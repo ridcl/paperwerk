@@ -1,0 +1,52 @@
+[project]
+name = "pile"
+version = "0.1.0"
+description = "The mess, re-organized"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tqdm>=4.67.1",
+    "mlflow==3.4.0",
+    "google-tunix",
+    "safetensors>=0.7.0",
+    "gcsfs>=2025.10.0",
+    "colorama>=0.4.6",
+    "hyperspace",
+    "duckdb>=1.4.3",
+    "datasets>=4.4.2",
+    "transformers==5.2.0",
+    "torch>=2.9.0",
+    "vllm>=0.13.0",
+    "trl[peft]",
+    "bitsandbytes",
+    "trackio"
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "ipython>=9.2.0",
+    "isort>=6.0.1",
+    "mypy>=1.15.0",
+    "pytest>=8.4.1",
+    "ruff>=0.13.1",
+]
+extra = [
+    "pillow>=11.2.1",
+    "datasets>=4.1.1",
+]
+
+
+[tool.uv]
+default-groups = ["dev", "extra"]
+override-dependencies = [
+    "transformers==5.2.0",
+]
+
+[tool.uv.sources]
+google-tunix = { workspace = true }
+
+[tool.uv.workspace]
+members = [
+    "lib/tunix",
+]
