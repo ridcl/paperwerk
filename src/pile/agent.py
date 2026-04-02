@@ -1,5 +1,13 @@
 import json
+import glob
+from dataclasses import dataclass
 from openai import OpenAI
+from pile.extractor import Extractor
+
+
+VLLM_URL = "http://localhost:8000/v1"
+MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b/"
+
 
 TOOLS = [
     {
@@ -48,24 +56,23 @@ TOOLS = [
 ]
 
 
-# ---------------------------
-# Dummy tool implementations
-# ---------------------------
+@dataclass
+class Context:
+    extractor: Extractor
 
 
-def extract_values(document_path: str, keys: list[str]) -> dict:
-    """Dummy extraction: returns placeholder values for each requested key."""
-    return {key: f"<extracted:{key}>" for key in keys}
+def extract_values(ctx: Context, document_path: str, keys: list[str]) -> dict:
+    items = ctx.extractor(document_path, keys)
+    return {item.key: item.value for item in items}
 
 
-def list_files(directory: str = "/") -> list[str]:
+def list_files(ctx: Context, directory: str = "/") -> list[str]:
     """Dummy file listing: returns a static set of example files."""
-    return [
-        "/docs/passport.pdf",
-        "/docs/tax_return_2024.pdf",
-        "/docs/employment_contract.pdf",
-        "/docs/bank_statement_march.pdf",
-    ]
+    extensions = ["pdf", "jpeg", "jpg", "png"]
+    filenames = []
+    for ext in extensions:
+        filenames += glob.glob(f"/data/Documents/**/*.{ext}")
+    return filenames
 
 
 # -------------
@@ -73,11 +80,11 @@ def list_files(directory: str = "/") -> list[str]:
 # -------------
 
 
-def dispatch_tool(name: str, arguments: dict):
+def dispatch_tool(ctx: Context, name: str, arguments: dict):
     if name == "extract_values":
-        return extract_values(**arguments)
+        return extract_values(ctx, **arguments)
     if name == "list_files":
-        return list_files(**arguments)
+        return list_files(ctx, **arguments)
     raise ValueError(f"Unknown tool: {name}")
 
 
@@ -90,12 +97,13 @@ class Agent:
 
     def __init__(
         self,
-        model: str = "/data/models/kvp10k-qwen3vl-4b/",
-        base_url: str = "http://localhost:8000/v1",
+        model: str = MODEL_NAME,
+        base_url: str = VLLM_URL,
     ):
         self.model = model
         self.base_url = base_url
         self.client = OpenAI(base_url=base_url, api_key="")
+        self.ctx = Context(extractor=Extractor(model=model, base_url=base_url))
         self.messages = []
 
     def __repr__(self):
@@ -122,7 +130,7 @@ class Agent:
             if choice.finish_reason == "tool_calls":
                 for tool_call in choice.message.tool_calls:
                     arguments = json.loads(tool_call.function.arguments)
-                    result = dispatch_tool(tool_call.function.name, arguments)
+                    result = dispatch_tool(self.ctx, tool_call.function.name, arguments)
                     self.messages.append(
                         {
                             "role": "tool",
@@ -132,6 +140,13 @@ class Agent:
                     )
             else:
                 return choice.message.content
+
+    def run_interactive(self):
+        user_message = None
+        while user_message != "/exit":
+            user_message = input(":prompt: ")
+            out = self.run(":response: " + user_message)
+            print(out)
 
 
 if __name__ == "__main__" and "__file__" in globals():

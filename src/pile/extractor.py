@@ -1,11 +1,18 @@
 import base64
+import json
 from collections.abc import Sequence
+import os
+from typing import Optional
 
-from pydantic import BaseModel
+from pdf2image import convert_from_path
+from pydantic import BaseModel, Field
 from openai import OpenAI
 from PIL import Image
 from io import BytesIO
 from PIL import Image, ImageDraw
+
+
+IMAGE_EXTENSIONS = (".jpeg", ".jpg", ".png")
 
 
 def pil_to_base64_url(image: Image.Image, format: str = "JPEG") -> str:
@@ -20,12 +27,8 @@ def pil_to_base64_url(image: Image.Image, format: str = "JPEG") -> str:
 class Grounded(BaseModel):
     key: str
     value: str
-    box_2d: list[int]  # 0..1000, [x0, y0, x1, y1]
-
-    @property
-    def box_f(self):
-        """Bounding box as a list of floating point numbers in interval 0..1"""
-        return [u / 1000 for u in self.box_2d]
+    box_2d: list[int]  # [x0, y0, x1, y1], 0..1000
+    meta: dict = Field(default_factory=dict, repr=False)
 
     @property
     def x0(self):
@@ -44,28 +47,19 @@ class Grounded(BaseModel):
         return self.box_2d[3]
 
 
-class _ExtractionResult(BaseModel):
-    items: list[Grounded]
-
-
-def visualize(image: Image.Image, items: list[Grounded]) -> Image.Image:
-    draw = ImageDraw.Draw(image)
-    W, H = image.size
-    for item in items:
-        x0, y0, x1, y1 = item.box_2d
-        px0, py0 = x0 / 1000 * W, y0 / 1000 * H
-        px1, py1 = x1 / 1000 * W, y1 / 1000 * H
-        draw.rectangle([px0, py0, px1, py1], outline="red", width=2)
-        draw.text((px0, max(0, py0 - 12)), item.key, fill="red")
-    return image
+_GROUNDED_LIST_SCHEMA = {
+    "type": "array",
+    "items": Grounded.model_json_schema(),
+}
 
 
 class Extractor:
 
     def __init__(
         self,
-        model: str = "/data/models/kvp10k-qwen3vl-4b/",
-        base_url: str = "http://localhost:8000/v1",
+        *,
+        base_url: str,
+        model: str,
     ):
         self.model = model
         self.base_url = base_url
@@ -100,21 +94,56 @@ class Extractor:
             }
         ]
 
-    def __call__(self, path: str, keys: Sequence[str]) -> list[Grounded]:
-        image = Image.open(path)
-        completion = self.client.beta.chat.completions.parse(
+    def extract(self, image: Image.Image, keys: Sequence[str]) -> list[Grounded]:
+        completion = self.client.chat.completions.create(
             model=self.model,
             messages=self._make_conversation(image, keys),
-            response_format=_ExtractionResult,
+            extra_body={"guided_json": _GROUNDED_LIST_SCHEMA},
         )
-        return completion.choices[0].message.parsed.items
+        data = json.loads(completion.choices[0].message.content)
+        return [Grounded(**item) for item in data]
+
+    def __call__(self, path: str, keys: Sequence[str]) -> list[Grounded]:
+        _, ext = os.path.splitext(path)
+        if ext in IMAGE_EXTENSIONS:
+            items = self.extract(Image.open(path), keys)
+            for item in items:
+                item.meta["filename"] = path
+            return item
+        elif ext == ".pdf":
+            images = convert_from_path(path, fmt="jpeg")
+            items = []
+            for page, image in enumerate(images):
+                page_items = self.extract(image, keys)
+                for item in page_items:
+                    item.meta = {"filename": path, "page": page}
+                items.extend(page_items)
+            return items
+        else:
+            raise ValueError(f"Unsupported file type: {ext}")
+
+
+def visualize(image: Image.Image, items: list[Grounded]) -> Image.Image:
+    draw = ImageDraw.Draw(image)
+    W, H = image.size
+    for item in items:
+        x0, y0, x1, y1 = item.box_2d
+        px0, py0 = x0 / 1000 * W, y0 / 1000 * H
+        px1, py1 = x1 / 1000 * W, y1 / 1000 * H
+        draw.rectangle([px0, py0, px1, py1], outline="red", width=2)
+        draw.text((px0, max(0, py0 - 12)), item.key, fill="red")
+    return image
 
 
 def main():
-    extractor = Extractor()
+    extractor = Extractor(
+        base_url="http://localhost:8000/v1", model="/data/models/kvp10k-qwen3vl-4b/"
+    )
 
-    path = "/data/taxes.jpeg"
-    keys = ["total_tax_box1", "payable_tax", "ssn", "reciavable_tax", "name"]
+    # path = "/data/taxes.jpeg"
+    path = "/data/Documents/ruling/Zhabinski, A.V. - Yandex.pdf"
+    # keys = ["total_tax_box1", "payable_tax", "ssn", "reciavable_tax", "name"]
+    keys = ["date", "reference_number", "phone_number"]
     items = extractor(path, keys)
 
     image = Image.open(path)
