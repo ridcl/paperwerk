@@ -1,8 +1,11 @@
 import json
 import glob
 from dataclasses import dataclass
+import traceback
 from openai import OpenAI
-from pile.extractor import Extractor
+from PIL import Image
+from pdf2image import convert_from_path
+from pile.extractor import Extractor, visualize
 
 
 VLLM_URL = "http://localhost:8000/v1"
@@ -38,6 +41,31 @@ TOOLS = [
     {
         "type": "function",
         "function": {
+            "name": "visualize_extraction",
+            "description": (
+                "Visualize extracted values by drawing bounding boxes on the source document page. "
+                "Returns the path to the saved visualization image."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "description": "List of extracted Grounded items as returned by extract_values.",
+                        "items": {"type": "object"},
+                    },
+                    "output_path": {
+                        "type": "string",
+                        "description": "Path to save the visualization image.",
+                    },
+                },
+                "required": ["items", "output_path"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "list_files",
             "description": "List files available in document storage.",
             "parameters": {
@@ -61,9 +89,25 @@ class Context:
     extractor: Extractor
 
 
-def extract_values(ctx: Context, document_path: str, keys: list[str]) -> dict:
+def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[dict]:
     items = ctx.extractor(document_path, keys)
-    return {item.key: item.value for item in items}
+    return [item.model_dump() for item in items]
+
+
+def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> str:
+    from pile.extractor import Grounded
+    grounded = [Grounded(**item) for item in items]
+    first = grounded[0]
+    filename = first.meta["filename"]
+    _, ext = filename.rsplit(".", 1)
+    if ext.lower() == "pdf":
+        page = first.meta["page"]
+        images = convert_from_path(filename, fmt="jpeg")
+        image = images[page]
+    else:
+        image = Image.open(filename)
+    visualize(image, grounded).save(output_path)
+    return output_path
 
 
 def list_files(ctx: Context, directory: str = "/") -> list[str]:
@@ -83,6 +127,8 @@ def list_files(ctx: Context, directory: str = "/") -> list[str]:
 def dispatch_tool(ctx: Context, name: str, arguments: dict):
     if name == "extract_values":
         return extract_values(ctx, **arguments)
+    if name == "visualize_extraction":
+        return visualize_extraction(ctx, **arguments)
     if name == "list_files":
         return list_files(ctx, **arguments)
     raise ValueError(f"Unknown tool: {name}")
@@ -91,6 +137,12 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
 # -------------
 # Agentic loop
 # -------------
+
+SYSTEM_MESSAGE = """You are a personal document assistant.
+You will be given questions about personal matters and should answer
+them based on the available documents. Use tools to list documents
+and extract information available in them.
+"""
 
 
 class Agent:
@@ -104,7 +156,7 @@ class Agent:
         self.base_url = base_url
         self.client = OpenAI(base_url=base_url, api_key="")
         self.ctx = Context(extractor=Extractor(model=model, base_url=base_url))
-        self.messages = []
+        self.messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
 
     def __repr__(self):
         return "Agent()"
@@ -145,8 +197,11 @@ class Agent:
         user_message = None
         while user_message != "/exit":
             user_message = input(":prompt: ")
-            out = self.run(":response: " + user_message)
-            print(out)
+            try:
+                out = self.run(":response: " + user_message)
+                print(out)
+            except Exception:
+                print(traceback.format_exc())
 
 
 if __name__ == "__main__" and "__file__" in globals():

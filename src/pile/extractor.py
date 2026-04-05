@@ -109,7 +109,7 @@ class Extractor:
             items = self.extract(Image.open(path), keys)
             for item in items:
                 item.meta["filename"] = path
-            return item
+            return items
         elif ext == ".pdf":
             images = convert_from_path(path, fmt="jpeg")
             items = []
@@ -140,10 +140,10 @@ def main():
         base_url="http://localhost:8000/v1", model="/data/models/kvp10k-qwen3vl-4b/"
     )
 
-    # path = "/data/taxes.jpeg"
-    path = "/data/Documents/ruling/Zhabinski, A.V. - Yandex.pdf"
-    # keys = ["total_tax_box1", "payable_tax", "ssn", "reciavable_tax", "name"]
-    keys = ["date", "reference_number", "phone_number"]
+    path = "/data/taxes.jpeg"
+    # path = "/data/Documents/ruling/Zhabinski, A.V. - Yandex.pdf"
+    keys = ["total_tax_box1", "payable_tax", "ssn", "reciavable_tax", "name"]
+    # keys = ["date", "reference_number", "phone_number"]
     items = extractor(path, keys)
 
     image = Image.open(path)
