@@ -17,7 +17,7 @@ IMAGE_EXTENSIONS = (".jpeg", ".jpg", ".png")
 
 def pil_to_base64_url(image: Image.Image, format: str = "JPEG") -> str:
     buffer = BytesIO()
-    image.save(buffer, format=format)
+    image.convert("RGB").save(buffer, format=format)
     buffer.seek(0)
     b64_data = base64.b64encode(buffer.read()).decode("utf-8")
     media_type = f"image/{format.lower()}"

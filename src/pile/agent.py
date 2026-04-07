@@ -1,11 +1,12 @@
 import json
-import glob
 from dataclasses import dataclass
 import traceback
 from openai import OpenAI
 from PIL import Image
 from pdf2image import convert_from_path
 from pile.extractor import Extractor, visualize
+from pile.storage import DocumentStorage
+from pile.summarizer import Summarizer
 
 
 VLLM_URL = "http://localhost:8000/v1"
@@ -66,18 +67,29 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "list_files",
-            "description": "List files available in document storage.",
+            "name": "show_files",
+            "description": "List all indexed documents and their summaries.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "show_details",
+            "description": "Show detailed information about a specific document, including per-page summaries.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "directory": {
+                    "filename": {
                         "type": "string",
-                        "description": "Optional subdirectory to list. Defaults to root.",
-                        "default": "/",
+                        "description": "Full path to the document file.",
                     }
                 },
-                "required": [],
+                "required": ["filename"],
             },
         },
     },
@@ -87,6 +99,7 @@ TOOLS = [
 @dataclass
 class Context:
     extractor: Extractor
+    storage: DocumentStorage
 
 
 def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[dict]:
@@ -110,13 +123,12 @@ def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> s
     return output_path
 
 
-def list_files(ctx: Context, directory: str = "/") -> list[str]:
-    """Dummy file listing: returns a static set of example files."""
-    extensions = ["pdf", "jpeg", "jpg", "png"]
-    filenames = []
-    for ext in extensions:
-        filenames += glob.glob(f"/data/Documents/**/*.{ext}")
-    return filenames
+def show_files(ctx: Context) -> list[str]:
+    return ctx.storage.show_files()
+
+
+def show_details(ctx: Context, filename: str) -> list[str]:
+    return ctx.storage.show_details(filename)
 
 
 # -------------
@@ -129,8 +141,10 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
         return extract_values(ctx, **arguments)
     if name == "visualize_extraction":
         return visualize_extraction(ctx, **arguments)
-    if name == "list_files":
-        return list_files(ctx, **arguments)
+    if name == "show_files":
+        return show_files(ctx, **arguments)
+    if name == "show_details":
+        return show_details(ctx, **arguments)
     raise ValueError(f"Unknown tool: {name}")
 
 
@@ -151,11 +165,16 @@ class Agent:
         self,
         model: str = MODEL_NAME,
         base_url: str = VLLM_URL,
+        root_dir: str = "/data/Documents",
     ):
         self.model = model
         self.base_url = base_url
         self.client = OpenAI(base_url=base_url, api_key="")
-        self.ctx = Context(extractor=Extractor(model=model, base_url=base_url))
+        summarizer = Summarizer(base_url=base_url, model=model)
+        self.ctx = Context(
+            extractor=Extractor(model=model, base_url=base_url),
+            storage=DocumentStorage(root_dir=root_dir, summarizer=summarizer),
+        )
         self.messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
 
     def __repr__(self):

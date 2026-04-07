@@ -45,7 +45,7 @@ RUN apt-get update && apt install -y --no-install-recommends \
         xz-utils \
         zlib1g-dev \
         zstd \
-        poppler-utils \   # for PDF parsing
+        poppler-utils \
     && sed -i "s/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g" /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
