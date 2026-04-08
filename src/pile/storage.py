@@ -1,3 +1,4 @@
+from copy import deepcopy
 import glob
 import hashlib
 import json
@@ -50,14 +51,12 @@ class DocumentStorage:
           "filename": <full path to the file>,
           "hash": <md5 hash of the file>,
           "summary": <summary of the whole document>,
-          "page_summary": [
+          "page_summaries": [
             <one-sentence summary of the 0th page>,
             <one-sentence summary of the 1st page>,
             ...
           ]
         }
-
-
         """
         existing = {r["filename"]: r for r in self._load_index()}
         records = []
@@ -72,8 +71,9 @@ class DocumentStorage:
                 continue
             file_hash = self._file_hash(full_path)
 
-            filler = "..." if len(full_path) > 20 else ""
-            pbar.set_description(filler + full_path[-20:])
+            dlen = 30
+            filler = "..." if len(full_path) > dlen else ""
+            pbar.set_description(filler + full_path[-dlen:])
 
             if full_path in existing and existing[full_path]["hash"] == file_hash:
                 records.append(existing[full_path])
@@ -86,27 +86,33 @@ class DocumentStorage:
                     "hash": file_hash,
                     "summary": summary_data["summary"],
                 }
-                if "page_summary" in summary_data:
-                    record["page_summary"] = summary_data["page_summary"]
+                if "page_summaries" in summary_data:
+                    record["page_summaries"] = summary_data["page_summaries"]
                 records.append(record)
+            except KeyboardInterrupt:
+                print("Interrupted, stopping...")
+                break
             except:
                 print(f"Failed to process file {full_path}")
                 print(traceback.format_exc())
 
         self._save_index(records)
 
-    def show_files(self) -> list[str]:
-        """Show all files in the root_dir and their summaries"""
+    def list_files(self):
+        """List all available files"""
         records = self._load_index()
-        lines = []
-        for record in records:
-            lines.append(f"{record['filename']}")
-            lines.append(f"  Summary: {record['summary']}")
-        for line in lines:
-            print(line)
-        return lines
+        fields = ("filename", "summary")
+        relevant = [{k: v for k, v in rec.items() if k in fields} for rec in records]
+        return relevant
 
-    def show_details(self, filename: str) -> list[str]:
+    def summaries(self) -> list[dict]:
+        """Show all files in the index and their summaries"""
+        records = self._load_index()
+        fields = ("filename", "summary")
+        relevant = [{k: v for k, v in rec.items() if k in fields} for rec in records]
+        return relevant
+
+    def details(self, filename: str) -> dict:
         """Show details of the specified file"""
         records = self._load_index()
         records = [rec for rec in records if rec["filename"] == filename]
@@ -114,15 +120,15 @@ class DocumentStorage:
             raise ValueError(
                 f"Expected exactly one record for {filename}, but got {len(records)}"
             )
-        record = records[0]
-        lines = []
-        lines.append(f"{record['filename']}")
-        lines.append(f"  Summary: {record['summary']}")
-        for i, page_summary in enumerate(record.get("page_summary", [])):
-            lines.append(f"  Page {i}: {page_summary}")
-        for line in lines:
-            print(line)
-        return lines
+        record = deepcopy(records[0])
+        pages = [
+            {"page": i, "summary": s} for i, s in enumerate(record["page_summaries"])
+        ]
+        return {
+            "filename": filename,
+            "summary": record["summary"],
+            "pages": pages,
+        }
 
 
 def main():

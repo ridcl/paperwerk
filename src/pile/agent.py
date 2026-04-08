@@ -67,7 +67,19 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "show_files",
+            "name": "list_files",
+            "description": "List all indexed documents.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "file_summaries",
             "description": "List all indexed documents and their summaries.",
             "parameters": {
                 "type": "object",
@@ -79,7 +91,7 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "show_details",
+            "name": "file_details",
             "description": "Show detailed information about a specific document, including per-page summaries.",
             "parameters": {
                 "type": "object",
@@ -109,6 +121,7 @@ def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[di
 
 def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> str:
     from pile.extractor import Grounded
+
     grounded = [Grounded(**item) for item in items]
     first = grounded[0]
     filename = first.meta["filename"]
@@ -123,12 +136,16 @@ def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> s
     return output_path
 
 
-def show_files(ctx: Context) -> list[str]:
-    return ctx.storage.show_files()
+def list_files(ctx: Context) -> list[str]:
+    return ctx.storage.list_files()
 
 
-def show_details(ctx: Context, filename: str) -> list[str]:
-    return ctx.storage.show_details(filename)
+def file_summaries(ctx: Context) -> list[str]:
+    return ctx.storage.summaries()
+
+
+def file_details(ctx: Context, filename: str) -> list[str]:
+    return ctx.storage.details(filename)
 
 
 # -------------
@@ -141,10 +158,12 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
         return extract_values(ctx, **arguments)
     if name == "visualize_extraction":
         return visualize_extraction(ctx, **arguments)
-    if name == "show_files":
-        return show_files(ctx, **arguments)
-    if name == "show_details":
-        return show_details(ctx, **arguments)
+    if name == "list_files":
+        return list_files(ctx, **arguments)
+    if name == "file_details":
+        return file_details(ctx, **arguments)
+    if name == "file_details":
+        return file_details(ctx, **arguments)
     raise ValueError(f"Unknown tool: {name}")
 
 
@@ -217,8 +236,8 @@ class Agent:
         while user_message != "/exit":
             user_message = input(":prompt: ")
             try:
-                out = self.run(":response: " + user_message)
-                print(out)
+                out = self.run(user_message)
+                print(":response: " + out)
             except Exception:
                 print(traceback.format_exc())
 

@@ -58,23 +58,23 @@ class Summarizer:
         )
         return completion.choices[0].message.content
 
-    def _summarize_short(self, image: Image.Image) -> str:
-        completion = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {"type": "text", "text": self._make_short_prompt()},
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": pil_to_base64_url(image)},
-                        },
-                    ],
-                }
-            ],
-        )
-        return completion.choices[0].message.content
+    # def _summarize_short(self, image: Image.Image) -> str:
+    #     completion = self.client.chat.completions.create(
+    #         model=self.model,
+    #         messages=[
+    #             {
+    #                 "role": "user",
+    #                 "content": [
+    #                     {"type": "text", "text": self._make_short_prompt()},
+    #                     {
+    #                         "type": "image_url",
+    #                         "image_url": {"url": pil_to_base64_url(image)},
+    #                     },
+    #                 ],
+    #             }
+    #         ],
+    #     )
+    #     return completion.choices[0].message.content
 
     def __call__(self, path: str) -> dict:
         """Summarize the document given by path (image or PDF)
@@ -82,22 +82,22 @@ class Summarizer:
 
         {
             "summary": <summary of the whole document>,
-            "page_summary": [
+            "page_summaries": [
                 <one-sentence summary of the 0th page>,
                 <one-sentence summary of the 1st page>,
                 ...
           ]
         }
 
-        Where "page_summary" is a list of page summaries (only for PDFs).
+        Where "page_summaries" is a list of page summaries (only for PDFs).
         """
         _, ext = os.path.splitext(path)
         if ext.lower() in IMAGE_EXTENSIONS:
             image = Image.open(path)
-            return {"summary": self.summarize(image)}
+            return {"summary": self.summarize(image), "page_summaries": []}
         elif ext.lower() == ".pdf":
             images = convert_from_path(path, fmt="jpeg")
-            page_summaries = [self._summarize_short(img) for img in images]
+            page_summaries = [self.summarize(img) for img in images]
             combined_prompt = (
                 "Below are one-sentence summaries of each page of a multi-page document. "
                 "Write a single cohesive summary of the whole document.\n\n"
@@ -109,7 +109,7 @@ class Summarizer:
             )
             return {
                 "summary": completion.choices[0].message.content,
-                "page_summary": page_summaries,
+                "page_summaries": page_summaries,
             }
         else:
             raise ValueError(f"Unsupported file type: {ext}")
