@@ -7,6 +7,7 @@ from pdf2image import convert_from_path
 from pile.extractor import Extractor, visualize
 from pile.storage import DocumentStorage
 from pile.summarizer import Summarizer
+from pile.vqa import VQA
 
 
 VLLM_URL = "http://localhost:8000/v1"
@@ -67,6 +68,30 @@ TOOLS = [
     {
         "type": "function",
         "function": {
+            "name": "ask_document",
+            "description": (
+                "Ask a free-form question about a document (PDF or image) "
+                "and get a short, precise answer."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "document_path": {
+                        "type": "string",
+                        "description": "Path to the document file in storage.",
+                    },
+                    "question": {
+                        "type": "string",
+                        "description": "Question to ask about the document.",
+                    },
+                },
+                "required": ["document_path", "question"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "list_files",
             "description": "List all indexed documents.",
             "parameters": {
@@ -111,7 +136,12 @@ TOOLS = [
 @dataclass
 class Context:
     extractor: Extractor
+    vqa: VQA
     storage: DocumentStorage
+
+
+def ask_document(ctx: Context, document_path: str, question: str) -> str | list[str]:
+    return ctx.vqa(document_path, question)
 
 
 def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[dict]:
@@ -154,17 +184,25 @@ def file_details(ctx: Context, filename: str) -> list[str]:
 
 
 def dispatch_tool(ctx: Context, name: str, arguments: dict):
-    if name == "extract_values":
-        return extract_values(ctx, **arguments)
-    if name == "visualize_extraction":
-        return visualize_extraction(ctx, **arguments)
-    if name == "list_files":
-        return list_files(ctx, **arguments)
-    if name == "file_details":
-        return file_details(ctx, **arguments)
-    if name == "file_details":
-        return file_details(ctx, **arguments)
-    raise ValueError(f"Unknown tool: {name}")
+    try:
+        if name == "ask_document":
+            return ask_document(ctx, **arguments)
+        if name == "extract_values":
+            return extract_values(ctx, **arguments)
+        if name == "visualize_extraction":
+            return visualize_extraction(ctx, **arguments)
+        if name == "list_files":
+            return list_files(ctx, **arguments)
+        if name == "file_details":
+            return file_details(ctx, **arguments)
+        if name == "file_details":
+            return file_details(ctx, **arguments)
+        raise ValueError(f"Unknown tool: {name}")
+    except:
+        # Propagate any exceptions to the agent LLM
+        exc_str = traceback.format_exc()
+        print(exc_str)
+        return exc_str
 
 
 # -------------
@@ -174,7 +212,11 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
 SYSTEM_MESSAGE = """You are a personal document assistant.
 You will be given questions about personal matters and should answer
 them based on the available documents. Use tools to list documents
-and extract information available in them.
+and extract information available in them. Start by listing all files
+and always give reference to the document that you used. For example,
+if you used `/foo/bar/baz.pdf`, reference it at the end of response as:
+
+:link:/foo/bar/baz.pdf
 """
 
 
@@ -192,6 +234,7 @@ class Agent:
         summarizer = Summarizer(base_url=base_url, model=model)
         self.ctx = Context(
             extractor=Extractor(model=model, base_url=base_url),
+            vqa=VQA(model=model, base_url=base_url),
             storage=DocumentStorage(root_dir=root_dir, summarizer=summarizer),
         )
         self.messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
