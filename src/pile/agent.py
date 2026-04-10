@@ -1,4 +1,5 @@
 import json
+import re
 from dataclasses import dataclass
 import traceback
 from openai import OpenAI
@@ -11,7 +12,8 @@ from pile.vqa import VQA
 
 
 VLLM_URL = "http://localhost:8000/v1"
-MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b/"
+# MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b/"
+MODEL_NAME = "google/gemma-4-E4B-it"
 
 
 TOOLS = [
@@ -46,7 +48,8 @@ TOOLS = [
             "name": "visualize_extraction",
             "description": (
                 "Visualize extracted values by drawing bounding boxes on the source document page. "
-                "Returns the path to the saved visualization image."
+                "Returns the path to the saved visualization image. "
+                "This tool can ONLY be used on the output from extract_values() function."
             ),
             "parameters": {
                 "type": "object",
@@ -58,7 +61,9 @@ TOOLS = [
                     },
                     "output_path": {
                         "type": "string",
-                        "description": "Path to save the visualization image.",
+                        "description": "Path to save the visualization image. "
+                        "Can be absolute or relative. "
+                        "The path should ALWAYS be used exactly as provided by user.",
                     },
                 },
                 "required": ["items", "output_path"],
@@ -193,8 +198,8 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
             return visualize_extraction(ctx, **arguments)
         if name == "list_files":
             return list_files(ctx, **arguments)
-        if name == "file_details":
-            return file_details(ctx, **arguments)
+        if name == "file_summaries":
+            return file_summaries(ctx, **arguments)
         if name == "file_details":
             return file_details(ctx, **arguments)
         raise ValueError(f"Unknown tool: {name}")
@@ -209,14 +214,60 @@ def dispatch_tool(ctx: Context, name: str, arguments: dict):
 # Agentic loop
 # -------------
 
-SYSTEM_MESSAGE = """You are a personal document assistant.
-You will be given questions about personal matters and should answer
-them based on the available documents. Use tools to list documents
-and extract information available in them. Start by listing all files
-and always give reference to the document that you used. For example,
-if you used `/foo/bar/baz.pdf`, reference it at the end of response as:
 
-:link:/foo/bar/baz.pdf
+def _repair_json(s: str) -> str:
+    """Fix model's common mistake: missing closing quote before } or ]."""
+    # Count unmatched quotes to detect unclosed strings
+    depth = 0
+    in_string = False
+    i = 0
+    result = []
+    while i < len(s):
+        c = s[i]
+        if c == "\\" and in_string:
+            result.append(s[i : i + 2])
+            i += 2
+            continue
+        if c == '"':
+            in_string = not in_string
+        elif c in "{[" and not in_string:
+            depth += 1
+        elif c in "}]" and not in_string:
+            depth -= 1
+        elif c in "}]" and in_string:
+            # Closing bracket inside an unclosed string — insert missing quote
+            result.append('"')
+            in_string = False
+            depth -= 1
+        result.append(c)
+        i += 1
+    return "".join(result)
+
+
+def _parse_raw_tool_calls(content: str) -> list[dict]:
+    match = re.search(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", content, re.DOTALL)
+    if not match:
+        return []
+    raw = match.group(1)
+    for candidate in (raw, _repair_json(raw)):
+        try:
+            data = json.loads(candidate)
+            return [{"name": data["name"], "arguments": json.dumps(data["arguments"])}]
+        except (json.JSONDecodeError, KeyError):
+            continue
+    return []
+
+
+SYSTEM_PROMPT = """You are a personal document assistant.
+You will be given questions about personal matters and should answer
+them based on the available documents. Some rules:
+
+1. When any information is unavailable or inaccessible, immediately
+  use available tools (e.g., `list_files`, `file_summaries`, or `ask_document`)
+  to retrieve or summarize relevant documents. Do not attempt to answer
+  without first checking available resources."
+2. NEVER try to guess document name.
+3. AWLAYS give references to the documents you used.
 """
 
 
@@ -237,7 +288,7 @@ class Agent:
             vqa=VQA(model=model, base_url=base_url),
             storage=DocumentStorage(root_dir=root_dir, summarizer=summarizer),
         )
-        self.messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
+        self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     def __repr__(self):
         return "Agent()"
@@ -261,18 +312,33 @@ class Agent:
             self.messages.append(choice.message.model_dump(exclude_unset=False))
 
             if choice.finish_reason == "tool_calls":
-                for tool_call in choice.message.tool_calls:
-                    arguments = json.loads(tool_call.function.arguments)
-                    result = dispatch_tool(self.ctx, tool_call.function.name, arguments)
-                    self.messages.append(
-                        {
-                            "role": "tool",
-                            "tool_call_id": tool_call.id,
-                            "content": json.dumps(result),
-                        }
-                    )
+                tool_calls = choice.message.tool_calls
+            elif choice.message.content and "<tool_call>" in choice.message.content:
+                # Qwen3-VL sometimes generates invalid tool calls, which breaks
+                # the parsing mechanism. This is a hack to fix it.
+                tool_calls = _parse_raw_tool_calls(choice.message.content)
+                if not tool_calls:
+                    return choice.message.content
             else:
                 return choice.message.content
+
+            for tool_call in tool_calls:
+                if isinstance(tool_call, dict):
+                    name = tool_call["name"]
+                    arguments = json.loads(tool_call["arguments"])
+                    tool_call_id = f"fallback-{name}"
+                else:
+                    name = tool_call.function.name
+                    arguments = json.loads(tool_call.function.arguments)
+                    tool_call_id = tool_call.id
+                result = dispatch_tool(self.ctx, name, arguments)
+                self.messages.append(
+                    {
+                        "role": "tool",
+                        "tool_call_id": tool_call_id,
+                        "content": json.dumps(result),
+                    }
+                )
 
     def run_interactive(self):
         user_message = None
