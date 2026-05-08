@@ -8,133 +8,12 @@ from pdf2image import convert_from_path
 from pile.extractor import Extractor, visualize
 from pile.storage import DocumentStorage
 from pile.summarizer import Summarizer
+from pile.tools import REGISTRY, tool
 from pile.vqa import VQA
 
 VLLM_URL = "http://localhost:8000/v1"
 MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b-retrained/"
 # MODEL_NAME = "google/gemma-4-E4B-it"
-
-
-TOOLS = [
-    {
-        "type": "function",
-        "function": {
-            "name": "extract_values",
-            "description": (
-                "Extract values for the given keys from a document (PDF or image) "
-                "stored in the document storage."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "document_path": {
-                        "type": "string",
-                        "description": "Path to the document file in storage.",
-                    },
-                    "keys": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "List of keys to extract from the document.",
-                    },
-                },
-                "required": ["document_path", "keys"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "visualize_extraction",
-            "description": (
-                "Visualize extracted values by drawing bounding boxes on the source document page. "
-                "Returns the path to the saved visualization image. "
-                "This tool can ONLY be used on the output from extract_values() function."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "items": {
-                        "type": "array",
-                        "description": "List of extracted Grounded items as returned by extract_values.",
-                        "items": {"type": "object"},
-                    },
-                    "output_path": {
-                        "type": "string",
-                        "description": "Path to save the visualization image. "
-                        "Can be absolute or relative. "
-                        "The path should ALWAYS be used exactly as provided by user.",
-                    },
-                },
-                "required": ["items", "output_path"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "ask_document",
-            "description": (
-                "Ask a free-form question about a document (PDF or image) "
-                "and get a short, precise answer."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "document_path": {
-                        "type": "string",
-                        "description": "Path to the document file in storage.",
-                    },
-                    "question": {
-                        "type": "string",
-                        "description": "Question to ask about the document.",
-                    },
-                },
-                "required": ["document_path", "question"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "list_files",
-            "description": "List all indexed documents.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": [],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "file_summaries",
-            "description": "List all indexed documents and their summaries.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": [],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "file_details",
-            "description": "Show detailed information about a specific document, including per-page summaries.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "filename": {
-                        "type": "string",
-                        "description": "Full path to the document file.",
-                    }
-                },
-                "required": ["filename"],
-            },
-        },
-    },
-]
 
 
 @dataclass
@@ -144,16 +23,31 @@ class Context:
     storage: DocumentStorage
 
 
-def ask_document(ctx: Context, document_path: str, question: str) -> str | list[str]:
-    return ctx.vqa(document_path, question)
-
-
+@tool
 def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[dict]:
+    """Extract values for the given keys from a document (PDF or image)
+    stored in the document storage.
+
+    Args:
+        document_path: Path to the document file in storage.
+        keys: List of keys to extract from the document.
+    """
     items = ctx.extractor(document_path, keys)
     return [item.model_dump() for item in items]
 
 
+@tool
 def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> str:
+    """Visualize extracted values by drawing bounding boxes on the source document page.
+    Returns the path to the saved visualization image.
+    This tool can ONLY be used on the output from extract_values() function.
+
+    Args:
+        items: List of extracted Grounded items as returned by extract_values.
+        output_path: Path to save the visualization image.
+            Can be absolute or relative.
+            The path should ALWAYS be used exactly as provided by user.
+    """
     from pile.extractor import Grounded
 
     grounded = [Grounded(**item) for item in items]
@@ -170,15 +64,38 @@ def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> s
     return output_path
 
 
+@tool
+def ask_document(ctx: Context, document_path: str, question: str) -> str | list[str]:
+    """Ask a free-form question about a document (PDF or image) and get
+    a short, precise answer.
+
+    Args:
+        document_path: Path to the document file in storage.
+        question: Question to ask about the document.
+    """
+    return ctx.vqa(document_path, question)
+
+
+@tool
 def list_files(ctx: Context) -> list[str]:
+    """List all indexed documents."""
     return ctx.storage.list_files()
 
 
+@tool
 def file_summaries(ctx: Context) -> list[str]:
+    """List all indexed documents and their summaries."""
     return ctx.storage.summaries()
 
 
+@tool
 def file_details(ctx: Context, filename: str) -> list[str]:
+    """Show detailed information about a specific document,
+    including per-page summaries.
+
+    Args:
+        filename: Full path to the document file.
+    """
     return ctx.storage.details(filename)
 
 
@@ -189,19 +106,7 @@ def file_details(ctx: Context, filename: str) -> list[str]:
 
 def dispatch_tool(ctx: Context, name: str, arguments: dict):
     try:
-        if name == "ask_document":
-            return ask_document(ctx, **arguments)
-        if name == "extract_values":
-            return extract_values(ctx, **arguments)
-        if name == "visualize_extraction":
-            return visualize_extraction(ctx, **arguments)
-        if name == "list_files":
-            return list_files(ctx, **arguments)
-        if name == "file_summaries":
-            return file_summaries(ctx, **arguments)
-        if name == "file_details":
-            return file_details(ctx, **arguments)
-        raise ValueError(f"Unknown tool: {name}")
+        return REGISTRY.dispatch(ctx, name, arguments)
     except:
         # Propagate any exceptions to the agent LLM
         exc_str = traceback.format_exc()
@@ -303,7 +208,7 @@ class Agent:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=self.messages,
-                tools=TOOLS,
+                tools=REGISTRY.to_openai(),
                 tool_choice="auto",
             )
 
