@@ -1,8 +1,8 @@
 {
-	"name": "Existing Dockerfile",
+	"name": "Training (JAX)",
 	"build": {
-		"context": "..",
-		"dockerfile": "../Dockerfile",
+		"context": "../..",
+		"dockerfile": "../../Dockerfile.train",
 		"target": "build-dev"
 	},
 
@@ -14,9 +14,10 @@
 	"containerEnv": {
 		"PYTHONPATH": "src:lib/tunix",
 		"HF_TOKEN": "${localEnv:HF_TOKEN_PERSONAL}",
+		// JAX-specific: compilation cache and memory/allocator tuning
 		"JAX_COMPILATION_CACHE_DIR": "/tmp/jax_cache",
 		"XLA_PYTHON_CLIENT_MEM_FRACTION": ".99",
-		"TF_GPU_ALLOCATOR": "cuda_malloc_async",  // mitigates fragmentation
+		"TF_GPU_ALLOCATOR": "cuda_malloc_async",
 		"XLA_FLAGS": "--xla_gpu_enable_command_buffer="
 	},
 
@@ -40,5 +41,4 @@
 	"postCreateCommand": "bash .devcontainer/init.sh",
 
 	"runArgs": ["--gpus", "all", "--shm-size", "2g"]
-
 }

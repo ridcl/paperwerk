@@ -10,10 +10,9 @@ from pile.storage import DocumentStorage
 from pile.summarizer import Summarizer
 from pile.vqa import VQA
 
-
 VLLM_URL = "http://localhost:8000/v1"
-# MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b/"
-MODEL_NAME = "google/gemma-4-E4B-it"
+MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b-retrained/"
+# MODEL_NAME = "google/gemma-4-E4B-it"
 
 
 TOOLS = [
