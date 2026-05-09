@@ -1,14 +1,16 @@
 from copy import deepcopy
+from dataclasses import dataclass
 import glob
 import hashlib
 import json
 import os
 import traceback
-from typing import Any
+from typing import Any, Optional, Protocol
 
 from tqdm import tqdm
 
 from pile.extractor import IMAGE_EXTENSIONS
+from pile.llm import LLM
 from pile.summarizer import Summarizer
 
 SUPPORTED_EXTENSIONS = IMAGE_EXTENSIONS + (".pdf",)
@@ -131,8 +133,130 @@ class DocumentStorage:
         }
 
 
+# --------------------------------------------------------
+# Document dataclasses
+# --------------------------------------------------------
+
+
+@dataclass
+class Page:
+    index: int
+    summary: int
+
+
+@dataclass
+class Document:
+    path: str
+    title: str
+    summary: str
+    pages: list[Page]
+    content: Optional[Any]
+
+
+# --------------------------------------------------------
+# Storage Backend
+# --------------------------------------------------------
+
+
+class StorageBackend(Protocol):
+    """Storage backend protocol.
+
+    Storage backend is responsible for managing document content.
+    Implementations can store documents locally or remotely,
+    retrieve eagerly or lazily, etc.
+    """
+
+    def add(self, filename: str, content: bytes) -> str:
+        """Add a new document to the storage.
+
+        Args:
+          filename: Original filename for better readability by humans.
+          content: Content of the document.
+
+        Returns:
+          Unique path of the document in the storage. The path includes
+          file extension that helps to identify document type.
+        """
+        ...
+
+    def get(self, path: str) -> bytes:
+        """Get the document from the storage.
+
+        Args:
+          path: Unique path of the document in the storage.
+
+        Returns:
+          Document content as bytes.
+        """
+        ...
+
+    def remove(self, path: str):
+        """Remove the document from the storage.
+
+        Args:
+          path: Unique path of the document in the storage.
+        """
+        ...
+
+
+class LocalStorageBackend:
+    """Storage backend that stores documents on the local filesystem.
+
+    Documents are named as ``{hash_prefix}_{original_filename}`` where
+    ``hash_prefix`` is the first 6 hex characters of the MD5 of the content.
+    This keeps paths unique while still hinting at what's inside.
+    """
+
+    def __init__(self, base_path: str):
+        self.base_path = base_path
+        os.makedirs(base_path, exist_ok=True)
+
+    def _full_path(self, path: str) -> str:
+        return os.path.join(self.base_path, path)
+
+    def add(self, filename: str, content: bytes) -> str:
+        digest = hashlib.md5(content).hexdigest()[:6]
+        path = f"{digest}_{os.path.basename(filename)}"
+        full_path = self._full_path(path)
+        if not os.path.exists(full_path):
+            with open(full_path, "wb") as f:
+                f.write(content)
+        return path
+
+    def get(self, path: str) -> bytes:
+        with open(self._full_path(path), "rb") as f:
+            return f.read()
+
+    def remove(self, path: str):
+        os.remove(self._full_path(path))
+
+
+# --------------------------------------------------------
+# Document Index
+# --------------------------------------------------------
+
+
+class DocumentIndex:
+
+    def __init__(self, backend: StorageBackend, llm: LLM):
+        self.backend = backend
+        self.llm = llm
+        self.summarizer = Summarizer(llm)
+
+    def add(self, path: str):
+        # 1. copy document to the storage backend
+        # 2. summarize
+        # 3. save metadata
+        ...
+
+    def get(self, path: str) -> Document: ...
+
+
 def main():
-    summarizer = Summarizer(
-        base_url="http://localhost:8000/v1", model="/data/models/kvp10k-qwen3vl-4b/"
+    llm = LLM(
+        base_url="http://localhost:8000/v1",
+        api_key="",
+        model="/data/models/kvp10k-qwen3vl-4b/",
     )
+    summarizer = Summarizer(llm)
     self = DocumentStorage("/data/Documents", summarizer)

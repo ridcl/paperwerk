@@ -1,23 +1,16 @@
 import os
 
-from openai import OpenAI
 from pdf2image import convert_from_path
 from PIL import Image
 
 from pile.extractor import IMAGE_EXTENSIONS, pil_to_base64_url
+from pile.llm import LLM
 
 
 class Summarizer:
 
-    def __init__(
-        self,
-        *,
-        base_url: str,
-        model: str,
-    ):
-        self.model = model
-        self.base_url = base_url
-        self.client = OpenAI(base_url=base_url, api_key="")
+    def __init__(self, llm: LLM):
+        self.llm = llm
 
     def __repr__(self):
         return "Summarizer()"
@@ -41,9 +34,8 @@ class Summarizer:
 
     def summarize(self, image: Image.Image) -> str:
         """Summarize the content of the image for efficient retrieval later."""
-        completion = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
+        completion = self.llm.invoke(
+            [
                 {
                     "role": "user",
                     "content": [
@@ -57,24 +49,6 @@ class Summarizer:
             ],
         )
         return completion.choices[0].message.content
-
-    # def _summarize_short(self, image: Image.Image) -> str:
-    #     completion = self.client.chat.completions.create(
-    #         model=self.model,
-    #         messages=[
-    #             {
-    #                 "role": "user",
-    #                 "content": [
-    #                     {"type": "text", "text": self._make_short_prompt()},
-    #                     {
-    #                         "type": "image_url",
-    #                         "image_url": {"url": pil_to_base64_url(image)},
-    #                     },
-    #                 ],
-    #             }
-    #         ],
-    #     )
-    #     return completion.choices[0].message.content
 
     def __call__(self, path: str) -> dict:
         """Summarize the document given by path (image or PDF)
@@ -103,9 +77,8 @@ class Summarizer:
                 "Write a single cohesive summary of the whole document.\n\n"
                 + "\n".join(f"Page {i}: {s}" for i, s in enumerate(page_summaries))
             )
-            completion = self.client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": combined_prompt}],
+            completion = self.llm.invoke(
+                [{"role": "user", "content": combined_prompt}],
             )
             return {
                 "summary": completion.choices[0].message.content,
