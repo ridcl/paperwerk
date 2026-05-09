@@ -1,3 +1,4 @@
+import asyncio
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 import glob
@@ -333,9 +334,9 @@ class DocumentIndex:
         self.backend.write_meta(INDEX_NAME, content)
 
     @multimethod
-    def _summarize(self, image: Image.Image) -> str:
+    async def _summarize(self, image: Image.Image) -> dict:
         """Summarize the content of the image for efficient retrieval later."""
-        completion = self.llm.invoke(
+        completion = await self.llm.ainvoke(
             [
                 {
                     "role": "user",
@@ -359,14 +360,16 @@ class DocumentIndex:
         return json.loads(completion.choices[0].message.content)
 
     @multimethod
-    def _summarize(self, local_path: str) -> str:
+    async def _summarize(self, local_path: str) -> dict:
         _, ext = os.path.splitext(local_path)
         if ext.lower() in IMAGE_EXTENSIONS:
             image = Image.open(local_path)
-            return self._summarize(image)
+            return await self._summarize(image)
         elif ext.lower() == ".pdf":
-            images = convert_from_path(local_path, fmt="jpeg")
-            page_summaries = [self._summarize(img) for img in images]
+            images = await asyncio.to_thread(convert_from_path, local_path, fmt="jpeg")
+            page_summaries = await asyncio.gather(
+                *(self._summarize(img) for img in images)
+            )
             combined_prompt = (
                 "Below are one-sentence summaries of each page of a multi-page document. "
                 "Write a single cohesive summary of the whole document.\n\n"
@@ -374,7 +377,7 @@ class DocumentIndex:
                     f"Page {i}: {s['summary']}" for i, s in enumerate(page_summaries)
                 )
             )
-            completion = self.llm.invoke(
+            completion = await self.llm.ainvoke(
                 [{"role": "user", "content": combined_prompt}],
             )
             return {
@@ -383,12 +386,12 @@ class DocumentIndex:
                 "pages": page_summaries,
             }
 
-    def add(self, local_path: str) -> Document:
+    async def add(self, local_path: str) -> Document:
         filename = os.path.basename(local_path)
         with open(local_path, "rb") as fp:
             content = fp.read()
-            path = self.backend.add(filename, content)
-        details = self._summarize(local_path)
+        path = self.backend.add(filename, content)
+        details = await self._summarize(local_path)
         page_details = details.get("pages", [])
         doc = Document(
             path=path,
@@ -398,6 +401,7 @@ class DocumentIndex:
         )
         self.documents[path] = doc
         self._save()
+        return path
 
     def get(self, path: str) -> Document:
         return self.documents[path]
@@ -406,20 +410,16 @@ class DocumentIndex:
         return list(self.documents.keys())
 
 
-def main():
+async def main():
     llm = LLM(
         base_url="http://localhost:8000/v1",
         api_key="",
         model="/data/models/kvp10k-qwen3vl-4b-retrained/",
     )
     self = DocumentIndex(LocalStorageBackend("/data/pile/storage"), llm)
-    self.add("/data/Documents/PP/permit_andrei.jpg")
-    self.add("/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf")
-
-    self._summarize("/data/Documents/PP/permit_andrei.jpg")
-    self._summarize(
-        "/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf"
+    await asyncio.gather(
+        self.add("/data/Documents/PP/permit_andrei.jpg"),
+        self.add(
+            "/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf"
+        ),
     )
-
-    # summarizer = Summarizer(llm)
-    # self = DocumentStorage("/data/Documents", summarizer)
