@@ -1,11 +1,11 @@
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 import glob
 import hashlib
 import json
 import os
 import traceback
-from typing import Any, Optional, Protocol
+from typing import Protocol
 
 from PIL import Image
 from pdf2image import convert_from_path
@@ -201,6 +201,30 @@ class StorageBackend(Protocol):
         """
         ...
 
+    def write_meta(self, name: str, content: bytes):
+        """Write a fixed-name metadata blob (e.g. the document index).
+
+        Metadata blobs share the storage with documents but live in a
+        reserved namespace, so a real document upload can never collide
+        with them.
+        """
+        ...
+
+    def read_meta(self, name: str) -> bytes:
+        """Read a metadata blob previously written via ``write_meta``.
+
+        Raises:
+          FileNotFoundError: if no blob is stored under ``name``.
+        """
+        ...
+
+    def delete_meta(self, name: str):
+        """Delete a metadata blob."""
+        ...
+
+
+META_DIR = "_meta"
+
 
 class LocalStorageBackend:
     """Storage backend that stores documents on the local filesystem.
@@ -233,6 +257,22 @@ class LocalStorageBackend:
     def remove(self, path: str):
         os.remove(self._full_path(path))
 
+    def _meta_path(self, name: str) -> str:
+        return os.path.join(self.base_path, META_DIR, name)
+
+    def write_meta(self, name: str, content: bytes):
+        full_path = self._meta_path(name)
+        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        with open(full_path, "wb") as f:
+            f.write(content)
+
+    def read_meta(self, name: str) -> bytes:
+        with open(self._meta_path(name), "rb") as f:
+            return f.read()
+
+    def delete_meta(self, name: str):
+        os.remove(self._meta_path(name))
+
 
 # --------------------------------------------------------
 # Document Index
@@ -260,12 +300,37 @@ Format:
 """
 
 
+INDEX_NAME = "index.json"
+
+
 class DocumentIndex:
 
     def __init__(self, backend: StorageBackend, llm: LLM):
         self.backend = backend
         self.llm = llm
         self.documents: dict[str, Document] = {}
+        self._load()
+
+    def _load(self):
+        try:
+            content = self.backend.read_meta(INDEX_NAME)
+        except FileNotFoundError:
+            return
+        data = json.loads(content.decode("utf-8"))
+        self.documents = {
+            path: Document(
+                path=d["path"],
+                title=d["title"],
+                summary=d["summary"],
+                pages=[Page(**p) for p in d["pages"]],
+            )
+            for path, d in data.items()
+        }
+
+    def _save(self):
+        data = {path: asdict(doc) for path, doc in self.documents.items()}
+        content = json.dumps(data, indent=2).encode("utf-8")
+        self.backend.write_meta(INDEX_NAME, content)
 
     @multimethod
     def _summarize(self, image: Image.Image) -> str:
@@ -332,6 +397,7 @@ class DocumentIndex:
             pages=[Page(i, ps["summary"]) for i, ps in enumerate(page_details)],
         )
         self.documents[path] = doc
+        self._save()
 
     def get(self, path: str) -> Document:
         return self.documents[path]
