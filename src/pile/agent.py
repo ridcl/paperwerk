@@ -6,6 +6,7 @@ from openai import OpenAI
 from PIL import Image
 from pdf2image import convert_from_path
 from pile.extractor import Extractor, visualize
+from pile.llm import LLM
 from pile.storage import DocumentStorage
 from pile.summarizer import Summarizer
 from pile.tools import REGISTRY, tool
@@ -186,10 +187,11 @@ class Agent:
         self.model = model
         self.base_url = base_url
         self.client = OpenAI(base_url=base_url, api_key="")
-        summarizer = Summarizer(base_url=base_url, model=model)
+        llm = LLM(base_url=base_url, api_key="", model=model)
+        summarizer = Summarizer(llm)
         self.ctx = Context(
-            extractor=Extractor(model=model, base_url=base_url),
-            vqa=VQA(model=model, base_url=base_url),
+            extractor=Extractor(llm),
+            vqa=VQA(llm),
             storage=DocumentStorage(root_dir=root_dir, summarizer=summarizer),
         )
         self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
