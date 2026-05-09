@@ -1,3 +1,4 @@
+import asyncio
 from typing import Any, Optional, Sequence
 
 from openai import AsyncOpenAI, OpenAI
@@ -14,14 +15,25 @@ class LLM:
 
     Works with any provider that speaks the OpenAI chat-completions API
     (OpenAI, Anthropic's OpenAI-compatible endpoint, vLLM, etc.).
+
+    ``max_concurrency`` caps the number of in-flight ``ainvoke`` calls,
+    so callers can ``asyncio.gather`` arbitrarily many requests without
+    overwhelming the endpoint. The cap is global to this ``LLM`` instance.
     """
 
-    def __init__(self, base_url: str, api_key: str, model: str):
+    def __init__(
+        self,
+        base_url: str,
+        api_key: str,
+        model: str,
+        max_concurrency: int = 8,
+    ):
         self.base_url = base_url
         self.api_key = api_key
         self.model = model
         self.client = OpenAI(base_url=base_url, api_key=api_key)
         self.aclient = AsyncOpenAI(base_url=base_url, api_key=api_key)
+        self._semaphore = asyncio.Semaphore(max_concurrency)
 
     def __repr__(self):
         return f"LLM(model={self.model!r}, base_url={self.base_url!r})"
@@ -68,4 +80,5 @@ class LLM:
         **kwargs: Any,
     ) -> ChatCompletion:
         params = self._params(messages, schema, tools, kwargs)
-        return await self.aclient.chat.completions.create(**params)
+        async with self._semaphore:
+            return await self.aclient.chat.completions.create(**params)
