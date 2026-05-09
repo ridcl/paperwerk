@@ -7,11 +7,15 @@ import os
 import traceback
 from typing import Any, Optional, Protocol
 
+from PIL import Image
+from pdf2image import convert_from_path
 from tqdm import tqdm
+from multimethod import multimethod
 
 from pile.extractor import IMAGE_EXTENSIONS
 from pile.llm import LLM
 from pile.summarizer import Summarizer
+from pile.utils import pil_to_base64_url
 
 SUPPORTED_EXTENSIONS = IMAGE_EXTENSIONS + (".pdf",)
 INDEX_FILE = "index.json"
@@ -150,7 +154,6 @@ class Document:
     title: str
     summary: str
     pages: list[Page]
-    content: Optional[Any]
 
 
 # --------------------------------------------------------
@@ -235,28 +238,122 @@ class LocalStorageBackend:
 # Document Index
 # --------------------------------------------------------
 
+SUMMARY_PROMPT = """Extract the title of the document and summarize its content.
+If title is not visible, make it up yourself (3-8 words).
+Summary should be very short, preferably 1 sentence, and focus on the main subjects.
+
+If the document refers to a specific person and/or legal entity,
+mention it in the title. Example:
+
+    "title": "Employment contract between John Doe and SuperCorp"
+
+If it is about more people and/or entities, mention it in the summary. Example:
+
+    "title": "Birth certificate of John Doe",
+    "summary": "Birth certificate of John Doe. Born: January 1, 2022. Parents: Adam Doe and Mary Doe"
+
+Format:
+{
+  "title": <title>,
+  "summary": <summary>
+}
+"""
+
 
 class DocumentIndex:
 
     def __init__(self, backend: StorageBackend, llm: LLM):
         self.backend = backend
         self.llm = llm
-        self.summarizer = Summarizer(llm)
+        self.documents: dict[str, Document] = {}
 
-    def add(self, path: str):
-        # 1. copy document to the storage backend
-        # 2. summarize
-        # 3. save metadata
-        ...
+    @multimethod
+    def _summarize(self, image: Image.Image) -> str:
+        """Summarize the content of the image for efficient retrieval later."""
+        completion = self.llm.invoke(
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": SUMMARY_PROMPT},
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": pil_to_base64_url(image)},
+                        },
+                    ],
+                }
+            ],
+            schema={
+                "type": "object",
+                "properties": {
+                    "title": {"type": "string"},
+                    "summary": {"type": "string"},
+                },
+            },
+        )
+        return json.loads(completion.choices[0].message.content)
 
-    def get(self, path: str) -> Document: ...
+    @multimethod
+    def _summarize(self, local_path: str) -> str:
+        _, ext = os.path.splitext(local_path)
+        if ext.lower() in IMAGE_EXTENSIONS:
+            image = Image.open(local_path)
+            return self._summarize(image)
+        elif ext.lower() == ".pdf":
+            images = convert_from_path(local_path, fmt="jpeg")
+            page_summaries = [self._summarize(img) for img in images]
+            combined_prompt = (
+                "Below are one-sentence summaries of each page of a multi-page document. "
+                "Write a single cohesive summary of the whole document.\n\n"
+                + "\n".join(
+                    f"Page {i}: {s['summary']}" for i, s in enumerate(page_summaries)
+                )
+            )
+            completion = self.llm.invoke(
+                [{"role": "user", "content": combined_prompt}],
+            )
+            return {
+                "title": page_summaries[0]["title"],
+                "summary": completion.choices[0].message.content,
+                "pages": page_summaries,
+            }
+
+    def add(self, local_path: str) -> Document:
+        filename = os.path.basename(local_path)
+        with open(local_path, "rb") as fp:
+            content = fp.read()
+            path = self.backend.add(filename, content)
+        details = self._summarize(local_path)
+        page_details = details.get("pages", [])
+        doc = Document(
+            path=path,
+            title=details["title"],
+            summary=details["summary"],
+            pages=[Page(i, ps["summary"]) for i, ps in enumerate(page_details)],
+        )
+        self.documents[path] = doc
+
+    def get(self, path: str) -> Document:
+        return self.documents[path]
+
+    def list(self):
+        return list(self.documents.keys())
 
 
 def main():
     llm = LLM(
         base_url="http://localhost:8000/v1",
         api_key="",
-        model="/data/models/kvp10k-qwen3vl-4b/",
+        model="/data/models/kvp10k-qwen3vl-4b-retrained/",
     )
-    summarizer = Summarizer(llm)
-    self = DocumentStorage("/data/Documents", summarizer)
+    self = DocumentIndex(LocalStorageBackend("/data/pile/storage"), llm)
+    self.add("/data/Documents/PP/permit_andrei.jpg")
+    self.add("/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf")
+
+    self._summarize("/data/Documents/PP/permit_andrei.jpg")
+    self._summarize(
+        "/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf"
+    )
+
+    # summarizer = Summarizer(llm)
+    # self = DocumentStorage("/data/Documents", summarizer)
