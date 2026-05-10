@@ -4,9 +4,9 @@ import os
 
 from pdf2image import convert_from_path
 from pydantic import BaseModel, Field
-from openai import OpenAI
-from PIL import Image
 from PIL import Image, ImageDraw
+
+from pile.llm import LLM
 from pile.utils import IMAGE_EXTENSIONS, pil_to_base64_url
 
 
@@ -41,15 +41,8 @@ _GROUNDED_LIST_SCHEMA = {
 
 class Extractor:
 
-    def __init__(
-        self,
-        *,
-        base_url: str,
-        model: str,
-    ):
-        self.model = model
-        self.base_url = base_url
-        self.client = OpenAI(base_url=base_url, api_key="")
+    def __init__(self, llm: LLM):
+        self.llm = llm
 
     def __repr__(self):
         return "Extractor()"
@@ -81,9 +74,8 @@ class Extractor:
         ]
 
     def extract(self, image: Image.Image, keys: Sequence[str]) -> list[Grounded]:
-        completion = self.client.chat.completions.create(
-            model=self.model,
-            messages=self._make_conversation(image, keys),
+        completion = self.llm.invoke(
+            self._make_conversation(image, keys),
             extra_body={"guided_json": _GROUNDED_LIST_SCHEMA},
         )
         data = json.loads(completion.choices[0].message.content)
@@ -122,9 +114,12 @@ def visualize(image: Image.Image, items: list[Grounded]) -> Image.Image:
 
 
 def main():
-    extractor = Extractor(
-        base_url="http://localhost:8000/v1", model="/data/models/kvp10k-qwen3vl-4b/"
+    llm = LLM(
+        base_url="http://localhost:8000/v1",
+        api_key="",
+        model="/data/models/kvp10k-qwen3vl-4b/",
     )
+    extractor = Extractor(llm)
 
     path = "/data/taxes.jpeg"
     # path = "/data/Documents/ruling/Zhabinski, A.V. - Yandex.pdf"
