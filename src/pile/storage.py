@@ -406,8 +406,42 @@ class DocumentIndex:
     def get(self, path: str) -> Document:
         return self.documents[path]
 
-    def list(self):
+    def list_paths(self):
         return list(self.documents.keys())
+
+    async def find(self, query: str, n: int = 5) -> list[Document]:
+        """Find n most relevant documents.
+
+        This method uses LLM to determine which documents are the most
+        relevant based on their titles and/or summaries.
+        """
+        if not self.documents:
+            return []
+        catalog = "\n\n".join(
+            f"path: {doc.path}\ntitle: {doc.title}\nsummary: {doc.summary}"
+            for doc in self.documents.values()
+        )
+        prompt = (
+            f"You are given a catalog of documents and a search query. "
+            f"Pick up to {n} documents most relevant to the query, "
+            f"ordered from most to least relevant. "
+            f"Return only paths that appear in the catalog. "
+            f"If nothing is relevant, return an empty list.\n\n"
+            f"Catalog:\n{catalog}\n\n"
+            f"Query: {query}"
+        )
+        completion = await self.llm.ainvoke(
+            [{"role": "user", "content": prompt}],
+            schema={
+                "type": "object",
+                "properties": {
+                    "paths": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["paths"],
+            },
+        )
+        result = json.loads(completion.choices[0].message.content)
+        return [self.documents[p] for p in result["paths"] if p in self.documents][:n]
 
 
 async def main():
