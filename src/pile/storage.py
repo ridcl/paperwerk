@@ -1,16 +1,19 @@
 import asyncio
+from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 import glob
 import hashlib
 import json
 import os
+import tempfile
 import traceback
 from typing import Protocol
 
 from PIL import Image
 from pdf2image import convert_from_path
 from tqdm import tqdm
+from tqdm.asyncio import tqdm_asyncio
 from multimethod import multimethod
 
 from pile.extractor import IMAGE_EXTENSIONS
@@ -333,6 +336,21 @@ class DocumentIndex:
         content = json.dumps(data, indent=2).encode("utf-8")
         self.backend.write_meta(INDEX_NAME, content)
 
+    @contextmanager
+    def as_local(self, path: str):
+        """Materialize a stored document on the local filesystem.
+
+        Fetches the document's bytes from the backend into a temp file
+        with the original extension, and yields the temp file's path.
+        The file is deleted when the context exits.
+        """
+        content = self.backend.get(path)
+        _, ext = os.path.splitext(path)
+        with tempfile.NamedTemporaryFile(suffix=ext) as fp:
+            fp.write(content)
+            fp.flush()
+            yield fp.name
+
     @multimethod
     async def _summarize(self, image: Image.Image) -> dict:
         """Summarize the content of the image for efficient retrieval later."""
@@ -391,6 +409,8 @@ class DocumentIndex:
         with open(local_path, "rb") as fp:
             content = fp.read()
         path = self.backend.add(filename, content)
+        if path in self.documents:
+            return path
         details = await self._summarize(local_path)
         page_details = details.get("pages", [])
         doc = Document(
@@ -443,6 +463,32 @@ class DocumentIndex:
         result = json.loads(completion.choices[0].message.content)
         return [self.documents[p] for p in result["paths"] if p in self.documents][:n]
 
+    async def index(self, root_dir: str):
+        """Index all supported documents found under ``root_dir``.
+
+        Walks ``root_dir`` recursively, adds each supported file (image
+        or PDF) to the index, and summarizes new ones in parallel.
+        Documents whose content is already indexed are skipped. Per-file
+        failures are reported but do not abort the run.
+        """
+        paths = []
+        for dirpath, _, filenames in os.walk(root_dir):
+            for name in filenames:
+                _, ext = os.path.splitext(name)
+                if ext.lower() in SUPPORTED_EXTENSIONS:
+                    paths.append(os.path.join(dirpath, name))
+
+        async def _safe_add(p):
+            try:
+                return await self.add(p)
+            except Exception as e:
+                return e
+
+        results = await tqdm_asyncio.gather(*(_safe_add(p) for p in paths))
+        for p, r in zip(paths, results):
+            if isinstance(r, Exception):
+                print(f"Failed to index {p}: {r!r}")
+
 
 async def main():
     llm = LLM(
@@ -451,6 +497,7 @@ async def main():
         model="/data/models/kvp10k-qwen3vl-4b-retrained/",
     )
     self = DocumentIndex(LocalStorageBackend("/data/pile/storage"), llm)
+    await self.index("/data/Documents/")
     await asyncio.gather(
         self.add("/data/Documents/PP/permit_andrei.jpg"),
         self.add(
