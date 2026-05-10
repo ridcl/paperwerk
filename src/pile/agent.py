@@ -2,12 +2,12 @@ import json
 import re
 from dataclasses import dataclass
 import traceback
-from openai import OpenAI
 from PIL import Image
 from pdf2image import convert_from_path
+from pile.async_utils import run_async
 from pile.extractor import Extractor, visualize
-from pile.storage import DocumentStorage
-from pile.summarizer import Summarizer
+from pile.llm import LLM
+from pile.storage import DocumentIndex, StorageBackend
 from pile.tools import REGISTRY, tool
 from pile.vqa import VQA
 
@@ -20,7 +20,7 @@ MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b-retrained/"
 class Context:
     extractor: Extractor
     vqa: VQA
-    storage: DocumentStorage
+    index: DocumentIndex
 
 
 @tool
@@ -32,7 +32,10 @@ def extract_values(ctx: Context, document_path: str, keys: list[str]) -> list[di
         document_path: Path to the document file in storage.
         keys: List of keys to extract from the document.
     """
-    items = ctx.extractor(document_path, keys)
+    with ctx.index.as_local(document_path) as path:
+        items = ctx.extractor(path, keys)
+    for item in items:
+        item.meta["filename"] = document_path
     return [item.model_dump() for item in items]
 
 
@@ -54,13 +57,14 @@ def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> s
     first = grounded[0]
     filename = first.meta["filename"]
     _, ext = filename.rsplit(".", 1)
-    if ext.lower() == "pdf":
-        page = first.meta["page"]
-        images = convert_from_path(filename, fmt="jpeg")
-        image = images[page]
-    else:
-        image = Image.open(filename)
-    visualize(image, grounded).save(output_path)
+    with ctx.index.as_local(filename) as path:
+        if ext.lower() == "pdf":
+            page = first.meta["page"]
+            images = convert_from_path(path, fmt="jpeg")
+            image = images[page]
+        else:
+            image = Image.open(path)
+        visualize(image, grounded).save(output_path)
     return output_path
 
 
@@ -73,30 +77,25 @@ def ask_document(ctx: Context, document_path: str, question: str) -> str | list[
         document_path: Path to the document file in storage.
         question: Question to ask about the document.
     """
-    return ctx.vqa(document_path, question)
+    with ctx.index.as_local(document_path) as path:
+        return ctx.vqa(path, question)
 
 
 @tool
-def list_files(ctx: Context) -> list[str]:
-    """List all indexed documents."""
-    return ctx.storage.list_files()
+def find_documents(ctx: Context, query: str, n: int = 5) -> list[dict]:
+    """Find up to n documents in the index that are relevant to the query.
 
-
-@tool
-def file_summaries(ctx: Context) -> list[str]:
-    """List all indexed documents and their summaries."""
-    return ctx.storage.summaries()
-
-
-@tool
-def file_details(ctx: Context, filename: str) -> list[str]:
-    """Show detailed information about a specific document,
-    including per-page summaries.
+    Returns a list of {"path", "title"} entries. The "path" can be passed
+    to other tools (e.g. extract_values, ask_document) to act on the
+    document. Use a descriptive query, e.g. "tax return for 2023" or
+    "John Doe's passport".
 
     Args:
-        filename: Full path to the document file.
+        query: Free-form description of what to look for.
+        n: Maximum number of documents to return.
     """
-    return ctx.storage.details(filename)
+    docs = run_async([ctx.index.find(query, n)])[0]
+    return [{"path": d.path, "title": d.title} for d in docs]
 
 
 # -------------
@@ -166,10 +165,10 @@ SYSTEM_PROMPT = """You are a personal document assistant.
 You will be given questions about personal matters and should answer
 them based on the available documents. Some rules:
 
-1. When any information is unavailable or inaccessible, immediately
-  use available tools (e.g., `list_files`, `file_summaries`, or `ask_document`)
-  to retrieve or summarize relevant documents. Do not attempt to answer
-  without first checking available resources."
+1. When any information is unavailable or inaccessible, immediately use
+  `find_documents(query, n)` to locate relevant documents, then
+  `ask_document` or `extract_values` to read them. Do not attempt to
+  answer without first checking available resources.
 2. NEVER try to guess document name.
 3. AWLAYS give references to the documents you used.
 """
@@ -177,20 +176,12 @@ them based on the available documents. Some rules:
 
 class Agent:
 
-    def __init__(
-        self,
-        model: str = MODEL_NAME,
-        base_url: str = VLLM_URL,
-        root_dir: str = "/data/Documents",
-    ):
-        self.model = model
-        self.base_url = base_url
-        self.client = OpenAI(base_url=base_url, api_key="")
-        summarizer = Summarizer(base_url=base_url, model=model)
+    def __init__(self, llm: LLM, backend: StorageBackend):
+        self.llm = llm
         self.ctx = Context(
-            extractor=Extractor(model=model, base_url=base_url),
-            vqa=VQA(model=model, base_url=base_url),
-            storage=DocumentStorage(root_dir=root_dir, summarizer=summarizer),
+            extractor=Extractor(llm),
+            vqa=VQA(llm),
+            index=DocumentIndex(backend, llm),
         )
         self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
@@ -205,9 +196,8 @@ class Agent:
         self.messages.append({"role": "user", "content": user_message})
 
         while True:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=self.messages,
+            response = self.llm.invoke(
+                self.messages,
                 tools=REGISTRY.to_openai(),
                 tool_choice="auto",
             )
@@ -256,8 +246,13 @@ class Agent:
 
 
 if __name__ == "__main__" and "__file__" in globals():
-    agent = Agent()
+    from pile.storage import LocalStorageBackend
+
+    llm = LLM(base_url=VLLM_URL, api_key="", model=MODEL_NAME)
+    backend = LocalStorageBackend("/data/pile/storage")
+    agent = Agent(llm, backend)
+    agent.run_interactive()
     answer = agent.run(
-        "List the available documents, then extract the 'name' and 'ssn' fields from the tax return."
+        "Find the tax return document, then extract the 'name' and 'ssn' fields from it."
     )
     print(answer)
