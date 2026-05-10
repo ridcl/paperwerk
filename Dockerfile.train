@@ -16,18 +16,37 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         ca-certificates \
         curl \
+        fonts-liberation \
+        fonts-noto-color-emoji \
         git \
         gpg \
         gpg-agent \
         less \
+        libasound2t64 \
+        libatk-bridge2.0-0t64 \
+        libatk1.0-0t64 \
+        libatspi2.0-0t64 \
         libbz2-dev \
+        libcairo2 \
+        libcups2t64 \
+        libdbus-1-3 \
+        libdrm2 \
         libffi-dev \
+        libgbm1 \
         liblzma-dev \
         libncurses5-dev \
         libncursesw5-dev \
+        libnspr4 \
+        libnss3 \
+        libpango-1.0-0 \
         libreadline-dev \
         libsqlite3-dev \
         libssl-dev \
+        libxcomposite1 \
+        libxdamage1 \
+        libxfixes3 \
+        libxkbcommon0 \
+        libxrandr2 \
         llvm \
         locales \
         openssh-server \
@@ -79,6 +98,7 @@ COPY --chown=${USERNAME}:${USERNAME} . "$BUILD_DIR"
 
 WORKDIR "${BUILD_DIR}"
 RUN uv lock && uv sync --active --group training && uv cache clean
+RUN $VIRTUAL_ENV/bin/playwright install chromium
 WORKDIR /home/${USERNAME}
 
 # Installed separately to pick the right CUDA variant and keep it out of the lockfile.
