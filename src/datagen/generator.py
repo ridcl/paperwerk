@@ -29,8 +29,8 @@ from pathlib import Path
 
 from pile.llm import LLM
 
-from datagen.render import annotate, render_template
-from datagen.templates import (
+from datagen.render import annotate, render
+from datagen._templates import (
     discover_fields,
     extract_block,
     generate_template,
@@ -182,8 +182,8 @@ def main(
         hint = _diversity_hint(sample_rng)
         print(f"[{i + 1}/{n}] {hint}")
         data = synthesize_data(field_names, llm, hint=hint)
-        pdf, png, fields = render_template(template, data)
-        pages = annotate(png, fields)
+        pdf, fields = render(template, data)
+        pages = annotate(pdf, fields)
         base = out / f"sample_{i:02d}"
         base.with_suffix(".pdf").write_bytes(pdf)
         base.with_suffix(".json").write_text(
