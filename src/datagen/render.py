@@ -22,6 +22,7 @@ Template contract:
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
 from io import BytesIO
 
@@ -29,6 +30,8 @@ from jinja2 import Environment
 from pdf2image import convert_from_bytes
 from PIL import ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
+
+from datagen.handwriting import apply_handwriting
 
 
 A4_WIDTH_PX = 794
@@ -47,15 +50,29 @@ def _clamp01(v: float) -> float:
     return max(0.0, min(1.0, v))
 
 
-def render(template_str: str, data: dict) -> tuple[bytes, list[Field]]:
+def render(
+    template_str: str,
+    data: dict,
+    *,
+    handwritten_fields: list[str] | tuple[str, ...] = (),
+    seed: int | None = None,
+) -> tuple[bytes, list[Field]]:
     """Expand a Jinja2 template with `data` and render it to PDF.
+
+    `handwritten_fields` names (schema-style — including `foo[]` /
+    `foo[].bar`) get styled with a randomly-chosen bundled handwriting
+    font, larger size, blue "ink" color, and slight tilt. The choice is
+    deterministic given `seed`.
 
     Returns (pdf_bytes, fields). Each `Field` carries the post-expansion
     `data-field` name (e.g. `line_items[0].description`), its rendered text,
     a 0-indexed `page`, and a `bbox` normalized to per-page `[0, 1]` with
     top-left origin.
     """
+    rng = random.Random(seed)
     html = Environment(autoescape=True).from_string(template_str).render(**data)
+    if handwritten_fields:
+        html = apply_handwriting(html, handwritten_fields, rng)
 
     fields: list[Field] = []
     with sync_playwright() as p:
