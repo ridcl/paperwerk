@@ -14,10 +14,13 @@ barrel) will require bbox transformation and lives separately.
 
 from __future__ import annotations
 
+import math
 import random
+from dataclasses import replace
 from io import BytesIO
 from typing import Callable
 
+import cv2
 import numpy as np
 from augraphy import (
     AugraphyPipeline,
@@ -253,3 +256,132 @@ def augment(
         augmented.append(Image.fromarray(out))
 
     return _images_to_pdf(augmented, dpi=dpi), fields
+
+
+def _random_homography(
+    width: int,
+    height: int,
+    quality: float,
+    rng: random.Random,
+) -> tuple[np.ndarray, tuple[int, int]]:
+    """Build a 3×3 perspective transform: small rotation + per-corner jitter.
+
+    Returns `(M, (out_w, out_h))` such that `cv2.warpPerspective(img, M, (out_w, out_h))`
+    leaves the warped paper fully inside the output canvas (translated to fit).
+
+    Magnitudes scale with quality: at q=1 the warp is near-imperceptible
+    (~0.3° rotation, ~0.5% corner jitter); at q=0 it's clearly tilted
+    (~4° rotation, ~4% corner jitter).
+    """
+    max_angle_deg = _lerp(quality, 4.0, 0.3)
+    max_jitter_pct = _lerp(quality, 0.04, 0.005)
+
+    src = np.float32([[0, 0], [width, 0], [width, height], [0, height]])
+
+    # Rotation around the page center.
+    angle = math.radians(rng.uniform(-max_angle_deg, max_angle_deg))
+    cos_a, sin_a = math.cos(angle), math.sin(angle)
+    cx, cy = width / 2.0, height / 2.0
+    rotated = np.float32([
+        [cx + cos_a * (x - cx) - sin_a * (y - cy),
+         cy + sin_a * (x - cx) + cos_a * (y - cy)]
+        for x, y in src
+    ])
+
+    # Independent per-corner jitter for a perspective-skew feel.
+    dx = max_jitter_pct * width
+    dy = max_jitter_pct * height
+    jitter = np.float32([
+        [rng.uniform(-dx, dx), rng.uniform(-dy, dy)] for _ in range(4)
+    ])
+    dst = rotated + jitter
+
+    # Translate so the output canvas starts at (0, 0).
+    x_min, y_min = float(dst[:, 0].min()), float(dst[:, 1].min())
+    x_max, y_max = float(dst[:, 0].max()), float(dst[:, 1].max())
+    dst[:, 0] -= x_min
+    dst[:, 1] -= y_min
+    out_w = int(math.ceil(x_max - x_min))
+    out_h = int(math.ceil(y_max - y_min))
+
+    return cv2.getPerspectiveTransform(src, dst), (out_w, out_h)
+
+
+def _warp_field_bbox(
+    f: Field,
+    M: np.ndarray,
+    src_w: int,
+    src_h: int,
+    dst_w: int,
+    dst_h: int,
+) -> Field:
+    """Push the field's 4 corners through M; return the enclosing axis-aligned rect.
+
+    The new bbox is the smallest axis-aligned rectangle containing the four
+    warped corners — a deliberate over-approximation, matching what a
+    human labeler with a rectangle tool would draw.
+    """
+    x0, y0, x1, y1 = f.bbox
+    corners = np.float32([[
+        [x0 * src_w, y0 * src_h],
+        [x1 * src_w, y0 * src_h],
+        [x1 * src_w, y1 * src_h],
+        [x0 * src_w, y1 * src_h],
+    ]])
+    warped = cv2.perspectiveTransform(corners, M)[0]
+    nx0 = max(0.0, min(1.0, float(warped[:, 0].min()) / dst_w))
+    ny0 = max(0.0, min(1.0, float(warped[:, 1].min()) / dst_h))
+    nx1 = max(0.0, min(1.0, float(warped[:, 0].max()) / dst_w))
+    ny1 = max(0.0, min(1.0, float(warped[:, 1].max()) / dst_h))
+    return replace(f, bbox=(nx0, ny0, nx1, ny1))
+
+
+def augment_geometric(
+    pdf_bytes: bytes,
+    fields: list[Field],
+    *,
+    quality: float = _DEFAULT_QUALITY,
+    dpi: int = _DEFAULT_DPI,
+    seed: int | None = None,
+) -> tuple[bytes, list[Field]]:
+    """Stage B: per-page perspective + rotation warp with synchronized bboxes.
+
+    Each page receives an independent random homography combining a small
+    rotation around its center and per-corner jitter. The warped page is
+    placed on a white-padded canvas large enough to hold all four warped
+    corners; field bboxes are recomputed as the axis-aligned enclosing
+    rectangle of each warped quad, normalized to the new canvas size.
+
+    `quality` is in `[0, 1]` (clamped). At q=1 the warp is near-imperceptible;
+    at q=0 the page is clearly tilted and skewed.
+
+    Output is a single image-only PDF (one page per input page), preserving
+    the "phone-photographed and stitched" feel.
+    """
+    q = max(0.0, min(1.0, quality))
+    rng = random.Random(seed)
+    if seed is not None:
+        np.random.seed(seed)
+
+    pages = convert_from_bytes(pdf_bytes, dpi=dpi)
+    by_page: dict[int, list[Field]] = {}
+    for f in fields:
+        by_page.setdefault(f.page, []).append(f)
+
+    warped_pages: list[Image.Image] = []
+    out_fields: list[Field] = []
+    for page_idx, img in enumerate(pages):
+        arr = np.array(img.convert("RGB"))
+        src_h, src_w = arr.shape[:2]
+        M, (dst_w, dst_h) = _random_homography(src_w, src_h, q, rng)
+        warped_arr = cv2.warpPerspective(
+            arr, M, (dst_w, dst_h),
+            flags=cv2.INTER_LINEAR,
+            borderMode=cv2.BORDER_CONSTANT,
+            borderValue=(255, 255, 255),
+        )
+        warped_pages.append(Image.fromarray(warped_arr))
+        for f in by_page.get(page_idx, []):
+            out_fields.append(_warp_field_bbox(f, M, src_w, src_h, dst_w, dst_h))
+
+    return _images_to_pdf(warped_pages, dpi=dpi), out_fields
