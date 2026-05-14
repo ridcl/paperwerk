@@ -112,6 +112,10 @@ RUN uv pip install "jax[cuda12]==0.8.1"
 ###########################################################
 FROM build-base AS build-dev
 
+USER root
+RUN /venv/bin/playwright install-deps
+USER ${USERNAME}
+
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
 CMD ["bash"]
