@@ -3,7 +3,7 @@
 Pipeline:
 1. `templates.make_template(llm, source)` builds a Jinja2 HTML template that
    mirrors the layout of `source` and discovers its field schema.
-2. `_synthesize_data(llm, fields)` asks the LLM for one realistic-looking
+2. `values.synthesize_values(llm, fields)` asks the LLM for one realistic-looking
    but completely synthetic record matching that schema (handles nested
    objects and arrays via the `[]` / `.` conventions).
 3. `render.render(template, data)` produces a PDF and per-field bboxes
@@ -22,7 +22,6 @@ import argparse
 import asyncio
 import json
 import os
-import re
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -31,49 +30,10 @@ from pile.llm import LLM
 
 from datagen.render import annotate, render
 from datagen.templates import make_template
+from datagen.values import synthesize_values
 
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _DEFAULT_MODEL = "claude-sonnet-4-6"
-
-
-async def _synthesize_data(llm: LLM, fields: list[str]) -> dict:
-    """Ask the LLM to invent realistic but synthetic values for `fields`.
-
-    Field-name conventions match the schema returned by `make_template`:
-    - `"name"`           — scalar string
-    - `"obj.attr"`       — nested {"obj": {"attr": ...}}
-    - `"arr[]"`          — JSON array of strings
-    - `"arr[].attr"`     — JSON array of objects with `attr`
-
-    Returns a dict ready to feed into `render()`.
-    """
-    field_list = "\n".join(f"  - {f}" for f in fields)
-    prompt = (
-        "Generate one synthetic record for a document template. Do not use "
-        "real PII; invent plausible names, companies, dates, addresses, etc.\n\n"
-        "Field schema (snake_case; `[]` marks array fields, `.` marks nested "
-        "object access):\n"
-        f"{field_list}\n\n"
-        "For array fields, choose a count that fits the document type "
-        "(2-5 invoice line items, 4-10 bank transactions, 3-8 CV skills, "
-        "etc.). Return one JSON object with the appropriate nesting and "
-        "array contents. Wrap the JSON in one ```json``` code fence and "
-        "output nothing else."
-    )
-    resp = await llm.ainvoke(
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=16000,
-        temperature=1.0,
-    )
-    text = resp.choices[0].message.content
-    m = re.search(r"```(?:json)?\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
-    blob = (m.group(1) if m else text).strip()
-    try:
-        return json.loads(blob)
-    except json.JSONDecodeError as e:
-        raise RuntimeError(
-            f"data synthesis returned invalid JSON ({e}); raw response:\n{text}"
-        ) from e
 
 
 async def _run(source: str, out_dir: str, model: str) -> None:
@@ -94,7 +54,7 @@ async def _run(source: str, out_dir: str, model: str) -> None:
         print(f"         - {f}")
 
     print("[2/4] synthesizing fake data")
-    data = await _synthesize_data(llm, schema)
+    data = await synthesize_values(llm, schema)
     (out / "data.json").write_text(json.dumps(data, indent=2))
     print(f"      -> {out / 'data.json'}")
 
