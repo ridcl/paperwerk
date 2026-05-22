@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from pile.storage import LocalStorageBackend
+from paperwerk.storage import LocalStorageBackend
 
 
 @pytest.fixture

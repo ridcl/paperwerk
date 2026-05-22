@@ -1,6 +1,6 @@
 """Render synthetic documents from the CUAD template/schema parquet.
 
-Reads `/data/pile/templates/cuad_20260517.parquet` (produced by
+Reads `/data/paperwerk/templates/cuad_20260517.parquet` (produced by
 `templates_20260517_cuad.py`). For each (template, schema, class) row:
 
 1. `synthesize_values(llm, schema)` invents one set of fake values,
@@ -12,7 +12,7 @@ Reads `/data/pile/templates/cuad_20260517.parquet` (produced by
 In ~10% of rows (deterministic given `--seed`) the values are styled as
 handwritten across every field; the other 90% are typed.
 
-Outputs go to `/data/pile/documents_20260517/{class}_{augmentation}_{index:04}.pdf`
+Outputs go to `/data/paperwerk/documents_20260517/{class}_{augmentation}_{index:04}.pdf`
 where `augmentation` is `clear` or `phone_photo` and `index` is the
 per-class sequence number.
 
@@ -36,15 +36,14 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
-from pile.llm import LLM
+from paperwerk.llm import LLM
 
 from datagen.augment import augment
 from datagen.render import render
 from datagen.values import synthesize_values
 
-
-_TEMPLATES_PARQUET = Path("/data/pile/templates/cuad_20260517.parquet")
-_OUT_DIR = Path("/data/pile/documents_20260517")
+_TEMPLATES_PARQUET = Path("/data/paperwerk/templates/cuad_20260517.parquet")
+_OUT_DIR = Path("/data/paperwerk/documents_20260517")
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _MODEL = "claude-sonnet-4-6"
 _CONCURRENCY = 10

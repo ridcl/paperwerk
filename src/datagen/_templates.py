@@ -33,9 +33,8 @@ from pathlib import Path
 from pdf2image import convert_from_path
 from PIL import Image
 
-from pile.async_utils import gather_limited
-from pile.llm import LLM
-
+from paperwerk.async_utils import gather_limited
+from paperwerk.llm import LLM
 
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _DEFAULT_MODEL = "claude-sonnet-4-6"
@@ -246,7 +245,11 @@ async def _build_one(
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html)
         n_fields = len(discover_fields(html))
-        rel = target.relative_to(out_dir.parent) if out_dir.parent in target.parents else target
+        rel = (
+            target.relative_to(out_dir.parent)
+            if out_dir.parent in target.parents
+            else target
+        )
         print(
             f"  {doc_type}/{variant}: wrote {rel} "
             f"({n_fields} field(s), {len(leaks)} leak(s) scrubbed)"
@@ -317,10 +320,7 @@ async def _run(
     n_ok = sum(1 for r in results if "error" not in r)
     n_err = len(results) - n_ok
     print()
-    print(
-        f"wrote {n_ok} template(s); {n_err} error(s); "
-        f"index -> {index_path}"
-    )
+    print(f"wrote {n_ok} template(s); {n_err} error(s); " f"index -> {index_path}")
 
 
 def main() -> None:
@@ -329,20 +329,28 @@ def main() -> None:
     )
     parser.add_argument("catalog", help="Path to catalog.json from `datagen.catalog`")
     parser.add_argument(
-        "-o", "--out-dir", default="src/datagen/templates",
+        "-o",
+        "--out-dir",
+        default="src/datagen/templates",
         help="Where to write generated templates (default: src/datagen/templates)",
     )
     parser.add_argument("--model", default=_DEFAULT_MODEL)
     parser.add_argument(
-        "--types", nargs="+", default=None,
+        "--types",
+        nargs="+",
+        default=None,
         help="Only generate templates for these doc_types",
     )
     parser.add_argument(
-        "--variants-per-type", type=int, default=None,
+        "--variants-per-type",
+        type=int,
+        default=None,
         help="Cap variants per type (most common first). Default: all",
     )
     parser.add_argument(
-        "--concurrency", type=int, default=_DEFAULT_CONCURRENCY,
+        "--concurrency",
+        type=int,
+        default=_DEFAULT_CONCURRENCY,
         help=f"Max concurrent LLM calls (default: {_DEFAULT_CONCURRENCY})",
     )
     args = parser.parse_args()
