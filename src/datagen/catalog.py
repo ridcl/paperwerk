@@ -32,9 +32,8 @@ from pathlib import Path
 from pdf2image import convert_from_path
 from PIL import Image
 
-from pile.async_utils import gather_limited
-from pile.llm import LLM
-
+from paperwerk.async_utils import gather_limited
+from paperwerk.llm import LLM
 
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _DEFAULT_MODEL = "claude-sonnet-4-6"
@@ -98,9 +97,7 @@ Output ONLY the JSON code fence. No prose before or after.
 PRIVACY: do not transcribe specific personal values from the source into your output. Field names are general (e.g. "full_name"), not the actual person's name."""
 
 
-_USER_TEXT = (
-    "Catalog the attached document by producing the JSON described in the system prompt."
-)
+_USER_TEXT = "Catalog the attached document by producing the JSON described in the system prompt."
 
 
 def _document_to_data_urls(path: Path, max_pages: int) -> list[str]:
@@ -159,7 +156,8 @@ def _walk(root: Path) -> list[Path]:
     if root.is_file():
         return [root]
     return [
-        p for p in sorted(root.rglob("*"))
+        p
+        for p in sorted(root.rglob("*"))
         if p.is_file() and p.suffix.lower() in _SUPPORTED_EXTS
     ]
 

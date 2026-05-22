@@ -10,7 +10,7 @@ Values are NOT synthesized here — downstream consumers fill them in
 documents.
 
 Writes one parquet row per successful contract to
-`/data/pile/templates/cuad_20260517.parquet` with columns:
+`/data/paperwerk/templates/cuad_20260517.parquet` with columns:
     template (str), schema (list[str]), class (str), source (str = "cuad").
 
 Run:
@@ -33,18 +33,17 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from datasets import load_dataset
 
-from pile.llm import LLM
+from paperwerk.llm import LLM
 
 from datagen.classifier import classify
 from datagen.templates import make_template
-
 
 _DATASET = "dvgodoy/CUAD_v1_Contract_Understanding_PDF"
 _SPLIT = "train"
 _PDF_COL = "pdf_bytes_base64"
 _NAME_COL = "file_name"
 _SOURCE = "cuad"
-_OUT_PATH = Path("/data/pile/templates/cuad_20260517.parquet")
+_OUT_PATH = Path("/data/paperwerk/templates/cuad_20260517.parquet")
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _MODEL = "claude-sonnet-4-6"
 _CONCURRENCY = 10
@@ -76,9 +75,7 @@ def _row_pdf_bytes(value) -> bytes:
     if not raw.lstrip().startswith(b"%PDF"):
         raw = _maybe_b64_decode(raw)
     if not raw.lstrip().startswith(b"%PDF"):
-        raise RuntimeError(
-            f"decoded cell is not a PDF; first bytes={raw[:32]!r}"
-        )
+        raise RuntimeError(f"decoded cell is not a PDF; first bytes={raw[:32]!r}")
     return raw
 
 
@@ -175,9 +172,7 @@ async def _run(limit: int) -> None:
     table = pa.table(
         {
             "template": pa.array([r["template"] for r in rows], type=pa.string()),
-            "schema": pa.array(
-                [r["schema"] for r in rows], type=pa.list_(pa.string())
-            ),
+            "schema": pa.array([r["schema"] for r in rows], type=pa.list_(pa.string())),
             "class": pa.array([r["class"] for r in rows], type=pa.string()),
             "source": pa.array([r["source"] for r in rows], type=pa.string()),
         }

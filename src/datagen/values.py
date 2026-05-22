@@ -16,8 +16,7 @@ from __future__ import annotations
 import json
 import re
 
-from pile.llm import LLM
-
+from paperwerk.llm import LLM
 
 _JSON_FENCE_RE = re.compile(r"```(?:json)?\s*(.*?)\s*```", re.DOTALL | re.IGNORECASE)
 
