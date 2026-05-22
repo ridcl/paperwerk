@@ -14,19 +14,23 @@ dependencies = [
     "pdf2image>=1.17.0",
     "pillow>=11.2.1",
     "multimethod>=2.0.2",
+    "openai>=1.55.0",
+    "jinja2>=3.1.0",
+    "augraphy>=8.2.6",
 ]
 
 [dependency-groups]
 # JAX training stack — install with: uv sync --group training
 # Do NOT mix with the serving group; JAX and PyTorch fight over CUDA allocators.
 training = [
-    "fabrique==0.5.0",
+    "fabrique==0.5.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "playwright>=1.50.0",
 ]
 # PyTorch / vLLM stack — install with: uv sync --group serving
 # timm, unsloth, trl are PyTorch-only; keep them out of the training container.
 serving = [
     "torch>=2.9.0",
-    "vllm>=0.19.0",
+    "vllm>=0.19.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
     "trl[peft]",
     "bitsandbytes",
     "timm>=1.0.26",
@@ -46,11 +50,3 @@ default-groups = ["dev"]
 override-dependencies = [
     "transformers==5.5.3",
 ]
-
-# [tool.uv.sources]
-# google-tunix = { workspace = true }
-
-# [tool.uv.workspace]
-# members = [
-#     "lib/tunix",
-# ]
