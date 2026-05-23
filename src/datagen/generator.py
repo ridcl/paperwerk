@@ -27,7 +27,7 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from pile.llm import LLM
+from paperwerk.llm import LLM
 
 from datagen.render import annotate, render
 from datagen._templates import (

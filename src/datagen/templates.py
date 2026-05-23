@@ -23,7 +23,7 @@ from __future__ import annotations
 import asyncio
 import re
 
-from pile.llm import LLM
+from paperwerk.llm import LLM
 
 from datagen.utils import document_to_data_urls
 
