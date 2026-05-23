@@ -3,9 +3,8 @@ import os
 from pdf2image import convert_from_path
 from PIL import Image
 
-from pile.llm import LLM
-from pile.utils import IMAGE_EXTENSIONS, pil_to_base64_url
-
+from paperwerk.llm import LLM
+from paperwerk.utils import IMAGE_EXTENSIONS, pil_to_base64_url
 
 SYSTEM_MESSAGE = """You are VQA bot.
 Give a short a precise answer to the question provided by user.

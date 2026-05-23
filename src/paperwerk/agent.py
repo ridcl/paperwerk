@@ -4,12 +4,12 @@ from dataclasses import dataclass
 import traceback
 from PIL import Image
 from pdf2image import convert_from_path
-from pile.async_utils import run_async
-from pile.extractor import Extractor, visualize
-from pile.llm import LLM
-from pile.storage import DocumentIndex, StorageBackend
-from pile.tools import REGISTRY, tool
-from pile.vqa import VQA
+from paperwerk.async_utils import run_async
+from paperwerk.extractor import Extractor, visualize
+from paperwerk.llm import LLM
+from paperwerk.storage import DocumentIndex, StorageBackend
+from paperwerk.tools import REGISTRY, tool
+from paperwerk.vqa import VQA
 
 VLLM_URL = "http://localhost:8000/v1"
 MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b-retrained/"
@@ -51,7 +51,7 @@ def visualize_extraction(ctx: Context, items: list[dict], output_path: str) -> s
             Can be absolute or relative.
             The path should ALWAYS be used exactly as provided by user.
     """
-    from pile.extractor import Grounded
+    from paperwerk.extractor import Grounded
 
     grounded = [Grounded(**item) for item in items]
     first = grounded[0]
@@ -246,10 +246,10 @@ class Agent:
 
 
 if __name__ == "__main__" and "__file__" in globals():
-    from pile.storage import LocalStorageBackend
+    from paperwerk.storage import LocalStorageBackend
 
     llm = LLM(base_url=VLLM_URL, api_key="", model=MODEL_NAME)
-    backend = LocalStorageBackend("/data/pile/storage")
+    backend = LocalStorageBackend("/data/paperwerk/storage")
     agent = Agent(llm, backend)
     agent.run_interactive()
     answer = agent.run(

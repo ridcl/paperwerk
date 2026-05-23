@@ -16,10 +16,10 @@ from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
 from multimethod import multimethod
 
-from pile.extractor import IMAGE_EXTENSIONS
-from pile.llm import LLM
-from pile.summarizer import Summarizer
-from pile.utils import pil_to_base64_url
+from paperwerk.extractor import IMAGE_EXTENSIONS
+from paperwerk.llm import LLM
+from paperwerk.summarizer import Summarizer
+from paperwerk.utils import pil_to_base64_url
 
 SUPPORTED_EXTENSIONS = IMAGE_EXTENSIONS + (".pdf",)
 INDEX_FILE = "index.json"
@@ -496,7 +496,7 @@ async def main():
         api_key="",
         model="/data/models/kvp10k-qwen3vl-4b-retrained/",
     )
-    self = DocumentIndex(LocalStorageBackend("/data/pile/storage"), llm)
+    self = DocumentIndex(LocalStorageBackend("/data/paperwerk/storage"), llm)
     await self.index("/data/Documents/")
     await asyncio.gather(
         self.add("/data/Documents/PP/permit_andrei.jpg"),

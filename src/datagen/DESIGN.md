@@ -177,7 +177,7 @@ A worker over `scenarios.json` that:
    `<scenario_id>.json`, `<scenario_id>_p{N}_annotated.png`.
 
 `render.py` is unchanged from step 0. Synthesis prompt is the existing
-`_DATA_PROMPT`. Concurrency: use `pile.async_utils.gather_limited` over
+`_DATA_PROMPT`. Concurrency: use `paperwerk.async_utils.gather_limited` over
 `LLM.ainvoke` for the synthesis calls; Playwright stays sync (browser
 launch is the heavy part — pool browsers if rendering becomes a
 bottleneck).
