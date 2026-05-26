@@ -1,14 +1,3 @@
-"""KVP10K experiment: evaluate and fine-tune Qwen3-VL-4B-Instruct on KVP extraction.
-
-Steps:
-1. Load KVP10K dataset from Hyperspace (extractions/kvp10k-with-images/v1)
-2. Evaluate base Qwen3-VL-4B-Instruct on test split
-   - F1 of exact value match (per document, then macro-averaged)
-   - Mean IoU of predicted vs. ground-truth bounding boxes (on exact-match hits)
-3. Fine-tune on train split with LoRA
-4. Re-evaluate on test split
-"""
-
 import io
 import json
 import logging
