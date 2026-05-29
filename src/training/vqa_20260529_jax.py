@@ -1,67 +1,64 @@
-"""LoRA fine-tuning of Qwen3-VL on the CUAD+KVP10k VQA dataset — Unsloth port.
+import io
+import json
+import logging
+import math
+import os
+from typing import Any
 
-This is the PyTorch/Unsloth counterpart of ``vqa_20260529_jax.py`` (JAX + Flax
-via tunix/fabrique). It trains the *same* task with the *same* data formatting,
-prompt, target schema, LoRA target modules, and evaluation metrics — only the
-training engine differs:
+import jax
+import jax.numpy as jnp
+import numpy as np
+import optax
+import pandas as pd
+import pyarrow.parquet as pq
+import qwix
+from flax import nnx
+from PIL import Image, ImageDraw
+from tqdm import tqdm
+from tunix.rl import reshard as reshard_lib
+from tunix.sft import metrics_logger, peft_trainer
 
-    JAX version                         Unsloth version (this file)
-    ---------------------------------   ---------------------------------------
-    fabrique.load_model / sampler       FastVisionModel.from_pretrained
-    qwix.apply_lora_to_model            FastVisionModel.get_peft_model
-    tunix peft_trainer.PeftTrainer      trl.SFTTrainer + UnslothVisionDataCollator
-    encode_messages (loss on assistant) collator train_on_responses_only=True
-    save_qwen3vl_lora_merged            model.save_pretrained_merged(merged_16bit)
-
-The merged 16-bit checkpoint it writes loads directly in vLLM / transformers
-without Unsloth or PEFT.
-
-Dataset schema (produced by datagen.builders.vqa_20260524_cuad_kvp10k):
-    images      list[binary]   — page image bytes, one entry per page
-    queries     list[string]   — answerable + unanswerable queries (shuffled)
-    answers     list[struct{               — one entry per answerable evidence
-                   query:        string,    —   the query this answers
-                   value:        string,    —   literal or derived answer
-                   bounding_box: list[f64], —   [x0,y0,x1,y1] normalised 0–1
-                   index:        int32,     —   which `images` entry holds it
-                }]
-    source      string
-    variant     string
-    page_start  int32
-    page_end    int32
-    split       string
-
-Both data builders currently emit one image per datapoint, but every path here
-handles an arbitrary number of pages (each answer carries the `index` of its
-page), matching the JAX version.
-"""
-
-# Unsloth patches transformers/trl on import, so it MUST come first — importing
-# it after them silently disables the optimizations (and Unsloth warns loudly).
-import unsloth  # noqa: F401  (side-effecting; keep above transformers/trl)
-from unsloth import FastVisionModel
-from unsloth.trainer import UnslothVisionDataCollator
-
-import io  # noqa: E402
-import json  # noqa: E402
-import logging  # noqa: E402
-import os  # noqa: E402
-from typing import Any  # noqa: E402
-
-import numpy as np  # noqa: E402
-import pandas as pd  # noqa: E402
-import pyarrow.parquet as pq  # noqa: E402
-import torch  # noqa: E402
-from PIL import Image, ImageDraw  # noqa: E402
-from tqdm import tqdm  # noqa: E402
-from trl import SFTConfig, SFTTrainer  # noqa: E402
+from fabrique.models.qwen3vl import model as model_lib
+from fabrique.models.qwen3vl.loading import load_model, resolve_model_dir
+from fabrique.models.qwen3vl.sampler import Qwen3VLSampler, load_sampler
+from fabrique.models.qwen3vl.utils import encode_messages
+from fabrique.models.qwen3vl.vision import VisionGridData
+from fabrique.saving import save_qwen3vl_lora_merged
+from fabrique.utils import show_hbm_usage
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Configuration  (mirrors vqa_20260529_jax.py)
+# Configuration
 # ---------------------------------------------------------------------------
+#
+# Dataset schema (produced by datagen.builders.vqa_20260524_cuad_kvp10k):
+#   images      list[binary]   — page image bytes, one entry per page
+#   queries     list[string]   — answerable + unanswerable queries (shuffled)
+#   answers     list[struct{               — one entry per answerable evidence
+#                  query:        string,    —   the query this answers
+#                  value:        string,    —   literal or derived answer
+#                  bounding_box: list[f64], —   [x0,y0,x1,y1] normalised 0–1
+#                  index:        int32,     —   which `images` entry holds it
+#               }]
+#   source      string
+#   variant     string
+#   page_start  int32
+#   page_end    int32
+#   split       string
+#
+# Differences vs. the kvp10k-only format this script supersedes:
+#   - single `image` (bytes) -> `images` (list of bytes); a datapoint may span
+#     several pages, so each answer carries the `index` of its page.
+#   - `kvps[*].key` / `keys` -> `answers[*].query` / `queries`.
+#   - a query may have several answers (e.g. every row of a table) and the
+#     `queries` list also holds unanswerable queries that have no answer.
+#
+# Note: both data builders currently emit one image per datapoint, so the
+# evaluation path feeds a single image per prompt through the public sampler
+# API (which binds one image per prompt). Training already handles any number
+# of images via `encode_messages`.
 
 DATASET_PATH = "/data/paperwerk/vqa_20260524.parquet"
 
@@ -69,39 +66,23 @@ MODEL_ID = "Qwen/Qwen3-VL-4B-Instruct"
 OUTPUT_DIR = "/data/models/vqa-20260529-qwen3vl-4b"
 LORA_CKPT_DIR = "/data/cache/vqa_20260529_lora_ckpts"
 
+MESH = jax.make_mesh((1, len(jax.devices())), ("fsdp", "tp"))
+
 BATCH_SIZE = 1
-GRAD_ACCUM_STEPS = 1  # JAX trained on a per-step batch of 1
 MAX_SEQ_LEN = 4096
 MAX_IMAGE_SIZE = 896
+EVAL_CACHE_SIZE = 4096
 EVAL_MAX_NEW_TOKENS = 2048
 EVAL_MAX_SAMPLES = 500
 
-# 16-bit LoRA (not 4-bit QLoRA) to mirror the JAX run's bf16 base weights and to
-# keep the merged checkpoint a clean, vLLM-servable 16-bit model. A 4B model in
-# bf16 + LoRA fits comfortably on a 24 GB card; flip to True for tighter memory.
-LOAD_IN_4BIT = False
-
 LORA_RANK = 16
-LORA_ALPHA = 2 * LORA_RANK
-# Same module subset as the JAX run: attention q/k (not v/o) + all MLP
-# projections, language tower only — the vision encoder stays frozen.
-LORA_TARGET_MODULES = ["q_proj", "k_proj", "gate_proj", "up_proj", "down_proj"]
-
+LORA_ALPHA = float(2 * LORA_RANK)
+_LORA_TARGETS = ".*q_proj|.*k_proj|.*gate_proj|.*up_proj|.*down_proj"
 MAX_STEPS = 10_000
 EVAL_EVERY_N_STEPS = 500
-WARMUP_STEPS = 50
-PEAK_LR = 2e-4
-WEIGHT_DECAY = 0.01
-MAX_GRAD_NORM = 1.0
 
 RANDOM_SEED = 42
 TEST_FRACTION = 0.05
-
-# Qwen ChatML role markers — used by the collator to mask everything except the
-# assistant turn, so loss is computed only on the completion (as the JAX run did
-# via encode_messages(loss_roles={"assistant"})).
-_INSTRUCTION_PART = "<|im_start|>user\n"
-_RESPONSE_PART = "<|im_start|>assistant\n"
 
 # ---------------------------------------------------------------------------
 # Dataset loading
@@ -130,7 +111,7 @@ def load_splits() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 # ---------------------------------------------------------------------------
-# Data formatting  (identical to the JAX version)
+# Data formatting
 # ---------------------------------------------------------------------------
 
 
@@ -196,13 +177,6 @@ def _make_target(answers: list[dict]) -> str:
 
 
 def make_conversation(row: pd.Series) -> list[dict]:
-    """Build the 2-turn chat (user prompt+images, assistant JSON target).
-
-    The message structure — content lists of ``{"type": "image", "image": PIL}``
-    and ``{"type": "text", "text": ...}`` — is exactly what
-    ``UnslothVisionDataCollator`` consumes (it runs the processor's chat template
-    and image preprocessing internally).
-    """
     images = _load_images(row["images"])
     queries = list(row["queries"])
     answers = list(row["answers"])
@@ -218,7 +192,7 @@ def make_conversation(row: pd.Series) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Metrics  (identical to the JAX version)
+# Metrics
 # ---------------------------------------------------------------------------
 
 
@@ -273,12 +247,12 @@ def compute_metrics(
 
         tp = 0
         for pred in preds:
-            pq_, pv = _norm(pred.get("query", "")), _norm(pred.get("value", ""))
+            pq, pv = _norm(pred.get("query", "")), _norm(pred.get("value", ""))
             match_i = next(
                 (
                     gi
                     for gi in gt_unused
-                    if _norm(gt_answers[gi]["query"]) == pq_
+                    if _norm(gt_answers[gi]["query"]) == pq
                     and _norm(gt_answers[gi]["value"]) == pv
                 ),
                 None,
@@ -370,48 +344,35 @@ def visualize_predictions(
             im.save(f"{stem}_p{i}{ext}")
 
 
-@torch.inference_mode()
-def _generate(model, processor, images: list[Image.Image], messages: list[dict]) -> str:
-    """Greedy-decode the model's answer for one (images, prompt) example.
-
-    Mirrors the JAX sampler call: applies the chat template with a generation
-    prompt, feeds the (text, images) through the processor, and returns the
-    decoded completion (the prompt tokens are stripped off).
-    """
-    text = processor.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
-    )
-    inputs = processor(text=[text], images=images, return_tensors="pt").to(model.device)
-    generated = model.generate(
-        **inputs,
-        max_new_tokens=EVAL_MAX_NEW_TOKENS,
-        do_sample=False,
-        use_cache=True,
-    )
-    trimmed = generated[:, inputs["input_ids"].shape[-1] :]
-    return processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
-
-
-def show_row(model, processor, row: pd.Series) -> None:
-    """Generate for a single row and dump a visualization to output/out.jpeg."""
-    FastVisionModel.for_inference(model)
+def show_row(lora_model, processor, row):
     images = _load_images(row["images"])
     messages = make_conversation(row)
-    del messages[-1]  # drop the assistant turn — we want the model to produce it
-    output = _generate(model, processor, images, messages)
-    print(output)
+    del messages[-1]
+    lora_model.config.remat_config = model_lib.RematConfig.NONE
+    try:
+        sampler = Qwen3VLSampler(lora_model, processor, cache_size=EVAL_CACHE_SIZE)
+        prompt = sampler._processor.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        output = sampler(
+            prompts=[prompt],
+            images=images,
+            max_new_tokens=EVAL_MAX_NEW_TOKENS,
+        )[0]
+        print(output)
+    finally:
+        lora_model.config.remat_config = model_lib.RematConfig.BLOCK
+
     visualize_predictions(images, output, list(row["answers"]), "output/out.jpeg")
     print("Saved to output/out.jpeg")
 
 
 def evaluate(
-    model,
-    processor,
+    sampler,
     df: pd.DataFrame,
     output_dir: str | None = None,
     max_samples: int = EVAL_MAX_SAMPLES,
 ) -> dict[str, float]:
-    FastVisionModel.for_inference(model)
     df = df.head(max_samples)
     predictions: list[str] = []
     ground_truths: list[list[dict]] = []
@@ -422,7 +383,14 @@ def evaluate(
         images = _load_images(row["images"])
         messages = make_conversation(row)
         del messages[-1]
-        output = _generate(model, processor, images, messages)
+        prompt = sampler._processor.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        output = sampler(
+            prompts=[prompt],
+            images=images,
+            max_new_tokens=EVAL_MAX_NEW_TOKENS,
+        )[0]
         predictions.append(output)
         ground_truths.append(list(row["answers"]))
         if output_dir is not None:
@@ -441,92 +409,189 @@ def evaluate(
 # ---------------------------------------------------------------------------
 
 
-class _VQADataset(torch.utils.data.Dataset):
-    """Lazily yields ``{"messages": conversation}`` rows for the collator.
-
-    Decoding happens in ``make_conversation`` on access, so page images are
-    materialised one batch at a time (matching the JAX ``_DataLoader``) instead
-    of holding every decoded image in memory at once. ``UnslothVisionDataCollator``
-    consumes the ``messages`` and produces masked, padded model inputs.
-    """
-
-    def __init__(self, df: pd.DataFrame):
-        self._rows = [row for _, row in df.iterrows()]
-
-    def __len__(self) -> int:
-        return len(self._rows)
-
-    def __getitem__(self, idx: int) -> dict:
-        return {"messages": make_conversation(self._rows[idx])}
+def _gen_model_input_fn(batch) -> dict:
+    return {
+        "input_tokens": jnp.array(batch.input_tokens),
+        "padding_mask": jnp.array(batch.input_mask).astype(jnp.bool_),
+        "completion_mask": jnp.array(batch.completion_mask),
+        "positions": jnp.array(batch.positions),
+        "pixel_values": jnp.array(batch.pixel_values, dtype=jnp.bfloat16),
+        "vision_grid": batch.vision_grid,
+    }
 
 
-def train(model, processor, train_df: pd.DataFrame, eval_df: pd.DataFrame) -> None:
+def _loss_fn(
+    model: model_lib.Qwen3VL,
+    input_tokens: jax.Array,
+    positions: jax.Array,
+    pixel_values: jax.Array,
+    vision_grid: VisionGridData,
+    padding_mask: jax.Array,
+    completion_mask: jax.Array,
+) -> jax.Array:
+    logits, _ = model(
+        input_tokens,
+        positions,
+        pixel_values,
+        vision_grid,
+        cache=None,
+        padding_mask=padding_mask,
+    )
+    logits = logits[:, :-1, :]
+    targets = input_tokens[:, 1:]
+    mask = completion_mask[:, 1:].astype(jnp.float32)
+    token_loss = optax.softmax_cross_entropy_with_integer_labels(
+        logits.astype(jnp.float32), targets
+    )
+    return jnp.sum(token_loss * mask) / jnp.sum(mask)
+
+
+class _DataLoader:
+    """Iterator that encodes VQA rows as batched EncodedBatch objects."""
+
+    def __init__(
+        self,
+        df: pd.DataFrame,
+        processor,
+        vcfg: model_lib.VisionModelConfig,
+        batch_size: int,
+        max_seq_len: int,
+        num_epochs: int = 1,
+    ):
+        self._df = df
+        self._processor = processor
+        self._vcfg = vcfg
+        self._batch_size = batch_size
+        self._max_seq_len = max_seq_len
+        self._num_epochs = num_epochs
+
+    def __iter__(self):
+        for epoch in range(self._num_epochs):
+            df = self._df.sample(frac=1, random_state=RANDOM_SEED + epoch)
+            buffer: list[list[dict]] = []
+            for _, row in df.iterrows():
+                buffer.append(make_conversation(row))
+                if len(buffer) == self._batch_size:
+                    yield encode_messages(
+                        self._processor,
+                        buffer,
+                        loss_roles={"assistant"},
+                        vcfg=self._vcfg,
+                        max_seq_len=self._max_seq_len,
+                        padding=True,
+                        pad_to_multiple_of=1024,
+                        truncation=True,
+                    )
+                    buffer = []
+
+
+def _get_lora_model(
+    base_model: model_lib.Qwen3VL,
+    mesh: jax.sharding.Mesh,
+) -> model_lib.Qwen3VL:
+    lora_provider = qwix.LoraProvider(
+        module_path=_LORA_TARGETS, rank=LORA_RANK, alpha=LORA_ALPHA
+    )
+    lora_model = qwix.apply_lora_to_model(
+        base_model, lora_provider, **base_model.get_model_input()
+    )
+    # Fix sharding metadata: LoRA A/B are rank-2 but inherit rank-3 specs from
+    # Einsum weights — trim the extra axis so nnx.get_partition_spec is valid.
+    for _, node in nnx.iter_graph(lora_model):
+        if isinstance(node, nnx.Variable) and node.has_metadata("out_sharding"):
+            sharding = node.get_metadata()["out_sharding"]
+            if sharding and len(sharding) > len(node.shape):
+                node.set_metadata("out_sharding", tuple(sharding[: len(node.shape)]))
+    with mesh:
+        graph_def, state = nnx.split(lora_model)
+        default_memory_kind = jax.devices()[0].default_memory().kind
+        dst_shardings = jax.tree_util.tree_map(
+            lambda x: jax.sharding.NamedSharding(
+                mesh, x, memory_kind=default_memory_kind
+            ),
+            nnx.get_partition_spec(state),
+        )
+        lora_model = nnx.merge(
+            graph_def, reshard_lib.reshard_pytree(state, dst_shardings)
+        )
+    return lora_model
+
+
+def train(train_df: pd.DataFrame, eval_df: pd.DataFrame) -> None:
     os.makedirs(LORA_CKPT_DIR, exist_ok=True)
 
-    FastVisionModel.for_training(model)
+    config = model_lib.ModelConfig.qwen3vl_4b()
+    config.remat_config = model_lib.RematConfig.BLOCK
+    processor, base_model = load_model(MODEL_ID, mesh=MESH, config=config)
+    show_hbm_usage()
 
-    train_dataset = _VQADataset(train_df)
-    eval_dataset = _VQADataset(eval_df.head(20))
+    lora_model = _get_lora_model(base_model, mesh=MESH)
+    show_hbm_usage()
 
-    # The collator masks the prompt (image + user text) and computes loss only on
-    # the assistant JSON — the PyTorch equivalent of the JAX completion_mask.
-    data_collator = UnslothVisionDataCollator(
-        model,
+    # TEMP: Visualize before training
+    eval_rows = [row for _, row in eval_df.iterrows()]
+    show_row(lora_model, processor, eval_rows[min(8, len(eval_rows) - 1)])
+
+    num_epochs = math.ceil(MAX_STEPS / len(train_df))
+    train_loader = _DataLoader(
+        train_df,
         processor,
-        train_on_responses_only=True,
-        instruction_part=_INSTRUCTION_PART,
-        response_part=_RESPONSE_PART,
+        config.vision_config,
+        batch_size=BATCH_SIZE,
+        max_seq_len=MAX_SEQ_LEN,
+        num_epochs=num_epochs,
+    )
+    eval_loader = _DataLoader(
+        eval_df.head(20),
+        processor,
+        config.vision_config,
+        batch_size=BATCH_SIZE,
+        max_seq_len=MAX_SEQ_LEN,
+        num_epochs=1,
     )
 
-    config = SFTConfig(
-        per_device_train_batch_size=BATCH_SIZE,
-        gradient_accumulation_steps=GRAD_ACCUM_STEPS,
+    logging_opts = metrics_logger.MetricsLoggerOptions(
+        log_dir="/tmp/tensorboard/vqa_20260529_qwen3vl",
+        flush_every_n_steps=EVAL_EVERY_N_STEPS,
+    )
+    training_config = peft_trainer.TrainingConfig(
+        eval_every_n_steps=EVAL_EVERY_N_STEPS,
         max_steps=MAX_STEPS,
-        learning_rate=PEAK_LR,
-        # JAX used warmup -> cosine decay to 1e-5; HF cosine decays to ~0, which
-        # is close enough for a 10k-step run with the same 50-step warmup.
-        lr_scheduler_type="cosine",
-        warmup_steps=WARMUP_STEPS,
-        weight_decay=WEIGHT_DECAY,
-        max_grad_norm=MAX_GRAD_NORM,  # matches optax.clip_by_global_norm(1.0)
-        optim="adamw_8bit",
-        bf16=torch.cuda.is_bf16_supported(),
-        fp16=not torch.cuda.is_bf16_supported(),
-        max_length=MAX_SEQ_LEN,
-        # Vision SFT essentials: keep raw image columns and skip TRL's text-only
-        # dataset prep — our collator does all preprocessing.
-        remove_unused_columns=False,
-        dataset_text_field="",
-        dataset_kwargs={"skip_prepare_dataset": True},
-        eval_strategy="steps",
-        eval_steps=EVAL_EVERY_N_STEPS,
-        per_device_eval_batch_size=BATCH_SIZE,
-        save_strategy="steps",
-        save_steps=EVAL_EVERY_N_STEPS,
-        logging_steps=10,
-        output_dir=LORA_CKPT_DIR,
-        report_to="tensorboard",
-        logging_dir="/tmp/tensorboard/vqa_20260529_qwen3vl",
-        seed=RANDOM_SEED,
+        metrics_logging_options=logging_opts,
+        checkpoint_root_directory=LORA_CKPT_DIR,
     )
-
-    trainer = SFTTrainer(
-        model=model,
-        processing_class=processor,
-        data_collator=data_collator,
-        train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
-        args=config,
+    optimizer = optax.chain(
+        optax.clip_by_global_norm(1.0),
+        optax.adamw(
+            optax.warmup_cosine_decay_schedule(
+                init_value=0.0,
+                peak_value=2e-4,
+                warmup_steps=50,
+                decay_steps=MAX_STEPS,
+                end_value=1e-5,
+            ),
+            weight_decay=0.01,
+        ),
     )
+    trainer = peft_trainer.PeftTrainer(
+        lora_model, optimizer, training_config
+    ).with_gen_model_input_fn(_gen_model_input_fn)
+    trainer.loss_fn = _loss_fn
+    trainer.eval_loss_fn = _loss_fn
 
     logger.info("Starting LoRA fine-tuning for %d steps", MAX_STEPS)
-    trainer.train()
+    with MESH:
+        trainer.train(train_loader, eval_ds=eval_loader)
 
-    logger.info("Saving merged 16-bit model to %s", OUTPUT_DIR)
+    logger.info("Saving merged LoRA model to %s", OUTPUT_DIR)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    # Bake the LoRA adapters into the base weights and write a plain 16-bit
-    # checkpoint — directly loadable by vLLM / transformers, no Unsloth needed.
-    model.save_pretrained_merged(OUTPUT_DIR, processor, save_method="merged_16bit")
+    save_qwen3vl_lora_merged(
+        model_id_or_dir=MODEL_ID,
+        output_dir=OUTPUT_DIR,
+        lora_model=lora_model,
+        rank=LORA_RANK,
+        alpha=LORA_ALPHA,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -534,52 +599,33 @@ def train(model, processor, train_df: pd.DataFrame, eval_df: pd.DataFrame) -> No
 # ---------------------------------------------------------------------------
 
 
-def main() -> None:
+def main():
+    jax.config.update("jax_compilation_cache_dir", "/tmp/jax_cache")
     train_df, eval_df = load_splits()
     eval_df = eval_df.head(20)
 
-    # --- Load base model ---
-    logger.info("Loading base model…")
-    model, processor = FastVisionModel.from_pretrained(
-        MODEL_ID,
-        load_in_4bit=LOAD_IN_4BIT,
-        # Unsloth's checkpointing — long-context friendly, lower VRAM.
-        use_gradient_checkpointing="unsloth",
-        max_seq_length=MAX_SEQ_LEN,
+    # --- Evaluate base model ---
+    logger.info("Loading base model for evaluation…")
+    sampler = load_sampler(MODEL_ID, mesh=MESH, cache_size=EVAL_CACHE_SIZE)
+    logger.info(
+        "Evaluating base model on %d test samples…", min(EVAL_MAX_SAMPLES, len(eval_df))
     )
 
-    # --- Evaluate base model ---
-    logger.info("Evaluating base model on %d test samples…", len(eval_df))
-    metrics_before = evaluate(model, processor, eval_df, output_dir="output/base_model")
+    metrics_before = evaluate(sampler, eval_df, output_dir="output/base_model")
     logger.info(
         "Base model  — F1: %.4f  IoU: %.4f",
         metrics_before["f1_exact_match"],
         metrics_before["iou"],
     )
+    del sampler  # free HBM before training
 
-    # --- Fine-tune (attach LoRA in place and train) ---
-    model = FastVisionModel.get_peft_model(
-        model,
-        finetune_vision_layers=False,  # vision tower frozen, as in the JAX run
-        finetune_language_layers=True,
-        finetune_attention_modules=True,
-        finetune_mlp_modules=True,
-        r=LORA_RANK,
-        lora_alpha=LORA_ALPHA,
-        lora_dropout=0.0,
-        bias="none",
-        target_modules=LORA_TARGET_MODULES,
-        use_rslora=False,
-        random_state=RANDOM_SEED,
-    )
-    # TEMP: visualize one example before training (mirrors the JAX script).
-    eval_rows = [row for _, row in eval_df.iterrows()]
-    show_row(model, processor, eval_rows[min(8, len(eval_rows) - 1)])
-    train(model, processor, train_df, eval_df)
+    # --- Fine-tune ---
+    train(train_df, eval_df)
 
-    # --- Evaluate fine-tuned model (LoRA active, in memory) ---
-    logger.info("Evaluating fine-tuned model…")
-    metrics_after = evaluate(model, processor, eval_df, output_dir="output/ft_model")
+    # --- Evaluate fine-tuned model ---
+    logger.info("Loading fine-tuned model for evaluation…")
+    sampler_ft = load_sampler(OUTPUT_DIR, mesh=MESH, cache_size=EVAL_CACHE_SIZE)
+    metrics_after = evaluate(sampler_ft, eval_df, output_dir="output/ft_model")
     logger.info(
         "Fine-tuned  — F1: %.4f  IoU: %.4f",
         metrics_after["f1_exact_match"],
@@ -588,12 +634,10 @@ def main() -> None:
 
     print("\n=== Results ===")
     print(
-        f"Base model:  F1={metrics_before['f1_exact_match']:.4f}  "
-        f"IoU={metrics_before['iou']:.4f}"
+        f"Base model:  F1={metrics_before['f1_exact_match']:.4f}  IoU={metrics_before['iou']:.4f}"
     )
     print(
-        f"Fine-tuned:  F1={metrics_after['f1_exact_match']:.4f}  "
-        f"IoU={metrics_after['iou']:.4f}"
+        f"Fine-tuned:  F1={metrics_after['f1_exact_match']:.4f}  IoU={metrics_after['iou']:.4f}"
     )
 
 
