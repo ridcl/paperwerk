@@ -1,8 +1,8 @@
 {
-	"name": "Training (JAX)",
+	"name": "Paperwerk",
 	"build": {
-		"context": "../..",
-		"dockerfile": "../../Dockerfile.train",
+		"context": "..",
+		"dockerfile": "../Dockerfile",
 		"target": "build-dev"
 	},
 	"mounts": [
@@ -10,14 +10,10 @@
 		"source=${localEnv:HOME}/data/,target=/data/,type=bind,consistency=cached"
 	],
 	"containerEnv": {
-		"PYTHONPATH": "src:lib/tunix",
+		"PYTHONPATH": "src",
 		"HF_TOKEN": "${localEnv:HF_TOKEN_PERSONAL}",
 		"ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY_WK}",
-		// JAX-specific: compilation cache and memory/allocator tuning
-		"JAX_COMPILATION_CACHE_DIR": "/tmp/jax_cache",
-		"XLA_PYTHON_CLIENT_MEM_FRACTION": ".99",
-		"TF_GPU_ALLOCATOR": "cuda_malloc_async",
-		"XLA_FLAGS": "--xla_gpu_enable_command_buffer="
+		"VLLM_PLATFORM": "cuda"
 	},
 	"customizations": {
 		"vscode": {
@@ -36,14 +32,5 @@
 		}
 	},
 	"postCreateCommand": "bash .devcontainer/init.sh",
-	//// This setting doesn't work for me for some reason
-	// "hostRequirements": {
-	// "gpu": "optional"
-	// }
-	"runArgs": [
-		"--gpus",
-		"all",
-		"--shm-size",
-		"2g"
-	]
+	"runArgs": ["--gpus", "all", "--shm-size", "16g"]
 }
