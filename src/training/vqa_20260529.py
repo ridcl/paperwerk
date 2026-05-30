@@ -87,7 +87,7 @@ LORA_ALPHA = 2 * LORA_RANK
 # projections, language tower only — the vision encoder stays frozen.
 LORA_TARGET_MODULES = ["q_proj", "k_proj", "gate_proj", "up_proj", "down_proj"]
 
-MAX_STEPS = 10_000
+MAX_STEPS = 12_000
 EVAL_EVERY_N_STEPS = 500
 WARMUP_STEPS = 50
 PEAK_LR = 2e-4
@@ -148,26 +148,7 @@ def _load_images(images_bytes: Any) -> list[Image.Image]:
 
 def _make_prompt(queries: list[str], n_images: int) -> str:
     query_list = "\n".join(f"- {q}" for q in queries)
-    page_phrase = (
-        "this document page" if n_images == 1 else f"these {n_images} document pages"
-    )
-    return (
-        f"Answer the following queries about {page_phrase}. "
-        'Return a JSON list where each item has "query", "value", "box_2d", and '
-        '"index" fields:\n'
-        '  - "query": the exact query string being answered, copied verbatim.\n'
-        '  - "value": the answer — either the literal text from the document or '
-        "a short derived value (e.g. a year extracted from a full date, or "
-        '"Yes"/"No" for a yes/no question).\n'
-        '  - "box_2d": the bounding box of the supporting evidence as '
-        "[x0, y0, x1, y1] with coordinates in the 0–1000 range.\n"
-        '  - "index": the 0-based page number (index into the provided images) '
-        "where the evidence is located.\n"
-        "A single query may have several answers — emit one item per answer. "
-        "Some queries cannot be answered from the document; omit those entirely "
-        "rather than guessing.\n"
-        f"Queries:\n{query_list}"
-    )
+    return f"Extract values:\n{query_list}"
 
 
 def _gt_bbox_to_qwen(bbox: list[float]) -> list[int]:
@@ -519,8 +500,21 @@ def train(model, processor, train_df: pd.DataFrame, eval_df: pd.DataFrame) -> No
         args=config,
     )
 
-    logger.info("Starting LoRA fine-tuning for %d steps", MAX_STEPS)
-    trainer.train()
+    # Resume from the most recent checkpoint in LORA_CKPT_DIR if one exists, so a
+    # re-run continues instead of restarting at step 0 (it restores model/adapter
+    # weights, optimizer, LR schedule, RNG, and global step). get_last_checkpoint
+    # returns None on a fresh run, and train(resume_from_checkpoint=None) starts
+    # from scratch — whereas passing True would error when no checkpoint exists.
+    from transformers.trainer_utils import get_last_checkpoint
+
+    last_checkpoint = (
+        get_last_checkpoint(LORA_CKPT_DIR) if os.path.isdir(LORA_CKPT_DIR) else None
+    )
+    if last_checkpoint:
+        logger.info("Resuming LoRA fine-tuning from checkpoint: %s", last_checkpoint)
+    else:
+        logger.info("Starting LoRA fine-tuning for %d steps", MAX_STEPS)
+    trainer.train(resume_from_checkpoint=last_checkpoint)
 
     logger.info("Saving merged 16-bit model to %s", OUTPUT_DIR)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
