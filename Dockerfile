@@ -99,14 +99,9 @@ ENV BUILD_DIR=/app
 COPY --chown=${USERNAME}:${USERNAME} . "$BUILD_DIR"
 
 WORKDIR "${BUILD_DIR}"
-RUN uv lock && uv sync --active --group training && uv cache clean
+RUN uv lock && uv sync --active && uv cache clean
 RUN $VIRTUAL_ENV/bin/playwright install chromium
 WORKDIR /home/${USERNAME}
-
-# Installed separately to pick the right CUDA variant and keep it out of the lockfile.
-# jax[cuda12] uses the NCCL/XLA libraries bundled with JAX rather than the system ones,
-# which avoids conflicts with the CUDA devel headers in this image.
-RUN uv pip install "jax[cuda12]==0.8.1"
 
 
 ###########################################################
