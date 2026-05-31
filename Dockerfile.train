@@ -1,4 +1,6 @@
-# FROM nvidia/cuda:12.4.1-devel-ubuntu22.04 AS build-base
+# Training image — Unsloth on PyTorch 2.9 / CUDA 12.
+# torch ships its own CUDA-12 runtime libs via pip, so no system CUDA toolkit is
+# needed; the ubuntu base is enough.
 FROM ubuntu:24.04 AS build-base
 RUN userdel -r ubuntu
 
@@ -99,7 +101,7 @@ ENV BUILD_DIR=/app
 COPY --chown=${USERNAME}:${USERNAME} . "$BUILD_DIR"
 
 WORKDIR "${BUILD_DIR}"
-RUN uv lock && uv sync --active && uv cache clean
+RUN uv lock && uv sync --active --group training && uv cache clean
 RUN $VIRTUAL_ENV/bin/playwright install chromium
 WORKDIR /home/${USERNAME}
 
