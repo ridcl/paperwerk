@@ -1,8 +1,8 @@
 {
-	"name": "Paperwerk",
+	"name": "Training (Unsloth)",
 	"build": {
-		"context": "..",
-		"dockerfile": "../Dockerfile",
+		"context": "../..",
+		"dockerfile": "../../Dockerfile.train",
 		"target": "build-dev"
 	},
 	"mounts": [
@@ -12,8 +12,7 @@
 	"containerEnv": {
 		"PYTHONPATH": "src",
 		"HF_TOKEN": "${localEnv:HF_TOKEN_PERSONAL}",
-		"ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY_WK}",
-		"VLLM_PLATFORM": "cuda"
+		"ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY_WK}"
 	},
 	"customizations": {
 		"vscode": {
