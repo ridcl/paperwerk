@@ -5,6 +5,7 @@ description = "The mess, re-organized"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    # Shared — safe in both environments
     "tqdm>=4.67.1",
     "safetensors>=0.7.0",
     "colorama>=0.4.6",
@@ -16,42 +17,50 @@ dependencies = [
     "openai>=1.55.0",
     "jinja2>=3.1.0",
     "augraphy>=8.2.6",
-    # Datagen rendering
-    "playwright>=1.50.0",
-    # PyTorch / vLLM stack — unified on CUDA 13 (host driver 580 / CUDA 13.0).
-    # torch resolves to the PyPI default +cu130 build, matching vLLM's cu13
-    # wheel, so the whole nvidia-* runtime graph stays on one CUDA major.
-    "torch>=2.9.0",
-    "vllm>=0.19.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
-    "trl[peft]",
-    "bitsandbytes",
-    "timm>=1.0.26",
-    # Unsloth LoRA fine-tuning. Its published metadata carries stale upper
-    # bounds (transformers<=5.5.0, torch<2.11.0, trl<=0.24.0) that predate the
-    # vLLM 0.22 / transformers 5.5.3 / torch 2.11 stack we run; the
-    # override-dependencies below relax them so the resolver keeps the existing
-    # versions instead of downgrading vLLM. unsloth-zoo is pinned alongside
-    # because the two are released in lockstep.
-    "unsloth>=2026.5.8",
-    "unsloth-zoo>=2026.5.4",
-    # Triton-kernel linear-attention ops for Qwen3.5 fine-tuning (gated DeltaNet
-    # etc.). Pure-Triton, so it rides on the installed triton/torch without a
-    # CUDA compile; its only heavy dep is an unversioned `transformers`, which
-    # the override keeps at 5.5.3.
-    "flash-linear-attention>=0.5.0",
-    # FlashAttention-2 without a source build: the `kernels` library fetches a
-    # prebuilt FA2 binary matching the runtime torch/CUDA/ABI from the Hub
-    # (transformers `attn_implementation="kernels-community/flash-attn2"`). No
-    # cu13/torch2.11 flash-attn wheel exists, and FA4 is Hopper/Blackwell-only,
-    # so this is the build-free path for Ampere; falls back to sdpa if no variant.
-    # Pinned to transformers 5.5.3's supported range — newer kernels (0.13+)
-    # made LayerRepository's version mandatory, which breaks transformers'
-    # hub_kernels.py at import time.
-    "kernels>=0.12.0,<0.13",
-    "tensorboardx>=2.6.5",
 ]
 
 [dependency-groups]
+# Training stack — Unsloth on PyTorch 2.9 / CUDA 12. Install with:
+#   uv sync --group training
+# torch 2.9 ships as a CUDA-12.8 build on PyPI (no custom index needed) and is
+# the combo prebuilt flash-attn-2 wheels target (cu12torch2.9). Mutually
+# exclusive with `serving` (see [tool.uv] conflicts) because vLLM forces a newer
+# torch — so the two never share one resolution.
+training = [
+    "torch>=2.9.0,<2.10.0",
+    "unsloth>=2026.5.8",
+    "unsloth-zoo>=2026.5.4",
+    # Triton-kernel linear attention for Qwen3.5 (Gated DeltaNet).
+    "flash-linear-attention>=0.5.0",
+    # Prebuilt FA2 from the Hub (pinned to transformers 5.5.3's supported range).
+    "kernels>=0.12.0,<0.13",
+    # Flash-Attention 2 for Unsloth's full-attention layers (Qwen3.5's Gated
+    # Attention blocks; the Gated DeltaNet majority uses flash-linear-attention).
+    # No flash-attn wheel builds without nvcc, so pin Dao-AILab's prebuilt wheel
+    # for this exact combo: cu12 / torch2.9 / cxx11abiTRUE / cp312 / x86_64 — the
+    # reason the training group sits on torch 2.9. Marker-gated to that env; on
+    # any other interpreter Unsloth silently falls back to xformers.
+    "flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3%2Bcu12torch2.9cxx11abiTRUE-cp312-cp312-linux_x86_64.whl ; python_version == '3.12' and sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "trl[peft]",
+    "bitsandbytes",
+    "timm>=1.0.26",
+    # Datagen rendering (dataset building is a training-side activity).
+    "playwright>=1.50.0",
+    "tensorboardx>=2.6.5",
+]
+# Serving stack — vLLM / PyTorch. Install with:
+#   uv sync --group serving
+# vLLM pulls its own (newer) torch; kept exactly as the pre-Unsloth serving env.
+serving = [
+    # Cap below torch 2.11 (which is a CUDA-13 build) to keep serving on CUDA 12,
+    # so the image runs on the cu12 H100. torch 2.10 is the newest cu12 build;
+    # vLLM 0.19 is the line that pairs with torch 2.10.
+    "torch>=2.10.0,<2.11.0",
+    "vllm>=0.19.0,<0.20.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "trl[peft]",
+    "bitsandbytes",
+    "timm>=1.0.26",
+]
 dev = [
     "black>=25.1.0",
     "ipython>=9.2.0",
@@ -64,14 +73,11 @@ dev = [
 
 [tool.uv]
 default-groups = ["dev"]
-# Override unsloth's stale ceilings on the two deps that the rest of the stack
-# pins higher: transformers (v5 is supported in unsloth's code, only its
-# metadata caps it at <=5.5.0) and torch (vLLM 0.22 pulls 2.11, unsloth's
-# metadata caps <2.11). We deliberately do NOT override trl/datasets — unsloth's
-# upper bounds there (trl<=0.24, datasets<4.4) reflect real API breakage, and
-# the repo only needs datasets>=4.3 with an unversioned trl, so letting the
-# resolver pick unsloth's tested versions keeps training reproducible.
+# training and serving never coexist (different torch); fork their resolutions so
+# unsloth's torch<2.11 (training) and vLLM's torch>=2.10 (serving) don't clash.
+conflicts = [[{ group = "training" }, { group = "serving" }]]
+# unsloth caps transformers<=5.5.0 in metadata, but v5 works in its code; we need
+# 5.5.3, so override across both forks.
 override-dependencies = [
     "transformers==5.5.3",
-    "torch>=2.9.0",
 ]

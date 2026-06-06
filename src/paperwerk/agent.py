@@ -12,8 +12,7 @@ from paperwerk.tools import REGISTRY, tool
 from paperwerk.vqa import VQA
 
 VLLM_URL = "http://localhost:8000/v1"
-MODEL_NAME = "/data/models/kvp10k-qwen3vl-4b-retrained/"
-# MODEL_NAME = "google/gemma-4-E4B-it"
+MODEL_NAME = "/data/models/vqa-20260529-qwen3vl-4b/"
 
 
 @dataclass
@@ -248,7 +247,7 @@ class Agent:
 if __name__ == "__main__" and "__file__" in globals():
     from paperwerk.storage import LocalStorageBackend
 
-    llm = LLM(base_url=VLLM_URL, api_key="", model=MODEL_NAME)
+    llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
     backend = LocalStorageBackend("/data/paperwerk/storage")
     agent = Agent(llm, backend)
     agent.run_interactive()
