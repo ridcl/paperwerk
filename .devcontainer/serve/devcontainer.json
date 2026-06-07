@@ -5,18 +5,16 @@
 		"dockerfile": "../../Dockerfile.serve",
 		"target": "build-dev"
 	},
-
 	"mounts": [
 		"source=${localEnv:HOME}/.cache/,target=/home/devpod/.cache/,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/data/,target=/data/,type=bind,consistency=cached"
 	],
-
 	"containerEnv": {
 		"PYTHONPATH": "src",
 		"HF_TOKEN": "${localEnv:HF_TOKEN_PERSONAL}",
-		"VLLM_PLATFORM": "cuda"
+		"VLLM_PLATFORM": "cuda",
+		"ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY_WK}"
 	},
-
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -33,8 +31,11 @@
 			}
 		}
 	},
-
 	"postCreateCommand": "bash .devcontainer/init.sh",
-
-	"runArgs": ["--gpus", "all", "--shm-size", "16g"]
+	"runArgs": [
+		"--gpus",
+		"all",
+		"--shm-size",
+		"16g"
+	]
 }
