@@ -175,18 +175,18 @@ them based on the available documents. Some rules:
 class Agent:
 
     def __init__(
-        self, llm: LLM, backend: StorageBackend, chat_llm: Optional[LLM] = None
+        self, llm: LLM, backend: StorageBackend, vqa_llm: Optional[LLM] = None
     ):
         self.llm = llm
-        self.chat_llm = chat_llm or llm
         self.ctx = Context(
-            vqa=VQA(llm),
+            vqa=VQA(vqa_llm or llm),
             index=DocumentIndex(backend, llm),
         )
         self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     @staticmethod
     def create_local() -> "Agent":
+        """Create fully local agent, using vLLM and LocalStorageBackend"""
         from paperwerk.storage import LocalStorageBackend
 
         llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
@@ -194,19 +194,22 @@ class Agent:
         return Agent(llm, backend)
 
     def create_hybrid() -> "Agent":
+        """Create an Agent with Claude for the main LLM and vLLM for VQA.
+        Use the local backend
+        """
         from paperwerk.storage import LocalStorageBackend
 
         api_key = os.environ.get("ANTHROPIC_API_KEY")
         if not api_key:
             sys.exit("error: ANTHROPIC_API_KEY environment variable is not set")
-        chat_llm = LLM(
+        llm = LLM(
             base_url="https://api.anthropic.com/v1/",
             api_key=api_key,
             model="claude-sonnet-4-6",
         )
-        llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
+        vqa_llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
         backend = LocalStorageBackend("/data/paperwerk/storage")
-        return Agent(llm, backend, chat_llm=chat_llm)
+        return Agent(llm, backend, vqa_llm=vqa_llm)
 
     def __repr__(self):
         return "Agent()"
@@ -219,7 +222,7 @@ class Agent:
         self.messages.append({"role": "user", "content": user_message})
 
         while True:
-            response = self.chat_llm.invoke(
+            response = self.llm.invoke(
                 self.messages,
                 tools=REGISTRY.to_openai(),
                 tool_choice="auto",
