@@ -191,7 +191,7 @@ class VQA:
             raise ValueError(f"Unsupported file type: {ext}")
 
 
-def visualize(image: Image.Image, items: Sequence[Answer]) -> Image.Image:
+def visualize(image: Image.Image, items: Sequence[Answer], color="red") -> Image.Image:
     """Draw each answer's bounding box (red) and query label on the page."""
     draw = ImageDraw.Draw(image)
     W, H = image.size
@@ -199,8 +199,8 @@ def visualize(image: Image.Image, items: Sequence[Answer]) -> Image.Image:
         x0, y0, x1, y1 = item.box_2d
         px0, py0 = x0 / 1000 * W, y0 / 1000 * H
         px1, py1 = x1 / 1000 * W, y1 / 1000 * H
-        draw.rectangle([px0, py0, px1, py1], outline="red", width=2)
-        draw.text((px0, max(0, py0 - 12)), item.query, fill="red")
+        draw.rectangle([px0, py0, px1, py1], outline=color, width=2)
+        draw.text((px0, max(0, py0 - 12)), item.query, fill=color)
     return image
 
 

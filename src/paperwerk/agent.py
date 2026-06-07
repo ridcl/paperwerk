@@ -1,7 +1,11 @@
 import json
 import re
+import sys
+import os
 import traceback
+from typing import Optional
 from dataclasses import dataclass
+from pathlib import Path
 
 from pdf2image import convert_from_path
 from PIL import Image
@@ -170,8 +174,11 @@ them based on the available documents. Some rules:
 
 class Agent:
 
-    def __init__(self, llm: LLM, backend: StorageBackend):
+    def __init__(
+        self, llm: LLM, backend: StorageBackend, chat_llm: Optional[LLM] = None
+    ):
         self.llm = llm
+        self.chat_llm = chat_llm or llm
         self.ctx = Context(
             vqa=VQA(llm),
             index=DocumentIndex(backend, llm),
@@ -186,6 +193,21 @@ class Agent:
         backend = LocalStorageBackend("/data/paperwerk/storage")
         return Agent(llm, backend)
 
+    def create_hybrid() -> "Agent":
+        from paperwerk.storage import LocalStorageBackend
+
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            sys.exit("error: ANTHROPIC_API_KEY environment variable is not set")
+        chat_llm = LLM(
+            base_url="https://api.anthropic.com/v1/",
+            api_key=api_key,
+            model="claude-sonnet-4-6",
+        )
+        llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
+        backend = LocalStorageBackend("/data/paperwerk/storage")
+        return Agent(llm, backend, chat_llm=chat_llm)
+
     def __repr__(self):
         return "Agent()"
 
@@ -197,7 +219,7 @@ class Agent:
         self.messages.append({"role": "user", "content": user_message})
 
         while True:
-            response = self.llm.invoke(
+            response = self.chat_llm.invoke(
                 self.messages,
                 tools=REGISTRY.to_openai(),
                 tool_choice="auto",
@@ -247,7 +269,7 @@ class Agent:
 
 
 if __name__ == "__main__" and "__file__" in globals():
-    agent = Agent.create_local()
+    agent = Agent.create_hybrid()
     agent.run_interactive()
     answer = agent.run(
         "Find the tax return document, then read the 'name' and 'ssn' fields from it."
