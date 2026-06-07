@@ -36,6 +36,7 @@ handles an arbitrary number of pages (each answer carries the `index` of its
 page), matching the JAX version.
 """
 
+# isort: skip_file  (import order below is deliberate — unsloth MUST come first)
 # Unsloth patches transformers/trl on import, so it MUST come first — importing
 # it after them silently disables the optimizations (and Unsloth warns loudly).
 import unsloth  # noqa: F401  (side-effecting; keep above transformers/trl)
@@ -55,6 +56,15 @@ import torch  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 from tqdm import tqdm  # noqa: E402
 from trl import SFTConfig, SFTTrainer  # noqa: E402
+
+# Message/target formatting lives in the serving package so the prompt, target
+# JSON schema, and bbox conventions stay identical between training and serving.
+from paperwerk.vqa import (  # noqa: E402
+    make_target,
+    make_user_message,
+    pil_image_part,
+    qwen_bbox_to_normalized,
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -146,54 +156,23 @@ def _load_images(images_bytes: Any) -> list[Image.Image]:
     return [_load_image(b) for b in images_bytes]
 
 
-def _make_prompt(queries: list[str], n_images: int) -> str:
-    query_list = "\n".join(f"- {q}" for q in queries)
-    return f"Extract values:\n{query_list}"
-
-
-def _gt_bbox_to_qwen(bbox: list[float]) -> list[int]:
-    """Ground-truth [x0,y0,x1,y1] (0–1 normalised) → Qwen [x0,y0,x1,y1] (0–1000)."""
-    x0, y0, x1, y1 = bbox
-    return [round(x0 * 1000), round(y0 * 1000), round(x1 * 1000), round(y1 * 1000)]
-
-
-def _qwen_bbox_to_normalized(bbox: list[int]) -> list[float]:
-    """Qwen [x0,y0,x1,y1] (0–1000) → [x0,y0,x1,y1] (0–1 normalised)."""
-    x0, y0, x1, y1 = bbox
-    return [x0 / 1000, y0 / 1000, x1 / 1000, y1 / 1000]
-
-
-def _make_target(answers: list[dict]) -> str:
-    targets = [
-        {
-            "query": ans["query"],
-            "value": ans["value"],
-            "box_2d": _gt_bbox_to_qwen(list(ans["bounding_box"])),
-            "index": int(ans["index"]),
-        }
-        for ans in answers
-    ]
-    return json.dumps(targets)
-
-
 def make_conversation(row: pd.Series) -> list[dict]:
     """Build the 2-turn chat (user prompt+images, assistant JSON target).
 
     The message structure — content lists of ``{"type": "image", "image": PIL}``
-    and ``{"type": "text", "text": ...}`` — is exactly what
-    ``UnslothVisionDataCollator`` consumes (it runs the processor's chat template
-    and image preprocessing internally).
+    and ``{"type": "text", "text": ...}`` (via ``pil_image_part``) — is exactly
+    what ``UnslothVisionDataCollator`` consumes (it runs the processor's chat
+    template and image preprocessing internally). The prompt and target JSON come
+    from ``paperwerk.vqa`` so serving reproduces them byte-for-byte.
     """
     images = _load_images(row["images"])
     queries = list(row["queries"])
     answers = list(row["answers"])
-    user_content: list[dict] = [{"type": "image", "image": img} for img in images]
-    user_content.append({"type": "text", "text": _make_prompt(queries, len(images))})
     return [
-        {"role": "user", "content": user_content},
+        make_user_message(images, queries, image_part=pil_image_part),
         {
             "role": "assistant",
-            "content": [{"type": "text", "text": _make_target(answers)}],
+            "content": [{"type": "text", "text": make_target(answers)}],
         },
     ]
 
@@ -271,7 +250,7 @@ def compute_metrics(
             gt = gt_answers[match_i]
             try:
                 if int(pred.get("index", 0)) == int(gt.get("index", 0)):
-                    pred_norm = _qwen_bbox_to_normalized(pred["box_2d"])
+                    pred_norm = qwen_bbox_to_normalized(pred["box_2d"])
                     all_iou.append(_iou(pred_norm, list(gt["bounding_box"])))
             except (KeyError, TypeError, ValueError):
                 pass

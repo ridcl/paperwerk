@@ -1,25 +1,24 @@
 import asyncio
-from contextlib import contextmanager
-from copy import deepcopy
-from dataclasses import asdict, dataclass
 import glob
 import hashlib
 import json
 import os
 import tempfile
 import traceback
+from contextlib import contextmanager
+from copy import deepcopy
+from dataclasses import asdict, dataclass
 from typing import Protocol
 
-from PIL import Image
+from multimethod import multimethod
 from pdf2image import convert_from_path
+from PIL import Image
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
-from multimethod import multimethod
 
-from paperwerk.extractor import IMAGE_EXTENSIONS
 from paperwerk.llm import LLM
 from paperwerk.summarizer import Summarizer
-from paperwerk.utils import pil_to_base64_url
+from paperwerk.utils import IMAGE_EXTENSIONS, pil_to_base64_url
 
 SUPPORTED_EXTENSIONS = IMAGE_EXTENSIONS + (".pdf",)
 INDEX_FILE = "index.json"

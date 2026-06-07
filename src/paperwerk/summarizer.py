@@ -3,8 +3,8 @@ import os
 from pdf2image import convert_from_path
 from PIL import Image
 
-from paperwerk.extractor import IMAGE_EXTENSIONS, pil_to_base64_url
 from paperwerk.llm import LLM
+from paperwerk.utils import IMAGE_EXTENSIONS, pil_to_base64_url
 
 
 class Summarizer:

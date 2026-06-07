@@ -5,6 +5,24 @@ from openai import AsyncOpenAI, OpenAI
 from openai.types.chat import ChatCompletion
 
 
+def _strictify(schema: Any) -> Any:
+    """Recursively ensure every ``object`` sets ``additionalProperties: false``.
+
+    Strict ``json_schema`` structured output (required by Anthropic's
+    OpenAI-compatible endpoint) rejects object schemas that don't
+    explicitly forbid extra properties. vLLM is lenient and accepts the
+    schema either way, so normalizing here keeps both backends working.
+    """
+    if isinstance(schema, dict):
+        schema = {k: _strictify(v) for k, v in schema.items()}
+        if schema.get("type") == "object" and "additionalProperties" not in schema:
+            schema["additionalProperties"] = False
+        return schema
+    if isinstance(schema, list):
+        return [_strictify(item) for item in schema]
+    return schema
+
+
 class LLM:
     """Thin wrapper around an OpenAI-compatible chat endpoint.
 
@@ -51,7 +69,7 @@ class LLM:
                 "type": "json_schema",
                 "json_schema": {
                     "name": schema.get("title", "response"),
-                    "schema": schema,
+                    "schema": _strictify(schema),
                     "strict": True,
                 },
             }
