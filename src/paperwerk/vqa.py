@@ -161,9 +161,7 @@ class VQA:
         answer from the page are omitted.
         """
         messages = [make_user_message([image], queries)]
-        completion = self.llm.invoke(
-            messages, extra_body={"guided_json": _ANSWERS_SCHEMA}
-        )
+        completion = self.llm.invoke(messages, schema=_ANSWERS_SCHEMA)
         data = json.loads(completion.choices[0].message.content)
         return [Answer(**item) for item in data]
 
