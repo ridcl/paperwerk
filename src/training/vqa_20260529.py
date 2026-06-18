@@ -44,6 +44,7 @@ version, so only the windowing step is new.
 # isort: skip_file  (import order below is deliberate — unsloth MUST come first)
 # Unsloth patches transformers/trl on import, so it MUST come first — importing
 # it after them silently disables the optimizations (and Unsloth warns loudly).
+from transformers import AutoModelForImageTextToText, AutoProcessor
 import unsloth  # noqa: F401  (side-effecting; keep above transformers/trl)
 from unsloth import FastVisionModel
 from unsloth.trainer import UnslothVisionDataCollator
@@ -102,8 +103,8 @@ GRAD_ACCUM_STEPS = 1
 # collator truncates anything past the limit — if that starts clipping assistant
 # targets, lower MAX_IMAGE_SIZE (fewer vision tokens/page) before raising the
 # length, since this 4096 was chosen to fit the <80 GB GPUs' memory budget.
-MAX_SEQ_LEN = 4096 if GPU_MEMORY_GB < 80 else 32768
-MAX_IMAGE_SIZE = 896 if GPU_MEMORY_GB < 80 else 1792
+MAX_SEQ_LEN = 32768 if GPU_MEMORY_GB > 70 else 4096
+MAX_IMAGE_SIZE = 1792 if GPU_MEMORY_GB > 70 else 896
 EVAL_MAX_NEW_TOKENS = 2048
 EVAL_MAX_SAMPLES = 500
 
@@ -452,6 +453,46 @@ def _generate(model, processor, images: list[Image.Image], messages: list[dict])
     return processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
 
 
+@torch.inference_mode()
+def _generate_plain(
+    model, processor, images: list[Image.Image], queries: list[str]
+) -> str:
+    """Greedy-decode answers for (images, queries) via the stock HF path.
+
+    Reproduces the standalone check that confirmed the trained checkpoint is
+    healthy: it builds the user turn straight from ``make_user_message`` (so the
+    prompt/image formatting is byte-identical to training and to ``_generate``),
+    forces the model into eval mode, then greedily decodes. The decoding call
+    itself is the same as ``_generate``; the one material difference is that this
+    helper calls ``model.eval()`` instead of relying on the caller to switch the
+    model to inference mode.
+
+    That difference is the whole point. Calling ``_generate``/``model.generate``
+    directly on an Unsloth ``FastVisionModel`` still in its *training*
+    configuration (gradient checkpointing on, training-mode kernels) emits
+    degenerate output — repeated null bytes on image inputs, prompt echo on
+    text. Running through this plain eval-mode path (equivalently: a stock
+    ``transformers`` load of the merged 16-bit checkpoint) yields valid grounded
+    JSON for both single- and multi-image inputs. Use it to sanity-check a
+    checkpoint without the Unsloth inference-mode toggle. For an Unsloth model
+    in-session, ``FastVisionModel.for_inference(model)`` is the canonical switch.
+    """
+    model.eval()
+    user = make_user_message(images, queries, image_part=pil_image_part)
+    text = processor.apply_chat_template(
+        [user], tokenize=False, add_generation_prompt=True
+    )
+    inputs = processor(text=[text], images=images, return_tensors="pt").to(model.device)
+    generated = model.generate(
+        **inputs,
+        max_new_tokens=EVAL_MAX_NEW_TOKENS,
+        do_sample=False,
+        use_cache=True,
+    )
+    trimmed = generated[:, inputs["input_ids"].shape[-1] :]
+    return processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
+
+
 def show_row(model, processor, row: pd.Series) -> None:
     """Generate for a single row and dump a visualization to output/out.jpeg."""
     FastVisionModel.for_inference(model)
@@ -648,13 +689,23 @@ def main() -> None:
     train(model, processor, train_df, eval_df)
 
     # --- Evaluate fine-tuned model (LoRA active, in memory) ---
+    # TODO: while training with Unsloth is fine, for evals it is brokem
+    # So we will need to use vLLM or pure HF instead
     logger.info("Evaluating fine-tuned model…")
+    model, processor = None, None
+    processor = AutoProcessor.from_pretrained(OUTPUT_DIR)
+    model = AutoModelForImageTextToText.from_pretrained(
+        OUTPUT_DIR, dtype=torch.bfloat16, device_map="cuda"
+    )
     metrics_after = evaluate(model, processor, eval_df, output_dir="output/ft_model")
     logger.info(
         "Fine-tuned  — F1: %.4f  IoU: %.4f",
         metrics_after["f1_exact_match"],
         metrics_after["iou"],
     )
+
+    model.push_to_hub("paperwerk-vqa")
+    processor.push_to_hub("paperwerk-vqa")
 
 
 if __name__ == "__main__" and "__file__" in globals():
