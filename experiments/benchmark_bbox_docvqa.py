@@ -14,7 +14,7 @@ BBOX_DOCVQA_ROOT = Path("/data/paperwerk/BBoxDocVQA")
 # cap (see src/training/vqa_20260529.py), and the server enforces it. These
 # dataset PNGs are high-DPI renders (~2500x3500), so we must match the cap.
 # box_2d is normalized to 0..1000, so downscaling leaves coordinates valid.
-MAX_IMAGE_SIZE = 896
+MAX_IMAGE_SIZE = 2 * 896
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
     # The VQA model is trained on single-page examples, so keep samples whose
     # evidence lives on a single page.
     sub = df[df.evidence_page.map(len) == 1]
-    row = sub.iloc[4]
+    row = sub.iloc[5]
 
     page = int(row.evidence_page[0])  # 1-based, matches the PNG file name
     image_path = (
