@@ -17,7 +17,7 @@ from paperwerk.tools import REGISTRY, tool
 from paperwerk.vqa import VQA, Answer, visualize
 
 VLLM_URL = "http://localhost:8000/v1"
-MODEL_NAME = "/data/models/vqa-20260529-qwen3vl-4b/"
+VQA_MODEL_NAME = "ridcl/paperwerk-vqa"
 
 
 @dataclass
@@ -189,7 +189,7 @@ class Agent:
         """Create fully local agent, using vLLM and LocalStorageBackend"""
         from paperwerk.storage import LocalStorageBackend
 
-        llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
+        llm = LLM(base_url=VLLM_URL, api_key="(none)", model=VQA_MODEL_NAME)
         backend = LocalStorageBackend("/data/paperwerk/storage")
         return Agent(llm, backend)
 
@@ -207,7 +207,7 @@ class Agent:
             api_key=api_key,
             model="claude-sonnet-4-6",
         )
-        vqa_llm = LLM(base_url=VLLM_URL, api_key="(none)", model=MODEL_NAME)
+        vqa_llm = LLM(base_url=VLLM_URL, api_key="(none)", model=VQA_MODEL_NAME)
         backend = LocalStorageBackend("/data/paperwerk/storage")
         return Agent(llm, backend, vqa_llm=vqa_llm)
 
