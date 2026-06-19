@@ -31,14 +31,20 @@ Dataset schema (produced by datagen.builders.vqa_20260524_cuad_kvp10k):
     page_end    int32
     split       string
 
-Both data builders currently emit one image per datapoint, but every path here
-handles an arbitrary number of pages (each answer carries the `index` of its
-page), matching the JAX version.
+Both data builders currently emit one image (page) per datapoint, but at serving
+time we apply VQA to several consecutive pages at once. To train for that, data
+preparation here groups each document's single-page rows into overlapping page
+windows of up to ``MAX_PAGES`` images (see ``load_splits``), concatenating their
+images/queries/answers and re-indexing every answer onto its page's position
+within the merged sequence. Every path downstream already handles an arbitrary
+number of pages (each answer carries the `index` of its page), matching the JAX
+version, so only the windowing step is new.
 """
 
 # isort: skip_file  (import order below is deliberate — unsloth MUST come first)
 # Unsloth patches transformers/trl on import, so it MUST come first — importing
 # it after them silently disables the optimizations (and Unsloth warns loudly).
+from transformers import AutoModelForImageTextToText, AutoProcessor
 import unsloth  # noqa: F401  (side-effecting; keep above transformers/trl)
 from unsloth import FastVisionModel
 from unsloth.trainer import UnslothVisionDataCollator
@@ -79,25 +85,36 @@ MODEL_ID = "Qwen/Qwen3-VL-4B-Instruct"
 OUTPUT_DIR = "/data/models/vqa-20260529-qwen3vl-4b"
 LORA_CKPT_DIR = "/data/cache/vqa_20260529_lora_ckpts"
 
+GPU_MEMORY_GB = torch.cuda.get_device_properties(0).total_memory / 1024**3
+
+# Page windowing: train on sequences of consecutive pages, mirroring how VQA is
+# applied at serving time. Each document's single-page rows are tiled into
+# windows of up to MAX_PAGES images. PAGE_STRIDE < MAX_PAGES makes consecutive
+# windows overlap (MAX_PAGES=5, PAGE_STRIDE=3 -> pages 0-4, 3-7, 6-10, ...), so a
+# value whose evidence sits near a window boundary is still seen whole in some
+# window. Set PAGE_STRIDE == MAX_PAGES for non-overlapping windows.
+MAX_PAGES = 3
+PAGE_STRIDE = 2
+
 BATCH_SIZE = 1
-GRAD_ACCUM_STEPS = 1  # JAX trained on a per-step batch of 1
-MAX_SEQ_LEN = 4096
-MAX_IMAGE_SIZE = 896
+GRAD_ACCUM_STEPS = 1
+# NB: a window now holds up to MAX_PAGES pages, so a packed example can carry
+# ~MAX_PAGES times the vision tokens of a single page. With MAX_SEQ_LEN below the
+# collator truncates anything past the limit — if that starts clipping assistant
+# targets, lower MAX_IMAGE_SIZE (fewer vision tokens/page) before raising the
+# length, since this 4096 was chosen to fit the <80 GB GPUs' memory budget.
+MAX_SEQ_LEN = 32768 if GPU_MEMORY_GB > 70 else 4096
+MAX_IMAGE_SIZE = 1792 if GPU_MEMORY_GB > 70 else 896
 EVAL_MAX_NEW_TOKENS = 2048
 EVAL_MAX_SAMPLES = 500
 
-# 16-bit LoRA (not 4-bit QLoRA) to mirror the JAX run's bf16 base weights and to
-# keep the merged checkpoint a clean, vLLM-servable 16-bit model. A 4B model in
-# bf16 + LoRA fits comfortably on a 24 GB card; flip to True for tighter memory.
 LOAD_IN_4BIT = False
 
 LORA_RANK = 16
 LORA_ALPHA = 2 * LORA_RANK
-# Same module subset as the JAX run: attention q/k (not v/o) + all MLP
-# projections, language tower only — the vision encoder stays frozen.
 LORA_TARGET_MODULES = ["q_proj", "k_proj", "gate_proj", "up_proj", "down_proj"]
 
-MAX_STEPS = 12_000
+MAX_STEPS = 10_000
 EVAL_EVERY_N_STEPS = 500
 WARMUP_STEPS = 50
 PEAK_LR = 2e-4
@@ -118,6 +135,81 @@ _RESPONSE_PART = "<|im_start|>assistant\n"
 # ---------------------------------------------------------------------------
 
 
+def _concat_window(rows: list[pd.Series]) -> dict:
+    """Merge consecutive page rows of one document into a single datapoint.
+
+    Concatenates the rows' images in page order, unions their query lists
+    (de-duplicated, order preserved), and re-indexes every answer onto its
+    page's position within the merged image sequence: a row landing at image
+    offset ``o`` shifts each of its answers from local ``index`` to ``o + index``
+    (rows are single-page today, so this is just the slot number, but the offset
+    keeps it correct should a source row ever carry multiple pages). Answers are
+    copied rather than mutated because overlapping windows revisit the same row.
+    """
+    images: list[bytes] = []
+    queries: list[str] = []
+    seen_queries: set[str] = set()
+    answers: list[dict] = []
+    for row in rows:
+        offset = len(images)  # where this row's pages land in the merged window
+        images.extend(row["images"])
+        for q in row["queries"]:
+            if q not in seen_queries:
+                seen_queries.add(q)
+                queries.append(q)
+        for ans in row["answers"]:
+            ans = dict(ans)
+            ans["index"] = offset + int(ans["index"])
+            answers.append(ans)
+    first, last = rows[0], rows[-1]
+    return {
+        "images": images,
+        "queries": queries,
+        "answers": answers,
+        "source": first["source"],
+        "variant": first["variant"],
+        "page_start": int(first["page_start"]),
+        "page_end": int(last["page_end"]),
+    }
+
+
+def _document_windows(rows: list[pd.Series]) -> list[dict]:
+    """Tile one document's page rows into overlapping ≤MAX_PAGES-image windows.
+
+    Rows are ordered by page, then a window grows from each start until adding
+    the next row would exceed MAX_PAGES images; the start then advances by
+    PAGE_STRIDE rows (< MAX_PAGES ⇒ overlap). A single row larger than MAX_PAGES
+    still forms its own window rather than stalling. Grouping is positional over
+    the pages that survived datagen, so a window spans available consecutive
+    rows even if an intermediate page was dropped upstream.
+    """
+    rows = sorted(rows, key=lambda r: int(r["page_start"]))
+    n = len(rows)
+    windows: list[dict] = []
+    start = 0
+    while start < n:
+        end, n_imgs = start, 0
+        while end < n:
+            k = len(rows[end]["images"])
+            if end > start and n_imgs + k > MAX_PAGES:
+                break
+            n_imgs += k
+            end += 1
+        windows.append(_concat_window(rows[start:end]))
+        if end >= n:
+            break
+        start += PAGE_STRIDE
+    return windows
+
+
+def _windowed(df: pd.DataFrame) -> pd.DataFrame:
+    """Replace single-page rows with multi-page windows, one group per document."""
+    rows: list[dict] = []
+    for _, doc in df.groupby("source", sort=False):
+        rows.extend(_document_windows([r for _, r in doc.iterrows()]))
+    return pd.DataFrame(rows).reset_index(drop=True)
+
+
 def load_splits() -> tuple[pd.DataFrame, pd.DataFrame]:
     # `images` is list<binary> with 32-bit offsets. Across the whole file its
     # decoded bytes exceed the 2 GiB offset limit, so pyarrow must split the
@@ -129,13 +221,22 @@ def load_splits() -> tuple[pd.DataFrame, pd.DataFrame]:
     pf = pq.ParquetFile(DATASET_PATH)
     frames = [batch.to_pandas() for batch in pf.iter_batches(batch_size=512)]
     df = pd.concat(frames, ignore_index=True)
-    # Random split by index (ignores the parquet's own `split` column) so the
-    # held-out set is drawn uniformly across sources and variants. Seeded for
-    # reproducibility.
-    test_df = df.sample(frac=TEST_FRACTION, random_state=RANDOM_SEED)
-    train_df = df.drop(test_df.index).reset_index(drop=True)
-    test_df = test_df.reset_index(drop=True)
-    logger.info("Train: %d rows, Test: %d rows", len(train_df), len(test_df))
+    # Split by document (`source`), not by row: overlapping page windows share
+    # images, so a row-level split would leak held-out pages into training. A
+    # `source` is one variant of one document (the variant is part of the string)
+    # and carries its own pages, so splitting on it keeps each window's pages on a
+    # single side. Seeded for reproducibility; ignores the parquet's own `split`.
+    sources = df["source"].drop_duplicates()
+    test_sources = set(sources.sample(frac=TEST_FRACTION, random_state=RANDOM_SEED))
+    train_df = _windowed(df[~df["source"].isin(test_sources)])
+    test_df = _windowed(df[df["source"].isin(test_sources)])
+    logger.info(
+        "Train: %d windows (%d docs), Test: %d windows (%d docs)",
+        len(train_df),
+        len(sources) - len(test_sources),
+        len(test_df),
+        len(test_sources),
+    )
     return train_df, test_df
 
 
@@ -352,6 +453,46 @@ def _generate(model, processor, images: list[Image.Image], messages: list[dict])
     return processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
 
 
+@torch.inference_mode()
+def _generate_plain(
+    model, processor, images: list[Image.Image], queries: list[str]
+) -> str:
+    """Greedy-decode answers for (images, queries) via the stock HF path.
+
+    Reproduces the standalone check that confirmed the trained checkpoint is
+    healthy: it builds the user turn straight from ``make_user_message`` (so the
+    prompt/image formatting is byte-identical to training and to ``_generate``),
+    forces the model into eval mode, then greedily decodes. The decoding call
+    itself is the same as ``_generate``; the one material difference is that this
+    helper calls ``model.eval()`` instead of relying on the caller to switch the
+    model to inference mode.
+
+    That difference is the whole point. Calling ``_generate``/``model.generate``
+    directly on an Unsloth ``FastVisionModel`` still in its *training*
+    configuration (gradient checkpointing on, training-mode kernels) emits
+    degenerate output — repeated null bytes on image inputs, prompt echo on
+    text. Running through this plain eval-mode path (equivalently: a stock
+    ``transformers`` load of the merged 16-bit checkpoint) yields valid grounded
+    JSON for both single- and multi-image inputs. Use it to sanity-check a
+    checkpoint without the Unsloth inference-mode toggle. For an Unsloth model
+    in-session, ``FastVisionModel.for_inference(model)`` is the canonical switch.
+    """
+    model.eval()
+    user = make_user_message(images, queries, image_part=pil_image_part)
+    text = processor.apply_chat_template(
+        [user], tokenize=False, add_generation_prompt=True
+    )
+    inputs = processor(text=[text], images=images, return_tensors="pt").to(model.device)
+    generated = model.generate(
+        **inputs,
+        max_new_tokens=EVAL_MAX_NEW_TOKENS,
+        do_sample=False,
+        use_cache=True,
+    )
+    trimmed = generated[:, inputs["input_ids"].shape[-1] :]
+    return processor.batch_decode(trimmed, skip_special_tokens=True)[0].strip()
+
+
 def show_row(model, processor, row: pd.Series) -> None:
     """Generate for a single row and dump a visualization to output/out.jpeg."""
     FastVisionModel.for_inference(model)
@@ -521,14 +662,14 @@ def main() -> None:
         max_seq_length=MAX_SEQ_LEN,
     )
 
-    # --- Evaluate base model ---
-    logger.info("Evaluating base model on %d test samples…", len(eval_df))
-    metrics_before = evaluate(model, processor, eval_df, output_dir="output/base_model")
-    logger.info(
-        "Base model  — F1: %.4f  IoU: %.4f",
-        metrics_before["f1_exact_match"],
-        metrics_before["iou"],
-    )
+    # # --- Evaluate base model ---
+    # logger.info("Evaluating base model on %d test samples…", len(eval_df))
+    # metrics_before = evaluate(model, processor, eval_df, output_dir="output/base_model")
+    # logger.info(
+    #     "Base model  — F1: %.4f  IoU: %.4f",
+    #     metrics_before["f1_exact_match"],
+    #     metrics_before["iou"],
+    # )
 
     # --- Fine-tune (attach LoRA in place and train) ---
     model = FastVisionModel.get_peft_model(
@@ -545,13 +686,17 @@ def main() -> None:
         use_rslora=False,
         random_state=RANDOM_SEED,
     )
-    # TEMP: visualize one example before training (mirrors the JAX script).
-    eval_rows = [row for _, row in eval_df.iterrows()]
-    show_row(model, processor, eval_rows[min(8, len(eval_rows) - 1)])
     train(model, processor, train_df, eval_df)
 
     # --- Evaluate fine-tuned model (LoRA active, in memory) ---
+    # TODO: while training with Unsloth is fine, for evals it is brokem
+    # So we will need to use vLLM or pure HF instead
     logger.info("Evaluating fine-tuned model…")
+    model, processor = None, None
+    processor = AutoProcessor.from_pretrained(OUTPUT_DIR)
+    model = AutoModelForImageTextToText.from_pretrained(
+        OUTPUT_DIR, dtype=torch.bfloat16, device_map="cuda"
+    )
     metrics_after = evaluate(model, processor, eval_df, output_dir="output/ft_model")
     logger.info(
         "Fine-tuned  — F1: %.4f  IoU: %.4f",
@@ -559,15 +704,8 @@ def main() -> None:
         metrics_after["iou"],
     )
 
-    print("\n=== Results ===")
-    print(
-        f"Base model:  F1={metrics_before['f1_exact_match']:.4f}  "
-        f"IoU={metrics_before['iou']:.4f}"
-    )
-    print(
-        f"Fine-tuned:  F1={metrics_after['f1_exact_match']:.4f}  "
-        f"IoU={metrics_after['iou']:.4f}"
-    )
+    model.push_to_hub("paperwerk-vqa")
+    processor.push_to_hub("paperwerk-vqa")
 
 
 if __name__ == "__main__" and "__file__" in globals():

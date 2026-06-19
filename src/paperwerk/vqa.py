@@ -154,38 +154,37 @@ class VQA:
     def __repr__(self):
         return "VQA()"
 
-    def ask(self, image: Image.Image, queries: Sequence[str]) -> list[Answer]:
-        """Answer ``queries`` about a single page image.
+    def ask(self, images: list[Image.Image], queries: Sequence[str]) -> list[Answer]:
+        """Answer ``queries`` about a given ``pages``.
 
         Returns one ``Answer`` per supported query; queries the model cannot
         answer from the page are omitted.
         """
-        messages = [make_user_message([image], queries)]
-        completion = self.llm.invoke(
-            messages, extra_body={"guided_json": _ANSWERS_SCHEMA}
-        )
+        messages = [make_user_message(images, queries)]
+        completion = self.llm.invoke(messages, schema=_ANSWERS_SCHEMA)
         data = json.loads(completion.choices[0].message.content)
         return [Answer(**item) for item in data]
 
-    def __call__(self, path: str, queries: Sequence[str]) -> list[Answer]:
+    def __call__(
+        self, path: str, queries: Sequence[str], window=3, stride=1
+    ) -> list[Answer]:
         _, ext = os.path.splitext(path)
         ext = ext.lower()
         if ext in IMAGE_EXTENSIONS:
             items = self.ask(Image.open(path), queries)
             for item in items:
-                item.meta = {"filename": path, "page": 0}
+                item.meta = {"filename": path}
             return items
         elif ext == ".pdf":
-            # The model was trained on single-page examples, so answer each page
-            # on its own and stamp the real page number into `meta` (the model's
-            # own `index` is always 0 for a single-image prompt).
             images = convert_from_path(path, fmt="jpeg")
             items: list[Answer] = []
-            for page, image in enumerate(images):
-                page_items = self.ask(image, queries)
-                for item in page_items:
-                    item.meta = {"filename": path, "page": page}
-                items.extend(page_items)
+            for page in range(0, len(images), stride):
+                batch = images[page : page + window]
+                batch_items = self.ask(batch, queries)
+                for item in batch_items:
+                    item.index += page
+                    item.meta = {"filename": path}
+                items.extend(batch_items)
             return items
         else:
             raise ValueError(f"Unsupported file type: {ext}")
@@ -207,16 +206,24 @@ def visualize(image: Image.Image, items: Sequence[Answer], color="red") -> Image
 def main():
     llm = LLM(
         base_url="http://localhost:8000/v1",
-        api_key="",
-        model="/data/models/vqa-20260529-qwen3vl-4b/",
+        api_key="(none)",
+        model="ridcl/paperwerk-vqa",
     )
     vqa = VQA(llm)
 
-    path = "/data/taxes.jpeg"
-    queries = ["What was the receivable tax?", "name", "ssn"]
+    # path = "/data/apple_cfs.pdf"
+    path = "/data/Documents/DataSnipper/Andrei Zhabinski + DataSnipper document.pdf"
+    queries = [
+        "contract_date",
+        "names of the parties",
+        "Where is the company registered?",
+    ]
     items = vqa(path, queries)
     for item in items:
         print(item)
 
-    image = Image.open(path)
-    visualize(image, items).save("output/out.jpeg")
+    images = convert_from_path(path) if path.endswith(".pdf") else [Image.open(path)]
+    for item in items:
+        images[item.index] = visualize(images[item.index], [item])
+    for i, image in enumerate(images):
+        image.save(f"output/out_{i:03d}.jpeg")
