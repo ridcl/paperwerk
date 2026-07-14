@@ -46,7 +46,7 @@ async def classify(
     labels. If `classes` is None, the model is asked to invent a reasonable
     snake_case identifier (e.g. `cv`, `passport`, `bank_statement`).
     """
-    urls = await asyncio.to_thread(document_to_data_urls, path, max_pages=_MAX_PAGES)
+    urls = await asyncio.to_thread(document_to_data_urls, path, end_page=_MAX_PAGES)
     if not urls:
         raise RuntimeError(f"no pages extracted from {path}")
 
