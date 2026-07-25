@@ -1,7 +1,7 @@
 """Jinja2 template generation from a real document image or PDF.
 
 `make_template` is the single entry point: given a path to a real document,
-it asks Claude (vision) for a Jinja2 HTML template that mirrors the source
+it asks an LLM for a Jinja2 HTML template that mirrors the source
 layout with `<span data-field="...">{{ ... }}</span>` markers, and returns
 the template together with a flat schema of field names.
 
@@ -50,13 +50,47 @@ _HTML_FENCE_RE = re.compile(r"```html\s*(.*?)\s*```", re.DOTALL | re.IGNORECASE)
 _ANY_FENCE_RE = re.compile(r"```\w*\s*(.*?)\s*```", re.DOTALL)
 
 
-def _extract_html(text: str) -> str:
-    """Pull the HTML out of a fenced block, falling back to the whole reply."""
+_HTML_TAG_RE = re.compile(r"<html\b", re.IGNORECASE)
+_BODY_TAG_RE = re.compile(r"<body\b", re.IGNORECASE)
+
+
+def _ensure_skeleton(html: str) -> str:
+    """Wrap a bare fragment in a complete `<html><head><body>` document.
+
+    The model is asked for a full document, but (especially smaller models)
+    it often returns just a `<style>` block plus `.page` divs. Normalising
+    here guarantees every template has the same structure, which keeps
+    `_merge_templates`, `apply_handwriting`, and any DOM-shaped consumer on
+    their well-defined code path instead of the fragment fallbacks.
+    """
+    if _HTML_TAG_RE.search(html):
+        return html  # already a full document
+    if _BODY_TAG_RE.search(html):
+        # Has <head>/<body> but no <html> wrapper — just wrap it.
+        return f"<!DOCTYPE html>\n<html>\n{html.strip()}\n</html>"
+    # Bare fragment: hoist <style> blocks into <head>, the rest into <body>.
+    styles = "\n".join(_STYLE_RE.findall(html))
+    body = _STYLE_RE.sub("", html).strip()
+    return (
+        "<!DOCTYPE html>\n<html>\n<head>\n"
+        f"{styles}\n</head>\n<body>\n{body}\n</body>\n</html>"
+    )
+
+
+def _extract_and_normalize_html(text: str) -> str:
+    """Pull the HTML out of a fenced block and normalize it to a full document.
+
+    Extraction falls back to any fenced block, then to the whole reply; the
+    result is then passed through `_ensure_skeleton` so a bare
+    `<style>`+`.page` fragment becomes a complete `<html><head><body>` document.
+    """
     m = _HTML_FENCE_RE.search(text)
     if m:
-        return m.group(1)
-    m = _ANY_FENCE_RE.search(text)
-    return m.group(1) if m else text.strip()
+        html = m.group(1)
+    else:
+        m = _ANY_FENCE_RE.search(text)
+        html = m.group(1) if m else text.strip()
+    return _ensure_skeleton(html)
 
 
 _DATA_FIELD_ATTR_RE = re.compile(r"""data-field=(["'])(.*?)\1""", re.DOTALL)
@@ -85,14 +119,16 @@ def discover_fields(template: str) -> list[str]:
     return out
 
 
-_SYSTEM_PROMPT = """You are converting a real document into a Jinja2 HTML template for synthetic data generation. The source is a layout reference ONLY. You must not reproduce any specific personal data from it into the template.
+_SYSTEM_PROMPT = """You are converting a real document into a Jinja2 HTML template for synthetic data generation. The source is a layout reference ONLY. You must not reproduce any specific sensitive data from it into the template.
 
 Output a single, self-contained Jinja2 HTML document inside one ```html``` code fence and nothing else.
 
-LAYOUT
-1. Mirror the visual layout of the input: headings, columns, dividers, font weights, alignment, relative spacing, section ordering. Use only system fonts: "DejaVu Serif", "Liberation Serif", "DejaVu Sans", "Liberation Sans", Georgia, Helvetica, Arial. DO NOT @import Google Fonts or load any external resource.
+It MUST be a complete HTML document, not a fragment: wrap everything in `<!DOCTYPE html><html><head>...</head><body>...</body></html>`, with the `<style>` block inside `<head>` and every `<div class="page">` inside `<body>`.
 
-2. Use exactly this page-wrapper structure — one <div class="page">…</div> per page in the source — with these exact .page rules in <style>:
+LAYOUT
+1. Mirror the visual layout of the input: headings, columns, dividers, font weights, alignment, relative spacing, section ordering. Use only system fonts: "DejaVu Serif", "Liberation Serif", "DejaVu Sans", "Liberation Sans", Georgia, Helvetica, Arial. DO NOT @import Google Fonts or load any external resource. Where the source shows a company logo or brand mark, do NOT reproduce it (no real wordmark, brand icon, or copied image/SVG); replace it with a simple neutral placeholder built from a small inline SVG — e.g. a plain rectangle or circle with a generic monogram or shape — of roughly the same size and position as the original.
+
+2. Use exactly this page-wrapper structure — one <div class="page">...</div> per page in the source — with these exact .page rules in <style>:
      .page {
        width: 794px; height: 1123px;
        padding: 50px 60px; box-sizing: border-box;
@@ -123,10 +159,14 @@ FIELDS
 
 5. Use Jinja loops ONLY for sections whose count truly varies in real-world instances (invoice line items, bank-statement transactions, CV work-experience or education entries). For singular/header/footer/summary content, use plain scalar fields.
 
-6. Static labels ("Email:", "Description", "Subtotal", "Date") stay as plain text. Only the variable values are marked as fields.
+6. Generic printed labels ("Email:", "Description", "Subtotal", "Date") stay as plain text. Only the variable values are marked as fields — and a concrete name, company, place, or number is a value, never a label (see rule 7).
 
 PRIVACY — NON-NEGOTIABLE
-7. Every <span data-field="X"> element's inner content must be a Jinja expression of the form {{ ... }}. Do NOT copy any specific names, dates, phone numbers, email addresses, postal addresses, employer names, school names, city or country names, or any other concrete value from the source. Static section/UI labels are not personal data and may be copied verbatim.
+7. Do NOT copy ANY specific value from the source into the template — not inside a field, not in a heading, not in a header/letterhead, not in a footer, not anywhere. This includes names, dates, phone numbers, email addresses, postal addresses, employer/company/organization/bank names, logo or letterhead text, account/routing/reference numbers, city or country names, and every other concrete value. Every such value must instead be a <span data-field="X"> element whose inner content is a Jinja expression of the form {{ ... }} — never the source text.
+
+   The document's OWN issuer — the company, organization, or bank whose name, logo, or address appears in the header/letterhead or the payment/footer block — is VARIABLE, not fixed branding: wrap it in data-field spans (e.g. issuer_name, issuer_address, bank_name), never copy it verbatim (e.g. do NOT leave "Microsoft" or "Bank of America" in the template).
+
+   The ONLY text you may copy verbatim is generic printed labels that carry no concrete value — e.g. "Invoice", "Sold To", "Date:", "Subtotal", "FEIN:". If in doubt, make it a field.
 
 8. Output only the fenced HTML block. No prose before or after."""
 
@@ -245,9 +285,7 @@ def _merge_templates(
         for html, _ in chunks[1:]:
             m2 = _BODY_RE.search(html)
             body_parts.append(m2.group(1) if m2 else html)
-        merged_html = (
-            head_and_body_open + "\n".join(body_parts) + body_close_and_after
-        )
+        merged_html = head_and_body_open + "\n".join(body_parts) + body_close_and_after
 
     seen: set[str] = set()
     merged_fields: list[str] = []
@@ -330,6 +368,6 @@ async def make_template(
         max_tokens=_DEFAULT_MAX_OUTPUT_TOKENS,
         temperature=0.2,
     )
-    template = _extract_html(resp.choices[0].message.content)
+    template = _extract_and_normalize_html(resp.choices[0].message.content)
     fields = discover_fields(template)
     return template, fields
