@@ -50,6 +50,25 @@ def _clamp01(v: float) -> float:
     return max(0.0, min(1.0, v))
 
 
+def _finalize(value):
+    """Stringify containers rendered directly as `{{ x }}`.
+
+    Value synthesis (especially smaller local models) occasionally returns a
+    dict or list for a field the template outputs directly, which would
+    otherwise render as a raw Python repr (``{'street': '123 Main St', ...}``).
+    Flatten those to a readable comma-joined string. Nested access
+    (``{{ x.y }}``) and normal scalars pass through untouched, since finalize
+    only sees the final expression value.
+    """
+    if isinstance(value, dict):
+        return ", ".join(
+            str(_finalize(v)) for v in value.values() if v not in (None, "")
+        )
+    if isinstance(value, (list, tuple)):
+        return ", ".join(str(_finalize(v)) for v in value if v not in (None, ""))
+    return value
+
+
 def render(
     template_str: str,
     data: dict,
@@ -70,7 +89,11 @@ def render(
     top-left origin.
     """
     rng = random.Random(seed)
-    html = Environment(autoescape=True).from_string(template_str).render(**data)
+    html = (
+        Environment(autoescape=True, finalize=_finalize)
+        .from_string(template_str)
+        .render(**data)
+    )
     if handwritten_fields:
         html = apply_handwriting(html, handwritten_fields, rng)
 
@@ -90,7 +113,14 @@ def render(
                 if box is None:
                     continue
                 name = loc.get_attribute("data-field") or ""
-                value = loc.inner_text()
+                # Form controls (input/textarea/select) carry their value in
+                # the `value` property, not as inner text; inner_text() returns
+                # "" for them. Read the control value in that case.
+                tag = loc.evaluate("el => el.tagName.toLowerCase()")
+                if tag in ("input", "textarea", "select"):
+                    value = loc.input_value()
+                else:
+                    value = loc.inner_text()
                 x = box["x"]
                 y = box["y"]
                 w = box["width"]
