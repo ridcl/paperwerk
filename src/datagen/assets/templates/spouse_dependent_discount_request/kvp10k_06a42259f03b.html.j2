@@ -1,0 +1,114 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .logo { font-size: 40px; font-weight: bold; }
+  .form-section { margin-bottom: 25px; }
+  .field-row { display: flex; margin-bottom: 15px; }
+  .field-row > div { flex: 1; }
+  .label { font-weight: normal; }
+  .input-line { border-bottom: 1px solid #000; min-width: 200px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; }
+</style>
+<body>
+  <div class="page">
+    <div class="header-section">
+      <div>
+        <div class="logo">AP</div>
+        <h1>AUSTIN PEAY STATE UNIVERSITY</h1>
+        <h2>Spouse/Dependent Discount Request</h2>
+        <p><strong>ROTC ONLY</strong></p>
+      </div>
+      <div>
+        <!-- Placeholder for logo image -->
+        <div style="width: 100px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">LEADERSHIP</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <p>Instructions: Please complete Sections I & II below, which provide information concerning the employee and the spouse/dependent for which the fee discount is to be provided. (Employee refers to current employee, retiree, or deceased employee/retiree.) Upon completion, forward the form to the employee's home institution Office of Human Resources prior to registration.</p>
+    </div>
+
+    <!-- Section I -->
+    <div class="form-section">
+      <h3>I. Employee and Spouse/Dependent Information:</h3>
+      
+      <div class="field-row">
+        <div style="width: 30%;">Employee Name:</div>
+        <div style="width: 70%;"><span class="input-line" data-field="employee.name">{{ employee.name }}</span></div>
+      </div>
+
+      <div class="field-row">
+        <div style="width: 30%;">Spouse/Dependent Name:</div>
+        <div style="width: 70%;"><span class="input-line" data-field="spouse_dependent.name">{{ spouse_dependent.name }}</span></div>
+      </div>
+
+      <div class="field-row">
+        <div style="width: 30%;">Relationship: [ ] Spouse [ ] Dependent Child</div>
+        <div style="width: 70%;">Age (if dependent): <span class="input-line" data-field="spouse_dependent.age">{{ spouse_dependent.age }}</span></div>
+      </div>
+
+      <div class="field-row">
+        <div style="width: 30%;">Institution attending:</div>
+        <div style="width: 70%;"><span class="input-line" data-field="institution_attending">{{ institution_attending }}</span></div>
+      </div>
+    </div>
+
+    <!-- Section II -->
+    <div class="form-section">
+      <h3>II. Eligibility Certification and Financial Aid Statement:</h3>
+      <p>I hereby certify that the above information is correct. I also certify that I and my spouse or dependent meet the eligibility requirements for a fee discount in accordance with APSU Policy 5.005. I understand that it is my responsibility to notify the Office of Human Resources of any change in my eligibility for this benefit.</p>
+      <p>I will notify the Financial Aid Office of any Title IV financial aid, as this benefit may require an adjustment of financial aid received. I understand that Title IV Aid includes national direct student loan, college work-study, supplemental educational opportunity grants, Pell grants, and other student aid programs administered by any TN State University.</p>
+      
+      <div class="field-row">
+        <div style="width: 50%;">Signature-Employee/Retiree/Spouse/Dependent of Deceased Employee</div>
+        <div style="width: 50%; text-align: right;">Date</div>
+      </div>
+    </div>
+
+    <!-- Section III -->
+    <div class="form-section">
+      <h3>III. Employing Institution:</h3>
+
+      <h4>A. Human Resources</h4>
+      <div class="field-row">
+        <div style="width: 30%;">Date of Regular Employment:</div>
+        <div style="width: 30%;"><span class="input-line" data-field="hr.date_regular_employment">{{ hr.date_regular_employment }}</span></div>
+        <div style="width: 40%; text-align: right;">Percentage of Employment: <span class="input-line" data-field="hr.percentage_employment">{{ hr.percentage_employment }}</span> (50% Minimum)</div>
+      </div>
+      <div class="field-row">
+        <div style="width: 30%;">Date of Retirement/Death:</div>
+        <div style="width: 30%;"><span class="input-line" data-field="hr.date_retirement_death">{{ hr.date_retirement_death }}</span></div>
+        <div style="width: 40%; text-align: right;">FOAP: <span class="input-line" data-field="hr.foap">{{ hr.foap }}</span></div>
+      </div>
+      <div class="field-row">
+        <div style="width: 30%;">Approved:</div>
+        <div style="width: 30%;"><span class="input-line" data-field="hr.approver_name">{{ hr.approver_name }}</span></div>
+        <div style="width: 40%; text-align: right;">Date</div>
+      </div>
+      <div class="field-row">
+        <div style="width: 100%;">Human Resources</div>
+      </div>
+    </div>
+
+    <!-- Section B -->
+    <div class="form-section">
+      <h4>B. Student Account Services (SAS) Office</h4>
+      <div class="field-row">
+        <div style="width: 30%;">Amount:</div>
+        <div style="width: 30%;"><span class="input-line" data-field="sas.amount">{{ sas.amount }}</span></div>
+        <div style="width: 40%; text-align: right;">Applied: <span class="input-line" data-field="sas.applied_date">{{ sas.applied_date }}</span> Date: <span class="input-line" data-field="sas.date_applied">{{ sas.date_applied }}</span></div>
+      </div>
+    </div>
+
+  </div>
+</body>

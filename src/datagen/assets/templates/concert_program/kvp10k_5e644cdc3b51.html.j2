@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Concert Program</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        .title-large { font-size: 72pt; line-height: 0.9; }
+        .subtitle { font-size: 24pt; margin-top: 10px; }
+        .header-text { font-size: 12pt; text-align: center; margin-bottom: 30px; }
+        .section-title { font-size: 18pt; margin-top: 30px; margin-bottom: 15px; }
+        .program-list { display: flex; justify-content: space-between; margin-top: 20px; }
+        .program-column { flex: 1; padding: 0 15px; }
+        .program-item { margin-bottom: 15px; }
+        .program-item span { display: block; }
+        .composer-info { font-size: 10pt; color: #555; }
+        .footer { position: absolute; bottom: 50px; width: 100%; text-align: center; font-size: 10pt; }
+        .divider { border-top: 1px solid #000; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header-text">Department of Music Presents</div>
+    <div style="text-align: center; margin: 50px 0;">
+        <div class="title-large" style="font-family: 'Brush Script MT', cursive; color: #a52a2a;">A Season of Renewal</div>
+    </div>
+    <div style="text-align: center;">
+        <div class="subtitle">College-Community Chorale Concert Choir</div>
+        <div class="subtitle">Studley Theatre</div>
+        <div style="margin-top: 20px;">Tuesday, <span data-field="performance_date">{{ performance_date }}</span><br>7:30 p.m.</div>
+    </div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+        <!-- Placeholder for visual element -->
+    </div>
+    <div style="position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; font-size: 12pt; letter-spacing: 20px;">
+        P R O G R A M
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-text" style="text-align: left;">The Department of Music at the State University of New York at New Paltz proudly presents</div>
+    <div style="text-align: center; margin-top: 30px;">
+        <div class="section-title">College-Community Chorale & Concert Choir</div>
+        <div style="font-size: 12pt;">
+            <span data-field="chorale_director">{{ chorale_director }}</span>, director<br>
+            <span data-field="pianist_name">{{ pianist_name }}</span>, collaborative pianist
+        </div>
+    </div>
+
+    <div class="section-title">College-Community Chorale</div>
+    <div class="program-list">
+        <div class="program-column">
+            <div class="program-item">
+                <span data-field="chorale_piece_1_title">{{ chorale_piece_1_title }}</span>
+                <div class="composer-info">W. A. Mozart (1756-1791)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="chorale_piece_2_title">{{ chorale_piece_2_title }}</span>
+                <div class="composer-info">Mozart</div>
+            </div>
+            <div class="program-item">
+                <span data-field="chorale_piece_3_title">{{ chorale_piece_3_title }}</span>
+                <div class="composer-info">Ralph Vaughan Williams (1872-1958), arr. Arthur Somerville</div>
+            </div>
+            <div class="program-item">
+                <span data-field="chorale_piece_4_title">{{ chorale_piece_4_title }}</span>
+                <div class="composer-info">Healey Willan (1880-1968)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="chorale_piece_5_title">{{ chorale_piece_5_title }}</span>
+                <div class="composer-info">Spiritual, arr. Alice Parker and Robert Shaw</div>
+            </div>
+        </div>
+        <div class="program-column">
+            <!-- Empty column for layout mirroring -->
+        </div>
+    </div>
+
+    <div class="footer">
+        Fall <span data-field="season_year">{{ season_year }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Concert Choir</div>
+    <div class="program-list">
+        <div class="program-column">
+            <div class="program-item">
+                <span data-field="choir_piece_1_title">{{ choir_piece_1_title }}</span>
+                <div class="composer-info">Guillaume Dufay (1397?-1474)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="choir_piece_2_title">{{ choir_piece_2_title }}</span>
+                <div class="composer-info">Anton Bruckner (1824-1896)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="choir_piece_3_title">{{ choir_piece_3_title }}</span>
+                <div class="composer-info">Gabriel Fauré (1845-1924)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="choir_piece_4_title">{{ choir_piece_4_title }}</span>
+                <div class="composer-info">Franz Schubert (1797-1828)</div>
+            </div>
+            <div class="program-item">
+                <span data-field="choir_piece_5_title">{{ choir_piece_5_title }}</span>
+                <div class="composer-info">Duke Ellington (1899-1974), arr. Paris Rutherford</div>
+            </div>
+            <div class="program-item">
+                <span data-field="choir_piece_6_title">{{ choir_piece_6_title }}</span>
+                <div class="composer-info">Ellington, arr. Nicholas Hare</div>
+            </div>
+        </div>
+        <div class="program-column">
+            <!-- Empty column for layout mirroring -->
+        </div>
+    </div>
+
+    <div class="footer">
+        A Season of Renewal
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">College-Community Chorale</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Soprano</div>
+            <div style="font-size: 10pt;">
+                <span data-field="chorale_soprano_1">{{ chorale_soprano_1 }}</span><br>
+                <span data-field="chorale_soprano_2">{{ chorale_soprano_2 }}</span><br>
+                <span data-field="chorale_soprano_3">{{ chorale_soprano_3 }}</span><br>
+                <span data-field="chorale_soprano_4">{{ chorale_soprano_4 }}</span><br>
+                <span data-field="chorale_soprano_5">{{ chorale_soprano_5 }}</span><br>
+                <span data-field="chorale_soprano_6">{{ chorale_soprano_6 }}</span><br>
+                <span data-field="chorale_soprano_7">{{ chorale_soprano_7 }}</span><br>
+                <span data-field="chorale_soprano_8">{{ chorale_soprano_8 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 10px;">
+            <div style="font-weight: bold;">Alto</div>
+            <div style="font-size: 10pt;">
+                <span data-field="chorale_alto_1">{{ chorale_alto_1 }}</span><br>
+                <span data-field="chorale_alto_2">{{ chorale_alto_2 }}</span><br>
+                <span data-field="chorale_alto_3">{{ chorale_alto_3 }}</span><br>
+                <span data-field="chorale_alto_4">{{ chorale_alto_4 }}</span><br>
+                <span data-field="chorale_alto_5">{{ chorale_alto_5 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Tenor</div>
+            <div style="font-size: 10pt;">
+                <span data-field="chorale_tenor_1">{{ chorale_tenor_1 }}</span><br>
+                <span data-field="chorale_tenor_2">{{ chorale_tenor_2 }}</span><br>
+                <span data-field="chorale_tenor_3">{{ chorale_tenor_3 }}</span>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Bass</div>
+            <div style="font-size: 10pt;">
+                <span data-field="chorale_bass_1">{{ chorale_bass_1 }}</span><br>
+                <span data-field="chorale_bass_2">{{ chorale_bass_2 }}</span><br>
+                <span data-field="chorale_bass_3">{{ chorale_bass_3 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Concert Choir</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Soprano</div>
+            <div style="font-size: 10pt;">
+                <span data-field="choir_soprano_1">{{ choir_soprano_1 }}</span><br>
+                <span data-field="choir_soprano_2">{{ choir_soprano_2 }}</span><br>
+                <span data-field="choir_soprano_3">{{ choir_soprano_3 }}</span><br>
+                <span data-field="choir_soprano_4">{{ choir_soprano_4 }}</span><br>
+                <span data-field="choir_soprano_5">{{ choir_soprano_5 }}</span><br>
+                <span data-field="choir_soprano_6">{{ choir_soprano_6 }}</span><br>
+                <span data-field="choir_soprano_7">{{ choir_soprano_7 }}</span><br>
+                <span data-field="choir_soprano_8">{{ choir_soprano_8 }}</span><br>
+                <span data-field="choir_soprano_9">{{ choir_soprano_9 }}</span><br>
+                <span data-field="choir_soprano_10">{{ choir_soprano_10 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 10px;">
+            <div style="font-weight: bold;">Alto</div>
+            <div style="font-size: 10pt;">
+                <span data-field="choir_alto_1">{{ choir_alto_1 }}</span><br>
+                <span data-field="choir_alto_2">{{ choir_alto_2 }}</span><br>
+                <span data-field="choir_alto_3">{{ choir_alto_3 }}</span><br>
+                <span data-field="choir_alto_4">{{ choir_alto_4 }}</span><br>
+                <span data-field="choir_alto_5">{{ choir_alto_5 }}</span><br>
+                <span data-field="choir_alto_6">{{ choir_alto_6 }}</span><br>
+                <span data-field="choir_alto_7">{{ choir_alto_7 }}</span><br>
+                <span data-field="choir_alto_8">{{ choir_alto_8 }}</span><br>
+                <span data-field="choir_alto_9">{{ choir_alto_9 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Tenor</div>
+            <div style="font-size: 10pt;">
+                <span data-field="choir_tenor_1">{{ choir_tenor_1 }}</span><br>
+                <span data-field="choir_tenor_2">{{ choir_tenor_2 }}</span><br>
+                <span data-field="choir_tenor_3">{{ choir_tenor_3 }}</span><br>
+                <span data-field="choir_tenor_4">{{ choir_tenor_4 }}</span><br>
+                <span data-field="choir_tenor_5">{{ choir_tenor_5 }}</span>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 10px;">
+            <div style="font-weight: bold;">Bass</div>
+            <div style="font-size: 10pt;">
+                <span data-field="choir_bass_1">{{ choir_bass_1 }}</span><br>
+                <span data-field="choir_bass_2">{{ choir_bass_2 }}</span><br>
+                <span data-field="choir_bass_3">{{ choir_bass_3 }}</span><br>
+                <span data-field="choir_bass_4">{{ choir_bass_4 }}</span>
+            </div>
+        </div>
+    </div>
+    <div style="font-size: 8pt; margin-top: 30px;">
+        *Member of semichorus in <span data-field="choir_piece_4_title">{{ choir_piece_4_title }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">TEXTS AND TRANSLATIONS</div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Magnificat</div>
+            <div style="font-size: 10pt;">
+                <span data-field="magnificat_latin_1">{{ magnificat_latin_1 }}</span><br>
+                <span data-field="magnificat_latin_2">{{ magnificat_latin_2 }}</span><br>
+                <span data-field="magnificat_latin_3">{{ magnificat_latin_3 }}</span><br>
+                <span data-field="magnificat_latin_4">{{ magnificat_latin_4 }}</span><br>
+                <span data-field="magnificat_latin_5">{{ magnificat_latin_5 }}</span><br>
+                <span data-field="magnificat_latin_6">{{ magnificat_latin_6 }}</span><br>
+                <span data-field="magnificat_latin_7">{{ magnificat_latin_7 }}</span><br>
+                <span data-field="magnificat_latin_8">{{ magnificat_latin_8 }}</span><br>
+                <span data-field="magnificat_latin_9">{{ magnificat_latin_9 }}</span><br>
+                <span data-field="magnificat_latin_10">{{ magnificat_latin_10 }}</span><br>
+                <span data-field="magnificat_latin_11">{{ magnificat_latin_11 }}</span><br>
+                <span data-field="magnificat_latin_12">{{ magnificat_latin_12 }}</span><br>
+                <span data-field="magnificat_latin_13">{{ magnificat_latin_13 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="magnificat_eng_1">{{ magnificat_eng_1 }}</span><br>
+                <span data-field="magnificat_eng_2">{{ magnificat_eng_2 }}</span><br>
+                <span data-field="magnificat_eng_3">{{ magnificat_eng_3 }}</span><br>
+                <span data-field="magnificat_eng_4">{{ magnificat_eng_4 }}</span><br>
+                <span data-field="magnificat_eng_5">{{ magnificat_eng_5 }}</span><br>
+                <span data-field="magnificat_eng_6">{{ magnificat_eng_6 }}</span><br>
+                <span data-field="magnificat_eng_7">{{ magnificat_eng_7 }}</span><br>
+                <span data-field="magnificat_eng_8">{{ magnificat_eng_8 }}</span><br>
+                <span data-field="magnificat_eng_9">{{ magnificat_eng_9 }}</span><br>
+                <span data-field="magnificat_eng_10">{{ magnificat_eng_10 }}</span><br>
+                <span data-field="magnificat_eng_11">{{ magnificat_eng_11 }}</span><br>
+                <span data-field="magnificat_eng_12">{{ magnificat_eng_12 }}</span><br>
+                <span data-field="magnificat_eng_13">{{ magnificat_eng_13 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Deposit potentes de sede</div>
+            <div style="font-size: 10pt;">
+                <span data-field="deposit_latin_1">{{ deposit_latin_1 }}</span><br>
+                <span data-field="deposit_latin_2">{{ deposit_latin_2 }}</span><br>
+                <span data-field="deposit_latin_3">{{ deposit_latin_3 }}</span><br>
+                <span data-field="deposit_latin_4">{{ deposit_latin_4 }}</span><br>
+                <span data-field="deposit_latin_5">{{ deposit_latin_5 }}</span><br>
+                <span data-field="deposit_latin_6">{{ deposit_latin_6 }}</span><br>
+                <span data-field="deposit_latin_7">{{ deposit_latin_7 }}</span><br>
+                <span data-field="deposit_latin_8">{{ deposit_latin_8 }}</span><br>
+                <span data-field="deposit_latin_9">{{ deposit_latin_9 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="deposit_eng_1">{{ deposit_eng_1 }}</span><br>
+                <span data-field="deposit_eng_2">{{ deposit_eng_2 }}</span><br>
+                <span data-field="deposit_eng_3">{{ deposit_eng_3 }}</span><br>
+                <span data-field="deposit_eng_4">{{ deposit_eng_4 }}</span><br>
+                <span data-field="deposit_eng_5">{{ deposit_eng_5 }}</span><br>
+                <span data-field="deposit_eng_6">{{ deposit_eng_6 }}</span><br>
+                <span data-field="deposit_eng_7">{{ deposit_eng_7 }}</span><br>
+                <span data-field="deposit_eng_8">{{ deposit_eng_8 }}</span><br>
+                <span data-field="deposit_eng_9">{{ deposit_eng_9 }}</span><br>
+                <span data-field="deposit_eng_10">{{ deposit_eng_10 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Kyrie</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Kyrie eleison</div>
+            <div style="font-size: 10pt;">
+                <span data-field="kyrie_latin_1">{{ kyrie_latin_1 }}</span><br>
+                <span data-field="kyrie_latin_2">{{ kyrie_latin_2 }}</span><br>
+                <span data-field="kyrie_latin_3">{{ kyrie_latin_3 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="kyrie_eng_1">{{ kyrie_eng_1 }}</span><br>
+                <span data-field="kyrie_eng_2">{{ kyrie_eng_2 }}</span><br>
+                <span data-field="kyrie_eng_3">{{ kyrie_eng_3 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Gloria in excelsis Deo</div>
+            <div style="font-size: 10pt;">
+                <span data-field="gloria_latin_1">{{ gloria_latin_1 }}</span><br>
+                <span data-field="gloria_latin_2">{{ gloria_latin_2 }}</span><br>
+                <span data-field="gloria_latin_3">{{ gloria_latin_3 }}</span><br>
+                <span data-field="gloria_latin_4">{{ gloria_latin_4 }}</span><br>
+                <span data-field="gloria_latin_5">{{ gloria_latin_5 }}</span><br>
+                <span data-field="gloria_latin_6">{{ gloria_latin_6 }}</span><br>
+                <span data-field="gloria_latin_7">{{ gloria_latin_7 }}</span><br>
+                <span data-field="gloria_latin_8">{{ gloria_latin_8 }}</span><br>
+                <span data-field="gloria_latin_9">{{ gloria_latin_9 }}</span><br>
+                <span data-field="gloria_latin_10">{{ gloria_latin_10 }}</span><br>
+                <span data-field="gloria_latin_11">{{ gloria_latin_11 }}</span><br>
+                <span data-field="gloria_latin_12">{{ gloria_latin_12 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="gloria_eng_1">{{ gloria_eng_1 }}</span><br>
+                <span data-field="gloria_eng_2">{{ gloria_eng_2 }}</span><br>
+                <span data-field="gloria_eng_3">{{ gloria_eng_3 }}</span><br>
+                <span data-field="gloria_eng_4">{{ gloria_eng_4 }}</span><br>
+                <span data-field="gloria_eng_5">{{ gloria_eng_5 }}</span><br>
+                <span data-field="gloria_eng_6">{{ gloria_eng_6 }}</span><br>
+                <span data-field="gloria_eng_7">{{ gloria_eng_7 }}</span><br>
+                <span data-field="gloria_eng_8">{{ gloria_eng_8 }}</span><br>
+                <span data-field="gloria_eng_9">{{ gloria_eng_9 }}</span><br>
+                <span data-field="gloria_eng_10">{{ gloria_eng_10 }}</span><br>
+                <span data-field="gloria_eng_11">{{ gloria_eng_11 }}</span><br>
+                <span data-field="gloria_eng_12">{{ gloria_eng_12 }}</span><br>
+                <span data-field="gloria_eng_13">{{ gloria_eng_13 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Qui tollis peccata mundi,</div>
+            <div style="font-size: 10pt;">
+                <span data-field="qui_latin_1">{{ qui_latin_1 }}</span><br>
+                <span data-field="qui_latin_2">{{ qui_latin_2 }}</span><br>
+                <span data-field="qui_latin_3">{{ qui_latin_3 }}</span><br>
+                <span data-field="qui_latin_4">{{ qui_latin_4 }}</span><br>
+                <span data-field="qui_latin_5">{{ qui_latin_5 }}</span><br>
+                <span data-field="qui_latin_6">{{ qui_latin_6 }}</span><br>
+                <span data-field="qui_latin_7">{{ qui_latin_7 }}</span><br>
+                <span data-field="qui_latin_8">{{ qui_latin_8 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="qui_eng_1">{{ qui_eng_1 }}</span><br>
+                <span data-field="qui_eng_2">{{ qui_eng_2 }}</span><br>
+                <span data-field="qui_eng_3">{{ qui_eng_3 }}</span><br>
+                <span data-field="qui_eng_4">{{ qui_eng_4 }}</span><br>
+                <span data-field="qui_eng_5">{{ qui_eng_5 }}</span><br>
+                <span data-field="qui_eng_6">{{ qui_eng_6 }}</span><br>
+                <span data-field="qui_eng_7">{{ qui_eng_7 }}</span><br>
+                <span data-field="qui_eng_8">{{ qui_eng_8 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Locus iste a Deo factus est</div>
+            <div style="font-size: 10pt;">
+                <span data-field="locus_latin_1">{{ locus_latin_1 }}</span><br>
+                <span data-field="locus_latin_2">{{ locus_latin_2 }}</span><br>
+                <span data-field="locus_latin_3">{{ locus_latin_3 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="locus_eng_1">{{ locus_eng_1 }}</span><br>
+                <span data-field="locus_eng_2">{{ locus_eng_2 }}</span><br>
+                <span data-field="locus_eng_3">{{ locus_eng_3 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Cantique de Jean Racine</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Verbe égal au Trè-Haut, notre unique espérance,</div>
+            <div style="font-size: 10pt;">
+                <span data-field="cantique_latin_1">{{ cantique_latin_1 }}</span><br>
+                <span data-field="cantique_latin_2">{{ cantique_latin_2 }}</span><br>
+                <span data-field="cantique_latin_3">{{ cantique_latin_3 }}</span><br>
+                <span data-field="cantique_latin_4">{{ cantique_latin_4 }}</span><br>
+                <span data-field="cantique_latin_5">{{ cantique_latin_5 }}</span><br>
+                <span data-field="cantique_latin_6">{{ cantique_latin_6 }}</span><br>
+                <span data-field="cantique_latin_7">{{ cantique_latin_7 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="cantique_eng_1">{{ cantique_eng_1 }}</span><br>
+                <span data-field="cantique_eng_2">{{ cantique_eng_2 }}</span><br>
+                <span data-field="cantique_eng_3">{{ cantique_eng_3 }}</span><br>
+                <span data-field="cantique_eng_4">{{ cantique_eng_4 }}</span><br>
+                <span data-field="cantique_eng_5">{{ cantique_eng_5 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Répands sur nous le feu de ta grâce puissante</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Répands sur nous le feu de ta grâce puissante</div>
+            <div style="font-size: 10pt;">
+                <span data-field="repands_latin_1">{{ repands_latin_1 }}</span><br>
+                <span data-field="repands_latin_2">{{ repands_latin_2 }}</span><br>
+                <span data-field="repands_latin_3">{{ repands_latin_3 }}</span><br>
+                <span data-field="repands_latin_4">{{ repands_latin_4 }}</span><br>
+                <span data-field="repands_latin_5">{{ repands_latin_5 }}</span><br>
+                <span data-field="repands_latin_6">{{ repands_latin_6 }}</span><br>
+                <span data-field="repands_latin_7">{{ repands_latin_7 }}</span><br>
+                <span data-field="repands_latin_8">{{ repands_latin_8 }}</span><br>
+                <span data-field="repands_latin_9">{{ repands_latin_9 }}</span><br>
+                <span data-field="repands_latin_10">{{ repands_latin_10 }}</span><br>
+                <span data-field="repands_latin_11">{{ repands_latin_11 }}</span><br>
+                <span data-field="repands_latin_12">{{ repands_latin_12 }}</span><br>
+                <span data-field="repands_latin_13">{{ repands_latin_13 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Translation</div>
+            <div style="font-size: 10pt;">
+                <span data-field="repands_eng_1">{{ repands_eng_1 }}</span><br>
+                <span data-field="repands_eng_2">{{ repands_eng_2 }}</span><br>
+                <span data-field="repands_eng_3">{{ repands_eng_3 }}</span><br>
+                <span data-field="repands_eng_4">{{ repands_eng_4 }}</span><br>
+                <span data-field="repands_eng_5">{{ repands_eng_5 }}</span><br>
+                <span data-field="repands_eng_6">{{ repands_eng_6 }}</span><br>
+                <span data-field="repands_eng_7">{{ repands_eng_7 }}</span><br>
+                <span data-field="repands_eng_8">{{ repands_eng_8 }}</span><br>
+                <span data-field="repands_eng_9">{{ repands_eng_9 }}</span><br>
+                <span data-field="repands_eng_10">{{ repands_eng_10 }}</span><br>
+                <span data-field="repands_eng_11">{{ repands_eng_11 }}</span><br>
+                <span data-field="repands_eng_12">{{ repands_eng_12 }}</span><br>
+                <span data-field="repands_eng_13">{{ repands_eng_13 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Hirtenchor</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; padding-right: 20px;">
+            <div style="font-weight: bold;">Hier auf den Fluren, mit rosigen Wangen,</div>
+            <div style="font-size: 10pt;">
+                <span data-field="hirtenchor_latin_1">{{ hirtenchor_latin_1 }}</span><br>
+                <span data-field="hirtenchor_latin_2">{{ hirtenchor_latin_2 }}</span><br>
+                <span data-field="hirtenchor_latin_3">{{ hirtenchor_latin_3 }}</span><br>
+                <span data-field="hirtenchor_latin_4">{{ hirtenchor_latin_4 }}</span><br>
+                <span data-field="hirtenchor_latin_5">{{ hirtenchor_latin_5 }}</span><br>
+                <span data-field="hirtenchor_latin_6">{{ hirtenchor_latin_6 }}</span>
+            </div>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold;">Shepherds' Chorus</div>
+            <div style="font-size: 10pt;">
+                <span data-field="hirtenchor_eng_1">{{ hirtenchor_eng_1 }}</span><br>
+                <span data-field="hirtenchor_eng_2">{{ hirtenchor_eng_2 }}</span><br>
+                <span data-field="hirtenchor_eng_3">{{ hirtenchor_eng_3 }}</span><br>
+                <span data-field="hirtenchor_eng_4">{{ hirtenchor_eng_4 }}</span><br>
+                <span data-field="hirtenchor_eng_5">{{ hirtenchor_eng_5 }}</span><br>
+                <span data-field="hirtenchor_eng_6">{{ hirtenchor_eng_6 }}</span><br>
+                <span data-field="hirtenchor_eng_7">{{ hirtenchor_eng_7 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Program Notes</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p { line-height: 1.6; }
+  .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <p>Hier zu den Füssen, Holde dir, grüs-</p>
+  <p>Herrscherin von Arkadien, wir dich.</p>
+  <p>Flöten, Schalmeien tönen, es freuen</p>
+  <p>Deiner die Fluren, die blühenden,</p>
+  <p>sich.</p>
+  <p>Von Jubel erschallen die grünenden</p>
+  <p>Hallen;</p>
+  <p>Der Höhen, die luftig, der Fluren, die</p>
+  <p>duftig</p>
+  <p>Erglänzen und strahlen in Liebe</p>
+  <p>und Lust.</p>
+  <p>In schattenden Talen,</p>
+  <p>Da schweigen die Qualen</p>
+  <p>Der liebenden Brust.</p>
+
+  <p style="text-align: right;">Here at your feet we greet you,</p>
+  <p>dear Princess of Arcadia.</p>
+  <p>Flutes and oboes sound;</p>
+  <p>the flowering meadows rejoice for you.</p>
+  <p>The green halls resound with celebra-</p>
+  <p>tion;</p>
+  <p>the airy heights, the fragrant meadows</p>
+  <p>glow and shine with love and pleasure.</p>
+  <p>In shadowy valleys</p>
+  <p>the pain of loving hearts</p>
+  <p>falls silent.</p>
+</div>
+
+<div class="page">
+  <h2>PROGRAM NOTES</h2>
+  <p>By the age of <span data-field="age">{{ age }}</span>, <span data-field="composer_name">{{ composer_name }}</span> was already a seasoned composer of sacred choral music, due to his position in the employ of the Archbishop of <span data-field="location">{{ location }}</span>, his native city. The <span data-field="work_title">{{ work_title }}</span>, dating from <span data-field="date">{{ date }}</span>, is an exuberant piece with some unexpected harmonic turns. The opening motive, G-A-C-B, was a favorite of Mozart; he returned to it <span data-field="years_later">{{ years_later }}</span> later, in the finale of the "Jupiter" symphony.</p>
+
+  <p>Like many composers of the late 19th and early 20th centuries, <span data-field="composer_name_2">{{ composer_name_2 }}</span> was a collector of the folk music of his native country, and this influence appears even in his music that does not draw directly on that heritage. Both the poem and the music of <span data-field="composer_name_3">{{ composer_name_3 }}</span> have some of the character of a folk song, although the song is in fact a setting of a poem by <span data-field="poet_name">{{ poet_name }}</span> (<span data-field="date_poet">{{ date_poet }}</span>). Vaughan Williams's original version was for solo voice and piano; it was later arranged for chorus by <span data-field="arranger_name">{{ arranger_name }}</span>.</p>
+
+  <p>Healey Willan was a Canadian organist, teacher, and prolific com-poser. His works include songs, symphonies, and chamber music, as well as church music. <span data-field="work_title_2">{{ work_title_2 }}</span> is a setting of a well-known text from the Song of Songs.</p>
+
+  <p><em>Swing Low, Sweet Chariot</em> is a beloved standard of the spiritual repertoire, describing a longing for rest in the afterlife. In this ar-rangement, by <span data-field="composer_name_4">{{ composer_name_4 }}</span> and <span data-field="composer_name_5">{{ composer_name_5 }}</span>, the refrain appears five times, each one subtly different from the others.</p>
+
+  <div class="divider"></div>
+
+  <p style="text-align: center;">Fall <span data-field="year">{{ year }}</span></p>
+  <p style="text-align: center;">A Season of Renewal</p>
+</div>
+
+<div class="page">
+  <p>Guillaume Dufay, known as a poet as well as a composer, was the leading figure in 15th-century French music. His <span data-field="work_title_3">{{ work_title_3 }}</span> sets two upper voices in canon, one following the other note-for-note, one measure apart. The lower parts were intended for sackbuts, ances-tors of the trombone, but have been adapted for voices by 20th-cen-tury arrangers.</p>
+
+  <p><span data-field="composer_name_6">{{ composer_name_6 }}</span>'s reputation rests primarily on his nine monumental symphonies, most lasting over an hour, with stately dimensions and full Wagnerian brass sections. However, he also wrote a great num-ber of sacred motets that capture in miniature some of the majestic aspects of his symphonic work. <span data-field="work_title_4">{{ work_title_4 }}</span>, composed in <span data-field="year_work">{{ year_work }}</span>, sets a text intended for the dedication of a church. The piece includes moments of silence between phrases, during which the audience is invited to imagine the resonance of a vast stone cathedral.</p>
+
+  <p>Although <span data-field="composer_name_7">{{ composer_name_7 }}</span> is best known for his songs and chamber music, his early career path pointed in a different direction. From age 9 to 20 he was a student at the <span data-field="school_name">{{ school_name }}</span> in Paris, preparing for a position in church music. His graduation piece was the <span data-field="work_title_5">{{ work_title_5 }}</span>, a setting of a translation of a medi-eval Latin hymn by the 17th-century French dramatist. Fauré later arranged the piece for chorus and full orchestra, but the version we will hear tonight, with piano, is the original.</p>
+</div>
+
+<div class="page">
+  <p>In <span data-field="year_event">{{ year_event }}</span> Schubert was asked to compose incidental music for the drama <span data-field="drama_title">{{ drama_title }}</span>. Although the play was a flop and has not been preserved, Schubert provided over an hour's worth of music for it, including an overture, ballet music, several entr'actes, and vocal and choral music. The <span data-field="work_title_6">{{ work_title_6 }}</span> is a charm-ing pastoral interlude, evoking the beauties of spring, with a hint of a darker mood toward the end.</p>
+
+  <p>One of Duke Ellington's signature tunes was <span data-field="song_title">{{ song_title }}</span>. The lyrics suggest the end of an unhappy love affair, but Ellington told a different story:</p>
+  <p>"Mood Indigo" is just a story about a little girl and a little boy. They are about 8 and the girl loves the boy. They never speak of it, of course, but she just likes the way he wears his hat. Every day he comes to her house at a certain time and she sits in her window and waits. Then one day he doesn't come. 'Mood Indigo' just tells how she feels.</p>
+
+  <p><span data-field="song_title_2">{{ song_title_2 }}</span> is a cheerful tune, driven by a constant walking bass line. Like many Ellington songs, it was a col-laborative effort between Ellington and some of his band members. Published in <span data-field="year_song">{{ year_song }}</span>, it was recorded by Ellington's band and many other artists, including <span data-field="artist_name">{{ artist_name }}</span>.</p>
+
+  <div class="divider"></div>
+
+  <p style="text-align: center;">Fall <span data-field="year_2">{{ year_2 }}</span></p>
+  <p style="text-align: center;">A Season of Renewal</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="font-size: 48px; margin: 0;">MUSIC</h1>
+        <h1 style="font-size: 48px; margin: 0;">FOR</h1>
+        <h1 style="font-size: 48px; margin: 0;">A</h1>
+        <h1 style="font-size: 48px; margin: 0;">DAY</h1>
+      </div>
+      <p style="text-align: center; font-size: 14px;">The SUNY New Paltz Department of Music invites you to join us for our "Music for a Day" open house on Friday, Nov. 12. High school juniors and seniors, and transfer students will have the opportunity to see what life as a music major at SUNY New Paltz is like.</p>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+        <div style="width: 48%;">
+          <h3 style="font-size: 20px; margin-bottom: 15px;">As a "Music Major for a Day," you will:</h3>
+          <ul>
+            <li>Take part in music classes alongside SUNY New Paltz music students</li>
+            <li>Meet the music faculty</li>
+            <li>Learn about degree paths, admissions, and auditions</li>
+            <li>Interact with current SUNY New Paltz music students</li>
+          </ul>
+        </div>
+        <div style="width: 48%;">
+          <h3 style="font-size: 20px; margin-bottom: 15px;">Schedule</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr>
+              <td style="padding: 5px 0; width: 30%;">9:00 a.m.</td>
+              <td style="padding: 5px 0;">Check-in and Welcome</td>
+            </tr>
+            <tr>
+              <td style="padding: 5px 0;">9:30 a.m.</td>
+              <td style="padding: 5px 0;">Music Theory Class</td>
+            </tr>
+            <tr>
+              <td style="padding: 5px 0;">10:30 a.m.</td>
+              <td style="padding: 5px 0;">Improvisation Workshop</td>
+            </tr>
+            <tr>
+              <td style="padding: 5px 0;">11:30 a.m.</td>
+              <td style="padding: 5px 0;">Lunch with SUNY New Paltz Students</td>
+            </tr>
+            <tr>
+              <td style="padding: 5px 0;">1:00 p.m.</td>
+              <td style="padding: 5px 0;">Ensemble Rehearsal and Masterclass</td>
+            </tr>
+            <tr>
+              <td style="padding: 5px 0;">2:30 p.m.</td>
+              <td style="padding: 5px 0;">Admissions and Audition Preparation</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%; text-align: right; padding-top: 50px;">
+      <img src="placeholder_image.png" alt="Logo" style="max-width: 100%; height: auto;">
+      <div style="margin-top: 20px;">
+        <p style="font-size: 12px;">F&PA</p>
+        <p style="font-size: 12px;">SUNY New Paltz</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top: 80px;"></div>
+
+  <p style="text-align: center; margin-top: 30px;">Please visit <a href="http://newpaltz.edu/music/concert-series" style="color: #000;">newpaltz.edu/music/concert-series</a> to view our upcoming Concert Series events. Enjoy the show!</p>
+
+  <div style="margin-top: 50px;">
+    <p>Your generous contributions support Department of Music programs.</p>
+    <p>Make your tax-deductible gift today at <a href="http://newpaltz.edu/give" style="color: #000;">newpaltz.edu/give</a>, or send your check, made payable to the SUNY New Paltz Foundation and marked for Music to:</p>
+    <p>SUNY New Paltz Foundation</p>
+    <p>1 Hawk Drive</p>
+    <p>New Paltz, NY 12561</p>
+  </div>
+</div>
+
+</body>
+</html>

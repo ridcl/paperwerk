@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curriculum Vitae</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 5px 0; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div style="text-align: right;">Curriculum Vitae {{ current_year }}</div>
+    <h1 style="text-align: left;">{{ full_name }}</h1>
+    <div style="margin-top: 20px;">
+        <p>Contact Information</p>
+        <p>
+            {{ contact.address_line_1 }}<br>
+            {{ contact.address_line_2 }}<br>
+            {{ contact.city_state_zip }}
+        </p>
+        <p>Office: {{ contact.office_phone }}</p>
+        <p>FAX: {{ contact.fax_phone }}</p>
+        <p>Email: <span data-field="contact.email">{{ contact.email }}</span></p>
+    </div>
+
+    <h2 style="margin-top: 40px;">Education</h2>
+    <ul>
+        <li>
+            <span data-field="education_entries[0].degree">{{ education_entries[0].degree }}</span>, <span data-field="education_entries[0].major">{{ education_entries[0].major }}</span>, <span data-field="education_entries[0].institution">{{ education_entries[0].institution }}</span>, {{ education_entries[0].years }}
+        </li>
+        <li>
+            <span data-field="education_entries[1].degree">{{ education_entries[1].degree }}</span>, <span data-field="education_entries[1].major">{{ education_entries[1].major }}</span>, <span data-field="education_entries[1].institution">{{ education_entries[1].institution }}</span>, {{ education_entries[1].years }}
+        </li>
+        <li>
+            <span data-field="education_entries[2].degree">{{ education_entries[2].degree }}</span>, <span data-field="education_entries[2].major">{{ education_entries[2].major }}</span>, <span data-field="education_entries[2].institution">{{ education_entries[2].institution }}</span>, {{ education_entries[2].years }}
+        </li>
+    </ul>
+
+    <h2 style="margin-top: 40px;">Academic Appointments</h2>
+    <ul>
+        {% for appointment in academic_appointments %}
+        <li>
+            <span data-field="academic_appointments[{{ loop.index0 }}].title">{{ academic_appointments[loop.index0].title }}</span>, <span data-field="academic_appointments[{{ loop.index0 }}].institution">{{ academic_appointments[loop.index0].institution }}</span>, {{ appointment.years }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 style="margin-top: 40px;">Research Publications</h2>
+    <ol>
+        {% for publication in research_publications %}
+        <li>
+            <span data-field="research_publications[{{ loop.index0 }}].citation">{{ research_publications[loop.index0].citation }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <h2 style="margin-top: 40px;">Notes</h2>
+    <ul>
+        {% for note in notes %}
+        <li>
+            <span data-field="notes[{{ loop.index0 }}].content">{{ notes[loop.index0].content }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 style="margin-top: 40px;">Accessibility Research and Prototypes</h2>
+    <ol>
+        {% for prototype in accessibility_prototypes %}
+        <li>
+            <span data-field="accessibility_prototypes[{{ loop.index0 }}].description">{{ accessibility_prototypes[loop.index0].description }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <h2 style="margin-top: 40px;">Educational Innovations</h2>
+    <ul>
+        {% for innovation in educational_innovations %}
+        <li>
+            <span data-field="educational_innovations[{{ loop.index0 }}].description">{{ educational_innovations[loop.index0].description }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 style="margin-top: 40px;">Thesis Supervision</h2>
+    <ol>
+        {% for thesis in thesis_supervision %}
+        <li>
+            <span data-field="thesis_supervision[{{ loop.index0 }}].student_name">{{ thesis_supervision[loop.index0].student_name }}</span>, <span data-field="thesis_supervision[{{ loop.index0 }}].title">{{ thesis_supervision[loop.index0].title }}</span>, {{ thesis.year }}
+        </li>
+        {% endfor %}
+    </ol>
+
+    <h2 style="margin-top: 40px;">Grants and Proposals</h2>
+    <div style="margin-top: 10px;">
+        <h3 style="font-weight: normal;">External Grants</h3>
+        <ul>
+            {% for grant in external_grants %}
+            <li>
+                <span data-field="external_grants[{{ loop.index0 }}].description">{{ external_grants[loop.index0].description }}</span>, {{ grant.years }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="margin-top: 10px;">
+        <h3 style="font-weight: normal;">Internal Lamar University Research Enhancement Grants</h3>
+        <ul>
+            {% for internal_grant in internal_grants %}
+            <li>
+                <span data-field="internal_grants[{{ loop.index0 }}].description">{{ internal_grants[loop.index0].description }}</span>, {{ internal_grant.years }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="margin-top: 10px;">
+        <h3 style="font-weight: normal;">Sponsored Students</h3>
+        <ul>
+            {% for student_group in sponsored_students %}
+            <li>
+                <span data-field="sponsored_students[{{ loop.index0 }}].level">{{ sponsored_students[loop.index0].level }}</span>: {{ student_group.names | join(', ') }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2 style="margin-top: 40px;">Proposals written since 1998</h2>
+    <ol>
+        {% for proposal in proposals %}
+        <li>
+            <span data-field="proposals[{{ loop.index0 }}].description">{{ proposals[loop.index0].description }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <h2 style="margin-top: 40px;">Advocacies and Community Service</h2>
+    <ul>
+        {% for advocacy in advocacies %}
+        <li>
+            <span data-field="advocacies[{{ loop.index0 }}].description">{{ advocacies[loop.index0].description }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 style="margin-top: 40px;">Professional Experience</h2>
+    <ol>
+        {% for experience in professional_experience %}
+        <li>
+            <span data-field="professional_experience[{{ loop.index0 }}].description">{{ professional_experience[loop.index0].description }}</span>, {{ experience.years }}
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div class="page">
+    <!-- Placeholder for potential second page content if needed, mirroring structure -->
+</div>
+
+</body>
+</html>

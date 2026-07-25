@@ -1,0 +1,195 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .right-align {
+    text-align: right;
+  }
+  .table-header th {
+    text-align: left;
+    padding-right: 10px;
+  }
+  .table-cell {
+    padding: 3px 0;
+  }
+</style>
+
+<div class="page">
+  <div class="center-text">
+    <span data-field="institution_name">{{ institution_name }}</span>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Seal Image -->
+    </div>
+    <span data-field="archives_center_name">{{ archives_center_name }}</span>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="guide_title">{{ guide_title }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="volume_size">{{ volume_size }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="font-size: 0.9em;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="guide_title">{{ guide_title }}</span>
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="date_range">{{ date_range }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span data-field="volume_size">{{ volume_size }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 80px;">
+    Access is granted in accordance with the <span data-field="protocols_link">{{ protocols_link }}</span>.
+  </div>
+  <div class="center-text" style="margin-top: 100px;">
+    <span data-field="section_arrangement">{{ section_arrangement }}</span>
+  </div>
+  <div style="margin-top: 20px;">
+    This collection has not been fully processed. The following preliminary inventory is available.
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="font-size: 0.9em;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="date_range">{{ date_range }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 60px;">
+    <span data-field="section_inventory">{{ section_inventory }}</span>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr class="table-header">
+          <th style="width: 70%;">Description</th>
+          <th style="width: 15%; text-align: center;">Box</th>
+          <th style="width: 15%; text-align: center;">Folder</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in law_school_committees %}
+        <tr>
+          <td class="table-cell"><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <span data-field="section_non_law_committees">{{ section_non_law_committees }}</span>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr class="table-header">
+          <th style="width: 70%;">Description</th>
+          <th style="width: 15%; text-align: center;">Box</th>
+          <th style="width: 15%; text-align: center;">Folder</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in non_law_committees %}
+        <tr>
+          <td class="table-cell"><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 10px;">
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="font-size: 0.9em;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center-text" style="margin-top: 20px;">
+    <span data-field="guide_title">{{ guide_title }}</span>
+    <span data-field="law_school_title">{{ law_school_title }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="date_range">{{ date_range }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span data-field="report_number">{{ report_number }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 60px;">
+    <span data-field="section_inventory">{{ section_inventory }}</span>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr class="table-header">
+          <th style="width: 70%;">Description</th>
+          <th style="width: 15%; text-align: center;">Box</th>
+          <th style="width: 15%; text-align: center;">Folder</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in subsequent_inventory_items %}
+        <tr>
+          <td class="table-cell"><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+          <td class="table-cell" style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

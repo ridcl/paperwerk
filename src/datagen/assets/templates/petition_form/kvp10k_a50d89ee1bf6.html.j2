@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Petition Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as primary */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .form-section { margin-bottom: 20px; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 30px; width: 100%; }
+  .two-column { display: flex; justify-content: space-between; margin-top: 10px; }
+  .two-column > div { width: 48%; }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+        <div>
+            <img src="placeholder_logo.png" alt="Logo" style="width: 100px; height: auto;">
+            <h1 style="font-size: 24pt; margin-top: 10px;">DEPAUW UNIVERSITY<br>REGISTRAR'S OFFICE</h1>
+        </div>
+        <h1 style="font-size: 24pt;">PETITION FORM</h1>
+    </div>
+
+    <div class="form-section">
+        <p>Student</p>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+            <div>
+                <p>Student ID#</p>
+                <div class="signature-line" style="width: 300px;" data-field="student_id">{{ student_id }}</div>
+            </div>
+            <div>
+                <p>Class Standing: FY SO JR SR</p>
+                <div class="signature-line" style="width: 300px;" data-field="class_standing_fy_so_jr_sr">{{ class_standing_fy_so_jr_sr }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <p>Expected Graduation Date</p>
+        <div style="display: flex; gap: 30px; margin-top: 10px;">
+            <label><input type="checkbox"> Fall</label>
+            <label><input type="checkbox"> Winter</label>
+            <label><input type="checkbox"> Spring</label>
+            <label><input type="checkbox"> May</label>
+            <label><input type="checkbox"> Summer</label>
+            <label>Academic Year</label>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <p>Instructions: Complete this petition and obtain required signatures. Include explanation in the area provided or in an attached document. You may attach supplementary statements from instructors, advisors, counselors, etc. or ask them to email their comments to the Registrar's Office, <span data-field="registrar_email">{{ registrar_email }}</span>.</p>
+        <p>Important: If petition is to Drop or Withdraw from a class, you should continue to attend class until you receive the decision of the Petition Committee.</p>
+    </div>
+
+    <div class="form-section">
+        <p>Petition is related to:</p>
+        <div style="display: flex; gap: 30px; margin-top: 10px;">
+            <label><input type="checkbox"> Graduation requirements</label>
+            <label><input type="checkbox"> Course load (less than full-time or overload)</label>
+            <label><input type="checkbox"> Registration adjustment (after adjustment deadlines)</label>
+            <label><input type="checkbox"> Course Department <span data-field="course_department">{{ course_department }}</span> Course # <span data-field="course_number">{{ course_number }}</span></label>
+        </div>
+        <div style="margin-top: 15px;">
+            <label><input type="radio" name="petition_type" value="drop"> Drop/cancel course</label><br>
+            <label><input type="radio" name="petition_type" value="add"> Add course. Date first attended <span data-field="date_first_attended">{{ date_first_attended }}</span></label><br>
+            <label><input type="radio" name="petition_type" value="withdraw"> Withdraw from course (grade of W)</label><br>
+            <label><input type="checkbox"> Other</label>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <p>Explanation for petition request (attach separate page if needed):</p>
+        <div style="height: 150px; border: 1px solid #000; margin-top: 10px; padding: 10px;">
+            <!-- Placeholder for explanation text -->
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <div>
+            <p>To be completed by Instructor:</p>
+            <p>First class date attended <span data-field="instructor_first_class_date">{{ instructor_first_class_date }}</span></p>
+            <p>Last class date attended <span data-field="instructor_last_class_date">{{ instructor_last_class_date }}</span></p>
+            <p>Comments</p>
+            <div style="height: 100px; border-bottom: 1px solid #000; margin-top: 5px;" data-field="comments">{{ comments }}</div>
+        </div>
+        <div>
+            <p>Instructor's signature</p>
+            <div class="signature-line" data-field="instructor_s_signature">{{ instructor_s_signature }}</div>
+            <p>Printed name <span data-field="instructor_printed_name">{{ instructor_printed_name }}</span></p>
+            <p>Date <span data-field="instructor_date">{{ instructor_date }}</span></p>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p>Student's signature</p>
+        <div class="signature-line" style="width: 300px;" data-field="student_s_signature">{{ student_s_signature }}</div>
+    </div>
+
+    <div class="form-section" style="margin-top: 40px;">
+        <p>To signers: Signature indicates you have read this petition. Indicate whether you approve or disapprove the petition. A supplementary statement may be emailed to the Registrar's Office (<span data-field="registrar_email">{{ registrar_email }}</span>).</p>
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div>
+                <p>Advisor (required)</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <label>Approve: <input type="radio"> Yes <input type="radio"> No <input type="radio"> Abstain</label>
+                    <label>Date <span data-field="advisor_date">{{ advisor_date }}</span></label>
+                </div>
+            </div>
+            <div>
+                <p>Department Chair</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <label>Approve: <input type="radio"> Yes <input type="radio"> No <input type="radio"> Abstain</label>
+                    <label>Date <span data-field="chair_date">{{ chair_date }}</span></label>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 20px;">Required for Major, Minor or Area requirement petitions. Possibly for other exceptions.</p>
+    </div>
+
+    <div class="form-section" style="margin-top: 30px;">
+        <p>Competency Program Director</p>
+        <div style="display: flex; gap: 20px; margin-top: 10px;">
+            <label>Approve: <input type="radio"> Yes <input type="radio"> No <input type="radio"> Abstain</label>
+            <label>Date <span data-field="director_date">{{ director_date }}</span></label>
+        </div>
+        <p>Required for W, Q or S petitions.</p>
+    </div>
+
+    <div class="form-section" style="margin-top: 30px;">
+        <p>Financial Aid</p>
+        <div style="display: flex; gap: 20px; margin-top: 10px;">
+            <label>Approve: <input type="radio"> Yes <input type="radio"> No <input type="radio"> Abstain</label>
+            <label>Date <span data-field="financial_aid_date">{{ financial_aid_date }}</span></label>
+        </div>
+        <p>Required for overload or underload petitions.</p>
+    </div>
+
+    <div class="form-section" style="margin-top: 40px;">
+        <p>***Office Use Only***</p>
+        <div style="display: flex; gap: 30px; margin-top: 10px;">
+            <div>
+                <p>Committee Action:</p>
+                <label><input type="checkbox"> Considered</label>
+                <label><input type="checkbox"> Granted</label>
+                <label><input type="checkbox"> Denied</label>
+                <p>Date <span data-field="committee_action_date">{{ committee_action_date }}</span></p>
+            </div>
+            <div>
+                <p>Database recording: ERHistory, ERMaster, Client Information Services, MEMOS</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <p style="font-size: 10pt; text-align: center; margin-top: 100px;">Registrar's Office, DePauw University, Phone: 765-658-4141, FAX: 765-658-4139, Email: <span data-field="registrar_email">{{ registrar_email }}</span></p>
+</div>
+
+</body>
+</html>

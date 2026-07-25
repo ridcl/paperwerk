@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; font-size: 12px; background: #fff; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .logo-box {
+    width: 80px;
+    height: 70px;
+    border: 2px solid #1a3a5c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1a3a5c;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .logo-sub {
+    font-size: 7px;
+    font-weight: normal;
+    color: #1a3a5c;
+    letter-spacing: 1px;
+  }
+  .university-info h1 {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .university-info p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  /* Form container */
+  .form-container {
+    border: 1px solid #999;
+    padding: 16px 18px 10px 18px;
+  }
+
+  .form-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 8px;
+    text-decoration: underline;
+  }
+
+  .intro-text {
+    font-size: 11px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .section-heading {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+  /* Field rows */
+  .field-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .field-label {
+    font-size: 11px;
+    white-space: nowrap;
+    margin-right: 2px;
+  }
+
+  .field-line {
+    border-bottom: 1px solid #000;
+    min-width: 60px;
+    flex: 1;
+    height: 16px;
+    display: inline-block;
+  }
+
+  .field-inline {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    flex: 1;
+  }
+
+  .sub-label {
+    font-size: 9px;
+    text-align: center;
+    color: #333;
+    margin-top: 1px;
+  }
+
+  /* Checkbox */
+  .checkbox {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #000;
+    margin-right: 3px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    margin-right: 10px;
+  }
+
+  /* Address section */
+  .address-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .address-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .address-field .field-line {
+    width: 100%;
+  }
+
+  .address-sub {
+    font-size: 9px;
+    text-align: center;
+    color: #333;
+  }
+
+  /* Program section */
+  .quarter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .quarter-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    margin-right: 8px;
+  }
+
+  .quarter-year {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .year-line {
+    border-bottom: 1px solid #000;
+    width: 35px;
+    height: 16px;
+  }
+
+  /* Signature section */
+  .sig-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  /* School use only */
+  .school-use {
+    border: 1px solid #999;
+    margin-top: 10px;
+    padding: 6px 10px 8px 10px;
+  }
+
+  .school-use-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: underline;
+    margin-bottom: 6px;
+  }
+
+  .school-use-cols {
+    display: flex;
+    gap: 0;
+  }
+
+  .school-use-col {
+    flex: 1;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .school-use-line {
+    border-bottom: 1px solid #000;
+    height: 20px;
+    margin-top: 4px;
+  }
+
+  span[data-field] {
+    display: inline-block;
+    min-width: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-box">
+      <div class="logo-text">
+        GRACE<span style="color:#c8a84b;">U</span><br>
+        <span class="logo-sub">BE THE LIGHT</span>
+      </div>
+    </div>
+    <div class="university-info">
+      <h1>Grace University</h1>
+      <p>
+        <span data-field="university.address_line1">{{ university.address_line1 }}</span><br>
+        <span data-field="university.address_line2">{{ university.address_line2 }}</span><br>
+        <span data-field="university.phone">{{ university.phone }}</span><br>
+        <span data-field="university.website">{{ university.website }}</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Form Container -->
+  <div class="form-container">
+
+    <div class="form-title">Application Form</div>
+
+    <p class="intro-text">
+      Please provide the information requested. You may submit this application in person, by mail or email.
+      Admission is granted without regard to race, gender, handicap or nationality.
+    </p>
+
+    <!-- Personal Information -->
+    <div class="section-heading">Personal Information</div>
+
+    <!-- Last Name / First Name / AKA -->
+    <div class="field-row" style="margin-bottom:12px;">
+      <div class="field-inline" style="flex:1.2;">
+        <span class="field-label">Last Name</span>
+        <span class="field-line" style="flex:1;"><span data-field="last_name">{{ last_name }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:1.4;">
+        <span class="field-label">First Name</span>
+        <span class="field-line" style="flex:1;"><span data-field="first_name">{{ first_name }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:0.8;">
+        <span class="field-label">AKA</span>
+        <span class="field-line" style="flex:1;"><span data-field="aka">{{ aka }}</span></span>
+      </div>
+    </div>
+
+    <!-- Birthday / Sex -->
+    <div class="field-row" style="margin-bottom:10px;">
+      <div style="display:flex; align-items:flex-end; gap:4px; flex:1;">
+        <span class="field-label">Birthday Date</span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="field-line" style="width:110px;"><span data-field="birthday_date">{{ birthday_date }}</span></span>
+          <span class="sub-label">(mm/dd/yyyy)</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; flex:1; padding-bottom:2px;">
+        <span class="field-label">Sex:</span>
+        <span class="checkbox"></span><span style="font-size:11px;">Female</span>
+        <span class="checkbox" style="margin-left:8px;"></span><span style="font-size:11px;">Male</span>
+        <span data-field="sex" style="display:none;">{{ sex }}</span>
+      </div>
+    </div>
+
+    <!-- City of Birth / Country of Birth / Country of Citizenship -->
+    <div class="field-row" style="margin-bottom:10px;">
+      <div class="field-inline" style="flex:1;">
+        <span class="field-label">City of Birth</span>
+        <span class="field-line" style="flex:1;"><span data-field="city_of_birth">{{ city_of_birth }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:1.1;">
+        <span class="field-label">Country of Birth</span>
+        <span class="field-line" style="flex:1;"><span data-field="country_of_birth">{{ country_of_birth }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:1.1;">
+        <span class="field-label">Country of Citizenship</span>
+        <span class="field-line" style="flex:1;"><span data-field="country_of_citizenship">{{ country_of_citizenship }}</span></span>
+      </div>
+    </div>
+
+    <!-- Home Phone / Cell Phone / Other -->
+    <div class="field-row" style="margin-bottom:10px;">
+      <div class="field-inline" style="flex:1;">
+        <span class="field-label">Home Phone</span>
+        <span class="field-line" style="flex:1;"><span data-field="home_phone">{{ home_phone }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:1.1;">
+        <span class="field-label">Cell Phone</span>
+        <span class="field-line" style="flex:1;"><span data-field="cell_phone">{{ cell_phone }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:1;">
+        <span class="field-label">Other</span>
+        <span class="field-line" style="flex:1;"><span data-field="other_phone">{{ other_phone }}</span></span>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="field-row" style="margin-bottom:10px;">
+      <span class="field-label">Email</span>
+      <span class="field-line" style="flex:1;"><span data-field="email">{{ email }}</span></span>
+    </div>
+
+    <!-- Current Address -->
+    <div style="margin-bottom:4px;">
+      <div class="field-row" style="margin-bottom:2px;">
+        <span class="field-label">Current Address</span>
+        <span class="field-line" style="width:80px;"><span data-field="address.number">{{ address.number }}</span></span>
+        <span class="field-line" style="flex:1;"><span data-field="address.street">{{ address.street }}</span></span>
+        <span class="field-line" style="width:90px;"><span data-field="address.apt_unit">{{ address.apt_unit }}</span></span>
+      </div>
+      <div style="display:flex; gap:8px; padding-left:100px; margin-bottom:2px;">
+        <div style="flex:0.6; text-align:center; font-size:9px; color:#333;">No.</div>
+        <div style="flex:1; text-align:center; font-size:9px; color:#333;">Street</div>
+        <div style="flex:0.7; text-align:center; font-size:9px; color:#333;">Apt/Unit #</div>
+      </div>
+    </div>
+
+    <!-- City / State / Zip -->
+    <div style="margin-bottom:6px;">
+      <div style="display:flex; gap:8px; border-top:1px solid #000; padding-top:2px; margin-bottom:2px;">
+        <span class="field-line" style="flex:1;"><span data-field="address.city">{{ address.city }}</span></span>
+        <span class="field-line" style="flex:0.8;"><span data-field="address.state">{{ address.state }}</span></span>
+        <span class="field-line" style="flex:0.8;"><span data-field="address.zip_code">{{ address.zip_code }}</span></span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <div style="flex:1; text-align:center; font-size:9px; color:#333;">City</div>
+        <div style="flex:0.8; text-align:center; font-size:9px; color:#333;">State</div>
+        <div style="flex:0.8; text-align:center; font-size:9px; color:#333;">Zip Code</div>
+      </div>
+    </div>
+
+    <!-- Home country address -->
+    <div style="font-size:11px; margin-bottom:4px;">Address in home country (if different from above)</div>
+    <div style="border-top:1px solid #000; padding-top:2px; margin-bottom:2px;">
+      <div style="display:flex; gap:8px;">
+        <span class="field-line" style="flex:1;"><span data-field="home_country_address.street">{{ home_country_address.street }}</span></span>
+        <span class="field-line" style="flex:1;"><span data-field="home_country_address.city">{{ home_country_address.city }}</span></span>
+        <span class="field-line" style="flex:1;"><span data-field="home_country_address.province">{{ home_country_address.province }}</span></span>
+        <span class="field-line" style="flex:0.8;"><span data-field="home_country_address.zip_code">{{ home_country_address.zip_code }}</span></span>
+        <span class="field-line" style="flex:0.8;"><span data-field="home_country_address.country">{{ home_country_address.country }}</span></span>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; margin-bottom:10px;">
+      <div style="flex:1; text-align:center; font-size:9px; color:#333;">Street</div>
+      <div style="flex:1; text-align:center; font-size:9px; color:#333;">City</div>
+      <div style="flex:1; text-align:center; font-size:9px; color:#333;">Province</div>
+      <div style="flex:0.8; text-align:center; font-size:9px; color:#333;">Zip Code</div>
+      <div style="flex:0.8; text-align:center; font-size:9px; color:#333;">Country</div>
+    </div>
+
+    <!-- Program Information -->
+    <div class="section-heading">Program Information</div>
+
+    <!-- Program -->
+    <div class="field-row" style="margin-bottom:8px;">
+      <span class="field-label">Program I want to apply</span>
+      <span class="field-line" style="flex:1;"><span data-field="program_name">{{ program_name }}</span></span>
+    </div>
+
+    <!-- Planned Starting Quarter -->
+    <div style="font-size:11px; margin-bottom:5px;">Planned Starting Quarter (indicate term and year):</div>
+    <div class="quarter-row">
+      <div class="quarter-item">
+        <span class="checkbox"></span>
+        <span style="font-size:11px;">Winter (January)</span>
+        <div class="quarter-year">
+          <span class="year-line"><span data-field="quarter_winter_year">{{ quarter_winter_year }}</span></span>
+          <span style="font-size:9px;color:#333;">year</span>
+        </div>
+      </div>
+      <div class="quarter-item">
+        <span class="checkbox"></span>
+        <span style="font-size:11px;">Spring (April)</span>
+        <div class="quarter-year">
+          <span class="year-line"><span data-field="quarter_spring_year">{{ quarter_spring_year }}</span></span>
+          <span style="font-size:9px;color:#333;">year</span>
+        </div>
+      </div>
+      <div class="quarter-item">
+        <span class="checkbox"></span>
+        <span style="font-size:11px;">Summer (July)</span>
+        <div class="quarter-year">
+          <span class="year-line"><span data-field="quarter_summer_year">{{ quarter_summer_year }}</span></span>
+          <span style="font-size:9px;color:#333;">year</span>
+        </div>
+      </div>
+      <div class="quarter-item">
+        <span class="checkbox"></span>
+        <span style="font-size:11px;">Fall (September)</span>
+        <div class="quarter-year">
+          <span class="year-line"><span data-field="quarter_fall_year">{{ quarter_fall_year }}</span></span>
+          <span style="font-size:9px;color:#333;">year</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Planned Completion -->
+    <div class="field-row" style="margin-bottom:8px;">
+      <span class="field-label">Planned Program Completion Term/Year:</span>
+      <span class="field-line" style="flex:1;"><span data-field="completion_term_year">{{ completion_term_year }}</span></span>
+    </div>
+
+    <!-- How did you learn -->
+    <div style="font-size:11px; margin-bottom:5px;">How did you learn of our program at Grace University?</div>
+    <div style="display:flex; align-items:center; gap:6px; margin-bottom:5px; flex-wrap:wrap;">
+      <span class="checkbox"></span><span style="font-size:11px; margin-right:20px;">Friend or Family</span>
+      <span class="checkbox"></span><span style="font-size:11px; margin-right:20px;">Website</span>
+      <span class="checkbox"></span><span style="font-size:11px;">Advertisement</span>
+      <span data-field="referral_source" style="display:none;">{{ referral_source }}</span>
+    </div>
+    <div class="field-row" style="margin-bottom:8px;">
+      <span class="field-label">Other</span>
+      <span class="field-line" style="flex:1;"><span data-field="referral_other">{{ referral_other }}</span></span>
+    </div>
+
+    <!-- Certification text -->
+    <p style="font-size:10.5px; line-height:1.5; margin-bottom:8px;">
+      I hereby certify the information submitted on this form is true and complete and authorize the verification of all
+      information herein recorded by Grace University in processing my application. I also authorize Grace University to
+      release this information to any credit evaluation agency it deems necessary in completing my application.
+    </p>
+
+    <!-- Applicant Signature / Date -->
+    <div class="sig-row">
+      <div class="field-inline" style="flex:1.5;">
+        <span class="field-label">Applicant's Signature</span>
+        <span class="field-line" style="flex:1;"><span data-field="applicant_signature">{{ applicant_signature }}</span></span>
+      </div>
+      <div class="field-inline" style="flex:0.7;">
+        <span class="field-label">Date</span>
+        <span class="field-line" style="flex:1;"><span data-field="signature_date">{{ signature_date }}</span></span>
+      </div>
+    </div>
+
+  </div><!-- end form-container -->
+
+  <!-- School Use Only -->
+  <div class="school-use">
+    <div class="school-use-title">For School Use Only</div>
+    <div class="school-use-cols">
+      <div class="school-use-col">
+        <span>Signature</span>
+        <div class="school-use-line"><span data-field="school_signature">{{ school_signature }}</span></div>
+      </div>
+      <div class="school-use-col" style="margin-left:20px;">
+        <span>Date</span>
+        <div class="school-use-line"><span data-field="school_date">{{ school_date }}</span></div>
+      </div>
+      <div class="school-use-col" style="margin-left:20px;">
+        <span>Student ID</span>
+        <div class="school-use-line"><span data-field="student_id">{{ student_id }}</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

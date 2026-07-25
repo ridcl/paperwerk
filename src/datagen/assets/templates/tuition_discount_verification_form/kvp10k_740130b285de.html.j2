@@ -1,0 +1,106 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { width: 30%; }
+  .form-input-area { width: 65%; border-bottom: 1px solid #000; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 50px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">Widener University</h1>
+    <p style="font-size: 12pt; margin: 5px 0;">Cancer Treatment Centers of America</p>
+    <h2 style="font-size: 14pt; margin: 5px 0;">Tuition Discount Verification Form</h2>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="form-label">Year:</div>
+    <div class="form-input-area"><span data-field="year">{{ year }}</span></div>
+    <div style="margin-left: 20px;">Term (Select one):</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> Fall</label>
+      <label><input type="checkbox"> Spring</label>
+      <label><input type="checkbox"> Summer</label>
+    </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #000; margin-bottom: 30px;">
+
+  <h3 style="margin-bottom: 15px;">Section A. (Completed by the student)</h3>
+
+  <p style="margin-bottom: 20px;">I hereby authorize certification of my employment status to Widener University.</p>
+
+  <div class="form-row" style="margin-bottom: 15px;">
+    <div class="form-label">Name of Employee:</div>
+    <div class="form-input-area"><span data-field="full_name">{{ full_name }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 15px;">
+    <div class="form-label">Relationship to Student:</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> Self</label>
+      <label><input type="checkbox"> Spouse</label>
+      <label><input type="checkbox"> Dependent</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 15px;">
+    <div class="form-label">Student ID:</div>
+    <div class="form-input-area"><span data-field="student_id">{{ student_id }}</span></div>
+    <div style="margin-left: 20px;">Program:</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> Undergraduate</label>
+      <label><input type="checkbox"> Graduate</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="form-label">Student Signature:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="student_signature">{{ student_signature }}</div>
+    <div style="margin-left: 20px;">Date:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="date">{{ date }}</div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #000; margin-bottom: 30px;">
+
+  <h3 style="margin-bottom: 15px;">Section B. (Completed by the employer)</h3>
+
+  <div style="margin-bottom: 30px;">
+    <input type="checkbox" style="margin-right: 10px;">
+    I certify that the above named student is an employee of the Cancer Treatment Centers of America and is eligible for tuition discounts as outlined in the official Memorandum of Understanding between Widener University and Cancer Treatment Centers of America.
+  </div>
+
+  <div class="form-row" style="margin-bottom: 15px;">
+    <div class="form-label">Signature:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="signature">{{ signature }}</div>
+    <div style="margin-left: 20px;">Date:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="date_2">{{ date_2 }}</div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="form-label">Print Name:</div>
+    <div class="form-input-area"><span data-field="employer.name">{{ employer.name }}</span></div>
+  </div>
+
+  <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #000;">
+    <p style="font-size: 10pt;">Submit for each semester enrolled via mail, fax, or email to:</p>
+    <p style="font-size: 10pt;">Widener University</p>
+    <p style="font-size: 10pt;">Graduate and Continuing Studies</p>
+    <p style="font-size: 10pt;">Providence House</p>
+    <p style="font-size: 10pt;">400 E 21st Street</p>
+    <p style="font-size: 10pt;">Chester, PA 19013-5792</p>
+    <p style="font-size: 10pt;">Email: <span data-field="contact.email">{{ contact.email }}</span></p>
+    <p style="font-size: 10pt;">Fax: <span data-field="contact.fax">{{ contact.fax }}</span></p>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; margin-bottom: 0.5em; }
+  .header-logo { float: left; margin-right: 30px; }
+  .form-section { margin-bottom: 30px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+  .divider { border-top: 1px solid #000; margin-top: 10px; margin-bottom: 10px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for OHSU Logo -->
+    <img src="placeholder_logo.png" alt="OHSU Logo" style="width: 100px;">
+  </div>
+  <div style="margin-left: 150px;">
+    <h1>2022 Golf Tournament</h1>
+    <h2>Sponsorship & Registration Form</h2>
+    <p style="text-align: center; font-size: 1.1em;">The Reserve Vineyards and Golf Club</p>
+    <p style="text-align: center;">September 26, {{ current_year }}</p>
+  </div>
+
+  <div class="form-section">
+    <p>Name: <span data-field="full_name">{{ full_name }}</span></p>
+    <p>Company: <span data-field="company_name">{{ company_name }}</span></p>
+    <p>Address: <span data-field="address">{{ address }}</span></p>
+    <p>City/State/Zip: <span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+    <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+    <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+  </div>
+
+  <div class="form-section">
+    <p>I would like to register for the following: (please check all that apply)</p>
+    <table class="line-item-table">
+      <tr>
+        <td style="width: 50%;">Gold Sponsor - ${{ gold_sponsor_amount }} ($7,080 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Silver Sponsor - ${{ silver_sponsor_amount }} ($3540 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Reception Hour Sponsor - ${{ reception_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Tee Prizes Sponsor - ${{ tee_prizes_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Golf Cart Sponsor - ${{ golf_cart_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Golf Tourname Team - ${{ golf_tourname_team_amount }} ($2,200 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Golf Threshome + OHSU Player - ${{ golf_threshome_ohsu_player_amount }} ($1,800 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Lunch Sponsor - ${{ lunch_sponsor_amount }} ($1,500 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Driving Range Sponsor - ${{ driving_range_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Beverage Cart Sponsor - ${{ beverage_cart_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Putting Green Sponsor - ${{ putting_green_sponsor_amount }} ($1,500 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Hole Sponsor - ${{ hole_sponsor_amount }} (100% may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Individual Golfer - ${{ individual_golfer_amount }} ($550 may be tax deductible as a charitable contribution)</td>
+      </tr>
+      <tr>
+        <td>Paddle Raise - please state amount wished to donate, if unable to attend (100% may be tax deductible)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <p style="font-size: 0.9em;">*Based on goods received, please consult your tax advisor.</p>
+  <p>All golfers will receive ${{ golfer_package_value }} in Nike bucks, breakfast, lunch, green fees, a golf cart, and access to the driving range.</p>
+  <p>* This tournament is limited to {{ max_participants }} players (26 teams). Registration will be on a first-come basis.</p>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <p>Please send your check (made payable to the OHSUF/Surgery Golf Tournament Fund) along with this form to the following address:</p>
+    <p>Oregon Health & Science University</p>
+    <p>Department of Surgery L223</p>
+    <p>Attn: <span data-field="contact_name">{{ contact_name }}</span></p>
+    <p><span data-field="mailing_street">{{ mailing_street }}</span></p>
+    <p><span data-field="mailing_city_state_zip">{{ mailing_city_state_zip }}</span></p>
+    <p>FAX: <span data-field="fax_number">{{ fax_number }}</span></p>
+  </div>
+
+  <div style="margin-top: 80px; font-size: 0.8em; text-align: center;">
+    <p>The OHSU Foundation is a 501(c)(3) tax-exempt organization and is the repository for all private grants and charitable donations in support of OHSU. The Taxpayer Identification Number is {{ tax_id_number }}.</p>
+    <p>Appeal Code: SURE19JSP</p>
+  </div>
+</div>

@@ -1,0 +1,229 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-logo {
+    float: left;
+    margin-right: 30px;
+  }
+  .header-info {
+    float: right;
+    text-align: right;
+  }
+  .section-title {
+    text-align: center;
+    margin: 40px 0 20px 0;
+    font-size: 1.2em;
+  }
+  .form-row {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+  }
+  .form-group span, .form-group div {
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    min-height: 1.2em;
+  }
+  .full-width-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .signature-line {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .signature-line div {
+    width: 45%;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+  }
+  .footer-text {
+    margin-top: 60px;
+    font-size: 0.8em;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="header-logo">
+      <!-- Placeholder for Logo -->
+    </div>
+    <div class="header-info">
+      <div style="font-size: 1.1em; font-weight: bold;">Office of Financial Aid</div>
+      <div style="font-size: 0.9em;">1570 Baltimore Pike</div>
+      <div style="font-size: 0.9em;">Lincoln University, PA 19352-0999</div>
+      <div style="font-size: 0.9em;">800-561-2606 phone</div>
+      <div style="font-size: 0.9em;">484-365-8198 fax</div>
+      <div style="font-size: 0.9em;"><a href="mailto:financialaid@lincoln.edu">{{ financialaid_email }}">{{ financialaid_email }}</a></div>
+    </div>
+  </div>
+
+  <h1 class="section-title" style="margin-top: 60px;">AUTHORIZATION TO RELEASE INFORMATION</h1>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>STUDENT'S NAME:</label>
+      <span data-field="student_name">{{ student_name }}</span>
+    </div>
+    <div class="form-group">
+      <label>STUDENT ID#:</label>
+      <span data-field="student_id">{{ student_id }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>CELL PHONE #:</label>
+      <span data-field="cell_phone">{{ cell_phone }}</span>
+    </div>
+    <!-- Empty space or other field if needed -->
+  </div>
+
+  <div style="margin-top: 30px; font-size: 0.95em; line-height: 1.5;">
+    <p>Pursuant to the provisions of the Privacy Act of 1974 (5 USC 552a, PL 93-579, as amended), I hereby authorize the Financial Aid Office to release information from my financial aid file and any other record(s) pertaining to me to the individual(s) listed below. I understand and agree that the information released will cover my time of enrollment and that the released information may be electronically transferred by the Office Financial Aid or its agents. I also understand that before any information is released to the individual(s) that I have designated below they must verify my social security number and my date of birth and provide his/her social security number.</p>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-group" style="width: 100%;">
+      <label>NAME:</label>
+      <span data-field="authorized_party.name">{{ authorized_party.name }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>RELATIONSHIP:</label>
+      <span data-field="authorized_party.relationship">{{ authorized_party.relationship }}</span>
+    </div>
+    <div class="form-group">
+      <label>SOCIAL SECURITY #:</label>
+      <span data-field="authorized_party.ssn">{{ authorized_party.ssn }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 100%;">
+      <label>ADDRESS:</label>
+      <span data-field="authorized_party.address">{{ authorized_party.address }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>TELEPHONE#:</label>
+      <span data-field="authorized_party.phone_home">{{ authorized_party.phone_home }}</span>
+    </div>
+    <div class="form-group">
+      <label>TELEPHONE#:</label>
+      <span data-field="authorized_party.phone_cell">{{ authorized_party.phone_cell }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>ALT. TELEPHONE#:</label>
+      <span data-field="authorized_party.phone_alt">{{ authorized_party.phone_alt }}</span>
+    </div>
+    <div class="form-group">
+      <label>EMAIL ADDRESS:</label>
+      <span data-field="authorized_party.email">{{ authorized_party.email }}</span>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 40px;">
+    <div class="form-group" style="width: 100%;">
+      <label>NAME:</label>
+      <span data-field="secondary_party.name">{{ secondary_party.name }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>RELATIONSHIP:</label>
+      <span data-field="secondary_party.relationship">{{ secondary_party.relationship }}</span>
+    </div>
+    <div class="form-group">
+      <label>SOCIAL SECURITY #:</label>
+      <span data-field="secondary_party.ssn">{{ secondary_party.ssn }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 100%;">
+      <label>ADDRESS:</label>
+      <span data-field="secondary_party.address">{{ secondary_party.address }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>TELEPHONE#:</label>
+      <span data-field="secondary_party.phone_home">{{ secondary_party.phone_home }}</span>
+    </div>
+    <div class="form-group">
+      <label>TELEPHONE#:</label>
+      <span data-field="secondary_party.phone_cell">{{ secondary_party.phone_cell }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>ALT. TELEPHONE#:</label>
+      <span data-field="secondary_party.phone_alt">{{ secondary_party.phone_alt }}</span>
+    </div>
+    <div class="form-group">
+      <label>EMAIL ADDRESS:</label>
+      <span data-field="secondary_party.email">{{ secondary_party.email }}</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 1.1em; margin-bottom: 10px;">DO NOT FORGET TO SIGN THIS DOCUMENT</h2>
+  </div>
+
+  <div class="signature-line">
+    <div>
+      <label>Student's Signature:</label>
+      <span data-field="student_signature_line">{{ student_signature_line }}</span>
+    </div>
+    <div>
+      <label>Date:</label>
+      <span data-field="signature_date">{{ signature_date }}</span>
+    </div>
+  </div>
+
+  <div class="footer-text">
+    <p style="font-weight: bold;">Mission:</p>
+    <p>Lincoln University, the nation's first degree-granting Historically Black College & University (HBCU), educates and empowers students to lead their communities and change the world.</p>
+    <p style="margin-top: 10px;">Regional accreditation by the Middle States Commission on Higher Education.</p>
+    <p>Lincoln University is an equal opportunity employer.</p>
+  </div>
+</div>

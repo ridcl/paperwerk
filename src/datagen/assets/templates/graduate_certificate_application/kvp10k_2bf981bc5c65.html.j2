@@ -1,0 +1,163 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .form-row { margin-bottom: 15px; }
+  .form-label { display: inline-block; width: 150px; vertical-align: top; }
+  .form-input-line { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 160px); }
+  .header-info { display: flex; justify-content: space-between; font-size: 10pt; }
+</style>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="placeholder_logo.png" alt="University Logo" style="height: 50px; margin-bottom: 10px;">
+        <h1 style="font-size: 24pt; margin: 0;">University of Colorado</h1>
+        <h2 style="font-size: 16pt; margin: 0;">Boulder</h2>
+    </div>
+
+    <div class="header-info" style="font-size: 10pt;">
+        <div>
+            Dept. of Civil, Environmental & Architectural Engineering<br>
+            College of Engineering and Applied Science<br>
+            428 UCB
+        </div>
+        <div>
+            T 303-492-6382<br>
+            F 303-492-7317
+        </div>
+    </div>
+
+    <h2 style="margin-top: 40px; margin-bottom: 20px;">Water Engineering and Management Graduate Certificate Application</h2>
+
+    <div class="form-row">
+        <span class="form-label">Name:</span>
+        <span class="form-input-line">{{ full_name }}</span>
+        <span class="form-label" style="margin-left: 300px;">Student ID:</span>
+        <span class="form-input-line">{{ student_id }}</span>
+    </div>
+
+    <div class="form-row">
+        <span class="form-label">Street Address:</span>
+        <span class="form-input-line">{{ street_address }}</span>
+    </div>
+
+    <div class="form-row">
+        <span class="form-label">City:</span>
+        <span class="form-input-line">{{ city }}</span>
+        <span class="form-label" style="margin-left: 300px;">State:</span>
+        <span class="form-input-line">{{ state }}</span>
+    </div>
+
+    <div class="form-row">
+        <span class="form-label">Zip Code:</span>
+        <span class="form-input-line">{{ zip_code }}</span>
+        <span class="form-label" style="margin-left: 300px;">Country:</span>
+        <span class="form-input-line">{{ country }}</span>
+    </div>
+
+    <div class="form-row">
+        <span class="form-label">Email:</span>
+        <span class="form-input-line">{{ email }}</span>
+        <span class="form-label" style="margin-left: 300px;">Phone:</span>
+        <span class="form-input-line">{{ phone }}</span>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <span class="form-label">Current Student Status:</span>
+        <label><input type="checkbox" data-field="current_student_status.non_degree" value="{{ current_student_status.non_degree }}"> Non-Degree</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="current_student_status.degree" value="{{ current_student_status.degree }}"> Degree (admitted to CU degree program)</label>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <span class="form-label">If Degree Student, campus admitted into:</span>
+        <label><input type="checkbox" data-field="degree_campus.boulder" value="{{ degree_campus.boulder }}"> Boulder</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="degree_campus.denver" value="{{ degree_campus.denver }}"> Denver</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="degree_campus.colorado_springs" value="{{ degree_campus.colorado_springs }}"> Colorado Springs</label>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <span class="form-label">Current Academic Program:</span>
+        <span class="form-input-line">{{ current_academic_program }}</span>
+    </div>
+
+    <div class="form-row">
+        <span class="form-label">Department:</span>
+        <span class="form-input-line">{{ department }}</span>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <span class="form-label">Beginning Term:</span>
+        <label><input type="checkbox" data-field="beginning_term.fall" value="{{ beginning_term.fall }}"> Fall</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="beginning_term.spring" value="{{ beginning_term.spring }}"> Spring</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="beginning_term.summer" value="{{ beginning_term.summer }}"> Summer?</label>
+        <span class="form-label" style="margin-left: 300px;">Year:</span>
+        <span class="form-input-line">{{ beginning_term_year }}</span>
+        <span class="form-label" style="margin-left: 300px;">Course You Plan to Take:</span>
+        <span class="form-input-line">{{ planned_course }}</span>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <span class="form-label">Will you be taking the courses on the Boulder campus or via distance learning (Boulder Connect)?</span>
+        <label><input type="checkbox" data-field="delivery_method.on_campus" value="{{ delivery_method.on_campus }}"> On Campus</label>
+        <label style="margin-left: 20px;"><input type="checkbox" data-field="delivery_method.distance_learning" value="{{ delivery_method.distance_learning }}"> Distance Learning (Boulder Connect)</label>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 12pt; margin-bottom: 10px;">For Non-Degree Student Only</h3>
+        <div class="form-row">
+            <span class="form-label">Baccalaureate Degree:</span>
+            <span class="form-input-line">{{ baccalaureate_degree }}</span>
+        </div>
+        <div class="form-row">
+            <span class="form-label">Institution at Which Degree was Received:</span>
+            <span class="form-input-line">{{ institution_name }}</span>
+        </div>
+        <div class="form-row">
+            <span class="form-label">Graduation Date:</span>
+            <span class="form-input-line">{{ graduation_date }}</span>
+        </div>
+    </div>
+
+    <div class="form-row" style="margin-top: 30px;">
+        <span class="form-label">Work Experience:</span>
+        <span class="form-input-line">{{ work_experience_details }}</span>
+    </div>
+
+    <div style="margin-top: 60px;">
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 45%;">
+                <span class="form-label">Student Signature:</span>
+                <span class="form-input-line" style="height: 1px;" data-field="student_signature">{{ student_signature }}</span>
+            </div>
+            <div style="width: 45%; text-align: right;">
+                <span class="form-label">Date:</span>
+                <span class="form-input-line" style="height: 1px;" data-field="date">{{ date }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 45%;">
+                <span class="form-label">WE & M Approval:</span>
+                <span class="form-input-line" style="height: 1px;" data-field="we_m_approval">{{ we_m_approval }}</span>
+            </div>
+            <div style="width: 45%; text-align: right;">
+                <span class="form-label">Date:</span>
+                <span class="form-input-line" style="height: 1px;" data-field="date_2">{{ date_2 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px; text-align: center; font-size: 10pt;">
+        Submit this form via email to <span data-field="email_contact">{{ email_contact }}</span>
+    </div>
+</div>

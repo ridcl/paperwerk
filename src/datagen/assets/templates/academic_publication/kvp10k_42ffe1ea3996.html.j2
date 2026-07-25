@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .contact-info p {
+    margin: 2px 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  td {
+    padding: 5px 0;
+  }
+  .list-item {
+    margin-bottom: 0.5em;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; line-height: 1.5; }
+  h1, h2, h3 { font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; }
+  ul { list-style-type: disc; padding-left: 20px; }
+  li { margin-bottom: 0.5em; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="full_name">{{ full_name }}</span>
+  </div>
+
+  <div class="contact-info" style="margin-top: 20px;">
+    <p>Home Address: <span data-field="home_address">{{ home_address }}</span></p>
+    <p>Work Address: <span data-field="work_address">{{ work_address }}</span></p>
+    <p>Email: <span data-field="email">{{ email }}</span></p>
+    <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+    <p>Fax: <span data-field="fax">{{ fax }}</span></p>
+    <p>Website: <span data-field="website">{{ website }}</span></p>
+  </div>
+
+  <div class="section-title">Current Academic and Research Positions:</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 30%;">Dates</td>
+        <td style="width: 70%;">Position/Institution</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="positions[0].dates">{{ positions[0].dates }}</span></td>
+        <td><span data-field="positions[0].description">{{ positions[0].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="positions[1].dates">{{ positions[1].dates }}</span></td>
+        <td><span data-field="positions[1].description">{{ positions[1].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="positions[2].dates">{{ positions[2].dates }}</span></td>
+        <td><span data-field="positions[2].description">{{ positions[2].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="positions[3].dates">{{ positions[3].dates }}</span></td>
+        <td><span data-field="positions[3].description">{{ positions[3].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="positions[4].dates">{{ positions[4].dates }}</span></td>
+        <td><span data-field="positions[4].description">{{ positions[4].description }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Past Academic and Research Positions:</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 30%;">Dates</td>
+        <td style="width: 70%;">Position/Institution</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="past_positions[0].dates">{{ past_positions[0].dates }}</span></td>
+        <td><span data-field="past_positions[0].description">{{ past_positions[0].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="past_positions[1].dates">{{ past_positions[1].dates }}</span></td>
+        <td><span data-field="past_positions[1].description">{{ past_positions[1].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="past_positions[2].dates">{{ past_positions[2].dates }}</span></td>
+        <td><span data-field="past_positions[2].description">{{ past_positions[2].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="past_positions[3].dates">{{ past_positions[3].dates }}</span></td>
+        <td><span data-field="past_positions[3].description">{{ past_positions[3].description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="past_positions[4].dates">{{ past_positions[4].dates }}</span></td>
+        <td><span data-field="past_positions[4].description">{{ past_positions[4].description }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title">PEER-REVIEWED SCHOLARSHIP</div>
+
+  <div class="section-title">Authored books</div>
+  <div class="list-item">
+    <span data-field="books[0].title">{{ books[0].title }}</span>. <span data-field="books[0].publisher">{{ books[0].publisher }}</span>, <span data-field="books[0].year">{{ books[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="books[1].title">{{ books[1].title }}</span>. In preparation.
+  </div>
+  <div class="list-item">
+    <span data-field="books[2].title">{{ books[2].title }}</span>. <span data-field="books[2].publisher">{{ books[2].publisher }}</span>, <span data-field="books[2].year">{{ books[2].year }}</span>.
+  </div>
+
+  <div class="section-title">Edited books</div>
+  <div class="list-item">
+    <span data-field="edited_books[0].title">{{ edited_books[0].title }}</span>. <span data-field="edited_books[0].publisher">{{ edited_books[0].publisher }}</span>, <span data-field="edited_books[0].year">{{ edited_books[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="edited_books[1].title">{{ edited_books[1].title }}</span>. <span data-field="edited_books[1].publisher">{{ edited_books[1].publisher }}</span>, <span data-field="edited_books[1].year">{{ edited_books[1].year }}</span>.
+  </div>
+
+  <div class="section-title">Edited special issue of journal</div>
+  <div class="list-item">
+    <span data-field="special_issues[0].title">{{ special_issues[0].title }}</span>. <span data-field="special_issues[0].publisher">{{ special_issues[0].publisher }}</span>, <span data-field="special_issues[0].year">{{ special_issues[0].year }}</span>.
+  </div>
+
+  <div class="section-title">Articles and book chapters</div>
+  <div class="list-item">
+    <span data-field="articles[0].title">{{ articles[0].title }}</span>. In <span data-field="articles[0].book_title">{{ articles[0].book_title }}</span>, <span data-field="articles[0].publisher">{{ articles[0].publisher }}</span>, <span data-field="articles[0].year">{{ articles[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="articles[1].title">{{ articles[1].title }}</span>. In <span data-field="articles[1].book_title">{{ articles[1].book_title }}</span>, <span data-field="articles[1].publisher">{{ articles[1].publisher }}</span>, <span data-field="articles[1].year">{{ articles[1].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="articles[2].title">{{ articles[2].title }}</span>. In <span data-field="articles[2].book_title">{{ articles[2].book_title }}</span>, <span data-field="articles[2].publisher">{{ articles[2].publisher }}</span>, <span data-field="articles[2].year">{{ articles[2].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="articles[3].title">{{ articles[3].title }}</span>. In <span data-field="articles[3].book_title">{{ articles[3].book_title }}</span>, <span data-field="articles[3].publisher">{{ articles[3].publisher }}</span>, <span data-field="articles[3].year">{{ articles[3].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="articles[4].title">{{ articles[4].title }}</span>. In <span data-field="articles[4].book_title">{{ articles[4].book_title }}</span>, <span data-field="articles[4].publisher">{{ articles[4].publisher }}</span>, <span data-field="articles[4].year">{{ articles[4].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="articles[5].title">{{ articles[5].title }}</span>. In <span data-field="articles[5].book_title">{{ articles[5].book_title }}</span>, <span data-field="articles[5].publisher">{{ articles[5].publisher }}</span>, <span data-field="articles[5].year">{{ articles[5].year }}</span>.
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Translations</div>
+  <div class="list-item">
+    <span data-field="translations[0].title">{{ translations[0].title }}</span>. In <span data-field="translations[0].book_title">{{ translations[0].book_title }}</span>, <span data-field="translations[0].publisher">{{ translations[0].publisher }}</span>, <span data-field="translations[0].year">{{ translations[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="translations[1].title">{{ translations[1].title }}</span>. In <span data-field="translations[1].book_title">{{ translations[1].book_title }}</span>, <span data-field="translations[1].publisher">{{ translations[1].publisher }}</span>, <span data-field="translations[1].year">{{ translations[1].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="translations[2].title">{{ translations[2].title }}</span>. In <span data-field="translations[2].book_title">{{ translations[2].book_title }}</span>, <span data-field="translations[2].publisher">{{ translations[2].publisher }}</span>, <span data-field="translations[2].year">{{ translations[2].year }}</span>.
+  </div>
+
+  <div class="section-title">Encyclopedia Articles</div>
+  <div class="list-item">
+    <span data-field="encyclopedia_articles[0].title">{{ encyclopedia_articles[0].title }}</span>. In <span data-field="encyclopedia_articles[0].book_title">{{ encyclopedia_articles[0].book_title }}</span>, <span data-field="encyclopedia_articles[0].publisher">{{ encyclopedia_articles[0].publisher }}</span>, <span data-field="encyclopedia_articles[0].year">{{ encyclopedia_articles[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="encyclopedia_articles[1].title">{{ encyclopedia_articles[1].title }}</span>. In <span data-field="encyclopedia_articles[1].book_title">{{ encyclopedia_articles[1].book_title }}</span>, <span data-field="encyclopedia_articles[1].publisher">{{ encyclopedia_articles[1].publisher }}</span>, <span data-field="encyclopedia_articles[1].year">{{ encyclopedia_articles[1].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="encyclopedia_articles[2].title">{{ encyclopedia_articles[2].title }}</span>. In <span data-field="encyclopedia_articles[2].book_title">{{ encyclopedia_articles[2].book_title }}</span>, <span data-field="encyclopedia_articles[2].publisher">{{ encyclopedia_articles[2].publisher }}</span>, <span data-field="encyclopedia_articles[2].year">{{ encyclopedia_articles[2].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="encyclopedia_articles[3].title">{{ encyclopedia_articles[3].title }}</span>. In <span data-field="encyclopedia_articles[3].book_title">{{ encyclopedia_articles[3].book_title }}</span>, <span data-field="encyclopedia_articles[3].publisher">{{ encyclopedia_articles[3].publisher }}</span>, <span data-field="encyclopedia_articles[3].year">{{ encyclopedia_articles[3].year }}</span>.
+  </div>
+
+  <div class="section-title">Book Reviews & Commentaries</div>
+  <div class="list-item">
+    <span data-field="reviews[0].title">{{ reviews[0].title }}</span>. In <span data-field="reviews[0].book_title">{{ reviews[0].book_title }}</span>, <span data-field="reviews[0].publisher">{{ reviews[0].publisher }}</span>, <span data-field="reviews[0].year">{{ reviews[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="reviews[1].title">{{ reviews[1].title }}</span>. In <span data-field="reviews[1].book_title">{{ reviews[1].book_title }}</span>, <span data-field="reviews[1].publisher">{{ reviews[1].publisher }}</span>, <span data-field="reviews[1].year">{{ reviews[1].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="reviews[2].title">{{ reviews[2].title }}</span>. In <span data-field="reviews[2].book_title">{{ reviews[2].book_title }}</span>, <span data-field="reviews[2].publisher">{{ reviews[2].publisher }}</span>, <span data-field="reviews[2].year">{{ reviews[2].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="reviews[3].title">{{ reviews[3].title }}</span>. In <span data-field="reviews[3].book_title">{{ reviews[3].book_title }}</span>, <span data-field="reviews[3].publisher">{{ reviews[3].publisher }}</span>, <span data-field="reviews[3].year">{{ reviews[3].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="reviews[4].title">{{ reviews[4].title }}</span>. In <span data-field="reviews[4].book_title">{{ reviews[4].book_title }}</span>, <span data-field="reviews[4].publisher">{{ reviews[4].publisher }}</span>, <span data-field="reviews[4].year">{{ reviews[4].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="reviews[5].title">{{ reviews[5].title }}</span>. In <span data-field="reviews[5].book_title">{{ reviews[5].book_title }}</span>, <span data-field="reviews[5].publisher">{{ reviews[5].publisher }}</span>, <span data-field="reviews[5].year">{{ reviews[5].year }}</span>.
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Presentations</div>
+  <div class="list-item">
+    <span data-field="presentations[0].title">{{ presentations[0].title }}</span>. <span data-field="presentations[0].conference">{{ presentations[0].conference }}</span>, <span data-field="presentations[0].year">{{ presentations[0].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="presentations[1].title">{{ presentations[1].title }}</span>. <span data-field="presentations[1].conference">{{ presentations[1].conference }}</span>, <span data-field="presentations[1].year">{{ presentations[1].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="presentations[2].title">{{ presentations[2].title }}</span>. <span data-field="presentations[2].conference">{{ presentations[2].conference }}</span>, <span data-field="presentations[2].year">{{ presentations[2].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="presentations[3].title">{{ presentations[3].title }}</span>. <span data-field="presentations[3].conference">{{ presentations[3].conference }}</span>, <span data-field="presentations[3].year">{{ presentations[3].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="presentations[4].title">{{ presentations[4].title }}</span>. <span data-field="presentations[4].conference">{{ presentations[4].conference }}</span>, <span data-field="presentations[4].year">{{ presentations[4].year }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="presentations[5].title">{{ presentations[5].title }}</span>. <span data-field="presentations[5].conference">{{ presentations[5].conference }}</span>, <span data-field="presentations[5].year">{{ presentations[5].year }}</span>.
+  </div>
+
+  <div class="section-title">Teaching Experience</div>
+  <div class="list-item">
+    <span data-field="teaching_experience[0].description">{{ teaching_experience[0].description }}</span>. <span data-field="teaching_experience[0].dates">{{ teaching_experience[0].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="teaching_experience[1].description">{{ teaching_experience[1].description }}</span>. <span data-field="teaching_experience[1].dates">{{ teaching_experience[1].dates }}</span>.
+  </div>
+
+  <div class="section-title">Courses Taught</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 30%;">Course</td>
+        <td style="width: 70%;">Semester/Year</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="courses[0].name">{{ courses[0].name }}</span></td>
+        <td><span data-field="courses[0].term">{{ courses[0].term }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="courses[1].name">{{ courses[1].name }}</span></td>
+        <td><span data-field="courses[1].term">{{ courses[1].term }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="courses[2].name">{{ courses[2].name }}</span></td>
+        <td><span data-field="courses[2].term">{{ courses[2].term }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="courses[3].name">{{ courses[3].name }}</span></td>
+        <td><span data-field="courses[3].term">{{ courses[3].term }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="courses[4].name">{{ courses[4].name }}</span></td>
+        <td><span data-field="courses[4].term">{{ courses[4].term }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="courses[5].name">{{ courses[5].name }}</span></td>
+        <td><span data-field="courses[5].term">{{ courses[5].term }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Independent Studies and Honors Thesis Advising</div>
+  <div class="list-item">
+    <span data-field="advising[0].description">{{ advising[0].description }}</span>. <span data-field="advising[0].dates">{{ advising[0].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="advising[1].description">{{ advising[1].description }}</span>. <span data-field="advising[1].dates">{{ advising[1].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="advising[2].description">{{ advising[2].description }}</span>. <span data-field="advising[2].dates">{{ advising[2].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="advising[3].description">{{ advising[3].description }}</span>. <span data-field="advising[3].dates">{{ advising[3].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="advising[4].description">{{ advising[4].description }}</span>. <span data-field="advising[4].dates">{{ advising[4].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="advising[5].description">{{ advising[5].description }}</span>. <span data-field="advising[5].dates">{{ advising[5].dates }}</span>.
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">SERVICE & ADMINISTRATIVE EXPERIENCE</div>
+  <div class="list-item">
+    <span data-field="service[0].description">{{ service[0].description }}</span>. <span data-field="service[0].dates">{{ service[0].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[1].description">{{ service[1].description }}</span>. <span data-field="service[1].dates">{{ service[1].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[2].description">{{ service[2].description }}</span>. <span data-field="service[2].dates">{{ service[2].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[3].description">{{ service[3].description }}</span>. <span data-field="service[3].dates">{{ service[3].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[4].description">{{ service[4].description }}</span>. <span data-field="service[4].dates">{{ service[4].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[5].description">{{ service[5].description }}</span>. <span data-field="service[5].dates">{{ service[5].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[6].description">{{ service[6].description }}</span>. <span data-field="service[6].dates">{{ service[6].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="service[7].description">{{ service[7].description }}</span>. <span data-field="service[7].dates">{{ service[7].dates }}</span>.
+  </div>
+
+  <div class="section-title">OTHER PROFESSIONAL ACTIVITIES</div>
+  <div class="list-item">
+    <span data-field="other_activities[0].description">{{ other_activities[0].description }}</span>. <span data-field="other_activities[0].dates">{{ other_activities[0].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="other_activities[1].description">{{ other_activities[1].description }}</span>. <span data-field="other_activities[1].dates">{{ other_activities[1].dates }}</span>.
+  </div>
+  <div class="list-item">
+    <span data-field="other_activities[2].description">{{ other_activities[2].description }}</span>. <span data-field="other_activities[2].dates">{{ other_activities[2].dates }}</span>.
+  </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; line-height: 1.5; }
+  h1, h2, h3 { font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; }
+  ul { list-style-type: disc; padding-left: 20px; }
+  li { margin-bottom: 0.5em; }
+</style>
+
+<div class="page">
+  <div>
+    <h2><span data-field="section_title_1">{{ section_title_1 }}</span></h2>
+    <ul>
+      <li>External Reviewer, Religions (<span data-field="date_range_1">{{ date_range_1 }}</span>)</li>
+      <li>External Reviewer, Dao: A Journal of Comparative Philosophy (<span data-field="date_range_2">{{ date_range_2 }}</span>)</li>
+      <li>External Reviewer, Japan Review (<span data-field="date_range_3">{{ date_range_3 }}</span>)</li>
+      <li>Book Reviewer, East Asian Philosophy & Religion, CHOICE: Current Reviews for Academic Libraries (<span data-field="date_range_4">{{ date_range_4 }}</span>)</li>
+      <li>External Reviewer, Philosophy East and West (<span data-field="date_range_5">{{ date_range_5 }}</span>)</li>
+      <li>External Reviewer, Journal of Buddhist Ethics (<span data-field="date_range_6">{{ date_range_6 }}</span>)</li>
+      <li>External Reviewer, Peace and Change: A Journal of Peace Studies (<span data-field="date_range_7">{{ date_range_7 }}</span>)</li>
+      <li>Editorial Board, Journal of Progressive Buddhism (<span data-field="date_range_8">{{ date_range_8 }}</span>)</li>
+      <li>Translation Consultant (Japanese-Sanscrit-English), Berserk Comic Series (<span data-field="date_range_9">{{ date_range_9 }}</span>)</li>
+      <li>Book Review Editor, Journal of Buddhist Ethics (<span data-field="date_range_10">{{ date_range_10 }}</span>)</li>
+      <li>Copy Editor, Proofreader, Translator, The Eastern Buddhist (<span data-field="date_range_11">{{ date_range_11 }}</span>)</li>
+      <li>Assistant Editor, Digital Dictionary of Buddhism (<span data-field="date_range_12">{{ date_range_12 }}</span>)</li>
+      <li>Managing Editor, ARC: The Journal of the Faculty of Religious Studies, McGill University (<span data-field="date_range_13">{{ date_range_13 }}</span>)</li>
+      <li>Book Review Editor, ARC: The Journal of the Faculty of Religious Studies, McGill University (<span data-field="date_range_14">{{ date_range_14 }}</span>)</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2><span data-field="section_title_2">{{ section_title_2 }}</span></h2>
+    <ul>
+      <li>American Academy of Religion</li>
+      <li>American Philosophical Association</li>
+      <li>Association for Asian Studies</li>
+      <li>Buddhist Critical-Constructive Reflection Group</li>
+      <li>Columbia Society for Comparative Philosophy</li>
+      <li>Continental and Comparative Philosophy Circle</li>
+      <li>International Association for Buddhist Studies</li>
+      <li>International Association for the History of Religions</li>
+      <li>International Society for Buddhist Philosophy</li>
+      <li>Japan Studies Association</li>
+      <li>Projekt History of Societies and Socialisms</li>
+      <li>Society for Asian and Comparative Philosophy</li>
+      <li>Society for the Study of Japanese Religions</li>
+    </ul>
+  </div>
+</div></body>
+</html>

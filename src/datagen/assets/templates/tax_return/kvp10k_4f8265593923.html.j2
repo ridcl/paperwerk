@@ -1,0 +1,721 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  td, th {
+    padding: 5px 0;
+    text-align: left;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .form-label {
+    width: 40%;
+  }
+  .form-value {
+    width: 60%;
+    text-align: right;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .instruction {
+    font-size: 0.9em;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">990-W</h1>
+      <div style="margin-top: 10px;">(WORKSHEET)</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">OMB No. 1545-0976</div>
+      <div style="font-size: 20pt; font-weight: bold;">2011</div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 14pt; margin-top: 20px;">Estimated Tax on Unrelated Business Taxable Income for Tax-Exempt Organizations (and on Investment Income for Private Foundations)</h2>
+  <div class="instruction">(Keep for your records. Do not send to the Internal Revenue Service.)</div>
+
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 70%; text-align: right;">Unrelated business taxable income expected in the tax year</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_1_value">{{ line_1_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">2</td>
+      <td style="width: 70%; text-align: right;">Tax on the amount on line 1. See instructions for tax computation</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_2_value">{{ line_2_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">3</td>
+      <td style="width: 70%; text-align: right;">Alternative minimum tax (see instructions)</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_3_value">{{ line_3_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4</td>
+      <td style="width: 70%; text-align: right;">Total. Add lines 2 and 3</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_4_value">{{ line_4_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">5</td>
+      <td style="width: 70%; text-align: right;">Estimated tax credits (see instructions)</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_5_value">{{ line_5_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">6</td>
+      <td style="width: 70%; text-align: right;">Subtract line 5 from line 4.</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_6_value">{{ line_6_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">7</td>
+      <td style="width: 70%; text-align: right;">Other taxes (see instructions)</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_7_value">{{ line_7_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">8</td>
+      <td style="width: 70%; text-align: right;">Total. Add lines 6 and 7</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_8_value">{{ line_8_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">9</td>
+      <td style="width: 70%; text-align: right;">Credit for federal tax paid on fuels (see instructions)</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_9_value">{{ line_9_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">10a</td>
+      <td style="width: 70%; text-align: right;">Subtract line 9 from line 8. Note, if less than $500, the organization is not required to make estimated tax payments. Private foundations, see instructions.</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_10a_value">{{ line_10a_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">10b</td>
+      <td style="width: 70%; text-align: right;">Enter the tax shown on the 2010 return (see instructions). Caution, if zero or the tax year was for less than 12 months, skip this line and enter the amount from line 10a on line 10c.</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_10b_value">{{ line_10b_value }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">10c</td>
+      <td style="width: 70%; text-align: right;">2011 Estimated Tax. Enter the smaller of line 10a or line 10b. If the organization is required to skip line 10b, enter the amount from line 10a on line 10c.</td>
+      <td style="width: 20%; text-align: right;"><span data-field="line_10c_value">{{ line_10c_value }}</span></td>
+    </tr>
+  </table>
+
+  <h2 style="font-size: 14pt; margin-top: 20px;">Schedule A</h2>
+  <div class="instruction">Required Installments Using the Annualized Income Installment Method and/or the Adjusted Seasonal Installment Method Under Section 6655(e)</div>
+  <div class="instruction">Note. See the instructions for Schedule A. An organization that expects its income to vary during the year may want to complete Schedule A to determine whether it may be able to lower the amount of one or more required installments. Complete each column of this schedule in its entirety before going to the next column.</div>
+
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_a">{{ months_1_a }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_b">{{ months_1_b }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_c">{{ months_1_c }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_d">{{ months_1_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">2</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_a">{{ line_2_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_b">{{ line_2_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_c">{{ line_2_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_d">{{ line_2_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">3</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_a">{{ line_3_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_b">{{ line_3_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_c">{{ line_3_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_d">{{ line_3_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4a</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_a">{{ line_4a_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_b">{{ line_4a_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_c">{{ line_4a_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_d">{{ line_4a_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4b</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_a">{{ line_4b_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_b">{{ line_4b_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_c">{{ line_4b_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_d">{{ line_4b_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">c</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_a">{{ line_c_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_b">{{ line_c_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_c">{{ line_c_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_d">{{ line_c_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">5</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_a">{{ line_5_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_b">{{ line_5_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_c">{{ line_5_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_d">{{ line_5_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">6</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_a">{{ line_6_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_b">{{ line_6_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_c">{{ line_6_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_d">{{ line_6_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">7</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_a">{{ line_7_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_b">{{ line_7_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_c">{{ line_7_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_d">{{ line_7_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">8</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_a">{{ line_8_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_b">{{ line_8_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_c">{{ line_8_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_d">{{ line_8_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">9</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_a">{{ line_9_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_b">{{ line_9_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_c">{{ line_9_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_d">{{ line_9_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">10</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_a">{{ line_10_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_b">{{ line_10_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_c">{{ line_10_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_d">{{ line_10_d }}</span></td>
+    </tr>
+  </table>
+
+  <h2 style="font-size: 14pt; margin-top: 20px;">Part II—Adjusted Seasonal Installment Method</h2>
+  <div class="instruction">Use this method only if the base period percentage for any 6 consecutive months is at least 70%. See the instructions for Schedule A, Part II, for more information.</div>
+
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">14</td>
+      <td style="width: 15%; text-align: center;">Enter taxable income for the following periods:</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">a</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_a">{{ line_14a_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_b">{{ line_14a_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_c">{{ line_14a_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_d">{{ line_14a_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">b</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_a">{{ line_14b_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_b">{{ line_14b_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_c">{{ line_14b_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_d">{{ line_14b_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">c</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_a">{{ line_14c_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_b">{{ line_14c_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_c">{{ line_14c_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_d">{{ line_14c_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">15</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_a">{{ line_15_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_b">{{ line_15_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_c">{{ line_15_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_d">{{ line_15_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">16</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_a">{{ line_16_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_b">{{ line_16_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_c">{{ line_16_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_d">{{ line_16_d }}</span></td>
+    </tr>
+  </table>
+
+  <h2 style="font-size: 14pt; margin-top: 20px;">Part III—Required Installments</h2>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">36</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">37</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_a">{{ line_37_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_b">{{ line_37_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_c">{{ line_37_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_d">{{ line_37_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">38</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_a">{{ line_38_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_b">{{ line_38_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_c">{{ line_38_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_d">{{ line_38_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">39</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_a">{{ line_39_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_b">{{ line_39_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_c">{{ line_39_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_d">{{ line_39_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">40</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_a">{{ line_40_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_b">{{ line_40_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_c">{{ line_40_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_d">{{ line_40_d }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">What's New</h3>
+    <div class="instruction">Federal tax deposits must be made by electronic funds transfer.</div>
+    <div class="instruction">Beginning January 1, 2011, you must use electronic funds transfer to make all federal tax deposits (such as estimated tax, excise tax, and corporate income tax) electronically using the Electronic Federal Tax Deposit Coupon, cannot be used after December 31, 2010.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Phone Help</h3>
+    <div class="instruction">If you have questions and/or need help completing this form, please call 1-877-822-9500. This toll-free telephone service is available Monday through Friday.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Estimated Tax Payments</h3>
+    <div class="instruction">Tax-exempt corporations, tax-exempt trusts, and private foundations must make estimated tax payments if the total estimated tax for the tax year is $10,000 or more. Use Form 990-W to file the organization's estimated tax liability for 2011.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Underpayment of Estimated Tax</h3>
+    <div class="instruction">An organization that does not pay the estimated tax due when it is due may be charged an underpayment penalty under section 6655, at a rate of 20% of the unpaid amount.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Overpayment of Estimated Tax</h3>
+    <div class="instruction">An estimated tax payment may apply for a "quick refund" if the overpayment is at least 10% of its expected income tax liability for the year and is at least $500. To apply for a quick refund, complete Form 1040-X, Amended U.S. Individual Income Tax Return, and file it with your tax return.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Electronic Deposit Requirement</h3>
+    <div class="instruction">The IRS has issued final regulations under section 6302 which provide that all federal tax deposits must be made electronically.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 14pt; margin-top: 0;">Schedule A</h2>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">Form 990-W (2011)</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top: 20px;">Part I—Annualized Income Installment Method</div>
+  <div class="instruction">If you are using both methods, complete all three parts. Enter in each column on line 12 of page 1, Form 990-W, the amounts from line 13 of page 1, Form 990-W.</div>
+
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_a">{{ months_1_a }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_b">{{ months_1_b }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_c">{{ months_1_c }}</span></td>
+      <td style="width: 15%; text-align: center;">First <span data-field="months_1_d">{{ months_1_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">2</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_a">{{ line_2_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_b">{{ line_2_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_c">{{ line_2_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_d">{{ line_2_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">3</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_a">{{ line_3_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_b">{{ line_3_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_c">{{ line_3_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_d">{{ line_3_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4a</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_a">{{ line_4a_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_b">{{ line_4a_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_c">{{ line_4a_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4a_d">{{ line_4a_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4b</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_a">{{ line_4b_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_b">{{ line_4b_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_c">{{ line_4b_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4b_d">{{ line_4b_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">c</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_a">{{ line_c_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_b">{{ line_c_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_c">{{ line_c_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_c_d">{{ line_c_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">5</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_a">{{ line_5_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_b">{{ line_5_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_c">{{ line_5_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_d">{{ line_5_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">6</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_a">{{ line_6_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_b">{{ line_6_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_c">{{ line_6_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_d">{{ line_6_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">7</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_a">{{ line_7_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_b">{{ line_7_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_c">{{ line_7_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_7_d">{{ line_7_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">8</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_a">{{ line_8_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_b">{{ line_8_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_c">{{ line_8_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_8_d">{{ line_8_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">9</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_a">{{ line_9_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_b">{{ line_9_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_c">{{ line_9_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_9_d">{{ line_9_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">10</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_a">{{ line_10_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_b">{{ line_10_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_c">{{ line_10_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_10_d">{{ line_10_d }}</span></td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="margin-top: 20px;">Part II—Adjusted Seasonal Installment Method</div>
+  <div class="instruction">Use this method only if the base period percentage for any 6 consecutive months is at least 70%. See the instructions for Schedule A, Part II, for more information.</div>
+
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">14</td>
+      <td style="width: 15%; text-align: center;">Enter taxable income for the following periods:</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">a</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_a">{{ line_14a_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_b">{{ line_14a_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_c">{{ line_14a_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14a_d">{{ line_14a_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">b</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_a">{{ line_14b_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_b">{{ line_14b_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_c">{{ line_14b_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14b_d">{{ line_14b_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">c</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_a">{{ line_14c_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_b">{{ line_14c_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_c">{{ line_14c_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_14c_d">{{ line_14c_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">15</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_a">{{ line_15_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_b">{{ line_15_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_c">{{ line_15_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_15_d">{{ line_15_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">16</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_a">{{ line_16_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_b">{{ line_16_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_c">{{ line_16_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_16_d">{{ line_16_d }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 14pt; margin-top: 0;">Schedule A</h2>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">Form 990-W (2011)</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top: 20px;">Part III—Required Installments</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">36</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">37</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_a">{{ line_37_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_b">{{ line_37_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_c">{{ line_37_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_37_d">{{ line_37_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">38</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_a">{{ line_38_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_b">{{ line_38_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_c">{{ line_38_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_38_d">{{ line_38_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">39</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_a">{{ line_39_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_b">{{ line_39_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_c">{{ line_39_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_39_d">{{ line_39_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">40</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_a">{{ line_40_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_b">{{ line_40_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_c">{{ line_40_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_40_d">{{ line_40_d }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Section references are to the Internal Revenue Code unless otherwise noted.</h3>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">What's New</h3>
+    <div class="instruction">Federal tax deposits must be made by electronic funds transfer.</div>
+    <div class="instruction">Beginning January 1, 2011, you must use electronic funds transfer to make all federal tax deposits (such as estimated tax, excise tax, and corporate income tax) electronically using the Electronic Federal Tax Deposit Coupon, cannot be used after December 31, 2010.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Phone Help</h3>
+    <div class="instruction">If you have questions and/or need help completing this form, please call 1-877-822-9500. This toll-free telephone service is available Monday through Friday.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Estimated Tax Payments</h3>
+    <div class="instruction">Tax-exempt corporations, tax-exempt trusts, and private foundations must make estimated tax payments if the total estimated tax for the tax year is $10,000 or more. Use Form 990-W to file the organization's estimated tax liability for 2011.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Underpayment of Estimated Tax</h3>
+    <div class="instruction">An organization that does not pay the estimated tax due when it is due may be charged an underpayment penalty under section 6655, at a rate of 20% of the unpaid amount.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Overpayment of Estimated Tax</h3>
+    <div class="instruction">An estimated tax payment may apply for a "quick refund" if the overpayment is at least 10% of its expected income tax liability for the year and is at least $500. To apply for a quick refund, complete Form 1040-X, Amended U.S. Individual Income Tax Return, and file it with your tax return.</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Electronic Deposit Requirement</h3>
+    <div class="instruction">The IRS has issued final regulations under section 6302 which provide that all federal tax deposits must be made electronically.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 14pt; margin-top: 0;">Form 990-W (2011)</h2>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">Schedule A</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 1</div>
+  <div class="instruction">Enter taxable income (line 1 or its share of the $50,000 amount as determined by the controlled group) on line 1. If the organization is part of a controlled group, enter the amount on line 1 or its share of the $25,000 amount. On line 6, each member must enter the smaller of the amount on line 5 or its share of the $50,000 amount.</div>
+
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;">(a)</td>
+      <td style="width: 15%; text-align: center;">(b)</td>
+      <td style="width: 15%; text-align: center;">(c)</td>
+      <td style="width: 15%; text-align: center;">(d)</td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">1</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_1_a">{{ line_1_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_1_b">{{ line_1_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_1_c">{{ line_1_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_1_d">{{ line_1_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">2</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_a">{{ line_2_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_b">{{ line_2_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_c">{{ line_2_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_2_d">{{ line_2_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">3</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_a">{{ line_3_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_b">{{ line_3_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_c">{{ line_3_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_3_d">{{ line_3_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">4</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4_a">{{ line_4_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4_b">{{ line_4_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4_c">{{ line_4_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_4_d">{{ line_4_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">5</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_a">{{ line_5_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_b">{{ line_5_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_c">{{ line_5_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_5_d">{{ line_5_d }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 10%; text-align: left;">6</td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_a">{{ line_6_a }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_b">{{ line_6_b }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_c">{{ line_6_c }}</span></td>
+      <td style="width: 15%; text-align: center;"><span data-field="line_6_d">{{ line_6_d }}</span></td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="margin-top: 20px;">Line 2—Trusts</div>
+  <div class="instruction">Trusts exempt under section 501(a) and employees' trusts that qualify under section 401(a) are taxed at trust rates.</div>
+  <div class="instruction">For trusts (below), if you expect a net long-term capital gain and a net short-term capital gain, you may use the 2011 Tax Computation Worksheet in Form 990-W, line 10b.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 3—Tax Rate Schedule for Trusts</div>
+  <div class="instruction">If the amount on line 1, page 1, is:</div>
+  <table style="margin-top: 10px;">
+    <tr>
+      <td style="width: 50%; text-align: left;">Over</td>
+      <td style="width: 25%; text-align: center;">$0.00</td>
+      <td style="width: 25%; text-align: center;">Enter on line 1, page 1:</td>
+    </tr>
+    <tr>
+      <td style="width: 50%; text-align: left;">$2,300</td>
+      <td style="width: 25%; text-align: center;">$3,500</td>
+      <td style="width: 25%; text-align: center;">$345.00 + 25%</td>
+    </tr>
+    <tr>
+      <td style="width: 50%; text-align: left;">$5,450</td>
+      <td style="width: 25%; text-align: center;">$8,000</td>
+      <td style="width: 25%; text-align: center;">$1,130.00 + 35%</td>
+    </tr>
+    <tr>
+      <td style="width: 50%; text-align: left;">$11,350</td>
+      <td style="width: 25%; text-align: center;">$13,500</td>
+      <td style="width: 25%; text-align: center;">$2,937 + 35%</td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="margin-top: 20px;">Line 5</div>
+  <div class="instruction">The estimated tax credits include the sum of any credits allowed under section 6651(a) and its instructions for information on recapture of tax credits that may be taken.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 7</div>
+  <div class="instruction">Other taxes include the sum of any recaptured tax credits. See Form 990-W, line 9 and its instructions for information on recapture of tax credits that may be taken.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 9</div>
+  <div class="instruction">Organization qualifies to take credits for federal tax paid on fuels, if the organization is claiming under section 482(g)(2) for its operations.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 10b</div>
+  <div class="instruction">Subtract line 9 from line 8. Private foundations figure the estimated tax liability by multiplying their estimated net investment income by the tax rate (1% or 2%), whichever applies. Taxable private foundations must use the 2011 Tax Computation Worksheet in Form 990-W, line 10b.</div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 14pt; margin-top: 0;">Schedule A</h2>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">Form 990-W (2011)</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 11</div>
+  <div class="instruction">Enter taxable income (line 1 or its share of the $50,000 amount as determined by the controlled group) on line 1. If the organization is part of a controlled group, enter the amount on line 1 or its share of the $25,000 amount. On line 6, each member must enter the smaller of the amount on line 5 or its share of the $50,000 amount.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 12</div>
+  <div class="instruction">If an apportionment plan is adopted, the members of the controlled group must divide the income amounts in each taxable income bracket in any way they want. They need not divide each taxable income bracket equally. For example, a controlled group may decide to allocate all of the income to one member, or none of the income to any member.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 13</div>
+  <div class="instruction">Members of a controlled group are treated as one corporation to determine the amount of taxable income. The amount of taxable income is the sum of the taxable income of all members of the controlled group.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 14</div>
+  <div class="instruction">Enter any 2010 overpayment that the organization chose to credit against unpaid required installments. The overpayment is credited against unpaid required installments in the order in which the installments are due.</div>
+
+  <div class="section-header" style="margin-top: 20px;">Line 14 (cont.)</div>
+  <div class="instruction">See Electronic Deposit Requirement on page 4 for the new required method for making the line 14 payments.</div>
+</div>

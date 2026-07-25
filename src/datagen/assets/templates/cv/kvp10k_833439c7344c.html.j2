@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .contact-info p {
+    margin: 2px 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-header {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-size: 0.9em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 5px 0; text-align: left; }
+</style>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="full_name">{{ full_name }}</span>
+  </div>
+  <div class="contact-info" style="margin-top: 5px;">
+    <p>{{ address_line_1 }}</p>
+    <p>{{ city_state_zip }}</p>
+    <p>Phone: {{ phone }}</p>
+    <p>E-mail: {{ email }}</p>
+  </div>
+
+  <div class="section-title">EDUCATION</div>
+
+  {% for edu in education %}
+  <div class="entry">
+    <div class="entry-header">{{ edu.degree }} ({{ edu.year }})</div>
+    <div class="entry-details">{{ edu.institution }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">EMPLOYMENT</div>
+
+  {% for job in work_experience %}
+  <div class="entry">
+    <div class="entry-header">{{ job.title }} - {{ job.start_year }}-{{ job.end_year }}</div>
+    <div class="entry-details">{{ job.employer }}</div>
+    <div class="entry-details">{{ job.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">I. PROFESSIONAL RECOGNITION</div>
+
+  {% for recognition in recognitions %}
+  <div class="entry">
+    <div class="entry-header">{{ recognition.year }}</div>
+    <div class="entry-details">{{ recognition.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">PROFESSIONAL MEMBERSHIP</div>
+
+  <ul>
+    {% for member in memberships %}
+    <li>{{ member.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">PUBLICATIONS</div>
+
+  {% for pub in publications %}
+  <div class="entry">
+    <div class="entry-header">{{ pub.year }}</div>
+    <div class="entry-details">{{ pub.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">BOOKS</div>
+
+  {% for book in books %}
+  <div class="entry">
+    <div class="entry-header">{{ book.year }}</div>
+    <div class="entry-details">{{ book.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">REFEREED BOOK CHAPTERS</div>
+
+  {% for chapter in book_chapters %}
+  <div class="entry">
+    <div class="entry-header">{{ chapter.year }}</div>
+    <div class="entry-details">{{ chapter.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">ENCYCLOPEDIA ENTRIES</div>
+
+  {% for entry in encyclopedia_entries %}
+  <div class="entry">
+    <div class="entry-header">{{ entry.year }}</div>
+    <div class="entry-details">{{ entry.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">BOOK REVIEWS</div>
+
+  {% for review in book_reviews %}
+  <div class="entry">
+    <div class="entry-header">{{ review.year }}</div>
+    <div class="entry-details">{{ review.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">MAPS</div>
+
+  {% for map in maps %}
+  <div class="entry">
+    <div class="entry-header">{{ map.year }}</div>
+    <div class="entry-details">{{ map.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">PRESS INTERVIEWS</div>
+
+  {% for interview in press_interviews %}
+  <div class="entry">
+    <div class="entry-header">{{ interview.year }}</div>
+    <div class="entry-details">{{ interview.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">PROFESSIONAL PRESENTATIONS</div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 50%;">
+      <div class="entry">
+        <div class="entry-header">{{ presentation.year }}</div>
+        <div class="entry-details">{{ presentation.description }}</div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="entry">
+        <div class="entry-header">{{ presentation.year }}</div>
+        <div class="entry-details">{{ presentation.description }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">INVITED LECTURES</div>
+
+  {% for lecture in invited_lectures %}
+  <div class="entry">
+    <div class="entry-header">{{ lecture.year }}</div>
+    <div class="entry-details">{{ lecture.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="page">
+    <div style="text-align: center; margin-top: 50px;">
+      <span data-field="page_number">{{ page_number }}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 5px 0; text-align: left; }
+</style>
+
+<div class="page">
+  <table>
+    <tr>
+      <td style="width: 10%;">2007</td>
+      <td style="width: 90%;">Natural Hazards, Newspapers, and Perceptions: A Content Analysis and What Can Be Learned. Association of American Geographers Annual Meeting. San Francisco, California.</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>Atmospheric Hazards in Great Lakes States: How Similar Are They? East Lakes Division of the Association of American Geographers. Toledo, Ohio.</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>Environmentally Responsible Sports: What Can Students Learn from the Environmental Sports Link? National Council for Geographic Education. Lake Tahoe, Nevada.</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Flexible Teaching Modules for Physical Geography. East Lakes Division of the Association of American Geographers. Bowling Green, Ohio.</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Geography Undergraduate program Management: Degrees, Courses, Enrollments. National Council for Geographic Education Annual Meeting. Birmingham, Alabama. (with L. Estaville, B. Brown, S. Caldwell, and W. Strong)</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Grade Level Content Standards in Geography. National Council for Geographic Education Annual Meeting. Birmingham, Alabama. (with J. Stoltman and M. Libbee)</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Flexible Teaching Modules for Physical Geography. Association of American Geographers Annual Meeting. Denver, Colorado.</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>American Preferences on Sports and the 2004 Summer Olympics. Colloquium Series, Department of Geography, Western Michigan University. Kalamazoo, Michigan.</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>Americans, Sports and the 2004 Summer Olympic Games. Southeast Division of the Association of American Geographers Annual Meeting. Biloxi, Mississippi. (with F. Shelley)</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>Young Adults' Environmental Knowledge and Environmental Attitudes. East Lakes Division of the Association of American Geographers. Athens, Ohio.</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>Young Adults' Environmental Knowledge And Attitudes: An International Comparison. International Geographical Union, Pre-Conference Symposium for Geographic Education. Glasgow, Scotland. (with A. Parish)</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <table>
+    <tr>
+      <td style="width: 10%;">2004</td>
+      <td style="width: 90%;">Ways of Analyzing Where People Perceive Natural Hazards to Occur. Abstracts of the 100th Association of American Geographers Annual Meeting. Philadelphia, Pennsylvania.</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>Environmental Student Attitudes: Are Students Pro-Environmental? Abstracts of the 99th Association of American Geographers Annual Meeting. New Orleans, Louisiana.</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>Events Watched and Countries Supported During the Winter Olympics. West Lakes Division of the Association of American Geographers Annual Meeting. Minneapolis, Minnesota.</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>Example of GIS in Hazard Perception Research. Association of American Geographers Annual Meeting. Los Angeles, California.</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>What's in the News? The Utility of Newspapers in Natural Hazards Research. East Lakes Division of the Association of American Geographers Annual Meeting. Cincinnati, Ohio.</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>Geohazard Perceptions in Glacier National Park. Association of American Geographers Annual Meeting. New York, New York.</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>Grizzly Bear-Human Confrontation: When two worlds collide. 63rd Association of Pacific Coast Geographers Annual Meeting. Arcata, California.</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>A Comparison of geohazard perceptions before and after a debris flow episode in Glacier National Park, Montana. Association of American Geographers Annual Meeting. Pittsburgh, Pennsylvania.</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Geographic aspects of athletes and entertainers in contemporary American politics. 13th Annual Political Geography Specialty Group Pre-Conference. Morgantown, West Virginia. (With F. Shelley)</td>
+    </tr>
+    <tr>
+      <td>1999</td>
+      <td>An analysis of attacks by grizzly bears (Ursus arctos horribilis) in Glacier National Park, Montana, USA. Southeast Division of the Association of American Geographers Annual Meeting. Tampa, Florida.</td>
+    </tr>
+    <tr>
+      <td>1999</td>
+      <td>Falls, flows, and blows: Environmental education through geohazard perception. 84th National Council for Geographic Education Annual Meeting. Boston, Massachusetts.</td>
+    </tr>
+    <tr>
+      <td>1999</td>
+      <td>An analysis of biogeographical data: Do different clustering techniques yield similar results? Southwest Division of the Association of American Geographers Annual Meeting. San Marcos, Texas.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <table>
+    <tr>
+      <td style="width: 10%;">1999</td>
+      <td style="width: 90%;">Historical reconstruction of geomorphic hazards in Glacier National Park, Montana: A comparison of data sources. 95th Association of American Geographers Annual Meeting. Honolulu, Hawaii.</td>
+    </tr>
+    <tr>
+      <td>1999</td>
+      <td>Avalanche hazard in Glacier National Park: An El Nino connection? Association of American Geographers Annual Meeting. Honolulu, Hawaii. (With R. Dixon, D. Butler, and J. Henry)</td>
+    </tr>
+    <tr>
+      <td>1998</td>
+      <td>Mapping and natural hazard perception: An experiment in Glacier National Park, Montana. Southwest Division of the Association of American Geographers Annual Meeting. Baton Rouge, Louisiana.</td>
+    </tr>
+    <tr>
+      <td>1998</td>
+      <td>Geographical analysis of NHL player origins: 1960-1996. Association of American Geographers Annual Meeting. Boston, Massachusetts.</td>
+    </tr>
+    <tr>
+      <td>1997</td>
+      <td>Geographical Analysis of NHL Player Origins. Southwest Division of the Association of American Geographers Annual Meeting. Albuquerque, New Mexico.</td>
+    </tr>
+    <tr>
+      <td>1997</td>
+      <td>Catastrophic windthrow: A case study of an Allegheny River wilderness island. Association of American Geographers Annual Meeting. Ft. Worth, Texas.</td>
+    </tr>
+    <tr>
+      <td>1997</td>
+      <td>The Locational Development of Ohio State Parks: Two Case Studies. Eastern Historical Geography Association, Pittsburgh, Pennsylvania. September 1997.</td>
+    </tr>
+    <tr>
+      <td>1996</td>
+      <td>State Parks: How did they evolve? East Lakes/West Lakes Association of American Geographers Book of Abstracts. Valparaiso, Indiana.</td>
+    </tr>
+    <tr>
+      <td>1996</td>
+      <td>Landownership patterns as antecedents to Lake Hope State Park. Ohio Academy of Sciences, 96, no. 2: A-28.</td>
+    </tr>
+    <tr>
+      <td>1996</td>
+      <td>Exclusionary Criteria Mapping for Landfill Siting, Grand Forks, ND. Great Plains/Rocky Mountains Division of the Association of American Geographers, Rapid City, South Dakota. (with J. Hammen).</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">FUNDED GRANTS</h2>
+  <table>
+    <tr>
+      <td style="width: 10%;">2013</td>
+      <td style="width: 90%;">DeChano-Cook, Lisa M. Student Motivation Levels in Science. Lucia Harrison Endowment Fund, Department of Geography, Western Michigan University. $1026</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">2015</td>
+      <td style="width: 90%;">Schwartz, Rob, DeChano-Cook, Lisa, and Neal, Dave. Local Citizen-Driven Resilience for Extreme Weather Events Leading to Floods. National Oceanic & Atmospheric Administration (NOAA). $500,000.</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>DeChano-Cook, Lisa M. Increasing Student Motivation through Journaling. Instructional Development Grant, Office of Faculty Development, Western Michigan University. $3333.60.</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>DeChano-Cook, Lisa M. Student Motivations for Learning Science. Support for Faculty Scholars Award. Western Michigan University. $2000.</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>Stoltman, Joseph P., DeChano, Lisa M., Kathleen Baker. Land Use: Human Environment Inquiry for Elementary Students. National Geographic Society Model Programs.</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Stoltman, Joseph P. and Lisa M. DeChano Teacher Enhancement in Geography Content: Bridging Standards with Classroom Instruction. National Science Foundation.</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>Stoltman, Joseph P. and Lisa M. DeChano. Building Bridges between Standards and Instruction through Teacher Enhancement in Geography Content. National Science Foundation.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">II. PROFESSIONAL COMPETENCE</h2>
+  <h3 style="margin-top: 30px;">AWARDS</h3>
+  <table>
+    <tr>
+      <td style="width: 10%;">2010</td>
+      <td style="width: 90%;">Higher Education Distinguished Teacher Award, National Council for Geographic Education, Savannah, Georgia.</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">TEACHING</h3>
+  <p>Western Michigan University</p>
+  <ul>
+    <li>Geography 1050 – Physical Geography (General Education Area VI)</li>
+    <li>Geography 2650 – Introduction to Geospatial Technologies (General Education Area VII)</li>
+    <li>Geography 3010 – Fundamental of Geographic Information Systems</li>
+    <li>Geography 3500 – Conservation and Environmental Management (General Education Area VII)</li>
+    <li>Geography 4260 – Disasters and Risk Management</li>
+    <li>Geography 5570 – Environmental Impact Assessment</li>
+    <li>Geography 5820 – Remote Sensing of the Environment</li>
+    <li>Geography 5970 – Independent Study (14 Undergraduate; 16 Graduate)</li>
+    <li>Geography 6200 – Seminar in Physical Geography</li>
+    <li>Geography 6250 – Seminar in Disasters & Risk Management</li>
+    <li>Geography 6650 – Seminar in Geography</li>
+  </ul>
+
+  <p style="margin-top: 20px;">California State Polytechnic University - Pomona</p>
+  <ul>
+    <li>Geography 101 – Physical Geography</li>
+    <li>Geography 303 – Climatology</li>
+    <li>Geography 309 – Field Geography</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">SUPERVISION OR COMMITTEE SERVICE ON ADVANCED DEGREES</h3>
+  <p>Thesis Chair</p>
+  <table>
+    <tr>
+      <td style="width: 10%;">2016</td>
+      <td style="width: 90%;">Zachary Merrill, Understanding the Controversy Surrounding the Wolf-Hunt by Michigan Residents.</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>Katy Moharter, A Geographic Distribution and Examination of Social-Psychological Factors and Their Impact on Support for the Death Penalty in the United States.</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>Bradley Farley, NCAA Conference Realignment – What are the Reasons for It?</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <table>
+    <tr>
+      <td style="width: 10%;">2014</td>
+      <td style="width: 90%;">Shannon McEwen, No Fracking Way! A Study on the Spatial Patterns of and Changes in Perception and Distance from a Michigan Horizontal Hydraulic Fracturing Site.</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td>Lucas Kanczler, Understanding Wildfire Hazard Vulnerability of Residents in Teton County, Wyoming.</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>Carissa Jackson, Modeling Habitat Suitability for the Mitchell's Satyr Butterfly Using A GIS.</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>Mark A. Moody, NASCAR Demographics and Attraction Power</td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>Ray Koole, National Park Service Interpretive Programs: Making your Park Visit More Meaningful</td>
+    </tr>
+    <tr>
+      <td>2007</td>
+      <td>Jessica Wesel, Educating Fourth Grade Students about Grey Wolves (Canis Lupus) Using a Teaching Trunk</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>Melissa Kovach, Sodium Chloride and its Impacts on Blueberry Soils</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Jennifer Weller, A Model of the Natural Spread of the Invasive Insect Species Emerald Ash Borer in the Lower Peninsula of Michigan</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>Linnea Hruska, Successful Superfund Site Restoration: A Case Study of Independence Grove Forest Preserve</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>Jaclyn Burke, Assessing the Acceptance of the New Environmental Paradigm in Kalamazoo County, Michigan</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px;">Independent Project Chair</h3>
+  <table>
+    <tr>
+      <td style="width: 10%;">2017</td>
+      <td style="width: 90%;">Aimee Moore, Eastern Hemlock Infestation: Potential Geographic Distribution of the Hemlock Woolly Adelgid in Michigan forests, April 2017 Graduation Anticipated.</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>Karma Hassel, The Influence of Community-Based Sustainability Projects on Environmental Perceptions and Behavior.</td>
+    </tr>
+    <tr>
+      <td>2009</td>
+      <td>Kim Walton, Environmental Assessment of Land Cover Changes in the Upper Rio Montagua Watershed</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px;">Dissertation Committee Member</h3>
+  <table>
+    <tr>
+      <td style="width: 10%;">2017</td>
+      <td style="width: 90%;">Dan Serfas, Is the Built Environment That Important in Determining Obesity?: An Investigation of Perceptions Using Concept Mapping and Spatial Statistics, University of Toledo, May 2017 Graduation Anticipated.</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td style="width: 90%;">Ryan Filbin, Assessing Channel Response to the Removal of the Sixth Street Dam in Grand Rapids, Michigan, using SWAT, April 2017 Graduation Anticipated.</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td style="width: 90%;">Virginia VanderVeen, Mapping Barrier Effects in the Wealthy Street Corridor in Grand Rapids, December 2016 Graduation Anticipated.</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td style="width: 90%;">Douglas Vander Hulst, Growth of LEED in the Midwest: Do the Demographics and Climate of the Midwest</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td style="width: 90%;">Rudy Bartels, The Climatology of Drought in Southern Michigan</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td style="width: 90%;">Anne Santa Maria, Managing Dispersed Recreation in the Allegheny National Forest</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td style="width: 90%;">Elise Crafts, Recognized or non-Recognized by the United States Government: Native American's role in Environmental Management</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td style="width: 90%;">Sokhna Diop, GIS-based Flood Analysis for Adequate Flood Mitigation in an Unplanned Urban Area</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td style="width: 90%;">Daniel Serfas, Assessing the Impacts of Dams on Nutrient and Sediment Loading in the Kalamazoo River Using the Soil and Water Assessment Tool (SWAT)</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td style="width: 90%;">Andrea Blanka Szell, Attitudes and Perceptions of Local Residents and Tourists Toward The Protected Area of Retezat National Park, Romania</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td style="width: 90%;">Joseph Burkhead, Prospects for an International Charter Space and Major Disaster Response to Drought Disasters - An Anhui, China Case Study</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td style="width: 90%;">Doug Rivet, Non-Parametric Interpolation and Weather Research Forecast Models for Potato Late Blight Risk Forecasting</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td style="width: 90%;">Janice Fulford, Detecting and Mapping the Michigan Vegetation Zone Using Ecological Indicators</td>
+    </tr>
+  </table>
+</div>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="page">
+  <div>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+    <p><span data-field="year">{{ year }}</span> <span data-field="publication_title">{{ publication_title }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <div class="section-title">Independent Study Member</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year">{{ year }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="name">{{ name }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="name">{{ name }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">Undergraduate Honors Thesis Chair</div>
+    <table>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="name">{{ name }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">INDEPENDENT STUDY</div>
+    <ul>
+      {% for item in undergraduate_students %}
+        <li><span data-field="undergraduate_students[{{ loop.index0 }}].name">{{ item.name }}</span> ({{ item.term }})</li>
+      {% endfor %}
+    </ul>
+
+    <div class="section-title">Graduate Students</div>
+    <ul>
+      {% for item in graduate_students %}
+        <li><span data-field="graduate_students[{{ loop.index0 }}].name">{{ item.name }}</span> ({{ item.term }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <div class="section-title">III. PROFESSIONAL SERVICE</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year">{{ year }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="award_description">{{ award_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="award_description">{{ award_description }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">OFFICES HELD IN NATIONAL AND STATE PROFESSIONAL ASSOCIATIONS</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="office_description">{{ office_description }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">DISCIPLINE SERVICE</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year">{{ year }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year">{{ year }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">UNIVERSITY</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year">{{ year }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year">{{ year }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title">DEPARTMENT</div>
+    <table>
+      <tr>
+        <td style="width: 10%;">
+          <span data-field="year_range">{{ year_range }}</span>
+        </td>
+        <td style="width: 90%;"><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_range">{{ year_range }}</span></td>
+        <td><span data-field="service_description">{{ service_description }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <p>AY <span data-field="year_1">{{ year_1 }}</span>- <span data-field="year_2">{{ year_2 }}</span></p>
+  <p>Chair, Curriculum Committee, Department of Geography, Western Michigan University, <span data-field="location_1">{{ location_1 }}</span>.</p>
+  <p>AY <span data-field="year_3">{{ year_3 }}</span>- <span data-field="year_4">{{ year_4 }}</span></p>
+  <p>Member, Curriculum Committee, Department of Geography, Western Michigan University, <span data-field="location_2">{{ location_2 }}</span>.</p>
+  <p>AY <span data-field="year_5">{{ year_5 }}</span></p>
+  <p>Undergraduate Advisor, Department of Geography, Western Michigan University, <span data-field="location_3">{{ location_3 }}</span>.</p>
+  <p>AY <span data-field="year_6">{{ year_6 }}</span>- AY <span data-field="year_7">{{ year_7 }}</span></p>
+  <p>Co-chair, Assessment Committee, Department of Geography, Western Michigan University, <span data-field="location_4">{{ location_4 }}</span>.</p>
+  <p>AY <span data-field="year_8">{{ year_8 }}</span>- AY <span data-field="year_9">{{ year_9 }}</span></p>
+  <p>Chair, 2003 East Lakes/West Lakes Regional Meeting Planning Committee, Department of Geography, Western Michigan University, <span data-field="location_5">{{ location_5 }}</span>.</p>
+  <p>AY <span data-field="year_10">{{ year_10 }}</span></p>
+  <p>Computer Laboratory Director, Department of Geography and Anthropology, California State Polytechnic University, <span data-field="location_6">{{ location_6 }}</span>.</p>
+  <p>AY <span data-field="year_11">{{ year_11 }}</span></p>
+  <p>Member, Budget and Planning Committee, Department of Geography and Anthropology, California State Polytechnic University, <span data-field="location_7">{{ location_7 }}</span>.</p>
+  <p>AY <span data-field="year_12">{{ year_12 }}</span></p>
+  <p>Member, Curriculum Committee, Department of Geography and Anthropology, California State Polytechnic University, <span data-field="location_8">{{ location_8 }}</span>.</p>
+  <h3 style="text-align: center;">COMMUNITY SERVICE/COMMITTEES</h3>
+  <p><span data-field="year_13">{{ year_13 }}</span></p>
+  <p>Guest Speaker, Robotics First, <span data-field="location_9">{{ location_9 }}</span>.</p>
+  <p><span data-field="year_14">{{ year_14 }}</span></p>
+  <p>Guest Speaker, <span data-field="grade_level_1">{{ grade_level_1 }}</span> Grades, Comstock Public Elementary Schools, Comstock, <span data-field="location_10">{{ location_10 }}</span>.</p>
+  <p><span data-field="year_15">{{ year_15 }}</span>- <span data-field="year_16">{{ year_16 }}</span></p>
+  <p>Coach, Comstock Northeast Middle School Track and Field Team, Comstock, <span data-field="location_11">{{ location_11 }}</span>.</p>
+  <p><span data-field="year_17">{{ year_17 }}</span></p>
+  <p>Co-advisor, Geography Club, Comstock Northeast Middle School, Comstock, <span data-field="location_12">{{ location_12 }}</span>.</p>
+  <p><span data-field="year_18">{{ year_18 }}</span></p>
+  <p>Workshop Co-leader, Geography Awareness Week Workshop (GIS and Mapping), Glowing Embers Girl Scouts of Kalamazoo, Kalamazoo, <span data-field="location_13">{{ location_13 }}</span>.</p>
+  <p><span data-field="year_19">{{ year_19 }}</span></p>
+  <p>Guest Badge Leader, Boy Scouts of America Troop #24 (from Illinois), Warren Dunes State Park, <span data-field="location_14">{{ location_14 }}</span>.</p>
+</div>
+<div class="page">
+  <p><span data-field="year_20">{{ year_20 }}</span></p>
+  <p>Guest Speaker, <span data-field="grade_level_2">{{ grade_level_2 }}</span> Grade, Northwood Elementary School, Parchment, <span data-field="location_15">{{ location_15 }}</span>.</p>
+  <p><span data-field="year_21">{{ year_21 }}</span></p>
+  <p>Geography Awareness Week Guest Speaker, <span data-field="grade_level_3">{{ grade_level_3 }}</span> and <span data-field="grade_level_4">{{ grade_level_4 }}</span> Grades, King-Westwood Elementary School, Kalamazoo, <span data-field="location_16">{{ location_16 }}</span>.</p>
+  <p><span data-field="year_22">{{ year_22 }}</span></p>
+  <p>Geography Awareness Week Guest Speaker, <span data-field="grade_level_5">{{ grade_level_5 }}</span> Grade, King-Westwood Elementary School, Kalamazoo, <span data-field="location_17">{{ location_17 }}</span>.</p>
+</div>
+</body>
+</html>

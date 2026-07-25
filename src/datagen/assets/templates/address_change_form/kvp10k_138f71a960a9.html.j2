@@ -1,0 +1,131 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; margin-bottom: 0.5em; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .section-title { font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 20px; margin-bottom: 15px; }
+  .form-row { display: flex; margin-bottom: 10px; }
+  .form-row > div { flex: 1; padding: 5px 0; }
+  .full-width-row { display: flex; flex-direction: column; margin-bottom: 15px; }
+  .input-field { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo/Name -->
+    <div style="font-size: 24px; font-weight: bold;">L<span style="font-size: 18px;">L</span></div>
+    <div style="font-size: 16px; text-align: center;">Linfield University</div>
+    <div style="font-size: 12px; text-align: center;">OFFICE OF THE REGISTRAR</div>
+  </div>
+
+  <h1 style="text-align: center; font-size: 20px;">ADDRESS CHANGE</h1>
+
+  <p style="text-align: justify; margin-bottom: 30px;">Please complete this form to make an address change while enrolled or upon graduation.</p>
+
+  <!-- Personal Information Section -->
+  <div style="margin-bottom: 25px;">
+    <div class="form-row">
+      <div style="width: 33%;">Last Name: <span class="input-field" style="display: block;">{{ full_name.last_name }}</span></div>
+      <div style="width: 33%;">First Name: <span class="input-field" style="display: block;">{{ full_name.first_name }}</span></div>
+      <div style="width: 33%;">Middle Name: <span class="input-field" style="display: block;">{{ full_name.middle_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 33%;">Linfield Student ID No.: <span class="input-field" style="display: block;">{{ student_id }}</span></div>
+      <div style="width: 33%;">Non-Linfield Email Address: <span class="input-field" style="display: block;">{{ email_address }}</span></div>
+      <div></div> <!-- Spacer -->
+    </div>
+  </div>
+
+  <!-- Permanent Address Section -->
+  <div class="section-title">PERMANENT ADDRESS</div>
+  <div style="border: 1px solid #000; padding: 15px;">
+    <div class="form-row">
+      <div style="width: 50%;">Street Address: <span class="input-field" style="display: block;">{{ permanent_address.street }}</span></div>
+      <div style="width: 25%;">City: <span class="input-field" style="display: block;">{{ permanent_address.city }}</span></div>
+      <div style="width: 25%;">State: <span class="input-field" style="display: block;">{{ permanent_address.state }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 50%;">Cell Phone: <span class="input-field" style="display: block;">{{ permanent_address.cell_phone }}</span></div>
+      <div style="width: 25%;">ZIP Code: <span class="input-field" style="display: block;">{{ permanent_address.zip_code }}</span></div>
+      <div style="width: 25%;">Other Phone: <span class="input-field" style="display: block;">{{ permanent_address.other_phone }}</span></div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <p>Is the address above also your family's address? <span class="checkbox-group">
+        <label><input type="checkbox"> Yes</label>
+        <label><input type="checkbox"> No</label>
+      </span></p>
+      <p>If yes, fill out line below:</p>
+      <div class="form-row">
+        <div style="width: 50%;">Name: <span class="input-field" style="display: block;">{{ family_name }}</span></div>
+        <div style="width: 50%;">Relationship: <span class="input-field" style="display: block;">{{ family_relationship }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alternate Address Section -->
+  <div class="section-title">ALTERNATE ADDRESS</div>
+  <div style="border: 1px solid #000; padding: 15px;">
+    <div class="form-row" style="margin-bottom: 15px;">
+      <div>Type of Address:</div>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Local</label>
+        <label><input type="checkbox"> Billing</label>
+        <label><input type="checkbox"> Family</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 50%;">Name (if other than student): <span class="input-field" style="display: block;">{{ alternate_name }}</span></div>
+      <div style="width: 50%;">Relationship: <span class="input-field" style="display: block;">{{ alternate_relationship }}</span></div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 50%;">Email Address: <span class="input-field" style="display: block;">{{ alternate_email }}</span></div>
+      <div></div> <!-- Spacer -->
+    </div>
+
+    <div class="form-row">
+      <div style="width: 50%;">Street Address: <span class="input-field" style="display: block;">{{ alternate_street }}</span></div>
+      <div style="width: 50%;">City: <span class="input-field" style="display: block;">{{ alternate_city }}</span></div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 50%;">Cell Phone: <span class="input-field" style="display: block;">{{ alternate_cell_phone }}</span></div>
+      <div style="width: 50%;">Other Phone: <span class="input-field" style="display: block;">{{ alternate_other_phone }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 50%;">State: <span class="input-field" style="display: block;">{{ alternate_state }}</span></div>
+      <div style="width: 50%;">ZIP Code: <span class="input-field" style="display: block;">{{ alternate_zip_code }}</span></div>
+    </div>
+  </div>
+
+  <!-- Signature and Footer -->
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>STUDENT SIGNATURE</p>
+        <div style="border-bottom: 1px solid #000; margin-top: 50px;" data-field="student_signature">{{ student_signature }}</div>
+      </div>
+      <div>
+        Date: <span class="input-field" style="display: inline-block; width: 150px;">{{ signature_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 100px; font-size: 10px; text-align: center;">
+    <p>Please return completed form to:</p>
+    <p style="margin: 5px 0;">{{ return_address.department }} - Office of the Registrar, {{ return_address.city }}, {{ return_address.state }} {{ return_address.zip }}</p>
+    <p style="margin: 5px 0;">{{ return_address.email }}</p>
+    <p style="margin-top: 20px;">Rev 1.04.22</p>
+  </div>
+</div>

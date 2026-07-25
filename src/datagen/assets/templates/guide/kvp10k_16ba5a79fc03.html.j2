@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TripDirect Requester Guide</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        p, li { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        .header-banner {
+            background-color: #3478a8;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-banner h1 {
+            margin: 0;
+            font-size: 28pt;
+        }
+        .section-title {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .instruction-list {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        .instruction-list li {
+            margin-bottom: 10px;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        .form-row label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+        .form-row input[type="text"], .form-row input[type="email"], .form-row input[type="password"], .form-row select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+        .button-group button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+            margin-top: 15px;
+            padding: 10px;
+            border-left: 3px solid #3478a8;
+            background-color: #eef4fb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header-banner">
+        <h1>TripDirect Requester Guide</h1>
+    </div>
+
+    <div class="section-title">How to Register/Log in</div>
+    <ul class="instruction-list">
+        <li>Open your Internet Browser (Internet Explorer, Firefox, etc). Click on the following link, or copy and paste it into the web browser: <span data-field="registration_url">{{ registration_url }}</span>.</li>
+        <li>If you are a returning user, enter your <span data-field="email_address">{{ email_address }}</span> and the <span data-field="password">{{ password }}</span>. Click <span data-field="sign_in_link">{{ sign_in_link }}</span>.</li>
+        <li>If you have forgotten your password, click the <span data-field="forgot_password_link">{{ forgot_password_link }}</span> and enter your email address. We'll send you instructions for resetting your password.</li>
+    </ul>
+
+    <div class="form-container">
+        <div class="form-row">
+            <label>Email</label>
+            <input type="text" value="{{ email_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Password</label>
+            <input type="password" value="{{ password_input_placeholder }}">
+        </div>
+        <div class="button-group">
+            <button>Sign In</button>
+            <button><span data-field="forgot_password_link_form">{{ forgot_password_link_form }}</span></button>
+        </div>
+    </div>
+
+    <div class="note">
+        If you are submitting your first request, you must enter registration information first. Click on the down arrow (▼) next to Never Submitted a Request? Register Here! to expand the registration form. <span data-field="note_registration">{{ note_registration }}</span>
+    </div>
+
+    <div class="form-container">
+        <p>Enter the <span data-field="account_number_label">{{ account_number_label }}</span></p>
+        <div class="form-row">
+            <label>First Name</label>
+            <input type="text" value="{{ first_name_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Last Name</label>
+            <input type="text" value="{{ last_name_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Phone Number</label>
+            <input type="text" value="{{ phone_number_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Email</label>
+            <input type="email" value="{{ email_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>New Password</label>
+            <input type="password" value="{{ new_password_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Confirm Password</label>
+            <input type="password" value="{{ confirm_password_input_placeholder }}">
+        </div>
+        <div class="button-group">
+            <button>Register</button>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">How to Submit a Request</div>
+    <ul class="instruction-list">
+        <li>Make sure you are on the Trip Request tab at the top of the screen.</li>
+    </ul>
+
+    <div class="note">
+        <span data-field="note_required_field">{{ note_required_field }}</span>
+    </div>
+
+    <ul class="instruction-list">
+        <li>The <span data-field="booked_by_section">{{ booked_by_section }}</span> section will be filled in with your contact information according to how it was entered upon registration.</li>
+        <li>Enter the <span data-field="trip_name_label">{{ trip_name_label }}</span> and the <span data-field="trip_destination_label">{{ trip_destination_label }}</span>.</li>
+        <li>Select your departing <span data-field="location_label">{{ location_label }}</span> and the <span data-field="organization_label">{{ organization_label }}</span> taking the trip.</li>
+        <li>Choose if your trip is <span data-field="one_way_radio">{{ one_way_radio }}</span> or <span data-field="round_trip_radio">{{ round_trip_radio }}</span>.</li>
+        <li>If you are entering a frequently taken trip, you may be able to select it from the <span data-field="trip_package_dropdown">{{ trip_package_dropdown }}</span> drop down list.</li>
+        <li>Select your trip <span data-field="departure_date_label">{{ departure_date_label }}</span> and <span data-field="return_date_label">{{ return_date_label }}</span>.</li>
+        <li>If applicable, select a <span data-field="budget_code_label">{{ budget_code_label }}</span>.</li>
+    </ul>
+
+    <div class="form-container">
+        <p>Booking Details</p>
+        <div class="form-row">
+            <label>Trip Name</label>
+            <input type="text" value="{{ trip_name_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Trip Destination</label>
+            <input type="text" value="{{ trip_destination_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Location</label>
+            <select>{{ location_dropdown }}</select>
+        </div>
+        <div class="form-row">
+            <label>Organization</label>
+            <select>{{ organization_dropdown }}</select>
+        </div>
+        <div class="form-row">
+            <label>Trip Type</label>
+            <select>{{ trip_type_dropdown }}</select>
+        </div>
+        <div class="form-row">
+            <label>Departure Date</label>
+            <input type="date" value="{{ departure_date_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Return Date</label>
+            <input type="date" value="{{ return_date_input_placeholder }}">
+        </div>
+        <div class="form-row">
+            <label>Trip Package</label>
+            <select>{{ trip_package_dropdown_2 }}</select>
+        </div>
+    </div>
+
+    <div class="section-title">Transportation Type</div>
+    <ul class="instruction-list">
+        <li>Select the <span data-field="transportation_type_label">{{ transportation_type_label }}</span> that is needed for your trip. Click on the icon next to the Transportation Type description to select it.</li>
+    </ul>
+
+    <div class="form-container">
+        <p>Transportation Type</p>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div style="text-align: center;">
+                <img src="placeholder_icon_activity_bus" alt="Activity Bus" style="width: 50px; height: 50px;">
+                <p>Activity Bus</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="placeholder_icon_car" alt="Car" style="width: 50px; height: 50px;">
+                <p>Car</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="placeholder_icon_charter_bus" alt="Charter Bus" style="width: 50px; height: 50px;">
+                <p>Charter Bus</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="placeholder_icon_multiple_types" alt="Multiple Types" style="width: 50px; height: 50px;">
+                <p>Multiple Types</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Trip Contact Details</div>
+    <ul class="instruction-list">
+        <li>Enter the <span data-field="trip_contact_label">{{ trip_contact_label }}</span>. Check the box next to Yes, the 'Booked By' requester information is the same as the 'Trip Contact' information if you are going to be the contact person for the trip.</li>
+        <li>Enter the <span data-field="number_of_students_label">{{ number_of_students_label }}</span> attending the trip.</li>
+        <li>You can add additional information for the trip in the <span data-field="faculty_supervising_adults_label">{{ faculty_supervising_adults_label }}</span>, <span data-field="educational_objective_label">{{ educational_objective_label }}</span>, and <span data-field="special_needs_label">{{ special_needs_label }}</span> requirements boxes.</li>
+        <li><span data-field="educational_objectives_note">{{ educational_objectives_note }}</span></li>
+        <li>Once the trip request form is completed, enter the submitted <span data-field="password_dexter">{{ password_dexter }}</span>.</li>
+        <li>Click on the Submit Request button.</li>
+    </ul>
+</div>
+
+<div class="page">
+    <div class="section-title">My Request Tab</div>
+    <p>You can view any requests that you have entered into the system by clicking on the <span data-field="my_requests_tab_link">{{ my_requests_tab_link }}</span> tab. Hover your mouse over the <span data-field="shortcuts_link">{{ shortcuts_link }}</span> and click on <span data-field="my_trip_requests_link">{{ my_trip_requests_link }}</span>. You will see a listing of any requests that you have entered into the system. You are also able to print out a list of your requests by clicking on the printer icon.</p>
+
+    <div class="form-container" style="margin-top: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+            <div style="font-weight: bold;">Main Request</div>
+            <div style="font-weight: bold;">IT Request</div>
+            <div style="font-weight: bold;">Schedule Request</div>
+            <div style="font-weight: bold;">Inventory Request</div>
+            <div style="font-weight: bold;">Trip Request</div>
+            <div style="font-weight: bold;">My Requests</div>
+            <div style="font-weight: bold;">Settings</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+            <div style="font-weight: bold;">My Requests</div>
+            <div style="font-weight: bold;">My Trip Requests</div>
+            <div style="font-weight: bold;">My Schedule Requests</div>
+            <div style="font-weight: bold;">My Inventory Requests</div>
+            <div style="font-weight: bold;">My Trip Requests</div>
+        </div>
+        <div class="note">
+            <span data-field="note_request_status">{{ note_request_status }}</span>
+        </div>
+    </div>
+
+    <div class="section-title">Viewing Trip Requests</div>
+    <p>On the My Trip Requests page you will see up-to-date information on your requests including the current status, trip ID number, and total costs. You can search for any trip request by typing a key word into the <span data-field="search_box_label">{{ search_box_label }}</span> and clicking GO.</p>
+
+    <div class="form-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <input type="text" placeholder="Search this results for:" style="width: 40%;">
+            <button>Search</button>
+            <div style="font-size: 0.9em;">
+                <a href="#">First</a> <a href="#">Previous</a> <a href="#">Next</a> <a href="#">Last</a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Trip ID</th>
+                    <th>Trip Name</th>
+                    <th>Trip Destination</th>
+                    <th>Organization</th>
+                    <th>Total Costs</th>
+                    <th>Status</th>
+                    <th>Departure Date</th>
+                    <th>Return Date</th>
+                    <th>Attendees</th>
+                    <th>Educational Objectives</th>
+                    <th>Contact Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in trip_requests %}
+                <tr>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].trip_id">{{ item.trip_id }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].trip_name">{{ item.trip_name }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].trip_destination">{{ item.trip_destination }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].organization">{{ item.organization }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].total_costs">{{ item.total_costs }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].status">{{ item.status }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].departure_date">{{ item.departure_date }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].return_date">{{ item.return_date }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].attendees">{{ item.attendees }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].educational_objectives">{{ item.educational_objectives }}</span></td>
+                    <td><span data-field="trip_requests[{{ loop.index0 }}].contact_phone">{{ item.contact_phone }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="page">
+    <div class="footer">
+        <span>SCHOOLDUDE.</span>
+        <span>1.877.868.3833 | <a href="#">support@schooldude.com</a> | <a href="#">www.schooldude.com</a></span>
+        <span>1</span>
+    </div>
+</div>
+
+</body>
+</html>

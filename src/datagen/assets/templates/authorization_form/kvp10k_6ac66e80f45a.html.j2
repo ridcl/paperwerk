@@ -1,0 +1,132 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 50px; margin-bottom: 10px;">
+    <h1 style="font-size: 18pt; margin: 0;">Grinnell College</h1>
+    <p style="font-size: 12pt; margin: 0;">Student Health and Wellness</p>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">Authorization to Release/Exchange Information</h2>
+
+  <div style="margin-bottom: 30px;">
+    <p><strong>Grinnell College</strong></p>
+    <p><span data-field="employer.name">{{ employer.name }}</span></p>
+    <p><span data-field="employer.address_line1">{{ employer.address_line1 }}</span></p>
+    <p><span data-field="employer.city">{{ employer.city }}</span></p>
+    <p>Phone: <span data-field="employer.phone">{{ employer.phone }}</span></p>
+    <p>Fax: <span data-field="employer.fax">{{ employer.fax }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Your Right to Medical Information Confidentiality: You have the right to confidentiality regarding your visits to the Student Health and Wellness center. Except in limited circumstances, in order to release any information including the nature of your visit, Student Health and Wellness will need your signed authorization and specific directions about what information is to be released.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Patient/Student's Name: <span data-field="full_name">{{ full_name }}</span> (Printed)</p>
+    <p>Date of Birth: <span data-field="date_of_birth">{{ date_of_birth }}</span></p>
+    <p>P-Card Number: <span data-field="p_card_number">{{ p_card_number }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>I authorize Grinnell College's Student Health and Wellness to release/exchange health and/or counseling information about me to:</p>
+    <div class="signature-line" data-field="p_card_number_2">{{ p_card_number_2 }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Name of Person/Entity: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    <p>Address: <span data-field="recipient_address">{{ recipient_address }}</span></p>
+    <p>City, State, Zip: <span data-field="recipient_city_state_zip">{{ recipient_city_state_zip }}</span></p>
+    <p>Phone: <span data-field="recipient_phone">{{ recipient_phone }}</span> Fax: <span data-field="recipient_fax">{{ recipient_fax }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 20px;">Authorization to Release/Exchange Information continued...</h2>
+
+  <div style="margin-bottom: 30px;">
+    <p>Type of Information to be Released/Exchanged:</p>
+    <div style="margin-left: 20px;">
+      <label><input type="checkbox"> Counseling Records</label><br>
+      <label><input type="checkbox"> All</label><br>
+      <label>Specifically related to: <span data-field="specific_counseling_details">{{ specific_counseling_details }}</span></label>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <label><input type="checkbox"> Medical Records</label><br>
+      <label><input type="checkbox"> All</label><br>
+      <label>Specifically related to: <span data-field="specific_medical_details">{{ specific_medical_details }}</span></label>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <label><input type="checkbox"> Recommendations</label><br>
+      <label>Other type of information to be released: <span data-field="other_info_type">{{ other_info_type }}</span></label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Any types of Records to be excluded:</p>
+    <div class="signature-line" data-field="recommendations">{{ recommendations }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>I understand that the information is to be used for:</p>
+    <div style="margin-left: 20px;">
+      <label><input type="checkbox"> Academic considerations</label><br>
+      <label><input type="checkbox"> Coordination of services/continuity of care <span data-field="care_continuity_details">{{ care_continuity_details }}</span></label><br>
+      <label><input type="checkbox"> Assessment of functioning requested for off-campus programs (Peace Corps, or other applications).</label><br>
+      <label><input type="checkbox"> Other use of released information</label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Special Authorization to Release/Exchange Information Regarding:</p>
+    <div style="margin-left: 20px;">
+      <label><input type="checkbox"> Alcohol/drug abuse</label><br>
+      <label><input type="checkbox"> HIV-related information</label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>I understand that I am giving my permission to Grinnell College Student Health and Wellness to disclose confidential counseling and/or health records. I also understand that I have the right to revoke this consent, but that my revocation is not effective until delivered in writing to Student Health and Wellness. I acknowledge receipt of a copy of this Authorization</p>
+    <div class="signature-line" style="width: 50%;" data-field="field_1">{{ field_1 }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>This release expires in one year unless another date is specified.</p>
+    <p>Release/Exchange Information Authorization obtained by: <span data-field="authorized_by_name">{{ authorized_by_name }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Patient/Student Signature: <span data-field="signature_date">{{ signature_date }}</span></p>
+    <p>Date: <span data-field="signature_date_value">{{ signature_date_value }}</span></p>
+  </div>
+</div>

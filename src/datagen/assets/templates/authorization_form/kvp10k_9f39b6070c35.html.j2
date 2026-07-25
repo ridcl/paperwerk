@@ -1,0 +1,98 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-label { width: 100px; font-weight: normal; }
+  .form-input-group { flex-grow: 1; display: flex; gap: 20px; }
+  .form-input-field { border-bottom: 1px solid #000; flex-grow: 1; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 30px; }
+</style>
+
+<div class="page">
+  <header>
+    <h1>University of Memphis at <span data-field="institution.name">{{ institution.name }}</span></h1>
+    <h2>Authorization to Release Lambuth Patient-Related Form</h2>
+    <p>Lambuth Student Records Request, <span data-field="address.street">{{ address.street }}</span>, <span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span> <span data-field="address.zip">{{ address.zip }}</span></p>
+    <p>Phone: <span data-field="contact.phone">({{ contact.phone }})</span> / Fax: <span data-field="contact.fax">({{ contact.fax }})</span></p>
+  </header>
+
+  <section style="margin-top: 40px;">
+    <p>Date: <span data-field="date.request">{{ date.request }}</span></p>
+    <p>Phone: <span data-field="contact.phone_request">{{ contact.phone_request }}</span></p>
+    <p>Fax: <span data-field="contact.fax_request">{{ contact.fax_request }}</span></p>
+  </section>
+
+  <section style="margin-top: 30px;">
+    <p>Instructions:</p>
+    <p>Please complete the information areas below. Type in or print your information, sign the form, and send it to Lambuth Student Records Request (see Address/Fax information in the header).</p>
+  </section>
+
+  <section style="margin-top: 30px; border: 1px solid #ccc; padding: 20px;">
+    <div class="form-row">
+      <div class="form-label">Name:</div>
+      <div class="form-input-group">
+        <div class="form-input-field">Last: <span data-field="personal.last_name">{{ personal.last_name }}</span></div>
+        <div class="form-input-field">First: <span data-field="personal.first_name">{{ personal.first_name }}</span></div>
+        <div class="form-input-field">Middle: <span data-field="personal.middle_name">{{ personal.middle_name }}</span></div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-label">Last 4 Digits of SSN:</div>
+      <div class="form-input-field">XXX - XX - <span data-field="personal.ssn_last4">{{ personal.ssn_last4 }}</span></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-label">Birth Date:</div>
+      <div class="form-input-field">MM-DD-____ YY:____</div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-label">Year of Graduation:</div>
+      <div class="form-input-field"><span data-field="personal.graduation_year">{{ personal.graduation_year }}</span></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-label">Comments:</div>
+      <div class="form-input-field" style="height: 80px; border-bottom: 1px solid #000;" data-field="comments">{{ comments }}</div>
+    </div>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <p>Mail Records (May be faxed if under 5 pages) to:</p>
+    <div style="border: 1px solid #000; padding: 15px;">
+      <div class="form-input-field" style="height: 20px;" data-field="mail_records_to">{{ mail_records_to }}</div>
+      <div class="form-input-field" style="height: 20px;" data-field="mail_records_to_2">{{ mail_records_to_2 }}</div>
+      <div class="form-input-field" style="height: 20px;" data-field="mail_records_to_3">{{ mail_records_to_3 }}</div>
+      <div class="form-input-field" style="height: 20px;" data-field="mail_records_to_4">{{ mail_records_to_4 }}</div>
+      <div class="form-input-field" style="height: 20px;" data-field="mail_records_to_5">{{ mail_records_to_5 }}</div>
+    </div>
+  </section>
+
+  <section style="margin-top: 50px;">
+    <div class="form-row">
+      <div class="form-label">Signature (Required):</div>
+      <div class="signature-line" style="flex-grow: 1;" data-field="signature">{{ signature }}</div>
+      <div class="form-label" style="margin-left: 50px;">Date:</div>
+      <div class="signature-line" style="width: 150px;" data-field="date">{{ date }}</div>
+    </div>
+  </section>
+
+  <section style="margin-top: 60px;">
+    <p style="font-size: 0.9em;"><strong>Important:</strong></p>
+    <p style="font-size: 0.9em;">This facsimile transmission may contain information that is Privileged, Confidential, or Exempt from disclosure under applicable law. It is intended ONLY for the use of the individual or entity to which it is addressed. If the receiver and/or reader of this transmission is not the intended recipient, or the employee or responsible agent thereof, then any disclosure, dissemination, distribution or copying of this transmission is strictly prohibited.</p>
+  </section>
+
+  <footer style="margin-top: 80px; text-align: center; font-size: 0.8em;">
+    An Equal Opportunity/Affirmative Action University
+  </footer>
+</div>

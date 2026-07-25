@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commencement Participation Petition</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+        .university-name {
+            font-size: 24pt;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .title-area {
+            text-align: right;
+        }
+        .title-area h1 {
+            font-size: 28pt;
+            margin: 0;
+            font-weight: bold;
+        }
+        .title-area p {
+            margin: 5px 0 0 0;
+            font-size: 10pt;
+        }
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+        .form-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-input-area {
+            border-bottom: 1px solid black;
+            padding-bottom: 2px;
+        }
+        .signature-line {
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature-box {
+            width: 45%;
+            text-align: center;
+        }
+        .signature-box p {
+            margin-top: 5px;
+        }
+        .instruction-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: 1px solid black;
+            background-color: #eee;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+        .button.primary {
+            background-color: #0056b3;
+            color: white;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-info">
+            <div class="logo-area">
+                <div class="university-name">WRIGHT STATE UNIVERSITY</div>
+            </div>
+            <div class="title-area">
+                <p>3640 Colonel Glenn Highway</p>
+                <p>Dayton, OH 45435</p>
+                <p>130 Student Union</p>
+                <p>Phone: {{ contact_phone }}</p>
+                <p>Fax: {{ contact_fax }}</p>
+                <p>RaiderConnect@wright.edu</p>
+            </div>
+        </div>
+
+        <h1>Commencement Participation Petition</h1>
+
+        <p>Students who are unable to attend due to military obligation or documented emergency are eligible to attend the first commencement ceremony following the end of the obligation or emergency. Such students must appropriately provide intent to participate, including documentation showing cause for the exception, before the normal deadline for application for graduation/commencement participation.</p>
+        <p><strong>Submit a petition by starting and completing a petition form, per the instructions below.</strong></p>
+
+        <div class="instruction-box">
+            <p><strong>Prepare required documentation for petition circumstances prior to beginning your petition.</strong></p>
+            <p><strong>To START a form</strong></p>
+            <ul>
+                <li>Click to open the below DocuSign link</li>
+                <li>Validate your email address</li>
+                <li>Enter the code you will receive via email</li>
+            </ul>
+            <div style="text-align: center; margin: 20px 0;">
+                <!-- Placeholder for DocuSign visual -->
+                <img src="placeholder_docsign.png" alt="DocuSign Placeholder" style="max-width: 200px;">
+            </div>
+            <p><strong>To complete the document - select FINISH</strong></p>
+            <div class="button-group" style="justify-content: center;">
+                <div class="button">FINISH</div>
+                <div class="button">FINISH LATER</div>
+                <div class="button">OTHER</div>
+            </div>
+            <p><strong>To save and return later- select FINISH LATER</strong></p>
+        </div>
+
+        <div class="instruction-box" style="margin-top: 30px;">
+            <p><strong>To RETURN to a form you already started</strong></p>
+            <ul>
+                <li>Click the REVIEW DOCUMENT link in the email you received when you selected FINISH LATER</li>
+            </ul>
+            <p>You may also log in to <a href="{{ docsugn_link }}">DocuSign</a></p>
+            <p>Navigate to the Manage option</p>
+            <ul>
+                <li>In the Inbox you will find your document - click SIGN to continue or complete</li>
+                <li>In the Inbox you will find your document - click SIGN to continue or complete</li>
+            </ul>
+            <!-- Placeholder for DocuSign interface visual -->
+            <img src="placeholder_docsign_interface.png" alt="DocuSign Interface Placeholder" style="max-width: 100%;">
+        </div>
+
+        <p style="margin-top: 40px;">University policy may be found here: <a href="{{ policy_link }}">{{ policy_link }}</a></p>
+    </div>
+
+    <div class="page">
+        <div class="section-title">STUDENT INFORMATION</div>
+        <div class="form-row">
+            <div style="flex-basis: 30%;">
+                <span class="form-label">Name</span>
+                <div class="form-input-area"><span data-field="full_name">{{ full_name }}</span></div>
+            </div>
+            <div style="flex-basis: 30%;">
+                <span class="form-label">Phone</span>
+                <div class="form-input-area"><span data-field="phone_number">{{ phone_number }}</span></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div style="flex-basis: 30%;">
+                <span class="form-label">UID</span>
+                <div class="form-input-area"><span data-field="student_id">{{ student_id }}</span></div>
+            </div>
+            <div style="flex-basis: 30%;">
+                <span class="form-label">Street</span>
+                <div class="form-input-area"><span data-field="address_street">{{ address_street }}</span></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div style="flex-basis: 30%;">
+                <span class="form-label">Email</span>
+                <div class="form-input-area"><span data-field="email_address">{{ email_address }}</span></div>
+            </div>
+            <div style="flex-basis: 30%;">
+                <span class="form-label">City/St/Zip</span>
+                <div class="form-input-area"><span data-field="address_city_state_zip">{{ address_city_state_zip }}</span></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div style="flex-basis: 30%;">
+                <span class="form-label">Major</span>
+                <div class="form-input-area"><span data-field="major">{{ major }}</span></div>
+            </div>
+            <div style="flex-basis: 30%;">
+                <span class="form-label">College</span>
+                <div class="form-input-area"><span data-field="college">{{ college }}</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">TERM GRADUATING:</div>
+        <div class="form-row" style="justify-content: space-around; text-align: center;">
+            <div>
+                <span class="form-label">Year</span>
+                <div class="form-input-area"><span data-field="graduation_year">{{ graduation_year }}</span></div>
+            </div>
+            <div>
+                <span class="form-label">Fall</span>
+                <div class="form-input-area"><span data-field="graduation_term_fall">{{ graduation_term_fall }}</span></div>
+            </div>
+            <div>
+                <span class="form-label">Spring</span>
+                <div class="form-input-area"><span data-field="graduation_term_spring">{{ graduation_term_spring }}</span></div>
+            </div>
+            <div>
+                <span class="form-label">Summer</span>
+                <div class="form-input-area"><span data-field="graduation_term_summer">{{ graduation_term_summer }}</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">TERM petitioning to participate</div>
+        <div class="form-row" style="justify-content: space-around; text-align: center;">
+            <div>
+                <span class="form-label">Year</span>
+                <div class="form-input-area"><span data-field="petition_year">{{ petition_year }}</span></div>
+            </div>
+            <div>
+                <span class="form-label">Fall</span>
+                <div class="form-input-area"><span data-field="petition_term_fall">{{ petition_term_fall }}</span></div>
+            </div>
+            <div>
+                <span class="form-label">Spring</span>
+                <div class="form-input-area"><span data-field="petition_term_spring">{{ petition_term_spring }}</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">ACTION(S) REQUESTED (Must be submitted at least six (6) weeks before the ceremony):</div>
+        <div style="margin-bottom: 20px;">
+            <input type="checkbox" id="walk_early" name="action" value="walk_early">
+            <label for="walk_early">Walk early (before semester graduating)</label>
+        </div>
+        <div style="margin-bottom: 30px;">
+            <input type="checkbox" id="walk_post" name="action" value="walk_post">
+            <label for="walk_post">Walk post-graduation semester (after appropriate ceremony listed above)</label>
+        </div>
+
+        <div class="section-title">PETITION DETAILS: (attach added explanation file via link(s) below if space provided is insufficient)</div>
+        <div class="form-input-area" style="height: 150px; border: 1px solid black;">
+            <!-- Area for detailed explanation -->
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="section-title">DOCUMENTATION REQUIRED</div>
+        <p>Provide the required documentation as listed for each circumstance applicable to you</p>
+
+        <div style="margin-top: 30px;">
+            <p><strong>Military Duty</strong></p>
+            <div class="form-input-area" style="height: 50px; border: 1px solid black;" data-field="military_duty">{{ military_duty }}</div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p><strong>Military Orders</strong></p>
+            <div class="form-input-area" style="height: 50px; border: 1px solid black;" data-field="military_orders">{{ military_orders }}</div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p><strong>Documented Emergency or Reason</strong></p>
+            <p>Provide clear and official documentation with dates and substantiating evidence of the circumstances described in your Petition Statement.</p>
+            <div class="form-input-area" style="height: 100px; border: 1px solid black;" data-field="documented_emergency_or_reason">{{ documented_emergency_or_reason }}</div>
+            <p>Completed medical form signed by an external, licensed physician.</p>
+        </div>
+
+        <div class="section-title">ATTACH ALL SUPPORTING DOCUMENTATION</div>
+        <p>Use link icon at right to upload supporting document(s)</p>
+        <!-- Placeholder for file upload interface -->
+        <div style="border: 1px dashed #aaa; padding: 20px; text-align: center; margin-bottom: 40px;">
+            File Upload Interface Placeholder
+        </div>
+
+        <div class="section-title">STUDENT CONFIRMATION</div>
+        <p>My extenuating circumstances prevented me from participating in the Commencement Ceremony of my graduation term according to policy: <a href="{{ policy_link }}">https://policy.wright.edu/policy/3685-commencement-participation</a></p>
+        <p>I understand that submission of a petition and documentation does not guarantee approval.</p>
+        <p>I understand that I may be required to submit additional documentation if my current documentation does not substantiate my request.</p>
+
+        <div class="signature-line">
+            <div class="signature-box">
+                <div class="form-input-area" style="height: 50px;" data-field="field_1">{{ field_1 }}</div>
+                <p>Student Signature</p>
+            </div>
+            <div class="signature-box">
+                <div class="form-input-area" style="height: 50px;" data-field="student_signature">{{ student_signature }}</div>
+                <p>Date</p>
+            </div>
+        </div>
+    </div>

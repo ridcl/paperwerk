@@ -1,0 +1,133 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { font-weight: normal; }
+  .form-input-line { border-bottom: 1px solid #000; flex-grow: 1; margin-left: 10px; }
+  .radio-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <div style="font-size: 24px; font-weight: bold;">UCF</div>
+      <div style="font-size: 24px; font-weight: bold;">Department</div>
+      <div style="font-size: 24px; font-weight: bold;">of History</div>
+      <div style="font-size: 12px; margin-top: 5px;">UNIVERSITY OF CENTRAL FLORIDA</div>
+    </div>
+    <div>
+      <h1 style="font-size: 28px; font-weight: bold;">Undergraduate Internship Application</h1>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 30%;">
+      <div class="form-label">Name:</div>
+      <div class="form-input-line"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div style="width: 30%;">
+      <div class="form-label">Student PID Number:</div>
+      <div class="form-input-line"><span data-field="student_pid_number">{{ student_pid_number }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 30%;">
+      <div class="form-label">Address:</div>
+      <div class="form-input-line"><span data-field="address">{{ address }}</span></div>
+    </div>
+    <div style="width: 30%;">
+      <div class="form-label">Phone Number:</div>
+      <div class="form-input-line"><span data-field="phone_number">{{ phone_number }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 30%;">
+      <div class="form-label">Class Standing:</div>
+      <div class="radio-group">
+        <label><input type="radio" name="class_standing" value="Junior"> Junior</label>
+        <label><input type="radio" name="class_standing" value="Senior"> Senior</label>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div class="form-label">Knights e-Mail Address:</div>
+      <div class="form-input-line"><span data-field="email_address">{{ email_address }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; margin-bottom: 10px;">History Courses Taken</div>
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <th style="text-align: left; padding: 5px;">Course</th>
+          <th style="text-align: left; padding: 5px;">Semester</th>
+          <th style="text-align: left; padding: 5px;">Instructor</th>
+          <th style="text-align: left; padding: 5px;">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in history_courses %}
+        <tr style="border-bottom: 1px dotted #ccc;">
+          <td style="padding: 5px;"><span data-field="history_courses[{{ loop.index0 }}].course_name">{{ history_courses[loop.index0].course_name }}</span></td>
+          <td style="padding: 5px;"><span data-field="history_courses[{{ loop.index0 }}].semester">{{ history_courses[loop.index0].semester }}</span></td>
+          <td style="padding: 5px;"><span data-field="history_courses[{{ loop.index0 }}].instructor_name">{{ history_courses[loop.index0].instructor_name }}</span></td>
+          <td style="padding: 5px;"><span data-field="history_courses[{{ loop.index0 }}].grade">{{ history_courses[loop.index0].grade }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; margin-bottom: 10px;">Areas of Interest:</div>
+    <div class="form-input-line" style="height: 50px;"><span data-field="areas_of_interest">{{ areas_of_interest }}</span></div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; margin-bottom: 10px;">Internship Opportunities – List three of your top preferences</div>
+    <ol style="padding-left: 20px;">
+      <li><span data-field="internship_preference_1">{{ internship_preference_1 }}</span></li>
+      <li><span data-field="internship_preference_2">{{ internship_preference_2 }}</span></li>
+      <li><span data-field="internship_preference_3">{{ internship_preference_3 }}</span></li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; margin-bottom: 10px;">What do you expect to gain from this internship experience that augments or contributes to your academic goals?</div>
+    <div class="form-input-line" style="height: 100px;"><span data-field="academic_goals_expectations">{{ academic_goals_expectations }}</span></div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-weight: bold;">***Please attach your CV/Resume with this form.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Please obtain the signature of two History Department faculty members familiar with your academic performance and who are willing to serve as references.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div style="width: 45%;">
+      <div class="form-label">Print</div>
+      <div class="form-input-line"><span data-field="signature_print_1">{{ signature_print_1 }}</span></div>
+      <div style="margin-top: 50px;">Sign & Date</div>
+      <div class="form-input-line" style="height: 50px;"><span data-field="signature_date_1">{{ signature_date_1 }}</span></div>
+    </div>
+    <div style="width: 45%;">
+      <div class="form-label">Print</div>
+      <div class="form-input-line"><span data-field="signature_print_2">{{ signature_print_2 }}</span></div>
+      <div style="margin-top: 50px;">Sign & Date</div>
+      <div class="form-input-line" style="height: 50px;"><span data-field="signature_date_2">{{ signature_date_2 }}</span></div>
+    </div>
+  </div>
+</div>

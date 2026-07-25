@@ -1,0 +1,390 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic layout structure */
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .header-nav a {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, "Helvetica";
+  }
+  .content-section {
+    margin-bottom: 30px;
+  }
+  .sidebar {
+    width: 30%; /* Approximate width for sidebar content */
+    float: left;
+    padding-right: 20px;
+  }
+  .main-content {
+    width: 68%; /* Approximate width for main content */
+    float: right;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-group input[type="text"], .form-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+  }
+  .button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, "Helvetica";
+  }
+  .table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <h1>Internet Resources</h1>
+    <p>Go to: <span data-field="website_url">{{ website_url }}</span></p>
+  </div>
+  <!-- Mocking the visual structure of the first image -->
+  <div style="display: flex; height: 400px; border: 1px solid #ccc;">
+    <div style="width: 30%; background-color: #f9f9f9; padding: 20px; border-right: 1px solid #ccc;">
+      <h3 style="text-align: center;">Apply Today!</h3>
+      <div style="margin-top: 20px;">
+        <p>Prospective Students</p>
+        <p>Adult Learners</p>
+        <p>Graduate Students</p>
+        <p>International Students</p>
+        <p>Parents & Guardians</p>
+        <p>Padres y Guardianes</p>
+      </div>
+    </div>
+    <div style="width: 70%; background-color: #e0e0e0; padding: 20px;">
+      <!-- Content area for the main visual -->
+      <p>Visual content placeholder...</p>
+      <div style="margin-top: 30px;">
+        <p>Legendary Novelist Tom Robbins to Lecture at Doane</p>
+        <p>First Students Begin New RN to BSN Program</p>
+        <p>Fifteen-Year-Old Doane Student Wins Year From Biochemistry Degree</p>
+        <p>Doane, CAMC Create Athletic Training Outreach Program</p>
+        <p>Fulbright Scholar in Residence Lends Insight to Arab Culture</p>
+      </div>
+      <div style="margin-top: 40px;">
+        <p>Class Cancellations Will Be Posted HERE!</p>
+        <h4 style="text-align: center;">EVENTS</h4>
+        <table class="table-container">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Event</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for event in events %}
+            <tr>
+              <td>{{ event.date }}</td>
+              <td>{{ event.description }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; height: 850px;">
+    <div class="sidebar" style="width: 30%; padding-right: 30px;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h3 style="font-size: 1.5em;">Information Technology Services</h3>
+        <p>For all of your technology needs</p>
+      </div>
+
+      <div class="content-section">
+        <h4>Stay Connected</h4>
+        <p>Doane Email is moving to Gmail!</p>
+        <p><a href="#">Login to Gmail</a></p>
+        <p><a href="#">Activate your Gmail Account</a></p>
+      </div>
+
+      <div class="content-section">
+        <h4>NetDocs:</h4>
+        <ul>
+          <li><a href="#">On-campus</a></li>
+          <li><a href="#">Off-campus</a></li>
+          <li><a href="#">KDNE</a></li>
+          <li><a href="#">The Doane Line</a></li>
+          <li><a href="#">DCTV</a></li>
+          <li><a href="#">Student Directory (login required)</a></li>
+          <li><a href="#">Faculty/Staff Directory (login required)</a></li>
+          <li><a href="#">Frequently Called Numbers</a></li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h4>Your Classes</h4>
+        <ul>
+          <li><a href="#">Blackboard</a></li>
+          <li><a href="#">WebAdvisor</a></li>
+          <li><a href="#">iTunesU</a></li>
+          <li><a href="#">Catalogs</a></li>
+          <li><a href="#">Course Schedules</a></li>
+          <li><a href="#">Writing Resources</a></li>
+          <li><a href="#">Syllabi</a></li>
+          <li><a href="#">Internships</a></li>
+          <li><a href="#">Learning Communities</a></li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h4>Your College</h4>
+        <ul>
+          <li><a href="#">Residence Life</a></li>
+          <li><a href="#">Student Jobs</a></li>
+          <li><a href="#">Mail Services</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">The Writing Center</a></li>
+          <li><a href="#">Dining Services</a></li>
+          <li><a href="#">Special Discounts For You</a></li>
+          <li><a href="#">Bookstore</a></li>
+          <li><a href="#">Handbooks</a></li>
+          <li><a href="#">Refer a Student</a></li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h4>Taking Care of You</h4>
+        <ul>
+          <li><a href="#">Safety & Security</a></li>
+          <li><a href="#">Career Development</a></li>
+          <li><a href="#">Crete Campus</a></li>
+          <li><a href="#">Lincoln/GI Campus</a></li>
+          <li><a href="#">Health & Wellness Center</a></li>
+          <li><a href="#">Get Educated About Relationships</a></li>
+          <li><a href="#">Academic Support Services</a></li>
+          <li><a href="#">Lincoln Campus Bulletin Board</a></li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Organizations</a></li>
+          <li><a href="#">SAC</a></li>
+          <li><a href="#">Athletics</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-content" style="width: 70%;">
+      <!-- Placeholder for the main content area of the second image -->
+      <p>Main content area placeholder...</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2>Activate your Account</h2>
+  </div>
+  <div style="max-width: 500px; margin: 0 auto; border: 1px solid #ccc; padding: 30px;">
+    <p>You must activate your Doane Gmail account before you can access your email.</p>
+    <p><a href="#">Activate My Doane Gmail Account</a></p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="max-width: 500px; margin: 0 auto; border: 1px solid #ccc; padding: 30px;">
+    <p>Login: <span data-field="login_format">{{ login_format }}</span></p>
+    <p>Password: <span data-field="password_hint">{{ password_hint }}</span></p>
+    <p>Doane Username (firstname.lastname): <span data-field="username_example">{{ username_example }}</span></p>
+    <p>Password: <input type="text" placeholder="********"></p>
+    <button class="button">Activate My Account</button>
+  </div>
+</div>
+
+<div class="page">
+  <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 30px;">
+    <p>This form will activate your Doane College Gmail account. You must activate your Doane Gmail account. You must activate your Doane Gmail account. After you activate your account, your Doane Gmail username and password will be the same as your Doane network login.</p>
+    <div class="form-group">
+      <label>Doane Username (firstname.lastname):</label>
+      <input type="text" value="{{ username_example }}">
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" placeholder="********">
+    </div>
+    <button class="button">Activate My Account</button>
+    <p style="margin-top: 20px;">Your Doane College Google Apps account has been successfully activated. Please go <a href="#">here</a> and login. This will finish your activation.</p>
+    <div class="form-group">
+      <label>Doane Username (firstname.lastname):</label>
+      <input type="text" value="{{ username_example }}">
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="max-width: 400px; margin: 0 auto; border: 1px solid #ccc; padding: 30px; text-align: center;">
+    <p>Sign in to your account at <span data-field="domain_name">{{ domain_name }}</span></p>
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" value="{{ username_example }}@{{ domain_name }}">
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" placeholder="********">
+    </div>
+    <div style="margin-bottom: 15px;">
+      <input type="checkbox" id="stay_signed" name="stay_signed">
+      <label for="stay_signed">Stay signed in</label>
+    </div>
+    <button class="button">Sign in</button>
+    <p style="margin-top: 15px;"><a href="#">Can't access your account?</a></p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid #ccc;">
+    <div style="font-weight: bold;">{{ username_example }}@{{ domain_name }}</div>
+    <div>
+      <a href="#">Settings</a> |
+      <a href="#">Help</a> |
+      <a href="#">Sign out</a>
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <input type="text" placeholder="Search the Web...">
+    <div style="margin-top: 10px;">
+      <a href="#">Show search options</a> |
+      <a href="#">Create a filter</a>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; border-top: 1px solid #ccc;">
+    <div style="width: 20%; padding: 10px; border-right: 1px solid #ccc; background-color: #f0f0f0;">
+      <p>Language:</p>
+      <select>
+        <option>{{ language_option }}</option>
+      </select>
+    </div>
+    <div style="width: 80%; padding: 10px;">
+      <p>Doane.edu Mail display language: <span data-field="display_language">{{ display_language }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; border-top: 1px solid #ccc;">
+    <div style="width: 20%; padding: 10px; border-right: 1px solid #ccc; background-color: #f0f0f0;">
+      <p>Settings</p>
+      <p>General</p>
+      <p>Accounts</p>
+      <p>Labels</p>
+      <p>Filters</p>
+      <p>Forwarding and POP/IMAP</p>
+      <p>Chat</p>
+      <p>Web Clips</p>
+      <p>Labs</p>
+    </div>
+    <div style="width: 80%; padding: 10px;">
+      <p>General</p>
+      <p>Accounts</p>
+      <p>Labels</p>
+      <p>Filters</p>
+      <p>Forwarding and POP/IMAP</p>
+      <p>Chat</p>
+      <p>Web Clips</p>
+      <p>Labs</p>
+    </div>
+  </div>
+  <div style="margin-top: 20px; border: 1px solid #ccc; padding: 20px;">
+    <div class="form-group">
+      <label>Forwarding:</label>
+      <p>Forward a copy of incoming mail to <span data-field="forward_email">{{ forward_email }}</span> and keep Doane.edu Mail's copy in the inbox.</p>
+    </div>
+    <div class="form-group">
+      <label>POP Download:</label>
+      <p>1. Status: POP is enabled for all mail that has arrived since <span data-field="pop_start_date">{{ pop_start_date }}</span></p>
+      <p>2. Enable POP for all mail (even mail that's already been downloaded)</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid #ccc;">
+    <div style="font-weight: bold;">{{ current_student_name }}</div>
+    <div>
+      <a href="#">Students</a>
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <div style="border: 1px solid #ccc; padding: 20px;">
+      <h4>Current Students - WebAdvisor for Students Menu</h4>
+      <p>The following links may display confidential information.</p>
+      <div style="margin-top: 20px;">
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+          <p><a href="#">Account Summary</a></p>
+          <p><a href="#">Account Summary by Term</a></p>
+          <p><a href="#">View My Payment Plan Schedule</a></p>
+        </div>
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+          <p><a href="#">Financial Aid</a></p>
+          <p><a href="#">Financial aid status by year</a></p>
+          <p><a href="#">Financial aid status by term</a></p>
+          <p><a href="#">Financial aid award letter</a></p>
+          <p><a href="#">Accept or reject my financial aid awards</a></p>
+          <p><a href="#">Change my requested loan amount</a></p>
+        </div>
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+          <p><a href="#">Search for Sections</a></p>
+          <p><a href="#">Register for Sections</a></p>
+          <p><a href="#">Delete a Section</a></p>
+          <p><a href="#">Manage My Waitlist</a></p>
+        </div>
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+          <p><a href="#">Academic Profile</a></p>
+          <p><a href="#">Grades</a></p>
+          <p><a href="#">Grade Point Average by Term</a></p>
+          <p><a href="#">View My Transcript</a></p>
+          <p><a href="#">My class schedule</a></p>
+          <p><a href="#">My profile</a></p>
+          <p><a href="#">Student Gradebook</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

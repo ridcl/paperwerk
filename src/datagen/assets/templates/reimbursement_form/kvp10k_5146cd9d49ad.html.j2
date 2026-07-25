@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Member Reimbursement Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; margin-bottom: 10px; align-items: center; }
+  .form-label { width: 200px; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container th, .table-container td { border: 1px solid #000; padding: 8px; text-align: left; }
+  .table-container th { background-color: #f0f0f0; }
+  .signature-line { margin-top: 50px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 16pt;">Member Reimbursement Pharmacy Form</h1>
+      <p>Please read the back for instructions. Complete all information.</p>
+      <p>An incomplete form may either delay your reimbursement or may be returned for additional information.</p>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="OptumRx Logo" style="width: 150px;">
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Complete and return this form when you have purchased a covered prescribed drug at retail cost and are seeking reimbursement. Submit this form with the original prescription label receipt(s). Cash register and credit card receipts alone are not acceptable as proof of purchase. Reimbursement is not guaranteed. Claims will be reviewed, subject to limitations, exclusions and other provisions of the Plan Benefit.</p>
+  </div>
+
+  <div class="section-title">Member/Subscriber Information (See your ID card.)</div>
+  <div class="form-row">
+    <div class="form-label">RxGrp</div>
+    <div class="form-input"><span data-field="member_rxgrp">{{ member_rxgrp }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Member ID</div>
+    <div class="form-input"><span data-field="member_id">{{ member_id }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Member Name (Last, First)</div>
+    <div class="form-input"><span data-field="member_name">{{ member_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Street Address</div>
+    <div class="form-input"><span data-field="member_address">{{ member_address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">City</div>
+    <div class="form-input" style="width: 150px;"><span data-field="member_city">{{ member_city }}</span></div>
+    <div class="form-input" style="width: 100px;"><span data-field="member_state">{{ member_state }}</span></div>
+    <div class="form-input" style="width: 100px;"><span data-field="member_zip">{{ member_zip }}</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 45%;">
+      <div class="section-title">Patient Information</div>
+      <div class="form-row">
+        <div class="form-label">Patient Name (Last, First)</div>
+        <div class="form-input"><span data-field="patient_name">{{ patient_name }}</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Patient Date of Birth (Month/Day/Year)</div>
+        <div class="form-input"><span data-field="patient_dob">{{ patient_dob }}</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Gender</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="gender" value="Female"> Female</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="gender" value="Male"> Male</div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Relationship to Member/Subscriber</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="relationship" value="Self"> Self</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="relationship" value="Spouse"> Spouse</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="relationship" value="Child"> Child</div>
+        <div class="form-input" style="width: 100px;"><input type="radio" name="relationship" value="Dependent Student"> Dependent Student</div>
+      </div>
+      <div class="form-row">
+        <div class="form-label"></div>
+        <div class="form-input" style="width: 100px;"><input type="checkbox"> Disabled Dependent</div>
+        <div class="form-input" style="width: 100px;"><input type="checkbox"> Dependent Partner</div>
+        <div class="form-input" style="width: 100px;"><input type="checkbox"> Nonspouse Partner</div>
+      </div>
+    </div>
+
+    <div style="width: 55%;">
+      <div class="section-title">Claim Receipts</div>
+      <p>(Please read Section A on back for details.)</p>
+      <p>Check the appropriate box if your receipts are for:</p>
+      <div style="margin-top: 15px;">
+        <input type="checkbox"> Compound prescription
+      </div>
+      <p>Please have your pharmacist complete Section A below. Make sure your pharmacist lists ALL the VALID 11 digit NDC numbers and ingredients and quantities on the claim form.</p>
+
+      <div class="section-title" style="margin-top: 20px;">Medication purchased outside of the United States</div>
+      <p>Please indicate:</p>
+      <div class="form-row">
+        <div class="form-label">Country</div>
+        <div class="form-input"><span data-field="med_country">{{ med_country }}</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Currency used</div>
+        <div class="form-input"><span data-field="med_currency">{{ med_currency }}</span></div>
+      </div>
+
+      <div class="section-title" style="margin-top: 20px;">Allergy medication</div>
+      <p>(if covered by your pharmacy plan)</p>
+      <div class="form-row">
+        <div class="form-label"></div>
+        <div class="form-input" style="width: 100px;"><input type="checkbox"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">Pharmacy and Prescribing Physician Information</div>
+  <div class="form-row">
+    <div class="form-label">Name of Pharmacy</div>
+    <div class="form-input"><span data-field="pharmacy_name">{{ pharmacy_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Street Address</div>
+    <div class="form-input"><span data-field="pharmacy_address">{{ pharmacy_address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">City</div>
+    <div class="form-input" style="width: 150px;"><span data-field="pharmacy_city">{{ pharmacy_city }}</span></div>
+    <div class="form-input" style="width: 100px;"><span data-field="pharmacy_state">{{ pharmacy_state }}</span></div>
+    <div class="form-input" style="width: 100px;"><span data-field="pharmacy_zip">{{ pharmacy_zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Telephone (Include Area Code)</div>
+    <div class="form-input"><span data-field="pharmacy_phone">{{ pharmacy_phone }}</span></div>
+  </div>
+  <div class="signature-line">
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+      <div>
+        <p>Signature of Pharmacist or Representative</p>
+        <div class="form-input" style="width: 300px;"><span data-field="pharmacist_signature">{{ pharmacist_signature }}</span></div>
+        <p>NPI/Pharmacy Account Number (If required by your pharmacy plan)</p>
+        <div class="form-input" style="width: 300px;"><span data-field="npi_account_number">{{ npi_account_number }}</span></div>
+      </div>
+      <div>
+        <p>Prescribing Physician Name and Phone Number</p>
+        <div class="form-input" style="width: 300px;"><span data-field="physician_name">{{ physician_name }}</span></div>
+        <div class="form-input" style="width: 300px;"><span data-field="physician_phone">{{ physician_phone }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Prescribing Physician Name and Phone Number</div>
+  <!-- This section is a header/summary, no loop needed -->
+
+  <div class="section-title" style="margin-top: 30px;">Acknowledgement</div>
+  <p>I certify that the medication(s) described above was received for use by the patient listed above, and that (or the patient, if not myself) am eligible for prescription drug benefits. I also certify that the medication received was not for an on-the-job injury. I recognize that reimbursement will be paid directly to me, and that assignment of these benefits to a pharmacy or any other party is void.</p>
+  <div class="signature-line">
+    <p>Signature of Member/Subscriber</p>
+    <div class="form-input" style="width: 300px;"><span data-field="member_signature">{{ member_signature }}</span></div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 9pt;">
+    <p>Instructions – Read carefully before completing this form.</p>
+    <ol>
+      <li>Be sure your receipts are complete. In order for your request to be processed, all receipts must contain the information listed below. Your pharmacist can provide the necessary information if your claim is not itemized.</li>
+      <li>The member/subscriber should read the acknowledgement carefully, then sign and date this form.</li>
+      <li>Return the completed form and receipt(s) to: OptumRx<br>ATTN: Claims Department<br>P.O. Box 29077<br>Hot Springs, AR 71903</li>
+    </ol>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Section A – Claim Receipts</div>
+  <p>Receipts must contain the following information.</p>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 30%;">Date prescription filled</div>
+    <div style="width: 30%;">NDC number (National Drug Code)</div>
+    <div style="width: 30%;">Prescription number (Rx number)</div>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 30%;">Name and address of pharmacy</div>
+    <div style="width: 30%;">Name of drug and strength</div>
+    <div style="width: 30%;">DAW (Dispense As Written Code)</div>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 30%;">Prescribing Physician Name or ID number</div>
+    <div style="width: 30%;">Quantity and days' supply</div>
+    <div style="width: 30%;"></div>
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">PHARMACY INFORMATION (For Compound Prescriptions ONLY)</div>
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 30%;">RX#</th>
+        <th style="width: 40%;">VALID 11 DIGIT NDC#</th>
+        <th style="width: 20%;">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].rx_number">{{ line_items[loop.index0].rx_number }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].ndc_number">{{ line_items[loop.index0].ndc_number }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].quantity">{{ line_items[loop.index0].quantity }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>• For each NDC number, indicate the "metric quantity" expressed in the number of tablets, grams, milliliters, creams, ointments, injectables, etc.</p>
+    <p>• Indicate the TOTAL charge (dollar amount) paid by the patient.</p>
+    <p>• Receipt(s) must be provided with patient claim form.</p>
+  </div>
+
+  <div class="table-container" style="margin-top: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Total Quantity</th>
+        <th style="width: 50%;">Total Charge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="total_quantity">{{ total_quantity }}</span></td>
+        <td><span data-field="total_charge">{{ total_charge }}</span></td>
+      </tr>
+    </tbody>
+  </div>
+
+  <div class="signature-line" style="margin-top: 50px;">
+    <p>Signature of Pharmacist</p>
+    <div class="form-input" style="width: 300px;"><span data-field="pharmacist_signature_section_a">{{ pharmacist_signature_section_a }}</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Section B – Coordination of Benefits</div>
+  <p>• You must complete a separate claim form for each pharmacy used and for each patient.</p>
+  <p>• You must submit claims within one year of date of purchase or as required by your plan.</p>
+
+  <div class="section-title" style="margin-top: 20px;">When submitting an Explanation of Benefits (EOB) from another Health Plan or from Medicare:</div>
+  <p>If you have not already done so, submit the claim to the Primary Plan or Medicare. Once the EOB is received, complete this form, submit the original prescription receipts, and attach the EOB from the Primary Plan or Medicare, which clearly indicates the cost of the prescription and what was paid by the Primary Plan or Medicare.</p>
+
+  <div class="section-title" style="margin-top: 20px;">When submitting a copy receipt:</div>
+  <p>If your Primary Plan is one in which a co-payment or coinsurance is paid at the pharmacy, then no EOB is needed. Just complete this form and submit the prescription receipt(s) that shows the co-payment or coinsurance amount paid at the pharmacy. The receipt(s) will serve as the EOB.</p>
+
+  <div style="margin-top: 50px; font-size: 9pt;">
+    <p>*Arizona: For your protection, Arizona law requires the following statement to appear on this form. Any person who knowingly presents a false or fraudulent claim for payment or a loss is subject to criminal and civil penalties.</p>
+    <p>*California: For your protection, California law requires the following to appear on this form. Any person who knowingly presents false or fraudulent claim for the payment of a loss is guilty of a crime and may be subject to fines and confinement in state prison.</p>
+  </div>
+</div>
+
+</body>
+</html>

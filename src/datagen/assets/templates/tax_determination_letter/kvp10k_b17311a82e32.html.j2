@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IRS Determination Letter</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .address-block { margin-bottom: 30px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .signature-block { margin-top: 60px; }
+  .footer { position: absolute; bottom: 50px; right: 60px; font-size: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  td { padding: 5px 0; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for formal look */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  .content { line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <img src="placeholder_irs_logo.png" alt="IRS Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+      <h1 style="font-size: 18pt; margin: 0;">Department of the Treasury</h1>
+      <h2 style="font-size: 14pt; margin: 0;">Internal Revenue Service</h2>
+      <div class="address-block">
+        <p>P.O. Box {{ address.box }}</p>
+        <p>{{ address.city }}, {{ address.state }} {{ address.zip }}</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p>Date: <span data-field="date_issued">{{ date_issued }}</span></p>
+      <p>Employer ID number: <span data-field="employer_id">{{ employer_id }}</span></p>
+      <p>Contact person/ID number: <span data-field="contact_id">{{ contact_id }}</span></p>
+      <p>Contact telephone number: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+      <p>Form you must file: <span data-field="form_name">{{ form_name }}</span></p>
+      <p>Tax years: <span data-field="tax_years">{{ tax_years }}</span></p>
+    </div>
+  </div>
+
+  <p>Dear <span data-field="recipient_name">{{ recipient_name }}</span>:</p>
+
+  <p>This letter is our final determination that you don't qualify for tax-exempt status under Section 501(c)(3) of the Internal Revenue Code (the Code). Recently, we sent you a proposed adverse determination in response to your application. The proposed adverse determination explained the facts, law, and basis for our conclusion, and it gave you 30 days to file a protest. Because we didn't receive a protest within the required 30 days, the proposed determination is now final.</p>
+
+  <p>Because you don't qualify as a tax-exempt organization under Section 501(c)(3) of the Code, donors can't deduct contributions to you under Section 170 of the Code. You must file federal income tax returns for the tax years listed at the top of this letter using the required form (also listed at the top of this letter) within 30 days of this letter unless you request an extension of time to file.</p>
+
+  <p>We'll make this final adverse determination letter and the proposed adverse determination letter available for public inspection (as required under Section 6110 of the Code) after deleting certain identifying information. Please read the enclosed Notice 437, Notice of Intention to Disclose, and review the two attached letters that show our proposed deletions. If you disagree with our proposed deletions, follow the instructions in the Notice 437 on how to notify us. If you agree with our deletions, you don't need to take any further action.</p>
+
+  <p>We'll also notify the appropriate state officials of our determination by sending them a copy of this final letter and the proposed determination letter (under Section 6104(c) of the Code). You should contact your state officials if you have questions about how this determination will affect your state responsibilities and requirements.</p>
+
+  <div class="signature-block">
+    <p>Sincerely,</p>
+    <p style="margin-top: 50px;">
+      <span data-field="signer_name">{{ signer_name }}</span><br>
+      <span data-field="signer_title">{{ signer_title }}</span><br>
+      <span data-field="signer_department">{{ signer_department }}</span>
+    </p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Enclosures:</p>
+    <ul>
+      <li>Notice 437</li>
+      <li>Redacted Letter 4036, Proposed Adverse Determination Under IRC Section 501(c)(3)</li>
+      <li>Redacted Letter 4038, Final Adverse Determination Under IRC Section 501(c)(3) - No Protest</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <p>If you have questions about this letter, you can contact the person listed at the top of this letter. If you have questions about your federal income tax status and responsibilities, call our customer service number at 1-800-829-1040 (TTY 1-800-829-4933 for deaf or hard of hearing) or customer service for businesses at 1-800-829-4933.</p>
+
+  <div style="text-align: center; margin-top: 100px;">
+    <p>Sincerely,</p>
+    <p style="margin-top: 50px;">
+      <span data-field="signer_name_2">{{ signer_name_2 }}</span><br>
+      <span data-field="signer_title_2">{{ signer_title_2 }}</span>
+    </p>
+  </div>
+
+  <div style="margin-top: 100px;">
+    <p><strong>Enclosures:</strong></p>
+    <ul>
+      <li>Notice 437</li>
+      <li>Redacted Letter 4036, Proposed Adverse Determination Under IRC Section 501(c)(3)</li>
+      <li>Redacted Letter 4038, Final Adverse Determination Under IRC Section 501(c)(3) - No Protest</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Letter 4038 (Rev. 7-2014)<br>
+    Catalog Number 476325
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <img src="placeholder_irs_logo.png" alt="IRS Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+      <h1 style="font-size: 18pt; margin: 0;">Department of the Treasury</h1>
+      <h2 style="font-size: 14pt; margin: 0;">Internal Revenue Service</h2>
+      <div class="address-block">
+        <p>P.O. Box {{ address.box }}</p>
+        <p>{{ address.city }}, {{ address.state }} {{ address.zip }}</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p>Date: <span data-field="date_issued_2">{{ date_issued_2 }}</span></p>
+      <p>Employer ID number: <span data-field="employer_id_2">{{ employer_id_2 }}</span></p>
+      <p>Contact person/ID number: <span data-field="contact_id_2">{{ contact_id_2 }}</span></p>
+      <p>Contact telephone number: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+      <p>Contact fax number: <span data-field="contact_fax_2">{{ contact_fax_2 }}</span></p>
+      <p>UIL: <span data-field="uil_2">{{ uil_2 }}</span></p>
+    </div>
+  </div>
+
+  <p>Dear <span data-field="recipient_name_2">{{ recipient_name_2 }}</span>:</p>
+
+  <p>We considered your application for recognition of exemption from federal income tax under Internal Revenue Code (IRC) Section 501(a). We determined that you don't qualify for exemption under IRC Section 501(c)(3). This letter explains the reasons for our conclusion. Please keep it for your records.</p>
+
+  <div class="section-title">Issues</div>
+  <p>Do you qualify for exemption under IRC Section 501(c)(3)? No, for the reasons stated below.</p>
+
+  <div class="section-title">Facts</div>
+  <p>You submitted Form 1023-EZ, Streamline Application for Recognition of Exemption Under Section 501(c)(3) of the Internal Revenue Code, on <span data-field="submission_date">{{ submission_date }}</span>.</p>
+
+  <p>You attest that you were incorporated on <span data-field="incorporation_date">{{ incorporation_date }}</span> in the state of <span data-field="incorporation_state">{{ incorporation_state }}</span>. You attest that you have the necessary organizing document, that your organizing document limits your purposes to one or more exempt purposes within the meaning of the IRC Section 501(c)(3), that your organizing document does not expressly empower you to engage in activities other than an insubstantial part, that are not in furtherance of one or more exempt purposes, and that your organizing document contains the dissolution provision required under Section 501(c)(3).</p>
+
+  <p>You attest that you are organized and operated exclusively to further charitable purposes. You attest that you have not conducted and will not conduct prohibited activities under IRC Section 501(c)(3). Specifically, you attest that you will:</p>
+  <ul>
+    <li><span data-field="attestation_1">{{ attestation_1 }}</span></li>
+    <li><span data-field="attestation_2">{{ attestation_2 }}</span></li>
+  </ul>
+
+  <p>Your mission or most significant activities on the Form 1023EZ indicated that you are the legal entity behind the cryptocurrency, T. Your team consists of all volunteers who work on the project to advance a system that allows for peer to peer transfer of value for goods and services.</p>
+
+  <p>Detailed information was subsequently requested. You are formed to advance T. T is open source and is a cryptocurrency which is defined as a digital asset designed to work as a medium of exchange that uses strong cryptography to secure financial transactions, control the creation of additional units, and verify the transfer of assets. Your software is free to download, inspect, and edit. All your software and research are public and open source allowing anyone to take advantage of or contribute to your work. You work to build technology and software to support the T blockchain. In general, cryptocurrencies use blockchain technology to record transactions. Furthermore, a blockchain provides anyone who wants access to observe and analyze the chain data, given one has the know-how.</p>
+
+  <div class="section-title">Your activities specifically consist of:</div>
+  <ul>
+    <li><span data-field="activity_1">{{ activity_1 }}</span></li>
+    <li><span data-field="activity_2">{{ activity_2 }}</span></li>
+    <li><span data-field="activity_3">{{ activity_3 }}</span></li>
+    <li><span data-field="activity_4">{{ activity_4 }}</span></li>
+    <li><span data-field="activity_5">{{ activity_5 }}</span></li>
+    <li><span data-field="activity_6">{{ activity_6 }}</span></li>
+    <li><span data-field="activity_7">{{ activity_7 }}</span></li>
+    <li><span data-field="activity_8">{{ activity_8 }}</span></li>
+  </ul>
+
+  <p>The only fee charged on the T blockchain is transaction fees that are paid out to the V that validate the transactions on the blockchain. For this, successful V obtain new cryptocurrency as a reward. The reward decreases costs by creating a complementary incentive to contribute to the processing power of the network. None of these fees are directed to the T team. You further stated that T uses a mining algorithm which can be</p>
+
+  <div class="footer">
+    Letter 4034 (Rev. 11-2018)<br>
+    Catalog Number 47628K
+  </div>
+</div>
+
+<div class="page">
+  <p>mined effectively using generalized hardware (graphics cards) which most individuals already have in their computers.</p>
+
+  <div class="section-title">Law</div>
+  <p>Currently all assets are held by individual team members. You pay their expenses for things such as domain names, server costs, software costs and more are reimbursed from your development fund that community members can donate to. In addition, you offer a developer tip jar on your website which is a fund that allows people to donate directly to the development team for their efforts. These funds are divided evenly among team members who have elected to receive tips from the community members.</p>
+
+  <p>Finally, you stated that all communications take place over the internet via your social networking sites.</p>
+
+  <div class="section-title">IRC Section 501(c)(3) exemptions from taxation any corporation organized and operated exclusively for religious, charitable, scientific, testing for public safety, literary, or educational purposes, or to foster national or international amateur sports competition, or for the prevention of cruelty to children or animals, provided no part of the net earnings of which inures to the benefit of any private shareholder or individual.</div>
+
+  <p>Treasury Regulation Section 1.501(c)(3)-1(a)(1) provides that, in order to be exempt as an organization described in IRC Section 501(c)(3), an organization must be both organized and operated exclusively for one or more of the purposes specified in IRC Section 501(c)(3). If an organization fails to meet either the organizational or operational test, it is not exempt.</p>
+
+  <p>Treas. Reg. Sec. 1.501(c)(3)-1(c)(1) provides that an organization will be regarded as “operated exclusively” for one or more exempt purposes only if it engages primarily in activities which accomplish one or more of such exempt purposes specified in IRC Section 501(c)(3). An organization will not be so regarded if more than an insubstantial part of its activities is not in furtherance of an exempt purpose.</p>
+
+  <p>Treas. Reg. Section 1.501(c)(3)-1(d)(1) states that an organization is not operated exclusively for one or more exempt purposes unless it serves a public rather than a private interest. It must not be operated for the benefit of designated individuals or the persons who created it.</p>
+
+  <p>Treas. Reg. Section 1.501(c)(3)-d(3)(i) provides that the term “educational” relates to: (a) the instruction or training of the individual for the purpose of improving or developing his capabilities; or (b) the instruction of the public on subjects useful to the individual and beneficial to the community.</p>
+
+  <p>Treas. Reg. Sec. 1.501(c)(3)-d(3)(ii) provides that an educational organization includes an organization whose activities consist of presenting public discussion groups, forums, panels, lectures, or other similar programs. Such programs may be on radio or television.</p>
+
+  <p>Rev. Rule 66-255, 1966-2 C.B. 210, describes an educational organization that qualified for providing public information. In this ruling, the organization educated the public as to a particular method of painless childbirth. The organization utilized meetings, films, forums, and publications to educate the public. The organization carried out its purpose through (a) public programs of films followed by discussions with doctors and members of the organization; (b) presentations on local radio stations; (c) meetings conducted by a doctor or a registered nurse for expectant parents; and (d) pamphlets, manuals, and books which are distributed to libraries, hospital, and obstetricians.</p>
+
+  <p>Another example of a qualifying educational organization was described in Rev. Rule 77-365, 1977-2 C.B. 192, in which the organization provided educational services to the public in the form of workshops, lessons, and seminars at municipal parks and recreational areas to instruct and educate individuals in a particular sport.</p>
+
+  <div class="footer">
+    Letter 4034 (Rev. 11-2018)<br>
+    Catalog Number 47628K
+  </div>
+</div>
+
+<div class="page">
+  <p>You are not conducting any of the activities described above. You do not conduct any public discussion groups, forums, panels, lectures or similar programs. You merely provide open source web applications that can be used or modified by anyone and used for whatever purpose that individual sees fit. You do not conduct any educational activities that instruct or train individuals for the purpose of improving their capabilities. Your activities are best described as providing a product with information and are analogous to a product manual, which does not rise to the level of educational as required under IRC Section 501(c)(3).</p>
+
+  <p>Furthermore, you do not meet the operational test under IRC Section 501(c)(3) because you are not operating exclusively for charitable purposes as required under Treas. Reg. Section 1.501(c)(3)-1(c)(1). You maintain, develop and distribute open source software relating to your cryptocurrency freely to the public. The provision of goods or services to the public must fulfill a recognized Section 501(c)(3) charitable purpose itself or be directed to benefiting a charitable class recognized under Section 501(c)(3).</p>
+
+  <div class="section-title">Conclusion</div>
+  <p>Based on the information submitted, we conclude that you are not an organization described in IRC Section 501(c)(3) because you are not operated for charitable purposes or for educational purposes.</p>
+
+  <div class="section-title">If you agree</div>
+  <p>If you agree with our proposed adverse determination, you don't need to do anything. If we don't hear from you within 30 days, we'll issue a final adverse determination letter. That letter will provide information on your income tax filing requirements.</p>
+
+  <div class="section-title">If you don't agree</div>
+  <p>If you have a right to protest if you don't agree with our proposed adverse determination. To do so, send us a protest within 30 days of the date of this letter. You must include:</p>
+  <ul>
+    <li>Your name, address, employer identification number (EIN), and a daytime phone number</li>
+    <li>A statement of the facts, law, and arguments supporting your position</li>
+    <li>A statement indicating whether you are requesting an Appeals Office conference</li>
+    <li>The signature of an officer, director, trustee, or other official who is authorized to sign for the organization or your authorized representative</li>
+  </ul>
+
+  <p>The following declaration:</p>
+  <p>For an officer, director, trustee, or other official who is authorized to sign for the organization: Under penalties of perjury, I declare that I have examined this request, or this modification to the request, including accompanying documents, and to the best of my knowledge and belief, the request</p>
+
+  <div class="footer">
+    Letter 4034 (Rev. 11-2018)<br>
+    Catalog Number 47628K
+  </div>
+</div>
+
+<div class="page">
+  <p>or the modification contains all relevant facts relating to the request, and such facts are true, correct, and complete.</p>
+
+  <p>Your representative (attorney, certified public accountant, or other individual enrolled to practice before the IRS) must file a Form 2848, Power of Attorney and Declaration of Representative, with us if they haven't already done so. You can find more information about representation in Publication 947, Practice Before the IRS and Power of Attorney.</p>
+
+  <p>We'll review your protest statement and decide if you gave us a basis to reconsider our determination. If so, we'll continue to process your case considering the information you provided. If you haven't given us a basis for reconsideration, we'll send you a letter explaining our decision and how to appeal it. You can find more information in Publication 892, How to Appeal an IRS Decision on Tax-Exempt Status.</p>
+
+  <p>If you don't file a protest within 30 days, you can't seek a declaratory judgment in court later because the law requires that you use the IRC administrative process first (IRC Section 7428(b)(2)).</p>
+
+  <div class="section-title">Where to send your protest</div>
+  <p>Send your protest, Form 2848, if applicable, and any supporting documents to the applicable address:</p>
+  <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+    <div style="width: 48%;">
+      <strong>U.S. mail:</strong><br>
+      Internal Revenue Service<br>
+      EO Determinations Quality Assurance<br>
+      Mail Stop 6403<br>
+      P.O. Box {{ address.box_2 }}<br>
+      {{ address.city_2 }}, {{ address.state_2 }} {{ address.zip_2 }}
+    </div>
+    <div style="width: 48%;">
+      <strong>Street address for delivery service:</strong><br>
+      Internal Revenue Service<br>
+      EO Determinations Quality Assurance<br>
+      550 Main Street, Mail Stop 6403<br>
+      {{ address.city_2_2 }}, {{ address.state_2_2 }} {{ address.zip_2_2 }}
+    </div>
+  </div>
+
+  <p>You can also fax your protest and supporting documents to the fax number listed at the top of this letter. If you fax your statement, please contact the person listed at the top of this letter to confirm that they received it.</p>
+
+  <p>You can get the forms and publications mentioned in this letter by visiting our website at www.irs.gov/forms-pubs or by calling 800-TAX-FORM (800-829-3676). If you have questions, you can contact the person listed at the top of this letter.</p>
+
+  <div class="section-title">Contacting the Taxpayer Advocate Service</div>
+  <p>The Taxpayer Advocate Service (TAS) is an independent organization within the IRS that can help protect your taxpayer rights. TAS can offer you help if your tax problem is causing a hardship, or if you've tried but haven't been able to resolve your problem with the IRS. If you qualify for TAS assistance, which is always free, TAS will do everything possible to help you. Visit www.taxpayeradvocate.irs.gov or call 877-777-4778.</p>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for formal look */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  .content { line-height: 1.6; }
+</style>
+
+<div class="page">
+  <div class="content">
+    <div style="text-align: right; font-size: 10pt;">
+      <span>{{ page_number }}</span>
+    </div>
+
+    <div style="margin-top: 100px;">
+      <p style="margin-bottom: 5px;">Sincerely,</p>
+      <p style="margin-top: 20px;">
+        <span data-field="full_name">{{ full_name }}</span><br>
+        <span data-field="employer.title">{{ employer.title }}</span>, <span data-field="employer.organization">{{ employer.organization }}</span><br>
+        <span data-field="employer.department">{{ employer.department }}</span>
+      </p>
+    </div>
+
+    <div style="position: absolute; bottom: 50px; right: 60px; font-size: 9pt; text-align: right;">
+      <p style="margin: 0;">Letter <span data-field="document_id">{{ document_id }}</span> (Rev. <span data-field="revision_date">{{ revision_date }}</span>)</p>
+      <p style="margin: 0;">Catalog Number <span data-field="catalog_number">{{ catalog_number }}</span></p>
+    </div>
+  </div>
+</div></body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insurance Claim Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .header { font-weight: bold; text-align: center; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .input-row td { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 18pt; margin-bottom: 5px;">Church Mutual Insurance Company</h1>
+    <p style="font-size: 10pt; margin: 0;">3000 Schuster Lane, P.O. Box 342, Merrill, WI 54452-0342</p>
+    <p style="font-size: 10pt; margin: 0;">(715) 536-5577 • (800) 554-2642 • Fax (715) 539-4651</p>
+    <p style="font-size: 10pt; margin: 0;">www.churchmutual.com</p>
+  </div>
+
+  <div class="section-title">AUTOMOBILE ACCIDENT REPORT</div>
+  <p style="font-size: 10pt;">Please furnish the following information for prompt handling of your claim. You may call this information in to our office or you may fax or mail this form to us.</p>
+
+  <div class="section-title">CLAIM INFORMATION</div>
+  <table>
+    <tbody>
+      <tr class="input-row">
+        <td>Date Reported</td>
+        <td><span data-field="date_reported">{{ date_reported }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Reported by: (Name)</td>
+        <td><span data-field="reporter_name">{{ reporter_name }}</span></td>
+        <td>(Title)</td>
+        <td><span data-field="reporter_title">{{ reporter_title }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Phone: (Home)</td>
+        <td><span data-field="reporter_phone_home">{{ reporter_phone_home }}</span></td>
+        <td>(Work)</td>
+        <td><span data-field="reporter_phone_work">{{ reporter_phone_work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Fax</td>
+        <td><span data-field="reporter_fax">{{ reporter_fax }}</span></td>
+        <td>E-mail</td>
+        <td><span data-field="reporter_email">{{ reporter_email }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Account No.</td>
+        <td><span data-field="account_number">{{ account_number }}</span></td>
+        <td>Policy No.</td>
+        <td><span data-field="policy_number">{{ policy_number }}</span></td>
+        <td>Effective Date</td>
+        <td><span data-field="effective_date">{{ effective_date }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Date of Loss</td>
+        <td><span data-field="date_of_loss">{{ date_of_loss }}</span></td>
+        <td>Time of Loss</td>
+        <td><span data-field="time_of_loss">{{ time_of_loss }}</span></td>
+        <td>a.m.</td>
+        <td><span data-field="time_am">{{ time_am }}</span></td>
+        <td>p.m.</td>
+        <td><span data-field="time_pm">{{ time_pm }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Insured's Name (as it appears on policy)</td>
+        <td colspan="4"><span data-field="insured_name">{{ insured_name }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address 1 (Street)</td>
+        <td colspan="4"><span data-field="insured_address_1">{{ insured_address_1 }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address 2 (Street)</td>
+        <td colspan="4"><span data-field="insured_address_2">{{ insured_address_2 }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="insured_city">{{ insured_city }}</span></td>
+        <td>State</td>
+        <td><span data-field="insured_state">{{ insured_state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="insured_zip_code">{{ insured_zip_code }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">ACCIDENT INFORMATION</div>
+  <table>
+    <tbody>
+      <tr class="input-row">
+        <td>Location of Accident (Street)</td>
+        <td colspan="3"><span data-field="accident_location_street">{{ accident_location_street }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="accident_city">{{ accident_city }}</span></td>
+        <td>State</td>
+        <td><span data-field="accident_state">{{ accident_state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="accident_zip_code">{{ accident_zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Police Dept. reported to</td>
+        <td><span data-field="police_dept">{{ police_dept }}</span></td>
+        <td>Officer's Name/Badge No.</td>
+        <td><span data-field="officer_name_badge">{{ officer_name_badge }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Report No.</td>
+        <td><span data-field="report_number">{{ report_number }}</span></td>
+        <td>Violation issued</td>
+        <td><span data-field="violation_issued">{{ violation_issued }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Description of Accident - Describe fully - Detail on provided diagram</td>
+        <td colspan="3"><span data-field="accident_description">{{ accident_description }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="height: 150px; border: 1px solid #000; margin-bottom: 20px;"></div>
+
+  <div class="section-title">WITNESSES</div>
+  <table>
+    <tbody>
+      {% for i in range(3) %}
+      <tr class="input-row">
+        <td>Name</td>
+        <td><span data-field="witnesses[{{ i }}].name">{{ witnesses[i].name }}</span></td>
+        <td>Phone No.: Home</td>
+        <td><span data-field="witnesses[{{ i }}].phone_home">{{ witnesses[i].phone_home }}</span></td>
+        <td>Work</td>
+        <td><span data-field="witnesses[{{ i }}].work">{{ witnesses[i].work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="witnesses[{{ i }}].city">{{ witnesses[i].city }}</span></td>
+        <td>State</td>
+        <td><span data-field="witnesses[{{ i }}].state">{{ witnesses[i].state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="witnesses[{{ i }}].zip_code">{{ witnesses[i].zip_code }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">INSURED'S VEHICLE AND DRIVER INFORMATION</div>
+  <table>
+    <tbody>
+      <tr class="input-row">
+        <td>Vehicle Serial No.</td>
+        <td><span data-field="vehicle_serial_no">{{ vehicle_serial_no }}</span></td>
+        <td>Year</td>
+        <td><span data-field="vehicle_year">{{ vehicle_year }}</span></td>
+        <td>Make</td>
+        <td><span data-field="vehicle_make">{{ vehicle_make }}</span></td>
+        <td>Model</td>
+        <td><span data-field="vehicle_model">{{ vehicle_model }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Vehicle No. on policy</td>
+        <td><span data-field="vehicle_policy_no">{{ vehicle_policy_no }}</span></td>
+        <td>License Plate No.</td>
+        <td><span data-field="license_plate_no">{{ license_plate_no }}</span></td>
+        <td>State of Issue</td>
+        <td><span data-field="license_plate_state">{{ license_plate_state }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Are you insured with any other insurance company?</td>
+        <td><span data-field="other_insurance_yes_no">{{ other_insurance_yes_no }}</span></td>
+        <td>No</td>
+        <td>Yes, if yes, what company?</td>
+        <td><span data-field="other_insurance_company">{{ other_insurance_company }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Name of Driver</td>
+        <td><span data-field="driver_name">{{ driver_name }}</span></td>
+        <td>Phone No.: (Home)</td>
+        <td><span data-field="driver_phone_home">{{ driver_phone_home }}</span></td>
+        <td>(Work)</td>
+        <td><span data-field="driver_phone_work">{{ driver_phone_work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Relation to insured (employee, volunteer, family, etc.)</td>
+        <td><span data-field="driver_relation">{{ driver_relation }}</span></td>
+        <td>Date of Birth</td>
+        <td><span data-field="driver_dob">{{ driver_dob }}</span></td>
+        <td>Age</td>
+        <td><span data-field="driver_age">{{ driver_age }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address (Street)</td>
+        <td colspan="4"><span data-field="driver_address_street">{{ driver_address_street }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="driver_city">{{ driver_city }}</span></td>
+        <td>State</td>
+        <td><span data-field="driver_state">{{ driver_state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="driver_zip_code">{{ driver_zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Driver's License No.</td>
+        <td><span data-field="driver_license_no">{{ driver_license_no }}</span></td>
+        <td>Purpose of Use</td>
+        <td><span data-field="license_purpose_of_use">{{ license_purpose_of_use }}</span></td>
+        <td>Used with Permission</td>
+        <td><span data-field="license_used_with_permission">{{ license_used_with_permission }}</span></td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr class="input-row">
+        <td>Describe damage to insured vehicle</td>
+        <td colspan="3"><span data-field="insured_vehicle_damage_description">{{ insured_vehicle_damage_description }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">PASSENGERS IN INSURED VEHICLE (USE ADDITIONAL PAPER IF NECESSARY)</div>
+  <table>
+    <tbody>
+      {% for i in range(3) %}
+      <tr class="input-row">
+        <td>Name</td>
+        <td><span data-field="passengers[{{ i }}].name">{{ passengers[i].name }}</span></td>
+        <td>Age</td>
+        <td><span data-field="passengers[{{ i }}].age">{{ passengers[i].age }}</span></td>
+        <td>Sex</td>
+        <td><span data-field="passengers[{{ i }}].sex">{{ passengers[i].sex }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Parent/Guardian</td>
+        <td><span data-field="passengers[{{ i }}].parent_guardian">{{ passengers[i].parent_guardian }}</span></td>
+        <td>Phone No.</td>
+        <td><span data-field="passengers[{{ i }}].phone_no">{{ passengers[i].phone_no }}</span></td>
+        <td>Work</td>
+        <td><span data-field="passengers[{{ i }}].work">{{ passengers[i].work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address</td>
+        <td colspan="3"><span data-field="passengers[{{ i }}].address">{{ passengers[i].address }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="passengers[{{ i }}].city">{{ passengers[i].city }}</span></td>
+        <td>State</td>
+        <td><span data-field="passengers[{{ i }}].state">{{ passengers[i].state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="passengers[{{ i }}].zip_code">{{ passengers[i].zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Injuries</td>
+        <td colspan="3"><span data-field="passengers[{{ i }}].injuries">{{ passengers[i].injuries }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">PROPERTY DAMAGE TO OTHERS</div>
+  <table>
+    <tbody>
+      {% for i in range(3) %}
+      <tr class="input-row">
+        <td>Owner of Property/Vehicle</td>
+        <td><span data-field="property_damage_others[{{ i }}].owner_name">{{ property_damage_others[i].owner_name }}</span></td>
+        <td>Address</td>
+        <td><span data-field="property_damage_others[{{ i }}].address">{{ property_damage_others[i].address }}</span></td>
+        <td>State</td>
+        <td><span data-field="property_damage_others[{{ i }}].state">{{ property_damage_others[i].state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="property_damage_others[{{ i }}].zip_code">{{ property_damage_others[i].zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Name of Driver</td>
+        <td><span data-field="property_damage_others[{{ i }}].driver_name">{{ property_damage_others[i].driver_name }}</span></td>
+        <td>Phone No. (Home)</td>
+        <td><span data-field="property_damage_others[{{ i }}].driver_phone_home">{{ property_damage_others[i].driver_phone_home }}</span></td>
+        <td>(Work)</td>
+        <td><span data-field="property_damage_others[{{ i }}].driver_phone_work">{{ property_damage_others[i].driver_phone_work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address (Street)</td>
+        <td colspan="3"><span data-field="property_damage_others[{{ i }}].address_street">{{ property_damage_others[i].address_street }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="property_damage_others[{{ i }}].city">{{ property_damage_others[i].city }}</span></td>
+        <td>State</td>
+        <td><span data-field="property_damage_others[{{ i }}].state">{{ property_damage_others[i].state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="property_damage_others[{{ i }}].zip_code">{{ property_damage_others[i].zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Describe damage to insured vehicle</td>
+        <td colspan="3"><span data-field="property_damage_others[{{ i }}].damage_description">{{ property_damage_others[i].damage_description }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">PROPERTY DAMAGE TO OTHERS (CONTINUED)</div>
+  <table>
+    <tbody>
+      {% for i in range(3) %}
+      <tr class="input-row">
+        <td>Other vehicle or property insured?</td>
+        <td><span data-field="other_property_insured_yes_no[{{ i }}]">{{ other_property_insured_yes_no[i] }}</span></td>
+        <td>No</td>
+        <td>Yes, if yes, state company or agency name, phone no., and policy no.</td>
+        <td><span data-field="other_property_details[{{ i }}]">{{ other_property_details[i] }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Repair Estimate</td>
+        <td><span data-field="repair_estimate_others[{{ i }}]">{{ repair_estimate_others[i] }}</span></td>
+        <td>Where can vehicle be seen?</td>
+        <td><span data-field="repair_location_others[{{ i }}]">{{ repair_location_others[i] }}</span></td>
+        <td>When?</td>
+        <td><span data-field="repair_date_others[{{ i }}]">{{ repair_date_others[i] }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">PASSENGERS IN OTHER VEHICLE (USE ADDITIONAL PAPER IF NECESSARY)</div>
+  <table>
+    <tbody>
+      {% for i in range(3) %}
+      <tr class="input-row">
+        <td>Name</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].name">{{ other_vehicle_passengers[i].name }}</span></td>
+        <td>Age</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].age">{{ other_vehicle_passengers[i].age }}</span></td>
+        <td>Sex</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].sex">{{ other_vehicle_passengers[i].sex }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Parent/Guardian</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].parent_guardian">{{ other_vehicle_passengers[i].parent_guardian }}</span></td>
+        <td>Phone No.</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].phone_no">{{ other_vehicle_passengers[i].phone_no }}</span></td>
+        <td>Work</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].work">{{ other_vehicle_passengers[i].work }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Address</td>
+        <td colspan="3"><span data-field="other_vehicle_passengers[{{ i }}].address">{{ other_vehicle_passengers[i].address }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].city">{{ other_vehicle_passengers[i].city }}</span></td>
+        <td>State</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].state">{{ other_vehicle_passengers[i].state }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="other_vehicle_passengers[{{ i }}].zip_code">{{ other_vehicle_passengers[i].zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>Injuries</td>
+        <td colspan="3"><span data-field="other_vehicle_passengers[{{ i }}].injuries">{{ other_vehicle_passengers[i].injuries }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="height: 100px; border: 1px solid #000; margin-bottom: 20px;"></div>
+
+  <div class="section-title">SHOW CARS AS YOU OTHER</div>
+  <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+    <div>
+      <p style="font-weight: bold;">A</p>
+      <p style="font-size: 10pt;">STREET</p>
+    </div>
+    <div>
+      <p style="font-weight: bold;">B</p>
+      <p style="font-size: 10pt;">STREET</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+    <div style="width: 40%;">
+      <p style="font-weight: bold;">LABEL EACH</p>
+      <p style="font-size: 10pt;">STREET</p>
+    </div>
+    <div style="width: 40%;">
+      <p style="font-weight: bold;">SHOW STOP OR</p>
+      <p style="font-size: 10pt;">SLOW SIGNS</p>
+    </div>
+  </div>
+
+  <div style="height: 200px; border: 1px solid #000; margin-bottom: 20px;"></div>
+
+  <div class="section-title">STATE - SPECIFIC FRAUD WARNING STATEMENTS FOR (PLEASE READ CAREFULLY)</div>
+  <p style="font-size: 10pt;">"For your protection, Arizona law requires the following statement to appear on this form: Any person who knowingly presents a false or fraudulent claim for payment of a loss is subject to criminal and civil penalties."</p>
+  <p style="font-size: 10pt;">"For your protection, California law requires the following to appear on this form: Any person who knowingly presents false or fraudulent claim for the payment of a loss is guilty of a crime and may be subject to fines and confinement in state prison."</p>
+  <p style="font-size: 10pt;">"It is unlawful to knowingly provide false, incomplete, or misleading facts or information to an insurance company for the purpose of defrauding or attempting to defraud the company. Penalties may include imprisonment, fines, denial of insurance, and civil damages. Any insurance company or agent of an insurance company who knowingly provides false, incomplete, or misleading facts or information to a policyholder or claimant for the purpose of defrauding or attempting to defraud the policyholder or claimant to a settlement or award or to influence its interest proceeds shall be reported to the Colorado Division of Insurance within the Department of Regulatory Agencies."</p>
+  <p style="font-size: 10pt;">"Any person who knowingly and with intent to injure, defraud, or deceive any insurance company files a statement of claim containing any false, incomplete, or misleading information is guilty of a felony of the third degree."</p>
+  <p style="font-size: 10pt;">"It is a crime to knowingly provide false, incomplete, or misleading information to an insurance company for the purpose of defrauding the company. Penalties may include imprisonment, fines, or denial of insurance benefits."</p>
+  <p style="font-size: 10pt;">"Any person who knowingly files a statement of claim containing any false or misleading information is subject to criminal and civil penalties."</p>
+  <p style="font-size: 10pt;">"Any person who knowingly makes or knowingly assists, abets, solicits, or conspires with another to make a false report of the theft, destruction, damage, or conversion of any motor vehicle to a law enforcement agency, the department of motor vehicles, or an insurance company commits a fraudulent insurance act, which is a crime, and shall also be subject to a civil penalty but not to exceed five thousand dollars and the value of the subject motor vehicle or stated claim for each violation."</p>
+  <p style="font-size: 10pt;">"Any person who knowingly and with intent to injure or defraud any insurer files an application or claim containing any false, incomplete, or missing information shall, upon conviction, be subject to imprisonment for up to 7 years and payment of a fine of up to $15,000."</p>
+  <p style="font-size: 10pt;">"For your protection, these states require the following wording on this form: Any person who knowingly and with intent to defraud an insurer files a statement of claim containing false, inflated, incomplete, or misleading information is subject to prosecution and punishment for insurance fraud and may be subject to civil fines, criminal penalties, and denial of insurance benefits."</p>
+  <p style="font-size: 10pt;">Applicable in All States</p>
+  <p style="font-size: 10pt;">For your protection, review your policy for an explanation of the insured's duties in the event of a loss. Failure to comply with these duties may void your policy.</p>
+  <table>
+    <tbody>
+      <tr class="input-row">
+        <td>Name (print)</td>
+        <td><span data-field="claimant_name">{{ claimant_name }}</span></td>
+        <td>Phone: (Home)</td>
+        <td><span data-field="claimant_phone_home">{{ claimant_phone_home }}</span></td>
+        <td>Work</td>
+        <td><span data-field="claimant_phone_work">{{ claimant_phone_work }}</span></td>
+        <td>Zip Code</td>
+        <td><span data-field="claimant_zip_code">{{ claimant_zip_code }}</span></td>
+      </tr>
+      <tr class="input-row">
+        <td>City</td>
+        <td><span data-field="claimant_city">{{ claimant_city }}</span></td>
+        <td>State</td>
+        <td><span data-field="claimant_state">{{ claimant_state }}</span></td>
+        <td>Date</td>
+        <td><span data-field="claimant_date">{{ claimant_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

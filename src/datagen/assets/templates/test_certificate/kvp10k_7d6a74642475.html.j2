@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CB Test Certificate</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 5px 0; }
+  .header-table { width: 100%; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <table class="header-table">
+    <tr>
+      <td style="width: 50%;">
+        <!-- IEC/ECEE Logo Placeholder -->
+        <img src="placeholder_iec_logo.png" alt="IEC/ECEE Scheme" style="height: 60px;">
+      </td>
+      <td style="width: 25%; text-align: right;">
+        <div style="border: 1px solid black; padding: 10px;">
+          <div style="font-size: 10px;">Ref. Certif. No.</div>
+          <div style="font-size: 14px; font-weight: bold;">SE-{{ certificate_number }}M2</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <h1 style="text-align: center; margin-top: 30px; font-size: 18px; font-weight: bold;">IEC SYSTEM FOR MUTUAL RECOGNITION OF TEST CERTIFICATES FOR ELECTRICAL EQUIPMENT (IECEE) CB SCHEME</h1>
+
+  <h2 style="text-align: center; margin-top: 40px; font-size: 14px; font-weight: bold;">CB TEST CERTIFICATE</h2>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 48%;">
+      <p>Product</p>
+      <p>Name and address of the applicant: <span data-field="applicant.name_address">{{ applicant.name_address }}</span></p>
+      <p>Name and address of the manufacturer: <span data-field="manufacturer.name_address">{{ manufacturer.name_address }}</span></p>
+      <p>Name and address of the factory: <span data-field="factory.name_address">{{ factory.name_address }}</span></p>
+      <p>Note: When more than one factory, please report on page 2</p>
+      <p>Ratings and principal characteristics</p>
+      <p>Trademark (if any)</p>
+      <p>Customer's Testing Facility (CTF) Stage used</p>
+      <p>Model / Type Ref.</p>
+      <p>Additional information (if necessary may also be reported on page 2)</p>
+      <p>A sample of the product was tested and found to be in conformity with</p>
+      <p>As shown in the Test Report Ref. No. which forms part of this Certificate</p>
+    </div>
+    <div style="width: 48%;">
+      <p>Contractor</p>
+      <p>{{ contractor.name }}</p>
+      <p>{{ contractor.address }}</p>
+      <p>Same as applicant</p>
+      <p>See page 2</p>
+      <p>{{ product_characteristics }}</p>
+      <p>{{ trademark_info }}</p>
+      <p>{{ ctf_stage }}</p>
+      <p>{{ model_type_ref }}</p>
+      <p>See page 2</p>
+      <p>{{ test_report_ref }}</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 30px;">This CB Test Certificate is issued by the National Certification Body</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <p>Date: <span data-field="date_issued">{{ date_issued }}</span></p>
+      <p>Intertek Semko AB</p>
+      <p>{{ address_line_1 }}</p>
+      <p>{{ address_line_2 }}</p>
+      <p>{{ city_postal_code }}</p>
+    </div>
+    <div>
+      <p>Signature: <span data-field="signature_name">{{ signature_name }}</span></p>
+      <p>Quan Li</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <table class="header-table">
+    <tr>
+      <td style="width: 50%;">
+        <!-- IEC/ECEE Logo Placeholder -->
+        <img src="placeholder_iec_logo.png" alt="IEC/ECEE Scheme" style="height: 60px;">
+      </td>
+      <td style="width: 25%; text-align: right;">
+        <div style="border: 1px solid black; padding: 10px;">
+          <div style="font-size: 10px;">Ref. Certif. No.</div>
+          <div style="font-size: 14px; font-weight: bold;">SE-{{ certificate_number }}M2</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <h2 style="text-align: center; margin-top: 30px; font-size: 14px; font-weight: bold;">Factories</h2>
+
+  <table style="margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="text-align: left; padding: 8px;">Factory Name</th>
+        <th style="text-align: left; padding: 8px;">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ factory_name_1 }}</td>
+        <td>{{ factory_address_1 }}</td>
+      </tr>
+      {% for factory in factories %}
+      <tr>
+        <td>{{ factory.name }}</td>
+        <td>{{ factory.address }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 style="text-align: center; margin-top: 40px; font-size: 14px; font-weight: bold;">Additional information</h2>
+
+  <p>Specific rating: {{ specific_rating }}</p>
+  <p>Rated insulation voltage, U_i = {{ rated_insulation_voltage }}</p>
+  <p>Rated impulse withstand voltage, U_imp = {{ rated_impulse_voltage }}</p>
+
+  <h3 style="margin-top: 20px;">Table 1: Ratings</h3>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="text-align: center; padding: 5px;">Type</th>
+        {% for col in column_headers %}
+        <th style="text-align: center; padding: 5px;">{{ col }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rating_table_data %}
+      <tr>
+        <td style="text-align: center; padding: 5px;">{{ row.type }}</td>
+        {% for cell in row.values %}
+        <td style="text-align: center; padding: 5px;">{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 20px;">* Also includes reversing starter contactor</p>
+
+  <h3 style="margin-top: 30px;">Table 2: Type key</h3>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="text-align: center; padding: 5px;">Key</th>
+        {% for num in key_numbers %}
+        <th style="text-align: center; padding: 5px;">{{ num }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center; padding: 5px;">1 = Main designation</td>
+        {% for num in key_numbers %}
+        <td style="text-align: center; padding: 5px;"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td style="text-align: center; padding: 5px;">2 = Electromagnet type</td>
+        {% for num in key_numbers %}
+        <td style="text-align: center; padding: 5px;"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td style="text-align: center; padding: 5px;">3 = Application</td>
+        {% for num in key_numbers %}
+        <td style="text-align: center; padding: 5px;"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td style="text-align: center; padding: 5px;">4 = Size of contactor</td>
+        {% for num in key_numbers %}
+        <td style="text-align: center; padding: 5px;"></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 50px;">Date: <span data-field="date_issued_page2">{{ date_issued_page2 }}</span></p>
+  <div style="margin-top: 50px;">
+    <p>Signature: <span data-field="signature_name_page2">{{ signature_name_page2 }}</span></p>
+    <p>Quan Li</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-top: 30px; font-size: 14px; font-weight: bold;">Additional information</h2>
+
+  <h3 style="margin-top: 20px;">Table 3: Number of main contacts</h3>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="text-align: center; padding: 5px;">No.</th>
+        <th style="text-align: center; padding: 5px;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in main_contacts %}
+      <tr>
+        <td style="text-align: center; padding: 5px;">{{ contact.number }}</td>
+        <td>{{ contact.description }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 30px;">Table 4: Number of auxiliary contacts</h3>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="text-align: center; padding: 5px;">No.</th>
+        <th style="text-align: center; padding: 5px;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in auxiliary_contacts %}
+      <tr>
+        <td style="text-align: center; padding: 5px;">{{ contact.number }}</td>
+        <td>{{ contact.description }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 30px;">Table 5: Coil configuration</h3>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="text-align: center; padding: 5px;">No.</th>
+        <th style="text-align: center; padding: 5px;">Configuration</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for coil in coil_configurations %}
+      <tr>
+        <td style="text-align: center; padding: 5px;">{{ coil.number }}</td>
+        <td>{{ coil.configuration }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 50px;">This certificate replaces CB certificate SE-{{ old_certificate_number }} dated {{ old_certificate_date }}. A new certificate is issued due to an additional type has been added.</p>
+
+  <p style="margin-top: 50px;">Date: <span data-field="date_issued_page3">{{ date_issued_page3 }}</span></p>
+  <div style="margin-top: 50px;">
+    <p>Signature: <span data-field="signature_name_page3">{{ signature_name_page3 }}</span></p>
+    <p>Quan Li</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .entry-item {
+    margin-bottom: 10px;
+  }
+  .date {
+    float: right;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+  .heading-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+  }
+  .contact-info {
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .entry {
+    margin-bottom: 0.5em;
+  }
+  .date {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 0.2em;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <h1 style="text-align: left;">{{ full_name }}</h1>
+  <div class="contact-info">
+    <span data-field="address">{{ address }}</span> |
+    <span data-field="email">{{ email }}</span>
+  </div>
+
+  <div class="section-title">EDUCATION:</div>
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="education.degree_name">{{ education.degree_name }}</span>, <span data-field="education.institution_name">{{ education.institution_name }}</span></div>
+      <span data-field="education.dates">{{ education.dates }}</span>
+    </div>
+    <div><span data-field="education.details">{{ education.details }}</span></div>
+  </div>
+
+  <div class="section-title">TEACHING EXPERIENCE:</div>
+  {% for item in teaching_experience %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="teaching_experience[{{ loop.index0 }}].title">{{ teaching_experience[loop.index0].title }}</span></div>
+      <span data-field="teaching_experience[{{ loop.index0 }}].dates">{{ teaching_experience[loop.index0].dates }}</span>
+    </div>
+    <div><span data-field="teaching_experience[{{ loop.index0 }}].institution">{{ teaching_experience[loop.index0].institution }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">TEACHING FIELDS:</div>
+  <div>
+    {% for skill in teaching_fields %}
+    <span data-field="teaching_fields[{{ loop.index0 }}]">{{ skill }}</span>,
+    {% endfor %}
+  </div>
+
+  <div class="section-title">PUBLICATIONS:</div>
+  {% for publication in publications %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="publications[{{ loop.index0 }}].title">{{ publications[loop.index0].title }}</span></div>
+      <span data-field="publications[{{ loop.index0 }}].date">{{ publications[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="publications[{{ loop.index0 }}].details">{{ publications[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">DIGITAL PROJECTS:</div>
+  {% for project in digital_projects %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="digital_projects[{{ loop.index0 }}].title">{{ digital_projects[loop.index0].title }}</span></div>
+      <span data-field="digital_projects[{{ loop.index0 }}].date">{{ digital_projects[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="digital_projects[{{ loop.index0 }}].details">{{ digital_projects[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">GRANTS, AWARDS AND AFFILIATIONS:</div>
+  {% for grant in grants_awards %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="grants_awards[{{ loop.index0 }}].title">{{ grants_awards[loop.index0].title }}</span></div>
+      <span data-field="grants_awards[{{ loop.index0 }}].date">{{ grants_awards[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="grants_awards[{{ loop.index0 }}].details">{{ grants_awards[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">INVITED LECTURES AND CONFERENCE TALKS:</div>
+  {% for talk in invited_talks %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="invited_talks[{{ loop.index0 }}].title">{{ invited_talks[loop.index0].title }}</span></div>
+      <span data-field="invited_talks[{{ loop.index0 }}].date">{{ invited_talks[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="invited_talks[{{ loop.index0 }}].details">{{ invited_talks[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">POSTERS:</div>
+  {% for poster in posters %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="posters[{{ loop.index0 }}].title">{{ posters[loop.index0].title }}</span></div>
+      <span data-field="posters[{{ loop.index0 }}].date">{{ posters[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="posters[{{ loop.index0 }}].details">{{ posters[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">MEDIA:</div>
+  {% for media in media_entries %}
+  <div class="entry-item">
+    <div class="heading-info">
+      <div><span data-field="media_entries[{{ loop.index0 }}].title">{{ media_entries[loop.index0].title }}</span></div>
+      <span data-field="media_entries[{{ loop.index0 }}].date">{{ media_entries[loop.index0].date }}</span>
+    </div>
+    <div><span data-field="media_entries[{{ loop.index0 }}].details">{{ media_entries[loop.index0].details }}</span></div>
+  </div>
+  {% endfor %}
+
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 2</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 3</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 4</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 5</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 6</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 7</div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">
+    <span data-field="date_of_document">{{ date_of_document }}</span>
+  </div>
+  <div class="section-title">CV, p. 8</div>
+</div>
+
+
+
+  <div class="page">
+    <div style="margin-bottom: 20px;">
+      <p><span data-field="mtsu_information_literacy_faculty_advisory_group_year">{{ mtsu_information_literacy_faculty_advisory_group_year }}</span> (<span data-field="mtsu_information_literacy_faculty_advisory_group_year_range">{{ mtsu_information_literacy_faculty_advisory_group_year_range }}</span>)</p>
+      <p><span data-field="mtsu_digital_partner_year">{{ mtsu_digital_partner_year }}</span> (<span data-field="mtsu_digital_partner_year_range">{{ mtsu_digital_partner_year_range }}</span>)</p>
+      <p><span data-field="mtsu_public_history_committee_year">{{ mtsu_public_history_committee_year }}</span> (<span data-field="mtsu_public_history_committee_year_range">{{ mtsu_public_history_committee_year_range }}</span>)</p>
+      <p><span data-field="national_history_day_judge_year">{{ national_history_day_judge_year }}</span> (<span data-field="national_history_day_judge_year_range">{{ national_history_day_judge_year_range }}</span>)</p>
+      <p><span data-field="graduate_liaison_certificate_year">{{ graduate_liaison_certificate_year }}</span> (<span data-field="graduate_liaison_certificate_year_range">{{ graduate_liaison_certificate_year_range }}</span>), <span data-field="graduate_liaison_certificate_university">{{ graduate_liaison_certificate_university }}</span></p>
+      <p><span data-field="founder_digital_humanities_reading_group_year">{{ founder_digital_humanities_reading_group_year }}</span> (<span data-field="founder_digital_humanities_reading_group_year_range">{{ founder_digital_humanities_reading_group_year_range }}</span>), <span data-field="founder_digital_humanities_reading_group_university">{{ founder_digital_humanities_reading_group_university }}</span></p>
+      <p><span data-field="advisory_committee_worklife_office_year">{{ advisory_committee_worklife_office_year }}</span> (<span data-field="advisory_committee_worklife_office_year_range">{{ advisory_committee_worklife_office_year_range }}</span>), <span data-field="advisory_committee_worklife_office_university">{{ advisory_committee_worklife_office_university }}</span></p>
+      <p><span data-field="graduate_student_representative_history_faculty_year">{{ graduate_student_representative_history_faculty_year }}</span> (<span data-field="graduate_student_representative_history_faculty_year_range">{{ graduate_student_representative_history_faculty_year_range }}</span>), <span data-field="graduate_student_representative_history_faculty_university">{{ graduate_student_representative_history_faculty_university }}</span></p>
+      <p><span data-field="congress_bundestag_fellowship_year">{{ congress_bundestag_fellowship_year }}</span> (<span data-field="congress_bundestag_fellowship_year_range">{{ congress_bundestag_fellowship_year_range }}</span>)</p>
+      <p><span data-field="mount_holyoke_college_history_department_search_committee_year">{{ mount_holyoke_college_history_department_search_committee_year }}</span> (<span data-field="mount_holyoke_college_history_department_search_committee_year_range">{{ mount_holyoke_college_history_department_search_committee_year_range }}</span>) and admissions volunteer (<span data-field="mount_holyoke_college_history_department_search_committee_year_range_2">{{ mount_holyoke_college_history_department_search_committee_year_range_2 }}</span>)</p>
+    </div>
+
+    <div class="section-title">RELATED EMPLOYMENT EXPERIENCE:</div>
+    <div class="entry">
+      <p><span data-field="employment_experience_1_description">{{ employment_experience_1_description }}</span> (<span data-field="employment_experience_1_year">{{ employment_experience_1_year }}</span>)</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_2_description">{{ employment_experience_2_description }}</span> (<span data-field="employment_experience_2_year">{{ employment_experience_2_year }}</span>)</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_3_description">{{ employment_experience_3_description }}</span> (<span data-field="employment_experience_3_year">{{ employment_experience_3_year }}</span>), Co-coordinator</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_4_description">{{ employment_experience_4_description }}</span> (<span data-field="employment_experience_4_year">{{ employment_experience_4_year }}</span>), Project Coordinator</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_5_description">{{ employment_experience_5_description }}</span> (<span data-field="employment_experience_5_year">{{ employment_experience_5_year }}</span>), Research Assistant for Prof. <span data-field="employment_experience_5_name">{{ employment_experience_5_name }}</span></p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_6_description">{{ employment_experience_6_description }}</span> (<span data-field="employment_experience_6_year">{{ employment_experience_6_year }}</span>), Intern, Publications Department and Fellowship Program</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_7_description">{{ employment_experience_7_description }}</span> (<span data-field="employment_experience_7_year">{{ employment_experience_7_year }}</span>), Intern for <span data-field="employment_experience_7_project">{{ employment_experience_7_project }}</span> exhibit and conference</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_8_description">{{ employment_experience_8_description }}</span> (<span data-field="employment_experience_8_year">{{ employment_experience_8_year }}</span>), Assistant Cataloger of Rare Books</p>
+    </div>
+    <div class="entry">
+      <p><span data-field="employment_experience_9_description">{{ employment_experience_9_description }}</span> (<span data-field="employment_experience_9_year">{{ employment_experience_9_year }}</span>), Student guard</p>
+    </div>
+
+    <div class="section-title">PROFESSIONAL DEVELOPMENT:</div>
+    <div class="entry">
+      <p><span data-field="professional_development_1_description">{{ professional_development_1_description }}</span></p>
+      <p style="margin-left: 20px;"><span data-field="professional_development_1_location">{{ professional_development_1_location }}</span></p>
+    </div>
+  </div>
+
+  <div class="page">
+    <div style="margin-bottom: 20px;">
+      <p><span data-field="co_design_approach_data_visualization_year">{{ co_design_approach_data_visualization_year }}</span>, <span data-field="co_design_approach_location">{{ co_design_approach_location }}</span> (<span data-field="co_design_approach_date">{{ co_design_approach_date }}</span>)</p>
+      <p><span data-field="neh_summer_seminar_material_maps_digital_age_year">{{ neh_summer_seminar_material_maps_digital_age_year }}</span> (Director, <span data-field="neh_summer_seminar_director">{{ neh_summer_seminar_director }}</span>), <span data-field="neh_summer_seminar_location">{{ neh_summer_seminar_location }}</span> (<span data-field="neh_summer_seminar_date">{{ neh_summer_seminar_date }}</span>)</p>
+      <p><span data-field="oxford_digital_humanities_summer_school_data_science_year">{{ oxford_digital_humanities_summer_school_data_science_year }}</span> (<span data-field="oxford_digital_humanities_summer_school_date">{{ oxford_digital_humanities_summer_school_date }}</span>) Workshop, <span data-field="oxford_digital_humanities_summer_school_location">{{ oxford_digital_humanities_summer_school_location }}</span> (<span data-field="oxford_digital_humanities_summer_school_date_2">{{ oxford_digital_humanities_summer_school_date_2 }}</span>)</p>
+      <p><span data-field="workshop_edward_tufte_visualization_workshop_year">{{ workshop_edward_tufte_visualization_workshop_year }}</span>, <span data-field="workshop_edward_tufte_location">{{ workshop_edward_tufte_location }}</span> (<span data-field="workshop_edward_tufte_date">{{ workshop_edward_tufte_date }}</span>)</p>
+      <p><span data-field="franchesceske_stiftung_einfuhrungskurs_year">{{ franchesceske_stiftung_einfuhrungskurs_year }}</span> (<span data-field="franchesceske_stiftung_date">{{ franchesceske_stiftung_date }}</span>)</p>
+      <p><span data-field="german_historical_institute_summer_seminar_year">{{ german_historical_institute_summer_seminar_year }}</span> (<span data-field="german_historical_institute_date">{{ german_historical_institute_date }}</span>)</p>
+    </div>
+
+    <div class="section-title">PROFESSIONAL ASSOCIATIONS:</div>
+    <ul>
+      <li><span data-field="association_1">{{ association_1 }}</span></li>
+      <li><span data-field="association_2">{{ association_2 }}</span></li>
+      <li><span data-field="association_3">{{ association_3 }}</span></li>
+      <li><span data-field="association_4">{{ association_4 }}</span></li>
+      <li><span data-field="association_5">{{ association_5 }}</span></li>
+      <li><span data-field="association_6">{{ association_6 }}</span></li>
+    </ul>
+
+    <div class="section-title">LANGUAGES:</div>
+    <p><span data-field="languages_description">{{ languages_description }}</span></p>
+  </div>
+</body>
+</html>

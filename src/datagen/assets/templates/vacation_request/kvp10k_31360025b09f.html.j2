@@ -1,0 +1,151 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for document feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 8px 0; vertical-align: top; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 10px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24px; margin: 0;">Western Oregon UNIVERSITY</h1>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 14px;">Human Resources</div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 18px; margin-top: 30px; margin-bottom: 20px;">Request for Cash Out of Vacation Leave – Classified Employees</h2>
+
+  <p style="font-size: 12px; line-height: 1.5;">
+    Pursuant to the Article 43, Section 17, of the Collective Bargaining Agreement between Western Oregon University and the Service Employees International Union (SEIU), classified employee may elect to cash-out up to forty (40) hours of vacation leave in January payroll each year. A request to cash-out vacation must be submitted by the last working day of the previous December. The employee must have a minimum of eighty (80) hours of accrued vacation leave remaining after the cash-out.
+  </p>
+
+  <p style="font-size: 12px; line-height: 1.5;">
+    To request a vacation cash-out, please complete the form below. Upon completion, please forward this form to Human Resources via the Human Resources Form Submission on your Portal or via hard-copy to our office. Please direct questions or concerns to <span data-field="contact_email">{{ contact_email }}</span> or (503) 838-8490.
+  </p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 45%;">
+      <div class="section-header">General Information</div>
+      <table style="margin-top: 10px;">
+        <tr>
+          <td style="width: 30%; font-weight: bold;">Employee Name:</td>
+          <td><span data-field="full_name">{{ full_name }}</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">V#:</td>
+          <td><span data-field="employee_id">{{ employee_id }}</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Department:</td>
+          <td><span data-field="department">{{ department }}</span></td>
+        </tr>
+      </table>
+    </div>
+    <div style="width: 45%;">
+      <div class="section-header">Vacation Cash-Out Request</div>
+      <table style="margin-top: 10px;">
+        <tr>
+          <td style="font-weight: bold;">Current Vacation Balance:</td>
+          <td><span data-field="current_balance">{{ current_balance }}</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Requested Vacation Cash-Out:</td>
+          <td><span data-field="requested_hours">{{ requested_hours }}</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Remaining Vacation After Cash-Out:</td>
+          <td><span data-field="remaining_balance">{{ remaining_balance }}</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div class="section-header">Provisions</div>
+    <ol style="font-size: 12px; line-height: 1.6;">
+      <li>I have at least eighty (80) hours of accrued vacation leave remaining after the cash-out.</li>
+      <li>This request can only be made once in each twelve-month period and must be made in December.</li>
+      <li>Payment is subject to ordinary deductions and withholdings.</li>
+      <li>This request is irrevocable. Once cashed out, I will not be able to buy back hours at a later time.</li>
+      <li>Requests must be received by Human Resources by the last business day in December.</li>
+      <li>The cash-out will be paid to employees as part of their January payroll check.</li>
+      <li>Manual checks will not be an option for payment.</li>
+    </ol>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 60px;">
+    <div style="width: 45%;">
+      <div class="section-header">Authorization</div>
+      <table style="margin-top: 10px;">
+        <tr>
+          <td style="width: 30%; font-weight: bold;">Employee Signature</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Supervisor Signature</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Dean/Director</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Provost/Vice President</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div style="width: 45%;">
+      <table style="margin-top: 10px;">
+        <tr>
+          <td style="width: 30%; font-weight: bold;">Name</td>
+          <td><span data-field="authorizer_name">{{ authorizer_name }}</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Signature</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Date</td>
+          <td><span data-field="authorization_date">{{ authorization_date }}</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div class="section-header">Office Use Only:</div>
+    <table style="margin-top: 10px;">
+      <tr>
+        <td style="width: 30%; font-weight: bold;">Eligibility Verified</td>
+        <td></td>
+        <td style="width: 30%; font-weight: bold;">Time Entry: LPV</td>
+        <td><span data-field="time_entry_lpv">{{ time_entry_lpv }}</span></td>
+        <td style="width: 30%; font-weight: bold;">Hours x hourly rate of $</td>
+        <td><span data-field="hourly_rate">{{ hourly_rate }}</span></td>
+        <td style="width: 30%; font-weight: bold;">= $</td>
+        <td><span data-field="total_payment">{{ total_payment }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="8" style="padding-top: 20px;">Adjustment made to leave accruals</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 100px; display: flex; justify-content: space-between; font-size: 10px; color: #555;">
+    <div>cc: Personnel File (DocStar)</div>
+    <div>Revised December 2021</div>
+  </div>
+</div>

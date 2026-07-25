@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .logo {
+            position: absolute;
+            top: 50px;
+            right: 60px;
+            font-size: 30px; /* Approximation for visual scaling */
+        }
+        .footer {
+            position: absolute;
+            bottom: 50px;
+            right: 60px;
+            font-size: 10px;
+            color: #555;
+        }
+        .header-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #A00040; /* Approximation of the red color */
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .chapter-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .table-of-contents-entry {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .toc-dots {
+            flex-grow: 1;
+            height: 0;
+            border-bottom: 1px dotted #aaa;
+        }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .figure-caption {
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .controls-window {
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: #fff;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .controls-window h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .checkbox-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .radio-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 40px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="text-align: center; margin-top: 150px;">
+        <h1 class="header-title">ViewPoint EyeTracker<span style="font-size: 0.7em;">®</span></h1>
+        <p style="font-size: 18px; margin-top: 10px;">DataAnalysis User Guide</p>
+    </div>
+    <div style="text-align: center; margin-top: 100px;">
+        <img src="placeholder_eye_image.jpg" alt="Eye Tracker Image" style="max-width: 100%; height: auto;">
+    </div>
+    <div style="text-align: center; margin-top: 100px;">
+        <span style="font-size: 40px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div class="footer">Page 1 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="text-align: center; margin-top: 100px;">
+        <h1 style="font-size: 36px;">Arrington Research</h1>
+    </div>
+    <div style="text-align: center; margin-top: 50px;">
+        <p>Contact Information</p>
+        <p><span data-field="contact_date">{{ contact_date }}</span></p>
+    </div>
+    <div style="text-align: center; margin-top: 50px; font-size: 12px;">
+        <p>2010 &copy; Arrington Research, Inc. All rights reserved</p>
+    </div>
+
+    <div style="margin-top: 80px; font-size: 12px;">
+        <p>Arrington Research, Inc.</p>
+        <p><span data-field="address_line_1">{{ address_line_1 }}</span></p>
+        <p><span data-field="address_city_state_zip">{{ address_city_state_zip }}</span></p>
+        <p>Phone +<span data-field="phone_number">{{ phone_number }}</span></p>
+        <p><span data-field="website_url">{{ website_url }}</span></p>
+        <p><span data-field="email_viewpoint_info">{{ email_viewpoint_info }}</span></p>
+        <p><span data-field="email_viewpoint_sales">{{ email_viewpoint_sales }}</span></p>
+        <p><span data-field="email_viewpoint_support">{{ email_viewpoint_support }}</span></p>
+    </div>
+
+    <div style="margin-top: 50px; font-size: 12px;">
+        <p>ViewPoint EyeTracker <span style="font-size: 0.7em;">®</span> is a registered trademark of Arrington Research, Inc.</p>
+        <p>ViewPoint – <span style="font-size: 0.7em;">™</span> is a trademark of Arrington Research, Inc.</p>
+        <p>RemoteLink™ is a trademark of Arrington Research, Inc.</p>
+        <p>ViewPoint Client™ is a trademark of Arrington Research, Inc.</p>
+    </div>
+    <div class="footer">Page 2 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <h2 class="chapter-title">Table of Contents</h2>
+        <div style="font-size: 12px;">
+            <div class="table-of-contents-entry">
+                <span>Chapter 1. Introduction</span>
+                <div class="toc-dots"></div>
+                <span>4</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>Chapter 2. Opening and Viewing a DataFile</span>
+                <div class="toc-dots"></div>
+                <span>5</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.1 The Controls window > Play Tab</span>
+                <div class="toc-dots"></div>
+                <span>5</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.2 The Controls window > Signal Tab</span>
+                <div class="toc-dots"></div>
+                <span>6</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.2.1 Fixation / Saccade Algorithms</span>
+                <div class="toc-dots"></div>
+                <span>7</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.3 Controls Window > 2D Plot Tab</span>
+                <div class="toc-dots"></div>
+                <span>9</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.4 Controls Window > Time Plot Tab</span>
+                <div class="toc-dots"></div>
+                <span>11</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.5 Controls Window > Display Tab</span>
+                <div class="toc-dots"></div>
+                <span>13</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.6 File Menu Items</span>
+                <div class="toc-dots"></div>
+                <span>14</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.7 Dump Summary Data</span>
+                <div class="toc-dots"></div>
+                <span>15</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>2.8 Dump Events Data</span>
+                <div class="toc-dots"></div>
+                <span>16</span>
+            </div>
+            <div class="table-of-contents-entry">
+                <span>Chapter 3. ARI Software License</span>
+                <div class="toc-dots"></div>
+                <span>18</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <h2 class="chapter-title">Chapter 1. Introduction</h2>
+        <p style="font-size: 12px;">The ViewPoint EyeTracker <span style="font-size: 0.7em;">®</span> is provided with a basic and easy to use DataAnalysis program. You can use this program to view and play back your data.</p>
+        <p style="font-size: 12px;">While we welcome feedback, please note that this program is provided as a means to get started with your data. In most cases this will be enough, although some users may require developing their own methods of analyzing the data.</p>
+    </div>
+    <div class="footer">Page 4 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <h2 class="chapter-title">Chapter 2. Opening and Viewing a DataFile</h2>
+        <p style="font-size: 12px;">Double click the DataAnalysis.exe program located in the Viewpoint folder.</p>
+        <p style="font-size: 12px;">Click on the file open icon at the top of the application, this will open the Viewpoint data folder and you can then select your data file.</p>
+
+        <h3 style="font-size: 18px; margin-top: 30px;">2.1 The Controls window > Play Tab</h3>
+        <p style="font-size: 12px;">This tab controls the play back of the data.</p>
+
+        <div style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+            <!-- Placeholder for Figure 1 -->
+            <img src="placeholder_figure1.png" alt="Figure 1" style="max-width: 100%; height: auto;">
+        </div>
+
+        <ul style="font-size: 12px; margin-top: 20px;">
+            <li>
+                <strong>Play Button:</strong> Plays the current data file by advancing the current data point by 1. Once the last data point is reached, DA starts playback over at the first data point.
+            </li>
+            <li>
+                <strong>Rewind Button:</strong> Stops playback and sets the current data point to the first data point.
+            </li>
+            <li>
+                <strong>Stop Button:</strong> Stops playback and the current data point remains unchanged so the user can resume playback from the stopped position.
+            </li>
+            <li>
+                <strong>Play Speed Slider:</strong> Adjusts the play speed for playback.
+            </li>
+            <li>
+                <strong>Frame Number Edit Box/Spin:</strong> Displays the current movie frame. The <span data-field="frame_number_display">{{ frame_number_display }}</span> spin control allows the user to navigate through the movie frame by frame.
+            </li>
+            <li>
+                <strong>Data Point # Edit Box/Spin:</strong> Displays the current data point. The <span data-field="data_point_display">{{ data_point_display }}</span> spin control allows the user to navigate through the data points point by point.
+            </li>
+            <li>
+                <strong>Data Time Edit Box:</strong> Displays the Total Time for the current data point. The user can change the time to navigate through the data points. DA automatically set the current data point to the data point that has a Total Time
+            </li>
+        </ul>
+    </div>
+    <div class="footer">Page 5 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <p style="font-size: 12px;">greater than or equal to the data time and adjusts the data time to match the exact Total Time of the current data point.</p>
+
+        <h3 style="font-size: 18px; margin-top: 30px;">2.2 The Controls window > Signal Tab</h3>
+        <div style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+            <!-- Placeholder for Figure 2 -->
+            <img src="placeholder_figure2.png" alt="Figure 2" style="max-width: 100%; height: auto;">
+        </div>
+
+        <ul style="font-size: 12px; margin-top: 20px;">
+            <li>
+                <strong>Signal Gain Slider:</strong> Sets the gain for the x position and y position plots in the Time Plot window. The gain is a y-axis scale factor (multiplier) that allows the user to change the y-axis viewing resolution.
+            </li>
+            <li>
+                <strong>Velocity Gain Slider:</strong> Sets the gain for the x velocity, y velocity, and the velocity magnitude plots in the Time Plot window. The gain is a y-axis scale factor (multiplier) that allows the user to change the y-axis viewing resolution.
+            </li>
+            <li>
+                <strong>Time Resolution Slider:</strong> Sets the time resolution for all plots in the Time Plot window. The time resolution is an x-axis scale factor (multiplier) that allows the user to change the x-axis viewing resolution.
+            </li>
+            <li>
+                <strong>Smoothing Slider:</strong> Sets the kernel size for the selected <span data-field="smoothing_filter_type">{{ smoothing_filter_type }}</span>. The formula used to calculate the Kernel is: Kernel = (2 * SmoothingPos) + 1. No smoothing occurs when the Smoothing slider position is set to 0 creating a Kernel value of 1. Larger Kernel values produce more smoothing than smaller Kernel values.
+            </li>
+            <li>
+                <strong>Aspect Ratio Gain Slider:</strong> Sets the gain for the pupil aspect ratio plot in the Time Plot window. The gain is a y-axis scale factor (multiplier) that allows the user to change the y-axis viewing resolution.
+            </li>
+            <li>
+                <strong>Torsion Gain Slider:</strong> Sets the gain for the torsion plot in the Time Plot window. The gain is a y-axis scale factor (multiplier) that allows the user to change the y-axis viewing resolution. <span style="font-size: 0.7em;">Torsion not implemented.</span>
+            </li>
+        </ul>
+    </div>
+    <div class="footer">Page 6 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <ul style="font-size: 12px; margin-top: 20px;">
+            <li>
+                <strong>Pupil Width Gain Slider:</strong> Sets the gain for the pupil width plot in the Time Plot window. The gain is a y-axis scale factor (multiplier) that allows the user to change the y-axis viewing resolution.
+            </li>
+            <li>
+                <strong>Smoothing Filter Drop List:</strong> Sets the current <span data-field="smoothing_filter_type">{{ smoothing_filter_type }}</span> for smoothing the data. The current, available filters the user can select from are Uniform and Gaussian. The user can change the amount of smoothing by adjusting the Smoothing slider.
+            </li>
+            <li>
+                <strong>Units Drop List:</strong> Sets the current units for the Fixation/Saccade Algorithm. When the algorithm is Velocity Threshold, the units change for the Saccade Threshold slider. When the algorithm is Dispersion Centroid, the units change for the Max Dispersion edit box. The current, available units the user can select from are normalized, degrees, and radians. The degrees and radians options are only available for data files in which the screen width, height, and distance have been set using the geometry setup in ViewPoint. Please make sure the geometry setting are setup correctly if the degrees or radians units are used.
+            </li>
+        </ul>
+
+        <h3 style="font-size: 18px; margin-top: 30px;">2.2.1 Fixation / Saccade Algorithms</h3>
+        <p style="font-size: 12px;">There are two algorithms available to identify fixations and saccades.</p>
+
+        <div style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+            <!-- Placeholder for Fixation/Saccade Algorithm 1 -->
+            <img src="placeholder_algorithm1.png" alt="Algorithm 1" style="max-width: 100%; height: auto;">
+        </div>
+
+        <p style="font-size: 12px; margin-top: 15px;">The Velocity Threshold algorithm finds fixations and saccades by identifying the saccades by finding total velocities that are greater than the saccade threshold. Anything not considered a saccade is considered a fixation. Changing the saccade threshold changes the number of fixations and saccades identified. The user can change the saccade threshold by adjusting the Saccade Threshold slider. The saccade threshold value is shown to the right of the slider in the Saccade Threshold edit box. The units of the saccade threshold are indicated by the selection made in the Units drop list.</p>
+
+        <div style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+            <!-- Placeholder for Dispersion Centroid Algorithm -->
+            <img src="placeholder_algorithm2.png" alt="Algorithm 2" style="max-width: 100%; height: auto;">
+        </div>
+
+        <p style="font-size: 12px; margin-top: 15px;">The Dispersion Centroid algorithm finds fixations and saccades by identifying the fixations by using a weighted position that allows for the human eye to first land close to the object of interest and then for micro saccades</p>
+    </div>
+    <div class="footer">Page 7 of 19</div>
+</div>
+
+<div class="page">
+    <div class="logo">
+        <span style="font-size: 30px;">A</span>
+        <div style="font-size: 10px; text-align: right;">Arrington Research</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <p style="font-size: 12px;">to adjust the eye to the object that we want to fixate. The fixations in this case would only consist of those data points that follow the adjustments made after the eyes landing position.</p>
+
+        <p style="font-size: 12px;">Falkner, T., et al., Fixation identification in Centroid versus Start-point modes eye tracking data. Perceptual and Motor Skills, 2008;106(p): 710-724.</p>
+
+        <p style="font-size: 12px; margin-top: 20px;">Anything not considered a fixation is considered a saccade. Changing the max dispersion and min duration changes the number of fixations and saccades identified. The user can change the max dispersion and min duration by directly editing their values in the edit boxes. The units of the max dispersion are indicated by the selection made in the Units drop list. In order for changes of max dispersion and min duration to take effect, the user must press the Update button. Because the post processing of the algorithm can take a while depending in the input values, a cancel/status dialog is shown after pressing the Update button. The user can cancel the update at anytime without affecting the current fixations and saccades. Below is the Cancel/Dialog.</p>
+
+        <div style="margin-top: 30px; border: 1px solid #ccc; padding: 15px; text-align: center;">
+            <!-- Placeholder for Cancel Dialog -->
+            <img src="placeholder_dialog.png" alt="Cancel Dialog" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+    <div class="footer">Page 8 of 19</div>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.3 Controls Window > 2D Plot Tab</h3>
+  <div class="figure-caption">Figure 3. Controls Window > Play Tab</div>
+  <div class="controls-window">
+    <h4>Controls</h4>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <span style="font-weight: bold;">Play</span>
+      <span style="font-weight: bold;">Signal</span>
+      <span style="font-weight: bold;">2D Plot</span>
+      <span style="font-weight: bold;">Time Plot</span>
+      <span style="font-weight: bold;">Display</span>
+    </div>
+    <div style="margin-top: 15px;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Schematic View</label>
+        <label><input type="checkbox"> Show Fixation Time</label>
+        <label><input type="checkbox"> Show Direction</label>
+        <label><input type="checkbox"> Maintain Aspect Ratio</label>
+      </div>
+      <div class="checkbox-group" style="margin-top: 10px;">
+        <label><input type="checkbox"> Show Images</label>
+        <label><input type="checkbox"> Show EyeA/B Gaze Point</label>
+        <label><input type="checkbox"> Show EyeB Gaze Point</label>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <label style="font-weight: bold;">Display:</label>
+      <select style="padding: 5px;">
+        <option>{{ display_options[0] }}</option>
+        <option>{{ display_options[1] }}</option>
+      </select>
+    </div>
+  </div>
+  <p style="margin-top: 20px;">
+    <span style="font-weight: bold;">Schematic View Check Box:</span> Toggles the schematic view in the 2D Plot window. In schematic view, the 2D Plot window draws a circle around the mean data point for the current fixation event. The area of the circle is proportional to the fixation total time. Schematic view is only available for images, not movies.
+  </p>
+  <p>
+    <span style="font-weight: bold;">Show Direction Check Box:</span> Toggles the show direction state in the 2D Plot window. In show direction mode, arrows are used to indicate direction for both saccade and fixation lines. When the show direction mode is not used, the saccade and fixation lines are shown without direction being indicated. Show direction mode is only available for images, not movies.
+  </p>
+  <p>
+    <span style="font-weight: bold;">Show Images Check Box:</span> Toggles the show images state when displaying images in the 2D Plot window. In show images mode, the 2D Plot window displays the image associated with the current data point. If there is no associated image the 2D Plot window displays either a blank window or an image that the user manually loaded. Show images mode is only available for images, not movies.
+  </p>
+  <p>
+    <span style="font-weight: bold;">Show Fixation Time Check Box:</span> Toggles the show fixation time state when displaying fixations in the 2D Plot window. In show fixation time mode, the 2D Plot window displays the fixation total time at the mean data point for each respective fixation event. Show fixation time mode is only available for images, not movies.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.4 Controls Window > Time Plot Tab</h3>
+  <div class="figure-caption">Figure 4. Controls Window > TimePlot Tab</div>
+  <div class="controls-window">
+    <h4>Controls</h4>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <span style="font-weight: bold;">Play</span>
+      <span style="font-weight: bold;">Signal</span>
+      <span style="font-weight: bold;">2D Plot</span>
+      <span style="font-weight: bold;">Time Plot</span>
+      <span style="font-weight: bold;">Display</span>
+    </div>
+    <div style="margin-top: 15px;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> X-Position</label>
+        <label><input type="checkbox"> X-Velocity</label>
+        <label><input type="checkbox"> Y-Position</label>
+        <label><input type="checkbox"> Y-Velocity</label>
+      </div>
+      <div class="checkbox-group" style="margin-top: 10px;">
+        <label><input type="checkbox"> Data Markers</label>
+        <label><input type="checkbox"> Time Markers</label>
+        <label><input type="checkbox"> Avoid Overlap</label>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 48%;">
+          <label style="font-weight: bold;">Velocity Magnitude Check Box:</label>
+          <p>Displays the velocity magnitude (total velocity) plot in the Time Plot window. The velocity magnitude is in units of normalized/ms calculated using the Pythagorean theorem on the x velocity and y velocity (sqrt((VelX^2 + VelY^2))).</p>
+        </div>
+        <div style="width: 48%;">
+          <label style="font-weight: bold;">Pupil Aspect Ratio Check Box:</label>
+          <p>Displays the pupil aspect ratio plot in the Time Plot window. The pupil aspect ratio is the pupil aspect ratio from the data file.</p>
+        </div>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Pupil Width Check Box:</label>
+        <p>Displays the pupil width plot in the Time Plot window. The pupil aspect ratio is the pupil width from the data file.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Torsion Check Box:</label>
+        <p>Torsion not implemented.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Data Markers Check Box:</label>
+        <p>Displays the data markers in the Time Plot window. A data marker is a data marker from the data file.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Time Markers Check Box:</label>
+        <p>Displays the time markers at the bottom of the Time Plot window showing each time interval specified by the Time Marker Spacing drop list.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Avoid Overlap Check Box:</label>
+        <p>Prevents individual plots from overlapping inside the Time Plot window.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Image Thumbnails Check Box:</label>
+        <p>Displays the thumbnails for each image associated with the current data file in the Time Plot window.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Center Zero Check Box:</label>
+        <p>Adjusts the plot y-scale from (0) to (-0.5) to (-0.5). Only the x position and y position plots are affected.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Time Marker Spacing Drop List:</label>
+        <p>Specifies the time spacing (0.1) sec - (10) sec between the time markers in the Time Plot window.</p>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top: 20px;">
+    <span style="font-weight: bold;">DataSummary:</span> Displays a window that contains information about the current data file.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.5 Controls Window > Display Tab</h3>
+  <div class="figure-caption">Figure 5. Controls Window > Display Tab</div>
+  <div class="controls-window">
+    <h4>Controls</h4>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <span style="font-weight: bold;">Play</span>
+      <span style="font-weight: bold;">Signal</span>
+      <span style="font-weight: bold;">2D Plot</span>
+      <span style="font-weight: bold;">Time Plot</span>
+      <span style="font-weight: bold;">Display</span>
+    </div>
+    <div style="margin-top: 15px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-weight: bold;">Line Thickness:</span>
+        <input type="number" value="2" style="width: 50px;">
+      </div>
+      <div style="margin-top: 15px;">
+        <label style="font-weight: bold;">Color Selection:</label>
+        <select style="padding: 5px;">
+          <option>{{ color_options[0] }}</option>
+          <option>{{ color_options[1] }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top: 20px;">
+    <span style="font-weight: bold;">Display Tab:</span> The display tab allows a user to customize the display by selecting different colors and line thicknesses for backgrounds, fixations, and saccades.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.6 File Menu Items</h3>
+  <div class="figure-caption">Figure 6. File Menu</div>
+  <div style="font-family: monospace; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">
+    <div style="display: flex; gap: 20px;">
+      <div>File</div>
+      <div>Windows</div>
+      <div>Data</div>
+      <div>Help</div>
+    </div>
+    <div style="margin-top: 5px;">
+      <div style="display: flex; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">DataFile...</span> <span style="font-size: 0.8em;">Ctrl+O</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">ImageFile...</span> <span style="font-size: 0.8em;">Ctrl+I</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">MovieFile...</span> <span style="font-size: 0.8em;">Ctrl+M</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">Settings</span></div>
+      </div>
+      <div style="margin-top: 5px;">
+        <div style="display: flex; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">Print</span></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><span style="font-weight: bold;">Exit</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top: 20px;">
+    <span style="font-weight: bold;">File_DataFile:</span> Loads a data file. Selecting this menu option prompts the user with a file selection dialog box. Once the user selects the data file, the application loads the data file. The data file format is discussed in the <span data-field="data_file_format_reference">{{ data_file_format_reference }}</span>. The data file indicates whether or not the application should load a movie file or an image file. After loading the data file, the data is processed according to the settings, then the data is displayed in the Events window, Time Plot window, and either the movie or images are displayed in the 2D Plot window. The user can now analyze the data.
+  </p>
+  <p>
+    <span style="font-weight: bold;">File_ImageFile:</span> Loads an image file. Selecting this menu option prompts the user with a file selection dialog box. Once the user selects the image file, the application loads the image file and displays it in the 2D Plot window. Loading a new image file while a movie file is loaded causes DA to close the current movie file. If the current data file contains images, loading a new image file does not overwrite any of the images but will become the current image anytime DA cannot associate the current data point with an image from the data file.
+  </p>
+  <p>
+    <span style="font-weight: bold;">File_MovieFile:</span> Loads a movie file. Selecting this menu option prompts the user with a file selection dialog box. Once the user selects the movie file, the application opens the movie file and displays the first frame in the 2D Plot window. Loading a movie file causes the application to close any movie file or image file previously loaded even if those files were specified in the data file.
+  </p>
+  <p>
+    <span style="font-weight: bold;">File_Settings:</span> Loads the AOI's from the View/Point settings file. Selecting the menu option prompts the user with a file selection dialog box. Once the user selects the settings file, the application loads all the AOI's from the settings file and overlays them on the 2D Plot window. <span data-field="settings_note">{{ settings_note }}</span>
+  </p>
+  <p>
+    <span style="font-weight: bold;">File_Print:</span> <span data-field="print_status">{{ print_status }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.7 Dump Summary Data</h3>
+  <div class="figure-caption">Figure 7. Data Menu > Dump Summary</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Help</th>
+        <th>Data Summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>DataFormat: <span data-field="data_format">{{ data_format }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>TimeStamp: <span data-field="timestamp">{{ timestamp }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ScreenSize: <span data-field="screen_size">{{ screen_size }}</span> <span data-field="screen_size_2">{{ screen_size_2 }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ViewingDistance: <span data-field="viewing_distance">{{ viewing_distance }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No. of datapoints: <span data-field="num_datapoints">{{ num_datapoints }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Data Duration: <span data-field="data_duration">{{ data_duration }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No. of Markers: <span data-field="num_markers">{{ num_markers }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No. of Images: <span data-field="num_images">{{ num_images }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>MovieFile: <span data-field="movie_file">{{ movie_file }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No. of Frames: <span data-field="num_frames">{{ num_frames }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Frame Rate: <span data-field="frame_rate">{{ frame_rate }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 20px;">
+    <span style="font-weight: bold;">Data_DataSummary:</span> Displays a window that contains information about the current data file.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span style="font-size: 2em;">A</span>
+    <div style="font-size: 0.9em;">Arrington Research</div>
+  </div>
+  <h3 style="font-size: 1.2em;">2.8 Dump Events Data</h3>
+  <div class="figure-caption">Figure 8. Data Menu > Dump Events</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Help</th>
+        <th>Event # and Total Elapsed Time</th>
+        <th>Event Type</th>
+        <th>Duration in Seconds</th>
+        <th>Data Point Range</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in dump_events %}
+      <tr>
+        <td><span data-field="dump_events[{{ loop.index0 }}].data_id">{{ event.data_id }}</span></td>
+        <td></td>
+        <td><span data-field="dump_events[{{ loop.index0 }}].elapsed_time">{{ event.elapsed_time }}</span></td>
+        <td><span data-field="dump_events[{{ loop.index0 }}].event_type">{{ event.event_type }}</span></td>
+        <td><span data-field="dump_events[{{ loop.index0 }}].duration">{{ event.duration }}</span></td>
+        <td><span data-field="dump_events[{{ loop.index0 }}].data_point_range">{{ event.data_point_range }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p style="margin-top: 20px;">
+    1) <span style="font-weight: bold;">Marker:</span> 1st column is the Event number. 2nd column is the Total Time in seconds. 3rd column is the Marker string. The last column is the data point range for all the points in the fixation.
+  </p>
+  <p>
+    2) <span style="font-weight: bold;">Image File Name:</span> 1st column is the Event number. 2nd column is the Total Time in seconds. 3rd column is the image file name.
+  </p>
+  <p>
+    3) <span style="font-weight: bold;">Fixation:</span> 1st column is the Event number. 2nd column is the Total Time in seconds. 3rd column is the duration time for the fixation in seconds. 4th column is the average gaze x and y points for all the points in the fixation. Fixation in normalized coordinates. The last column is the data point range for all the points in the fixation.
+  </p>
+</div>
+
+
+
+<div class="page">
+  <div style="text-align: right;">
+    <img src="logo.png" alt="Logo" style="width: 150px;">
+    <div style="font-size: 12pt; text-align: right;">
+      <span data-field="company_name">{{ company_name }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 50px;">
+    <p>4) <span data-field="description_text">{{ description_text }}</span></p>
+  </div>
+</div>
+<div class="page">
+  <div style="text-align: right;">
+    <img src="logo.png" alt="Logo" style="width: 150px;">
+    <div style="font-size: 12pt; text-align: right;">
+      <span data-field="company_name">{{ company_name }}</span>
+    </div>
+  </div>
+  <h1 style="font-size: 24pt; margin-top: 20px;">Chapter 3.ARI Software License</h1>
+  <div style="margin-top: 30px;">
+    <p>PLEASE READ THIS SOFTWARE LICENSE AGREEMENT "AGREEMENT" CAREFULLY BEFORE USING THE SOFTWARE. BY USING ALL OR ANY PART OF THE SOFTWARE, YOU ARE AGREEING TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU ACQUIRED THE SOFTWARE ON TANGIBLE MEDIA (E.G. CD) WITHOUT AN OPPORTUNITY TO REVIEW THIS AGREEMENT AND YOU DO NOT ACCEPT THIS AGREEMENT, YOU MAY OBTAIN A REFUND OF ANY AMOUNT YOU ORIGINALLY PAID IF YOU DO NOT USE THE SOFTWARE AND RETURN IT, BUT WITH PROOF OF PAYMENT, TO THE LOCATION FROM WHICH IT WAS OBTAINED WITHIN THIRTY (30) DAYS OF THE PURCHASE DATE. IF YOU ACQUIRED THE SOFTWARE IN ELECTRONIC FORM, YOU AGREE TO THE TERMS OF THIS AGREEMENT AND YOU ARE BOUND BY THEM. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT USE THE SOFTWARE.</p>
+    <p>2. Software License As long as you comply with the terms of this Agreement, you grant to ARI a non-exclusive license to use the Software for the purposes described in the Documentation. You may install and use a copy of the Software on your computer or on multiple computers, up to the Number of Computers; you may make one backup copy of the Software, provided your backup copy is not installed on any other computer. The software accompanying this Agreement, including all documentation, is licensed, not sold, and is subject to the terms of this Agreement. ARI reserves the right to modify the Software and Documentation at any time, and you agree to accept such modifications. ARI reserves the right to modify the Software and Documentation at any time, and you agree to accept such modifications.</p>
+    <p>3. Restrictions. The Software and any copies that you are authorized by ARI to make are the intellectual property of and owned by ARI and are subject to the terms of this Agreement. You may not copy, modify, reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of the Software. You may not rent, lease, sell, sublicense, or otherwise transfer the Software or any part thereof. You may not use the Software to provide services to third parties or to create derivative works. You may not remove or alter any proprietary notices contained in the Software or Documentation.</p>
+    <p>4. Transfer. You may not rent, lease, sublicense or otherwise transfer any or all portion of the Software to be copied onto another user's computer except as may be permitted by the Documentation. If you transfer the Software to another user, you must provide that user with a copy of this Agreement, and they must agree to be bound by its terms. You may not transfer the Software to any entity that is not an end-user.</p>
+    <p>5. Limited Warranty on ARI. ARI warrants to the person or entity that first purchases a license for the Software for use pursuant to the terms of this Agreement, that the software is to be received in free from material defects in workmanship and under normal use for a period of ninety (90) days from the date of purchase. ARI's sole and exclusive liability under this warranty is limited to the replacement of the software or the provision of a refund of the purchase price, at ARI's option. ARI makes no other warranties, express or implied, including but not limited to, any warranties of merchantability, fitness for a particular purpose, or non-infringement. ARI shall not be liable for any indirect, incidental, special, or consequential damages arising out of the use or inability to use the Software.</p>
+    <p>6. Limitation of Liability. IN NO EVENT SHALL ARI BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, BUSINESS INTERRUPTION, LOSS OF DATA, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF ARI HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. ARI'S TOTAL AGGREGATE LIABILITY TO YOU FOR ANY AND ALL CLAIMS ARISING OUT OF OR RELATING TO THIS AGREEMENT SHALL NOT EXCEED THE AMOUNT YOU PAID TO ARI FOR THE SOFTWARE.</p>
+  </div>
+</div>
+<div class="page">
+  <div style="text-align: right;">
+    <img src="logo.png" alt="Logo" style="width: 150px;">
+    <div style="font-size: 12pt; text-align: right;">
+      <span data-field="company_name">{{ company_name }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 30px;">
+    <p>7. Limitation of Liability. UNDER NO CIRCUMSTANCES INCLUDING NEGLIGENCE, SHALL ARI BE LIABLE FOR ANY INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OR INABILITY TO USE THE ARI SOFTWARE, EVEN IF ARI OR AN ARI AUTHORIZED REPRESENTATIVE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES.</p>
+  </div>
+</div>
+<div class="page">
+  <div style="text-align: right;">
+    <img src="logo.png" alt="Logo" style="width: 150px;">
+    <div style="font-size: 12pt; text-align: right;">
+      <span data-field="company_name">{{ company_name }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 30px;">
+    <p>Page 19 of 19</p>
+  </div>
+</div>
+</body>
+</html>

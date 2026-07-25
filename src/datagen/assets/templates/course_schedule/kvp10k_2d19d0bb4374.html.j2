@@ -1,0 +1,1040 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .sub-header {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 48pt;
+    font-weight: bold;
+    color: #cc0000; /* Placeholder color matching visual style */
+  }
+  .footer-text {
+    font-size: 9pt;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .contact-info {
+    font-size: 10pt;
+    margin-top: 20px;
+  }
+  .contact-info p {
+    margin: 3px 0;
+  }
+</style>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <div class="sub-header">ABB India Limited</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 50%;">Product Category</th>
+        <th style="width: 10%;">Page No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 17) %}
+      <tr>
+        <td>{{ i }}</td>
+        <td><span data-field="product_category_{{ i }}">{{ "Category Name" if i == 1 else "Category Name" }}</span></td>
+        <td>{{ i }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">HV Switchgear & Transformers</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Circuit Breakers (245kV & 420 kV) - Level 2", "code": "INTCVS58", "days": 2, "remarks": "On request"},
+        {"sr": 2, "name": "Circuit Breakers (72.5kV), Type EDK SF6 Level 1-2", "code": "INTCVS59", "days": 2, "remarks": "On request"},
+        {"sr": 3, "name": "Circuit Breakers (345kV) Type LTBD with Bulk & FSA Drives Level 2", "code": "INTCVS60", "days": 2, "remarks": "On request"},
+        {"sr": 4, "name": "Capacitor Banks", "code": "INTCVS75", "days": 2, "remarks": "On request"},
+        {"sr": 5, "name": "Power Transformers - Level 2", "code": "INTCVS61", "days": 5, "remarks": "Fri"},
+        {"sr": 6, "name": "Power Transformers - Level 1", "code": "INTCVS55", "days": 2, "remarks": "On request"},
+        {"sr": 7, "name": "HV Switchgear (CB/CT/CV/DC and SA) and Power Transformers", "code": "INTCVS46", "days": 5, "remarks": "Fri"},
+        {"sr": 8, "name": "HV & MV Switchgear (CB/CT/CV/DC and SA) and Power Transformers", "code": "INTCVS81", "days": 6, "remarks": "Mon-Sat"},
+        {"sr": 9, "name": "Operation & Maintenance and condition Monitoring of Switchyard Equipments", "code": "INTCVS477", "days": 6, "remarks": "Mon-Sat"},
+        {"sr": 10, "name": "HV Gas Insulated Switchgear (GIS)", "code": "INTCVS13", "days": 3, "remarks": "Mon-Wed"},
+        {"sr": 11, "name": "HV Hybrid Switchgear System, Plug & switch System (PASS)", "code": "INTCVS12", "days": 2, "remarks": "Thu-Fri"},
+        {"sr": 12, "name": "Generator Circuit Breaker and Generator Transformer", "code": "INTCVS64", "days": 2, "remarks": "On request"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Mansha Shukla | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Power Systems</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Electrical Safety", "code": "INTCVS72", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 2, "name": "Substation engineering", "code": "INTCVS13", "days": 1, "remarks": "Mon"},
+        {"sr": 3, "name": "Power System Earthing", "code": "INTCVS65", "days": 2, "remarks": "Thu-Fri"},
+        {"sr": 4, "name": "Power System Studies, Planning and Analysis-Comprehensive", "code": "INTCVS374", "days": 10, "remarks": "On request"},
+        {"sr": 5, "name": "Power System studies and Relay Co-ordination", "code": "INTCVS476", "days": 4, "remarks": "Mon-Thu"},
+        {"sr": 6, "name": "Condition Monitoring of Switch Yard Equipments", "code": "INTCVS47", "days": 3, "remarks": "On request"},
+        {"sr": 7, "name": "HVDC Technologies and Application", "code": "INTCVS66", "days": 1, "remarks": "Mon"},
+        {"sr": 8, "name": "FACTS Technologies that enable Stronger, Smarter and Greener Grid", "code": "INTCVS67", "days": 1, "remarks": "Tue"},
+        {"sr": 9, "name": "Reactive Power Compensation & Harmonics in Power System", "code": "INTCVS568", "days": 2, "remarks": "On request"},
+        {"sr": 10, "name": "Dynamic Reactive Power Compensation", "code": "INTCVS569", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 11, "name": "Asset Performance Management", "code": "INTCVS570", "days": 3, "remarks": "Wed-Thu"},
+        {"sr": 12, "name": "Microgrids & Renewable Energy Integration in Grid", "code": "INTCVS70", "days": 3, "remarks": "Wed-Thu"},
+        {"sr": 13, "name": "Digitalization of Power Grid", "code": "INTCVS71", "days": 1, "remarks": "Wed"},
+        {"sr": 14, "name": "NEPLAN - Graphical User Interface, Load Flow and Short Circuit", "code": "INTCVS73", "days": 3, "remarks": "On request"},
+        {"sr": 15, "name": "NEPLAN - Renewable Energy Modelling", "code": "INTCVS74", "days": 2, "remarks": "On request"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Mansha Shukla | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Distribution Automation</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Power system protection", "code": "INTCVS01", "days": 3, "remarks": "Mon-Wed"},
+        {"sr": 2, "name": "Relion® 615 / 620 series - Operation and Engineering", "code": "INTCVS02", "days": 2, "remarks": "Thu-Fri"},
+        {"sr": 3, "name": "Relay handling tool PCM600", "code": "INTCVS03", "days": 1, "remarks": "Sat"},
+        {"sr": 4, "name": "Relion® 615 / 620 series - Testing and Commissioning", "code": "INTCVS20", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 5, "name": "IEC850 for protection Application", "code": "INTCVS21", "days": 2, "remarks": "Wed-Thu"},
+        {"sr": 6, "name": "Relion® 630 series - Operation", "code": "INTCVS05", "days": 1, "remarks": "On request"},
+        {"sr": 7, "name": "Relion® 630 series - Engineering (Programming)", "code": "INTCVS06", "days": 2, "remarks": "On request"},
+        {"sr": 8, "name": "Relion® 611 series - Operation and engineering", "code": "INTCVS10", "days": 2, "remarks": "On request"},
+        {"sr": 9, "name": "Relion® 611 series - Operation and engineering", "code": "INTCVS12", "days": 2, "remarks": "On request"},
+        {"sr": 10, "name": "High Speed Transfer Device SUE 3000", "code": "INTCVS19", "days": 1, "remarks": "On request"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Risha Poovana | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Motors and Generators</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Operation & Maintenance Workshop on LV & HV Motors", "code": "INBOM101", "days": 3, "remarks": "On Request"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Mansha Shukla | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Turbogenerators</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Awareness of Turbogenerators", "code": "INTCVS01", "days": 1, "remarks": "On Request"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Mansha Shukla | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Medium Voltage Products</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Introduction, Operation & Maintenance of Air Insulated Switchgear/GIS/ZSI/ZNI - Level 1", "code": "INTCVS2", "days": 2, "remarks": "Wed-Thu"},
+        {"sr": 2, "name": "Operation, On-site Testing & Pre-requisites of Installation of Air Insulated Switchgear/GIS/ZSI/ZNI - Level 2", "code": "INTCVS24", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 3, "name": "Introduction, Operation & Maintenance of Ring Main Unit Safetylink/SafeLink CB - Level 1", "code": "INTCVS26", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 4, "name": "Operation, On-site Testing & Pre-requisites of Installation of Ring Main Unit Safetylink/SafeLink CB - Level 2", "code": "INTCVS27", "days": 3, "remarks": "Mon-Wed"},
+        {"sr": 5, "name": "Introduction & Operation of Compact Secondary Substation - Level 1", "code": "INTCVS108", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 6, "name": "Operation, On-site Testing & Pre-requisites of Installation of Compact Secondary Substation - Level 2", "code": "INTCVS109", "days": 3, "remarks": "Mon-Wed"},
+        {"sr": 7, "name": "Introduction, Operation & Maintenance of Limited Product - VHA/VME/Unsafe-Level 1", "code": "INTCVS111", "days": 3, "remarks": "Mon-Wed"},
+        {"sr": 8, "name": "Introduction, Operation & Maintenance of Limited Product - VHA/VME/Unsafe-Level 2", "code": "INTCVS112", "days": 2, "remarks": "Wed-Thu"},
+        {"sr": 9, "name": "Operation, On-site Testing & Pre-requisites of Installation of Indoor Circuit Breaker - VDA/VMA/HPA / HCA - Level 1", "code": "INTCVS116", "days": 2, "remarks": "Wed-Thu"},
+        {"sr": 10, "name": "Introduction, Operation & Maintenance of Medium Voltage Gas Insulated Switchgear - Level 1", "code": "INTCVS117", "days": 2, "remarks": "Wed-Thu"},
+        {"sr": 11, "name": "Introduction, Operation & Maintenance of OVR-15, OVR-22, OVR-38 Medium Voltage Air Insulated Auto Reclosure - Level 1", "code": "INTCVS115", "days": 2, "remarks": "Mon-Tue"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Murumali Wakade | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="logo">ABB</div>
+  <div class="sub-header">Substation Automation</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Days</th>
+        <th>Remarks</th>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <th>{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in [
+        {"sr": 1, "name": "Transmission Line Protection", "code": "INGPAS-5", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 2, "name": "Station Protection", "code": "INGPAS-5", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 3, "name": "Generator System Protection", "code": "INGPAS-5", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 4, "name": "Substation Automation with IEC61850", "code": "INGPAS-5", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 5, "name": "Gateway and Remote HMI Engineering", "code": "INGPAS-5", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 6, "name": "Substation Protection course", "code": "INGPAS-6", "days": 10, "remarks": "Mon-Fri"},
+        {"sr": 7, "name": "Substation Automation course", "code": "INGPAS-7", "days": 10, "remarks": "Mon-Fri"},
+        {"sr": 8, "name": "Substation Protection and Automation", "code": "INGPAS-8", "days": 10, "remarks": "Mon-Fri"},
+        {"sr": 9, "name": "RTUS00 Basic course", "code": "INGPAS-9", "days": 3, "remarks": "On Request"},
+        {"sr": 10, "name": "RTUS00 PLC and HMI", "code": "INGPAS-10", "days": 2, "remarks": "Mon-Tue"},
+        {"sr": 11, "name": "RTUS00 Advanced with IEC61850 Client & Server", "code": "INGPAS-12", "days": 2, "remarks": "On Request"},
+        {"sr": 12, "name": "RTUS00 & MicroSADA Remote HMI", "code": "INGPAS-13", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 13, "name": "RTU Din Rail Mounting Basic Course", "code": "INGPAS-14", "days": 2, "remarks": "On Request"},
+        {"sr": 14, "name": "BOXA & Power Management System", "code": "INGPAS-15", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 15, "name": "Power Line Carrier Communication Equipment ETL, INGCAS-C 101", "code": "INGCAS-C 101", "days": 5, "remarks": "Mon-Fri"},
+        {"sr": 16, "name": "Fibre Optic Communication Equipment FOX", "code": "INGCAS-C 103", "days": 4, "remarks": "Mon-Thu"}
+      ] %}
+      {% for item in line_items %}
+      <tr>
+        <td>{{ item.sr }}</td>
+        <td><span data-field="course_name">{{ item.name }}</span></td>
+        <td><span data-field="course_code">{{ item.code }}</span></td>
+        <td>{{ item.days }}</td>
+        <td>{{ item.remarks }}</td>
+        {% for month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        <td>{% if loop.index0 % 0 == 0 %}X{% else %}-{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="contact-info">
+    <p>Venue: <span data-field="venue_name">{{ venue_name }}</span></p>
+    <p>Contact Person: <span data-field="contact_person_name">{{ contact_person_name }}</span> | Email: <span data-field="contact_email">{{ contact_email }}</span> | Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> | Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>Ms. Risha Poovana | Email: <span data-field="contact_email_2">{{ contact_email_2 }}</span> | Mobile: <span data-field="contact_mobile_2">{{ contact_mobile_2 }}</span> | Phone: <span data-field="contact_phone_2">{{ contact_phone_2 }}</span></p>
+  </div>
+  <div class="footer-text">
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+  </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Course Schedule</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    font-size: 10px;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .company-logo {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    font-size: 30pt;
+    font-weight: bold;
+  }
+  .footer-text {
+    font-size: 9pt;
+    margin-top: 40px;
+    line-height: 1.4;
+  }
+  .contact-info {
+    font-size: 9pt;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Power Generation (Control & Inst.)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_pg %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Venue: <span data-field="venue_pg">{{ venue_pg }}</span><br>
+    Contact Person: <span data-field="contact_person_pg">{{ contact_person_pg }}</span> | Email: <span data-field="email_pg">{{ email_pg }}</span> | Mobile: <span data-field="mobile_pg">{{ mobile_pg }}</span> | Phone: <span data-field="phone_pg">{{ phone_pg }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_pg">{{ internet_link_pg }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Industrial Automation</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_ia %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Venue: <span data-field="venue_ia">{{ venue_ia }}</span><br>
+    For More Details Contact: <span data-field="contact_person_ia">{{ contact_person_ia }}</span> | Email: <span data-field="email_ia">{{ email_ia }}</span> | Contact No: <span data-field="contact_no_ia">{{ contact_no_ia }}</span><br>
+    Note: <span data-field="notes_ia">{{ notes_ia }}</span>
+    <br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_ia">{{ internet_link_ia }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Measurement Products</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_mp %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Venue: <span data-field="venue_mp">{{ venue_mp }}</span><br>
+    Contact Person: <span data-field="contact_person_mp">{{ contact_person_mp }}</span> | Email: <span data-field="email_mp">{{ email_mp }}</span> | Mobile: <span data-field="mobile_mp">{{ mobile_mp }}</span> | Phone: <span data-field="phone_mp">{{ phone_mp }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_mp">{{ internet_link_mp }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Low Voltage Drive</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_lvd %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Course Sr. No. - <span data-field="course_sr_no_lvd">{{ course_sr_no_lvd }}</span>, <span data-field="course_sr_no_lvd_2">{{ course_sr_no_lvd_2 }}</span> & 15: Mentioned Courses will schedule & conducted based on Customer request only. Please Contact us & Get Mail Confirmation from us if you are interested in any of the Courses. All other Mentioned Courses schedule can be postponed or reschedule based on nomination list & availability.<br>
+    Venue: <span data-field="venue_lvd">{{ venue_lvd }}</span><br>
+    Contact Person: <span data-field="contact_person_lvd">{{ contact_person_lvd }}</span> | Email: <span data-field="email_lvd">{{ email_lvd }}</span> | Mobile: <span data-field="mobile_lvd">{{ mobile_lvd }}</span> | Phone: <span data-field="phone_lvd">{{ phone_lvd }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_lvd">{{ internet_link_lvd }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Medium Voltage Drive</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_mvd %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    MV Drives Training Centre, <span data-field="venue_mvd">{{ venue_mvd }}</span><br>
+    MV Drives Training Centre: <span data-field="mv_drives_training_centre">{{ mv_drives_training_centre }}</span><br>
+    Contact Person: <span data-field="contact_person_mvd">{{ contact_person_mvd }}</span> | Email: <span data-field="email_mvd">{{ email_mvd }}</span> | Mobile: <span data-field="mobile_mvd">{{ mobile_mvd }}</span> | Phone: <span data-field="phone_mvd">{{ phone_mvd }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_mvd">{{ internet_link_mvd }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Power Electronics</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_pe %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Venue: <span data-field="venue_pe">{{ venue_pe }}</span><br>
+    Contact Person: <span data-field="contact_person_pe">{{ contact_person_pe }}</span> | Email: <span data-field="email_pe">{{ email_pe }}</span> | Mobile: <span data-field="mobile_pe">{{ mobile_pe }}</span> | Phone: <span data-field="phone_pe">{{ phone_pe }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_pe">{{ internet_link_pe }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Robotics</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_robotics %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Robotics Training Centre, <span data-field="venue_robotics">{{ venue_robotics }}</span><br>
+    Robotics Training Centre, ABB India Limited, <span data-field="robotics_address">{{ robotics_address }}</span><br>
+    Contact Person: <span data-field="contact_person_robotics">{{ contact_person_robotics }}</span> | Email: <span data-field="email_robotics">{{ email_robotics }}</span> | Mobile: <span data-field="mobile_robotics">{{ mobile_robotics }}</span> | Phone: <span data-field="phone_robotics">{{ phone_robotics }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_robotics">{{ internet_link_robotics }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="company-logo">ABB</div>
+  <div class="header-title">Course Schedule 2019</div>
+  <h2 style="font-size: 18pt; font-weight: normal; text-align: center; margin-top: 5px;">ABB India Limited</h2>
+  <h3 style="font-size: 14pt; font-weight: bold; text-align: center; margin-top: 5px;">Low Voltage Products</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sr. No.</th>
+        <th style="width: 35%;">Course Name</th>
+        <th style="width: 10%;">Course No.</th>
+        <th style="width: 10%;">Days</th>
+        <th style="width: 10%;">Remarks</th>
+        {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <th style="width: 4%;">{{ month }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_schedule_lvp %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="course_no">{{ item.course_no }}</span></td>
+        <td>{{ item.days }}</td>
+        <td><span data-field="remarks">{{ item.remarks }}</span></td>
+        {% for month_name in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+        <td>
+          {% if item.schedule[month_name] %}
+            &times;
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="footer-text">
+    Low Voltage Switchgear Training Centre, <span data-field="venue_lvp">{{ venue_lvp }}</span><br>
+    Contact Person: <span data-field="contact_person_lvp">{{ contact_person_lvp }}</span> | Email: <span data-field="email_lvp">{{ email_lvp }}</span> | Mobile: <span data-field="mobile_lvp">{{ mobile_lvp }}</span> | Phone: <span data-field="phone_lvp">{{ phone_lvp }}</span><br>
+    The latest version of our course schedule can be found on internet link: <span data-field="internet_link_lvp">{{ internet_link_lvp }}</span>
+  </div>
+</div>
+</body>
+</html>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .header-subtitle {
+    font-size: 14pt;
+    margin-bottom: 30px;
+  }
+  .footer-text {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .footer-meta {
+    font-size: 10pt;
+    margin-top: 10px;
+  }
+</style>
+<body>
+  <div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+      <div>
+        <div class="header-title">Course Schedule 2019</div>
+        <div class="header-subtitle">ABB India Limited</div>
+        <div style="font-size: 16pt; font-weight: bold;">Low Voltage Systems</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 30pt; font-weight: bold;">ABB</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;">Sr. No.</th>
+          <th style="width: 35%;">Course Name</th>
+          <th style="width: 15%;">Course No.</th>
+          <th style="width: 10%;">Days</th>
+          <th style="width: 35%;">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in course_schedule %}
+        <tr>
+          <td><span data-field="course_schedule[{{ loop.index0 }}].sr_no">{{ item.sr_no }}</span></td>
+          <td><span data-field="course_schedule[{{ loop.index0 }}].course_name">{{ item.course_name }}</span></td>
+          <td><span data-field="course_schedule[{{ loop.index0 }}].course_no">{{ item.course_no }}</span></td>
+          <td><span data-field="course_schedule[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+          <td><span data-field="course_schedule[{{ loop.index0 }}].remarks">{{ item.remarks }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div style="margin-top: 40px;">
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th style="width: 10%;">Week no.</th>
+            {% for month in ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+            <th style="width: 8%;">{{ month }}</th>
+            {% endfor %}
+          </tr>
+          <tr>
+            <th style="width: 10%;"></th>
+            {% for day in range(1, 32) %}
+            <th style="width: 8%;">{{ day }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Calendar grid structure would go here, but since the source is a static grid representation, we mimic the structure -->
+          <tr>
+            <td style="text-align: left; font-weight: bold;">Week no.</td>
+            {% for day in range(1, 32) %}
+            <td></td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 80px;">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 50%;">
+          <div style="font-weight: bold;">Venue:</div>
+          <div class="footer-text"><span data-field="venue_details">{{ venue_details }}</span></div>
+        </div>
+        <div style="width: 50%; text-align: right;">
+          <div style="font-weight: bold;">Contact Person:</div>
+          <div class="footer-text">
+            <span data-field="contact_person_name">{{ contact_person_name }}</span> |
+            Email: <span data-field="contact_email">{{ contact_email }}</span> |
+            Mobile: <span data-field="contact_mobile">{{ contact_mobile }}</span> |
+            Phone: <span data-field="contact_phone">{{ contact_phone }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-text" style="margin-top: 20px;">
+        The latest version of our course schedule can be found on internet link: <span data-field="internet_link">{{ internet_link }}</span>
+      </div>
+    </div>
+
+    <div style="position: absolute; bottom: 50px; right: 60px; font-size: 10pt;">17</div>
+  </div>
+</body>

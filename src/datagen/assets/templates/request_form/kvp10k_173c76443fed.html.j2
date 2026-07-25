@@ -1,0 +1,127 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .header-info { margin-bottom: 20px; }
+  .form-group { margin-bottom: 15px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">STEPHEN F. AUSTIN STATE UNIVERSITY</h1>
+  </div>
+
+  <div class="header-info" style="margin-bottom: 30px;">
+    <p>Office of the Registrar</p>
+    <p>P.O. Box {{ registrar_box }}; SFA Station • {{ registrar_city }}, {{ registrar_state }} {{ registrar_zip }}</p>
+    <p>Phone: ({{ registrar_phone }}) • Fax: ({{ registrar_fax }}) • Email: <a href="mailto:{{ registrar_email }}">{{ registrar_email }}</a></p>
+  </div>
+
+  <h2 style="font-size: 16pt; margin-bottom: 20px;">REQUEST FOR CERTIFICATION OF INFORMATION</h2>
+  <p style="margin-bottom: 30px;">A copy/photo of an unexpired photo ID must be submitted with this form.</p>
+
+  <div class="form-group">
+    <p>Student Information:</p>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 48%;">
+        <p>Full legal name: _________________________</p>
+        <span data-field="full_name" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ full_name }}</span>
+      </div>
+      <div style="width: 48%;">
+        <p>Campus ID# or SSN: _________________________</p>
+        <span data-field="campus_id_ssn" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ campus_id_ssn }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <p>Date of birth: _________________________</p>
+    <span data-field="date_of_birth" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ date_of_birth }}</span>
+    <p>Daytime phone number: _________________________</p>
+    <span data-field="daytime_phone" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ daytime_phone }}</span>
+  </div>
+
+  <div class="form-group">
+    <p>Purpose of request:</p>
+    <span data-field="purpose_of_request" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ purpose_of_request }}</span>
+  </div>
+
+  <div class="form-group">
+    <p>Information Requested: (check all that apply)</p>
+    <div style="margin-left: 20px;">
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Completion of attached paperwork from:</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> University letter verifying enrollment status (full-time, half-time, etc.)</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Semester and year:</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> University letter verifying academic standing (good standing, probation, suspension)</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Semester and year:</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> University letter verifying non-attendance</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> University letter verifying a student has submitted an application for an upcoming semester graduation</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Other (please specify):</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <p>Additional information to be included: ____________________________________________________________________</p>
+    <span data-field="additional_info" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ additional_info }}</span>
+  </div>
+
+  <div class="form-group">
+    <p>Method of Delivery: (check all that apply)</p>
+    <div style="margin-left: 20px;">
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Pick up at the Registrar's Office (photo ID required upon arrival)</label>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Email information to:</label>
+      <div style="margin-left: 20px;">
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Recipient's name:</label>
+        <span data-field="recipient_name_email" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ recipient_name_email }}</span>
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Recipient's email address:</label>
+        <span data-field="recipient_email_address" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ recipient_email_address }}</span>
+      </div>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Mail information to:</label>
+      <div style="margin-left: 20px;">
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Recipient's name:</label>
+        <span data-field="recipient_name_mail" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ recipient_name_mail }}</span>
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Mailing address:</label>
+        <span data-field="mailing_address" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ mailing_address }}</span>
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> City, state, ZIP:</label>
+        <span data-field="city_state_zip" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ city_state_zip }}</span>
+      </div>
+      <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Fax information to:</label>
+      <div style="margin-left: 20px;">
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Recipient's name:</label>
+        <span data-field="recipient_name_fax" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ recipient_name_fax }}</span>
+        <label style="display: block; margin-bottom: 5px;"><input type="checkbox"> Fax number:</label>
+        <span data-field="fax_number" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ fax_number }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 40px;">
+    <p>I authorize the Registrar's Office at Stephen F. Austin State University to release the above information as requested, including my campus ID number.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 60px;">
+    <div style="width: 45%;">
+      <p>Student's signature: _________________________</p>
+      <span data-field="student_signature" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ student_signature }}</span>
+    </div>
+    <div style="width: 45%;">
+      <p>Date: _________________________</p>
+      <span data-field="date_signed" style="display: block; border-bottom: 1px solid #000; padding-bottom: 2px;">{{ date_signed }}</span>
+    </div>
+  </div>
+
+  <div style="text-align: right; margin-top: 80px; font-size: 10pt;">
+    Form Last Revised: 03/2022
+  </div>
+</div>

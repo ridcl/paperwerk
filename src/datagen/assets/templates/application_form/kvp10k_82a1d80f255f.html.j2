@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Short Term Advance Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-title { font-size: 24pt; }
+  .sub-header { font-size: 14pt; }
+  .section-title { font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 10pt; margin-bottom: 3px; }
+  .form-group input[type="text"], .form-group select { border: 1px solid #ccc; padding: 5px; width: 100%; box-sizing: border-box; font-size: 10pt; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px; border: 1px solid #000; text-align: left; font-size: 10pt; }
+  .text-right { text-align: right; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div>
+      <h1 class="header-title">University of Central Florida</h1>
+      <h2 class="sub-header">Short Term Advance Application and Promissory Note</h2>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 14pt;">Page 1 of 2</span>
+      <div style="margin-top: 10px;">
+        <span style="font-size: 18pt; font-weight: bold;">FALL 2019</span>
+      </div>
+    </div>
+  </div>
+  <p style="font-size: 10pt; margin-bottom: 30px;">Carefully read the Instructions on page two. Please submit only one request per semester. Duplicates cause delays.</p>
+
+  <div class="section-title">Applicant Information</div>
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>Name</label>
+      <div style="display: flex;">
+        <div style="width: 33.3%;">
+          <label>First</label>
+          <input type="text" value="{{ applicant.first_name }}">
+        </div>
+        <div style="width: 33.3%;">
+          <label>Middle Initial</label>
+          <input type="text" value="{{ applicant.middle_initial }}">
+        </div>
+        <div style="width: 33.3%;">
+          <label>Last</label>
+          <input type="text" value="{{ applicant.last_name }}">
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Address</label>
+      <input type="text" value="{{ applicant.address }}">
+    </div>
+    <div class="form-group" style="width: 20%;">
+      <label>City</label>
+      <input type="text" value="{{ applicant.city }}">
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <label>State</label>
+      <input type="text" value="{{ applicant.state }}">
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <label>Zip Code</label>
+      <input type="text" value="{{ applicant.zip_code }}">
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="form-group" style="width: 30%;">
+      <label>Home Phone</label>
+      <input type="text" value="{{ applicant.home_phone }}">
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Business Phone</label>
+      <input type="text" value="{{ applicant.business_phone }}">
+    </div>
+    <div class="form-group" style="width: 20%;">
+      <label>Driver's License #</label>
+      <input type="text" value="{{ applicant.driver_license_number }}">
+    </div>
+    <div class="form-group" style="width: 20%;">
+      <label>Date of Birth</label>
+      <input type="text" value="{{ applicant.date_of_birth }}">
+    </div>
+  </div>
+
+  <div class="section-title">Source of Repayment: (Check one box only.)</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="option1" checked>
+      <label for="option1" style="margin-left: 5px;">Financial Aid (up to ${{ repayment_options[0].max_amount }})</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="option2">
+      <label for="option2" style="margin-left: 5px;">Other (up to ${{ repayment_options[1].max_amount }})</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <div class="form-group" style="width: 50%;">
+      <label>VA</label>
+      <input type="text" value="{{ repayment_options[0].va_details }}">
+    </div>
+    <div class="form-group" style="width: 50%;">
+      <label>VA Stamp</label>
+      <input type="text" value="{{ repayment_options[1].va_stamp }}">
+    </div>
+  </div>
+
+  <div class="section-title">Required Reference (Preferably closest living relative)</div>
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>Name</label>
+      <div style="display: flex;">
+        <div style="width: 33.3%;">
+          <label>First</label>
+          <input type="text" value="{{ reference.first_name }}">
+        </div>
+        <div style="width: 33.3%;">
+          <label>Middle Initial</label>
+          <input type="text" value="{{ reference.middle_initial }}">
+        </div>
+        <div style="width: 33.3%;">
+          <label>Last</label>
+          <input type="text" value="{{ reference.last_name }}">
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Relationship</label>
+      <input type="text" value="{{ reference.relationship }}">
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <div class="form-group" style="width: 30%;">
+      <label>Address</label>
+      <input type="text" value="{{ reference.address }}">
+    </div>
+    <div class="form-group" style="width: 20%;">
+      <label>City</label>
+      <input type="text" value="{{ reference.city }}">
+    </div>
+    <div class="form-group" style="width: 20%;">
+      <label>State</label>
+      <input type="text" value="{{ reference.state }}">
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Zip Code</label>
+      <input type="text" value="{{ reference.zip_code }}">
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <div class="form-group" style="width: 30%;">
+      <label>Home Phone</label>
+      <input type="text" value="{{ reference.home_phone }}">
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Business Phone</label>
+      <input type="text" value="{{ reference.business_phone }}">
+    </div>
+  </div>
+
+  <div class="section-title">Promissory Note</div>
+  <div style="font-size: 10pt; line-height: 1.5;">
+    <p>I promise to pay any amount received under this promissory note. I understand that any deferment may become due as provided in this note. I accept responsibility for full repayment of this note when due. I understand that if I do not pay this note by the due date, I will be charged a late fee, my records will be placed on hold, my account may be referred to collections, and I agree to reimburse the fees of any collection agency, which may be based on a percentage of the debt collected, and all costs and expenses, including reasonable attorneys' fees incurred in such collection efforts. I understand that this is a promissory note, and I have read and understand the Short Term Advance Instructions and Conditions on page two of this contract. All funds disbursed will be direct deposited into the account I have provided here or money may be disbursed to me in cash. I understand that the repayment of this advance and that this is an advance that must be repaid. I understand that this is an educational loan and may be non-dischargeable in bankruptcy.</p>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="form-group" style="width: 50%;">
+      <label>The due date for this Short Term Advance is {{ due_date }}.</label>
+    </div>
+    <div class="form-group" style="width: 50%;">
+      <label>I understand that a ${{ late_fee_amount }} processing fee will be charged to my account for this advance.</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="agreement_checkbox">
+      <label for="agreement_checkbox" style="margin-left: 5px;">I understand that receiving incomplete items on my myUCF To Do List may delay the processing of this Short Term Advance.</label>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 40px;">Student Signature</div>
+  <div style="font-size: 10pt; line-height: 1.5;">
+    <p>Your advance will be direct deposited or mailed to the current mailing address shown on the myUCF portal, no earlier than one week prior to the first day of classes. To setup Direct Deposit, go to myUCF.edu, and click on Student Self Service > Finances > My Account > Student Direct Deposit. Processing time for Short Term Advances is 5-7 business days.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 45%;">
+      <div class="section-title">Resubmitted Application:</div>
+      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div style="width: 45%;">
+          <label>Date:</label>
+          <input type="text" value="{{ resubmission_date }}">
+        </div>
+        <div style="width: 45%;">
+          <label>Approving Counselor:</label>
+          <input type="text" value="{{ counselor_name }}">
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="width: 45%;">
+            <label>Application Approved:</label>
+            <input type="text" value="{{ application_approved_status }}">
+          </div>
+          <div style="width: 45%;">
+            <label>Application Denied:</label>
+            <input type="text" value="{{ application_denied_status }}">
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="width: 45%;">
+            <label>Amount Approved:</label>
+            <input type="text" value="{{ amount_approved }}">
+          </div>
+          <div style="width: 45%;">
+            <label>Amount Denied:</label>
+            <input type="text" value="{{ amount_denied }}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div style="margin-top: 100px;">
+        <div style="font-size: 10pt;">Revised: 07/2019</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 class="header-title">Short Term Advance</h1>
+    <h2 class="sub-header">Instructions and Conditions</h2>
+    <div style="font-size: 14pt; font-weight: bold; margin-top: 10px;">FALL 2019</div>
+  </div>
+
+  <div class="section-title">Instructions</div>
+  <ol style="font-size: 10pt; line-height: 1.6;">
+    <li>Read all instructions and conditions. This form is valid for fall 2019 only.</li>
+    <li>Fill out form completely. Print legibly or type in black ink. Incomplete forms will not be processed.</li>
+    <li>Provide your name, complete address, telephone number, and your date of birth.</li>
+    <li>Provide the name, address, and telephone number of a reference, preferably closest living relative.</li>
+    <li><span style="font-weight: bold;">This is required for all applications.</span></li>
+    <li>Read, sign, and date the Promissory Note.</li>
+    <li>Fax, mail, upload or hand-deliver completed form to the Office of Student Financial Assistance for processing.</li>
+    <li>Check myUCF to confirm the processing of your Short Term Advance.</li>
+    <li>If approved, your Short Term Advance will be direct deposited to your bank account. To setup Direct Deposit, go to myUCF.edu, and click on Student Self Service > Finances > My Account > Student Direct Deposit. Otherwise, your advance will be mailed to the current mailing address shown on the myUCF portal. Check your mailing address on myUCF for accuracy. Direct deposited funds are usually available 48-72 hours after refunds are posted to your account. Mailed checks can take up to a week or more.</li>
+    <li>The amount of your advance is based on your source of repayment. (See Short Term Advance Conditions below.) A $5.00 non-refundable processing fee will be charged to your account by the university.</li>
+    <li>You must be enrolled for the academic term in which you seek the Short Term Advance.</li>
+    <li>Repayment is due November 1, 2019. Late payers will be charged a late fee of $25.00.</li>
+    <li>Supplemental requests must be accompanied by supporting documentation.</li>
+  </ol>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Short Term Advance Conditions (Read Carefully)</div>
+  <ol style="font-size: 10pt; line-height: 1.6;">
+    <li><span style="font-weight: bold;">Amount:</span> The amount of your advance is based on your source of repayment. If the repayment source selected is Other (such as employment, parents, etc.), then the maximum advance amount is $300. The advance amount for financial aid recipients is based on estimated aid for the semester with a maximum amount of $600. There is a $100 minimum for Short Term Advance request.</li>
+    <li><span style="font-weight: bold;">Service Charge:</span> A $5.00 non-refundable fee will be charged by the university to defray the cost of this program.</li>
+    <li><span style="font-weight: bold;">Repayment:</span> Full repayment of the advance must be made to UCF, at the UCF Cashiers Office located at 109 Millican Hall or online by the due date. Where regulations allow, the Short Term Advance will be deducted from your financial aid prior to issuing any refunds.</li>
+    <li><span style="font-weight: bold;">Late Payment Charge:</span> Payment of a $25.00 late fee will be required if the advance is not paid in full by the due date.</li>
+    <li><span style="font-weight: bold;">Default:</span> A default on the payment of the advance may result in the university placing restrictions on your account, preventing receipt of transcripts of records, impeding academic progress, placing the advance for collection, and reporting to the credit bureau. If placed for collection, you will be responsible for all collection fees, which may be based on a percentage of the debt collected, and all costs and expenses, including reasonable attorneys' fees.</li>
+    <li><span style="font-weight: bold;">No Outstanding To-Do List Items (for Financial Aid):</span> Students must have complete a financial aid file to tie receive a Short-Term Advance.</li>
+  </ol>
+
+  <div style="font-size: 10pt; line-height: 1.6; margin-top: 30px;">
+    <p>Your advance will be direct deposited or mailed to the current mailing address shown on the myUCF portal, no earlier than one week prior to the first day of classes. <span style="font-weight: bold;">Processing time for Short Term Advances is 5-7 business days.</span></p>
+  </div>
+</div>
+</body>
+</html>

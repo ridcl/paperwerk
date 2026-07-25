@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Special Circumstances Request</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .header-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+        .label-col {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-col {
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .signature-area {
+            margin-top: 50px;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 50%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-logo">
+            <span style="font-size: 40px;">&#x2699;&#x2699;&#x2699;</span>
+            <h1 style="font-size: 48px; margin: 0;">WESTMONT</h1>
+        </div>
+        <h2 style="text-align: center; font-size: 24px; margin-top: 10px;">2022-2023 Special Circumstances Request</h2>
+
+        <div class="section-title">STUDENT INFORMATION</div>
+        <div class="form-row">
+            <div>
+                <span class="label-col">Last Name</span>
+                <div class="input-col">{{ student_info.last_name }}</div>
+            </div>
+            <div>
+                <span class="label-col">First Name</span>
+                <div class="input-col">{{ student_info.first_name }}</div>
+            </div>
+            <div>
+                <span class="label-col">M.I.</span>
+                <div class="input-col">{{ student_info.middle_initial }}</div>
+            </div>
+            <div>
+                <span class="label-col">Westmont ID Number or Last 4 digits of Social Security Number</span>
+                <div class="input-col">{{ student_info.id_number }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <span class="label-col">E-mail Address</span>
+                <div class="input-col">{{ student_info.email }}</div>
+            </div>
+            <div>
+                <span class="label-col">Student's Cell Phone</span>
+                <div class="input-col">{{ student_info.phone }}</div>
+            </div>
+        </div>
+
+        <div class="section-title">GENERALLY REQUIRED DOCUMENTATION</div>
+        <p>All requests must include:</p>
+        <ul>
+            <li>2022-2023 Verification Worksheet</li>
+            <li>2020 signed copies of Parent and Student Federal Income Tax Returns</li>
+            <li>2020 W-2 Form(s)</li>
+        </ul>
+
+        <div class="section-title">SUPPLEMENTAL DOCUMENTATION</div>
+        <p>Please select the option(s) below that best fits your circumstance and include all of the supplemental documentation listed in addition to the documents listed above. Please also include a signed letter explaining your special circumstance.</p>
+
+        <div class="checkbox-group">
+            <label>
+                <input type="checkbox"> LOSS OF EMPLOYMENT OR REDUCTION IN EMPLOYMENT/INCOME
+            </label>
+            <p style="margin-left: 20px;">
+                <span class="label-col" style="font-weight: normal;">•</span> Signed copy of the 2021 Tax Return and 2021 W-2 Form(s).
+            </p>
+            <p style="margin-left: 20px;">
+                <span class="label-col" style="font-weight: normal;">•</span> 2022 Projected Income. Please include estimates of all income, including (but not limited to): income earned from work, interest income, rental income, unemployment or retirement income, account distributions, etc.
+            </p>
+            <p style="margin-left: 20px;">
+                <span class="label-col" style="font-weight: normal;">•</span> Copy of documentation relevant to your reduction in income, lay off, or unemployment.
+            </p>
+        </div>
+
+        <div class="checkbox-group" style="margin-top: 20px;">
+            <label>
+                <input type="checkbox"> MEDICAL EXPENSES PAID IN 2021
+            </label>
+            <p style="margin-left: 20px;">
+                <span class="label-col" style="font-weight: normal;">•</span> Itemized list of "out of pocket" medical expenses incurred in 2021. Please do not include health insurance premiums.
+            </p>
+        </div>
+
+        <div class="checkbox-group" style="margin-top: 20px;">
+            <label>
+                <input type="checkbox"> ONE-TIME INCOME RECEIVED IN 2020
+            </label>
+            <p style="margin-left: 20px;">
+                <span class="label-col" style="font-weight: normal;">•</span> Please indicate the nature of the income that you do not expect to receive again. Attach any relevant documentation.
+            </p>
+        </div>
+
+        <div class="signature-area">
+            <div class="section-title">SIGNATURE</div>
+            <p>By signing this worksheet, we certify that all the information is complete and correct:</p>
+
+            <div class="form-row" style="margin-top: 40px;">
+                <div style="flex: 1;">
+                    <span class="label-col">Student's handwritten signature</span>
+                    <div class="signature-line" data-field="student_s_handwritten_signature">{{ student_s_handwritten_signature }}</div>
+                </div>
+                <div style="flex: 1;">
+                    <span class="label-col">Parent's handwritten signature</span>
+                    <div class="signature-line" data-field="parent_s_handwritten_signature">{{ parent_s_handwritten_signature }}</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <p>Submit this completed form to:</p>
+                <p>Westmont College</p>
+                <p>Office of Financial Aid</p>
+                <p>955 La Paz Road</p>
+                <p>{{ contact_info.address_line_1 }}</p>
+                <p>{{ contact_info.city_state_zip }}</p>
+                <p>Email: {{ contact_info.email }}</p>
+            </div>
+
+            <p style="margin-top: 30px;">Questions? Call our Financial Aid Help Line at {{ contact_info.phone }}.</p>
+            <p>Special Circumstances Request</p>
+        </div>
+    </div>
+</body>
+</html>

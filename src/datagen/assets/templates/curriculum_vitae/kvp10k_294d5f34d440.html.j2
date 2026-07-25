@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-name { font-size: 24pt; font-weight: bold; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .subsection-title { font-size: 12pt; font-weight: bold; margin-top: 10px; margin-bottom: 3px; }
+  .entry-date { font-style: italic; font-size: 10pt; }
+  .metadata { font-size: 10pt; color: #555; }
+  .list-item { margin-bottom: 5px; line-height: 1.4; }
+  .two-column { display: flex; justify-content: space-between; }
+  .two-column > div { width: 48%; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .page-number {
+    font-size: 0.9em;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .divider {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+  tr td:first-child {
+    font-weight: bold;
+    width: 30%;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 class="header-name">{{ full_name }}</h1>
+    <p style="font-size: 12pt;">CURRICULUM VITAE</p>
+  </div>
+
+  <div class="two-column">
+    <div>
+      <div class="subsection-title">Office address:</div>
+      <p><span data-field="address.line1">{{ address.line1 }}</span></p>
+      <p><span data-field="address.line2">{{ address.line2 }}</span></p>
+      <p><span data-field="address.line3">{{ address.line3 }}</span></p>
+    </div>
+    <div>
+      <div class="subsection-title">Home address:</div>
+      <p><span data-field="address.home_line1">{{ address.home_line1 }}</span></p>
+      <p><span data-field="address.home_line2">{{ address.home_line2 }}</span></p>
+      <p><span data-field="address.home_line3">{{ address.home_line3 }}</span></p>
+      <p>Telephone: <span data-field="phone_home">{{ phone_home }}</span></p>
+      <p>Email: <span data-field="email_home">{{ email_home }}</span></p>
+    </div>
+  </div>
+
+  <div class="section-title">EDUCATION</div>
+  <div class="list-item">
+    <span data-field="education.institution_name">{{ education.institution_name }}</span>, <span data-field="education.department">{{ education.department }}</span>.
+    <span data-field="education.degree">{{ education.degree }}</span>.
+    <span data-field="education.details">{{ education.details }}</span>.
+    <span data-field="education.year">{{ education.year }}</span>.
+  </div>
+
+  <div class="section-title">PROFESSIONAL EMPLOYMENT</div>
+  <div class="list-item">
+    <span data-field="employment.title">{{ employment.title }}</span> at <span data-field="employment.institution">{{ employment.institution }}</span>, <span data-field="employment.dates">{{ employment.dates }}</span>.
+    <p style="margin-left: 20px;"><span data-field="employment.description">{{ employment.description }}</span></p>
+  </div>
+
+  <div class="section-title">PUBLICATIONS</div>
+  <div class="subsection-title">ARTICLES</div>
+  {% for pub in publications.articles %}
+    <div class="list-item">
+      <span data-field="publications.articles[{{ loop.index0 }}].title">{{ pub.title }}</span>.
+      <span data-field="publications.articles[{{ loop.index0 }}].journal">{{ pub.journal }}</span>, <span data-field="publications.articles[{{ loop.index0 }}].volume">{{ pub.volume }}</span>, pp. <span data-field="publications.articles[{{ loop.index0 }}].pages">{{ pub.pages }}</span>. <span data-field="publications.articles[{{ loop.index0 }}].year">{{ pub.year }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="subsection-title">BOOKS</div>
+  {% for pub in publications.books %}
+    <div class="list-item">
+      <span data-field="publications.books[{{ loop.index0 }}].title">{{ pub.title }}</span>.
+      <span data-field="publications.books[{{ loop.index0 }}].publisher">{{ pub.publisher }}</span>, <span data-field="publications.books[{{ loop.index0 }}].year">{{ pub.year }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="subsection-title">CHAPTERS</div>
+  {% for pub in publications.chapters %}
+    <div class="list-item">
+      <span data-field="publications.chapters[{{ loop.index0 }}].title">{{ pub.title }}</span>.
+      In <span data-field="publications.chapters[{{ loop.index0 }}].book_title">{{ pub.book_title }}</span>, pp. <span data-field="publications.chapters[{{ loop.index0 }}].pages">{{ pub.pages }}</span>. <span data-field="publications.chapters[{{ loop.index0 }}].year">{{ pub.year }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="section-title">PRESENTATIONS</div>
+  {% for pres in presentations %}
+    <div class="list-item">
+      <span data-field="presentations[{{ loop.index0 }}].title">{{ pres.title }}</span>.
+      <span data-field="presentations[{{ loop.index0 }}].conference">{{ pres.conference }}</span>, <span data-field="presentations[{{ loop.index0 }}].location">{{ pres.location }}</span>, <span data-field="presentations[{{ loop.index0 }}].date">{{ pres.date }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="section-title">SERVICE AND AFFILIATIONS</div>
+  {% for service in services %}
+    <div class="list-item">
+      <span data-field="services[{{ loop.index0 }}].title">{{ service.title }}</span>.
+      <span data-field="services[{{ loop.index0 }}].details">{{ service.details }}</span>.
+    </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 10px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+
+  <div class="section-title">REVIEWS</div>
+  {% for review in reviews %}
+    <div class="list-item">
+      <span data-field="reviews[{{ loop.index0 }}].title">{{ review.title }}</span>.
+      <span data-field="reviews[{{ loop.index0 }}].journal">{{ review.journal }}</span>, <span data-field="reviews[{{ loop.index0 }}].date">{{ review.date }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="section-title">WORKSHOPS AND LECTURES</div>
+  {% for workshop in workshops %}
+    <div class="list-item">
+      <span data-field="workshops[{{ loop.index0 }}].title">{{ workshop.title }}</span>.
+      <span data-field="workshops[{{ loop.index0 }}].details">{{ workshop.details }}</span>.
+    </div>
+  {% endfor %}
+
+  <div class="section-title">SKILLS</div>
+  {% for skill in skills %}
+    <span data-field="skills[{{ loop.index0 }}]">{{ skill }}</span>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 10px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+
+  <div class="section-title">OTHER ACTIVITIES</div>
+  {% for activity in activities %}
+    <div class="list-item">
+      <span data-field="activities[{{ loop.index0 }}].title">{{ activity.title }}</span>.
+      <span data-field="activities[{{ loop.index0 }}].details">{{ activity.details }}</span>.
+    </div>
+  {% endfor %}
+
+</div>
+
+
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 9</div>
+  </div>
+
+  <p>“Ob ugroze utrazu russkim iazykom statusa mirovogo iazyka” (“On the Threat to Russian’s Status as a World Language”). Remarks delivered by video-recording to the International Internet Conference and Humanities Forum “The Russian Language Between Europe and Asia,” held at the Permskaya Yarmarka Exhibition Center, 65 Gagarin Boulevard, in Perm, Russia, 30 May–1 June 2013.</p>
+
+  <p>Participant, ACTFL Oral Proficiency Interview Assessment Workshop, in Russian Group led by <span data-field="employer.name">{{ employer.name }}</span>, 19–22 July 2012.</p>
+
+  <p>“In What Language Should a Contemporary Humanities Scholar Speak and Think?” Lecture presented to the XV Fulbright Summer School in the Humanities, “The Humanities as a Transnational Project,” Moscow State University, 26 June 2012. Discussant throughout the Summer School, 25–29 June 2012.</p>
+
+  <p>Co-discussant, along with Martin Daughtry and Moni Yakim, for “Vladimir Vysotsky: The Voice of Russia in English Translation.” Russian Sundays Series. The 92d St. in New York City, 6 May 2012.</p>
+
+  <p>Interview conducted 16 Feb. 2012 with journalist Vlad Morozov on Aleksandr Chudakov and my translation of his novel, aired on Radio Liberty’s Russian-language service, Radio Svoboda, 30 April 2012. <a href="{{ url }}">http://www.svoboda.ru/content/transcripts/24565569.html</a>.</p>
+
+  <p>“Pasternak’s Shakespeare Under the Magnifying Glass” (Pasternak, Nikiforovskaya and Chukovskiy.” Revised version of my lecture to Columbia University of 1 October 2010. Delivered at Annual Meeting of AATSEEL, the American Association of Teachers of Slavic and East European Languages, Pasadena, CA, 7 Jan. 2011.</p>
+
+  <p>“Pasternak’s Shakespeare Under the Magnifying Glass.” Lecture presented to the Columbia University Seminar on Slavic History and Culture, No. 497, 1 Oct. 2010.</p>
+
+  <p>Fourth Annual LLC Research Conference. Panelist for Roundtable “Literature in as/on Exiles,” with visiting writer <span data-field="employer.name">{{ employer.name }}</span>, UAlbany, 16 April 2010.</p>
+
+  <p>“New but Hardly Improved: Are Multiple Retranslations of Classics the Best Cultural Use to Make of Translation Talent?” 48th Annual Southern Conference on Slavic Studies, Gainesville, FL, 25 March 2010.</p>
+
+  <p>“Pasternak and the ‘Museum Girls’: The Biographical Dimension of the Immortality Theme in <span data-field="employer.name">{{ employer.name }}</span>.” Paper delivered at the 41st National Convention of AAASS, the American Association for the Advancement of Slavic Studies, Boston, MA, 14 Nov. 2009.</p>
+
+  <p>Chaired and assumed role of discussant for a panel, “Ethnonosticism: Connations Reflected in Semantics and Pragmatics of a Language,” at the 41st National Convention of AAASS, the American Association for the Advancement of Slavic Studies, Boston, MA, 14 Nov. 2009.</p>
+
+  <p>“Aleksandr Blok iodno vybrannoe mesto iz perepiski Flobera.” (“Aleksandr Blok and a Selected Passage from the Correspondence of Flaubert.” Lecture delivered at the Graduate School Symposium of Middlebury College Russian School, VT, 25 July 2009.</p>
+
+  <p>“Intertext as Translation: A Verse Reminiscence of Flaubert’s Correspondence in Aleksandr Blok’s Poem ‘Retribution.’” Presentation at “Texts on Texts,” Third Annual Research Conference, held at UAlbany, Department of Languages, Literatures and Cultures, 2 April 2009.</p>
+
+  <p>“What’s Fowler to Us? Russian-English Translators and the Heritage of English Usage Dictionaries.” Paper delivered at the Annual Meeting of AATSEEL, the American</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 11</div>
+  </div>
+
+  <p>Association of Teachers of Slavic and East European Languages, San Francisco, 29 Dec. 2008.</p>
+
+  <p>Chaired panel, “The Silver Age and the West,” at the Annual Meeting of AATSEEL, the American Association of Teachers of Slavic and East European Languages, San Francisco, 29 Dec. 2008.</p>
+
+  <p>“Roman A.P. Chudakova “Lozhistia mgla na starye stupeni” kak utverzhdenie ‘samostennosti veshchi’.” Znamka o proteza literaturovedstva.” (“Aleksandr Chudakov’s Novel A Gloom Descends Upon the Ancient Steps as Affirmation of the ‘Thing as Value-in-Itself’.” Notes on the Prose of a Literary Scholar.” Lecture delivered at the “professors’ section” of the Graduate School Symposium of Middlebury College Russian School, Vermont, 26 July 2008.</p>
+
+  <p>“Byvaili u Pasternaka ‘chetvertye stroki’? Vzglad perevodchika na osobno zatrudnennyy sluchay’.” (“Do the Verses of Pasternak Include ‘Fourth Lines’? A Translator’s Perspective on Especially Difficult Passages.” Paper delivered at Gaspardovsky extension, 2008, held at the Russian State University for the Humanities in Moscow, 10–12 April 2008.</p>
+
+  <p>“Note-to-Style, Idea-to-Idea: Forging the ‘Singable’ Translation.” Job talk at the Department of Languages, Literatures and Cultures, SUNY Albany, 29 March 2007.</p>
+
+  <p>“V stikhakh rosiya i svoboda Ivan London...: Stikhovoe ‘dikensianstvo’ u rannego Pasternaka.” (“In My Verses Arose a London of My Own Creation...”: Dickensian Motifs in Early Pasternak.” Paper delivered at international Pasternak conference, “Liubov’ prostanstva: Poetika mesta i prostranstva” (Love of Space: Poetics of Place and Space), held in Perm, Russia, 2–6 July 2006.</p>
+
+  <p>Participation in literary translation workshop conducted by Marian Schwartz during conference “Translating Eastern Europe: Art, Politics, and Identity in Translated Literature,” held at Ohio State University, 30 Sept.–2 Oct. 2005.</p>
+
+  <p>“Russian Science Today: Crisis and Reforms.” Public lecture for the International Relations Forum at Bristol Village, Waverly Ohio, 11 May 2005.</p>
+
+  <p>“Survival Tales of the Soviet-Period Intelligentsia: Pasternak’s <span data-field="employer.name">{{ employer.name }}</span> and the Memoiristic Writings of Aleksandr Chudakov.” Job talk at the Department of Languages, Literatures and Cultures, SUNY Albany, 14 April 2005.</p>
+
+  <p>“Perevodchik Timoti Sergey” v nature i po-libo-umu.” (“Timothy Sergey, Translator—Up Close” and “No Matter What.” Interview, <span data-field="employer.name">{{ employer.name }}</span>, 8 Jan. 2005.</p>
+
+  <p>Radio appearance on the “Pereplet” program of the Russian-language People’s Wave Radio, WKDM 1380 AM in New York City, 7 Oct. 2004. (Half-hour live interview on translating literature and contemporary Russian lexicon.)</p>
+
+  <p>“Aleksandr Chudakov’s Little-Known Hit Novel: A Translator’s Tale.” Midwest Slavic Conference, Ohio State University, 28 Feb. 2004.</p>
+
+  <p>Several radio appearances on the “Grey Matters” program of WCBN 88.3 FM in Ann Arbor, MI, to discuss Russian politics and media affairs (2001–03).</p>
+
+  <p>“Hunting the Goose: Vladimir Gusinsky and the Putin Regime.” Public lecture, Ohio State University Center for Slavic and East European Studies, in Columbus, OH, 15 Nov. 2000.</p>
+
+  <p>“The Hater of Life and Eros in Chekhov’s ‘Unter Prishibeev,’” “Uchitel’ slovesnosti,” and “Chelovek v futliare”: An Instance of Character Typification in Chekhov.” Paper given at</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 12</div>
+  </div>
+
+  <p>the Third International Chekhov Symposium, Yale University, New Haven, CT, 26–28 April 1990.</p>
+
+  <p>“Akhmatova and ‘Nevidimyi grad Kitezh’.” Paper given at the annual meeting of the Connecticut and Rhode Island Chapters of AATSEEL, Yale University, New Haven, CT, 21 April 1990.</p>
+
+  <p>Commentator for panel on Russian 19th- and 20th-century prose and poetry at the Fifth Annual Ivy League Graduate Student Conference in Russian and Soviet Studies, Brown University, Providence, RI, 23–24 March 1990.</p>
+
+  <p>“Plot-Construction Parallelism in Pushkin’s Vstrel and Metel”: The Question of Play with Fabula as a Unifying Principle in Poetic Belkina.” The Fourth Annual Ivy League Graduate Students’ Conference in Russian and Soviet Studies, Yale University, New Haven, CT, 7–8 April 1989.</p>
+
+  <div class="divider"></div>
+
+  <h3 class="section-title">GRANTS AND AWARDS</h3>
+
+  <p>Supporting grant from the National Endowment for the Arts, $20,000, for the translation of <span data-field="employer.name">{{ employer.name }}</span>, awarded 25 Oct. 2005.</p>
+
+  <p>Two-week fellowship to the Ledge House International Writers’ Residency to work on the translation of <span data-field="employer.name">{{ employer.name }}</span>, awarded by the PEN Translation Fund (summer 2005).</p>
+
+  <p>PEN Translation Fund award for an English translation of <span data-field="employer.name">{{ employer.name }}</span>, 21 April 2004.</p>
+
+  <p>Sterling Prize Fellowship for Beginning Graduate Students, Yale University, New Haven, CT, for academic year 1988–89.</p>
+
+  <p>Fulbright-Hayes scholarship for advanced study of Russian language and Russian language pedagogy at the Pushkin Institute, Moscow, in a cooperative program administered by the Pushkin Institute and Middlebury College Russian School, Middlebury, VT, for academic year 1986–87.</p>
+
+  <p>University of Michigan Hopwood Award for Creative Writing, Major Essay category, 1984, for essay on Joyce and Nietzsche, “Amid a crowd of stars,” Stephen Dedalus and the Art of Metaphysical Sacrifice.</p>
+
+  <p>University of Michigan Hopwood Award for Creative Writing, Minor Essay category, 1983, for essay on Romantic critical theory, “The Nineteenth-Century Quest for Community: Romantic Transcendentalism and the Masters of Discourse.”</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 13</div>
+  </div>
+
+  <h3 class="section-title">SERVICE</h3>
+
+  <p>DEPARTMENTAL, COLLEGE, AND UNIVERSITY-WIDE</p>
+
+  <p>On the three-year UAlbany University Senate leadership track beginning AY 2020-21. Departmental senator on Faculty Senate, serving on Senate Governance Committee, beginning spring 2017.</p>
+
+  <p>Member of Provost’s Strategic Planning “Expedition 3.1” drafting committee (faculty development) chaired by Ann Marie Murray, April–May 2017.</p>
+
+  <p>Member of Promotion Committee for LLC colleague Loti Safayi, summer–fall 2015.</p>
+
+  <p>Featured presenter at ITLAL “Tenure Trek” presentation, “Writing Effective Research and Service Statements,” 2 October 2014.</p>
+
+  <p>Chairman of LLC Executive Committee for consecutive terms, since September 2014.</p>
+
+  <p>Member of Tenure Committee for LLC colleague Ilka Kressner, 2014.</p>
+
+  <div class="divider"></div>
+
+  <h3 class="section-title">TEACHING EXPERIENCE</h3>
+
+  <p>Organized UAlbany Ukraine Crisis Forum with presentations by faculty of various disciplines, held at the Campus Center, 375, 17 April 2014.</p>
+
+  <p>University in the High School (UHS) liaison for the UAlbany UHS Russian program as of Fall 2013. Represented LLC at SUNY Language Pact (Pipeline-Access-Culture-Technology) Building Community to Strengthen Language Learning Full-day workshop at the SUNY Global Center, New York, NY, 5 April 2013.</p>
+
+  <p>Represented LLC at SUNY-MLA Collaboration for Language and Culture Education: Exploring New Structures for a Changing World full-day workshop at SUNY Plaza, Albany, NY, 29 May 2012.</p>
+
+  <p>Faculty advisor and host for Russian Learners Club, 2008–15.</p>
+
+  <p>Counselor for LLC on the CAS Faculty Council, Member of Council’s Academic Support Committee, 2009–13.</p>
+
+  <p>Represented LLC at the UAlbany Accepted Student Open House, 3 April 2011.</p>
+
+  <p>Member, LLC Executive Committee, 2009–11.</p>
+
+  <p>Member, Undergraduate Academic Council and also the General Education Committee, 2007–08.</p>
+
+  <p>Member, Advisory Committee on the Center for Languages and International Communication (CLIC), 2007–08.</p>
+
+  <div class="divider"></div>
+
+  <h3 class="section-title">SERVICE TO THE FIELD, OUTREACH, CONSULTING</h3>
+
+  <p>Contributed Expert Reference Letter to the EB-1A petition to U.S. Immigration Services on behalf of contemporary Russian poet and singer-songwriter Aleksandr Shecherbina, 5 August 2022.</p>
+
+  <p>Consulting mezzo-soprano Stephanie Ponier on Russian pronunciation for her performances of Prokofiev’s Aleksandr Nevsky Cantata with the Choer de la Montagne directed by Julien Proulx, Église St-Matthieu de Beloeil, Quebec, CA, 24–26 May 2013, 8 March–4 June 2013.</p>
+
+  <p>Judge for the annual Russian Poetry Contest conducted by New Russia Cultural Center at its Annual Russian Winter Festivals in Albany, NY, regularly since 2013.</p>
+
+  <p>External examiner for honors oral exam on thesis, “Translating Tatyana Tolstaya,” at Hobart and William Smith Colleges, 28 April 2012.</p>
+
+  <p>Consulting translator-scholar Henry Pickford (U. Colorado Boulder) on his English translations and analyses of poems by Lev Loshef, 1 June 2010–27 April 2013.</p>
+
+  <p>External examiner for oral Russian at Skidmore College, regularly at end of semesters from December 2011 to 2018.</p>
+
+  <p>Consulting translator-performer Vadim Astrakhan on his singable English translations of songs by Vladimir Vysotsky, irregularly, from 2011 to 2017.</p>
+
+  <p>Co-organizer and judge representing UAlbany’s Russian program for an annual competition of spoken and written Russian for a consortium of New York state colleges and universities, since 2011.</p>
+
+  <p>Judge for the annual ACTR High-school Olympiad of Spoken Russian, since 2008; organizer of UAlbany’s hosting functions from 2013 to present.</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 14</div>
+  </div>
+
+  <h3 class="section-title">MEMBERSHIPS IN PROFESSIONAL ASSOCIATIONS</h3>
+
+  <p>Association for Slavic, East European, and Eurasian Studies</p>
+
+  <p>American Association of Teachers of Slavic and East European Languages</p>
+
+  <p>Southern Conference on Slavic Studies</p>
+
+  <p>American Council on the Teaching of Foreign Languages</p>
+
+  <p>Slavic Languages Division of the American Translators Association</p>
+
+  <p>ProZ.com Translation Workplace</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 15</div>
+  </div>
+
+  <h3 class="section-title">COURSES TAUGHT AT UALBANY</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <td>FA</td>
+        <td>Year</td>
+        <td>Course</td>
+        <td>Term</td>
+        <td>Units</td>
+        <td>Title/Topic</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2007</td>
+        <td>ARUS 301, Advanced Russian I (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 547, Russian Language Through Film (conducted in Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>2008</td>
+        <td>ARUS 302, Advanced Russian II (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 501, Translation into English</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 603A and B, Specialized Translation (Russian to English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FA</td>
+        <td>2008</td>
+        <td>ARUS 301, Advanced Russian I (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 502, Translation into Russian (conducted in Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 605, Literary Translation</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>2009</td>
+        <td>ARUS 302, Advanced Russian II (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 480, Senior (Capstone) Seminar (conducted in Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FA</td>
+        <td>2009</td>
+        <td>ARUS 301, Advanced Russian I (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 251, Masterpieces of 19th-Century Russian Literature (in English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 401, Advanced Russian Grammar</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>2010</td>
+        <td>ARUS 202, Intermediate Russian II (Second-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 302, Advanced Russian II (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FA</td>
+        <td>2010</td>
+        <td>ARUS 301, Advanced Russian I (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 401, Advanced Russian Grammar (Fourth-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 251, Masterpieces of 19th-Century Russian Literature (in English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>2011</td>
+        <td>ARUS 202, Intermediate Russian II (Second-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 302, Advanced Russian II (Third-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FA</td>
+        <td>2011</td>
+        <td>Ad-hoc research release from teaching and service</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>2012</td>
+        <td>ARUS 202, Intermediate Russian II (Second-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 401, Advanced Russian Grammar (Fourth-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FA</td>
+        <td>2012</td>
+        <td>ARUS 101-0001, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 201-Y, Intermediate Russian I (Second-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 16</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2013</td>
+        <td>ARUS 102-0001, Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2013</td>
+        <td>ARUS 101-0001, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 201-Y, Intermediate Russian I (Second-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2014</td>
+        <td>ARUS 102-0001, Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2014</td>
+        <td>ARUS 101-0001, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2015</td>
+        <td>ARUS 102-0001, Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2015</td>
+        <td>ARUS 101-0001, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 251, Masterpieces of 19th-Century Russian Literature (in English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2016</td>
+        <td>ARUS 102-0002, Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2016</td>
+        <td>ARUS 101-0001, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002, Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>AENG 226-0012 Focus-Lit Theme, Form, or Mode, crosslisting of ARUS 252, Masterpieces of 20th-Century Russian Literature (in English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2017</td>
+        <td>ARUS 102-0002 Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2017</td>
+        <td>Sabbatical Semester</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2018</td>
+        <td>ARUS 102-0002 Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2018</td>
+        <td>ARUS 101-0001 Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002 Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>AENG 226-002 Focus-Lit Theme, Form, or Mode, crosslisting of ARUS 252, Masterpieces of 20th-Century Russian Literature (in English)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <td>SP</td>
+        <td>2019</td>
+        <td>ARUS 102-0002 Elementary Russian II (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FA</td>
+        <td>2019</td>
+        <td>ARUS 101-0001 Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 101-0002 Elementary Russian I (First-Year Russian)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>ARUS 280-0001, Soviet and Russian Cinema</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 17</div>
+  </div>
+
+  <h3 class="section-title">Independent Studies Conducted at UAlbany Since 2007</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td>Course</td>
+        <td>Term</td>
+        <td>Units</td>
+        <td>Title/Topic</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td>ARUS 397</td>
+        <td>FA 2008</td>
+        <td>2</td>
+        <td>Russian Grammar Through Writing (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td>ARUS 697</td>
+        <td>FA 2008</td>
+        <td>1</td>
+        <td>Advanced Russian-English Translation (Approaches to Poetry)</td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td>ARUS 697</td>
+        <td>FA 2008</td>
+        <td>4</td>
+        <td>Advanced English to Russian Translation</td>
+      </tr>
+      <tr>
+        <td>4.</td>
+        <td>ARUS 397</td>
+        <td>SP 2009</td>
+        <td>1</td>
+        <td>Russian Grammar Through Writing (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>5.</td>
+        <td>ARUS 697</td>
+        <td>SP 2010</td>
+        <td>3</td>
+        <td>Russian Grammar and Stylistics Through Composition (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>6.</td>
+        <td>ARUS 397</td>
+        <td>SP 2011</td>
+        <td>4</td>
+        <td>Intensive Grammar (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>7.</td>
+        <td>ARUS 397</td>
+        <td>SP 2012</td>
+        <td>3</td>
+        <td>Advanced Russian Grammar</td>
+      </tr>
+      <tr>
+        <td>8.</td>
+        <td>ARUS 397</td>
+        <td>SP 2012</td>
+        <td>3</td>
+        <td>Intensive Grammar (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>9.</td>
+        <td>ARUS 397</td>
+        <td>SP 2016</td>
+        <td>1</td>
+        <td>Topics Contemporary Russia</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="page-number">10/31/2022 18</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td>Course</td>
+        <td>Term</td>
+        <td>Units</td>
+        <td>Title/Topic</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td>ARUS 397</td>
+        <td>FA 2008</td>
+        <td>2</td>
+        <td>Russian Grammar Through Writing (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td>ARUS 697</td>
+        <td>FA 2008</td>
+        <td>1</td>
+        <td>Advanced Russian-English Translation (Approaches to Poetry)</td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td>ARUS 697</td>
+        <td>FA 2008</td>
+        <td>4</td>
+        <td>Advanced English to Russian Translation</td>
+      </tr>
+      <tr>
+        <td>4.</td>
+        <td>ARUS 397</td>
+        <td>SP 2009</td>
+        <td>1</td>
+        <td>Russian Grammar Through Writing (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>5.</td>
+        <td>ARUS 697</td>
+        <td>SP 2010</td>
+        <td>3</td>
+        <td>Russian Grammar and Stylistics Through Composition (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>6.</td>
+        <td>ARUS 397</td>
+        <td>SP 2011</td>
+        <td>4</td>
+        <td>Intensive Grammar (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>7.</td>
+        <td>ARUS 397</td>
+        <td>SP 2012</td>
+        <td>3</td>
+        <td>Advanced Russian Grammar</td>
+      </tr>
+      <tr>
+        <td>8.</td>
+        <td>ARUS 397</td>
+        <td>SP 2012</td>
+        <td>3</td>
+        <td>Intensive Grammar (Advanced Heritage Learner)</td>
+      </tr>
+      <tr>
+        <td>9.</td>
+        <td>ARUS 397</td>
+        <td>SP 2016</td>
+        <td>1</td>
+        <td>Topics Contemporary Russia</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

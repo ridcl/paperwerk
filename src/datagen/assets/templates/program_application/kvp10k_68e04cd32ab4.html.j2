@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Program Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .inline-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .radio-group label {
+    margin-right: 15px;
+  }
+  .checkbox-group label {
+    margin-right: 15px;
+  }
+  hr {
+    border: 0;
+    height: 1px;
+    background: #000;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div style="text-align: left;">
+      <h1 style="font-size: 24px; margin: 0;">SONOMA STATE UNIVERSITY</h1>
+      <h2 style="font-size: 20px; margin: 0;">MCNAIR SCHOLARS PROGRAM</h2>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24px; margin: 0;">Program Application</h1>
+    </div>
+  </div>
+
+  <p>The McNair Scholars is a federally funded TRIO program requiring the information below to determine eligibility. All information supplied is kept strictly confidential by federal, state, and SSU standards.</p>
+  <p>The McNair Scholars Program has been designed to support only 27 SSU undergraduate students per year, and acceptance into the program is competitive. There is no formal deadline at this time; however, space in the program is limited, so please submit your application as soon as possible.</p>
+
+  <div class="section-title">STUDENT INFORMATION</div>
+
+  <div class="form-group">
+    Full Legal Name: <span data-field="full_name">{{ full_name }}</span>
+  </div>
+  <div class="form-group">
+    Preferred Name: <span data-field="preferred_name">{{ preferred_name }}</span>
+  </div>
+  <div class="form-group">
+    Preferred Pronouns: <span data-field="preferred_pronouns">{{ preferred_pronouns }}</span>
+  </div>
+  <div class="form-group">
+    Permanent Address: <span data-field="permanent_address">{{ permanent_address }}</span>
+  </div>
+  <div class="form-group">
+    Current/Local Address: <span data-field="current_local_address">{{ current_local_address }}</span>
+  </div>
+  <div class="inline-group">
+    <div class="form-group">
+      SSU E-mail: <span data-field="ssu_email">{{ ssu_email }}</span>
+    </div>
+    <div class="form-group">
+      Other E-mail: <span data-field="other_email">{{ other_email }}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    Cell Number: <span data-field="cell_number">{{ cell_number }}</span>
+  </div>
+
+  <hr>
+
+  <div class="section-title">ACADEMIC INFORMATION</div>
+
+  <div class="form-group">
+    What is your current grade level at SSU (i.e. first-year, sophomore, junior, senior)? <span data-field="current_grade_level">{{ current_grade_level }}</span>
+  </div>
+  <div class="form-group">
+    Expected Month/Year of Graduation from Sonoma State: <span data-field="expected_graduation_date">{{ expected_graduation_date }}</span>
+  </div>
+  <div class="form-group">
+    What is your officially declared undergraduate major(s)/minor? <span data-field="major_minor">{{ major_minor }}</span>
+  </div>
+  <div class="form-group">
+    What is your planned graduate school major? <span data-field="planned_graduate_major">{{ planned_graduate_major }}</span>
+  </div>
+  <div class="form-group">
+    Do you plan to pursue a graduate degree directly after earning your undergraduate degree?
+    <div class="radio-group" style="margin-top: 5px;">
+      <label><input type="radio" name="graduate_plan" value="yes"> Yes</label>
+      <label><input type="radio" name="graduate_plan" value="no"> No</label>
+    </div>
+  </div>
+  <p style="font-size: 0.9em; margin-top: 10px;">(Note: The McNair Scholars program is not currently accepting applications from students who are pursuing MD, DO, Nursing, JD, or MBA degrees)</p>
+
+  <div style="text-align: right; margin-top: 50px;">
+    SSU McNair Scholars Program Application | 1
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">CITIZENSHIP INFORMATION</div>
+
+  <div class="form-group">
+    Are you a U.S. citizen or permanent resident?
+    <div class="radio-group" style="margin-top: 5px;">
+      <label><input type="radio" name="citizenship_status" value="yes"> Yes</label>
+      <label><input type="radio" name="citizenship_status" value="no"> No</label>
+    </div>
+  </div>
+  <p>If you answered "No" to the question above, please answer the following:</p>
+  <div class="form-group">
+    Are you a permanent resident of the United States?
+    <div class="radio-group" style="margin-top: 5px;">
+      <label><input type="radio" name="permanent_resident" value="yes"> Yes</label>
+      <label><input type="radio" name="permanent_resident" value="no"> No</label>
+    </div>
+  </div>
+  <div class="form-group">
+    If you are not yet a permanent resident, are you in the U.S for other than a temporary purpose with the intent of becoming a permanent resident?
+    <div class="radio-group" style="margin-top: 5px;">
+      <label><input type="radio" name="intent_to_become_resident" value="yes"> Yes</label>
+      <label><input type="radio" name="intent_to_become_resident" value="no"> No</label>
+    </div>
+  </div>
+  <p>If you are in the process of becoming a permanent resident, please provide evidence from the Immigration and Naturalization Service with your intent to become a permanent resident.</p>
+
+  <div class="section-title">ELIGIBILITY</div>
+
+  <p>Students are eligible to participate in the McNair Scholars program if they are a low-income and first-generation college student of any race/ethnicity, OR they belong to at least one of the groups underrepresented in graduate education (African-American, Latino/a, Native Hawaiian/Pacific Islander, or Native American), regardless of income status and parental educational attainment level; however, two-thirds of each McNair Scholars cohort must be first-generation and low-income students. Applicants also must have completed 60-semester units and have a cumulative minimum GPA of 3.0.</p>
+
+  <div class="form-group">
+    1. Ethnicity Status (please select all that apply)
+    <div class="checkbox-group" style="margin-top: 10px;">
+      <label><input type="checkbox" name="ethnicity" value="american_indian/alaskan_native"> American Indian/Alaskan Native</label>
+      <label><input type="checkbox" name="ethnicity" value="black_or_african_american"> Black or African-American</label>
+      <label><input type="checkbox" name="ethnicity" value="native_hawaiian_or_pacific_islander"> Native Hawaiian or Pacific Islander</label>
+      <label><input type="checkbox" name="ethnicity" value="other_please_specify"> Other (Please Specify)</label>
+      <label><input type="checkbox" name="ethnicity" value="asian"> Asian</label>
+      <label><input type="checkbox" name="ethnicity" value="hispanic_or_latino"> Hispanic or Latino</label>
+      <label><input type="checkbox" name="ethnicity" value="white"> White</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    2. First-Generation College Student Status (please check any of the following that apply)
+    <div class="checkbox-group" style="margin-top: 10px;">
+      <label><input type="checkbox" name="fg_status" value="neither_parent_bachelor"> Neither of my parents (biological or adoptive) possess a bachelor's degree.</label>
+      <label><input type="checkbox" name="fg_status" value="prior_age_18_one_parent"> Prior to the age of 18, I regularly resided with only one parent, and that parent did not possess a bachelor's degree.</label>
+      <label><input type="checkbox" name="fg_status" value="prior_age_18_no_support"> Prior to the age of 18, I did not regularly reside with or receive support from a biological or adoptive parent.</label>
+      <label><input type="checkbox" name="fg_status" value="prior_age_18_one_parent_bachelor"> Prior to the age of 18, at least one of the parents with whom I resided possessed a bachelor's degree.</label>
+      <label><input type="checkbox" name="fg_status" value="none_above"> None of above</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    3. Income Status
+    <div class="radio-group" style="margin-top: 5px;">
+      <label><input type="radio" name="income_eligible" value="yes"> Yes</label>
+      <label><input type="radio" name="income_eligible" value="no"> No</label>
+    </div>
+  </div>
+  <p>We will obtain information from the financial aid office in order to verify your income status. We may also ask for further documentation after we review your financial aid information.</p>
+
+  <div class="section-title">RESEARCH EXPERIENCE</div>
+
+  <div class="form-group">
+    Have the following questions help us to determine in what ways we can best serve the McNair Scholars. Previous research experience and/or knowledge of the graduate school application process is not considered, nor is it required, as an eligibility factor.
+    <div class="form-group" style="margin-top: 15px;">
+      Have you participated in research at the undergraduate level?
+      <div class="radio-group" style="margin-top: 5px;">
+        <label><input type="radio" name="research_undergrad" value="yes"> Yes</label>
+        <label><input type="radio" name="research_undergrad" value="no"> No</label>
+      </div>
+    </div>
+    <p>If you answered yes, please tell us about the research: when it was conducted, in what discipline, and whether it was supported by a faculty advisor.</p>
+  </div>
+
+  <div class="section-title">SUPPLEMENTAL APPLICATION MATERIALS</div>
+
+  <p>In addition to this application, please submit the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Unofficial transcripts from SSU and/or any other institution where you have earned more than 20 units of academic credit.</li>
+    <li>Essay 1 & Essay 2 (see below for instructions).</li>
+  </ul>
+
+  <p>Please attach your typed responses to the following prompts in separate documents (500-1000 words each). Please make sure to answer each component of the prompt in your response.</p>
+
+  <div class="form-group">
+    <strong>Essay 1:</strong> Explain your reasons for pursuing a graduate degree. If selected to be a McNair Scholar, what research topic(s) would you be interested in researching and how is this research related to your educational/career goals? How will the McNair Scholars Program assist you in making your educational/career goals possible?
+  </div>
+  <div class="form-group">
+    <strong>Essay 2:</strong> Tell us your story (your family background, journey to college, challenges you have faced and overcome, etc.). How has your personal background prepared you for the rigors of the McNair Scholars program as well as graduate-level study.
+  </div>
+
+  <div class="section-title">FACULTY RECOMMENDATION</div>
+
+  <p>A recommendation from a faculty member in your major (or minor) is required as part of the application process. Please contact your recommender immediately and provide them with the McNair Faculty Recommendation Form available on the <a href="#">Application page of the McNair Scholars website</a>. Please advise your recommender that that the completed form should be emailed directly to Dr. Daniel Malpica: <span data-field="faculty_email">{{ faculty_email }}</span>.</p>
+  <p>Your recommendation should be from a faculty member in your major (or minor) who can address your academic ability and potential. If you are unable to get a recommendation from faculty in your major (or minor), please contact us to discuss other options.</p>
+
+  <div style="text-align: right; margin-top: 50px;">
+    SSU McNair Scholars Program Application | 2
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">SUBMITTING YOUR APPLICATION</div>
+
+  <p>Your completed application and supplemental materials should be emailed to Dr. Daniel Malpica, McNair Scholars Program Director, at <span data-field="director_email">{{ director_email }}</span>.</p>
+  <p>Please name your files consistently using the following naming convention: Last Name_First Name_Title of Document (e.g. Malpica_Daniel_Essay_1, Malpica_Daniel_Transcripts, etc.)</p>
+
+  <div class="form-group" style="margin-top: 30px;">
+    <label><input type="checkbox" name="certification" value="true"> By checking this box, I certify that all information on this application is true and accurate to the best of my knowledge. I further understand that any false statements may result in denial or revocation of this application.</label>
+  </div>
+
+  <div class="inline-group">
+    <div class="form-group">
+      Name: <span data-field="applicant_name">{{ applicant_name }}</span>
+    </div>
+    <div class="form-group">
+      Date: <span data-field="submission_date">{{ submission_date }}</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <p>If you have any questions about the application, or the program, please contact Dr. Daniel Malpica at <span data-field="director_email">{{ director_email }}</span> or call 707-664-2264.</p>
+
+  <div style="text-align: right; margin-top: 50px;">
+    SSU McNair Scholars Program Application | 4
+  </div>
+</div>
+
+</body>
+</html>

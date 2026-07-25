@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instrumentation Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        .header-title { font-size: 36pt; font-weight: bold; }
+        .subtitle { font-size: 16pt; margin-top: 5px; }
+        .body-text { font-size: 11pt; line-height: 1.5; }
+        .section-title { font-size: 18pt; font-weight: bold; margin-bottom: 15px; }
+        .table-container { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table-header th { background-color: #f0f0f0; padding: 10px; border: 1px solid #ddd; text-align: left; font-weight: bold; }
+        .table-cell td { padding: 10px; border: 1px solid #ddd; font-size: 10pt; }
+        .footer { position: absolute; bottom: 50px; width: 100%; font-size: 9pt; color: #555; }
+        .logo-abn { font-family: "Helvetica", Arial, sans-serif; font-size: 30pt; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-top: 100px;">
+            <div class="header-title">Instrumentation</div>
+            <div class="subtitle">for Pulp & Paper Applications</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 80px;">
+            <div style="flex: 1; padding-right: 50px;">
+                <div class="body-text">
+                    The purpose of a continuous or a batch digester is to dissolve lignins from the fibers in wood chips.
+                    <br><br>
+                    The cook is performed by heating the wood chips together with sodium hydroxide and sodium sulphide to high temperatures. The bisulphides primarily break up lignin bonds to the fibres, while sodium hydroxide dissolves and extracts the lignin.
+                    <br><br>
+                    A primary goal for the cook is to produce fibers with a certain kappa number, which relates to how much residual lignin there is left on the fibers. To control the cook, it is important to keep control of all flow rates, temperatures, pressures and pH.
+                    <br><br>
+                    Mechanical treatment in the fiber line untangles fibers and is followed by the removal of non-decomposed chips (shives), stones and other unwanted particles.
+                    <br><br>
+                    Dedicated, robust instrumentation and advanced control are required to achieve this efficiently.
+                </div>
+            </div>
+            <div style="flex: 1; text-align: right;">
+                <img src="placeholder_image.png" alt="Digester Process Diagram" style="max-width: 400px; height: auto;">
+                <div style="font-size: 9pt; text-align: right; margin-top: 10px;">Digester – {{ digester_location }}</div>
+            </div>
+        </div>
+
+        <div style="text-align: left; margin-top: 100px;">
+            <div class="logo-abn">ABB Automation</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="placeholder_diagram.png" alt="Process Flow Diagram" style="max-width: 750px; height: auto;">
+        </div>
+
+        <div style="margin-top: 50px;">
+            <div class="section-title">Parameter | Why measure this parameter ?</div>
+            <table class="table-container">
+                <thead>
+                    <tr class="table-header">
+                        <th style="width: 20%;">Parameter</th>
+                        <th style="width: 80%;">Why measure this parameter ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Flow</td>
+                        <td>{{ flow_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dissolved Lignin</td>
+                        <td>{{ dissolved_lignin_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dissolved Solids</td>
+                        <td>{{ dissolved_solids_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kappa/Fiber Size</td>
+                        <td>{{ kappa_fiber_size_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pressure</td>
+                        <td>{{ pressure_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Conductivity</td>
+                        <td>{{ conductivity_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Differential Pressure</td>
+                        <td>{{ differential_pressure_description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{ temperature_description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 80px;">
+            <div class="section-title">Why use ABB Instrumentation ?</div>
+            <div style="font-size: 11pt; line-height: 1.6;">
+                <p>{{ abb_instrumentation_benefit_1 }}</p>
+                <p>{{ abb_instrumentation_benefit_2 }}</p>
+                <p>{{ abb_instrumentation_benefit_3 }}</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 80px;">
+            <div class="section-title">Which ABB Product ?</div>
+            <table class="table-container">
+                <thead>
+                    <tr class="table-header">
+                        <th style="width: 33%;">Parameter</th>
+                        <th style="width: 33%;">ABB Product</th>
+                        <th style="width: 33%;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Flow</td>
+                        <td>{{ product_flow }}</td>
+                        <td>{{ product_flow_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dissolved Lignin</td>
+                        <td>{{ product_dissolved_lignin }}</td>
+                        <td>{{ product_dissolved_lignin_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dissolved Solids</td>
+                        <td>{{ product_dissolved_solids }}</td>
+                        <td>{{ product_dissolved_solids_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kappa/Fiber Size</td>
+                        <td>{{ product_kappa_fiber_size }}</td>
+                        <td>{{ product_kappa_fiber_size_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pressure</td>
+                        <td>{{ product_pressure }}</td>
+                        <td>{{ product_pressure_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Conductivity</td>
+                        <td>{{ product_conductivity }}</td>
+                        <td>{{ product_conductivity_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Differential Pressure</td>
+                        <td>{{ product_differential_pressure }}</td>
+                        <td>{{ product_differential_pressure_desc }}</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{ product_temperature }}</td>
+                        <td>{{ product_temperature_desc }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 50px;">
+            <div style="flex: 1;">
+                <div class="section-title">ABB Instrumentation provides:</div>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 15px;"><span style="font-weight: bold;">&#9658;</span> <span data-field="service_know_how">{{ service_know_how }}</span></li>
+                    <li style="margin-bottom: 15px;"><span style="font-weight: bold;">&#9658;</span> <span data-field="service_full_scope_supply">{{ service_full_scope_supply }}</span></li>
+                    <li style="margin-bottom: 15px;"><span style="font-weight: bold;">&#9658;</span> <span data-field="service_innovative_technology">{{ service_innovative_technology }}</span></li>
+                    <li style="margin-bottom: 15px;"><span style="font-weight: bold;">&#9658;</span> <span data-field="service_rugged_devices">{{ service_rugged_devices }}</span></li>
+                    <li style="margin-bottom: 15px;"><span style="font-weight: bold;">&#9658;</span> <span data-field="service_global_service_support">{{ service_global_service_support }}</span></li>
+                </ul>
+            </div>
+            <div style="flex: 1; text-align: right;">
+                <div class="logo-abn" style="transform: scaleX(-1);">ABB</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <div class="logo-abn" style="font-size: 14pt;">ABB Oldends Lane</div>
+                    <div style="font-size: 9pt;">Stonehouse, Gles.</div>
+                    <div style="font-size: 9pt;">England, GL4 8DE</div>
+                    <div style="font-size: 9pt;">Tel: +44 (0) 1453 826661</div>
+                    <div style="font-size: 9pt;">Fax: +44 (0) 1453 827856</div>
+                </div>
+                <div>
+                    <div class="logo-abn" style="font-size: 14pt;">ABB Automation Inc.</div>
+                    <div style="font-size: 9pt;">2175 Lockheed Way</div>
+                    <div style="font-size: 9pt;">Carlson City,</div>
+                    <div style="font-size: 9pt;">NY 13504</div>
+                    <div style="font-size: 9pt;">Tel: +1 775-883-4366</div>
+                    <div style="font-size: 9pt;">Fax: +1 775-883-4373</div>
+                </div>
+                <div>
+                    <div class="logo-abn" style="font-size: 14pt;">ABB Automation Products</div>
+                    <div style="font-size: 9pt;">Dransfelder Str. D-37079</div>
+                    <div style="font-size: 9pt;">Göttingen</div>
+                    <div style="font-size: 9pt;">Germany</div>
+                    <div style="font-size: 9pt;">Tel: +49 (0) 51 9 05-0</div>
+                    <div style="font-size: 9pt;">Fax: +49 (0) 51 9 05-777</div>
+                </div>
+                <div>
+                    <div class="logo-abn" style="font-size: 14pt;">ABB Industry Pte Ltd</div>
+                    <div style="font-size: 9pt;">2 Ayer Rajah Crescent</div>
+                    <div style="font-size: 9pt;">Singapore 139035</div>
+                    <div style="font-size: 9pt;">Tel: +65 6776 57 11</div>
+                    <div style="font-size: 9pt;">Fax: +65 779 12 06</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

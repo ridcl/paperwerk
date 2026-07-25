@@ -1,0 +1,131 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2, h3 { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24px; font-weight: bold;">WEBER STATE UNIVERSITY</h1>
+      <p style="margin: 2px 0;">3850 Dixon Parkway Department 1014</p>
+      <p style="margin: 2px 0;">Ogden, UT 84408-1014</p>
+      <p style="margin: 2px 0;">Phone: <span data-field="phone">{{ phone }}</span> Fax: <span data-field="fax">{{ fax }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 18px; font-weight: bold;">Accounting Services</h2>
+      <p>Invoice number: <span data-field="invoice_number">{{ invoice_number }}</span></p>
+      <p>Check number: <span data-field="check_number">{{ check_number }}</span></p>
+      <p>Date: <span data-field="date">{{ date }}</span></p>
+      <p>Vendor Number: <span data-field="vendor_number">{{ vendor_number }}</span></p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom: 20px;">Check Request for Prize, Award, Stipend, or Honorarium ($400 or less)</h3>
+
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td style="width: 50%; padding-bottom: 10px;">Legal Name: <span data-field="legal_name">{{ legal_name }}</span></td>
+      <td style="width: 50%; padding-bottom: 10px;">Phone: <span data-field="phone">{{ phone }}</span></td>
+    </tr>
+    <tr>
+      <td>Address: <span data-field="address">{{ address }}</span></td>
+      <td>E-mail: <span data-field="email">{{ email }}</span></td>
+    </tr>
+    <tr>
+      <td>City: <span data-field="city">{{ city }}</span></td>
+      <td>State: <span data-field="state">{{ state }}</span> Zip: <span data-field="zip">{{ zip }}</span></td>
+    </tr>
+    <tr>
+      <td>Social Security Number (SSN): <span data-field="ssn">{{ ssn }}</span></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>U.S. Citizen: <span data-field="us_citizen">{{ us_citizen }}</span> or No <span data-field="us_citizen_no">{{ us_citizen_no }}</span> (if no, contact Accounting Services <span data-field="before_giving_prize_or_award">{{ before_giving_prize_or_award }}</span>)</td>
+    </tr>
+    <tr>
+      <td>Are you or have you been a WSU employee during the past 12 months?</td>
+      <td><input type="radio" name="employee_status" value="yes"> Yes or <input type="radio" name="employee_status" value="no"> No (if yes, contact Accounting Services, you may need to use a PAR.)</td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <tr>
+      <td style="width: 25%;">Date: <span data-field="date_request">{{ date_request }}</span></td>
+      <td style="width: 25%;">Amount: $ <span data-field="amount">{{ amount }}</span></td>
+      <td style="width: 25%;">Check one: <input type="checkbox" name="check_type" value="prize"> Prize <input type="checkbox" name="check_type" value="award"> Award <input type="checkbox" name="check_type" value="stipend"> Stipend <input type="checkbox" name="check_type" value="honorarium"> Honorarium</td>
+    </tr>
+    <tr>
+      <td>Description: <span data-field="description">{{ description }}</span></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">Index (Old IRS account)</th>
+        <th style="text-align: left; width: 30%;">Fund</th>
+        <th style="text-align: left; width: 20%;">Orgn</th>
+        <th style="text-align: left; width: 30%;">Account (subcode)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].index">{{ item.index }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].fund">{{ item.fund }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].orgn">{{ item.orgn }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].account">{{ item.account }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 12px;">IRS Substitute W-9: Federal law requires that we have on file a W-9 form with the Social Security number and signature for each individual or business to whom the University makes a non-payroll payment. Therefore we ask that you complete the following information. The IRS may impose a penalty of up to $500.00 for non-compliance or supplying false information.</p>
+    <p style="font-size: 12px;">Certification - Under penalties of perjury, I certify that: (1) The number shown on this form is my correct taxpayer identification number (or I am waiting for a number to be issued to me); and (2) I am not subject to backup withholding because: (a) I am exempt from backup withholding, or (b) I have not been notified by IRS that I am subject to backup withholding as a result of failure to report all interest or dividends, or (c) the IRS has notified me that I am no longer subject to backup withholding, and (3) I am a U.S. person (including a U.S. resident alien).</p>
+  </div>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <tr>
+      <td style="width: 50%;">SIGNATURE: _________________________</td>
+      <td style="width: 50%; text-align: right;">Date: _________________________</td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <tr>
+      <td style="width: 33%;">Requestor signature</td>
+      <td style="width: 33%; text-align: center;">Date</td>
+      <td style="width: 33%;">Approval signature</td>
+    </tr>
+    <tr>
+      <td colspan="3" style="text-align: center;">Date</td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <tr>
+      <td colspan="3" style="text-align: center;">
+        <input type="checkbox" name="documentation_attached"> Documentation attached (if necessary)
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">This form must be completed each time an individual receives a prize, award, stipend or honorarium. Checks will be mailed directly to the individual unless otherwise indicated.</p>
+    <p>Send completed form to Accounting Services at MC 1014 as documentation to complete payment processing.</p>
+  </div>
+</div>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Residence Hall Contract</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .header-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        .contract-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        .data-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .data-label {
+            width: 150px;
+            font-weight: normal;
+        }
+        .data-value {
+            flex-grow: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .signature-area {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .signature-box {
+            width: 40%;
+        }
+        .fine-print {
+            font-size: 0.85em;
+            line-height: 1.4;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header-logo">
+        <img src="placeholder_logo.png" alt="University Logo">
+        <div style="text-align: center;">
+            <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF</h1>
+            <h1 style="font-size: 36pt; margin: 0;">TEXAS</h1>
+            <h2 style="font-size: 18pt; margin: 0;">ARLINGTON</h2>
+        </div>
+    </div>
+
+    <div class="contract-title">
+        <h1 style="font-size: 22pt;">UNIVERSITY RESIDENCE HALL CONTRACT</h1>
+        <h2 style="font-size: 16pt;">THE UNIVERSITY OF TEXAS AT ARLINGTON</h2>
+        <h3 style="font-size: 14pt;">Fall Spring 2021-2022</h3>
+    </div>
+
+    <div class="section-title">Contract Details</div>
+    <div class="data-row">
+        <div class="data-label">Student Name:</div>
+        <div class="data-value"><span data-field="student_name">{{ student_name }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">EMP ID:</div>
+        <div class="data-value"><span data-field="emp_id">{{ emp_id }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Residence Hall Assignment:</div>
+        <div class="data-value"><span data-field="residence_hall_assignment">{{ residence_hall_assignment }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Room Type:</div>
+        <div class="data-value"><span data-field="room_type">{{ room_type }}</span></div>
+    </div>
+
+    <div class="section-title">Contract Dates and Amounts</div>
+    <div class="data-row">
+        <div class="data-label">Contractual Amount:</div>
+        <div class="data-value"><span data-field="contractual_amount">{{ contractual_amount }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Contractual Dates:</div>
+        <div class="data-value"><span data-field="contractual_dates">{{ contractual_dates }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Fall/Spring Term Dates:</div>
+        <div class="data-value"><span data-field="fall_spring_term_dates">{{ fall_spring_term_dates }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Contract Period:</div>
+        <div class="data-value"><span data-field="contract_period">{{ contract_period }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Break Period:</div>
+        <div class="data-value"><span data-field="break_period">{{ break_period }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Days in Contract Period:</div>
+        <div class="data-value"><span data-field="days_in_contract_period">{{ days_in_contract_period }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Contract Start Date:</div>
+        <div class="data-value"><span data-field="contract_start_date">{{ contract_start_date }}</span></div>
+    </div>
+    <div class="data-row">
+        <div class="data-label">Move in Date:</div>
+        <div class="data-value"><span data-field="move_in_date">{{ move_in_date }}</span></div>
+    </div>
+
+    <div class="section-title">Deposit Information</div>
+    <div class="data-row">
+        <div class="data-label">Deposit Amount:</div>
+        <div class="data-value"><span data-field="deposit_amount">{{ deposit_amount }}</span></div>
+    </div>
+    <p style="font-size: 0.9em; margin-top: 15px;">
+        Student must accept this University Residence Hall Contract and Meal Plan Contract (if required) and pay the deposit by <span data-field="deposit_deadline">{{ deposit_deadline }}</span>. The deposit of <span data-field="deposit_amount_text">{{ deposit_amount_text }}</span> is not required if Student has an existing <span data-field="existing_deposit_status">{{ existing_deposit_status }}</span> deposit on record with University. Student's existing security deposit shall be considered as the deposit payment for this Contract and will be applied to this Contract.
+    </p>
+
+    <div class="section-title">Residence Hall Payment Plan:</div>
+    <p style="font-size: 0.9em;">
+        The Contract is billed in installments or sessions. Please refer to the table for the specific payment amounts and due dates.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Payment Type</th>
+                <th>Payment Amount</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in payment_schedule %}
+            <tr>
+                <td><span data-field="payment_schedule[{{ loop.index0 }}].payment_type">{{ item.payment_type }}</span></td>
+                <td><span data-field="payment_schedule[{{ loop.index0 }}].payment_amount">{{ item.payment_amount }}</span></td>
+                <td><span data-field="payment_schedule[{{ loop.index0 }}].due_date">{{ item.due_date }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="section-title">Agreement and Signatures</div>
+    <p style="font-size: 0.9em;">
+        If Contract Start Date is after <span data-field="contract_start_date_reference">{{ contract_start_date_reference }}</span>, Student shall be responsible to pay a pro-rated contractual amount based on the number of days remaining in the Contract Period multiplied by the daily rate. In this instance, Student's first installment, due on or before the Contract Start Date, shall be adjusted based on the pro-rated contractual amount, and remaining installments for future months shall be as noted above.
+    </p>
+    <p style="font-size: 0.9em;">
+        We hereby certify that I/we have read and understand the separate document entitled <span data-field="contract_name">{{ contract_name }}</span> and Conditions ("Terms and Conditions") and understand and agree that the terms of that document is incorporated into this Contract and these documents collectively constitute the "Contract". I/we acknowledge that the UTA Housing Office will not grant the license described in the Contract unless personal guarantee of payment of all charges or obligations under the Contract is made. The undersigned further jointly and severally agree to pay all of the charges arising under the Contract and any extension thereof when due and in accordance with the rules and regulations of The University of Texas at Arlington, together with all fees and other reasonable costs for the collection of any amount not paid when due.
+    </p>
+    <p style="font-size: 0.9em;">
+        The execution of this Contract by Student and Guarantor, if applicable, constitutes acceptance thereof. A student under the age of eighteen years must also have this Contract signed by a parent, guardian, or other person with legal responsibility for Student. Failure of Student to obtain Guarantor's signature, if required, does not negate cancellation penalties as stated in the Terms and Conditions.
+    </p>
+    <p style="font-size: 0.9em;">
+        The undersigned authorizes the University to apply proceeds of any federal and institutional financial aid or registration fee refunds, belonging to undersigned, to any University debt, including, but not limited to, tuition, fees, interest, room, board, and/or finance charges, unless prohibited by applicable law. If financial aid fails to cover any portion of this Contract, the student understands the balance owed under this Contract will be the responsibility of the Student. ALL CONTRACT CANCELLATIONS MUST BE ADDRESSED IN WRITING TO THE HOUSING OFFICE VIA EMAIL, FAX, OR LETTER. Student will be responsible for all fees and forfeitures outlined in the Terms and Conditions.
+    </p>
+
+    <div class="signature-area">
+        <div class="signature-box">
+            <p style="text-align: center;">"Housing Contract Signature"</p>
+            <div style="height: 50px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+            <p style="text-align: center;">Student Signature</p>
+        </div>
+        <div class="signature-box">
+            <p style="text-align: center;">"ContractSignedDate"</p>
+            <div style="height: 50px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+            <p style="text-align: center;">Date</p>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div style="width: 45%;">
+            <p style="font-weight: bold; margin-bottom: 10px;">"Age"</p>
+            <div class="data-row">
+                <div class="data-label">Age:</div>
+                <div class="data-value"><span data-field="age">{{ age }}</span></div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Guarantor's Signature (Required if Student is Under 18):</div>
+                <div class="data-value"><span data-field="guarantor_signature_required_if_under_18">{{ guarantor_signature_required_if_under_18 }}</span></div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Guarantor's Address:</div>
+                <div class="data-value"><span data-field="guarantor_address">{{ guarantor_address }}</span></div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Guarantor's Email:</div>
+                <div class="data-value"><span data-field="guarantor_email">{{ guarantor_email }}</span></div>
+            </div>
+        </div>
+        <div style="width: 45%;">
+            <div class="data-row">
+                <div class="data-label">Phone 1:</div>
+                <div class="data-value"><span data-field="phone_1">{{ phone_1 }}</span></div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Phone 2:</div>
+                <div class="data-value"><span data-field="phone_2">{{ phone_2 }}</span></div>
+            </div>
+            <div style="margin-top: 40px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">"University ContractSignedDate"</p>
+                <div style="height: 50px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+                <p style="text-align: center;">Guarantor's Name (Print)</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <p style="font-size: 0.9em;">
+            <span data-field="university_name">{{ university_name }}</span> at <span data-field="university_location">{{ university_location }}</span>
+        </p>
+        <p style="font-size: 0.9em;">
+            By: <span data-field="by_name">{{ by_name }}</span>
+        </p>
+        <p style="font-size: 0.9em;">
+            Vice President, Administration and Campus Operations
+        </p>
+    </div>
+
+    <div class="fine-print">
+        <p>
+            You may be entitled to know what information UT Arlington collects concerning you. You may review and have UTA correct this information according to procedures set forth in UT System BPM#32. The law is found in sections 552.021, 552.023 and 559.004 of the Texas Government Code.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

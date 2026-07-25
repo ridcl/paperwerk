@@ -1,0 +1,131 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .input-line {
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .address-block {
+    margin-bottom: 20px;
+  }
+  .signature-line {
+    margin-top: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 18pt; margin: 0;">Clark University - Registrar's Office</h1>
+    <p style="margin: 5px 0;">{{ university_address_line1 }}</p>
+    <p style="margin: 5px 0;">{{ university_address_line2 }}</p>
+  </div>
+
+  <h2 style="text-align: center; font-weight: bold; margin-bottom: 40px;">ENROLLMENT VERIFICATION FORM</h2>
+
+  <div style="width: 100%;">
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">STUDENT NAME:</span>
+      <div class="input-line"><span data-field="student_full_name">{{ student_full_name }}</span></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">CLARK ID#:</span>
+      <div class="input-line"><span data-field="student_id">{{ student_id }}</span></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">ANTICIPATED DATE OF GRADUATION:</span>
+      <div class="input-line"><span data-field="graduation_date">{{ graduation_date }}</span></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">SIGNATURE:</span>
+      <div class="input-line"><span data-field="signature">{{ signature }}</span></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">EMAIL ADDRESS:</span>
+      <div class="input-line"><span data-field="student_email">{{ student_email }}</span></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <span class="form-label">DAYTIME PHONE NUMBER:</span>
+      <div class="input-line"><span data-field="student_phone">{{ student_phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">PLEASE INDICATE SEMESTER(S) TO VERIFY:</div>
+  <p style="font-size: 10pt; margin-top: -10px; margin-bottom: 20px;">(We are only authorized to verify for <span data-field="verification_type_present">{{ verification_type_present }}</span>, <span data-field="verification_type_prior">{{ verification_type_prior }}</span>, or "<span data-field="verification_type_pre_registered">{{ verification_type_pre_registered }}</span>" attendance.)</p>
+
+  <p style="font-size: 10pt; margin-bottom: 20px;">This form may be printed and sent to the Registrar's Office or faxed to <span data-field="registrar_fax_number">{{ registrar_fax_number }}</span>. We will also accept email requests for verification sent from the student's Clark email account to the following address: <span data-field="registrar_email">{{ registrar_email }}</span>.</p>
+
+  <div style="margin-top: 30px;">
+    <p style="font-weight: bold;">**Address to be sent to:</p>
+    <div style="margin-top: 10px;">
+      <span class="form-label">NAME:</span>
+      <div class="input-line"><span data-field="recipient_name">{{ recipient_name }}</span></div>
+    </div>
+    <div style="margin-top: 20px;">
+      <span class="form-label">ADDRESS:</span>
+      <div class="input-line"><span data-field="recipient_address">{{ recipient_address }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-weight: bold;">OR</p>
+    <div style="margin-top: 10px;">
+      <span class="form-label">FAX letter to:</span>
+      <div class="input-line"><span data-field="fax_recipient_name">{{ fax_recipient_name }}</span></div>
+    </div>
+    <div style="margin-top: 20px;">
+      <span class="form-label">FAX #:</span>
+      <div class="input-line"><span data-field="fax_number">{{ fax_number }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-weight: bold;">OR</p>
+    <div style="margin-top: 10px;">
+      <span class="form-label">Check here to hold letter for pick up:</span>
+      <div style="margin-top: 5px;">
+        <input type="checkbox" style="margin-right: 10px;">
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-weight: bold;">**IMPORTANT: If we are mailing directly to an insurance company, you must indicate the <span data-field="subscriber_info_label">{{ subscriber_info_label }}</span> &amp; ID#:</p>
+    <div style="margin-top: 10px;">
+      <span class="form-label">SUBSCRIBER NAME:</span>
+      <div class="input-line"><span data-field="subscriber_name">{{ subscriber_name }}</span></div>
+    </div>
+    <div style="margin-top: 20px;">
+      <span class="form-label">SUBSCRIBER ID #:</span>
+      <div class="input-line"><span data-field="subscriber_id">{{ subscriber_id }}</span></div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 80px;">
+    <p style="font-size: 12pt; font-weight: bold;">Please allow two business days to process request</p>
+  </div>
+</div>

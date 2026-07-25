@@ -1,0 +1,237 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .header-logo {
+    float: left;
+    margin-right: 30px;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .label-col {
+    width: 30%;
+    padding-right: 10px;
+  }
+  .input-col {
+    width: 70%;
+  }
+  .line-item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .line-item-table th, .line-item-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    font-size: 10pt;
+  }
+  .line-item-table th {
+    background-color: #f2f2f2;
+  }
+  .signature-block {
+    margin-top: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="header-logo">
+      <img src="" alt="Logo" style="height: 70px;">
+      <div style="margin-top: 5px;">
+        <div style="font-size: 12pt; font-weight: bold;">DREXEL UNIVERSITY</div>
+        <div style="font-size: 28pt; font-weight: bold;">Graduate</div>
+        <div style="font-size: 28pt; font-weight: bold;">College</div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">D-1</div>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 40px; font-size: 16pt; font-weight: bold;">PLAN OF STUDY & SUPERVISING PROFESSOR APPOINTMENT FORM</h1>
+
+  <p style="margin-top: 20px; font-size: 10pt;">This form is to be completed by the student after consultation with his/her Department Graduate Advisor and Supervising Professor (if any) and should be submitted to the Graduate College by the end of the third quarter of enrollment as a PhD/doctoral student.</p>
+
+  <div class="section-title">Student Information</div>
+  <div class="form-row">
+    <div class="label-col">Name of Student:</div>
+    <div class="input-col"><span data-field="full_name">{{ full_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Student ID Number:</div>
+    <div class="input-col"><span data-field="student_id_number">{{ student_id_number }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">PhD/Doctoral Degree:</div>
+    <div class="input-col"><span data-field="degree_name">{{ degree_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">College:</div>
+    <div class="input-col"><span data-field="college_name">{{ college_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Major:</div>
+    <div class="input-col"><span data-field="major">{{ major }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Minor (if applicable):</div>
+    <div class="input-col"><span data-field="minor">{{ minor }}</span></div>
+  </div>
+
+  <div class="section-title">Required Examinations and Anticipated Dates</div>
+  <div class="form-row">
+    <div class="label-col">Candidacy Examination (MM/DD/YYYY):</div>
+    <div class="input-col"><span data-field="candidacy_exam_date">{{ candidacy_exam_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Dissertation Defense (MM/DD/YYYY):</div>
+    <div class="input-col"><span data-field="dissertation_defense_date">{{ dissertation_defense_date }}</span></div>
+  </div>
+  <p style="font-size: 10pt; margin-top: 10px;">Note: Some programs may establish additional requirements.*</p>
+
+  <div class="section-title">Supervising Professor and Co-Supervising Professor Information</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col" style="width: 20%;">Professor:</div>
+    <div class="input-col" style="width: 80%;"><span data-field="supervisor_name">{{ supervisor_name }}</span> has agreed to serve as my Supervising</div>
+  </div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col" style="width: 20%;">Professor:</div>
+    <div class="input-col" style="width: 80%;"><span data-field="co_supervisor_name">{{ co_supervisor_name }}</span> has agreed to serve as my Co-Supervising</div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Professor (if applicable) for work toward the PhD/doctoral degree:</div>
+    <div class="input-col"><span data-field="supervisor_for_work_name">{{ supervisor_for_work_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Professor (if applicable) for work toward the PhD/doctoral degree:</div>
+    <div class="input-col"><span data-field="co_supervisor_for_work_name">{{ co_supervisor_for_work_name }}</span></div>
+  </div>
+
+  <div class="section-title">Authorizations/Signatures</div>
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="label-col" style="width: 30%;">Student:</div>
+    <div class="input-col" style="width: 70%;"><span data-field="student_signature_line">{{ student_signature_line }}</span></div>
+    <div style="width: 20%; text-align: right;">Date:</div>
+    <div style="width: 30%; text-align: right;"><span data-field="student_date">{{ student_date }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="label-col" style="width: 30%;">Supervising Professor:</div>
+    <div class="input-col" style="width: 70%;"><span data-field="supervisor_signature_line">{{ supervisor_signature_line }}</span></div>
+    <div style="width: 20%; text-align: right;">Date:</div>
+    <div style="width: 30%; text-align: right;"><span data-field="supervisor_date">{{ supervisor_date }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="label-col" style="width: 30%;">Co-Supervising Professor (if applicable):</div>
+    <div class="input-col" style="width: 70%;"><span data-field="co_supervisor_signature_line">{{ co_supervisor_signature_line }}</span></div>
+    <div style="width: 20%; text-align: right;">Date:</div>
+    <div style="width: 30%; text-align: right;"><span data-field="co_supervisor_date">{{ co_supervisor_date }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div class="label-col" style="width: 30%;">Department Graduate Advisor:</div>
+    <div class="input-col" style="width: 70%;"><span data-field="advisor_signature_line">{{ advisor_signature_line }}</span></div>
+    <div style="width: 20%; text-align: right;">Date:</div>
+    <div style="width: 30%; text-align: right;"><span data-field="advisor_date">{{ advisor_date }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="label-col">Graduate College:</div>
+    <div class="input-col"><span data-field="college_signature_line">{{ college_signature_line }}</span></div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 14pt; font-weight: bold;">Masters Degree Information (If Applicable)</div>
+  </div>
+
+  <div class="form-row">
+    <div class="label-col">Masters Degree Received:</div>
+    <div class="input-col"><span data-field="masters_degree_received">{{ masters_degree_received }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Name of Institution:</div>
+    <div class="input-col"><span data-field="masters_institution_name">{{ masters_institution_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Date of Graduation:</div>
+    <div class="input-col"><span data-field="masters_graduation_date">{{ masters_graduation_date }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="label-col" style="width: 100%;">Are you transferring from another program post-Masters level?</div>
+    <div class="input-col" style="width: 100%; display: flex; gap: 20px; align-items: center;">
+      <label><input type="checkbox" data-field="transferring_yes" value="{{ transferring_yes }}"> Yes</label>
+      <label><input type="checkbox" data-field="transferring_no" value="{{ transferring_no }}"> No</label>
+    </div>
+  </div>
+
+  <p style="font-size: 10pt; margin-top: 15px;">Note: If Yes, please provide a copy of your post-Masters level transcript with this form.</p>
+
+  <div class="section-title">List All Courses Taken (or To Be Taken)</div>
+  <p style="font-size: 10pt;">45 post-Masters credits are required for a PhD/doctoral degree.</p>
+
+  <table class="line-item-table">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Course Number</th>
+        <th style="width: 50%;">Course Title</th>
+        <th style="width: 20%;">Credits</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_list %}
+      <tr>
+        <td><span data-field="course_list[{{ loop.index0 }}].course_number">{{ item.course_number }}</span></td>
+        <td><span data-field="course_list[{{ loop.index0 }}].course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="course_list[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="font-size: 10pt; margin-top: 20px;">*Please list any other requirements</p>
+
+  <div style="margin-top: 80px; font-size: 10pt; text-align: center;">
+    Graduate College 3141 Chestnut Street Main 301 Philadelphia, PA 19104<br>
+    Tel: 215.895.0366 Fax: 215.895.0495 Email: <span data-field="college_email">{{ college_email }}</span> Web: <span data-field="college_web">{{ college_web }}</span><br>
+    (Last Updated 2/22/2016)
+  </div>
+</div>

@@ -1,0 +1,295 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td, th { padding: 5px 0; text-align: left; }
+</style>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="text-align: left;">
+      <img src="placeholder_logo.png" alt="Logo" style="height: 80px; width: auto; margin-bottom: 10px;">
+      <h1 style="font-size: 18pt; margin: 0;">DEPARTMENT OF HEALTH & HUMAN SERVICES</h1>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 10pt;">
+        <p style="margin: 0;">Program Support Center</p>
+        <p style="margin: 0;">Financial Management Portfolio</p>
+        <p style="margin: 0;">Cost Allocation Services</p>
+      </div>
+      <div style="margin-top: 20px; font-size: 10pt;">
+        <p style="margin: 0;">{{ employer.address_line_1 }}</p>
+        <p style="margin: 0;">{{ employer.city_state_zip }}</p>
+        <p style="margin: 0;">PHONE: {{ employer.phone }}</p>
+        <p style="margin: 0;">FAX: {{ employer.fax }}</p>
+        <p style="margin: 0;">EMAIL: {{ employer.email }}</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 40px;">
+    <p style="font-size: 12pt;">{{ document_date }}</p>
+  </div>
+  <div style="margin-top: 30px;">
+    <p style="font-weight: bold;">Mr. {{ recipient.first_name }} {{ recipient.last_name }}, PhD</p>
+    <p style="margin: 0;">Vice President for Research</p>
+    <p style="margin: 0;">{{ recipient.employer.name }}</p>
+    <p style="margin: 0;">{{ recipient.employer.address_line_1 }}</p>
+    <p style="margin: 0;">{{ recipient.employer.city_state_zip }}</p>
+  </div>
+  <div style="margin-top: 30px;">
+    <p>Dear Mr. {{ recipient.last_name }}:</p>
+    <p>A copy of the F&A Rate Agreement is being mailed to you. This agreement reflects an understanding reached between your organization and a member of my staff concerning the rate(s) that may be used to support your claim for overhead and fringe benefit costs on grants and contracts with the Federal Government.</p>
+    <p>The Office of Management and Budget (OMB) has requested that we reach an agreement with each institution on components for the published F&A cost rates. The attached form(s) are provided for that purpose. Please sign the form(s) and return them with the agreement.</p>
+    <p>To indicate your concurrence with the understanding cited above, please have this letter and the attached agreement signed by an authorized representative of your organization and return to {{ contact.email }}, retaining a copy for your files. We will reproduce and distribute the Rate Agreement to the appropriate awarding organizations of the Federal Government for their use.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">
+    <p>Mr. {{ recipient.last_name }}</p>
+    <p>July 13, 2018</p>
+    <p>Page 2</p>
+  </div>
+  <div style="margin-top: 40px;">
+    <p>A fringe benefit proposal, together with the required supporting information, must be submitted to this office for each fiscal year in which your organization claims fringe benefits under grants and contracts awarded by the Federal Government. Therefore, your next fringe benefit proposal for the fiscal year ending June 30, 2021 will be due in our office by December 30, 2021. Your next Facilities and Administration (F&A) proposal based on actual costs based on fiscal year ending June 30, 2021 is due in our office by December 31, 2021. Please submit your next proposal via email to {{ contact.email }}.</p>
+  </div>
+  <div style="margin-top: 50px;">
+    <p>Sincerely,</p>
+    <p style="margin-top: 50px;">Darryl W. Mayes</p>
+    <p>Deputy Director</p>
+    <p>Cost Allocation Services</p>
+  </div>
+  <div style="margin-top: 80px;">
+    <p style="font-weight: bold;">CONCURRENCE:</p>
+    <p>{{ institution.name }}</p>
+    <div style="height: 80px; border-bottom: 1px solid black;"></div>
+    <p>(Signature)</p>
+    <p>{{ signatory.full_name }}</p>
+    <p>{{ signatory.title }}</p>
+    <p>{{ signatory.date }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-size: 14pt;">COMPONENTS OF THE PUBLISHED FACILITIES & ADMINISTRATIVE COST RA1</h2>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p>INSTITUTION: <span data-field="institution.name">{{ institution.name }}</span></p>
+    <p>FY COVERED BY RATE: {{ rate_period.start_date }} through {{ rate_period.end_date }}</p>
+    <p>RATE TYPE: <span data-field="rate_type">{{ rate_type }}</span></p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">RATE COMPONENTS:</th>
+        <th style="width: 15%;">ORGANISED RESEARCH FY {{ rate_year_1 }} - 22</th>
+        <th style="width: 15%;">OFF-CAMP FY {{ rate_year_2 }} - 22</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Building Depreciation</td>
+        <td><span data-field="rate_components.building_depreciation">{{ rate_components.building_depreciation }}</span></td>
+        <td><span data-field="rate_components.building_depreciation_off_camp">{{ rate_components.building_depreciation_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Equipment Depreciation</td>
+        <td><span data-field="rate_components.equipment_depreciation">{{ rate_components.equipment_depreciation }}</span></td>
+        <td><span data-field="rate_components.equipment_depreciation_off_camp">{{ rate_components.equipment_depreciation_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Interest</td>
+        <td><span data-field="rate_components.interest">{{ rate_components.interest }}</span></td>
+        <td><span data-field="rate_components.interest_off_camp">{{ rate_components.interest_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Operations & Maintenance</td>
+        <td><span data-field="rate_components.operations_maintenance">{{ rate_components.operations_maintenance }}</span></td>
+        <td><span data-field="rate_components.operations_maintenance_off_camp">{{ rate_components.operations_maintenance_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Library</td>
+        <td><span data-field="rate_components.library">{{ rate_components.library }}</span></td>
+        <td><span data-field="rate_components.library_off_camp">{{ rate_components.library_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Utility Cost Allowance</td>
+        <td><span data-field="rate_components.utility_cost_allowance">{{ rate_components.utility_cost_allowance }}</span></td>
+        <td><span data-field="rate_components.utility_cost_allowance_off_camp">{{ rate_components.utility_cost_allowance_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>Administrative Component</td>
+        <td><span data-field="rate_components.administrative_component">{{ rate_components.administrative_component }}</span></td>
+        <td><span data-field="rate_components.administrative_component_off_camp">{{ rate_components.administrative_component_off_camp }}</span></td>
+      </tr>
+      <tr>
+        <td>F&A Rate</td>
+        <td><span data-field="rate_components.fa_rate">{{ rate_components.fa_rate }}</span></td>
+        <td><span data-field="rate_components.fa_rate_off_camp">{{ rate_components.fa_rate_off_camp }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 50px;">
+    <p>CONCURRENCE:</p>
+    <p>{{ institution.name }}</p>
+    <div style="height: 80px; border-bottom: 1px solid black;"></div>
+    <p>(Signature)</p>
+    <p>{{ signatory.full_name }}</p>
+    <p>{{ signatory.title }}</p>
+    <p>{{ signatory.date }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 14pt;">COLLEGES AND UNIVERSITIES RATE AGREEMENT</h2>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div>
+      <p>EIN: <span data-field="ein">{{ ein }}</span></p>
+      <p>ORGANIZATION: <span data-field="organization.name">{{ organization.name }}</span></p>
+      <p>{{ organization.address_line_1 }}</p>
+      <p>{{ organization.city_state_zip }}</p>
+    </div>
+    <div>
+      <p>DATE: {{ agreement_date }}</p>
+      <p>FILING REF.: The preceding agreement was dated {{ previous_agreement_date }}</p>
+    </div>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p>The rates approved in this agreement are for use on grants, contracts and other agreements with the Federal Government, subject to the conditions in Section III.</p>
+  </div>
+  <h3 style="font-size: 12pt; margin-bottom: 15px;">SECTION I: INDIRECT COST RATES</h3>
+  <p>RATE TYPES: <span data-field="rate_types">{{ rate_types }}</span></p>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 10%;">TYPE</th>
+        <th style="width: 15%;">FROM</th>
+        <th style="width: 15%;">TO</th>
+        <th style="width: 20%;">RATE (%)</th>
+        <th style="width: 25%;">LOCATION</th>
+        <th style="width: 15%;">APPLICABLE TO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rate in indirect_cost_rates %}
+      <tr>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].type">{{ rate.type }}</span></td>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].from_date">{{ rate.from_date }}</span></td>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].to_date">{{ rate.to_date }}</span></td>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].rate">{{ rate.rate }}</span></td>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].location">{{ rate.location }}</span></td>
+        <td><span data-field="indirect_cost_rates[{{ loop.index0 }}].applicable_to">{{ rate.applicable_to }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p style="font-size: 10pt; margin-top: 20px;">*BASE</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 14pt;">ORGANIZATION: {{ organization.name }}</h2>
+    <p>AGREEMENT DATE: {{ agreement_date }}</p>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p>Modified total direct costs, consisting of all direct salaries and wages, applicable fringe benefits, materials and supplies, services, travel and up to the first $25,000 of each subaward (regardless of the period of performance of the subaward) under the award. Modified total direct costs shall exclude equipment, capital expenditures, charges for patient care, rental costs, tuition remission, scholarship and fellowships, participant support costs and the portion of indirect costs allocated to the subaward. Other items may only be excluded when necessary to avoid a serious injury in the distribution of indirect costs, and with the approval of the cognizant agency for indirect costs.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 14pt;">ORGANIZATION: {{ organization.name }}</h2>
+    <p>AGREEMENT DATE: {{ agreement_date }}</p>
+  </div>
+  <h3 style="font-size: 12pt; margin-bottom: 15px;">SECTION I: FRINGE BENEFIT RATES**</h3>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 10%;">TYPE</th>
+        <th style="width: 15%;">FROM</th>
+        <th style="width: 15%;">TO</th>
+        <th style="width: 20%;">RATE (%)</th>
+        <th style="width: 25%;">LOCATION</th>
+        <th style="width: 15%;">APPLICABLE TO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rate in fringe_benefit_rates %}
+      <tr>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].type">{{ rate.type }}</span></td>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].from_date">{{ rate.from_date }}</span></td>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].to_date">{{ rate.to_date }}</span></td>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].rate">{{ rate.rate }}</span></td>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].location">{{ rate.location }}</span></td>
+        <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].applicable_to">{{ rate.applicable_to }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p style="font-size: 10pt; margin-top: 20px;">** DESCRIPTION OF FRINGE BENEFITS RATE BASE: Salaries and wages.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 14pt;">SECTION II: SPECIAL REMARKS</h2>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p><strong>TREATMENT OF PAID ABSENCES:</strong></p>
+    <p>The fringe benefits are charged using the rate(s) listed in the Fringe Benefits Section of this Agreement. The fringe benefits included in the rate(s) are listed below.</p>
+    <p><strong>TREATMENT OF PAID ABSENCES:</strong></p>
+    <p>Vacation, holiday, sick leave pay and other paid absences are included in salaries and wages and are claimed on grants, contracts and other agreements as part of the normal cost for salaries and wages. Separate claims are not made for the cost of these paid absences.</p>
+    <p><strong>OFF-SITE DEFINITION:</strong> For all activities performed in facilities not owned by organization and to which rent is directly allocated to the project(s), the off-site rate will apply. Grants or contracts will no be subject to more than one indirect cost rate. If more than 50% of a project is performed off-site, the off-site rate will apply to the entire project.</p>
+    <p>Fringe Benefits Include: Retirement, FICA, Health Insurance, Life Insurance, Worker's Compensation, Health Insurance and Termination Pay (annual and sick leave).</p>
+    <p><strong>Equipment Definition:</strong></p>
+    <p>Equipment means an article of nonexpendable, tangible personal property having a useful life of more than one year and an acquisition cost of $5,000 or more per unit.</p>
+    <p>Per 2 CFR 200.414(g) - A rate extension has been granted.</p>
+    <p>The next indirect cost and fringe benefit proposal based on actual costs for the fiscal year ending {{ next_proposal_end_date }} is due by {{ next_proposal_due_date }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 14pt;">SECTION III: GENERAL</h2>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p><strong>A. LIMITATIONS:</strong></p>
+    <p>The rates in this Agreement are subject to any statutory or administrative limitations and apply to a given grant, contract or other agreement only to the extent that funds are available. Acceptance of the rates is subject to the terms and conditions of this Agreement. The rates are not to be used for any purpose other than as set forth in this Agreement. The rates are not to be used for any purpose other than as set forth in this Agreement. The rates are not to be used for any purpose other than as set forth in this Agreement.</p>
+    <p><strong>B. ACCOUNTING CHANGES:</strong></p>
+    <p>This Agreement is based on the accounting system supported by the organization to be in effect during the Agreement period. The organization agrees to notify the cognizant agency of any changes to its accounting system that may affect the use of the rates in this Agreement. Any changes to the accounting system must be approved by the cognizant agency prior to implementation.</p>
+    <p><strong>C. FIXED RATES:</strong></p>
+    <p>If a rate is fixed in this Agreement, it is based on an estimate of the costs for the period covered by the rate. When the actual costs for the period covered by the rate are determined, the organization shall notify the cognizant agency of the difference between the costs used to establish the fixed rate and actual costs.</p>
+    <p><strong>D. USE BY OTHER FEDERAL AGENCIES:</strong></p>
+    <p>In this Agreement, the rates approved in accordance with the authority in Title 2 of the Code of Federal Regulations, Part 200 (2 CFR 200), and should be applied to grants, contracts and other agreements covered by 2 CFR 200, subject to any limitations in this Agreement. The organization may provide copies of the Agreement to other Federal Agencies to give them early notice.</p>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <p>BY THE INSTITUTION:</p>
+      <p>{{ institution.name }}</p>
+      <div style="height: 80px; border-bottom: 1px solid black;"></div>
+      <p>(Signature)</p>
+      <p>{{ signatory.full_name }}</p>
+      <p>{{ signatory.title }}</p>
+      <p>{{ signatory.date }}</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p>ON BEHALF OF THE FEDERAL GOVERNMENT:</p>
+      <p>DEPARTMENT OF HEALTH AND HUMAN SERVICES</p>
+      <div style="height: 80px; border-bottom: 1px solid black;"></div>
+      <p>(Signature)</p>
+      <p>{{ government_signatory.full_name }}</p>
+      <p>{{ government_signatory.title }}</p>
+      <p>{{ government_signatory.date }}</p>
+      <p style="margin-top: 30px;">HHS REPRESENTATIVE: <span data-field="hhs_representative.name">{{ hhs_representative.name }}</span></p>
+      <p>Telephone: <span data-field="hhs_representative.phone">{{ hhs_representative.phone }}</span></p>
+    </div>
+  </div>
+</div>

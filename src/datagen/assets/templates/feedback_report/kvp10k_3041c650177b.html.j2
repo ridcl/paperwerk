@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .header-title {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 16pt;
+    margin-bottom: 40px;
+  }
+  .footer-text {
+    font-size: 10pt;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .signature-block {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .signature-block div {
+    margin-top: 50px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .subtitle {
+    font-size: 12pt;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-header {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo_placeholder.png" alt="Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt; margin: 0;">RAJASTHAN</h2>
+  </div>
+  <div style="text-align: right; font-size: 10pt; margin-top: 20px;">
+    <p>Kent Kalwar, NH-11-C,</p>
+    <p>Jaipur (Rajasthan) 303002</p>
+    <p>Tel: {{ contact.phone }}</p>
+    <p>Fax: {{ contact.fax }}</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 100px;">
+    <h1 style="font-size: 36pt; font-weight: bold;">FEEDBACK</h1>
+    <h1 style="font-size: 36pt; font-weight: bold;">REPORT</h1>
+    <h1 style="font-size: 36pt; font-weight: bold;">{{ report_year }}</h1>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 18pt;">Internal Quality Assurance Cell</h2>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+  </div>
+  <div style="text-align: right; font-size: 10pt; margin-top: 20px;">
+    <p>Kent Kalwar, NH-11-C,</p>
+    <p>Jaipur (Rajasthan) 303002</p>
+    <p>Tel: {{ contact.phone }}</p>
+    <p>Fax: {{ contact.fax }}</p>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 50px;">Feedback Analysis Report & Action Taken Report</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">S.No</th>
+        <th style="width: 70%;">Feedback Type</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in feedback_types %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="feedback_types[{{ loop.index0 }}].type">{{ item.type }}</span></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="text-align: center; margin-top: 100px;">
+    <h2 style="font-size: 18pt;">Student Feedback Analysis Report {{ report_year }}</h2>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 50px;">Internal Quality Assurance Cell</h2>
+  <h3 style="text-align: center; margin-bottom: 30px;">Student Feedback Analysis Report {{ report_year }}</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">S.No</th>
+        <th style="width: 40%;">Range in Percentage</th>
+        <th style="width: 30%;">No of Faculty</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in percentage_ranges %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="percentage_ranges[{{ loop.index0 }}].range">{{ item.range }}</span></td>
+        <td><span data-field="percentage_ranges[{{ loop.index0 }}].faculty_count">{{ item.faculty_count }}</span></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="text-align: center; margin-top: 50px;">Action Taken Report of Student Feedback {{ report_year }}</h3>
+
+  <ul style="list-style-type: disc; padding-left: 40px;">
+    <li>Industry integration is advised to all Board of Studies, also suggested to constitute a dedicated industry advisory council which connect domain-based experts.</li>
+    <li>Strengthening of {{ resource_type }} with e-resources.</li>
+  </ul>
+
+  <div class="signature-block">
+    <div>
+      <img src="signature_placeholder.png" alt="Signature" style="width: 150px; height: auto;">
+      <p>Director-IQAC</p>
+      <p>Amity University Rajasthan</p>
+      <p>JAIPUR</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 50px;">Internal Quality Assurance Cell</h2>
+  <h3 style="text-align: center; margin-bottom: 30px;">Action Taken Report of Faculty Feedback {{ report_year }}</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 45%;">Parameters</th>
+        <th style="width: 25%;">Average out of 5</th>
+        <th style="width: 25%;">Action Taken Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in faculty_feedback_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="faculty_feedback_items[{{ loop.index0 }}].parameter">{{ item.parameter }}</span></td>
+        <td><span data-field="faculty_feedback_items[{{ loop.index0 }}].average">{{ item.average }}</span></td>
+        <td><span data-field="faculty_feedback_items[{{ loop.index0 }}].action_taken">{{ item.action_taken }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="signature-block">
+    <div>
+      <img src="signature_placeholder.png" alt="Signature" style="width: 150px; height: auto;">
+      <p>Director-IQAC</p>
+      <p>Amity University Rajasthan</p>
+      <p>JAIPUR</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 50px;">Internal Quality Assurance Cell</h2>
+  <h3 style="text-align: center; margin-bottom: 30px;">Analysis & Action taken Report of Employer's Feedback {{ report_year }}</h3>
+
+  <ul style="list-style-type: disc; padding-left: 40px;">
+    <li>Departments are instructed to corporate industry feedback in curriculum upgradation and produce industry ready graduates.</li>
+    <li>Placement cell is asked for updating students about industrial processes and train them accordingly.</li>
+    <li>ASCENT and AIBAS must focus on students' communication and behaviour respectively.</li>
+    <li>University believes in strengthening its infrastructure and governance and committed for quality delivery.</li>
+  </ul>
+
+  <div class="signature-block">
+    <div>
+      <img src="signature_placeholder.png" alt="Signature" style="width: 150px; height: auto;">
+      <p>Director-IQAC</p>
+      <p>Amity University Rajasthan</p>
+      <p>JAIPUR</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+    <h3 style="font-size: 16pt; margin-top: 10px;">ALUMNI FEEDBACK ANALYSIS REPORT OF AUR</h3>
+    <h3 style="font-size: 16pt;">CLASS OF {{ graduation_year }} (Convocation-{{ convocation_date }})</h3>
+    <h3 style="font-size: 16pt;">DEPARTMENT</h3>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.N</th>
+        <th style="width: 40%;">Parameters</th>
+        {% for dept in departments %}
+        <th style="width: 10%;">{{ dept.name }}</th>
+        {% endfor %}
+        <th style="width: 10%;">Total</th>
+        <th style="width: 10%;">AUR</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in alumni_feedback_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="alumni_feedback_items[{{ loop.index0 }}].parameter">{{ item.parameter }}</span></td>
+        {% for dept in departments %}
+        <td><span data-field="alumni_feedback_items[{{ loop.index0 }}].scores[{{ dept.id }}]">{{ item.scores[dept.id] }}</span></td>
+        {% endfor %}
+        <td><span data-field="alumni_feedback_items[{{ loop.index0 }}].total">{{ item.total }}</span></td>
+        <td><span data-field="alumni_feedback_items[{{ loop.index0 }}].aur">{{ item.aur }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+    <h3 style="font-size: 16pt; margin-top: 10px;">Action Taken Report of Alumni Feedback {{ report_year }}</h3>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 40%;">Parameters</th>
+        <th style="width: 25%;">Analysis out of 10</th>
+        <th style="width: 30%;">Action Taken Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in alumni_action_taken_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="alumni_action_taken_items[{{ loop.index0 }}].parameter">{{ item.parameter }}</span></td>
+        <td><span data-field="alumni_action_taken_items[{{ loop.index0 }}].analysis">{{ item.analysis }}</span></td>
+        <td><span data-field="alumni_action_taken_items[{{ loop.index0 }}].action_taken">{{ item.action_taken }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">AMITY UNIVERSITY</h1>
+    <h2 style="font-size: 18pt;">RAJASTHAN</h2>
+    <h3 style="font-size: 16pt; margin-top: 10px;">PARENTS FEEDBACK ANALYSIS REPORT {{ report_year }}</h3>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.N</th>
+        <th style="width: 40%;">Parameters</th>
+        {% for dept in departments %}
+        <th style="width: 10%;">{{ dept.name }}</th>
+        {% endfor %}
+        <th style="width: 10%;">Total</th>
+        <th style="width: 10%;">AUR</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in parents_feedback_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="parents_feedback_items[{{ loop.index0 }}].parameter">{{ item.parameter }}</span></td>
+        {% for dept in departments %}
+        <td><span data-field="parents_feedback_items[{{ loop.index0 }}].scores[{{ dept.id }}]">{{ item.scores[dept.id] }}</span></td>
+        {% endfor %}
+        <td><span data-field="parents_feedback_items[{{ loop.index0 }}].total">{{ item.total }}</span></td>
+        <td><span data-field="parents_feedback_items[{{ loop.index0 }}].aur">{{ item.aur }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .subtitle {
+    font-size: 12pt;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-header {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <div class="header-title">AMITY UNIVERSITY RAJASTHAN</div>
+    <div class="subtitle">Internal Quality Assurance Cell</div>
+    <div style="font-size: 10pt; margin-top: 10px;">Action Taken Report of Parent's Feedback 2017-18</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">S.N.</th>
+        <th style="width: 40%;">Parameters</th>
+        <th style="width: 20%;">Analysis out of 10</th>
+        <th style="width: 30%;">Action Taken Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(20) %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="parameters[{{ loop.index0 }}]">{{ "Getting admission in the University for my ward is a matter of pride for me." if loop.index0 == 0 else "The admission process in the University is fair and accurate (Neat and Clean)." if loop.index0 == 1 else "My ward has improved his knowledge base through interaction with faculties of the University." if loop.index0 == 2 else "The discipline in the University is good." if loop.index0 == 3 else "The atmosphere in the University is conducive for Teaching-Learning." if loop.index0 == 4 else "There is a positive change in the behaviour of my ward after joining and studied in the University." if loop.index0 == 5 else "I have great feeling and rate the University high in my assessment" if loop.index0 == 6 else "AUR is one of the best Universities in India." if loop.index0 == 7 else "The University information is accessible to all through updated website and brochures." if loop.index0 == 8 else "Quality of food and Mess facilities are good and are adequate to house students." if loop.index0 == 9 else "The curriculum of the courses is well designed and promotes student learning objectives (SLOs). It is need based, demand driven and as per market requirement." if loop.index0 == 10 else "Employability is given focus in the curriculum design." if loop.index0 == 11 else "The curriculum incorporates recent changes/advances in the field of education and research." if loop.index0 == 12 else "Examination results are declared in time (with in 30 days)." if loop.index0 == 13 else "The University Employees are cooperative." if loop.index0 == 14 else "University bus services are good and punctual." if loop.index0 == 15 else "Hostel facilities are good and available as per requirement." if loop.index0 == 16 else "The changes introduced in the University in recent years are positive and progressive." if loop.index0 == 17 else "Sports & Gym facilities are good" if loop.index0 == 18 else "I would like to recommend this Institute/ School and University to my relatives & friends" }}</span></td>
+        <td><span data-field="analysis_out_of_10[{{ loop.index0 }}]">{{ "8.25" if loop.index0 == 0 else "8.24" if loop.index0 == 1 else "8.15" if loop.index0 == 2 else "8.06" if loop.index0 == 3 else "8.05" if loop.index0 == 4 else "7.95" if loop.index0 == 5 else "7.68" if loop.index0 == 6 else "7.13" if loop.index0 == 7 else "7.94" if loop.index0 == 8 else "7.56" if loop.index0 == 9 else "8.13" if loop.index0 == 10 else "7.64" if loop.index0 == 11 else "7.68" if loop.index0 == 12 else "8.00" if loop.index0 == 13 else "7.40" if loop.index0 == 14 else "7.90" if loop.index0 == 15 else "7.88" if loop.index0 == 16 else "7.99" if loop.index0 == 17 else "7.69" if loop.index0 == 18 else "7.64" if loop.index0 == 19 }}</span></td>
+        <td><span data-field="action_taken_report[{{ loop.index0 }}]">{{ "Continuously quality Delivery" if loop.index0 == 0 else "Transparent & User Friendly system" if loop.index0 == 1 else "Connect HR for quality Recruitment" if loop.index0 == 2 else "Connect Proctor & Heads" if loop.index0 == 3 else "Leadership team ensures the same" if loop.index0 == 4 else "Behavioral science is mandatory for all courses" if loop.index0 == 5 else "DSW will ensure" if loop.index0 == 6 else "University belives in quality" if loop.index0 == 7 else "Focus on e-governance" if loop.index0 == 8 else "Connected with Director Administration" if loop.index0 == 9 else "IQAC ensures PO_PSO_CO assignments" if loop.index0 == 10 else "Dean Academics Connect" if loop.index0 == 11 else "Connect BOS" if loop.index0 == 12 else "Connect COE" if loop.index0 == 13 else "Connect HR for quality Recruitment" if loop.index0 == 14 else "Connect Administration" if loop.index0 == 15 else "Connect Hostel" if loop.index0 == 16 else "Leadership team ensures the same" if loop.index0 == 17 else "Sports officer will ensure" if loop.index0 == 18 else "University ensures quality exposure" if loop.index0 == 19 }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div></body>
+</html>

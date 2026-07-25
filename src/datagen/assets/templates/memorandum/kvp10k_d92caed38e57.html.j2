@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a base */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-info { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; font-size: 10pt; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 40px; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">UAF</h1>
+      <div class="header-info" style="margin-top: 10px;">
+        UNIVERSITY OF ALASKA<br>
+        FAIRBANKS
+        <div style="margin-top: 5px;">(907) 474-7964 • 474-7056</div>
+        <div style="margin-top: 2px;">Fax (907) 474-5213</div>
+        <div style="margin-top: 2px;">www.uaf.edu/uaf</div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 14pt; font-weight: bold;">Governance Office</div>
+      <div style="font-size: 12pt; margin-top: 5px;">America's Arctic University</div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 16pt; margin-bottom: 20px;">MEMORANDUM</h2>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 30%;">
+      <p style="margin: 0;">TO:</p>
+      <p style="margin: 5px 0 0 0;"><span data-field="recipient_name">{{ recipient_name }}</span>, <span data-field="recipient_title">{{ recipient_title }}</span></p>
+      <p style="margin: 0;">FROM:</p>
+      <p style="margin: 5px 0 0 0;"><span data-field="sender_name">{{ sender_name }}</span>, <span data-field="sender_title">{{ sender_title }}</span></p>
+    </div>
+    <div style="width: 60%; text-align: right;">
+      <p style="margin: 0;">DATE:</p>
+      <p style="margin: 5px 0 0 0;"><span data-field="memo_date">{{ memo_date }}</span></p>
+      <p style="margin: 0;">SUBJECT:</p>
+      <p style="margin: 5px 0 0 0;"><span data-field="memo_subject">{{ memo_subject }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; line-height: 1.6;">
+    <p>Attached please find a copy of the approval for <span data-field="course_name">{{ course_name }}</span> – <span data-field="course_code">{{ course_code }}</span> – <span data-field="course_description">{{ course_description }}</span>, <span data-field="course_credits">{{ course_credits }}</span> credits (<span data-field="course_level">{{ course_level }}</span>), as a <span data-field="semester">{{ semester }}</span> <span data-field="year">{{ year }}</span> stacked trial course.</p>
+    <p>I may be contacted at <span data-field="contact_phone">{{ contact_phone }}</span> if you have any questions or need further information.</p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Attachment</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>cc:</p>
+    <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+      <li><span data-field="cc_list[{{ 0 }}]">{{ cc_list[0] }}</span></li>
+      <li><span data-field="cc_list[{{ 1 }}]">{{ cc_list[1] }}</span></li>
+      <li><span data-field="cc_list[{{ 2 }}]">{{ cc_list[2] }}</span></li>
+      <li><span data-field="cc_list[{{ 3 }}]">{{ cc_list[3] }}</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 30px;">
+    <span data-field="document_date">{{ document_date }}</span>
+  </div>
+
+  <div style="line-height: 1.6;">
+    <p>The Graduate Academic &amp; Advisory Committee of the Faculty Senate approved the following trial course:</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 14pt; margin-bottom: 10px;">GRADUATE/UNDERGRADUATE COURSE REQUEST</h3>
+    <p style="margin-bottom: 10px;">SCHOOL OF FISHERIES AND OCEAN SCIENCES</p>
+    <p style="margin-bottom: 10px;">(Submitted by the Graduate Program in Marine Sciences &amp; Limnology)</p>
+    <p style="margin-bottom: 10px;">I-Tr. Trial Course: <span data-field="trial_course_name">{{ trial_course_name }}</span> – <span data-field="trial_course_code">{{ trial_course_code }}</span> – <span data-field="trial_course_description">{{ trial_course_description }}</span>, <span data-field="trial_course_credits">{{ trial_course_credits }}</span> credits (<span data-field="trial_course_level">{{ trial_course_level }}</span>); to be stacked as <span data-field="stacked_course_code">{{ stacked_course_code }}</span>; letter graded and not repeatable; prerequisites include graduate standing for <span data-field="prereq_course_1">{{ prereq_course_1 }}</span>, and <span data-field="prereq_course_2">{{ prereq_course_2 }}</span>, <span data-field="prereq_course_3">{{ prereq_course_3 }}</span>, and <span data-field="prereq_course_4">{{ prereq_course_4 }}</span>, or permission of instructor for <span data-field="prereq_course_5">{{ prereq_course_5 }}</span> level; to be offered alternate spring; first offering in <span data-field="trial_year">{{ trial_year }}</span>.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Effective: <span data-field="effective_semester">{{ effective_semester }}</span></p>
+    <p>Rationale: See request attached.</p>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>APPROVED:</p>
+        <div class="signature-line"></div>
+        <p style="margin-top: 5px;">Chancellor's / Provost's Office</p>
+      </div>
+      <div style="text-align: right;">
+        <p>DATE:</p>
+        <div class="signature-line" style="width: 150px;"></div>
+        <p style="margin-top: 5px;">10/4/10</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>DISAPPROVED:</p>
+        <div class="signature-line"></div>
+        <p style="margin-top: 5px;">Chancellor's / Provost's Office</p>
+      </div>
+      <div style="text-align: right;">
+        <p>DATE</p>
+        <div class="signature-line" style="width: 150px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

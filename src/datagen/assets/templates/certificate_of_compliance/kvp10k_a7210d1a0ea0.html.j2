@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate of Compliance</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1 { text-align: center; font-weight: bold; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .data-row { display: flex; margin-bottom: 10px; }
+        .data-label { width: 150px; font-weight: normal; }
+        .data-value { flex-grow: 1; }
+        .footer { position: absolute; bottom: 50px; width: calc(100% - 120px); text-align: center; font-size: 10pt; }
+        .signature-block { display: flex; justify-content: space-between; margin-top: 50px; }
+        .signature-area { text-align: center; }
+        .ul-logo { width: 80px; height: auto; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>CERTIFICATE OF COMPLIANCE</h1>
+
+        <div class="data-row">
+            <div class="data-label">Certificate Number:</div>
+            <div class="data-value"><span data-field="certificate_number">{{ certificate_number }}</span></div>
+        </div>
+
+        <div class="data-row">
+            <div class="data-label">Report Reference Date:</div>
+            <div class="data-value"><span data-field="report_reference_date">{{ report_reference_date }}</span></div>
+        </div>
+
+        <div class="data-row">
+            <div class="data-label">Issued to:</div>
+            <div class="data-value"><span data-field="applicant_company_name">{{ applicant_company_name }}</span></div>
+        </div>
+
+        <div class="data-row">
+            <div class="data-label">Applicant Company:</div>
+            <div class="data-value"><span data-field="applicant_company_address">{{ applicant_company_address }}</span></div>
+        </div>
+
+        <div class="data-row">
+            <div class="data-label">Listed Company:</div>
+            <div class="data-value"><span data-field="listed_company_name">{{ listed_company_name }}</span></div>
+        </div>
+
+        <div class="section-title">This is to certify that representative samples of</div>
+        <div class="data-row">
+            <div class="data-label">Standard(s) for Safety:</div>
+            <div class="data-value">
+                {% for standard in standards %}
+                    <span data-field="standards[{{ loop.index0 }}].description">{{ standard.description }}</span>
+                    {% if not loop.last %} ; {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section-title">Additional Standards:</div>
+        <div class="data-row">
+            <div class="data-value">
+                {% for standard in additional_standards %}
+                    <span data-field="additional_standards[{{ loop.index0 }}]">{{ standard }}</span>
+                    {% if not loop.last %} ; {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section-title">Additional Information:</div>
+        <div class="data-row">
+            <div class="data-value">
+                <span data-field="additional_info_text">{{ additional_info_text }}</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <p>This Certificate of Compliance does not provide authorization to apply the UL Mark. Only the UL Follow-Up Services Procedure provides authorization to apply the UL Mark.</p>
+        </div>
+
+        <div class="signature-block">
+            <div class="signature-area">
+                <div style="height: 50px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+                <div style="font-size: 10pt;">Bruce Nuhrenholtz, Director North American Certification Program</div>
+                <div style="font-size: 10pt;">UL LLC</div>
+            </div>
+            <div class="signature-area">
+                <img src="placeholder_ul_logo.png" alt="UL Logo" class="ul-logo" style="display: block; margin: 0 auto;">
+            </div>
+        </div>
+
+        <div class="footer">
+            Page 1
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; margin-top: 50px;">
+            <p>Only those products bearing the UL Mark should be considered as being UL Certified and covered under UL's Follow-Up Services.</p>
+            <p>Look for the UL Certification Mark on the product.</p>
+        </div>
+
+        <div style="margin-top: 100px;">
+            <div class="signature-block">
+                <div class="signature-area">
+                    <div style="height: 50px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+                    <div style="font-size: 10pt;">Bruce Nuhrenholtz, Director North American Certification Program</div>
+                    <div style="font-size: 10pt;">UL LLC</div>
+                </div>
+                <div class="signature-area">
+                    <img src="placeholder_ul_logo.png" alt="UL Logo" class="ul-logo" style="display: block; margin: 0 auto;">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Page 2
+        </div>
+    </div>
+</body>
+</html>

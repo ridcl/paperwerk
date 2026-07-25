@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IRS Notice</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td, th { padding: 5px 0; text-align: left; }
+        .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .irs-logo { font-size: 30px; font-weight: bold; }
+        .section-title { font-size: 18pt; font-weight: bold; margin-bottom: 20px; }
+        .sub-section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .note { font-size: 10pt; line-height: 1.5; margin-bottom: 15px; }
+        .payment-summary { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+        .amount-box { width: 200px; text-align: right; border: 1px solid #000; padding: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header-info">
+        <div>
+            <div class="irs-logo">IRS</div>
+            <div style="margin-top: 10px;">
+                <span data-field="department_name">{{ department_name }}</span><br>
+                <span data-field="service_name">{{ service_name }}</span><br>
+                <span data-field="address">{{ address }}</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-weight: bold;">Notice</div>
+            <div>Notice date: <span data-field="notice_date">{{ notice_date }}</span></div>
+            <div>Taxpayer ID number: <span data-field="taxpayer_id_number">{{ taxpayer_id_number }}</span></div>
+            <div>To contact us: <span data-field="contact_info">{{ contact_info }}</span></div>
+            <div>Page <span data-field="page_number">{{ page_number }}</span> of 5</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+        <div style="font-weight: bold;">BUSINESS NAME</div>
+        <div style="font-weight: bold;">ADDRESS</div>
+        <div style="font-weight: bold;">CITY, STATE ZIP</div>
+    </div>
+
+    <div class="section-title">Notice of seizure and notice of your right to a hearing</div>
+    <div style="font-size: 24pt; font-weight: bold; margin-bottom: 30px;">Amount due immediately: <span data-field="amount_due_immediately">{{ amount_due_immediately }}</span></div>
+
+    <div class="note">
+        <span data-field="paragraph_1">{{ paragraph_1 }}</span>
+        <span data-field="paragraph_2">We determined you are not entitled to a pre-levy hearing because you (or your predecessor) previously requested a Collection Due Process hearing under Internal Revenue Code section 6330. Your previous request included an employment tax period that fell within the two-year period that ended with the beginning of the period shown on this notice. However, you can appeal the seizure (levy) of your assets by requesting a Collection Due Process hearing (Internal Revenue Code Section 6330) by <span data-field="hearing_deadline">{{ paragraph_2">We determined you are not entitled to a pre-levy hearing because you (or your predecessor) previously requested a Collection Due Process hearing under Internal Revenue Code section 6330. Your previous request included an employment tax period that fell within the two-year period that ended with the beginning of the period shown on this notice. However, you can appeal the seizure (levy) of your assets by requesting a Collection Due Process hearing (Internal Revenue Code Section 6330) by <span data-field= }}</span>.</span>
+    </div>
+
+    <div class="section-title">Billing Summary</div>
+    <table>
+        <tr>
+            <td>Amount you owed</td>
+            <td><span data-field="billing_amount_owed">{{ billing_amount_owed }}</span></td>
+        </tr>
+        <tr>
+            <td>Additional failure-to-pay penalty</td>
+            <td><span data-field="billing_penalty">{{ billing_penalty }}</span></td>
+        </tr>
+        <tr>
+            <td>Additional interest charges</td>
+            <td><span data-field="billing_interest">{{ billing_interest }}</span></td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Amount due immediately</td>
+            <td style="font-weight: bold;"><span data-field="billing_total_due">{{ billing_total_due }}</span></td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 50px; text-align: right;">Continued on back...</div>
+</div>
+
+<div class="page">
+    <div class="header-info">
+        <div>
+            <div class="irs-logo">IRS</div>
+            <div style="margin-top: 10px;">
+                <span data-field="address_2">{{ address_2 }}</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-weight: bold;">Notice</div>
+            <div>Notice date: <span data-field="notice_date_2">{{ notice_date_2 }}</span></div>
+            <div>Taxpayer ID number: <span data-field="taxpayer_id_number_2">{{ taxpayer_id_number_2 }}</span></div>
+        </div>
+    </div>
+
+    <div class="section-title">Payment</div>
+
+    <div class="note">
+        <span data-field="payment_instruction_1">{{ payment_instruction_1 }}</span>
+        <span data-field="payment_instruction_2">{{ payment_instruction_2 }}</span>
+    </div>
+
+    <div class="payment-summary">
+        <div>
+            <span style="font-weight: bold;">Amount due immediately</span>
+        </div>
+        <div class="amount-box">
+            <span data-field="payment_amount_due">{{ payment_amount_due }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">What you need to do immediately</div>
+
+    <div class="note">
+        <span data-field="immediate_action_1">Send us the amount due of <span data-field="amount_due_immediate_2">{{ immediate_action_1">Send us the amount due of <span data-field= }}</span>, or we may seize (levy) your property on or after <span data-field="seizure_date">{{ seizure_date }}</span>.</span>
+        <span data-field="immediate_action_2">{{ immediate_action_2 }}</span>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Installment and payment agreements—download required forms or save time and money by applying online if you qualify</li>
+            <li>Automatic deductions from your bank account</li>
+            <li>Credit card payments</li>
+        </ul>
+        <span data-field="immediate_action_3">{{ immediate_action_3 }}</span>
+        <span data-field="immediate_action_4">{{ immediate_action_4 }}</span>
+    </div>
+
+    <div class="sub-section-title">Right to request a Collection Due Process hearing</div>
+    <div class="note">
+        <span data-field="hearing_right_1">If you wish to appeal this proposed levy, you must complete and mail the enclosed Form 12153, Request for a Collection Due Process or Equivalent Hearing, by <span data-field="hearing_deadline_2">{{ hearing_right_1">If you wish to appeal this proposed levy, you must complete and mail the enclosed Form 12153, Request for a Collection Due Process or Equivalent Hearing, by <span data-field= }}</span>. Send the form to us at the address listed at the top of page 1. Be sure to include the reason you are requesting a hearing (see section 8 of the instructions) and the amount you are disputing.</span>
+        <span data-field="hearing_right_2">Don't file Form 12153 as early as <span data-field="hearing_filing_date">{{ hearing_right_2">Don't file Form 12153 as early as <span data-field= }}</span>, you will lose the ability to contest Appeals' decisions in the U.S. Tax Court.</span>
+    </div>
+
+    <div class="sub-section-title">About Federal Tax Liens</div>
+    <div class="note">
+        <span data-field="lien_info_1">{{ lien_info_1 }}</span>
+        <span data-field="lien_info_2">{{ lien_info_2 }}</span>
+        <span data-field="lien_info_3">{{ lien_info_3 }}</span>
+        <span data-field="lien_info_4">{{ lien_info_4 }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-info">
+        <div>
+            <div class="irs-logo">IRS</div>
+            <div style="margin-top: 10px;">
+                <span data-field="address_3">{{ address_3 }}</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-weight: bold;">Notice</div>
+            <div>Notice date: <span data-field="notice_date_3">{{ notice_date_3 }}</span></div>
+            <div>Taxpayer ID number: <span data-field="taxpayer_id_number_3">{{ taxpayer_id_number_3 }}</span></div>
+        </div>
+    </div>
+
+    <div class="sub-section-title">Contact information</div>
+    <div class="note">
+        <span data-field="contact_info_1">{{ contact_info_1 }}</span>
+        <span data-field="contact_info_2">{{ contact_info_2 }}</span>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div>Primary phone</div>
+            <div>Best time to call</div>
+            <div>Secondary phone</div>
+            <div>Best time to call</div>
+        </div>
+        <!-- Placeholder for phone/time data -->
+    </div>
+
+    <div class="section-title">What need to do immediately-continued</div>
+    <div class="note">
+        <span data-field="continued_action_1">{{ continued_action_1 }}</span>
+        <span data-field="continued_action_2">{{ continued_action_2 }}</span>
+    </div>
+
+    <div class="sub-section-title">Denial or revocation of United States passport</div>
+    <div class="note">
+        <span data-field="passport_denial_1">{{ passport_denial_1 }}</span>
+        <span data-field="passport_denial_2">{{ passport_denial_2 }}</span>
+        <span data-field="passport_denial_3">{{ passport_denial_3 }}</span>
+        <span data-field="passport_denial_4">{{ passport_denial_4 }}</span>
+        <span data-field="passport_denial_5">{{ passport_denial_5 }}</span>
+        <span data-field="passport_denial_6">{{ passport_denial_6 }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">If we don't hear from you</div>
+    <div class="note">
+        <span data-field="no_response_1">{{ no_response_1 }}</span>
+        <span data-field="no_response_2">{{ no_response_2 }}</span>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Wages and other income</li>
+            <li>Bank accounts</li>
+            <li>Business assets</li>
+            <li>Personal assets (including your car and home)</li>
+            <li>Social Security benefits</li>
+        </ul>
+    </div>
+
+    <div class="section-title">Your billing details</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Tax period ending</th>
+                <th>Form number</th>
+                <th>Amount you owed</th>
+                <th>Additional interest</th>
+                <th>Additional penalty</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in line_items %}
+            <tr>
+                <td><span data-field="line_items[{{ loop.index0 }}].tax_period_ending">{{ line_items[loop.index0].tax_period_ending }}</span></td>
+                <td><span data-field="line_items[{{ loop.index0 }}].form_number">{{ line_items[loop.index0].form_number }}</span></td>
+                <td><span data-field="line_items[{{ loop.index0 }}].amount_owed">{{ line_items[loop.index0].amount_owed }}</span></td>
+                <td><span data-field="line_items[{{ loop.index0 }}].additional_interest">{{ line_items[loop.index0].additional_interest }}</span></td>
+                <td><span data-field="line_items[{{ loop.index0 }}].additional_penalty">{{ line_items[loop.index0].additional_penalty }}</span></td>
+                <td><span data-field="line_items[{{ loop.index0 }}].total">{{ line_items[loop.index0].total }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <div class="section-title">Penalties</div>
+
+    <div class="sub-section-title">Failure-to-pay</div>
+    <div class="note">
+        <span data-field="penalty_failure_1">{{ penalty_failure_1 }}</span>
+        <span data-field="penalty_failure_2">{{ penalty_failure_2 }}</span>
+        <span data-field="penalty_failure_3">{{ penalty_failure_3 }}</span>
+        <span data-field="penalty_failure_4">{{ penalty_failure_4 }}</span>
+        <span data-field="penalty_failure_5">{{ penalty_failure_5 }}</span>
+        <span data-field="penalty_failure_6">{{ penalty_failure_6 }}</span>
+        <span data-field="penalty_failure_7">{{ penalty_failure_7 }}</span>
+    </div>
+
+    <div class="sub-section-title">Removal or reduction of penalties</div>
+    <div class="note">
+        <span data-field="penalty_removal_1">{{ penalty_removal_1 }}</span>
+        <span data-field="penalty_removal_2">{{ penalty_removal_2 }}</span>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Identify which penalty charges you would like us to reconsider (e.g., 2016 late filing penalty).</li>
+            <li>For each penalty, explain why you believe it should be reconsidered.</li>
+            <li>If you write us, include a signed statement and supporting documentation for penalty abatement request.</li>
+        </ul>
+        <span data-field="penalty_removal_3">{{ penalty_removal_3 }}</span>
+    </div>
+
+    <div class="sub-section-title">Removal of penalties due to erroneous written advice from the IRS</div>
+    <div class="note">
+        <span data-field="penalty_erroneous_1">{{ penalty_erroneous_1 }}</span>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>You wrote us asking for written advice on a specific issue.</li>
+            <li>You received written advice from us.</li>
+            <li>You reasonably relied on our written advice and were penalized based on that advice.</li>
+        </ul>
+        <span data-field="penalty_erroneous_2">{{ penalty_erroneous_2 }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Interest charges</div>
+    <div class="note">
+        <span data-field="interest_1">{{ interest_1 }}</span>
+        <span data-field="interest_2">{{ interest_2 }}</span>
+    </div>
+
+    <div class="sub-section-title">Corporate Interest</div>
+    <div class="note">
+        <span data-field="corporate_interest_1">{{ corporate_interest_1 }}</span>
+        <span data-field="corporate_interest_2">{{ corporate_interest_2 }}</span>
+    </div>
+
+    <div class="sub-section-title">Additional information</div>
+    <div class="note">
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Visit www.irs.gov/cp297A</li>
+            <li>For tax forms, instructions, and publications, visit www.irs.gov or call 1-800-TAX-FORM (1-800-829-3676).</li>
+            <li>Review the enclosed documents:</li>
+            <ul style="list-style-type: circle; margin-left: 20px;">
+                <li>Collection Due Process Hearing (Form 12153)</li>
+                <li>Collection Appeal Rights (Publication 1660)</li>
+                <li>Notice of Federal Tax Lien (Publication 450)</li>
+            </ul>
+            <li>Keep this notice for your records.</li>
+        </ul>
+        <span data-field="assistance_note">{{ assistance_note }}</span>
+    </div>
+</div>
+
+</body>
+</html>

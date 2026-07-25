@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Estimated Tax Forms</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 5px; text-align: left; }
+  .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 10px; }
+  .sub-header { font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .instruction-text { font-size: 10pt; line-height: 1.4; margin-bottom: 15px; }
+  .form-field-label { font-size: 10pt; display: inline-block; width: 150px; }
+  .form-field-input { border-bottom: 1px solid black; min-width: 100px; }
+  .two-column-layout { display: flex; justify-content: space-between; }
+  .two-column-layout > div { width: 48%; }
+  .table-small { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .table-small td { padding: 3px 5px; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">OMB No. 1545-0971</div>
+  <div style="text-align: center; margin-top: 10px;">
+    <div class="header-title">Form 1041-ES</div>
+    <div style="font-size: 18pt; font-weight: bold;">Estimated Income Tax for Estates and Trusts</div>
+  </div>
+  <div style="text-align: center; font-size: 10pt; margin-bottom: 30px;">
+    Section references are to the Internal Revenue Code.
+  </div>
+
+  <div class="section-title">A Change To Note</div>
+  <div class="instruction-text">
+    For tax years beginning in 1999, the estimated tax safe harbor that is based on the tax shown on the prior year's tax return is increased to 105% of that amount if the gross income on that return is more than <span data-field="threshold_amount_1">{{ threshold_amount_1 }}</span> and less than <span data-field="threshold_amount_2">{{ threshold_amount_2 }}</span> of gross income for 1998 or 1999 is from farming or fishing.
+  </div>
+  <div class="instruction-text">
+    However, if a return was not filed for 1998 or that return did not cover a full 12 months, then 2 does not apply.
+  </div>
+  <div class="instruction-text">
+    For this purpose, include household income tax shown on the return, but only if either of the following is true:
+  </div>
+  <ul style="font-size: 10pt; margin-top: 0;">
+    <li>The estate or trust will have Federal income tax withheld from any income, OR</li>
+    <li>The estate or trust would be required to make estimated tax payments (or did not include household employment taxes when filing its estimated tax.</li>
+  </ul>
+
+  <div class="section-title">Purpose of Form</div>
+  <div class="instruction-text">
+    Use this package to figure and pay estimated tax for an estate or trust. Estimated tax is the amount of tax an estate or trust expects to owe for an entire year after subtracting the amount of tax withheld and the amount of any credits.
+  </div>
+  <div class="instruction-text">
+    This package is primarily for first-time filers. After the IRS receives the first payment voucher, you will receive a 1041-ES package with the name, address, and employer information on the <span data-field="form_number_1">{{ form_number_1 }}</span> printed on this package. However, for tax years, the fiduciary did not receive any 1999 printed vouchers, use the vouchers in this package. However, if the vouchers to the notary refers to the IRS use a change of address. If the fiduciary has a change of address, send it to the service center where you file the estate's or trust's tax return.
+  </div>
+
+  <div class="section-title">Who Must Make Estimated Tax Payments</div>
+  <div class="instruction-text">
+    Generally, a fiduciary of an estate or trust must pay estimated tax if the estimated tax is expected to be over, after subtracting its withholding and credits, at least <span data-field="min_tax_amount_1">{{ min_tax_amount_1 }}</span> for tax in 1999 and can expect its withholding and credits to be less than the smaller of <span data-field="threshold_tax_1">{{ threshold_tax_1 }}</span> and <span data-field="threshold_tax_2">{{ threshold_tax_2 }}</span> of gross income from farming or fishing. To figure the estate's or trust's AGI, see the instructions for line <span data-field="line_number_1">{{ line_number_1 }}</span> of Form <span data-field="form_number_2">{{ form_number_2 }}</span>, U.S. Income Tax Return for Estates and Trusts.
+  </div>
+  <div class="instruction-text">
+    The tax shown on the 1998 tax return (105% of that amount if the gross income on that return is more than <span data-field="threshold_amount_3">{{ threshold_amount_3 }}</span> and less than <span data-field="threshold_amount_4">{{ threshold_amount_4 }}</span> of gross income for 1998 or 1999 is from farming or fishing). To figure the estate's or trust's AGI, see the instructions for line <span data-field="line_number_2">{{ line_number_2 }}</span> of Form <span data-field="form_number_3">{{ form_number_3 }}</span>.
+  </div>
+
+  <div class="section-title">How To Figure Estimated Tax</div>
+  <div class="instruction-text">
+    Use the 1999 Estimated Tax Worksheet and 1999 Tax Rate Schedule on page <span data-field="page_number_1">{{ page_number_1 }}</span> and the estate's or trust's 1998 tax return and the 1999 estimated tax schedule as a guide for figuring the 1999 estimated tax.
+  </div>
+  <div class="instruction-text">
+    If the estate or trust receives its income unevenly throughout the year, use the 1999 Estimated Tax Worksheet to determine the amount of its required estimated tax payment for one or more periods throughout the year.
+  </div>
+  <div class="instruction-text">
+    See Pub. 505, Tax Withholding and Estimated Tax, for more information.
+  </div>
+
+  <div class="section-title">Instructions for 1999 Estimated Tax Worksheet</div>
+  <div class="instruction-text">
+    Line 4 - Exception
+    <div class="instruction-text" style="margin-left: 20px;">
+      Descendent's estate is allowed a <span data-field="exception_amount">{{ exception_amount }}</span> exception. Trust: A trust that is required by this governing trust instrument to distribute
+    </div>
+  </div>
+
+  <div class="two-column-layout" style="margin-top: 40px;">
+    <div>
+      <div class="section-title">When To Make Estimated Tax Payments</div>
+      <div class="instruction-text">
+        Trusts. The trust may pay all of its estimated tax by April 15, 1999, or in four installments due by the following dates:
+        <table class="table-small">
+          <tr>
+            <td style="width: 30%;">1st installment</td>
+            <td style="width: 30%;">April 15, 1999</td>
+            <td style="width: 40%;"></td>
+          </tr>
+          <tr>
+            <td>2nd installment</td>
+            <td>June 15, 1999</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3rd installment</td>
+            <td>September 15, 1999</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4th installment</td>
+            <td>January 15, 2000</td>
+            <td></td>
+          </tr>
+        </table>
+        <div class="instruction-text" style="margin-top: 15px;">
+          Note: The trust does not have to make the 4th installment due in January, 2000, if it files the 1999 Form <span data-field="form_number_4">{{ form_number_4 }}</span> by the last day of the month following the close of the tax year.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Certain Payments of Estimated Tax Treated as Paid by Beneficiary</div>
+      <div class="instruction-text">
+        The fiduciary or executor, for the final year of the estate, may elect to have the estimated tax payments treated as made by a beneficiary (and not as payments made by the estate or trust).
+      </div>
+      <div class="instruction-text">
+        Such an amount is treated as a payment of the estimated tax made by the beneficiary on the January 15 following the tax year.
+      </div>
+      <div class="instruction-text">
+        For making election. The fiduciary must make the election on the 1999 Form <span data-field="form_number_5">{{ form_number_5 }}</span>, Allocation of Estimated Tax Payments to Beneficiaries. The election must be filed on or before the 65th day after the close of the estate's or trust's tax year. For details, see section <span data-field="section_number_1">{{ section_number_1 }}</span>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">Page 2</div>
+  <div class="section-title">How To Complete and Use the Payment Vouchers</div>
+  <div class="instruction-text">
+    Each payment voucher has the date when the voucher is due for calendar year estates and trusts. Be sure to use the voucher the voucher omits a making payment. To complete your voucher, fill in all the estate's or trust's name and EIN, and the fiduciary's name, title, and address in the spaces provided on the payment voucher.
+  </div>
+  <div class="instruction-text">
+    Enter on the payment line of the voucher only the amount of estimated tax or trust is sending. When making payments of estimated tax, be sure to take into account any 1998 tax return or trust amount do not include the overpayment amount on this line.
+  </div>
+
+  <div class="section-title">Where To File</div>
+  <div class="instruction-text">
+    Mail the payment voucher to:
+    <div style="margin-left: 20px;">
+      Internal Revenue Service
+      <br>
+      <span data-field="address_line_1">{{ address_line_1 }}</span>
+      <br>
+      <span data-field="city_state_zip">{{ city_state_zip }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Amending Estimated Tax Payments</div>
+  <div class="instruction-text">
+    DO NOT send the payment voucher to the Internal Revenue Service.
+  </div>
+  <div class="instruction-text">
+    Note: Only the U.S. Postal Service can deliver to the above address.
+  </div>
+  <div class="instruction-text">
+    You are required to request a form to amend your estimated tax payments. This is subject to the Paperwork Reduction Act. Use the form <span data-field="form_number_6">{{ form_number_6 }}</span> to request the form.
+  </div>
+  <div class="instruction-text">
+    The IRS will send you the form, and you must fill it out and return it to us to figure and collect the right amount of tax.
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">Page 3</div>
+  <div class="section-title">1999 Estimated Tax Worksheet (Do Not File—Keep for Your Records)</div>
+  <table class="table-small">
+    <thead>
+      <tr>
+        <th style="width: 5%;">1</th>
+        <th style="width: 35%;">2</th>
+        <th style="width: 35%;">3</th>
+        <th style="width: 25%;">4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Enter adjusted total income expected in 1999.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Enter any expected income distribution deduction.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Enter any estate tax deduction.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Enter exemption (see instructions).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Add lines 2 through 4.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Taxable income of estate or trust. Subtract line 5 from line 1.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Tax. Figure your tax on line 6 by using the 1999 Tax Rate Schedule below. (If the estate or trust expects a net capital gain and line 6 is more than zero, use the Tax Computation Worksheet Using Maximum Capital Gains Rates on page 4, to figure the tax.)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Tax on lump-sum distributions (from Form 4972).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Add lines 7 and 8.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Credits (see instructions).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Subtract line 10 from line 9. If zero or less, enter 0.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Estimated tax.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>1999 estimated tax. Add lines 11 and 12. Reduce this total by any credit you expect to claim on Form <span data-field="form_number_7">{{ form_number_7 }}</span>.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>14a</td>
+        <td>Enter 90% of line 13 (90% for farmers and fishers).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>14b</td>
+        <td>Enter 10% of line 13 (10% for farmers and fishers).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Tax due on the 1998 tax return (105% of that amount if the estate's or trust's gross income for 1998 or 1999 is from farming or fishing).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Required annual payment. Enter the smaller of line 14a or 14b.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Subtract line 15 from line 14c.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Estimated tax due.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>(Note: If line 13 minus line 15 is less than $1,000, the estate or trust is not required to make estimated tax payments.)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Amount if the required payment is less than $1,000, enter the amount you are applying to this installment here and on line 1 of the payment voucher. (You may round off cents to the nearest whole dollar.)</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">1999 Tax Rate Schedule</div>
+    <table class="table-small">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Over—</th>
+          <th style="width: 20%;">But not over—</th>
+          <th style="width: 20%;">15%</th>
+          <th style="width: 20%;">15%</th>
+          <th style="width: 20%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>$0</td>
+          <td>$1,750</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>$1,750</td>
+          <td>$4,050</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>$4,050</td>
+          <td>$6,200</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>$6,200</td>
+          <td>$8,450</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>$8,450</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="section-title">Record of Estimated Tax Payments</div>
+    <table class="table-small">
+      <thead>
+        <tr>
+          <th style="width: 10%;">Pay-ment no.</th>
+          <th style="width: 20%;">Date</th>
+          <th style="width: 20%;">By check or money order number</th>
+          <th style="width: 20%;">Amount</th>
+          <th style="width: 30%;">1998 overpayment credit applied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Total.</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+      <span style="font-size: 10pt;">Tear off here</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">Page 4</div>
+  <div class="section-title">1999 Tax Computation Worksheet Using Maximum Capital Gains Rates (Use this computation if the estate or trust expects a net capital gain and line 6 of the Estimated Tax Worksheet on page 3.)</div>
+  <table class="table-small">
+    <thead>
+      <tr>
+        <th style="width: 5%;">1</th>
+        <th style="width: 35%;">2</th>
+        <th style="width: 35%;">3</th>
+        <th style="width: 25%;">4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Enter taxable income from line 6 of the Worksheet on page 3.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Enter the net capital gain expected for 1999. (Remember: Do not include any capital gain from the disposition of property held for investment interest expense purposes.)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Combine the net short-term capital loss and 28% rate gain or loss expected for 1999.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>If zero or less, enter 0.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Add lines 3 and 4.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Subtract line 5 from line 2. If zero or less, enter 0.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Enter the smaller of line 1 or line 6.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Enter the smaller of line 7 or line 8.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Enter the larger of line 9 or line 10.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Enter the larger of line 10 or line 11.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Tax on amount on line 1 from the 1999 Tax Rate Schedule.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Tax on amount on line 2 from the 1999 Tax Rate Schedule.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Subtract line 18 from line 17.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Multiply line 13 by 10% (10%).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Enter the smaller of line 1 or line 6.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Enter the amount from line 15.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Subtract line 18 from line 17.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Multiply line 19 by 20% (20%).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Multiply line 20 by 20% (20%).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Add lines 21 and 22.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>Add lines 11, 15, 19, and 25.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Subtract line 28 from line 27.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Multiply line 29 by 28% (28%).</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>Add lines 12, 16, 20, 26, and 30.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>Tax on the amount on line 1 from the 1999 Tax Rate Schedule.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>Tax. Enter the smaller of line 31 or line 32 here and on line 7 of the Worksheet on page 3.</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">Page 5</div>
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div class="section-title">Form 1041-ES Payment Voucher</div>
+  </div>
+
+  <div class="two-column-layout">
+    <div>
+      <div class="form-field-label">1 Amount of payment $</div>
+      <div class="form-field-input"></div>
+      <div class="form-field-label">2 Fiscal year filers-enter year ending</div>
+      <div class="form-field-input"></div>
+      <div style="margin-top: 20px;">
+        <div class="form-field-label">Employer identification number</div>
+        <div class="form-field-input" style="width: 300px;"></div>
+        <div class="form-field-label">Name of estate or trust</div>
+        <div class="form-field-input" style="width: 300px;"></div>
+        <div class="form-field-label">Name and title of fiduciary</div>
+        <div class="form-field-input" style="width: 300px;"></div>
+        <div class="form-field-label">Address of fiduciary (number, street, and room or suite no.)</div>
+        <div class="form-field-input" style="width: 300px;"></div>
+        <div class="form-field-label">City, state, and ZIP code</div>
+        <div class="form-field-input" style="width: 300px;"></div>
+      </div>
+    </div>
+    <div>
+      <div style="text-align: center; margin-top: 100px;">
+        <div style="font-size: 10pt;">Tear off here</div>
+      </div>
+      <div style="margin-top: 100px;">
+        <div class="form-field-label">1 Amount of payment $</div>
+        <div class="form-field-input"></div>
+        <div class="form-field-label">2 Fiscal year filers-enter year ending</div>
+        <div class="form-field-input"></div>
+        <div style="margin-top: 20px;">
+          <div class="form-field-label">Employer identification number</div>
+          <div class="form-field-input" style="width: 300px;"></div>
+          <div class="form-field-label">Name of estate or trust</div>
+          <div class="form-field-input" style="width: 300px;"></div>
+          <div class="form-field-label">Name and title of fiduciary</div>
+          <div class="form-field-input" style="width: 300px;"></div>
+          <div class="form-field-label">Address of fiduciary (number, street, and room or suite no.)</div>
+          <div class="form-field-input" style="width: 300px;"></div>
+          <div class="form-field-label">City, state, and ZIP code</div>
+          <div class="form-field-input" style="width: 300px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

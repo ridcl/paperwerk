@@ -1,0 +1,71 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+  .address-block { margin-bottom: 20px; }
+  .line-item { margin-bottom: 10px; }
+</style>
+
+<div class="page">
+  <div class="section-title">FORM FOR CUSTOMS</div>
+
+  <div class="line-item">
+    Tracking Number: <span data-field="tracking_number">{{ tracking_number }}</span>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 45%;">
+      <div class="section-title">Shipment Address:</div>
+      <div class="address-block">
+        <span data-field="shipper.name">{{ shipper.name }}</span><br>
+        <span data-field="shipper.street_address">{{ shipper.street_address }}</span><br>
+        <span data-field="shipper.city">{{ shipper.city }}</span>, <span data-field="shipper.state">{{ shipper.state }}</span> <span data-field="shipper.zip_code">{{ shipper.zip_code }}</span><br>
+        <span data-field="shipper.country">{{ shipper.country }}</span>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div class="section-title">From:</div>
+      <div class="address-block">
+        Phone: <span data-field="sender.phone">{{ sender.phone }}</span><br>
+        Fax: <span data-field="sender.fax">{{ sender.fax }}</span><br>
+        Date of shipment: <span data-field="shipment_date">{{ shipment_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="section-title">TO WHOM IT MAY CONCERN:</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    Package containing:
+    <ul style="list-style-type: disc; margin-left: 20px;">
+      <li>Human blood samples for diagnostic purposes</li>
+      <li>Not toxic</li>
+      <li>Not dangerous</li>
+      <li>Non-infectious</li>
+      <li>Contains no animal by-products</li>
+      <li>Contains no tissue culture origin</li>
+      <li>Contains no animal material</li>
+      <li>Obtained directly from humans, not recombinant, not cultured</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>To use in medical diagnosis – packed in compliance with IATA packing instruction 650. Value: <span data-field="declared_value">{{ declared_value }}</span>.</p>
+    <p style="font-weight: bold;">Timely medical diagnosis depends on timely delivery of this human sample in less than 60 hours after it was received by the courier service handling the priority shipping.</p>
+    <p>When a problem arises, please contact the Medical Genomics Laboratory at <span data-field="contact_phone">{{ contact_phone }}</span> as delay in customs may have an adverse impact on the diagnostics that need to be performed on the sample.</p>
+  </div>
+
+  <div style="margin-top: 60px;">
+    Signature of sender: _________________________
+  </div>
+</div>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCA Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #000;
+    background: #fff;
+  }
+
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+  }
+
+  .header-table td {
+    vertical-align: top;
+    padding: 2px 0;
+  }
+
+  .label-col {
+    width: 70px;
+    font-weight: normal;
+    color: #000;
+  }
+
+  .value-col {
+    color: #000;
+  }
+
+  .number-row {
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+
+  .number-row .num-value {
+    font-weight: bold;
+  }
+
+  .release-row {
+    margin-bottom: 0;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 8px 0 10px 0;
+  }
+
+  .email-block {
+    margin-bottom: 14px;
+  }
+
+  .email-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+
+  .email-label {
+    font-weight: bold;
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+
+  .email-value {
+    flex: 1;
+  }
+
+  .redacted-box {
+    display: inline-block;
+    background: #000;
+    color: #000;
+    min-width: 110px;
+    height: 14px;
+    vertical-align: middle;
+  }
+
+  .redacted-box-wide {
+    display: inline-block;
+    background: #000;
+    color: #000;
+    min-width: 260px;
+    height: 14px;
+    vertical-align: middle;
+  }
+
+  .body-text {
+    color: #1a5276;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 10px;
+  }
+
+  .body-text a {
+    color: #1a5276;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ID Row -->
+  <table class="header-table">
+    <tr>
+      <td class="label-col">ID:</td>
+      <td class="value-col"><span data-field="document_id">{{ document_id }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">UILC:</td>
+      <td class="value-col"><span data-field="uilc">{{ uilc }}</span></td>
+    </tr>
+  </table>
+
+  <!-- Number and Release Date -->
+  <div class="number-row">
+    Number: <span class="num-value"><span data-field="document_number">{{ document_number }}</span></span>
+  </div>
+  <div class="release-row">
+    Release Date: <span data-field="release_date">{{ release_date }}</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Email Header Block -->
+  <div class="email-block">
+    <div class="email-row">
+      <span class="email-label">From:</span>
+      <span class="email-value"><span class="redacted-box">&nbsp;</span></span>
+    </div>
+    <div class="email-row">
+      <span class="email-label">Sent:</span>
+      <span class="email-value"><span data-field="sent_datetime">{{ sent_datetime }}</span></span>
+    </div>
+    <div class="email-row">
+      <span class="email-label">To:</span>
+      <span class="email-value"><span class="redacted-box">&nbsp;</span></span>
+    </div>
+    <div class="email-row">
+      <span class="email-label">Cc:</span>
+      <span class="email-value"><span class="redacted-box-wide">&nbsp;</span></span>
+    </div>
+    <div class="email-row">
+      <span class="email-label">Bcc:</span>
+      <span class="email-value"></span>
+    </div>
+    <div class="email-row">
+      <span class="email-label">Subject:</span>
+      <span class="email-value"><span data-field="subject">{{ subject }}</span></span>
+    </div>
+  </div>
+
+  <!-- Body Text -->
+  <div class="body-text">
+    <span data-field="body_text">{{ body_text }}</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2 { text-align: center; }
+  .form-section { margin-bottom: 20px; }
+  .signature-line { margin-top: 50px; }
+</style>
+
+<div class="page">
+  <!-- Header Section -->
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">Amity Law School, Delhi</h1>
+    <p style="font-size: 10pt; margin-top: 5px;">(An Institution of Ritnand Balved Education Foundation)</p>
+    <p style="font-size: 10pt;">Affiliated to Guru Gobind Singh Indraprastha University, Delhi</p>
+  </div>
+
+  <!-- Subscription Form Title -->
+  <h2 style="text-align: center; margin-bottom: 30px;">SUBSCRIPTION/MEMBERSHIP FORM</h2>
+
+  <!-- Personal Details Section -->
+  <div class="form-section">
+    <p>I wish to subscribe to Amity Law Review/ALSD Student Journal/Life Membership.</p>
+    <p>A bank draft/cheque bearing cheque No. <span data-field="cheque_number">{{ cheque_number }}</span> for Rs. <span data-field="amount_paid">{{ amount_paid }}</span>.</p>
+    <p>Drawn in favor of Amity Law School, Delhi, towards Subscription/Membership for <span data-field="subscription_period">{{ subscription_period }}</span> is enclosed.</p>
+  </div>
+
+  <!-- Input Fields -->
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 45%;">
+        <label for="name">Name:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="full_name" style="display: block; height: 100%;">{{ full_name }}</span>
+        </div>
+      </div>
+      <div style="width: 45%;">
+        <label for="designation">Designation:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="designation" style="display: block; height: 100%;">{{ designation }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="address">Address:</label><br>
+      <div style="border-bottom: 1px solid black; width: 100%; height: 30px;">
+        <span data-field="address" style="display: block; height: 100%;">{{ address }}</span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">
+        <label for="city">City:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="city" style="display: block; height: 100%;">{{ city }}</span>
+        </div>
+      </div>
+      <div style="width: 30%;">
+        <label for="pin">PIN:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="pin" style="display: block; height: 100%;">{{ pin }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">
+        <label for="country">Country:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="country" style="display: block; height: 100%;">{{ country }}</span>
+        </div>
+      </div>
+      <div style="width: 30%;">
+        <label for="fax">Fax:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="fax" style="display: block; height: 100%;">{{ fax }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">
+        <label for="phone">Phone:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="phone" style="display: block; height: 100%;">{{ phone }}</span>
+        </div>
+      </div>
+      <div style="width: 30%;">
+        <label for="email">Email:</label><br>
+        <div style="border-bottom: 1px solid black; width: 100%; height: 20px;">
+          <span data-field="email" style="display: block; height: 100%;">{{ email }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature Block -->
+  <div class="signature-line" style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div>
+      <p>Signature:</p>
+      <div style="border-bottom: 1px solid black; width: 200px;" data-field="signature">{{ signature }}</div>
+    </div>
+    <div>
+      <p>Date:</p>
+      <div style="border-bottom: 1px solid black; width: 200px;" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+
+  <!-- Subscription Rates Table -->
+  <div style="margin-top: 60px;">
+    <h3 style="text-align: center; margin-bottom: 15px;">SUBSCRIPTION RATES</h3>
+    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+      <thead>
+        <tr style="border-bottom: 1px solid black;">
+          <th style="padding: 8px; border: 1px solid black;">Category</th>
+          <th style="padding: 8px; border: 1px solid black;">1 yr</th>
+          <th style="padding: 8px; border: 1px solid black;">2 yr</th>
+          <th style="padding: 8px; border: 1px solid black;">3 yr</th>
+          <th style="padding: 8px; border: 1px solid black;">Life Membership</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid black;">
+          <td style="padding: 8px; border: 1px solid black;">Indian (In Rs.)</td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_indian_1yr">{{ rate_indian_1yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_indian_2yr">{{ rate_indian_2yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_indian_3yr">{{ rate_indian_3yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_indian_life">{{ rate_indian_life }}</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid black;">
+          <td style="padding: 8px; border: 1px solid black;">Institutional/Individuals</td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_inst_1yr">{{ rate_inst_1yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_inst_2yr">{{ rate_inst_2yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_inst_3yr">{{ rate_inst_3yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_inst_life">{{ rate_inst_life }}</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid black;">
+          <td style="padding: 8px; border: 1px solid black;">Alumni</td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_alumni_1yr">{{ rate_alumni_1yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_alumni_2yr">{{ rate_alumni_2yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_alumni_3yr">{{ rate_alumni_3yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_alumni_life">{{ rate_alumni_life }}</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid black;">
+          <td style="padding: 8px; border: 1px solid black;">Students</td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_student_1yr">{{ rate_student_1yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_student_2yr">{{ rate_student_2yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_student_3yr">{{ rate_student_3yr }}</span></td>
+          <td style="padding: 8px; border: 1px solid black;"><span data-field="rate_student_life">{{ rate_student_life }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer Note -->
+  <p style="margin-top: 70px; font-size: 10pt;">Please send the amount by DD/Crossed account payee cheque favouring "<span data-field="institution_name">{{ institution_name }}</span>, Delhi" for the timely receipt of the journal.</p>
+</div>

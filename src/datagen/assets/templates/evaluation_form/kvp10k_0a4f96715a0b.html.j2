@@ -1,0 +1,151 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a base */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 30px; margin-bottom: 30px; display: inline-block; width: 50%; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-row > div { flex: 1; }
+  .section-title { font-weight: bold; margin-bottom: 15px; display: block; }
+  .grid-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .grid-table th, .grid-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .grid-table th { background-color: #f2f2f2; }
+  .comments-box { width: 100%; height: 150px; border: 1px solid #000; padding: 10px; margin-top: 10px; box-sizing: border-box; }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div>
+      <p>From: <span data-field="supervisor_name">{{ supervisor_name }}</span></p>
+      <p>To: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 24px; font-weight: bold;">LINCOLN UNIVERSITY</div>
+      <div style="font-size: 12px;">(University Seal Placeholder)</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        <p>Name: <span data-field="supervisor_name_full">{{ supervisor_name_full }}</span></p>
+        <p>Company: <span data-field="company_name">{{ company_name }}</span></p>
+        <p>Address: <span data-field="company_address">{{ company_address }}</span></p>
+      </div>
+      <div style="width: 45%;">
+        <p>To: <span data-field="recipient_name_full">{{ recipient_name_full }}</span></p>
+        <p>Address: <span data-field="recipient_address">{{ recipient_address }}</span></p>
+        <p>Email: <span data-field="recipient_email">{{ recipient_email }}</span></p>
+        <p>Fax: <span data-field="recipient_fax">{{ recipient_fax }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">Intern's Evaluation</h2>
+
+  <div style="margin-bottom: 30px;">
+    <p>Lincoln University cares about its students' achievements in internships and work experience. The form below provides the university evaluation requirements. Please return this form to us within 10 days after internship completion by postal mail, e-mail, or fax at the addresses stated above.</p>
+    <p>Following the internship agreement, the host organization provided a specific work experience for the student and evaluated his/her job performance and the adequacy of his/her preparation for undertaking the work. The company assigned a member of its staff to supervise the intern and is providing a written evaluation of his/her performance at the completion of the internship period.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div style="width: 30%;">Company Name: <span data-field="company_name_eval">{{ company_name_eval }}</span></div>
+      <div style="width: 30%;">Company Address: <span data-field="company_address_eval">{{ company_address_eval }}</span></div>
+      <div style="width: 40%;">Industry Type: <span data-field="industry_type">{{ industry_type }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Intern's Name: <span data-field="intern_name">{{ intern_name }}</span></div>
+      <div style="width: 30%;">Supervisor's Name: <span data-field="supervisor_name_eval">{{ supervisor_name_eval }}</span></div>
+      <div style="width: 40%;">Contact Person's Name: <span data-field="contact_person_name">{{ contact_person_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Title: <span data-field="intern_title">{{ intern_title }}</span></div>
+      <div style="width: 30%;">Title: <span data-field="supervisor_title">{{ supervisor_title }}</span></div>
+      <div style="width: 40%;">Title: <span data-field="contact_title">{{ contact_title }}</span></div>
+    </div>
+  </div>
+
+  <p>On a scale of 1 to 5 (1: unsatisfactory — 5: excellent), please rate the intern in the following categories. Please circle the applicable rating for each category.</p>
+
+  <table class="grid-table">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Category</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Intern's professional skills / proficiency</td>
+        <td><span data-field="rating_professional_skills_1">{{ rating_professional_skills_1 }}</span></td>
+        <td><span data-field="rating_professional_skills_2">{{ rating_professional_skills_2 }}</span></td>
+        <td><span data-field="rating_professional_skills_3">{{ rating_professional_skills_3 }}</span></td>
+        <td><span data-field="rating_professional_skills_4">{{ rating_professional_skills_4 }}</span></td>
+        <td><span data-field="rating_professional_skills_5">{{ rating_professional_skills_5 }}</span></td>
+      </tr>
+      <tr>
+        <td>Intern's career readiness</td>
+        <td><span data-field="rating_career_readiness_1">{{ rating_career_readiness_1 }}</span></td>
+        <td><span data-field="rating_career_readiness_2">{{ rating_career_readiness_2 }}</span></td>
+        <td><span data-field="rating_career_readiness_3">{{ rating_career_readiness_3 }}</span></td>
+        <td><span data-field="rating_career_readiness_4">{{ rating_career_readiness_4 }}</span></td>
+        <td><span data-field="rating_career_readiness_5">{{ rating_career_readiness_5 }}</span></td>
+      </tr>
+      <tr>
+        <td>Intern's workplace ethics</td>
+        <td><span data-field="rating_workplace_ethics_1">{{ rating_workplace_ethics_1 }}</span></td>
+        <td><span data-field="rating_workplace_ethics_2">{{ rating_workplace_ethics_2 }}</span></td>
+        <td><span data-field="rating_workplace_ethics_3">{{ rating_workplace_ethics_3 }}</span></td>
+        <td><span data-field="rating_workplace_ethics_4">{{ rating_workplace_ethics_4 }}</span></td>
+        <td><span data-field="rating_workplace_ethics_5">{{ rating_workplace_ethics_5 }}</span></td>
+      </tr>
+      <tr>
+        <td>Intern's communication skills</td>
+        <td><span data-field="rating_communication_skills_1">{{ rating_communication_skills_1 }}</span></td>
+        <td><span data-field="rating_communication_skills_2">{{ rating_communication_skills_2 }}</span></td>
+        <td><span data-field="rating_communication_skills_3">{{ rating_communication_skills_3 }}</span></td>
+        <td><span data-field="rating_communication_skills_4">{{ rating_communication_skills_4 }}</span></td>
+        <td><span data-field="rating_communication_skills_5">{{ rating_communication_skills_5 }}</span></td>
+      </tr>
+      <tr>
+        <td>Overall satisfaction with intern</td>
+        <td><span data-field="rating_overall_satisfaction_1">{{ rating_overall_satisfaction_1 }}</span></td>
+        <td><span data-field="rating_overall_satisfaction_2">{{ rating_overall_satisfaction_2 }}</span></td>
+        <td><span data-field="rating_overall_satisfaction_3">{{ rating_overall_satisfaction_3 }}</span></td>
+        <td><span data-field="rating_overall_satisfaction_4">{{ rating_overall_satisfaction_4 }}</span></td>
+        <td><span data-field="rating_overall_satisfaction_5">{{ rating_overall_satisfaction_5 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    Comments:
+    <div class="comments-box">
+      <span data-field="comments">{{ comments }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 50%;">
+        <p>(Supervisor's Signature)</p>
+        <div class="signature-line" data-field="comments_2">{{ comments_2 }}</div>
+      </div>
+      <div style="width: 50%;">
+        Date: <span data-field="signature_date">{{ signature_date }}</span>
+      </div>
+    </div>
+  </div>
+</div>

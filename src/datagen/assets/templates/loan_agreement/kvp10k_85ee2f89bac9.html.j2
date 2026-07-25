@@ -1,0 +1,147 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { width: 48%; }
+  .input-field { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container th, .table-container td { border: 1px solid #000; padding: 8px; text-align: left; }
+  .table-container th { background-color: #f0f0f0; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <span style="font-size: 40px;">U</span>
+    <h1 style="font-size: 24px;">THE UNIVERSITY OF UTAH</h1>
+    <p style="font-size: 12px;">H-23 Final Right to Cancel Disclosure Form</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 16px;">RIGHT TO CANCEL</h2>
+    <p>You have a right to cancel this transaction, without penalty, by midnight on <span data-field="cancellation_deadline">{{ cancellation_deadline }}</span>. No funds will be disbursed to you or to your school until after this time. You may cancel by calling us at <span data-field="contact_phone">{{ contact_phone }}</span>.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 16px;">Loan Calculator</h2>
+    <div class="form-row">
+      <div>
+        <label>Borrower Name:</label><br>
+        <span class="input-field" style="display: block;">{{ borrower_name }}</span>
+      </div>
+      <div>
+        <label>Borrower Address:</label><br>
+        <span class="input-field" style="display: block;">{{ borrower_address }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>City:</label><br>
+        <span class="input-field" style="display: block;">{{ borrower_city }}</span>
+      </div>
+      <div>
+        <label>St:</label><br>
+        <span class="input-field" style="display: block;">{{ borrower_state }}</span>
+        <label>Zip:</label><br>
+        <span class="input-field" style="display: block;">{{ borrower_zip }}</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 16px; margin-top: 30px;">Loan Rates & Estimated Total Costs — HUBBARD LOAN PROGRAM</h2>
+
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Total Loan Amount</th>
+        <th style="width: 25%;">Interest Rate</th>
+        <th style="width: 25%;">Interest Charge</th>
+        <th style="width: 25%;">Total of Payments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The total amount you are borrowing.</td>
+        <td>Your current interest rate.</td>
+        <td>The estimated dollar amount the credit will cost you.</td>
+        <td>The estimated amount you have paid when you have made all payments.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size: 16px; margin-top: 30px;">ITEMIZATION OF AMOUNT FINANCED</h2>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Amount paid to you</th>
+        <th style="width: 50%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="amount_paid_to_borrower">{{ amount_paid_to_borrower }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Lender Fee to make the loan (Originator Fee)</td>
+        <td><span data-field="lender_fee">{{ lender_fee }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Amount Financed</td>
+        <td><span data-field="total_amount_financed">{{ total_amount_financed }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size: 16px; margin-top: 30px;">ABOUT YOUR INTEREST RATE</h2>
+  <p>Based on the current interest rate, your estimated annual percentage rate (APR), which is the cost of your loan as a yearly rate, is <span data-field="apr_rate">{{ apr_rate }}</span>%.</p>
+
+  <h3 style="font-size: 14px; margin-top: 20px;">OTHER FEES</h3>
+  <ul>
+    <li>Late Charge — A late charge of $<span data-field="late_charge_amount">{{ late_charge_amount }}</span> for each late payment will be assessed on any payment received after the due date.</li>
+    <li>Return Check Charge — $<span data-field="return_check_charge">{{ return_check_charge }}</span>.</li>
+  </ul>
+
+  <h2 style="font-size: 16px; margin-top: 30px;">Estimated Repayment Schedule & Terms</h2>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 20%;">LOAN TERM</th>
+        <th style="width: 30%;">MONTHLY PAYMENTS AT 10% INTEREST RATE</th>
+        <th style="width: 20%;"># of Payments</th>
+        <th style="width: 30%;">ESTIMATED TOTAL AMOUNT OF PAYMENTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in repayment_schedule %}
+      <tr>
+        <td><span data-field="repayment_schedule[{{ loop.index0 }}].loan_term">{{ item.loan_term }}</span></td>
+        <td><span data-field="repayment_schedule[{{ loop.index0 }}].monthly_payment">{{ item.monthly_payment }}</span></td>
+        <td><span data-field="repayment_schedule[{{ loop.index0 }}].number_of_payments">{{ item.number_of_payments }}</span></td>
+        <td><span data-field="repayment_schedule[{{ loop.index0 }}].total_payment">{{ item.total_payment }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14px; margin-top: 30px;">REFERENCE NOTES</h3>
+  <p><strong>Bankruptcy Limitations:</strong></p>
+  <p>If you file for bankruptcy you may still be required to pay back this loan.</p>
+
+  <p><strong>Prepayments:</strong></p>
+  <p>If you pay off early, you will not have to pay a penalty. You will not be entitled to a refund of part of the finance charge. See your contract documents for any additional information about non-payment, default, and required repayment in full before the scheduled date, and prepayment refunds and penalties.</p>
+
+  <div style="margin-top: 50px; font-size: 10px;">
+    3/10
+  </div>
+</div>

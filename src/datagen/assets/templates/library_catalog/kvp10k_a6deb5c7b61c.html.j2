@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resource List</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 11pt;
+  }
+  th, td {
+    padding: 10px 5px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .header-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 14pt;
+    margin-bottom: 30px;
+  }
+  .section-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .footer-info {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 10pt;
+  }
+  .qr-code-container {
+    text-align: center;
+    margin: 40px 0;
+  }
+  .qr-code-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    display: inline-block;
+    line-height: 150px;
+    text-align: center;
+    font-size: 10pt;
+  }
+  .step-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  .step {
+    text-align: center;
+    width: 30%;
+  }
+  .step-icon {
+    font-size: 40pt;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <div style="font-size: 30pt; font-weight: bold;">MANIPAL</div>
+    <div style="font-size: 12pt;">ACADEMY OF HIGHER EDUCATION</div>
+    <div style="font-size: 8pt;">(Institution of Eminence Deemed to be University)</div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <div style="font-size: 16pt; font-weight: bold;">SEARCH – The KMC Health Sciences Library, Manipal</div>
+  </div>
+
+  <div style="margin-top: 30px; font-size: 11pt;">
+    <p><strong>Know Your Online Resources (Databases/Journals/Books) @ Health Sciences Library</strong></p>
+    <p>SEARCH - The <span data-field="library_name">{{ library_name }}</span>, MAHE, Manipal has access to the following Online Resources (Databases/Journals/Books) for the year <span data-field="current_year">{{ current_year }}</span> and same could be accessed through Health Sciences Library portal in the MAHE Campus at Manipal as well as remotely (Via OpenAthens) by the users of <span data-field="library_name">{{ library_name }}</span>, MAHE, Manipal.</p>
+  </div>
+
+  <div class="section-heading">
+    Table of Online Resources
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">Sl. No.</th>
+        <th style="width: 30%;">Online Resources</th>
+        <th style="width: 30%;">Category</th>
+        <th style="width: 35%;">Brief Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 37) %}
+      {% set resource_data = get_resource_data(i) %}
+      {% if resource_data %}
+      <tr>
+        <td>{{ i }}</td>
+        <td><span data-field="resources[{{ i-1 }}].name">{{ resource_data.name }}</span></td>
+        <td><span data-field="resources[{{ i-1 }}].category">{{ resource_data.category }}</span></td>
+        <td><span data-field="resources[{{ i-1 }}].description">{{ resource_data.description }}</span></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <div style="font-size: 16pt; font-weight: bold;">Scan and Search your Online Resources</div>
+  </div>
+
+  <div class="qr-code-container">
+    <div class="qr-code-placeholder">QR Code Placeholder</div>
+  </div>
+
+  <div class="step-container">
+    <div class="step">
+      <div class="step-icon">&#x2191;</div>
+      <div style="font-size: 11pt;">Step I: Scan the QR Code</div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x2191;</div>
+      <div style="font-size: 11pt;">Step II: Enter the Login Credentials</div>
+    </div>
+    <div class="step">
+      <div class="step-icon">&#x2191;</div>
+      <div style="font-size: 11pt;">Step III: Search Your Library</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px;">
+    <div style="font-size: 11pt; font-weight: bold; margin-bottom: 10px;">For more information contact:</div>
+    <div style="font-size: 11pt;">SEARCH – The <span data-field="library_name">{{ library_name }}</span></div>
+    <div style="font-size: 11pt;">MAHE, Manipal</div>
+    <div style="font-size: 11pt;">Ph: <span data-field="phone_number">{{ phone_number }}</span></div>
+    <div style="font-size: 11pt;">E-mail: <span data-field="email_address">{{ email_address }}</span></div>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <div style="font-size: 10pt;">Access Through:</div>
+    <div style="font-size: 10pt;">&#x25B6; <span data-field="library_website_url">{{ library_website_url }}</span></div>
+    <div style="font-size: 10pt;">&#x25B6; <span data-field="remote_access_url">{{ remote_access_url }}</span></div>
+    <div style="font-size: 10pt;">OpenAthens</div>
+  </div>
+</div>
+
+</body>
+</html>

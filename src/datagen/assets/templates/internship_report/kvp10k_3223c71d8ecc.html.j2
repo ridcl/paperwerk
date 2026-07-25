@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Internship Data File</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24pt;">Internship in Psychology</h1>
+    <p>Data File</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Student Name: <span data-field="full_name">{{ student_name }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Internship Site</p>
+    <p>Name of Organization: <span data-field="employer.name">{{ employer.name }}</span></p>
+    <p>Web Address: <span data-field="employer.web_address">{{ employer.web_address }}</span></p>
+    <p>Address: <span data-field="employer.address">{{ employer.address }}</span></p>
+    <p>Placement Supervisor (name, phone, email): <span data-field="supervisor.name">{{ supervisor.name }}</span>, <span data-field="supervisor.phone">{{ supervisor.phone }}</span>, <span data-field="supervisor.email">{{ supervisor.email }}</span></p>
+    <p>Initial Contact Person (name, phone, email): <span data-field="contact_person.name">{{ contact_person.name }}</span>, <span data-field="contact_person.phone">{{ contact_person.phone }}</span>, <span data-field="contact_person.email">{{ contact_person.email }}</span></p>
+    <p>Scheduled Start & End Dates: <span data-field="dates.start_date">{{ dates.start_date }}</span> to <span data-field="dates.end_date">{{ dates.end_date }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h2 class="section-title">Brief Description of Organization (mission/purpose, types of clients served, services provided):</h2>
+    <p><span data-field="organization_description">{{ organization_description }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h2 class="section-title">Intern Duties & Responsibilities (list):</h2>
+    <ul>
+      {% for duty in intern_duties %}
+        <li><span data-field="intern_duties[{{ loop.index0 }}]">{{ duty }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h2 class="section-title">Benefits Obtained:</h2>
+    <p><span data-field="benefits_obtained">{{ benefits_obtained }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h2 class="section-title">One Sentence Capture of the Internship (My internship experience...):</h2>
+    <p><span data-field="one_sentence_capture">{{ one_sentence_capture }}</span></p>
+  </div>
+</div>
+</body>
+</html>

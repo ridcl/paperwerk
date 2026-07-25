@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Conversion</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { text-align: center; }
+        .header-block { text-align: center; margin-bottom: 30px; }
+        .logo { margin: 20px 0; }
+        .title-section { text-align: center; margin-top: 40px; }
+        .metadata { text-align: center; margin-top: 20px; font-size: 0.9em; }
+        .contact-info { margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px; }
+        .table-container { margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+        .toc-entry { display: flex; justify-content: space-between; padding: 3px 0; }
+        .toc-entry span:first-child { flex-grow: 1; }
+        .toc-entry span:last-child { width: 30px; text-align: right; }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header-block">
+        <span style="font-size: 1.5em; font-weight: bold;">University of Pennsylvania</span>
+        <div class="logo">
+            <!-- Placeholder for University Seal -->
+            <img src="" alt="Seal" style="width: 100px; height: auto;">
+        </div>
+        <div style="font-size: 1.2em;">The University Archives and Records Center</div>
+    </div>
+
+    <div class="title-section">
+        <h1 style="font-size: 2em;">A Guide to the <span data-field="record_name">{{ record_name }}</span></h1>
+        <h2 style="font-size: 1.5em;">{{ record_date_range }} (bulk {{ record_date_range_detail }})</h2>
+        <p style="margin-top: 30px;">{{ volume_size }}</p>
+        <div class="metadata">
+            UPC {{ upc_number }}
+        </div>
+        <p style="margin-top: 50px; font-size: 0.9em;">Prepared by {{ preparer_name }}</p>
+        <p style="font-size: 0.9em;">{{ preparation_date }}</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="contact-info">
+        <p>The University Archives and Records Center</p>
+        <p>{{ address_line_1 }}</p>
+        <p>{{ city_state_zip }}</p>
+        <p>Phone: {{ phone_number }}</p>
+        <p>Fax: {{ fax_number }}</p>
+        <p>{{ website_url }}</p>
+        <p>{{ director_name }}, Director</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 1.5em;">Abrahamsohn Christmas and Easter Committee Records</h2>
+        <p>UPC {{ upc_number }}</p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h3 style="font-size: 1.2em;">TABLE OF CONTENTS</h3>
+    </div>
+
+    <div class="table-container">
+        {% for section in table_of_contents %}
+        <div class="toc-entry">
+            <span>{{ section.title }}</span>
+            <span>{{ section.page_number }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 1.5em;">Guide to the</h2>
+        <h3 style="font-size: 1.2em;">Abrahamsohn Christmas and Easter Committee Records</h3>
+        <p>UPC {{ upc_number }}</p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+        <p>Access is granted in accordance with the <a href="#">Protocols for the University Archives and Records Center</a>.</p>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">PROVENANCE</h3>
+        <p>{{ provenance_text }}</p>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">ARRANGEMENT</h3>
+        <p>{{ arrangement_text }}</p>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">HISTORICAL NOTE</h3>
+        <p>{{ historical_note_text }}</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">SCOPE AND CONTENT</h3>
+        <p>{{ scope_and_content_text }}</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">INVENTORY</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>CHARTER</th>
+                    <th>Box</th>
+                    <th>Folder</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ inventory_charter_year }}</td>
+                    <td>{{ inventory_charter_box }}</td>
+                    <td>{{ inventory_charter_folder }}</td>
+                </tr>
+                <tr>
+                    <td>FINANCIAL LEDGER</td>
+                    <td>{{ inventory_financial_ledger_box }}</td>
+                    <td>{{ inventory_financial_ledger_folder }}</td>
+                </tr>
+                {% for item in inventory_meeting_minutes %}
+                <tr>
+                    <td>{{ item.year_range }}</td>
+                    <td>{{ item.box }}</td>
+                    <td>{{ item.folder }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>RECORDS</td>
+                    <td>{{ inventory_records_box }}</td>
+                    <td>{{ inventory_records_folder }}</td>
+                </tr>
+                <tr>
+                    <td>Annual Reports of the Board of Managers of the Hospital of the University of Pennsylvania (photocopies) 1940-1948</td>
+                    <td>{{ inventory_annual_reports_box }}</td>
+                    <td>{{ inventory_annual_reports_folder }}</td>
+                </tr>
+                <tr>
+                    <td>Meeting Minutes (photocopies) 1940-1949</td>
+                    <td>{{ inventory_meeting_minutes_photocopies_box }}</td>
+                    <td>{{ inventory_meeting_minutes_photocopies_folder }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="page">
+    <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.2em;">INVENTORY</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Box</th>
+                    <th>Folder</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventory_detailed_list %}
+                <tr>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.box }}</td>
+                    <td>{{ item.folder }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">
+    <span style="font-weight: bold;">Abrahamsohn Christmas and Easter Committee Records</span><br>
+    UPC <span data-field="upc_number">{{ upc_number }}</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 30px;">
+    <thead>
+      <tr style="font-weight: bold;">
+        <td style="width: 60%;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Folder <span data-field="folder_identifier_1">{{ folder_identifier_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_1">{{ count_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_1">{{ page_count_1 }}</span></td>
+      </tr>
+      <tr>
+        <td>Folder <span data-field="folder_identifier_2">{{ folder_identifier_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_2">{{ count_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_2">{{ page_count_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Folder <span data-field="folder_identifier_3">{{ folder_identifier_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_3">{{ count_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_3">{{ page_count_3 }}</span></td>
+      </tr>
+      <tr>
+        <td>Folder <span data-field="folder_identifier_4">{{ folder_identifier_4 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_4">{{ count_4 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_4">{{ page_count_4 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="name_1">{{ name_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_5">{{ count_5 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_5">{{ page_count_5 }}</span></td>
+      </tr>
+      <tr>
+        <td>Logs</td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_1">{{ log_entry_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_6">{{ count_6 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_6">{{ page_count_6 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_2">{{ log_entry_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_7">{{ count_7 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_7">{{ page_count_7 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_3">{{ log_entry_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_8">{{ count_8 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_8">{{ page_count_8 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_4">{{ log_entry_4 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_9">{{ count_9 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_9">{{ page_count_9 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_5">{{ log_entry_5 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_10">{{ count_10 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_10">{{ page_count_10 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_6">{{ log_entry_6 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_11">{{ count_11 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_11">{{ page_count_11 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_7">{{ log_entry_7 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_12">{{ count_12 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_12">{{ page_count_12 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_8">{{ log_entry_8 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_13">{{ count_13 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_13">{{ page_count_13 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_9">{{ log_entry_9 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_14">{{ count_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_14">{{ page_count_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="log_entry_10">{{ log_entry_10 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_15">{{ count_15 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_15">{{ page_count_15 }}</span></td>
+      </tr>
+      <tr>
+        <td>Membership Lists <span data-field="membership_years">{{ membership_years }}</span></td>
+        <td style="text-align: right;"><span data-field="count_16">{{ count_16 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_16">{{ page_count_16 }}</span></td>
+      </tr>
+      <tr>
+        <td>Miscellaneous Items <span data-field="misc_years">{{ misc_years }}</span></td>
+        <td style="text-align: right;"><span data-field="count_17">{{ count_17 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_17">{{ page_count_17 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_1">{{ photo_years_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_18">{{ count_18 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_18">{{ page_count_18 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_2">{{ photo_years_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_19">{{ count_19 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_19">{{ page_count_19 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_3">{{ photo_years_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_20">{{ count_20 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_20">{{ page_count_20 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_4">{{ photo_years_4 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_21">{{ count_21 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_21">{{ page_count_21 }}</span></td>
+      </tr>
+      <tr>
+        <td>1990s</td>
+      </tr>
+      <tr>
+        <td><span data-field="decade_entry">{{ decade_entry }}</span></td>
+        <td style="text-align: right;"><span data-field="count_22">{{ count_22 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_22">{{ page_count_22 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">
+    <span style="font-weight: bold;">Abrahamsohn Christmas and Easter Committee Records</span><br>
+    UPC <span data-field="upc_number_2">{{ upc_number_2 }}</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 30px;">
+    <thead>
+      <tr style="font-weight: bold;">
+        <td style="width: 60%;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>By-Laws <span data-field="by_laws_year">{{ by_laws_year }}</span></td>
+        <td style="text-align: right;"><span data-field="count_23">{{ count_23 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_23">{{ page_count_23 }}</span></td>
+      </tr>
+      <tr>
+        <td>Committee Reports</td>
+      </tr>
+      {% for report in committee_reports %}
+      <tr>
+        <td><span data-field="report_period">{{ report.period }}</span></td>
+        <td style="text-align: right;"><span data-field="count_report">{{ report.count }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_report">{{ report.page_count }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Miscellaneous <span data-field="misc_years_2">{{ misc_years_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_24">{{ count_24 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_24">{{ page_count_24 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_5">{{ photo_years_5 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_25">{{ count_25 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_25">{{ page_count_25 }}</span></td>
+      </tr>
+      <tr>
+        <td>Reports <span data-field="report_years_1">{{ report_years_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_26">{{ count_26 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_26">{{ page_count_26 }}</span></td>
+      </tr>
+      <tr>
+        <td>Thank You Notes <span data-field="thank_you_years">{{ thank_you_years }}</span></td>
+        <td style="text-align: right;"><span data-field="count_27">{{ count_27 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_27">{{ page_count_27 }}</span></td>
+      </tr>
+      <tr>
+        <td>2000s</td>
+      </tr>
+      <tr>
+        <td>Board of Women Visitor's Reports <span data-field="board_report_years">{{ board_report_years }}</span></td>
+        <td style="text-align: right;"><span data-field="count_28">{{ count_28 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_28">{{ page_count_28 }}</span></td>
+      </tr>
+      <tr>
+        <td>Chairman's Copies <span data-field="chairman_report_years">{{ chairman_report_years }}</span></td>
+        <td style="text-align: right;"><span data-field="count_29">{{ count_29 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_29">{{ page_count_29 }}</span></td>
+      </tr>
+      <tr>
+        <td>Committee Reports</td>
+      </tr>
+      {% for report in committee_reports_2000s %}
+      <tr>
+        <td><span data-field="report_period_2000s">{{ report.period_2000s }}</span></td>
+        <td style="text-align: right;"><span data-field="count_report_2000s">{{ report.count_2000s }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_report_2000s">{{ report.page_count_2000s }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">
+    <span style="font-weight: bold;">Abrahamsohn Christmas and Easter Committee Records</span><br>
+    UPC <span data-field="upc_number_3">{{ upc_number_3 }}</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 30px;">
+    <thead>
+      <tr style="font-weight: bold;">
+        <td style="width: 60%;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+        <td style="width: 20%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="decade_entry_2">{{ decade_entry_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_30">{{ count_30 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_30">{{ page_count_30 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="decade_entry_3">{{ decade_entry_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_31">{{ count_31 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_31">{{ page_count_31 }}</span></td>
+      </tr>
+      <tr>
+        <td>Minutes <span data-field="minutes_years_1">{{ minutes_years_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_32">{{ count_32 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_32">{{ page_count_32 }}</span></td>
+      </tr>
+      <tr>
+        <td>Miscellaneous <span data-field="misc_years_3">{{ misc_years_3 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_33">{{ count_33 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_33">{{ page_count_33 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_6">{{ photo_years_6 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_34">{{ count_34 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_34">{{ page_count_34 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_7">{{ photo_years_7 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_35">{{ count_35 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_35">{{ page_count_35 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_8">{{ photo_years_8 }}</span></td>
+        <td style="text-align: right;"><span data-field="count_36">{{ count_36 }}</span></td>
+        <td style="text-align: right;"><span data-field="page_count_36">{{ page_count_36 }}</span></td>
+      </tr>
+      <tr>
+        <td>MISCELLANEOUS</td>
+      </tr>
+      <tr>
+        <td>Documents <span data-field="doc_years_1">{{ doc_years_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_37">{{ box_37 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_37">{{ folder_37 }}</span></td>
+      </tr>
+      <tr>
+        <td>Historical Notes, n.d.</td>
+        <td style="text-align: right;"><span data-field="box_38">{{ box_38 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_38">{{ folder_38 }}</span></td>
+      </tr>
+      <tr>
+        <td>Many Hands, Happy Work: A History of the Abrahamsohn Christmas and Easter Committee, <span data-field="history_years">{{ history_years }}</span></td>
+        <td style="text-align: right;"><span data-field="box_39">{{ box_39 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_39">{{ folder_39 }}</span></td>
+      </tr>
+      <tr>
+        <td>Photographs <span data-field="photo_years_9">{{ photo_years_9 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_40">{{ box_40 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_40">{{ folder_40 }}</span></td>
+      </tr>
+      <tr>
+        <td>Scrapbook (Photocopies of original Layout) <span data-field="scrapbook_years_1">{{ scrapbook_years_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_41">{{ box_41 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_41">{{ folder_41 }}</span></td>
+      </tr>
+      <tr>
+        <td>Scrapbook (Original Documents) <span data-field="scrapbook_years_2">{{ scrapbook_years_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_42">{{ box_42 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_42">{{ folder_42 }}</span></td>
+      </tr>
+      <tr>
+        <td>History of the Abrahamsohn Christmas and Easter Committee of the University of Pennsylvania, <span data-field="history_years_2">{{ history_years_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_43">{{ box_43 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_43">{{ folder_43 }}</span></td>
+      </tr>
+      <tr>
+        <td>VIDEOS</td>
+      </tr>
+      <tr>
+        <td>"Carolling at UPMC" KYW-TV (VHS) <span data-field="video_title_1">{{ video_title_1 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_44">{{ box_44 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_44">{{ folder_44 }}</span></td>
+      </tr>
+      <tr>
+        <td>"Holiday Trees" WPVI-TV (VHS) <span data-field="video_title_2">{{ video_title_2 }}</span></td>
+        <td style="text-align: right;"><span data-field="box_45">{{ box_45 }}</span></td>
+        <td style="text-align: right;"><span data-field="folder_45">{{ folder_45 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

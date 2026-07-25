@@ -1,0 +1,82 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+</style>
+<div class="page">
+  <div>
+    <div style="font-weight: bold; margin-bottom: 10px;">Curriculum Guide</div>
+    <h1 style="font-size: 24pt; margin-top: 0;">SWORD (Soul-Winning Outreach Discipleship) A Bible Worker Certification Program</h1>
+    <div style="margin-top: 20px;">
+      <span data-field="academic_year">{{ academic_year }}</span>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse; margin-top: 30px;">
+    <thead>
+      <tr>
+        <th style="text-align: left; padding: 10px; border-bottom: 1px solid #000;">Practical Components</th>
+        <th style="text-align: left; padding: 10px; border-bottom: 1px solid #000;">RELT Code</th>
+        <th style="text-align: left; padding: 10px; border-bottom: 1px solid #000;">Course Title</th>
+        <th style="text-align: right; padding: 10px; border-bottom: 1px solid #000;">Credits</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in practical_components %}
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #ccc;">
+          <span data-field="practical_components[{{ loop.index0 }}].description">{{ item.description }}</span>
+        </td>
+        <td style="padding: 10px; border-bottom: 1px solid #ccc;">
+          <span data-field="practical_components[{{ loop.index0 }}].code">{{ item.code }}</span>
+        </td>
+        <td style="padding: 10px; border-bottom: 1px solid #ccc;">
+          <span data-field="practical_components[{{ loop.index0 }}].title">{{ item.title }}</span>
+        </td>
+        <td style="padding: 10px; border-bottom: 1px solid #ccc; text-align: right;">
+          <span data-field="practical_components[{{ loop.index0 }}].credits">{{ item.credits }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+    <div>
+      <p>Program Structure Lab 2: Local Church Ministry/Evangelism/Planting</p>
+      <p>Item # <span data-field="item_number">{{ item_number }}</span></p>
+      <p>Title: <span data-field="program_title">{{ program_title }}</span></p>
+      <p>Credits: <span data-field="program_credits">{{ program_credits }}</span></p>
+      <p>Date: <span data-field="document_date">{{ document_date }}</span></p>
+      <p>Source: Southwestern Adventist University—Office of Academic Administration</p>
+    </div>
+    <div style="text-align: right;">
+      <table style="width: 50%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 5px;">Sub-Total credits</td>
+          <td style="padding: 5px; text-align: right;"><span data-field="sub_total_credits">{{ sub_total_credits }}</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="text-align: left;">
+      <p>100 W. Hillcrest Street</p>
+      <p><span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+      <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+      <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="Logo" style="height: 50px;">
+      <p style="font-weight: bold; margin-top: 5px;">SOUTHWESTERN ADVENTIST UNIVERSITY</p>
+    </div>
+  </div>
+</div>

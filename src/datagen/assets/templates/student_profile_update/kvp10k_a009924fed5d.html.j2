@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Profile Update</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { display: flex; flex-direction: column; }
+  .label { font-weight: normal; margin-bottom: 3px; font-size: 12pt; }
+  .input-line { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .disclaimer { font-size: 10pt; line-height: 1.4; margin-top: 15px; }
+  .checkbox-group label { font-weight: normal; margin-right: 15px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24pt;">SUNY</h1>
+      <h1 style="font-size: 24pt;">Cortland</h1>
+      <div style="margin-top: 20px;">
+        <div class="label">Student Registration and Record Services</div>
+        <div class="label">Room {{ student_address.room_number }}, Miller Building</div>
+        <div class="label">PO Box {{ student_address.po_box }}</div>
+        <div class="label">{{ student_address.city }}, NY {{ student_address.zip_code }}</div>
+        <div class="label">Phone: {{ student_address.phone }} | Email: {{ student_address.email }}</div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24pt;">Student Profile Update</h1>
+    </div>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 40px;">
+    Use this form to make changes to your personal student information / profile. Please do not include a social security number or other personally identifiable information. To make legal name and gender changes, please use the Legal Name or Gender Change Form. If you are sending any additional documentation with identifiable information with this form, please mail the form to the office or drop the form off at Room 223 in the Miller Building.
+  </div>
+  <div class="disclaimer" style="text-align: right;">
+    Complete this form online for faster updates and your convenience.
+  </div>
+
+  <h2 class="section-title">Current/Former Name and Contact Information</h2>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <div class="label">First:</div>
+      <div class="input-line"><span data-field="full_name_first">{{ full_name_first }}</span></div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Last:</div>
+      <div class="input-line"><span data-field="full_name_last">{{ full_name_last }}</span></div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Middle:</div>
+      <div class="input-line"><span data-field="full_name_middle">{{ full_name_middle }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Email Address:</div>
+      <div class="input-line"><span data-field="email_address">{{ email_address }}</span></div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Mobile Phone:</div>
+      <div class="input-line"><span data-field="mobile_phone">{{ mobile_phone }}</span></div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Cortland ID:</div>
+      <div class="input-line"><span data-field="cortland_id">{{ cortland_id }}</span></div>
+    </div>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 20px;">
+    NOTE: Your mobile phone number may be utilized for emergency communications. Please indicate this box if you do not want us to update your mobile phone. <input type="checkbox" style="margin-right: 5px;"> Do not update.
+  </div>
+
+  <h2 class="section-title" style="margin-top: 30px;">Address Change 1</h2>
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Street:</div>
+      <div class="input-line"><span data-field="address_1.street">{{ address_1.street }}</span></div>
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <div class="label">Line 2:</div>
+      <div class="input-line"><span data-field="address_1.line2">{{ address_1.line2 }}</span></div>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Street:</div>
+      <div class="input-line"><span data-field="address_2.street">{{ address_2.street }}</span></div>
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <div class="label">Line 2:</div>
+      <div class="input-line"><span data-field="address_2.line2">{{ address_2.line2 }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 25%;">
+      <div class="label">City:</div>
+      <div class="input-line"><span data-field="address_1.city">{{ address_1.city }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">State/Province:</div>
+      <div class="input-line"><span data-field="address_1.state_province">{{ address_1.state_province }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">City:</div>
+      <div class="input-line"><span data-field="address_2.city">{{ address_2.city }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">State/Province:</div>
+      <div class="input-line"><span data-field="address_2.state_province">{{ address_2.state_province }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Postal Code:</div>
+      <div class="input-line"><span data-field="address_1.postal_code">{{ address_1.postal_code }}</span></div>
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <div class="label">Nation:</div>
+      <div class="input-line"><span data-field="address_1.nation">{{ address_1.nation }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Postal Code:</div>
+      <div class="input-line"><span data-field="address_2.postal_code">{{ address_2.postal_code }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Nation:</div>
+      <div class="input-line"><span data-field="address_2.nation">{{ address_2.nation }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Phone:</div>
+      <div class="input-line"><span data-field="address_1.phone">{{ address_1.phone }}</span></div>
+    </div>
+    <div class="form-group" style="width: 15%;">
+      <div class="label">Ext.:</div>
+      <div class="input-line"><span data-field="address_1.extension">{{ address_1.extension }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Phone:</div>
+      <div class="input-line"><span data-field="address_2.phone">{{ address_2.phone }}</span></div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <div class="label">Ext.:</div>
+      <div class="input-line"><span data-field="address_2.extension">{{ address_2.extension }}</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top: 30px;">Phone/Address Type:</h2>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Permanent</label>
+    <label><input type="checkbox"> Parent/Guardian</label>
+    <label><input type="checkbox"> Local</label>
+  </div>
+  <div class="disclaimer" style="font-size: 10pt;">
+    Parent/Guardian addresses should be entered ONLY if they differ from the permanent address.
+  </div>
+
+  <h2 class="section-title" style="margin-top: 30px;">Chosen Name Change (Current Students Only)</h2>
+  <div class="disclaimer" style="font-size: 10pt;">
+    You may elect to include a chosen name in the student information system to best represent you.
+  </div>
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <div class="label">Chosen First Name:</div>
+      <div class="input-line"><span data-field="chosen_first_name">{{ chosen_first_name }}</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top: 30px;">Personal Pronoun Change (Current Students Only)</h2>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Ae/Aer/Aers</label>
+    <label><input type="checkbox"> He/Him/His</label>
+    <label><input type="checkbox"> She/Her/Hers</label>
+    <label><input type="checkbox"> They/Them/Theirs</label>
+    <br>
+    <label><input type="checkbox"> Ze, Zir, Zirs</label>
+    <label><input type="checkbox"> He, Hir, Hers</label>
+    <label><input type="checkbox"> No Pronoun</label>
+    <label><input type="checkbox"> No Answer</label>
+  </div>
+  <div class="disclaimer" style="font-size: 10pt;">
+    The College will continually reassess the list and accept feedback ad requests from students. If there is another pronoun set you prefer please list it below:
+  </div>
+  <div class="input-line" style="margin-top: 10px;"><span data-field="preferred_pronoun_list">{{ preferred_pronoun_list }}</span></div>
+
+  <div class="disclaimer" style="margin-top: 40px;">
+    Student Signature*: <span data-field="student_signature_date">{{ student_signature_date }}</span>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 50px; font-size: 10pt;">
+    Student Registration and Record Services • Miller Building, Room 223 • P.O. Box 2000 • Cortland, NY 13045-0900 • (607) 753-4702 • Fax: (607) 753-2959 • srrs@cortland.edu
+    <br>
+    Form A0018
+  </div>
+</div>
+
+<div class="page">
+  <div class="disclaimer" style="font-size: 10pt;">
+    For Chosen Name Changes Only
+  </div>
+  <div class="disclaimer" style="font-size: 10pt;">
+    Important: This form contains important acknowledgements and information. Please be sure to read the documentation completely, and do not hesitate to ask to meet with a trained staff member in the SRRS if you have questions or concerns. The following changes do NOT require legal documentation.
+  </div>
+
+  <div class="disclaimer" style="font-size: 10pt; margin-top: 20px;">
+    SUNY Cortland seeks to provide all members of the campus community with the opportunity to use a chosen name that may differ from a legal name. For this reason, the College allows you to update your chosen name in the student information system (SIS).
+  </div>
+
+  <h3 class="section-title" style="margin-top: 30px;">1. Records and Legal Instruments:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    In some instances, the College is required to use the legal name either due to federal/state law or due to the requirements of officials and external agencies. If you are seeking a legal name change, you must use the legal name change procedures established by the College and as required by New York State and federal law.
+  </div>
+
+  <h3 class="section-title" style="margin-top: 20px;">2. Inappropriate or Illegal Use:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    The College reserves the right to remove a chosen name if it is used inappropriately including using a name for the purposes of disruption, misrepresentation or to attempt to avoid a legal obligation.
+  </div>
+
+  <h3 class="section-title" style="margin-top: 20px;">3. Privacy and Directory Data:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    If you do not want your chosen name made available as directory information, you should restrict access to directory information using the Directory Exclusion Form in accord with the Family Education Rights and Privacy Act (FERPA).
+  </div>
+
+  <h3 class="section-title" style="margin-top: 20px;">4. Financial Aid Impact:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    If you choose to use a chosen name, you are advised to make an appointment with a SUNY Cortland Financial Aid counselor if you receive any state or federal student aid (including FAFSA, TAP and PELL). Using a chosen name without making required changes to the FAFSA and your record can result in conflicts when determining or distributing a financial aid award.
+  </div>
+
+  <h3 class="section-title" style="margin-top: 20px;">5. External Agencies and Officials:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    Your name may remain unchanged in other related systems and at other agencies. SUNY Cortland cannot control or be responsible for instances where the chosen name is not used or where it may conflict with off-campus systems and agencies. You should be prepared to update records and contact agencies where it is appropriate or required. This includes managing financial aid records.
+  </div>
+
+  <h3 class="section-title" style="margin-top: 20px;">6. Help and Advocacy:</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    While the use of a chosen name is your responsibility, the College is available to help you and advocate for you if you encounter any problems. If experience issues related to the use of a chosen name with an external agency or in systems, please contact the following advocates:
+  </div>
+  <div style="margin-top: 15px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+      <div style="width: 45%;">
+        <div class="label" style="font-weight: bold;">Thom Hanford</div>
+        <div class="label">Executive Director and Registrar</div>
+        <div class="label">Student Registration and Record Services</div>
+        <div class="label">Miller 223</div>
+        <div class="label">607-753-4702</div>
+      </div>
+      <div style="width: 45%;">
+        <div class="label" style="font-weight: bold;">Andrea Robinson-Kuretich</div>
+        <div class="label">Associate Registrar</div>
+        <div class="label">Student Registration and Record Services</div>
+        <div class="label">Miller 223</div>
+        <div class="label">607-753-4702</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title" style="margin-top: 30px;">7. Title IX Office</h3>
+  <div class="disclaimer" style="font-size: 10pt;">
+    In addition, students are encouraged to contact the Title IX office or the Institutional Equity and Inclusion Office if they have additional needs or concerns.
+  </div>
+  <div style="margin-top: 15px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+      <div style="width: 45%;">
+        <div class="label" style="font-weight: bold;">Title IX Office</div>
+        <div class="label">Miller Building, Room 404A</div>
+        <div class="label">607-753-4550</div>
+      </div>
+      <div style="width: 45%;">
+        <div class="label" style="font-weight: bold;">Institutional Equity and Inclusion Office</div>
+        <div class="label">Miller Building, Room 404C</div>
+        <div class="label">607-753-2263</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 40px;">
+    If you have questions or concerns about submitting this form, we advise you contact the Student Registration and Record Services Office at 607-753-4702 for a confidential appointment.
+  </div>
+
+  <div class="disclaimer" style="margin-top: 50px; font-size: 10pt;">
+    Student Registration and Record Services • Miller Building, Room 223 • P.O. Box 2000 • Cortland, NY 13045-0900 • (607) 753-4702 • Fax: (607) 753-2959 • srrs@cortland.edu
+    <br>
+    Form A0018
+  </div>
+</div>
+</body>
+</html>

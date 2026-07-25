@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Note</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+        }
+        .page:last-child { page-break-after: auto; }
+        body {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+        .header-logo {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 30px;
+            color: #CC0000; /* Approximation of ABB red */
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .content-block {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-logo">ABB</div>
+        <div style="margin-top: 100px;">
+            <div style="font-size: 12px; color: #555; margin-bottom: 5px;">APPLICATION NOTE AN001</div>
+            <h1 style="font-size: 36px; margin-top: 0; margin-bottom: 10px;">Protection for Resistance Temperature Detectors (RTDs)</h1>
+            <h2 style="font-size: 22px; margin-top: 0; margin-bottom: 20px;">ESP AN001 for ESP 06D, ESP SL06, ESP 06Q, ESP RTD, ESP SL RTD, ESP RTDQ</h2>
+        </div>
+        <div style="height: 500px; background-image: url('placeholder_diagram_1.jpg'); background-size: cover; background-position: center;">
+            <!-- Placeholder for the large diagram -->
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span data-field="document_title_page_2">{{ document_title_page_2 }}</span>
+        </div>
+
+        <div class="content-block">
+            <p>The Resistance Temperature Detector is a widely used device for measuring temperature. In basic terms, the electrical resistance of a sensing resistor, Rt, varies with temperature.</p>
+        </div>
+
+        <div class="content-block">
+            <p>Temperature is simply measured indirectly by reading the voltage drop across the sensing resistor in the presence of a constant current flowing through it using Ohm's Law.</p>
+        </div>
+
+        <div class="content-block">
+            <p>Fundamentally, every sensing resistor is a 2 wire device. It is essential that the resistance values of any external lead wires are taken into account.</p>
+        </div>
+
+        <h3 style="margin-top: 30px;">2 Wire systems</h3>
+        <div class="content-block">
+            <p>2 Wire systems offer poor accuracy due to lead resistance but are adequate for some industrial applications.</p>
+        </div>
+        <div class="content-block">
+            <p>This type of system can be protected using a single 2-channel ESP 06D or space saving Slim Line ESP SL06 surge protective device (SPD) (ESP 06D illustrated opposite).</p>
+        </div>
+
+        <div class="diagram-container">
+            <!-- Diagram for 2 Wire systems -->
+            <img src="placeholder_diagram_2_wire.png" alt="2 Wire System Diagram" style="max-width: 80%; height: auto;">
+        </div>
+
+        <h3 style="margin-top: 30px;">3 Wire systems - earthed bridge</h3>
+        <div class="content-block">
+            <p>3 Wire systems allow for a good deal of lead resistance compensation and therefore offer better accuracy than a 2 wire system.</p>
+        </div>
+        <div class="content-block">
+            <p>In a typical 3 wire system, the bridge circuit is earthed as shown in the diagram opposite. It is therefore necessary to protect all three wires.</p>
+        </div>
+        <div class="content-block">
+            <p>This could be accomplished using two ESP 06D or ESP SL06 SPDs where only 1 channel of the second SPD is utilised. However, this would be bulky and not cost effective due to the unused channel.</p>
+        </div>
+
+        <div class="diagram-container">
+            <!-- Diagram for 3 Wire systems - earthed bridge -->
+            <img src="placeholder_diagram_3_wire_earthed.png" alt="3 Wire System Earthed Bridge Diagram" style="max-width: 80%; height: auto;">
+        </div>
+
+        <h3 style="margin-top: 30px;">3 Wire systems - floating bridge</h3>
+        <div class="content-block">
+            <p>There are also 3 wire systems where the bridge circuit is not earthed and is said to be "floating".</p>
+        </div>
+        <div class="content-block">
+            <p>In this system, a single ESP SL06 or ESP 06D SPD can be used to protect the 2 leads from the bridge arms whilst the third (supply) lead is connected to the SPD's earth via the screen connection (ESP 06D illustrated opposite).</p>
+        </div>
+
+        <div class="diagram-container">
+            <!-- Diagram for 3 Wire systems - floating bridge -->
+            <img src="placeholder_diagram_3_wire_floating.png" alt="3 Wire System Floating Bridge Diagram" style="max-width: 80%; height: auto;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span data-field="document_title_page_3">{{ document_title_page_3 }}</span>
+        </div>
+
+        <h3 style="margin-top: 30px;">4 Wire systems</h3>
+        <div class="content-block">
+            <p>4 Wire systems provide the highest accuracy as the lead resistances and connection contact resistances have a negligible effect if the measuring circuit has high input impedance.</p>
+        </div>
+        <div class="content-block">
+            <p>The leads are often connected to a constant current circuit.</p>
+        </div>
+        <div class="content-block">
+            <p>All 4 channels can be protected using two ESP 06D or OVR SL06 SPDs (ESP SL06 illustrated opposite).</p>
+        </div>
+
+        <h3 style="margin-top: 30px;">Protecting multiple RTDs</h3>
+        <div class="content-block">
+            <p>Where there are multiple RTD systems requiring protection, the ESP Q series variants, ESP 06Q and ESP RTDQ, can be utilised.</p>
+        </div>
+        <div class="content-block">
+            <p>The ESP 06Q provides protection for 4 pairs (8 channels) of wires whilst the ESP RTDQ will protect three sets of 3 wires (9 channels). Diagrams for each type are shown opposite.</p>
+        </div>
+        <div class="content-block">
+            <p>Thus space saving potential and cost effectiveness can be realised over the equivalent number of SPDs.</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; margin-top: 30px;">
+            <div style="text-align: center;">
+                <img src="placeholder_diagram_esp06q.png" alt="ESP 06Q Diagram" style="max-width: 45%; height: auto;">
+                <p style="font-size: 14px; margin-top: 10px;">An ESP 06Q unit is capable of protecting:</p>
+                <ul>
+                    <li><span data-field="esp06q_feature_1">{{ esp06q_feature_1 }}</span></li>
+                    <li><span data-field="esp06q_feature_2">{{ esp06q_feature_2 }}</span></li>
+                    <li><span data-field="esp06q_feature_3">{{ esp06q_feature_3 }}</span></li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <img src="placeholder_diagram_esprtdq.png" alt="ESP RTDQ Diagram" style="max-width: 45%; height: auto;">
+                <p style="font-size: 14px; margin-top: 10px;">An ESP RTDQ unit is designed to protect up to three 3 wire systems with an earthed bridge.</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Part No.</th>
+                        <th>ABB order code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ESP 06D</td>
+                        <td><span data-field="part_no_esp06d_order_code">{{ part_no_esp06d_order_code }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>ESP SL06</td>
+                        <td><span data-field="part_no_espsl06_order_code">{{ part_no_espsl06_order_code }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>ESP 06Q</td>
+                        <td><span data-field="part_no_esp06q_order_code">{{ part_no_esp06q_order_code }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>ESP RTD</td>
+                        <td><span data-field="part_no_esprtd_order_code">{{ part_no_esprtd_order_code }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>ESP SLRTD</td>
+                        <td><span data-field="part_no_espslrtd_order_code">{{ part_no_espslrtd_order_code }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>ESP RTDQ</td>
+                        <td><span data-field="part_no_esprtdq_order_code">{{ part_no_esprtdq_order_code }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 100%;">
+            <div style="width: 50%;">
+                <div style="font-size: 14px; color: #555;">ABB Ltd.</div>
+                <div style="font-size: 12px;">Tower Court</div>
+                <div style="font-size: 12px;">Foleshill Enterprise Park</div>
+                <div style="font-size: 12px;">Courtauld's Way</div>
+                <div style="font-size: 12px;">Coventry CV6 5NX</div>
+                <div style="font-size: 12px;">National Tel: <span data-field="national_tel">{{ national_tel }}</span></div>
+                <div style="font-size: 12px;">National Fax: <span data-field="national_fax">{{ national_fax }}</span></div>
+                <div style="font-size: 12px;">E-Mail: <span data-field="email">{{ email }}</span></div>
+                <div style="font-size: 12px; margin-top: 10px;">www.abb.com/lowvoltage</div>
+            </div>
+            <div style="width: 50%; text-align: right;">
+                <div style="height: 100%; background-image: url('placeholder_diagram_footer.jpg'); background-size: cover; background-position: center;">
+                    <!-- Placeholder for the large diagram -->
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 20px; left: 60px; font-size: 10px; color: #777;">
+            © Copyright 2018 ABB. All rights reserved.
+            <br>
+            Specifications subject to change without notice.
+        </div>
+    </div>
+</body>
+</html>

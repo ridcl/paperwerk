@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .date {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px; /* Adjust as needed */
+  }
+  .description {
+    display: inline-block;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .date {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .title {
+    font-weight: bold;
+  }
+  .description {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, "Helvetica";
+    font-size: 0.9em;
+  }
+  .list-item {
+    margin-bottom: 5px;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .entry { margin-bottom: 15px; }
+  .date { float: right; font-weight: bold; }
+  .title { font-weight: bold; }
+  .description { margin-left: 20px; font-size: 0.95em; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .entry {
+    margin-bottom: 10px;
+  }
+  .date {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .content {
+    display: inline;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <span class="date">{{ education_dates[0] }}</span>
+    <span class="description">{{ education_institution_1 }}</span>
+    <p>{{ education_degree_1 }}</p>
+    <p>{{ education_focus_1 }}</p>
+    <p>{{ education_dissertation_1 }}</p>
+  </div>
+  <div class="entry">
+    <span class="date">{{ education_dates[1] }}</span>
+    <span class="description">{{ education_institution_2 }}</span>
+    <p>{{ education_degree_2 }}</p>
+    <p>{{ education_concentration_2 }}</p>
+  </div>
+  <div class="entry">
+    <span class="date">{{ education_dates[2] }}</span>
+    <span class="description">{{ education_institution_3 }}</span>
+    <p>{{ education_degree_3 }}</p>
+    <p>{{ education_focus_3 }}</p>
+  </div>
+
+  <div class="section-title">Memberships</div>
+  <ul>
+    <li>{{ membership_1 }}</li>
+    <li>{{ membership_2 }}</li>
+  </ul>
+
+  <div class="section-title">Research experience</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;"></td>
+        <td style="width: 40%;"></td>
+        <td style="width: 50%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in research_experience %}
+      <tr>
+        <td><span data-field="research_experience[{{ loop.index0 }}].dates">{{ item.dates }}</span></td>
+        <td><span data-field="research_experience[{{ loop.index0 }}].role">{{ item.role }}</span></td>
+        <td><span data-field="research_experience[{{ loop.index0 }}].institution">{{ item.institution }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Grants and contracts (funded)</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;"></td>
+        <td style="width: 40%;"></td>
+        <td style="width: 50%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in grants_contracts %}
+      <tr>
+        <td><span data-field="grants_contracts[{{ loop.index0 }}].dates">{{ item.dates }}</span></td>
+        <td><span data-field="grants_contracts[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td><span data-field="grants_contracts[{{ loop.index0 }}].role">{{ item.role }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Publications in peer-reviewed journals</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;"></td>
+        <td style="width: 40%;"></td>
+        <td style="width: 50%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in publications %}
+      <tr>
+        <td><span data-field="publications[{{ loop.index0 }}].dates">{{ item.dates }}</span></td>
+        <td><span data-field="publications[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="publications[{{ loop.index0 }}].details">{{ item.details }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Presentations</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;"></td>
+        <td style="width: 40%;"></td>
+        <td style="width: 50%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in presentations %}
+      <tr>
+        <td><span data-field="presentations[{{ loop.index0 }}].dates">{{ item.dates }}</span></td>
+        <td><span data-field="presentations[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="presentations[{{ loop.index0 }}].details">{{ item.details }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="page">
+  <h1 style="text-align: center;">Debra L. Brucker, MPA, PhD</h1>
+</div>
+
+<div class="page">
+  <div class="section-title">Publications</div>
+  <div class="entry">
+    <span class="date">{{ publication_date_1 }}</span>
+    <span class="title">{{ publication_title_1 }}</span>
+    <div class="description">{{ publication_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_2 }}</span>
+    <span class="title">{{ publication_title_2 }}</span>
+    <div class="description">{{ publication_journal_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_3 }}</span>
+    <span class="title">{{ publication_title_3 }}</span>
+    <div class="description">{{ publication_journal_3 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_4 }}</span>
+    <span class="title">{{ publication_title_4 }}</span>
+    <div class="description">{{ publication_journal_4 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_5 }}</span>
+    <span class="title">{{ publication_title_5 }}</span>
+    <div class="description">{{ publication_journal_5 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_6 }}</span>
+    <span class="title">{{ publication_title_6 }}</span>
+    <div class="description">{{ publication_journal_6 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_7 }}</span>
+    <span class="title">{{ publication_title_7 }}</span>
+    <div class="description">{{ publication_journal_7 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_8 }}</span>
+    <span class="title">{{ publication_title_8 }}</span>
+    <div class="description">{{ publication_journal_8 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_9 }}</span>
+    <span class="title">{{ publication_title_9 }}</span>
+    <div class="description">{{ publication_journal_9 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ publication_date_10 }}</span>
+    <span class="title">{{ publication_title_10 }}</span>
+    <div class="description">{{ publication_journal_10 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Peer-reviewed book chapters</div>
+  <div class="entry">
+    <span class="date">{{ chapter_date_1 }}</span>
+    <span class="title">{{ chapter_title_1 }}</span>
+    <div class="description">{{ chapter_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ chapter_date_2 }}</span>
+    <span class="title">{{ chapter_title_2 }}</span>
+    <div class="description">{{ chapter_journal_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ chapter_date_3 }}</span>
+    <span class="title">{{ chapter_title_3 }}</span>
+    <div class="description">{{ chapter_journal_3 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Student mentoring</div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_1 }}</span>
+    <span class="title">{{ mentoring_title_1 }}</span>
+    <div class="description">{{ mentoring_description_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_2 }}</span>
+    <span class="title">{{ mentoring_title_2 }}</span>
+    <div class="description">{{ mentoring_description_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_3 }}</span>
+    <span class="title">{{ mentoring_title_3 }}</span>
+    <div class="description">{{ mentoring_description_3 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_4 }}</span>
+    <span class="title">{{ mentoring_title_4 }}</span>
+    <div class="description">{{ mentoring_description_4 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_5 }}</span>
+    <span class="title">{{ mentoring_title_5 }}</span>
+    <div class="description">{{ mentoring_description_5 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ mentoring_date_6 }}</span>
+    <span class="title">{{ mentoring_title_6 }}</span>
+    <div class="description">{{ mentoring_description_6 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Manuscripts under review</div>
+  <div class="entry">
+    <span class="date">{{ manuscript_date_1 }}</span>
+    <span class="title">{{ manuscript_title_1 }}</span>
+    <div class="description">{{ manuscript_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ manuscript_date_2 }}</span>
+    <span class="title">{{ manuscript_title_2 }}</span>
+    <div class="description">{{ manuscript_journal_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ manuscript_date_3 }}</span>
+    <span class="title">{{ manuscript_title_3 }}</span>
+    <div class="description">{{ manuscript_journal_3 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ manuscript_date_4 }}</span>
+    <span class="title">{{ manuscript_title_4 }}</span>
+    <div class="description">{{ manuscript_journal_4 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Working papers</div>
+  <div class="entry">
+    <span class="date">{{ working_paper_date_1 }}</span>
+    <span class="title">{{ working_paper_title_1 }}</span>
+    <div class="description">{{ working_paper_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ working_paper_date_2 }}</span>
+    <span class="title">{{ working_paper_title_2 }}</span>
+    <div class="description">{{ working_paper_journal_2 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Papers under development</div>
+  <div class="entry">
+    <span class="date">{{ development_date_1 }}</span>
+    <span class="title">{{ development_title_1 }}</span>
+    <div class="description">{{ development_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ development_date_2 }}</span>
+    <span class="title">{{ development_title_2 }}</span>
+    <div class="description">{{ development_journal_2 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Grant applications (under review)</div>
+  <div class="entry">
+    <span class="date">{{ grant_review_date_1 }}</span>
+    <span class="title">{{ grant_review_title_1 }}</span>
+    <div class="description">{{ grant_review_description_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ grant_review_date_2 }}</span>
+    <span class="title">{{ grant_review_title_2 }}</span>
+    <div class="description">{{ grant_review_description_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ grant_review_date_3 }}</span>
+    <span class="title">{{ grant_review_title_3 }}</span>
+    <div class="description">{{ grant_review_description_3 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Grant applications (not funded)</div>
+  <div class="entry">
+    <span class="date">{{ grant_unfunded_date_1 }}</span>
+    <span class="title">{{ grant_unfunded_title_1 }}</span>
+    <div class="description">{{ grant_unfunded_description_1 }}</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Peer-reviewed book reviews</div>
+  <div class="entry">
+    <span class="date">{{ review_date_1 }}</span>
+    <span class="title">{{ review_title_1 }}</span>
+    <div class="description">{{ review_journal_1 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ review_date_2 }}</span>
+    <span class="title">{{ review_title_2 }}</span>
+    <div class="description">{{ review_journal_2 }}</div>
+  </div>
+  <div class="entry">
+    <span class="date">{{ review_date_3 }}</span>
+    <span class="title">{{ review_title_3 }}</span>
+    <div class="description">{{ review_journal_3 }}</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, {{ degree }}</h1>
+  
+  <div class="section-title">Professional Experience</div>
+  
+  {% for item in work_experience %}
+  <div class="entry">
+    <span class="date">{{ item.date }}</span>
+    <div class="title">{{ item.title }} at {{ item.employer.name }}</div>
+    <div class="description">{{ item.description }}</div>
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div class="section-title">Teaching Experience</div>
+  
+  {% for item in teaching_experience %}
+  <div class="entry">
+    <span class="date">{{ item.date }}</span>
+    <div class="title">{{ item.title }}</div>
+    <div class="description">{{ item.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Research and Publications</div>
+  
+  {% for item in publications %}
+  <div class="entry">
+    <span class="date">{{ item.date }}</span>
+    <div class="title">{{ item.title }}</div>
+    <div class="description">{{ item.description }}</div>
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div class="section-title">Presentations</div>
+  
+  {% for item in presentations %}
+  <div class="entry">
+    <span class="date">{{ item.date }}</span>
+    <div class="title">{{ item.title }}</div>
+    <div class="description">{{ item.description }}</div>
+  </div>
+  {% endfor %}
+
+</div>
+
+
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span data-field="contact.address">{{ contact.address }}</span>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+  {% for item in professional_experience %}
+  <div class="entry">
+    <span class="date">{{ item.start_date }} - {{ item.end_date }}</span>
+    <span class="content">{{ item.title }}</span> at <span data-field="employer.name">{{ item.employer.name }}</span>.
+    <p style="margin: 3px 0 0 0;">{{ item.description }}</p>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Publications and Presentations</div>
+  {% for item in publications %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.title }}</span>. Presented at <span data-field="publication.venue">{{ item.venue }}</span>.
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Education</div>
+  {% for item in education %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.degree }}</span> from <span data-field="school.name">{{ item.school.name }}</span>.
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Field Experience</div>
+  {% for item in field_experience %}
+  <div class="entry">
+    <span class="date">{{ item.start_date }} - {{ item.end_date }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Invited Participant</div>
+  {% for item in invited_participant %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Honors</div>
+  {% for item in honors %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Professional Development</div>
+  {% for item in professional_development %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+  <div class="section-title">University Service</div>
+  {% for item in university_service %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Professional Service</div>
+  {% for item in professional_service %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}, MPA, PhD</h1>
+
+  <div class="section-title">Public Service</div>
+  {% for item in public_service %}
+  <div class="entry">
+    <span class="date">{{ item.year }}</span>
+    <span class="content">{{ item.description }}</span>.
+  </div>
+  {% endfor %}
+
+</div>
+
+</body>
+</html>

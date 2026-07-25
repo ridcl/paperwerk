@@ -1,0 +1,102 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic form structure */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-group input[type="text"], .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 24pt;
+    margin: 0;
+    font-weight: bold;
+  }
+  .header h2 {
+    font-size: 14pt;
+    margin: 5px 0 0 0;
+    font-weight: normal;
+  }
+</style>
+
+<div class="page">
+  <div class="header">
+    <h1>ARCHIVES OF MIAMI DADE COLLEGE</h1>
+    <h2>College Records Transfer Consultation Request Form</h2>
+    <p style="font-size: 10pt; margin-top: 10px;">Please complete form, print, and fax to {{ fax_number }}</p>
+  </div>
+
+  <div class="form-group">
+    <label for="name_of_office">Name of Office, Department or Institute:</label>
+    <input type="text" id="name_of_office" value="{{ name_of_office }}">
+  </div>
+
+  <div class="form-group">
+    <label for="contact_person_name">Contact Person Name:</label>
+    <input type="text" id="contact_person_name" value="{{ contact_person_name }}">
+  </div>
+
+  <div class="form-group">
+    <label for="telephone">Telephone &/or Campus Extension:</label>
+    <input type="text" id="telephone" value="{{ telephone }}">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email Address:</label>
+    <input type="text" id="email" value="{{ email_address }}">
+  </div>
+
+  <div class="form-group">
+    <label>Campus Address:</label>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <input type="text" placeholder="Building-Room Number:" value="{{ campus_address.building_room_number }}">
+      <input type="text" placeholder="Campus:" value="{{ campus_address.campus }}">
+      <input type="text" placeholder="Other:" value="{{ campus_address.other }}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="brief_description">Brief Description of the Records:</label>
+    <textarea id="brief_description" rows="6">{{ brief_description }}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="current_location">Current Location of Records:</label>
+    <textarea id="current_location" rows="6">{{ current_location }}</textarea>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt; text-align: center;">
+    <p>Please call the College Archivist at {{ archivist_phone }} if you have any questions.</p>
+    <p>Complete the form print, and fax to {{ fax_number }}</p>
+    <p>Thank you for your interest in the College Archives.</p>
+  </div>
+</div>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fee Payment Worksheet</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2 { text-align: center; }
+        .section { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-row { margin-bottom: 15px; }
+        .label { display: inline-block; width: 150px; font-weight: bold; }
+        .input-area { border-bottom: 1px solid black; display: inline-block; width: calc(100% - 150px); }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>USF Orientation</h1>
+        <h2>Fee Payment</h2>
+        <p>Orientation Fee Payment by Check or Money Order</p>
+        <p>While we prefer that you pay for your Orientation with credit card or e-check, we accept cash or money orders. To pay with a check or money order, you must complete this form and mail it to the address listed on this form.</p>
+
+        <div class="section">
+            <h3>Instructions for Payment by Check or Money Order</h3>
+            <ol>
+                <li>Log into <span data-field="orientation_website_url">{{ orientation_website_url }}</span> and complete the online reservation process up to the point of submitting payment.</li>
+                <li>Include any guests who will be attending; however, if you are unsure, guests may be added later. We recommend you confirm your own reservation first and add guests later if they are unsure of attending.</li>
+                <li>We will do our best to honor the date you choose, but please remember that reservations are not confirmed until payment is received.</li>
+                <li>Complete the worksheet to calculate the total amount of students and guests.</li>
+                <li>Please make all checks or money orders payable to the University of South Florida.</li>
+                <li>Mail this form with your check or money order to our lockbox address: <br>
+                    University of South Florida, P.O. Box <span data-field="lockbox_box_number">{{ lockbox_box_number }}</span>, Orlando, FL <span data-field="lockbox_zip_code">{{ lockbox_zip_code }}</span>.</li>
+                <li>Email <span data-field="orientation_email">{{ orientation_email }}</span> to let us know that you submitted payment by mail. Once the Cashier' Office confirms receipt, we will manually confirm your reservation.</li>
+                <li>You will receive an email confirmation once the reservation has been confirmed. At that time you should log into your reservation and print out your e-confirmation packet.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2>Fee Payment Worksheet – Summer/Fall {{ current_year }}</h2>
+
+        <div class="section">
+            <div class="form-row">
+                <span class="label">Please Print Name:</span>
+                <span class="input-area">{{ student_full_name }}</span>
+            </div>
+            <div class="form-row">
+                <span class="label">Student Name:</span>
+                <span class="input-area">{{ student_name }}</span>
+            </div>
+            <div class="form-row">
+                <span class="label">Student University ID#:</span>
+                <span class="input-area">{{ student_id }}</span>
+            </div>
+            <p>Please make all checks or money orders payable to the University of South Florida. Mail this form with your check or money order to our lockbox at the following address:</p>
+            <p>University of South Florida<br>
+            P.O. Box <span data-field="lockbox_box_number">{{ lockbox_box_number }}</span><br>
+            Orlando, FL <span data-field="lockbox_zip_code">{{ lockbox_zip_code }}</span></p>
+        </div>
+
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%;">Population</th>
+                        <th style="width: 15%;">Fee</th>
+                        <th style="width: 25%;">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>First Year Student</td>
+                        <td><span data-field="fee_first_year_student">{{ fee_first_year_student }}</span></td>
+                        <td><span data-field="qty_first_year_student">{{ qty_first_year_student }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Family & Guests</td>
+                        <td><span data-field="fee_family_guests">{{ fee_family_guests }}</span></td>
+                        <td><span data-field="qty_family_guests">{{ qty_family_guests }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Children 12 & Under</td>
+                        <td><span data-field="fee_children_under">{{ fee_children_under }}</span></td>
+                        <td><span data-field="qty_children_under">{{ qty_children_under }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: right; margin-top: 10px;">
+                Total: <span data-field="total_left_column">{{ total_left_column }}</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%;">Population</th>
+                        <th style="width: 15%;">Fee</th>
+                        <th style="width: 25%;">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>First Year International</td>
+                        <td><span data-field="fee_first_year_international">{{ fee_first_year_international }}</span></td>
+                        <td><span data-field="qty_first_year_international">{{ qty_first_year_international }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Family & Guests</td>
+                        <td><span data-field="fee_family_guests_2">{{ fee_family_guests_2 }}</span></td>
+                        <td><span data-field="qty_family_guests_2">{{ qty_family_guests_2 }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Children 12 & Under</td>
+                        <td><span data-field="fee_children_under_2">{{ fee_children_under_2 }}</span></td>
+                        <td><span data-field="qty_children_under_2">{{ qty_children_under_2 }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: right; margin-top: 10px;">
+                Total: <span data-field="total_middle_column">{{ total_middle_column }}</span>
+            </div>
+        </div>
+
+        <div class="section" style="display: flex; justify-content: space-between;">
+            <div style="width: 48%;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 33%;">Population</th>
+                            <th style="width: 15%;">Fee</th>
+                            <th style="width: 25%;">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transfer Student (Traditional)</td>
+                            <td><span data-field="fee_transfer_traditional">{{ fee_transfer_traditional }}</span></td>
+                            <td><span data-field="qty_transfer_traditional">{{ qty_transfer_traditional }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Family & Guests</td>
+                            <td><span data-field="fee_family_guests_3">{{ fee_family_guests_3 }}</span></td>
+                            <td><span data-field="qty_family_guests_3">{{ qty_family_guests_3 }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Children 12 & Under</td>
+                            <td><span data-field="fee_children_under_3">{{ fee_children_under_3 }}</span></td>
+                            <td><span data-field="qty_children_under_3">{{ qty_children_under_3 }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 10px;">
+                    Total: <span data-field="total_right_column_1">{{ total_right_column_1 }}</span>
+                </div>
+            </div>
+            <div style="width: 48%;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 33%;">Population</th>
+                            <th style="width: 15%;">Fee</th>
+                            <th style="width: 25%;">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transfer Student (Express)</td>
+                            <td><span data-field="fee_transfer_express">{{ fee_transfer_express }}</span></td>
+                            <td><span data-field="qty_transfer_express">{{ qty_transfer_express }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>INTO Online Orientation</td>
+                            <td><span data-field="fee_into_online">{{ fee_into_online }}</span></td>
+                            <td><span data-field="qty_into_online">{{ qty_into_online }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 10px;">
+                    Total: <span data-field="total_right_column_2">{{ total_right_column_2 }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <table style="width: 50%; float: left;">
+                <tr>
+                    <td style="width: 50%;">Date: <span data-field="date_paid">{{ date_paid }}</span></td>
+                    <td style="width: 50%;">Cashier's Initials: <span data-field="cashier_initials">{{ cashier_initials }}</span></td>
+                </tr>
+            </table>
+            <div style="clear: both;"></div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <p>OFFICE OF ORIENTATION</p>
+            <p>myorientation@usf.edu | (813) 974-3060 | usf.edu/orientation</p>
+            <p style="text-align: right;">UNIVERSITY OF SOUTH FLORIDA</p>
+            <p style="text-align: right;">#MYORIENTATION</p>
+        </div>
+    </div>
+</body>
+</html>

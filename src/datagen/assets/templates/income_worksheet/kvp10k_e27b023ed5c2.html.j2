@@ -1,0 +1,198 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2 { font-weight: bold; }
+  .section { margin-bottom: 20px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { width: 48%; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; border-bottom: 1px solid #ccc; }
+</style>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h2 style="font-size: 18pt; margin: 0;">Office of Student Financial Assistance</h2>
+      <h1 style="font-size: 16pt; margin-top: 5px;">STUDENT EXCLUDED INCOME WORKSHEET</h1>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 14pt; margin: 0;">2019-2020</h2>
+      <h3 style="font-size: 12pt; margin: 2px 0 0 0;">ACADEMIC YEAR</h3>
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="form-row">
+      <div>
+        <p>Student's Name:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="full_name">{{ full_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>UCFID:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="ucfid">{{ ucfid }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <p>Address:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="address">{{ address }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Date:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="date">{{ date }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <p>City:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="city">{{ city }}</span>
+        </div>
+      </div>
+      <div>
+        <p>State/Zip:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="state_zip">{{ state_zip }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <p>Email Address:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="email">{{ email }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Phone:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="phone">{{ phone }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-bottom: 30px;">
+    <p>The income reported to IRS for tax purposes may be adjusted for financial aid purposes. In some instances, the amount of income listed on the tax return includes income that is not counted for financial aid purposes. In addition, child support paid by the student/spouse (whichever is applicable) is deducted from income because that money is not available for educational purposes or normal living expenses.</p>
+    <p>We are unable to continue processing your financial aid because your 2019-2020 FAFSA contains conflicting information. To resolve this discrepancy, please complete this worksheet. If you are married, please include your spouse's information.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>
+        <p>Student/Spouse</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px;">
+          <span data-field="student_spouse_name">{{ student_spouse_name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>1. Child support paid in 2017 because of divorce or separation or as a result of legal requirements. Do not include support for children already listed in your household.</strong></p>
+    <p>Name(s) & age(s) of the children for whom these payments were paid in 2017:</p>
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <th style="width: 50%;">Name</th>
+          <th style="width: 25%;">Age</th>
+          <th style="width: 25%;">Name</th>
+          <th style="width: 25%;">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in child_support_children %}
+        <tr>
+          <td><span data-field="child_support_children[{{ loop.index0 }}].name">{{ child_support_children[loop.index0].name }}</span></td>
+          <td><span data-field="child_support_children[{{ loop.index0 }}].age">{{ child_support_children[loop.index0].age }}</span></td>
+          <td><span data-field="child_support_children[{{ loop.index0 }}].name_2">{{ child_support_children[loop.index0].name_2 }}</span></td>
+          <td><span data-field="child_support_children[{{ loop.index0 }}].age_2">{{ child_support_children[loop.index0].age_2 }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="margin-top: 15px;">Name of the person to whom child support was paid:</p>
+    <div style="border-bottom: 1px solid black; margin-top: 3px;"><span data-field="child_support_recipient_name">{{ child_support_recipient_name }}</span></div>
+    <p>Name of the person who paid child support:</p>
+    <div style="border-bottom: 1px solid black; margin-top: 3px;"><span data-field="child_support_payer_name">{{ child_support_payer_name }}</span></div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>2. Grant, scholarship, fellowship and assistantship aid, including AmeriCorp awards, in excess of tuition, fees, books, and required supplies that was reported in the Adjusted Gross Income (AGI) on the 2017 federal tax return(s).</strong></p>
+    <p>Was this amount claimed as income on your or your spouse's 2017 tax return?</p>
+    <div style="display: flex; gap: 20px; margin-top: 10px;">
+      <label><input type="radio" name="claimed_aid" value="yes"> yes</label>
+      <label><input type="radio" name="claimed_aid" value="no"> no</label>
+    </div>
+    <p style="margin-top: 15px;">Amount: $ <span data-field="aid_amount">{{ aid_amount }}</span></p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>3. 2017 Taxable Earnings from Federal Work-Study or other need-based work programs. Was this income reported on your or your spouse's 2017 income tax return(s)?</strong></p>
+    <div style="display: flex; gap: 20px; margin-top: 10px;">
+      <label><input type="radio" name="work_study_reported" value="yes"> yes</label>
+      <label><input type="radio" name="work_study_reported" value="no"> no</label>
+    </div>
+    <p style="margin-top: 15px;">Please name the college(s) from which this 2017 taxable income was earned:</p>
+    <div style="border-bottom: 1px solid black; margin-top: 3px;"><span data-field="work_study_college_name">{{ work_study_college_name }}</span></div>
+    <p style="margin-top: 15px;">Amount: $ <span data-field="work_study_amount">{{ work_study_amount }}</span></p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>4. Education credits from IRS Form 1040-line 50 or 1040-A line 33 on the 2017 tax return.</strong></p>
+    <p>Amount: $ <span data-field="education_credits_amount">{{ education_credits_amount }}</span></p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>5. Combat pay or Special Combat Pay. Only enter the amount that was taxable and included in your or your spouse's Adjusted Gross Income. Please attach all 2017 W-2 forms.</strong></p>
+    <p>Amount: $ <span data-field="combat_pay_amount">{{ combat_pay_amount }}</span></p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section" style="margin-bottom: 30px;">
+    <p><strong>6. Earnings from work under a Cooperative Education Program offered by a school. Please attach all 2017 W-2 forms.</strong></p>
+    <p>Amount: $ <span data-field="coop_ed_earnings_amount">{{ coop_ed_earnings_amount }}</span></p>
+  </div>
+
+  <!-- Signature Block -->
+  <div class="section" style="margin-top: 50px;">
+    <p>By signing this form, I certify that the information provided on this form is complete and correct to the best of my knowledge.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+      <div>
+        <p>Student's Signature:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px; width: 50%;" data-field="student_s_signature">{{ student_s_signature }}</div>
+      </div>
+      <div style="text-align: right;">
+        <p>Date:</p>
+        <div style="border-bottom: 1px solid black; margin-top: 3px; width: 50%;" data-field="date_2">{{ date_2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="position: absolute; bottom: 50px; left: 60px; right: 60px; font-size: 10pt; text-align: center;">
+    <p>Office of Student Financial Assistance • Millican Hall, Room 107 • Orlando, FL 32816-0113</p>
+    <p>Phone: 407.823.2827 • Fax: 407.823.5241 • Web: finaid.ucf.edu | a division of Student Development and Enrollment Services</p>
+    <p style="margin-top: 10px;">An Equal Opportunity and Affirmative Action Institution</p>
+  </footer>
+</div>

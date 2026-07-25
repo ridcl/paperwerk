@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Disability Verification Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  .logo-area { text-align: left; }
+  .title-area { text-align: right; }
+  .form-section { margin-bottom: 30px; }
+  .field-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .field-label { flex-basis: 30%; }
+  .field-input { flex-basis: 65%; border-bottom: 1px solid #000; }
+  .checkbox-group label { margin-right: 20px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-section">
+    <div class="logo-area">
+      <!-- Placeholder for Logo -->
+    </div>
+    <div class="title-area">
+      <h1>Disability Verification</h1>
+      <div style="font-size: 12px;">
+        <span data-field="address_line_1">{{ address_line_1 }}</span><br>
+        <span data-field="city_state_zip">{{ city_state_zip }}</span><br>
+        <span data-field="phone">{{ phone }}</span><br>
+        <span data-field="email">{{ email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Date:</div>
+      <div class="field-input"><span data-field="date">{{ date }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>The student named below may be eligible for special services at this college. In order to provide services we must have a verification of disability as defined on the reverse side of this sheet.</p>
+    <div class="field-row">
+      <div class="field-label">Name:</div>
+      <div class="field-input"><span data-field="full_name_last">{{ full_name_last }}</span></div>
+      <div class="field-input" style="width: 15%;"></div>
+      <div class="field-input"><span data-field="full_name_first">{{ full_name_first }}</span></div>
+      <div class="field-input" style="width: 15%;"></div>
+      <div class="field-input"><span data-field="full_name_mi">{{ full_name_mi }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">Address:</div>
+      <div class="field-input" style="width: 100%;"><span data-field="address">{{ address }}</span></div>
+      <div class="field-label" style="margin-left: 30%;">City</div>
+      <div class="field-input" style="width: 20%;"><span data-field="zip_code">{{ zip_code }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Please provide the following information in full:</p>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">1. Description of Primary Diagnosis:</div>
+      <div class="field-input" style="flex-basis: 100%; border-bottom: 1px solid #000; height: 40px;"></div>
+    </div>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">2. Functional Limitations (i.e., limited ambulation, visual acuity, degree of hearing loss, etc.):</div>
+      <div class="field-input" style="flex-basis: 100%; border-bottom: 1px solid #000; height: 40px;"></div>
+    </div>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">3. Prescribed Medications and Dosage:</div>
+      <div class="field-input" style="flex-basis: 100%; border-bottom: 1px solid #000; height: 40px;"></div>
+    </div>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">4. The above-mentioned disability(ies) is/are:</div>
+      <div class="checkbox-group" style="flex-basis: 100%;">
+        <label><input type="checkbox"> Permanent / Chronic</label>
+        <label><input type="checkbox"> Short-term Temporary: 45 days or greater</label>
+        <label><input type="checkbox"> Temporary: less than 45 days</label>
+      </div>
+    </div>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">5. This disability is</div>
+      <div class="checkbox-group" style="flex-basis: 100%;">
+        <label><input type="checkbox"> Observable</label>
+        <label><input type="checkbox"> Non Observable</label>
+      </div>
+    </div>
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="flex-basis: 100%;">6. Please list other special assistance needed:</div>
+      <div class="field-input" style="flex-basis: 100%; border-bottom: 1px solid #000; height: 40px;"></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="form-section">
+    <p>If this form is completed by someone other than the professional who made the diagnosis, the name and address of the person who made the diagnosis should also be listed below:</p>
+    <div class="field-row">
+      <div class="field-label">Signature:</div>
+      <div class="field-input" style="width: 60%; border-bottom: 1px solid #000;"></div>
+      <div class="field-label" style="margin-left: 20%;">Title</div>
+    </div>
+    <div class="field-row" style="margin-top: 15px;">
+      <div class="field-label">Name (printed):</div>
+      <div class="field-input" style="width: 100%; border-bottom: 1px solid #000;"></div>
+    </div>
+    <div class="field-row" style="margin-top: 15px;">
+      <div class="field-label">Address:</div>
+      <div class="field-input" style="width: 100%; border-bottom: 1px solid #000;"></div>
+    </div>
+    <div class="field-row" style="margin-top: 15px;">
+      <div class="field-label">Phone:</div>
+      <div class="field-input" style="width: 100%; border-bottom: 1px solid #000;"></div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 50px;">
+    <p>Please return to: Dr. Mark Comeaux, Vice President for Student Affairs</p>
+    <p><span data-field="return_address">{{ return_address }}</span></p>
+    <p style="text-align: right; font-size: 10px;">53102713</p>
+  </div>
+</div>
+</body>
+</html>

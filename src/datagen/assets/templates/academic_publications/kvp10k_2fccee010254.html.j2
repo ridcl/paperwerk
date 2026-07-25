@@ -1,0 +1,426 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td, th {
+    padding: 8px 0;
+    text-align: left;
+  }
+  .two-column {
+    display: flex;
+    justify-content: space-between;
+  }
+  .two-column > div {
+    width: 48%;
+  }
+</style>
+
+<div class="page">
+  <div class="two-column">
+    <div>
+      <h1 style="font-size: 18pt; margin-bottom: 0;">{{ full_name }}</h1>
+      <p style="margin-top: 5px;">{{ email }}</p>
+      <p style="margin-top: 2px;">{{ website }}</p>
+    </div>
+    <div style="text-align: right;">
+      <h3 style="margin-top: 0;">{{ employer.name }}</h3>
+      <p style="margin-top: 2px;">{{ employer.address }}</p>
+      <p style="margin-top: 2px;">{{ employer.city_state_zip }}</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Institute of Behavioral Science</h2>
+  <p>University of Colorado Boulder</p>
+  <p>{{ address }}</p>
+  <p>{{ phone }}</p>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Department of Sociology</h2>
+  <p>University of Colorado Boulder</p>
+  <p>{{ address }}</p>
+  <p>{{ phone }}</p>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Academic Positions</h2>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 70%;">Position</th>
+        <th style="text-align: right; width: 30%;">Dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for position in academic_positions %}
+      <tr>
+        <td><span data-field="academic_positions[{{ loop.index0 }}].title">{{ position.title }}</span></td>
+        <td style="text-align: right;"><span data-field="academic_positions[{{ loop.index0 }}].dates">{{ position.dates }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Education</h2>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 70%;">Degree/Institution</th>
+        <th style="text-align: left; width: 30%;">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for education_entry in education %}
+      <tr>
+        <td><span data-field="education[{{ loop.index0 }}].institution">{{ education_entry.institution }}</span></td>
+        <td><span data-field="education[{{ loop.index0 }}].details">{{ education_entry.details }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="margin-top: 30px; font-size: 14pt;">Publications</h2>
+  <p><strong>Peer-Reviewed Journal Articles</strong></p>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for publication in peer_reviewed_articles %}
+    <li>
+      <span data-field="peer_reviewed_articles[{{ loop.index0 }}].title">{{ publication.title }}</span>.
+      <span data-field="peer_reviewed_articles[{{ loop.index0 }}].journal">{{ publication.journal }}</span>,
+      <span data-field="peer_reviewed_articles[{{ loop.index0 }}].volume_issue">{{ publication.volume_issue }}</span>,
+      <span data-field="peer_reviewed_articles[{{ loop.index0 }}].pages">{{ publication.pages }}</span>.
+      <span data-field="peer_reviewed_articles[{{ loop.index0 }}].year">{{ publication.year }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p style="margin-top: 20px;"><strong>Book Chapters</strong></p>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for book_chapter in book_chapters %}
+    <li>
+      <span data-field="book_chapters[{{ loop.index0 }}].title">{{ book_chapter.title }}</span>.
+      In <span data-field="book_chapters[{{ loop.index0 }}].book_title">{{ book_chapter.book_title }}</span>,
+      <span data-field="book_chapters[{{ loop.index0 }}].editor">{{ book_chapter.editor }}</span> (Ed.),
+      <span data-field="book_chapters[{{ loop.index0 }}].publisher">{{ book_chapter.publisher }}</span>,
+      <span data-field="book_chapters[{{ loop.index0 }}].year">{{ book_chapter.year }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p style="margin-top: 20px;"><strong>Invited Book Chapters</strong></p>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for invited_chapter in invited_chapters %}
+    <li>
+      <span data-field="invited_chapters[{{ loop.index0 }}].title">{{ invited_chapter.title }}</span>.
+      In <span data-field="invited_chapters[{{ loop.index0 }}].book_title">{{ invited_chapter.book_title }}</span>,
+      <span data-field="invited_chapters[{{ loop.index0 }}].editor">{{ invited_chapter.editor }}</span> (Ed.),
+      <span data-field="invited_chapters[{{ loop.index0 }}].publisher">{{ invited_chapter.publisher }}</span>,
+      <span data-field="invited_chapters[{{ loop.index0 }}].year">{{ invited_chapter.year }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Honors, Fellowships, and Awards</h2>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">Year</th>
+        <th style="text-align: left; width: 80%;">Award/Honor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for award in awards %}
+      <tr>
+        <td><span data-field="awards[{{ loop.index0 }}].year">{{ award.year }}</span></td>
+        <td><span data-field="awards[{{ loop.index0 }}].name">{{ award.name }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="margin-top: 30px; font-size: 14pt;">Grants and Funding</h2>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">Year</th>
+        <th style="text-align: left; width: 80%;">Grant/Funding Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for grant in grants %}
+      <tr>
+        <td><span data-field="grants[{{ loop.index0 }}].year">{{ grant.year }}</span></td>
+        <td><span data-field="grants[{{ loop.index0 }}].description">{{ grant.description }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 style="margin-top: 30px; font-size: 14pt;">Professional Service</h2>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">Year</th>
+        <th style="text-align: left; width: 80%;">Service Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for service in services %}
+      <tr>
+        <td><span data-field="services[{{ loop.index0 }}].year">{{ service.year }}</span></td>
+        <td><span data-field="services[{{ loop.index0 }}].description">{{ service.description }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .list-item {
+    margin-bottom: 0.5em;
+  }
+  .two-column {
+    display: flex;
+    gap: 40px;
+  }
+  .column {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">{{ full_name }}</div>
+  <h3 style="font-size: 14pt; margin-top: 20px;">{{ document_title }}</h3>
+  <p style="font-size: 11pt;">{{ date_of_document }}</p>
+
+  <div class="section-title">Selected Completed Intramural Funding</div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ funding_project_title_1 }}”. Principal investigator, {{ funding_institution_1 }}. {{ funding_summary_1 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ funding_project_title_2 }}”. Co-investigator, {{ funding_institution_2 }}. {{ funding_summary_2 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ funding_project_title_3 }}”. Co-investigator, {{ funding_institution_3 }}. {{ funding_summary_3 }}.</p>
+  </div>
+
+  <div class="section-title">Selected Pending Funding and Proposals Declined</div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ pending_project_title_1 }}”. Co-investigator, {{ pending_institution_1 }}. {{ pending_summary_1 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ pending_project_title_2 }}”. {{ pending_summary_2 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ pending_project_title_3 }}”. {{ pending_summary_3 }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Recent Presentations at Professional Meetings (Supervised Student Collaborators Included)</div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_1 }}”. Presented at {{ presentation_venue_1 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_2 }}”. Presented at {{ presentation_venue_2 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_3 }}”. Presented at {{ presentation_venue_3 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_4 }}”. Presented at {{ presentation_venue_4 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_5 }}”. Presented at {{ presentation_venue_5 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ presentation_title_6 }}”. Presented at {{ presentation_venue_6 }}.</p>
+  </div>
+
+  <div class="section-title">Recent Presentations</div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_1 }}”. Presented at {{ recent_presentation_venue_1 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_2 }}”. Presented at {{ recent_presentation_venue_2 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_3 }}”. Presented at {{ recent_presentation_venue_3 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_4 }}”. Presented at {{ recent_presentation_venue_4 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_5 }}”. Presented at {{ recent_presentation_venue_5 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ recent_presentation_title_6 }}”. Presented at {{ recent_presentation_venue_6 }}.</p>
+  </div>
+
+  <div class="section-title">Recent Teaching/Mentoring Presentations</div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ teaching_presentation_title_1 }}”. {{ teaching_presentation_summary_1 }}.</p>
+  </div>
+  <div class="list-item" style="font-size: 11pt;">
+    <p>“{{ teaching_presentation_title_2 }}”. {{ teaching_presentation_summary_2 }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Undergraduate Courses:</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for course in undergraduate_courses %}
+    <li class="list-item">{{ course.course_name }} ({{ course.institution }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Graduate Courses:</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for course in graduate_courses %}
+    <li class="list-item">{{ course.course_name }} ({{ course.institution }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Related Experience:</div>
+  <div class="two-column">
+    <div class="column">
+      <div class="list-item" style="font-size: 11pt;">
+        <p>Dissertation committee member: {{ dissertation_committee_member_1 }}.</p>
+      </div>
+      {% for member in dissertation_committee_members %}
+      <div class="list-item" style="font-size: 11pt;">
+        <p>Dissertation committee member: {{ member.name }}.</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="column">
+      <div class="list-item" style="font-size: 11pt;">
+        <p>Master's degree primary advisor: {{ master_advisor_1 }}.</p>
+      </div>
+      {% for advisor in master_advisors %}
+      <div class="list-item" style="font-size: 11pt;">
+        <p>Master's degree primary advisor: {{ advisor.name }}.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Selected Professional Service</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for service in professional_service %}
+    <li class="list-item">{{ service.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Teaching and Mentoring</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for teaching_role in teaching_roles %}
+    <li class="list-item">{{ teaching_role.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Faculty Service</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for faculty_role in faculty_roles %}
+    <li class="list-item">{{ faculty_role.description }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div class="section-title">Awards and Honors</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 11pt;">
+    {% for award in awards_and_honors %}
+    <li class="list-item">{{ award.description }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+</body>
+</html>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for academic feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+</style>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 50px;">
+    <span data-field="full_name">{{ full_name }}</span>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 12pt; line-height: 1.5;">
+      Founder and co-organizer, Population and Health graduate student workshop, Sociology. <span data-field="dates">{{ dates }}</span>.
+    </p>
+  </div>
+
+  <h2 style="font-size: 14pt; font-weight: bold; margin-top: 40px; margin-bottom: 15px;">
+    Professional Memberships
+  </h2>
+
+  <div style="margin-bottom: 15px;">
+    <p style="font-size: 11pt; line-height: 1.5;">
+      <span data-field="membership_details">{{ membership_details }}</span>
+    </p>
+  </div>
+</div>

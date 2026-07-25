@@ -1,0 +1,428 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  p {
+    text-align: justify;
+    line-height: 1.6;
+  }
+  .abstract-content {
+    text-align: justify;
+  }
+  .author-info {
+    text-align: center;
+  }
+  .signature-block {
+    margin-top: 50px;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .equation {
+    text-align: center;
+    margin: 20px 0;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif;
+  }
+</style>
+
+<div class="page">
+  <div class="author-info">
+    <p style="font-size: 14pt;">The Vertical Distribution of Climate Forcings and Feedbacks from the Surface to Top of Atmosphere</p>
+    <p style="margin-top: 50px;">
+      <span data-field="author_1_name">{{ author_1_name }}</span><br>
+      <span data-field="author_1_affiliation">{{ author_1_affiliation }}</span>
+    </p>
+    <p>
+      <span data-field="author_2_name">{{ author_2_name }}</span><br>
+      <span data-field="author_2_affiliation">{{ author_2_affiliation }}</span>
+    </p>
+  </div>
+  <div style="text-align: center; margin-top: 100px;">
+    <p>Submitted to <span data-field="journal_name">{{ journal_name }}</span></p>
+    <p>April <span data-field="submission_year">{{ submission_year }}</span> (revised October <span data-field="revision_year">{{ revision_year }}</span>)</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="abstract-content">
+    <h2 style="text-align: center;">Abstract</h2>
+    <p>The radiative forcings and feedbacks that determine Earth's climate sensitivity are typically defined at the top-of-atmosphere (TOA) or tropopause, yet climate sensitivity itself refers to a change in temperature at the surface. In this paper, we describe how TOA radiative perturbations translate into surface temperature changes. It is shown using first principles that radiation changes at the TOA can be equated with the change in energy stored by the oceans and land surface. This ocean and land heat uptake in turn involves an adjustment of the surface radiative and non-radiative energy fluxes, with the latter being comprised of the turbulent exchange of latent and sensible heat between the surface and atmosphere. We employ the radiative kernel technique to decompose TOA radiative feedbacks in the IPCC Fourth Assessment Report climate models into components associated with changes in radiative heating of the atmosphere and of the surface. (We consider the equilibrium response of atmosphere-mixed layer ocean models subjected to an instantaneous doubling of atmospheric CO<span data-field="co2_doubling">{{ co2_doubling }}</span>.) It is shown that most feedbacks, i.e., the temperature, water vapor and cloud feedbacks, (as well as CO<span data-field="co2_doubling">{{ co2_doubling }}</span> forcing) affect primarily the turbulent energy exchange at the surface rather than the radiative energy exchange. Specifically, the temperature feedback increases the surface turbulent (radiative) energy loss by <span data-field="temp_feedback_loss_1">{{ temp_feedback_loss_1 }}</span> (<span data-field="temp_feedback_loss_2">{{ temp_feedback_loss_2 }}</span>) in the multimodel mean; the water vapor feedback decreases the surface turbulent energy loss by <span data-field="wv_feedback_loss_1">{{ wv_feedback_loss_1 }}</span> and increases the surface radiative heating by <span data-field="wv_feedback_heating_1">{{ wv_feedback_heating_1 }}</span>; and the cloud feedback decreases both the turbulent energy loss and the radiative heating at the surface by <span data-field="cloud_feedback_loss_1">{{ cloud_feedback_loss_1 }}</span> and <span data-field="cloud_feedback_loss_2">{{ cloud_feedback_loss_2 }}</span>, respectively. Since changes to the surface turbulent energy exchange are dominated in the global mean sense by changes in surface</p>
+  </div>
+</div>
+
+<div class="page">
+  <p>evaporation, these results serve to highlight the fundamental importance of the global water cycle to Earth's climate sensitivity.</p>
+
+  <h2 style="font-size: 14pt;">1. Introduction</h2>
+  <p>Climate sensitivity is defined as the equilibrium change in global annual mean surface temperature that occurs in response to a climate forcing, or imposed perturbation of the planetary energy balance. The sensitivity depends critically on the sign and strength of climate feedbacks, which are changes in Earth system properties induced by a climate forcing and acting to either reinforce (for a positive feedback) or counteract (for a negative feedback) the forcing (see, e.g., <span data-field="citation_1">{{ citation_1 }}</span>; <span data-field="citation_2">{{ citation_2 }}</span>; <span data-field="citation_3">{{ citation_3 }}</span>). Climate forcings and feedbacks have traditionally been evaluated at the top-of-atmosphere (or tropopause), in which case they can also be referred to as radiative forcings and feedbacks, since radiative transfer is the only means by which Earth exchanges energy with space. The reason for considering top-of-atmosphere (TOA) forcings and feedbacks when assessing climate sensitivity is straightforward (see also <span data-field="citation_4">{{ citation_4 }}</span>). Since the atmosphere effectively has no heat capacity on climate change timescales (i.e., decades or longer), any TOA energy imbalance must be manifest as an equivalent energy imbalance at the surface. In other words, the TOA energy imbalance represents the net heat flux into the surface. Energy added to the surface (for the case of a positive forcing or feedback) goes predominantly into warming the oceans and land, with only a small fraction used to melt ice. Thus, changes in the global mean surface temperature should be proportional to changes in the TOA radiation, and this basic tenet has been the backbone of climate sensitivity research (<span data-field="citation_5">{{ citation_5 }}</span>).</p>
+</div>
+
+<div class="page">
+  <p>is clear from the preceding discussion, however, that TOA forcings and feedbacks must be associated with adjustments in the surface energy balance (e.g., <span data-field="citation_6">{{ citation_6 }}</span>). Understanding the manner in which these adjustments occur is therefore critical for understanding climate sensitivity. In the current work, we examine the signature of different forcings and feedbacks at the surface, in the atmosphere, and at the TOA, thus providing a consistent picture of changes in energy flow through the atmosphere-surface column.</p>
+  <p>In contrast to the TOA energy budget, which is purely radiative, the surface energy budget additionally includes a non-radiative component, which consists of the transfer of latent and sensible heat from the surface to the atmosphere. In a global and annual mean sense, this non-radiative (turbulent) energy exchange must balance the net radiative cooling of the atmospheric column, since, as noted above, the atmosphere's heat capacity is negligible. Adjustments in the surface energy balance in response to a climate forcing or feedback can therefore occur in the radiative or non-radiative energy fluxes. <span data-field="citation_7">{{ citation_7 }}</span> found the non-radiative flux adjustment to be larger than the radiative flux adjustment in a series of climate modeling experiments in which atmospheric CO<span data-field="co2_doubling">{{ co2_doubling }}</span> was instantaneously doubled. (Note that this refers to the direct effect of CO<span data-field="co2_doubling">{{ co2_doubling }}</span> forcing on the surface energy budget; however, we show in subsequent sections that the result also holds for most climate feedbacks.) In particular, <span data-field="citation_8">{{ citation_8 }}</span> note a reduction in the latent heat flux (LHF) from the surface to the atmosphere that is larger in magnitude than the increase in surface radiative heating. (Changes in the surface sensible heat flux (SHF) were found to be much smaller.) The decrease in surface LHF (which is essentially equal to the decrease in surface evaporation in the</p>
+</div>
+
+<div class="page">
+  <p>global mean) occurs in order to restore the energy balance of the troposphere, which loses less energy through net longwave (LW) emission when CO<span data-field="co2_doubling">{{ co2_doubling }}</span> levels are higher. This suggests that CO<span data-field="co2_doubling">{{ co2_doubling }}</span> forcing acts to warm the surface primarily by damping the surface evaporative cooling, rather than by enhancing the downward radiation flux from the atmosphere (though the latter effect is certainly not negligible).</p>
+  <p>The importance of changes in surface evaporation as a mechanism for controlling surface temperature changes has been recognized for some time. For example, <span data-field="citation_9">{{ citation_9 }}</span> invoked this mechanism to explain the stability of tropical sea surface temperatures (SSTs) that has been inferred from the geologic record. By stabilizing the tropical SST, evaporation changes also contribute to the polar amplification of surface temperature change predicted by climate models in response to a wide variety of forcings (<span data-field="citation_10">{{ citation_10 }}</span>; <span data-field="citation_11">{{ citation_11 }}</span>). <span data-field="citation_12">{{ citation_12 }}</span> called upon evaporation effects to explain the land/sea warming contrast that is evident in model simulations of future climate change. Specifically, large areas of the land surface at most latitudes warm more than the surrounding oceans (in both transient and equilibrium simulations), which is due at least partly to the fact that increases in evaporative cooling over land are limited by lack of soil moisture and ecosystem control of evapotranspiration. It is clear from these and other studies that evaporation plays a key role in regulating the surface temperature. In this paper we aim to provide new insight on this issue by assessing quantitatively the impact of different climate feedback processes on the surface energy balance. We show that most feedbacks that are important for climate sensitivity contribute to significant alterations of the turbulent energy loss from</p>
+</div>
+
+<div class="page">
+  <p>the surface, thus implicating changes in evaporative cooling as a fundamental mechanism controlling the Earth's surface temperature.</p>
+
+  <h2 style="font-size: 14pt;">2. Methodology</h2>
+  <p>To assess the vertical distribution of different climate feedbacks, we begin by decomposing the global mean TOA radiative perturbation due to each feedback $x$ into components associated with changes in radiative heating of the atmosphere (ATM) and of the surface (SFC):</p>
+  <div class="equation">
+    <p>
+      <span data-field="equation_1">{{ equation_1 }}</span>
+    </p>
+  </div>
+  <p>We consider the equilibrium climate response to an instantaneous doubling of atmospheric CO<span data-field="co2_doubling">{{ co2_doubling }}</span>, and evaluate feedbacks resulting from changes in temperature ($T$), water vapor ($q$), clouds ($c$), and surface albedo ($\alpha$), which are the "fast" feedbacks important for climate sensitivity. We further consider the effects of each feedback in isolation, thus neglecting possible interactions between feedbacks. Note that the surface albedo feedback in this case arises entirely from changes in the areal coverage of snow and sea ice. Slower surface albedo feedbacks associated with changes in land ice and vegetation are also important for climate sensitivity (<span data-field="citation_13">{{ citation_13 }}</span>), but these slow feedbacks are not included here since they are not represented in the climate model experiments we will analyze. Finally, note that $d R^{\text{TOA}}$ summed over all feedbacks $x$ (plus the CO<span data-field="co2_doubling">{{ co2_doubling }}</span> forcing) must equal zero between two equilibrium states; however, this need not be the case for $d R^{\text{ATM}}$ and $d R^{\text{SFC}}$ individually.</p>
+</div>
+
+<div class="page">
+  <p>Recalling from earlier that changes in the global mean atmospheric radiative heating must be balanced by changes in the non-radiative energy transfer from the surface, we can write</p>
+  <div class="equation">
+    <p>
+      <span data-field="equation_2">{{ equation_2 }}</span>
+    </p>
+  </div>
+  <p>where $d R^{\text{SFC}} = d L H F + d S H F^{\text{SFC}}$ is the anomalous turbulent energy flux at the surface. Substituting (2) into (1) we obtain</p>
+  <div class="equation">
+    <p>
+      <span data-field="equation_3">{{ equation_3 }}</span>
+    </p>
+  </div>
+  <p>which relates a TOA radiative feedback to adjustments in the surface radiative and non-radiative energy fluxes. Equation (3) is thus equivalent to the ocean and land heat uptake induced by feedback $x$.</p>
+  <p>We compute $d R^{\text{TOA}}$ and $d R^{\text{ATM}}$ using the radiative kernel technique (<span data-field="citation_14">{{ citation_14 }}</span>; <span data-field="citation_15">{{ citation_15 }}</span>; <span data-field="citation_16">{{ citation_16 }}</span>; <span data-field="citation_17">{{ citation_17 }}</span>), and their difference gives us the radiative feedbacks at the surface, $d R^{\text{SFC}}$. The radiative kernel technique assumes that feedbacks can be expressed as</p>
+  <div class="equation">
+    <p>
+      <span data-field="equation_4">{{ equation_4 }}</span>
+    </p>
+  </div>
+  <p>and similarly for $d R^{\text{ATM}}$ and $d R^{\text{SFC}}$. $K_x$ in (4) are the radiative kernels, which describe the sensitivity of $x$ in this case) the TOA radiative heating to incremental changes in the feedback variables. Kernels are computed using an offline version of the radiation code from the Max Planck Institute for Meteorology (MPI-M) ECHAM5 general circulation model (GCM), following the approach outlined in <span data-field="citation_18">{{ citation_18 }}</span>. Feedbacks are then calculated by multiplying these kernels by the climate response $d x$, defined here as the change in the feedback variables between the last 10 years of the slab ocean control</p>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+
+<div class="page">
+  <p>substantially attenuated as a result of absorption by clouds and water vapor. In contrast, temperature increases in the lower troposphere produce relatively large compensating changes in the ATM and SFC LW radiative energy loss (Figs. 1b,c), enhancing the LW energy loss of the atmospheric column while decreasing net surface LW energy loss by about the same amount. The effect of surface warming on the radiative heating at the TOA, in the atmosphere, and at the surface is illustrated in Figure 2a. Surface LW energy loss increases by approximately <span data-field="value_1">{{ value_1 }}</span> W m<sup>-2</sup> per degree of surface warming. However, this is reflected as only a small increase in the TOA LW energy loss (generally &lt; <span data-field="value_2">{{ value_2 }}</span> W m<sup>-2</sup> K<sup>-1</sup>), since the atmosphere absorbs most of the additional LW flux emitted by the surface, thus decreasing the ATM net LW cooling.</p>
+  <p>The surface albedo kernels are plotted in Figure 2b. The kernels have been multiplied by <span data-field="value_3">{{ value_3 }}</span> in order to show the radiative heating changes resulting from a <span data-field="value_4">{{ value_4 }}</span> decrease in albedo. It is evident that albedo changes are felt almost exclusively at the SFC and TOA, with hardly any impact on the ATM radiative heating. This is not surprising given the atmosphere's large transmissivity to shortwave (SW) radiation. The effect of albedo changes is strongest in high latitudes where the surface is bright due to snow and ice cover, although larger increases in SFC and TOA SW heating occur in high southern latitudes than in high northern latitudes. This is partly a result of less cloud cover in high southern latitudes, which enhances the impact of surface albedo changes, but is also due to the fact that a reflective surface (i.e., the Antarctic ice sheet) persists throughout the year (whereas in high northern latitudes snow and sea ice melt during the summer months when SW radiation is present and albedo changes can have an effect).</p>
+</div>
+
+<div class="page">
+  <p>At low latitudes, the surface is already absorbing most of the insolation, so a <span data-field="value_5">{{ value_5 }}</span> decrease in surface albedo has relatively little effect.</p>
+  <p>Finally, in Figures 3 and 4, we show the LW and SW components of the water vapor kernels. Following Soden et al. (2008) and Previdi (2010), the q kernels have been scaled by the factor</p>
+  <p style="text-align: center;">
+    <span data-field="equation_symbol">{{ equation_symbol }}</span> = <span data-field="numerator_q">{{ numerator_q }}</span> / <span data-field="denominator_dt">{{ denominator_dt }}</span>
+    <span data-field="equation_number">{{ equation_number }}</span>
+  </p>
+  <p>where q<sub>s</sub> is the saturation specific humidity calculated from the monthly mean temperature and pressure at each point. Figures 3 and 4 therefore depict the effect that water vapor increases would have on the radiative heating assuming that the atmosphere warms uniformly by <span data-field="value_6">{{ value_6 }}</span> K while maintaining constant relative humidity. Increasing atmospheric water vapor concentrations reduces the outgoing LW radiation at the TOA (Fig. 3a), particularly when the water vapor increases occur in the subtropical upper troposphere. Increases in q in this region also reduce the LW cooling of the atmospheric column (Fig. 3b). In contrast, higher water vapor amounts in the lower troposphere enhance the downwelling LW flux to the surface, thus increasing the ATM LW cooling while decreasing the SFC cooling (Figs. 3b,c). This effect is strongest in the tropics slightly above the surface (at ~ <span data-field="value_7">{{ value_7 }}</span> hPa), since at tropical surface temperatures the water vapor emission is already nearly saturated. Higher water vapor concentrations lead to greater SW absorption in the atmosphere at the expense of the surface (Figs. 4b,c). The ATM and SFC SW heating changes do not completely cancel one another, however, resulting in a small increase in heating at the TOA (Fig. 4a).</p>
+</div>
+
+<div class="page">
+  <p>In this section we examine the signature of different climate feedbacks at the TOA, in the atmosphere, and at the surface. Figure 5 shows the global annual mean T, q, c and a feedbacks for the models listed in Table 1. Feedbacks have been normalized by the global mean surface air temperature change, and have been vertically integrated from the surface to the tropopause, defined as <span data-field="value_8">{{ value_8 }}</span> hPa at the equator and increasing linearly with latitude to <span data-field="value_9">{{ value_9 }}</span> hPa at the poles.</p>
+  <p>The most fundamental stabilizing (negative) climate feedback is the temperature feedback, whereby increases in temperature (in response to a positive climate forcing) cause the planet to emit more LW radiation to space. In the multimodel mean, this additional LW energy loss amounts to <span data-field="value_10">{{ value_10 }}</span> W m<sup>-2</sup> K<sup>-1</sup>, the majority of which (83%, or <span data-field="value_11">{{ value_11 }}</span> W m<sup>-2</sup> K<sup>-1</sup>) is due to greater emission from the atmosphere (Fig. 5a). Surface LW energy loss increases only slightly (by <span data-field="value_12">{{ value_12 }}</span> W m<sup>-2</sup> K<sup>-1</sup>), since the enhanced upward LW flux from a warmer surface is largely compensated for by enhanced downward flux from a warmer atmosphere. In contrast, the loss of non-radiative energy from the surface increases much more dramatically in response to warming (by <span data-field="value_13">{{ value_13 }}</span> W m<sup>-2</sup> K<sup>-1</sup>), which is the amount needed to balance the increase in atmospheric radiative cooling.</p>
+  <p>Figure 5b shows the vertical distribution of the water vapor feedback. Higher water vapor concentrations increase the radiative heating at the TOA by <span data-field="value_14">{{ value_14 }}</span> W m<sup>-2</sup> K<sup>-1</sup> on average in the models, with most of this additional heating (55%, or <span data-field="value_15">{{ value_15 }}</span> W m<sup>-2</sup> K<sup>-1</sup>) felt within the atmosphere. Increases in q therefore act to warm the surface in two ways: by enhancing the SFC radiative heating by <span data-field="value_16">{{ value_16 }}</span> W m<sup>-2</sup> K<sup>-1</sup> (which represents the net effect of a <span data-field="value_17">{{ value_17 }}</span> W m<sup>-2</sup> K<sup>-1</sup> increase in downward LW and a <span data-field="value_18">{{ value_18 }}</span> W m<sup>-2</sup> K<sup>-1</sup> decrease in downward SW), and by reducing the SFC turbulent energy loss by <span data-field="value_19">{{ value_19 }}</span> W m<sup>-2</sup> K<sup>-1</sup>.</p>
+</div>
+
+<div class="page">
+  <p>The cloud feedback is depicted in Figure 5c for the seven models that had the necessary data. All models have a positive c feedback at the TOA, but the models differ substantially in terms of how this TOA radiative perturbation is distributed between the atmosphere and surface. In the multimodel mean, however, the effect of cloud changes is to increase the radiative heating of the atmosphere by <span data-field="value_20">{{ value_20 }}</span> W m<sup>-2</sup> K<sup>-1</sup> and decrease the radiative heating of the surface by <span data-field="value_21">{{ value_21 }}</span> W m<sup>-2</sup> K<sup>-1</sup>. This implies that cloud changes warm the surface by diminishing the turbulent energy transfer to the atmosphere.</p>
+  <p>In contrast to the other feedbacks discussed so far, the a feedback is felt almost entirely at the surface (Fig. 5d). In other words, albedo changes have essentially no effect on the atmospheric radiative heating, thus indicating a negligible impact on the surface non-radiative energy flux.</p>
+  <p>The spatial distributions of the different feedbacks are plotted in Figures 6 and 7. The temperature and water vapor feedbacks (Fig. 6) are strongest in the tropics for both TOA and ATM. Increases in temperature produce the largest increase in surface net LW cooling over the continents and at high latitudes, whereas over the oceans the SFC LW cooling increases much less or even decreases (Fig. 6c). This is partly a result of enhanced surface warming over land and in the Arctic, and is also due to the fact that the LW emissivity of the atmosphere in these areas is smaller than over the oceans (mainly because of less water vapor), implying a smaller increase in the surface downwelling LW radiation. The water vapor feedback at the TOA and in the atmosphere (Figs. 6d,e) has a maximum over the eastern equatorial Pacific. This is associated with a lack of high clouds in this region and thus a strong impact of upper tropospheric moistening on the outgoing LW flux at the TOA. Cloud feedbacks, although quite noisy, are generally</p>
+</div>
+
+<div class="page">
+  <p>positive for TOA and ATM (Figs. 7a,b) with the exception of over the Arctic and high latitude Southern Ocean. At the SFC (Fig. 7c), cloud changes decrease the radiative heating in the subpolar North Atlantic and Pacific, the equatorial Pacific, and the high latitude Southern Ocean, and increase the radiative heating in the Arctic and Antarctic and in the subtropical oceans. Albedo feedbacks are confined to middle and high latitude regions where snow and sea ice disappears (Figs. 7d,f). As noted above, the effect of a changes on the ATM radiative heating is negligible (Fig. 7e).</p>
+  <p>Finally, we wish to make two additional points. First, although we have focused in this section on climate feedbacks, we have also examined the vertical dependence of the CO<sub>2</sub> forcing. Five of the models listed in Table 1 have archived the 2×CO<sub>2</sub> radiative forcing at the tropopause, and we have calculated this forcing at the surface using the ECHAM5 radiation code. The multimodel mean tropopause forcing is found to be <span data-field="value_22">{{ value_22 }}</span> W m<sup>-2</sup>, and the surface forcing calculated with ECHAM5 is <span data-field="value_23">{{ value_23 }}</span> W m<sup>-2</sup>, implying a forcing in the atmosphere (troposphere) of <span data-field="value_24">{{ value_24 }}</span> W m<sup>-2</sup>.</p>
+  <p>These results therefore confirm the findings of Andrews et al. (2009) that the radiative effects of doubling CO<sub>2</sub> are experienced mainly in the atmospheric column, thus driving a reduction in the non-radiative energy flux from the surface to the atmosphere. This leads into the second point which we wish to address. In principle, a change in the atmospheric radiative cooling induced by a climate forcing or feedback could be balanced by a change in either the surface LHF or SHF, or some combination of the two. We find that the global annual mean atmospheric radiative cooling increases by <span data-field="value_25">{{ value_25 }}</span> W m<sup>-2</sup> between the slab ocean control experiment and the 2×CO<sub>2</sub> equilibrium experiment (based on the average of seven models that had the necessary data to compute this quantity). The LHF from the surface</p>
+</div>
+
+<div class="page">
+  <p>to the atmosphere increases by <span data-field="value_26">{{ value_26 }}</span> W m<sup>-2</sup>, while the SHF decreases by <span data-field="value_27">{{ value_27 }}</span> W m<sup>-2</sup>.</p>
+  <p>Thus, adjustments in the surface turbulent energy transfer are dominated by changes in surface evaporation, with SHF changes playing a secondary role.</p>
+  <h3 style="font-weight: bold;">4. Discussion and Conclusions</h3>
+  <p>The traditional approach to understanding Earth's climate sensitivity has concentrated on the processes (forcings and feedbacks) that perturb the top-of-atmosphere radiative energy balance. While there is good physical reason for this, as discussed in the Introduction, the current work and other studies (e.g., Liepert, 2010) have argued that the traditional paradigm should be expanded to also consider the energy balance of the coupled surface-troposphere system. We have presented a simple framework which allows TOA radiative forcings and feedbacks to be directly associated with adjustments in the surface radiative and non-radiative energy fluxes, therefore providing an alternative perspective on how these forcings and feedbacks actually work to change the surface temperature. We find that CO<sub>2</sub> forcing and most of the (fast) feedbacks it induces (i.e., temperature, water vapor, and cloud) have larger impacts on the surface non-radiative energy transfer than the radiative energy transfer. In a global mean sense, adjustments in the surface non-radiative energy transfer are dominated by changes in the latent heat flux (rather than the sensible heat flux), thus pointing to a key role for evaporative cooling (i.e., phase transition) in regulating the surface temperature. This importance of evaporative cooling stems from the fact that the radiative effects of CO<sub>2</sub> forcing and most feedbacks are felt primarily within the atmosphere, therefore requiring</p>
+</div>
+
+<div class="page">
+  <p>surface evaporation to respond in order to restore the atmospheric energy balance (since the atmosphere is unable to absorb heat on climate change timescales).</p>
+  <p>Clearly, many of the individual pieces of the story that is told here were already in place. TOA feedbacks based on radiative kernels have been discussed elsewhere, e.g., by Soden et al. (2008); however, Soden et al. (2008) do not show results for the atmospheric column or surface, so it is unclear how the TOA radiation changes they discuss are distributed between these two components. Previdi (2010) examines the impact of different climate feedbacks on the atmospheric radiative heating, but does not show results for the TOA or surface; thus, it is unclear how the inferred changes in surface turbulent energy transfer due to each feedback compare in sign and magnitude to the changes in surface radiative energy transfer. Note that it is not appropriate to use the TOA results from Soden et al. (2008) and the atmospheric results from Previdi (2010) to infer surface radiation changes; doing so can be misleading. For example, the multimodel mean TOA cloud feedback reported by Soden et al. (2008) is <span data-field="value_28">{{ value_28 }}</span> W m<sup>-2</sup> K<sup>-1</sup>, whereas the multimodel mean atmospheric cloud feedback reported by Previdi (2010) is <span data-field="value_29">{{ value_29 }}</span> W m<sup>-2</sup> K<sup>-1</sup>. This would suggest that cloud changes act to increase the radiative heating at the surface by <span data-field="value_30">{{ value_30 }}</span> W m<sup>-2</sup> K<sup>-1</sup>, which is exactly opposite to our finding in the present study that cloud changes decrease surface radiative heating (by <span data-field="value_31">{{ value_31 }}</span> W m<sup>-2</sup> K<sup>-1</sup>). Thus, there is value in examining the TOA, atmospheric and surface feedbacks within a consistent framework (e.g., using a single set of kernels and model experiments). Finally, Andrews et al. (2009) discuss how the radiative effects of doubling CO<sub>2</sub> are partitioned between the atmosphere and surface, drawing implications for the hydrological cycle; however, they do not include a similar discussion for the various climate feedbacks,</p>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .center {
+    text-align: center;
+  }
+</style>
+
+<div class="page">
+  <p>the surface radiative heating in the multimodel mean, which one might not expect a <span data-field="placeholder_text">{{ placeholder_text }}</span>. This suggests that water vapor and cloud changes are positive feedbacks on the surface temperature primarily because they act to damp the rate of increase in surface evaporation with warming.</p>
+  <p>While the above is admittedly a simplified thermodynamic description of how the climate system works, it is obvious that the feedbacks controlling climate sensitivity must involve changes in the global water cycle. We have focused in this paper on the impacts of different feedbacks on surface evaporation; however, it is clear that the nature of this interaction is not one-way. In other words, the TOA feedbacks discussed here would not occur in the first place were it not for changes in evaporation and other water cycle processes. For example, one characteristic of the temperature feedback is enhanced warming in the tropical upper troposphere, which is a result of stronger condensational heating. The water vapor, cloud and albedo feedbacks similarly involve changes in the cycling and storage of water in different phases and in different parts of the climate system. Radiative feedbacks are therefore at once a driver of and a response to changes in the water cycle. We suggest that water cycle changes need to be viewed as fundamental in determining the sensitivity of Earth's climate to an imposed forcing, in contrast to the traditional paradigm in which the water cycle is thought to merely respond to surface temperature changes.</p>
+  <p style="text-align: right; margin-top: 50px;">17</p>
+</div>
+
+<div class="page">
+  <h2 class="center">References</h2>
+  <p><span data-field="author_list_1">{{ author_list_1 }}</span></p>
+  <p><span data-field="author_list_2">{{ author_list_2 }}</span></p>
+  <p><span data-field="author_list_3">{{ author_list_3 }}</span></p>
+  <p><span data-field="author_list_4">{{ author_list_4 }}</span></p>
+  <p><span data-field="author_list_5">{{ author_list_5 }}</span></p>
+  <p><span data-field="author_list_6">{{ author_list_6 }}</span></p>
+  <p><span data-field="author_list_7">{{ author_list_7 }}</span></p>
+  <p style="text-align: right; margin-top: 50px;">18</p>
+</div>
+
+<div class="page">
+  <p><span data-field="author_list_8">{{ author_list_8 }}</span></p>
+  <p><span data-field="author_list_9">{{ author_list_9 }}</span></p>
+  <p><span data-field="author_list_10">{{ author_list_10 }}</span></p>
+  <p><span data-field="author_list_11">{{ author_list_11 }}</span></p>
+  <p><span data-field="author_list_12">{{ author_list_12 }}</span></p>
+  <p><span data-field="author_list_13">{{ author_list_13 }}</span></p>
+  <p style="text-align: right; margin-top: 50px;">19</p>
+</div>
+
+<div class="page">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Model</th>
+        <th style="width: 25%; text-align: right;">Climate Sensitivity (K)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for model in climate_models %}
+      <tr>
+        <td><span data-field="model.name">{{ model.name }}</span></td>
+        <td style="text-align: right;"><span data-field="model.sensitivity">{{ model.sensitivity }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><strong>Table 1.</strong> List of IPCC Fourth Assessment Report climate models analyzed in the present study. In each case, the atmosphere-mixed layer ocean version of the model was used. Climate sensitivity is defined as the change in global annual mean surface air temperature between the last 10 years of the slab ocean control experiment and the last 10 years of the 2×CO2 equilibrium experiment (with a single realization of each experiment used from each model).</p>
+  <p style="text-align: right; margin-top: 50px;">20</p>
+</div>
+
+<div class="page">
+  <h3 class="center">Figure 1.</h3>
+  <p>Zonal annual mean temperature kernels for a) the top-of-atmosphere (TOA), b) atmosphere, and c) surface.</p>
+  <!-- Placeholder for Figure 1 visualization -->
+  <div style="height: 400px; border: 1px solid #ccc; margin-top: 20px;">[Visualization Placeholder: Figure 1]</div>
+  <p style="text-align: right; margin-top: 50px;">21</p>
+</div>
+
+<div class="page">
+  <h3 class="center">Figure 2.</h3>
+  <p>a) Surface component of the temperature kernels. b) Surface albedo kernels (multiplied by -1).</p>
+  <!-- Placeholder for Figure 2 visualization -->
+  <div style="height: 400px; border: 1px solid #ccc; margin-top: 20px;">[Visualization Placeholder: Figure 2]</div>
+  <p style="text-align: right; margin-top: 50px;">22</p>
+</div>
+
+<div class="page">
+  <h3 class="center">Figure 3.</h3>
+  <p>Zonal annual mean longwave vapor kernels for a) the TOA, b) atmosphere, and c) surface.</p>
+  <!-- Placeholder for Figure 3 visualization -->
+  <div style="height: 400px; border: 1px solid #ccc; margin-top: 20px;">[Visualization Placeholder: Figure 3]</div>
+  <p style="text-align: right; margin-top: 50px;">23</p>
+</div>
+
+<div class="page">
+  <h3 class="center">Figure 4.</h3>
+  <p>Zonal annual mean shortwave vapor kernels for a) the TOA, b) atmosphere, and c) surface.</p>
+  <!-- Placeholder for Figure 4 visualization -->
+  <div style="height: 400px; border: 1px solid #ccc; margin-top: 20px;">[Visualization Placeholder: Figure 4]</div>
+  <p style="text-align: right; margin-top: 50px;">24</p>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic academic paper look */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p { line-height: 1.5; }
+  .figure-caption { font-size: 0.9em; margin-top: 10px; text-align: center; }
+  .figure-grid { display: flex; justify-content: space-between; margin-top: 20px; }
+  .figure-item { width: 48%; text-align: center; }
+  .chart-placeholder { width: 100%; height: 250px; background-color: #f0f0f0; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+</style>
+<body>
+  <div class="page">
+    <div class="figure-grid">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (a)</div>
+        <p class="figure-caption">a) temperature</p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (b)</div>
+        <p class="figure-caption">b) water vapor</p>
+      </div>
+    </div>
+    <div class="figure-grid" style="margin-top: 30px;">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (c)</div>
+        <p class="figure-caption">c) cloud</p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (d)</div>
+        <p class="figure-caption">d) albedo</p>
+      </div>
+    </div>
+    <p class="figure-caption" style="margin-top: 40px;">
+      Figure 5. Global annual mean and vertically integrated radiative feedbacks due to changes in a) temperature, b) water vapor, c) clouds, and d) surface albedo between the last 10 years of the slab ocean control experiment and the last 10 years of the 2&times;CO<sub>2</sub> equilibrium experiment. Positive values signify an increase in radiative heating at the TOA, in the atmosphere, or at the surface. Numbers along the abscissa correspond to the models listed in Table 1. Note that the bars for TOA, ATM and SFC overlap with one another.
+    </p>
+  </div>
+
+  <div class="page">
+    <div class="figure-grid">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (a)</div>
+        <p class="figure-caption">a) temperature: TOA</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_a_temp_toa">{{ global_mean_a_temp_toa }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (d)</div>
+        <p class="figure-caption">d) water vapor: TOA</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_d_vapor_toa">{{ global_mean_d_vapor_toa }}</span></p>
+      </div>
+    </div>
+    <div class="figure-grid" style="margin-top: 30px;">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (b)</div>
+        <p class="figure-caption">b) temperature: ATM</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_b_temp_atm">{{ global_mean_b_temp_atm }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (e)</div>
+        <p class="figure-caption">e) water vapor: ATM</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_e_vapor_atm">{{ global_mean_e_vapor_atm }}</span></p>
+      </div>
+    </div>
+    <div class="figure-grid" style="margin-top: 30px;">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (c)</div>
+        <p class="figure-caption">c) temperature: SFC</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_c_temp_sfc">{{ global_mean_c_temp_sfc }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (f)</div>
+        <p class="figure-caption">f) water vapor: SFC</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_f_vapor_sfc">{{ global_mean_f_vapor_sfc }}</span></p>
+      </div>
+    </div>
+    <p class="figure-caption" style="margin-top: 40px;">
+      Figure 6. Annual and multimodel mean temperature and water vapor radiative feedbacks at the TOA, in the atmosphere, and at the surface.
+    </p>
+  </div>
+
+  <div class="page">
+    <div class="figure-grid">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (a)</div>
+        <p class="figure-caption">a) cloud: TOA</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_a_cloud_toa">{{ global_mean_a_cloud_toa }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (d)</div>
+        <p class="figure-caption">d) albedo: TOA</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_d_albedo_toa">{{ global_mean_d_albedo_toa }}</span></p>
+      </div>
+    </div>
+    <div class="figure-grid" style="margin-top: 30px;">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (b)</div>
+        <p class="figure-caption">b) cloud: ATM</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_b_cloud_atm">{{ global_mean_b_cloud_atm }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (e)</div>
+        <p class="figure-caption">e) albedo: ATM</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_e_albedo_atm">{{ global_mean_e_albedo_atm }}</span></p>
+      </div>
+    </div>
+    <div class="figure-grid" style="margin-top: 30px;">
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (c)</div>
+        <p class="figure-caption">c) cloud: SFC</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_c_cloud_sfc">{{ global_mean_c_cloud_sfc }}</span></p>
+      </div>
+      <div class="figure-item">
+        <div class="chart-placeholder">Chart Placeholder (f)</div>
+        <p class="figure-caption">f) albedo: SFC</p>
+        <p class="figure-caption" style="font-weight: bold;">Global Mean = <span data-field="global_mean_f_albedo_sfc">{{ global_mean_f_albedo_sfc }}</span></p>
+      </div>
+    </div>
+    <p class="figure-caption" style="margin-top: 40px;">
+      Figure 7. Annual and multimodel mean cloud and albedo radiative feedbacks at the TOA, in the atmosphere, and at the surface.
+    </p>
+  </div>
+</body>

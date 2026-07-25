@@ -1,0 +1,88 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { margin-top: 0; }
+  .header-logo { float: left; }
+  .header-info { float: right; text-align: right; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .line-item-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div class="header-logo">
+      <span style="font-size: 36px; font-weight: bold;">CSUN</span>
+      <div style="font-size: 12px;">CALIFORNIA<br>STATE UNIVERSITY<br>NORTHRIDGE</div>
+    </div>
+    <div class="header-info">
+      <div style="font-size: 14px;">UNIVERSITY CASH SERVICES</div>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 50px;">Check Payment Remittance Slip</h1>
+
+  <div style="margin-top: 30px;">
+    <p>Bayramian Hall Lobby</p>
+    <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+    <p>Fax: <span data-field="fax">{{ fax }}</span></p>
+    <p>Mail Code: <span data-field="mail_code">{{ mail_code }}</span></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div>
+        I.CSUN Student ID: <span data-field="student_id">{{ student_id }}</span>
+      </div>
+      <div>
+        Name: (Last, First, MI) <span data-field="full_name">{{ full_name }}</span>
+      </div>
+      <div>
+        Date: <span data-field="date">{{ date }}</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <p>Please pay <span data-field="tuition_amount_label">{{ tuition_amount_label }}</span> amount: $ <span data-field="tuition_amount">{{ tuition_amount }}</span> &nbsp;&nbsp;&nbsp;&nbsp; With a <span data-field="personal_check_label">{{ personal_check_label }}</span> #: <span data-field="personal_check_number">{{ personal_check_number }}</span>.</p>
+      <p>Please pay <span data-field="housing_amount_label">{{ housing_amount_label }}</span> amount: $ <span data-field="housing_amount">{{ housing_amount }}</span> &nbsp;&nbsp;&nbsp;&nbsp; With a <span data-field="cashier_check_label">{{ cashier_check_label }}</span> #: <span data-field="cashier_check_number">{{ cashier_check_number }}</span>.</p>
+      <p>Please pay <span data-field="meal_amount_label">{{ meal_amount_label }}</span> amount: $ <span data-field="meal_amount">{{ meal_amount }}</span> &nbsp;&nbsp;&nbsp;&nbsp; With a <span data-field="money_order_label">{{ money_order_label }}</span> #: <span data-field="money_order_number">{{ money_order_number }}</span>.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 20px;">
+    <p>II.MAIL PAYMENT TO: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    <p><span data-field="recipient_street_1">{{ recipient_street_1 }}</span></p>
+    <p><span data-field="recipient_city_state_zip">{{ recipient_city_state_zip }}</span></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 20px;">
+    <p>III.MAKE YOUR CHECK OR MONEY ORDER PAYABLE TO: <span data-field="payable_to">{{ payable_to }}</span></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 20px;">
+    <p style="font-weight: bold; text-transform: uppercase;">PAYMENT IS NOT CONSIDERED RECEIVED UNTIL IT IS POSTED TO THE STUDENT ACCOUNT.</p>
+  </div>
+
+  <ul style="list-style-type: disc; margin-top: 20px; padding-left: 20px; font-size: 12px;">
+    <li><span data-field="policy_1">{{ policy_1 }}</span></li>
+    <li><span data-field="policy_2">{{ policy_2 }}</span></li>
+    <li><span data-field="policy_3">{{ policy_3 }}</span></li>
+    <li><span data-field="policy_4">{{ policy_4 }}</span></li>
+  </ul>
+</div>

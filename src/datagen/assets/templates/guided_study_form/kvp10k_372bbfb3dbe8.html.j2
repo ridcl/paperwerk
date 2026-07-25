@@ -1,0 +1,167 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  hr {
+    border: 0;
+    height: 1px;
+    background-color: #000;
+    margin: 10px 0;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="text-align: left;">
+      <div style="font-size: 24px; font-weight: bold;">LOYOLA</div>
+      <div style="font-size: 12px; letter-spacing: 1px;">UNIVERSITY CHICAGO</div>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <div style="width: 30px; height: 30px; border: 1px solid #000; text-align: center; line-height: 30px; font-size: 10px;">1870</div>
+        <div style="font-size: 10px; text-align: center;">AD MAIOREM</div>
+        <div style="font-size: 10px; text-align: center;">DEI</div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24px; margin: 0;">INSTITUTE of PASTORAL STUDIES</h1>
+      <h2 style="font-size: 18px; margin-top: 5px;">Guided Study Form</h2>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="form-row">
+      <div>Name:</div>
+      <div><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>ID#:</div>
+      <div><span data-field="student_id">{{ student_id }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Semester/year for which you are registering:</div>
+      <div><span data-field="registration_period">{{ registration_period }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>No. of credits you wish to register for:</div>
+      <div>
+        <input type="checkbox" style="margin-right: 5px;">
+        <input type="checkbox" style="margin-right: 5px;">
+        <input type="checkbox" style="margin-right: 5px;">
+        <input type="checkbox" style="margin-right: 5px;">
+        <span data-field="credit_count">{{ credit_count }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>Title of Proposed Course:</div>
+      <div><span data-field="proposed_course_title">{{ proposed_course_title }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Faculty Sponsor:</div>
+      <div><span data-field="faculty_sponsor_name">{{ faculty_sponsor_name }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; border-top: 1px solid #000; padding-top: 20px;">
+    <p><strong>Proposal:</strong> In an attachment with this form, the student must submit a detailed proposal for the guided study. The proposal must include the following sections:</p>
+    <ol style="padding-left: 20px;">
+      <li>Reason for Requesting Guided Study – Include a statement about whether a similar course is offered by the IPS? If such course is offered outline why that course will not meet the student's program objectives.</li>
+      <li>Learning Objectives of the Course – What are the specific and measurable outcomes the student hopes to accomplish with the completion of the course?</li>
+      <li>Integration – How does the course conform to and support the goals of the IPS and the particular degree program in which the student is enrolled? How does the course reflect the theological and pastoral interests of the student?</li>
+      <li>Methodology – How does the student propose to proceed during the semester in pursuit of these learning outcomes?</li>
+      <li><span data-field="methodology_details">{{ methodology_details }}</span></li>
+      <li>Schedule – What are the time markers by which the student and professor can determine appropriate progress toward the objectives of the course?</li>
+      <li>Evaluation – By what specific norms will the student and the professor determine the degree of success of the course work?</li>
+    </ol>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <p>By my signature on the line below, I hereby affirm that the information given in this application is true to the best of my knowledge. I also agree to the terms and conditions of the Institute of Pastoral Studies regarding this form.</p>
+    <p style="margin-top: 20px;"><strong>NOTE:</strong> Must be signed and dated at least THREE weeks (or more) PRIOR to the start of the semester</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 80px;">
+    <div style="width: 45%;">
+      <div style="margin-bottom: 50px;">Student signature</div>
+      <div class="signature-line" data-field="student_signature">{{ student_signature }}</div>
+      <div style="margin-top: 5px;">Date</div>
+      <div class="signature-line" style="margin-top: 40px;" data-field="date">{{ date }}</div>
+      <div style="margin-top: 5px;">Faculty signature</div>
+      <div class="signature-line" data-field="faculty_signature">{{ faculty_signature }}</div>
+      <div style="margin-top: 40px;">Date</div>
+    </div>
+    <div style="width: 45%;">
+      <div style="margin-bottom: 50px;">Faculty mentor signature (where applicable)</div>
+      <div class="signature-line" data-field="faculty_mentor_signature">{{ faculty_mentor_signature }}</div>
+      <div style="margin-top: 5px;">Date</div>
+      <div class="signature-line" style="margin-top: 40px;" data-field="date_2">{{ date_2 }}</div>
+      <div style="margin-top: 5px;">IPS Dean Signature</div>
+      <div class="signature-line" data-field="ips_dean_signature">{{ ips_dean_signature }}</div>
+      <div style="margin-top: 40px;">Date</div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 100px;">
+    <div style="width: 300px; margin: 0 auto;">
+      <p style="text-align: center;">Return this form to</p>
+      <p style="text-align: center;">Coordinator</p>
+      <p style="text-align: center;"><span data-field="coordinator_email">{{ coordinator_email }}</span></p>
+      <p style="text-align: center;">Phone: <span data-field="coordinator_phone">{{ coordinator_phone }}</span></p>
+      <p style="text-align: center;">Fax: <span data-field="coordinator_fax">{{ coordinator_fax }}</span></p>
+      <p style="text-align: center;">Institute of Pastoral Studies Lewis Towers, Room <span data-field="room_number">{{ room_number }}</span> N. Michigan Avenue Chicago, IL <span data-field="zip_code">{{ zip_code }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 50px;">
+    <h3 style="font-weight: bold;">For office use only</h3>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>499 section #: <span data-field="section_number">{{ section_number }}</span></div>
+      <div>Course created by Reg/Rec: <span data-field="course_creator">{{ course_creator }}</span></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>Student registered through LOCUS: <span data-field="locus_system">{{ locus_system }}</span></div>
+      <div>(Date): <span data-field="registration_date">{{ registration_date }}</span></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>Grade received from Instructor: <span data-field="instructor_grade">{{ instructor_grade }}</span></div>
+      <div>(Date): <span data-field="grade_date">{{ grade_date }}</span></div>
+    </div>
+  </div>
+
+  <div style="text-align: right; font-size: 10px;">
+    Last Updated: <span data-field="last_updated_date">{{ last_updated_date }}</span>
+  </div>
+</div>

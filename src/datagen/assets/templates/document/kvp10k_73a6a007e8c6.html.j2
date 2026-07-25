@@ -1,0 +1,112 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .logo-area { display: flex; align-items: center; }
+  .form-section { margin-bottom: 30px; }
+  .section-title { font-weight: bold; margin-bottom: 15px; }
+  .checkbox-group label { display: block; margin-bottom: 5px; }
+  .signature-area { margin-top: 60px; }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div class="logo-area">
+      <div style="font-size: 24px; font-weight: bold;">DRURY UNIVERSITY</div>
+      <div style="margin-left: 20px;">
+        <div style="font-size: 14px;">400.002F1</div>
+        <div style="font-size: 14px;">Conflict of Interest Disclosure:</div>
+        <div style="font-size: 14px;">Trustees & Senior Leadership</div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 24px; font-weight: bold;">FO RM</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p style="font-size: 12px;">Per University policy 400.002F: Conflict of Interest, all University trustees and officers/senior leadership are required to disclose annually to the University any conflict(s) of interest or lack thereof related to their work with the University.</p>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="form-section">
+    <div class="section-title">Section 1: Disclosure Information (please print)</div>
+    <div style="margin-top: 15px;">
+      <p>Name: <span data-field="full_name">{{ full_name }}</span></p>
+      <div class="checkbox-group" style="margin-top: 10px;">
+        <label><input type="checkbox"> Trustee</label>
+        <label><input type="checkbox"> University Officer</label>
+        <p style="margin-top: 5px;">Position Title: <span data-field="position_title">{{ position_title }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="form-section">
+    <div class="section-title">Section 2: Conflict of Interest Disclosure</div>
+    <p>Please certify below that you have either no actual or possible conflict of interest to report OR describe below any relationships, transactions, positions you hold (volunteer or otherwise), or circumstances that you believe could contribute to an actual or possible conflict of interest between the University and your personal interests, financial or otherwise:</p>
+    <div class="checkbox-group" style="margin-top: 15px;">
+      <label><input type="checkbox"> I have no conflict of interest to report.</label>
+      <label><input type="checkbox"> I have the following actual or possible conflict(s) of interest to report.</label>
+    </div>
+    <p style="margin-top: 15px;">Please specify below any actual transactions of which you are aware between the University and any entity or person with which you have a business, investment, or family relationship (attach additional pages as needed).</p>
+    <ol style="margin-top: 10px;">
+      <li><span data-field="conflict_detail_1">{{ conflict_detail_1 }}</span></li>
+      <li><span data-field="conflict_detail_2">{{ conflict_detail_2 }}</span></li>
+      <li><span data-field="conflict_detail_3">{{ conflict_detail_3 }}</span></li>
+    </ol>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="form-section">
+    <div class="section-title">Section 3: Disclosure of Other Interests</div>
+    <p>For the purposes of determining possible future conflicts of interest, please also specify other nonprofit and for-profit boards on which you and/or your spouse sit, any for-profit businesses for which you or an immediate family member are an officer of director, or a majority shareholder, and the name of your employer and any businesses you or a family member own (attach additional pages as needed).</p>
+    <ol style="margin-top: 10px;">
+      <li><span data-field="other_interest_1">{{ other_interest_1 }}</span></li>
+      <li><span data-field="other_interest_2">{{ other_interest_2 }}</span></li>
+      <li><span data-field="other_interest_3">{{ other_interest_3 }}</span></li>
+    </ol>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="form-section">
+    <div class="section-title">Section 4: Certification</div>
+    <p>By signing below, I certify that:</p>
+    <div class="checkbox-group" style="margin-top: 15px;">
+      <label><input type="checkbox"> I have received a copy of the University's Conflict of Interest Policy;</label>
+      <label><input type="checkbox"> I have read and understand the policy;</label>
+      <label><input type="checkbox"> I agree to comply with the policy;</label>
+      <label><input type="checkbox"> I understand that the University is charitable and in order to maintain its federal tax exemption it must engage primarily in activities that accomplish one or more of its exempt purposes and not engage in activities and transactions that provide impermissible benefits to individuals or entities; and</label>
+      <label><input type="checkbox"> the information set forth above is true and complete to the best of my knowledge.</label>
+    </div>
+  </div>
+
+  <!-- Signature and Footer -->
+  <div class="signature-area">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+      <div style="width: 40%;">
+        Signature
+      </div>
+      <div style="width: 40%; text-align: right;">
+        Date
+      </div>
+    </div>
+    <div style="margin-top: 50px;">
+      <p style="font-size: 10px;">Next Steps:</p>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>Present this form to the Assistant Secretary of the University or Executive Assistant to the President.</li>
+        <li>This form will be kept on file for no less than three (3) years.</li>
+      </ul>
+      <p style="font-size: 10px; margin-top: 20px;">400.002F1: Conflict of Interest Disclosure: Trustees & Senior Leadership v2020.05.001</p>
+    </div>
+  </div>
+</div>

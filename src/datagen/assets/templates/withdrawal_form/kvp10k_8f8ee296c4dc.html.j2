@@ -1,0 +1,180 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for formal look */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  .header { font-size: 24pt; font-weight: bold; text-align: right; }
+  .title { font-size: 16pt; font-weight: bold; margin-bottom: 20px; }
+  .form-row { display: flex; margin-bottom: 15px; font-size: 11pt; }
+  .form-row > div { flex: 1; }
+  .label { font-weight: bold; display: inline-block; width: 120px; }
+  .input-area { border-bottom: 1px solid #000; min-width: 200px; }
+  .section-title { font-weight: bold; margin-top: 25px; margin-bottom: 10px; font-size: 12pt; }
+  .disclaimer { font-size: 10pt; line-height: 1.4; margin-top: 15px; }
+  .signature-block { margin-top: 40px; font-size: 10pt; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 5px; width: 300px; }
+</style>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <div class="title">Official Withdrawal from Course Petition</div>
+    </div>
+    <div class="header">
+      SUNY<br>
+      Registrar's Office
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Student Name:</span>
+      <div class="input-area"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div>
+      <span class="label">Cortland ID Number:</span>
+      <div class="input-area"><span data-field="cortland_id">{{ cortland_id }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Local Address:</span>
+      <div class="input-area"><span data-field="local_address">{{ local_address }}</span></div>
+    </div>
+    <div>
+      <span class="label">Telephone Number:</span>
+      <div class="input-area"><span data-field="phone_number">{{ phone_number }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">City:</span>
+      <div class="input-area"><span data-field="city">{{ city }}</span></div>
+    </div>
+    <div>
+      <span class="label">State:</span>
+      <div class="input-area"><span data-field="state">{{ state }}</span></div>
+    </div>
+    <div>
+      <span class="label">Zip:</span>
+      <div class="input-area"><span data-field="zip_code">{{ zip_code }}</span></div>
+    </div>
+    <div>
+      <span class="label">E-mail:</span>
+      <div class="input-area"><span data-field="email">{{ email }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Major / Program:</span>
+      <div class="input-area"><span data-field="major_program">{{ major_program }}</span></div>
+    </div>
+    <div>
+      <span class="label">Primary Advisor:</span>
+      <div class="input-area"><span data-field="primary_advisor_name">{{ primary_advisor_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Important:</strong> The letter grade of X indicates the Official Withdrawal from a College course without academic penalty. Grades of X will not be awarded for courses, which are dropped during the official College Drop and Add period. Students are not allowed to withdraw from classes during the last three weeks of semester courses. Due to fluctuating dates, withdrawal deadlines for summer and winter sessions will be established prior to the term. A student who has been found in violation of the academic dishonesty code loses the opportunity to withdraw from the course in which the violation has occurred.
+  </div>
+
+  <div class="disclaimer">
+    <strong>Financial Aid Impact:</strong> The Grade of X is considered attempted but not completed for the purpose of calculating Satisfactory Academic Progress (SAP) for Financial Aid eligibility. The policies regarding SAP for State and Federal Financial Aid are detailed in the SUNY Cortland College Catalog. The most common financial aid impact from course withdrawal in a single semester is a loss of a YS NAP eligibility for the following semester. However, a pattern of withdrawal and/or failure across more than one semester may result in the loss of ALL future aid eligibility, including student loans. It is strongly recommended that you consult with your Financial Aid Counselor if the course withdrawal will reduce your total completed credit hours for the current semester to less than twelve.
+  </div>
+
+  <div class="disclaimer">
+    By signing below, you (the student) petition to withdraw from the course listed below with the understanding that if I withdraw before the deadline date, a grade of "X" will be issued. If I fail to withdraw by the deadline, the actual grade earned in the course, or an "E" will be recorded on my academic record and included in my GPA.
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div>
+      <span class="label">CRN:</span>
+      <div class="input-area"><span data-field="crn">{{ crn }}</span></div>
+    </div>
+    <div>
+      <span class="label">Course:</span>
+      <div class="input-area"><span data-field="course_name">{{ course_name }}</span></div>
+    </div>
+    <div>
+      <span class="label">Credit Hours:</span>
+      <div class="input-area"><span data-field="credit_hours">{{ credit_hours }}</span></div>
+    </div>
+    <div>
+      <span class="label">Instructor:</span>
+      <div class="input-area"><span data-field="instructor_name">{{ instructor_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Enrolled Credit Hours BEFORE This Withdrawal</div>
+  <div class="section-title">Enrolled Credit Hours AFTER This Withdrawal</div>
+
+  <div class="signature-block">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+      <div>
+        <span class="label">Student Signature:</span>
+        <div class="signature-line" data-field="student_signature">{{ student_signature }}</div>
+        <div style="margin-top: 5px;">Date: <span data-field="student_signature_date">{{ student_signature_date }}</span></div>
+      </div>
+      <div>
+        <span class="label">Instructor Signature:</span>
+        <div class="signature-line" data-field="instructor_signature">{{ instructor_signature }}</div>
+        <div style="margin-top: 5px;">Date: <span data-field="instructor_signature_date">{{ instructor_signature_date }}</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+      <div>
+        <span class="label">Primary Advisor Signature:</span>
+        <div class="signature-line" data-field="primary_advisor_signature">{{ primary_advisor_signature }}</div>
+        <div style="margin-top: 5px;">Date: <span data-field="primary_advisor_signature_date">{{ primary_advisor_signature_date }}</span></div>
+      </div>
+      <div>
+        <span class="label">Secondary Advisor Signature:</span>
+        <div class="signature-line" data-field="secondary_advisor_signature">{{ secondary_advisor_signature }}</div>
+        <div style="margin-top: 5px;">Date: <span data-field="secondary_advisor_signature_date">{{ secondary_advisor_signature_date }}</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <span class="label">Associate Dean for Student:</span>
+        <div class="signature-line" data-field="associate_dean_for_student">{{ associate_dean_for_student }}</div>
+        <div style="margin-top: 5px;">Date: <span data-field="associate_dean_signature_date">{{ associate_dean_signature_date }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div style="font-size: 10pt;">
+      <strong>Office Use Only - NOTES:</strong>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px; font-size: 10pt;">
+    <div>
+      Routing:
+      <div style="display: flex; gap: 20px; margin-top: 5px;">
+        <div class="input-area" style="width: 150px;"><span data-field="routing_instructor">{{ routing_instructor }}</span></div>
+        <div class="input-area" style="width: 150px;"><span data-field="routing_associate_dean">{{ routing_associate_dean }}</span></div>
+        <div class="input-area" style="width: 150px;"><span data-field="routing_advisor">{{ routing_advisor }}</span></div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      Rev: Dec 2015
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px; font-size: 9pt;">
+    Miller Building, Room 223 • P.O. Box 2000 • Cortland, NY 13045-0900<br>
+    Phone: {{ phone_number }} • Fax: {{ fax_number }} • E-mail: registrar@cortland.edu
+  </div>
+</div>

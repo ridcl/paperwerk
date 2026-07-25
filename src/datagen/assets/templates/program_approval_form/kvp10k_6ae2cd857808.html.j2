@@ -1,0 +1,819 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td, th {
+    padding: 5px 0;
+    text-align: left;
+  }
+  .header {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">OFFICE OF ACADEMIC AFFAIRS</h1>
+      <h2 style="font-size: 18pt; margin: 5px 0 0 0;">PROGRAM APPROVAL FORM</h2>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="University Logo" style="width: 150px; height: auto;">
+      <p style="font-size: 10pt; margin: 5px 0 0 0;">THE UNIVERSITY OF<br>ALABAMA IN HUNTSVILLE</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>
+      <span style="font-weight: bold;">Undergraduate</span>
+      <input type="checkbox">
+      <span style="font-weight: bold;">Graduate</span>
+      <input type="checkbox">
+      <span style="font-weight: bold;">New Program</span>
+      <input type="checkbox">
+      <span style="font-weight: bold;">Program Change</span>
+      <input type="checkbox">
+    </p>
+    <p style="margin-top: 10px;">
+      College: <span data-field="college_name">{{ college_name }}</span>
+    </p>
+    <p>
+      Program Title: <span data-field="program_title">{{ program_title }}</span>
+    </p>
+    <p>
+      Program Type:
+      <input type="checkbox"> Major
+      <input type="checkbox"> Minor
+      <input type="checkbox"> Concentration
+      <input type="checkbox"> Certificate
+    </p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div>
+      Total Credit Hours: <span data-field="total_credit_hours">{{ total_credit_hours }}</span>
+    </div>
+    <div>
+      Effective Date: <span data-field="effective_date">{{ effective_date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      Is the new program or change in existing program part of an accreditation requirement? If so, please explain.
+    </p>
+    <div style="border: 1px solid #ccc; height: 150px; margin-top: 10px;">
+      <!-- Text area placeholder -->
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      Attach a detailed description of proposed program to include the following: background information, academic justification, student need and demand, listing of courses with credit hour requirements or deletions, facility requirements, and any other pertinent information.
+    </p>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>
+        <p>Department Chair: <span data-field="department_chair_name">{{ department_chair_name }}</span></p>
+        <p>Date: <span data-field="department_chair_date">{{ department_chair_date }}</span></p>
+      </div>
+      <div>
+        <p>Grad. Council: <span data-field="grad_council_name">{{ grad_council_name }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      College Dean: _________________________
+    </p>
+    <p>
+      College Curriculum Committee: _________________________
+    </p>
+    <p>
+      Undergrad Curriculum Cmte: _________________________
+    </p>
+    <p>
+      Acknowledgements from other units: _________________________
+    </p>
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+      <div>
+        <p>Department Chair: _________________________</p>
+      </div>
+      <div>
+        <p>College Dean: _________________________</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 20px;">Justification for Changes in Theatre BA Curriculum</h2>
+  <p style="margin-bottom: 20px;">
+    These changes are a proactive response to the addition of new faculty and the concomitant growth of the program in student numbers and facilities. The curriculum now reflects classes more suitable to a BA in Theatre—including new classes in design, performance, dramaturgy, and video production. Required courses, both core and tracks, align with peer and aspirant peer theatre programs. The focus on experiential learning and entrepreneurship distinguishes the UAH program from our peers, becoming a point of regional prominence.
+  </p>
+  <p style="margin-bottom: 20px;">
+    Likewise, elective courses have expanded to meet the needs of students to become employable in their chosen field once they graduate. The electives allow students to deepen their knowledge in a particular area, or broaden their experience into a larger range of fields within theatre.
+  </p>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 15px;">THEATRE BA Requirements (39 hours)</h2>
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    <span style="color: green; font-weight: bold;">Green Highlight: Change</span> (in hours or course name/number)
+    <span style="color: yellow; font-weight: bold;">Yellow Highlight: New Class</span>
+    <span style="text-decoration: line-through;">Strikethrough: Removed</span>
+  </p>
+
+  <h3 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">OLD PROGRAM</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 122 - Theatre Appreciation</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 221 - Acting I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 225 - Elements of Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 or 323 - Theatre History I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 425 - Theatre Mainstage</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 431 - Senior Seminar/Common Theory</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">EMPHASIS 12 Hrs.</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 161 or 462 - Shakespeare I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 210 - Voice and Dietion</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 250 - Movement</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 321 - Acting II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Technical</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 230 - Stage Management</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 305 - Music Technology I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 355 - Scene Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 365 - Lighting Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Dramaturgy</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EH 461 - Shakespeare I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>EH 462 - Shakespeare II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 or TH 323 - Theatre History I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 426 - Burkeian Theory & Criticism</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">ELECTIVES 6 Hrs. (select 2)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CM 113 - Intro to Rhetorical Communication</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 260 - Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 330 - Nonverbal Communication</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 426 - Burkeian Theory & Criticism</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 444 - Advertising</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>EH 461 - Shakespeare I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>EH 462 - Shakespeare II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 15px;">NEW PROGRAM</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 100 - Stagecraft</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 150 - Script Analysis</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 221 - Acting I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 225 - Elements of Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 or 323 - Theatre History I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 425 - Theatre Mainstage</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 475 - Entrepreneurship</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">EMPHASIS 9 Hrs.</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 321 - Acting II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 421 - Acting III</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 465 - Directing</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Technical</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 330 - Stage Management</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 355 - Scene Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 365 or 375 - Lighting or Sound Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Dramaturgy</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EH 461 or 462 - Shakespeare I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 480 - Dramaturgy</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Video</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CM/TH 260 - Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM/TH 360 - Advanced Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM/TH 421 - Documentary Video</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">ELECTIVES 6 Hrs. (select 2)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CM 260 - Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 334 - History of American Cinema</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 360 - Advanced Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 421 - Documentary Video</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 321 - Acting II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 - Theatre History I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 15px;">THEATRE MINOR requirements (24 hours)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 122 - Theatre Appreciation</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 221 - Acting I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 225 - Elements of Theatre Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 or 323 - Theatre History I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 425 - Theatre Mainstage</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">ELECTIVES 6 Hrs. (select 2)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ARS 140 - Three-Dimensional Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>WLC 204 - International Cinema</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 100 - Intro to Music Literature</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>EH 461 - Shakespeare I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>EH 462 - Shakespeare II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 330 - Nonverbal Communication</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 15px;">THEATRE BA requirements (39 hours)</h2>
+  <h3 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">CORE 24 Hrs.</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 100 - Stagecraft</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 150 - Script Analysis</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 221 - Acting I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 225 - Elements of Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 or 323 - Theatre History I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 425 - Theatre Mainstage</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 475 - Entrepreneurship</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">EMPHASIS 9 Hrs.</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 321 - Acting II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 421 - Acting III</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 465 - Directing</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Technical</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TH 330 - Stage Management</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 355 - Scene Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 365 or 375 - Lighting or Sound Design</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Dramaturgy</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EH 461 or 462 - Shakespeare I or II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 480 - Dramaturgy</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Video</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CM/TH 260 - Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM/TH 360 - Advanced Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM/TH 421 - Documentary Video</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">ELECTIVES 6 Hrs. (select 2)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 60%;">Course</th>
+        <th style="width: 20%; text-align: center;">Hours</th>
+        <th style="width: 20%; text-align: center;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CM 260 - Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 334 - History of American Cinema</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 360 - Advanced Video Production</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>CM 421 - Documentary Video</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 321 - Acting II</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+      <tr>
+        <td>TH 322 - Theatre History I</td>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

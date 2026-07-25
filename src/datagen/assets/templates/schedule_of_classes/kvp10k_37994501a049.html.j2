@@ -1,0 +1,732 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 10pt;
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+  }
+  .header-title {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .report-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="class_number">{{ class_number }}</span></td>
+        <td><span data-field="subject_code">{{ subject_code }}</span></td>
+        <td><span data-field="category_section">{{ category_section }}</span></td>
+        <td><span data-field="credit_units">{{ credit_units }}</span></td>
+        <td><span data-field="course_title">{{ course_title }}</span></td>
+        <td><span data-field="days">{{ days }}</span></td>
+        <td><span data-field="time">{{ time }}</span></td>
+        <td><span data-field="location">{{ location }}</span></td>
+        <td><span data-field="instructor">{{ instructor }}</span></td>
+        <td><span data-field="fees">{{ fees }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="10" style="font-size: 9pt; padding-top: 5px;">- International Requirement</td>
+      </tr>
+      <tr>
+        <td colspan="10" style="font-size: 9pt;">International Requirement</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="report-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+    <div>Run Date: <span data-field="run_date">{{ run_date }}</span></div>
+    <div>Run Time: <span data-field="run_time">{{ run_time }}</span></div>
+  </div>
+  <div style="text-align: center;">
+    <div class="header-title">University of Utah</div>
+    <div style="font-size: 12pt; font-weight: normal;">Schedule of Classes for Summer 2026</div>
+    <div style="font-size: 12pt; font-weight: normal;">Campus: <span data-field="campus_name">{{ campus_name }}</span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#·Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="subject_code">{{ item.subject_code }}</span></td>
+        <td><span data-field="category_section">{{ item.category_section }}</span></td>
+        <td><span data-field="credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="days">{{ item.days }}</span></td>
+        <td><span data-field="time">{{ item.time }}</span></td>
+        <td><span data-field="location">{{ item.location }}</span></td>
+        <td><span data-field="instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12pt;
+  }
+  .title-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .title-section h1 {
+    font-size: 24pt;
+    margin: 0;
+    font-weight: bold;
+  }
+  .title-section h2 {
+    font-size: 14pt;
+    margin: 5px 0 0 0;
+    font-weight: normal;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+</style>
+<div class="page">
+  <div class="header-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. {{ page_number }} of {{ total_pages }}</div>
+    <div>Run Date: {{ run_date }}</div>
+    <div>Run Time: {{ run_time }}</div>
+  </div>
+  <div class="title-section">
+    <span data-field="university_name">{{ university_name }}</span>
+    <h2>Schedule of Classes for Summer {{ summer_year }}</h2>
+    <p>Campus: <span data-field="campus_name">{{ campus_name }}</span></p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#</th>
+        <th>Sec#</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].sub_number">{{ item.sub_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].catalog_number">{{ item.catalog_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].section_number">{{ item.section_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].time">{{ item.time }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].location">{{ item.location }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if notes %}
+  <div class="note">
+    {% for note in notes %}
+    <p>{{ note }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+<div class="page">
+  <div class="header-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. {{ page_number }} of {{ total_pages }}</div>
+    <div>Run Date: {{ run_date }}</div>
+    <div>Run Time: {{ run_time }}</div>
+  </div>
+  <div class="title-section">
+    <span data-field="university_name">{{ university_name }}</span>
+    <h2>Schedule of Classes for Summer {{ summer_year }}</h2>
+    <p>Campus: <span data-field="campus_name">{{ campus_name }}</span></p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#</th>
+        <th>Sec#</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].sub_number">{{ item.sub_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].catalog_number">{{ item.catalog_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].section_number">{{ item.section_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].time">{{ item.time }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].location">{{ item.location }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if notes %}
+  <div class="note">
+    {% for note in notes %}
+    <p>{{ note }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+<div class="page">
+  <div class="header-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. {{ page_number }} of {{ total_pages }}</div>
+    <div>Run Date: {{ run_date }}</div>
+    <div>Run Time: {{ run_time }}</div>
+  </div>
+  <div class="title-section">
+    <span data-field="department_name">{{ department_name }}</span>
+  </div>
+  <div style="margin-bottom: 20px; font-size: 10pt;">
+    Office Address: <span data-field="office_address">{{ office_address }}</span> Phone: <span data-field="office_phone">{{ office_phone }}</span>
+  </div>
+  <div style="margin-bottom: 20px; font-size: 10pt;">
+    Departmental Advisors:
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat#</th>
+        <th>Sec#</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].sub_number">{{ item.sub_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].catalog_number">{{ item.catalog_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].section_number">{{ item.section_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].credit_units">{{ item.credit_units }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].time">{{ item.time }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].location">{{ item.location }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if notes %}
+  <div class="note">
+    {% for note in notes %}
+    <p>{{ note }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12pt;
+  }
+  .title-section {
+    margin-bottom: 30px;
+  }
+  .contact-info {
+    margin-bottom: 30px;
+    font-size: 10pt;
+  }
+</style>
+
+<div class="page">
+  <div class="header-info">
+    <div>Report ID: <span data-field="report_id">{{ report_id }}</span></div>
+    <div>Page No. {{ page_number }} of {{ total_pages }}</div>
+    <div>Run Date: {{ run_date }}</div>
+    <div>Run Time: {{ run_time }}</div>
+  </div>
+  <div class="title-section">
+    <h1 style="font-size: 18pt; margin: 0;">University of Utah</h1>
+    <h2 style="font-size: 14pt; margin: 5px 0 0 0;">Schedule of Classes for Summer 2026</h2>
+    <h3 style="font-size: 12pt; margin: 5px 0 0 0;">Campus: <span data-field="campus_name">{{ campus_name }}</span></h3>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat.#-Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].subject">{{ item.subject }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].cat_sec">{{ item.cat_sec }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].time">{{ item.time }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].location">{{ item.location }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="contact-info">
+    <p>Office Address: <span data-field="office_address">{{ office_address }}</span> Phone: <span data-field="office_phone">{{ office_phone }}</span></p>
+    <p>Departmental Advisors: <span data-field="departmental_advisors">{{ departmental_advisors }}</span></p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Class#</th>
+        <th>Sub</th>
+        <th>Cat.#-Sec</th>
+        <th>Cmpt Units</th>
+        <th>Title</th>
+        <th>Days</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th>Instructor</th>
+        <th>Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schedule_items %}
+      <tr>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].class_number">{{ item.class_number }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].subject">{{ item.subject }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].cat_sec">{{ item.cat_sec }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].days">{{ item.days }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].time">{{ item.time }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].location">{{ item.location }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].instructor">{{ item.instructor }}</span></td>
+        <td><span data-field="schedule_items[{{ loop.index0 }}].fees">{{ item.fees }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top: 30px; font-size: 10pt;">
+    <p>Note: This course meets {{ schedule_items[0].meeting_details }}</p>
+  </div>
+</div>

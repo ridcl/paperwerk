@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Board of Studies Meeting</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .title-block {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .title-block h1 {
+    font-size: 24pt;
+    margin: 0;
+  }
+  .title-block h2 {
+    font-size: 14pt;
+    margin: 5px 0 0 0;
+  }
+  .meeting-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 12pt;
+  }
+  .signature-area {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .signature-box {
+    text-align: center;
+    width: 40%;
+  }
+  .signature-line {
+    border-top: 1px solid black;
+    margin-top: 50px;
+    display: block;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="title-block">
+    <h1><span data-field="college_name">{{ college_name }}</span></h1>
+    <h2><span data-field="affiliation_details">{{ affiliation_details }}</span></h2>
+    <p style="font-size: 12pt; margin-top: 10px;">MADURAI-625 015</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-size: 14pt; font-weight: bold;">DEPARTMENT OF INFORMATION TECHNOLOGY</p>
+    <p style="font-size: 10pt;">Telephone: {{ contact_phone }} | Fax: {{ contact_fax }}</p>
+    <p style="font-size: 10pt;">Website: <a href="{{ website_url }}">{{ website_url }}</a></p>
+  </div>
+
+  <div class="meeting-details">
+    <div>
+      <strong>Date:</strong> <span data-field="meeting_date_1">{{ meeting_date_1 }}</span>
+    </div>
+    <div>
+      <strong>Venue:</strong> <span data-field="meeting_venue_1">{{ meeting_venue_1 }}</span>
+    </div>
+  </div>
+
+  <h3 style="text-align: center; margin-bottom: 30px;">BOARD OF STUDIES MEETING</h3>
+
+  <div style="margin-bottom: 40px;">
+    <p><strong>Chairman</strong></p>
+    <p>Dr.<span data-field="chairman_name_1">{{ chairman_name_1 }}</span>,</p>
+    <p>Head of the Department,</p>
+    <p><span data-field="chairman_dept">{{ chairman_dept }}</span></p>
+    <p><span data-field="chairman_college">{{ chairman_college }}</span></p>
+    <p><span data-field="chairman_city">{{ chairman_city }}</span></p>
+  </div>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 10%;">S.No</th>
+        <th style="width: 60%;">External Experts</th>
+        <th style="width: 30%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for expert in external_experts %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          <p>Dr.<span data-field="external_experts[{{ loop.index0 }}].name">{{ expert.name }}</span>,</p>
+          <p>{{ expert.designation }}</p>
+          <p>{{ expert.affiliation }}</p>
+        </td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="title-block">
+    <h1><span data-field="college_name">{{ college_name }}</span></h1>
+    <h2><span data-field="affiliation_details">{{ affiliation_details }}</span></h2>
+    <p style="font-size: 12pt; margin-top: 10px;">MADURAI-625 015</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-size: 14pt; font-weight: bold;">DEPARTMENT OF INFORMATION TECHNOLOGY</p>
+    <p style="font-size: 10pt;">Telephone: {{ contact_phone }} | Fax: {{ contact_fax }}</p>
+    <p style="font-size: 10pt;">Website: <a href="{{ website_url }}">{{ website_url }}</a></p>
+  </div>
+
+  <div class="meeting-details">
+    <div>
+      <strong>Date:</strong> <span data-field="meeting_date_2">{{ meeting_date_2 }}</span>
+    </div>
+    <div>
+      <strong>Venue:</strong> <span data-field="meeting_venue_2">{{ meeting_venue_2 }}</span>
+    </div>
+  </div>
+
+  <h3 style="text-align: center; margin-bottom: 30px;">BOARD OF STUDIES MEETING</h3>
+
+  <div style="margin-bottom: 40px;">
+    <p><strong>Chairman</strong></p>
+    <p>Dr.<span data-field="chairman_name_2">{{ chairman_name_2 }}</span>,</p>
+    <p>Head of the Department,</p>
+    <p><span data-field="chairman_dept_2">{{ chairman_dept_2 }}</span></p>
+    <p><span data-field="chairman_college_2">{{ chairman_college_2 }}</span></p>
+    <p><span data-field="chairman_city_2">{{ chairman_city_2 }}</span></p>
+  </div>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 10%;">S.No</th>
+        <th style="width: 60%;">Internal Faculty Members</th>
+        <th style="width: 30%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for faculty in internal_faculty %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          <p>{{ faculty.name }}</p>
+          <p>{{ faculty.department }}</p>
+        </td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="title-block">
+    <h1><span data-field="college_name">{{ college_name }}</span></h1>
+    <h2><span data-field="affiliation_details">{{ affiliation_details }}</span></h2>
+    <p style="font-size: 12pt; margin-top: 10px;">MADURAI-625 015</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-size: 14pt; font-weight: bold;">DEPARTMENT OF INFORMATION TECHNOLOGY</p>
+    <p style="font-size: 10pt;">Telephone: {{ contact_phone }} | Fax: {{ contact_fax }}</p>
+    <p style="font-size: 10pt;">Website: <a href="{{ website_url }}">{{ website_url }}</a></p>
+  </div>
+
+  <div class="meeting-details">
+    <div>
+      <strong>Date of Meeting:</strong> <span data-field="meeting_date_3">{{ meeting_date_3 }}</span>
+    </div>
+    <div>
+      <strong>Venue:</strong> <span data-field="meeting_venue_3">{{ meeting_venue_3 }}</span>
+    </div>
+  </div>
+
+  <h3 style="text-align: center; margin-bottom: 30px;">Management Review System Formats</h3>
+
+  <p><strong>Name of the Meeting:</strong> Board of Studies</p>
+  <p><strong>Convener:</strong> Dr.<span data-field="convener_name">{{ convener_name }}</span>, Head, Department of Information Technology, TCE, Madurai.</p>
+
+  <h4 style="margin-top: 30px;">Members of Board of Studies: External Experts</h4>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 60%;">Name and Designation</th>
+        <th style="width: 35%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for expert in external_experts_review %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          <p>Mr.<span data-field="expert_review[{{ loop.index0 }}].name">{{ expert.name }}</span>, {{ expert.designation }}</p>
+          <p>{{ expert.affiliation }}</p>
+        </td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 style="margin-top: 30px;">Faculty Members:</h4>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 60%;">Name</th>
+        <th style="width: 35%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for faculty in faculty_members_review %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ faculty.name }}</td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 50px;">
+    <p>Mr.<span data-field="summary_name">{{ summary_name }}</span> presented the action taken report on previous Board of Studies meeting and Academic Council Meeting and the changes in scheduling of courses for B.Tech (Information Technology) for students admitted in the academic year 2014-2015 onwards.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="title-block">
+    <h1><span data-field="college_name">{{ college_name }}</span></h1>
+    <h2><span data-field="affiliation_details">{{ affiliation_details }}</span></h2>
+    <p style="font-size: 12pt; margin-top: 10px;">MADURAI-625 015</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-size: 14pt; font-weight: bold;">DEPARTMENT OF INFORMATION TECHNOLOGY</p>
+    <p style="font-size: 10pt;">Telephone: {{ contact_phone }} | Fax: {{ contact_fax }}</p>
+    <p style="font-size: 10pt;">Website: <a href="{{ website_url }}">{{ website_url }}</a></p>
+  </div>
+
+  <div class="meeting-details">
+    <div>
+      <strong>Date of Meeting:</strong> <span data-field="meeting_date_4">{{ meeting_date_4 }}</span>
+    </div>
+    <div>
+      <strong>Venue:</strong> <span data-field="meeting_venue_4">{{ meeting_venue_4 }}</span>
+    </div>
+  </div>
+
+  <h3 style="text-align: center; margin-bottom: 30px;">Management Review System Formats</h3>
+
+  <p><strong>Name of the Meeting:</strong> Board of Studies</p>
+  <p><strong>Convener:</strong> Dr.<span data-field="convener_name_2">{{ convener_name_2 }}</span>, Head, Department of Information Technology, TCE, Madurai.</p>
+
+  <h4 style="margin-top: 30px;">Members of Board of Studies: External Experts</h4>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 60%;">Name and Designation</th>
+        <th style="width: 35%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for expert in external_experts_review_2 %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          <p>Dr.<span data-field="expert_review_2[{{ loop.index0 }}].name">{{ expert.name }}</span>, {{ expert.designation }}</p>
+          <p>{{ expert.affiliation }}</p>
+        </td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 style="margin-top: 30px;">Faculty Members:</h4>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 60%;">Name</th>
+        <th style="width: 35%;">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for faculty in faculty_members_review_2 %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ faculty.name }}</td>
+        <td>
+          <div style="height: 60px;">
+            <!-- Placeholder for signature -->
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 style="margin-top: 30px;">Approval for Programme core courses from Third to Seventh semester - For students admitted in the academic year 2014-2015 onwards</h4>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">S.No</th>
+        <th style="width: 25%;">Sub Code</th>
+        <th style="width: 35%;">Subject Name</th>
+        <th style="width: 15%;">Presented By</th>
+        <th style="width: 15%;">Suggestions</th>
+        <th style="width: 10%;">Responsibility</th>
+        <th style="width: 10%;">Target Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in curriculum_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ item.sub_code }}</td>
+        <td>{{ item.subject_name }}</td>
+        <td>{{ item.presented_by }}</td>
+        <td>{{ item.suggestions }}</td>
+        <td>{{ item.responsibility }}</td>
+        <td>{{ item.target_date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;"></td>
+        <td style="width: 15%;"></td>
+        <td style="width: 40%;"></td>
+        <td style="width: 25%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td><span data-field="subject_name">{{ subject_name }}</span></td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>1. Another measure of uncertainty -Fuzzy Topics can be included<br>
+        2. If it can't be accommodated here, take it to Discrete Mathematics<br>
+        3. Reference Books on Digital Communication, communication systems - Are application oriented and can be avoided - can be removed (if case studies are included, these books can be useful)<br>
+        4. Case study Based Mathematics will be of great value to students</td>
+        <td><span data-field="suggestions">{{ suggestions }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td><span data-field="subject_name">{{ subject_name }}</span></td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>1. Basics of accounting can be included.<br>
+        2. Some topics in audit can be included.</td>
+        <td><span data-field="suggestions">{{ suggestions }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td><span data-field="subject_name">{{ subject_name }}</span></td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>1.Last unit (Facility Planning and Productivity) is more important for Mechanical stream -its necessity can be checked<br>
+        2.Suggestions from CSE dept BOS Meeting can also be considered for remodelling IT syllabus</td>
+        <td><span data-field="suggestions">{{ suggestions }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td><span data-field="subject_name">{{ subject_name }}</span></td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>1.GRE/TOEFL - can be concentrated more<br>
+        2. Credit weightage to this course can be reduced if possible<br>
+        No suggestions.</td>
+        <td><span data-field="suggestions">{{ suggestions }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td><span data-field="subject_name">{{ subject_name }}</span></td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No suggestions.</td>
+        <td><span data-field="suggestions">{{ suggestions }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;">Sl.No</td>
+        <td style="width: 15%;">Sub Code</td>
+        <td style="width: 40%;">Subject Name</td>
+        <td style="width: 25%;">Presented By</td>
+        <td style="width: 10%;">Responsibility</td>
+        <td style="width: 10%;">Target Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Information Retrieval</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Text Book can be checked for recent edition</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Decision Support Systems</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Edition details of the Text Book was missing.</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Database Administration</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1.Case studies on open source tools can be included<br>
+        2. Include commonly available books</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>4.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Cloud Security</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Entire Unit need not be spanned for overview (as students already study cloud computing-) can be made as a recap<br>
+        2. Recap can also include security related</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;">Sl.No</td>
+        <td style="width: 15%;">Sub Code</td>
+        <td style="width: 40%;">Subject Name</td>
+        <td style="width: 25%;">Presented By</td>
+        <td style="width: 10%;">Responsibility</td>
+        <td style="width: 10%;">Target Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Advanced Cryptography</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Industry People can be made to teach this course as a week end course (Alumni can be involved)</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>6.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Ethical Hacking</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>No suggestions.</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>7.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Information security auditing and management</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>ISACA Members can be invited for guest lecture</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>8.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Internet of Things</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1.Hands ON Sessions can be conducted.<br>
+        2. Number of Reference books can be reduced.</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>9.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Service Oriented Architecture</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Restful services can be included as case study in Unit I</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>10.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Parallel Computing</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>No Suggestions</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>11.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Software defined Networks</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Number of References can be increased</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>12.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Network Administration</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Check Reference books</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>13.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Software Testing</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Content Delivery -Demo can be given with tools</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>14.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>C#and.NETFramework</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Guest lectures can be arranged from Microsoft</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>15.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Multi-core Architecture</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Multi Core Architecture Book, authored by Ranjani Parthasarathy from AU is recommended.</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>16.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Embedded Systems</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Introduction to Microprocessor & MicroController can be included as first unit (8085 & 8051)<br>
+        2. Hands on sessions using kits and boards can be included</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;">Sl.No</td>
+        <td style="width: 15%;">Sub Code</td>
+        <td style="width: 40%;">Subject Name</td>
+        <td style="width: 25%;">Presented By</td>
+        <td style="width: 10%;">Responsibility</td>
+        <td style="width: 10%;">Target Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>17.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Robotics</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Web References can be added</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>18.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Theory of Computation</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Web References can be added</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>19.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Numerical Methods</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Reference Books on Quantitative Techniques can be included</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>20.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Operations Research</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Add Queuing concepts here<br>
+        2. Check latest editions or reprint versions</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;">Sl.No</td>
+        <td style="width: 15%;">Sub Code</td>
+        <td style="width: 40%;">Subject Name</td>
+        <td style="width: 25%;">Presented By</td>
+        <td style="width: 10%;">Responsibility</td>
+        <td style="width: 10%;">Target Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Enterprise mobility</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>No Suggestions</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Malware Analysis</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>1. Proper Commitment from industry people has to be ensured<br>
+        2. Facilitate students to update Available free Software with the help of tools</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <td style="width: 10%;">Sl.No</td>
+        <td style="width: 15%;">Sub Code</td>
+        <td style="width: 40%;">Subject Name</td>
+        <td style="width: 25%;">Presented By</td>
+        <td style="width: 10%;">Responsibility</td>
+        <td style="width: 10%;">Target Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Information Security Program Development and Management</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Pre requisite based on Security can be included.</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Information Retrieval Techniques</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>No Suggestions</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Distributed Operating Systems and Security</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>No Suggestions</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>4.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Network Penetration Testing</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Overlap with wireless security topics need to be checked</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+      <tr>
+        <td>5.</td>
+        <td><span data-field="sub_code">{{ sub_code }}</span></td>
+        <td>Cognitive Sciences</td>
+        <td><span data-field="presented_by">{{ presented_by }}</span></td>
+        <td>Check the availability of text books</td>
+        <td><span data-field="responsibility">{{ responsibility }}</span></td>
+        <td><span data-field="target_date">{{ target_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

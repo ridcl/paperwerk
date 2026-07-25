@@ -1,0 +1,124 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .note {
+    margin-top: 30px;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+    <div>
+      <span data-field="student_name">{{ student_name }}</span>
+    </div>
+    <div>
+      <span data-field="student_id">{{ student_id }}</span>
+    </div>
+  </div>
+
+  <div class="header">
+    <img src="" alt="University Logo" style="max-width: 200px; height: auto;">
+    <h1 style="font-size: 18pt; margin-top: 10px;">COLLEGE OF LIBERAL ARTS & SCIENCE • COMPUTER SCIENCE MINOR</h1>
+  </div>
+
+  <div style="margin-bottom: 30px; font-size: 0.9em;">
+    Academic Plan: <span data-field="academic_plan">{{ academic_plan }}</span> |
+    Version Number: <span data-field="version_number">{{ version_number }}</span> |
+    Effective Date: <span data-field="effective_date">{{ effective_date }}</span>
+  </div>
+
+  <h2 class="section-title">PROGRAM REQUIREMENTS FOR COMPUTER SCIENCE MINOR</h2>
+
+  <h3 class="section-title">Minor Program: 21 credits</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 70%;">Course</th>
+        <th style="width: 15%; text-align: center;">CR</th>
+        <th style="width: 15%; text-align: center;">GR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Required Courses - 15 credits</td>
+      </tr>
+      {% for course in required_courses %}
+      <tr>
+        <td>{{ course.description }}</td>
+        <td style="text-align: center;"><span data-field="course_credits">{{ course.credits }}</span></td>
+        <td style="text-align: center;"><span data-field="course_grade">{{ course.grade }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 class="section-title">2. Elective Courses - 6 credits</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 70%;">Course Requirement</th>
+        <th style="width: 15%; text-align: center;">CR</th>
+        <th style="width: 15%; text-align: center;">GR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A. Any 200-level or higher CSC* course</td>
+        <td style="text-align: center;"><span data-field="elective_credits_a">{{ elective_credits_a }}</span></td>
+        <td style="text-align: center;"><span data-field="elective_grade_a">{{ elective_grade_a }}</span></td>
+      </tr>
+      <tr>
+        <td>B. Any 300-level or higher CSC** course</td>
+        <td style="text-align: center;"><span data-field="elective_credits_b">{{ elective_credits_b }}</span></td>
+        <td style="text-align: center;"><span data-field="elective_grade_b">{{ elective_grade_b }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    NOTE: A student majoring in Computer Science or Information Technology may not minor in Computer Science.
+  </div>
+
+  <div class="section-title" style="margin-top: 40px;">Advisement Notes</div>
+  <div class="note">
+    <p>
+      <span style="font-weight: bold;">*</span> If you are thinking of going for an MS in Computer Science: Software Development you should take CSC 235.
+    </p>
+    <p>
+      <span style="font-weight: bold;">*</span> If you are thinking of going on for an MS in Computer Science: Software Development you should take CSC 310.
+    </p>
+  </div>
+
+  <div style="margin-top: 60px; text-align: center; font-size: 0.9em;">
+    Computer Science & Information Technology Department
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-row { margin-bottom: 15px; }
+  .label { display: inline-block; width: 150px; vertical-align: top; }
+  .input-line { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 160px); }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 24px; font-weight: bold;">The</div>
+    <div style="font-size: 24px; font-weight: bold;">City College</div>
+    <div style="font-size: 24px; font-weight: bold;">of New York</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 14px;"><strong>Reference Check List</strong></p>
+    <p style="font-size: 12px;">Please attach any additional notes/documentation to the back of this page.</p>
+  </div>
+
+  <!-- Candidate Information -->
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Candidate Name:</span>
+    <span class="input-line">{{ candidate.full_name }}</span>
+    <span style="float: right;">Date: <span data-field="date_submitted">{{ date_submitted }}</span></span>
+  </div>
+
+  <!-- Position Applying For -->
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Position Applying for:</span>
+    <span class="input-line">{{ candidate.position_applying_for }}</span>
+  </div>
+
+  <!-- Reference 1 -->
+  <h3 style="margin-top: 30px;">Reference 1 (Required)</h3>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Name of Reference:</span>
+    <span class="input-line">{{ reference_1.name }}</span>
+    <span style="float: right;">Title: <span data-field="reference_1.title">{{ reference_1.title }}</span></span>
+  </div>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Company:</span>
+    <span class="input-line">{{ reference_1.company }}</span>
+    <span style="float: right;">Contact (phone/email): <span data-field="reference_1.contact">{{ reference_1.contact }}</span></span>
+  </div>
+
+  <!-- Questions for Reference 1 -->
+  <div class="form-row" style="margin-top: 20px;">
+    <p>1. How would you rate the feedback given regarding this employee? (Check one)</p>
+    <div class="checkbox-group">
+      <label><input type="checkbox" data-field="reference_1.rating.outstanding" value="{{ reference_1.rating.outstanding }}"> Outstanding</label>
+      <label><input type="checkbox" data-field="reference_1.rating.good" value="{{ reference_1.rating.good }}"> Good</label>
+      <label><input type="checkbox" data-field="reference_1.rating.average" value="{{ reference_1.rating.average }}"> Average</label>
+      <label><input type="checkbox" data-field="reference_1.rating.fair" value="{{ reference_1.rating.fair }}"> Fair</label>
+      <label><input type="checkbox" data-field="reference_1.rating.poor" value="{{ reference_1.rating.poor }}"> Poor</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <p>2. Were any issues mentioned? <span style="margin-left: 10px;">Yes <input type="checkbox" data-field="reference_1.issues.yes" value="{{ reference_1.issues.yes }}"> No <input type="checkbox" data-field="reference_1.issues.no" value="{{ reference_1.issues.no }}"></span></p>
+    <p style="margin-top: 10px;">a. If yes, please specify:</p>
+    <span class="input-line" style="width: 95%;">{{ reference_1.issues_details }}</span>
+  </div>
+
+  <!-- Reference 2 -->
+  <h3 style="margin-top: 40px;">Reference 2 (Required)</h3>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Name of Reference:</span>
+    <span class="input-line">{{ reference_2.name }}</span>
+    <span style="float: right;">Title: <span data-field="reference_2.title">{{ reference_2.title }}</span></span>
+  </div>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Company:</span>
+    <span class="input-line">{{ reference_2.company }}</span>
+    <span style="float: right;">Contact (phone/email): <span data-field="reference_2.contact">{{ reference_2.contact }}</span></span>
+  </div>
+
+  <!-- Questions for Reference 2 -->
+  <div class="form-row" style="margin-top: 20px;">
+    <p>3. How would you rate the feedback given regarding this employee? (Check one)</p>
+    <div class="checkbox-group">
+      <label><input type="checkbox" data-field="reference_2.rating.outstanding" value="{{ reference_2.rating.outstanding }}"> Outstanding</label>
+      <label><input type="checkbox" data-field="reference_2.rating.good" value="{{ reference_2.rating.good }}"> Good</label>
+      <label><input type="checkbox" data-field="reference_2.rating.average" value="{{ reference_2.rating.average }}"> Average</label>
+      <label><input type="checkbox" data-field="reference_2.rating.fair" value="{{ reference_2.rating.fair }}"> Fair</label>
+      <label><input type="checkbox" data-field="reference_2.rating.poor" value="{{ reference_2.rating.poor }}"> Poor</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <p>4. Were any issues mentioned? <span style="margin-left: 10px;">Yes <input type="checkbox" data-field="reference_2.issues.yes" value="{{ reference_2.issues.yes }}"> No <input type="checkbox" data-field="reference_2.issues.no" value="{{ reference_2.issues.no }}"></span></p>
+    <p style="margin-top: 10px;">a. If yes, please specify:</p>
+    <span class="input-line" style="width: 95%;">{{ reference_2.issues_details }}</span>
+  </div>
+
+  <!-- Reference 3 -->
+  <h3 style="margin-top: 40px;">Reference 3 (Optional)</h3>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Name of Reference:</span>
+    <span class="input-line">{{ reference_3.name }}</span>
+    <span style="float: right;">Title: <span data-field="reference_3.title">{{ reference_3.title }}</span></span>
+  </div>
+  <div class="form-row">
+    <span style="display: inline-block; width: 150px;">Company:</span>
+    <span class="input-line">{{ reference_3.company }}</span>
+    <span style="float: right;">Contact (phone/email): <span data-field="reference_3.contact">{{ reference_3.contact }}</span></span>
+  </div>
+
+  <!-- Questions for Reference 3 -->
+  <div class="form-row" style="margin-top: 20px;">
+    <p>5. How would you rate the feedback given regarding this employee? (Check one)</p>
+    <div class="checkbox-group">
+      <label><input type="checkbox" data-field="reference_3.rating.outstanding" value="{{ reference_3.rating.outstanding }}"> Outstanding</label>
+      <label><input type="checkbox" data-field="reference_3.rating.good" value="{{ reference_3.rating.good }}"> Good</label>
+      <label><input type="checkbox" data-field="reference_3.rating.average" value="{{ reference_3.rating.average }}"> Average</label>
+      <label><input type="checkbox" data-field="reference_3.rating.fair" value="{{ reference_3.rating.fair }}"> Fair</label>
+      <label><input type="checkbox" data-field="reference_3.rating.poor" value="{{ reference_3.rating.poor }}"> Poor</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <p>6. Were any issues mentioned? <span style="margin-left: 10px;">Yes <input type="checkbox" data-field="reference_3.issues.yes" value="{{ reference_3.issues.yes }}"> No <input type="checkbox" data-field="reference_3.issues.no" value="{{ reference_3.issues.no }}"></span></p>
+    <p style="margin-top: 10px;">a. If yes, please specify:</p>
+    <span class="input-line" style="width: 95%;">{{ reference_3.issues_details }}</span>
+  </div>
+
+  <!-- Completion Section -->
+  <div style="margin-top: 60px;">
+    <p>Completed By:</p>
+    <div class="form-row" style="margin-top: 10px;">
+      <span style="display: inline-block; width: 150px;">Name:</span>
+      <span class="input-line">{{ completed_by.name }}</span>
+      <span style="float: right;">Signature: <span class="input-line" style="width: 200px;" data-field="name">{{ name }}</span> Date: <span data-field="completion_date">{{ completion_date }}</span></span>
+    </div>
+  </div>
+</div>

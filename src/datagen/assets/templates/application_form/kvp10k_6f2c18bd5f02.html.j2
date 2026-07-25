@@ -1,0 +1,207 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  .header-logo { text-align: center; margin-bottom: 30px; }
+  .form-group { margin-bottom: 15px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { font-weight: bold; display: inline-block; width: 150px; }
+  .form-input-container { flex-grow: 1; }
+  .input-field { border-bottom: 1px solid #ccc; padding: 2px 0; width: 100%; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .checkbox-group { display: flex; gap: 20px; margin-top: 10px; }
+  .signature-area { margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo/Header Content -->
+    <div style="font-size: 24px; font-weight: bold;">TEXTS & TECHNOLOGY, PH.D.</div>
+    <div style="font-size: 12px;">Investing in the Future of the Humanities</div>
+  </div>
+
+  <h1 style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">Application for the Texts & Technology Travel Award</h1>
+  <p style="margin-bottom: 20px;">For graduate student participation at an academic conference</p>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Name:</div>
+      <div class="form-input-container"><span class="input-field">{{ full_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Email:</div>
+      <div class="form-input-container"><span class="input-field">{{ email }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Phone:</div>
+      <div class="form-input-container"><span class="input-field">{{ phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Conference Name:</div>
+      <div class="form-input-container"><span class="input-field">{{ conference_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Location:</div>
+      <div class="form-input-container"><span class="input-field">{{ location }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Dates of Conference:</div>
+      <div class="form-input-container"><span class="input-field">{{ dates_of_conference }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Travel Dates: Departure</div>
+      <div class="form-input-container"><span class="input-field">{{ travel_dates_departure }}</span></div>
+      <div class="form-label" style="margin-left: 30px;">Return</div>
+      <div class="form-input-container"><span class="input-field">{{ travel_dates_return }}</span></div>
+    </div>
+  </div>
+
+  <p style="font-size: 12px; margin-bottom: 15px;">If you have received a T&T travel award before, date of last award:</p>
+  <div class="form-group">
+    <div class="form-input-container"><span class="input-field">{{ last_award_date }}</span></div>
+  </div>
+
+  <div class="section-title">Itemized Budget</div>
+  <p style="font-size: 12px; margin-bottom: 10px;">Consult the UCF Travel Reference Guide for allowed amounts: <a href="https://fa.ucf.edu/wp-content/uploads/sites/2/Travel_Reference_Guide.pdf">https://fa.ucf.edu/wp-content/uploads/sites/2/Travel_Reference_Guide.pdf</a></p>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Transportation:</div>
+      <div class="form-input-container"><span class="input-field">{{ transportation_amount }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Registration fees:</div>
+      <div class="form-input-container"><span class="input-field">{{ registration_fees_amount }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Lodging:</div>
+      <div class="form-input-container"><span class="input-field">{{ lodging_amount }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Food:</div>
+      <div class="form-input-container"><span class="input-field">{{ food_amount }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Other Expense:</div>
+      <div class="form-input-container"><span class="input-field">{{ other_expense_amount }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Specify Other Expense:</div>
+      <div class="form-input-container"><span class="input-field">{{ specify_other_expense }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="form-label">Total Est. Budget:</div>
+      <div class="form-input-container" style="font-weight: bold;"><span class="input-field">{{ total_est_budget }}</span></div>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;">It is T&T's expectation that students will pursue all available funding to supplement what we are able to provide. Please indicate whether you have applied for:</p>
+
+  <div class="checkbox-group">
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="sga" name="sga">
+      <label for="sga" style="margin-left: 5px;">SGA Conference Registration and Travel Funding:</label>
+      <span data-field="sga_applied">{{ sga_applied }}</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="college" name="college">
+      <label for="college" style="margin-left: 5px;">College of Graduate Studies Presentation Fellowship:</label>
+      <span data-field="college_applied">{{ college_applied }}</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="other" name="other">
+      <label for="other" style="margin-left: 5px;">Other Funding (please list):</label>
+      <span data-field="other_applied">{{ other_applied }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="form-row" style="font-size: 12px;">
+      <div style="width: 200px;"></div> <!-- Spacer -->
+      <div style="flex-grow: 1;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Estimated Award:</span>
+          <span data-field="sga_estimated_award">{{ sga_estimated_award }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Estimated Award:</span>
+          <span data-field="college_estimated_award">{{ college_estimated_award }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Estimated Award:</span>
+          <span data-field="other_estimated_award">{{ other_estimated_award }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Materials Checklist:</div>
+  <div style="margin-left: 15px;">
+    <div style="margin-bottom: 5px;"><input type="checkbox"> Application</div>
+    <div style="margin-bottom: 5px;"><input type="checkbox"> CV</div>
+    <div style="margin-bottom: 5px;"><input type="checkbox"> Abstract / Proposal</div>
+    <div style="margin-bottom: 5px;"><input type="checkbox"> Statement of Event Significance</div>
+    <div style="margin-bottom: 5px;"><input type="checkbox"> Email indicating advisor's approval</div>
+    <div style="margin-bottom: 5px;"><input type="checkbox"> Copy of Conference Invitation (Skip if application pending)</div>
+  </div>
+
+  <p style="margin-top: 40px; font-size: 12px;">Your signature below indicates acceptance of the guidelines found on the T&T website and verifies that all the information is complete and accurate. Incomplete applications will not be considered for funding.</p>
+
+  <div class="signature-area">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p style="font-weight: bold;">Applicant's signature</p>
+        <div style="border-bottom: 1px solid #000; width: 300px; margin-top: 5px;" data-field="applicant_s_signature">{{ applicant_s_signature }}</div>
+        <p style="margin-top: 5px;">Date: <span data-field="signature_date">{{ signature_date }}</span></p>
+      </div>
+      <div style="text-align: right;">
+        <p style="font-weight: bold;">Program Use Only</p>
+        <p style="margin-top: 10px;">Application Received: <span data-field="application_received_date">{{ application_received_date }}</span></p>
+        <p>Award Amount: <span data-field="award_amount">{{ award_amount }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>

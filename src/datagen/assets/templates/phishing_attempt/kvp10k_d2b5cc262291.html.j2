@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Synthetic Data Generation</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the app/form structure */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .input-group label {
+    font-size: 12px;
+    color: #555;
+  }
+  .input-group input, .input-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .primary-button {
+    background-color: #007bff;
+    color: white;
+  }
+  .secondary-button {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .sub-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .text-block {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+  .alert-box {
+    border: 1px solid #ffc107;
+    background-color: #fff3cd;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 13px;
+  }
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .table-cell {
+    flex-basis: 50%;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the visual structure */
+  body { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .phone-frame {
+    width: 375px; height: 667px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    position: relative;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+  .screen {
+    width: 100%; height: 100%;
+    border-radius: 29px;
+    overflow: hidden;
+    position: relative;
+  }
+  .header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+  .content {
+    padding: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #555;
+  }
+  .form-group input[type="text"], .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    margin-left: 10px;
+  }
+  .alert-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 80%;
+  }
+  .alert-box p {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .alert-box .button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .info-box {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">Sign Up</div>
+  <div class="form-container">
+    <div class="text-block">
+      Welcome, new user.
+      <br><br>
+      We have found that you haven't yet signed up with Chase Payments.
+      <br><br>
+      Please complete the simple enrollment below to create an account and receive your money.
+    </div>
+    <div class="input-group">
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" value="{{ first_name }}">
+    </div>
+    <div class="input-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" value="{{ last_name }}">
+    </div>
+    <div class="input-group">
+      <label for="user_id">User ID</label>
+      <input type="text" id="user_id" value="{{ user_id }}">
+    </div>
+    <div class="alert-box">
+      Must be 8-24 characters and include at least one upper case letter, one lower case letter, a number [0-9], with no special characters.
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" value="{{ password }}">
+    </div>
+    <div class="button-group">
+      <button class="secondary-button">Back</button>
+      <button class="primary-button">Continue</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">Create Password</div>
+  <div class="form-container">
+    <div class="alert-box">
+      Must be 8-24 characters and include at least one upper case letter, one lower case letter, a number [0-9], with no special characters.
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" value="{{ password }}">
+    </div>
+    <div class="input-group">
+      <label for="confirm_password">Confirm Password</label>
+      <input type="password" id="confirm_password" value="{{ confirm_password }}">
+    </div>
+    <div class="text-block">
+      By giving your mobile phone number to JPMorgan Chase Bank, N.A., you are giving permission for JPMorgan Chase Bank, N.A. to send an activation code using an automatically dialed text message or artificial or prerecorded phone message. Message and data rates may apply.
+    </div>
+    <div class="input-group">
+      <label for="phone_number">Contact</label>
+      <input type="text" id="phone_number" value="{{ phone_number }}">
+    </div>
+    <div class="text-block">
+      Recipient creates a password. Mobile number is optional for future authentication purposes.
+    </div>
+    <div class="input-group">
+      <label for="security_question_1">Security Questions</label>
+      <select id="security_question_1">
+        <option value="">Select Security Question (required)</option>
+        {% for q in security_questions %}
+          <option value="{{ q }}">{{ q }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="answer_1">Answer (Required)</label>
+      <input type="text" id="answer_1" value="{{ answer_1 }}">
+    </div>
+    <div class="input-group">
+      <label for="security_question_2">Security Questions</label>
+      <select id="security_question_2">
+        <option value="">Select Security Question (required)</option>
+        {% for q in security_questions %}
+          <option value="{{ q }}">{{ q }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="answer_2">Answer (Required)</label>
+      <input type="text" id="answer_2" value="{{ answer_2 }}">
+    </div>
+    <div class="text-block">
+      Recipient creates 2 security questions for future authentication purposes.
+    </div>
+    <div class="input-group">
+      <label for="terms_agreement">Terms and Conditions</label>
+      <input type="checkbox" id="terms_agreement" checked> I agree the <span data-field="terms_link">{{ terms_link }}</span>.
+    </div>
+    <div class="button-group">
+      <button class="secondary-button">Cancel</button>
+      <button class="primary-button">Save and Continue</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">Contact</div>
+  <div class="form-container">
+    <div class="text-block">
+      By giving your mobile phone number to JPMorgan Chase Bank, N.A., you are giving permission for JPMorgan Chase Bank, N.A. to send an activation code using an automatically dialed text message or artificial or prerecorded phone message. Message and data rates may apply.
+    </div>
+    <div class="input-group">
+      <label for="phone_number">Contact</label>
+      <input type="text" id="phone_number" value="{{ phone_number }}">
+    </div>
+    <div class="text-block">
+      Recipient creates 2 security questions for future authentication purposes.
+    </div>
+    <div class="input-group">
+      <label for="security_question_1">Security Questions</label>
+      <select id="security_question_1">
+        <option value="">Select Security Question (required)</option>
+        {% for q in security_questions %}
+          <option value="{{ q }}">{{ q }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="answer_1">Answer (Required)</label>
+      <input type="text" id="answer_1" value="{{ answer_1 }}">
+    </div>
+    <div class="input-group">
+      <label for="security_question_2">Security Questions</label>
+      <select id="security_question_2">
+        <option value="">Select Security Question (required)</option>
+        {% for q in security_questions %}
+          <option value="{{ q }}">{{ q }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="answer_2">Answer (Required)</label>
+      <input type="text" id="answer_2" value="{{ answer_2 }}">
+    </div>
+    <div class="text-block">
+      Recipient accepts site Terms & Conditions and clicks Save and Continue.
+    </div>
+    <div class="input-group">
+      <label for="terms_agreement">Terms and Conditions</label>
+      <input type="checkbox" id="terms_agreement" checked> I agree the <span data-field="terms_link">{{ terms_link }}</span>.
+    </div>
+    <div class="button-group">
+      <button class="secondary-button">Cancel</button>
+      <button class="primary-button">Save and Continue</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">My Payments</div>
+  <div class="form-container">
+    <div class="table-row">
+      <div class="table-cell">Amount</div>
+      <div class="table-cell"><span data-field="payment.amount">{{ payment.amount }}</span> USD</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Sender</div>
+      <div class="table-cell"><span data-field="payment.sender">{{ payment.sender }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Description</div>
+      <div class="table-cell"><span data-field="payment.description">{{ payment.description }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Expiry Date</div>
+      <div class="table-cell"><span data-field="payment.expiry_date">{{ payment.expiry_date }}</span></div>
+    </div>
+    <div class="text-block" style="margin-top: 20px;">
+      Recipient can view Payment Details or Transfer to Bank Account.
+    </div>
+    <div class="button-group" style="margin-top: 30px;">
+      <button class="secondary-button">Transfer to Bank Account</button>
+      <button class="primary-button">Decline</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">Payment Information</div>
+  <div class="form-container">
+    <div class="table-row">
+      <div class="table-cell">Payment Date</div>
+      <div class="table-cell"><span data-field="payment_info.payment_date">{{ payment_info.payment_date }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Sender</div>
+      <div class="table-cell"><span data-field="payment_info.sender">{{ payment_info.sender }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Amount</div>
+      <div class="table-cell"><span data-field="payment_info.amount">{{ payment_info.amount }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Payment ID</div>
+      <div class="table-cell"><span data-field="payment_info.payment_id">{{ payment_info.payment_id }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Description</div>
+      <div class="table-cell"><span data-field="payment_info.description">{{ payment_info.description }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Purpose</div>
+      <div class="table-cell"><span data-field="payment_info.purpose">{{ payment_info.purpose }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Reference Number</div>
+      <div class="table-cell"><span data-field="payment_info.reference_number">{{ payment_info.reference_number }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Customer ID</div>
+      <div class="table-cell"><span data-field="payment_info.customer_id">{{ payment_info.customer_id }}</span></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Additional Identifier</div>
+      <div class="table-cell"><span data-field="payment_info.additional_identifier">{{ payment_info.additional_identifier }}</span></div>
+    </div>
+    <div class="text-block" style="margin-top: 30px;">
+      If satisfied, Recipient selects 'Transfer to Bank Account'.
+    </div>
+    <div class="button-group" style="margin-top: 20px;">
+      <button class="secondary-button">Back</button>
+      <button class="primary-button">Transfer to Bank Account</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">CHASE</div>
+  <div class="sub-header">Add New Account</div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="routing_number">Routing Number</label>
+      <input type="text" id="routing_number" value="{{ routing_number }}">
+    </div>
+    <div class="input-group">
+      <label for="account_number">Account Number</label>
+      <input type="text" id="account_number" value="{{ account_number }}">
+    </div>
+    <div class="input-group">
+      <label for="account_type">Account Type</label>
+      <select id="account_type">
+        <option value="Saving">Saving</option>
+        <option value="Checking">Checking</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="bank_name">Bank Name</label>
+      <input type="text" id="bank_name" value="{{ bank_name }}">
+    </div>
+    <div class="input-group">
+      <label for="bank_nick_name">Bank Nick Name</label>
+      <input type="text" id="bank_nick_name" value="{{ bank_nick_name }}">
+    </div>
+    <div class="input-group">
+      <label for="default_account">Default Account?</label>
+      <select id="default_account">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div class="text-block" style="margin-top: 20px;">
+      Bank Name is automatically filled in. Recipient can make this their default account for receiving future payments.
+    </div>
+    <div class="button-group" style="margin-top: 30px;">
+      <button class="secondary-button">Cancel</button>
+      <button class="primary-button">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the visual structure */
+  body { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .phone-frame {
+    width: 375px; height: 667px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    position: relative;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+  .screen {
+    width: 100%; height: 100%;
+    border-radius: 29px;
+    overflow: hidden;
+    position: relative;
+  }
+  .header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+  .content {
+    padding: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #555;
+  }
+  .form-group input[type="text"], .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    margin-left: 10px;
+  }
+  .alert-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 80%;
+  }
+  .alert-box p {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .alert-box .button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .info-box {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+</style>
+
+<div class="page">
+  <!-- Page 1: Add New Account -->
+  <div class="phone-frame">
+    <div class="screen">
+      <div class="header">
+        <div>CHASE</div>
+        <div><span data-field="menu_icon">{{ menu_icon }}</span></div>
+      </div>
+      <div class="content">
+        <h2>Add New Account</h2>
+        <div class="form-group">
+          <label>Routing Number</label>
+          <input type="text" value="{{ routing_number }}">
+        </div>
+        <div class="form-group">
+          <label>Account Number</label>
+          <input type="text" value="{{ account_number }}">
+        </div>
+        <div class="form-group">
+          <label>Account Type</label>
+          <div>
+            <input type="radio" name="account_type" value="Saving" {% if account_type == 'Saving' %}checked{% endif %}> Saving
+            <input type="radio" name="account_type" value="Checking" {% if account_type == 'Checking' %}checked{% endif %}> Checking
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Bank Name</label>
+          <input type="text" value="{{ bank_name }}">
+        </div>
+        <div class="form-group">
+          <label>Bank Nick Name</label>
+          <input type="text" value="{{ bank_nick_name }}">
+        </div>
+        <div class="form-group">
+          <label>Default Account?</label>
+          <div>
+            <input type="radio" name="default_account" value="Yes" {% if is_default %}checked{% endif %}> Yes
+            <input type="radio" name="default_account" value="No" {% if not is_default %}checked{% endif %}> No
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="button btn-primary">Submit</button>
+          <button class="button btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    Recipient clicks Submit to finalize payment.
+  </div>
+</div>
+
+<div class="page">
+  <!-- Page 2: Confirm Details -->
+  <div class="phone-frame">
+    <div class="screen">
+      <div class="header">
+        <div>CHASE</div>
+        <div><span data-field="menu_icon">{{ menu_icon }}</span></div>
+      </div>
+      <div class="content">
+        <h2>Confirm details</h2>
+        <div class="form-group">
+          <label>Routing Number</label>
+          <input type="text" value="{{ routing_number }}">
+        </div>
+        <div class="form-group">
+          <label>Account Number</label>
+          <input type="text" value="{{ account_number }}">
+        </div>
+        <div class="form-group">
+          <label>Account Type</label>
+          <input type="text" value="{{ account_type }}">
+        </div>
+        <div class="form-group">
+          <label>Bank Name</label>
+          <input type="text" value="{{ bank_name }}">
+        </div>
+        <div class="form-group">
+          <label>Bank Nick Name</label>
+          <input type="text" value="{{ bank_nick_name }}">
+        </div>
+        <div class="button-group">
+          <button class="button btn-primary">Confirm and Transfer</button>
+          <button class="button btn-secondary">Cancel</button>
+          <button class="button btn-secondary" style="margin-left: 10px;">Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    Recipient confirms and the payment is sent.
+  </div>
+</div>
+
+<div class="page">
+  <!-- Page 3: Confirmation/Transfer Screen -->
+  <div class="phone-frame">
+    <div class="screen">
+      <div class="header">
+        <div>CHASE</div>
+        <div><span data-field="menu_icon">{{ menu_icon }}</span></div>
+      </div>
+      <div class="content">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span data-field="confirmation_icon">{{ confirmation_icon }}</span>
+        </div>
+        <p style="font-size: 16px; margin-bottom: 20px;">The amount <span data-field="transfer_amount">{{ transfer_amount }}</span> USD will be transferred to your account</p>
+        <div style="border-top: 1px solid #eee; padding-top: 20px;">
+            <div class="form-group">
+                <label>Account Type</label>
+                <input type="text" value="{{ account_type }}">
+            </div>
+            <div class="form-group">
+                <label>Bank Name</label>
+                <input type="text" value="{{ bank_name }}">
+            </div>
+            <div class="form-group">
+                <label>Bank Nick Name</label>
+                <input type="text" value="{{ bank_nick_name }}">
+            </div>
+        </div>
+        <div class="button-group" style="margin-top: 40px;">
+          <button class="button btn-primary">Confirm and Transfer</button>
+          <button class="button btn-secondary">Cancel</button>
+          <button class="button btn-secondary" style="margin-left: 10px;">Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box" style="top: 100px; right: 50px;">
+    Payment is typically made in 1-3 business days.
+  </div>
+</div></body>
+</html>

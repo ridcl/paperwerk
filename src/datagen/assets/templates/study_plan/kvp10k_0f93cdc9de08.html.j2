@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan de Estudio Template</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td, th { padding: 8px; text-align: left; border-bottom: 1px solid #ccc; }
+        .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 10px; }
+        .subtitle { font-size: 14pt; margin-bottom: 30px; }
+        .section-title { font-size: 16pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .footer-info { font-size: 10pt; margin-top: 50px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span style="font-size: 12pt;">Facultad de Ciencias Marinas y Tecnológicas</span>
+        </div>
+        <div style="text-align: center; position: relative; height: 600px;">
+            <!-- Placeholder for image/visual layout -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #333; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <h1 style="font-size: 48pt; margin-bottom: 20px;">Plan de Estudio</h1>
+                <div style="margin-top: 50px;">
+                    <h2 style="font-size: 28pt;">Licenciatura en Ingeniería en Ciencias Náuticas y Administración con Énfasis en Transporte Marítima</h2>
+                    <p style="font-size: 14pt; margin-top: 20px;">CTDA-151-2019 del <span data-field="date">{{ date }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <!-- Placeholder for University Logo -->
+            <img src="placeholder_logo.png" alt="University Logo" style="width: 150px; height: auto;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center;">
+            <span style="font-size: 16pt; font-weight: bold;">Plan de Estudio - Licenciatura en Ingeniería en Ciencias Náuticas y Administración con Énfasis en Transporte Marítima</span>
+            <p style="font-size: 12pt;">CTDA-151-2019 del <span data-field="date">{{ date }}</span></p>
+        </div>
+
+        <!-- CICLO BÁSICO I CUATRIMESTRE -->
+        <div class="section-title">CICLO BÁSICO I CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in basic_cycle_i_quadrimestre %}
+                <tr>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].abreviatura">{{ basic_cycle_i_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].codigo">{{ basic_cycle_i_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].clave">{{ basic_cycle_i_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].asignatura">{{ basic_cycle_i_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].teor">{{ basic_cycle_i_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].prat">{{ basic_cycle_i_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].lab">{{ basic_cycle_i_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].total_horas">{{ basic_cycle_i_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].creditos">{{ basic_cycle_i_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="basic_cycle_i_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ basic_cycle_i_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="basic_cycle_i_quadrimestre_subtotal_horas">{{ basic_cycle_i_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="basic_cycle_i_quadrimestre_subtotal_creditos">{{ basic_cycle_i_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CICLO II CUATRIMESTRE -->
+        <div class="section-title">CICLO II CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_ii_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_ii_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_ii_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_ii_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_ii_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_ii_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_ii_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_ii_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_ii_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_ii_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_ii_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_ii_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_ii_quadrimestre_subtotal_horas">{{ cycle_ii_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_ii_quadrimestre_subtotal_creditos">{{ cycle_ii_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <!-- CICLO III CUATRIMESTRE -->
+        <div class="section-title">CICLO III CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_iii_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_iii_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_iii_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_iii_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_iii_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_iii_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_iii_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_iii_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_iii_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_iii_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_iii_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_iii_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_iii_quadrimestre_subtotal_horas">{{ cycle_iii_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_iii_quadrimestre_subtotal_creditos">{{ cycle_iii_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CICLO IV CUATRIMESTRE -->
+        <div class="section-title">CICLO IV CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_iv_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_iv_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_iv_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_iv_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_iv_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_iv_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_iv_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_iv_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_iv_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_iv_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_iv_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_iv_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_iv_quadrimestre_subtotal_horas">{{ cycle_iv_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_iv_quadrimestre_subtotal_creditos">{{ cycle_iv_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CICLO V CUATRIMESTRE -->
+        <div class="section-title">CICLO V CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_v_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_v_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_v_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_v_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_v_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_v_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_v_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_v_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_v_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_v_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_v_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_v_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_v_quadrimestre_subtotal_horas">{{ cycle_v_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_v_quadrimestre_subtotal_creditos">{{ cycle_v_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <!-- CICLO VI CUATRIMESTRE -->
+        <div class="section-title">CICLO VI CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_vi_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_vi_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_vi_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_vi_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_vi_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_vi_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_vi_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_vi_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_vi_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_vi_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_vi_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_vi_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_vi_quadrimestre_subtotal_horas">{{ cycle_vi_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_vi_quadrimestre_subtotal_creditos">{{ cycle_vi_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CICLO VII CUATRIMESTRE -->
+        <div class="section-title">CICLO VII CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_vii_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_vii_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_vii_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_vii_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_vii_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_vii_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_vii_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_vii_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_vii_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_vii_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_vii_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_vii_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_vii_quadrimestre_subtotal_horas">{{ cycle_vii_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_vii_quadrimestre_subtotal_creditos">{{ cycle_vii_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CICLO VIII CUATRIMESTRE -->
+        <div class="section-title">CICLO VIII CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_viii_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_viii_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_viii_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_viii_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_viii_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_viii_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_viii_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_viii_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_viii_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_viii_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_viii_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_viii_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_viii_quadrimestre_subtotal_horas">{{ cycle_viii_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_viii_quadrimestre_subtotal_creditos">{{ cycle_viii_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- IX CUATRIMESTRE -->
+        <div class="section-title">IX CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_ix_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_ix_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_ix_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_ix_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_ix_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_ix_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_ix_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_ix_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_ix_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_ix_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_ix_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_ix_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_ix_quadrimestre_subtotal_horas">{{ cycle_ix_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_ix_quadrimestre_subtotal_creditos">{{ cycle_ix_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- X CUATRIMESTRE -->
+        <div class="section-title">X CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_x_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_x_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_x_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_x_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_x_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_x_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_x_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_x_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_x_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_x_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_x_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_x_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_x_quadrimestre_subtotal_horas">{{ cycle_x_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_x_quadrimestre_subtotal_creditos">{{ cycle_x_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <!-- XI CUATRIMESTRE -->
+        <div class="section-title">XI CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_xi_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_xi_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_xi_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_xi_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_xi_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_xi_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_xi_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_xi_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_xi_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_xi_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_xi_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_xi_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_xi_quadrimestre_subtotal_horas">{{ cycle_xi_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_xi_quadrimestre_subtotal_creditos">{{ cycle_xi_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- XII CUATRIMESTRE -->
+        <div class="section-title">XII CUATRIMESTRE</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ABREV.</th>
+                    <th style="width: 10%;">CÓD.</th>
+                    <th style="width: 15%;">CLAVE</th>
+                    <th style="width: 40%;">ASIGNATURA</th>
+                    <th style="width: 10%;">TEÓR.</th>
+                    <th style="width: 10%;">PRAT.</th>
+                    <th style="width: 10%;">LAB.</th>
+                    <th style="width: 10%;">TOTAL DE HORAS</th>
+                    <th style="width: 15%;">CRED.</th>
+                    <th style="width: 10%;">Pre-requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cycle_xii_quadrimestre %}
+                <tr>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].abreviatura">{{ cycle_xii_quadrimestre[loop.index0].abreviatura }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].codigo">{{ cycle_xii_quadrimestre[loop.index0].codigo }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].clave">{{ cycle_xii_quadrimestre[loop.index0].clave }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].asignatura">{{ cycle_xii_quadrimestre[loop.index0].asignatura }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].teor">{{ cycle_xii_quadrimestre[loop.index0].teor }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].prat">{{ cycle_xii_quadrimestre[loop.index0].prat }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].lab">{{ cycle_xii_quadrimestre[loop.index0].lab }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].total_horas">{{ cycle_xii_quadrimestre[loop.index0].total_horas }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].creditos">{{ cycle_xii_quadrimestre[loop.index0].creditos }}</span></td>
+                    <td><span data-field="cycle_xii_quadrimestre[{{ loop.index0 }}].pre_requisitos">{{ cycle_xii_quadrimestre[loop.index0].pre_requisitos }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7" style="text-align: right; font-weight: bold;">Sub Total</td>
+                    <td style="font-weight: bold;"><span data-field="cycle_xii_quadrimestre_subtotal_horas">{{ cycle_xii_quadrimestre_subtotal_horas }}</span></td>
+                    <td style="font-weight: bold;"><span data-field="cycle_xii_quadrimestre_subtotal_creditos">{{ cycle_xii_quadrimestre_subtotal_creditos }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <!-- TÍTULO A OTORGAR -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 20pt; margin-bottom: 10px;">Título a otorgar:</h2>
+            <h1 style="font-size: 32pt; margin-bottom: 10px;">Licenciatura en Ingeniería en Ciencias Náuticas y Administración con Énfasis en Transporte Marítima</h1>
+            <p style="font-size: 14pt;">CTDA-151-2019 del <span data-field="date">{{ date }}</span></p>
+        </div>
+
+        <!-- CICLOS -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="font-size: 12pt;">CICLO BÁSICO: I - III</p>
+            <p style="font-size: 12pt;">CICLO INTERMEDIO: IV - VI</p>
+            <p style="font-size: 12pt;">CICLO DE ESPECIALIZACIÓN: VII - IX</p>
+            <p style="font-size: 12pt;">CICLO DE PRE-EMBARQUE: X - XI</p>
+            <p style="font-size: 12pt;">CICLO DE EMBARQUE O PRÁCTICA PROFESIONAL: XII (12 MESES DE EMBARQUE)</p>
+        </div>
+
+        <!-- CURSOS BÁSICOS -->
+        <div class="section-title">CURSOS BÁSICOS</div>
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for course in basic_courses %}
+            <li style="margin-bottom: 5px;"><span data-field="basic_courses[{{ loop.index0 }}].nombre">{{ basic_courses[loop.index0].nombre }}</span></li>
+            {% endfor %}
+        </ul>
+
+        <!-- CURSOS ESPECIALIZADOS OMI -->
+        <div class="section-title">CURSOS ESPECIALIZADOS OMI</div>
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for course in specialized_omi_courses %}
+            <li style="margin-bottom: 5px;"><span data-field="specialized_omi_courses[{{ loop.index0 }}].nombre">{{ specialized_omi_courses[loop.index0].nombre }}</span></li>
+            {% endfor %}
+        </ul>
+
+        <!-- CURSOS ESPECIALES -->
+        <div class="section-title">CURSOS ESPECIALES</div>
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for course in special_courses %}
+            <li style="margin-bottom: 5px;"><span data-field="special_courses[{{ loop.index0 }}].nombre">{{ special_courses[loop.index0].nombre }}</span></li>
+            {% endfor %}
+        </ul>
+
+        <!-- CURSOS DE MARINA MERCANTE -->
+        <div class="section-title">CURSOS DE MARINA MERCANTE</div>
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for course in merchant_courses %}
+            <li style="margin-bottom: 5px;"><span data-field="merchant_courses[{{ loop.index0 }}].nombre">{{ merchant_courses[loop.index0].nombre }}</span></li>
+            {% endfor %}
+        </ul>
+
+        <!-- REQUISITOS DE EGRESO -->
+        <div class="section-title">REQUISITOS DE EGRESO</div>
+        <p style="font-size: 12pt;">El estudiante deberá cumplir con <span data-field="egreso_horas_laborales">{{ egreso_horas_laborales }}</span> de labor social y aprobar el examen de conocimientos generales de inglés.</p>
+    </div>
+
+    <div class="page">
+        <!-- TÍTULO A OTORGAR (Repeat for visual consistency) -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 20pt; margin-bottom: 10px;">Título a otorgar:</h2>
+            <h1 style="font-size: 32pt; margin-bottom: 10px;">Licenciatura en Ingeniería en Ciencias Náuticas y Administración con Énfasis en Transporte Marítima</h1>
+            <p style="font-size: 14pt;">CTDA-151-2019 del <span data-field="date">{{ date }}</span></p>
+        </div>
+
+        <!-- Footer Section -->
+        <div style="text-align: center; margin-top: 100px;">
+            <div style="display: flex; justify-content: space-around; align-items: center; padding: 0 20px;">
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">PANAMÁ</p>
+                    <p style="font-size: 10pt;">Tel: <span data-field="phone_panama">{{ phone_panama }}</span></p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">VERAGUAS</p>
+                    <p style="font-size: 10pt;">Tel: <span data-field="phone_veraguas">{{ phone_veraguas }}</span></p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">CHIRIQUÍ</p>
+                    <p style="font-size: 10pt;">Tel: <span data-field="phone_chiriqui">{{ phone_chiriqui }}</span></p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px;">
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">@<span data-field="social_colombus_panama">{{ social_colombus_panama }}</span></p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">www.<span data-field="website_colombus">{{ website_colombus }}</span></p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">@<span data-field="social_colombus_panama_2">{{ social_colombus_panama_2 }}</span></p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 12pt;">Columbus University Panamá</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

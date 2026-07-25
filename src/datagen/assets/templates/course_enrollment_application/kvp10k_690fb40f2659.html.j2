@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office of Continuing Education - Course Schedule</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 13px; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* PAGE 1 - Cover */
+  .cover-header {
+    background-color: #f0b800;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    margin-bottom: 0;
+  }
+  .cover-header .hamburger {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: #1a1a1a;
+  }
+  .cover-header h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    font-family: "Liberation Sans", Arial, sans-serif;
+  }
+  .cover-body {
+    background: linear-gradient(to bottom right, #f0b800 40%, #1a1a1a 100%);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 30px 30px 30px;
+    min-height: 960px;
+  }
+  .cover-announce {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .cover-announce .arrow {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 2px;
+  }
+  .cover-announce p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.5;
+  }
+  .cover-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 2px solid #e0e0e0;
+    padding: 22px 24px 18px 24px;
+    width: 420px;
+    align-self: flex-start;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cover-card-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-card-left { flex: 1; }
+  .cover-card h2 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Liberation Serif", Georgia, serif;
+    margin-bottom: 10px;
+  }
+  .cover-card p { font-size: 12px; line-height: 1.7; color: #222; }
+  .cover-card .tagline { font-weight: bold; font-size: 12px; margin-top: 8px; }
+  .cover-logo-placeholder {
+    width: 90px;
+    height: 90px;
+    border: 3px solid #f0b800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #f0b800;
+    background: #fff;
+    margin-left: 14px;
+    flex-shrink: 0;
+  }
+
+  /* PAGE 2 - Blank with page number */
+  .page-number {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-size: 12px;
+    color: #333;
+  }
+
+  /* PAGE 3 - Application Form */
+  .form-header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .form-header .uni-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #f0b800;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #f0b800;
+    margin-bottom: 6px;
+  }
+  .form-header .office-title {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Liberation Serif", Georgia, serif;
+  }
+  .form-header .uni-name {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Liberation Serif", Georgia, serif;
+  }
+  .form-address-bar {
+    border-top: 1.5px solid #333;
+    border-bottom: 1.5px solid #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  .form-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    font-family: "Liberation Sans", Arial, sans-serif;
+  }
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+  .admin-table th, .admin-table td {
+    border: 1.5px solid #333;
+    padding: 4px 8px;
+    vertical-align: top;
+  }
+  .admin-table th {
+    background: #fff;
+    font-weight: bold;
+    font-size: 11px;
+  }
+  .payment-options { display: flex; gap: 18px; }
+  .payment-col { display: flex; flex-direction: column; gap: 3px; }
+  .payment-col label { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+  .official-bar {
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    padding: 3px 0;
+    margin-bottom: 8px;
+  }
+  .register-notice {
+    background: #f0b800;
+    border: 2px solid #c8960a;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .section-title {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+  .form-field {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+  }
+  .form-field label { font-size: 12px; white-space: nowrap; }
+  .form-field .underline {
+    border-bottom: 1px solid #333;
+    flex: 1;
+    min-width: 60px;
+    height: 16px;
+  }
+  .gender-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .gender-box input[type=checkbox] { margin: 0; }
+  .full-field {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .full-field label { font-size: 12px; white-space: nowrap; }
+  .full-field .underline {
+    border-bottom: 1px solid #333;
+    flex: 1;
+    height: 16px;
+  }
+
+  /* PAGE 4 - Educational Background + Courses */
+  .edu-section { margin-bottom: 16px; }
+  .edu-field {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .edu-field label { font-size: 12px; white-space: nowrap; }
+  .edu-field .underline {
+    border-bottom: 1px solid #333;
+    flex: 1;
+    height: 16px;
+  }
+  .emerg-section { margin-bottom: 16px; }
+  .courses-section { margin-bottom: 10px; }
+  .courses-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .courses-table th {
+    border: 1.5px solid #333;
+    padding: 6px 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .category-header {
+    background: #f0b800;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    color: #1a1a1a;
+    padding: 6px;
+    border: 1.5px solid #333;
+  }
+  .course-row td {
+    border: 1.5px solid #333;
+    padding: 8px;
+    vertical-align: top;
+  }
+  .course-checkbox-cell {
+    width: 28px;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 10px !important;
+  }
+  .course-fee-cell {
+    width: 70px;
+    text-align: center;
+    vertical-align: top;
+    font-weight: bold;
+    padding-top: 10px !important;
+  }
+  .course-code { font-weight: bold; }
+  .course-title { font-weight: bold; }
+  .course-desc { font-style: italic; margin-bottom: 6px; }
+  .course-instructor { font-weight: bold; }
+  .course-dates { font-weight: bold; }
+  .course-location { font-weight: bold; display: flex; justify-content: space-between; }
+
+  .section-num { font-weight: bold; margin-right: 6px; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 13px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Outer border table */
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+  }
+
+  .course-table td, .course-table th {
+    border: 1px solid #000;
+    vertical-align: top;
+    padding: 0;
+  }
+
+  /* Checkbox cell */
+  .cell-checkbox {
+    width: 30px;
+    padding: 10px 6px;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .checkbox-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #000;
+    margin-top: 2px;
+  }
+
+  /* Course content cell */
+  .cell-content {
+    padding: 10px 12px;
+    vertical-align: top;
+  }
+
+  /* Price cell */
+  .cell-price {
+    width: 70px;
+    padding: 10px 8px;
+    text-align: center;
+    vertical-align: top;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  /* Section header row */
+  .section-header {
+    background-color: #f0a500;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
+    text-decoration: underline;
+    letter-spacing: 0.5px;
+  }
+
+  .course-code {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .course-title {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .course-description {
+    font-style: italic;
+    font-size: 12.5px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+
+  .course-meta {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .course-meta .meta-label {
+    font-weight: bold;
+  }
+
+  .meta-row-inline {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .page-number {
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    font-size: 12px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  }
+
+  /* Signature page */
+  .sig-section {
+    margin-top: 40px;
+  }
+
+  .sig-line-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4px;
+  }
+
+  .sig-line {
+    border-bottom: 1px solid #000;
+    width: 320px;
+    height: 20px;
+  }
+
+  .sig-date-line {
+    border-bottom: 1px solid #000;
+    width: 130px;
+    height: 20px;
+  }
+
+  .sig-label {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .sig-block {
+    margin-bottom: 40px;
+  }
+
+  /* Info page */
+  .info-border {
+    border: 4px solid #f0a500;
+    border-radius: 28px;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+  }
+
+  .info-center {
+    text-align: center;
+  }
+
+  .info-university-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .info-subtitle {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .info-section-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    margin-top: 24px;
+  }
+
+  .info-hours {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .info-addresses {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  .info-address-block {
+    width: 48%;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .info-address-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .info-contact {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .info-contact-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .info-email-link {
+    text-decoration: underline;
+  }
+
+  .footer-disclaimer {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .logo-placeholder {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
+  }
+
+  .logo-sub {
+    font-size: 9px;
+    font-weight: normal;
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Cover -->
+<div class="page" style="padding: 0; display: flex; flex-direction: column;">
+  <div class="cover-header">
+    <span class="hamburger">&#9776;</span>
+    <h1>Office of Continuing Education and &nbsp;Service-Learning</h1>
+  </div>
+  <div class="cover-body">
+    <div class="cover-announce">
+      <span class="arrow">&#9658;</span>
+      <p>
+        <span data-field="office_name">{{ office_name }}</span><br>
+        is pleased to announce its <span data-field="schedule_year">{{ schedule_year }}</span> <span data-field="schedule_term">{{ schedule_term }}</span> schedule of classes...
+      </p>
+    </div>
+    <div class="cover-card">
+      <h2><span data-field="university_name">{{ university_name }}</span></h2>
+      <div class="cover-card-inner">
+        <div class="cover-card-left">
+          <p><span data-field="office_full_name">{{ office_full_name }}</span></p>
+          <p><span data-field="po_box">{{ po_box }}</span></p>
+          <p><span data-field="university_city_state_zip">{{ university_city_state_zip }}</span></p>
+          <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+          <p>Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+          <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+          <p class="tagline"><span data-field="tagline">{{ tagline }}</span></p>
+        </div>
+        <div class="cover-logo-placeholder">G</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: Blank with page number -->
+<div class="page">
+  <div class="page-number">Page <strong>1</strong> of <strong><span data-field="total_pages">{{ total_pages }}</span></strong></div>
+</div>
+
+<!-- PAGE 3: Application Form -->
+<div class="page" style="padding: 36px 50px;">
+  <div class="form-header">
+    <div class="uni-logo-placeholder">G</div><br>
+    <div class="office-title">Office of Continuing Education and Service-Learning</div>
+    <div class="uni-name"><span data-field="form_university_name">{{ form_university_name }}</span></div>
+  </div>
+  <div class="form-address-bar">
+    <div>
+      <span data-field="form_street_address">{{ form_street_address }}</span><br>
+      Fax: <span data-field="form_fax">{{ form_fax }}</span>
+    </div>
+    <div style="text-align:right;">
+      Phone: <span data-field="form_phone">{{ form_phone }}</span><br>
+      E-mail: <span data-field="form_email">{{ form_email }}</span>
+    </div>
+  </div>
+  <div class="form-title">APPLICATION TO ENROLL IN CONTINUING EDUCATION COURSE(S)</div>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th style="width:120px;">ID NUMBER</th>
+        <th>PAYMENT TYPE ACCEPTED</th>
+        <th style="width:100px;">RECEIPT NO.</th>
+        <th style="width:160px;">DATE REGISTERED (mm/dd/yy)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <div class="payment-options">
+            <div class="payment-col">
+              <label><input type="checkbox"> Cash</label>
+              <label><input type="checkbox"> Payroll Deduction</label>
+              <label><input type="checkbox"> Cashier's Check</label>
+            </div>
+            <div class="payment-col">
+              <label><input type="checkbox"> Credit/Debit Card</label>
+              <label><input type="checkbox"> Certified Check</label>
+              <label><input type="checkbox"> Money Order</label>
+            </div>
+          </div>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="official-bar">- DO NOT WRITE ABOVE THIS LINE - FOR OFFICIAL USE ONLY -</div>
+  <div class="register-notice">
+    To register, please go to the Cashier's Office located on the first floor of <span data-field="cashier_building">{{ cashier_building }}</span> or call the Cashier's<br>
+    Office at <span data-field="cashier_phone">{{ cashier_phone }}</span>.<br>
+    Payroll deduction is available.
+  </div>
+
+  <p style="margin-bottom:10px;"><span class="section-num">1.)</span><span class="section-title" style="display:inline;">Personal Information</span></p>
+
+  <div class="form-row">
+    <div class="form-field">
+      <label>Last Name:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field">
+      <label>First Name:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field" style="flex:0 0 auto;">
+      <label>Middle Initial:</label>
+      <div class="underline" style="min-width:36px;"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label>Date of Birth (mm/dd/yy):</label>
+      <div class="underline"></div>
+    </div>
+    <div class="gender-box">
+      Gender: <input type="checkbox"> Male &nbsp;<input type="checkbox"> Female
+    </div>
+  </div>
+  <div style="height:10px;"></div>
+  <div class="full-field">
+    <label>Mailing Address:</label>
+    <div class="underline"></div>
+  </div>
+  <div class="form-row">
+    <div class="form-field" style="flex:2;">
+      <label>City:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field" style="flex:1;">
+      <label>State:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field" style="flex:1;">
+      <label>Zip Code:</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label>Tel. #:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field">
+      <label>Cell #:</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+  <div class="full-field">
+    <label>E-mail Address:</label>
+    <div class="underline"></div>
+  </div>
+  <div style="height:14px;"></div>
+  <div class="full-field">
+    <label>Permanent (Home) Address:</label>
+    <div class="underline"></div>
+  </div>
+  <div class="form-row">
+    <div class="form-field" style="flex:2;">
+      <label>City:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field" style="flex:1;">
+      <label>State:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field" style="flex:1;">
+      <label>Zip Code:</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label>Tel. #:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-field">
+      <label>Cell #:</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+  <div class="page-number">Page <strong>2</strong> of <strong><span data-field="total_pages_p3">{{ total_pages }}</span></strong></div>
+</div>
+
+<!-- PAGE 4: Educational Background + Emergency Contact + Courses (categories 1) -->
+<div class="page" style="padding: 36px 50px;">
+  <div class="edu-section">
+    <div class="section-title">Educational Background:</div>
+    <div class="edu-field">
+      <label>Highest Level of Education:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="edu-field">
+      <label>College / University:</label>
+      <div class="underline"></div>
+    </div>
+    <div class="edu-field">
+      <label>Major (and/or Optional Minor):</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <div class="emerg-section">
+    <p style="margin-bottom:10px;"><span class="section-num">2.)</span><span class="section-title" style="display:inline;">Emergency Contact Information:</span></p>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Name:</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-field">
+        <label>Relationship to the Applicant:</label>
+        <div class="underline"></div>
+      </div>
+    </div>
+    <div class="full-field">
+      <label>Contact Number:</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <div class="courses-section">
+    <p style="margin-bottom:8px;"><span class="section-num">3.)</span><span class="section-title" style="display:inline;">Continuing Education Courses:</span> Please select the course(s) you would like to enroll.</p>
+    <table class="courses-table">
+      <thead>
+        <tr>
+          <th style="width:28px;"></th>
+          <th>Course Details</th>
+          <th style="width:70px;">Fee /<br>CEU Credit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for category in course_categories %}
+        <tr>
+          <td colspan="3" class="category-header"><span data-field="course_categories[{{ loop.index0 }}].name">{{ category.name }}</span></td>
+        </tr>
+        {% for course in category.courses %}
+        <tr class="course-row">
+          <td class="course-checkbox-cell"><input type="checkbox"></td>
+          <td>
+            <div class="course-code"><span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].code">{{ course.code }}</span></div>
+            <div class="course-title"><span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].title">{{ course.title }}</span></div>
+            <div class="course-desc"><span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].description">{{ course.description }}</span></div>
+            <div class="course-instructor">Instructor: <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></div>
+            <div class="course-dates">Dates: <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].dates">{{ course.dates }}</span></div>
+            <div class="course-location">
+              <span>Location: <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].location">{{ course.location }}</span></span>
+              <span>Time: <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].time">{{ course.time }}</span></span>
+            </div>
+          </td>
+          <td class="course-fee-cell">
+            <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].fee">{{ course.fee }}</span><br>
+            <span data-field="course_categories[{{ loop.index0 }}].courses[{{ loop.index0 }}].ceu_credit">{{ course.ceu_credit }}</span>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="page-number">Page <strong>3</strong> of <strong><span data-field="total_pages_p4">{{ total_pages }}</span></strong></div>
+</div>
+
+
+
+
+<!-- PAGE 1 (Page 8) -->
+<div class="page">
+  <table class="course-table">
+    <tbody>
+      <!-- First course on page 1 (standalone, not in section loop) -->
+      {% for course in page8_top_courses %}
+      <tr>
+        <td class="cell-checkbox"><div class="checkbox-box"></div></td>
+        <td class="cell-content">
+          <div class="course-code"><span data-field="page8_top_courses[{{ loop.index0 }}].code">{{ course.code }}</span></div>
+          <div class="course-title"><span data-field="page8_top_courses[{{ loop.index0 }}].title">{{ course.title }}</span></div>
+          <div class="course-description"><span data-field="page8_top_courses[{{ loop.index0 }}].description">{{ course.description }}</span></div>
+          <div class="course-meta">
+            <div><span class="meta-label">Instructor:</span> <span data-field="page8_top_courses[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></div>
+            <div><span class="meta-label">Dates:</span> <span data-field="page8_top_courses[{{ loop.index0 }}].dates">{{ course.dates }}</span></div>
+            <div class="meta-row-inline">
+              <span><span class="meta-label">Location:</span> <span data-field="page8_top_courses[{{ loop.index0 }}].location">{{ course.location }}</span></span>
+              <span><span class="meta-label">Time:</span> <span data-field="page8_top_courses[{{ loop.index0 }}].time">{{ course.time }}</span></span>
+            </div>
+          </div>
+        </td>
+        <td class="cell-price">
+          <span data-field="page8_top_courses[{{ loop.index0 }}].price">{{ course.price }}</span><br>
+          <span data-field="page8_top_courses[{{ loop.index0 }}].ceus">{{ course.ceus }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+
+      <!-- Section header -->
+      <tr>
+        <td colspan="3" class="section-header">
+          <span data-field="section_header_vintage">{{ section_header_vintage }}</span>
+        </td>
+      </tr>
+
+      <!-- Vintage Lunch and Learn courses -->
+      {% for course in vintage_courses_page8 %}
+      <tr>
+        <td class="cell-checkbox"><div class="checkbox-box"></div></td>
+        <td class="cell-content">
+          <div class="course-code"><span data-field="vintage_courses_page8[{{ loop.index0 }}].code">{{ course.code }}</span></div>
+          <div class="course-title"><span data-field="vintage_courses_page8[{{ loop.index0 }}].title">{{ course.title }}</span></div>
+          <div class="course-description"><span data-field="vintage_courses_page8[{{ loop.index0 }}].description">{{ course.description }}</span></div>
+          <div class="course-meta">
+            <div><span class="meta-label">Instructor:</span> <span data-field="vintage_courses_page8[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></div>
+            <div><span class="meta-label">Dates:</span> <span data-field="vintage_courses_page8[{{ loop.index0 }}].dates">{{ course.dates }}</span></div>
+            <div><span class="meta-label">Location:</span> <span data-field="vintage_courses_page8[{{ loop.index0 }}].location">{{ course.location }}</span></div>
+            <div><span class="meta-label">Time:</span> <span data-field="vintage_courses_page8[{{ loop.index0 }}].time">{{ course.time }}</span></div>
+          </div>
+        </td>
+        <td class="cell-price">
+          <span data-field="vintage_courses_page8[{{ loop.index0 }}].price">{{ course.price }}</span><br>
+          <span data-field="vintage_courses_page8[{{ loop.index0 }}].ceus">{{ course.ceus }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-number">Page <span data-field="page8_number">{{ page8_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+</div>
+
+<!-- PAGE 2 (Page 9) -->
+<div class="page">
+  <table class="course-table">
+    <tbody>
+      {% for course in vintage_courses_page9 %}
+      <tr>
+        <td class="cell-checkbox"><div class="checkbox-box"></div></td>
+        <td class="cell-content">
+          <div class="course-code"><span data-field="vintage_courses_page9[{{ loop.index0 }}].code">{{ course.code }}</span></div>
+          <div class="course-title"><span data-field="vintage_courses_page9[{{ loop.index0 }}].title">{{ course.title }}</span></div>
+          <div class="course-description"><span data-field="vintage_courses_page9[{{ loop.index0 }}].description">{{ course.description }}</span></div>
+          <div class="course-meta">
+            <div><span class="meta-label">Instructor:</span> <span data-field="vintage_courses_page9[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></div>
+            <div><span class="meta-label">Dates:</span> <span data-field="vintage_courses_page9[{{ loop.index0 }}].dates">{{ course.dates }}</span></div>
+            <div><span class="meta-label">Location:</span> <span data-field="vintage_courses_page9[{{ loop.index0 }}].location">{{ course.location }}</span></div>
+            <div><span class="meta-label">Time:</span> <span data-field="vintage_courses_page9[{{ loop.index0 }}].time">{{ course.time }}</span></div>
+          </div>
+        </td>
+        <td class="cell-price">
+          <span data-field="vintage_courses_page9[{{ loop.index0 }}].price">{{ course.price }}</span><br>
+          <span data-field="vintage_courses_page9[{{ loop.index0 }}].ceus">{{ course.ceus }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-number">Page <span data-field="page9_number">{{ page9_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+</div>
+
+<!-- PAGE 3 (Page 10) -->
+<div class="page">
+  <table class="course-table">
+    <tbody>
+      {% for course in vintage_courses_page10 %}
+      <tr>
+        <td class="cell-checkbox"><div class="checkbox-box"></div></td>
+        <td class="cell-content">
+          <div class="course-code"><span data-field="vintage_courses_page10[{{ loop.index0 }}].code">{{ course.code }}</span></div>
+          <div class="course-title"><span data-field="vintage_courses_page10[{{ loop.index0 }}].title">{{ course.title }}</span></div>
+          <div class="course-description"><span data-field="vintage_courses_page10[{{ loop.index0 }}].description">{{ course.description }}</span></div>
+          <div class="course-meta">
+            <div><span class="meta-label">Instructor:</span> <span data-field="vintage_courses_page10[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></div>
+            <div><span class="meta-label">Dates:</span> <span data-field="vintage_courses_page10[{{ loop.index0 }}].dates">{{ course.dates }}</span></div>
+            <div><span class="meta-label">Location:</span> <span data-field="vintage_courses_page10[{{ loop.index0 }}].location">{{ course.location }}</span></div>
+            <div><span class="meta-label">Time:</span> <span data-field="vintage_courses_page10[{{ loop.index0 }}].time">{{ course.time }}</span></div>
+          </div>
+        </td>
+        <td class="cell-price">
+          <span data-field="vintage_courses_page10[{{ loop.index0 }}].price">{{ course.price }}</span><br>
+          <span data-field="vintage_courses_page10[{{ loop.index0 }}].ceus">{{ course.ceus }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Signature section -->
+  <div style="margin-top: 50px;">
+    <div class="sig-block">
+      <div class="sig-line-row">
+        <div class="sig-line" data-field="field_1">{{ field_1 }}</div>
+        <div class="sig-date-line" data-field="field_2">{{ field_2 }}</div>
+      </div>
+      <div style="display:flex; justify-content:space-between;">
+        <div class="sig-label">Signature of Participant (if 18 years of age or older)</div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+
+    <div class="sig-block" style="margin-top: 30px;">
+      <div class="sig-line-row">
+        <div class="sig-line" data-field="date">{{ date }}</div>
+        <div class="sig-date-line" data-field="date_2">{{ date_2 }}</div>
+      </div>
+      <div style="display:flex; justify-content:space-between;">
+        <div class="sig-label">
+          Signature of Participant's Parent/Representative<br>
+          <span style="margin-left: 20px;">(if under 18 years of age)</span>
+        </div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-number">Page <span data-field="page10_number">{{ page10_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+</div>
+
+<!-- PAGE 4 (Page 11) - Info/Contact Page -->
+<div class="page">
+  <div style="padding: 10px 0;">
+    <div class="info-border">
+      <!-- Logo / University Name -->
+      <div class="info-center">
+        <div class="logo-placeholder">
+          <span data-field="university_logo_text">{{ university_logo_text }}</span>
+          <span class="logo-sub"><span data-field="university_logo_subtext">{{ university_logo_subtext }}</span></span>
+        </div>
+        <div class="info-university-name"><span data-field="university_name">{{ university_name }}</span></div>
+        <div class="info-subtitle"><span data-field="office_name">{{ office_name }}</span></div>
+        <div class="info-subtitle"><span data-field="director_name">{{ director_name }}</span></div>
+      </div>
+
+      <!-- Office Hours -->
+      <div class="info-center">
+        <div class="info-section-title">Office Hours</div>
+        <div class="info-hours">
+          <div><span data-field="office_hours_weekday_label">{{ office_hours_weekday_label }}</span>: <span data-field="office_hours_weekday_time">{{ office_hours_weekday_time }}</span></div>
+          <div><span data-field="office_hours_friday_label">{{ office_hours_friday_label }}</span>: <span data-field="office_hours_friday_time">{{ office_hours_friday_time }}</span></div>
+        </div>
+      </div>
+
+      <!-- Addresses -->
+      <div class="info-addresses">
+        <div class="info-address-block">
+          <div class="info-address-title">Physical Address</div>
+          <div><span data-field="physical_address.line1">{{ physical_address.line1 }}</span></div>
+          <div><span data-field="physical_address.line2">{{ physical_address.line2 }}</span></div>
+          <div><span data-field="physical_address.line3">{{ physical_address.line3 }}</span></div>
+        </div>
+        <div class="info-address-block">
+          <div class="info-address-title">Mailing Address</div>
+          <div><span data-field="mailing_address.line1">{{ mailing_address.line1 }}</span></div>
+          <div><span data-field="mailing_address.line2">{{ mailing_address.line2 }}</span></div>
+          <div><span data-field="mailing_address.line3">{{ mailing_address.line3 }}</span></div>
+          <div><span data-field="mailing_address.line4">{{ mailing_address.line4 }}</span></div>
+          <div><span data-field="mailing_address.line5">{{ mailing_address.line5 }}</span></div>
+        </div>
+      </div>
+
+      <!-- Phone / Fax / Email -->
+      <div class="info-contact">
+        <div class="info-contact-title">Phone / Fax / E-mail</div>
+        <div>Phone: <span data-field="contact.phone">{{ contact.phone }}</span></div>
+        <div>Fax: <span data-field="contact.fax">{{ contact.fax }}</span></div>
+        <div>E-mail: <span class="info-email-link" data-field="contact.email">{{ contact.email }}</span></div>
+      </div>
+    </div>
+
+    <div class="footer-disclaimer">
+      <span data-field="footer_disclaimer">{{ footer_disclaimer }}</span>
+    </div>
+  </div>
+
+  <div class="page-number">Page <span data-field="page11_number">{{ page11_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></div>
+</div>
+
+</body>
+</html>

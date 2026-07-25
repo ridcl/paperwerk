@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FAFSA Verification Worksheet</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .header { font-weight: bold; text-align: center; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <img src="placeholder_logo.png" alt="Logo" style="max-width: 150px; height: auto;">
+    <h1 style="font-size: 18pt; margin: 5px 0;">The College of St Scholastica</h1>
+    <p style="font-size: 10pt; margin: 2px 0;">Financial Aid Office T1122, 1200 Kenwood Avenue, Duluth, MN 55811</p>
+    <p style="font-size: 10pt; margin: 2px 0;">218-723-6273 / <a href="mailto:financialaid@css.edu">{{ financialaid_email }}</a></p>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 40px;">2021-2022 FAFSA Verification Worksheet</h2>
+  <h3 style="text-align: center;">INDEPENDENT Student</h3>
+
+  <div class="section-title">Student Information</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">First Name: <span data-field="first_name">{{ first_name }}</span></td>
+      <td style="width: 50%;">Last Name: <span data-field="last_name">{{ last_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Mailing Address: <span data-field="mailing_address">{{ mailing_address }}</span></td>
+      <td>City: <span data-field="city">{{ city }}</span></td>
+    </tr>
+    <tr>
+      <td>State: <span data-field="state">{{ state }}</span></td>
+      <td>Zip: <span data-field="zip">{{ zip }}</span></td>
+    </tr>
+    <tr>
+      <td>Date of Birth: <span data-field="dob">{{ dob }}</span></td>
+      <td>Phone: <span data-field="phone">{{ phone }}</span></td>
+    </tr>
+    <tr>
+      <td>Email: <span data-field="email">{{ email }}</span></td>
+    </tr>
+  </table>
+
+  <div class="section-title">Household Information</div>
+  <p>Write the names of ALL household members below. Your household, as it relates to the FAFSA, includes:</p>
+  <ul>
+    <li>You</li>
+    <li>Your spouse (if married)</li>
+    <li>Your children or your spouse's children
+      <ul>
+        <li>If you will provide more than half of their financial support from 7/1/21 through 6/30/22, even if the child does not live with you.</li>
+      </ul>
+    </li>
+    <li>Other people
+      <ul>
+        <li>If they now live with you AND you currently provide more than half of their financial support and will continue to provide more than half of their financial support from 7/1/21 through 6/30/22.
+          <p style="font-size: 9pt;">Please call with questions: 218-723-6273.</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Write the names of ALL household members below. List the college name for any household member attending college at least half-time per semester/quarter who will be enrolled in a degree, diploma or certificate program.</p>
+  <p><strong>Do not list a college for students still in high school taking PSEO or College in the Schools coursework.</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Full Name</th>
+        <th style="width: 15%;">Age</th>
+        <th style="width: 30%;">Relationship to you</th>
+        <th style="width: 30%;">Attending college in 2021-2022? If so, where?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in household_members %}
+      <tr>
+        <td><span data-field="household_members[{{ loop.index0 }}].full_name">{{ household_members[loop.index0].full_name }}</span></td>
+        <td><span data-field="household_members[{{ loop.index0 }}].age">{{ household_members[loop.index0].age }}</span></td>
+        <td><span data-field="household_members[{{ loop.index0 }}].relationship">{{ household_members[loop.index0].relationship }}</span></td>
+        <td><span data-field="household_members[{{ loop.index0 }}].college_status">{{ household_members[loop.index0].college_status }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <p style="text-align: center; font-size: 10pt;">**The 2021-2022 FAFSA is based on 2019 tax information**</p>
+  <p style="text-align: center; font-size: 10pt;">Please visit <a href="https://www.css.edu/admissions-and-aid/financial-aid/verification-process/" style="color: blue;">https://www.css.edu/admissions-and-aid/financial-aid/verification-process/</a> for more information about the verification process.</p>
+
+  <div class="section-title">Student's Tax Filing Status</div>
+  <p>Student: Did you/your spouse file a 2019 U.S. Federal income tax return?</p>
+  <table style="width: 50%;">
+    <tr>
+      <td><input type="radio" name="option1" value="yes"> Yes – complete Option 1</td>
+      <td><input type="radio" name="option1" value="no"> No – complete Option 2</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Option 1 for Tax Filers</div>
+  <p>Check this box if you completed the IRS Data Retrieval Tool (DRT) while filing out your FAFSA.</p>
+  <p>Not sure if you completed the DRT when you filled out your FAFSA? Check with Financial Aid: 218-723-6273.</p>
+  <p>If you have not submitted your tax information to our office via DRT, please choose ONE of the following options:</p>
+  <ul>
+    <li>Complete the IRS Data Retrieval Tool (DRT) via the <a href="https://www.irs.gov" style="color: blue;">FAFSA.gov</a> website – <strong>PREFERRED</strong></li>
+    <li>Submit a signed copy of your/spouse's 2019 Federal tax return and Schedule 1, 2, and 3 (if applicable) and request a submit a 2019 tax return transcript for you/spouse via the <a href="https://www.irs.gov" style="color: blue;">IRS.gov</a> website</li>
+  </ul>
+
+  <div class="section-title">Option 2 for Non-Tax Filers</div>
+  <p>Student: Were you/your spouse required to file a tax return in 2019?</p>
+  <table style="width: 50%;">
+    <tr>
+      <td><input type="radio" name="option2" value="yes"> Yes</td>
+      <td><input type="radio" name="option2" value="no"> No</td>
+    </tr>
+  </table>
+  <ol>
+    <li>Request and submit a Verification of Non-Filing Letter for you/spouse from the IRS by visiting <a href="https://www.irs.gov" style="color: blue;">IRS.gov</a>.</li>
+    <li>Complete the grid below and submit copies of all 2019 W-2 forms issued by employer(s).
+      <ul>
+        <li>If you did not earn wages in 2019, enter $0 in the Wages Earned field below.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Employer's Name</th>
+        <th style="width: 20%;">2019 Wages</th>
+        <th style="width: 20%;"></th>
+        <th style="width: 30%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in w2_entries %}
+      <tr>
+        <td><span data-field="w2_entries[{{ loop.index0 }}].employer_name">{{ w2_entries[loop.index0].employer_name }}</span></td>
+        <td><span data-field="w2_entries[{{ loop.index0 }}].wages_earned">{{ w2_entries[loop.index0].wages_earned }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p>If your marital status has changed since 2019, please reach out to Financial Aid to determine if you need to submit any additional verification documents: <a href="mailto:financialaid@css.edu">{{ financialaid_email }}</a> or 218-723-6273.</p>
+
+  <div class="section-title">Signature</div>
+  <p><strong>WARNING:</strong> If you purposely give false or misleading information, you may be fined, sentenced to jail or both. By signing this worksheet, I certify that all the information reported is true and correct. I authorize the CSS Financial Aid Office to make changes to my FAFSA as indicated above.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">Student's Signature (must be handwritten – not typed)</td>
+      <td style="width: 50%;">Date</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <p style="font-size: 10pt; text-align: center;">Your 2021-2022 FAFSA has been selected for the verification process. The law says that before awarding Federal Student Aid, we must ask you to confirm the information you provided on your FAFSA. Please review your FAFSA and complete this worksheet. If you have questions or need assistance, please contact the Financial Aid Office at <a href="mailto:financialaid@css.edu">{{ financialaid_email }}</a> or 218-723-6273.</p>
+  <p style="font-size: 10pt; text-align: center;">St. Scholastica's full verification policy can be found at <a href="https://www.css.edu/admissions-and-aid/financial-aid/verification-policy/" style="color: blue;">https://www.css.edu/admissions-and-aid/financial-aid/verification-policy/</a>.</p>
+  <p style="font-size: 10pt; text-align: center;">The FAFSA verification process must be completed before any financial aid can be paid to your student account for the 2021-2022 school year.</p>
+</div>
+
+</body>
+</html>

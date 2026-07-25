@@ -1,0 +1,168 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 5px 0;
+    text-align: left;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    width: 48%;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 80px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">MONTANA STATE UNIVERSITY</h1>
+    <h2 style="font-size: 16pt; margin: 0;">BILLINGS</h2>
+  </div>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-bottom: 30px; text-align: center;">
+    <p>For Priority processing please return this document to the</p>
+    <p>International Studies Office by</p>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 40px;">Required Immunization Form for International Students</h2>
+
+  <div style="margin-bottom: 30px;">
+    <p>International Studies Office</p>
+    <p>Tel: {{ contact_phone_1 }}</p>
+    <p>Fax: {{ contact_phone_2 }}</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>
+        <label>Name:</label><br>
+        <span data-field="full_name">{{ full_name }}</span>
+      </div>
+      <div>
+        <label>MSUB Student ID Number:</label><br>
+        <span data-field="student_id">{{ student_id }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label>Permanent Address:</label><br>
+        <span data-field="address">{{ address }}</span>
+      </div>
+      <div>
+        <label>Date:</label><br>
+        <span data-field="submission_date">{{ submission_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>
+        <label>Email:</label><br>
+        <span data-field="email">{{ email }}</span>
+      </div>
+      <div>
+        <label>City:</label><br>
+        <span data-field="city">{{ city }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>State/Province:</label><br>
+        <span data-field="state_province">{{ state_province }}</span>
+      </div>
+      <div>
+        <label>Country:</label><br>
+        <span data-field="country">{{ country }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>Birthdate:</label><br>
+        <span data-field="birthdate">{{ birthdate }}</span>
+      </div>
+      <div>
+        <label>Postal Code:</label><br>
+        <span data-field="postal_code">{{ postal_code }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p><strong>DIRECTIONS:</strong></p>
+    <ol>
+      <li>The following immunizations are required by law and MSUB policy. You will not be able to register without this form.</li>
+      <li>This information must be from your Physician's records or other official immunization records.</li>
+      <li>It must be signed and stamped by your physician.</li>
+    </ol>
+  </div>
+
+  <h3 style="margin-top: 40px; margin-bottom: 15px;">Immunization Records</h3>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Vaccine</th>
+        <th style="width: 25%; text-align: center;">Date of Last Dose</th>
+        <th style="width: 25%;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>MMR (Measles, Mumps, Rubella):</td>
+        <td style="text-align: center;"><span data-field="mmr_date">{{ mmr_date }}</span></td>
+        <td>Two (2) immunizations given after 12 months of age and after 1968.</td>
+      </tr>
+      <tr>
+        <td>Tuberculosis Skin Test:</td>
+        <td style="text-align: center;"><span data-field="tb_date">{{ tb_date }}</span></td>
+        <td>Current skin test given within the last 12 months.</td>
+      </tr>
+      <tr>
+        <td>Other Required Vaccines:</td>
+        <td style="text-align: center;"><span data-field="other_vaccine_date">{{ other_vaccine_date }}</span></td>
+        <td><span data-field="other_vaccine_notes">{{ other_vaccine_notes }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-bottom: 30px;">
+    <p><strong>Physician's Signature:</strong> _________________________</p>
+    <p><strong>Physician's Stamp:</strong> _________________________</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p><strong>Fees:</strong></p>
+    <p>MMR: US$ {{ fee_mmr }} | Tuberculosis: US$ {{ fee_tb }} | Chest XRAY: US$ {{ fee_chest_xray }}</p>
+  </div>
+
+  <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ccc;">
+    <p><strong>TO RETURN THIS DOCUMENT:</strong></p>
+    <p>By Mail - Office of International Studies 1500 University Drive, Billings MT 59101 USA</p>
+    <p>By Email - <a href="mailto:{{ email_contact }}">{{ email_contact }}</a>. A scanned copy of this document can be emailed to <a href="mailto:{{ email_contact }}">{{ email_contact }}</a>. Please bring the original with you. A faxed copy of this document can be faxed to +001 (406) 896-5907. Then please bring this original with you.</p>
+  </div>
+</div>

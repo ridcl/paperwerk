@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scholarship Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .logo-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .logo-left img {
+    height: 60px; /* Placeholder for logo size */
+  }
+  .logo-right div {
+    text-align: right;
+  }
+  .info-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 10pt;
+  }
+  .info-block div {
+    width: 45%;
+  }
+  .form-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ccc;
+  }
+  .form-section h3 {
+    margin-top: 0;
+    font-size: 12pt;
+    margin-bottom: 15px;
+  }
+  .input-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .input-row label {
+    width: 100px;
+    font-weight: bold;
+  }
+  .input-row input[type="text"], .input-row select {
+    flex-grow: 1;
+    padding: 3px;
+    border: 1px solid #aaa;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-right: 15px;
+  }
+  .signature-area {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-box {
+    width: 45%;
+    border-top: 1px solid black;
+    padding-top: 5px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="logo-area">
+    <div class="logo-left">
+      <!-- Placeholder for logos -->
+      <img src="" alt="Logo 1">
+    </div>
+    <div class="logo-right">
+      <div>
+        <div style="font-size: 10pt;">PHONE: <span data-field="phone_number">{{ phone_number }}</span></div>
+        <div style="font-size: 10pt;">FAX: <span data-field="fax_number">{{ fax_number }}</span></div>
+        <div style="font-size: 10pt;">MAIL: <span data-field="mailing_address">{{ mailing_address }}</span></div>
+        <div style="font-size: 10pt;">WEB: <span data-field="website_url">{{ website_url }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 20pt; margin: 0;">Scholarship Application</h1>
+  </div>
+
+  <div class="form-section">
+    <h3>Applicant Information</h3>
+    <div class="input-row">
+      <label>Name</label>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div class="input-row">
+      <label>Home Address</label>
+      <span data-field="home_address">{{ home_address }}</span>
+    </div>
+    <div class="input-row">
+      <label>City</label>
+      <span data-field="city">{{ city }}</span>
+      <label style="width: 50px;">State</label>
+      <span data-field="state">{{ state }}</span>
+      <label style="width: 50px;">Zip</label>
+      <span data-field="zip_code">{{ zip_code }}</span>
+    </div>
+    <div class="input-row">
+      <label>Email</label>
+      <span data-field="email">{{ email }}</span>
+      <label style="width: 100px;">Phone</label>
+      <span data-field="phone_number_applicant">{{ phone_number_applicant }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Program Selection</h3>
+    <div class="input-row">
+      <label>PROGRAM</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_may_fire_school" value="{{ program_may_fire_school }}"> May Fire School</label>
+        <label><input type="checkbox" data-field="program_october_fire_school" value="{{ program_october_fire_school }}"> October Fire School</label>
+      </div>
+    </div>
+    <div class="input-row">
+      <label>Class Name</label>
+      <span data-field="class_name_first_choice">{{ class_name_first_choice }}</span>
+      <label style="width: 100px;">First Choice</label>
+    </div>
+    <div class="input-row">
+      <label>Class Name</label>
+      <span data-field="class_name_second_choice">{{ class_name_second_choice }}</span>
+      <label style="width: 100px;">Second Choice</label>
+    </div>
+    <div class="input-row" style="margin-top: 20px;">
+      <label style="width: 100%;">Please submit a registration form to guarantee your spot</label>
+    </div>
+    <div class="input-row" style="margin-top: 15px;">
+      <label style="width: 100%;">Is your department covering the cost of your registration?</label>
+      <div class="checkbox-group" style="margin-left: 10px;">
+        <label><input type="checkbox" data-field="cost_covered_yes" value="{{ cost_covered_yes }}"> Yes</label>
+        <label><input type="checkbox" data-field="cost_covered_no" value="{{ cost_covered_no }}"> No</label>
+      </div>
+    </div>
+    <div class="input-row" style="margin-top: 15px;">
+      <label style="width: 100%;">Are you planning to attend the program if you do not receive a scholarship?</label>
+      <div class="checkbox-group" style="margin-left: 10px;">
+        <label><input type="checkbox" data-field="attend_if_no_scholarship_yes" value="{{ attend_if_no_scholarship_yes }}"> Yes</label>
+        <label><input type="checkbox" data-field="attend_if_no_scholarship_no" value="{{ attend_if_no_scholarship_no }}"> No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Personal Statement</h3>
+    <div style="border: 1px solid #000; height: 150px; padding: 10px; margin-top: 10px;">
+      <p style="margin: 0;">Please attach a short essay (1-3 paragraphs) of how this training will benefit you, your department and the community.</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Department Information</h3>
+    <div class="input-row">
+      <label>Department</label>
+      <span data-field="department_name">{{ department_name }}</span>
+    </div>
+    <div class="input-row">
+      <label>Department Address</label>
+      <span data-field="department_address">{{ department_address }}</span>
+    </div>
+    <div class="input-row">
+      <label>City</label>
+      <span data-field="department_city">{{ department_city }}</span>
+      <label style="width: 50px;">State</label>
+      <span data-field="department_state">{{ department_state }}</span>
+      <label style="width: 50px;">Zip</label>
+      <span data-field="department_zip">{{ department_zip }}</span>
+    </div>
+    <div class="input-row">
+      <label>County</label>
+      <span data-field="department_county">{{ department_county }}</span>
+      <label style="width: 100px;">Work Phone</label>
+      <span data-field="department_phone">{{ department_phone }}</span>
+    </div>
+    <div class="input-row">
+      <label>District Population</label>
+      <span data-field="district_population">{{ district_population }}</span>
+      <label style="width: 150px;">Annual External Training Budget</label>
+      <span data-field="annual_training_budget">{{ annual_training_budget }}</span>
+      <label style="width: 100px;"># of Personnel on Department</label>
+      <span data-field="personnel_count">{{ personnel_count }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Chief Authorization (required)</h3>
+    <div class="input-row">
+      <label>Signature</label>
+      <span data-field="chief_signature">{{ chief_signature }}</span>
+    </div>
+    <div class="input-row">
+      <label>Print Name</label>
+      <span data-field="chief_print_name">{{ chief_print_name }}</span>
+      <label style="width: 100px;">Phone Number</label>
+      <span data-field="chief_phone">{{ chief_phone }}</span>
+    </div>
+  </div>
+
+  <div class="signature-area">
+    <div class="signature-box">
+      Applicant Signature
+      <br><br><br>
+      <span data-field="applicant_signature_line">{{ applicant_signature_line }}</span>
+    </div>
+    <div class="signature-box">
+      Department Information
+      <br><br><br>
+      <span data-field="department_signature_line">{{ department_signature_line }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 9pt;">
+    <p>Scholarship is for registration fees only. Participant is responsible for housing, books transportation, and meals. This need-based scholarship is open to all municipal firefighters, paramedics, and EMTs—full-time, part-time, and volunteer. Submit completed application form in one of the ways listed at the top of this form.</p>
+    <p>REG: <span data-field="reg_code">{{ reg_code }}</span> NEW: <span data-field="new_code">{{ new_code }}</span> C SW SE: <span data-field="c_sw_se">{{ c_sw_se }}</span> DPS: <span data-field="dps_code">{{ dps_code }}</span> Y: <span data-field="y_code">{{ y_code }}</span> APS: <span data-field="aps_code">{{ aps_code }}</span> N</p>
+    <p>Bowling Green State University is an AA/EO educator and employer</p>
+  </div>
+</div>
+</body>
+</html>

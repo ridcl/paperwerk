@@ -1,0 +1,125 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { text-align: center; font-weight: bold; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-bottom: 10px; display: block; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { flex: 1; margin-right: 20px; }
+  .form-group:last-child { margin-right: 0; }
+  .input-line { border-bottom: 1px solid #000; height: 1em; margin-top: 5px; }
+  .checkbox-group label { margin-right: 15px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <h1>IAB FedEx Purchase Request</h1>
+  <p style="text-align: center; font-size: small;">(IAB Rev. 827/07)</p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <span class="section-title">Recipient Information:</span>
+      <p>Address of Recipient:</p>
+      <div class="input-line" data-field="address_of_recipient">{{ address_of_recipient }}</div>
+    </div>
+    <div class="form-group">
+      <span class="section-title">FedEx account # if not using IAB FedEx account (9 digits):</span>
+      <p>Recipient FedEx Acct.:</p>
+      <div class="input-line" data-field="recipient_fedex_acct">{{ recipient_fedex_acct }}</div>
+      <p>Third Party FedEx Acct.:</p>
+      <div class="input-line" data-field="third_party_fedex_acct">{{ third_party_fedex_acct }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex-basis: 100%;">
+      <span class="section-title">Service Type:</span>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> 2-Day (U.S.)</label>
+        <label><input type="checkbox"> Overnight by 10:30 a.m. (most U.S. locations)</label>
+        <label><input type="checkbox"> Overnight by 3:30 p.m. (most U.S. locations)</label>
+        <label><input type="checkbox"> International Priority * (include pkg contents)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <p>Telephone (required):</p>
+      <div class="input-line" data-field="telephone">{{ telephone }}</div>
+    </div>
+    <div class="form-group">
+      <p>Email (if available):</p>
+      <div class="input-line" data-field="email">{{ email }}</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex-basis: 100%;">
+      <span class="section-title">Shipper Contact Information:</span>
+      <p>Name, email, & phone of person preparing shipment:</p>
+      <div class="input-line" data-field="shipper_contact_information">{{ shipper_contact_information }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex-basis: 100%;">
+      <p>***NO STYROFOAM CONTAINERS***</p>
+      <p>Does the package contain dry ice?:</p>
+      <div style="display: flex; gap: 30px; margin-top: 10px;">
+        <label>Yes <div class="input-line" style="width: 100px;" data-field="does_the_package_contain_dry_ice">{{ does_the_package_contain_dry_ice }}</div></label>
+        <label>No <div class="input-line" style="width: 100px;" data-field="yes">{{ yes }}</div></label>
+      </div>
+      <p style="margin-top: 15px;">Weight of dry ice _________________________</p>
+      <p>Total package weight with dry ice _________________________</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <span class="section-title">IAB Account Information (All fields required)</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <p>Requestor:</p>
+      <div class="input-line" data-field="requestor">{{ requestor }}</div>
+    </div>
+    <div class="form-group">
+      <p>Authorizing Pl:</p>
+      <div class="input-line" data-field="authorizing_pl">{{ authorizing_pl }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <p>Date:</p>
+      <div class="input-line" data-field="date">{{ date }}</div>
+    </div>
+    <div class="form-group" style="flex-basis: 100%;">
+      <p>Authorizing Signature (REQUIRED):</p>
+      <div class="input-line" style="height: 80px;" data-field="authorizing_signature">{{ authorizing_signature }}</div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top: 40px;"></div>
+
+  <div class="form-row" style="justify-content: flex-start;">
+    <div class="form-group" style="flex-basis: 100%;">
+      <p>Director's Office staff processing this request:</p>
+      <div class="input-line" style="height: 50px;" data-field="authorizing_signature_2">{{ authorizing_signature_2 }}</div>
+    </div>
+  </div>
+</div>

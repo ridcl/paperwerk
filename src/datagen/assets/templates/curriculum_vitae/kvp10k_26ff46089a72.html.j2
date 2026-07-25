@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .logo-lsu {
+    font-size: 48px;
+    font-weight: bold;
+    color: #003366; /* Placeholder color for LSU blue */
+  }
+  .logo-health {
+    font-size: 36px;
+    font-weight: bold;
+    color: #003366;
+  }
+  .logo-new-orleans {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: -10px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+  .list-item {
+    margin-bottom: 8px;
+  }
+  .publication-title {
+    font-weight: bold;
+  }
+  .abstract-text {
+    font-size: 0.9em;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <div class="logo-lsu">LSU</div>
+    <div class="logo-health">Health</div>
+    <div class="logo-new-orleans">NEW ORLEANS</div>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 40px;">CURRICULUM VITAE</h1>
+  <h2 style="text-align: center; margin-top: 10px;">{{ full_name }}</h2>
+
+  <div style="margin-top: 30px;">
+    <p>Current Title: <span data-field="current_title">{{ current_title }}</span></p>
+    <p>Business Address: <span data-field="business_address">{{ business_address }}</span></p>
+    <p>Business Telephone and Fax: <span data-field="business_phone">{{ business_phone }}</span></p>
+    <p>Business email Address: <span data-field="business_email">{{ business_email }}</span></p>
+  </div>
+
+  <div class="section-title">Education:</div>
+  <div style="margin-left: 20px;">
+    <div class="list-item">
+      <span data-field="education_year_1">{{ education_year_1 }}</span> - <span data-field="education_degree_1">{{ education_degree_1 }}</span>
+    </div>
+    <div class="list-item">
+      <span data-field="education_year_2">{{ education_year_2 }}</span> - <span data-field="education_degree_2">{{ education_degree_2 }}</span>
+    </div>
+    <div class="list-item">
+      <span data-field="education_year_3">{{ education_year_3 }}</span> - <span data-field="education_degree_3">{{ education_degree_3 }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Certification:</div>
+  <div style="margin-left: 20px;">
+    <p>USMLE: <span data-field="usmle_status">{{ usmle_status }}</span></p>
+  </div>
+
+  <div class="section-title">Academic, Professional, and Research Appointments</div>
+  <div style="margin-left: 20px;">
+    {% for appointment in appointments %}
+    <div class="list-item">
+      <span data-field="appointment_years[{{ loop.index0 }}]">{{ appointment_years[loop.index0] }}</span> - <span data-field="appointment_title[{{ loop.index0 }}]">{{ appointment_title[loop.index0] }}</span>
+      <div class="entry-details">
+        <span data-field="appointment_institution[{{ loop.index0 }}]">{{ appointment_institution[loop.index0] }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Membership in Professional Organizations:</div>
+  <div style="margin-left: 20px;">
+    {% for membership in memberships %}
+    <div class="list-item">
+      <span data-field="membership_years[{{ loop.index0 }}]">{{ membership_years[loop.index0] }}</span> - <span data-field="membership_organization[{{ loop.index0 }}]">{{ membership_organization[loop.index0] }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Awards and Honors:</div>
+  <div style="margin-left: 20px;">
+    {% for award in awards %}
+    <div class="list-item">
+      <span data-field="award_years[{{ loop.index0 }}]">{{ award_years[loop.index0] }}</span> - <span data-field="award_description[{{ loop.index0 }}]">{{ award_description[loop.index0] }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">TEACHING EXPERIENCE AND RESPONSIBILITIES</div>
+  <div style="margin-left: 20px;">
+    {% for teaching_exp in teaching_experiences %}
+    <div class="list-item">
+      <span data-field="teaching_years[{{ loop.index0 }}]">{{ teaching_years[loop.index0] }}</span> - <span data-field="teaching_role[{{ loop.index0 }}]">{{ teaching_role[loop.index0] }}</span>
+      <div class="entry-details">
+        <span data-field="teaching_institution[{{ loop.index0 }}]">{{ teaching_institution[loop.index0] }}</span>
+        <p style="margin: 3px 0 0 0;">Roles: <span data-field="teaching_roles_details[{{ loop.index0 }}]">{{ teaching_roles_details[loop.index0] }}</span></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">RESEARCH AND SCHOLARSHIP</div>
+
+  <div class="section-title">Journal Publications:</div>
+  <div style="margin-left: 20px;">
+    {% for pub in journal_publications %}
+    <div class="list-item">
+      <span data-field="pub_number[{{ loop.index0 }}]">{{ pub_number[loop.index0] }}</span>. <span data-field="pub_authors[{{ loop.index0 }}]">{{ pub_authors[loop.index0] }}</span>, <span data-field="pub_title[{{ loop.index0 }}]">{{ pub_title[loop.index0] }}</span>.
+      <div class="abstract-text">
+        <span data-field="pub_journal_info[{{ loop.index0 }}]">{{ pub_journal_info[loop.index0] }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Published Abstracts:</div>
+  <div style="margin-left: 20px;">
+    {% for abstract in published_abstracts %}
+    <div class="list-item">
+      <span data-field="abstract_number[{{ loop.index0 }}]">{{ abstract_number[loop.index0] }}</span>. <span data-field="abstract_authors[{{ loop.index0 }}]">{{ abstract_authors[loop.index0] }}</span>, <span data-field="abstract_title[{{ loop.index0 }}]">{{ abstract_title[loop.index0] }}</span>.
+      <div class="abstract-text">
+        <span data-field="abstract_journal_info[{{ loop.index0 }}]">{{ abstract_journal_info[loop.index0] }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">SERVICE ACTIVITIES</div>
+  <div style="margin-left: 20px;">
+    <div class="list-item">
+      <span data-field="service_activity_type_1">{{ service_activity_type_1 }}</span>: <span data-field="service_activity_details_1">{{ service_activity_details_1 }}</span>
+    </div>
+    <div class="list-item">
+      <span data-field="service_activity_type_2">{{ service_activity_type_2 }}</span>: <span data-field="service_activity_details_2">{{ service_activity_details_2 }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Community Service Activities:</div>
+  <div style="margin-left: 20px;">
+    {% for community_service in community_services %}
+    <div class="list-item">
+      <span data-field="community_service_years[{{ loop.index0 }}]">{{ community_service_years[loop.index0] }}</span> - <span data-field="community_service_activity[{{ loop.index0 }}]">{{ community_service_activity[loop.index0] }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 50px; text-align: right; font-size: 0.9em;">
+    Revised: <span data-field="revision_date">{{ revision_date }}</span>
+  </div>
+</div>
+
+</body>
+</html>

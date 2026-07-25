@@ -1,0 +1,155 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .form-group { margin-bottom: 15px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 30px;">
+    <button style="padding: 8px 15px; border: 1px solid #ccc; background-color: #f0f0f0;">Clear Form</button>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 80px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">NORTHERN MICHIGAN UNIVERSITY</h1>
+  </div>
+
+  <div style="font-size: 10pt; line-height: 1.4; margin-bottom: 30px;">
+    To Register: Complete the following form. Email to <span data-field="contact_email">{{ contact_email }}</span>, fax to: (906) <span data-field="fax_number">{{ fax_number }}</span>, or mail to: <span data-field="mailing_address">{{ mailing_address }}</span>. Registrations will be held as pending until payment is received.
+    <br><br>
+    Questions: Call Continuing Education & Workforce Development (906) <span data-field="phone_number">{{ phone_number }}</span>.
+  </div>
+
+  <div style="width: 100%;">
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Name:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="full_name">{{ full_name }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Company Name:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="company_name">{{ company_name }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Address:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="address">{{ address }}</span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div style="width: 45%;">
+        <div class="form-group">
+          <label style="display: inline-block; width: 100px;">City:</label>
+          <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+            <span data-field="city">{{ city }}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label style="display: inline-block; width: 100px;">State:</label>
+          <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+            <span data-field="state">{{ state }}</span>
+          </div>
+        </div>
+      </div>
+      <div style="width: 45%;">
+        <div class="form-group">
+          <label style="display: inline-block; width: 100px;">Zip:</label>
+          <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+            <span data-field="zip_code">{{ zip_code }}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label style="display: inline-block; width: 100px;">Phone:</label>
+          <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+            <span data-field="phone_number_contact">{{ phone_number_contact }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+      <label style="display: inline-block; width: 100px;">E-mail:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="email">{{ email }}</span>
+      </div>
+    </div>
+
+    <div style="font-size: 9pt; margin-top: 30px; margin-bottom: 20px;">
+      Deadline for cancellation with full reimbursement is 5 business days prior to training date.
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label style="display: inline-block; width: 120px;">Course Name:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 130px);">
+        <span data-field="course_name">{{ course_name }}</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <label style="display: inline-block; width: 120px;">Course Date:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 130px);">
+        <span data-field="course_date">{{ course_date }}</span>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid black; margin-bottom: 10px;"></div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+      <div style="display: flex; gap: 30px;">
+        <div>
+          <label style="display: block; margin-bottom: 5px;">VISA</label>
+          <input type="checkbox" style="margin-right: 5px;">
+          <label style="display: inline-block; margin-right: 15px;">MC</label>
+          <input type="checkbox" style="margin-right: 5px;">
+          <label style="display: inline-block;">DIS</label>
+          <input type="checkbox">
+        </div>
+      </div>
+      <div>
+        <label style="display: block; margin-bottom: 5px;">Amount: $</label>
+        <div style="border-bottom: 1px solid black; display: inline-block; width: 100px;">
+          <span data-field="amount_due">{{ amount_due }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Credit Card #:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="credit_card_number">{{ credit_card_number }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Expiration Date:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px);">
+        <span data-field="expiration_date">{{ expiration_date }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="display: inline-block; width: 100px;">Signature of cardholder:</label>
+      <div style="border-bottom: 1px solid black; width: calc(100% - 110px); margin-top: 30px;">
+        <span data-field="cardholder_signature">{{ cardholder_signature }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

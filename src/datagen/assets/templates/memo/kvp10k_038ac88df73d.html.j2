@@ -1,0 +1,81 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a safe default */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { text-align: center; }
+  .header-logo { margin-bottom: 20px; }
+  .memo-header { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .memo-body p { line-height: 1.6; margin-bottom: 15px; }
+  .signature-block { margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo -->
+    <div style="text-align: center;">
+      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="#006400"/>
+        <path d="M50 5 L75 35 L75 75 L50 95 L25 75 L25 35 Z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+  <h1 style="text-align: center; font-size: 24pt; margin-bottom: 5px;">THE AGA KHAN UNIVERSITY</h1>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 20px;">MEMO</h2>
+  </div>
+
+  <div class="memo-body">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div>
+        <p><strong>FROM:</strong> <span data-field="sender.title">{{ sender.title }}</span></p>
+        <p><strong>TO:</strong></p>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+          <li><span data-field="recipient.department_1">{{ recipient.department_1 }}</span></li>
+          <li><span data-field="recipient.department_2">{{ recipient.department_2 }}</span></li>
+          <li><span data-field="recipient.department_3">{{ recipient.department_3 }}</span></li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>DATE:</strong> <span data-field="memo_date">{{ memo_date }}</span></p>
+        <p><strong>COPY:</strong> <span data-field="cc_list">{{ cc_list }}</span></p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p><strong>SUBJECT:</strong> <span data-field="subject">{{ subject }}</span></p>
+    </div>
+
+    <p>I wish to notify you that psychological counselling services are available to you at the <span data-field="organization_name">{{ organization_name }}</span>. The University will cover the cost of this professional student support service for a maximum of <span data-field="service_limit">{{ service_limit }}</span> per case per academic year.</p>
+
+    <p>In order to maintain confidentiality, you will need to personally book an appointment to see a Counsellor for required service on telephone number: <span data-field="contact_phone">{{ contact_phone }}</span> or e-mail: <span data-field="contact_email">{{ contact_email }}</span>. You will be required to identify yourself using your Student ID.</p>
+
+    <p>KAPC is located on:</p>
+    <p><strong><span data-field="location.floor">{{ location.floor }}</span>, <span data-field="location.building">{{ location.building }}</span></strong></p>
+    <p>Off <span data-field="location.area">{{ location.area }}</span></p>
+    <p>Opposite <span data-field="location.landmark">{{ location.landmark }}</span></p>
+
+    <p>If you have any questions about this service please contact me on mobile number <span data-field="mobile_number">{{ mobile_number }}</span>.</p>
+
+    <div class="signature-block">
+      <p style="margin-top: 60px;">Sincerely,</p>
+      <p>
+        <span data-field="signer.full_name">{{ signer.full_name }}</span><br>
+        <span data-field="signer.title">{{ signer.title }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; font-size: 10pt; text-align: center;">
+    <p>3rd Floor, Park Place Building, 2nd Parklands Avenue & Limuru Road</p>
+    <p>P.O. Box 30270 - 00100, GPO, Nairobi, Kenya</p>
+    <p>Tel: +254 (20) 366 1200/2424/2236; Website: <span data-field="university_website">{{ university_website }}</span></p>
+  </div>
+</div>

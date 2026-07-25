@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Health Record</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .logo-area img {
+    height: auto;
+  }
+  .contact-info p {
+    margin: 2px 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .form-row label {
+    width: 150px;
+    font-weight: normal;
+  }
+  .form-row input[type="text"], .form-row select {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  .grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em;
+  }
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+  .signature-line {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <!-- Placeholder for logo -->
+    </div>
+    <div class="contact-info">
+      <h1>NJCU HEALTH AND WELLNESS CENTER</h1>
+      <p>2039 Kennedy Blvd., Jersey City, NJ 07305-1597</p>
+      <p>Vodra Hall, Suite 107</p>
+      <p>(201) 200-3456 or 3457 • Fax: (201) 200-2011</p>
+      <p>Email: <span data-field="email">{{ email }}</span></p>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">ENTRANCE HEALTH RECORD</h2>
+
+  <p><strong>DIRECTIONS:</strong> The Entrance Health Record is to be completed by the student and returned to the Health and Wellness Center at the above address. DO NOT send the form to the Admissions Office. All medical / immunization information is confidential and will not be released without the student's written permission with the exception of vital information in case of a medical emergency. Parent or guardian's signature is required if the student is under the age of 18. <strong>INCOMPLETE FORMS ARE NOT ACCEPTED</strong></p>
+
+  <div class="form-row">
+    <label>PLEASE CHECK:</label>
+    <input type="checkbox" data-field="please_check.undergraduate" value="{{ please_check.undergraduate }}"> Undergraduate
+    <input type="checkbox" data-field="please_check.graduate" value="{{ please_check.graduate }}"> Graduate
+    <input type="checkbox" data-field="please_check.re_admit" value="{{ please_check.re_admit }}"> Re-Admit
+    <input type="checkbox" data-field="please_check.certificate" value="{{ please_check.certificate }}"> Certificate
+    <input type="checkbox" data-field="please_check.transfer" value="{{ please_check.transfer }}"> Transfer
+    <input type="checkbox" data-field="please_check.other" value="{{ please_check.other }}"> Other
+  </div>
+
+  <div class="form-row">
+    <label>Starting Semester:</label>
+    <input type="radio" name="semester" data-field="starting_semester.fall" value="{{ starting_semester.fall }}"> Fall
+    <input type="radio" name="semester" data-field="starting_semester.spring" value="{{ starting_semester.spring }}"> Spring
+    <input type="radio" name="semester" data-field="starting_semester.summer" value="{{ starting_semester.summer }}"> Summer
+    <input type="radio" name="semester" data-field="starting_semester.year" value="{{ starting_semester.year }}"> Year: <span data-field="starting_semester.year_value">{{ starting_semester.year_value }}</span>
+    <input type="checkbox" data-field="do_you_plan_to_live_on_campus" value="{{ do_you_plan_to_live_on_campus }}"> Do you plan to live on campus?
+    <input type="checkbox" data-field="do_you_plan_to_live_off_campus" value="{{ do_you_plan_to_live_off_campus }}"> Yes
+    <input type="checkbox" data-field="do_you_plan_to_live_off_campus_no" value="{{ do_you_plan_to_live_off_campus_no }}"> No
+  </div>
+
+  <h3 style="margin-top: 30px;">PLEASE PRINT ALL INFORMATION, EXCEPT WHERE A SIGNATURE IS REQUIRED - PLEASE USE INK</h3>
+
+  <div class="grid-2-col">
+    <div class="form-row">
+      <label>Name:</label>
+      <span data-field="full_name">{{ full_name }}</span>
+      <label style="width: auto;">M.I.:</label>
+      <span data-field="middle_initial">{{ middle_initial }}</span>
+    </div>
+    <div class="form-row">
+      <label>Maiden/Former Name:</label>
+      <span data-field="maiden_name">{{ maiden_name }}</span>
+      <label style="width: auto;">Date of Birth:</label>
+      <span data-field="date_of_birth">{{ date_of_birth }}</span>
+      <label style="width: auto;">Gender:</label>
+      <span data-field="gender">{{ gender }}</span>
+    </div>
+  </div>
+
+  <div class="grid-2-col">
+    <div class="form-row">
+      <label>Address (Permanent Home):</label>
+      <span data-field="address.street_permanent">{{ address.street_permanent }}</span>
+      <span data-field="address.city_permanent">{{ address.city_permanent }}</span>
+      <span data-field="address.state_permanent">{{ address.state_permanent }}</span>
+      <span data-field="address.zip_permanent">{{ address.zip_permanent }}</span>
+    </div>
+    <div class="form-row">
+      <label>Address (Local, if different from above):</label>
+      <span data-field="address.street_local">{{ address.street_local }}</span>
+      <span data-field="address.city_local">{{ address.city_local }}</span>
+      <span data-field="address.state_local">{{ address.state_local }}</span>
+      <span data-field="address.zip_local">{{ address.zip_local }}</span>
+    </div>
+  </div>
+
+  <div class="grid-2-col">
+    <div class="form-row">
+      <label>Phone (Cell):</label>
+      <span data-field="phone_cell">{{ phone_cell }}</span>
+      <label style="width: auto;">Work:</label>
+      <span data-field="phone_work">{{ phone_work }}</span>
+    </div>
+    <div class="form-row">
+      <label>Email:</label>
+      <span data-field="email_student">{{ email_student }}</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">PERSONS TO NOTIFY IN CASE OF EMERGENCY (Please complete both):</h3>
+
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 10%;">#</th>
+        <th style="width: 30%;">Name</th>
+        <th style="width: 30%;">Relationship</th>
+        <th style="width: 30%;">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td><span data-field="emergency_contact_1.name">{{ emergency_contact_1.name }}</span></td>
+        <td><span data-field="emergency_contact_1.relationship">{{ emergency_contact_1.relationship }}</span></td>
+        <td><span data-field="emergency_contact_1.phone">{{ emergency_contact_1.phone }}</span></td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td><span data-field="emergency_contact_2.name">{{ emergency_contact_2.name }}</span></td>
+        <td><span data-field="emergency_contact_2.relationship">{{ emergency_contact_2.relationship }}</span></td>
+        <td><span data-field="emergency_contact_2.phone">{{ emergency_contact_2.phone }}</span></td>
+      </tr>
+    </tbody>
+  </div>
+
+  <h3 style="margin-top: 30px;">HEALTH & HOSPITALIZATION INSURANCE:</h3>
+  <div class="form-row">
+    <label>Do you have health insurance?</label>
+    <input type="checkbox" data-field="has_insurance_yes" value="{{ has_insurance_yes }}"> YES
+    <input type="checkbox" data-field="has_insurance_no" value="{{ has_insurance_no }}"> NO
+    <span style="margin-left: 20px;">If yes, please indicate the company name and policy number of the insurance:</span>
+    <span data-field="insurance_details">{{ insurance_details }}</span>
+  </div>
+
+  <h3 style="margin-top: 30px;">MOST RECENT HEALTHCARE PROVIDER:</h3>
+  <div class="grid-2-col">
+    <div class="form-row">
+      <label>Address:</label>
+      <span data-field="provider_address">{{ provider_address }}</span>
+      <label style="width: auto;">Phone #:</label>
+      <span data-field="provider_phone">{{ provider_phone }}</span>
+    </div>
+    <div class="form-row">
+      <label>Name:</label>
+      <span data-field="provider_name">{{ provider_name }}</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">MEDICAL CONSENT AND RELEASE:</h3>
+  <p>Permission is hereby given to perform routine health examination, provide preventative measures, medical treatment and first aid at the Health and Wellness Center of New Jersey City University and to make necessary referrals. I also consent to the release of my University medical records to appropriate health care providers in the event of an emergency.</p>
+
+  <div class="signature-line">
+    <div class="form-row">
+      <label>Date:</label>
+      <span data-field="consent_date">{{ consent_date }}</span>
+    </div>
+    <div class="form-row">
+      <label>Signature:</label>
+      <span data-field="consent_signature">{{ consent_signature }}</span>
+    </div>
+  </div>
+  <p style="font-size: 0.8em; margin-top: 5px;">(If student is under 18 years of age, parent or legal guardian must sign here)</p>
+
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">PERSONAL HISTORY</h2>
+  <p>Use the space below to provide additional details</p>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Anemia:</label>
+      <input type="checkbox" data-field="personal_history.anemia" value="{{ personal_history.anemia }}">
+    </div>
+    <div class="form-row">
+      <label>Frequent Cough:</label>
+      <input type="checkbox" data-field="personal_history.frequent_cough" value="{{ personal_history.frequent_cough }}">
+    </div>
+    <div class="form-row">
+      <label>Night Sweats:</label>
+      <input type="checkbox" data-field="personal_history.night_sweats" value="{{ personal_history.night_sweats }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Asthma:</label>
+      <input type="checkbox" data-field="personal_history.asthma" value="{{ personal_history.asthma }}">
+    </div>
+    <div class="form-row">
+      <label>Gastrointestinal Issues:</label>
+      <input type="checkbox" data-field="personal_history.gastrointestinal_issues" value="{{ personal_history.gastrointestinal_issues }}">
+    </div>
+    <div class="form-row">
+      <label>Recent weight gain or loss how much:</label>
+      <span data-field="personal_history.weight_change">{{ personal_history.weight_change }}</span>
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Alcohol or Substance Abuse:</label>
+      <input type="checkbox" data-field="personal_history.substance_abuse" value="{{ personal_history.substance_abuse }}">
+    </div>
+    <div class="form-row">
+      <label>Head Injury/Concussion:</label>
+      <input type="checkbox" data-field="personal_history.head_injury" value="{{ personal_history.head_injury }}">
+    </div>
+    <div class="form-row">
+      <label>Rheumatic Fever:</label>
+      <input type="checkbox" data-field="personal_history.rheumatic_fever" value="{{ personal_history.rheumatic_fever }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Blood Disorder:</label>
+      <input type="checkbox" data-field="personal_history.blood_disorder" value="{{ personal_history.blood_disorder }}">
+    </div>
+    <div class="form-row">
+      <label>Hearing/Speech Deficit:</label>
+      <input type="checkbox" data-field="personal_history.hearing_speech_deficit" value="{{ personal_history.hearing_speech_deficit }}">
+    </div>
+    <div class="form-row">
+      <label>Sinusitis:</label>
+      <input type="checkbox" data-field="personal_history.sinusitis" value="{{ personal_history.sinusitis }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Chronic Fatigue:</label>
+      <input type="checkbox" data-field="personal_history.chronic_fatigue" value="{{ personal_history.chronic_fatigue }}">
+    </div>
+    <div class="form-row">
+      <label>Heart Murmur/Heart Problem:</label>
+      <input type="checkbox" data-field="personal_history.heart_murmur" value="{{ personal_history.heart_murmur }}">
+    </div>
+    <div class="form-row">
+      <label>Skin Disorder:</label>
+      <input type="checkbox" data-field="personal_history.skin_disorder" value="{{ personal_history.skin_disorder }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Convulsions/Seizures/Epilepsy:</label>
+      <input type="checkbox" data-field="personal_history.seizures" value="{{ personal_history.seizures }}">
+    </div>
+    <div class="form-row">
+      <label>HIV/AIDS:</label>
+      <input type="checkbox" data-field="personal_history.hiv_aids" value="{{ personal_history.hiv_aids }}">
+    </div>
+    <div class="form-row">
+      <label>Psoriasis/Eczema:</label>
+      <input type="checkbox" data-field="personal_history.psoriasis" value="{{ personal_history.psoriasis }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Depression/Anxiety:</label>
+      <input type="checkbox" data-field="personal_history.depression_anxiety" value="{{ personal_history.depression_anxiety }}">
+    </div>
+    <div class="form-row">
+      <label>Hepatitis:</label>
+      <input type="checkbox" data-field="personal_history.hepatitis" value="{{ personal_history.hepatitis }}">
+    </div>
+    <div class="form-row">
+      <label>Tonsillitis (Chronic):</label>
+      <input type="checkbox" data-field="personal_history.tonsillitis" value="{{ personal_history.tonsillitis }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Eating Disorder:</label>
+      <input type="checkbox" data-field="personal_history.eating_disorder" value="{{ personal_history.eating_disorder }}">
+    </div>
+    <div class="form-row">
+      <label>High Blood Pressure/ Hypertension:</label>
+      <input type="checkbox" data-field="personal_history.hypertension" value="{{ personal_history.hypertension }}">
+    </div>
+    <div class="form-row">
+      <label>Ulcer/Chronic Gastritis:</label>
+      <input type="checkbox" data-field="personal_history.ulcer" value="{{ personal_history.ulcer }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Emphysema:</label>
+      <input type="checkbox" data-field="personal_history.emphysema" value="{{ personal_history.emphysema }}">
+    </div>
+    <div class="form-row">
+      <label>Infectious Mononucleosis:</label>
+      <input type="checkbox" data-field="personal_history.mono" value="{{ personal_history.mono }}">
+    </div>
+    <div class="form-row">
+      <label>Urinary Tract Infection:</label>
+      <input type="checkbox" data-field="personal_history.uti" value="{{ personal_history.uti }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Environmental/Seasonal Allergies:</label>
+      <input type="checkbox" data-field="personal_history.allergies" value="{{ personal_history.allergies }}">
+    </div>
+    <div class="form-row">
+      <label>Kidney Problems:</label>
+      <input type="checkbox" data-field="personal_history.kidney_problems" value="{{ personal_history.kidney_problems }}">
+    </div>
+    <div class="form-row">
+      <label>Unexplained Aches & Pains:</label>
+      <input type="checkbox" data-field="personal_history.aches_pains" value="{{ personal_history.aches_pains }}">
+    </div>
+  </div>
+
+  <div class="grid-3-col">
+    <div class="form-row">
+      <label>Fainting Spells:</label>
+      <input type="checkbox" data-field="personal_history.fainting_spells" value="{{ personal_history.fainting_spells }}">
+    </div>
+    <div class="form-row">
+      <label>Lyme Disease:</label>
+      <input type="checkbox" data-field="personal_history.lyme_disease" value="{{ personal_history.lyme_disease }}">
+    </div>
+    <div class="form-row">
+      <label>OTHER:</label>
+      <input type="checkbox" data-field="personal_history.other_check" value="{{ personal_history.other_check }}">
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;">If you have checked any of the above, <strong>please explain fully:</strong></p>
+  <div style="border: 1px solid #000; height: 100px; margin-bottom: 30px;"></div>
+
+  <h3 style="margin-top: 30px;">ALLERGIES: (to medications or foods):</h3>
+  <div style="border: 1px solid #000; height: 50px; margin-bottom: 30px;"></div>
+
+  <h3 style="margin-top: 30px;">Current medications: (please include prescription contraceptives) and over the counter medications used on a frequent basis:</h3>
+  <div style="border: 1px solid #000; height: 80px; margin-bottom: 30px;"></div>
+
+  <h3 style="margin-top: 30px;">Hospitalizations and surgeries:</h3>
+  <div style="border: 1px solid #000; height: 80px; margin-bottom: 30px;"></div>
+
+  <h3 style="margin-top: 30px;">Serious injuries:</h3>
+  <div style="border: 1px solid #000; height: 80px; margin-bottom: 30px;"></div>
+
+  <h3 style="margin-top: 30px;">FAMILY HISTORY (please check and complete)</h3>
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Family</th>
+        <th style="width: 20%;">Living Please indicate age</th>
+        <th style="width: 40%;">State of Health Please indicate here if any family member has Diabetes, Cancer, Heart Disease, High Blood Pressure, Kidney Problems, or OTHER</th>
+        <th style="width: 25%;">If family member is deceased (Please indicate age of death and cause of death)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mother</td>
+        <td><span data-field="family_history.mother.age">{{ family_history.mother.age }}</span></td>
+        <td><span data-field="family_history.mother.health">{{ family_history.mother.health }}</span></td>
+        <td><span data-field="family_history.mother.deceased">{{ family_history.mother.deceased }}</span></td>
+      </tr>
+      <tr>
+        <td>Father</td>
+        <td><span data-field="family_history.father.age">{{ family_history.father.age }}</span></td>
+        <td><span data-field="family_history.father.health">{{ family_history.father.health }}</span></td>
+        <td><span data-field="family_history.father.deceased">{{ family_history.father.deceased }}</span></td>
+      </tr>
+      <tr>
+        <td>Siblings</td>
+        <td><span data-field="family_history.siblings.age">{{ family_history.siblings.age }}</span></td>
+        <td><span data-field="family_history.siblings.health">{{ family_history.siblings.health }}</span></td>
+        <td><span data-field="family_history.siblings.deceased">{{ family_history.siblings.deceased }}</span></td>
+      </tr>
+    </tbody>
+  </div>
+
+  <p style="margin-top: 30px;">I hereby certify that the information submitted on this health record is complete and correct.</p>
+
+  <div class="signature-line">
+    <div class="form-row">
+      <label>Signature of Student:</label>
+      <span data-field="student_signature">{{ student_signature }}</span>
+    </div>
+    <div class="form-row">
+      <label>Date:</label>
+      <span data-field="student_date">{{ student_date }}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">NEW JERSEY STATE IMMUNIZATION REQUIREMENTS</h2>
+  <p>Students who fail to comply will be blocked from second semester registration and excluded from University housing.</p>
+
+  <div class="form-row">
+    <label>STUDENT NAME (PRINT NAME):</label>
+    <span data-field="student_name_print">{{ student_name_print }}</span>
+  </div>
+  <div class="form-row">
+    <label>NJCU Student ID # or last 4 digits of SSN:</label>
+    <span data-field="student_id_ssn">{{ student_id_ssn }}</span>
+    <label style="width: auto;">Date of Birth:</label>
+    <span data-field="student_dob_imm">{{ student_dob_imm }}</span>
+  </div>
+
+  <h3 style="margin-top: 30px;">REQUIRED IMMUNIZATIONS FOR ALL STUDENTS</h3>
+
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 20%;">MMR</th>
+        <th style="width: 20%;">Measles, Mumps, Rubella (MMR)</th>
+        <th style="width: 20%;">MMR #1</th>
+        <th style="width: 20%;">MMR #2</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Measles (Single Antigen Measles Vaccine)</td>
+        <td>Month/Day/Year</td>
+        <td><span data-field="mmr_1_date">{{ mmr_1_date }}</span></td>
+        <td><span data-field="mmr_2_date">{{ mmr_2_date }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Mumps (Single Antigen Mumps Vaccine)</td>
+        <td>Month/Day/Year</td>
+        <td><span data-field="mumps_1_date">{{ mumps_1_date }}</span></td>
+        <td><span data-field="mumps_2_date">{{ mumps_2_date }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Rubella (Single Antigen Rubella Vaccine)</td>
+        <td>Month/Day/Year</td>
+        <td><span data-field="rubella_1_date">{{ rubella_1_date }}</span></td>
+        <td><span data-field="rubella_2_date">{{ rubella_2_date }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </div>
+  <p style="font-size: 0.8em; margin-top: 5px;">OR</p>
+
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 20%;">LABORATORY PROOF OF IMMUNITY:</th>
+        <th style="width: 60%;">Measles, Mumps, Rubella Virus IgG Antibody test demonstrating immunity. Copy of the official laboratory report must be attached.</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HEPATITIS B</td>
+        <td>(Required for all students registering for 12 credits or more) 3 Dose Series</td>
+        <td><span data-field="hep_b_dose1">{{ hep_b_dose1 }}</span></td>
+        <td><span data-field="hep_b_dose2">{{ hep_b_dose2 }}</span></td>
+        <td><span data-field="hep_b_dose3">{{ hep_b_dose3 }}</span></td>
+      </tr>
+    </tbody>
+  </div>
+  <p style="font-size: 0.8em; margin-top: 5px;">OR</p>
+
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 20%;">LABORATORY PROOF OF IMMUNITY:</th>
+        <th style="width: 60%;">Hepatitis B Surface Antibody test demonstrating immunity. Copy of the official laboratory report must be attached.</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>MENINGITIS B or MEN B - Trumenba (3 doses) or Bexsero (2 doses)</td>
+        <td></td>
+        <td><span data-field="meningitis_b_dose1">{{ meningitis_b_dose1 }}</span></td>
+        <td><span data-field="meningitis_b_dose2">{{ meningitis_b_dose2 }}</span></td>
+        <td><span data-field="meningitis_b_dose3">{{ meningitis_b_dose3 }}</span></td>
+      </tr>
+    </tbody>
+  </div>
+  <p style="font-size: 0.8em; margin-top: 5px;">Name of vaccine: <span data-field="vaccine_name">{{ vaccine_name }}</span></p>
+
+  <p style="font-weight: bold; margin-top: 20px;">*REQUIRED FOR ALL STUDENTS APPLYING FOR NJCU HOUSING*</p>
+  <div class="form-row">
+    <label>Meningococcal Meningitis A, C, Y, W-135 (Menactra/Menveo- given within the last 5 years and after age 16)</label>
+    <span data-field="meningococcal_dose1">{{ meningococcal_dose1 }}</span>
+    <span data-field="meningococcal_dose2">{{ meningococcal_dose2 }}</span>
+    <span data-field="meningococcal_dose3">{{ meningococcal_dose3 }}</span>
+    <span data-field="meningococcal_most_recent_dose">{{ meningococcal_most_recent_dose }}</span>
+  </div>
+
+  <h3 style="margin-top: 30px;">RECOMMENDED IMMUNIZATIONS - (Optional at the present time)</h3>
+
+  <div class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 20%;">VARICELLA (Chickenpox):</th>
+        <th style="width: 20%;">Dose #1</th>
+        <th style="width: 20%;">Dose #2</th>
+        <th style="width: 40%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TETANUS, DIPHTHERIA, PERTUSSIS (Tdap):</td>
+        <td>1 Dose within the last 10 years</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>HEPATITIS A:</td>
+        <td>Dose #1</td>
+        <td>Dose #2</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>MANTOUX TEST</td>
+        <td>Result</td>
+        <td>MM</td>
+        <td>Chest x-ray/Quantiferon Gold/T-Spot Blood test (attach radiology/laboratory test results)</td>
+      </tr>
+    </tbody>
+  </div>
+
+  <p style="font-weight: bold; margin-top: 30px;">FORMS WITHOUT SIGNATURE OR OFFICE STAMP AND THE REQUIRED INFORMATION WILL BE CONSIDERED INCOMPLETE</p>
+
+  <div class="signature-line">
+    <div class="form-row">
+      <label>Signature of Health Care Provider:</label>
+      <span data-field="provider_signature">{{ provider_signature }}</span>
+    </div>
+    <div class="form-row">
+      <label>Print Name:</label>
+      <span data-field="provider_name_print">{{ provider_name_print }}</span>
+    </div>
+  </div>
+  <div class="form-row" style="margin-top: 10px;">
+    <label>Address:</label>
+    <span data-field="provider_address_print">{{ provider_address_print }}</span>
+    <label style="width: auto;">Ph #:</label>
+    <span data-field="provider_phone_print">{{ provider_phone_print }}</span>
+    <label style="width: auto;">Date:</label>
+    <span data-field="provider_date">{{ provider_date }}</span>
+  </div>
+
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">IMMUNIZATION EXEMPTIONS</h2>
+
+  <div class="form-row">
+    <label>Immune Status Exemption - ANTIBODY TITERS (BLOOD TEST) Copy of laboratory results showing that you are immune is required. Only positive or titers will be accepted. Equivalol results are NOT acceptable.</label>
+    <input type="checkbox" data-field="immune_status_exemption" value="{{ immune_status_exemption }}">
+  </div>
+
+  <div class="form-row">
+    <label>Age Exemption - Born prior to January 1, 1957 (valid for MMR immunization exemption only) - There is NO AGE exemption for the Hepatitis B immunization.</label>
+    <input type="checkbox" data-field="age_exemption" value="{{ age_exemption }}">
+  </div>
+
+  <div class="form-row">
+    <label>Medical Exemption - Physician statement REQUIRED - must include diagnosis. Diagnosis must be an acceptable diagnosis as determined by our office and based on national guidelines. If pregnant, your physician statement must include your due date. You will be exempted until 6 weeks after your due date. Please note that breast-feeding an infant does NOT constitute a medical exemption as per national immunization guidelines. Medical exemptions will be reviewed annually and you may be required to submit a physician statement annually.</label>
+    <input type="checkbox" data-field="medical_exemption" value="{{ medical_exemption }}">
+  </div>
+
+  <div class="form-row">
+    <label>Religious Exemption - Statement explaining how these immunizations conflict with your religious beliefs is required. You do not need to name your religion, and the statement MUST be written by the student, not by the clergy or a copy of a state regulations. The State of New Jersey does not recognize or accept philosophical objections.</label>
+    <input type="checkbox" data-field="religious_exemption" value="{{ religious_exemption }}">
+  </div>
+
+  <p style="margin-top: 30px;">Where can you obtain an acceptable record of your immunizations? Students are responsible for contacting the various agencies or institutions and requesting a copy of their immunization records. All records MUST be in English or accompanied by a translation.</p>
+
+  <p style="margin-top: 20px;"><strong>Health Department:</strong> If primary immunization records were obtained at a local health department, a copy may be obtained from this source.</p>
+
+  <h3 style="margin-top: 30px;">MENINGITIS INFORMATION</h3>
+  <p>By State Law, every incoming student must be provided with information about MENINGITIS and the availability of a vaccine to prevent Bacterial Meningitis. All new students (residing in on-campus housing) are required to show proof of one Meningitis Vaccination.</p>
+  <p><strong>Definition:</strong> Meningitis is an inflammation of the protective membranes covering the brain and spinal cord. It can be caused by various bacteria or viruses or bacterial meningitis may include soft tissue infection, headache, nausea, vomiting, and rash.</p>
+  <p>Meningitis can be deadly and spread easily and sporadically. It is most likely caused by bacteria such as Streptococcus pneumoniae. Common early symptoms include fever, severe headache, neck stiffness, and rash. Because meningococcal meningitis is a serious disease, all students residing in on-campus housing are required to show proof of vaccination.</p>
+  <p><strong>Incidence:</strong> About 2,600 people get meningococcal disease each year in the U.S. 10-15% of these people die, in spite of treatment with antibiotics.</p>
+  <p><strong>Prevention:</strong> Meningococcal vaccine can prevent 2 of the 3 types of meningococcal disease in older children and adults. The American College Health Association now recommends vaccination for all college-age students (particularly those who live in dormitories).</p>
+
+  <h3 style="margin-top: 30px;">MENINGITIS SURVEY - REQUIRED</h3>
+  <p>This survey shall become part of the student's health record and is being required by N.J. Law, P.L. 2000 c. 25.</p>
+
+  <div class="form-row">
+    <label>Student Name (PRINT):</label>
+    <span data-field="survey_student_name">{{ survey_student_name }}</span>
+  </div>
+
+  <p>I have read the above information about Meningitis, the effectiveness of the vaccine, and the availability of a meningitis vaccine. Check one below:</p>
+  <div class="form-row">
+    <input type="radio" name="meningitis_check" data-field="meningitis_check.yes" value="{{ meningitis_check.yes }}"> I have decided to receive the meningitis vaccine now or at some future time.
+    <input type="radio" name="meningitis_check" data-field="meningitis_check.no" value="{{ meningitis_check.no }}"> I have decided not to receive the meningitis vaccine. NOTE: This vaccine is REQUIRED to live in Campus Housing.
+    <input type="radio" name="meningitis_check" data-field="meningitis_check.undecided" value="{{ meningitis_check.undecided }}"> I am undecided about whether or not to receive the meningitis vaccine.
+    <input type="radio" name="meningitis_check" data-field="meningitis_check.received" value="{{ meningitis_check.received }}"> I have received the meningitis vaccine on <span data-field="meningitis_received_date">{{ meningitis_received_date }}</span> Name of Vaccine: <span data-field="meningitis_vaccine_name">{{ meningitis_vaccine_name }}</span>
+  </div>
+
+  <div class="signature-line" style="margin-top: 40px;">
+    <div class="form-row">
+      <label>Administered by:</label>
+      <span data-field="administering_person">{{ administering_person }}</span>
+      <span data-field="administering_role">{{ administering_role }}</span>
+    </div>
+    <div class="form-row">
+      <label>Signature of Student:</label>
+      <span data-field="survey_student_signature">{{ survey_student_signature }}</span>
+    </div>
+  </div>
+  <div class="form-row" style="margin-top: 10px;">
+    <label>Date:</label>
+    <span data-field="survey_student_date">{{ survey_student_date }}</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Investment Fund Combined</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td, th { padding: 8px 0; text-align: left; }
+  .header-title { font-size: 24pt; font-weight: bold; }
+  .section-title { font-size: 16pt; font-weight: bold; margin-bottom: 10px; }
+  .sub-section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .text-content { font-size: 10pt; line-height: 1.5; }
+  .footer { position: absolute; bottom: 50px; right: 60px; font-size: 9pt; color: #555; }
+  .logo-text { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; font-size: 18pt; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 class="header-title">Wright State University Investment Fund Combined</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+    <div style="width: 45%;">
+      <div class="section-title">Your Client Portfolio Management Team:</div>
+      <div style="margin-top: 15px;">
+        <p><strong>{{ client_manager.name }}</strong></p>
+        <p>Client Portfolio Manager</p>
+        <p>{{ client_manager.phone }}</p>
+        <p>{{ client_manager.email }}</p>
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <div class="section-title">Your Client Portfolio Management Team:</div>
+      <div style="margin-top: 15px;">
+        <p><strong>{{ service_director.name }}</strong></p>
+        <p>Client Service Director</p>
+        <p>{{ service_director.phone }}</p>
+        <p>{{ service_director.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; height: 300px; background-image: url('placeholder_image.jpg'); background-size: cover; background-position: center; margin-bottom: 50px;">
+    <!-- Placeholder for visual layout mirroring -->
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background-color: #38761d; color: white; display: flex; justify-content: space-between; padding: 20px 60px; box-sizing: border-box;">
+        <div>
+            <span class="logo-text">SEI</span>
+            <div style="font-size: 10pt;">New ways. New answers.*</div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 12pt;">As of: {{ report_date }}</div>
+            <div style="font-size: 10pt;">©{{ copyright_year }} SEI</div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Market and performance overview</h2>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 55%;">
+      <ul style="list-style-type: disc; padding-left: 20px; font-size: 10pt;">
+        <li>Global equity markets climbed at an accelerated pace in October with a boost from emerging markets.</li>
+        <li>U.S. equities produced positive returns led by small-cap stocks in October, and growth generally outperformed value.</li>
+        <li>Health care and information technology were the best-performing U.S. sectors, while energy and utilities lagged.</li>
+        <li>The Federal Open Market Committee announced an expected 0.25% decrease in the federal funds rate toward the end of October, representing its third cut in as many months.</li>
+        <li>In mid-October, the U.S. central bank made its first monthly purchase of $60 billion in Treasury bills as part of a program to increase liquidity in the financial system.</li>
+        <li>Short-term Treasury rates declined and long-term rates increased marginally.</li>
+        <li>These opposing changes in U.S. rates—driven largely by the Federal Reserve's most recent rate cut—resulted in the yield curve partially reverting to its "normal" upward slope, as longer-term Treasuries began to yield more than shorter-term Treasuries.</li>
+        <li>Local-currency emerging-market bonds led the fixed-income universe by a wide margin. U.S. investment-grade corporates also performed well, followed by securitized sectors. High-yield bonds and Treasuries lagged.</li>
+      </ul>
+    </div>
+    <div style="width: 40%; margin-left: 30px;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">Financial Markets Review (%)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left;"></th>
+            <th style="text-align: right;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>U.S. Large Cap</td>
+            <td style="text-align: right;"><span data-field="market_data.us_large_cap">{{ market_data.us_large_cap }}</span></td>
+          </tr>
+          <tr>
+            <td>U.S. Small Cap</td>
+            <td style="text-align: right;"><span data-field="market_data.us_small_cap">{{ market_data.us_small_cap }}</span></td>
+          </tr>
+          <tr>
+            <td>International Equity x US</td>
+            <td style="text-align: right;"><span data-field="market_data.international_equity_x_us">{{ market_data.international_equity_x_us }}</span></td>
+          </tr>
+          <tr>
+            <td>Emerging Markets Equity</td>
+            <td style="text-align: right;"><span data-field="market_data.emerging_markets_equity">{{ market_data.emerging_markets_equity }}</span></td>
+          </tr>
+          <tr>
+            <td>U.S. Investment-Grade Bonds</td>
+            <td style="text-align: right;"><span data-field="market_data.us_investment_grade_bonds">{{ market_data.us_investment_grade_bonds }}</span></td>
+          </tr>
+          <tr>
+            <td>Long Duration</td>
+            <td style="text-align: right;"><span data-field="market_data.long_duration">{{ market_data.long_duration }}</span></td>
+          </tr>
+          <tr>
+            <td>High Yield Bonds</td>
+            <td style="text-align: right;"><span data-field="market_data.high_yield_bonds">{{ market_data.high_yield_bonds }}</span></td>
+          </tr>
+          <tr>
+            <td>Emerging Markets Debt</td>
+            <td style="text-align: right;"><span data-field="market_data.emerging_markets_debt">{{ market_data.emerging_markets_debt }}</span></td>
+          </tr>
+          <tr>
+            <td>Inflation-Linked</td>
+            <td style="text-align: right;"><span data-field="market_data.inflation_linked">{{ market_data.inflation_linked }}</span></td>
+          </tr>
+          <tr>
+            <td>Commodities</td>
+            <td style="text-align: right;"><span data-field="market_data.commodities">{{ market_data.commodities }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="font-size: 8pt; margin-top: 10px;">
+        <p><em>Source: SEI. Past performance is no guarantee of future results.</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Investment returns</h2>
+  <div style="font-size: 10pt; margin-bottom: 20px;">
+    <p>For period ending {{ report_date }}</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;"></th>
+        <th style="text-align: right;">Total</th>
+        <th style="text-align: right;">Actual</th>
+        <th style="text-align: right;">Cumulative (%)</th>
+        <th style="text-align: right;">1 Month</th>
+        <th style="text-align: right;">3 Month</th>
+        <th style="text-align: right;">FYTD</th>
+        <th style="text-align: right;">1 Year</th>
+        <th style="text-align: right;">3 Year</th>
+        <th style="text-align: right;">5 Year</th>
+        <th style="text-align: right;">10 Year</th>
+        <th style="text-align: right;">Inception</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Portfolio Return</td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.assets">{{ returns.total_portfolio.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.actual">{{ returns.total_portfolio.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.cumulative_pct">{{ returns.total_portfolio.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.1_month">{{ returns.total_portfolio.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.3_month">{{ returns.total_portfolio.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.fytd">{{ returns.total_portfolio.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.1_year">{{ returns.total_portfolio.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.3_year">{{ returns.total_portfolio.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.5_year">{{ returns.total_portfolio.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.10_year">{{ returns.total_portfolio.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_portfolio.inception">{{ returns.total_portfolio.inception }}</span></td>
+      </tr>
+      <tr>
+        <td>Standard Deviation Portfolio</td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.assets">{{ returns.std_dev_portfolio.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.actual">{{ returns.std_dev_portfolio.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.cumulative_pct">{{ returns.std_dev_portfolio.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.1_month">{{ returns.std_dev_portfolio.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.3_month">{{ returns.std_dev_portfolio.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.fytd">{{ returns.std_dev_portfolio.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.1_year">{{ returns.std_dev_portfolio.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.3_year">{{ returns.std_dev_portfolio.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.5_year">{{ returns.std_dev_portfolio.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.10_year">{{ returns.std_dev_portfolio.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.std_dev_portfolio.inception">{{ returns.std_dev_portfolio.inception }}</span></td>
+      </tr>
+      <tr>
+        <td>Cash/Cash Equivalents</td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.assets">{{ returns.cash_equivalents.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.actual">{{ returns.cash_equivalents.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.cumulative_pct">{{ returns.cash_equivalents.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.1_month">{{ returns.cash_equivalents.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.3_month">{{ returns.cash_equivalents.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.fytd">{{ returns.cash_equivalents.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.1_year">{{ returns.cash_equivalents.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.3_year">{{ returns.cash_equivalents.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.5_year">{{ returns.cash_equivalents.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.10_year">{{ returns.cash_equivalents.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.cash_equivalents.inception">{{ returns.cash_equivalents.inception }}</span></td>
+      </tr>
+      {% for item in alternatives %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].assets">{{ item.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].actual">{{ item.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].cumulative_pct">{{ item.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].1_month">{{ item.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].3_month">{{ item.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].fytd">{{ item.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].1_year">{{ item.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].3_year">{{ item.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].5_year">{{ item.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].10_year">{{ item.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].inception">{{ item.inception }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Total Fixed Income</td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.assets">{{ returns.total_fixed_income.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.actual">{{ returns.total_fixed_income.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.cumulative_pct">{{ returns.total_fixed_income.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.1_month">{{ returns.total_fixed_income.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.3_month">{{ returns.total_fixed_income.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.fytd">{{ returns.total_fixed_income.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.1_year">{{ returns.total_fixed_income.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.3_year">{{ returns.total_fixed_income.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.5_year">{{ returns.total_fixed_income.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.10_year">{{ returns.total_fixed_income.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_fixed_income.inception">{{ returns.total_fixed_income.inception }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Equity</td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.assets">{{ returns.total_equity.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.actual">{{ returns.total_equity.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.cumulative_pct">{{ returns.total_equity.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.1_month">{{ returns.total_equity.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.3_month">{{ returns.total_equity.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.fytd">{{ returns.total_equity.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.1_year">{{ returns.total_equity.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.3_year">{{ returns.total_equity.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.5_year">{{ returns.total_equity.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.10_year">{{ returns.total_equity.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="returns.total_equity.inception">{{ returns.total_equity.inception }}</span></td>
+      </tr>
+      {% for item in us_equity_holdings %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].assets">{{ item.assets }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].actual">{{ item.actual }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].cumulative_pct">{{ item.cumulative_pct }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].1_month">{{ item.1_month }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].3_month">{{ item.3_month }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].fytd">{{ item.fytd }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].1_year">{{ item.1_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].3_year">{{ item.3_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].5_year">{{ item.5_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].10_year">{{ item.10_year }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].inception">{{ item.inception }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Disclosures</h2>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">Fund / Benchmark Disclosures</h3>
+    <div class="text-content">
+      <p>The <span data-field="disclosure.fund_type">{{ disclosure.fund_type }}</span>, with the exception of its structured credit, certain private assets, and energy debt products, are "fund-of-funds," which means that the funds invest in underlying third party funds. Alternative investments by their nature involve a substantial degree of risk. Investment values and performance information calculated by fund of funds are generally based on investment values reported by the underlying third party funds which may use a number of valuation methods depending on asset class and may provide such valuations on a delayed timeline. For interim reporting, fund of fund valuations are typically estimates and may be subject to later adjustment. The value of investments in the SEI Alternative, Property and Private Assets Funds as presented in this report are calculated pursuant to each fund's valuation procedures on either a monthly or quarterly basis, as applicable, and are subject to change. The performance of the SEI Funds is not indicative of the performance of the underlying funds and should not be used to infer the performance of the SEI Funds. None of the SEI Alternative, Property and Private Assets Funds, their respective boards, SEI or any of their affiliates will provide any investment advice, nor will they provide any recommendations to buy or sell any securities. The investment values and performance information presented in this report are based on information provided by underlying investments or other third parties. Your investment is illiquid, and you may not realize the estimated value of your investment when you attempt to dispose of your investment. The value of investments and performance information for the Alternative, Property and Private Assets Funds provided herein are presented on a monthly or quarterly lag, as noted below, based on the timing of reporting from, or attributable to, the underlying investments.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">The SEI Global Private Assets III, L.P. performance is calculated gross of investment management fees and net of administrative expenses and underlying fund expenses. The Fund is valued based upon the most current information available, and may reflect lags of up to 3 months as noted in the report, based on the timing of reporting from, or attributable to, the underlying investments. Returns in this report for the SEI Global Private Assets III Fund reflect the Fund's value as determined as of the end of the prior quarter, plus cash flows for the current quarter. Therefore, the returns shown here may differ from what the Fund's actual return will be when its value for the current quarter is calculated. Please refer to the SEI Global Private Asset III, L.P.'s Limited Partnership Agreement and Confidential Private Placement Memorandum for further information regarding valuation.</h3>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Disclosures</h2>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">General Disclosures</h3>
+    <div class="text-content">
+      <p>For those SEI products which employ a multi-manager structure, SEI Investments Management Corporation is responsible for overseeing the sub-advisors, and recommending their hiring, termination and replacement.</p>
+      <p>All performance numbers greater than one year are annualized. All figures in this report are based on trade date and accrual accounting methods. As a result, these figures may not match your custody statement.</p>
+      <p>Certain fund benchmarks used to measure performance may be changed by SEI to more appropriately reflect a fund's investment style.</p>
+      <p>The Total Portfolio Index reported is customized for your account. It is based on the benchmarks for each asset class in which you are invested, weighted based on your target allocations. The Total Portfolio Index is adjusted to reflect any changes in your target allocations but not changes in your actual allocations which may occur due to changes in the market value of your investments.</p>
+      <p>If there has been a change in the financial condition of your organization, please notify your SEI Client Portfolio Manager immediately.</p>
+      <p>This presentation is provided by SEI Investments Management Corporation (SIMC), a registered investment adviser and wholly owned subsidiary of SEI Investments Company. The material included herein is based on the views of SIMC. Statements that are not factual in nature, including opinions, projections and estimates, assume certain economic conditions and industry developments and constitute only current opinions that are subject to change without notice. Nothing herein is intended to be a forecast of future events, or a guarantee of future results. This presentation should not be relied upon by the reader as research or investment advice (SIMC has not provided any investment advice).</p>
+      <p>The risks inherent in investing including loss of principal. There is no assurance that the objectives of any strategy or fund will be achieved or will be successful. No investment strategy, including diversification, can protect against market risk or loss. Current and future portfolio holdings are subject to risk. Past performance does not guarantee future results.</p>
+      <p>Index returns are for illustrative purposes only and do not represent actual fund performance. Index performance returns do not reflect past performance fees, transaction costs, or expenses, which would reduce returns. Indexes are unmanaged and one cannot invest directly in an index.</p>
+      <p>In the event prior performance was provided to SEI and included in this report, neither SEI nor its affiliates assumes any responsibility for the accuracy or completeness of such prior performance and such information has not been independently verified by SEI.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Disclosures</h2>
+
+  <div style="margin-top: 20px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">General Disclosures - continued</h3>
+    <div class="text-content">
+      <p>The Portfolio Return and underlying holdings performance numbers are calculated using Gross Fund Performance, using a true time weighted performance method (prior to 6/30/2012 the Modified Dietz method of calculation was used). Gross Fund Performance reflects the effective performance of the underlying mutual funds that are selected or recommended by SIMC to implement an institutional client's investment strategy. Gross Fund Performance does not reflect the impact of fund level expenses. Net Fund Performance reflects the effective performance of the underlying mutual funds after the deduction of all management fees and other expenses charged by the funds and the reinvestment of dividends and other earnings. The inclusion of the fund level expenses that the client incurs but that are offset against the client's account level investment management fees would reduce the gross fund performance of the mutual funds. Alternative, Property and Private Assets Funds performance may be reported on a monthly or quarterly lag.</p>
+      <p>Any presentation of gross mutual fund performance of underlying mutual fund investments or gross account level performance is only intended for one-on-one presentations with clients and may not be duplicated in any form by any means or redistributed without SIMC's prior written consent.</p>
+      <p>Through June 30, 2012, annual performance is calculated based on monthly return streams, geometrically linked. From June 30, 2012 onward, annual performance is based upon daily return streams, geometrically linked as of the specified month end.</p>
+      <p>Performance results do not reflect the effect of certain account level advisory fees. The inclusion of such fees would reduce account level performance, particularly when compounded over a period of years. The following hypothetical illustration shows the compound effect fees have on investment return: For an account charged 1% with a stated annual return of 10%, the net total return before taxes would be reduced from 10% to 9%. A ten year investment of $100,000 at 10% would grow to $259,374, and at 9% would grow to $236,736 before taxes. For a complete description of all fees and expenses, please refer to SIMC's Form ADV Part 2A, the investment management agreement between SIMC and each client, and quarterly client notices.</p>
+      <p>Net Portfolio Returns since 6/30/2012 reflect the deduction of SIMC's investment management fee and the impact that fee had on the client's portfolio performance. Prior to 6/30/2012, Net Portfolio Returns reflect a proxy annual fee for all periods to demonstrate the impact that SIMC's investment management fee had on the portfolio performance. However, this is a hypothetical calculation, as it does not reflect the actual fees paid by the client during the period. See your client invoice for actual fees paid.</p>
+      <p>SEI performance may differ from that of your manager, custodian or consultant due to differences of pricing, valuation and performance methodology.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

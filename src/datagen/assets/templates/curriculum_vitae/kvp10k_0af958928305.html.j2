@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    margin-bottom: 20px;
+  }
+  .contact-info p {
+    margin: 2px 0;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .entry {
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  .entry-title {
+    font-weight: bold;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif;
+  }
+  .entry-details {
+    font-style: italic;
+    font-size: 10pt;
+    margin-left: 15px;
+  }
+  .list-item {
+    margin-bottom: 5px;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <h1 style="font-size: 24pt; margin: 0;">Curriculum Vitae</h1>
+    <p style="font-size: 14pt; margin-top: 5px;">{{ full_name }}</p>
+  </div>
+
+  <div class="contact-info">
+    <p>Business Address: <span data-field="business_address.street">{{ business_address.street }}</span></p>
+    <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+    <p>Email: <span data-field="email">{{ email }}</span></p>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="entry-title">{{ education.degree_1 }}</div>
+    <div class="entry-details">{{ education.institution_1 }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ education.degree_2 }}</div>
+    <div class="entry-details">{{ education.institution_2 }}</div>
+  </div>
+
+  <div class="section-title">Teaching Assistantships</div>
+  {% for ta in teaching_assistantships %}
+  <div class="entry">
+    <div class="entry-title">{{ ta.period }}</div>
+    <div class="entry-details">{{ ta.description }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Professional Affiliations</div>
+  <div class="entry">
+    <div class="entry-title">{{ affiliation_1 }}</div>
+    <div class="entry-details">{{ affiliation_1_details }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ affiliation_2 }}</div>
+    <div class="entry-details">{{ affiliation_2_details }}</div>
+  </div>
+
+  <div class="section-title">Conference Presentations</div>
+  {% for presentation in conference_presentations %}
+  <div class="entry">
+    <div class="entry-title">{{ presentation.title }}</div>
+    <div class="entry-details">{{ presentation.details }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Invited Talks/Lectures</div>
+  {% for talk in invited_talks %}
+  <div class="entry">
+    <div class="entry-title">{{ talk.title }}</div>
+    <div class="entry-details">{{ talk.details }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Competitive Grants Received</div>
+  <div class="entry">
+    <div class="entry-title">{{ grant_1_title }}</div>
+    <div class="entry-details">{{ grant_1_date }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ grant_2_title }}</div>
+    <div class="entry-details">{{ grant_2_date }}</div>
+  </div>
+
+  <div class="section-title">Awards</div>
+  <div class="entry">
+    <div class="entry-title">{{ award_1_name }}</div>
+    <div class="entry-details">{{ award_1_year }}</div>
+  </div>
+
+  <div class="section-title">Clinical Training</div>
+  <div class="entry">
+    <div class="entry-title">{{ clinical_training_1_description }}</div>
+    <div class="entry-details">{{ clinical_training_1_presenters }}</div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Interpersonal Psychotherapy Training Conference</div>
+  <div class="entry">
+    <div class="entry-title">Interpersonal Psychotherapy Training Conference</div>
+    <div class="entry-details">Presenters: {{ training_conference_1_presenters }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Interpersonal Psychotherapy Training Conference</div>
+    <div class="entry-details">Presenters: {{ training_conference_2_presenters }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Interpersonal Psychotherapy Training Conference</div>
+    <div class="entry-details">Presenter: {{ training_conference_3_presenter }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Psychotherapy for Adolescents Training Conference</div>
+    <div class="entry-details">Presenters: {{ training_conference_4_presenters }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Motivational Interviewing Training Conference</div>
+    <div class="entry-details">Presenter: {{ training_conference_5_presenter }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Acceptance and Commitment Therapy Training Conference</div>
+    <div class="entry-details">Presenter: {{ training_conference_6_presenter }}</div>
+  </div>
+
+  <div class="section-title">Additional Responsibilities</div>
+  <div class="entry">
+    <div class="entry-title">Graduate Student Advisory Committee, Member</div>
+    <div class="entry-details">Supervisor: {{ advisory_committee_supervisor }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Behavioral Consultant to the First Year Undergraduate Student Retention Program</div>
+    <div class="entry-details">Supervisor: {{ consultant_supervisor }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Mentor to Undergraduate Research Assistants in a Psychology Laboratory</div>
+    <div class="entry-details">Supervisor: {{ mentor_supervisor }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Mentor to First-year Graduate Students</div>
+    <div class="entry-details">Supervisor: {{ mentor_grad_supervisor }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Statistical Consultant on an Undergraduate Honors Thesis</div>
+    <div class="entry-details">Supervisor: {{ statistical_consultant_supervisor }}</div>
+  </div>
+
+  <div class="section-title">Research Supervision</div>
+  <div class="entry">
+    <div class="entry-title">Supervisor for Research Assistants on a Meta-analysis</div>
+    <div class="entry-details">Supervisors: {{ research_supervisor_1 }}, {{ research_supervisor_2 }}, and {{ research_supervisor_3 }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Society for Research in Psychopathology, Student Contributor, Publication Committee</div>
+    <div class="entry-details">Supervisors: {{ society_supervisor_1 }}, {{ society_supervisor_2 }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Interviewed a prominent SRP member for an co-wrote an article in the SRP newsletter</div>
+    <div class="entry-details"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

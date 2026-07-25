@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Time Coronavirus Brief</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .byline { font-size: 0.9em; color: #555; margin-bottom: 20px; }
+  .article-body { line-height: 1.6; text-align: justify; }
+  .datatable { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .datatable th, .datatable td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  .datatable th { background-color: #f2f2f2; }
+  .map-container { text-align: center; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 3em; margin: 0;">TIME</h1>
+    <h2 style="font-size: 1.5em; margin: 5px 0;">THE CORONAVIRUS BRIEF</h2>
+  </div>
+
+  <p style="font-size: 1.1em; margin-bottom: 5px;">Friday, <span data-field="date">{{ date }}</span></p>
+  <p class="byline">By <span data-field="author_name">{{ author_name }}</span></p>
+
+  <h2 style="font-size: 1.8em; margin-top: 30px; margin-bottom: 20px;">Foreign Spies Also Target Zoom, Not Just Internet Trolls</h2>
+
+  <div class="article-body">
+    <p>If you've never been "<span data-field="quote_term">{{ quote_term }}</span>," let me tell you one thing from experience: it's horrific and violating. And it's an experience shared by potentially thousands of people around the world. One moment you think you're having a private virtual conversation, the next you're interrupted by an outsider who swings racial slurs at you, or displays pornographic images on your screen.</p>
+    <p>As it turns out, the <span data-field="platform_name">{{ platform_name }}</span>—which has grown increasingly popular around the world as the coronavirus pandemic keeps more and more people in social isolation—is not only filled with vulnerabilities that leave users susceptible to Zoombombing; it is also being used by foreign spies to obtain sensitive information.</p>
+    <p>John Walcott, TIME foreign policy and national security reporter, spoke to three U.S. intelligence officials to learn about how foreign spies have targeted Zoom. "While the Chinese, Russians, and others are targeting virtually every tool Americans and others are using now that they're forced to work from home, Zoom is an attractive target, especially for China," Walcott reports.</p>
+    <p>Though Zoom had originally promised its users that the platform provided end-to-end encryption for all conversations, that later turned out not to be entirely true. An April 3 report by <span data-field="report_source">{{ report_source }}</span> uncovered further vulnerabilities, including encryption keys that are routed through servers in China. Zoom has promised to increase its security measures, and went so far as to declare a 90-day focus on privacy rather than flashy new features. There are also ways users can prevent Zoombombing by following the company's recommended practices. But former NSA and CIA director Michael Hayden tells Walcott that "Zoom's links to China, regardless of what its CEO promises, create a persistent threat."</p>
+    <p><a href="#" style="color: #000;">Read more here.</a></p>
+  </div>
+
+  <h2 style="font-size: 1.8em; margin-top: 40px; margin-bottom: 20px;">TODAY'S CORONAVIRUS OUTLOOK</h2>
+
+  <div class="map-container">
+    <p style="font-size: 1.2em; font-weight: bold;">The Global Situation</p>
+    <p>Roughly <span data-field="global_infected_count">{{ global_infected_count }}</span> million people in over <span data-field="global_countries_count">{{ global_countries_count }}</span> countries and territories around the world had been infected with COVID-19 as of Thursday evening, and more than <span data-field="global_deaths_count">{{ global_deaths_count }}</span> lives have been lost due to the illness.</p>
+    <div style="width: 80%; margin: 20px auto;">
+      <!-- Placeholder for world map visualization -->
+      <div style="height: 300px; background-color: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center;">
+        [World Map Visualization Placeholder]
+      </div>
+    </div>
+    <p style="font-size: 0.9em;">Here is every country with over <span data-field="map_threshold_count">{{ map_threshold_count }}</span> confirmed cases, as of Thursday night, 8 PM eastern time:</p>
+  </div>
+
+  <table class="datatable">
+    <thead>
+      <tr>
+        <th>Country/Region</th>
+        <th>Total</th>
+        <th>Cases</th>
+        <th>Deaths</th>
+        <th>Recoveries</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for country in country_data %}
+      <tr>
+        <td><span data-field="country_data[{{ loop.index0 }}].name">{{ country.name }}</span></td>
+        <td><span data-field="country_data[{{ loop.index0 }}].total">{{ country.total }}</span></td>
+        <td><span data-field="country_data[{{ loop.index0 }}].cases">{{ country.cases }}</span></td>
+        <td><span data-field="country_data[{{ loop.index0 }}].deaths">{{ country.deaths }}</span></td>
+        <td><span data-field="country_data[{{ loop.index0 }}].recoveries">{{ country.recoveries }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 1.8em; margin-bottom: 20px;">The Situation in the United States</h2>
+    <div style="width: 80%; margin: 20px auto;">
+      <!-- Placeholder for US map visualization -->
+      <div style="height: 350px; background-color: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center;">
+        [US Map Visualization Placeholder]
+      </div>
+    </div>
+    <p>More than <span data-field="us_infected_count">{{ us_infected_count }}</span> people in the U.S. have contracted COVID-19, and more than <span data-field="us_deaths_count">{{ us_deaths_count }}</span> have died from it as of April 9.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 1.8em; margin-bottom: 20px;">WHAT ELSE YOU SHOULD KNOW</h2>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">Will Restrictions Ease on Young People First?</h3>
+    <div class="article-body">
+      <p>As countries around the world weigh economic concerns against public health, researchers in the U.K. have presented one potential option: allow young people between 20-30 years old to leave their homes and get back to work. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">Inside the Army Corps of Engineers' Race to Build Hospitals</h3>
+    <div class="article-body">
+      <p>TIME national security correspondent W.J. Hennigan offers readers a glimpse of what it's like for the Army Corps of Engineers to construct emergency coronavirus hospitals. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">No, 5G Wireless Technology Is Not At All Linked to Coronavirus</h3>
+    <div class="article-body">
+      <p>Among the rampant misinformation about the coronavirus being spread throughout the internet is one conspiracy theory about 5G technology. TIME reporter Billy Perrigo debunks that myth, while providing broader context on the dangers of misinformation. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">Tzi Ma on Tigertail, Mulan and Anti-Asian Bigotry</h3>
+    <div class="article-body">
+      <p>The push for representation on the big screen has kept actor Tzi Ma busy. Then came COVID-19. "A man stopped right in front of me with his car and said straight in my eyes, 'You should be quarantined,'" Ma says. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">What the World Can Learn From Sanitation Workers in Hong Kong</h3>
+    <div class="article-body">
+      <p>Surgical masks, disinfectant wipes and other supplies have piled up in Hong Kong dumpsters. A public sanitation worker in Hong Kong shares her experience with TIME and offers some perspective on the risks posed by those who keep public spaces clean. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <h3 style="font-size: 1.4em; margin-top: 30px; margin-bottom: 15px;">How to Help the World's Neediest Countries</h3>
+    <div class="article-body">
+      <p>Michelle Nunn, president and CEO of CARE USA, a humanitarian aid agency, offers some tips on how to help the world's neediest and most vulnerable countries during a pandemic. <a href="#" style="color: #000;">Read more here.</a></p>
+    </div>
+
+    <p style="margin-top: 30px; font-size: 0.9em;">Thanks for reading. We hope you find the Coronavirus Brief newsletter to be a helpful tool to navigate this very complex situation, and welcome feedback at <span data-field="newsletter_email">{{ newsletter_email }}</span>.</p>
+    <p style="margin-top: 10px; font-size: 0.9em;">If you were forwarded this and want to sign up to receive it daily, <a href="#" style="color: #000;">click here.</a></p>
+  </div>
+
+  <!-- Advertisement Placeholder -->
+  <div style="text-align: center; margin-top: 50px; border: 1px solid #ccc; padding: 20px; background-color: #f9f9f9;">
+    <img src="placeholder_ad.png" alt="Advertisement" style="max-width: 100%; height: auto;">
+    <p style="font-size: 0.7em; margin-top: 10px;">Powered by <span data-field="ad_provider">{{ ad_provider }}</span></p>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <div style="text-align: left;">
+      <h2 style="font-size: 1.5em; margin: 0;">Want more from TIME?</h2>
+      <p style="margin: 5px 0 0 0;">Sign up for our other newsletters.</p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 1.5em; margin: 0;">Subscribe to the magazine.</h2>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px; font-size: 0.9em;">
+    TIME: may receive compensation for some links to products and services in this email. Offers may be subject to change without notice.
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px; font-size: 0.9em;">
+    Connect with TIME via <a href="#" style="color: #000;">Facebook</a> | <a href="#" style="color: #000;">Twitter</a> | <a href="#" style="color: #000;">Newsletters</a>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px; font-size: 0.8em;">
+    <a href="#" style="color: #000;">EMAIL</a> | <a href="#" style="color: #000;">UNSUBSCRIBE</a> | <a href="#" style="color: #000;">PRIVACY POLICY</a> | <a href="#" style="color: #000;">YOUR CALIFORNIA PRIVACY RIGHTS</a>
+  </div>
+
+  <div style="text-align: center; font-size: 0.8em;">
+    TIME, USA, LLC, 3 Bryant Park, New York, NY 10036
+  </div>
+
+  <div style="text-align: center; font-size: 0.7em; margin-top: 40px;">
+    Questions? Contact <span data-field="contact_email">{{ contact_email }}</span>
+  </div>
+
+  <div style="text-align: center; font-size: 0.6em; margin-top: 20px;">
+    Copyright © <span data-field="copyright_year">{{ copyright_year }}</span> TIME, USA, LLC. All rights reserved.
+  </div>
+</div>
+
+</body>
+</html>

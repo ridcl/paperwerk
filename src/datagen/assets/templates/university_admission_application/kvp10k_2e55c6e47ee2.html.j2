@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Application for Admission under the Agreement on Graduate Education</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; font-size: 11px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  h1.main-title {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .intro-text {
+    font-size: 10.5px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .bold-note {
+    font-weight: bold;
+    font-size: 10.5px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .form-box {
+    border: 1px solid #000;
+    padding: 12px 14px;
+    margin-top: 10px;
+  }
+  .form-box-header {
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .field-block {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .field-line {
+    border-bottom: 1px solid #000;
+    min-width: 60px;
+    min-height: 16px;
+    display: inline-block;
+  }
+  .field-label {
+    font-size: 9px;
+    margin-top: 2px;
+    color: #000;
+  }
+
+  .name-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    gap: 6px;
+  }
+  .name-row .label-inline {
+    font-size: 10.5px;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+  .name-segment {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .name-segment .field-line {
+    width: 100%;
+  }
+  .name-segment .field-label {
+    font-size: 9px;
+  }
+
+  .address-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    gap: 6px;
+  }
+  .address-row .label-inline {
+    font-size: 10.5px;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+
+  .inline-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .inline-label {
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+  .inline-field {
+    border-bottom: 1px solid #000;
+    min-width: 80px;
+    min-height: 16px;
+    display: inline-block;
+  }
+
+  .two-col-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 8px;
+  }
+  .two-col-section .col {
+    flex: 1;
+  }
+
+  .enrollment-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .enrollment-left {
+    flex: 1;
+  }
+  .enrollment-right {
+    flex: 0 0 200px;
+  }
+  .enrollment-right .enroll-label {
+    font-weight: bold;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+  }
+  .enrollment-right .enroll-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 4px;
+    gap: 4px;
+  }
+  .enrollment-right .enroll-row .inline-field {
+    min-width: 60px;
+  }
+
+  .signature-section {
+    margin-bottom: 8px;
+  }
+  .sig-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+  .sig-label {
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+  .sig-line {
+    border-bottom: 1px solid #000;
+    flex: 1;
+    min-height: 16px;
+  }
+
+  .bold-section {
+    font-weight: bold;
+    font-size: 10.5px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .note-text {
+    font-size: 9.5px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .student-sig-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  .student-sig-row .sig-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+  }
+  .student-sig-row .sig-block .sig-label {
+    font-size: 11px;
+    font-weight: normal;
+  }
+  .student-sig-row .sig-block .sig-line {
+    flex: 1;
+  }
+
+  /* Page 2 styles */
+  .office-box {
+    border: 1px solid #000;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .office-box-header {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .office-box-header u {
+    text-decoration: underline;
+  }
+
+  .cert-text {
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .institution-check-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 10px;
+  }
+  .inst-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    font-weight: bold;
+  }
+  .inst-check-line {
+    border-bottom: 1px solid #000;
+    width: 50px;
+    min-height: 14px;
+    display: inline-block;
+  }
+
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  .course-table th {
+    font-weight: bold;
+    font-size: 10.5px;
+    text-align: left;
+    padding: 2px 4px;
+    border-bottom: 1px solid #000;
+  }
+  .course-table td {
+    font-size: 10.5px;
+    padding: 4px 4px;
+    border-bottom: 1px solid #000;
+    min-height: 20px;
+  }
+
+  .gta-section {
+    margin-bottom: 10px;
+  }
+  .gta-title {
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .gta-bold-row {
+    font-weight: bold;
+    font-size: 10px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .gta-note {
+    font-size: 10px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .registrar-box {
+    border: 1px solid #000;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .registrar-header {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .registrar-header u {
+    text-decoration: underline;
+  }
+
+  .tuition-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 10px;
+  }
+  .tuition-row .inline-field {
+    min-width: 80px;
+  }
+
+  .attention-text {
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .address-columns {
+    display: flex;
+    gap: 40px;
+    margin-top: 14px;
+  }
+  .address-col {
+    flex: 1;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .address-col .addr-title {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 4px;
+  }
+
+  .send-text {
+    font-size: 10.5px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <h1 class="main-title">
+    Application for Admission under the Agreement on Graduate Education – The University of<br>
+    Missouri-Kansas City (UMKC), the Board of Regents of the State of Kansas, and the University<br>
+    of Kansas Medical Center (KUMC)
+  </h1>
+
+  <p class="intro-text">
+    Students are enrolled at both the home and host institution, and pay tuition and fees at the host institution for the course(s) enrolled in
+    under this agreement. Students enrolling at KUMC pay online in the Enroll and Pay system. Students enrolling at KUMC will receive
+    instructions about using Enroll and Pay to pay tuition/fees and how to access the KUMC network/email account from the Graduate
+    Studies Office. Students enrolling at UMKC pay tuition/fees at the Cashier's Office, 112 Administrative Center or online through the
+    UMKC website.
+  </p>
+
+  <p class="bold-note">
+    Deadlines for submitting applications are:&nbsp;&nbsp; August 1 - Fall Semester,&nbsp;&nbsp; December 1 - Spring Semester,&nbsp;&nbsp; May 1 - Summer Session.
+  </p>
+
+  <p class="bold-note">
+    It is the student's responsibility to request and pay for a transcript to be sent from the host institution to the home institution if needed.
+  </p>
+
+  <div class="form-box">
+    <div class="form-box-header">Student completes this section.&nbsp; Make sure all sections are completed and print clearly:</div>
+
+    <!-- SSN / Student # row -->
+    <div class="field-row" style="margin-bottom:14px;">
+      <div class="field-block" style="flex:1.2;">
+        <div class="field-line"><span data-field="social_security_number">{{ social_security_number }}</span></div>
+        <div class="field-label">Social Security Number</div>
+      </div>
+      <div class="field-block" style="flex:1.2;">
+        <div class="field-line"><span data-field="student_num_home">{{ student_num_home }}</span></div>
+        <div class="field-label">Student # Home Institution</div>
+      </div>
+      <div class="field-block" style="flex:1;">
+        <div class="field-line"><span data-field="student_num_host">{{ student_num_host }}</span></div>
+        <div class="field-label">Student # Host Institution<br>(to be completed by Host Institution)</div>
+      </div>
+    </div>
+
+    <!-- Name row -->
+    <div class="name-row" style="margin-bottom:10px;">
+      <span class="label-inline">Name</span>
+      <div class="name-segment">
+        <div class="field-line"><span data-field="name.last">{{ name.last }}</span></div>
+        <div class="field-label">Last</div>
+      </div>
+      <div class="name-segment">
+        <div class="field-line"><span data-field="name.first">{{ name.first }}</span></div>
+        <div class="field-label">First</div>
+      </div>
+      <div class="name-segment">
+        <div class="field-line"><span data-field="name.middle">{{ name.middle }}</span></div>
+        <div class="field-label">Middle</div>
+      </div>
+      <div class="name-segment">
+        <div class="field-line"><span data-field="name.maiden">{{ name.maiden }}</span></div>
+        <div class="field-label">Maiden</div>
+      </div>
+    </div>
+
+    <!-- Address row -->
+    <div class="address-row" style="margin-bottom:10px;">
+      <span class="label-inline">Current Address</span>
+      <div class="name-segment" style="flex:1.5;">
+        <div class="field-line"><span data-field="address.street">{{ address.street }}</span></div>
+        <div class="field-label">No &amp; Street&nbsp;&nbsp; Apt. #</div>
+      </div>
+      <div class="name-segment">
+        <div class="field-line"><span data-field="address.city">{{ address.city }}</span></div>
+        <div class="field-label">City</div>
+      </div>
+      <div class="name-segment" style="flex:0.6;">
+        <div class="field-line"><span data-field="address.state">{{ address.state }}</span></div>
+        <div class="field-label">State</div>
+      </div>
+      <div class="name-segment" style="flex:0.6;">
+        <div class="field-line"><span data-field="address.zip">{{ address.zip }}</span></div>
+        <div class="field-label">Zip</div>
+      </div>
+    </div>
+
+    <!-- Phone / Email / DOB -->
+    <div class="inline-row" style="margin-bottom:8px;">
+      <span class="inline-label">Phone (</span>
+      <span class="inline-field" style="min-width:20px;"><span data-field="phone.area_code">{{ phone.area_code }}</span></span>
+      <span class="inline-label">)</span>
+      <span class="inline-field" style="min-width:100px;"><span data-field="phone.number">{{ phone.number }}</span></span>
+      <span class="inline-label">E-Mail Address</span>
+      <span class="inline-field" style="min-width:140px;"><span data-field="email">{{ email }}</span></span>
+      <span class="inline-label">Date of Birth</span>
+      <div style="display:flex;flex-direction:column;">
+        <span class="inline-field" style="min-width:80px;"><span data-field="date_of_birth">{{ date_of_birth }}</span></span>
+        <span style="font-size:9px;">Mo/Day/Year</span>
+      </div>
+    </div>
+
+    <!-- International student -->
+    <div class="inline-row" style="margin-bottom:8px;">
+      <span class="inline-label">Are you an international Student?&nbsp;&nbsp; YES</span>
+      <span class="inline-field" style="min-width:80px;"><span data-field="international_yes">{{ international_yes }}</span></span>
+      <span class="inline-label">NO</span>
+      <span class="inline-field" style="min-width:80px;"><span data-field="international_no">{{ international_no }}</span></span>
+    </div>
+
+    <!-- Citizenship / Visa -->
+    <div class="inline-row" style="margin-bottom:8px;">
+      <span class="inline-label">Citizenship/country</span>
+      <span class="inline-field" style="min-width:160px;"><span data-field="citizenship_country">{{ citizenship_country }}</span></span>
+      <span class="inline-label">Visa Type (if applicable)</span>
+      <span class="inline-field" style="min-width:140px;"><span data-field="visa_type">{{ visa_type }}</span></span>
+    </div>
+
+    <!-- Signature of Rep -->
+    <div style="font-size:10.5px; margin-bottom:6px;">Signature of Representative from Home institutions International Student Office for students on a Visa:</div>
+    <div class="sig-row" style="margin-bottom:4px;">
+      <div class="sig-line"><span data-field="intl_rep_signature">{{ intl_rep_signature }}</span></div>
+      <span class="sig-label">Date</span>
+      <div class="sig-line"><span data-field="intl_rep_date">{{ intl_rep_date }}</span></div>
+    </div>
+    <div class="inline-row" style="margin-bottom:8px;">
+      <span class="inline-label">Print name of representative from International Student Office</span>
+      <span class="inline-field" style="flex:1; min-width:200px;"><span data-field="intl_rep_print_name">{{ intl_rep_print_name }}</span></span>
+    </div>
+
+    <!-- Degree / Department / Enrollment -->
+    <div class="enrollment-section">
+      <div class="enrollment-left">
+        <div class="inline-row" style="margin-bottom:6px;">
+          <span class="inline-label">Degree(s) sought: at home institution</span>
+          <span class="inline-field" style="min-width:120px;"><span data-field="degree_sought">{{ degree_sought }}</span></span>
+        </div>
+        <div class="inline-row" style="margin-bottom:6px;">
+          <span class="inline-label">Department at home institution</span>
+          <span class="inline-field" style="min-width:130px;"><span data-field="department_home">{{ department_home }}</span></span>
+        </div>
+        <div style="font-weight:bold; font-size:10.5px; margin-top:4px;">* This agreement includes all graduate degree programs excluding MD.</div>
+      </div>
+      <div class="enrollment-right">
+        <div class="enroll-label">ENROLLMENT REQUESTED FOR:</div>
+        <div class="enroll-row">
+          <span class="inline-field" style="min-width:30px;"><span data-field="enrollment_fall_year">{{ enrollment_fall_year }}</span></span>
+          <span class="inline-label">FALL 20</span>
+          <span class="inline-field" style="min-width:40px;"><span data-field="enrollment_fall_suffix">{{ enrollment_fall_suffix }}</span></span>
+        </div>
+        <div class="enroll-row">
+          <span class="inline-field" style="min-width:30px;"><span data-field="enrollment_spring_year">{{ enrollment_spring_year }}</span></span>
+          <span class="inline-label">SPRING 20</span>
+          <span class="inline-field" style="min-width:40px;"><span data-field="enrollment_spring_suffix">{{ enrollment_spring_suffix }}</span></span>
+        </div>
+        <div class="enroll-row">
+          <span class="inline-field" style="min-width:30px;"><span data-field="enrollment_summer_year">{{ enrollment_summer_year }}</span></span>
+          <span class="inline-label">SUMMER 20</span>
+          <span class="inline-field" style="min-width:40px;"><span data-field="enrollment_summer_suffix">{{ enrollment_summer_suffix }}</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KUMC requirements -->
+    <div class="bold-section" style="margin-top:8px;">
+      UKMC students attending at least one course at KUMC must complete the following requirements and obtain the appropriate signatures prior to presenting an application to the KUMC Office of Graduate Studies:
+    </div>
+
+    <div style="font-size:10.5px; margin-bottom:2px;">Signature of KUMC Student Health Representative*:</div>
+    <div class="sig-row" style="margin-bottom:2px;">
+      <div class="sig-line"><span data-field="kumc_health_rep_signature">{{ kumc_health_rep_signature }}</span></div>
+    </div>
+    <div style="font-size:9.5px; margin-bottom:2px;">(1012 Student Center)</div>
+    <div class="inline-row" style="margin-bottom:2px;">
+      <span class="inline-label">Date:</span>
+      <span class="inline-field" style="flex:1;"><span data-field="kumc_health_rep_date">{{ kumc_health_rep_date }}</span></span>
+    </div>
+    <div class="note-text">* Students are required to submit immunization, health history, and physical examination records. Contact Student Health at 913-588-1941 or http://www.kumc.edu/studentcenter/health.html.</div>
+
+    <div style="font-size:10.5px; margin-bottom:2px;">Signature of Health Insurance Representative*:</div>
+    <div class="sig-row" style="margin-bottom:2px;">
+      <div class="sig-line"><span data-field="health_insurance_rep_signature">{{ health_insurance_rep_signature }}</span></div>
+    </div>
+    <div style="font-size:9.5px; margin-bottom:2px;">(G112 Student Center)</div>
+    <div class="inline-row" style="margin-bottom:2px;">
+      <span class="inline-label">Date:</span>
+      <span class="inline-field" style="flex:1;"><span data-field="health_insurance_rep_date">{{ health_insurance_rep_date }}</span></span>
+    </div>
+    <div class="note-text">* Students must provide proof of health insurance. For more details, go to the health insurance website at http://www.kumc.edu/studentcenter/healthinsure.html</div>
+
+    <!-- Note -->
+    <div class="bold-section" style="margin-top:6px;">
+      Note:&nbsp; I understand that my enrollment in the course(s) shown on this form is subject to the availability of class space at the time of my registration and I am responsible for all tuition and fees assessed by the host institution.
+    </div>
+
+    <!-- Student Signature -->
+    <div class="student-sig-row">
+      <div class="sig-block">
+        <span class="sig-label">Student Signature</span>
+        <div class="sig-line"><span data-field="student_signature">{{ student_signature }}</span></div>
+      </div>
+      <div class="sig-block">
+        <span class="sig-label">Date</span>
+        <div class="sig-line"><span data-field="student_signature_date">{{ student_signature_date }}</span></div>
+      </div>
+    </div>
+
+  </div><!-- end form-box -->
+</div><!-- end page 1 -->
+
+
+<!-- PAGE 2 -->
+<div class="page">
+
+  <!-- Office of Graduate Studies box -->
+  <div class="office-box">
+    <div class="office-box-header"><u>Office of Graduate Studies</u> of HOME Institution completes this section.&nbsp;&nbsp; Please be sure all questions are answered:</div>
+
+    <div class="cert-text">
+      This is to certify that the above named individual is a Graduate Student in good standing at this institution. He/She has our permission to take the following course(s) at the:
+    </div>
+
+    <div class="institution-check-row" style="margin-bottom:10px;">
+      <div class="inst-option">
+        <span class="inst-check-line"><span data-field="institution_choice_umkc">{{ institution_choice_umkc }}</span></span>
+        University of Missouri – Kansas City
+      </div>
+      <div class="inst-option">
+        <span class="inst-check-line"><span data-field="institution_choice_kumc">{{ institution_choice_kumc }}</span></span>
+        University of Kansas Medical Center
+      </div>
+    </div>
+
+    <div class="cert-text">
+      The course(s) taken under this agreement count as resident credit toward graduation. Maximum of six credit hours per semester. This course(s) is a part of the student's graduate program or a prerequisite for the program.
+    </div>
+
+    <!-- Course table -->
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th style="width:22%;">Course Title</th>
+          <th style="width:16%;">Subject</th>
+          <th style="width:14%;">Catalog #</th>
+          <th style="width:12%;">Class #</th>
+          <th style="width:18%;">Credit Hours</th>
+          <th style="width:18%;">Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td><span data-field="courses[{{ loop.index0 }}].title">{{ course.title }}</span></td>
+          <td><span data-field="courses[{{ loop.index0 }}].subject">{{ course.subject }}</span></td>
+          <td><span data-field="courses[{{ loop.index0 }}].catalog_num">{{ course.catalog_num }}</span></td>
+          <td><span data-field="courses[{{ loop.index0 }}].class_num">{{ course.class_num }}</span></td>
+          <td><span data-field="courses[{{ loop.index0 }}].credit_hours">{{ course.credit_hours }}</span></td>
+          <td><span data-field="courses[{{ loop.index0 }}].instructor">{{ course.instructor }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- GTA/RA/GRA section -->
+    <div class="gta-section">
+      <div class="gta-title">GTA/RA/GRA Appointment Information:</div>
+      <div class="gta-bold-row">
+        Student is eligible for GTA/RA/GRA appointment for the semester of enrollment under this agreement:&nbsp; YES
+        <span class="inline-field" style="min-width:70px;"><span data-field="gta_eligible_yes">{{ gta_eligible_yes }}</span></span>
+        &nbsp; NO
+        <span class="inline-field" style="min-width:70px;"><span data-field="gta_eligible_no">{{ gta_eligible_no }}</span></span>
+      </div>
+      <div class="gta-note">This GTA/GA/GRA appointment must meet the minimum qualifications for the waiver of non-resident tuition at the <strong>HOME SCHOOL</strong>.</div>
+      <div class="inline-row" style="margin-bottom:8px;">
+        <span class="inline-label">Comments:</span>
+        <span class="inline-field" style="flex:1; min-width:300px;"><span data-field="gta_comments">{{ gta_comments }}</span></span>
+      </div>
+
+      <div class="gta-bold-row" style="margin-top:6px;">
+        This applicant is eligible for enrollment at host institution&nbsp;&nbsp; YES
+        <span class="inline-field" style="min-width:80px;"><span data-field="eligible_enrollment_yes">{{ eligible_enrollment_yes }}</span></span>
+        &nbsp; NO
+        <span class="inline-field" style="min-width:80px;"><span data-field="eligible_enrollment_no">{{ eligible_enrollment_no }}</span></span>
+      </div>
+
+      <!-- Advisor / Dean signatures -->
+      <div class="sig-row" style="margin-bottom:6px;">
+        <span class="sig-label">Graduate Advisor Signature:</span>
+        <div class="sig-line"><span data-field="grad_advisor_signature">{{ grad_advisor_signature }}</span></div>
+        <span class="sig-label">Print Name:</span>
+        <div class="sig-line"><span data-field="grad_advisor_print_name">{{ grad_advisor_print_name }}</span></div>
+      </div>
+      <div class="sig-row" style="margin-bottom:6px;">
+        <span class="sig-label">Phone # and E-mail Address:</span>
+        <div class="sig-line"><span data-field="grad_advisor_phone_email">{{ grad_advisor_phone_email }}</span></div>
+        <span class="sig-label">Date of Approval:</span>
+        <div class="sig-line"><span data-field="grad_advisor_approval_date">{{ grad_advisor_approval_date }}</span></div>
+      </div>
+      <div class="sig-row" style="margin-bottom:6px;">
+        <span class="sig-label">Dean of Graduate School Signature:</span>
+        <div class="sig-line"><span data-field="dean_signature">{{ dean_signature }}</span></div>
+        <span class="sig-label">Print Name:</span>
+        <div class="sig-line"><span data-field="dean_print_name">{{ dean_print_name }}</span></div>
+      </div>
+      <div class="sig-row" style="margin-bottom:4px;">
+        <span class="sig-label">Phone # and E-mail Address:</span>
+        <div class="sig-line"><span data-field="dean_phone_email">{{ dean_phone_email }}</span></div>
+        <span class="sig-label">Date of Approval:</span>
+        <div class="sig-line"><span data-field="dean_approval_date">{{ dean_approval_date }}</span></div>
+      </div>
+    </div>
+  </div><!-- end office box -->
+
+  <!-- Registrar's Office box -->
+  <div class="registrar-box">
+    <div class="registrar-header"><u>Registrar's Office</u> of HOME institution completes this section:</div>
+
+    <div class="tuition-row">
+      <span>Student is:&nbsp; Resident for Tuition Purposes</span>
+      <span class="inline-field" style="min-width:80px;"><span data-field="resident_tuition">{{ resident_tuition }}</span></span>
+      <span>Non Resident for Tuition Purposes</span>
+      <span class="inline-field" style="min-width:80px;"><span data-field="non_resident_tuition">{{ non_resident_tuition }}</span></span>
+    </div>
+
+    <div class="attention-text">
+      *ATTENTION STUDENT: If you are a Non-Resident at the home school but live in the state of the host school, you may qualify for resident tuition rates. Contact the Registrar's Office at the Host Institution for more details.
+    </div>
+
+    <div class="sig-row" style="margin-bottom:6px;">
+      <span class="sig-label">Home Registrar Signature:</span>
+      <div class="sig-line"><span data-field="home_registrar_signature">{{ home_registrar_signature }}</span></div>
+      <span class="sig-label">Print Name</span>
+      <div class="sig-line"><span data-field="home_registrar_print_name">{{ home_registrar_print_name }}</span></div>
+    </div>
+    <div class="sig-row" style="margin-bottom:4px;">
+      <span class="sig-label">Phone and E-mail Address:</span>
+      <div class="sig-line"><span data-field="home_registrar_phone_email">{{ home_registrar_phone_email }}</span></div>
+      <span class="sig-label">Date of Approval:</span>
+      <div class="sig-line"><span data-field="home_registrar_approval_date">{{ home_registrar_approval_date }}</span></div>
+    </div>
+  </div><!-- end registrar box -->
+
+  <div class="send-text">Send completed application to the appropriate HOST school at the address below:</div>
+
+  <!-- Address columns -->
+  <div class="address-columns">
+    <div class="address-col">
+      <div class="addr-title"><span data-field="kumc_label">{{ kumc_label }}</span></div>
+      <div><span data-field="kumc_contact_name">{{ kumc_contact_name }}</span></div>
+      <div><span data-field="kumc_contact_title">{{ kumc_contact_title }}</span></div>
+      <div><span data-field="kumc_institution_name">{{ kumc_institution_name }}</span></div>
+      <div><span data-field="kumc_mail_stop">{{ kumc_mail_stop }}</span></div>
+      <div><span data-field="kumc_street">{{ kumc_street }}</span></div>
+      <div><span data-field="kumc_city_state_zip">{{ kumc_city_state_zip }}</span></div>
+    </div>
+    <div class="address-col">
+      <div class="addr-title"><span data-field="umkc_label">{{ umkc_label }}</span></div>
+      <div><span data-field="umkc_dept_name">{{ umkc_dept_name }}</span></div>
+      <div><span data-field="umkc_institution_name">{{ umkc_institution_name }}</span></div>
+      <div><span data-field="umkc_building">{{ umkc_building }}</span></div>
+      <div><span data-field="umkc_street">{{ umkc_street }}</span></div>
+      <div><span data-field="umkc_city_state_zip">{{ umkc_city_state_zip }}</span></div>
+    </div>
+  </div>
+
+</div><!-- end page 2 -->
+
+</body>
+</html>

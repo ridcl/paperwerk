@@ -1,0 +1,111 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 30px;
+  }
+  .company-info {
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .note {
+    margin-top: 40px;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 45%;">
+      <div class="company-info">
+        <h1 style="font-size: 16pt; font-weight: bold; margin: 0;">CLEAN AIR PRODUCTS</h1>
+        <p style="margin: 2px 0;">{{ company_address_line_1 }}</p>
+        <p style="margin: 2px 0;">{{ company_address_line_2 }}</p>
+        <p style="margin: 2px 0;">Phone: {{ company_phone }}</p>
+        <p style="margin: 2px 0;">FAX: {{ company_fax }}</p>
+        <p style="margin: 2px 0;">E-mail: <a href="mailto:{{ company_email }}">{{ company_email }}</a></p>
+        <p style="margin: 2px 0;">Website: <a href="{{ company_website }}">{{ company_website }}</a></p>
+      </div>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <div class="header-title">QUOTATION Q{{ quotation_number }}</div>
+      <div style="margin-top: 50px;">
+        Document Date: <span data-field="document_date">{{ document_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>ATTN: <span data-field="contact_name">{{ contact_name }}</span></p>
+    <p>PHONE: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p>E-Mail: <span data-field="contact_email">{{ contact_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table>
+      <thead>
+        <tr>
+          <td style="width: 10%;">ITEM</td>
+          <td style="width: 15%;">QTY</td>
+          <td style="width: 50%;">DESCRIPTION</td>
+          <td style="width: 15%; text-align: right;">UNIT COST</td>
+          <td style="width: 10%; text-align: right;">EXTENDED COST</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ item.quantity }}</td>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td style="text-align: right;">{{ item.unit_cost }}</td>
+          <td style="text-align: right;">{{ item.extended_cost }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p style="font-size: 10pt;">Note: Reference <span data-field="reference_number">{{ reference_number }}</span></p>
+  </div>
+
+  <div class="note">
+    <p>This quote is firm for 30 days. Standard Warranty Form 330 applies, located on website.</p>
+    <p>Sales taxes are not included in the price. Applicable taxes will be added.</p>
+    <p>Terms Net 30 from date of shipping. Some orders will require a deposit and / or progress payments.</p>
+    <p>All orders subject to approved credit. Consult factory for details.</p>
+    <p>Interest charges of {{ interest_rate }}% per month on accounts past 30 days.</p>
+    <p>Freight Prepay and Add to invoice, FOB Clean Air Products.</p>
+    <p>Signature: _________________________</p>
+    <p>REP: <span data-field="representative_name">{{ representative_name }}</span></p>
+    <p>Jason Flaa</p>
+    <p>tt</p>
+    <p style="margin-top: 20px;">NOTE - Please e-mail purchase orders to: <span data-field="purchase_order_email">{{ purchase_order_email }}</span></p>
+  </div>
+</div>

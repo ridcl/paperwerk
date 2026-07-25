@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .contact-info p { margin: 2px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+  .two-column { display: flex; justify-content: space-between; }
+  .two-column > div { width: 48%; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt; margin-bottom: 5px;">{{ full_name }}</h1>
+    <div class="contact-info">
+      <p><span data-field="address">{{ address }}</span></p>
+      <p><span data-field="phone">{{ phone }}</span> | <span data-field="email">{{ email }}</span></p>
+    </div>
+  </div>
+
+  <div class="section-title">PERSONAL PROFILE</div>
+  <div class="two-column">
+    <div>
+      <p>Date of birth: {{ date_of_birth }}</p>
+      <p>Residence: {{ residence }}</p>
+      <p>Marital Status: {{ marital_status }}</p>
+      <p>Website: <a href="{{ website }}">{{ website }}</a></p>
+      <p>OCRID: {{ ocrid }}</p>
+    </div>
+  </div>
+
+  <div class="section-title">EDUCATION</div>
+  <div>
+    {% for edu in education %}
+    <p><strong>{{ edu.year }}</strong>: {{ edu.degree }} at {{ edu.institution }}</p>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">SPECIAL SEMINARS</div>
+  <div>
+    {% for seminar in special_seminars %}
+    <p>{{ seminar }}</p>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">POSITIONS</div>
+  <div>
+    <p><strong>Academic</strong></p>
+    {% for position in academic_positions %}
+    <p>{{ position.year_range }} - {{ position.title }} at {{ position.institution }}</p>
+    {% endfor %}
+
+    <p><strong>Volunteer</strong></p>
+    {% for volunteer in volunteer_positions %}
+    <p>{{ volunteer.year }} - {{ volunteer.title }} at {{ volunteer.institution }}</p>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">VISITING RESEARCHER POSITIONS</div>
+  <div>
+    {% for visiting_researcher in visiting_researcher_positions %}
+    <p>{{ visiting_researcher.year }} - {{ visiting_researcher.title }} at {{ visiting_researcher.institution }}. Project: {{ visiting_researcher.project }}</p>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">SERVICE</div>
+  <div>
+    <p><strong>Professional societies</strong></p>
+    {% for society in professional_societies %}
+    <p>{{ society.year }} - {{ society.role }} at {{ society.organization }}</p>
+    {% endfor %}
+
+    <p><strong>Ad hoc Reviewer [Number of reviews]: {{ review_count }} total</strong></p>
+    <ul>
+      {% for journal in reviewed_journals %}
+      <li>{{ journal }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">PUBLICATIONS</div>
+  <p>Select peer-reviewed publications (Link to full list of peer-review publications: <a href="#">My Bibliography</a>)</p>
+  <p>Total peer-review papers published: {{ total_publications }}</p>
+  <p>Metrics: Total citations: {{ total_citations }} | Most cited first-author article = {{ most_cited_article_count }} (since {{ most_cited_article_year }}); h-index = {{ h_index }}</p>
+  <p>Authors contributed equally</p>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 5%;">#</td>
+        <td style="width: 75%;">Publication Details</td>
+        <td style="width: 20%;">Citations</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pub in publications %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ pub.title }}</td>
+        <td>{{ pub.citations }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title">POSTER PRESENTATIONS</div>
+  {% for poster in poster_presentations %}
+  <p><strong>{{ poster.year }}</strong>: {{ poster.title }}</p>
+  {% endfor %}
+
+  <div class="section-title">RESEARCH SUPPORT</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 15%;">Years</td>
+        <td style="width: 25%;">Funding Source</td>
+        <td style="width: 20%;">Cumulative Costs ($USD)</td>
+        <td style="width: 20%;">Role, effort (calendar months)</td>
+        <td style="width: 20%;">Grant Title</td>
+        <td style="width: 10%;">Project Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for grant in research_grants %}
+      <tr>
+        <td>{{ grant.years }}</td>
+        <td>{{ grant.funding_source }}</td>
+        <td>{{ grant.costs }}</td>
+        <td>{{ grant.role_effort }}</td>
+        <td>{{ grant.grant_title }}</td>
+        <td>{{ grant.description }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title">ADVISORY COMMITTEE</div>
+  {% for committee_member in advisory_committee %}
+  <p>{{ committee_member.year }} - {{ committee_member.name }}</p>
+  {% endfor %}
+
+  <div class="section-title">QUALIFYING EXAM COMMITTEE</div>
+  {% for exam_member in exam_committee %}
+  <p>{{ exam_member.year }} - {{ exam_member.name }}</p>
+  {% endfor %}
+
+  <div class="section-title">AWARDS</div>
+  {% for award in awards %}
+  <p><strong>{{ award.year }}</strong>: {{ award.name }}</p>
+  {% endfor %}
+
+  <div class="section-title">TRAVEL AWARDS</div>
+  {% for travel in travel_awards %}
+  <p>{{ travel.year }} - {{ travel.name }}</p>
+  {% endfor %}
+</div>
+
+</body>
+</html>

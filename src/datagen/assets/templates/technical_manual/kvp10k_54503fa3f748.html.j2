@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Synthetic Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; font-weight: bold; margin-bottom: 15px;">LNX CONVERSION MODULES (HF electronic)</h1>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="document_title_summary">{{ document_title_summary }}</span>
+        <br>
+        <span data-field="document_description_summary">{{ document_description_summary }}</span>
+      </p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div style="font-size: 24pt; font-weight: bold;">Van Lien</div>
+      <div style="font-size: 18pt; font-weight: bold;">ABB</div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Nederlands</h2>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="nl_intro_text">{{ nl_intro_text }}</span>
+        <br>
+        <span data-field="nl_scope_text">{{ nl_scope_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">English</h2>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="en_intro_text">{{ en_intro_text }}</span>
+        <br>
+        <span data-field="en_scope_text">{{ en_scope_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Deutsch</h2>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="de_intro_text">{{ de_intro_text }}</span>
+        <br>
+        <span data-field="de_scope_text">{{ de_scope_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Français</h2>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="fr_intro_text">{{ fr_intro_text }}</span>
+        <br>
+        <span data-field="fr_scope_text">{{ fr_scope_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Technische specificaties</h3>
+      <table style="width: 100%; font-size: 10pt; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 1px solid #ccc;">
+            <th style="padding: 5px; text-align: left;">Type</th>
+            <th style="padding: 5px; text-align: left;">Lamptype</th>
+            <th style="padding: 5px; text-align: left;">T5</th>
+            <th style="padding: 5px; text-align: left;">T8</th>
+            <th style="padding: 5px; text-align: left;">T12</th>
+            <th style="padding: 5px; text-align: left;">TC-T5L</th>
+            <th style="padding: 5px; text-align: left;">TC-T8L</th>
+            <th style="padding: 5px; text-align: left;">TC-T12L</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in module_specs %}
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 5px;">{{ item.type }}</td>
+            <td style="padding: 5px;">{{ item.lamp_type }}</td>
+            <td style="padding: 5px;">{{ item.t5_rating }}</td>
+            <td style="padding: 5px;">{{ item.t8_rating }}</td>
+            <td style="padding: 5px;">{{ item.t12_rating }}</td>
+            <td style="padding: 5px;">{{ item.tc_t5l_rating }}</td>
+            <td style="padding: 5px;">{{ item.tc_t8l_rating }}</td>
+            <td style="padding: 5px;">{{ item.tc_t12l_rating }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">ABB b.v.</div>
+      <div style="font-size: 10pt; line-height: 1.4;">
+        <p>
+          <span data-field="company_name">{{ company_name }}</span>
+        </p>
+        <p>
+          <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city">{{ city }}</span> <span data-field="postal_code">{{ postal_code }}</span>
+        </p>
+        <p>
+          <span data-field="country">{{ country }}</span>
+        </p>
+        <p>
+          <span data-field="phone">{{ phone }}</span>
+        </p>
+        <p>
+          <span data-field="email">{{ email }}</span>
+        </p>
+        <p>
+          <span data-field="support_url">{{ support_url }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 50%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">INSTRUCTION LEAFLET</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="leaflet_summary_text">{{ leaflet_summary_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <h1 style="font-size: 36pt; font-weight: bold; margin-bottom: 0;">LNX-series</h1>
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">NL CONVERSION MODULES (HF electronic)</h2>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="nl_header_text">{{ nl_header_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div style="font-size: 14pt; font-weight: bold;">ABB</div>
+      <div style="font-size: 10pt; line-height: 1.4;">
+        <p>
+          <span data-field="company_name_2">{{ company_name_2 }}</span>
+        </p>
+        <p>
+          <span data-field="address_line_2">{{ address_line_2 }}</span>
+        </p>
+        <p>
+          <span data-field="contact_info_2">{{ contact_info_2 }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Installation and Connection</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="installation_text">{{ installation_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Safety Precautions</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="safety_text">{{ safety_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Technical Specifications</h3>
+      <table style="width: 100%; font-size: 10pt; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 1px solid #ccc;">
+            <th style="padding: 5px; text-align: left;">Parameter</th>
+            <th style="padding: 5px; text-align: left;">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for spec in technical_specs %}
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 5px;">{{ spec.parameter_name }}</td>
+            <td style="padding: 5px;">{{ spec.parameter_value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 45%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Warranty Information</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="warranty_text">{{ warranty_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 50%;">
+      <h3 style="font-size: 12pt; font-weight: bold; margin-bottom: 8px;">Disposal Information</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">
+        <span data-field="disposal_text">{{ disposal_text }}</span>
+      </p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div style="font-size: 14pt; font-weight: bold;">ABB</div>
+      <div style="font-size: 10pt; line-height: 1.4;">
+        <p>
+          <span data-field="legal_notice">{{ legal_notice }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

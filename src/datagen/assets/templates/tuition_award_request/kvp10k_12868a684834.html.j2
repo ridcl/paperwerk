@@ -1,0 +1,99 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; }
+  .header-logo { text-align: center; margin-bottom: 30px; }
+  .form-section { margin-bottom: 20px; }
+  .field-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .field-label { font-weight: bold; width: 30%; }
+  .field-value { width: 65%; }
+  .radio-group label { margin-right: 20px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <div style="font-size: 60px; font-weight: bold;">CMU</div>
+    <div style="text-align: center; font-size: 18px;">CENTRAL MICHIGAN UNIVERSITY</div>
+  </div>
+
+  <h1 style="text-align: center; font-size: 24px;">Graduate Domestic Tuition Award Request</h1>
+
+  <div class="form-section">
+    <p>Instructions:</p>
+    <ol>
+      <li>Prior to submission students must review the award criteria to ensure they meet the eligibility criteria and renewal criteria. Students who do not meet eligibility criteria should not apply.</li>
+      <li>Completed forms should be emailed to <span data-field="email_address">{{ email_address }}</span> with the email subject line of 'Graduate Domestic Tuition Award Request – CMU Student # <span data-field="student_id">{{ student_id }}</span>' (Example: Subject Line – Graduate Domestic Tuition Award Request – 123456)</li>
+    </ol>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Date:</div>
+      <div class="field-value"><span data-field="date">{{ date }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">CMU Student ID:</div>
+      <div class="field-value"><span data-field="student_id">{{ student_id }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">First Name:</div>
+      <div class="field-value"><span data-field="first_name">{{ first_name }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">Last (Family) Name:</div>
+      <div class="field-value"><span data-field="last_name">{{ last_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Email address:</div>
+      <div class="field-value"><span data-field="email_address">{{ email_address }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">Alternate email address:</div>
+      <div class="field-value"><span data-field="alternate_email">{{ alternate_email }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Admitted Program:</div>
+      <div class="field-value"><span data-field="admitted_program">{{ admitted_program }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">Admitted Semester:</div>
+      <div class="field-value"><span data-field="admitted_semester">{{ admitted_semester }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Please review my file for consideration of the following award: (Please select one)</p>
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="award_type" value="neighboring">
+        Graduate Neighboring Regions Tuition Merit Award
+      </label><br>
+      <label>
+        <input type="radio" name="award_type" value="out_of_state">
+        Out-of-State Tuition Merit Award
+      </label>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center; font-size: 12px; color: #555;">
+    Central Michigan University – Admissions Processing<br>
+    <span data-field="contact_email">{{ contact_email }}</span> – <span data-field="contact_phone">{{ contact_phone }}</span>
+  </div>
+</div>

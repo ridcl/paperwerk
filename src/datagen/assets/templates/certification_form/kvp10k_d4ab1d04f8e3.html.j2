@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Certification Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header-table td {
+    padding: 0;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <div style="font-size: 36px; font-weight: bold;">NORTHEASTERN</div>
+      <div style="font-size: 16px; font-weight: normal;">STATE UNIVERSITY</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-weight: bold;">SCERT</div>
+      <div style="font-weight: bold;">STX</div>
+      <div style="margin-top: 10px;">Northeastern State University</div>
+      <div>715 N. Grand Ave.</div>
+      <div>Tahlequah, OK 74464</div>
+      <div>Phone: {{ contact_phone }}</div>
+      <div>Fax: {{ contact_fax }}</div>
+      <div>drdropbox@nsuk.edu</div>
+      <div>financialaid@nsuk.edu</div>
+    </div>
+  </div>
+
+  <h1 style="font-size: 20px; margin-bottom: 30px;">2025-2026 Certification of Student Non-Filing Form</h1>
+
+  <table class="header-table" style="margin-bottom: 30px;">
+    <tr>
+      <td style="width: 30%;">Last Name</td>
+      <td style="width: 30%;">First Name</td>
+      <td style="width: 20%; text-align: center;">N</td>
+      <td style="width: 20%;">Student ID #</td>
+      <td style="width: 20%;">Phone</td>
+    </tr>
+    <tr>
+      <td><span data-field="last_name">{{ last_name }}</span></td>
+      <td><span data-field="first_name">{{ first_name }}</span></td>
+      <td style="text-align: center;"></td>
+      <td><span data-field="student_id">{{ student_id }}</span></td>
+      <td><span data-field="phone_number">{{ phone_number }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-bottom: 20px;">
+    <p style="font-weight: bold;">INSTRUCTIONS:</p>
+    <p>If you or your spouse <span data-field="did_not_file">{{ did_not_file }}</span> a 2023 federal income tax return, and are not required to file a 2023 tax return (IRS Form 1040), you must complete this form and provide signatures.</p>
+    <p>If you (and/or your spouse) had income from work, you must also attach a copy of your (and/or your spouse) W-2 or equivalent document.</p>
+    <p>By checking this box and signing this form, you are verifying that you (and/or your spouse) have attempted to obtain the Verification of Non-Filing Transcript from the IRS or other tax authorities and was unable to obtain the required documentation.</p>
+  </div>
+
+  <div class="section-header">Section A – Certification of Non-Tax Filing (PLEASE CHECK BOX BELOW IF NOT FILING)</div>
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="certify_non_filing">
+    <label for="certify_non_filing">I (we) certify that I (we) have not and will not file a 2023 U.S. Income Tax Return IRS Form 1040 and are not required to file.</label>
+  </div>
+
+  <div class="section-header">Section B – 2023 Source(s) of Income</div>
+
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <td style="width: 5%;">No.</td>
+        <td style="width: 45%;">Employer/Type of Work</td>
+        <td style="width: 25%; text-align: center;">Period of Work (MM/YY – MM/YY)</td>
+        <td style="width: 25%;">Total Earnings (2023)</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in income_sources %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="income_sources[{{ loop.index0 }}].employer_type">{{ item.employer_type }}</span></td>
+        <td style="text-align: center;">{{ item.period_of_work }}</td>
+        <td><span data-field="income_sources[{{ loop.index0 }}].total_earnings">{{ item.total_earnings }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr>
+        <td style="width: 5%;">No.</td>
+        <td style="width: 45%;">Source of Untaxed Income</td>
+        <td style="width: 25%; text-align: center;">Monthly Amount</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in untaxed_income %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="untaxed_income[{{ loop.index0 }}].source">{{ item.source }}</span></td>
+        <td style="text-align: center;">{{ item.monthly_amount }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-header" style="margin-top: 40px;">Section C – Certification and Signatures</div>
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="signed_statement">
+    <label for="signed_statement">I listed earned income from work and have attached my 2023 W-2 or equivalent document</label>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>My signature below certifies that all of the above information is true and correct.</p>
+    <table style="width: 100%; margin-top: 30px;">
+      <tr>
+        <td style="width: 50%;">Student Signature: _________________________</td>
+        <td style="width: 50%; text-align: right;">Date: _________________________</td>
+      </tr>
+      <tr>
+        <td style="width: 50%;">Spouse Signature: _________________________</td>
+        <td style="width: 50%; text-align: right;">Date: _________________________</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 80px; border-top: 1px solid #000; padding-top: 10px;">
+    <div style="font-weight: bold;">Student Financial Services</div>
+    <div style="font-size: 12px;">715 N. Grand Ave. | Tahlequah, OK 74464 | {{ contact_phone }} | {{ contact_fax }} | www.nsuk.edu</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .section-title { font-weight: bold; }
+</style>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">file: <span data-field="file_id">{{ file_id }}</span></div>
+  <div style="text-align: right; font-size: 10pt;">date: <span data-field="date">{{ date }}</span></div>
+  <h1 style="font-size: 14pt; margin-top: 20px;">INTERVAL ANALYSIS: VERIFYING FEASIBILITY</h1>
+  <h2 style="font-size: 12pt; margin-top: 20px;">Introduction.</h2>
+  <p style="margin-bottom: 15px;">Constrained optimization problems are of the form</p>
+  <div style="margin-left: 100px; margin-bottom: 20px;">
+    <p>minimize $\phi(\mathbf{x})$</p>
+    <p>subject to $\mathbf{c}_i(\mathbf{x}) \le 0, i=1, \dots, m,$</p>
+    <p>$\mathbf{g}_j(\mathbf{x}) \le 0, j=1, \dots, q_1$</p>
+    <p>$\mathbf{h}_k(\mathbf{x}) = 0, k=1, \dots, q_2$</p>
+    <p>$\mathbf{x}_i \le \bar{x}_i, \mathbf{x}_i \ge \underline{x}_i, i=1, \dots, n.$</p>
+  </div>
+  <p style="margin-bottom: 15px;">where $\phi: \mathbb{R}^n \to \mathbb{R}, \mathbf{c}_i: \mathbb{R}^n \to \mathbb{R}, \mathbf{g}_j: \mathbb{R}^n \to \mathbb{R}, \text{ and } \mathbf{h}_k: \mathbb{R}^n \to \mathbb{R}.$</p>
+  <p style="margin-bottom: 15px;">(1)</p>
+  <p style="margin-bottom: 15px;">In interval branch and bound algorithms for finding global optima for Problem (1), a search box of the form</p>
+  <div style="margin-left: 100px; margin-bottom: 20px;">
+    <p>$\mathbf{x} \in [\underline{x}_1, \bar{x}_1] \times [\underline{x}_2, \bar{x}_2] \times \dots \times [\underline{x}_n, \bar{x}_n]$</p>
+    <p>$\underline{x}_i \le x_i \le \bar{x}_i, 1 \le i \le n.$</p>
+  </div>
+  <p style="margin-bottom: 15px;">is generally given, where some of the sides in (2) correspond to bound constraints of Problem (1), and the other sides merely define the extent of the search region. If there are no constraints $\mathbf{c}_i$ and $\mathbf{g}_j$, then the box $\mathbf{x}$ is systematically tessellated into sub-boxes. The branch and bound algorithm, in its most basic form, proceeds as follows: Over each sub-box $\mathbf{x}_b$ ($\mathbf{x}_b$ is computed for some $b \in \mathbb{N}$ and the range of $\mathbf{x}$ over $b$ is bounded (e.g. with a straightforward interval evaluation). (See Interval analysis: Introduction, interval numbers and basic properties of interval arithmetic.) If there are no constraints $\mathbf{c}_i$ and $\mathbf{g}_j$, then the value $\phi(\mathbf{x})$ represents an upper bound on the minimum of $\phi$. The minimum such value is kept as the tessellation and search proceed; if any box $\mathbf{x}$ has a lower range bound greater than $\phi$, it is rejected as not containing a global optimum. See [1], [2], or [3] for details of such algorithms.</p>
+  <p style="margin-bottom: 15px;">Interval analysis: Introduction, interval numbers and basic properties of interval arithmetic. Interval analysis: Introduction, interval numbers and basic properties of interval arithmetic. Interval analysis: Interval Newton methods</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">file: <span data-field="file_id">{{ file_id }}</span></div>
+  <div style="text-align: right; font-size: 10pt;">date: <span data-field="date">{{ date }}</span></div>
+  <p style="margin-bottom: 20px;">possible normalization conditions. For details, see [1], §10.5] or [2, §2.5].</p>
+  <p style="margin-bottom: 20px;">However, computational problems occur in practice with the system (3). It is more difficult to find a good approximate critical point (for an approximate small box $\mathbf{x}$) of the entire system (3) than it is to find a point where the inequality and equality constraints are satisfied. Furthermore, if an interval Newton method is applied to (3) over a large box, the corresponding interval Jacobi matrix or slope matrix typically contains singular matrices and hence is useless for existence verification. This is especially true if it is difficult to get good estimates for the Lagrange multipliers $\lambda_i$ and $\nu_j$. For this reason, the techniques outlined below are useful.</p>
+  <h2 style="font-size: 12pt; margin-top: 20px;">Feasibility of inequality constraints.</h2>
+  <p style="margin-bottom: 20px;">Proving feasibility of the inequality constraints is sometimes possible by evaluating the $\mathbf{g}_j$ with interval arithmetic. If $\mathbf{g}_j(\mathbf{x}) \le 0$, then every point in $\mathbf{x}$ is feasible with respect to the constraint $\mathbf{g}_j(\mathbf{x}) \le 0$. See Interval analysis: Introduction, interval numbers, and basic properties of interval arithmetic [3]. However, if $\mathbf{g}_j(\mathbf{x})$ is active, then $\mathbf{g}_j(\mathbf{x})$ and no conclusion can be reached from an interval evaluation. In such cases, feasibility can sometimes be proven by treating $\mathbf{g}_j(\mathbf{x}) = 0$ as one of the equality constraints, using the techniques below.</p>
+  <h2 style="font-size: 12pt; margin-top: 20px;">Infeasibility.</h2>
+  <p style="margin-bottom: 20px;">An inequality constraint $\mathbf{g}_j$ is proven infeasible over $\mathbf{x}$ if $\mathbf{g}_j(\mathbf{x}) > 0$ and an equality constraint $\mathbf{c}_i$ is infeasible over $\mathbf{x}$ if either $\mathbf{c}_i(\mathbf{x}) > 0$ or $\mathbf{c}_i(\mathbf{x}) \le 0$. See Interval analysis: Introduction, interval numbers, and basic properties of interval arithmetic [3].</p>
+  <h2 style="font-size: 12pt; margin-top: 20px;">Feasibility of equality constraints.</h2>
+  <p style="margin-bottom: 20px;">The equality constraints</p>
+  <div style="margin-left: 100px; margin-bottom: 20px;">
+    <p>$\mathbf{c}_i(\mathbf{x}) = 0, \quad \mathbf{c}_i(\mathbf{x})^\circ = 0,$</p>
+  </div>
+  <p style="margin-bottom: 20px;">$\mathbf{c}: \mathbb{R}^n \to \mathbb{R}^m, \mathbf{c}_i \in \mathbb{R}^n$ can be considered an underdetermined system of equations, whereas interval Newton methods generally prove existence / uniqueness for square systems. However,</p>
+  <p style="margin-bottom: 20px;">Interval analysis: Introduction, interval numbers, and basic properties of interval arithmetic</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">file: <span data-field="file_id">{{ file_id }}</span></div>
+  <div style="text-align: right; font-size: 10pt;">date: <span data-field="date">{{ date }}</span></div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <p style="font-size: 10pt;">R. Baker Kearfott</p>
+      <p style="font-size: 10pt;">Department of Mathematics</p>
+      <p style="font-size: 10pt;">University of Southwestern Louisiana</p>
+      <p style="font-size: 10pt;">U.S.L. Box 4-1010, Lafayette, LA 70504-1010 USA</p>
+      <p style="font-size: 10pt;">E-mail address: <span data-field="email">{{ email }}</span></p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">AMS991 Subject Classification: 65G10, 65H20.</p>
+      <p style="font-size: 10pt;">Key words and phrases: constrained optimization, automatic result verification, interval computations, global optimization.</p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 50%;">
+      <p style="font-size: 10pt;">[1] Hansen, E. R.: Global Optimization Using Interval Analysis, Marcel Dekker, Inc., New York, 1992.</p>
+      <p style="font-size: 10pt;">[2] Kearfott, R. B.: Rigorous Global Search: Com- putational Methods, Kluwer, Dordrecht, Netherlands, 1996.</p>
+      <p style="font-size: 10pt;">[3] Ratschke, H. and Rokne, J.: New Computer Methods for Global Optimization, Wiley, New York, 1988.</p>
+    </div>
+    <div style="width: 50%;">
+      <p style="font-size: 10pt;">The situation is more complicated in the con- strained case. In particular, the values $\phi(\mathbf{x})$ can not be taken as upper bounds on the global optimum unless it is known that $\mathbf{x}$ is feasible. More generally, an upper bound on the range of $\phi$ over a small box $\mathbf{x}$ can be taken as an up- per bound for the global optimum provided it is proven that there exists a feasible point of Prob- lem (1) within $\mathbf{x}$. This article outlines how this can be done.</p>
+      <p style="font-size: 10pt;">For the fundamental concepts used through- out this article, see Interval analysis: Intro- duction, interval numbers and basic prop- erties of interval arithmetic.</p>
+      <p style="font-size: 10pt;">General feasibility: the Fritz-John condi- tions.</p>
+      <p style="font-size: 10pt;">An interval Newton method (see Interval analysis: Interval Newton methods) can sometimes be used to prove existence of a feasi- ble point of Problem (1) that is a critical point of $\phi$. In particular, the interval Newton method can sometimes prove existence of a solution to the Lagrange multiplier or Fritz-John system within $\mathbf{x}$. For the Fritz-John system, it is con- venient to consider the $\mathbf{g}_j$ bound constraints in the same form as the $\mathbf{g}_j$ inequality con- straints, so that there are $\mathbf{g}_j = \mathbf{q}_1 + \mathbf{g}_j$ general in- equality constraints of the form $\mathbf{g}_j(\mathbf{x}) \le 0$. With that, the Fritz-John system can be written as</p>
+      <div style="margin-left: 100px; margin-bottom: 20px;">
+        <p>$\left(\begin{array}{c} \mathbf{u}_0 \nabla \phi(\mathbf{x}) + \sum_{j=1}^{q_1} \mathbf{u}_j \nabla \mathbf{g}_j + \sum_{k=1}^{q_2} \mathbf{v}_k \nabla \mathbf{h}_k(\mathbf{x}) \\ \mathbf{g}_j \\ \mathbf{h}_k \end{array}\right) = \left(\begin{array}{c} 0 \\ 0 \\ 0 \end{array}\right)$</p>
+      </div>
+      <p style="font-size: 10pt;">(2)</p>
+      <p style="font-size: 10pt;">Certain complications arise. For example, if bound constraints or inequality constraints are active, then either the point $\mathbf{x}$ must be per- turbed or else the bound or inequality con- straints must be treated as equality constraints. Handling this case by perturbation is discussed in [2, p. 191].</p>
+      <p style="font-size: 10pt;">For the original explanation of the Gaussian elimination-based process, see [1, §12.4]. In [2, §5.2.4], additional background, discussion, and references appear.</p>
+    </div>
+  </div>
+</div>

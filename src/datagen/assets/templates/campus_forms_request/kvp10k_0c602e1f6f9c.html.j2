@@ -1,0 +1,150 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  td {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">SIU</h1>
+      <h2 style="font-size: 18pt; margin: 0;">Southern Illinois University</h2>
+      <p style="font-size: 10pt; margin: 0;">CARBONDALE</p>
+    </div>
+    <div style="text-align: right;">
+      <h3 style="font-size: 14pt; margin: 0;">Campus Forms Request (commodities)</h3>
+      <p style="font-size: 10pt; margin: 5px 0;">Printing/Duplicating Service - Mail Code 6733</p>
+      <p style="font-size: 10pt; margin: 5px 0;">Southern Illinois University Carbondale</p>
+      <p style="font-size: 10pt; margin: 5px 0;">Phone 618-453-2268 Fax 453-1643</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <p>Date Submitted _________________________ Date Wanted _________________________</p>
+      <p>Contact Person _________________________</p>
+      <p>Department _________________________</p>
+      <p>Mail Code _________________________</p>
+    </div>
+    <div style="width: 45%;">
+      <p>Order Number _________________________</p>
+      <p>Account Title _________________________</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 30%;">
+      <p>Contact Phone _________________________ FAX _________________________</p>
+      <p>E-Mail Address _________________________</p>
+      <p>Deliver to _________________________ Bldg. Name or Address _________________________ Room Number _________________________</p>
+    </div>
+    <div style="width: 65%;">
+      <table style="width: 100%;">
+        <tr>
+          <td style="width: 20%;">Budget Purpose</td>
+          <td style="width: 15%;">Dept. Act. 1</td>
+          <td style="width: 15%;">Dept. Act. 2</td>
+          <td style="width: 15%;">Object</td>
+        </tr>
+        <tr>
+          <td><span data-field="budget_purpose">{{ budget_purpose }}</span></td>
+          <td><span data-field="dept_act_1">{{ dept_act_1 }}</span></td>
+          <td><span data-field="dept_act_2">{{ dept_act_2 }}</span></td>
+          <td><span data-field="object">{{ object }}</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>AIS Acct. # _________________________</p>
+    <p>Fiscal Officer Signature _________________________</p>
+  </div>
+
+  <div style="border: 1px solid #000; padding: 15px; margin-bottom: 30px; background-color: #f9f9f9;">
+    <p style="font-weight: bold; margin: 0;">Current Price Listing for Campus Forms</p>
+    <p style="font-weight: bold; margin: 5px 0 0 0;">may be viewed on this web page:</p>
+    <p style="margin: 0;">www.pso.siu.edu/printing/campusForms.php</p>
+  </div>
+
+  <div style="border: 1px solid #000; padding: 15px; margin-bottom: 30px;">
+    <p style="font-weight: bold; margin: 0;">~Shaded Areas Printing/Duplicating Office Use Only~</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;">Qty Ordered</th>
+          <th style="width: 10%;">Qty Entered</th>
+          <th style="width: 10%;">Form # Entered</th>
+          <th style="width: 35%;">Form Name – Use Full Title of Form</th>
+          <th style="width: 10%;">Unit of Issue</th>
+          <th style="width: 10%;">Unit Price</th>
+          <th style="width: 10%;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].qty_ordered">{{ item.qty_ordered }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].qty_entered">{{ item.qty_entered }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].form_number">{{ item.form_number }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].form_name">{{ item.form_name }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].unit_of_issue">{{ item.unit_of_issue }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].unit_price">{{ item.unit_price }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].price">{{ item.price }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Please retain a copy for your records.</p>
+    <p>Original to: Printing & Duplicating</p>
+    <p>Mail Code 6733</p>
+    <p>210 Physical Plant Drive</p>
+    <p>Phone: 453-2268</p>
+    <p>Fax: 453-1643</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 50%;">
+      <p>Total Amount Billed _________________________</p>
+    </div>
+    <div style="width: 50%;">
+      <p>Billing Date _________________________ By _________________________</p>
+      <p>Delivery or Pickup Date _________________________ By _________________________</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 14pt;">
+    FAXED ORDERS ARE ACCEPTED
+  </div>
+</div>

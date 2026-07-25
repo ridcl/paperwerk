@@ -1,0 +1,140 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2 { font-weight: bold; }
+  .section { margin-bottom: 20px; }
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 15px; }
+  .checkbox-item label { font-weight: normal; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row div { flex: 1; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 12pt; font-weight: bold;">Department of</div>
+    <div style="font-size: 14pt; font-weight: bold;">COMMUNICATIONS</div>
+    <div style="font-size: 10pt;">University of North Alabama</div>
+  </div>
+
+  <h1 style="font-size: 18pt; margin-bottom: 10px;">Room Use Request – Communications Building</h1>
+  <p style="font-size: 12pt; margin-bottom: 30px;">for use by all UNA departments/offices, RSOs, and non-UNA organizations</p>
+
+  <div class="section">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">CHOOSE ONE</h2>
+    <div class="checkbox-group">
+      <div class="checkbox-item">
+        <input type="checkbox"> 115 Production Studio
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 126 Conference Room (seats 16)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 124 Screening Room (seats 42)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 131 Screening Room (seats 121)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 128 (seats 29)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 129 (seats 32)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 201 (seats 32)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 116 Publishing (Mac – seats 20)
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox"> 118 Production (Windows – seats 20)
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="form-row">
+      <div>Event Date: <span data-field="event_date">{{ event_date }}</span></div>
+      <div>Start Time: <span data-field="start_time">{{ start_time }}</span></div>
+      <div>End Time: <span data-field="end_time">{{ end_time }}</span></div>
+      <div># of participants: <span data-field="number_of_participants">{{ number_of_participants }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Event Details:</div>
+      <div><span data-field="event_details">{{ event_details }}</span></div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <p style="font-size: 11pt; margin-bottom: 10px;">Check all that apply:</p>
+    <div style="display: flex; gap: 20px; font-size: 11pt;">
+      <label><input type="checkbox"> PowerPoint</label>
+      <label><input type="checkbox"> Internet access</label>
+      <label><input type="checkbox"> Streaming video</label>
+      <label><input type="checkbox"> DVD</label>
+      <label><input type="checkbox"> Blu-ray (131)</label>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <p style="font-size: 11pt;">By submission of this form, we agree to adhere to all UNA regulations for appropriate facility usage.</p>
+    <p style="font-size: 11pt;">The responsible person agrees to attend the event and adhere to the department regulations outlined below.</p>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">STUDENT ORGANIZATIONS ONLY:</h2>
+    <p style="font-size: 11pt;">By submission of this form, we affirm that the requesting organization is a Registered Student Organization (RSO) in good standing with UNA. For RSOs, a FACULTY ADVISOR MUST ACT AS THE RESPONSIBLE PERSON. The faculty advisor must attend the event and take responsibility for adherence to these Department of Communications regulations and all regulations in the UNA RSO Handbook.</p>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">Requesting Group/Organization:</h2>
+    <div class="form-row">
+      <div>Contact person (or RSO Officer):</div>
+      <div>Name: <span data-field="contact_person_name">{{ contact_person_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Responsible person: (if RSO, Faculty Advisor)</div>
+      <div>Name: <span data-field="responsible_person_name">{{ responsible_person_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Email:</div>
+      <div><span data-field="contact_email">{{ contact_email }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Phone:</div>
+      <div><span data-field="contact_phone">{{ contact_phone }}</span></div>
+    </div>
+    <div class="form-row" style="margin-top: 15px;">
+      <div>Signature:</div>
+      <div><div class="signature-line" data-field="signature">{{ signature }}</div></div>
+    </div>
+    <div class="form-row" style="margin-top: 15px;">
+      <div>Position or Department:</div>
+      <div><span data-field="position_department">{{ position_department }}</span></div>
+    </div>
+    <div class="form-row" style="margin-top: 15px;">
+      <div>Date:</div>
+      <div><span data-field="request_date">{{ request_date }}</span></div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <p style="font-size: 11pt;">• Room Use Request forms must be submitted to the Department of Communications office a minimum of 72 hours in advance via email to <span data-field="department_email">{{ department_email }}</span> (preferred), mailed to Department of Communications, UNA Box 5007, Florence, AL 35632, or delivered in person to the department office, 105 Communications Building. Phone: 256.765.4247</p>
+    <p style="font-size: 11pt;">• Requests for room usage will be considered in the order in which they are received. Academic events will be given priority over non-academic events.</p>
+    <p style="font-size: 11pt;">• If the room is not available on the requested date/time, an alternative room or date/time may be suggested by the department. The responsible person will be notified if the room request is accepted or not accepted.</p>
+    <p style="font-size: 11pt;">• The responsible person named above must be present at the event. In the case of RSOs, this will be the faculty advisor.</p>
+    <p style="font-size: 11pt;">• The responsible person using the facility assumes liability for any damages to the facility, equipment or furnishings.</p>
+    <p style="font-size: 11pt;">• Food and drinks are not allowed in the labs or studio and are discouraged in other venues. If you wish to have refreshments for any event, this should be noted in the "Event Details" for department approval.</p>
+    <p style="font-size: 11pt;">• Any equipment that is utilized must be returned to prior settings after use.</p>
+    <p style="font-size: 11pt;">• Department of Communications personnel will typically be required to be present. This is at the discretion of the department, but payable by the requesting party. When required, the requesting party will pay a rate of $15 per hour for a minimum of two hours. Before applications are approved, the organization will be notified of any expenses that will be incurred.</p>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 10px 0;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+  }
+  .logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .university-logo {
+    /* Placeholder for visual representation */
+    font-size: 30pt;
+    font-weight: bold;
+  }
+  .report-title {
+    text-align: right;
+  }
+  .section-header {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .detail-row td:first-child {
+    width: 30%;
+    font-weight: bold;
+  }
+  .comment-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    min-height: 100px;
+    margin-top: 10px;
+    font-size: 10pt;
+  }
+</style>
+
+<div class="page">
+  <div class="logo-container">
+    <div class="university-logo">
+      Albany State University
+    </div>
+    <div class="report-title">
+      Consolidation Committee<br>
+      Final Report
+      <div style="margin-top: 10px;">
+        <span style="font-size: 12pt; font-weight: bold;">DARTON</span><br>
+        <span style="font-size: 10pt;">STATE COLLEGE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Committee Details</div>
+  <table>
+    <tbody>
+      <tr class="detail-row">
+        <td>Date:</td>
+        <td><span data-field="committee_details.date">{{ committee_details.date }}</span></td>
+      </tr>
+      <tr class="detail-row">
+        <td>Committee Name:</td>
+        <td><span data-field="committee_details.committee_name">{{ committee_details.committee_name }}</span></td>
+      </tr>
+      <tr class="detail-row">
+        <td>Committee Co-Chairs:</td>
+        <td><span data-field="committee_details.co_chairs">{{ committee_details.co_chairs }}</span></td>
+      </tr>
+      <tr class="detail-row">
+        <td>Functional Area:</td>
+        <td><span data-field="committee_details.functional_area">{{ committee_details.functional_area }}</span></td>
+      </tr>
+      <tr class="detail-row">
+        <td>Functional Area Coordinator:</td>
+        <td><span data-field="committee_details.coordinator">{{ committee_details.coordinator }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>List the major tasks your committee will need to take to accomplish your deliverables. Please provide more details for the tasks leading up to the SACSCOC Prospectus development.</p>
+
+  <div class="section-header">Major Tasks for Committee Tracker from Final Planning Document and Recommendations</div>
+
+  {% for task in major_tasks %}
+    <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+      <p style="font-weight: bold; margin-bottom: 5px;">Task: <span data-field="major_tasks[{{ loop.index0 }}].task_description">{{ task.task_description }}</span></p>
+      <p style="margin-top: 0;">Recommendation and/or Action Taken:</p>
+      <div class="comment-box">
+        <span data-field="major_tasks[{{ loop.index0 }}].recommendation">{{ task.recommendation }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-header">Other/Final Comments (if any):</div>
+  <div class="comment-box">
+    <span data-field="other_comments">{{ other_comments }}</span>
+  </div>
+</div>

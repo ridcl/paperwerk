@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IPEDS Data Center</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as primary */
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .header-row td {
+    font-weight: bold;
+  }
+  .note {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>National Center for Education Statistics</h1>
+  <h2>IPEDS Data Center</h2>
+  <p>UnitID: <span data-field="unit_id">{{ unit_id }}</span></p>
+  <p>OPEID: <span data-field="opeid">{{ opeid }}</span></p>
+  <p>Address: <span data-field="address">{{ address }}</span></p>
+  <p>Web Address: <span data-field="web_address">{{ web_address }}</span></p>
+  <p>Fall Enrollment <span data-field="fall_enrollment_year">{{ fall_enrollment_year }}</span></p>
+
+  <div class="section-header">Race and Ethnicity Reporting Method</div>
+  <p>Which method of reporting race and ethnicity will you use for this component?</p>
+  <p>NEW race/ethnicity categories (9 categories):</p>
+  <ul>
+    <li>Notes:</li>
+    <li>•Report Hispanic/Latino individuals of any race as Hispanic/Latino</li>
+    <li>•Report race for non-Hispanic/Latino individuals only</li>
+    <li>Nonresident alien</li>
+    <li>Hispanic/Latino</li>
+    <li>American Indian or Alaska Native</li>
+    <li>Asian</li>
+    <li>Black or African American</li>
+    <li>Native Hawaiian or Other Pacific Islander</li>
+    <li>White</li>
+    <li>Two or more races</li>
+    <li>Race and ethnicity unknown</li>
+  </ul>
+
+  <div class="section-header">OLD race/ethnicity categories (7 categories):</div>
+  <ul>
+    <li>Nonresident alien</li>
+    <li>Black, non-Hispanic</li>
+    <li>American Indian/Alaska Native</li>
+    <li>Asian/Pacific Islander</li>
+    <li>Hispanic</li>
+    <li>White, non-Hispanic</li>
+    <li>Race and ethnicity unknown</li>
+  </ul>
+
+  <div class="section-header">MIXTURE of new and old race/ethnicity categories (all 14 categories will show on each screen):</div>
+  <p>NEW categories:</p>
+  <p>Notes for NEW categories:</p>
+  <ul>
+    <li>•Report Hispanic/Latino individuals of any race as Hispanic/Latino</li>
+    <li>•Report race for non-Hispanic/Latino individuals only</li>
+    <li>Hispanic/Latino</li>
+    <li>American Indian or Alaska Native</li>
+    <li>Asian</li>
+    <li>Black or African American</li>
+    <li>Native Hawaiian or Other Pacific Islander</li>
+    <li>White</li>
+    <li>Two or more races</li>
+    <li>OLD categories:</li>
+    <li>Black, non-Hispanic</li>
+  </ul>
+</div>
+
+<div class="page">
+  <div class="section-header">Part C Selection</div>
+  <p>Completion of Part C (Residence of First-Time Undergraduates Students) is optional this year.</p>
+  <p>If you answer 'Yes' to the question below, you will be given Part C and be expected to complete the screens. If you select 'No', you will skip Part C.</p>
+  <p>Do you wish to complete Part C this year?</p>
+  <label><input type="radio" name="part_c_complete" value="yes"> Yes, I will complete Part C</label><br>
+  <label><input type="radio" name="part_c_complete" value="no"> No, I will not complete Part C</label>
+  <p>You may use the space below to provide context for the data you've reported above.</p>
+  <textarea style="width: 100%; height: 100px; margin-top: 10px;"></textarea>
+
+  <p>Institution: <span data-field="institution_id">{{ institution_id }}</span></p>
+
+  <div class="section-header">Part A - Fall Enrollment for Full-Time Undergraduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Students enrolled for</th>
+        <th>First-time</th>
+        <th>Degree/certificate-seeking</th>
+        <th>Continuing</th>
+        <th>Total degree/certificate-seeking</th>
+        <th>Non-degree/non-certificate-seeking</th>
+        <th>Total, full-time undergraduate students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Men</td>
+        <td><span data-field="men_first_time">{{ men_first_time }}</span></td>
+        <td><span data-field="men_degree_seeking">{{ men_degree_seeking }}</span></td>
+        <td><span data-field="men_continuing">{{ men_continuing }}</span></td>
+        <td><span data-field="men_total_degree_seeking">{{ men_total_degree_seeking }}</span></td>
+        <td><span data-field="men_non_degree_seeking">{{ men_non_degree_seeking }}</span></td>
+        <td><span data-field="men_total_students">{{ men_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Women</td>
+        <td><span data-field="women_first_time">{{ women_first_time }}</span></td>
+        <td><span data-field="women_degree_seeking">{{ women_degree_seeking }}</span></td>
+        <td><span data-field="women_continuing">{{ women_continuing }}</span></td>
+        <td><span data-field="women_total_degree_seeking">{{ women_total_degree_seeking }}</span></td>
+        <td><span data-field="women_non_degree_seeking">{{ women_non_degree_seeking }}</span></td>
+        <td><span data-field="women_total_students">{{ women_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>American Indian/Alaska Native</td>
+        <td><span data-field="ai_an_first_time">{{ ai_an_first_time }}</span></td>
+        <td><span data-field="ai_an_degree_seeking">{{ ai_an_degree_seeking }}</span></td>
+        <td><span data-field="ai_an_continuing">{{ ai_an_continuing }}</span></td>
+        <td><span data-field="ai_an_total_degree_seeking">{{ ai_an_total_degree_seeking }}</span></td>
+        <td><span data-field="ai_an_non_degree_seeking">{{ ai_an_non_degree_seeking }}</span></td>
+        <td><span data-field="ai_an_total_students">{{ ai_an_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Asian/Pacific Islander</td>
+        <td><span data-field="api_first_time">{{ api_first_time }}</span></td>
+        <td><span data-field="api_degree_seeking">{{ api_degree_seeking }}</span></td>
+        <td><span data-field="api_continuing">{{ api_continuing }}</span></td>
+        <td><span data-field="api_total_degree_seeking">{{ api_total_degree_seeking }}</span></td>
+        <td><span data-field="api_non_degree_seeking">{{ api_non_degree_seeking }}</span></td>
+        <td><span data-field="api_total_students">{{ api_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td><span data-field="his_first_time">{{ his_first_time }}</span></td>
+        <td><span data-field="his_degree_seeking">{{ his_degree_seeking }}</span></td>
+        <td><span data-field="his_continuing">{{ his_continuing }}</span></td>
+        <td><span data-field="his_total_degree_seeking">{{ his_total_degree_seeking }}</span></td>
+        <td><span data-field="his_non_degree_seeking">{{ his_non_degree_seeking }}</span></td>
+        <td><span data-field="his_total_students">{{ his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>White, non-Hispanic</td>
+        <td><span data-field="white_non_his_first_time">{{ white_non_his_first_time }}</span></td>
+        <td><span data-field="white_non_his_degree_seeking">{{ white_non_his_degree_seeking }}</span></td>
+        <td><span data-field="white_non_his_continuing">{{ white_non_his_continuing }}</span></td>
+        <td><span data-field="white_non_his_total_degree_seeking">{{ white_non_his_total_degree_seeking }}</span></td>
+        <td><span data-field="white_non_his_non_degree_seeking">{{ white_non_his_non_degree_seeking }}</span></td>
+        <td><span data-field="white_non_his_total_students">{{ white_non_his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Race and ethnicity unknown</td>
+        <td><span data-field="unknown_first_time">{{ unknown_first_time }}</span></td>
+        <td><span data-field="unknown_degree_seeking">{{ unknown_degree_seeking }}</span></td>
+        <td><span data-field="unknown_continuing">{{ unknown_continuing }}</span></td>
+        <td><span data-field="unknown_total_degree_seeking">{{ unknown_total_degree_seeking }}</span></td>
+        <td><span data-field="unknown_non_degree_seeking">{{ unknown_non_degree_seeking }}</span></td>
+        <td><span data-field="unknown_total_students">{{ unknown_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="total_first_time">{{ total_first_time }}</span></td>
+        <td><span data-field="total_degree_seeking">{{ total_degree_seeking }}</span></td>
+        <td><span data-field="total_continuing">{{ total_continuing }}</span></td>
+        <td><span data-field="total_total_degree_seeking">{{ total_total_degree_seeking }}</span></td>
+        <td><span data-field="total_non_degree_seeking">{{ total_non_degree_seeking }}</span></td>
+        <td><span data-field="total_total_students">{{ total_total_students }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part A - Fall Enrollment for Full-Time Undergraduate Students (Continued)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Total men prior year</th>
+        <th>Total women prior year</th>
+        <th>Total men</th>
+        <th>Total women</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nonresident alien</td>
+        <td><span data-field="prior_nonresident_alien_men">{{ prior_nonresident_alien_men }}</span></td>
+        <td><span data-field="prior_nonresident_alien_women">{{ prior_nonresident_alien_women }}</span></td>
+        <td><span data-field="current_nonresident_alien_men">{{ current_nonresident_alien_men }}</span></td>
+        <td><span data-field="current_nonresident_alien_women">{{ current_nonresident_alien_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Black, non-Hispanic</td>
+        <td><span data-field="prior_black_non_his_men">{{ prior_black_non_his_men }}</span></td>
+        <td><span data-field="prior_black_non_his_women">{{ prior_black_non_his_women }}</span></td>
+        <td><span data-field="current_black_non_his_men">{{ current_black_non_his_men }}</span></td>
+        <td><span data-field="current_black_non_his_women">{{ current_black_non_his_women }}</span></td>
+      </tr>
+      <tr>
+        <td>American Indian/Alaska Native</td>
+        <td><span data-field="prior_ai_an_men">{{ prior_ai_an_men }}</span></td>
+        <td><span data-field="prior_ai_an_women">{{ prior_ai_an_women }}</span></td>
+        <td><span data-field="current_ai_an_men">{{ current_ai_an_men }}</span></td>
+        <td><span data-field="current_ai_an_women">{{ current_ai_an_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Asian/Pacific Islander</td>
+        <td><span data-field="prior_api_men">{{ prior_api_men }}</span></td>
+        <td><span data-field="prior_api_women">{{ prior_api_women }}</span></td>
+        <td><span data-field="current_api_men">{{ current_api_men }}</span></td>
+        <td><span data-field="current_api_women">{{ current_api_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td><span data-field="prior_his_men">{{ prior_his_men }}</span></td>
+        <td><span data-field="prior_his_women">{{ prior_his_women }}</span></td>
+        <td><span data-field="current_his_men">{{ current_his_men }}</span></td>
+        <td><span data-field="current_his_women">{{ current_his_women }}</span></td>
+      </tr>
+      <tr>
+        <td>White, non-Hispanic</td>
+        <td><span data-field="prior_white_non_his_men">{{ prior_white_non_his_men }}</span></td>
+        <td><span data-field="prior_white_non_his_women">{{ prior_white_non_his_women }}</span></td>
+        <td><span data-field="current_white_non_his_men">{{ current_white_non_his_men }}</span></td>
+        <td><span data-field="current_white_non_his_women">{{ current_white_non_his_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Race and ethnicity unknown</td>
+        <td><span data-field="prior_unknown_men">{{ prior_unknown_men }}</span></td>
+        <td><span data-field="prior_unknown_women">{{ prior_unknown_women }}</span></td>
+        <td><span data-field="current_unknown_men">{{ current_unknown_men }}</span></td>
+        <td><span data-field="current_unknown_women">{{ current_unknown_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="prior_total_men">{{ prior_total_men }}</span></td>
+        <td><span data-field="prior_total_women">{{ prior_total_women }}</span></td>
+        <td><span data-field="current_total_men">{{ current_total_men }}</span></td>
+        <td><span data-field="current_total_women">{{ current_total_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total women</td>
+        <td><span data-field="total_women_prior_year">{{ total_women_prior_year }}</span></td>
+        <td><span data-field="total_women_current_year">{{ total_women_current_year }}</span></td>
+        <td><span data-field="total_women_prior_year_2">{{ total_women_prior_year_2 }}</span></td>
+        <td><span data-field="total_women_current_year_2">{{ total_women_current_year_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Total men</td>
+        <td><span data-field="total_men_prior_year">{{ total_men_prior_year }}</span></td>
+        <td><span data-field="total_men_current_year">{{ total_men_current_year }}</span></td>
+        <td><span data-field="total_men_prior_year_2">{{ total_men_prior_year_2 }}</span></td>
+        <td><span data-field="total_men_current_year_2">{{ total_men_current_year_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="total_grand_prior_year">{{ total_grand_prior_year }}</span></td>
+        <td><span data-field="total_grand_current_year">{{ total_grand_current_year }}</span></td>
+        <td><span data-field="total_grand_prior_year_2">{{ total_grand_prior_year_2 }}</span></td>
+        <td><span data-field="total_grand_current_year_2">{{ total_grand_current_year_2 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part A - Fall Enrollment for Part-Time Undergraduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Students enrolled for</th>
+        <th>First-time</th>
+        <th>Degree/certificate-seeking</th>
+        <th>Continuing</th>
+        <th>Total degree/certificate-seeking</th>
+        <th>Non-degree/non-certificate-seeking</th>
+        <th>Total, part-time undergraduate students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Men</td>
+        <td><span data-field="pt_men_first_time">{{ pt_men_first_time }}</span></td>
+        <td><span data-field="pt_men_degree_seeking">{{ pt_men_degree_seeking }}</span></td>
+        <td><span data-field="pt_men_continuing">{{ pt_men_continuing }}</span></td>
+        <td><span data-field="pt_men_total_degree_seeking">{{ pt_men_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_men_non_degree_seeking">{{ pt_men_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_men_total_students">{{ pt_men_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Women</td>
+        <td><span data-field="pt_women_first_time">{{ pt_women_first_time }}</span></td>
+        <td><span data-field="pt_women_degree_seeking">{{ pt_women_degree_seeking }}</span></td>
+        <td><span data-field="pt_women_continuing">{{ pt_women_continuing }}</span></td>
+        <td><span data-field="pt_women_total_degree_seeking">{{ pt_women_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_women_non_degree_seeking">{{ pt_women_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_women_total_students">{{ pt_women_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>American Indian/Alaska Native</td>
+        <td><span data-field="pt_ai_an_first_time">{{ pt_ai_an_first_time }}</span></td>
+        <td><span data-field="pt_ai_an_degree_seeking">{{ pt_ai_an_degree_seeking }}</span></td>
+        <td><span data-field="pt_ai_an_continuing">{{ pt_ai_an_continuing }}</span></td>
+        <td><span data-field="pt_ai_an_total_degree_seeking">{{ pt_ai_an_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_ai_an_non_degree_seeking">{{ pt_ai_an_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_ai_an_total_students">{{ pt_ai_an_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Asian/Pacific Islander</td>
+        <td><span data-field="pt_api_first_time">{{ pt_api_first_time }}</span></td>
+        <td><span data-field="pt_api_degree_seeking">{{ pt_api_degree_seeking }}</span></td>
+        <td><span data-field="pt_api_continuing">{{ pt_api_continuing }}</span></td>
+        <td><span data-field="pt_api_total_degree_seeking">{{ pt_api_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_api_non_degree_seeking">{{ pt_api_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_api_total_students">{{ pt_api_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td><span data-field="pt_his_first_time">{{ pt_his_first_time }}</span></td>
+        <td><span data-field="pt_his_degree_seeking">{{ pt_his_degree_seeking }}</span></td>
+        <td><span data-field="pt_his_continuing">{{ pt_his_continuing }}</span></td>
+        <td><span data-field="pt_his_total_degree_seeking">{{ pt_his_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_his_non_degree_seeking">{{ pt_his_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_his_total_students">{{ pt_his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>White, non-Hispanic</td>
+        <td><span data-field="pt_white_non_his_first_time">{{ pt_white_non_his_first_time }}</span></td>
+        <td><span data-field="pt_white_non_his_degree_seeking">{{ pt_white_non_his_degree_seeking }}</span></td>
+        <td><span data-field="pt_white_non_his_continuing">{{ pt_white_non_his_continuing }}</span></td>
+        <td><span data-field="pt_white_non_his_total_degree_seeking">{{ pt_white_non_his_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_white_non_his_non_degree_seeking">{{ pt_white_non_his_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_white_non_his_total_students">{{ pt_white_non_his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Race and ethnicity unknown</td>
+        <td><span data-field="pt_unknown_first_time">{{ pt_unknown_first_time }}</span></td>
+        <td><span data-field="pt_unknown_degree_seeking">{{ pt_unknown_degree_seeking }}</span></td>
+        <td><span data-field="pt_unknown_continuing">{{ pt_unknown_continuing }}</span></td>
+        <td><span data-field="pt_unknown_total_degree_seeking">{{ pt_unknown_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_unknown_non_degree_seeking">{{ pt_unknown_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_unknown_total_students">{{ pt_unknown_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="pt_total_first_time">{{ pt_total_first_time }}</span></td>
+        <td><span data-field="pt_total_degree_seeking">{{ pt_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_total_continuing">{{ pt_total_continuing }}</span></td>
+        <td><span data-field="pt_total_total_degree_seeking">{{ pt_total_total_degree_seeking }}</span></td>
+        <td><span data-field="pt_total_non_degree_seeking">{{ pt_total_non_degree_seeking }}</span></td>
+        <td><span data-field="pt_total_total_students">{{ pt_total_total_students }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part A - Fall Enrollment for Full-Time Graduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Students enrolled for</th>
+        <th>Total full-time</th>
+        <th>Total part-time</th>
+        <th>Total graduate students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Men</td>
+        <td><span data-field="grad_men_full_time">{{ grad_men_full_time }}</span></td>
+        <td><span data-field="grad_men_part_time">{{ grad_men_part_time }}</span></td>
+        <td><span data-field="grad_men_total_students">{{ grad_men_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Women</td>
+        <td><span data-field="grad_women_full_time">{{ grad_women_full_time }}</span></td>
+        <td><span data-field="grad_women_part_time">{{ grad_women_part_time }}</span></td>
+        <td><span data-field="grad_women_total_students">{{ grad_women_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>American Indian/Alaska Native</td>
+        <td><span data-field="grad_ai_an_full_time">{{ grad_ai_an_full_time }}</span></td>
+        <td><span data-field="grad_ai_an_part_time">{{ grad_ai_an_part_time }}</span></td>
+        <td><span data-field="grad_ai_an_total_students">{{ grad_ai_an_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Asian/Pacific Islander</td>
+        <td><span data-field="grad_api_full_time">{{ grad_api_full_time }}</span></td>
+        <td><span data-field="grad_api_part_time">{{ grad_api_part_time }}</span></td>
+        <td><span data-field="grad_api_total_students">{{ grad_api_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td><span data-field="grad_his_full_time">{{ grad_his_full_time }}</span></td>
+        <td><span data-field="grad_his_part_time">{{ grad_his_part_time }}</span></td>
+        <td><span data-field="grad_his_total_students">{{ grad_his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>White, non-Hispanic</td>
+        <td><span data-field="grad_white_non_his_full_time">{{ grad_white_non_his_full_time }}</span></td>
+        <td><span data-field="grad_white_non_his_part_time">{{ grad_white_non_his_part_time }}</span></td>
+        <td><span data-field="grad_white_non_his_total_students">{{ grad_white_non_his_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Race and ethnicity unknown</td>
+        <td><span data-field="grad_unknown_full_time">{{ grad_unknown_full_time }}</span></td>
+        <td><span data-field="grad_unknown_part_time">{{ grad_unknown_part_time }}</span></td>
+        <td><span data-field="grad_unknown_total_students">{{ grad_unknown_total_students }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="grad_total_full_time">{{ grad_total_full_time }}</span></td>
+        <td><span data-field="grad_total_part_time">{{ grad_total_part_time }}</span></td>
+        <td><span data-field="grad_total_students">{{ grad_total_students }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part B - Fall Enrollment by Age and Gender for Full-Time Undergraduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Full-time Undergraduate Students Men</th>
+        <th>Full-time Undergraduate Students Women</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Under 18</td>
+        <td><span data-field="age_under_18_men">{{ age_under_18_men }}</span></td>
+        <td><span data-field="age_under_18_women">{{ age_under_18_women }}</span></td>
+      </tr>
+      <tr>
+        <td>18-19</td>
+        <td><span data-field="age_18_19_men">{{ age_18_19_men }}</span></td>
+        <td><span data-field="age_18_19_women">{{ age_18_19_women }}</span></td>
+      </tr>
+      <tr>
+        <td>20-21</td>
+        <td><span data-field="age_20_21_men">{{ age_20_21_men }}</span></td>
+        <td><span data-field="age_20_21_women">{{ age_20_21_women }}</span></td>
+      </tr>
+      <tr>
+        <td>22-24</td>
+        <td><span data-field="age_22_24_men">{{ age_22_24_men }}</span></td>
+        <td><span data-field="age_22_24_women">{{ age_22_24_women }}</span></td>
+      </tr>
+      <tr>
+        <td>25-29</td>
+        <td><span data-field="age_25_29_men">{{ age_25_29_men }}</span></td>
+        <td><span data-field="age_25_29_women">{{ age_25_29_women }}</span></td>
+      </tr>
+      <tr>
+        <td>30-34</td>
+        <td><span data-field="age_30_34_men">{{ age_30_34_men }}</span></td>
+        <td><span data-field="age_30_34_women">{{ age_30_34_women }}</span></td>
+      </tr>
+      <tr>
+        <td>35-39</td>
+        <td><span data-field="age_35_39_men">{{ age_35_39_men }}</span></td>
+        <td><span data-field="age_35_39_women">{{ age_35_39_women }}</span></td>
+      </tr>
+      <tr>
+        <td>40-49</td>
+        <td><span data-field="age_40_49_men">{{ age_40_49_men }}</span></td>
+        <td><span data-field="age_40_49_women">{{ age_40_49_women }}</span></td>
+      </tr>
+      <tr>
+        <td>50-64</td>
+        <td><span data-field="age_50_64_men">{{ age_50_64_men }}</span></td>
+        <td><span data-field="age_50_64_women">{{ age_50_64_women }}</span></td>
+      </tr>
+      <tr>
+        <td>65 and over</td>
+        <td><span data-field="age_65_over_men">{{ age_65_over_men }}</span></td>
+        <td><span data-field="age_65_over_women">{{ age_65_over_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="age_total_men">{{ age_total_men }}</span></td>
+        <td><span data-field="age_total_women">{{ age_total_women }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part B - Fall Enrollment by Age and Gender for Part-Time Undergraduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Part-time Undergraduate Students Men</th>
+        <th>Part-time Undergraduate Students Women</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Under 18</td>
+        <td><span data-field="pt_age_under_18_men">{{ pt_age_under_18_men }}</span></td>
+        <td><span data-field="pt_age_under_18_women">{{ pt_age_under_18_women }}</span></td>
+      </tr>
+      <tr>
+        <td>18-19</td>
+        <td><span data-field="pt_age_18_19_men">{{ pt_age_18_19_men }}</span></td>
+        <td><span data-field="pt_age_18_19_women">{{ pt_age_18_19_women }}</span></td>
+      </tr>
+      <tr>
+        <td>20-21</td>
+        <td><span data-field="pt_age_20_21_men">{{ pt_age_20_21_men }}</span></td>
+        <td><span data-field="pt_age_20_21_women">{{ pt_age_20_21_women }}</span></td>
+      </tr>
+      <tr>
+        <td>22-24</td>
+        <td><span data-field="pt_age_22_24_men">{{ pt_age_22_24_men }}</span></td>
+        <td><span data-field="pt_age_22_24_women">{{ pt_age_22_24_women }}</span></td>
+      </tr>
+      <tr>
+        <td>25-29</td>
+        <td><span data-field="pt_age_25_29_men">{{ pt_age_25_29_men }}</span></td>
+        <td><span data-field="pt_age_25_29_women">{{ pt_age_25_29_women }}</span></td>
+      </tr>
+      <tr>
+        <td>30-34</td>
+        <td><span data-field="pt_age_30_34_men">{{ pt_age_30_34_men }}</span></td>
+        <td><span data-field="pt_age_30_34_women">{{ pt_age_30_34_women }}</span></td>
+      </tr>
+      <tr>
+        <td>35-39</td>
+        <td><span data-field="pt_age_35_39_men">{{ pt_age_35_39_men }}</span></td>
+        <td><span data-field="pt_age_35_39_women">{{ pt_age_35_39_women }}</span></td>
+      </tr>
+      <tr>
+        <td>40-49</td>
+        <td><span data-field="pt_age_40_49_men">{{ pt_age_40_49_men }}</span></td>
+        <td><span data-field="pt_age_40_49_women">{{ pt_age_40_49_women }}</span></td>
+      </tr>
+      <tr>
+        <td>50-64</td>
+        <td><span data-field="pt_age_50_64_men">{{ pt_age_50_64_men }}</span></td>
+        <td><span data-field="pt_age_50_64_women">{{ pt_age_50_64_women }}</span></td>
+      </tr>
+      <tr>
+        <td>65 and over</td>
+        <td><span data-field="pt_age_65_over_men">{{ pt_age_65_over_men }}</span></td>
+        <td><span data-field="pt_age_65_over_women">{{ pt_age_65_over_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="pt_age_total_men">{{ pt_age_total_men }}</span></td>
+        <td><span data-field="pt_age_total_women">{{ pt_age_total_women }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part B - Fall Enrollment by Age and Gender for Full-Time Graduate Students</div>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Full-time Graduate Students Men</th>
+        <th>Full-time Graduate Students Women</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Under 18</td>
+        <td><span data-field="grad_age_under_18_men">{{ grad_age_under_18_men }}</span></td>
+        <td><span data-field="grad_age_under_18_women">{{ grad_age_under_18_women }}</span></td>
+      </tr>
+      <tr>
+        <td>18-19</td>
+        <td><span data-field="grad_age_18_19_men">{{ grad_age_18_19_men }}</span></td>
+        <td><span data-field="grad_age_18_19_women">{{ grad_age_18_19_women }}</span></td>
+      </tr>
+      <tr>
+        <td>20-21</td>
+        <td><span data-field="grad_age_20_21_men">{{ grad_age_20_21_men }}</span></td>
+        <td><span data-field="grad_age_20_21_women">{{ grad_age_20_21_women }}</span></td>
+      </tr>
+      <tr>
+        <td>22-24</td>
+        <td><span data-field="grad_age_22_24_men">{{ grad_age_22_24_men }}</span></td>
+        <td><span data-field="grad_age_22_24_women">{{ grad_age_22_24_women }}</span></td>
+      </tr>
+      <tr>
+        <td>25-29</td>
+        <td><span data-field="grad_age_25_29_men">{{ grad_age_25_29_men }}</span></td>
+        <td><span data-field="grad_age_25_29_women">{{ grad_age_25_29_women }}</span></td>
+      </tr>
+      <tr>
+        <td>30-34</td>
+        <td><span data-field="grad_age_30_34_men">{{ grad_age_30_34_men }}</span></td>
+        <td><span data-field="grad_age_30_34_women">{{ grad_age_30_34_women }}</span></td>
+      </tr>
+      <tr>
+        <td>35-39</td>
+        <td><span data-field="grad_age_35_39_men">{{ grad_age_35_39_men }}</span></td>
+        <td><span data-field="grad_age_35_39_women">{{ grad_age_35_39_women }}</span></td>
+      </tr>
+      <tr>
+        <td>40-49</td>
+        <td><span data-field="grad_age_40_49_men">{{ grad_age_40_49_men }}</span></td>
+        <td><span data-field="grad_age_40_49_women">{{ grad_age_40_49_women }}</span></td>
+      </tr>
+      <tr>
+        <td>50-64</td>
+        <td><span data-field="grad_age_50_64_men">{{ grad_age_50_64_men }}</span></td>
+        <td><span data-field="grad_age_50_64_women">{{ grad_age_50_64_women }}</span></td>
+      </tr>
+      <tr>
+        <td>65 and over</td>
+        <td><span data-field="grad_age_65_over_men">{{ grad_age_65_over_men }}</span></td>
+        <td><span data-field="grad_age_65_over_women">{{ grad_age_65_over_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="grad_age_total_men">{{ grad_age_total_men }}</span></td>
+        <td><span data-field="grad_age_total_women">{{ grad_age_total_women }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part B - Fall Enrollment by Age and Gender for Part-Time Graduate Students</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Part-time Graduate Students Men</th>
+        <th>Part-time Graduate Students Women</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Under 18</td>
+        <td><span data-field="pt_grad_age_under_18_men">{{ pt_grad_age_under_18_men }}</span></td>
+        <td><span data-field="pt_grad_age_under_18_women">{{ pt_grad_age_under_18_women }}</span></td>
+      </tr>
+      <tr>
+        <td>18-19</td>
+        <td><span data-field="pt_grad_age_18_19_men">{{ pt_grad_age_18_19_men }}</span></td>
+        <td><span data-field="pt_grad_age_18_19_women">{{ pt_grad_age_18_19_women }}</span></td>
+      </tr>
+      <tr>
+        <td>20-21</td>
+        <td><span data-field="pt_grad_age_20_21_men">{{ pt_grad_age_20_21_men }}</span></td>
+        <td><span data-field="pt_grad_age_20_21_women">{{ pt_grad_age_20_21_women }}</span></td>
+      </tr>
+      <tr>
+        <td>22-24</td>
+        <td><span data-field="pt_grad_age_22_24_men">{{ pt_grad_age_22_24_men }}</span></td>
+        <td><span data-field="pt_grad_age_22_24_women">{{ pt_grad_age_22_24_women }}</span></td>
+      </tr>
+      <tr>
+        <td>25-29</td>
+        <td><span data-field="pt_grad_age_25_29_men">{{ pt_grad_age_25_29_men }}</span></td>
+        <td><span data-field="pt_grad_age_25_29_women">{{ pt_grad_age_25_29_women }}</span></td>
+      </tr>
+      <tr>
+        <td>30-34</td>
+        <td><span data-field="pt_grad_age_30_34_men">{{ pt_grad_age_30_34_men }}</span></td>
+        <td><span data-field="pt_grad_age_30_34_women">{{ pt_grad_age_30_34_women }}</span></td>
+      </tr>
+      <tr>
+        <td>35-39</td>
+        <td><span data-field="pt_grad_age_35_39_men">{{ pt_grad_age_35_39_men }}</span></td>
+        <td><span data-field="pt_grad_age_35_39_women">{{ pt_grad_age_35_39_women }}</span></td>
+      </tr>
+      <tr>
+        <td>40-49</td>
+        <td><span data-field="pt_grad_age_40_49_men">{{ pt_grad_age_40_49_men }}</span></td>
+        <td><span data-field="pt_grad_age_40_49_women">{{ pt_grad_age_40_49_women }}</span></td>
+      </tr>
+      <tr>
+        <td>50-64</td>
+        <td><span data-field="pt_grad_age_50_64_men">{{ pt_grad_age_50_64_men }}</span></td>
+        <td><span data-field="pt_grad_age_50_64_women">{{ pt_grad_age_50_64_women }}</span></td>
+      </tr>
+      <tr>
+        <td>65 and over</td>
+        <td><span data-field="pt_grad_age_65_over_men">{{ pt_grad_age_65_over_men }}</span></td>
+        <td><span data-field="pt_grad_age_65_over_women">{{ pt_grad_age_65_over_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><span data-field="pt_grad_age_total_men">{{ pt_grad_age_total_men }}</span></td>
+        <td><span data-field="pt_grad_age_total_women">{{ pt_grad_age_total_women }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Part C - High School Graduates</div>
+  <p>Does your institution have any first-time, degree/certificate-seeking undergraduate students who graduated from high school or received their GED within the past 12 months?</p>
+  <label><input type="radio" name="hs_grad_yes" value="yes"> Yes, we have students who graduated high school or received their GED in the past 12 months.</label><br>
+  <label><input type="radio" name="hs_grad_no" value="no"> No, we do not have any students who graduated high school or received their GED in the past 12 months.</label>
+  <p>You may use the space below to provide context for the data you've reported above.</p>
+  <textarea style="width: 100%; height: 100px; margin-top: 10px;"></textarea>
+
+  <p>Institution: <span data-field="institution_id">{{ institution_id }}</span></p>
+
+  <div class="section-header">Part C - Residence of First-Time Undergraduate Students</div>
+  <p>NOTE: These data are optional this year.</p>
+  <p>Enrollment as of the institution's official fall reporting date or as of October 15, <span data-field="reporting_year">{{ reporting_year }}</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>State of residence when student first admitted</th>
+        <th>FIPS Code</th>
+        <th>Total first-time, degree/certificate-seeking undergraduates</th>
+        <th>Of students in column 1, those who graduated from high school or received a GED in the past 12 months</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alabama</td>
+        <td>01</td>
+        <td><span data-field="residence_alabama_total">{{ residence_alabama_total }}</span></td>
+        <td><span data-field="residence_alabama_ged">{{ residence_alabama_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Alaska</td>
+        <td>02</td>
+        <td><span data-field="residence_alaska_total">{{ residence_alaska_total }}</span></td>
+        <td><span data-field="residence_alaska_ged">{{ residence_alaska_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Arizona</td>
+        <td>04</td>
+        <td><span data-field="residence_arizona_total">{{ residence_arizona_total }}</span></td>
+        <td><span data-field="residence_arizona_ged">{{ residence_arizona_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Arkansas</td>
+        <td>05</td>
+        <td><span data-field="residence_arkansas_total">{{ residence_arkansas_total }}</span></td>
+        <td><span data-field="residence_arkansas_ged">{{ residence_arkansas_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>California</td>
+        <td>06</td>
+        <td><span data-field="residence_california_total">{{ residence_california_total }}</span></td>
+        <td><span data-field="residence_california_ged">{{ residence_california_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Colorado</td>
+        <td>08</td>
+        <td><span data-field="residence_colorado_total">{{ residence_colorado_total }}</span></td>
+        <td><span data-field="residence_colorado_ged">{{ residence_colorado_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Connecticut</td>
+        <td>09</td>
+        <td><span data-field="residence_connecticut_total">{{ residence_connecticut_total }}</span></td>
+        <td><span data-field="residence_connecticut_ged">{{ residence_connecticut_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Delaware</td>
+        <td>10</td>
+        <td><span data-field="residence_delaware_total">{{ residence_delaware_total }}</span></td>
+        <td><span data-field="residence_delaware_ged">{{ residence_delaware_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>District of Columbia</td>
+        <td>11</td>
+        <td><span data-field="residence_dc_total">{{ residence_dc_total }}</span></td>
+        <td><span data-field="residence_dc_ged">{{ residence_dc_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Florida</td>
+        <td>12</td>
+        <td><span data-field="residence_florida_total">{{ residence_florida_total }}</span></td>
+        <td><span data-field="residence_florida_ged">{{ residence_florida_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Georgia</td>
+        <td>13</td>
+        <td><span data-field="residence_georgia_total">{{ residence_georgia_total }}</span></td>
+        <td><span data-field="residence_georgia_ged">{{ residence_georgia_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Hawaii</td>
+        <td>15</td>
+        <td><span data-field="residence_hawaii_total">{{ residence_hawaii_total }}</span></td>
+        <td><span data-field="residence_hawaii_ged">{{ residence_hawaii_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Idaho</td>
+        <td>16</td>
+        <td><span data-field="residence_idaho_total">{{ residence_idaho_total }}</span></td>
+        <td><span data-field="residence_idaho_ged">{{ residence_idaho_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Illinois</td>
+        <td>17</td>
+        <td><span data-field="residence_illinois_total">{{ residence_illinois_total }}</span></td>
+        <td><span data-field="residence_illinois_ged">{{ residence_illinois_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Indiana</td>
+        <td>18</td>
+        <td><span data-field="residence_indiana_total">{{ residence_indiana_total }}</span></td>
+        <td><span data-field="residence_indiana_ged">{{ residence_indiana_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Iowa</td>
+        <td>19</td>
+        <td><span data-field="residence_iowa_total">{{ residence_iowa_total }}</span></td>
+        <td><span data-field="residence_iowa_ged">{{ residence_iowa_ged }}</span></td>
+      </tr>
+      <tr>
+        <td>Kansas</td>
+        <td>20</td>
+        <td><span data-field="residence_kansas_total">{{ residence_kansas_total }}</span></td>
+        <td><span data-field="residence_kansas_ged">{{ residence_kansas_ged }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="page">
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 15%;">Kentucky</td>
+        <td style="width: 15%; text-align: center;">{{ data.ky_value_1 }}</td>
+        <td style="width: 15%; text-align: center;">{{ data.ky_value_2 }}</td>
+        <td style="width: 15%; text-align: center;">{{ data.ky_value_3 }}</td>
+      </tr>
+      <tr class="header-row">
+        <td>Louisiana</td>
+        <td style="text-align: center;">{{ data.la_value_1 }}</td>
+        <td style="text-align: center;">{{ data.la_value_2 }}</td>
+        <td style="text-align: center;">{{ data.la_value_3 }}</td>
+      </tr>
+      <tr class="header-row">
+        <td>Maine</td>
+        <td style="text-align: center;">{{ data.me_value_1 }}</td>
+        <td style="text-align: center;">{{ data.me_value_2 }}</td>
+        <td style="text-align: center;">{{ data.me_value_3 }}</td>
+      </tr>
+    </thead>
+  </table>
+  <p>Institution: <span data-field="institution_name">{{ institution_name }}</span></p>
+
+  <h3>Part C - Residence of First-time Undergraduate Students</h3>
+  <p class="note">NOTE: These data are optional this year.</p>
+  <p class="note">Enrollment as of the institution's official fall reporting date or as of October 15, 2009</p>
+
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 25%;">State of residence when student was first admitted</td>
+        <td style="width: 15%; text-align: center;">FIPS Code</td>
+        <td style="width: 30%; text-align: center;">Total first-time, degree/certificate-seeking undergraduates</td>
+        <td style="width: 30%; text-align: center;">Of students in column 1, those who graduated from high school OR received a GED in the past 12 months</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Maryland</td>
+        <td style="text-align: center;">{{ data.md_fips }}</td>
+        <td style="text-align: center;">{{ data.md_total }}</td>
+        <td style="text-align: center;">{{ data.md_grad }}</td>
+      </tr>
+      <tr>
+        <td>Massachusetts</td>
+        <td style="text-align: center;">{{ data.ma_fips }}</td>
+        <td style="text-align: center;">{{ data.ma_total }}</td>
+        <td style="text-align: center;">{{ data.ma_grad }}</td>
+      </tr>
+      <tr>
+        <td>Michigan</td>
+        <td style="text-align: center;">{{ data.mi_fips }}</td>
+        <td style="text-align: center;">{{ data.mi_total }}</td>
+        <td style="text-align: center;">{{ data.mi_grad }}</td>
+      </tr>
+      <tr>
+        <td>Minnesota</td>
+        <td style="text-align: center;">{{ data.mn_fips }}</td>
+        <td style="text-align: center;">{{ data.mn_total }}</td>
+        <td style="text-align: center;">{{ data.mn_grad }}</td>
+      </tr>
+      <tr>
+        <td>Mississippi</td>
+        <td style="text-align: center;">{{ data.ms_fips }}</td>
+        <td style="text-align: center;">{{ data.ms_total }}</td>
+        <td style="text-align: center;">{{ data.ms_grad }}</td>
+      </tr>
+      <tr>
+        <td>Missouri</td>
+        <td style="text-align: center;">{{ data.mo_fips }}</td>
+        <td style="text-align: center;">{{ data.mo_total }}</td>
+        <td style="text-align: center;">{{ data.mo_grad }}</td>
+      </tr>
+      <tr>
+        <td>Montana</td>
+        <td style="text-align: center;">{{ data.mt_fips }}</td>
+        <td style="text-align: center;">{{ data.mt_total }}</td>
+        <td style="text-align: center;">{{ data.mt_grad }}</td>
+      </tr>
+      <tr>
+        <td>Nebraska</td>
+        <td style="text-align: center;">{{ data.ne_fips }}</td>
+        <td style="text-align: center;">{{ data.ne_total }}</td>
+        <td style="text-align: center;">{{ data.ne_grad }}</td>
+      </tr>
+      <tr>
+        <td>Nevada</td>
+        <td style="text-align: center;">{{ data.nv_fips }}</td>
+        <td style="text-align: center;">{{ data.nv_total }}</td>
+        <td style="text-align: center;">{{ data.nv_grad }}</td>
+      </tr>
+      <tr>
+        <td>New Hampshire</td>
+        <td style="text-align: center;">{{ data.nh_fips }}</td>
+        <td style="text-align: center;">{{ data.nh_total }}</td>
+        <td style="text-align: center;">{{ data.nh_grad }}</td>
+      </tr>
+      <tr>
+        <td>New Jersey</td>
+        <td style="text-align: center;">{{ data.nj_fips }}</td>
+        <td style="text-align: center;">{{ data.nj_total }}</td>
+        <td style="text-align: center;">{{ data.nj_grad }}</td>
+      </tr>
+      <tr>
+        <td>New Mexico</td>
+        <td style="text-align: center;">{{ data.nm_fips }}</td>
+        <td style="text-align: center;">{{ data.nm_total }}</td>
+        <td style="text-align: center;">{{ data.nm_grad }}</td>
+      </tr>
+      <tr>
+        <td>New York</td>
+        <td style="text-align: center;">{{ data.ny_fips }}</td>
+        <td style="text-align: center;">{{ data.ny_total }}</td>
+        <td style="text-align: center;">{{ data.ny_grad }}</td>
+      </tr>
+      <tr>
+        <td>North Carolina</td>
+        <td style="text-align: center;">{{ data.nc_fips }}</td>
+        <td style="text-align: center;">{{ data.nc_total }}</td>
+        <td style="text-align: center;">{{ data.nc_grad }}</td>
+      </tr>
+      <tr>
+        <td>North Dakota</td>
+        <td style="text-align: center;">{{ data.nd_fips }}</td>
+        <td style="text-align: center;">{{ data.nd_total }}</td>
+        <td style="text-align: center;">{{ data.nd_grad }}</td>
+      </tr>
+      <tr>
+        <td>Ohio</td>
+        <td style="text-align: center;">{{ data.oh_fips }}</td>
+        <td style="text-align: center;">{{ data.oh_total }}</td>
+        <td style="text-align: center;">{{ data.oh_grad }}</td>
+      </tr>
+      <tr>
+        <td>Oklahoma</td>
+        <td style="text-align: center;">{{ data.ok_fips }}</td>
+        <td style="text-align: center;">{{ data.ok_total }}</td>
+        <td style="text-align: center;">{{ data.ok_grad }}</td>
+      </tr>
+      <tr>
+        <td>Oregon</td>
+        <td style="text-align: center;">{{ data.or_fips }}</td>
+        <td style="text-align: center;">{{ data.or_total }}</td>
+        <td style="text-align: center;">{{ data.or_grad }}</td>
+      </tr>
+      <tr>
+        <td>Pennsylvania</td>
+        <td style="text-align: center;">{{ data.pa_fips }}</td>
+        <td style="text-align: center;">{{ data.pa_total }}</td>
+        <td style="text-align: center;">{{ data.pa_grad }}</td>
+      </tr>
+      <tr>
+        <td>Rhode Island</td>
+        <td style="text-align: center;">{{ data.ri_fips }}</td>
+        <td style="text-align: center;">{{ data.ri_total }}</td>
+        <td style="text-align: center;">{{ data.ri_grad }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 25%;">State of residence when student was first admitted</td>
+        <td style="width: 15%; text-align: center;">FIPS Code</td>
+        <td style="width: 30%; text-align: center;">Total first-time, degree/certificate-seeking undergraduates</td>
+        <td style="width: 30%; text-align: center;">Of students in column 1, those who graduated from high school OR received a GED in the past 12 months</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>South Carolina</td>
+        <td style="text-align: center;">{{ data.sc_fips }}</td>
+        <td style="text-align: center;">{{ data.sc_total }}</td>
+        <td style="text-align: center;">{{ data.sc_grad }}</td>
+      </tr>
+      <tr>
+        <td>South Dakota</td>
+        <td style="text-align: center;">{{ data.sd_fips }}</td>
+        <td style="text-align: center;">{{ data.sd_total }}</td>
+        <td style="text-align: center;">{{ data.sd_grad }}</td>
+      </tr>
+      <tr>
+        <td>Tennessee</td>
+        <td style="text-align: center;">{{ data.tn_fips }}</td>
+        <td style="text-align: center;">{{ data.tn_total }}</td>
+        <td style="text-align: center;">{{ data.tn_grad }}</td>
+      </tr>
+      <tr>
+        <td>Texas</td>
+        <td style="text-align: center;">{{ data.tx_fips }}</td>
+        <td style="text-align: center;">{{ data.tx_total }}</td>
+        <td style="text-align: center;">{{ data.tx_grad }}</td>
+      </tr>
+      <tr>
+        <td>Utah</td>
+        <td style="text-align: center;">{{ data.ut_fips }}</td>
+        <td style="text-align: center;">{{ data.ut_total }}</td>
+        <td style="text-align: center;">{{ data.ut_grad }}</td>
+      </tr>
+      <tr>
+        <td>Vermont</td>
+        <td style="text-align: center;">{{ data.vt_fips }}</td>
+        <td style="text-align: center;">{{ data.vt_total }}</td>
+        <td style="text-align: center;">{{ data.vt_grad }}</td>
+      </tr>
+      <tr>
+        <td>Virginia</td>
+        <td style="text-align: center;">{{ data.va_fips }}</td>
+        <td style="text-align: center;">{{ data.va_total }}</td>
+        <td style="text-align: center;">{{ data.va_grad }}</td>
+      </tr>
+      <tr>
+        <td>Washington</td>
+        <td style="text-align: center;">{{ data.wa_fips }}</td>
+        <td style="text-align: center;">{{ data.wa_total }}</td>
+        <td style="text-align: center;">{{ data.wa_grad }}</td>
+      </tr>
+      <tr>
+        <td>West Virginia</td>
+        <td style="text-align: center;">{{ data.wv_fips }}</td>
+        <td style="text-align: center;">{{ data.wv_total }}</td>
+        <td style="text-align: center;">{{ data.wv_grad }}</td>
+      </tr>
+      <tr>
+        <td>Wisconsin</td>
+        <td style="text-align: center;">{{ data.wi_fips }}</td>
+        <td style="text-align: center;">{{ data.wi_total }}</td>
+        <td style="text-align: center;">{{ data.wi_grad }}</td>
+      </tr>
+      <tr>
+        <td>Wyoming</td>
+        <td style="text-align: center;">{{ data.wy_fips }}</td>
+        <td style="text-align: center;">{{ data.wy_total }}</td>
+        <td style="text-align: center;">{{ data.wy_grad }}</td>
+      </tr>
+      <tr>
+        <td>State Unknown</td>
+        <td style="text-align: center;">{{ data.su_fips }}</td>
+        <td style="text-align: center;">{{ data.su_total }}</td>
+        <td style="text-align: center;">{{ data.su_grad }}</td>
+      </tr>
+      <tr>
+        <td>American Samoa</td>
+        <td style="text-align: center;">{{ data.as_fips }}</td>
+        <td style="text-align: center;">{{ data.as_total }}</td>
+        <td style="text-align: center;">{{ data.as_grad }}</td>
+      </tr>
+      <tr>
+        <td>Federated States of Micronesia</td>
+        <td style="text-align: center;">{{ data.fm_fips }}</td>
+        <td style="text-align: center;">{{ data.fm_total }}</td>
+        <td style="text-align: center;">{{ data.fm_grad }}</td>
+      </tr>
+      <tr>
+        <td>Guam</td>
+        <td style="text-align: center;">{{ data.gu_fips }}</td>
+        <td style="text-align: center;">{{ data.gu_total }}</td>
+        <td style="text-align: center;">{{ data.gu_grad }}</td>
+      </tr>
+      <tr>
+        <td>Marshall Islands</td>
+        <td style="text-align: center;">{{ data.mi_fips }}</td>
+        <td style="text-align: center;">{{ data.mi_total }}</td>
+        <td style="text-align: center;">{{ data.mi_grad }}</td>
+      </tr>
+      <tr>
+        <td>Northern Marianas</td>
+        <td style="text-align: center;">{{ data.nm_fips }}</td>
+        <td style="text-align: center;">{{ data.nm_total }}</td>
+        <td style="text-align: center;">{{ data.nm_grad }}</td>
+      </tr>
+      <tr>
+        <td>Palau</td>
+        <td style="text-align: center;">{{ data.pa_fips }}</td>
+        <td style="text-align: center;">{{ data.pa_total }}</td>
+        <td style="text-align: center;">{{ data.pa_grad }}</td>
+      </tr>
+      <tr>
+        <td>Puerto Rico</td>
+        <td style="text-align: center;">{{ data.pr_fips }}</td>
+        <td style="text-align: center;">{{ data.pr_total }}</td>
+        <td style="text-align: center;">{{ data.pr_grad }}</td>
+      </tr>
+      <tr>
+        <td>Virgin Islands</td>
+        <td style="text-align: center;">{{ data.vi_fips }}</td>
+        <td style="text-align: center;">{{ data.vi_total }}</td>
+        <td style="text-align: center;">{{ data.vi_grad }}</td>
+      </tr>
+      <tr>
+        <td>Foreign Countries</td>
+        <td style="text-align: center;">{{ data.fc_fips }}</td>
+        <td style="text-align: center;">{{ data.fc_total }}</td>
+        <td style="text-align: center;">{{ data.fc_grad }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h3>Part D - Total Undergraduate Entering Class, Fall 2009</h3>
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 50%;">Total</td>
+        <td style="width: 25%; text-align: center;">Total first-time, degree/certificate-seeking undergraduates from Part A (your GRS cohort)</td>
+        <td style="width: 25%; text-align: center;">Total transfer-in degree/certificate-seeking undergraduates (full-time + part-time) from Part A</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total</td>
+        <td style="text-align: center;">{{ data.d_total_grs }}</td>
+        <td style="text-align: center;">{{ data.d_total_transfer }}</td>
+      </tr>
+      <tr>
+        <td>Total non-degree/certificate-seeking undergraduates displayed on line 4, the number that are new to the institution (entering the institution for the first time)</td>
+        <td style="text-align: center;">{{ data.d_non_degree_new }}</td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">Note: This is calculated as first-time students (line D2) + students transferring to the institution (line D3) - non-degree/certificate-seeking undergraduates entering in Fall 2009 (line D5).</p>
+  <p class="note">D7 Percentage of undergraduate entering class represented by your GRS cohort (line D1/line D6)</p>
+  <p><strong>Institution:</strong> <span data-field="institution_name">{{ institution_name }}</span></p>
+</div>
+
+<div class="page">
+  <h3>Part E - First-time Bachelor's Cohort Retention Rates</h3>
+  <p class="note">Retention rates will be calculated based on information provided below.</p>
+
+  <h4>Academic reporters report retention data as of the institution's official fall reporting date or as of October 15. Program reporters report retention data on students enrolled in the institution at any time between August 1 and October 31.</h4>
+
+  <p>If there are no students to be reported in a cohort, please enter zero. Do not leave the field blank.</p>
+
+  <p>When reporting data below, remember to:</p>
+  <ul>
+    <li>Include only first-time <strong>bachelor's</strong> students in your full- and part-time cohorts. Do not include students who transferred into your institution.</li>
+    <li>Determine student status (full- or part-time) using Fall 2008 status (e.g. if a student was part-time in Fall 2008, report them in the part-time cohort regardless of their Fall 2009 status).</li>
+    <li>Report in the exclusion boxes the number of students from each cohort who left the institution for any of the following reasons: died or were totally and permanently disabled; to serve in the armed forces (including those called to active duty); to serve with a foreign aid service of the Federal Government (e.g. Peace Corps); or to serve on official church missions.</li>
+  </ul>
+  <p>The system will subtract exclusions from the original cohorts and use adjusted cohorts for calculating retention rates. Retention rates will be calculated by the system after clicking 'Save.'</p>
+
+  <h4>FULL-TIME, FIRST-TIME BACHELOR'S COHORT RETENTION:</h4>
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 50%;"></td>
+        <td style="width: 25%; text-align: center;">Preloaded cohort</td>
+        <td style="width: 25%; text-align: center;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="cohort_fulltime_preloaded_label">{{ cohort_fulltime_preloaded_label }}</span></td>
+        <td style="text-align: center;">{{ data.cohort_fulltime_preloaded }}</td>
+        <td style="text-align: center;">{{ data.cohort_fulltime_adjusted }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Retention Rate: {{ data.cohort_fulltime_retention_rate }}%</p>
+
+  <h4>PART-TIME, FIRST-TIME BACHELOR'S COHORT RETENTION:</h4>
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 50%;"></td>
+        <td style="width: 25%; text-align: center;">Preloaded cohort</td>
+        <td style="width: 25%; text-align: center;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="cohort_parttime_preloaded_label">{{ cohort_parttime_preloaded_label }}</span></td>
+        <td style="text-align: center;">{{ data.cohort_parttime_preloaded }}</td>
+        <td style="text-align: center;">{{ data.cohort_parttime_adjusted }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Retention Rate: {{ data.cohort_parttime_retention_rate }}%</p>
+  <p>You may use the space below to provide context for the data you've reported above.</p>
+</div>
+
+<div class="page">
+  <h3>Part F - Student-to-Faculty Ratio</h3>
+  <p>Please provide your institution's student-to-faculty ratio (i.e., student-to-instructional staff) for Fall 2009. The student-to-faculty ratio and any accompanying context that is provided will be displayed on College Navigator.</p>
+  <p class="note">Note: Logic in this item is similar to item I-2 from the Common Data Set data collection.</p>
+
+  <p>Click here to use a worksheet to help you determine the student-to-faculty ratio</p>
+
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 50%;">Student-to-faculty ratio</td>
+        <td style="width: 25%; text-align: center;">{{ data.faculty_ratio_value }}</td>
+        <td style="width: 25%; text-align: center;">to 1</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You may use the space below to provide context for the data you've reported above.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>These context notes will be posted on the College Navigator website, and should be written to be understood by students and parents.</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

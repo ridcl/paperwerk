@@ -1,0 +1,237 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  td, th {
+    padding: 5px 0;
+  }
+</style>
+
+<div class="page">
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 24pt; margin-bottom: 5px;">The University of Texas at El Paso</h1>
+    <h2 style="font-size: 18pt; margin-top: 0;">Department of Computer Science</h2>
+    <h3 style="font-size: 16pt; margin-top: 0;">CS 3195 – Junior Professional Orientation</h3>
+    <h3 style="font-size: 16pt;">Fall 2020 Syllabus</h3>
+  </header>
+
+  <section style="margin-bottom: 30px;">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">1. General Information</h2>
+
+    <div style="margin-bottom: 20px;">
+      <p>Instructor: <span data-field="instructor.full_name">{{ instructor.full_name }}</span></p>
+      <p>Email: <span data-field="instructor.email">{{ instructor.email }}</span></p>
+      <p>Office: <span data-field="instructor.office">{{ instructor.office }}</span></p>
+      <p>Office Hours: <span data-field="instructor.office_hours">{{ instructor.office_hours }}</span></p>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>Instructional Assistants (IA):</p>
+      {% for ia in instructional_assistants %}
+        <p> - <span data-field="instructional_assistants[{{ loop.index0 }}].name">{{ ia.name }}</span></p>
+        <p>   Email: <span data-field="instructional_assistants[{{ loop.index0 }}].email">{{ ia.email }}</span></p>
+        <p>   Office Hours: <span data-field="instructional_assistants[{{ loop.index0 }}].office_hours">{{ ia.office_hours }}</span></p>
+      {% endfor %}
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>Class Dates: <span data-field="class_dates">{{ class_dates }}</span></p>
+      <p>Class Time: <span data-field="class_time">{{ class_time }}</span></p>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>Textbook (Required): <span data-field="textbook.title">{{ textbook.title }}</span></p>
+      <p>ISBN: <span data-field="textbook.isbn">{{ textbook.isbn }}</span></p>
+      <p>Print ISBN: <span data-field="textbook.print_isbn">{{ textbook.print_isbn }}</span></p>
+    </div>
+
+    <p style="font-size: 10pt; margin-top: 20px;">This book is available at the bookstore and through major online book retailers. This textbook is required; bring to class every meeting.</p>
+    <p style="font-size: 10pt;">Photocopied textbooks are illegal, and their use will not be tolerated.</p>
+  </section>
+</div>
+
+<div class="page">
+  <section style="margin-bottom: 30px;">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">2. Objectives & Outcomes</h2>
+
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">Class Objectives:</h3>
+    <ol style="padding-left: 20px;">
+      <li><span data-field="objective_1">{{ objective_1 }}</span></li>
+      <li><span data-field="objective_2">{{ objective_2 }}</span></li>
+      <li><span data-field="objective_3">{{ objective_3 }}</span></li>
+      <li><span data-field="objective_4">{{ objective_4 }}</span></li>
+      <li><span data-field="objective_5">{{ objective_5 }}</span></li>
+      <li><span data-field="objective_6">{{ objective_6 }}</span></li>
+      <li><span data-field="objective_7">{{ objective_7 }}</span></li>
+      <li><span data-field="objective_8">{{ objective_8 }}</span></li>
+    </ol>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Learning outcomes</h3>
+    <p>Level 1: Knowledge and Comprehension:</p>
+    <p>Level 1 outcomes are those in which the student has been exposed to the terms and concepts at a basic level and can supply basic definitions. Upon successful completion of this course, students will be able to:</p>
+    <ol style="padding-left: 20px;">
+      <li><span data-field="outcome_l1_1">{{ outcome_l1_1 }}</span></li>
+      <li><span data-field="outcome_l1_2">{{ outcome_l1_2 }}</span></li>
+      <li><span data-field="outcome_l1_3">{{ outcome_l1_3 }}</span></li>
+      <li><span data-field="outcome_l1_4">{{ outcome_l1_4 }}</span></li>
+      <li><span data-field="outcome_l1_5">{{ outcome_l1_5 }}</span></li>
+    </ol>
+
+    <p style="margin-top: 20px;">Level 2: Application and Analysis:</p>
+    <p>Level 2 outcomes are those in which the student can apply the material in familiar situations, e.g., can work a problem of familiar structure with minor changes in the details. Upon successful completion of this course, students will be able to:</p>
+    <ol style="padding-left: 20px;">
+      <li><span data-field="outcome_l2_1">{{ outcome_l2_1 }}</span></li>
+      <li><span data-field="outcome_l2_2">{{ outcome_l2_2 }}</span></li>
+      <li><span data-field="outcome_l2_3">{{ outcome_l2_3 }}</span></li>
+      <li><span data-field="outcome_l2_4">{{ outcome_l2_4 }}</span></li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom: 30px;">
+    <h2 style="font-size: 14pt; margin-bottom: 15px;">3. Policies & Other Information</h2>
+
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">Grading:</h3>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Class Attendance/Attendance Quizzes: <span data-field="grade_attendance">{{ grade_attendance }}</span></li>
+      <li>Quizzes: <span data-field="grade_quizzes">{{ grade_quizzes }}</span></li>
+      <li>Writing Assignments: Ethics Report: <span data-field="grade_writing">{{ grade_writing }}</span></li>
+      <li>Assignments: <span data-field="grade_assignments">{{ grade_assignments }}</span></li>
+    </ul>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Assessment Breakdown:</h3>
+    <table>
+      <tr>
+        <td style="width: 50%;">Mockup Interview</td>
+        <td style="width: 50%; text-align: right;"><span data-field="weight_mockup">{{ weight_mockup }}</span></td>
+      </tr>
+      <tr>
+        <td>Final Exam</td>
+        <td style="text-align: right;"><span data-field="weight_final">{{ weight_final }}</span></td>
+      </tr>
+    </table>
+
+    <p style="font-size: 10pt; margin-top: 20px;">Quizzes will be taken through Blackboard. There is no make up for missed quizzes (No Exceptions).</p>
+
+    <p style="font-size: 10pt; margin-top: 20px;">The nominal percentage-score-to-letter-grade conversion is as follows:</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>90% or higher is an A</li>
+      <li>80-89% is a B</li>
+      <li>70-79% is a C</li>
+      <li>60-69% is a D</li>
+      <li>below 60% is an F</li>
+    </ul>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Assignments:</h3>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Homework: A <span data-field="hw_penalty">{{ hw_penalty }}</span> penalty will be assessed for assignments submitted late. Assignments that are more than one day late (24 hours) will be accepted and will receive a <span data-field="hw_late_penalty">{{ hw_late_penalty }}</span> penalty.</li>
+      <li>You will be asked to write a 3-4-page report on a topic related to ethics in computing or the impact of computing on society. The topic must be chosen from a list provided by the instructor.</li>
+      <li>Professional portfolios Online – Must include a homepage about you, resume page, and projects/samples/experience page.</li>
+      <li>Mock interview: You will provide your portfolio and a 1-2-minute elevator speech.</li>
+    </ul>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Guest Speakers</h3>
+    <p>We will have guest speakers from UTEP Career Services and Computer Science Professionals that will volunteer their time and expertise to contribute to the class goals.</p>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Attendance and Punctuality</h3>
+    <p>Your attendance and preparation are critical for your success in this course and your development as a professional. The items below are essential for ensuring that you benefit from the course and are prepared to enter the workforce.</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Attendance: You will be dropped from the class if you have <span data-field="attendance_limit">{{ attendance_limit }}</span> absences.</li>
+      <li>Attendance will be taken through in class attendance activities.</li>
+      <li>Preparation: The reading assignments and homework cover materials that are essential for your professional development. Please read the assigned pages from the text and complete homework.</li>
+    </ul>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Technology:</h3>
+    <p>Course content is delivered via the Internet through the Blackboard learning management system (LMS), supplemented by Microsoft Teams. Ensure your UTEP MINERS account is working and that you have access to the Internet. You may use any of the primary Web browsers—Edge, Google Chrome, Firefox, Safari, etc. When having technical difficulties, try switching to another browser.</p>
+  </section>
+</div>
+
+<div class="page">
+  <section style="margin-bottom: 30px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">Drop Policy:</h3>
+    <p>To drop this class, please contact the Registrar's Office to initiate the drop process. If you cannot complete this for whatever reason, please contact me. If you do not, you are at risk of receiving an "F" for the course.</p>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">Accommodations Policy:</h3>
+    <p>UTEP is committed to providing reasonable accommodations and auxiliary services to students, staff, faculty, job applicants, applicants for admissions, and other beneficiaries of University programs, services and activities with documented disabilities in order to provide them with equal opportunities to participate in programs, services, and activities in compliance with sections 503 and 504 of the Rehabilitation Act of 1973, as amended, and the Americans with Disabilities Act (ADA) of 1990 and the Americans with Disabilities Act Amendments Act (ADAAA) of 2008. Reasonable accommodations will be made unless it is determined that doing so would cause undue hardship on the University. Students requesting an accommodation based on a disability must register with the UTEP Center for Accommodations and Support Services (CASS); please contact the office at (915) 747-5148, or by email to <span data-field="cass_email">{{ cass_email }}</span>. Students are required to discuss their accommodations with the instructor for a proper plan to be made.</p>
+
+    <h3 style="font-size: 12pt; margin-top: 20px; margin-bottom: 5px;">4. Standards of Conduct and Academic Dishonesty</h3>
+
+    <h4 style="font-size: 11pt; margin-top: 15px; margin-bottom: 5px;">Netiquette:</h4>
+    <p>Always consider audience. Remember that members of the class and the instructor will be reading any postings. Respect and courtesy must be provided to classmates and to instructor at all times. No harassment or inappropriate postings will be tolerated. When reacting to someone else's message, address the ideas, not the person. Post only what anyone would comfortably state in a public forum. Blackboard is not a public internet venue; all postings to it should be considered private and confidential. Whatever is posted on in these online spaces is intended for classmates and professor only. Please do not copy documents and paste them to a publicly accessible website, blog, or other space. If students wish to do so, they have the ethical obligation to first request the permission of the writer(s).</p>
+
+    <h4 style="font-size: 11pt; margin-top: 20px; margin-bottom: 5px;">Standards of Conduct:</h4>
+    <p>You are expected to conduct yourself in a professional and courteous manner, as prescribed by the <span data-field="utep_standards_link">{{ utep_standards_link }}</span>.</p>
+  </section>
+</div>
+
+<div class="page">
+  <section style="margin-bottom: 30px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">Academic Dishonesty</h3>
+    <p>A fundamental principle for any educational institution, academic integrity is highly valued and seriously regarded at The University of Texas at El Paso. More specifically, students are expected to maintain absolute integrity and a high standard of individual honor in scholastic work undertaken at the University. At a minimum, you should complete any assignments, exams, and other scholastic endeavors with the utmost honesty, which requires you to:</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Acknowledge the contributions of other sources to your scholastic efforts;</li>
+      <li>Complete your assignments independently unless expressly authorized to seek or obtain assistance in preparing them;</li>
+      <li>Follow instructions for assignments and exams, and observe the standards of your academic discipline; and</li>
+      <li>Avoid engaging in any form of academic dishonesty on behalf of yourself or another student.</li>
+    </ul>
+
+    <p style="margin-top: 20px;">Graded work, e.g., homework and tests, is to be completed independently and should be unmistakably your own work (or, in the case of group work, your team's work), although you may discuss your project with other students in a general way. You may not represent as your own work material that is transcribed or copied from another person, book, or any other source, e.g., a web page.</p>
+
+    <p style="margin-top: 20px;">Any student who commits an act of scholastic dishonesty is subject to discipline. Scholastic dishonesty includes, but is not limited to cheating, plagiarism, collusion, the submission for credit of any work or materials that are attributable to another person.</p>
+
+    <h4 style="font-size: 11pt; margin-top: 20px; margin-bottom: 5px;">Cheating</h4>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Copying from the test paper of another student</li>
+      <li>Communicating with another student during a test</li>
+      <li>Giving or seeking aid from another student during a test</li>
+      <li>Possession and/or use of unauthorized materials during tests (i.e. Crib notes, class notes, books, etc.)</li>
+      <li>Substituting for another person to take a test</li>
+      <li>Falsifying research data, reports, academic work offered for credit</li>
+    </ul>
+
+    <h4 style="font-size: 11pt; margin-top: 20px; margin-bottom: 5px;">Plagiarism</h4>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Using someone's work in your assignments without the proper citations</li>
+      <li>Submitting the same paper or assignment from a different course, without direct permission of instructors</li>
+    </ul>
+
+    <h4 style="font-size: 11pt; margin-top: 20px; margin-bottom: 5px;">Collusion</h4>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Unauthorized collaboration with another person in preparing academic assignments</li>
+    </ul>
+
+    <h4 style="font-size: 11pt; margin-top: 20px; margin-bottom: 5px;">Collaboration:</h4>
+    <p>Collaboration among students is strongly encouraged. It is acceptable to:</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Talk with other students about approaches and ideas.</li>
+      <li>Get ideas and extra information from the internet, books, etc.</li>
+    </ul>
+    <p style="margin-top: 20px;">However, it is not acceptable to:</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Share code with another student (if a piece of code is submitted by two or more students, both students are guilty of cheating, regardless of who wrote the original code).</li>
+      <li>Use code acquired from an outside source (the internet, a friend, etc.)</li>
+      <li>Look at another student's code/work</li>
+      <li>Debug another student's code/work</li>
+    </ul>
+
+    <p style="margin-top: 20px;">Software to detect plagiarized programs/work are used; appropriate disciplinary actions will be taken as necessary.</p>
+
+    <p style="font-size: 10pt; margin-top: 30px;">A full description of the University Standards of Conduct and Academic Dishonesty can be found in the <span data-field="handbook_link">{{ handbook_link }}</span>.</p>
+    <p style="font-size: 10pt;">Professors are required to -- and will -- report academic dishonesty and any other violation of the Standards of Conduct to the Dean of Students.</p>
+  </section>
+</div>

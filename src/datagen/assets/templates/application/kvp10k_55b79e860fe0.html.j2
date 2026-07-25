@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Assistance Migrant Program Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { text-align: center; margin-top: 0; }
+  .header-logo { float: left; margin-right: 30px; }
+  .header-text { text-align: center; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-group { flex: 1; margin-right: 20px; }
+  .form-group.full-width { flex: 1 1 100%; margin-right: 0; }
+  .checkbox-group label { margin-right: 15px; }
+  .table-header { font-weight: bold; border-bottom: 1px solid #000; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px; border: 1px solid #ccc; }
+  .signature-line { margin-top: 50px; display: flex; justify-content: space-between; }
+</style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 {
+    text-align: center;
+    margin-top: 0;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 70%;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+  </div>
+  <div class="header-text">
+    <h1>College Assistance Migrant Program</h1>
+    <h2>College of Education and Human Science</h2>
+    <p>Valdosta State University</p>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">CAMP APPLICATION</h1>
+</div>
+
+<div class="page">
+  <div style="border-top: 1px solid #000; margin-bottom: 20px;"></div>
+  <p><strong>PLEASE SUBMIT APPLICATION TO:</strong></p>
+  <p>COLLEGE ASSISTANCE MIGRANT PROGRAM</p>
+  <p>College of Education and Human Services</p>
+  <p><span data-field="address.street">{{ address.street }}</span></p>
+  <p><span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span> <span data-field="address.zip">{{ address.zip }}</span></p>
+  <p>Phone: <span data-field="contact.phone">{{ contact.phone }}</span></p>
+  <p>Fax: <span data-field="contact.fax">{{ contact.fax }}</span></p>
+  <p>Email: <span data-field="contact.email">{{ contact.email }}</span></p>
+  <div style="border-top: 1px solid #000; margin-top: 30px;"></div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">CAMP Services Offered at VSU:</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <div style="width: 48%;">
+      <ul>
+        <li><span data-field="services.course_selection">{{ services.course_selection }}</span></li>
+        <li><span data-field="services.study_skills">{{ services.study_skills }}</span></li>
+        <li><span data-field="services.tutoring">{{ services.tutoring }}</span></li>
+        <li><span data-field="services.academic_monitoring">{{ services.academic_monitoring }}</span></li>
+        <li><span data-field="services.freshman_seminar">{{ services.freshman_seminar }}</span></li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <ul>
+        <li><span data-field="services.job_search">{{ services.job_search }}</span></li>
+        <li><span data-field="services.resume_writing">{{ services.resume_writing }}</span></li>
+        <li><span data-field="services.mock_interviews">{{ services.mock_interviews }}</span></li>
+        <li><span data-field="services.financial_aid">{{ services.financial_aid }}</span></li>
+        <li><span data-field="services.scholarship_internship">{{ services.scholarship_internship }}</span></li>
+        <li><span data-field="services.career_development">{{ services.career_development }}</span></li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <ul>
+        <li><span data-field="services.employment_referrals">{{ services.employment_referrals }}</span></li>
+        <li><span data-field="services.community_service">{{ services.community_service }}</span></li>
+        <li><span data-field="services.attend_social_events">{{ services.attend_social_events }}</span></li>
+        <li><span data-field="services.leadership_development">{{ services.leadership_development }}</span></li>
+        <li><span data-field="services.mentoring">{{ services.mentoring }}</span></li>
+        <li><span data-field="services.health_services">{{ services.health_services }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="text-align: center;">CAMP Eligibility Requirements:</h2>
+  <ul>
+    <li>Must be a U.S. citizen or permanent resident (with current Resident Alien Card)</li>
+    <li>Must be admitted as a freshman to VSU</li>
+    <li>Must be a migrant/seasonal farmworker or immediate family of a migrant/seasonal farmworker.</li>
+    <li>OR any student who has participated or is currently participating in the Migrant Education Program (questions regarding eligibility - please contact <span data-field="contact.eligibility_contact">{{ contact.eligibility_contact }}</span>, CAMP Recruiter, at <span data-field="contact.eligibility_email">{{ contact.eligibility_email }}</span>)</li>
+    <li>Student applying must be eligible to receive Federal Financial Aid</li>
+  </ul>
+
+  <h2 style="text-align: center;">CAMP Scholarship will support unmet financial need in the following:</h2>
+  <ul>
+    <li><span data-field="scholarship_support.housing">{{ scholarship_support.housing }}</span></li>
+    <li><span data-field="scholarship_support.meal_plan">{{ scholarship_support.meal_plan }}</span></li>
+    <li><span data-field="scholarship_support.books">{{ scholarship_support.books }}</span></li>
+    <li><span data-field="scholarship_support.tuition_fees">{{ scholarship_support.tuition_fees }}</span></li>
+    <li><span data-field="scholarship_support.stipend">{{ scholarship_support.stipend }}</span></li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Checklist</h2>
+  <table style="margin-top: 20px;">
+    <thead>
+      <tr>
+        <td class="table-header">VSU Online Application</td>
+        <td class="table-header">CAMP Application (see page 4)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox"> $20 Application fee or fee waiver from counselor</td>
+        <td><input type="checkbox"> Autobiography (see page 5)</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> Official ACT or SAT Scores</td>
+        <td><input type="checkbox"> Eligibility (if applicable, see page 6)</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> Official High School Transcripts</td>
+        <td><input type="checkbox"> Release of Information (see page 7)</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> GED Transcript (if applicable)</td>
+        <td><input type="checkbox"> Two Recommendation Letters (page 8-9)</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> Official College Transcript (if applicable)</td>
+        <td><input type="checkbox"> Student Interview Questionnaire (see below)</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> Immunization Records</td>
+        <td><input type="checkbox"> FAFSA SAR Report</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> Lawful Presence Verification</td>
+        <td><input type="checkbox"> Tax Forms - W2 forms</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> $100 Housing Application & deposit</td>
+        <td><input type="checkbox"> Birth Certificate</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox"> Social Security Card</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox"> Driver's License or State Issued ID</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox"> Permanent Resident ID Card (if applicable)</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox"> MEP Release (see page 10)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 30px;">*Complete the online interview questionnaire at <span data-field="interview_link">{{ interview_link }}</span>. Students may be contacted if further information is needed.</p>
+
+  <div style="margin-top: 40px;">
+    <h3 style="text-align: center;">IMPORTANT:</h3>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Please use <span data-field="pen_color">{{ pen_color }}</span> or <span data-field="pen_color_2">{{ pen_color_2 }}</span> ballpoint pen to complete the application.</li>
+      <li>It is the applicant's responsibility to ensure that application materials (recommendation letters, transcripts, etc.) are received. Incomplete applications will not be considered.</li>
+    </ul>
+    <p>If you need help with any of the forms or have any questions about your CAMP Program application status, please email us at <span data-field="contact.camp_email">{{ contact.camp_email }}</span> or call at <span data-field="contact.camp_phone">{{ contact.camp_phone }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Applicant Information</h2>
+  <div class="form-row">
+    <div class="form-group">Full Name:</div>
+    <div class="form-group">Last: <span data-field="applicant.last">{{ applicant.last }}</span></div>
+    <div class="form-group">First: <span data-field="applicant.first">{{ applicant.first }}</span></div>
+    <div class="form-group">M.I.: <span data-field="applicant.middle_initial">{{ applicant.middle_initial }}</span></div>
+    <div class="form-group">SS#: <span data-field="applicant.ssn">{{ applicant.ssn }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Address:</div>
+    <div class="form-group full-width">Street Address: <span data-field="applicant.address.street">{{ applicant.address.street }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">City: <span data-field="applicant.city">{{ applicant.city }}</span></div>
+    <div class="form-group">State: <span data-field="applicant.state">{{ applicant.state }}</span></div>
+    <div class="form-group">ZIP Code: <span data-field="applicant.zip">{{ applicant.zip }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Phone: <span data-field="applicant.phone">{{ applicant.phone }}</span></div>
+    <div class="form-group">Email: <span data-field="applicant.email">{{ applicant.email }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Sex: <span data-field="applicant.sex">{{ applicant.sex }}</span></div>
+    <div class="form-group">Date of birth: <span data-field="applicant.dob">{{ applicant.dob }}</span></div>
+    <div class="form-group">Age: <span data-field="applicant.age">{{ applicant.age }}</span></div>
+    <div class="form-group">Number in your family: <span data-field="applicant.family_size">{{ applicant.family_size }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Father's name: <span data-field="applicant.father_name">{{ applicant.father_name }}</span></div>
+    <div class="form-group">Mother's Name: <span data-field="applicant.mother_name">{{ applicant.mother_name }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Parent's address: <span data-field="applicant.parent_address.street">{{ applicant.parent_address.street }}</span></div>
+    <div class="form-group">Parent's phone number: <span data-field="applicant.parent_phone">{{ applicant.parent_phone }}</span></div>
+  </div>
+
+  <h3 style="text-align: center; margin-top: 30px;">PLEASE LIST A RELATIVE FOR CONTACT IN CASE OF EMERGENCY:</h3>
+  <div class="form-row">
+    <div class="form-group">Name: <span data-field="emergency_contact.name">{{ emergency_contact.name }}</span></div>
+    <div class="form-group">Phone Number: <span data-field="emergency_contact.phone">{{ emergency_contact.phone }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">Address: <span data-field="emergency_contact.address">{{ emergency_contact.address }}</span></div>
+    <div class="form-group">Relationship: <span data-field="emergency_contact.relationship">{{ emergency_contact.relationship }}</span></div>
+  </div>
+
+  <h3 style="text-align: center; margin-top: 30px;">Education</h3>
+  <div class="form-row">
+    <div class="form-group">High School: <span data-field="education.high_school_name">{{ education.high_school_name }}</span></div>
+    <div class="form-group">City and State: <span data-field="education.high_school_city_state">{{ education.high_school_city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">From: <span data-field="education.high_school_from">{{ education.high_school_from }}</span></div>
+    <div class="form-group">To: <span data-field="education.high_school_to">{{ education.high_school_to }}</span></div>
+    <div class="form-group">Did you graduate? <span data-field="education.high_school_graduated">{{ education.high_school_graduated }}</span></div>
+    <div class="form-group">YES <input type="checkbox"> NO <input type="checkbox"> STILL ENROLLED <input type="checkbox"> GPA: <span data-field="education.high_school_gpa">{{ education.high_school_gpa }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">College Name: <span data-field="education.college_name">{{ education.college_name }}</span></div>
+    <div class="form-group">City and State: <span data-field="education.college_city_state">{{ education.college_city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">From: <span data-field="education.college_from">{{ education.college_from }}</span></div>
+    <div class="form-group">To: <span data-field="education.college_to">{{ education.college_to }}</span></div>
+    <div class="form-group">Did you graduate? <span data-field="education.college_graduated">{{ education.college_graduated }}</span></div>
+    <div class="form-group">YES <input type="checkbox"> NO <input type="checkbox"> STILL ENROLLED <input type="checkbox"> GPA: <span data-field="education.college_gpa">{{ education.college_gpa }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Other (GED, Technical School Diploma, etc.): <span data-field="education.other_school_name">{{ education.other_school_name }}</span></div>
+    <div class="form-group">City and State: <span data-field="education.other_school_city_state">{{ education.other_school_city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">From: <span data-field="education.other_school_from">{{ education.other_school_from }}</span></div>
+    <div class="form-group">To: <span data-field="education.other_school_to">{{ education.other_school_to }}</span></div>
+    <div class="form-group">Did you graduate? <span data-field="education.other_school_graduated">{{ education.other_school_graduated }}</span></div>
+    <div class="form-group">YES <input type="checkbox"> NO <input type="checkbox"> STILL ENROLLED <input type="checkbox"> Degree: <span data-field="education.other_school_degree">{{ education.other_school_degree }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">Expected major at VSU: <span data-field="education.expected_major">{{ education.expected_major }}</span></div>
+    <div class="form-group">Have you applied to VSU? YES <input type="checkbox"> NO <input type="checkbox"></div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>I certify that the information on this application is true and I am accepted to the Valdosta State University CAMP. I agree to follow all rules and regulations established by the program. I also agree to participate in the academic/support services provided by CAMP to assist me in completing my freshman year at VSU.</p>
+    <div class="signature-line">
+      <div>Signature: _________________________</div>
+      <div>Date: _________________________</div>
+    </div>
+    <p style="margin-top: 20px;">Parent/Guardian Signature: _________________________</p>
+    <p>If you're under the age of 18, your parents must also sign.</p>
+    <div class="signature-line" style="margin-top: 50px;">
+      <div>Date: _________________________</div>
+      <div>For Office Use Only: Date: _________________________</div>
+    </div>
+    <p>Verified by: _________________________</p>
+    <p>Comments: ____________________________________________________________________</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Autobiography</h2>
+  <p>Please read carefully:</p>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>Type a three-page essay maximum – using 12-point font, double spaced, and address the questions listed below:</li>
+    <li>Please describe your family's work history and the types of migrant/seasonal farm work have you or your immediate family performed.</li>
+    <li>Please describe what you have learned from your migrant worker experience and how it has prepared you to attend VSU. What motivates you to pursue a college degree?</li>
+    <li>Why did you apply for CAMP? Address the reasons why you would like to participate in CAMP.</li>
+    <li>Please describe any high school leadership and extracurricular activities, volunteer work, and any other information that you would consider relevant toward your acceptance in the program.</li>
+  </ul>
+
+  <div style="margin-top: 40px; border: 1px solid #000; padding: 20px;">
+    <h3 style="text-align: center;">Important Essay Tips:</h3>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>Use a word processing program, preferably on a desktop or laptop.</li>
+      <li>DO NOT use your cellphone.</li>
+      <li>Follow the document formatting.</li>
+      <li>Don't forget to include your name!</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Release of Information</h2>
+  <p>I, <span data-field="release_info.name">{{ release_info.name }}</span>, hereby give permission to Valdosta State University, College Assistance Migrant Program (CAMP) staff to:</p>
+  <ul>
+    <li>Access student high school and college academic records/information such as grades, transcripts, SAT/ACT scores and other enrollment documents.</li>
+    <li>Migrant Education Program records/information.</li>
+    <li>Employment records/information.</li>
+    <li>Access Financial Aid Information (FAFSA).</li>
+    <li>Release my academic grades to my parent(s) or guardian(s) for educational purposes.</li>
+    <li>Use videography or photography in any media coverage (TV, radio, newspaper, print, etc.) related to CAMP for educational purposes, and I understand that there is no compensation for my participation.</li>
+  </ul>
+  <div class="signature-line">
+    <div>Signature: _________________________</div>
+    <div>Date: _________________________</div>
+  </div>
+  <p style="margin-top: 30px;">Parent/ Guardian Signature: _________________________</p>
+  <p>If you're under the age of 18, your parent/guardian must also sign.</p>
+  <div class="signature-line" style="margin-top: 50px;">
+    <div>Date: _________________________</div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Academic Recommendation</h2>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 48%;">
+      <p>Student's Name: <span data-field="recommendation.student_name">{{ recommendation.student_name }}</span></p>
+      <p>Home Phone: <span data-field="recommendation.student_phone">{{ recommendation.student_phone }}</span></p>
+      <p>Student Email: <span data-field="recommendation.student_email">{{ recommendation.student_email }}</span></p>
+    </div>
+    <div style="width: 48%;">
+      <p>Name of Evaluator: <span data-field="recommendation.evaluator_name">{{ recommendation.evaluator_name }}</span></p>
+      <p>Position: <span data-field="recommendation.evaluator_position">{{ recommendation.evaluator_position }}</span></p>
+      <p>School: <span data-field="recommendation.evaluator_school">{{ recommendation.evaluator_school }}</span></p>
+      <p>Phone Number: <span data-field="recommendation.evaluator_phone">{{ recommendation.evaluator_phone }}</span></p>
+      <p>Address: <span data-field="recommendation.evaluator_address">{{ recommendation.evaluator_address }}</span></p>
+      <p>City: <span data-field="recommendation.evaluator_city">{{ recommendation.evaluator_city }}</span></p>
+      <p>State: <span data-field="recommendation.evaluator_state">{{ recommendation.evaluator_state }}</span></p>
+      <p>Zip: <span data-field="recommendation.evaluator_zip">{{ recommendation.evaluator_zip }}</span></p>
+    </div>
+  </div>
+
+  <p><strong>TO THE STUDENT:</strong> Please take this form to a teacher, counselor, or school administrator who knows you. Ask this person to complete the form AND write a recommendation letter.</p>
+  <p><strong>TO THE EVALUATOR:</strong> Thank you for agreeing to write a recommendation letter for the applicant listed above. Your recommendation letter will constitute a very important part of the selection process. Your answers will be confidential. If you have questions, please call me at <span data-field="contact.recommendation_phone">{{ contact.recommendation_phone }}</span> or at <span data-field="contact.recommendation_email">{{ contact.recommendation_email }}</span>.</p>
+
+  <p>In your letter, please address statements supporting the qualities listed below along with any information you want to share about the applicant.</p>
+
+  <p>Please rate the student on the following qualities:</p>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <td class="table-header">Personal Qualities</td>
+        <td class="table-header">Strong (3)</td>
+        <td class="table-header">Average (2)</td>
+        <td class="table-header">Weak (1)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Persistence</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Leadership Qualities</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Motivation</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Responsibility</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Integrity</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Academic Potential</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="form-group">Highly Recommend: <input type="checkbox"></div>
+    <div class="form-group">Recommend: <input type="checkbox"></div>
+    <div class="form-group">Do Not Recommend: <input type="checkbox"></div>
+  </div>
+
+  <p style="margin-top: 30px;">Please type the recommendation letter on official letterhead and place it in a sealed envelope. Please mail this form and recommendation letter to:</p>
+  <p>COLLEGE ASSISTANCE MIGRANT PROGRAM</p>
+  <p>College of Education and Human Services</p>
+  <p><span data-field="address.street">{{ address.street }}</span></p>
+  <p><span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span> <span data-field="address.zip">{{ address.zip }}</span></p>
+  <p>(229) 253-2862 (phone)</p>
+  <p><span data-field="contact.camp_email">{{ contact.camp_email }}</span> (email)</p>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 {
+    text-align: center;
+    margin-top: 0;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 70%;
+  }
+</style>
+
+<div class="page">
+  <div>
+    <!-- Logo/Header Area -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <!-- Placeholder for Logo -->
+      <div style="font-size: 60px; margin-bottom: 10px;">&hearts;</div>
+      <h1 style="font-size: 24px; margin: 0;">GABOE</h1>
+      <p style="font-size: 14px; margin: 5px 0 0 0;">Georgia Department of Education</p>
+      <p style="font-size: 12px; margin: 5px 0 0 0;">Richard Woods, Georgia's School Superintendent</p>
+      <p style="font-size: 10px; margin: 0;">"Educating Georgia's Future"</p>
+    </div>
+
+    <!-- Main Content -->
+    <p style="margin-bottom: 20px;">
+      I, <span data-field="full_name">{{ full_name }}</span>, give the Georgia Department of Education (GaDOE) Title I, Part C - Migrant Education Program (MEP), permission to release my/my child's MEP participant status to the staff of the College Assistance Migrant Program (CAMP) at <span data-field="employer.name">{{ employer.name }}</span>, <span data-field="employer.city">{{ employer.city }}</span>, <span data-field="employer.state">{{ employer.state }}</span> <span data-field="employer.zip">{{ employer.zip }}</span>.
+    </p>
+
+    <p style="margin-bottom: 20px;">
+      I understand the purpose of this release of information is to complete my/my child's application package for the CAMP program.
+    </p>
+
+    <p style="margin-bottom: 30px;">
+      I understand that I was informed about the Family Education Rights and Privacy Act (FERPA) during my initial eligibility meeting with the MEP recruiter.
+    </p>
+
+    <!-- Signature Section -->
+    <div style="width: 100%;">
+      <p style="margin-bottom: 10px;">MEP Participant Name:</p>
+      <div class="signature-line" data-field="mep_participant_name">{{ mep_participant_name }}</div>
+
+      <p style="margin-top: 40px; margin-bottom: 10px;">Parent/Guardian (or participant if 18 or older) Name:</p>
+      <div class="signature-line" data-field="parent_guardian_name">{{ parent_guardian_name }}</div>
+
+      <p style="margin-top: 40px; margin-bottom: 10px;">Parent/Guardian (or participant if 18 or older) Signature:</p>
+      <div class="signature-line" data-field="parent_guardian_signature">{{ parent_guardian_signature }}</div>
+
+      <p style="margin-top: 50px;">Date:</p>
+      <div class="signature-line" style="width: 200px;" data-field="date">{{ date }}</div>
+    </div>
+
+    <!-- Footer -->
+    <div style="position: absolute; bottom: 50px; left: 60px; right: 60px; text-align: center; font-size: 10px;">
+      <p style="margin: 0;">1854 Twin Towers East • 205 Jesse Hill Jr. Drive • Atlanta, Georgia 30334 • www.gadoe.org</p>
+      <p style="margin: 2px 0 0 0;">An Equal Opportunity Employer</p>
+    </div>
+  </div>
+</div></body>
+</html>

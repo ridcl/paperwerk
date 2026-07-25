@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .contact-info { margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .entry { margin-bottom: 15px; }
+  .entry-title { font-weight: bold; }
+  .entry-details { font-style: italic; font-size: 0.9em; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <span data-field="full_name" style="font-size: 1.5em; font-weight: bold;">{{ full_name }}</span>
+    <div class="contact-info">
+      <span data-field="department">{{ department }}</span>, <span data-field="university">{{ university }}</span><br>
+      <span data-field="address">{{ address }}</span><br>
+      Office: <span data-field="office_phone">{{ office_phone }}</span> | Fax: <span data-field="fax_phone">{{ fax_phone }}</span><br>
+      <span data-field="email">{{ email }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  {% for edu in education %}
+  <div class="entry">
+    <span data-field="edu.year">{{ edu.year }}</span> - <span data-field="edu.degree">{{ edu.degree }}</span>, <span data-field="edu.major">{{ edu.major }}</span>, <span data-field="edu.institution">{{ edu.institution }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Teaching and Professional Appointments</div>
+  {% for appt in appointments %}
+  <div class="entry">
+    <span data-field="appt.year_start">{{ appt.year_start }}</span>-<span data-field="appt.year_end">{{ appt.year_end }}</span> - <span data-field="appt.title">{{ appt.title }}</span>, <span data-field="appt.institution">{{ appt.institution }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Research and Publications</div>
+
+  <div class="section-title">Books (Peer Reviewed)</div>
+  {% for book in books %}
+  <div class="entry">
+    <span data-field="book.title">{{ book.title }}</span>, <span data-field="book.publisher">{{ book.publisher }}</span>, <span data-field="book.year">{{ book.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Edited Books (Peer Reviewed)</div>
+  {% for edited_book in edited_books %}
+  <div class="entry">
+    <span data-field="edited_book.title">{{ edited_book.title }}</span>, <span data-field="edited_book.publisher">{{ edited_book.publisher }}</span>, <span data-field="edited_book.year">{{ edited_book.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Journal Articles (Peer Reviewed)</div>
+  {% for journal in journal_articles %}
+  <div class="entry">
+    <span data-field="journal.title">{{ journal.title }}</span>, <span data-field="journal.publication">{{ journal.publication }}</span>, <span data-field="journal.year">{{ journal.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Works in Edited Collections (Peer Reviewed)</div>
+  {% for collection_work in collection_works %}
+  <div class="entry">
+    <span data-field="collection_work.title">{{ collection_work.title }}</span>, in <span data-field="collection_work.collection">{{ collection_work.collection }}</span>, <span data-field="collection_work.publisher">{{ collection_work.publisher }}</span>, <span data-field="collection_work.year">{{ collection_work.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Other Published Articles (Not Refereed)</div>
+  {% for other_article in other_articles %}
+  <div class="entry">
+    <span data-field="other_article.title">{{ other_article.title }}</span>, <span data-field="other_article.publication">{{ other_article.publication }}</span>, <span data-field="other_article.year">{{ other_article.year }}</span>
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div class="section-title">Museum Exhibits</div>
+  {% for exhibit in museum_exhibits %}
+  <div class="entry">
+    <span data-field="exhibit.title">{{ exhibit.title }}</span>, <span data-field="exhibit.role">{{ exhibit.role }}</span>, <span data-field="exhibit.year">{{ exhibit.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Encyclopedia Entries</div>
+  {% for encyclopedia in encyclopedia_entries %}
+  <div class="entry">
+    <span data-field="encyclopedia.title">{{ encyclopedia.title }}</span>, <span data-field="encyclopedia.source">{{ encyclopedia.source }}</span>, <span data-field="encyclopedia.year">{{ encyclopedia.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Research Grants, Funding and Awards</div>
+  <div class="section-title">Awards</div>
+  {% for award in awards %}
+  <div class="entry">
+    <span data-field="award.name">{{ award.name }}</span>, <span data-field="award.description">{{ award.description }}</span>, <span data-field="award.year">{{ award.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Conference Papers and Presentations</div>
+  <div class="section-title">International</div>
+  {% for international_conf in international_conferences %}
+  <div class="entry">
+    <span data-field="international_conf.title">{{ international_conf.title }}</span>, <span data-field="international_conf.conference">{{ international_conf.conference }}</span>, <span data-field="international_conf.year">{{ international_conf.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">National</div>
+  {% for national_conf in national_conferences %}
+  <div class="entry">
+    <span data-field="national_conf.title">{{ national_conf.title }}</span>, <span data-field="national_conf.conference">{{ national_conf.conference }}</span>, <span data-field="national_conf.year">{{ national_conf.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Regional</div>
+  {% for regional_conf in regional_conferences %}
+  <div class="entry">
+    <span data-field="regional_conf.title">{{ regional_conf.title }}</span>, <span data-field="regional_conf.conference">{{ regional_conf.conference }}</span>, <span data-field="regional_conf.year">{{ regional_conf.year }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Film Screenings & Festivals</div>
+  {% for film_fest in film_festivals %}
+  <div class="entry">
+    <span data-field="film_fest.title">{{ film_fest.title }}</span>, <span data-field="film_fest.year">{{ film_fest.year }}</span>
+  </div>
+  {% endfor %}
+
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <p>Hymns of Three Cities (2015, 23 mins, Co-Director)</p>
+  <p>Created Equal Screening: <span data-field="screening_details_1">{{ screening_details_1 }}</span>, <span data-field="date_1">{{ date_1 }}</span>. National.</p>
+  <p>Flickering Landscapes Conference Screening. <span data-field="date_2">{{ date_2 }}</span>. Regional.</p>
+  <p>Flagler Film Festival. <span data-field="date_3">{{ date_3 }}</span>. Regional.</p>
+  <p>Jacksonville Documentary Film Festival. <span data-field="date_4">{{ date_4 }}</span>. Regional.</p>
+  <p>Show Me Justice Film Festival. <span data-field="date_5">{{ date_5 }}</span>. National.</p>
+  <p>Special Recognition Award, (In)Justice for All Film Festival. <span data-field="date_6">{{ date_6 }}</span>. National.</p>
+  <p>Filthy Dreamers (2014, 27 mins, Co-Director)</p>
+  <p>Fort Lauderdale Film Festival, <span data-field="date_7">{{ date_7 }}</span>. International.</p>
+  <p>The Committee (2012, 27 mins, Co-Director)</p>
+  <p>National Distribution: <span data-field="distributor_1">{{ distributor_1 }}</span>. <span data-field="date_8">{{ date_8 }}</span>. National.</p>
+  <p>Gasparilla International Film Festival. <span data-field="date_9">{{ date_9 }}</span>. International.</p>
+  <p>Best of Competition Award, Festival of Media Arts. Broadcast Educators Association. <span data-field="date_10">{{ date_10 }}</span>. National.</p>
+  <p>Shadows of the Past, Reflections for the Future (2011, 15 mins, Co-director)</p>
+  <p>Award of Excellence, Faculty/Student Video. Broadcast Educators Association. <span data-field="date_11">{{ date_11 }}</span>. National.</p>
+  <p>Presentations for Local Community</p>
+  <ul>
+    <li>“The Civil Rights Movement in Jacksonville, Florida,” <span data-field="presenter_1">{{ presenter_1 }}</span>. <span data-field="date_12">{{ date_12 }}</span></li>
+    <li>“The Legacy of Harry T. Moore in Florida,” The Holocaust Memorial Resource and Education Center of Florida, Maitland, Florida, <span data-field="date_13">{{ date_13 }}</span></li>
+    <li>“The Woman Suffrage Movement in Florida,” Ormond Beach Historical Society (Spring <span data-field="date_14">{{ date_14 }}</span>)</li>
+    <li>“The Woman Suffrage Movement in Florida,” Frank DeGroot Public Library, Palm Bay, Florida (Winter <span data-field="date_15">{{ date_15 }}</span>)</li>
+    <li>“The Long History of the African American Civil Rights Movement in Florida,” Ormond Beach Historical Society (Spring <span data-field="date_16">{{ date_16 }}</span>)</li>
+    <li>“James Weldon Johnson’s Jacksonville” 2012 James Weldon Johnson Festival, Jacksonville, Florida, Featured Speaker (Summer <span data-field="date_17">{{ date_17 }}</span>)</li>
+    <li>“The Long History of the African American Civil Rights Movement in Florida,” Frank DeGroot Public Library, Palm Bay, Florida (Winter <span data-field="date_18">{{ date_18 }}</span>)</li>
+  </ul>
+</div>
+
+<div class="page">
+  <ul>
+    <li>“Eatonville: The Town that Freedom Built,” Roundtable Discussion, Zora Festival (Winter <span data-field="date_19">{{ date_19 }}</span>)</li>
+    <li>“Traveling Exhibit: The Long History of the African American Civil Rights Movement in Florida, 1865-1965,” Florida Humanities Council Mini-Grant for Community Organizations, (2011)</li>
+    <li>“The Early History of the Civil Rights Movement in Jacksonville, Florida,” Aurora Lecture Series, Aurora Theatre, Jacksonville Florida, (Summer 2011)</li>
+    <li>“Zora Neale Hurston and Black Folk Music,” Zora Memorial Celebration, Maitland Public Library (Fall 2009)</li>
+    <li>“Origins of the Seminoles,” Winter Park Public Library, (Fall 2009)</li>
+    <li>“Florida Labor History,” Student Labor Action Project, (Fall 2009)</li>
+    <li>Exhibit Curator, From Kin to Kant: The Culture of Turpentine with the Winter Park Historical Association (2008-2009)</li>
+    <li>“If God Send Me a Pistol, I’ll Send Him a Man’ Zora Neale Hurston and Black Life in the Florida Turpentine Camps” Winter Park Historical Society, (Winter 2008)</li>
+    <li>“Jim Crow Transportation in Florida, 1876-1905,” Florida Historical Society, (Spring 2008)</li>
+    <li>Chaired, “Florida and the Civil Rights Movement” the Orange County Regional History Center, (Spring 2006)</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">Courses Taught</h3>
+  <ul>
+    <li>Undergraduate</li>
+    <li>HIS 4150 History and Historians</li>
+    <li>AMH 3422 Frontier Florida</li>
+    <li>AMH 3425 Sunbelt Florida</li>
+    <li>AMH 3403 History of the South since 1865</li>
+    <li>LAH 4136 Colonial Florida</li>
+    <li>FIL 3930H Honors Documentary Workshop</li>
+    <li>HIS 4070 Oral History</li>
+    <li>HIS3081 Hist. Museums and Digital Spaces</li>
+    <li>Graduate</li>
+    <li>AMH 5937 Colloquium Gender and Sexuality</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px;">Thesis Supervision</h3>
+  <ul>
+    <li>“A digital media exploration of the Federal Writers’ Project’s folk song collecting expeditions in Depression Era Florida” by Holly Baker Defended Summer 2018</li>
+    <li>“Creating a Digital Exhibit on the Colonial Fur Trade in Florida: A Public History/Digital History Project” by Benjamin DiBiase, Defended Summer 2017</li>
+    <li>“Hippieland: Bohemian Space and Countercultural Place in San Francisco’s Haight-Ashbury Neighborhood” by Kevin Mitchell Mercer, Defended Summer 2017</li>
+    <li>“The Rhetoric of Public Memory in Urban Park Revitalization in 20th Century Jacksonville, Florida” by Mary Catherine Kelley, Defended Spring 2016</li>
+    <li>“Conflict and Modernity in New South Florida’s Phosphate Mines, 1900-1930,” by Terrell Orr, defended Spring 2016</li>
+    <li>“Stage Illusionsist: A Historical Study Using Illusionists as a Reflection of Mass Entertainment, Popular Culture, and Change During the Late Nineteenth Century,” by Clayton Phillips, defended Fall 2015</li>
+    <li>“The Best and Worst of all that God and Man Can Do”: Paternalistic Perceptions on the Intellectually Disabled at Florida’s Sunland Institutions,” by Bethany Dickens, defended Spring of 2014.</li>
+    <li>“The North Comes South: Northern Methodists in Florida during Reconstruction,” Heather Bollinger, Defended Summer 2011</li>
+    <li>“The Whiteman’s Seminole: White Manhood, Indians and Slaves, and the Second Seminole War,” Francis Mahan IV, Defended Spring 2011</li>
+    <li>“From Celery City to Navy Town: The Impact of Naval Air Station Sanford during World War II,” Lewis W. Metzger V, Defended Summer 2010</li>
+    <li>“Outside the Circle: The Juxtaposition of Powwow Imagery and Cherokee Historical Representation” Dana Brumley, Defended Summer 2009</li>
+  </ul>
+</div>
+
+<div class="page">
+  <ul>
+    <li>“Constructing African American Histories in Central Florida,” Kathy Parry, Defended Spring 2008</li>
+    <li>“Brazilian Immigration: A New View of Latinization,” Patricia Buzato, Defended Fall 2007</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">Service to the College and Department</h3>
+  <ul>
+    <li>Faculty Senate, Steering Committee, (2014-2016)</li>
+    <li>Faculty Senate, Budget and Administration Committee (2012-2016)</li>
+    <li>Faculty Senate, (2012-2016)</li>
+    <li>Chair, Technology Committee (2007-2012)</li>
+    <li>Department Webpage Administrator (2007-2012)</li>
+    <li>Public History Committee (2006-2009)</li>
+    <li>Coordinator of RICHES Podcasts (2009-2015)</li>
+    <li>Library Liaison (2006-2007)</li>
+    <li>Phi Alpha Theta Sponsor (2006-2007)</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">Service to the Profession</h3>
+  <ul>
+    <li>President, H-Net, (2019-2021)</li>
+    <li>Vice President of Research and Publications, H-Net, (2013-2018)</li>
+    <li>Board of Directors, Florida Historical Society, (2010-2018)</li>
+    <li>Manuscript Reviewer, Florida Historical Quarterly, Agricultural History, Journal of South History, University Press of Florida, Oxford University Press, Bedford Books, Vanderbilt University Press</li>
+    <li>Judge, Harry T. Moore Award, Best Book on the history of ethnic minorities in Florida, (2011)</li>
+    <li>Judge, Rembert Patrick Award, Best Scholarly Book in Florida History, (2007)</li>
+    <li>Judge, Arthur W. Thompson Award, Best Article in the Florida Historical Quarterly, (2005, 2005)</li>
+  </ul>
+</div>
+
+<div class="page">
+  <ul>
+    <li>Member, Florida Historical Quarterly Editorial Board (2004-Present)</li>
+    <li>National Endowment for the Humanities, Judge, Research Grants (July 2004)</li>
+    <li>Program and Locations Committee, Southern Labor Studies Conference, (2004)</li>
+    <li>National Endowment for the Humanities, Judge Education Grants (December 2003)</li>
+    <li>List Editor, Review Editor and Web Editor, H-Florida, H-Net Humanities Network (1999-2008)</li>
+    <li>Membership Committee, Southern Historical Association, (1998-1999)</li>
+  </ul>
+</div></body>
+</html>

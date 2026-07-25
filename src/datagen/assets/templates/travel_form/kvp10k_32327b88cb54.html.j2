@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tuberculosis (TB) Risk Assessment Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-logo { font-size: 36pt; margin-bottom: 10px; }
+  .header-title { font-size: 24pt; margin-bottom: 5px; }
+  .header-subtitle { font-size: 14pt; margin-bottom: 30px; }
+  .form-section { margin-bottom: 30px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-label { font-weight: normal; }
+  .form-input-group { display: flex; gap: 20px; }
+  .form-input-group > div { flex: 1; }
+  .checkbox-group label { margin-right: 15px; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container th, .table-container td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .table-container th { background-color: #f2f2f2; }
+  .signature-line { margin-top: 50px; display: flex; justify-content: space-between; }
+  .signature-box { width: 45%; border-top: 1px solid black; padding-top: 5px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div class="header-logo">C</div>
+    <div class="header-title">THE UNIVERSITY OF TENNESSEE CHATTANOOGA</div>
+    <div class="header-subtitle">SCHOOL OF NURSING</div>
+  </div>
+  <h2 style="text-align: center; margin-bottom: 20px;">International Travel Form</h2>
+  <p style="text-align: center; margin-bottom: 30px;">This form must be submitted to the <span data-field="department_name">{{ department_name }}</span> one month prior to travel.</p>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">Student's First Name:</span> <span data-field="full_name_first">{{ student.first_name }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">Last Name:</span> <span data-field="full_name_last">{{ student.last_name }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">Date of Birth:</span> <span data-field="dob">{{ student.dob }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">Middle Name:</span> <span data-field="full_name_middle">{{ student.middle_name }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">Travel Destination:</span> <span data-field="travel_destination">{{ student.travel_destination }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">Date of Travel (Departure and Return):</span> <span data-field="travel_dates">{{ student.travel_dates }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">Date of Tdpa/Td:</span> <span data-field="tdpa_date">{{ student.tdpa_date }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">Date of Last TB Skin Test:</span> <span data-field="tb_skin_test_date">{{ student.tb_skin_test_date }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">Please answer the following questions by selecting yes or no.</h3>
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 70%;">Question</th>
+          <th style="width: 15%;">Yes</th>
+          <th style="width: 15%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.</td>
+          <td>Have you ever had close contact with anyone who was sick with TB?</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>2.</td>
+          <td>Were you born in one of the countries listed below?</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>3.</td>
+          <td>Have you traveled or will you be traveling to any of the countries listed at the bottom? If yes, please circle these.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>4.</td>
+          <td>Have you been a resident, employee, or volunteer in a prison, homeless shelter, nursing home, or other high-risk caregiving setting?</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>5.</td>
+          <td>Have you been a member of an 'at-risk' group - medically underserved/low income/ drug or alcohol abusers?</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>6.</td>
+          <td>Have you been a healthcare worker/volunteer serving clients at 'risk' for active TB?</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 20px; font-size: 10pt;">*Significance of travel exposure should be discussed with a health care provider and evaluated.</p>
+  </div>
+
+  <div class="form-section">
+    <p>If the answer is YES to any of the above questions, the University of Tennessee also requires that a Health Care Provider complete and return the enclosed Tuberculosis Risk Assessment Form, along with the completed questionnaire, to Student Health Services prior to travel. All Tuberculosis Testing to be accepted must be done 6 months prior to travel.</p>
+    <p>If the answers to all the above questions are NO, further evaluation is not required; however, this completed questionnaire must be returned to Student Health Services prior to travel.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">STUDENT SIGNATURE (REQUIRED):</span>
+        <div class="signature-box" style="width: 100%;"></div>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">DATE:</span>
+        <div class="signature-box" style="width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 45%;">
+        <span class="form-label">RECEIVED IN STUDENT HEALTH SERVICES BY:</span>
+        <div class="signature-box" style="width: 100%;"></div>
+      </div>
+      <div style="width: 45%;">
+        <span class="form-label">DATE:</span>
+        <div class="signature-box" style="width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">SIGNATURE OF STUDENT HEALTH SERVICES REPRESENTATIVE:</h3>
+    <div class="signature-box" style="width: 100%; height: 100px; border-top: 2px solid black;"></div>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <h3 style="margin-bottom: 15px;">TB Risk Factors for Infection (Review with patient. If any "Yes" proceed to #2. If all "No", proceed to #5)</h3>
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 70%;">Factor</th>
+          <th style="width: 15%;">Yes</th>
+          <th style="width: 15%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A.</td>
+          <td>Prior positive TB test.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>B.</td>
+          <td>Recent close contact with someone with infectious TB disease.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>C.</td>
+          <td>Foreign-born (or travel to/in) a high prevalence area (e.g., Africa, Asia, Eastern Europe, or Central or South America).</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>D.</td>
+          <td>Fibrotic changes on a prior chest x-ray suggesting inactive or past TB disease.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>E.</td>
+          <td>HIV/AIDS.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>F.</td>
+          <td>Organ transplant recipient.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>G.</td>
+          <td>Immunosuppressed (equivalent of &gt; 15 mg/d of prednisone or &gt; 1 month of TNF- $\alpha$ antagonist).</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>H.</td>
+          <td>History of illicit drug use.</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>I.</td>
+          <td>Resident, employee, or volunteer in a high-risk congregate setting (e.g., correctional facilities, nursing homes, homeless shelters, hospitals, and other health care facilities).</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>J.</td>
+          <td>Medical condition associated with increased risk of progressing TB disease if infected (e.g., diabetes mellitus, silicosis, chronic kidney or lung cancer, immunocompromised due to glucocorticoid/alcohol disease, such as Hodgkin's disease or leukemia; end stage renal disease; intestinal bypass or gastrectomy; chronic malabsorption syndrome; HIV/AIDS or low body weight (&lt;10% or more below ideal for the given population)).</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+    </table>
+    <p style="margin-top: 20px; font-size: 10pt;">*The significance of the travel exposure should be discussed with a health care provider and evaluated.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">Review with patient. If the answer to any of the above questions was "Yes" proceed to #2. If all "No", proceed to #5</h3>
+    <p>If yes, proceed with testing as indicated, e.g., TST or IGRA, chest x-ray, sputum AFB smear and cultures. Ongoing treatment for TB will not prevent the student's participation.</p>
+    <p>If no, proceed to number 3.</p>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">3. Tuberculosis Skin Test (TST) or Interferon Gamma Release Assay (IGRA)</h3>
+    <p>Do not use TST within four weeks of a live virus vaccine.</p>
+    <p>TST result should be recorded as actual millimeter of induration, transverse diameter; if no induration, write "0".</p>
+    <p>The TST interpretation should be based on millimeter of induration as well as risk factors. See page 2.</p>
+    <div class="form-row">
+      <div style="width: 30%;">TST:</div>
+      <div style="width: 30%;">Date Given:</div>
+      <div style="width: 30%;">Result: <span data-field="tst_result">{{ tst.result }}</span> mm of induration.</div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Date Read:</div>
+      <div style="width: 30%;"></div>
+      <div style="width: 30%;">**Interpretation: <span data-field="tst_interpretation">{{ tst.interpretation }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">Interferon Gamma Release Assay (IGRA):</h3>
+    <div class="form-row">
+      <div style="width: 30%;">Date Obtained:</div>
+      <div style="width: 30%;"></div>
+      <div style="width: 30%;">Result: <span data-field="igra_result">{{ igra.result }}</span> / <span data-field="igra_method">{{ igra.method }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">4. Chest x-ray required within 6 months prior to departure for recent or prior positive TST or IGRA</h3>
+    <div class="form-row">
+      <div style="width: 30%;">Date Obtained:</div>
+      <div style="width: 30%;"></div>
+      <div style="width: 30%;">Result: <span data-field="xray_result">{{ xray.result }}</span> / <span data-field="xray_type">{{ xray.type }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">5. Please Circle "No Risk" or "Risk" Below Regarding TB Infections:</h3>
+    <div class="checkbox-group" style="margin-bottom: 20px;">
+      <label><input type="radio" name="risk_level" value="No Risk"> A. No Risk</label>
+      <label><input type="radio" name="risk_level" value="Risk"> B. Risk (Please attach information regarding past/present treatment for latent/active TB infection)</label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 style="margin-bottom: 15px;">6. Health Care Provider Contact Information sign only when testing completed</h3>
+    <div class="form-row">
+      <div style="width: 20%;">Provider's Name:</div>
+      <div style="width: 30%;"></div>
+      <div style="width: 20%;">Address:</div>
+      <div style="width: 30%;"></div>
+    </div>
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="width: 20%;">City:</div>
+      <div style="width: 20%;">State:</div>
+      <div style="width: 20%;">Zip Code:</div>
+      <div style="width: 30%;">Country:</div>
+    </div>
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="width: 20%;">Phone #:</div>
+      <div style="width: 20%;">Fax #:</div>
+    </div>
+    <div class="signature-line" style="margin-top: 50px;">
+      <div class="signature-box" style="width: 50%;">Provider's Signature</div>
+      <div class="signature-box" style="width: 50%;">Date</div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <h3 style="margin-bottom: 15px;">** TST Interpretation Guidelines</h3>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>&gt; 5 mm is positive in:</li>
+      <li style="margin-left: 20px;">&bull; Persons with HIV/AIDS</li>
+      <li style="margin-left: 20px;">&bull; Persons with fibrotic changes on a prior chest x-ray consistent with past TB disease</li>
+      <li style="margin-left: 20px;">&bull; Immunosuppressed persons: taking &gt; 15 mg/d of prednisone for &gt; 1 month; taking a TNF-$\alpha$ antagonist</li>
+      <li>&gt; 10 mm is positive in:</li>
+      <li style="margin-left: 20px;">&bull; Persons born in a high prevalence country or who resided in one for a significant amount of time</li>
+      <li style="margin-left: 20px;">&bull; Persons with diabetes mellitus</li>
+      <li style="margin-left: 20px;">&bull; Persons with chronic kidney disease</li>
+      <li style="margin-left: 20px;">&bull; Persons with the following: silicosis; diabetes mellitus; chronic renal failure; leukemia and lymphomas; gastrectomy or intestinal bypass; head, neck, or lung cancer; low body weight (&lt;10% below ideal body ideal); and/or chronic malabsorption syndromes</li>
+      <li>&gt; 15 mm is positive in:</li>
+      <li style="margin-left: 20px;">&bull; Persons with no known risk factors for TB disease</li>
+    </ul>
+    <p style="margin-top: 20px; font-size: 10pt;">*The significance of the travel exposure should be discussed with a health care provider and evaluated.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px; font-size: 10pt;">
+    <p>Healthcare Provider: Please return this completed two page form to the address listed below. It must be received in our office one month prior to travel.</p>
+    <p>Student Health Services</p>
+    <p>The University of Tennessee Chattanooga</p>
+    <p>615 McCallie Avenue, Department 6856</p>
+    <p>Chattanooga, TN 37403</p>
+  </div>
+</div>
+
+</body>
+</html>

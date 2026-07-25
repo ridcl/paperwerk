@@ -1,0 +1,185 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .logo { float: left; }
+  .contact-info { text-align: right; font-size: 0.9em; }
+  .form-section { margin-bottom: 25px; }
+  .line-item-row { display: flex; margin-bottom: 15px; }
+  .line-item-row > div { flex: 1; }
+  .divider { border-top: 1px solid #000; margin-top: 10px; margin-bottom: 10px; }
+  .input-line { border-bottom: 1px solid #000; width: 100%; }
+</style>
+<body>
+  <div class="page">
+    <div class="header-info">
+      <div class="logo">
+        <!-- Placeholder for Logo -->
+        <img src="" alt="Logo" style="width: 100px;">
+      </div>
+      <div class="contact-info">
+        <h1>INAFA' MAOLEK CONCILIATION</h1>
+        <p>PO Box 3267 Hagåtña, Guam 96932</p>
+        <p>Tel: {{ contact_info.phone }}</p>
+        <p>E-mail: <span data-field="contact_info.email">{{ contact_info.email }}</span></p>
+      </div>
+    </div>
+
+    <h2>Service Request Form</h2>
+    <p>Please print information. Thank you.</p>
+
+    <div class="form-section">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 45%;">
+          <p>Name of Organization</p>
+          <div class="input-line" data-field="name_of_organization">{{ name_of_organization }}</div>
+        </div>
+        <div style="width: 45%;">
+          <p>Date of referral</p>
+          <div class="input-line" data-field="date_of_referral">{{ date_of_referral }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%;">
+          <p>Referring person</p>
+          <div class="input-line" data-field="referring_person">{{ referring_person }}</div>
+        </div>
+        <div style="width: 30%;">
+          <p>Position / Title</p>
+          <div class="input-line" data-field="position_title">{{ position_title }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%;">
+          <p>Contact #</p>
+          <div class="input-line" data-field="contact">{{ contact }}</div>
+        </div>
+        <div style="width: 30%;">
+          <p>Fax #</p>
+          <div class="input-line" data-field="fax">{{ fax }}</div>
+        </div>
+        <div style="width: 30%;">
+          <p>Email Address</p>
+          <div class="input-line" data-field="email_address">{{ email_address }}</div>
+        </div>
+      </div>
+    </div>
+
+    {% for i in range(4) %}
+    <div class="form-section">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%;">
+          <p>Name of Disputant</p>
+          <div class="input-line" data-field="name_of_disputant">{{ name_of_disputant }}</div>
+        </div>
+        <div style="width: 30%;">
+          <p>Contact #</p>
+          <div class="input-line" data-field="contact_2">{{ contact_2 }}</div>
+        </div>
+        <div style="width: 30%;">
+          <p>Contact #</p>
+          <div class="input-line" data-field="contact_3">{{ contact_3 }}</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="form-section">
+      <p>Others harmed by action or involved in the conflict: Name, Position, and Contact Information:</p>
+      <div class="input-line" style="height: 80px;" data-field="contact_4">{{ contact_4 }}</div>
+    </div>
+
+    <div class="form-section">
+      <p>SERVICE REQUESTED:</p>
+      <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+        <div style="text-align: center;">
+          <p>Restorative Justice</p>
+          <div class="input-line" style="width: 200px;" data-field="restorative_justice">{{ restorative_justice }}</div>
+        </div>
+        <div style="text-align: center;">
+          <p>Mediation</p>
+          <div class="input-line" style="width: 200px;" data-field="mediation">{{ mediation }}</div>
+        </div>
+        <div style="text-align: center;">
+          <p>Peer Mediation</p>
+          <div class="input-line" style="width: 200px;" data-field="peer_mediation">{{ peer_mediation }}</div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+        <div style="text-align: center;">
+          <p>Conflict Coaching</p>
+          <div class="input-line" style="width: 200px;" data-field="conflict_coaching">{{ conflict_coaching }}</div>
+        </div>
+        <div style="text-align: center;">
+          <p>Creating Lasting Family Connections</p>
+          <div class="input-line" style="width: 200px;" data-field="creating_lasting_family_connections">{{ creating_lasting_family_connections }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <p>Describe the Conflict (please be as specific as possible):</p>
+      <div class="input-line" style="height: 200px;" data-field="describe_the_conflict">{{ describe_the_conflict }}</div>
+    </div>
+
+    <div style="margin-top: 50px; font-size: 0.8em; text-align: center;">
+      Form: IM 1-Service Request Form
+      <br>
+      C:\Users\Tina Nolet\Documents\Case Manager\Service Request Form Community Request.Doc
+      <br>
+      Page 1
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="form-section">
+      <p>What intervention or disciplinary action has been taken?</p>
+      <div class="input-line" style="height: 150px;" data-field="page_1">{{ page_1 }}</div>
+    </div>
+
+    <div class="form-section">
+      <p>What outcomes are you seeking?</p>
+      <div class="input-line" style="height: 150px;" data-field="what_outcomes_are_you_seeking">{{ what_outcomes_are_you_seeking }}</div>
+    </div>
+
+    <div class="form-section">
+      <p>What are some of the possible consequences for the participants failing to fully participate in the process?</p>
+      <div class="input-line" style="height: 150px;" data-field="what_outcomes_are_you_seeking_2">{{ what_outcomes_are_you_seeking_2 }}</div>
+    </div>
+
+    <div class="form-section" style="margin-top: 40px;">
+      <p>Are you prepared to accept the outcome?</p>
+      <span style="margin-right: 30px;">YES</span>
+      <span style="margin-right: 30px;">NO</span>
+    </div>
+
+    <div class="form-section">
+      <p>Are you willing to participate or willing to enable your staff to participate in the process?</p>
+      <span style="margin-right: 30px;">YES</span>
+      <span style="margin-right: 30px;">NO</span>
+    </div>
+
+    <div style="margin-top: 50px; font-size: 0.8em; text-align: center;">
+      Form: IM 1-Service Request Form
+      <br>
+      C:\Users\Tina Nolet\Documents\Case Manager\Service Request Form Community Request.Doc
+      <br>
+      Page 2
+    </div>
+  </div>
+</body>

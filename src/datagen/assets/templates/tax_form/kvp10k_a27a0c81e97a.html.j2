@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tax Exemption Certificate</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .header { font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">NEW YORK STATE</h1>
+      <h2 style="font-size: 16pt; margin: 0;">2021</h2>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24pt; margin: 0;">IT-2104-E</h1>
+      <p style="font-size: 10pt; margin: 5px 0 0 0;">This certificate will expire on <span data-field="expiration_date">{{ expiration_date }}</span>.</p>
+    </div>
+  </div>
+
+  <p style="font-size: 11pt; margin-bottom: 20px;">To claim exemption from withholding for New York State personal income tax (and New York City and Yonkers personal income tax, if applicable), you must meet the conditions in either Group A or Group B.</p>
+
+  <h3 style="font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Group A</h3>
+  <ul style="font-size: 11pt; line-height: 1.5; margin-top: 0;">
+    <li>You must be under age <span data-field="age_limit_a">{{ age_limit_a }}</span>, or over age <span data-field="age_limit_b">{{ age_limit_b }}</span>, or a full-time student under age <span data-field="student_age">{{ student_age }}</span>; and</li>
+    <li>You did not have a New York income tax liability for <span data-field="tax_year_a">{{ tax_year_a }}</span>; and</li>
+    <li>You do not expect to have a New York income tax liability for <span data-field="tax_year_b">{{ tax_year_b }}</span> for this purpose, you have a tax liability if your return shows tax before the allowance of any credit for income tax withheld.</li>
+  </ul>
+
+  <h3 style="font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Group B</h3>
+  <p style="font-size: 11pt; margin-bottom: 10px;">You meet the conditions set forth under the Servicemembers Civil Relief Act (SCRA), as amended by the Military Spouses Residency Relief Act and the Veterans Benefits and Transition Act. See Military spouses.</p>
+  <p style="font-size: 11pt; margin-bottom: 20px;">If you do not meet all of the conditions in either Group A or Group B above, stop; you cannot claim exemption from withholding (see Note below).</p>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">First name and middle initial</td>
+      <td style="width: 30%;">Last name</td>
+      <td style="width: 20%;">Social Security number</td>
+      <td style="width: 20%;">Filing status: Mark X in only one box</td>
+    </tr>
+    <tr>
+      <td><span data-field="full_name_first">{{ full_name_first }}</span></td>
+      <td><span data-field="full_name_last">{{ full_name_last }}</span></td>
+      <td><span data-field="ssn">{{ ssn }}</span></td>
+      <td>
+        <label><input type="radio" name="filing_status" value="A"> A Single</label>
+        <label><input type="radio" name="filing_status" value="B"> B Married</label>
+      </td>
+    </tr>
+  </table>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">Mailing address (number and street or PO box)</td>
+      <td style="width: 30%;">Apartment number</td>
+      <td style="width: 20%;">Date of birth (mm/dd/yyyy)</td>
+      <td style="width: 20%;">C Qualifying widow(er) or head of household with qualifying person.</td>
+    </tr>
+    <tr>
+      <td><span data-field="address_line_1">{{ address_line_1 }}</span></td>
+      <td><span data-field="address_apt">{{ address_apt }}</span></td>
+      <td><span data-field="dob">{{ dob }}</span></td>
+      <td><span data-field="qualifying_status">{{ qualifying_status }}</span></td>
+    </tr>
+  </table>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">City, village, or post office</td>
+      <td style="width: 30%;">State</td>
+      <td style="width: 20%;">ZIP code</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span data-field="city">{{ city }}</span></td>
+      <td><span data-field="state">{{ state }}</span></td>
+      <td><span data-field="zip_code">{{ zip_code }}</span></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">Are you a full-time student?......</td>
+      <td><input type="radio" name="student_status" value="Yes"> Yes</td>
+      <td><input type="radio" name="student_status" value="No"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 30%;">Are you a military spouse exempt under the SCRA?......</td>
+      <td><input type="radio" name="military_spouse_status" value="Yes"> Yes</td>
+      <td><input type="radio" name="military_spouse_status" value="No"> No</td>
+    </tr>
+  </table>
+
+  <p style="font-size: 11pt; margin-bottom: 20px;">I certify that the information on this form is correct and that, for the year <span data-field="tax_year_certify">{{ tax_year_certify }}</span>, I expect to qualify for exemption from withholding of New York State income tax under section <span data-field="tax_section">{{ tax_section }}</span> of the Tax Law or under the SCRA. I will notify my employer within 10 days of any change requiring revocation of the exemption from withholding as explained in the instructions.</p>
+
+  <table style="margin-bottom: 30px;">
+    <tr>
+      <td style="width: 50%;">Employer's signature (give the completed certificate to your employer)</td>
+      <td style="width: 50%; text-align: right;">Date</td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 12pt; font-weight: bold; margin-top: 30px; margin-bottom: 10px;">Employer: complete this section only if you must send a copy of this form to the NYS Tax Department (see instructions).</h3>
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 50%;">Employer name and address</td>
+      <td style="width: 50%; text-align: right;">Employer identification number</td>
+    </tr>
+    <tr>
+      <td><span data-field="employer_name">{{ employer.name }}</span></td>
+      <td><span data-field="employer_id">{{ employer.id }}</span></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 15px;">Instructions</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">must withhold New York State income tax (and New York City and Yonkers personal income tax, if applicable) from your wages. D<span data-field="instruction_ref_1">{{ instruction_ref_1 }}</span>.</p>
+      <p style="font-size: 10pt; line-height: 1.4;">Generally, as a resident, you are required to file a New York State income tax return if you are required to file a federal income tax return, or if your federal adjusted gross income plus your New York income tax additions is more than <span data-field="income_threshold">{{ income_threshold }}</span>. However, if you are single and can be claimed as a dependent on another person's federal return, you must file a New York State income tax return if your federal adjusted gross income plus your New York income tax additions is more than <span data-field="income_threshold_2">{{ income_threshold_2 }}</span>.</p>
+      <p style="font-size: 10pt; line-height: 1.4;">If you are a joint filer and have income from New York sources, you must file a New York State income tax return if the sum of your federal adjusted gross income and New York additions to income is more than your New York standard deduction.</p>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 15px;">Employee</h3>
+      <p style="font-size: 10pt; line-height: 1.4;">Keep this certificate with your records. If an employee who claims exemption from withholding on Form IT-2104-E usually earns more than <span data-field="earnings_threshold">{{ earnings_threshold }}</span> per week, you must send a copy of that certificate to the NYS Tax Department at the Tax Audit Administrator, Withholding Certificate Coordinator, W A Harriman Campus, Albany NY 12227-0865.</p>
+      <p style="font-size: 10pt; line-height: 1.4;">The Tax Department will not accept this form if it is incomplete. We will review these certificates and notify you of any adjustments that must be made.</p>
+      <p style="font-size: 10pt; line-height: 1.4;">Due dates for sending certificates received from employees who earn more than <span data-field="due_date_threshold">{{ due_date_threshold }}</span> per week are:</p>
+      <table style="font-size: 10pt; margin-top: 10px;">
+        <tr>
+          <td style="width: 25%;">Quarter</td>
+          <td style="width: 25%;">Due Date</td>
+          <td style="width: 25%;">Quarter</td>
+          <td style="width: 25%;">Due Date</td>
+        </tr>
+        <tr>
+          <td>January - March</td>
+          <td>April 30</td>
+          <td>July - September</td>
+          <td>October 31</td>
+        </tr>
+        <tr>
+          <td>October - December</td>
+          <td>January 31</td>
+        </tr>
+      </table>
+      <p style="font-size: 10pt; line-height: 1.4; margin-top: 15px;">Revocation by employer - You must revoke this exemption certificate in writing and send it to the calendar year of birth stated on the certificate filed by the employee indicates the date of revocation. The revocation must be in the form of a written notice to the employee.</p>
+      <p style="font-size: 10pt; line-height: 1.4; margin-top: 15px;">New hires and rehired - Mark an X in the box if you are submitting a Report Program. A newly hired or rehired employee means an employee previously not employed by you, or previously employed by you but who has been separated from your employment for more than consecutive days. Enter the first day any services are performed for which the employee will be paid wages, commissions, tips or other compensation. For services performed for any employee working for commissions is eligible to earn commissions. Also, mark an X in the Yes or No box indicating if dependent health insurance benefits are available for this employee. If yes, enter the date the employee qualifies for coverage. Mail the completed form, within 20 days of hiring.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">NYS TAX DEPARTMENT</h3>
+    <p style="font-size: 10pt; margin: 0;">NEW YORK STATE</p>
+    <p style="font-size: 10pt; margin: 0;">PO BOX 15119</p>
+    <p style="font-size: 10pt; margin: 0;">ALBANY NY 12219</p>
+    <p style="font-size: 10pt; margin-top: 10px;">To report newly hired or rehired employees online go to <span data-field="online_reporting_url">{{ online_reporting_url }}</span>.</p>
+    <p style="font-size: 10pt; margin-top: 10px;">Note: If the newly hired or rehired employee has also claimed exemption from withholding but usually earns more than <span data-field="earnings_threshold_2">{{ earnings_threshold_2 }}</span> per week, mail Form IT-2104-E to the Tax Department at the New Hire Notification address above.</p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Privacy notification</h3>
+    <p style="font-size: 10pt; margin: 0;">See our website or Publication 54, Privacy Notification.</p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Need help?</h3>
+    <ul style="font-size: 10pt; line-height: 1.4; margin-top: 0;">
+      <li>Information and forms are available on the Tax Department's website at <span data-field="website_url">{{ website_url }}</span>.</li>
+      <li>For help completing this form, employees may call <span data-field="employee_phone">{{ employee_phone }}</span>, and employers may call <span data-field="employer_phone">{{ employer_phone }}</span>.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

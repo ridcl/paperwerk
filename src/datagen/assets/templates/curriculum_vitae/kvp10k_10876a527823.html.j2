@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-name { font-size: 24pt; font-weight: bold; }
+  .header-title { font-size: 14pt; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .job-title { font-weight: bold; }
+  .institution-name { font-style: italic; }
+  .date-range { font-style: italic; float: right; }
+  .contact-info p { margin: 2px 0; }
+  .list-item { margin-bottom: 5px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .references-section { display: flex; justify-content: space-between; margin-top: 30px; }
+  .contact-block { width: 30%; }
+  .contact-block div { margin-bottom: 15px; }
+  .contact-block strong { display: inline-block; width: 60px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <div class="header-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="header-title">Curriculum Vitae</div>
+  </div>
+
+  <div class="contact-info" style="margin-top: 30px;">
+    <p>Contact Information</p>
+    <p><span data-field="contact.address_line_1">{{ contact.address_line_1 }}</span></p>
+    <p><span data-field="contact.address_line_2">{{ contact.address_line_2 }}</span></p>
+    <p><span data-field="contact.city_state_zip">{{ contact.city_state_zip }}</span></p>
+    <p><span data-field="contact.phone">{{ contact.phone }}</span></p>
+    <p><span data-field="contact.email">{{ contact.email }}</span></p>
+  </div>
+
+  <div class="section-title">Education</div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Doctor of Philosophy (Ph.D.), Sociology, <span data-field="education.phd_year">{{ education.phd_year }}</span></div>
+    <div class="institution-name"><span data-field="education.phd_institution">{{ education.phd_institution }}</span></div>
+    <div>Dissertation: <span data-field="education.phd_dissertation_title">{{ education.phd_dissertation_title }}</span> (Major Professor, Dr. L. Susan Williams)</div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Master of Science (M.S.), Criminal Justice, <span data-field="education.ms_year">{{ education.ms_year }}</span></div>
+    <div class="institution-name"><span data-field="education.ms_institution">{{ education.ms_institution }}</span></div>
+    <div>Thesis: <span data-field="education.ms_thesis_title">{{ education.ms_thesis_title }}</span> (Thesis Chair, Dr. Peter B. Kraska)</div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Bachelor of Arts (B.A.), Geology, <span data-field="education.ba_year">{{ education.ba_year }}</span></div>
+    <div class="institution-name"><span data-field="education.ba_institution">{{ education.ba_institution }}</span></div>
+    <div>B.A., Geology with a minor in English</div>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Assistant Professor of Criminal Justice, <span data-field="experience.prof_start_year">{{ experience.prof_start_year }}</span> - present</div>
+    <div class="institution-name"><span data-field="experience.prof_institution">{{ experience.prof_institution }}</span></div>
+    <div>College of Arts and Sciences</div>
+    <div>Department of Government, Law, and Justice</div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Graduate Assistant, <span data-field="experience.ga_start_year">{{ experience.ga_start_year }}</span> - <span data-field="experience.ga_end_year">{{ experience.ga_end_year }}</span></div>
+    <div class="institution-name"><span data-field="experience.ga_institution">{{ experience.ga_institution }}</span></div>
+    <div>Teaching Assistant, Sociology and Criminology</div>
+    <div>Research Assistant, Dr. Cornelia Flora, research on value chains and networks in assessing feasibility of seed oil jet fuel production 2013-15 (Funded by the Office of Naval Research and the Agricultural Research Service)</div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Adjunct Faculty Instructor, <span data-field="experience.adjunct_start_year">{{ experience.adjunct_start_year }}</span> - <span data-field="experience.adjunct_end_year">{{ experience.adjunct_end_year }}</span></div>
+    <div class="institution-name"><span data-field="experience.adjunct_institution">{{ experience.adjunct_institution }}</span></div>
+    <div>Department of Criminal Justice and Police Studies</div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <div class="job-title">Project Assessor, <span data-field="experience.assessor_year">{{ experience.assessor_year }}</span></div>
+    <div class="institution-name"><span data-field="experience.assessor_institution">{{ experience.assessor_institution }}</span></div>
+    <div>Department of Criminal Justice and Police Studies</div>
+    <div>Assessor, Regional Community Policing Institute's national survey research and evaluation of U.S. Department of Justice and COPS Office's Recruitment Toolkit</div>
+  </div>
+
+  <div class="section-title">Classes Taught</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li class="list-item"><span data-field="taught_class_1">{{ taught_class_1 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_2">{{ taught_class_2 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_3">{{ taught_class_3 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_4">{{ taught_class_4 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_5">{{ taught_class_5 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_6">{{ taught_class_6 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_7">{{ taught_class_7 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_8">{{ taught_class_8 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_9">{{ taught_class_9 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_10">{{ taught_class_10 }}</span></li>
+    <li class="list-item"><span data-field="taught_class_11">{{ taught_class_11 }}</span></li>
+  </ul>
+
+  <div class="section-title">Referenced Journal Articles</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="journal_article_1">{{ journal_article_1 }}</span></div>
+    <div class="list-item"><span data-field="journal_article_2">{{ journal_article_2 }}</span></div>
+    <div class="list-item"><span data-field="journal_article_3">{{ journal_article_3 }}</span></div>
+    <div class="list-item"><span data-field="journal_article_4">{{ journal_article_4 }}</span></div>
+    <div class="list-item"><span data-field="journal_article_5">{{ journal_article_5 }}</span></div>
+    <div class="list-item"><span data-field="journal_article_6">{{ journal_article_6 }}</span></div>
+  </div>
+
+  <div class="section-title">Book Chapters</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="book_chapter_1">{{ book_chapter_1 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_2">{{ book_chapter_2 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_3">{{ book_chapter_3 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_4">{{ book_chapter_4 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_5">{{ book_chapter_5 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_6">{{ book_chapter_6 }}</span></div>
+    <div class="list-item"><span data-field="book_chapter_7">{{ book_chapter_7 }}</span></div>
+  </div>
+
+  <div class="section-title">Book Reviews</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="book_review_1">{{ book_review_1 }}</span></div>
+  </div>
+
+  <div class="section-title">Encyclopedia Entries</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="encyclopedia_entry_1">{{ encyclopedia_entry_1 }}</span></div>
+  </div>
+
+  <div class="section-title">Works in Progress</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="work_in_progress_1">{{ work_in_progress_1 }}</span></div>
+  </div>
+
+  <div class="section-title">Awards and Honors</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="award_1">{{ award_1 }}</span></div>
+    <div class="list-item"><span data-field="award_2">{{ award_2 }}</span></div>
+    <div class="list-item"><span data-field="award_3">{{ award_3 }}</span></div>
+    <div class="list-item"><span data-field="award_4">{{ award_4 }}</span></div>
+    <div class="list-item"><span data-field="award_5">{{ award_5 }}</span></div>
+    <div class="list-item"><span data-field="award_6">{{ award_6 }}</span></div>
+    <div class="list-item"><span data-field="award_7">{{ award_7 }}</span></div>
+    <div class="list-item"><span data-field="award_8">{{ award_8 }}</span></div>
+    <div class="list-item"><span data-field="award_9">{{ award_9 }}</span></div>
+  </div>
+
+  <div class="section-title">Conference Presentations</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="presentation_1">{{ presentation_1 }}</span></div>
+    <div class="list-item"><span data-field="presentation_2">{{ presentation_2 }}</span></div>
+    <div class="list-item"><span data-field="presentation_3">{{ presentation_3 }}</span></div>
+    <div class="list-item"><span data-field="presentation_4">{{ presentation_4 }}</span></div>
+    <div class="list-item"><span data-field="presentation_5">{{ presentation_5 }}</span></div>
+    <div class="list-item"><span data-field="presentation_6">{{ presentation_6 }}</span></div>
+    <div class="list-item"><span data-field="presentation_7">{{ presentation_7 }}</span></div>
+    <div class="list-item"><span data-field="presentation_8">{{ presentation_8 }}</span></div>
+    <div class="list-item"><span data-field="presentation_9">{{ presentation_9 }}</span></div>
+    <div class="list-item"><span data-field="presentation_10">{{ presentation_10 }}</span></div>
+    <div class="list-item"><span data-field="presentation_11">{{ presentation_11 }}</span></div>
+    <div class="list-item"><span data-field="presentation_12">{{ presentation_12 }}</span></div>
+  </div>
+
+  <div class="section-title">Media Publications</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="media_pub_1">{{ media_pub_1 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_2">{{ media_pub_2 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_3">{{ media_pub_3 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_4">{{ media_pub_4 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_5">{{ media_pub_5 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_6">{{ media_pub_6 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_7">{{ media_pub_7 }}</span></div>
+    <div class="list-item"><span data-field="media_pub_8">{{ media_pub_8 }}</span></div>
+  </div>
+
+  <div class="section-title">Service</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="service_1">{{ service_1 }}</span></div>
+    <div class="list-item"><span data-field="service_2">{{ service_2 }}</span></div>
+    <div class="list-item"><span data-field="service_3">{{ service_3 }}</span></div>
+    <div class="list-item"><span data-field="service_4">{{ service_4 }}</span></div>
+    <div class="list-item"><span data-field="service_5">{{ service_5 }}</span></div>
+    <div class="list-item"><span data-field="service_6">{{ service_6 }}</span></div>
+    <div class="list-item"><span data-field="service_7">{{ service_7 }}</span></div>
+  </div>
+
+  <div class="section-title">Professional Associations</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="association_1">{{ association_1 }}</span></div>
+    <div class="list-item"><span data-field="association_2">{{ association_2 }}</span></div>
+    <div class="list-item"><span data-field="association_3">{{ association_3 }}</span></div>
+    <div class="list-item"><span data-field="association_4">{{ association_4 }}</span></div>
+    <div class="list-item"><span data-field="association_5">{{ association_5 }}</span></div>
+    <div class="list-item"><span data-field="association_6">{{ association_6 }}</span></div>
+    <div class="list-item"><span data-field="association_7">{{ association_7 }}</span></div>
+    <div class="list-item"><span data-field="association_8">{{ association_8 }}</span></div>
+  </div>
+
+  <div class="section-title">Skills and Interests</div>
+  <div style="font-size: 9pt;">
+    <div class="list-item"><span data-field="skills_interests">{{ skills_interests }}</span></div>
+  </div>
+</div>
+<div class="page">
+  <div style="text-align: right; font-size: 9pt;">6</div>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .references-section { display: flex; justify-content: space-between; margin-top: 30px; }
+  .contact-block { width: 30%; }
+  .contact-block div { margin-bottom: 15px; }
+  .contact-block strong { display: inline-block; width: 60px; }
+</style>
+
+<div class="page">
+  <h2 style="font-size: 16pt; font-weight: bold; margin-bottom: 20px;">References</h2>
+  <div class="references-section">
+    
+    <!-- Column 1 -->
+    <div class="contact-block">
+      <div>
+        <strong>Dr.</strong> <span data-field="contact_1.first_name">{{ contact_1.first_name }}</span> <span data-field="contact_1.last_name">{{ contact_1.last_name }}</span><br>
+        <span data-field="contact_1.affiliation">{{ contact_1.affiliation }}</span><br>
+        Email: <span data-field="contact_1.email">{{ contact_1.email }}</span><br>
+        Phone: <span data-field="contact_1.phone">{{ contact_1.phone }}</span>
+      </div>
+      <div>
+        <strong>Dr.</strong> <span data-field="contact_2.first_name">{{ contact_2.first_name }}</span> <span data-field="contact_2.last_name">{{ contact_2.last_name }}</span><br>
+        <span data-field="contact_2.affiliation">{{ contact_2.affiliation }}</span><br>
+        Email: <span data-field="contact_2.email">{{ contact_2.email }}</span><br>
+        Phone: <span data-field="contact_2.phone">{{ contact_2.phone }}</span>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="contact-block">
+      <div>
+        <strong>Dr.</strong> <span data-field="contact_3.first_name">{{ contact_3.first_name }}</span> <span data-field="contact_3.last_name">{{ contact_3.last_name }}</span><br>
+        <span data-field="contact_3.affiliation">{{ contact_3.affiliation }}</span><br>
+        Email: <span data-field="contact_3.email">{{ contact_3.email }}</span><br>
+        Phone: <span data-field="contact_3.phone">{{ contact_3.phone }}</span>
+      </div>
+      <div>
+        <strong>Dr.</strong> <span data-field="contact_4.first_name">{{ contact_4.first_name }}</span> <span data-field="contact_4.last_name">{{ contact_4.last_name }}</span><br>
+        <span data-field="contact_4.affiliation">{{ contact_4.affiliation }}</span><br>
+        Email: <span data-field="contact_4.email">{{ contact_4.email }}</span><br>
+        Phone: <span data-field="contact_4.phone">{{ contact_4.phone }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div style="position: absolute; bottom: 50px; right: 60px; font-size: 10pt;">9</div>
+</div></body>
+</html>

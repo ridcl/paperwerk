@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Form</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        td { padding: 5px 0; }
+        .header-info { text-align: right; font-size: 10pt; }
+        .title { text-align: center; font-size: 14pt; font-weight: bold; margin-bottom: 20px; }
+        .section-title { font-weight: bold; margin-top: 15px; margin-bottom: 10px; }
+        .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .form-row > div { width: 48%; }
+        .label { font-weight: normal; }
+        .input-area { border-bottom: 1px solid #000; }
+        .signature-area { margin-top: 50px; text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="font-size: 12pt; font-weight: bold;">AU-FRG INSTITUTE FOR CAD/CAM</div>
+            <div style="font-size: 12pt; font-weight: bold;">COLLEGE OF ENGINEERING GUINDY CAMPUS</div>
+            <div style="font-size: 14pt; font-weight: bold;">ANNA UNIVERSITY</div>
+            <div style="font-size: 10pt;">CHENNAI - 600 025</div>
+            <div style="font-size: 10pt;">Tel: {{ contact_number }} | Email: {{ contact_email }}</div>
+            <div style="font-size: 10pt; margin-top: 10px;">Date: {{ application_date }}</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+            <div style="width: 60%;">
+                <div style="font-size: 12pt; font-weight: bold;">Director</div>
+                <div style="margin-top: 50px;"></div>
+            </div>
+            <div style="width: 35%; text-align: center;">
+                <div style="border: 1px solid #000; padding: 10px; width: 100%; height: 120px;">
+                    <div style="text-align: center; font-size: 10pt;">Affix your recent passport size photo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="title">APPLICATION FOR THE POST OF PROJECT ASSISTANT I AND II</div>
+        <div style="text-align: center; margin-bottom: 30px;">For Office Use only</div>
+
+        <table>
+            <tr>
+                <td style="width: 25%;">Ref. No.:</td>
+                <td class="input-area" style="width: 75%;">{{ ref_no }}</td>
+            </tr>
+            <tr>
+                <td>Application No.:</td>
+                <td class="input-area" style="width: 75%;">{{ application_no }}</td>
+            </tr>
+            <tr>
+                <td>Received Date:</td>
+                <td class="input-area" style="width: 75%;">{{ received_date }}</td>
+            </tr>
+        </table>
+
+        <div class="section-title">Personal Details</div>
+        <div class="form-row">
+            <div style="width: 50%;">
+                <div class="label">1. Name of the Applicant:</div>
+                <div class="input-area">{{ applicant_full_name }}</div>
+            </div>
+            <div style="width: 50%;">
+                <div class="label">2. Current Designation and Affiliation:</div>
+                <div class="input-area">{{ current_designation }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 50%;">
+                <div class="label">3. Name of the Father and Mother:</div>
+                <div class="input-area">{{ father_mother_name }}</div>
+            </div>
+            <div style="width: 50%;">
+                <div class="label">4. Date of Birth:</div>
+                <div class="input-area">{{ date_of_birth }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 50%;">
+                <div class="label">5. Sex:</div>
+                <div class="input-area">{{ sex }}</div>
+            </div>
+            <div style="width: 50%;">
+                <div class="label">6. Marital Status:</div>
+                <div class="input-area">{{ marital_status }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 50%;">
+                <div class="label">7. Nationality & Religion:</div>
+                <div class="input-area">{{ nationality_religion }}</div>
+            </div>
+            <div style="width: 50%;">
+                <div class="label">8. Community:</div>
+                <div class="input-area">{{ community }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 100%;">
+                <div class="label">9. Address for communication:</div>
+                <div class="input-area" style="height: 50px;">{{ communication_address }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 50%;">
+                <div class="label">Permanent Address:</div>
+                <div class="input-area" style="height: 50px;">{{ permanent_address }}</div>
+            </div>
+            <div style="width: 50%;">
+                <div class="label">10. Contact Phone Numbers:</div>
+                <div class="input-area" style="height: 50px;">{{ contact_phone_numbers }}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div style="width: 100%;">
+                <div class="label">11. Email Address:</div>
+                <div class="input-area" style="height: 50px;">{{ email_address }}</div>
+            </div>
+        </div>
+
+        <div class="section-title">Academic Record</div>
+        <div style="font-size: 10pt; margin-bottom: 10px;">12. Academic record : For each of the following examinations, starting from Matriculation to the highest qualification: (enclose the copies of supporting documents)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;">Si.No</th>
+                    <th style="width: 15%;">Degree</th>
+                    <th style="width: 25%;">Specialization</th>
+                    <th style="width: 30%;">Name of the College/University</th>
+                    <th style="width: 15%;">Regular/Part Time</th>
+                    <th style="width: 10%;">Year of Passing</th>
+                    <th style="width: 10%;">% of Marks&Class</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for edu in educational_history %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ edu.degree }}</td>
+                    <td>{{ edu.specialization }}</td>
+                    <td>{{ edu.college_university }}</td>
+                    <td>{{ edu.regular_part_time }}</td>
+                    <td>{{ edu.year_of_passing }}</td>
+                    <td>{{ edu.marks_class }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="section-title">Software Skills</div>
+        <div style="font-size: 10pt; margin-bottom: 10px;">13. Software skills, if any of the below</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Software skills</th>
+                    <th style="width: 80%;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CAD software</td>
+                    <td>{{ skills.cad_software }}</td>
+                </tr>
+                <tr>
+                    <td>CAE software</td>
+                    <td>{{ skills.cae_software }}</td>
+                </tr>
+                <tr>
+                    <td>CAM software</td>
+                    <td>{{ skills.cam_software }}</td>
+                </tr>
+                <tr>
+                    <td>CFD software</td>
+                    <td>{{ skills.cfd_software }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-title">Work Experience</div>
+        <div style="font-size: 10pt; margin-bottom: 10px;">14. Experience: Industry, R&D, Academic, Consultancy, Others- Starting from the present employer (enclose the copies of supporting documents)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Position Held</th>
+                    <th style="width: 30%;">Name & Address of the Employer</th>
+                    <th style="width: 25%;">Nature of Work</th>
+                    <th style="width: 10%;">From</th>
+                    <th style="width: 10%;">To</th>
+                    <th style="width: 10%;">Total Service</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in work_experience %}
+                <tr>
+                    <td>{{ job.position_held }}</td>
+                    <td>{{ job.employer_name }}</td>
+                    <td>{{ job.nature_of_work }}</td>
+                    <td>{{ job.from_date }}</td>
+                    <td>{{ job.to_date }}</td>
+                    <td>{{ job.total_service }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="section-title">Projects</div>
+        <div style="font-size: 10pt; margin-bottom: 10px;">15. Title of UG/PG project (enclose the Copy of abstract) or any other Research project</div>
+        <div class="input-area" style="height: 50px;">{{ project_title }}</div>
+
+        <div class="section-title">Publications & Awards</div>
+        <div style="font-size: 10pt; margin-bottom: 10px;">16. Journal/Conference publications : (enclose publications)</div>
+        <div class="input-area" style="height: 50px;">{{ publications }}</div>
+
+        <div style="font-size: 10pt; margin-bottom: 10px;">17. Awards, patents, prizes etc. (if any)</div>
+        <div class="input-area" style="height: 50px;">{{ awards_patents }}</div>
+
+        <div class="section-title">Declaration</div>
+        <div style="font-size: 10pt; margin-bottom: 20px;">18. Any other information you would like to provide in support of your application</div>
+        <div class="input-area" style="height: 80px;">{{ other_information }}</div>
+
+        <div style="margin-top: 50px;">
+            <div style="display: flex; justify-content: space-between;">
+                <div style="width: 45%;">
+                    <div class="label">Date:</div>
+                    <div class="input-area" style="width: 100%;">{{ declaration_date }}</div>
+                </div>
+                <div style="width: 45%; text-align: right;">
+                    <div class="label">Place:</div>
+                    <div class="input-area" style="width: 100%;">{{ declaration_place }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signature-area">
+            <div style="margin-bottom: 50px;">
+                <div style="border-top: 1px solid #000; width: 150px; margin: 0 auto;"></div>
+                <div style="text-align: center; margin-top: 5px;">Candidate's Signature</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

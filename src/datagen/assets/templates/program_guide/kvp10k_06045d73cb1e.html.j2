@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Week Awards</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the visual structure */
+  h1, h2, h3 { font-family: "Liberation Serif", Georgia, serif; }
+  .section-title { font-weight: bold; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <div style="font-size: 80px; line-height: 0.9; margin-bottom: -10px;">
+      <span style="font-size: 60px;">&#x1F9D1;</span>
+      <span style="font-size: 60px;">&#x1F9D2;</span>
+      <span style="font-size: 60px;">&#x1F9D3;</span>
+    </div>
+    <h1 style="font-size: 72px; margin: 0;">
+      <span style="font-weight: bold;">Research</span>
+      <span style="font-weight: bold;">Week</span>
+    </h1>
+    <div style="font-size: 48px; margin-top: -10px;">OHSU 2021</div>
+    <h2 style="font-size: 36px; margin-top: 40px; font-weight: normal;">INNOVATION AWARDS</h2>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <div style="font-size: 80px;">OHSU</div>
+  </div>
+  <div style="text-align: justify; line-height: 1.6;">
+    <p>OHSU's research community remained strong and innovative during 2020. Through loss, uncertainty and unrest, this community has come forward with existing and newfound skills to create solutions and find ways to make things better and brighter. These efforts have been a bright note and counterpoint to the turmoil and disruption that we've experienced.</p>
+    <p>Together, we have celebrated new startup companies, collaborated with new and existing industry partners, continued to innovate as a community and have continued to push technology advancements forward—through new and challenging working environments. Your teamwork, resilience and determination make it a pleasure to do our part in the success of OHSU's mission and vision.</p>
+    <p>Technology Transfer and Collaborations and Entrepreneurship are proud to recognize and honor many individuals involved in innovation, entrepreneurship, industry partnership and technology commercialization at OHSU during the past year. Thank you for being a part of OHSU and making us who we are.</p>
+  </div>
+  <div style="margin-top: 60px;">
+    <p><strong>{{ director_name_1 }}</strong>, <span data-field="director_title_1">{{ director_title_1 }}</span></p>
+    <p><strong>{{ director_name_2 }}</strong>, <span data-field="director_title_2">{{ director_title_2 }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">CREATORS OF LICENSED TECHNOLOGY</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; font-size: 16px;">
+    {% for name in creators %}
+    <div><span data-field="creators[{{ loop.index0 }}]">{{ name }}</span></div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">PRINCIPAL INVESTIGATORS OF NON-CLINICAL INDUSTRY SPONSORED RESEARCH</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; font-size: 16px;">
+    {% for name in principal_investigators %}
+    <div><span data-field="principal_investigators[{{ loop.index0 }}]">{{ name }}</span></div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">NEW COMPANIES BASED ON OHSU TECHNOLOGY</h2>
+  <ul style="list-style-type: none; padding: 0; font-size: 16px;">
+    {% for company in new_companies %}
+    <li style="margin-bottom: 10px;"><span data-field="new_companies[{{ loop.index0 }}]">{{ company }}</span></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">INVENTORS OF ISSUED US PATENTS</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; font-size: 16px;">
+    {% for name in inventors %}
+    <div><span data-field="inventors[{{ loop.index0 }}]">{{ name }}</span></div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">EARLY CAREER INNOVATOR</h2>
+  <div style="display: flex; gap: 40px; align-items: flex-start;">
+    <div style="flex: 1;">
+      <img src="placeholder_image.jpg" alt="Innovator" style="width: 100%; height: auto; border-radius: 5px;">
+    </div>
+    <div style="flex: 2;">
+      <h3 style="font-size: 32px; margin-top: 0;">{{ early_career_innovator_name }}</h3>
+      <p style="font-size: 18px; margin-top: 5px;">{{ early_career_innovator_title }}</p>
+      <p style="font-size: 18px;">{{ early_career_innovator_affiliation }}</p>
+    </div>
+  </div>
+  <div style="margin-top: 40px; text-align: justify; line-height: 1.6;">
+    <p>The Early Career Innovator Award is presented to an OHSU employee such as a student, post-doctoral fellow, medical resident or someone else early in their professional career who possesses a passion for innovation and developing technologies to solve real-world problems. They work closely with the innovation ecosystems within and outside of OHSU to prepare their innovations for commercial success.</p>
+    <p>As a doctoral student in the lab of {{ mentor_name }}, {{ early_career_innovator_name }} worked on the development of a new class of nerve-specific fluorescent dyes used to detect tumor margins during fluorescence-guided surgery. These near-infrared dyes were the foundation of Inherent Targeting LLC, a start-up co-founded by Barth, Gibbs and Lei Wang. They will be used to improve a surgeon's ability to visualize nerves during surgery, therefore reducing the risk of nerve damage.</p>
+    <p>Since his graduation in 2018, Barth has continued in the Gibbs lab as a research scientist while, as CEO of Inherent Targeting, he focuses on the commercialization and clinical translation of the nerve-specific dyes. Barth, Gibbs and Wang have worked extensively with OHSU Technology Transfer, OHSU Collaborations and Entrepreneurship and the Oregon Clinical Translational Research Institute—as well as with external mentors—to move the technology forward. Through these efforts, Barth and his cofounders are guiding Inherent Targeting to successfully bring the nerve-specific near-infrared dyes to the clinic.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">CAREER INNOVATION EXCELLENCE</h2>
+  <div style="display: flex; gap: 40px; align-items: flex-start;">
+    <div style="flex: 1;">
+      <img src="placeholder_image.jpg" alt="Innovator" style="width: 100%; height: auto; border-radius: 5px;">
+    </div>
+    <div style="flex: 2;">
+      <h3 style="font-size: 32px; margin-top: 0;">{{ career_innovation_excellence_name }}, M.D.</h3>
+      <p style="font-size: 18px; margin-top: 5px;">PROFESSOR, PEDIATRICS, SCHOOL OF MEDICINE</p>
+      <p style="font-size: 18px;">DIRECTOR, OHSU PEDIATRIC RESEARCH AND DIRECTOR OF THE PAPÉ FAMILY PEDIATRIC RESEARCH INSTITUTE, 2008-2018</p>
+    </div>
+  </div>
+  <div style="margin-top: 40px; text-align: justify; line-height: 1.6;">
+    <p>The Career Innovation Excellence Award is presented to an OHSU employee who over the course of their career has demonstrated to be an accomplished inventor and entrepreneur, has shown a true passion for innovation, has been successful in engaging and cultivating partnerships with industry, and has worked tirelessly to translate their discoveries into solutions for real-world problems and the benefit of society.</p>
+    <p>In his thirty years with OHSU, {{ career_innovation_excellence_name }}'s research has advanced the clinical care of patients in significant ways. A prolific innovator, he has made major advancements in the development of platforms for treating single gene disorders through cell selection and gene transfer techniques. Grompe and his collaborators have conceived and developed ninety new innovations over the years, of which twenty-eight have been licensed by OHSU to industry partners such as LogiBio, Inc. (NASDAQ: LOGC), Cytotheryx, Inc., and Yecuris, Inc.</p>
+    <p>Among many key scientific achievements, Grompe showed therapeutic stem cells can be derived from adult bone marrow, developed effective screening and treatments for the rare liver disorder tyrosinemia type 1, identified and cloned a key gene linked to Fanconi anemia, and much more. He created a method of using mice to generate human liver cells—a capability useful in testing the effects of new drugs or diseases that led to the formation of Yecuris. Grompe is a scientific founder of Yecuris and Ambys Medicines, Inc., a portfolio company of Third Rock Ventures that is developing innovative treatments for liver disease.</p>
+    <p>In 2020, Grompe was inducted into the OHSU Chapter of the National Academy of Inventors for his innovative ideas and contributions to the scientific community.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 30px; margin-bottom: 30px;">NEW INNOVATORS OF THE YEAR</h2>
+  <div style="display: flex; gap: 40px; align-items: flex-start;">
+    <div style="flex: 1;">
+      <img src="placeholder_image.jpg" alt="Innovator" style="width: 100%; height: auto; border-radius: 5px;">
+    </div>
+    <div style="flex: 2;">
+      <h3 style="font-size: 32px; margin-top: 0;">{{ new_innovator_name }}</h3>
+      <p style="font-size: 18px; margin-top: 5px;">{{ new_innovator_title }}</p>
+      <p style="font-size: 18px;">{{ new_innovator_affiliation }}</p>
+    </div>
+  </div>
+  <div style="margin-top: 40px; text-align: justify; line-height: 1.6;">
+    <p>The New Innovators of the Year Award is presented to an employee, or team, relatively new to the innovation development process at OHSU, but who demonstrates true passion for advancing technology development and has made great strides and efforts in collaborating with various innovator ecosystems within and outside of OHSU. They demonstrate an eagerness to see their discoveries translate into tangible solutions for societal benefit.</p>
+    <p>As the COVID-19 pandemic spread across the globe in early 2020, health care professionals anticipated a serious shortage of the ventilators needed to keep the sickest patients alive. In response, Albert Chi, Evan Fontaine and Whitney Menzel designed a ventilator that can be widely produced for $10 USD in 3-10 hours with a 3D-printer. The device was designed to be used when clinicians must make life-or-death decisions about which patients are intubated with ventilators to improve their chances of survival.</p>
+    <p>In addition to collaborations within OHSU, this work was funded by OCTRI's Biomedical Innovation Program. The team worked closely with 3D-printing technology firms and had some assistance from engineers at Oregon-based Nike. The group filed for emergency use authorization from the US Food and Drug Administration to deploy the design across the country. In addition to its low price and rapid producibility, the device requires no electricity—only a standard oxygen tank. The future may see it used in austere environments such as military operations or sites of natural disasters.</p>
+  </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the visual structure */
+  h1, h2, h3 { font-family: "Liberation Serif", Georgia, serif; }
+  .section-title { font-weight: bold; text-transform: uppercase; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="color: #e0005a; font-size: 24pt; margin: 0;">NATIONAL ACADEMY OF INVENTORS HONORARY MEMBERS</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-around; text-align: center;">
+    <div style="width: 45%;">
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[0] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[1] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[2] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[3] }}</p>
+    </div>
+    <div style="width: 45%;">
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[4] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[5] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[6] }}</p>
+      <p style="font-size: 12pt; margin: 5px 0;">{{ members[7] }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-size: 16pt; color: #333;">INDUCTEES IN THE OHSU CHAPTER OF THE NATIONAL ACADEMY OF INVENTORS</h2>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 50px;">
+    <p style="font-size: 14pt;">{{ inductees[0] }}</p>
+    <p style="font-size: 14pt;">{{ inductees[1] }}</p>
+    <p style="font-size: 14pt;">{{ inductees[2] }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 16pt; color: #333;">THANK YOU TO OUR SPONSORS</h2>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h3 style="font-size: 12pt; color: #555;">GOLD</h3>
+    <div style="text-align: center; margin-top: 15px;">
+      <!-- Placeholder for logo/text representation -->
+      <span style="font-size: 40pt; vertical-align: middle;">&#9889;</span>
+      <span style="font-size: 20pt; font-weight: bold; margin-left: 10px;">{{ sponsor_gold_name }}</span>
+      <span style="font-size: 10pt; margin-left: 5px;">LLP</span>
+    </div>
+  </div>
+
+  <div>
+    <h3 style="font-size: 12pt; color: #555;">SILVER</h3>
+    <div style="text-align: center; margin-top: 15px;">
+      <!-- Placeholder for logo/text representation -->
+      <span style="font-size: 30pt; vertical-align: middle;">&#9889;</span>
+      <span style="font-size: 20pt; font-weight: bold; margin-left: 10px;">{{ sponsor_silver_name }}</span>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+      <span style="font-size: 10pt;">{{ sponsor_silver_sub_name }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 150px;">
+    <h2 style="font-size: 24pt; font-family: 'DejaVu Sans', sans-serif;">OHSU</h2>
+    <p style="font-size: 12pt; margin: 10px 0;">{{ address_street }}</p>
+    <p style="font-size: 12pt; margin: 0 0 5px 0;">{{ address_city }}, {{ address_state }} {{ address_zip }}</p>
+    <p style="font-size: 10pt; margin: 0;">{{ website_url }}</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 80px;">
+    <!-- Placeholder for OHSU logo -->
+    <span style="font-size: 60pt; vertical-align: middle;">&#9889;</span>
+    <span style="font-size: 20pt; margin-left: 10px;">OHSU</span>
+  </div>
+
+  <div style="text-align: center; margin-top: 100px; font-size: 10pt;">
+    OHSU IS AN EQUAL OPPORTUNITY, AFFIRMATIVE ACTION INSTITUTION.
+  </div>
+</div></body>
+</html>

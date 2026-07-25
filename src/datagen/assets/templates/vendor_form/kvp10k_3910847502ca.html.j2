@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.4;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .field-label {
+    font-weight: bold;
+    width: 30%;
+  }
+  .field-input {
+    width: 65%;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <p>Requested By:</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="requested_by_name">{{ requested_by_name }}</span>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p>G</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="banner_vendor_id">{{ banner_vendor_id }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Date:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="date">{{ date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>SUBSTITUTE W-9/VENDOR MAINTENANCE FORM</p>
+  </div>
+
+  <p>This form should be used by U.S. Persons: (1) U.S. citizens (2) U.S. resident aliens & (3) entities created or organized in the U.S. or under the laws of the U.S. PLEASE PRINT LEGIBLY. FOREIGN PAYEES MUST COMPLETE IRS FORM W-8BEN INSTEAD OF THIS FORM.</p>
+
+  <div class="section-header">REQUIRED:</div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Name (as shown on the income tax return):</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Business Name, if different from above:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="business_name">{{ business_name }}</span>
+    </div>
+  </div>
+
+  <div class="section-header">Address Information</div>
+
+  <div style="margin-bottom: 15px;">
+    <p>Permanent Address (for tax and general correspondence):</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="address_line_1">{{ address_line_1 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p>Address Line 2:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="address_line_2">{{ address_line_2 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p>Address Line 3:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="address_line_3">{{ address_line_3 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>ID number for the name shown on the tax return (SSN for individual, sole proprietor, disregarded single-member LLC):</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="id_number">{{ id_number }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Social Security Number:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="ssn">{{ ssn }}</span>
+    </div>
+    <p style="margin-top: 10px;">or EIN (if no SSN):</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="ein">{{ ein }}</span>
+    </div>
+  </div>
+
+  <div class="section-header">Tax Designation:</div>
+
+  <div style="margin-bottom: 15px;">
+    <label><input type="radio" name="tax_designation" value="corporation"> Corporation</label>
+    <label style="margin-left: 20px;"><input type="radio" name="tax_designation" value="partnership"> Partnership/Multiple-Member LLC</label>
+    <label style="margin-left: 40px;"><input type="radio" name="tax_designation" value="government"> Government Entity</label>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <label><input type="radio" name="tax_designation" value="individual"> Individual/Sole Proprietor</label>
+    <label style="margin-left: 20px;"><input type="radio" name="tax_designation" value="exempt"> Exempt under IRC Sec. 501(c)</label>
+  </div>
+
+  <div class="section-header">Tax Residency Status (must check one):</div>
+
+  <div style="margin-bottom: 15px;">
+    <label><input type="checkbox" name="residency" value="us_citizen"> U.S. Citizen</label>
+    <label style="margin-left: 30px;"><input type="checkbox" name="residency" value="us_resident"> U.S. Permanent Resident</label>
+    <label style="margin-left: 30px;"><input type="checkbox" name="residency" value="us_resident_alien"> U.S. Resident Alien*</label>
+    <label style="margin-left: 30px;"><input type="checkbox" name="residency" value="nonresident"> Nonresident Alien*</label>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label><input type="checkbox" name="residency" value="entity_us"> Entity created or organized in the U.S. or under the laws of the U.S.</label>
+    <label style="margin-left: 30px;"><input type="checkbox" name="residency" value="visa_type"> VISA Type*</label>
+  </div>
+
+  <div class="section-header">OPTIONAL:</div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Remittance Address if different from above address:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="remittance_address_line_1">{{ remittance_address_line_1 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p>Address Line 2:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="remittance_address_line_2">{{ remittance_address_line_2 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <p>Address Line 3:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="remittance_address_line_3">{{ remittance_address_line_3 }}</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Telephone:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="telephone">{{ telephone }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Fax:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="fax">{{ fax }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Email:</p>
+    <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+      <span data-field="email">{{ email }}</span>
+    </div>
+  </div>
+
+  <div class="section-header">REQUIRED:</div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Certification / Signature</p>
+    <p>Under penalties of perjury, my signature certifies that:</p>
+    <ol>
+      <li>The number shown on this form is my correct taxpayer identification number (or I am waiting for a number to be issued), and</li>
+      <li>I am not subject to backup withholding because: (a) I am exempt from backup withholding, or (b) I have not been notified by the IRS that I am subject to backup as a result of a failure to report all interest or dividends, or (c) the IRS has notified me that I am no longer subject to backup withholding.</li>
+    </ol>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <label><input type="checkbox" name="certification_check"> I am a U.S. person (including a U.S. resident alien)</label>
+  </div>
+
+  <p style="font-size: 0.9em; margin-bottom: 20px;">*Certification instructions - You must check one of above if you have been notified by the IRS that you are currently subject to backup withholding because you have failed to report all interest and dividends on your tax returns. For real estate transactions, number 2 above does not apply.</p>
+
+  <div style="margin-bottom: 30px;">
+    <p>The Internal Revenue Service does not require your consent to any provision of this document other than the certification required to avoid backup withholding.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Signature:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="signature">{{ signature }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Date:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="signature_date">{{ signature_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Printed Name:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="printed_name">{{ printed_name }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Title:</p>
+      <div style="border-bottom: 1px solid #000; display: inline-block; margin-left: 10px;">
+        <span data-field="title">{{ title }}</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 0.8em; margin-top: 50px;">*Nonresident aliens and individuals unsure of their status should fill out the International Visitor/Vendor Information Form. Resident aliens who are not permanent residents should fill out both forms. Entities not created or organized in the United States or under the laws of the United States should not fill out and submit the appropriate IRS Form W-8.</p>
+
+  <div style="margin-top: 50px; padding-top: 10px; border-top: 1px solid #000;">
+    <p style="font-weight: bold;">Oakland University* Accounts Payable • 1218 West Vandenberg Hall • Rochester • MI 48309</p>
+  </div>
+</div>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+    <div>
+      <p>Fax: 248-370-2554</p>
+    </div>
+    <div>
+      <p>Phone: 248-370-4395</p>
+    </div>
+    <div>
+      <p>Email: payables@oakland.edu</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

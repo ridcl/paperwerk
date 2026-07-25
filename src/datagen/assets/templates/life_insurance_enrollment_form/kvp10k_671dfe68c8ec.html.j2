@@ -1,0 +1,96 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-row { display: flex; margin-bottom: 10px; }
+  .line-item-row > div { flex: 1; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div style="text-align: left;">
+      <div style="font-size: 48px; font-weight: bold;">T</div>
+      <div style="font-size: 24px; font-weight: bold;">TRUMAN</div>
+      <div style="font-size: 14px;">STATE UNIVERSITY</div>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24px; margin: 0;">2022 Life Insurance Enrollment and Change Form</h1>
+      <div style="margin-top: 20px;">
+        Effective Date: <span data-field="effective_date">{{ effective_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 style="font-size: 16px; font-weight: bold;">Employee Information:</h2>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div>
+        Name (Please Print): <span data-field="full_name">{{ full_name }}</span>
+      </div>
+      <div>
+        Social Security Number: <span data-field="ssn">{{ ssn }}</span>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      Date of Birth: <span data-field="date_of_birth">{{ date_of_birth }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 style="font-size: 16px; font-weight: bold;">Contact Information:</h2>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div style="flex: 2;">Street: <span data-field="address.street">{{ address.street }}</span></div>
+      <div style="flex: 1;">City: <span data-field="address.city">{{ address.city }}</span></div>
+      <div style="flex: 1;">ST: <span data-field="address.state">{{ address.state }}</span></div>
+      <div style="flex: 1;">Zip: <span data-field="address.zip">{{ address.zip }}</span></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div>Home Phone: <span data-field="phone.home">{{ phone.home }}</span></div>
+      <div>Work Phone: <span data-field="phone.work">{{ phone.work }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 style="font-size: 16px; font-weight: bold;">Life Insurance Primary Beneficiary:</h2>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div style="flex: 1;">Name: <span data-field="primary_beneficiary.name">{{ primary_beneficiary.name }}</span></div>
+      <div style="flex: 1;">Relationship: <span data-field="primary_beneficiary.relationship">{{ primary_beneficiary.relationship }}</span></div>
+      <div style="flex: 1;">Address: <span data-field="primary_beneficiary.address">{{ primary_beneficiary.address }}</span></div>
+      <div style="flex: 1;">Percentage: <span data-field="primary_beneficiary.percentage">{{ primary_beneficiary.percentage }}</span></div>
+      <div style="flex: 1;">Phone: <span data-field="primary_beneficiary.phone">{{ primary_beneficiary.phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 style="font-size: 16px; font-weight: bold;">Life Insurance Contingent Beneficiary:</h2>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <div style="flex: 1;">Name: <span data-field="contingent_beneficiary.name">{{ contingent_beneficiary.name }}</span></div>
+      <div style="flex: 1;">Relationship: <span data-field="contingent_beneficiary.relationship">{{ contingent_beneficiary.relationship }}</span></div>
+      <div style="flex: 1;">Address: <span data-field="contingent_beneficiary.address">{{ contingent_beneficiary.address }}</span></div>
+      <div style="flex: 1;">Percentage: <span data-field="contingent_beneficiary.percentage">{{ contingent_beneficiary.percentage }}</span></div>
+      <div style="flex: 1;">Phone: <span data-field="contingent_beneficiary.phone">{{ contingent_beneficiary.phone }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p style="font-size: 12px; line-height: 1.5;">I certify that, to the best of my knowledge, that the information provided on this form is correct and complete. I understand that it is my responsibility to notify Truman State University within thirty-one (31) days of a change in family status.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 100px;">
+    <div>
+      Signature
+    </div>
+    <div>
+      Date
+    </div>
+  </div>
+</div>

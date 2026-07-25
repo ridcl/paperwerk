@@ -1,0 +1,167 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  body { font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif; }
+  h1, h2 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .logo-area { }
+  .form-area { flex-grow: 1; }
+  .section { margin-bottom: 25px; }
+  .form-row { display: flex; margin-bottom: 15px; align-items: center; }
+  .form-row > div { margin-right: 20px; }
+  .form-label { font-weight: normal; }
+  .input-field { border: 1px solid #ccc; padding: 5px; width: 100%; box-sizing: border-box; }
+  .radio-group label { margin-right: 15px; }
+  .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div class="logo-area">
+      <!-- Placeholder for logo -->
+      <div style="width: 100px; height: 100px; border: 1px solid #000;"></div>
+    </div>
+    <div class="form-area" style="text-align: right;">
+      <h2 style="font-size: 24px;">Annual Membership</h2>
+      <p style="font-size: 24px;">${{ membership_fee }}</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h1 style="font-size: 22px;">Osher Lifelong Learning Institute</h1>
+    <p style="font-size: 14px;">California State University, Dominguez Hills</p>
+    <h2 style="font-size: 20px;">OLLI Annual Membership Form</h2>
+    <p style="font-size: 14px;">2026-2027 Effective July 1, 2026 to June 30, 2027</p>
+    <p style="font-size: 12px;">NLL 201 01 CRN 37905</p>
+  </div>
+
+  <div class="section">
+    <p>If you would like to become an OLLI Member, or you are a renewing Member, please complete and mail this form with your <span data-field="membership_fee">{{ membership_fee }}</span> Membership fee to OLLI@CSUDH, 1000 East Victoria St., CCPE-1100, Carson, CA 90747.</p>
+    <p>For more information, call <span data-field="phone_number">{{ phone_number }}</span> or email <span data-field="email_address">{{ email_address }}</span>.</p>
+  </div>
+
+  <div class="section">
+    <h3 style="font-weight: bold;">MEMBER INFORMATION</h3>
+    <div class="form-row">
+      <div style="width: 100px;">Date</div>
+      <div style="flex-grow: 1;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="date" value="{{ date }}">
+      </div>
+      <div style="width: 150px;">Student ID No</div>
+      <div style="width: 200px;">OR Birth Date</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="or_birth_date" value="{{ or_birth_date }}"> / <input type="text" class="input-field" style="width: 50%;" data-field="or_birth_date_2" value="{{ or_birth_date_2 }}"> / <input type="text" class="input-field" style="width: 50%;" data-field="or_birth_date_3" value="{{ or_birth_date_3 }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Name</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="name" value="{{ name }}">
+      </div>
+      <div style="width: 150px;">Last</div>
+      <div style="width: 150px;">First</div>
+      <div style="width: 150px;">Middle Initial</div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Address</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="address" value="{{ address }}">
+      </div>
+      <div style="width: 150px;">Street</div>
+      <div style="width: 150px;">City</div>
+      <div style="width: 100px;">State</div>
+      <div style="width: 80px;">Zip</div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Phone</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="phone" value="{{ phone }}">
+      </div>
+      <div style="width: 150px;">Home</div>
+      <div style="width: 150px;">Cell</div>
+      <div style="width: 200px;">New address? <span class="radio-group"><label><input type="radio" name="new_address">Yes</label><label><input type="radio" name="new_address">No</label></span></div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Email (required)</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="email" value="{{ email }}">
+      </div>
+      <div style="width: 150px;">Gender: <span class="radio-group"><label><input type="radio" name="gender">Male</label><label><input type="radio" name="gender">Female</label></span></div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Are you a CSUDH Alumni?</div>
+      <div style="width: 200px;">
+        <span class="radio-group"><label><input type="radio" name="alumni">Yes</label><label><input type="radio" name="alumni">No</label></span>
+      </div>
+      <div style="width: 150px;">Year of Graduation</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="year_of_graduation" value="{{ year_of_graduation }}">
+      </div>
+      <div style="width: 150px;">Degree</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="degree" value="{{ degree }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h3 style="font-weight: bold;">EMERGENCY CONTACT INFORMATION</h3>
+    <div class="form-row">
+      <div style="width: 100px;">Primary Local Contact Person</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="primary_local_contact_person" value="{{ primary_local_contact_person }}">
+      </div>
+      <div style="width: 150px;">Phone</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="phone_2" value="{{ phone_2 }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Address</div>
+      <div style="width: 200px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="address_2" value="{{ address_2 }}">
+      </div>
+      <div style="width: 150px;">Street</div>
+      <div style="width: 150px;">City</div>
+      <div style="width: 100px;">State</div>
+      <div style="width: 80px;">Zip</div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 100px;">Referred by</div>
+      <div style="width: 600px;">
+        <input type="text" class="input-field" style="width: 100%;" data-field="referred_by" value="{{ referred_by }}">
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+    <button style="padding: 10px 20px; border: 1px solid #000; background-color: #fff; cursor: pointer;">PRINT</button>
+    <button style="padding: 10px 20px; border: 1px solid #000; background-color: #ccffcc; cursor: pointer;">SUBMIT</button>
+  </div>
+
+  <div style="margin-top: 80px; text-align: center;">
+    <p style="font-size: 16px; font-weight: bold;">Empowering Lifelong Learners</p>
+    <p style="font-size: 14px;">One Course at a Time</p>
+    <div style="margin-top: 30px;">
+      <!-- Placeholder for CSUDH logo -->
+      <div style="width: 150px; height: 50px; border: 1px solid #000; display: inline-block;"></div>
+      <p style="font-size: 10px; margin-top: 5px;">CSUDH COLLEGE OF CONTINUING & PROFESSIONAL EDUCATION</p>
+    </div>
+  </div>
+</div>

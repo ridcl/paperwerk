@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 style="font-size: 18pt; font-weight: bold;">Frequently Requested Information</h1>
+  
+  <div style="margin-top: 20px;">
+    <p><strong>Applicant Organization (Legal Name)</strong></p>
+    <p><span data-field="applicant_organization.name">{{ applicant_organization.name }}</span></p>
+    <p><span data-field="applicant_organization.address_line_1">{{ applicant_organization.address_line_1 }}</span></p>
+    <p><span data-field="applicant_organization.city_state_zip">{{ applicant_organization.city_state_zip }}</span></p>
+    <p><span data-field="applicant_organization.phone">{{ applicant_organization.phone }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Authorized Institutional Signatory</strong></p>
+    <p><span data-field="signatory.name">{{ signatory.name }}</span></p>
+    <p><span data-field="signatory.title">{{ signatory.title }}</span></p>
+    <p><span data-field="signatory.address_line_1">{{ signatory.address_line_1 }}</span></p>
+    <p><span data-field="signatory.city_state_zip">{{ signatory.city_state_zip }}</span></p>
+    <p><span data-field="signatory.phone">{{ signatory.phone }}</span></p>
+    <p><span data-field="signatory.email">{{ signatory.email }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Person to Contact Regarding this Proposal</strong></p>
+    <p>Name: <span data-field="contact_person.name">{{ contact_person.name }}</span></p>
+    <p>Telephone number: <span data-field="contact_person.phone">{{ contact_person.phone }}</span></p>
+    <p>Email address: <span data-field="contact_person.email">{{ contact_person.email }}</span></p>
+    <p><span data-field="contact_person.address_line_1">{{ contact_person.address_line_1 }}</span></p>
+    <p><span data-field="contact_person.city_state_zip">{{ contact_person.city_state_zip }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Institutional Designations</strong></p>
+    <ul>
+      <li><span data-field="institutional_designations.public_state_controlled">{{ institutional_designations.public_state_controlled }}</span></li>
+      <li><span data-field="institutional_designations.hispanic_serving">{{ institutional_designations.hispanic_serving }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Congressional District:</strong> <span data-field="congressional_district">{{ congressional_district }}</span></p>
+    <p><strong>DUNS #:</strong> <span data-field="duns_number">{{ duns_number }}</span></p>
+    <p><strong>UEI (Unique Entity Identifier):</strong> <span data-field="uei">{{ uei }}</span></p>
+    <p><strong>Employer Identification Number (EIN):</strong> <span data-field="ein">{{ ein }}</span></p>
+    <p><strong>CAGE code:</strong> <span data-field="cage_code">{{ cage_code }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>NAICS:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for naics_code in naics_codes %}
+        <li><span data-field="naics_codes[{{ loop.index0 }}].code">{{ naics_code.code }}</span>: <span data-field="naics_codes[{{ loop.index0 }}].description">{{ naics_code.description }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 18pt; font-weight: bold;">Cognizant Audit Agency</h1>
+  
+  <div style="margin-top: 20px;">
+    <p>Department of the Navy, Office of Naval Research</p>
+    <p><span data-field="agency_contact.name">{{ agency_contact.name }}</span>, Contracting Officer</p>
+    <p>Phone: <span data-field="agency_contact.phone">{{ agency_contact.phone }}</span></p>
+    <p>Email: <span data-field="agency_contact.email">{{ agency_contact.email }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p><strong>Facility and Administrative Cost (F&A) Rates</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="facility_rates_link">{{ facility_rates_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Fringe Benefits</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="fringe_benefits_link">{{ fringe_benefits_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Hispanic Serving Institution</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="hsi_link">{{ hsi_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Proposal Routing Form</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="proposal_routing_link">{{ proposal_routing_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Conflict of Interest Disclosure Form</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="conflict_of_interest_link">{{ conflict_of_interest_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Human Subjects Research</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="human_subjects_research_link">{{ human_subjects_research_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Graduate Student Stipends</strong></p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="graduate_student_stipends_link">{{ graduate_student_stipends_link }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Institutional Research</strong> (provides student data)</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li><span data-field="institutional_research_link">{{ institutional_research_link }}</span></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

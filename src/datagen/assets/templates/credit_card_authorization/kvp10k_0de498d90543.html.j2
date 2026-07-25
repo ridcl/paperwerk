@@ -1,0 +1,130 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { text-align: center; font-size: 24pt; margin-bottom: 5px; }
+  h2 { font-size: 14pt; margin-top: 20px; margin-bottom: 10px; font-weight: bold; }
+  .section { margin-bottom: 20px; }
+  .line-item { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .label { width: 200px; text-align: left; }
+  .input-area { border-bottom: 1px solid #000; flex-grow: 1; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; margin-bottom: 5px; }
+</style>
+
+<div class="page">
+  <div>
+    <h1>Idaho State University</h1>
+    <h2>Credit Card Authorization</h2>
+
+    <div class="section">
+      <h2>Cardholder's Information</h2>
+      <div class="line-item">
+        <div class="label">Cardholder's Name:</div>
+        <div class="input-area"><span data-field="cardholder.full_name">{{ cardholder.full_name }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Billing Address:</div>
+        <div class="input-area"><span data-field="cardholder.billing_address">{{ cardholder.billing_address }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Card Number:</div>
+        <div class="input-area"><span data-field="cardholder.card_number">{{ cardholder.card_number }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Traveler's Name:</div>
+        <div class="input-area"><span data-field="cardholder.traveler_name">{{ cardholder.traveler_name }}</span></div>
+      </div>
+    </div>
+
+    <div class="section" style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        <div class="line-item">
+          <div class="label">Date:</div>
+          <div class="input-area"><span data-field="authorization.date">{{ authorization.date }}</span></div>
+        </div>
+        <div class="line-item">
+          <div class="label">Phone #:</div>
+          <div class="input-area"><span data-field="cardholder.phone">{{ cardholder.phone }}</span></div>
+        </div>
+        <div class="line-item">
+          <div class="label">Exp. Date:</div>
+          <div class="input-area"><span data-field="cardholder.expiry_date">{{ cardholder.expiry_date }}</span></div>
+        </div>
+        <div class="line-item">
+          <div class="label">Inv./PO #:</div>
+          <div class="input-area"><span data-field="authorization.invoice_po_number">{{ authorization.invoice_po_number }}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Vendor's Information</h2>
+      <div class="line-item">
+        <div class="label">Vendor's Name:</div>
+        <div class="input-area"><span data-field="vendor.name">{{ vendor.name }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Address:</div>
+        <div class="input-area"><span data-field="vendor.address">{{ vendor.address }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Website:</div>
+        <div class="input-area"><span data-field="vendor.website">{{ vendor.website }}</span></div>
+      </div>
+    </div>
+
+    <div class="section" style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        <div class="line-item">
+          <div class="label">Phone #:</div>
+          <div class="input-area"><span data-field="vendor.phone">{{ vendor.phone }}</span></div>
+        </div>
+        <div class="line-item">
+          <div class="label">Fax #:</div>
+          <div class="input-area"><span data-field="vendor.fax">{{ vendor.fax }}</span></div>
+        </div>
+        <div class="line-item">
+          <div class="label">Amount: $</div>
+          <div class="input-area"><span data-field="authorization.amount">{{ authorization.amount }}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="line-item" style="margin-bottom: 5px;">
+        <div class="label">Description of Services/Goods:</div>
+        <div class="input-area" style="flex-grow: 1;" data-field="description_of_services_goods">{{ description_of_services_goods }}</div>
+      </div>
+      <div class="line-item" style="margin-top: 10px;">
+        <div class="label">Check one:</div>
+        <div>
+          <input type="checkbox" id="all_charges_approved"> <label for="all_charges_approved">All Charges Approved</label>
+          <input type="checkbox" id="room_charges_approved"> <label for="room_charges_approved">Room Charges Approved Only</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top: 30px;">
+      <p>By signing this form, I (responsible party of this card) authorize the above vendor to collect payment for all listed charges as described to the above card. Charges must not exceed <span data-field="authorization.limit">{{ authorization.limit }}</span> for all goods/services. I certify that I am the authorized signer of the above listed card.</p>
+      <div class="line-item" style="margin-top: 20px;">
+        <div class="label">Cardholder's Printed Name:</div>
+        <div class="input-area"><span data-field="cardholder.printed_name">{{ cardholder.printed_name }}</span></div>
+      </div>
+      <div class="line-item">
+        <div class="label">Cardholder's Signature:</div>
+        <div class="signature-line" data-field="cardholder_s_signature">{{ cardholder_s_signature }}</div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top: 50px; font-size: 10pt;">
+      <p>NOTE: Vendor's might not honor the Idaho tax exempt status on the Idaho State University's travel card if the <span data-field="tax_exemption_form">{{ tax_exemption_form }}</span> is not filled out correctly when provided to the vendor.</p>
+    </div>
+  </div>
+</div>

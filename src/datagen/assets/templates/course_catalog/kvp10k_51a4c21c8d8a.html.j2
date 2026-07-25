@@ -1,0 +1,112 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header-row td {
+    font-weight: bold;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    width: 200px;
+    margin-top: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 24pt; margin: 0;">Western Oregon</h1>
+    <h2 style="font-size: 18pt; margin: 0;">UNIVERSITY</h2>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <p>Name: <span data-field="full_name">{{ full_name }}</span></p>
+      <p>V-number: <span data-field="v_number">{{ v_number }}</span></p>
+      <p>WOU Email address: <span data-field="wou_email">{{ wou_email }}</span></p>
+      <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+    </div>
+    <div style="width: 45%;">
+      <p>Address: <span data-field="address">{{ address }}</span></p>
+      <p>Advisor: <span data-field="advisor_name">{{ advisor_name }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>
+      **Students must complete all courses below in order to receive their endorsement.
+    </p>
+  </div>
+
+  <table>
+    <thead>
+      <tr class="header-row">
+        <td style="width: 50%;">COURSES</td>
+        <td style="width: 15%; text-align: center;">Term</td>
+        <td style="width: 15%; text-align: center;">Grade</td>
+        <td style="width: 20%; text-align: center;">Credits</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in courses %}
+      <tr>
+        <td>
+          <span data-field="course.code">{{ course.code }}</span> <span data-field="course.title">{{ course.title }}</span>
+        </td>
+        <td style="text-align: center;"><span data-field="course.term">{{ course.term }}</span></td>
+        <td style="text-align: center;"><span data-field="course.grade">{{ course.grade }}</span></td>
+        <td style="text-align: center;"><span data-field="course.credits">{{ course.credits }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 45%;">
+      <p>Advisor's Signature:</p>
+      <div class="signature-line"></div>
+      <p>Date:</p>
+      <div class="signature-line"></div>
+    </div>
+    <div style="width: 45%;">
+      <p>Student's Signature:</p>
+      <div class="signature-line"></div>
+      <p>Date:</p>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>APPROVED: Director of Graduate Student Success & Recruitment <span data-field="director_signature_line">{{ director_signature_line }}</span> Date: <span data-field="director_date">{{ director_date }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>License Completion Date: <span data-field="license_completion_date">{{ license_completion_date }}</span></p>
+  </div>
+
+  <p style="font-size: 10pt; margin-top: 80px;">*Students completing an endorsement, certificate, or specialization only are not eligible for federal financial aid.</p>
+</div>

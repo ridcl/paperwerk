@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form 4137</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 4px 0;
+    vertical-align: top;
+  }
+  .header-row td {
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .instruction-text {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">
+          <strong>Form 4137</strong>
+        </td>
+        <td style="width: 50%; text-align: right;">
+          <strong>OMB No. 1545-0074</strong>
+        </td>
+      </tr>
+    </table>
+    <h1 style="text-align: center; font-size: 18pt; margin-top: 20px;">Social Security and Medicare Tax on Unreported Tip Income</h1>
+    <p style="text-align: center; margin-top: 10px;">Attach to your tax return.</p>
+    <p style="text-align: center;">Go to www.irs.gov/Form4137 for the latest information.</p>
+
+    <table style="width: 100%; margin-top: 20px;">
+      <tr>
+        <td style="width: 50%;">
+          Name of person who received tips. If married, complete a separate Form 4137 for each spouse with unreported tips.
+        </td>
+        <td style="width: 50%; text-align: right;">
+          Social security number
+        </td>
+      </tr>
+    </table>
+
+    <table style="width: 100%; margin-top: 20px;">
+      <tr class="header-row">
+        <td style="width: 20%;">1</td>
+        <td style="width: 40%;"> (a) Name of employer to whom you were required to but didn't report all your tips (see instructions)</td>
+        <td style="width: 20%;"> (b) Employer identification number (see instructions)</td>
+        <td style="width: 20%;"> (c) Total cash and charge tips you received (including unreported tips) (see instructions)</td>
+        <td style="width: 20%;"> (d) Total cash and charge tips you reported to your employer</td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td><span data-field="employer.name">{{ employer.name }}</span></td>
+        <td><span data-field="employer.ein">{{ employer.ein }}</span></td>
+        <td><span data-field="total_tips_received">{{ total_tips_received }}</span></td>
+        <td><span data-field="total_tips_reported">{{ total_tips_reported }}</span></td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td><span data-field="employer.name">{{ employer.name }}</span></td>
+        <td><span data-field="employer.ein">{{ employer.ein }}</span></td>
+        <td><span data-field="total_tips_received">{{ total_tips_received }}</span></td>
+        <td><span data-field="total_tips_reported">{{ total_tips_reported }}</span></td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td><span data-field="employer.name">{{ employer.name }}</span></td>
+        <td><span data-field="employer.ein">{{ employer.ein }}</span></td>
+        <td><span data-field="total_tips_received">{{ total_tips_received }}</span></td>
+        <td><span data-field="total_tips_reported">{{ total_tips_reported }}</span></td>
+      </tr>
+    </table>
+
+    <table style="width: 100%; margin-top: 20px;">
+      <tr class="header-row">
+        <td style="width: 10%;">2</td>
+        <td style="width: 90%;">Total cash and charge tips you received in <span data-field="tax_year">{{ tax_year }}</span>. Add the amounts from line 1, column (c).</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Total cash and charge tips you reported to your employer(s) in <span data-field="tax_year">{{ tax_year }}</span>. Add the amounts from line 1, column (d).</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c. (See <span data-field="instruction_ref_4">{{ instruction_ref_4 }}</span>)</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Cash and charge tips you received but didn't report to your employer because the total was less than <span data-field="threshold_amount">{{ threshold_amount }}</span> in a calendar month (see instructions).</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Unreported tips subject to Medicare tax. Subtract line 5 from line 4.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Maximum amount of wages (including tips) subject to social security tax.</td>
+        <td style="text-align: right;"><span data-field="ss_max_amount">{{ ss_max_amount }}</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Total social security wages and social security tips (total of your Form W-2, boxes 3 and 7) and road retirement (IRTA) compensation (subject to 6.2% rate) (see instructions).</td>
+        <td style="text-align: right;"><span data-field="ss_total_wages">{{ ss_total_wages }}</span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Subtract line 8 from line 7. If line 8 is more than line 7, enter -0.</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Unreported tips subject to social security tax. Enter the smaller of line 6 or line 9. If you received tips as a federal, state, or local government employee, see instructions.</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Multiply line 10 by 0.062 (social security tax rate).</td>
+        <td style="text-align: right;"><span data-field="ss_tax_amount">{{ ss_tax_amount }}</span></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Multiply line 6 by 0.0145 (Medicare tax rate).</td>
+        <td style="text-align: right;"><span data-field="medicare_tax_amount">{{ medicare_tax_amount }}</span></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Add lines 11 and 12. Include as tax on Schedule 2 (Form 1040), line 5, or Form 1040-SS, Part I, line 6a. (See instructions there.)</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <h2 class="section-title">General Instructions</h2>
+    <div class="instruction-text">
+      <p><strong>Purpose of form.</strong> Use Form 4137 only to figure the social security and Medicare tax owed on tips you didn't report to your employer, including any allocated tips shown on your Form(s) W-2 that you must report as income. You must also report the tips on your Form(s) W-2. If you are a self-employed person, this form, your social security and Medicare tips will be credited to your social security record (used to figure your benefits). Don't use Form 4137 as a substitute for Form W-2.</p>
+    </div>
+
+    <h2 class="section-title">Future Developments</h2>
+    <div class="instruction-text">
+      <p>For the latest information about developments related to Form 4137 and its instructions, such as legislation enacted after they were published, go to www.irs.gov/Form137.</p>
+    </div>
+
+    <h2 class="section-title">What's New?</h2>
+    <div class="instruction-text">
+      <p>For 2025, the maximum wages and tips subject to social security tax increases to <span data-field="ss_max_amount_2025">{{ ss_max_amount_2025 }}</span>. The social security tax rate an employee must pay on tips remains at 6.2%.</p>
+    </div>
+
+    <h2 class="section-title">Reminder</h2>
+    <div class="instruction-text">
+      <p>A 0.9% Additional Medicare Tax applies to Medicare wages, Railroad Retirement Tax Act (RRTA) compensation, and self-employment income over a certain amount. If you have income over a certain amount, you must file this tax. Use Form 8959, Additional Medicare Tax, to figure this tax. See the instructions for Form 8959 for more information on the Additional Medicare Tax.</p>
+    </div>
+
+    <h2 class="section-title">Specific Instructions</h2>
+    <div class="instruction-text">
+      <p><strong>Line 1.</strong> Complete a separate row for each employer. If you had more than five employers in 2025, attach a statement that lists the names and EINs of the other employers in a similar format to the one required on Form 4137, line 1, and complete at each line 1 of Form 4137. Line 2 includes all tips you received from your employer(s) and attached statements. Include your name, social security number, and calendar year (2025) on the top of any attachment.</p>
+      <p><strong>Column (a).</strong> Enter your employer's name you entered in column (a), enter the employer identification number (EIN) or the words "Applied For" exactly as shown on your Form W-2.</p>
+      <p><strong>Column (c).</strong> Enter the total cash and charge tips you received. All of the following tips must be included.</p>
+      <p><strong>Column (d).</strong> Enter the total cash and charge tips you reported to your employer. Tips reported timely are included in gross income of the employee on Form W-2, box 1. If you did not report all of your tips to your employer during January 1 through January 31, 2025, include the tips on your Form 4137, line 1, column (c) and report them on your Form W-2.</p>
+      <p><strong>Tip.</strong> You didn't report all (or any) income allocated tips (see instructions). If you have income allocated tips, you can prove that your unreported tips are less than the amount in box 8. Include these tips in column (c). These tips are considered income to you in the month you actually received them.</p>
+      <p><strong>Tip.</strong> You received that you weren't required to report to your employer because they totaled less than $200 during the month. Include these tips in column (c).</p>
+      <p><strong>Line 6.</strong> Enter this amount on Form 8959, line 2, if you're required to file that form.</p>
+      <p><strong>Line 8.</strong> For railroad retirement (RRTA) compensation, don't include an amount greater than <span data-field="rrta_limit">{{ rrta_limit }}</span>, which is the amount of your RRTA compensation.</p>
+      <p><strong>Line 10.</strong> If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax, subtract the amount of tips that were subject only to the 1.45% Medicare tax from the amount comparing lines 6 and 9. Don't reduce the actual entry on line 6. Enter "1.45% tips" and the amount you subtracted on the dotted line next to line 10.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

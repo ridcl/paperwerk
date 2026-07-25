@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medical History Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px; border: 1px solid #ccc; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .header-info div { width: 48%; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">
+    Complete and Mail to:
+    <div style="font-weight: bold;">McMurry University # 716</div>
+    <div style="font-weight: bold;">Abilene TX 79987-0716</div>
+    Phone: {{ contact_phone }}
+    Fax: {{ contact_fax }}
+    Student Identification Number
+  </div>
+  <h1 style="text-align: center;">McMurry University International</h1>
+  <h2 style="text-align: center;">Report of Medical History and Consent of Medical Treatment</h2>
+  <p>Name (Last, First, Middle)</p>
+  <p>Home Address (Number and Street, City, State, Zip)</p>
+  <table>
+    <tr>
+      <td style="width: 20%;">Date of Birth</td>
+      <td style="width: 20%;">Age</td>
+      <td style="width: 20%;">Sex</td>
+      <td style="width: 40%;">Marital Status</td>
+    </tr>
+    <tr>
+      <td><span data-field="date_of_birth">{{ date_of_birth }}</span></td>
+      <td><span data-field="age">{{ age }}</span></td>
+      <td>
+        <input type="radio" name="sex" value="Male"> Male
+        <input type="radio" name="sex" value="Female"> Female
+      </td>
+      <td>
+        <input type="radio" name="marital_status" value="Single"> Single
+        <input type="radio" name="marital_status" value="Married"> Married
+        <input type="radio" name="marital_status" value="Other"> Other
+      </td>
+    </tr>
+  </table>
+  <p>Person to notify in case of illness, injury, or emergency: Name, Relationship, Street Address</p>
+  <p>City, State, Zip</p>
+  <p>Home Telephone No.</p>
+  <p>Business Telephone No. or Cell No.</p>
+</div>
+
+<div class="page">
+  <h3 style="text-align: center;">PROOF OF THE FOLLOWING 4 IMMUNIZATIONS IS REQUIRED BY MCM PRIOR TO REGISTRATION</h3>
+  <p style="text-align: center;">May send copy of official immunization record.</p>
+
+  <h4 style="font-weight: bold;">BACTERIAL MENINGITIS VACCINE</h4>
+  <p>Must submit evidence of the vaccination. Acceptable evidence includes the following:</p>
+  <ul>
+    <li>The signature or stamp of a physician or his/her designee, or public health personnel, on a form which shows the month, day, and year the vaccination dose or booster was administered.</li>
+    <li>An official immunization record generated from a state or local authority.</li>
+  </ul>
+  <p>Available exemptions:</p>
+  <ul>
+    <li>Is 22 years of age or older on or before the first day of the term enrollment.</li>
+    <li>Signs an affidavit declaring the vaccination. Request must be made through the Department of State Health Services.</li>
+  </ul>
+
+  <h4 style="font-weight: bold;">BACTERIAL MENINGITIS VACCINE - DATE</h4>
+  <p><span data-field="meningitis_vaccine_date">{{ meningitis_vaccine_date }}</span></p>
+
+  <h4 style="font-weight: bold;">TUBERCULOSIS (See Tuberculosis Screening Questionnaire). If any questions answered yes, then a negative test OR chest x-ray is required within Past One Year.</h4>
+  <table style="margin-top: 10px;">
+    <tr>
+      <td style="width: 20%;">TB SKIN TEST</td>
+      <td style="width: 20%;">Date</td>
+      <td style="width: 20%;">Results</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">CHEST X-RAY</td>
+      <td style="width: 20%;">Date</td>
+      <td style="width: 20%;">Results</td>
+    </tr>
+  </table>
+  <p>Have you ever had BCG vaccine? If yes, date</p>
+  <p><span data-field="bcg_vaccine_date">{{ bcg_vaccine_date }}</span></p>
+
+  <h4 style="font-weight: bold;">TETANUS/DIPHTHERIA Booster within 10 Years</h4>
+  <p><span data-field="tetanus_booster_date">{{ tetanus_booster_date }}</span></p>
+
+  <h4 style="font-weight: bold;">MMR (Measles, Mumps, Rubella) Two injections since age one.</h4>
+  <p>Dose #1</p>
+  <p><span data-field="mmr_dose1_date">{{ mmr_dose1_date }}</span></p>
+  <p>Dose #2</p>
+  <p><span data-field="mmr_dose2_date">{{ mmr_dose2_date }}</span></p>
+</div>
+
+<div class="page">
+  <h4 style="font-weight: bold;">AUTHORIZED SIGNATURE:</h4>
+  <p>PHYSICIAN, PUBLIC HEALTH CLINIC, OR TRANSCRIPT FROM SCHOOL RECORDS</p>
+  <p>Signature</p>
+  <p><span data-field="authorized_signature_date">{{ authorized_signature_date }}</span></p>
+  <p>Title</p>
+  <p>Address</p>
+  <p>City, State, Zip</p>
+  <p>Telephone No.</p>
+  <p>Fax No.</p>
+
+  <h4 style="font-weight: bold; margin-top: 30px;">RECOMMENDED (But Not Required)</h4>
+  <table>
+    <tr>
+      <td style="width: 30%;">Hepatitis A Vaccine</td>
+      <td style="width: 30%;">Dose #1</td>
+      <td style="width: 40%;">Date</td>
+    </tr>
+    <tr>
+      <td>Dose #2</td>
+      <td>Date</td>
+    </tr>
+    <tr>
+      <td>Please List Allergies:</td>
+      <td>Drugs:</td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h3 style="text-align: center;">Consent to Medical Treatment</h3>
+  <p>I authorize the Campus Nurse and/or consultants to administer medical services and immunizations, and to perform emergency and therapeutic procedures, as necessary, or refer to licensed medical personnel when indicated (including to nearby hospitals).</p>
+  <p>Signature of Student if 18 years or over</p>
+  <p><span data-field="student_signature_date">{{ student_signature_date }}</span></p>
+  <p>Date</p>
+  <p>Signature of Parent or Guardian if Student is under 18</p>
+  <p><span data-field="guardian_signature_date">{{ guardian_signature_date }}</span></p>
+  <p>Date</p>
+
+  <h3 style="margin-top: 30px;">PERSONAL HISTORY</h3>
+  <p>Have you had or have you now?</p>
+  <table>
+    <tr>
+      <td style="width: 10%;">YES</td>
+      <td style="width: 10%;">NO</td>
+      <td style="width: 10%;">YES</td>
+      <td style="width: 10%;">NO</td>
+      <td style="width: 10%;">YES</td>
+      <td style="width: 10%;">NO</td>
+      <td style="width: 10%;">YES</td>
+      <td style="width: 10%;">NO</td>
+    </tr>
+    <tr>
+      <td>German Measles</td>
+      <td><input type="checkbox"></td>
+      <td>Measles</td>
+      <td><input type="checkbox"></td>
+      <td>Mumps</td>
+      <td><input type="checkbox"></td>
+      <td>Chicken Pox</td>
+      <td><input type="checkbox"></td>
+      <td>Rubella</td>
+      <td><input type="checkbox"></td>
+      <td>Varicella</td>
+      <td><input type="checkbox"></td>
+      <td>Hepatitis A</td>
+      <td><input type="checkbox"></td>
+      <td>Hepatitis B</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Dizzy Spells</td>
+      <td><input type="checkbox"></td>
+      <td>Fainting</td>
+      <td><input type="checkbox"></td>
+      <td>Weakness, Paralysis</td>
+      <td><input type="checkbox"></td>
+      <td>Tuberculosis</td>
+      <td><input type="checkbox"></td>
+      <td>Asthma</td>
+      <td><input type="checkbox"></td>
+      <td>Shortness of Breath</td>
+      <td><input type="checkbox"></td>
+      <td>Diabetes</td>
+      <td><input type="checkbox"></td>
+      <td>High Blood Pressure</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Epilepsy, Convulsions</td>
+      <td><input type="checkbox"></td>
+      <td>Heart Disease</td>
+      <td><input type="checkbox"></td>
+      <td>Kidney Disease</td>
+      <td><input type="checkbox"></td>
+      <td>Allergy</td>
+      <td><input type="checkbox"></td>
+      <td>Other Medical Condition</td>
+      <td><input type="checkbox"></td>
+      <td>Surgery List:</td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </table>
+  <p>Comments/Medications:</p>
+  <div style="border: 1px solid #000; height: 60px; margin-bottom: 20px;"></div>
+</div>
+
+<div class="page">
+  <h3 style="text-align: center;">FAMILY HISTORY</h3>
+  <table>
+    <tr>
+      <td style="width: 15%;">Father</td>
+      <td style="width: 15%;">Age</td>
+      <td style="width: 15%;">Occupation</td>
+      <td style="width: 55%;">Cause of Death</td>
+    </tr>
+    <tr>
+      <td><span data-field="family_history.father_name">{{ family_history.father_name }}</span></td>
+      <td><span data-field="family_history.father_age">{{ family_history.father_age }}</span></td>
+      <td><span data-field="family_history.father_occupation">{{ family_history.father_occupation }}</span></td>
+      <td>
+        A. Has your physical activity been restricted during the past five years?
+        <input type="checkbox"> Yes <input type="checkbox"> No
+      </td>
+    </tr>
+    <tr>
+      <td>Mother</td>
+      <td><span data-field="family_history.mother_age">{{ family_history.mother_age }}</span></td>
+      <td><span data-field="family_history.mother_occupation">{{ family_history.mother_occupation }}</span></td>
+      <td>
+        B. Have you ever received treatment or counseling for a nervous condition, personality, or character disorder, or emotional problem?
+        <input type="checkbox"> Yes <input type="checkbox"> No
+      </td>
+    </tr>
+    <tr>
+      <td>Brothers</td>
+      <td></td>
+      <td></td>
+      <td>
+        C. Do you take any prescription medications?
+        <input type="checkbox"> Yes <input type="checkbox"> No
+      </td>
+    </tr>
+    <tr>
+      <td>Sisters</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <p>Student Signature. I certify all questions are answered accurately.</p>
+  <p><span data-field="student_certification_date">{{ student_certification_date }}</span></p>
+
+  <p style="margin-top: 30px;">I understand that international students attending McMurry University will be required to show proof of health insurance or the student will be required to purchase insurance through the university and the charges will be applied to the student's account.</p>
+  <p>Signature</p>
+  <p><span data-field="insurance_signature_date">{{ insurance_signature_date }}</span></p>
+  <p>Please sign below that you received written information about Bacterial Meningitis:</p>
+  <p>Signature</p>
+  <p><span data-field="meningitis_info_receipt_date">{{ meningitis_info_receipt_date }}</span></p>
+</div>
+
+<div class="page">
+  <h3 style="text-align: center;">Tuberculosis Screening Questionnaire</h3>
+  <p>Part I: Tuberculosis (TB) Screening Questionnaire (to be completed by incoming students)</p>
+  <p>Please answer the following questions:</p>
+  <p>Have you ever had close contact with persons known or suspected to have active TB disease? Yes No</p>
+  <p>Were you born in one of the countries or territories listed below that have a high incidence of active TB disease? (If yes, please cite country, below.) Yes No</p>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Country</th>
+        {% for country in countries %}
+        <th style="width: 10%;">{{ country }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Afghanistan</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Algeria</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Angola</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Argentina</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Armenia</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Bangladesh</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Belarus</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Benin</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Bolivia (Plurinational State of)</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Bosnia and Herzegovina</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Botswana</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Brazil</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Bulgaria</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Burkina Faso</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Burundi</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Cabo Verde</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Cambodia</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Cameroon</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Central African Republic</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Chad</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>China</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>Hong Kong SAR</td>
+        {% for country in countries %}
+        <td><input type="checkbox"></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Source: World Health Organization Global Health Observatory, Tuberculosis Incidence 2018. Countries with incidence rates of &ge; 20 cases per 100,000 population. For future updates, refer to http://www.who.int/tb/countries/en/.</p>
+
+  <p>Have you had frequent or prolonged visits to one or more of the countries or territories listed above with a high prevalence of TB disease? (If yes, CHECK the countries or territories, above)</p>
+  <p>Yes No</p>
+
+  <p>Have you been a resident, volunteer, and/or employee of high-risk congregate settings (e.g., correctional facilities, long-term care facilities, and homeless shelters)?</p>
+  <p>Yes No</p>
+
+  <p>Have you been a volunteer or health care worker who served clients who are at increased risk for active TB disease?</p>
+  <p>Yes No</p>
+
+  <p>Have you ever been a member of any of the following groups that an increased incidence of latent M. tuberculosis infection or active TB disease: medically underserved, low-income, or abusing drugs or alcohol?</p>
+  <p>Yes No</p>
+
+  <p>If the answer is YES to any of the above questions, McMurry University, requires that you receive TB testing as soon as possible but at least prior to the start of the subsequent semester.</p>
+  <p>If the answer to all the above questions is NO, no further testing or further action is required.</p>
+</div>
+
+</body>
+</html>

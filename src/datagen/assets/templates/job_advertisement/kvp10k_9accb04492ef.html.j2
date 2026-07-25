@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Fellow Recruitment Notice</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; font-size: 13px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header { text-align: center; margin-bottom: 18px; }
+  .header .univ-name { font-weight: bold; font-size: 14px; }
+  .header .inst-name { font-weight: bold; font-size: 15px; }
+  .header .address { font-size: 13px; }
+  .header .website { font-size: 13px; }
+
+  .adv-date-row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 13px; }
+  .adv-date-row .adv-no { font-weight: bold; }
+  .adv-date-row .date { font-weight: bold; }
+
+  .notice-title { text-align: center; font-weight: bold; font-size: 14px; letter-spacing: 4px; text-decoration: underline; margin-bottom: 14px; }
+
+  .recruitment-heading { text-align: center; font-weight: bold; font-size: 13px; margin-bottom: 12px; }
+
+  .intro-para { text-align: justify; margin-bottom: 14px; font-size: 13px; line-height: 1.5; }
+
+  table.post-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.post-table td { border: 1px solid #000; padding: 5px 8px; vertical-align: top; line-height: 1.45; }
+  table.post-table td.label-col { width: 38%; }
+  table.post-table td.value-col { width: 62%; }
+  table.post-table .header-row td { font-weight: bold; }
+
+  /* Page 2 styles */
+  .section-heading { font-weight: bold; font-size: 13px; margin-bottom: 10px; }
+  .apply-list { margin-left: 20px; margin-bottom: 10px; }
+  .apply-list li { text-align: justify; line-height: 1.5; margin-bottom: 10px; font-size: 13px; }
+  .apply-list li .bold { font-weight: bold; }
+  .email-block { margin-left: 0; margin-bottom: 10px; font-size: 13px; line-height: 1.6; }
+  .email-block .bold { font-weight: bold; }
+  .email-note { font-size: 13px; margin-bottom: 10px; line-height: 1.5; }
+
+  .gen-info-heading { text-align: center; font-weight: bold; font-size: 13px; margin: 14px 0 10px 0; }
+  .gen-info-para { font-size: 13px; line-height: 1.5; text-align: justify; margin-bottom: 10px; }
+
+  /* Page 3 styles */
+  .cont-para { font-size: 13px; line-height: 1.5; text-align: justify; margin-bottom: 10px; }
+  .signature-block { text-align: right; margin-top: 40px; font-size: 13px; line-height: 1.7; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="header">
+    <div class="univ-name"><span data-field="university_name">{{ university_name }}</span></div>
+    <div class="inst-name"><span data-field="institute_name">{{ institute_name }}</span></div>
+    <div class="address"><span data-field="institute_address">{{ institute_address }}</span></div>
+    <div class="website">(<span data-field="institute_website">{{ institute_website }}</span>)</div>
+  </div>
+
+  <div class="adv-date-row">
+    <span class="adv-no">Adv. No.: <span data-field="adv_number">{{ adv_number }}</span></span>
+    <span class="date">Date: <span data-field="notice_date">{{ notice_date }}</span></span>
+  </div>
+
+  <div class="notice-title">N O T I C E</div>
+
+  <div class="recruitment-heading">Recruitment for <span data-field="position_category">{{ position_category }}</span> under funded project</div>
+
+  <div class="intro-para">
+    <span data-field="institute_full_name">{{ institute_full_name }}</span> (<span data-field="institute_acronym">{{ institute_acronym }}</span>), is a constituent unit of <span data-field="parent_university">{{ parent_university }}</span>, <span data-field="parent_university_city">{{ parent_university_city }}</span>. Institute invites applications from Indian nationals for the following positions on contract basis:
+  </div>
+
+  <table class="post-table">
+    {% for post in posts %}
+    <tr class="header-row">
+      <td class="label-col"><strong>Name of the Post - {{ loop.index }}</strong></td>
+      <td class="value-col"><strong><span data-field="posts[{{ loop.index0 }}].post_title">{{ post.post_title }}</span></strong></td>
+    </tr>
+    <tr>
+      <td class="label-col">Title of the Project</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].project_title">{{ post.project_title }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Funding Agency</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].funding_agency">{{ post.funding_agency }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Project Code</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].project_code">{{ post.project_code }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Minimum educational Qualifications/experience</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].min_qualification">{{ post.min_qualification }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Preference</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].preference">{{ post.preference }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Job requirement</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].job_requirement">{{ post.job_requirement }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Tenure of the project</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].tenure">{{ post.tenure }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Fellowship amount</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].fellowship_amount">{{ post.fellowship_amount }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">No. of positions</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].num_positions">{{ post.num_positions }}</span></td>
+    </tr>
+    <tr>
+      <td class="label-col">Last date of application</td>
+      <td class="value-col"><span data-field="posts[{{ loop.index0 }}].last_date">{{ post.last_date }}</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="section-heading">How to Apply:</div>
+
+  <ol class="apply-list">
+    <li>Applications on plain paper giving full particulars in the following format may kindly be submitted: (1) Name of the applicant, (2) Date of Birth, (3) Whether belonging to SC/ST/OBC (Original Caste/Community Certificate issued by competent authorities to be produced at the time of interview in support of the claim). (4) Educational Qualification (furnish details commencing from SSC), (5) Experience indicating full details, (6) Address for communication, (7) Telephone No., (8) Email address.</li>
+    <li>
+      The application with the above information duly signed together with photo-copies of relevant certificates/testimonials should be addressed to:<br>
+      <span class="bold">The Director, <span data-field="director_institute_name">{{ director_institute_name }}</span>, <span data-field="director_institute_address">{{ director_institute_address }}</span>.</span> Please mention "<span data-field="envelope_subject">{{ envelope_subject }}</span>" on envelops.
+      <br><br>
+      Applications can also be sent by email to the following address on or before <span class="bold"><span data-field="email_deadline">{{ email_deadline }}</span>.</span><br>
+      <span class="bold"><span data-field="contact_email">{{ contact_email }}</span></span>
+      <br><br>
+      Please mention "<span data-field="email_subject_line">{{ email_subject_line }}</span>" in the subject line of the email.
+    </li>
+    <li>The print out of the application form sent by email signed and dated by the applicant along with recent passport size photograph and photocopies of relevant certificates and other testimonials in support of age, qualification, experience etc. will be collected at the time of interview.</li>
+    <li>Applicant must bring all the original certificates at the time of interview for the purpose of verification, along with one set of photocopies.</li>
+    <li>Candidates who have applied for post will be required to appear for an interview before the Selection Committee in <span data-field="interview_venue">{{ interview_venue }}</span> <span class="bold">at <span data-field="interview_time">{{ interview_time }}</span></span> on <span class="bold"><span data-field="interview_date">{{ interview_date }}</span></span></li>
+  </ol>
+
+  <div class="gen-info-heading">General Information / details about the post</div>
+
+  <div class="gen-info-para">1.  Appointment is purely temporary and will terminate automatically without any notice or compensation on termination of the research project.</div>
+  <div class="gen-info-para">2.  The appointed person shall have no claim of appointment / absorption in Funding Agency or in <span data-field="gen_university_name">{{ gen_university_name }}</span>, <span data-field="gen_university_city">{{ gen_university_city }}</span>.</div>
+  <div class="gen-info-para">3.  Appointment of the applicant will be governed by the terms and conditions of the funding agency particularly applicable to the said project.</div>
+  <div class="gen-info-para">4.  The qualification prescribed should have been obtained from recognized Universities / Institutions.</div>
+  <div class="gen-info-para">5.  The prescribed educational qualifications are the bare minimum and mere possession of same does not entitled candidates to be called for interview. Where</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="cont-para">number of applications received in response to this advertisement is large, it will not be convenient or possible to interview all the candidates. Based on the recommendations of the Screening Committee, the Project Leader may restrict the number of candidates to be called for the interview to a reasonable limit after taking into consideration qualifications and experience over and above the minimum prescribed in the advertisement. Therefore, it will be in the interest of the candidates, to mention all the qualifications and experience in the relevant field at the time of applying.</div>
+
+  <div class="cont-para">6. No TA/DA will be admissible for appearing for the interview.</div>
+  <div class="cont-para">7. Selected candidates will have to join duty immediately on receipt of the offer.</div>
+  <div class="cont-para">8. Reservation as per Govt. of India norms will be followed.</div>
+  <div class="cont-para">9.  No interim enquiries / correspondence / communication of any sort will be entertained on the matter.</div>
+  <div class="cont-para">10.  Canvassing in any form and / or bringing any influence or otherwise, will be treated as a disqualification for the post applied for.</div>
+
+  <div class="signature-block">
+    The Director,<br>
+    <span data-field="signatory_institute_name">{{ signatory_institute_name }}</span>,<br>
+    <span data-field="signatory_institute_address">{{ signatory_institute_address }}</span>.
+  </div>
+</div>
+
+</body>
+</html>

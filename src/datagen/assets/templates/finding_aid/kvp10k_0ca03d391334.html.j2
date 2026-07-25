@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        .header-logo { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; font-size: 24px; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .metadata-table td { padding: 3px 0; }
+        .toc-entry { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .toc-entry span:first-child { flex-grow: 1; }
+        .toc-entry span:last-child { text-align: right; }
+        .list-item { margin-bottom: 5px; }
+        .inventory-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .inventory-table th, .inventory-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        .inventory-table th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div style="display: flex; align-items: center; margin-bottom: 30px;">
+        <div class="header-logo" style="margin-right: 10px;">A</div>
+        <div style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 20px;">ArchivesSpace</div>
+    </div>
+    <h1 style="font-size: 24px; margin-bottom: 10px;">{{ full_name }} papers</h1>
+    <div style="border-top: 1px solid #000; padding-top: 10px; font-size: 12px;">
+        This finding aid was produced using ArchivesSpace on {{ production_date }}. Describing Archives: A Content Standard
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 20px;">{{ full_name }} papers</h2>
+    </div>
+    <div style="border-top: 1px solid #000; margin-bottom: 30px;"></div>
+
+    <h2 class="section-title">Table of Contents</h2>
+    <div style="margin-left: 50px;">
+        <div class="toc-entry">
+            <span>Summary Information</span>
+            <span>{{ toc_summary_info_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Biographical/Historical Note</span>
+            <span>{{ toc_biographical_historical_note_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Collection Scope and Content</span>
+            <span>{{ toc_collection_scope_and_content_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Arrangement</span>
+            <span>{{ toc_arrangement_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Administrative Information</span>
+            <span>{{ toc_administrative_information_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Controlled Access Headings</span>
+            <span>{{ toc_controlled_access_headings_page }}</span>
+        </div>
+        <div class="toc-entry">
+            <span>Collection Inventory</span>
+            <span>{{ toc_collection_inventory_page }}</span>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 50px; font-size: 12px;">- Page 2 -</div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 20px;">{{ full_name }} papers</h2>
+    </div>
+
+    <h2 class="section-title">Summary Information</h2>
+    <table class="metadata-table" style="width: 100%; margin-top: 15px;">
+        <tr>
+            <td style="width: 150px;">Repository:</td>
+            <td><span data-field="repository.name">{{ repository.name }}</span></td>
+        </tr>
+        <tr>
+            <td>Creator:</td>
+            <td><span data-field="repository.creator">{{ repository.creator }}</span></td>
+        </tr>
+        <tr>
+            <td>Title:</td>
+            <td><span data-field="repository.title">{{ repository.title }}</span></td>
+        </tr>
+        <tr>
+            <td>ID:</td>
+            <td><span data-field="repository.id">{{ repository.id }}</span></td>
+        </tr>
+        <tr>
+            <td>Date [inclusive]:</td>
+            <td><span data-field="repository.date_inclusive">{{ repository.date_inclusive }}</span></td>
+        </tr>
+        <tr>
+            <td>Physical Description:</td>
+            <td><span data-field="repository.physical_description">{{ repository.physical_description }}</span></td>
+        </tr>
+        <tr>
+            <td>Language of the Material:</td>
+            <td><span data-field="repository.language">{{ repository.language }}</span></td>
+        </tr>
+    </table>
+
+    <h3 style="margin-top: 30px;">Preferred Citation</h3>
+    <p style="font-style: italic; margin-left: 20px;">{{ preferred_citation }}</p>
+
+    <div style="margin-top: 40px;">
+        <a href="#" style="font-size: 12px;">^ Return to Table of Contents</a>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">Biographical/Historical Note</h2>
+    <div style="text-align: justify; line-height: 1.6;">
+        <p>{{ biographical_historical_note_text }}</p>
+    </div>
+    <div style="margin-top: 40px;">
+        <a href="#" style="font-size: 12px;">^ Return to Table of Contents</a>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">Collection Scope and Content</h2>
+    <div style="text-align: justify; line-height: 1.6;">
+        <p>{{ collection_scope_and_content_text }}</p>
+    </div>
+    <div style="margin-top: 40px;">
+        <a href="#" style="font-size: 12px;">^ Return to Table of Contents</a>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">Arrangement</h2>
+    <div style="text-align: justify; line-height: 1.6;">
+        <p>{{ arrangement_text }}</p>
+    </div>
+    <div style="margin-top: 40px;">
+        <a href="#" style="font-size: 12px;">^ Return to Table of Contents</a>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">Administrative Information</h2>
+
+    <h3 style="margin-top: 20px;">Publication Statement</h3>
+    <table class="metadata-table" style="width: 100%; margin-top: 15px;">
+        <tr>
+            <td style="width: 150px;">Repository:</td>
+            <td><span data-field="admin.repository_name">{{ admin.repository_name }}</span></td>
+        </tr>
+        <tr>
+            <td>Creator:</td>
+            <td><span data-field="admin.creator">{{ admin.creator }}</span></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><span data-field="admin.address">{{ admin.address }}</span></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><span data-field="admin.email">{{ admin.email }}</span></td>
+        </tr>
+        <tr>
+            <td>URL:</td>
+            <td><span data-field="admin.url">{{ admin.url }}</span></td>
+        </tr>
+    </table>
+
+    <h3 style="margin-top: 30px;">Access</h3>
+    <div style="text-align: justify; line-height: 1.6;">
+        <p>{{ access_statement }}</p>
+    </div>
+
+    <h3 style="margin-top: 30px;">Publication Rights</h3>
+    <div style="text-align: justify; line-height: 1.6;">
+        <p>{{ publication_rights_text }}</p>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <a href="#" style="font-size: 12px;">^ Return to Table of Contents</a>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">Controlled Access Headings</h2>
+    <ul style="list-style-type: disc; padding-left: 30px;">
+        {% for heading in controlled_access_headings %}
+        <li class="list-item">{{ heading }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="section-title" style="margin-top: 40px;">Collection Inventory</h2>
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Title/Description</th>
+                <th>Instances</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in collection_inventory %}
+            <tr>
+                <td><span data-field="collection_inventory[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+                <td><span data-field="collection_inventory[{{ loop.index0 }}].instances">{{ item.instances }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

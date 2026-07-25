@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form 2350</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h2 style="font-size: 24pt; margin: 0;">Form <span style="font-weight: bold;">{{ form_number }}</span></h2>
+      <h3 style="margin-top: 5px;">Application for Extension of Time</h3>
+      <h3 style="margin-top: 5px;">To File U.S. Income Tax Return</h3>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 10pt;">OMB No. <span data-field="omb_number">{{ omb_number }}</span></div>
+      <div style="font-size: 18pt; font-weight: bold;">{{ current_year }}</div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 40px;">
+    <p style="font-size: 10pt;">For U.S. Citizens and Resident Aliens Abroad Who Expect To Qualify for Special Tax Treatment</p>
+    <p style="font-size: 10pt;">See instructions later.</p>
+    <p style="font-size: 10pt;">Go to <a href="#" style="color: #000;">www.irs.gov/Form2350</a> for the latest information.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <p style="font-weight: bold;">Please print or type.</p>
+      <p style="margin-top: 5px;">Your first name and middle initial(s): <span data-field="full_name_first_name">{{ full_name_first_name }}</span></p>
+      <p style="margin-top: 5px;">Last name: <span data-field="full_name_last_name">{{ full_name_last_name }}</span></p>
+    </div>
+    <div style="width: 45%;">
+      <p style="font-weight: bold;">Your social security number</p>
+      <p style="margin-top: 5px;">Social security number: <span data-field="ssn">{{ ssn }}</span></p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">If a joint return, spouse's first name and middle initial(s): <span data-field="spouse_first_name">{{ spouse_first_name }}</span></p>
+    <p style="font-weight: bold;">Spouse's last name: <span data-field="spouse_last_name">{{ spouse_last_name }}</span></p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">Home address (number and street): <span data-field="home_address_street">{{ home_address_street }}</span></p>
+    <p style="font-weight: bold;">City, town or post office, state, and ZIP code. If you have a foreign address, enter only the city name on this line; then complete the spaces below. See instructions.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <p style="font-weight: bold;">File by the due date for filing your return.</p>
+      <p style="margin-top: 5px;">Foreign country name: <span data-field="foreign_country_name">{{ foreign_country_name }}</span></p>
+    </div>
+    <div style="width: 45%;">
+      <p style="font-weight: bold;">Foreign province/county</p>
+      <p style="margin-top: 5px;">Foreign postal code</p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 40px;">
+    <p style="font-weight: bold;">Please fill in the Return Label at the bottom of this page.</p>
+    <p style="margin-top: 15px;">1 I request an extension of time until <span data-field="extension_date_1">{{ extension_date_1 }}</span> to file my income tax return for the calendar year <span data-field="tax_year_1">{{ tax_year_1 }}</span>, because my tax home is in a foreign country and I expect to qualify for special tax treatment by meeting the "bona fide residence test" or the "physical presence test." (See instructions.)</p>
+    <p style="margin-top: 10px;">2 Were you previously granted an extension of time to file for this tax year? <span data-field="previously_granted_yes">{{ previously_granted_yes }}</span> Yes <span data-field="previously_granted_no">{{ previously_granted_no }}</span> No</p>
+    <p style="margin-top: 10px;">3 Will you need additional time to allocate moving expenses? <span data-field="moving_expenses_yes">{{ moving_expenses_yes }}</span> Yes <span data-field="moving_expenses_no">{{ moving_expenses_no }}</span> No</p>
+    <p style="margin-top: 10px;">4a Date you first arrived in the foreign country <span data-field="arrival_date_4a">{{ arrival_date_4a }}</span></p>
+    <p style="margin-top: 10px;">4b Date qualifying period begins <span data-field="qualifying_period_start_date_4b">{{ qualifying_period_start_date_4b }}</span>; ends <span data-field="qualifying_period_end_date_4b">{{ qualifying_period_end_date_4b }}</span>.</p>
+    <p style="margin-top: 10px;">c Your foreign home address <span data-field="foreign_home_address_c">{{ foreign_home_address_c }}</span></p>
+    <p style="margin-top: 10px;">d Date you expect to return to the United States <span data-field="return_date_d">{{ return_date_d }}</span></p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 40px;">
+    <p style="font-weight: bold;">Note: This is not an extension of time to pay tax. Full payment is required to avoid interest and late payment charges.</p>
+    <p style="font-weight: bold;">5 Enter the amount of income tax paid with this form <span data-field="tax_paid_amount_5">{{ tax_paid_amount_5 }}</span></p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+    <div style="width: 50%;">
+      <h3 style="margin-top: 0;">Signature and Verification</h3>
+      <p style="font-size: 10pt;">Under penalties of perjury, I declare that I have examined this form, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete; and, if prepared by someone other than the taxpayer, that I am authorized to prepare this form.</p>
+      <p style="margin-top: 20px;">Signature of taxpayer: <span data-field="taxpayer_signature_date">{{ taxpayer_signature_date }}</span> Date</p>
+      <p style="margin-top: 20px;">Signature of spouse: <span data-field="spouse_signature_date">{{ spouse_signature_date }}</span> Date</p>
+      <p style="margin-top: 20px;">Signature of preparer other than taxpayer: <span data-field="preparer_signature_date">{{ preparer_signature_date }}</span> Date</p>
+    </div>
+    <div style="width: 50%;">
+      <h3 style="margin-top: 0;">Notice to Applicant</h3>
+      <div style="margin-top: 20px;">
+        <p style="font-weight: bold;">We have approved your application.</p>
+        <p style="font-weight: bold;">We have not approved your application.</p>
+        <p style="font-weight: bold;">However, we have granted a 45-day grace period to consider a valid extension of time for elections otherwise required to be made on a timely return.</p>
+        <p style="font-weight: bold;">We have not approved your application. After considering the above information, we cannot grant your request for an extension of time to file. We are not granting a 45-day grace period.</p>
+        <p style="font-weight: bold;">We cannot consider your application because it was filed after the due date of your return.</p>
+        <p style="font-weight: bold;">Other</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 40px;">
+    <p style="font-weight: bold;">Return Label</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 45%;">
+        <p style="font-weight: bold;">Taxpayer's name (and agent's name, if applicable). If a joint return, also give spouse's name.</p>
+        <p style="margin-top: 5px;">Address (number and street, including suite, room, or apt. no., or P.O. box number)</p>
+      </div>
+      <div style="width: 45%; text-align: right;">
+        <p style="font-weight: bold;">Agent:</p>
+        <p style="margin-top: 5px;">Always include taxpayer's name on Return Label.</p>
+      </div>
+    </div>
+    <p style="margin-top: 15px; font-size: 10pt;">City or town, province or state, and county (including postal or ZIP code)</p>
+  </div>
+
+  <div style="text-align: center; font-size: 9pt; margin-top: 50px;">
+    <p>For Privacy Act and Paperwork Reduction Act Notice, see instructions later.</p>
+    <p>Cat. No. <span data-field="cat_number">{{ cat_number }}</span> Form <span data-field="form_number_label">{{ form_number_label }}</span> (<span data-field="form_number_date">{{ form_number_date }}</span>) Created 9/5/25</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <p style="font-size: 18pt; font-weight: bold;">[This page left blank intentionally]</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 24pt; margin: 0;">Form <span style="font-weight: bold;">{{ form_number }}</span></h2>
+      <h3 style="margin-top: 5px;">IRS e-file: It's Convenient, Safe, and Secure</h3>
+      <p style="font-size: 10pt;">If you are filing your tax return electronically, you can get an extension of time to file your tax return by filing electronically. You will receive an electronic acknowledgment once you complete the transaction. Keep it with your records. Do not send in a paper Form <span data-field="form_number_e_file">{{ form_number_e_file }}</span> if you file your Form <span data-field="form_number_e_file">{{ form_number_e_file }}</span> electronically.</p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <h3 style="margin-top: 0;">Paper Form <span data-field="form_number_paper">{{ form_number_paper }}</span></h3>
+      <p style="font-size: 10pt;">The IRS recommends electronic filing whenever possible. If you wish to file on paper instead of electronically, fill in the Form <span data-field="form_number_paper">{{ form_number_paper }}</span> and mail it to the address in the instructions. For payment options, see How To Make a Payment With Your Extension, later.</p>
+      <p style="font-size: 10pt;">Note: If you are a fiscal year taxpayer, you must file a paper Form <span data-field="form_number_paper">{{ form_number_paper }}</span>.</p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">General Instructions</h3>
+    <p style="font-size: 10pt;"><strong>Purpose of Form</strong></p>
+    <p style="font-size: 10pt;">Use Form <span data-field="form_number">{{ form_number }}</span> to ask for an extension of time to file your tax return only if you expect to file your return with the IRS and you need the time to meet the tax filing deadline. This form is for taxpayers who are not claiming foreign income exclusion and/or the foreign tax credit.</p>
+    <p style="font-size: 10pt;"><strong>Who Should File</strong></p>
+    <p style="font-size: 10pt;">You should file Form <span data-field="form_number">{{ form_number }}</span> if all three of the following apply:</p>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li>You are a U.S. citizen or resident alien.</li>
+      <li>You qualify for the foreign income exclusion and/or the foreign tax credit.</li>
+      <li>You are a bona fide resident of a foreign country or a physical presence test but not until after your tax return is due.</li>
+    </ul>
+    <p style="font-size: 10pt;"><strong>Additional Information</strong></p>
+    <p style="font-size: 10pt;">Pub. 54, Tax Guide for U.S. Citizens and Resident Aliens Abroad, has a detailed discussion of the foreign income exclusion, the foreign tax credit, and the bona fide residence test. See Pub. 54 for more information. For the physical presence test, you can download Pub. 54 (and other forms and publications) at www.irs.gov/FormsPubs.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">When To File</h3>
+    <p style="font-size: 10pt;">You must file Form <span data-field="form_number">{{ form_number }}</span> due the due date of Form 1040 or 1040-SR. For a calendar year return, this is April 15, 2026. If you were affected by a disaster or are a member of the Armed Forces, you may be able to file later. See instructions for Form 1040 or 1040-SR.</p>
+    <p style="font-size: 10pt;"><strong>Late payment penalty.</strong> The late payment penalty is usually 15% of the balance due on your return, which is calculated on the unpaid taxes. If you have a late filing penalty, you may be charged for each month or part of a month that your return is late. Generally, the maximum penalty is 25%.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">How To Make A Payment With Your Extension</h3>
+    <p style="font-size: 10pt;">You can make a payment by check or money order. Go to <a href="#" style="color: #000;">www.irs.gov/payments</a> by check or money order for details on paying by check or money order.</p>
+    <p style="font-size: 10pt;"><strong>Electronic Payments Are Recommended</strong></p>
+    <p style="font-size: 10pt;">The IRS recommends paying electronically whenever possible. If you wish to pay Form <span data-field="form_number">{{ form_number }}</span> electronically, you can simultaneously authorize the Treasury to make an electronic withdrawal (direct debit) for the balance due. You can also make a secure payment.</p>
+    <p style="font-size: 10pt;">For more information, go to www.irs.gov/Payments.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">Privacy Act and Paperwork Reduction Act Notice</h3>
+    <p style="font-size: 10pt;">We use this information to process your request for an extension of time to file your tax return. We will not disclose your social security number (SSN), routine uses of this information are limited to processing your request for an extension of time to file your tax return. We do not share your information with any other government agency or third party unless required by law. Generally, tax returns and return information are confidential, as required by section <span data-field="privacy_act_section">{{ privacy_act_section }}</span> of the Internal Revenue Code.</p>
+    <p style="font-size: 10pt;">The average time and expenses required to complete and file this form will vary depending on individual circumstances. For the estimated time and expenses, please see the instructions for Form <span data-field="form_number">{{ form_number }}</span>.</p>
+    <p style="font-size: 10pt;">If you have suggestions for making this form simpler, we would be happy to hear from you. See the instructions for your income tax return.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 24pt; margin: 0;">Form <span style="font-weight: bold;">{{ form_number }}</span></h2>
+      <h3 style="margin-top: 5px;">Specific Instructions</h3>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <h3 style="margin-top: 0;">Tax Home</h3>
+      <p style="font-size: 10pt;">You must have a tax home in a foreign country (or countries) and not have an abode in the United States. Generally, your tax home is where you maintain your family home. However, if you have an abode in the United States, you may still have a tax home in a foreign country. For example, if you are a U.S. citizen who is temporarily living abroad for work, your tax home is the place where you regularly live.</p>
+      <p style="font-size: 10pt;"><strong>Foreign Country.</strong> A foreign country is a country other than the United States.</p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">Signature and Verification</h3>
+    <p style="font-size: 10pt;">Generally, the taxpayer requesting the extension must sign this form. If you are unable to sign a form, any person in a close personal or business relationship to you may sign on your behalf if a statement is attached to the form, stating that the person is authorized to sign for you. If you plan to join a return with your spouse, both of you must sign this form. Attach a statement to the form if you are unable to sign it yourself.</p>
+    <p style="font-size: 10pt;">If filing electronically, you must first execute Form <span data-field="form_number_e_file_sig">{{ form_number_e_file_sig }}</span>, IRS e-File Signature Authorization, to authorize your electronic submission of this form.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h3 style="font-size: 14pt;">Notice to Applicant and Return Label</h3>
+    <p style="font-size: 10pt;">We will use it to fill out your application. If approved, don't attach the notice to your return—keep it for your records.</p>
+  </div>
+</div>
+
+</body>
+</html>

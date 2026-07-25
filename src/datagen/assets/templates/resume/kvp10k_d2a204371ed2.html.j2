@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .section-title { font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+  .entry-header { font-weight: bold; }
+  .job-title { font-weight: bold; }
+  .company-name { font-weight: bold; }
+  .dates { font-style: italic; font-size: 0.9em; }
+  ul { list-style-type: disc; margin-left: 20px; padding-left: 0; }
+  li { margin-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="margin: 0;">{{ full_name }}</h1>
+    <p style="margin: 5px 0;">
+      <span data-field="address">{{ address }}</span> • 
+      <span data-field="city_state_zip">{{ city_state_zip }}</span> • 
+      <span data-field="phone">{{ phone }}</span> • 
+      <span data-field="email">{{ email }}</span>
+    </p>
+  </header>
+
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 50%;">
+      <h2 class="section-title">EDUCATION</h2>
+      <div>
+        <div class="entry-header">
+          <span data-field="education.degree">{{ education.degree }}</span>, 
+          <span data-field="education.major">{{ education.major }}</span>
+        </div>
+        <div class="dates">
+          <span data-field="education.graduation_date">{{ education.graduation_date }}</span>
+        </div>
+        <div class="company-name">
+          <span data-field="education.institution">{{ education.institution }}</span>
+        </div>
+        <div class="company-name">
+          <span data-field="education.honors">{{ education.honors }}</span>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <h2 class="section-title">RELATED COURSEWORK</h2>
+      <ul>
+        {% for item in coursework %}
+        <li>
+          <span data-field="coursework[{{ loop.index0 }}].description">{{ item.description }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">CLINICAL EXPERIENCE</h2>
+    <div>
+      <div class="entry-header">
+        <span data-field="clinical_experience.employer_name">{{ clinical_experience.employer_name }}</span>, 
+        <span data-field="clinical_experience.location">{{ clinical_experience.location }}</span>
+      </div>
+      <div class="dates">
+        <span data-field="clinical_experience.dates">{{ clinical_experience.dates }}</span>
+      </div>
+      <div class="job-title">
+        <span data-field="clinical_experience.title">{{ clinical_experience.title }}</span>
+      </div>
+      <ul>
+        {% for item in clinical_experience.responsibilities %}
+        <li><span data-field="clinical_experience.responsibilities[{{ loop.index0 }}]">{{ item }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">RELATED EXPERIENCE</h2>
+    <div>
+      <div class="entry-header">
+        <span data-field="related_experience.employer_name">{{ related_experience.employer_name }}</span>, 
+        <span data-field="related_experience.location">{{ related_experience.location }}</span>
+      </div>
+      <div class="dates">
+        <span data-field="related_experience.dates">{{ related_experience.dates }}</span>
+      </div>
+      <div class="job-title">
+        <span data-field="related_experience.title">{{ related_experience.title }}</span>
+      </div>
+      <ul>
+        {% for item in related_experience.responsibilities %}
+        <li><span data-field="related_experience.responsibilities[{{ loop.index0 }}]">{{ item }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">CERTIFICATIONS</h2>
+    <ul>
+      {% for cert in certifications %}
+      <li><span data-field="certifications[{{ loop.index0 }}]">{{ cert }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">SPECIAL SKILLS</h2>
+    <ul>
+      {% for skill in skills %}
+      <li><span data-field="skills[{{ loop.index0 }}]">{{ skill }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">LEADERSHIP OR COM. SERV</h2>
+    <ul>
+      {% for item in leadership_service %}
+      <li><span data-field="leadership_service[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">RESEARCH EXPERIENCE</h2>
+    <ul>
+      {% for item in research_experience %}
+      <li><span data-field="research_experience[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">ART AWARDS</h2>
+    <ul>
+      {% for item in art_awards %}
+      <li><span data-field="art_awards[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">EXHIBIT EXPERIENCE</h2>
+    <ul>
+      {% for item in exhibit_experience %}
+      <li><span data-field="exhibit_experience[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">PROFESSIONAL AFFILIATIONS</h2>
+    <ul>
+      {% for item in professional_affiliations %}
+      <li><span data-field="professional_affiliations[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">PROFESSIONAL DEVELOPMENT</h2>
+    <ul>
+      {% for item in professional_development %}
+      <li><span data-field="professional_development[{{ loop.index0 }}]">{{ item }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 0.8em; color: #555;">
+    <p>*Note: There are a number of other categories that might be appropriate for your resume, depending on your own unique background. There is no one set of categories that should be included, this needs to be personalized to fit your background. Questions? Make an appointment with your Career Coach to work on your resume.</p>
+    <p>*Note: For students applying for jobs after Graduation, the Related Coursework section would be removed and would be replaced with Licensure information.</p>
+  </div>
+</div>
+</body>
+</html>

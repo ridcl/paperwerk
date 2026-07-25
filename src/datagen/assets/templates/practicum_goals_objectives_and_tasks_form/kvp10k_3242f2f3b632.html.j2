@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Practicum Goals, Objectives and Tasks Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-logo { font-size: 24pt; font-weight: bold; }
+  .sub-header { font-size: 12pt; }
+  .form-title { font-size: 16pt; font-weight: bold; margin-bottom: 10px; }
+  .instruction { font-size: 11pt; margin-bottom: 20px; }
+  .section-heading { font-size: 14pt; font-weight: bold; margin-top: 30px; margin-bottom: 15px; }
+  .field-label { font-weight: bold; display: inline-block; width: 150px; }
+  .input-area { border-bottom: 1px solid #000; min-height: 1em; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  th, td { border: 1px solid #000; padding: 8px; text-align: left; font-size: 10pt; }
+  th { background-color: #f0f0f0; }
+  .signature-line { margin-top: 60px; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="header-logo">UNE Online</div>
+    <div class="sub-header">UNIVERSITY OF NEW ENGLAND</div>
+  </div>
+  <div class="form-title">Practicum Goals, Objectives and Tasks Form</div>
+  <div class="instruction">To be completed by the student with guidance from the preceptor.</div>
+  <div class="instruction" style="margin-top: 10px;">Due: <span data-field="due_date">{{ due_date }}</span></div>
+  <div class="instruction">Return via email to <span data-field="preceptor_email">{{ preceptor_email }}</span></div>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <div class="field-label">Student Name:</div>
+        <div class="input-area"><span data-field="full_name">{{ full_name }}</span></div>
+      </div>
+      <div>
+        <div class="field-label">Date:</div>
+        <div class="input-area"><span data-field="date_submitted">{{ date_submitted }}</span></div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+      <div>
+        <div class="field-label">Practicum Site:</div>
+        <div class="input-area"><span data-field="practicum_site">{{ practicum_site }}</span></div>
+      </div>
+      <div>
+        <div class="field-label">Date:</div>
+        <div class="input-area"><span data-field="date_reviewed">{{ date_reviewed }}</span></div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+      <div>
+        <div class="field-label">Preceptor:</div>
+        <div class="input-area"><span data-field="preceptor_name">{{ preceptor_name }}</span></div>
+      </div>
+      <div>
+        <div class="field-label">Project Title:</div>
+        <div class="input-area"><span data-field="project_title">{{ project_title }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-heading">Section 1: Overview of your project</div>
+  <div class="instruction">Briefly describe your project(s) including purpose and expected product (~200 words)</div>
+  <div class="input-area" style="min-height: 100px;"><span data-field="project_description">{{ project_description }}</span></div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="header-logo">UNE Online</div>
+    <div class="sub-header">UNIVERSITY OF NEW ENGLAND</div>
+  </div>
+  <div class="section-heading">Section 2: Goals and Objectives</div>
+  <div class="instruction">(See the handbook for an example)</div>
+  <div class="instruction">List your goals for the Practicum Experience. Goals should include what you want to achieve by the end of the practicum experience. There should be only one goal for each project. If you have a second project, please add an additional goal.</div>
+  <div class="instruction">For each goal, list 1-3 objectives. Objectives should be measurable and may include specific deliverables that you will be working on as part of your Practicum Experience. Include a date for the completion of each objective.</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Goal</th>
+        <th>Objectives</th>
+        <th>Tasks</th>
+        <th>Completion Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in goals %}
+      <tr>
+        <td><span data-field="goals[{{ loop.index0 }}].goal_description">{{ item.goal_description }}</span></td>
+        <td>
+          {% for objective in item.objectives %}
+            <div style="margin-bottom: 10px;">
+              <span data-field="goals[{{ loop.index0 }}].objectives[{{ loop.index0 }}.{{ objective.id }}].objective_description">{{ objective.objective_description }}</span>
+              <span data-field="goals[{{ loop.index0 }}].objectives[{{ loop.index0 }}.{{ objective.id }}].completion_date">{{ objective.completion_date }}</span>
+            </div>
+          {% endfor %}
+        </td>
+        <td><span data-field="goals[{{ loop.index0 }}].tasks">{{ item.tasks }}</span></td>
+        <td><span data-field="goals[{{ loop.index0 }}].completion_date">{{ item.goal_completion_date }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="header-logo">UNE Online</div>
+    <div class="sub-header">UNIVERSITY OF NEW ENGLAND</div>
+  </div>
+  <div class="section-heading">Section 3: Data</div>
+  <div class="instruction">The Practicum Experience is intended to provide students with an opportunity to learn professional responsibility as well as health informatics skills. To facilitate this, it is important for the preceptor to have a discussion with the student to clarify expectations, rules, and regulations that govern the activities the student will be performing on behalf of the host organization. The following questions should be completed jointly with the preceptor and student.</div>
+
+  <div style="margin-top: 30px;">
+    <p>A. Human Subjects Research (<a href="http://www.une.edu/research/compliance/irb/index.cfm" style="color: blue;">http://www.une.edu/research/compliance/irb/index.cfm</a>)</p>
+    <p>Does the project entail research involving human subjects and/or use if identifiable data?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="human_subjects_research_yes_no">{{ human_subjects_research_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>If yes, has the project been reviewed and approved by the appropriate Institutional Review Board?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="irb_approved_yes_no">{{ irb_approved_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>B. Access to and Use of Data</p>
+    <p>Will the student use data supplied by the host organization?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="use_host_data_yes_no">{{ use_host_data_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>If yes, describe the source and format of the data. Will the student have access to identifiable information? Be specific.</p>
+    <div class="input-area" style="min-height: 50px;"><span data-field="data_source_description">{{ data_source_description }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Will the student generate data for the host organization?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="generate_host_data_yes_no">{{ generate_host_data_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>If yes, what data will be collected? How will it be collected? Be specific.</p>
+    <div class="input-area" style="min-height: 50px;"><span data-field="generated_data_details">{{ generated_data_details }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Does the preceptor have authority to grant student use of data?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="preceptor_authority_yes_no">{{ preceptor_authority_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>May the student take the data offsite from the agency/organization?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="offsite_data_allowed_yes_no">{{ offsite_data_allowed_yes_no }}</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="header-logo">UNE Online</div>
+    <div class="sub-header">UNIVERSITY OF NEW ENGLAND</div>
+  </div>
+  <div class="instruction">Will the student be allowed to report the data or the results of their analysis in a final report or Capstone?</div>
+  <div class="input-area" style="min-height: 1em;"><span data-field="report_results_allowed_yes_no">{{ report_results_allowed_yes_no }}</span></div>
+
+  <div style="margin-top: 30px;">
+    <p>Have confidentiality issues and data use restrictions been discussed with the student?</p>
+    <div class="input-area" style="min-height: 1em;"><span data-field="confidentiality_discussed_yes_no">{{ confidentiality_discussed_yes_no }}</span></div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p>I have read and approved the project described above:</p>
+    <div class="signature-line">
+      <div>
+        <div class="field-label">Preceptor Signature:</div>
+        <div class="input-area" style="width: 40%;" data-field="preceptor_signature">{{ preceptor_signature }}</div>
+        <div style="margin-top: 20px;">Date: <span data-field="preceptor_signature_date">{{ preceptor_signature_date }}</span></div>
+      </div>
+      <div>
+        <div class="field-label">Course Instructor:</div>
+        <div class="input-area" style="width: 40%;" data-field="course_instructor">{{ course_instructor }}</div>
+        <div style="margin-top: 20px;">Date: <span data-field="instructor_signature_date">{{ instructor_signature_date }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">Version 9/22/17</div>
+  <div style="text-align: right; font-size: 10pt; margin-top: 50px;">Version 3/9/17</div>
+</div>
+
+</body>
+</html>

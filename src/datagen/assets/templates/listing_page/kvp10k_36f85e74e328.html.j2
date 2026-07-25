@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for document feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  body { margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div style="font-size: 24px; font-weight: bold;">eBay</div>
+    <div style="text-align: right;">
+      <span style="font-size: 12px;">Site Map</span>
+    </div>
+  </header>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="font-size: 14px;">
+      <span data-field="item_title">{{ item_title }}</span>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Search</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Advanced Search</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Buy</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Sell</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">My eBay</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Community</button>
+      <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9;">Help</button>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="font-size: 14px;">
+      <a href="#" style="text-decoration: none; color: #000;">Back to list of items</a>
+    </div>
+    <div style="font-size: 12px; margin-top: 5px;">
+      Listed in category: <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span>
+      <br>
+      Also listed in: <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span> > <span data-field="category_link">{{ category_link }}</span>
+    </div>
+  </div>
+
+  <h1 style="font-size: 22px; margin-bottom: 10px;">
+    <span data-field="item_title">{{ item_title }}</span>
+  </h1>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="font-size: 14px;">
+      Item number: <span data-field="item_number">{{ item_number }}</span>
+    </div>
+    <div style="font-size: 14px;">
+      <a href="#" style="text-decoration: none;">Watch this item</a> in My eBay
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 40px;">
+    <!-- Left Column: Image -->
+    <div style="flex: 1;">
+      <img src="placeholder_image.jpg" alt="Item Image" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+      <div style="margin-top: 10px;">
+        <a href="#" style="text-decoration: none;">View larger picture</a>
+      </div>
+    </div>
+
+    <!-- Right Column: Seller Info & Bidding -->
+    <div style="flex: 1;">
+      <h2 style="font-size: 18px; margin-bottom: 15px;">Meet the seller</h2>
+      <div style="margin-bottom: 15px;">
+        <p style="margin: 5px 0;">Seller: <span data-field="seller_name">{{ seller_name }}</span> (<span data-field="seller_rating">{{ seller_rating }}</span>) <span style="font-size: 10px;">★</span></p>
+        <p style="margin: 5px 0;">Feedback: <span data-field="feedback_score">{{ feedback_score }}</span></p>
+        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+          <li>Member since: <span data-field="member_since">{{ member_since }}</span> in <span data-field="location">{{ location }}</span></li>
+          <li><a href="#">Read feedback comments</a></li>
+          <li><a href="#">Ask seller a question</a></li>
+          <li><a href="#">Add to Favorite Sellers</a></li>
+          <li><a href="#">View seller's other items</a></li>
+        </ul>
+      </div>
+
+      <h2 style="font-size: 18px; margin-bottom: 15px;">Buy safely</h2>
+      <div style="margin-bottom: 15px;">
+        <p style="margin: 5px 0;">1. Check the seller's reputation</p>
+        <p style="margin: 5px 0;">Score: <span data-field="seller_score">{{ seller_score }}</span> | <span data-field="feedback_percentage">{{ feedback_percentage }}</span></p>
+        <p style="margin: 5px 0;"><a href="#">Read feedback comments</a></p>
+        <p style="margin: 5px 0;">2. Check how you're protected</p>
+        <p style="margin: 5px 0;">PayPal Up to <span data-field="paypal_limit">{{ paypal_limit }}</span> in buyer protection.</p>
+        <p style="margin: 5px 0;"><a href="#">See eligibility.</a></p>
+      </div>
+
+      <!-- Bidding/Purchase Info -->
+      <div style="border-top: 1px solid #eee; padding-top: 15px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">Starting bid:</div>
+          <div style="font-size: 14px; font-weight: bold;"><span data-field="starting_price">{{ starting_price }}</span></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">Place Bid ></div>
+          <div style="font-size: 14px;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">End time:</div>
+          <div style="font-size: 14px;"><span data-field="end_time">{{ end_time }}</span> (<span data-field="duration">{{ duration }}</span>)</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">Shipping costs:</div>
+          <div style="font-size: 14px;"><span data-field="shipping_cost">{{ shipping_cost }}</span> (<span data-field="shipping_details">{{ shipping_details }}</span>)</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">Ships to:</div>
+          <div style="font-size: 14px;"><span data-field="shipping_destination">{{ shipping_destination }}</span></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">Item location:</div>
+          <div style="font-size: 14px;"><span data-field="item_location">{{ item_location }}</span></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="font-size: 14px;">History:</div>
+          <div style="font-size: 14px;"><span data-field="bids_count">{{ bids_count }}</span></div>
+        </div>
+        <div style="margin-top: 20px;">
+          <p style="font-size: 14px;">You can also:</p>
+          <p style="font-size: 14px;"><a href="#">Get mobile or IM alerts</a> | <a href="#">Email to a friend</a></p>
+          <button style="padding: 5px 10px; border: 1px solid #ccc; background-color: #f9f9f9; margin-top: 10px;">Watch This Item</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+    <h2 style="font-size: 16px;">Listing and payment details:</h2>
+    <p style="font-size: 14px;">Show</p>
+  </div>
+</div>
+
+<div class="page">
+  <header style="font-size: 12px; text-align: right; margin-bottom: 30px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </header>
+
+  <h2 style="font-size: 18px; margin-bottom: 20px;">Description</h2>
+
+  <div style="font-size: 14px; line-height: 1.6;">
+    <p>Here's an old envelope, which also has a letter with it. The envelope has a postmark for <span data-field="postmark_location">{{ postmark_location }}</span></p>
+    <p>It's addressed to <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    <p>The enclosure consists of a one page letter written by <span data-field="sender_name">{{ sender_name }}</span>.</p>
+    <p>The headline is <span data-field="headline_location">{{ headline_location }}</span></p>
+
+    <div style="border: 1px solid #ccc; padding: 15px; margin: 20px 0;">
+      <p style="font-size: 14px; line-height: 1.6;">From his Congressional biography: "<span data-field="biography_excerpt">{{ biography_excerpt }}</span></p>
+    </div>
+
+    <p>Some abstracts:</p>
+    <p>"<span data-field="abstract_quote">{{ abstract_quote }}</span>"</p>
+    <p>"<span data-field="abstract_quote_2">{{ abstract_quote_2 }}</span>"</p>
+  </div>
+</div>
+
+<div class="page">
+  <header style="font-size: 12px; text-align: right; margin-bottom: 30px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </header>
+
+  <div style="font-size: 14px; line-height: 1.6;">
+    <p>"<span data-field="letter_excerpt_1">{{ letter_excerpt_1 }}</span>"</p>
+    <p>"<span data-field="letter_excerpt_2">{{ letter_excerpt_2 }}</span>"</p>
+    <p>Condition of the letter rates good. I hope the scan gives you a general idea of the condition.</p>
+
+    <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Terms and conditions:</h3>
+    <ul style="list-style-type: disc; padding-left: 20px; font-size: 14px;">
+      <li>Shipping for a single cover or letter is <span data-field="shipping_price_single">{{ shipping_price_single }}</span> in US; worldwide <span data-field="shipping_price_worldwide">{{ shipping_price_worldwide }}</span>. Save on postage on multiple purchases. Packages with value over $50.00 require insurance. $50.00 to $100.00 the fee is 2.30, actual cost. Not responsible for lost or uninsured packages.</li>
+      <li>Unconditionally guaranteed authentic. Member American Philatelic Society.</li>
+      <li>Money order or cashier's check ships within 24 hours. Personal checks require 7 days to clear unless you've purchased from me before. PayPal is fine. Thank you for sending payment within 10 days.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 40px; text-align: center;">
+    <p style="font-size: 12px;">On Sep-04-07 at 18:19:39 PDT, seller added the following information:</p>
+    <div style="font-size: 24px; margin: 15px 0;">000005</div>
+    <p style="font-size: 12px;">Use the FREE Counters 1 million sellers do - Vendio!</p>
+  </div>
+</div>
+
+<div class="page">
+  <header style="font-size: 12px; text-align: right; margin-bottom: 30px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </header>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_image_1.jpg" alt="Item Image 1" style="max-width: 300px; height: auto; border: 1px solid #ccc;">
+    <img src="placeholder_image_2.jpg" alt="Item Image 2" style="max-width: 300px; height: auto; border: 1px solid #ccc; margin-left: 20px;">
+  </div>
+
+  <h2 style="font-size: 18px; margin-bottom: 20px;">Shipping and handling</h2>
+
+  <div style="font-size: 14px; line-height: 1.6;">
+    <p>Free shipping for each additional eligible item you buy from <span data-field="seller_name">{{ seller_name }}</span>!</p>
+
+    <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Ships to</h3>
+    <p>Worldwide</p>
+
+    <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Country:</h3>
+    <p><span data-field="shipping_country">{{ shipping_country }}</span></p>
+
+    <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Shipping and Handling</h3>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background-color: #f0f0f0;">
+          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">To</th>
+          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">Service</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ccc;"><span data-field="shipping_to_location">{{ shipping_to_location }}</span></td>
+          <td style="padding: 10px; border: 1px solid #ccc;"><span data-field="shipping_service">{{ shipping_service }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Negotiation Agreement</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; font-size: 11px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Page 1 */
+  .header-block {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .header-logo {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #555;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+  .header-center {
+    flex: 1;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .header-center .dept-name {
+    font-weight: bold;
+    font-size: 12px;
+    color: #1a3a6b;
+    letter-spacing: 0.5px;
+  }
+  .header-center .dept-sub {
+    font-size: 10px;
+    color: #1a3a6b;
+    line-height: 1.5;
+  }
+  .agreement-date {
+    text-align: right;
+    font-size: 11px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+  .title-section {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 8px 0 6px 0;
+    letter-spacing: 0.5px;
+  }
+  hr.thick { border: none; border-top: 1.5px solid #000; margin: 4px 0; }
+  hr.thin { border: none; border-top: 0.5px solid #000; margin: 4px 0; }
+
+  .institution-block {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0 10px 0;
+  }
+  .institution-label {
+    font-size: 11px;
+    width: 120px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .institution-value {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .intro-text {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .section-header {
+    font-weight: bold;
+    font-size: 11.5px;
+    margin: 6px 0 4px 0;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+  }
+
+  .rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-top: 4px;
+  }
+  .rates-table th {
+    text-align: left;
+    font-weight: normal;
+    text-decoration: underline;
+    padding: 2px 4px;
+    white-space: nowrap;
+  }
+  .rates-table td {
+    padding: 1px 4px;
+    white-space: nowrap;
+  }
+  .rates-table .group-header td {
+    font-style: normal;
+    text-decoration: underline;
+    padding-top: 4px;
+    font-size: 10.5px;
+  }
+  .col-type { width: 50px; }
+  .col-from { width: 55px; }
+  .col-to   { width: 60px; }
+  .col-rate { width: 55px; }
+  .col-base { width: 45px; }
+  .col-loc  { width: 90px; }
+  .col-app  { width: auto; }
+
+  .page-num {
+    text-align: center;
+    font-style: italic;
+    font-size: 10.5px;
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+  }
+
+  /* Page 2 */
+  .dist-base-title {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 11.5px;
+    font-weight: normal;
+    margin-bottom: 6px;
+  }
+  .dist-base-text {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  .applicable-title {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 11.5px;
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+  .applicable-text {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+  .section2-header {
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    margin: 10px 0 8px 0;
+  }
+  .clause {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  .clause-label {
+    font-weight: bold;
+  }
+
+  /* Page 3 */
+  .clause-continued {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  .special-remarks-list {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+  .special-remarks-list li {
+    margin-bottom: 6px;
+    text-align: justify;
+  }
+  .accepted-block {
+    margin-top: 10px;
+    font-size: 11px;
+  }
+  .sig-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+  .sig-col {
+    width: 48%;
+  }
+  .sig-col-label {
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 20px;
+  }
+  .sig-line {
+    border-bottom: 1px solid #000;
+    height: 36px;
+    margin-bottom: 4px;
+    width: 90%;
+  }
+  .sig-name {
+    font-size: 11px;
+    font-weight: normal;
+  }
+  .sig-title {
+    font-size: 11px;
+  }
+  .date-line {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+  }
+  .date-label {
+    font-size: 11px;
+    margin-right: 6px;
+  }
+  .date-value-line {
+    border-bottom: 1px solid #000;
+    width: 160px;
+    height: 20px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2px;
+    font-size: 11px;
+  }
+  .contact-block {
+    margin-top: 14px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .contact-block .contact-title {
+    font-style: italic;
+  }
+  .contact-row {
+    display: flex;
+    gap: 30px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="header-block">
+    <div class="header-logo">[SEAL]</div>
+    <div class="header-center">
+      <div class="dept-name"><span data-field="agency.department">{{ agency.department }}</span></div>
+      <div class="dept-sub">
+        <span data-field="agency.office">{{ agency.office }}</span><br>
+        <span data-field="agency.street">{{ agency.street }}</span><br>
+        <span data-field="agency.suite">{{ agency.suite }}</span><br>
+        <span data-field="agency.city_state_zip">{{ agency.city_state_zip }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="agreement-date">Agreement Date: <span data-field="agreement_date">{{ agreement_date }}</span></div>
+
+  <hr class="thin">
+  <div class="title-section">NEGOTIATION AGREEMENT</div>
+  <hr class="thick">
+
+  <div class="institution-block">
+    <div class="institution-label">INSTITUTION:</div>
+    <div class="institution-value">
+      <span data-field="institution.name">{{ institution.name }}</span><br>
+      <span data-field="institution.city_state_zip">{{ institution.city_state_zip }}</span>
+    </div>
+  </div>
+
+  <div class="intro-text">
+    <span data-field="intro_paragraph">{{ intro_paragraph }}</span>
+  </div>
+
+  <div class="section-header">Section I:&nbsp; RATES - TYPE:&nbsp; PREDETERMINED (PRED)</div>
+
+  <table class="rates-table">
+    <thead>
+      <tr>
+        <th class="col-type">TYPE</th>
+        <th class="col-from">FROM</th>
+        <th class="col-to">TO</th>
+        <th class="col-rate">RATE</th>
+        <th class="col-base">BASE</th>
+        <th class="col-loc">LOCATION</th>
+        <th class="col-app">APPLICABLE TO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for group in rate_groups %}
+      <tr class="group-header">
+        <td colspan="7"><span data-field="rate_groups[{{ loop.index0 }}].group_name">{{ group.group_name }}</span></td>
+      </tr>
+      {% for row in group.rows %}
+      <tr>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].type">{{ row.type }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].from_date">{{ row.from_date }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].to_date">{{ row.to_date }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].rate">{{ row.rate }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].base">{{ row.base }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].location">{{ row.location }}</span></td>
+        <td><span data-field="rate_groups[{{ loop.index0 }}].rows[{{ loop.index0 }}].applicable_to">{{ row.applicable_to }}</span></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-num">Page 1 of 3</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="dist-base-title">DISTRIBUTION BASE</div>
+  <div class="dist-base-text">
+    <span data-field="distribution_base_text">{{ distribution_base_text }}</span>
+  </div>
+
+  <div class="applicable-title">APPLICABLE TO:</div>
+  <div class="applicable-text">
+    <span data-field="applicable_to_text_1">{{ applicable_to_text_1 }}</span>
+  </div>
+  <div class="applicable-text">
+    <span data-field="applicable_to_text_2">{{ applicable_to_text_2 }}</span>
+  </div>
+
+  <hr class="thick" style="margin-top:10px;">
+  <div class="section2-header">SECTION II:&nbsp; GENERAL TERMS AND CONDITIONS</div>
+
+  <div class="clause">
+    <span class="clause-label">A. LIMITATIONS:</span> <span data-field="clause_a_text">{{ clause_a_text }}</span>
+  </div>
+
+  <div class="clause">
+    <span class="clause-label">B. ACCOUNTING CHANGES:</span> <span data-field="clause_b_text">{{ clause_b_text }}</span>
+  </div>
+
+  <div class="clause">
+    <span class="clause-label">C. PREDETERMINED RATES:</span> <span data-field="clause_c_text">{{ clause_c_text }}</span>
+  </div>
+
+  <div class="clause">
+    <span class="clause-label">D. USE BY OTHER FEDERAL AGENCIES:</span> <span data-field="clause_d_text">{{ clause_d_text }}</span>
+  </div>
+
+  <div class="page-num">Page 2 of 3</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="clause-continued">
+    <span data-field="clause_d_continued">{{ clause_d_continued }}</span>
+  </div>
+
+  <div class="clause">
+    <span class="clause-label">E. DFARS WAIVER:</span> <span data-field="clause_e_text">{{ clause_e_text }}</span>
+  </div>
+
+  <div class="clause">
+    <span class="clause-label">F. APPLICATION OF INDIRECT COST RATES TO DOD CONTRACTS/SUBCONTRACTS:</span> <span data-field="clause_f_text">{{ clause_f_text }}</span>
+  </div>
+
+  <div class="clause" style="margin-bottom:4px;">
+    <span class="clause-label">G. SPECIAL REMARKS:</span>
+  </div>
+  <ol class="special-remarks-list">
+    {% for remark in special_remarks %}
+    <li><span data-field="special_remarks[{{ loop.index0 }}]">{{ remark }}</span></li>
+    {% endfor %}
+  </ol>
+
+  <div class="accepted-block">Accepted:</div>
+  <div class="sig-columns">
+    <div class="sig-col">
+      <div class="sig-col-label">FOR <span data-field="institution_short_name">{{ institution_short_name }}</span>:</div>
+      <div class="sig-line"></div>
+      <div class="sig-name"><span data-field="institution_signatory.name">{{ institution_signatory.name }}</span></div>
+      <div class="sig-title"><span data-field="institution_signatory.title">{{ institution_signatory.title }}</span></div>
+      <div class="date-line">
+        <span class="date-label">Date</span>
+        <div class="date-value-line"><span data-field="institution_signatory.date">{{ institution_signatory.date }}</span></div>
+      </div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-col-label">FOR THE U.S. GOVERNMENT:</div>
+      <div class="sig-line"></div>
+      <div class="sig-name"><span data-field="government_signatory.name">{{ government_signatory.name }}</span></div>
+      <div class="sig-title"><span data-field="government_signatory.title">{{ government_signatory.title }}</span></div>
+      <div class="date-line">
+        <span class="date-label">Date</span>
+        <div class="date-value-line"><span data-field="government_signatory.date">{{ government_signatory.date }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-block">
+    <div class="contact-title">For information concerning this agreement contact:</div>
+    <div class="contact-row">
+      <div>
+        <span data-field="contact.name_title">{{ contact.name_title }}</span><br>
+        <span data-field="contact.office">{{ contact.office }}</span>
+      </div>
+      <div>
+        Phone: <span data-field="contact.phone">{{ contact.phone }}</span><br>
+        E-mail: <span data-field="contact.email">{{ contact.email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">Page 3 of 3</div>
+</div>
+
+</body>
+</html>

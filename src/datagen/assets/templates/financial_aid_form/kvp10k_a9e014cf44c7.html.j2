@@ -1,0 +1,172 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .address-block { font-size: 12px; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+        <div>
+            <h1 style="font-size: 24px; margin: 0;">FAU</h1>
+        </div>
+        <div style="text-align: right;">
+            <h2 style="font-size: 16px; margin: 0;">Florida Atlantic University</h2>
+            <h3 style="font-size: 14px; margin: 2px 0;">Office of Student Financial Aid</h3>
+            <h3 style="font-size: 14px; margin: 2px 0;">Housing Status Revision Request Budget Change</h3>
+            <h3 style="font-size: 14px; margin: 2px 0;">202<span data-field="year">{{ year }}</span> Academic Year</h3>
+            <h3 style="font-size: 14px; margin: 2px 0;">FORM: REVBUD</h3>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+        <div style="width: 30%;">
+            <div class="address-block">
+                <p>Boca Campus</p>
+                <p><span data-field="street_address_1">{{ street_address_1 }}</span></p>
+                <p><span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+                <p>Tel: <span data-field="phone_number">{{ phone_number }}</span></p>
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <div class="address-block">
+                <p>Davie Campus</p>
+                <p><span data-field="street_address_1">{{ street_address_1 }}</span></p>
+                <p><span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+                <p>Tel: <span data-field="phone_number">{{ phone_number }}</span></p>
+                <p>Website: <a href="{{ website_url }}">{{ website_url }}</a></p>
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <div class="address-block">
+                <p>Jupiter Campus</p>
+                <p>Office of Financial Aid - SR 139</p>
+                <p><span data-field="street_address_1">{{ street_address_1 }}</span></p>
+                <p><span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+                <p>Tel: <span data-field="phone_number">{{ phone_number }}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 30%; padding-top: 15px;">Name:</td>
+            <td style="width: 70%;"><span data-field="full_name">{{ full_name }}</span></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><span data-field="address">{{ address }}</span></td>
+        </tr>
+    </table>
+
+    <table style="width: 100%; margin-top: 30px;">
+        <tr>
+            <td style="width: 30%;">FAU Z NUMBER:</td>
+            <td style="width: 70%;"><span data-field="fau_z_number">{{ fau_z_number }}</span></td>
+        </tr>
+        <tr>
+            <td>TELEPHONE:</td>
+            <td><span data-field="phone_number_contact">{{ phone_number_contact }}</span></td>
+        </tr>
+        <tr>
+            <td>FAU EMAIL:</td>
+            <td><span data-field="email_address">{{ email_address }}</span></td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 40px;">
+        <p style="font-weight: bold;">IMPORTANT:</p>
+        <p>This form must be completed (including any attachments) and submitted to Financial Aid immediately, but no later than:</p>
+        <p>August 21, 2021 for Fall 2021</p>
+        <p>January 8, 2022 for Spring 2022</p>
+        <p>May 14, 2022 for Summer 2022</p>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p style="font-weight: bold;">Instructions:</p>
+        <p>Select the option that describes your change in housing. Sign and submit this form to the Office of Student Financial Aid.</p>
+        <p>My housing plans for the 2021-2022 academic year have changed from what I originally indicated when I completed the Free Application for Federal Student Aid (FAFSA).</p>
+        <div style="margin-top: 15px;">
+            <input type="checkbox" id="option1" name="option1"> <label for="option1">I will NOT be living with my parents and instead (check the applicable box below):</label>
+            <div style="margin-left: 20px;">
+                <input type="checkbox" id="option1a" name="option1a"> <label for="option1a">I will be living in a FAU Residence Hall</label><br>
+                <input type="checkbox" id="option1b" name="option1b"> <label for="option1b">I will be living Off Campus</label>
+            </div>
+        </div>
+        <div style="margin-top: 15px;">
+            <input type="checkbox" id="option2" name="option2"> <label for="option2">I will be living with my parents.</label>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p style="font-weight: bold;">This change is effective (check one):</p>
+        <input type="checkbox" id="check1" name="check1"> <label for="check1">Fall 2021</label>
+        <input type="checkbox" id="check2" name="check2"> <label for="check2">Spring 2022</label>
+        <input type="checkbox" id="check3" name="check3"> <label for="check3">Summer 2022</label>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p style="font-weight: bold;">Required Documentation:</p>
+        <ul>
+            <li>Copy of FAU Housing Assignment or Letter from Housing is required if your plan is to live in the residence hall or campus apartments.</li>
+            <li>Copy of apartment lease, mortgage statement or a letter from your landlord is required if you plan to live Off Campus.</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p style="font-weight: bold;">By signing below, I certify that the information reported above is complete and correct:</p>
+    </div>
+
+    <table style="width: 100%; margin-top: 40px;">
+        <tr>
+            <td style="width: 50%;">Student Signature</td>
+            <td style="width: 50%;">Date</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 50px;">
+        <h3 style="font-weight: bold;">FINANCIAL AID USE ONLY</h3>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 33%;">Budget Adjustment Completed:</td>
+                <td style="width: 33%;"><input type="checkbox"> Approved</td>
+                <td style="width: 33%;"><input type="checkbox"> Denied</td>
+            </tr>
+            <tr>
+                <td style="width: 33%;"></td>
+                <td style="width: 33%;"></td>
+                <td style="width: 33%;"><input type="checkbox"> Documentation Required</td>
+            </tr>
+        </table>
+    </div>
+
+    <table style="width: 100%; margin-top: 50px;">
+        <tr>
+            <td style="width: 50%;">Counselor Signature</td>
+            <td style="width: 50%;">Date</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div style="text-align: right; font-size: 10px; margin-top: 20px;">
+        Revised: 02/25/21
+    </div>
+</div>

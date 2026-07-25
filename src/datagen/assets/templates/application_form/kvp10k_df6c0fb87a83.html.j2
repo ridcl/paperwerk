@@ -1,0 +1,188 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 0.5em; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { width: 48%; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table th, .line-item-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .signature-row { display: flex; justify-content: space-between; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <!-- Header Area (Logo/Title Area) -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <!-- Placeholder for Logo/Seal -->
+      <div style="font-size: 40px;">[Logo Placeholder]</div>
+    </div>
+    <div style="text-align: right;">
+      <p>Student Financial Aid Office</p>
+      <p>1000 Seventeenth Avenue North</p>
+      <p>Nashville, Tennessee 37208</p>
+      <p>Main: {{ contact.main_phone }}</p>
+      <p>Fax: {{ contact.fax_phone }}</p>
+      <p>Web: <a href="#">{{ contact.website }}</a></p>
+    </div>
+  </div>
+
+  <!-- Main Title -->
+  <h1 style="text-align: center; font-size: 18pt; margin-bottom: 20px;">2021-2022 DEPENDENT CONSIDERATION IN HOUSEHOLD</h1>
+
+  <!-- Instructions Box -->
+  <div style="border: 1px solid #000; padding: 20px; margin-bottom: 30px;">
+    <p style="font-weight: bold;">INSTRUCTIONS:</p>
+    <p>Upon review, the inclusion of one of you/your parent(s)'s** dependents as part of your household may or may not be considered. Fill out this form only if you indicated on the Verification Worksheet that you and/or your parent(s) are providing at least half support for this person.</p>
+  </div>
+
+  <!-- A. STUDENT INFORMATION -->
+  <div class="section-header">A. STUDENT INFORMATION</div>
+  <div class="form-row">
+    <div>
+      Student Name: <span data-field="student_info.full_name">{{ student_info.full_name }}</span>
+    </div>
+    <div>
+      Student ID Number: <span data-field="student_info.id_number">{{ student_info.id_number }}</span>
+    </div>
+  </div>
+  <div class="form-row">
+    <div>
+      SSN (last four): <span data-field="student_info.ssn_last_four">{{ student_info.ssn_last_four }}</span>
+    </div>
+    <div>
+      Phone Number: <span data-field="student_info.phone_number">{{ student_info.phone_number }}</span>
+    </div>
+  </div>
+
+  <!-- B. ADDITIONAL DEPENDENT(S) -->
+  <div class="section-header">B. ADDITIONAL DEPENDENT(S)</div>
+  <div class="form-row">
+    <div>
+      Dependent's Name: <span data-field="dependent_info.full_name">{{ dependent_info.full_name }}</span>
+    </div>
+    <div>
+      Relationship to you/your parent(s): <span data-field="dependent_info.relationship">{{ dependent_info.relationship }}</span>
+    </div>
+  </div>
+
+  <!-- Reason for Support -->
+  <div style="margin-top: 20px;">
+    <p>1. Reason that this person lives with you/your parent(s)** and why you/your parent(s)** are supporting them:</p>
+    <div style="border: 1px solid #000; height: 80px; padding: 10px; margin-top: 5px;">
+      <span data-field="dependent_info.reason_for_support">{{ dependent_info.reason_for_support }}</span>
+    </div>
+  </div>
+
+  <!-- Income Declaration -->
+  <div style="margin-top: 30px;">
+    <p>2. Does this person have any income? <span data-field="income_declaration.has_income">{{ income_declaration.has_income }}</span> Yes <span data-field="income_declaration.has_income_no">{{ income_declaration.has_income_no }}</span> No</p>
+
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <th style="width: 60%;">Type of Income</th>
+          <th style="width: 20%; text-align: right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wages</td>
+          <td style="text-align: right;"><span data-field="dependent_income.wages_amount">{{ dependent_income.wages_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Social Security</td>
+          <td style="text-align: right;"><span data-field="dependent_income.ss_amount">{{ dependent_income.ss_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Retirement</td>
+          <td style="text-align: right;"><span data-field="dependent_income.retirement_amount">{{ dependent_income.retirement_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>TANF Benefits</td>
+          <td style="text-align: right;"><span data-field="dependent_income.tanf_amount">{{ dependent_income.tanf_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Disability</td>
+          <td style="text-align: right;"><span data-field="dependent_income.disability_amount">{{ dependent_income.disability_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Other</td>
+          <td style="text-align: right;"><span data-field="dependent_income.other_amount">{{ dependent_income.other_amount }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tax Return Declaration -->
+  <div style="margin-top: 30px;">
+    <p>3. Did this person file a 2019 Federal Income Tax Return? <span data-field="tax_return_declaration.filed">{{ tax_return_declaration.filed }}</span> Yes <span data-field="tax_return_declaration.not_filed">{{ tax_return_declaration.not_filed }}</span> No</p>
+    <p>(If Yes, attach a copy of their IRS Tax Return Transcript)</p>
+  </div>
+
+  <!-- Support Type Declaration -->
+  <div style="margin-top: 30px;">
+    <p>4. Type of support you and/or your parent(s)** provide for this person:</p>
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <th style="width: 60%;">Type of Support</th>
+          <th style="width: 20%; text-align: right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rent</td>
+          <td style="text-align: right;"><span data-field="support_type.rent_amount">{{ support_type.rent_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Car Insurance</td>
+          <td style="text-align: right;"><span data-field="support_type.car_insurance_amount">{{ support_type.car_insurance_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Car Payment</td>
+          <td style="text-align: right;"><span data-field="support_type.car_payment_amount">{{ support_type.car_payment_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Utilities</td>
+          <td style="text-align: right;"><span data-field="support_type.utilities_amount">{{ support_type.utilities_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Clothing</td>
+          <td style="text-align: right;"><span data-field="support_type.clothing_amount">{{ support_type.clothing_amount }}</span></td>
+        </tr>
+        <tr>
+          <td>Food</td>
+          <td style="text-align: right;"><span data-field="support_type.food_amount">{{ support_type.food_amount }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Signatures -->
+  <div class="signature-row">
+    <div>
+      <p>Student</p>
+      <p>Print Name: <span data-field="signature_student.print_name">{{ signature_student.print_name }}</span></p>
+      <p>Signature: <span data-field="signature_student.signature">{{ signature_student.signature }}</span></p>
+      <p>Date: <span data-field="signature_student.date">{{ signature_student.date }}</span></p>
+    </div>
+    <div>
+      <p>**Parent</p>
+      <p>Print Name: <span data-field="signature_parent.print_name">{{ signature_parent.print_name }}</span></p>
+      <p>Signature: <span data-field="signature_parent.signature">{{ signature_parent.signature }}</span></p>
+      <p>Date: <span data-field="signature_parent.date">{{ signature_parent.date }}</span></p>
+    </div>
+  </div>
+
+  <!-- Footer Note -->
+  <p style="margin-top: 50px; font-size: 10pt;">**Parent information is required for dependent students only. Independent students should only report their own information.</p>
+</div>

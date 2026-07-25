@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Motors and Drives Selection Guide</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 100%;">
+      <h1 style="font-size: 24pt; margin-bottom: 5px;">ABB MOTORS AND DRIVES</h1>
+      <h2 style="font-size: 28pt; margin-top: 0;">Motors and drives matched pairings for plastic extruders</h2>
+      <h3 style="font-size: 18pt; margin-top: 5px;">Quick selection guide for ACS880 Drives & RPMAC motors</h3>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="ABB Logo" style="width: 150px;">
+    </div>
+  </div>
+
+  <div style="display: flex; margin-top: 50px; gap: 40px;">
+    <div style="flex: 1;">
+      <img src="placeholder_machine.png" alt="Machine Diagram" style="width: 100%; height: auto;">
+    </div>
+    <div style="flex: 1.5; padding-left: 40px;">
+      <p style="font-size: 12pt; line-height: 1.6;">ABB supplies a broad portfolio of drives and motors that provide best-in-class energy efficiency, enable fast machine setup and deliver high torque right down to zero speed.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p style="font-size: 14pt; font-weight: bold;">Flexibility. Dependability. Efficiency. Everything counts.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-around; margin-top: 80px;">
+    <div style="text-align: center; width: 30%;">
+      <img src="placeholder_icon_reliable.png" alt="Reliable Icon" style="width: 60px; margin-bottom: 10px;">
+      <h4 style="font-size: 14pt; margin-bottom: 5px;">Reliable starting</h4>
+      <p style="font-size: 10pt; line-height: 1.4;">During start-up, an application requires high torque from zero speed to overcome the friction of the material. Baldor-Reliance® RPM AC motors can deliver full torque from zero when paired with ACS880 drives with Direct Torque Control (DTC) technology.</p>
+    </div>
+    <div style="text-align: center; width: 30%;">
+      <img src="placeholder_icon_quality.png" alt="Quality Icon" style="width: 60px; margin-bottom: 10px;">
+      <h4 style="font-size: 14pt; margin-bottom: 5px;">High quality extruding</h4>
+      <p style="font-size: 10pt; line-height: 1.4;">ABB's DTC technology provides highly accurate speed control in either open or closed loop.</p>
+    </div>
+    <div style="text-align: center; width: 30%;">
+      <img src="placeholder_icon_efficiency.png" alt="Efficiency Icon" style="width: 60px; margin-bottom: 10px;">
+      <h4 style="font-size: 14pt; margin-bottom: 5px;">High efficiency</h4>
+      <p style="font-size: 10pt; line-height: 1.4;">The combination of ABB motor technology with variable frequency drive control offers the highest package efficiency over the whole speed range. Compared to a conventional AC motor and drive, you can achieve a 2-4% reduction in energy consumption. As a result, the payback time for the RPM AC/ACS880 solution could be less than a year.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <h2 style="font-size: 18pt;">Extruder selection chart</h2>
+    <h3 style="font-size: 14pt;">ACS880 drives and RPM AC motors</h3>
+    <p style="font-size: 10pt; margin-bottom: 20px;">ABB has done the hard work of ensuring that our motors and drives work together to make your life easier.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 10%;">Hp</th>
+          <th style="width: 10%;">RPM</th>
+          <th style="width: 15%;">Enclosure</th>
+          <th style="width: 15%;">Frame</th>
+          <th style="width: 15%;">Catalog number</th>
+          <th style="width: 10%;">FLA</th>
+          <th style="width: 15%;">Motor</th>
+          <th style="width: 10%;">Wall Mount</th>
+          <th style="width: 10%;">Matching ACS880 drive</th>
+          <th style="width: 10%;">Cabinet (6-pulse)</th>
+          <th style="width: 10%;">Cabinet (ULH)</th>
+          <th style="width: 10%;">Matching ACS880 drive</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(10) %}
+        <tr>
+          <td><span data-field="table_data[{{ i }}].hp">{{ 10 + i * 10 }}</span></td>
+          <td><span data-field="table_data[{{ i }}].rpm">{{ 1800 - i * 100 }}</span></td>
+          <td><span data-field="table_data[{{ i }}].enclosure">{{ "TEFC" if i % 2 == 0 else "O" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].frame">{{ "F12" if i % 2 == 0 else "F10" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].catalog_number">{{ "1BDRPM" if i % 2 == 0 else "1BDRPM" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].fla">{{ "33" if i % 2 == 0 else "34" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].motor">{{ "ACS880-01-040A-S" if i % 2 == 0 else "ACS880-01-052A-S" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].wall_mount">{{ "S" if i % 2 == 0 else "S" }}</td>
+          <td><span data-field="table_data[{{ i }}].matching_acs880_drive_6pulse">{{ "ACS880-07-096A-S" if i % 2 == 0 else "ACS880-07-096A-S" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].cabinet_6pulse">{{ "ACS880-37-010A-S" if i % 2 == 0 else "ACS880-37-010A-S" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].cabinet_ulh">{{ "ACS880-37-010A-S" if i % 2 == 0 else "ACS880-37-010A-S" }}</span></td>
+          <td><span data-field="table_data[{{ i }}].matching_acs880_drive_ulh">{{ "ACS880-07-096A-S" if i % 2 == 0 else "ACS880-07-096A-S" }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 100px; display: flex; justify-content: space-between; font-size: 9pt;">
+    <div style="width: 30%;">
+      <p>ABB Inc.</p>
+      <p><span data-field="address.street">{{ "16250 W Glendale Blvd" }}</span></p>
+      <p><span data-field="address.city">{{ "New Wells, WI 53131" }}</span></p>
+      <p>Phone: <span data-field="phone">{{ "1-800-752-0596" }}</span></p>
+    </div>
+    <div style="width: 35%; text-align: center;">
+      <p>ABB Motors and Mechanical Inc.</p>
+      <p><span data-field="address.street">{{ "5711 S.R. Boreham, Jr. Street" }}</span></p>
+      <p><span data-field="address.city">{{ "Fort Arabia, PR 00701" }}</span></p>
+      <p>Phone: <span data-field="phone">{{ "1-800-752-0596" }}</span></p>
+    </div>
+    <div style="width: 35%; text-align: right;">
+      <p>For more information, please contact your local ABB representative or visit:</p>
+      <p><span data-field="website">{{ "abb.com/drives/segments/plastics-and-rubber" }}</span></p>
+      <p><span data-field="website">{{ "abb.com/motors-generators/acs880-drives" }}</span></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

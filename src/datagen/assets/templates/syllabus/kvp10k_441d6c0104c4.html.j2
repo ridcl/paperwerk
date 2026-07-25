@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td, th { padding: 8px; text-align: left; border-bottom: 1px solid #ccc; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: right;">
+            <span data-field="course_code">{{ course_code }}</span>
+            <span data-field="course_name">{{ course_name }}</span>
+        </div>
+        <div style="text-align: right; margin-top: 5px;">
+            Syllabus
+        </div>
+        <div style="text-align: right; margin-top: 5px;">
+            Fall <span data-field="year">{{ year }}</span>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <h2 style="font-size: 14pt;">General Information</h2>
+            <p>Professor: <span data-field="professor_name">{{ professor.name }}</span></p>
+            <p>Professor of Finance</p>
+            <p><span data-field="employer.name">{{ employer.name }}</span></p>
+            <p>Department of Economics and Finance</p>
+            <p>COBA <span data-field="department_code">{{ department_code }}</span></p>
+            <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+            <p>e-mail: <span data-field="email">{{ email }}</span></p>
+            <p>Office Hrs: <span data-field="office_hours">{{ office_hours }}</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">TA Contact Information</h2>
+        <p>Michael McGonigle E-mail: <span data-field="ta_emails.mcgonigle">{{ ta_emails.mcgonigle }}</span></p>
+        <p>Adrian Tippit E-mail: <span data-field="ta_emails.tippit">{{ ta_emails.tippit }}</span></p>
+        <p>Julian Vogel E-mail: <span data-field="ta_emails.vogel">{{ ta_emails.vogel }}</span></p>
+
+        <h2 class="section-title">Lab Class Meetings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CRN</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Room</th>
+                    <th>TA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meeting in lab_meetings %}
+                <tr>
+                    <td>{{ meeting.crn }}</td>
+                    <td>{{ meeting.day }}</td>
+                    <td>{{ meeting.time }}</td>
+                    <td>{{ meeting.room }}</td>
+                    <td>{{ meeting.ta_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Course Materials</h2>
+        <ul>
+            <li><span data-field="material_1">{{ material_1 }}</span></li>
+            <li><span data-field="material_2">{{ material_2 }}</span></li>
+        </ul>
+
+        <h2 class="section-title">Objectives</h2>
+        <p>This finance lab has several objectives. First, it will show the student how to apply financial theory using a standard software package Microsoft Excel. While financial equations appear complex, the application of these equations in a computer can be relatively straight forward. Second, the lab will expose the student to the process of creating financial models. Third, the lab will expose and educate the student in the use of Excel. Excel is a standard software package used extensively on Wall Street and in industry. Finally, the data used in the projects is the same data used by practitioners in industry. Real world data has a number of quirks and problems. Gaining experience in the use of real world data is valuable.</p>
+        <p>Each project will give students experience in highly marketable and valuable skills. An additional objective of the finance lab will be to create a portfolio of project reports. These reports can be used in the interviewing process to show potential employers the quality of your work and demonstrate the skills that you have acquired in the course of the lab.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">Attendance</h2>
+        <p>Attendance is mandatory for the lab. There will be a sign-in sheet for each class. Perfect attendance is worth 100 points to the final grade. If one class is missed, 10 points will be deducted resulting in a score of 90. If a second class is missed, 10 addition points will be deducted resulting in a score of 80. If a third class is missed, 10 addition points will be deducted resulting in a score of 70. Any additional missed classes will result in a score of 50.</p>
+
+        <h2 class="section-title">Projects</h2>
+        <p>There are six excel based projects for this class. Each project will incorporate advanced features of excel and use real world data. Formal project reports are due for each project. The student is encouraged to create a performance portfolio of these projects that can be used in interviews to demonstrate their proficiency in excel applications, writing, and finance. Requirements for each project will be posted on the class website along with a sample outline of the project report format. Each student will be assigned a unique stock/company.</p>
+        <p>The student will be guided through the projects by a series of YouTube videos showing the step by step process in excel. Students are encouraged to assist each other with the technical aspects of the excel projects. While the labs are one day a week for 8:00am, outside work will be required.</p>
+        <p>A written report is required for some projects. The report format is posted on the class website. Written reports are individual assignments. The report will be worth 40% of the grade for a given project.</p>
+        <p>The excel portion of the project will be submitted on the class black board website. The submission is timed and late submissions will be penalized. The excel portion of the project is worth 60% of the grade and will be automatically graded with a computer program. Late submission (within 24 hours of the indicated due time) of the Excel file will result in an automatic 10 point loss on the excel portion of the project.</p>
+        <p>The due dates and times for the Excel Files and Project Reports are different. Due dates are listed on the syllabus and on the black board website for the lab.</p>
+        <p>In the event of a black board crash on the day of an excel project submission, students will be given 1 full day after black board returns to operation to submit the excel file. The black board crash must be significant in the view of the professor and the extension is at the discretion of the professor assigned to the class.</p>
+
+        <h2 class="section-title">Brief Description of the Projects</h2>
+        {% for project in projects %}
+        <p>Project {{ loop.index }}: {{ project.description }}</p>
+        {% endfor %}
+
+        <h2 class="section-title">Access to Course Projects</h2>
+        <p>username: <span data-field="username">{{ username }}</span></p>
+        <p>password: <span data-field="password">{{ password }}</span></p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">Grade Components (Point Breakdown):</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for component in grade_components %}
+                <tr>
+                    <td>{{ component.name }}</td>
+                    <td>{{ component.description }}</td>
+                    <td>{{ component.points }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p style="margin-top: 20px;">Total Points 580 (Note: The lowest grade on a written report will be dropped. If a written report is not turned in then its grade will be zero and this will be de facto the written report grade that is dropped.)</p>
+
+        <h2 class="section-title">E-Mail Policy of the Finance Department</h2>
+        <p>It is the policy of the finance department that all e-mails sent to professors or teaching assistants be of a professional nature and format. A formal greeting and salutation are required. Proper grammar, spelling, and format are required. You must clearly state the problem or question that be addressed. On the subject line of the email you must identify the class, section, time, and location where the class meets. We reserve the right to not reply to any e-mail that does not meet these requirements and is not of a professional nature.</p>
+
+        <h2 class="section-title">University Policies</h2>
+        <p>If you have a disability and need classroom accommodations, please contact The Center for Accommodations and Support Services (CASS) at 747-5148, or by email to <span data-field="cass_email">{{ cass_email }}</span>, or visit their office located in UTEP Union East, Room 106. For additional information, please visit the CASS website at <span data-field="cass_website">{{ cass_website }}</span>.</p>
+        <p>The University of Texas at El Paso prides itself on its standards of academic excellence. In all matters of intellectual pursuit, UTEP faculty and students must strive to achieve excellence based on the quality of work produced by the individual. In the classroom and in all other academic activities, students are expected to uphold the highest standards of academic integrity. Any form of scholastic dishonesty is an affront to the pursuit of knowledge and jeopardizes the dignity of the degree awarded to all graduates of UTEP. It is imperative that all students meet the members of this institution and the regulations pertaining to academic integrity and that all faculty insist on adherence to these standards. Any student who commits an act of scholastic dishonesty is subject to discipline. Scholastic dishonesty includes, but is not limited to, cheating, plagiarism, collusion, the submission for credit of any work or materials that are attributable to while in or part to another person, taking an examination for another person, any act designed to give unfair advantage to a student or the attempt to commit such acts. Proven violations of the detailed regulations, as printed in the Handbook of Operating Procedures (HOP), and available in the Office of the Dean of Students, and the homepage of The Dean of Students (DOS) at <span data-field="dos_website">{{ dos_website }}</span>, may result in sanctions ranging from disciplinary probation, to failing grade on the work in question, to a failing grade in the course, to suspension or dismissal, among others.</p>
+
+        <h2 class="section-title">Campus Carry</h2>
+        <p>Persons who hold a Concealed Handgun License can lawfully carry their gun into a UTEP classroom as long as it remains concealed. Open carry remains prohibited on campus. Should you feel someone is</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">Lab Schedule</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>Project</th>
+                    <th>Due Date: Excel File*/Report**</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule_item in lab_schedule %}
+                <tr>
+                    <td>{{ schedule_item.start_date }}</td>
+                    <td>Project {{ schedule_item.project_number }}: {{ schedule_item.project_name }}</td>
+                    <td>{{ schedule_item.due_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="font-size: 9pt; margin-top: 15px;">* Excel files must be submitted to the black board website by midnight on the indicated day. Late excel submissions will receive a 10 point penalty. Late submission: within 24 hours of the indicated due time.</p>
+        <p style="font-size: 9pt;">**Written reports must be submitted by 5:00pm on the indicated day. No late written report submissions are accepted. E-mailed files will not be accepted. The reports must be printed and stapled.</p>
+        <p style="font-size: 9pt;">*** Location for the written reports submission: COBA 236. Leave your reports in the designated tray for your lab class.</p>
+    </div>
+</body>
+</html>

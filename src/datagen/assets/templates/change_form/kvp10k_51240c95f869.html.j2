@@ -1,0 +1,102 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 0.5em; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .form-section { margin-bottom: 30px; }
+  .line-item-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .signature-line { border-bottom: 1px solid black; width: 100%; margin-top: 5px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo/Name -->
+    <span style="font-size: 24pt;">CHICAGO STATE UNIVERSITY</span>
+  </div>
+
+  <div class="form-section">
+    <h2 style="text-align: center;">DATE OF BIRTH/ SOCIAL SECURITY NUMBER CHANGE FORM</h2>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Note: Employees must change this information at <span data-field="department.name">{{ department.name }}</span></p>
+    <p style="font-size: 10pt; margin-top: 15px;">Office of the Registrar | Cook Administration 128 | Phone: <span data-field="contact.phone">{{ contact.phone }}</span> | Fax: <span data-field="contact.fax">{{ contact.fax }}</span> | Email: <span data-field="contact.email">{{ contact.email }}</span></p>
+  </div>
+
+  <div class="form-section">
+    <p>STUDENT'S NAME (please print): _________________________________________</p>
+    <p>STUDENT'S UID #2: _________________________________________</p>
+  </div>
+
+  <div class="form-section">
+    <p>Which of the following are you updating?</p>
+    <div style="margin-top: 15px;">
+      <input type="checkbox" id="ssn_update">
+      <label for="ssn_update">Social Security Number (SSN) – Please provide signed SSN Card and a valid picture ID.</label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item-row">
+      <div style="width: 50%;">
+        <p>(Old Number in System – if any)</p>
+        <div class="signature-line" data-field="field_1">{{ field_1 }}</div>
+      </div>
+      <div style="width: 50%;">
+        <p>(Correct Number)</p>
+        <div class="signature-line" data-field="field_2">{{ field_2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item-row">
+      <div style="width: 50%;">
+        <p>(Date of Birth in System)</p>
+        <div class="signature-line" data-field="field_3">{{ field_3 }}</div>
+      </div>
+      <div style="width: 50%;">
+        <p>(Correct Date of Birth)</p>
+        <div class="signature-line" data-field="field_4">{{ field_4 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Student's Signature: _________________________________________</p>
+    <p style="margin-top: 20px;">Submit to: <span data-field="office.name">{{ office.name }}</span> – <span data-field="office.location">{{ office.location }}</span></p>
+    <p style="font-size: 10pt;">Chicago State University</p>
+    <p style="font-size: 10pt;">9501 South King Drive</p>
+    <p style="font-size: 10pt;">Chicago, IL 60628</p>
+  </div>
+
+  <div class="form-section" style="border-top: 1px solid #ccc; padding-top: 20px;">
+    <h3 style="text-align: left; margin-bottom: 10px;">OFFICE USE ONLY</h3>
+    <p>Stamp Date Received: _________________________</p>
+    <p>ID Provided:</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox">
+      <label>Signed Social Security Card</label>
+      <input type="checkbox" style="margin-left: 30px;">
+      <label>Birth Certificate</label>
+      <input type="checkbox" style="margin-left: 30px;">
+      <label>Driver's License</label>
+      <input type="checkbox" style="margin-left: 30px;">
+      <label>Passport</label>
+    </div>
+    <div style="margin-top: 30px;">
+      <p>Staff Initial: _________________________</p>
+      <p>Date Received: _________________________</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button style="padding: 10px 20px; margin-right: 10px;">PRINT</button>
+    <button style="padding: 10px 20px;">CLEAR FORM</button>
+  </div>
+</div>

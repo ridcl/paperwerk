@@ -1,0 +1,75 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td, th { padding: 8px; text-align: left; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div>
+      <p style="font-weight: bold;">TO:</p>
+      <p><span data-field="recipient_organization">{{ recipient_organization }}</span></p>
+    </div>
+    <div>
+      <p style="font-weight: bold;">FROM:</p>
+      <p><span data-field="sender_full_name">{{ sender_full_name }}</span></p>
+      <p><span data-field="sender_affiliation">{{ sender_affiliation }}</span></p>
+      <p><span data-field="sender_address">{{ sender_address }}</span></p>
+      <p>Phone: <span data-field="sender_phone">({{ sender_phone }})</span>, e-mail: <span data-field="sender_email">{{ sender_email }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>SUBJECT: <span data-field="subject_title">{{ subject_title }}</span></p>
+    <p>PROJECT NUMBER: <span data-field="project_number">{{ project_number }}</span></p>
+    <p>PROJECT TITLE: <span data-field="project_title">{{ project_title }}</span></p>
+    <p>PROJECT PERIOD: <span data-field="project_period">{{ project_period }}</span></p>
+    <p>DATE: <span data-field="date_submitted">{{ date_submitted }}</span></p>
+  </div>
+
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">Project Description</h3>
+  <p><span data-field="project_description_text">{{ project_description_text }}</span></p>
+</div>
+
+<div class="page">
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">Objectives</h3>
+  <p><span data-field="objectives_summary">{{ objectives_summary }}</span></p>
+
+  <p>More specific goals of this research are:</p>
+  <ol>
+    <li><span data-field="objective_1">{{ objective_1 }}</span></li>
+    <li><span data-field="objective_2">{{ objective_2 }}</span></li>
+    <li><span data-field="objective_3">{{ objective_3 }}</span></li>
+  </ol>
+
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">Methodology</h3>
+  <p><strong>Research Plan:</strong> A three-step approach is being taken:</p>
+  <ul>
+    <li><span data-field="methodology_step_1">{{ methodology_step_1 }}</span></li>
+    <li><span data-field="methodology_step_2">{{ methodology_step_2 }}</span></li>
+  </ul>
+
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">Accomplishments</h3>
+  <p><strong>(Task 1: Equilibria properties):</strong> <span data-field="accomplishment_task1">{{ accomplishment_task1 }}</span></p>
+  <p><strong>(Task 2: 2-D Aquifer experiments):</strong> <span data-field="accomplishment_task2">{{ accomplishment_task2 }}</span></p>
+  <p><strong>(Task 3: Modeling):</strong> <span data-field="accomplishment_task3">{{ accomplishment_task3 }}</span></p>
+</div>
+
+<div class="page">
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">Future Work</h3>
+  <p><strong>(Task 1: Equilibria properties):</strong> <span data-field="future_work_task1">{{ future_work_task1 }}</span></p>
+  <p><strong>(Task 2: 2-D Aquifer experiments):</strong> <span data-field="future_work_task2">{{ future_work_task2 }}</span></p>
+  <p><strong>(Task 3: Modeling):</strong> <span data-field="future_work_task3">{{ future_work_task3 }}</span></p>
+
+  <h3 style="font-family: 'DejaVu Sans', sans-serif; margin-top: 30px;">List of Publications and Presentations</h3>
+  <p><span data-field="publication_summary">{{ publication_summary }}</span></p>
+</div>

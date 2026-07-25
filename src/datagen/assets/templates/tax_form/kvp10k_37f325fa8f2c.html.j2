@@ -1,0 +1,175 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-label { width: 30%; }
+  .form-input { width: 65%; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 18pt;">OKLAHOMA TAX COMMISSION</h1>
+    <h2 style="font-size: 14pt;">EMPLOYEE'S WITHHOLDING ALLOWANCE CERTIFICATE</h2>
+    <p style="font-size: 10pt;">This certificate is for income tax withholding purposes only. Type or print.</p>
+    <p style="font-size: 10pt; font-weight: bold;">NOTE: DO NOT mail to the Oklahoma Tax Commission.</p>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Your First Name and Middle Initial</div>
+    <div class="form-input"><span data-field="full_name_first_name">{{ full_name_first_name }}</span></div>
+    <div class="form-label">Last Name</div>
+    <div class="form-input"><span data-field="full_name_last_name">{{ full_name_last_name }}</span></div>
+    <div class="form-label">Your Social Security Number</div>
+    <div class="form-input"><span data-field="ssn">{{ ssn }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Home Address (Number and Street or Rural Route)</div>
+    <div class="form-input"><span data-field="address_line_1">{{ address_line_1 }}</span></div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 30%;">
+      <div class="form-row">
+        <div class="form-label">City or Town</div>
+        <div class="form-input"><span data-field="city">{{ city }}</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">State</div>
+        <div class="form-input"><span data-field="state">{{ state }}</span></div>
+      </div>
+    </div>
+    <div style="width: 25%;">
+      <div class="form-row">
+        <div class="form-label">Filing Status</div>
+        <div class="form-input checkbox-group">
+          <label><input type="radio" name="filing_status" value="single"> Single</label>
+          <label><input type="radio" name="filing_status" value="married"> Married</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">ZIP Code</div>
+        <div class="form-input"><span data-field="zip_code">{{ zip_code }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Allowances</h3>
+
+  <table style="width: 100%; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="width: 5%;"></td>
+        <td style="width: 50%;">Allowance For Yourself: Enter 1 for yourself</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span data-field="allowance_yourself">{{ allowance_yourself }}</span></td>
+        <td></td>
+        <td><span data-field="allowance_yourself_check">{{ allowance_yourself_check }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Allowance For Your Spouse: Does your spouse work? <span data-field="spouse_works_yes">{{ spouse_works_yes }}</span> <span data-field="spouse_works_no">{{ spouse_works_no }}</span>. If yes, Enter 0, 1, or none for your spouse</td>
+        <td></td>
+        <td><span data-field="allowance_spouse">{{ allowance_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Allowance For Dependents: Enter the number of dependents you will claim on your tax return. Do not claim yourself or your spouse or dependents that your spouse has already claimed on his or her Form OK-W-4.</td>
+        <td></td>
+        <td><span data-field="allowance_dependents">{{ allowance_dependents }}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Additional Allowances: You may claim additional allowances if you itemize your deductions or have other state tax deductions or credits that lower your tax. Enter the number of additional allowances you would like to claim...</td>
+        <td></td>
+        <td><span data-field="allowance_additional">{{ allowance_additional }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <thead>
+      <tr>
+        <td style="width: 5%;"></td>
+        <td style="width: 50%;">Total Number of Allowances You Are Claiming: Add Lines 1 through 4 and enter total here.</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span data-field="total_allowances">{{ total_allowances }}</span></td>
+        <td></td>
+        <td><span data-field="total_allowances_check">{{ total_allowances_check }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 10pt;">Except Status: If you had a right to a refund of all Oklahoma income tax withheld last year because you had no tax liability and this year you expect a refund of all Oklahoma income tax withheld because you expect to have no tax liability, write "Exempt" on Line 7. See information below.</p>
+    <p style="font-size: 10pt;">If you meet the conditions set forth under the Servicemember Civil Relief Act, as amended by the Military Spouses Residency Relief Act and have no Oklahoma tax liability, write "Exempt" on line 8 and complete Form OW-9-MSE. See information below.</p>
+    <p style="font-size: 10pt;">If income earned as a member of any active duty component of the Armed Forces of the United States is eligible for the military income deduction write "Exempt" on Line 9.</p>
+  </div>
+
+  <table style="width: 100%; margin-bottom: 40px;">
+    <thead>
+      <tr>
+        <td style="width: 5%;"></td>
+        <td style="width: 50%;">Date (MM/DD/YYYY)</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span data-field="date_signed">{{ date_signed }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 10pt; margin-bottom: 20px;">Employee's Signature (Form is not valid unless you sign it)</p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">ITEMS TO REMEMBER:</h3>
+
+  <div style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <div style="width: 48%;">
+      <ul>
+        <li>If your filing status is married filing joint and your spouse works, do not claim an exemption on Form OK-W-4 for your spouse.</li>
+        <li>If your spouse has dependents, please be sure only one of you claim the dependents on your Form OK-W-4. If both spouses claim the dependents as an allowance on Form OK-W-4, it may cause you to owe more Oklahoma income tax than you would otherwise.</li>
+        <li>If you have more than one employer, you should claim a smaller number or no allowances on each Form OK-W-4 filed with employers other than your principal employer so the amount withheld will be closer to your amount of total tax.</li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <ul>
+        <li>If you itemize your deductions, instead of using the standard deduction, the amount not taxed by Oklahoma may be a greater benefit.</li>
+        <li>If you are claiming an "Exempt" status due to the Military Spouses Residency Relief Act you must provide Form OW-9-MSE "Annual Withholding Tax Exemption Certification for Military Spouses".</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt;">
+    <p>Form OK-W-4 is completed so you can have such "take-home pay" as possible without an income tax liability due to the state of Oklahoma when you file your return. Deductions and exemptions reduce the amount of your taxable income. If your income is less than the total of your personal exemption plus your standard deduction, you should mark "Exempt" on Line 7 above. The following amounts of your annual Oklahoma adjusted gross income will not be taxed by the state of Oklahoma when you file your individual income tax return.</p>
+  </div>
+</div>

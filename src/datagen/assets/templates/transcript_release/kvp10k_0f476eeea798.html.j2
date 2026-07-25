@@ -1,0 +1,133 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  .logo-area { text-align: left; }
+  .title-area { text-align: right; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { margin-bottom: 5px; font-weight: normal; }
+  .form-group input[type="text"] { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .signature-line { margin-top: 60px; border-bottom: 1px solid #000; width: 50%; }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div class="logo-area">
+      <div style="font-size: 48px; font-weight: bold;">W</div>
+      <div style="font-size: 24px; font-weight: bold;">Western Illinois</div>
+      <div style="font-size: 20px;">University</div>
+    </div>
+    <div class="title-area">
+      <h1 style="font-size: 24px;">TRANSCRIPT RELEASE</h1>
+      <h2 style="font-size: 18px;">High School Dual Enrollment</h2>
+      <p style="font-size: 12px;">Complete and return to</p>
+      <p style="font-size: 12px;">Undergraduate Admissions</p>
+      <p style="font-size: 12px;">Western Illinois University</p>
+      <p style="font-size: 12px;">1 University Circle</p>
+      <p style="font-size: 12px;">Macon, IL 61455</p>
+      <p style="font-size: 12px;">Fax: {{ contact_fax }}</p>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 30px;">Please print or type the requested information below. This transcript request form is to be used for the the sole purpose of providing an official, printed Western Illinois University transcript to the high school indicated below while the student is enrolled in the high school dual enrollment program. Please note that official transcripts will not be released if the student has an administrative hold with the University. There is no charge for a hard-copy transcript.</p>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>WIU ID Number</label>
+      <input type="text" value="{{ wiu_id }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Date of Birth</label>
+      <input type="text" value="{{ dob }}"/>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>Name</label>
+      <input type="text" value="{{ full_name }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Address</label>
+      <input type="text" value="{{ address }}"/>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>City</label>
+      <input type="text" value="{{ city }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>State</label>
+      <input type="text" value="{{ state }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Zip Code</label>
+      <input type="text" value="{{ zip_code }}"/>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-size: 14px;">
+      <p style="margin-bottom: 15px;">• I understand that by signing this agreement I am authorizing Western Illinois University to release my academic transcript to my high school at the end of each term in which I am registered for classes as a high school dual enrollment student. I understand that my high school counselor will be able to request my academic transcript with final grades and may include those grades on my high school transcript.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="form-row">
+      <div class="form-group" style="width: 30%;">
+        <label>High School</label>
+        <input type="text" value="{{ high_school_name }}"/>
+      </div>
+      <div class="form-group" style="width: 30%;">
+        <label>High School Counselor</label>
+        <input type="text" value="{{ counselor_name }}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 30%;">
+      <label>City</label>
+      <input type="text" value="{{ hs_city }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>State</label>
+      <input type="text" value="{{ hs_state }}"/>
+    </div>
+    <div class="form-group" style="width: 30%;">
+      <label>Zip Code</label>
+      <input type="text" value="{{ hs_zip_code }}"/>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-size: 14px;">
+      <p>• I understand that my information will be stored within the guidelines of the Family Educational Rights and Privacy Act (FERPA) and will be a part of my academic record.</p>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 80px;">
+    <div style="width: 50%;">
+      <label>Applicant's Signature</label>
+      <div class="signature-line"></div>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <label>Date</label>
+      <div class="signature-line" style="width: 50%;"></div>
+    </div>
+  </div>
+
+  <p style="margin-top: 80px; font-size: 12px;">For questions about the High School Dual Enrollment program, please contact Undergraduate Admissions at {{ admissions_phone }} or {{ admissions_email }}.</p>
+</div>

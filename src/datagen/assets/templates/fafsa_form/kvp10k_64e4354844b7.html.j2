@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verification Worksheet</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-group { margin-bottom: 15px; }
+  .radio-group label { margin-right: 15px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px 0; text-align: left; }
+  .text-right { text-align: right; }
+  .underline { border-bottom: 1px solid black; display: inline-block; min-width: 200px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <h1>Office of Student Financial Assistance</h1>
+      <h2>VERIFICATION WORKSHEET</h2>
+      <p>INDEPENDENT</p>
+    </div>
+    <div>
+      <h3>ACADEMIC YEAR 2020-2021</h3>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Student's Name:</label>
+    <div class="underline">{{ student_full_name }}</div>
+  </div>
+
+  <div class="form-group">
+    <label>Spouse Name (if married):</label>
+    <div class="underline">{{ spouse_full_name }}</div>
+  </div>
+
+  <div class="form-group" style="display: flex; justify-content: space-between;">
+    <div>
+      <label>Date:</label>
+      <div class="underline">{{ date_signed }}</div>
+    </div>
+    <div>
+      <label>UCF ID:</label>
+      <div class="underline">{{ ucf_id }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    A. If the Student Marital Status is:
+  </div>
+  <div class="form-group radio-group">
+    <label><input type="radio" name="marital_status" value="Single"> Single</label>
+    <label><input type="radio" name="marital_status" value="Divorced"> Divorced</label>
+    <label><input type="radio" name="marital_status" value="Separated"> Separated</label>
+    <label><input type="radio" name="marital_status" value="Married"> Married or Remarried</label>
+    <label><input type="radio" name="marital_status" value="Widowed"> Widowed</label>
+  </div>
+
+  <div class="form-group">
+    <p>Read carefully and complete this verification packet in black or blue ink.</p>
+    <p>Please refer to your SAR (Student Aid Report) when answering the questions. Any discrepancy may need an explanation and additional documentation.</p>
+    <p>Please answer your questions as of the date you signed the FAFSA.</p>
+    <p>If a question does not apply to you or your spouse, if married, mark the answer as zero or N/A (not applicable).</p>
+    <p>Do not skip any questions. If you leave any section blank, this form may be deemed incomplete and result in the delay of processing aid.</p>
+  </div>
+
+  <div class="section-title">
+    B. If the Student Marital Status is:
+  </div>
+  <div class="form-group radio-group">
+    <label><input type="radio" name="spouse_status" value="Married"> Married</label>
+  </div>
+
+  <div class="section-title">
+    Include the following in the Household
+  </div>
+  <div class="form-group radio-group">
+    <label><input type="checkbox" name="household_member_student" value="Student"> Yourself (the student)</label>
+    <label><input type="checkbox" name="household_member_spouse" value="Spouse"> Your spouse</label>
+    <label><input type="checkbox" name="household_member_children" value="Children"> Your children</label>
+  </div>
+
+  <div class="section-title">
+    A. If the Student Marital Status is:
+  </div>
+  <div class="form-group">
+    <p><strong>Note:</strong> We may require additional documentation if we have reason to believe that the information regarding the household members enrolled in eligible postsecondary educational institutions is inaccurate.</p>
+  </div>
+
+  <div class="section-title">
+    DO NOT Include the following:
+  </div>
+  <div class="form-group">
+    <label><input type="checkbox"> Foster Children</label>
+    <label><input type="checkbox"> Any child you or your spouse are paying child support for</label>
+  </div>
+
+  <div class="section-title">
+    Instructions for completing "ATTENDING COLLEGE"
+  </div>
+  <div class="form-group">
+    <p>On your FAFSA application, you were asked to identify the number of people attending college for the 2020-2021 aid year. If the number in college should include any household member who:</p>
+    <ul>
+      <li>Will be enrolled at least half-time at an eligible postsecondary education institution at any time between July 1, 2020 and June 30, 2021</li>
+      <li>Will be enrolled in a degree, diploma, or certificate program</li>
+    </ul>
+    <p>For each person who meets the above criteria, indicate the name of the college. If the college person is attending UCF - be sure to also list that person's UCF ID.</p>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <h1>NAME:</h1>
+      <div class="underline">{{ name_field_page2 }}</div>
+    </div>
+    <div>
+      <h1>UCF ID:</h1>
+      <div class="underline">{{ ucf_id_page2 }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    Section I: Family Information
+  </div>
+
+  <div class="section-title">
+    A. What was your marital status as of the date you first completed the FAFSA?
+  </div>
+  <div class="form-group radio-group">
+    <label><input type="radio" name="marital_status_i" value="Single"> Single</label>
+    <label><input type="radio" name="marital_status_i" value="Divorced"> Divorced</label>
+    <label><input type="radio" name="marital_status_i" value="Married"> Married or Remarried</label>
+    <label><input type="radio" name="marital_status_i" value="Separated"> Separated</label>
+    <label><input type="radio" name="marital_status_i" value="Widowed"> Widowed</label>
+  </div>
+
+  <div class="section-title">
+    Section II: Student's Household Size & Number in College
+  </div>
+
+  <div class="section-title">
+    A. You and Your Spouse (if married)
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Full Name</td>
+        <td style="width: 15%;">Date of Birth</td>
+        <td style="width: 15%;">Relationship</td>
+        <td style="width: 30%;">If attending college, list: College Name, City, State</td>
+        <td style="width: 10%;">UCF ID if attending UCF</td>
+        <td style="width: 10%;">Type of Degree Seeking</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="household_members.student_full_name">{{ household_members.student_full_name }}</span></td>
+        <td><span data-field="household_members.student_dob">{{ household_members.student_dob }}</span></td>
+        <td>Student / Self</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% for item in household_members.other %}
+      <tr>
+        <td><span data-field="household_members.other[{{ loop.index0 }}].full_name">{{ item.full_name }}</span></td>
+        <td><span data-field="household_members.other[{{ loop.index0 }}].dob">{{ item.dob }}</span></td>
+        <td><span data-field="household_members.other[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">
+    B. Your Children: List children who will receive more than half of their financial support from you or your spouse, if married, between July 1, 2020 and June 30, 2021, or are required to use your information when completing the FAFSA.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Full Name</td>
+        <td style="width: 15%;">Date of Birth</td>
+        <td style="width: 15%;">Relationship</td>
+        <td style="width: 30%;">If attending college, list: College Name, City, State</td>
+        <td style="width: 10%;">UCF ID if attending UCF</td>
+        <td style="width: 10%;">Type of Degree Seeking</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in children %}
+      <tr>
+        <td><span data-field="children[{{ loop.index0 }}].full_name">{{ item.full_name }}</span></td>
+        <td><span data-field="children[{{ loop.index0 }}].dob">{{ item.dob }}</span></td>
+        <td><span data-field="children[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">
+    C. Other Dependents: List other dependents who live with you and your spouse, if married, AND will receive more than half of their financial support from you and your spouse, if married, between July 1, 2020 and June 30, 2021.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Full Name</td>
+        <td style="width: 15%;">Date of Birth</td>
+        <td style="width: 15%;">Relationship</td>
+        <td style="width: 30%;">If attending college, list: College Name, City, State</td>
+        <td style="width: 10%;">UCF ID if attending UCF</td>
+        <td style="width: 10%;">Type of Degree Seeking</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in other_dependents %}
+      <tr>
+        <td><span data-field="other_dependents[{{ loop.index0 }}].full_name">{{ item.full_name }}</span></td>
+        <td><span data-field="other_dependents[{{ loop.index0 }}].dob">{{ item.dob }}</span></td>
+        <td><span data-field="other_dependents[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <h1>NAME:</h1>
+      <div class="underline">{{ name_field_page3 }}</div>
+    </div>
+    <div>
+      <h1>UCF ID:</h1>
+      <div class="underline">{{ ucf_id_page3 }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    Section III: Family 2018 Untaxed Income
+  </div>
+
+  <div class="form-group">
+    <p>1. 2018 Untaxed portions of IRA distribution and pensions from IRS form 1040 lines 4a minus 4b.</p>
+    <p>Total untaxed amount received in 2018:</p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Student: <div class="underline">{{ untaxed_income.student_amount }}</div></td>
+        <td style="width: 50%;">Spouse: <div class="underline">{{ untaxed_income.spouse_amount }}</div></td>
+      </tr>
+    </table>
+    <p>Was the above amount (#1) reinvested in a retirement account?</p>
+    <div class="form-group radio-group">
+      <label><input type="radio" name="reinvested_student" value="Yes"> Yes</label>
+      <label><input type="radio" name="reinvested_student" value="No"> No</label>
+      <label><input type="radio" name="reinvested_spouse" value="Yes"> Yes</label>
+      <label><input type="radio" name="reinvested_spouse" value="No"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <p>2. 2018 payments to tax-deferred pension and savings plans (paid directly to or withheld from earnings) including but not limited to amounts reported on your 2018 W-2 in boxes 12a through 12d (Codes D, E, F, G, H, & S).</p>
+    <p>Total amount received in 2018:</p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Student: <div class="underline">{{ payments_received.student_amount }}</div></td>
+        <td style="width: 50%;">Spouse: <div class="underline">{{ payments_received.spouse_amount }}</div></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <p>ATTACH COPIES OF ALL 2018 W-2 FORMS FOR ITEMS REPORTED ON #2.</p>
+  </div>
+
+  <div class="form-group">
+    <p>3. 2018 IRS Deductions and payments to self-employed SEP, SIMPLE, Keogh and other qualified plans from IRS Form1040 Schedule 1 (total lines 2b + 32)</p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Student: <div class="underline">{{ deductions_amount.student_amount }}</div></td>
+        <td style="width: 50%;">Spouse: <div class="underline">{{ deductions_amount.spouse_amount }}</div></td>
+      </tr>
+    </table>
+    <p>If you listed an amount for #3 be sure to include a copy of the IRS tax return, Schedule 1, when submitting the 2018 tax return/transcript, except if you used the IRS Data Retrieval tool.</p>
+  </div>
+
+  <div class="section-title">
+    Section IV: 2018 Excluded Income Information
+  </div>
+
+  <div class="form-group">
+    <p>1. 2018 Education credits from IRS Form 1040 Schedule 3 - line 50.</p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Student: <div class="underline">{{ excluded_income.student_amount }}</div></td>
+        <td style="width: 50%;">Spouse: <div class="underline">{{ excluded_income.spouse_amount }}</div></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <p>2. Amount of combat pay or special combat pay on your 2018 tax return?</p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Student: <div class="underline">{{ combat_pay.student_amount }}</div></td>
+        <td style="width: 50%;">Spouse: <div class="underline">{{ combat_pay.spouse_amount }}</div></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <h1>NAME:</h1>
+      <div class="underline">{{ name_field_page4 }}</div>
+    </div>
+    <div>
+      <h1>UCF ID:</h1>
+      <div class="underline">{{ ucf_id_page4 }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    Section V: Verification of 2018 Income
+  </div>
+
+  <div class="form-group">
+    <p>A. Did you (or were you required to) file a 2018 tax return?</p>
+    <div class="form-group radio-group">
+      <label><input type="radio" name="filed_tax_return_student" value="Yes"> Yes</label>
+      <label><input type="radio" name="filed_tax_return_student" value="No"> No</label>
+      <label><input type="radio" name="filed_tax_return_spouse" value="Yes"> Yes</label>
+      <label><input type="radio" name="filed_tax_return_spouse" value="No"> No</label>
+    </div>
+    <p>If yes, you must provide a signed copy of the 2018 tax return, 2018 tax return transcript or use the IRS Retrieval Tool. To request a copy of the transcript, go to <a href="#">www.irs.gov</a> under "Get Your Tax Record" or call 1-800-908-9984.</p>
+    <p>If no, each non-filer is required to provide the IRS Verification of Non-Filing Letter. To request this letter, go to <a href="#">www.irs.gov</a> and complete the Form 4506-T.</p>
+  </div>
+
+  <div class="section-title">
+    B. Complete the section below if you/your spouse did not file and are not required to file a 2018 federal tax return.
+  </div>
+  <div class="form-group">
+    <p>All Non-Tax Filers must provide a signature on Section VI, page 4.</p>
+    <p>List all employer(s) and amounts earned in 2018. If self-employed, list "Self-employed" as the employer and report the income earned. If you and/or your spouse did not work at all in 2018, write N/A for name of employer(s).</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 15%;">Non-Tax Filer</td>
+        <td style="width: 15%;">Income Earned in 2018?</td>
+        <td style="width: 25%;">Name of Employer</td>
+        <td style="width: 15%;">2018 Income Earned</td>
+        <td style="width: 10%;">W-2s Attached</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Student:</td>
+        <td><input type="radio" name="non_tax_filer_student_yes" value="Yes"> Yes <input type="radio" name="non_tax_filer_student_no" value="No"> No</td>
+        <td><div class="underline">{{ non_tax_employer_student_name }}</div></td>
+        <td class="text-right"><div class="underline">{{ non_tax_income_student_amount }}</div></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Spouse:</td>
+        <td><input type="radio" name="non_tax_filer_spouse_yes" value="Yes"> Yes <input type="radio" name="non_tax_filer_spouse_no" value="No"> No</td>
+        <td><div class="underline">{{ non_tax_employer_spouse_name }}</div></td>
+        <td class="text-right"><div class="underline">{{ non_tax_income_spouse_amount }}</div></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {% for item in non_tax_filers %}
+      <tr>
+        <td></td>
+        <td><input type="radio" name="non_tax_filer_other_yes" value="Yes"> Yes <input type="radio" name="non_tax_filer_other_no" value="No"> No</td>
+        <td><div class="underline">{{ non_tax_employer_other_name }}</div></td>
+        <td class="text-right"><div class="underline">{{ non_tax_income_other_amount }}</div></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>A copy of the W-2(s) from each employer must be attached to this form.</p>
+
+  <div class="section-title">
+    Section VI: Required Signatures
+  </div>
+  <div class="form-group">
+    <p>By signing below, you and your parents, certify that all the information in this packet has been read and completed accurately and truthfully.</p>
+  </div>
+
+  <div class="form-group" style="display: flex; justify-content: space-between;">
+    <div>
+      <label>Your Signature (Student):</label>
+      <div class="underline">{{ student_signature }}</div>
+    </div>
+    <div>
+      <label>Date Signed:</label>
+      <div class="underline">{{ student_date_signed }}</div>
+    </div>
+  </div>
+
+  <div class="form-group" style="display: flex; justify-content: space-between;">
+    <div>
+      <label>Your Spouse's Signature:</label>
+      <div class="underline">{{ spouse_signature }}</div>
+    </div>
+    <div>
+      <label>Date Signed:</label>
+      <div class="underline">{{ spouse_date_signed }}</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

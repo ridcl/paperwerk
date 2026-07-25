@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application for U.S. Passport</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; margin-bottom: 10px; align-items: center; }
+  .form-label { width: 200px; font-weight: normal; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; padding: 2px 5px; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+  .grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 15px; }
+  .signature-line { border-top: 1px solid #000; width: 100%; margin-top: 50px; }
+  .disclaimer { font-size: 0.8em; margin-top: 30px; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;">OMB CONTROL NO. 1405-004<br>EXPIRATION DATE: 12-31-2023<br>IMPORTANT: BINDERED. 85 MINUTES</div>
+  <h1 style="text-align: center; font-size: 24pt; margin-top: 50px;">U.S. Department of State</h1>
+  <h1 style="text-align: center; font-size: 24pt;">APPLICATION FOR A U.S. PASSPORT</h1>
+  <p style="text-align: justify; margin-top: 20px;">This form is used to apply for a U.S. passport. For information or questions, visit the official Department of State website at travel.state.gov or contact the National Passport Information Center at 1-877-487-2778 (TDD/TTY: 1-888-874-7733) or <a href="mailto:NPSIC@state.gov">NPSIC@state.gov</a>.</p>
+
+  <div class="section-header">WHAT TO SUBMIT WITH THIS APPLICATION</div>
+  <p style="text-align: justify;">Submit an original or certified copy and a photocopy of the front (and back, if there is printed information) with your application. Your evidence will be returned to you if it is not damaged, altered, or forged. Submit one of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>U.S. birth certificate that is a certified copy of all the following requirements:</li>
+    <li>Issued by the county, city, or state of <span data-field="place_of_birth_jurisdiction">{{ place_of_birth_jurisdiction }}</span>, and bears the seal, and place of birth <span data-field="place_of_birth_location">{{ place_of_birth_location }}</span>.</li>
+    <li>Last year/parents' full name: <span data-field="full_name">{{ full_name }}</span>.</li>
+    <li>Has the date filed with registrar's office (must be within one year of birth).</li>
+    <li>Has the registrar's signature and the seal of the issuing authority.</li>
+  </ul>
+  <p style="text-align: justify;">You must establish your citizenship to the satisfaction of the Department and may be asked to provide additional evidence. If you are claiming citizenship through the naturalization of your parents or if your U.S. birth certificate was made one year after your birth, see instruction page 2 for information can be found at travel.state.gov/citizenship.</p>
+
+  <div class="section-header">2. PROOF OF IDENTITY</div>
+  <p style="text-align: justify;">Present your original identification and submit a photocopy of the front and back with your application. It must show a photograph that is a good quality likeness of you. Examples include:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Previous or current U.S. passport booklet</li>
+    <li>Military identification, federal, state, or city government employee identification</li>
+    <li>Driver's license (not temporary or learner's permit)</li>
+    <li>Certificate of Naturalization or Citizenship</li>
+  </ul>
+  <p style="text-align: justify;">You must establish your identity to the satisfaction of the Department and may be asked to provide additional evidence. More information can be found at travel.state.gov/citizenship. If you have changed your name, please see instructions on what to submit at travel.state.gov/namechange.</p>
+
+  <div class="section-header">3. A RECENT COLOR PHOTOGRAPH</div>
+  <p style="text-align: justify;">Submit one color photograph, 2x2 inches in size. Photographs must meet the following requirements (see the list on travel.state.gov/photos):</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Head must be 1-3/8 inches from bottom of the chin to the top of the head</li>
+    <li>Use a plain white or off-white background</li>
+    <li>Face must be fully visible, with both ears visible, and no hair obscuring the face</li>
+    <li>Printed on matte or glossy photo paper</li>
+  </ul>
+
+  <div class="section-header">FEES</div>
+  <p style="text-align: justify;">Please visit our website at travel.state.gov/passports for current fees. For information on optional services, see instruction page 2.</p>
+  <p>Payment methods:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Acceptable payment methods: Personal check, cashier's check, money order or money order (U.S. Postal, international, indemnity currency) exchange with the applicant's fee and the filing fee and print on the form and pay it to "U.S. Department of State".</li>
+    <li>The execution fee must be paid separately and made payable to the acceptance facility in the form that they accept.</li>
+    <li><span data-field="payment_method_details">{{ payment_method_details }}</span>. We accept checks, money orders, and credit cards (Visa, MasterCard, American Express, Discover); money orders (U.S. Postal, international, currency exchange); or exact cash (no change provided). All fees should be payable to the U.S. Department of State.</li>
+  </ul>
+
+  <div class="section-header">FOR CHILDREN UNDER 16</div>
+  <p style="text-align: justify;">To submit an application for a child under age 16, both parents or the child's legal guardian(s) must appear and present all of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Evidence of the child's citizenship.</li>
+    <li>Evidence of the child's relationship to parent(s)/guardian(s): (Example: a birth certificate or consular report of birth abroad listing the names of the parent(s)/guardian(s)).</li>
+    <li>Original parent/guardian permission-signed identification and a photocopy of the front and back.</li>
+  </ul>
+  <p style="text-align: justify;">If only one parent/guardian can appear, you must also submit one of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>The second parent's notarized written statement or DS-3053 (including the child's full name and date of birth) consenting to the passport issuance for the child.</li>
+    <li>A notarized statement from the second parent stating that they do not consent to the passport issuance for the child, signed on the same day, and must come with a photocopy of the front and back side of the second parent's government-issued photo identification.</li>
+  </ul>
+
+  <div class="section-header">FOR CHILDREN AGE 16 OR 17</div>
+  <p style="text-align: justify;">If only one parent/guardian can appear, you must also submit one of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>The other parent's notarized written statement or DS-3053 (including the child's full name and date of birth) consenting to the passport issuance for the child.</li>
+    <li>A notarized statement from the other parent stating that they do not consent to the passport issuance for the child, signed on the same day, and must come with a photocopy of the front and back side of the other parent's government-issued photo identification.</li>
+  </ul>
+
+  <div class="disclaimer">
+    <p>WARNING</p>
+    <p>False statements made knowingly and willfully in passport applications, including affidavits or other documents submitted to support this application, are punishable by fine and/or imprisonment under U.S. law, including the provisions of 18 U.S.C. 1001, 18 U.S.C. 1542, and 18 U.S.C. 1621.</p>
+    <p>Alteration or mutilation of a passport issued pursuant to this application is punishable by fine and/or imprisonment under the provisions of 18 U.S.C. 1542.</p>
+    <p>The use of a passport or travel document obtained by fraud or deception is punishable by fine and/or imprisonment under 18 U.S.C. 1542.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; font-size: 10pt; margin-bottom: 10px;">U.S. Department of State</div>
+  <div style="text-align: right; font-size: 0.9em;">OMB CONTROL NO. 1405-004<br>EXPIRATION DATE: 12-31-2023<br>IMPORTANT: BINDERED. 85 MINUTES</div>
+
+  <div class="section-header">OTHER FORMS OF PROOF OF U.S. CITIZENSHIP</div>
+  <p style="text-align: justify;">An acceptable U.S. birth certificate must include your full name, date and place of birth, sex, date the birth record was filed, the seal or other certification of the official custodian of such records (state, county, or city/town office), and the full names of your parent(s).</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>If the birth certificate was filed more than one year after the birth: It must be supported by evidence described in the next paragraph.</li>
+  </ul>
+  <p style="text-align: justify;">If no birth record exists: Submit a registrar's notice to that effect. Also, submit a combination of the evidence listed below, which should include your first and last name, date and/or place of birth, the seal or other certification of the office (if customary), and the signature of the issuing official.</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Hospital birth record</li>
+    <li>Early census record</li>
+    <li>Early school, census, medical, or family Bible records</li>
+    <li>Naturalization certificate or consular report of birth abroad (such as a newspaper article)</li>
+    <li>Notarized affidavit (or DS-10, Birth Affidavit) of older blood relatives having knowledge of your birth may be submitted in addition to some of the records listed above.</li>
+  </ul>
+
+  <div class="section-header">APPLICANTS BORN OUTSIDE THE UNITED STATES</div>
+  <p style="text-align: justify;">Please note: If we determine that you are a U.S. citizen, your lawful permanent resident card submitted with this application will be forwarded to U.S. Citizenship and Immigration Services.</p>
+  <p style="text-align: justify;">If you claim citizenship through naturalization of one or both parent(s), submit all of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Your foreign birth certificate (and official translation if the document is not in English)</li>
+    <li>Evidence of your admission to the United States for legal permanent residence and proof you subsequently resided in the United States</li>
+    <li>Your parents' marriage/cohabitation evidence and/or evidence that you were in the legal and physical custody of your U.S. citizen parent(s), if applicable.</li>
+  </ul>
+  <p style="text-align: justify;">If you claim citizenship through birth abroad to at least one U.S. citizen parent, submit all of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Consular Report of Birth Abroad (Form DS-1350 or FS-545), Certification of Birth (Form DS-1350 or FS-545), or your foreign birth certificate (and official translation if the document is not in English)</li>
+    <li>Proof of U.S. citizenship of your parent</li>
+    <li>Your parents' marriage certificate</li>
+  </ul>
+  <p style="text-align: justify;">If you claim citizenship through adoption by a U.S. citizen parent(s), submit all of the following:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Evidence of your permanent residence status</li>
+    <li>Evidence of your full and final adoption</li>
+    <li>Evidence that you were in the legal and physical custody of your U.S. citizen parent(s)</li>
+    <li>Evidence you have resided in the United States</li>
+  </ul>
+  <p style="text-align: justify;">*Only applies if the applicant was born on or after 10/05/1978.</p>
+  <p style="text-align: justify;">You must establish your citizenship to the satisfaction of the Department. We may ask you to provide additional evidence to establish your claim to U.S. citizenship. Visit travel.state.gov/citizenship for details.</p>
+
+  <div class="section-header">OTHER FEE INFORMATION</div>
+  <p style="text-align: justify;">FEES ARE LISTED ON OUR WEBSITE AT TRAVEL.STATE.GOV BY LAW. THE PASSPORT FEES ARE NON-REFUNDABLE.</p>
+  <p style="text-align: justify;">Expedited service: Available for an additional fee. Our website travel.state.gov contains updated information regarding fees and processing times for expedited service. Expedited service is only available for passports mailed in the United States and Canada. Please include the appropriate fee with your payment.</p>
+  <p style="text-align: justify;">1-2 Day Delivery: Available for an additional fee. This service is only available for passport book (and not passport card) mailings in the United States. Please include the appropriate fee with your payment.</p>
+  <p style="text-align: justify;">Verification of a previous U.S. Passport or Consular Report of Birth Abroad: An additional fee will be charged when, upon your request, we verify issuance of a previous U.S. passport or Consular Report of Birth Abroad because you are unable to submit evidence of U.S. citizenship.</p>
+
+  <div class="section-header">Special Issuance Passports:</div>
+  <p style="text-align: justify;">If you present U.S. government authorization to apply for a special issuance passport (no-fee regular, service, official, or diplomatic), you must pay the execution fee when applying at a designated acceptance facility. No other fees are charged when you apply.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; font-size: 10pt; margin-bottom: 10px;">U.S. Department of State</div>
+  <div style="text-align: right; font-size: 0.9em;">OMB CONTROL NO. 1405-004<br>EXPIRATION DATE: 12-31-2023<br>IMPORTANT: BINDERED. 85 MINUTES</div>
+
+  <div class="section-header">WHAT IS THE DIFFERENCE BETWEEN A PASSPORT BOOK AND A PASSPORT CARD?</div>
+  <p style="text-align: justify;">The U.S. passport card is not valid for international air travel. Unlike the U.S. passport book, the U.S. passport card is valid only for entry at land border crossings and sea ports of entry traveling from Canada, Mexico, the Caribbean, and Bermuda.</p>
+  <p style="text-align: justify;">The U.S. passport book is valid for international air travel. It is a booklet that contains a full passport, which is valid for international air travel. It is a booklet that contains a full passport, which is valid for international air travel.</p>
+
+  <div class="section-header">HOW FEES ARE ESTABLISHED AND PROCESSED</div>
+  <p style="text-align: justify;">Passport service fees are levied by law and regulation (see 22 U.S.C. 214, 22 C.F.R. 21.50-56) and are collected at the time you apply for the passport service.</p>
+  <p style="text-align: justify;">If we fail to receive full payment of the applicable fees (for example, if your check is returned for any reason or you dispute a fee charge to your account), we may cancel your application and return your application materials. We may also notify the acceptance facility that your application is incomplete. If we receive a returned check, we will notify you and your acceptance facility that your application is incomplete. If we receive a returned check, we will notify you and your acceptance facility that your application is incomplete.</p>
+  <p style="text-align: justify;">Debt collection procedures used by U.S. Department of Treasury may include referral of the debt to private collection agencies, reporting of the debt to credit reporting agencies, and other legal actions. If you fail to pay the fees required for your passport application, you may be subject to legal action by the U.S. Department of State.</p>
+  <p style="text-align: justify;">You may use this application if you meet all of the provisions listed below, your passport using sponsoring agency for instructions on proper routing procedures before forwarding this application. Your completed passport will be released to your sponsoring agency for forwarding to you.</p>
+
+  <div class="section-header">PROTECT YOURSELF AGAINST IDENTITY THEFT - REPORT YOUR PASSPORT LOST OR STOLEN</div>
+  <p style="text-align: justify;">If your passport is lost or stolen, report it immediately to the U.S. Department of State. You must report your passport lost or stolen to the U.S. Department of State as soon as possible. If you fail to report your passport lost or stolen, you may be subject to penalties under U.S. law.</p>
+  <p style="text-align: justify;">The information you provide regarding your passport lost or stolen, or passport book or card will be placed into our Consular Lost or Stolen Passport database. If you report your passport lost or stolen, you will be issued a new passport. If you do not report your passport lost or stolen, you may be subject to penalties under U.S. law.</p>
+  <p style="text-align: justify;">For more information regarding reporting a lost or stolen U.S. passport book or card, please call the National Passport Information Center at 1-877-487-2778 (TDD/TTY: 1-888-874-7733) or visit travel.state.gov.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; font-size: 10pt; margin-bottom: 10px;">U.S. Department of State</div>
+  <div style="text-align: right; font-size: 0.9em;">OMB CONTROL NO. 1405-004<br>EXPIRATION DATE: 12-31-2023<br>IMPORTANT: BINDERED. 85 MINUTES</div>
+
+  <div class="section-header">APPLICATION FOR A U.S. PASSPORT</div>
+
+  <div class="form-row">
+    <div class="form-label">Select document(s) for which you are submitting fees:</div>
+    <div style="flex-grow: 1;">
+      <input type="checkbox" id="book" name="book" value="book"> <label for="book">U.S. Passport Book</label>
+      <input type="checkbox" id="card" name="card" value="card"> <label for="card">U.S. Passport Card</label>
+      <input type="checkbox" id="both" name="both" value="both"> <label for="both">Both</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">1. Name. Last</div>
+    <div class="form-input" style="width: 50%;"></div>
+    <div class="form-label">First</div>
+    <div class="form-input" style="width: 25%;"></div>
+    <div class="form-label">Middle</div>
+    <div class="form-input" style="width: 25%;"></div>
+    <div class="form-label">Sex</div>
+    <div class="form-input" style="width: 10%;">M</div>
+    <div class="form-label">NFR</div>
+    <div class="form-input" style="width: 10%;"></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">2. Date of Birth (mm/dd/yyyy)</div>
+    <div class="form-input" style="width: 20%;"></div>
+    <div class="form-label">3. Place of Birth (City & State if in the U.S. or City & Country as it is presently known.)</div>
+    <div class="form-input" style="width: 50%;"></div>
+    <div class="form-label">4. Place of Birth (City & State if in the U.S. or City & Country as it is presently known.)</div>
+    <div class="form-input" style="width: 50%;"></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">5. Social Security Number</div>
+    <div class="form-input" style="width: 40%;"></div>
+    <div class="form-label">6. Email (state application status at passportstatus.state.gov)</div>
+    <div class="form-input" style="width: 50%;"></div>
+    <div class="form-label">7. Primary Contact Phone Number</div>
+    <div class="form-input" style="width: 50%;"></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">8. Mailing Address Line 1: (Street/P.O. Box or Urb)</div>
+    <div class="form-input" style="width: 100%;"></div>
+  </div>
+
+  <div class="grid-2col">
+    <div>
+      <div class="form-label">Address Line 2: (Include Apartment, Suite, etc. if applicant is a child, write "In Care Of" of the parent. Example: In Care Of - Jane Doe, mother)</div>
+      <div class="form-input" style="width: 100%;"></div>
+    </div>
+    <div>
+      <div class="form-label">City</div>
+      <div class="form-input" style="width: 33%;"></div>
+      <div class="form-label">State</div>
+      <div class="form-input" style="width: 33%;"></div>
+      <div class="form-label">Zip Code</div>
+      <div class="form-input" style="width: 33%;"></div>
+      <div class="form-label">Country: (if outside the United States)</div>
+      <div class="form-input" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">9. List all other names you have used. (Examples: Birth Name, Maiden, Previous Marital Name, Legal Name Change. Attach additional pages if needed)</div>
+    <div class="form-input" style="width: 100%;"></div>
+  </div>
+
+  <div style="text-align: center; margin: 40px 0;">
+    <div style="border: 1px solid #000; padding: 10px; width: 60%;">
+      <p style="font-weight: bold; margin: 0;">DO NOT SIGN APPLICATION UNTIL REQUESTED TO DO SO BY AUTHORIZED AGENT</p>
+    </div>
+  </div>
+
+  <div class="grid-2col">
+    <div>
+      <div class="form-label">Identifying Documents - Applicant / Mother/Father/Parent/Legal Guardian on Second Signature Line (if identifying minor)</div>
+      <div class="form-row" style="margin-top: 10px;">
+        <div class="form-label" style="width: 15%;">ID No</div>
+        <div class="form-input" style="width: 25%;"></div>
+        <div class="form-label" style="width: 15%;">Type</div>
+        <div class="form-input" style="width: 25%;"></div>
+        <div class="form-label" style="width: 15%;">Exp. Date</div>
+        <div class="form-input" style="width: 25%;"></div>
+      </div>
+      <div class="form-row" style="margin-top: 10px;">
+        <div class="form-label" style="width: 15%;">Issuing Authority</div>
+        <div class="form-input" style="width: 50%;"></div>
+      </div>
+    </div>
+    <div>
+      <div class="form-label">Identifying Documents - Applicant / Mother/Father/Parent/Legal Guardian on Third Signature Line (if identifying minor)</div>
+      <div class="form-row" style="margin-top: 10px;">
+        <div class="form-label" style="width: 15%;">ID No</div>
+        <div class="form-input" style="width: 25%;"></div>
+        <div class="form-label" style="width: 15%;">Type</div>
+        <div class="form-input" style="width: 25%;"></div>
+        <div class="form-label" style="width: 15%;">Exp. Date</div>
+        <div class="form-input" style="width: 25%;"></div>
+      </div>
+      <div class="form-row" style="margin-top: 10px;">
+        <div class="form-label" style="width: 15%;">Issuing Authority</div>
+        <div class="form-input" style="width: 50%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-label">Acceptance Agent</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Passport Staff Agent</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Signature of Person Authorized to Accept Applications</div>
+    <div class="form-input" style="width: 40%;"></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-label">Signature of Applicant</div>
+    <div class="form-input" style="width: 50%;"></div>
+    <div class="form-label">Date</div>
+    <div class="form-input" style="width: 25%;"></div>
+    <div class="form-label">Applicant's Legal Signature - age 16 and older</div>
+    <div class="form-input" style="width: 25%;"></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-label">Print Family Name/Location</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Agent ID Number</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Mother/Father/Parent/Legal Guardian's Signature (if identifying minor)</div>
+    <div class="form-input" style="width: 40%;"></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-label">Name of courier company (if applicable)</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Facility ID Number</div>
+    <div class="form-input" style="width: 30%;"></div>
+    <div class="form-label">Mother/Father/Parent/Legal Guardian's Signature (if identifying minor)</div>
+    <div class="form-input" style="width: 40%;"></div>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 50px;">
+    <p>Please do not write below this line - FOR ISSUING OFFICE ONLY</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div>
+        <p>Birth Certificate</p>
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+          <input type="checkbox"> <label>SR</label>
+          <input type="checkbox"> <label>CR</label>
+          <input type="checkbox"> <label>City</label>
+          <input type="checkbox"> <label>Filed</label>
+        </div>
+        <p>Issued:</p>
+        <div style="border-bottom: 1px solid #000; width: 150px;" data-field="issued">{{ issued }}</div>
+        <p>Sole Parent</p>
+        <input type="checkbox">
+      </div>
+      <div>
+        <p>N/A</p>
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+          <input type="checkbox"> <label>City</label>
+          <input type="checkbox"> <label>USCIS</label>
+          <input type="checkbox"> <label>UDOC</label>
+          <input type="checkbox"> <label>Date/Place Acquired</label>
+        </div>
+        <p>Issued:</p>
+        <div style="border-bottom: 1px solid #000; width: 150px;" data-field="issued_2">{{ issued_2 }}</div>
+      </div>
+    </div>
+  </div>
+</div>

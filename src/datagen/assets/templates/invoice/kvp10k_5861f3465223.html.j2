@@ -1,0 +1,126 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24px; margin: 0;">New Mexico Tech</h1>
+      <p style="margin: 2px 0;">801 Leroy Place</p>
+      <p style="margin: 2px 0;">Socorro, NM</p>
+      <p style="margin: 2px 0;">87801</p>
+    </div>
+    <div style="text-align: right;">
+      <p>Date: <span data-field="date">{{ date }}</span></p>
+      <p>Direct</p>
+      <p>Pymt No.: <span data-field="payment_number">{{ payment_number }}</span></p>
+      <p>Department Name</p>
+      <p>Building, Room no.</p>
+      <p>Department contact (name, phone)</p>
+      <p>Delivery Date</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 30px;">Order Confirmation for Goods and Services</h2>
+  <p style="margin-top: 5px;">Payment shall not exceed <span data-field="max_amount">{{ max_amount }}</span>.</p>
+
+  <div style="margin-top: 30px;">
+    <p>Order to: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Send invoices in duplicate via mail or email:</p>
+    <p>New Mexico Institute of Mining and Technology</p>
+    <p>Accounts Payable Department</p>
+    <p>801 Leroy Place</p>
+    <p>Socorro, NM 87801</p>
+    <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+    <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Ship to: <span data-field="ship_to_location">{{ ship_to_location }}</span></p>
+    <p style="font-size: 12px; margin-top: 10px;">Receiving Hours: Weekdays 8:00 AM - 12:00 PM & 1:00 - 4:00 PM</p>
+    <p style="font-size: 12px;">NO HOLIDAY DELIVERIES ACCEPTED</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">ITEM #</th>
+        <th style="width: 50%;">DESCRIPTION</th>
+        <th style="width: 10%; text-align: center;">QTY</th>
+        <th style="width: 10%; text-align: center;">UNIT PRICE</th>
+        <th style="width: 15%; text-align: right;">EXT. PRICE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].item_number">{{ item.item_number }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].quantity">{{ item.quantity }}</span></td>
+        <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].unit_price">{{ item.unit_price }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].extended_price">{{ item.extended_price }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align: right; font-weight: bold;">TOTAL</td>
+        <td style="text-align: right; font-weight: bold;"><span data-field="total_amount">{{ total_amount }}</span></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div style="margin-top: 60px; display: flex; justify-content: space-between;">
+    <div>
+      <p>Print: <span data-field="print_name">{{ print_name }}</span></p>
+      <p>Signature:</p>
+    </div>
+    <div>
+      <p>Vendor</p>
+      <p>New Mexico Tech</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>TERMS AND CONDITIONS</strong> - Payment Terms Net 30. This order is subject to the general terms and conditions of New Mexico Tech's purchasing procedures. They can be referenced at: <a href="http://www.nmt.edu/finance/purchasing/docs/forms/Terms_and_Conditions_2015.pdf">{{ terms_link }}</a></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 14px;">CERTIFICATION OF TAX EXEMPTION</h3>
+    <p style="font-size: 12px;">New Mexico Tech is an agency of the State of New Mexico. This certification is made pursuant to State Statute <span data-field="statute_number">{{ statute_number }}</span> and 7-7-43 (B) and is issued in lieu of a "Nontaxable Transaction Certificate". This order may be retained by seller as evidence that this sale is deductible from the seller's gross receipts. This exemption does not apply to the purchase of services, lease of property, or items purchased for a construction project.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 14px;">FOR FORM W-9 Certification of Exemption</h3>
+    <p style="font-size: 12px;">Taxpayer Identification Number: <span data-field="tax_id_number">{{ tax_id_number }}</span>. Certification Under penalties of perjury. I certify that the number shown on this form is the correct taxpayer identification number of New Mexico Tech. I also certify under penalties of perjury that New Mexico Tech is an agency of the State of New Mexico, and is exempt from backup withholding.</p>
+  </div>
+
+  <div style="margin-top: 60px; display: flex; justify-content: space-between;">
+    <p style="font-size: 12px;">Updated <span data-field="update_date">{{ update_date }}</span></p>
+    <p style="font-size: 12px;">Kimela Miller, Chief Procurement Officer</p>
+  </div>
+</div>

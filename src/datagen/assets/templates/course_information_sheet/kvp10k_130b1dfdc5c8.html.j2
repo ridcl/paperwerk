@@ -1,0 +1,214 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px; border: 1px solid #ccc; }
+  .header { font-weight: bold; font-size: 1.1em; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <span class="header">Friends for Learning, Inc.</span>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <span class="header">Instructor & Course Information Sheet (CIS) Rev. 11</span>
+    </div>
+    <div>
+      Date submitted: <span data-field="date_submitted">{{ date_submitted }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px; font-size: 0.9em;">
+    <p>•This is a fillable PDF. It can be completed on the computer.</p>
+    <p>•When finished, go to "File", "Save as", give the form a name (e.g. the title) and save.</p>
+    <p>•If possible, attach the CIS to an email and send to <span data-field="email_address">{{ email_address }}</span></p>
+    <p>•Or make a copy of the form, complete it by hand and mail. (See address below.)</p>
+    <p>•Contents of this form will appear in the Course Catalog so be sure the information is clear, accurate and concise.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Course #</th>
+        <th style="width: 50%;">Course Title (limit 40 characters)</th>
+        <th style="width: 15%;">Instructor</th>
+        <th style="width: 15%;">Fee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="course_number">{{ course_number }}</span></td>
+        <td><span data-field="course_title">{{ course_title }}</span></td>
+        <td><span data-field="instructor_name">{{ instructor_name }}</span></td>
+        <td><span data-field="course_fee">{{ course_fee }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      When: <span data-field="when_date">{{ when_date }}</span>
+    </div>
+    <div>
+      Location: <span data-field="location">{{ location }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    Content:
+    <div style="border: 1px solid #ccc; height: 100px; margin-top: 5px; padding: 10px;">
+      <!-- Placeholder for content -->
+    </div>
+  </div>
+
+  <table style="width: 50%;">
+    <tr>
+      <td style="width: 50%;">Credentials:</td>
+      <td style="width: 50%;"></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">Facilitator:</td>
+      <td style="width: 33%;">E-mail:</td>
+      <td style="width: 33%;">Phone:</td>
+    </tr>
+    <tr>
+      <td><span data-field="facilitator_name">{{ facilitator_name }}</span></td>
+      <td><span data-field="facilitator_email">{{ facilitator_email }}</span></td>
+      <td><span data-field="facilitator_phone">{{ facilitator_phone }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Instructor:</th>
+        <th style="width: 25%;">E-mail:</th>
+        <th style="width: 25%;">Phone:</th>
+        <th style="width: 30%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="instructor_name_2">{{ instructor_name_2 }}</span></td>
+        <td><span data-field="instructor_email_2">{{ instructor_email_2 }}</span></td>
+        <td><span data-field="instructor_phone_2">{{ instructor_phone_2 }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Instructor's preferred Date(s):</th>
+        <th style="width: 20%;">Time:</th>
+        <th style="width: 25%;">Number of sessions:</th>
+        <th style="width: 25%;">Location: (Address if not at ISU)</th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span data-field="preferred_date_range">{{ preferred_date_range }}</span>
+          <span data-field="day_of_week_checkboxes">{{ day_of_week_checkboxes }}</span>
+        </td>
+        <td><span data-field="preferred_time">{{ preferred_time }}</span></td>
+        <td><span data-field="number_of_sessions">{{ number_of_sessions }}</span></td>
+        <td><span data-field="session_location">{{ session_location }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Field trip(?):</th>
+        <th style="width: 40%;">Number of students allowed in class:</th>
+        <th style="width: 20%;">Minimum:</th>
+        <th style="width: 20%;">Maximum:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="field_trip_status">{{ field_trip_status }}</span></td>
+        <td><span data-field="student_capacity">{{ student_capacity }}</span></td>
+        <td><span data-field="minimum_students">{{ minimum_students }}</span></td>
+        <td><span data-field="maximum_students">{{ maximum_students }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Equipment and materials required for class</th>
+        <th style="width: 70%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span data-field="equipment_checkboxes">{{ equipment_checkboxes }}</span>
+        </td>
+        <td>
+          <!-- Placeholder for equipment details -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Office use only:</th>
+        <th style="width: 70%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Class Day of week: <span data-field="office_day_of_week">{{ office_day_of_week }}</span>
+        </td>
+        <td>
+          Date(s): <span data-field="office_dates">{{ office_dates }}</span>; Time: <span data-field="office_time">{{ office_time }}</span>; Location: <span data-field="office_location">{{ office_location }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Class date/day/time approved by instructor as verified by facilitator:
+          <span data-field="approval_status">{{ approval_status }}</span>
+        </td>
+        <td>
+          <span data-field="approval_notes">{{ approval_notes }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Scheduled with ISU:
+          <span data-field="isu_scheduling_status">{{ isu_scheduling_status }}</span>
+        </td>
+        <td>
+          <span data-field="isu_comments">{{ isu_comments }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 50px; font-size: 0.8em; text-align: center;">
+    Rev 11 March, 2021 *Using your normal email, send this form (as an attachment) to <span data-field="email_address_rev">{{ email_address_rev }}</span>. Or mail to <span data-field="mailing_address">{{ mailing_address }}</span>. Phone: <span data-field="phone_number_rev">{{ phone_number_rev }}</span>
+  </div>
+</div>

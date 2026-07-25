@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as primary */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; /* Using sans-serif for headings */
+  }
+  p, td {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_seal.png" alt="Seal" style="width: 150px; height: auto; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">COMMONWEALTH OF VIRGINIA</h1>
+    <h2 style="font-size: 14pt; margin: 0;">DEPARTMENT OF SOCIAL SERVICES</h2>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>DATE: <span data-field="date">{{ date }}</span></p>
+    <p>TO: <span data-field="recipient_system">{{ recipient_system }}</span></p>
+    <p>FROM: <span data-field="sender_name">{{ sender_name }}</span>, <span data-field="sender_title">{{ sender_title }}</span></p>
+    <p>SUBJECT: <span data-field="subject">{{ subject }}</span></p>
+    <p>CONTACT: <span data-field="contact_info">{{ contact_info }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Virginia Department of Social Services (VDSS) is pleased to announce an upgrade to the Central Registry Search system. Our agency will roll out the new system in <span data-field="rollout_date">early to mid {{ rollout_date }}</span>. This memo informs you of changes to the system and steps to take when submitting your search request form.</p>
+  </div>
+
+  <div class="section-header">Changes to the system</div>
+  <div style="margin-bottom: 20px;">
+    <p>The system upgrade will shorten the search timeframes. Instead of manual searches, the system will process the search information to find matches. The results of the searches will be emailed instead of mailed. Emailed results will be sent to the agency's main point-of-contact. For local department of social services, the results will be emailed to the agency director.</p>
+    <p>The system upgrade will include billing information being sent through the system. Emails will be sent to the finance point-of-contact, if the agency has a designated finance staff representative.</p>
+    <p>The results received will look different than what is currently being returned. Instead of receiving the search form back, the emailed results will include a determination and a birth year for the applicant for which the search was conducted.</p>
+  </div>
+
+  <div class="section-header">Steps to take when completing and submitting the Central Registry Release of Information Form</div>
+  <div style="margin-bottom: 30px;">
+    <p>Continue to use the Central Registry Release of Information Form (<span data-field="form_number">{{ form_number }}</span>) at <a href="{{ form_url }}">{{ form_url }}</a>.</p>
+  </div>
+
+  <div style="text-align: right; margin-top: 50px;">
+    <p>1</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-size: 16pt;">Central Registry Release of Information Form requirements</h2>
+  </div>
+
+  <ul style="margin-top: 0;">
+    <li>Print the form as a 2-sided document</li>
+    <li>Use a separate blank page if additional space is needed for listing spousal and children's names</li>
+    <li>Complete all fields and required information on the form (including an email address)</li>
+    <li>Print legibly</li>
+    <li>Have the form notarized</li>
+    <li>Ensure the applicant's signature appears on the form</li>
+    <li>Follow the directions when completing the form</li>
+    <li>Mail the completed form with payment to:</li>
+    <li style="margin-left: 30px;">Virginia Department of Social Services</li>
+    <li style="margin-left: 30px;">Office of Background Investigations - Search Unit</li>
+    <li style="margin-left: 30px;">801 East Main Street,</li>
+    <li style="margin-left: 30px;">6th Floor Richmond, VA 23219-2901</li>
+  </ul>
+
+  <div class="section-header" style="margin-top: 40px;">Actions to Avoid</div>
+  <ul style="margin-top: 0;">
+    <li>Do not use white out or cross out information on the form</li>
+    <li>Do not write on or cover the bar code</li>
+    <li>Do not write in the margins</li>
+    <li>Do not copy the form and make it smaller than 8" x 10"</li>
+    <li>Do not staple the form</li>
+    <li>Do not send personal checks</li>
+    <li>Do not send extra documents along with the form (e.g. copies of birth certificates, marriage licenses or driver's licenses - <span data-field="attachments_note">{{ attachments_note }}</span>)</li>
+  </ul>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Note:</strong> If the search form is not filled out correctly, it will be returned. Forms will now be scanned into the new system, so the completed form must be easy to read, with no additional marks or documents attached.</p>
+  </div>
+
+  <div class="section-header" style="margin-top: 30px;">Central Registry Email</div>
+  <p>Our VDSS staff will send emails results from one of the following CRS email addresses:</p>
+  <ul style="margin-top: 0;">
+    <li><span data-field="email_address_1">{{ email_address_1 }}</span></li>
+    <li><span data-field="email_address_2">{{ email_address_2 }}</span></li>
+  </ul>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Note:</strong> Do not send your <span data-field="form_name">{{ form_name }}</span> to the CRS “matcher or supervisor” email addresses. Instead, send all requests and payments to the address listed under the <span data-field="form_link_text">{{ form_link_text }}</span> section shown above.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Thank you for your patience as we prepare to implement this new automated system. We are hopeful for faster turnaround times by using the new system. If you have questions, contact the Office of Background Investigations at <span data-field="phone_number">{{ phone_number }}</span>.</p>
+  </div>
+
+  <div style="text-align: right; margin-top: 50px;">
+    <p>2</p>
+  </div>
+</div>
+</body>
+</html>

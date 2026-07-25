@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verification Worksheet</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+  th { background-color: #f2f2f2; padding: 8px; border: 1px solid #ccc; text-align: left; }
+  .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 20px; }
+  .section-heading { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .sub-heading { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .label { font-weight: bold; display: inline-block; width: 150px; }
+  .input-field { border-bottom: 1px solid black; min-width: 200px; }
+  .warning-box { border: 1px solid black; padding: 15px; margin-top: 20px; background-color: #fff3cd; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="max-width: 150px;">
+    <div style="margin-top: 10px;">
+      <span style="font-size: 10pt;">The Arts and Social Change for 150 Years</span>
+    </div>
+  </div>
+  <div style="text-align: right;">
+    <h1 style="font-size: 18pt; font-weight: bold;">2021-2022 V1 Verification Worksheet</h1>
+    <h2 style="font-size: 14pt; font-weight: normal;">Independent Student</h2>
+  </div>
+
+  <div class="section-heading">Independent Student's Information</div>
+  <table>
+    <tr>
+      <td style="width: 20%;">Last Name</td>
+      <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+      <td style="width: 20%;">First Name</td>
+      <td style="width: 30%;"><span data-field="first_name">{{ first_name }}</span></td>
+    </tr>
+    <tr>
+      <td>M.I.</td>
+      <td><span data-field="middle_initial">{{ middle_initial }}</span></td>
+      <td>Student ID #</td>
+      <td><span data-field="student_id">{{ student_id }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <p>Street Address (include apt. no.)</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <div style="width: 45%;">
+        <span class="label">City</span>
+        <span class="input-field" style="display: block;">{{ city }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="label">State</span>
+        <span class="input-field" style="display: block;">{{ state }}</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 45%;">
+        <span class="label">Zip Code</span>
+        <span class="input-field" style="display: block;">{{ zip_code }}</span>
+      </div>
+      <div style="width: 45%;">
+        <span class="label">Email Address</span>
+        <span class="input-field" style="display: block;">{{ email_address }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Home Phone Number (include area code)</p>
+    <span class="input-field" style="display: block; width: 50%;">{{ home_phone }}</span>
+    <p>Alternate or Cell Phone Number</p>
+    <span class="input-field" style="display: block; width: 50%;">{{ phone_number }}</span>
+  </div>
+
+  <div class="section-heading">A. Independent Student's Family Information</div>
+  <p>List below the people in your household. You must include:</p>
+  <ul>
+    <li><span data-field="household_member_self">{{ household_member_self }}</span></li>
+    <li>Your spouse, if you are married</li>
+    <li>Your children, if any, if you will provide more than half of their support from July 1, 2019, through June 30, 2021, or if the child would be required to provide your information if they were completing a FAFSA for 2021-2022. Include children who meet either of these standards, even if they do not live with you.</li>
+    <li>Other people if they now live with you and you provide more than half of their support and will continue to provide more than half of their support through June 30, 2021.</li>
+  </ul>
+
+  <div style="margin-top: 20px;">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Full Name</th>
+          <th style="width: 15%;">Age</th>
+          <th style="width: 25%;">Relationship</th>
+          <th style="width: 40%;">College</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in household_members %}
+        <tr>
+          <td><span data-field="household_members[{{ loop.index0 }}].full_name">{{ item.full_name }}</span></td>
+          <td><span data-field="household_members[{{ loop.index0 }}].age">{{ item.age }}</span></td>
+          <td><span data-field="household_members[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+          <td><span data-field="household_members[{{ loop.index0 }}].college">{{ item.college }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="margin-top: 15px;">If more space is needed, attach a separate page with the student's name and Student ID Number at the top.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-heading">B. Tax Return Filers - The best way to verify income is by using the IRS Data Retrieval Tool that is part of FAFSA on the Web. If the student has not already used the tool, go to FAFSA.gov, log in to the student's FAFSA record, select "Make FAFSA Corrections," and navigate to the Financial Information section of the form. From there, follow the instructions to determine if the student is eligible to use the IRS Data Retrieval Tool to transfer 2019 IRS income tax information into the student's FAFSA. It takes up to two weeks for IRS income information to be available for the IRS Data Retrieval Tool for electronic IRS tax return filers, and up to eight weeks for paper IRS tax return filers.</div>
+
+  <div style="margin-top: 20px;">
+    <p>Check only ONE box from below if you filed a 2019 tax return.</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="box1">
+      <label for="box1">Check here if you used, or will use, the IRS Data Retrieval Tool to transfer your tax information to your FAFSA, and <a href="#">skip to section C</a>.</label>
+    </div>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="box2">
+      <label for="box2">Check here if you did not use the IRS Data Retrieval Tool. Attach a copy of your IRS Tax Return Transcript to this form. Contact the IRS at <a href="#">http://www.irs.gov/Individuals/Get-Transcript</a> or 1-800-908-9946 to request a copy of your 2019 IRS Tax Return Transcript, and <a href="#">skip to section C</a>.</label>
+    </div>
+  </div>
+
+  <div class="section-heading">2. NONFILERS</div>
+  <p>Check only ONE box from below if you DID NOT file a 2019 tax return, list every employer even if they did not issue an IRS W-2 form.</p>
+  <div style="margin-top: 10px;">
+    <input type="checkbox" id="box3">
+    <label for="box3">The student (and, if married, the students spouse) was not employed and had no income earned from work in 2019.</label>
+  </div>
+  <div style="margin-top: 10px;">
+    <input type="checkbox" id="box4">
+    <label for="box4">The student (and, if married, the students spouse) was employed in 2019 and has listed below the names of all the student's employers, the amount earned from each employer in 2019 even if they did not receive an IRS W-2 form, and whether an IRS W-2 form is attached. Attach copies of all 2019 IRS W-2 forms issued to the student by employers.</label>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 35%;">Student Employer's Name</th>
+          <th style="width: 20%;">2019 Amount Earned</th>
+          <th style="width: 25%;">Check if W-2 Attached</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in nonfiler_employers %}
+        <tr>
+          <td><span data-field="nonfiler_employers[{{ loop.index0 }}].employer_name">{{ item.employer_name }}</span></td>
+          <td><span data-field="nonfiler_employers[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="margin-top: 15px;">If more space is needed, attach a separate page with the student's name and Student ID Number at the top.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-heading">C. Certification and Signatures</div>
+  <p>Each person signing this worksheet certifies that all of the information reported on it is complete and correct. The student must sign this worksheet. If married, the spouse's signature is optional.</p>
+
+  <div class="warning-box">
+    <p style="font-weight: bold;">WARNING:</p>
+    <p>If you purposely give false or misleading information on this worksheet, you may be fined, be sentenced to jail, or both.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+      <div>
+        <p>Student's Signature</p>
+        <span class="input-field" style="display: block; width: 300px;">{{ student_signature }}</span>
+      </div>
+      <div>
+        <p>Date</p>
+        <span class="input-field" style="display: block; width: 300px;">{{ student_date }}</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+      <div>
+        <p>Spouse's Signature</p>
+        <span class="input-field" style="display: block; width: 300px;">{{ spouse_signature }}</span>
+      </div>
+      <div>
+        <p>Date</p>
+        <span class="input-field" style="display: block; width: 300px;">{{ spouse_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 80px;">You should make a copy of this completed form for your records.</p>
+
+  <div style="margin-top: 100px; text-align: center; font-size: 10pt;">
+    <p>Page 3 of 3</p>
+    <p>Office of Financial Aid</p>
+    <p>1000 Seventeenth Avenue North* Nashville, TN 37208 * phone 615-329-8735 * fax 615-329-8520 * <a href="mailto:finaid@fisk.edu">finaid@fisk.edu</a></p>
+  </div>
+</div>
+
+</body>
+</html>

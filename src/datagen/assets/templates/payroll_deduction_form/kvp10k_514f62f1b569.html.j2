@@ -1,0 +1,147 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">Employee HSA payroll deduction form</h1>
+      <p style="margin: 5px 0 0 0;">Return completed forms to:</p>
+      <p style="margin: 0;">Company name: <span data-field="company_name">{{ company_name }}</span></p>
+      <p style="margin: 5px 0 0 0;">Attn: <span data-field="attn_name">{{ attn_name }}</span>, <span data-field="attn_phone">{{ attn_phone }}</span></p>
+      <p style="margin: 5px 0 0 0;">Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+      <p style="margin: 5px 0 0 0;">Email address: <span data-field="email_address">{{ email_address }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 24pt; margin: 0;">LS Lake Shore Savings</h2>
+      <p style="font-size: 14pt; margin: 0;">Putting People First.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Annual employer contribution information</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 33.3%;">Self-only</th>
+        <th style="width: 33.3%;">Family</th>
+        <th style="width: 33.3%;">Other (optional)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 15px; font-size: 10pt;">For mid-year enrollees, contact your HR department for your pro-rated employer election amount.</p>
+  <p style="font-size: 10pt;">Notes</p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">HSA contribution limits and contribution calculator</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Coverage type</th>
+        <th style="width: 25%;">2021 annual HSA contributions</th>
+        <th style="width: 25%;">Per month</th>
+        <th style="width: 25%;">2022 annual HSA contributions</th>
+        <th style="width: 25%;">Per month</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Self-only</td>
+        <td><span data-field="hsa_2021_self_only_annual">{{ hsa_2021_self_only_annual }}</span></td>
+        <td><span data-field="hsa_2021_self_only_monthly">{{ hsa_2021_self_only_monthly }}</span></td>
+        <td><span data-field="hsa_2022_self_only_annual">{{ hsa_2022_self_only_annual }}</span></td>
+        <td><span data-field="hsa_2022_self_only_monthly">{{ hsa_2022_self_only_monthly }}</span></td>
+      </tr>
+      <tr>
+        <td>Family</td>
+        <td><span data-field="hsa_2021_family_annual">{{ hsa_2021_family_annual }}</span></td>
+        <td><span data-field="hsa_2021_family_monthly">{{ hsa_2021_family_monthly }}</span></td>
+        <td><span data-field="hsa_2022_family_annual">{{ hsa_2022_family_annual }}</span></td>
+        <td><span data-field="hsa_2022_family_monthly">{{ hsa_2022_family_monthly }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 60%; margin-top: 20px;">
+    <tr>
+      <td style="width: 50%;">
+        <p><strong>Total annual contribution</strong></p>
+        <p>Other (Type in amount)</p>
+        <p>Total eligible amount</p>
+      </td>
+      <td style="width: 50%;">
+        <p><strong>Total annual employer contribution</strong></p>
+        <p>Per-pay period max withholding</p>
+        <p>Total eligible amount</p>
+      </td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <tr>
+      <td style="width: 33%;">
+        <p>Total annual contribution</p>
+        <p>($ <span data-field="total_annual_contribution">{{ total_annual_contribution }}</span>)</p>
+      </td>
+      <td style="width: 33%;">
+        <p>Total annual employer contribution</p>
+        <p>($ <span data-field="total_employer_contribution">{{ total_employer_contribution }}</span>)</p>
+      </td>
+      <td style="width: 33%;">
+        <p>Total eligible amount</p>
+        <p>($ <span data-field="total_eligible_amount">{{ total_eligible_amount }}</span>)</p>
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size: 10pt; margin-top: 20px;">Eligibility and contribution limits to your health savings account (HSA) are determined by the effective date of your high-deductible health plan (HDHP). If you're covered as of December 1, you're considered an eligible individual for the entire year and you're not required to pro-rate your contributions. If you cease to be an eligible individual during the next calendar year, any funding over the prorated amount is considered an excess contribution and subject to a penalty and income tax.</p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Employee information and authorization</h3>
+  <table>
+    <tr>
+      <td style="width: 50%;">
+        <p>Employee name: <span data-field="employee_name">{{ employee_name }}</span></p>
+        <p>Please withhold $ <span data-field="withhold_amount">{{ withhold_amount }}</span> from my (weekly/bi-weekly/monthly) payroll and apply the funds to my Lakeshore Savings HSA.</p>
+        <p>Signature</p>
+      </td>
+      <td style="width: 50%; text-align: right;">
+        <p>Last 4 of SSN or employee ID</p>
+        <p>Date</p>
+      </td>
+    </tr>
+  </table>
+</div>

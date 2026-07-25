@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .contact-info p {
+    margin: 2px 0;
+  }
+  .section-title {
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-size: 10pt;
+    color: #555;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .two-column-layout {
+    display: flex;
+    gap: 50px;
+  }
+  .column {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <h1>Curriculum Vitae</h1>
+    </div>
+    <div>
+      <span data-field="date">{{ date }}</span>
+    </div>
+  </div>
+
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">EDUCATION</div>
+      <div class="entry">
+        <div class="entry-title">{{ education_entry_1.institution }}</div>
+        <div class="entry-details">
+          {{ education_entry_1.degree }}, {{ education_entry_1.major }}, {{ education_entry_1.minor }}<br>
+          Awarded {{ education_entry_1.award_date }}
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">{{ education_entry_2.institution }}</div>
+        <div class="entry-details">
+          {{ education_entry_2.degree }}, {{ education_entry_2.major }}, {{ education_entry_2.minor }}<br>
+          Awarded {{ education_entry_2.award_date }}
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="section-title">BRIAN MARKS</div>
+      <div class="entry">
+        <div class="entry-title">Assistant Professor</div>
+        <div class="entry-details">
+          Department of Geography and Anthropology<br>
+          {{ employer.name }}<br>
+          {{ employer.address }}<br>
+          Phone: {{ employer.phone }}<br>
+          Email: {{ employer.email }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">AWARDS AND GRANTS</div>
+      {% for award in awards_and_grants %}
+        <div class="entry">
+          <div class="entry-title">{{ award.year }}. {{ award.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <div class="section-title">NON-TEACHING EMPLOYMENT</div>
+      {% for employment in non_teaching_employment %}
+        <div class="entry">
+          <div class="entry-title">{{ employment.year_range }}: {{ employment.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">PUBLICATIONS IN REFEREED JOURNALS</div>
+      {% for publication in publications_in_refereed_journals %}
+        <div class="entry">
+          <div class="entry-title">{{ publication.year }}. {{ publication.title }}</div>
+          <div class="entry-details">{{ publication.journal_info }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <div class="section-title">EDITOR REVIEWED JOURNAL ARTICLES</div>
+      {% for article in editor_reviewed_journal_articles %}
+        <div class="entry">
+          <div class="entry-title">{{ article.year }}. {{ article.title }}</div>
+          <div class="entry-details">{{ article.journal_info }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">BOOK CHAPTERS AND CONTRIBUTIONS</div>
+      {% for book_chapter in book_chapters_and_contributions %}
+        <div class="entry">
+          <div class="entry-title">{{ book_chapter.year }}. {{ book_chapter.title }}</div>
+          <div class="entry-details">{{ book_chapter.publication_info }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <div class="section-title">OTHER PUBLICATIONS</div>
+      {% for other_pub in other_publications %}
+        <div class="entry">
+          <div class="entry-title">{{ other_pub.year }}. {{ other_pub.title }}</div>
+          <div class="entry-details">{{ other_pub.publication_info }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">BOOK MANUSCRIPTS IN PREPARATION</div>
+      {% for manuscript in book_manuscripts_in_preparation %}
+        <div class="entry">
+          <div class="entry-title">{{ manuscript.title }}</div>
+          <div class="entry-details">{{ manuscript.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <div class="section-title">REVIEWING EXPERIENCE</div>
+      {% for review_exp in reviewing_experience %}
+        <div class="entry">
+          <div class="entry-title">{{ review_exp.description }}</div>
+          <div class="entry-details">{{ review_exp.details }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="two-column-layout">
+    <div class="column">
+      <div class="section-title">PROFESSIONAL SERVICE</div>
+      {% for service in professional_service %}
+        <div class="entry">
+          <div class="entry-title">{{ service.description }}</div>
+          <div class="entry-details">{{ service.details }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <div class="section-title">SELECTED PAPERS AND ACTIVITIES FROM PROFESSIONAL MEETINGS</div>
+      {% for activity in selected_papers_and_activities %}
+        <div class="entry">
+          <div class="entry-title">{{ activity.year }}. {{ activity.description }}</div>
+          <div class="entry-details">{{ activity.details }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

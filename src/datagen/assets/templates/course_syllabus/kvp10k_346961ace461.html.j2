@@ -1,0 +1,691 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<div class="page">
+  <header>
+    <h1 style="font-size: 24pt; font-weight: bold; margin-bottom: 5px;">{{ course_code }} - {{ course_name }}</h1>
+    <h2 style="font-size: 14pt; font-weight: normal; margin-top: 0;">{{ semester_year }}</h2>
+  </header>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Instructor Contact Information</h3>
+    <p>Name: <span data-field="instructor.full_name">{{ instructor.full_name }}</span></p>
+    <p>Office Hours: <span data-field="instructor.office_hours">{{ instructor.office_hours }}</span></p>
+    <p>Email: <span data-field="instructor.email">{{ instructor.email }}</span></p>
+  </div>
+
+  <div class="section-title">Instructor Introduction</div>
+  <p><span data-field="instructor_bio">{{ instructor_bio }}</span></p>
+
+  <div class="section-title">Course Description</div>
+  <p><span data-field="course_description">{{ course_description }}</span></p>
+
+  <div class="section-title">Course Goals and Objectives</div>
+  <p><span data-field="goals_objectives">{{ goals_objectives }}</span></p>
+
+  <div class="section-title">Course Outcomes</div>
+  <p><span data-field="course_outcomes">{{ course_outcomes }}</span></p>
+
+  <div class="section-title">Assignments</div>
+  <p><span data-field="assignments_description">{{ assignments_description }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-title">Grading Standards and Criteria</div>
+  <p>Evaluation of student performance for this course is based upon the following criteria:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><span data-field="grading_criteria_1">{{ grading_criteria_1 }}</span></li>
+    <li><span data-field="grading_criteria_2">{{ grading_criteria_2 }}</span></li>
+    <li><span data-field="grading_criteria_3">{{ grading_criteria_3 }}</span></li>
+    <li><span data-field="grading_criteria_4">{{ grading_criteria_4 }}</span></li>
+  </ul>
+
+  <div class="section-title">Specifically you will be evaluated upon:</div>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><span data-field="evaluation_point_1">{{ evaluation_point_1 }}</span></li>
+    <li><span data-field="evaluation_point_2">{{ evaluation_point_2 }}</span></li>
+    <li><span data-field="evaluation_point_3">{{ evaluation_point_3 }}</span></li>
+  </ul>
+
+  <div class="section-title">Materials and Personal Equipment</div>
+  <p>Students taking <span data-field="course_code">{{ course_code }}</span> must need to purchase materials and some basic external hard drive, cloud subscriptions, to store your digital files.</p>
+
+  <div class="section-title">Materials</div>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><span data-field="material_1">{{ material_1 }}</span></li>
+    <li><span data-field="material_2">{{ material_2 }}</span></li>
+    <li><span data-field="material_3">{{ material_3 }}</span></li>
+  </ul>
+
+  <div class="section-title">Attendance and Participation</div>
+  <p><span data-field="attendance_policy">{{ attendance_policy }}</span></p>
+  <p><span data-field="participation_policy">{{ participation_policy }}</span></p>
+
+  <div class="section-title">Course Participation</div>
+  <p><span data-field="participation_details">{{ participation_details }}</span></p>
+
+  <div class="section-title">Class Recordings</div>
+  <p><span data-field="recording_policy">{{ recording_policy }}</span></p>
+
+  <div class="section-title">Inclement Weather, Withdrawals, Pass/Fail</div>
+  <p><span data-field="weather_policy">{{ weather_policy }}</span></p>
+  <p><span data-field="withdrawal_policy">{{ withdrawal_policy }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-title">Cheating/Plagiarism</div>
+  <p><span data-field="cheating_policy">{{ cheating_policy }}</span></p>
+
+  <div class="section-title">Disabilities</div>
+  <p><span data-field="disability_policy">{{ disability_policy }}</span></p>
+
+  <div class="section-title">Class COVID Safety Protocols:</div>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><span data-field="covid_protocol_1">{{ covid_protocol_1 }}</span></li>
+    <li><span data-field="covid_protocol_2">{{ covid_protocol_2 }}</span></li>
+    <li><span data-field="covid_protocol_3">{{ covid_protocol_3 }}</span></li>
+    <li><span data-field="covid_protocol_4">{{ covid_protocol_4 }}</span></li>
+  </ul>
+
+  <div class="section-title">How to Self-Report</div>
+  <p><span data-field="self_report_instructions">{{ self_report_instructions }}</span></p>
+
+  <div class="section-title">What Faculty, Staff and Students Must Do Before Coming to Campus</div>
+  <p><span data-field="pre_campus_instructions">{{ pre_campus_instructions }}</span></p>
+
+  <div class="section-title">What to do when on Campus</div>
+  <p><span data-field="on_campus_instructions">{{ on_campus_instructions }}</span></p>
+
+  <div class="section-title">Syllabus Statement Regarding COVID-19 Accommodations:</div>
+  <p><span data-field="covid_accommodation_statement">{{ covid_accommodation_statement }}</span></p>
+
+  <div class="section-title">Compliance</div>
+  <p><span data-field="compliance_statement">{{ compliance_statement }}</span></p>
+
+  <div class="section-title">F2F Hybrid Course Syllabus Additional Language, Student Responsibilities</div>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><span data-field="hybrid_responsibility_1">{{ hybrid_responsibility_1 }}</span></li>
+    <li><span data-field="hybrid_responsibility_2">{{ hybrid_responsibility_2 }}</span></li>
+    <li><span data-field="hybrid_responsibility_3">{{ hybrid_responsibility_3 }}</span></li>
+  </ul>
+</div>
+
+<div class="page">
+  <div class="section-title">Course Planning Calendar* - Mondays and Wednesdays Fall 2020</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Month</th>
+        <th style="width: 80%;">Dates and Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>August</td>
+        <td><span data-field="calendar_august_1">{{ calendar_august_1 }}</span></td>
+      </tr>
+      <tr>
+        <td>September</td>
+        <td><span data-field="calendar_september_1">{{ calendar_september_1 }}</span></td>
+      </tr>
+      <tr>
+        <td>October</td>
+        <td><span data-field="calendar_october_1">{{ calendar_october_1 }}</span></td>
+      </tr>
+      <tr>
+        <td>November</td>
+        <td><span data-field="calendar_november_1">{{ calendar_november_1 }}</span></td>
+      </tr>
+      <tr>
+        <td>December</td>
+        <td><span data-field="calendar_december_1">{{ calendar_december_1 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <header>
+    <h1 style="font-size: 14pt; font-weight: bold; margin-bottom: 5px;">{{ course_code }} - {{ course_name }}</h1>
+    <h2 style="font-size: 10pt; font-weight: normal; margin-top: 0;">{{ semester_year }}</h2>
+  </header>
+
+  <div style="margin-top: 20px;">
+    <p>Instructor: <span data-field="instructor.full_name">{{ instructor.full_name }}</span></p>
+    <p>Office: <span data-field="instructor.office_location">{{ instructor.office_location }}</span></p>
+    <p>Phone: <span data-field="instructor.phone">{{ instructor.phone }}</span></p>
+    <p>Office Hours: <span data-field="instructor.office_hours_detail">{{ instructor.office_hours_detail }}</span></p>
+  </div>
+
+  <div class="section-title">Assignment 1a, 1b, &c: Learning Indesign: 3 Exercises That'll Help</div>
+  <p><span data-field="assignment_1a_description">{{ assignment_1a_description }}</span></p>
+
+  <div class="section-title">Assignment 1a: Wedding Invitation</div>
+  <p>Instructions: <span data-field="assignment_1a_instructions">{{ assignment_1a_instructions }}</span></p>
+  <p>Timeline: <span data-field="assignment_1a_timeline">{{ assignment_1a_timeline }}</span></p>
+
+  <div class="section-title">Assignment 1b: Gettysburg Address</div>
+  <p>Instructions: <span data-field="assignment_1b_instructions">{{ assignment_1b_instructions }}</span></p>
+  <p>Timeline: <span data-field="assignment_1b_timeline">{{ assignment_1b_timeline }}</span></p>
+
+  <div class="section-title">Assignment 1c: Wedding Invitation (Second Version)</div>
+  <p>Instructions: <span data-field="assignment_1c_instructions">{{ assignment_1c_instructions }}</span></p>
+  <p>Timeline: <span data-field="assignment_1c_timeline">{{ assignment_1c_timeline }}</span></p>
+
+  <div class="section-title">Submission Instructions</div>
+  <p><span data-field="submission_instructions">{{ submission_instructions }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-title">Assignment 3236 Graphic Design 4: Typography</div>
+  <p>Assignment 1a: Wedding Invitation</p>
+  <p>File size: <span data-field="assignment_1a_file_size">{{ assignment_1a_file_size }}</span></p>
+  <p>Margins: <span data-field="assignment_1a_margins">{{ assignment_1a_margins }}</span></p>
+  <p>Typeface: <span data-field="assignment_1a_typeface">{{ assignment_1a_typeface }}</span></p>
+  <p>Layout: <span data-field="assignment_1a_layout">{{ assignment_1a_layout }}</span></p>
+  <p>Text: <span data-field="assignment_1a_text">{{ assignment_1a_text }}</span></p>
+  <p>Justify: <span data-field="assignment_1a_justify">{{ assignment_1a_justify }}</span></p>
+  <p>Font Size: <span data-field="assignment_1a_font_size">{{ assignment_1a_font_size }}</span></p>
+  <p>Paragraph Spacing: <span data-field="assignment_1a_paragraph_spacing">{{ assignment_1a_paragraph_spacing }}</span></p>
+  <p>Line Spacing: <span data-field="assignment_1a_line_spacing">{{ assignment_1a_line_spacing }}</span></p>
+  <p>Text Frame Options: <span data-field="assignment_1a_text_frame_options">{{ assignment_1a_text_frame_options }}</span></p>
+  <p>Text Wrap: <span data-field="assignment_1a_text_wrap">{{ assignment_1a_text_wrap }}</span></p>
+  <p>Proofing: <span data-field="assignment_1a_proofing">{{ assignment_1a_proofing }}</span></p>
+  <p>Project Number: <span data-field="assignment_1a_project_number">{{ assignment_1a_project_number }}</span></p>
+
+  <div style="margin-top: 30px;">
+    <p>Name: <span data-field="student_name">{{ student_name }}</span></p>
+    <p>Date: <span data-field="student_date">{{ student_date }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Assignment 1a: Wedding Invitation</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Name: <span data-field="invitation_name">{{ invitation_name }}</span></p>
+      <p>Date: <span data-field="invitation_date">{{ invitation_date }}</span></p>
+    </div>
+    <div>
+      <p>To: <span data-field="invitation_recipient">{{ invitation_recipient }}</span></p>
+      <p>From: <span data-field="invitation_sender">{{ invitation_sender }}</span></p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 50px 0;">
+    <h2 style="font-size: 36pt; font-weight: bold;">{{ invitation_title }}</h2>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 50px;">
+    <p>invite you to</p>
+    <p style="font-size: 18pt;">{{ invitation_event_name }}</p>
+    <p>share their joy</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 50px;">
+    <p>as they are</p>
+    <p>united in marriage</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 50px;">
+    <p>on Saturday, May 15, 2005</p>
+    <p>3:00 p.m.</p>
+    <p>at the</p>
+    <p style="font-size: 14pt;">{{ venue_name }}</p>
+    <p style="font-size: 12pt;">{{ venue_address }}</p>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 50px;">
+    <p>Dinner will be served from</p>
+    <p>4:30 – 10:00 p.m.</p>
+    <p>at the</p>
+    <p style="font-size: 14pt;">{{ reception_name }}</p>
+    <p style="font-size: 12pt;">{{ reception_address }}</p>
+  </div>
+
+  <div style="text-align: center;">
+    <p>RSVP regrets only</p>
+    <p>Type your name here</p>
+    <p>Assignment 1a: Wedding Invitation</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Assignment 3236 Graphic Design 4: Gettysburg Address</div>
+  <p>Assignment 1b: Gettysburg Address</p>
+  <p>File size: <span data-field="assignment_1b_file_size">{{ assignment_1b_file_size }}</span></p>
+  <p>Margins: <span data-field="assignment_1b_margins">{{ assignment_1b_margins }}</span></p>
+  <p>Typeface: <span data-field="assignment_1b_typeface">{{ assignment_1b_typeface }}</span></p>
+  <p>Layout: <span data-field="assignment_1b_layout">{{ assignment_1b_layout }}</span></p>
+  <p>Text: <span data-field="assignment_1b_text">{{ assignment_1b_text }}</span></p>
+  <p>Justify: <span data-field="assignment_1b_justify">{{ assignment_1b_justify }}</span></p>
+  <p>Font Size: <span data-field="assignment_1b_font_size">{{ assignment_1b_font_size }}</span></p>
+  <p>Paragraph Spacing: <span data-field="assignment_1b_paragraph_spacing">{{ assignment_1b_paragraph_spacing }}</span></p>
+  <p>Line Spacing: <span data-field="assignment_1b_line_spacing">{{ assignment_1b_line_spacing }}</span></p>
+  <p>Text Frame Options: <span data-field="assignment_1b_text_frame_options">{{ assignment_1b_text_frame_options }}</span></p>
+  <p>Text Wrap: <span data-field="assignment_1b_text_wrap">{{ assignment_1b_text_wrap }}</span></p>
+  <p>Proofing: <span data-field="assignment_1b_proofing">{{ assignment_1b_proofing }}</span></p>
+  <p>Project Number: <span data-field="assignment_1b_project_number">{{ assignment_1b_project_number }}</span></p>
+
+  <div style="margin-top: 30px;">
+    <p>Your name here</p>
+    <p>ASSIGNMENT 1b: Gettysburg Address</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Assignment 3236 Graphic Design 4: Gettysburg Address</div>
+  <p>Assignment 1c: Gettysburg Address (Second Version)</p>
+  <p>File size: <span data-field="assignment_1c_file_size">{{ assignment_1c_file_size }}</span></p>
+  <p>Margins: <span data-field="assignment_1c_margins">{{ assignment_1c_margins }}</span></p>
+  <p>Typeface: <span data-field="assignment_1c_typeface">{{ assignment_1c_typeface }}</span></p>
+  <p>Layout: <span data-field="assignment_1c_layout">{{ assignment_1c_layout }}</span></p>
+  <p>Text: <span data-field="assignment_1c_text">{{ assignment_1c_text }}</span></p>
+  <p>Justify: <span data-field="assignment_1c_justify">{{ assignment_1c_justify }}</span></p>
+  <p>Font Size: <span data-field="assignment_1c_font_size">{{ assignment_1c_font_size }}</span></p>
+  <p>Paragraph Spacing: <span data-field="assignment_1c_paragraph_spacing">{{ assignment_1c_paragraph_spacing }}</span></p>
+  <p>Line Spacing: <span data-field="assignment_1c_line_spacing">{{ assignment_1c_line_spacing }}</span></p>
+  <p>Text Frame Options: <span data-field="assignment_1c_text_frame_options">{{ assignment_1c_text_frame_options }}</span></p>
+  <p>Text Wrap: <span data-field="assignment_1c_text_wrap">{{ assignment_1c_text_wrap }}</span></p>
+  <p>Proofing: <span data-field="assignment_1c_proofing">{{ assignment_1c_proofing }}</span></p>
+  <p>Project Number: <span data-field="assignment_1c_project_number">{{ assignment_1c_project_number }}</span></p>
+
+  <div style="margin-top: 30px;">
+    <p>Your name here</p>
+    <p>ASSIGNMENT 1c: Gettysburg Address</p>
+  </div>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .sub-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .instruction-list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div class="section-title">PROOFREADER'S MARKS</div>
+    <div style="margin-top: 20px;">
+      <div style="float: right;">Desktop Publishing</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">CORRECTION</th>
+        <th style="width: 30%;">TEXT MARK</th>
+        <th style="width: 15%;">MARK IN MARGIN</th>
+        <th style="width: 20%;">CORRECTION</th>
+        <th style="width: 30%;">TEXT MARK</th>
+        <th style="width: 15%;">MARK IN MARGIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>INSERT TEXT</td>
+        <td>{{ text_mark_1 }}</td>
+        <td>{{ mark_in_margin_1 }}</td>
+        <td>RUN ON (NO NEW PARAGRAPH)</td>
+        <td>{{ text_mark_2 }}</td>
+        <td>{{ mark_in_margin_2 }}</td>
+      </tr>
+      <tr>
+        <td>REPLACE TEXT</td>
+        <td>{{ text_mark_3 }}</td>
+        <td>{{ mark_in_margin_3 }}</td>
+        <td>TO ME</td>
+        <td>{{ text_mark_4 }}</td>
+        <td>{{ mark_in_margin_4 }}</td>
+      </tr>
+      <tr>
+        <td>DELETE TEXT</td>
+        <td>{{ text_mark_5 }}</td>
+        <td>{{ mark_in_margin_5 }}</td>
+        <td>MOVE TO NEXT LINE</td>
+        <td>{{ text_mark_6 }}</td>
+        <td>{{ mark_in_margin_6 }}</td>
+      </tr>
+      <tr>
+        <td>DELETE TEXT</td>
+        <td>{{ text_mark_7 }}</td>
+        <td>{{ mark_in_margin_7 }}</td>
+        <td>MOVE UP FROM NEXT LINE</td>
+        <td>{{ text_mark_8 }}</td>
+        <td>{{ mark_in_margin_8 }}</td>
+      </tr>
+      <tr>
+        <td>DELETE/CLOSE SPACE</td>
+        <td>{{ text_mark_9 }}</td>
+        <td>{{ mark_in_margin_9 }}</td>
+        <td>WRONG FONT</td>
+        <td>{{ text_mark_10 }}</td>
+        <td>{{ mark_in_margin_10 }}</td>
+      </tr>
+      <tr>
+        <td>LEAVE UNCHANGED</td>
+        <td>{{ text_mark_11 }}</td>
+        <td>{{ mark_in_margin_11 }}</td>
+        <td>TRANSPOSE LETTER</td>
+        <td>{{ text_mark_12 }}</td>
+        <td>{{ mark_in_margin_12 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT PERIOD</td>
+        <td>{{ text_mark_13 }}</td>
+        <td>{{ mark_in_margin_13 }}</td>
+        <td>TRANSPOSE WORD</td>
+        <td>{{ text_mark_14 }}</td>
+        <td>{{ mark_in_margin_14 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT COMMA</td>
+        <td>{{ text_mark_15 }}</td>
+        <td>{{ mark_in_margin_15 }}</td>
+        <td>CENTER TEXT</td>
+        <td>{{ text_mark_16 }}</td>
+        <td>{{ mark_in_margin_16 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT COLON</td>
+        <td>{{ text_mark_17 }}</td>
+        <td>{{ mark_in_margin_17 }}</td>
+        <td>INDENT TEXT</td>
+        <td>{{ text_mark_18 }}</td>
+        <td>{{ mark_in_margin_18 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT ASPOTROPHE</td>
+        <td>{{ text_mark_19 }}</td>
+        <td>{{ mark_in_margin_19 }}</td>
+        <td>MOVE TEXT RIGHT</td>
+        <td>{{ text_mark_20 }}</td>
+        <td>{{ mark_in_margin_20 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT QUOTATIONS</td>
+        <td>{{ text_mark_21 }}</td>
+        <td>{{ mark_in_margin_21 }}</td>
+        <td>MOVE TEXT LEFT</td>
+        <td>{{ text_mark_22 }}</td>
+        <td>{{ mark_in_margin_22 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT PARENTHESES</td>
+        <td>{{ text_mark_23 }}</td>
+        <td>{{ mark_in_margin_23 }}</td>
+        <td>LOWER TEXT</td>
+        <td>{{ text_mark_24 }}</td>
+        <td>{{ mark_in_margin_24 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT BRACKETS</td>
+        <td>{{ text_mark_25 }}</td>
+        <td>{{ mark_in_margin_25 }}</td>
+        <td>ALIGN TEXT/COL. VERTICALLY</td>
+        <td>{{ text_mark_26 }}</td>
+        <td>{{ mark_in_margin_26 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT ELLIPSIS</td>
+        <td>{{ text_mark_27 }}</td>
+        <td>{{ mark_in_margin_27 }}</td>
+        <td>ALIGN HORIZONTALLY</td>
+        <td>{{ text_mark_28 }}</td>
+        <td>{{ mark_in_margin_28 }}</td>
+      </tr>
+      <tr>
+        <td>INSERT HIDDEN</td>
+        <td>{{ text_mark_29 }}</td>
+        <td>{{ mark_in_margin_29 }}</td>
+        <td>ADD SPACE</td>
+        <td>{{ text_mark_30 }}</td>
+        <td>{{ mark_in_margin_30 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE ITALIC</td>
+        <td>{{ text_mark_31 }}</td>
+        <td>{{ mark_in_margin_31 }}</td>
+        <td>CLOSE UP SPACE</td>
+        <td>{{ text_mark_32 }}</td>
+        <td>{{ mark_in_margin_32 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE BOLD</td>
+        <td>{{ text_mark_33 }}</td>
+        <td>{{ mark_in_margin_33 }}</td>
+        <td>EQUALIZE SPACE</td>
+        <td>{{ text_mark_34 }}</td>
+        <td>{{ mark_in_margin_34 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE BOLD ITALIC</td>
+        <td>{{ text_mark_35 }}</td>
+        <td>{{ mark_in_margin_35 }}</td>
+        <td>SPELL OUT</td>
+        <td>{{ text_mark_36 }}</td>
+        <td>{{ mark_in_margin_36 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE ROMAN</td>
+        <td>{{ text_mark_37 }}</td>
+        <td>{{ mark_in_margin_37 }}</td>
+        <td>INSERT EM DASH</td>
+        <td>{{ text_mark_38 }}</td>
+        <td>{{ mark_in_margin_38 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE LIGHT FACE</td>
+        <td>{{ text_mark_39 }}</td>
+        <td>{{ mark_in_margin_39 }}</td>
+        <td>INSERT EN DASH</td>
+        <td>{{ text_mark_40 }}</td>
+        <td>{{ mark_in_margin_40 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE SMALL CAPS</td>
+        <td>{{ text_mark_41 }}</td>
+        <td>{{ mark_in_margin_41 }}</td>
+        <td>INSERT LEADING</td>
+        <td>{{ text_mark_42 }}</td>
+        <td>{{ mark_in_margin_42 }}</td>
+      </tr>
+      <tr>
+        <td>CAP & SMALL CAP</td>
+        <td>{{ text_mark_43 }}</td>
+        <td>{{ mark_in_margin_43 }}</td>
+        <td>DECREASE LEADING</td>
+        <td>{{ text_mark_44 }}</td>
+        <td>{{ mark_in_margin_44 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE LOWER CASE</td>
+        <td>{{ text_mark_45 }}</td>
+        <td>{{ mark_in_margin_45 }}</td>
+        <td>REMOVE UNWANTED</td>
+        <td>{{ text_mark_46 }}</td>
+        <td>{{ mark_in_margin_46 }}</td>
+      </tr>
+      <tr>
+        <td>MAKE LOWER CASE</td>
+        <td>{{ text_mark_47 }}</td>
+        <td>{{ mark_in_margin_47 }}</td>
+        <td>ADD RULE</td>
+        <td>{{ text_mark_48 }}</td>
+        <td>{{ mark_in_margin_48 }}</td>
+      </tr>
+      <tr>
+        <td>SUPERIOR</td>
+        <td>{{ text_mark_49 }}</td>
+        <td>{{ mark_in_margin_49 }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>INFERIOR</td>
+        <td>{{ text_mark_50 }}</td>
+        <td>{{ mark_in_margin_50 }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>NEW PARAGRAPH</td>
+        <td>{{ text_mark_51 }}</td>
+        <td>{{ mark_in_margin_51 }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="sub-heading">There are 12 points in 1 pica.</div>
+  <ul class="instruction-list">
+    <li>A point is a unit of a measurement that is the standard for typesetting and publication design is picas.</li>
+    <li>A measuring depth of printing. One point is equal to .013836 of an inch and 72 points are approximately 1 inch.</li>
+    <li>A pica is a typesetting unit of measurement commonly used for measuring lines of type.</li>
+    <li>One pica equals 12 points. There are 6 picas to an inch.</li>
+    <li>A standard US letter size page is 8.5 by 11 inches or 51 by 66 picas. (6 picas = 12 pts, plus the leftover)</li>
+    <li>The letter p is used to designate picas as in 22p or 6p. With 12 points to the pica, half a pica would be 6 points written as 06p. 17 points would be 1p5 (1 pica = 12 pts, plus the leftover)</li>
+  </ul>
+</div>
+
+<div class="page">
+  <div class="sub-heading">GRAPHIC DESIGN</div>
+  <div style="margin-bottom: 20px;">
+    <span data-field="student_name">{{ student_name }}</span>
+    <div style="margin-top: 5px;">
+      <span data-field="student_email">{{ student_email }}</span>
+    </div>
+    <div style="margin-top: 5px;">
+      <span data-field="student_phone">{{ student_phone }}</span>
+    </div>
+    <div style="margin-top: 5px;">
+      <span data-field="office_hours">{{ office_hours }}</span>
+    </div>
+  </div>
+
+  <div class="sub-heading">Tell me a little bit about yourself:</div>
+  <div style="margin-bottom: 20px;">
+    <p>NAME ...................................................................................................................................</p>
+    <p>DATE OF BIRTH (mm/dd/yyyy) .....................................................................................................</p>
+    <p>MAILING ADDRESS .....................................................................................................................</p>
+    <p>TELEPHONE # ..........................................................................................................................</p>
+    <p>E-MAIL .....................................................................................................................................</p>
+  </div>
+
+  <div class="sub-heading">Instructions:</div>
+  <p>(All UTEP students are required to have a UTEP e-mail address to receive official university announcements. I will also occasionally need to make announcements to the entire class via UTEP webmail and you'll be responsible to check it on a regular basis. If you do not already have a UTEP e-mail account, establish one immediately and inform me of that e-mail address ASAP.)</p>
+
+  <div class="sub-heading">Questions:</div>
+  <ol>
+    <li>Why are you taking this class?</li>
+    <li>Who is your favorite graphic designer?</li>
+    <li>What is your favorite band(s)/type of music?</li>
+    <li>What is the last book you read?</li>
+    <li>What is your favorite / most used emoji?</li>
+    <li>What is your favorite website(s) / online store(s)?</li>
+    <li>How do you get your news / stay abreast of current events?</li>
+    <li>What is your favorite(s)?</li>
+    <li>Tell me an interesting fact about yourself:</li>
+    <li>Tell me the most impactful way COVID has changed your everyday life:</li>
+  </ol>
+</div>
+
+<div class="page">
+  <div class="sub-heading">Graphic Design 4 syllabus acknowledgement and course contract acceptance (Feel free to take a pic of this page, complete it on your phone, and then email the signed pic to my email)</div>
+  <div style="margin-top: 30px;">
+    <p>Course - <span data-field="course_code">{{ course_code }}</span></p>
+    <p>Semester - <span data-field="semester">{{ semester }}</span></p>
+    <p>Instructor - <span data-field="instructor_name">{{ instructor_name }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>I have received and reviewed the attached syllabus. I have had the opportunity to ask questions for clarification and I understand and agree to the conditions of this syllabus.</p>
+    <p style="margin-top: 50px;">Name (print clearly) ...................................................................................................................................</p>
+    <p>Signature ...................................................................................................................................................</p>
+    <p>UTEP Student ID # <span data-field="student_id">{{ student_id }}</span></p>
+  </div>
+</div>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Security Advisory</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+        .document-details { display: flex; flex-direction: column; }
+        .logo { font-size: 48px; font-weight: bold; }
+        .section-title { font-size: 24px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; }
+        .sub-heading { font-size: 18px; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .content-body { font-size: 11pt; line-height: 1.5; }
+        .note { border: 1px solid #ccc; padding: 20px; margin-top: 20px; background-color: #f9f9f9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 11pt; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .footer { position: absolute; bottom: 50px; right: 60px; font-size: 10pt; color: #777; }
+        .page-number { font-size: 10pt; color: #777; }
+        .divider { border-top: 1px solid #000; margin: 30px 0; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h1 style="font-size: 28pt; font-weight: bold; margin-top: 0;">SECURITY - AC 800M MMS - Denial of Service vulnerability in MMS communication</h1>
+        <div style="font-size: 16pt; font-weight: normal; margin-bottom: 40px;">CVE ID: <span data-field="cve_id">{{ cve_id }}</span></div>
+
+        <div class="note">
+            <h3 style="margin-top: 0; font-size: 16pt;">Notice</h3>
+            <div class="content-body">
+                <p>The information in this document is subject to change without notice, and should not be construed as a commitment by ABB.</p>
+                <p>ABB provides no warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, for the information contained in this document, and assumes no responsibility for any errors that may appear in this document. In no event shall ABB or any of its suppliers be liable for direct, indirect, special, incidental or consequential damages of any nature or kind arising from the use of this document, or from the use of any hardware or software described in this document, even if ABB or its suppliers have been advised of the possibility of such damages.</p>
+                <p>This document and parts hereof must not be reproduced or copied without written permission from ABB, and the contents hereof must not be imparted to a third party nor used for any unauthorized purpose.</p>
+                <p>All rights to registrations and trademarks reside with their respective owners.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <span class="page-number">1/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">Purpose</h2>
+        <div class="content-body">
+            <p>ABB has a rigorous internal cyber security continuous improvement process which involves regular testing with industry leading tools and periodic assessments to identify potential product issues. Occasionally an issue is determined to be a design or coding flaw with implications that may impact product cyber security.</p>
+            <p>When a potential product vulnerability is identified or reported, ABB immediately initiates our vulnerability handling process. This entails validating if the issue is in a fact product issue, identifying root causes, determining what related products may be impacted, developing a remediation, and notifying end users and governmental organizations (e.g., ICS-CERT).</p>
+            <p>The resulting Cyber Security Advisory intends to notify customers of the vulnerability and provide details on which products are impacted, how to mitigate the vulnerability or explain workarounds that minimize the potential risk much as possible. The release of a Cyber Security Advisory should not be misconstrued as an affirmation or indication of an active threat or ongoing campaign targeting the products mentioned here. If ABB is aware of any specific threats it will be clearly mentioned in the communication.</p>
+            <p>The publication of this Cyber Security Advisory is an example of ABB's commitment to the user community in support of this critical topic. Responsible disclosure is an important element in the chain of trust we work to maintain with our many customers. The release of an Advisory provides timely information which is essential to help ensure our customers are fully informed.</p>
+        </div>
+        <div class="footer">
+            <span class="page-number">2/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">Affected products</h2>
+        <div class="content-body">
+            <p>800xA, Control Software for AC 800M</p>
+            <p>AC 800M Controller Firmware, Version 5.1 all versions, 6.0.0-0 to 6.0.3, and 6.1.0 to 6.1.1.</p>
+            <p>AC 800M High Integrity Controller Firmware, Version 5.1.1-x, 6.0.0-0 to 6.0.3, and 6.1.0 to 6.1.1.</p>
+            <p>Control Builder Safe, versions 1.x, 2.0 and 3.0 including.</p>
+            <p>AC 800M High Integrity Controller Firmware, Version 5.1.1-1, 5.1.1-2, CC1 6.0.0-1, and 6.1.1-0.</p>
+            <p>AC 800M Controller Firmware, Version 5.1.1-2, 6.0.0-1, and 6.1.1-0.</p>
+            <p>Compact Product Suite - Control and I/O</p>
+            <p>AC 800M Controller Firmware, Version 5.1 all versions, 6.0.0-0 to 6.0.3, and 6.1.0 to 6.1.1-1.</p>
+            <p>ABB Base Software for SoftControl</p>
+            <p>AC 800M SoftController, Version 5.1 all versions, 6.0.0-0 to 6.0.3, and 6.1.0 to 6.1.1-1.</p>
+        </div>
+
+        <h2 class="section-title">Vulnerability IDs and Product Issue Numbers (PIN)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CVE ID</th>
+                    <th>Product Issue Number*</th>
+                    <th>Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span data-field="vulnerability_id_cve">{{ vulnerability_id_cve }}</span></td>
+                    <td><span data-field="vulnerability_id_pin">{{ vulnerability_id_pin }}</span></td>
+                    <td><span data-field="vulnerability_id_product">{{ vulnerability_id_product }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 10pt; margin-top: 10px;">* Product Issue Number - is an ABB Internal unique identifier to identify an issue. The Product Issue Number is for example used to identify the correction of an issue in Release Notes.</p>
+        <div class="footer">
+            <span class="page-number">3/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">Summary</h2>
+        <div class="content-body">
+            <p>ABB is aware of a vulnerability in the product versions listed above.</p>
+            <p>An attacker who successfully exploited this vulnerability in the MMS protocol stack could cause the affected products to be inaccessible for a period of time or stop.</p>
+
+            <h3 class="sub-heading">Recommended immediate actions</h3>
+            <div class="content-body">
+                <p>See <a href="#" style="color: blue;">mitigating factors</a>. ABB is currently investigating this vulnerability to provide adequate protection to customers.</p>
+                <p>The issue is currently planned to be corrected in the following product versions. Other product versions may be relevant in future revisions:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CVE ID</th>
+                            <th>Product</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span data-field="summary_cve_id">{{ summary_cve_id }}</span></td>
+                            <td><span data-field="summary_product">{{ summary_product }}</span> (including ABB Base Software for SoftControl)</td>
+                            <td><span data-field="summary_version">{{ summary_version }}</span> (coming revision)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Control Builder Safe (including ABB Base Software for SoftControl)</td>
+                            <td>Next version after 3.0</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Compact Product Suite - Control and I/O</td>
+                            <td><span data-field="summary_version_compact">{{ summary_version_compact }}</span> (coming revision)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Customers on version 5.1 or older are recommended to upgrade to a supported version that is not affected by this issue.</p>
+            </div>
+
+            <h3 class="sub-heading">Vulnerability severity and details</h3>
+            <div class="content-body">
+                <p>A vulnerability exists in the MMS protocol stack in the AC 800M controller firmware included in the product versions listed above. An attacker could exploit the vulnerability by sending a specially crafted message to the system node, causing the affected product to stop or become inaccessible.</p>
+                <p>Other communication protocols, application code execution and I/O copy is not affected by this vulnerability.</p>
+                <p>The severity assessment has been performed by using the FIRST Common Vulnerability Scoring System (CVSS) v3.1.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CVE ID</th>
+                            <th>Product</th>
+                            <th>CVSS v3.1 Base Score</th>
+                            <th>CVSS v3.1 Temporal Score</th>
+                            <th>CVSS v3.1 Vector</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span data-field="severity_cve_id">{{ severity_cve_id }}</span></td>
+                            <td><span data-field="severity_product">{{ severity_product }}</span></td>
+                            <td><span data-field="severity_base_score">{{ severity_base_score }}</span> (<span data-field="severity_cvss_base_desc">{{ severity_cvss_base_desc }}</span>)</td>
+                            <td><span data-field="severity_temporal_score">{{ severity_temporal_score }}</span> (<span data-field="severity_cvss_temporal_desc">{{ severity_cvss_temporal_desc }}</span>)</td>
+                            <td><span data-field="severity_vector">{{ severity_vector }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 10pt; margin-top: 10px;">https://www.first.org/cvss/cvss-calculator/3.1/N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H/E:F/RL:U/RC:C</p>
+            </div>
+        </div>
+        <div class="footer">
+            <span class="page-number">4/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">NVD Summary Link: <a href="#" style="color: blue;"><span data-field="nvd_link">{{ nvd_link }}</span></a></h2>
+
+        <h2 class="section-title">Mitigating factors</h2>
+        <div class="content-body">
+            <p>Following the recommendations in the user documentation and General security recommendations will limit the exposure for unauthorized access.</p>
+            <p>The Control Network is a trusted network zone that should be protected from unauthorized access. Re-fer to section "General security recommendations" for further advice on how to keep your system secure.</p>
+            <p>Recommended security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network. Such practices include that process control systems are physically protected from direct access by unauthorized personnel, have no direct connections to the internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that must be evaluated case by case.</p>
+            <p>Process control & automation systems should be treated as critical business functions.</p>
+            <p>Use network segmentation to isolate process control systems from business functions.</p>
+            <p>Use intrusion detection systems (IDS) or intrusion prevention systems (IPS) to detect/block control system exploits. Consider using IPS rules protecting against control system exploits.</p>
+            <p>When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Please ensure that VPN solutions are updated to the most current version available.</p>
+            <p>In case you want to filter internal control network traffic, consider using solutions supporting LAN-WAN traffic control like VLAN access control lists.</p>
+            <p>Harden your control systems by enabling only the ports, services and software required for normal control operation. Disable all other ports and disable/uninstall all other services and software.</p>
+            <p>If possible, limit the permissions of user accounts, software processes and devices to the permissions required for normal control operation.</p>
+            <p>Use trusted, patched software and malware protection solutions. Interact with trusted web sites and trusted email attachments only.</p>
+            <p>Ensure all nodes are always up to date in terms of installed software, operating system and firmware patches as well as anti-virus and firewall.</p>
+            <p>Protect control systems and all network equipment from physical access by unauthorized personnel e.g., by placing them in locked switch cabinets.</p>
+            <p>More information on recommended practices can be found in the referenced user manual.</p>
+        </div>
+        <div class="footer">
+            <span class="page-number">5/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">Workarounds</h2>
+        <div class="content-body">
+            <p>No workaround exists. Refer to the chapter <a href="#" style="color: blue;">mitigating factors</a> to limit the exposure for the vulnerability.</p>
+        </div>
+
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="content-body">
+            <h3 class="sub-heading">What is the scope of the vulnerability?</h3>
+            <p>An attacker who successfully exploited this vulnerability could cause the MMS communication in the affected controller to be inaccessible for a period of time (up to 30 seconds). If the communication has not recovered after this time the controller will stop.</p>
+
+            <h3 class="sub-heading">What causes the vulnerability?</h3>
+            <p>The vulnerability is caused by lack of input data validation in the MMS protocol stack in the affected products.</p>
+
+            <h3 class="sub-heading">What is the MMS protocol stack?</h3>
+            <p>The MMS protocol stack is the software implementation of the MMS communication protocol used by the affected products. The protocol defines communication messages transferred between controllers as well as between the engineering station and controllers.</p>
+
+            <h3 class="sub-heading">What might an attacker use the vulnerability to do?</h3>
+            <p>An attacker who successfully exploited this vulnerability could cause the affected AC 800M controller to become inaccessible or stop.</p>
+        </div>
+        <div class="footer">
+            <span class="page-number">6/7</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-info">
+            <div class="document-details">
+                <div style="font-size: 12pt; font-weight: bold;">DOCUMENT ID: <span data-field="document_id">{{ document_id }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">REVISION: <span data-field="revision">{{ revision }}</span></div>
+                <div style="font-size: 12pt; font-weight: bold;">DATE: <span data-field="date">{{ date }}</span></div>
+            </div>
+            <div class="logo">ABB</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold;">CYBER SECURITY ADVISORY</div>
+        </div>
+
+        <h2 class="section-title">General security recommendations</h2>
+        <div class="content-body">
+            <p>Control systems and the control network are exposed to cyber threats. In order to minimize these risks, the protective measures and best practices listed below are available in addition to measures they consider appropriate for their control system environment:</p>
+            <ul>
+                <li>Place control systems in a dedicated control network containing control systems only.</li>
+                <li>Locate control networks and systems behind firewalls and separate them from any other networks like business networks and the internet.</li>
+                <li>Block any inbound Internet traffic destined for the control networks/systems. Place remote access systems used for remote control system access outside the control network.</li>
+                <li>Limit outbound Internet traffic originating from control systems/networks as much as possible. If control systems must talk to the Internet, tailor firewall rules to required resources - allow only source IPs, destination IPs and services/destination ports which control systems definitely need to use for normal control operation.</li>
+            </ul>
+
+            <h2 class="section-title">Acknowledgement</h2>
+            <div class="content-body">
+                <p>ABB thanks the Industrial Control Security Laboratory of Qi An Xin Technology Group Inc. in China for helping to identify the vulnerabilities and protecting our customers.</p>
+            </div>
+
+            <h2 class="section-title">References</h2>
+            <div class="content-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3BSE034463*</td>
+                            <td>System 800xA Reference - Network Configuration</td>
+                        </tr>
+                        <tr>
+                            <td>2PAA120527</td>
+                            <td>System 800xA, Symphony Plus and Freelance - System Hardening</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <span class="page-number">7/7</span>
+        </div>
+    </div>
+</body>
+</html>

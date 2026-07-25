@@ -1,0 +1,216 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .right-align {
+    text-align: right;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 16pt; margin: 0;">DEPARTMENT OF THE NAVY</h1>
+    <h2 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 12pt; margin: 5px 0;">OFFICE OF NAVAL RESEARCH</h2>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin: 2px 0;">875 NORTH RANDOLPH STREET</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin: 2px 0;">SUITE 1425</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin: 2px 0;">ARLINGTON, VA 22203-1995</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div style="width: 50%;">
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">IN REPLY REFER TO:</p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Agreement Date: <span data-field="agreement_date">{{ agreement_date }}</span></p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">[Supersedes Agreement Dated: <span data-field="superseded_date">{{ superseded_date }}</span>]</p>
+    </div>
+  </div>
+
+  <h2 style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 14pt; text-align: center; margin-bottom: 30px;">NEGOTIATION AGREEMENT</h2>
+
+  <div style="margin-bottom: 40px;">
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 12pt;">INSTITUTION: <span data-field="institution.name">{{ institution.name }}</span></p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 12pt;">FAIRBANKS, ALASKA 99775</p>
+  </div>
+
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The Staff Benefits and Leave Benefits rates contained herein are for use on grants, contracts and/or other agreements issued or awarded to the University of Alaska by all Federal Agencies of the United States of America, in accordance with the provisions and cost principles mandated by 2 CFR Part 200. These rates shall be used for forward pricing and billing purposes for the University of Alaska Fiscal Year <span data-field="fiscal_year">{{ fiscal_year }}</span>. This rate agreement supersedes all previous rate agreements/determinations related to these rates for Fiscal Year <span data-field="fiscal_year">{{ fiscal_year }}</span>.
+  </p>
+
+  <h3 style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Section I: RATES - TYPE: FIXED (FIXED)</h3>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">Fringe Benefits Rates:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">TYPE</th>
+        <th style="width: 15%;">FROM</th>
+        <th style="width: 15%;">TO</th>
+        <th style="width: 25%;">STAFF BENEFITS</th>
+        <th style="width: 25%;">LEAVE BENEFITS</th>
+        <th style="width: 10%;">EMPLOYEE CATEGORY</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in fringe_rates %}
+      <tr>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].type">{{ fringe_rates[loop.index0].type }}</span></td>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].from_date">{{ fringe_rates[loop.index0].from_date }}</span></td>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].to_date">{{ fringe_rates[loop.index0].to_date }}</span></td>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].staff_rate">{{ fringe_rates[loop.index0].staff_rate }}</span></td>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].leave_rate">{{ fringe_rates[loop.index0].leave_rate }}</span></td>
+        <td><span data-field="fringe_rates[{{ loop.index0 }}].employee_category">{{ fringe_rates[loop.index0].employee_category }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 10pt; margin-top: 30px;">
+    Notes: <span data-field="note_1">{{ note_1 }}</span> <span data-field="note_2">{{ note_2 }}</span> <span data-field="note_3">{{ note_3 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 14pt;">DISTRIBUTION BASES</h2>
+  </div>
+
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    (a) Staff benefits rates are applied to base salaries plus overtime, miscellaneous pay, and leave accrual provisions.
+  </p>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    (b) Leave benefits rates are applied to base salaries excluding: overtime, miscellaneous pay, and paid leave.
+  </p>
+
+  <h3 style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">SECTION II - GENERAL TERMS AND CONDITIONS</h3>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">A. LIMITATIONS:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    Use of the rates set forth under Section I is subject to availability of funds and to any other statutory or administrative limitations. The rates are applicable to a given grant, contract or other agreement only to the extent that funds are available and consistent with any and all limitations of cost clauses or provisions. If any contained therein, acceptance of any or all of the rates agreed to herein is predicated upon the following conditions: (1) that no costs other than those incurred by the institution were included in this indirect cost pool as finally accepted and that such costs are legal obligations of the institution and allowable under governing cost principles; (2) that the same costs that have been treated as indirect costs are not claimed as direct costs; (3) that similar types of costs have been accorded consistent accounting treatment; and (4) that the information provided by the institution which was used as a basis for acceptance of the rates agreed to herein, and expressly relied upon by the Government in negotiating and accepting the said rates is not subsequently found to be materially incomplete or inaccurate.
+  </p>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">B. ACCOUNTING CHANGES:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The rates contained in Section I of this agreement are based on the accounting system in effect at the time the agreement was negotiated. Changes to the method(s) of accounting for costs, which affect the amount of reimbursement resulting from the use of these rates require the prior written approval of the authorized representative of the cognizant agency for indirect costs. Such changes include but are not limited to changes in the charging of a particular type of cost from indirect to direct. Failure to obtain such approval may result in subsequent cost disallowances.
+  </p>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">C. FIXED RATES WITH CARRY-FORWARD PROVISIONS:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The fixed rates contained in this agreement are based on estimates of the costs for FY <span data-field="fy_2019">{{ fy_2019 }}</span>. When actual costs for this fiscal year are determined, adjustments will be applied to a rate negotiation for a subsequent fiscal year to recognize the difference between the FY <span data-field="fy_2019">{{ fy_2019 }}</span> estimated costs used to establish the fixed rates and the negotiated actual FY <span data-field="fy_2019">{{ fy_2019 }}</span> costs.
+  </p>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">D. CARRY FORWARD AMOUNTS:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The following carry-forward amounts were considered in the establishment of the FY <span data-field="fy_2019">{{ fy_2019 }}</span> rates:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;">Employee Category</th>
+        <th style="width: 30%; text-align: right;">STAFF BENEFITS</th>
+        <th style="width: 30%; text-align: right;">LEAVE BENEFITS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="carry_forward_category">{{ carry_forward_category }}</span></td>
+        <td class="right-align"><span data-field="carry_forward_staff_amount">{{ carry_forward_staff_amount }}</span></td>
+        <td class="right-align"><span data-field="carry_forward_leave_amount">{{ carry_forward_leave_amount }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 10pt; margin-top: 20px;">
+    ( ) Denotes Over-Recovery
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 14pt;">FY 2019</h2>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;">Employee Category</th>
+        <th style="width: 30%; text-align: right;">STAFF BENEFITS</th>
+        <th style="width: 30%; text-align: right;">LEAVE BENEFITS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in fy_2019_rates %}
+      <tr>
+        <td><span data-field="fy_2019_rates[{{ loop.index0 }}].category">{{ fy_2019_rates[loop.index0].category }}</span></td>
+        <td class="right-align"><span data-field="fy_2019_rates[{{ loop.index0 }}].staff_amount">{{ fy_2019_rates[loop.index0].staff_amount }}</span></td>
+        <td class="right-align"><span data-field="fy_2019_rates[{{ loop.index0 }}].leave_amount">{{ fy_2019_rates[loop.index0].leave_amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 10pt; margin-top: 20px;">
+    *Job group Non-Union Faculty - <12 mo. is included in the Essex & Non-Union Faculty - 12 mo. group for staff benefit purposes but is separate for leave benefit purposes.
+  </p>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 10pt; margin-top: 10px;">
+    **AAFT (AG) merged into UNAC (F9) effective May 13, 2018. This amount represents the combined carry-forward total.
+  </p>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 30px; margin-bottom: 10px;">E. USE BY OTHER FEDERAL AGENCIES:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The rates set forth in Section I are negotiated in accordance with and under the authority set forth in 2 CFR Part 200. Accordingly, such rates shall be applied to the extent provided in such regulations to grants, contracts, and other agreements to which 2 CFR Part 200 applies, subject to any limitations in part A of this section. Copies of this document may be provided by either party to other federal agencies to provide them with the rates set forth in this agreement and its terms and conditions.
+  </p>
+
+  <h4 style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px; margin-bottom: 10px;">F. SPECIAL REMARKS:</h4>
+  <p style="font-family: 'DejaVu Serif', 'Liberation Serif', Georgia, serif; font-size: 11pt; line-height: 1.5;">
+    The Government's agreement with the rates set forth in Section I is not an acceptance of the University of Alaska's accounting practices or methodologies. Any reliance by the Government on cost data or methodologies submitted by the University of Alaska is on a non-precedence-setting basis and does not imply Government acceptance.
+  </p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div style="width: 45%;">
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt;">Accepted:</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px;">FOR THE UNIVERSITY OF ALASKA:</p>
+      <div style="height: 60px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt;">MYRON J. DOSCH</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Chief Financial Officer</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin-top: 10px;">Date: <span data-field="acceptance_date">{{ acceptance_date }}</span></p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt;">FOR THE U.S. GOVERNMENT:</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 11pt; margin-top: 20px;">BRADLEY ROBERT B.2306</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Contracting Officer</p>
+      <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin-top: 10px;">Date: <span data-field="government_date">{{ government_date }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ccc;">
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">For information concerning this agreement contact:</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Sharon Gales</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Office of Naval Research</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">875 North Randolph Street</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">Arlington, VA 22203-1995</p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt; margin-top: 10px;">Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+    <p style="font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif; font-size: 10pt;">E-mail: <span data-field="contact_email">{{ contact_email }}</span></p>
+  </div>
+</div>

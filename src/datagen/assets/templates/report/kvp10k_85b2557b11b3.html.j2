@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manufacturing Report</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        .header-title { font-size: 48pt; line-height: 1.1; }
+        .subtitle { font-size: 14pt; margin-top: 10px; }
+        .section-title { font-size: 24pt; font-weight: bold; margin-bottom: 15px; }
+        .body-text { font-size: 11pt; line-height: 1.6; margin-bottom: 15px; }
+        .list-item { font-size: 11pt; line-height: 1.6; margin-bottom: 10px; }
+        .footer { font-size: 9pt; text-align: center; margin-top: 50px; }
+        .logo-container { margin-bottom: 30px; }
+        .logo-text { font-size: 12pt; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(45deg, #c0392b 25%, transparent 25%, transparent 75%, #c0392b 75%, #c0392b 100%); background-size: 100px 100px; opacity: 0.1;"></div>
+        <div style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-image: linear-gradient(135deg, #e67e22 25%, transparent 25%, transparent 75%, #e67e22 75%, #e67e22 100%); background-size: 100px 100px; opacity: 0.1;"></div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; height: 100%;">
+            <!-- Left Content Area -->
+            <div style="width: 55%;">
+                <div style="padding-top: 100px;">
+                    <h1 class="header-title" style="color: #c0392b;">{{ report_year }}</h1>
+                    <h1 class="header-title" style="color: #c0392b;">{{ state_name }}</h1>
+                    <h1 class="header-title" style="color: #c0392b;">MANUFACTURING</h1>
+                    <h1 class="header-title" style="color: #c0392b;">REPORT</h1>
+                    <p class="subtitle">EXECUTIVE SUMMARY</p>
+                </div>
+            </div>
+
+            <!-- Right Image Area -->
+            <div style="width: 45%; position: absolute; top: 0; right: 0; height: 100%; overflow: hidden;">
+                <img src="placeholder_image.jpg" alt="Manufacturing worker" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+        <div class="body-text">
+            <p>This report is on the state of <span data-field="state_name">{{ state_name }}</span> manufacturing conducted for the <span data-field="organization_name">{{ organization_name }}</span>. The report and analysis was done by the <span data-field="research_body">{{ research_body }}</span> at the <span data-field="university_name">{{ university_name }}</span>. This is the <span data-field="report_version">{{ report_version }}</span> year that BBER and MMEC have collaborated to produce reports on Montana's manufacturing climate. The three primary topics are: the state of manufacturing, the state of the workforce, and the state of the industry. This report provides an in-depth look at Montana manufacturing; and an impact survey of firms which used MMEC's consulting services.</p>
+        </div>
+
+        <h2 class="section-title">STATE OF MONTANA MANUFACTURING</h2>
+        <div class="body-text">
+            <p><span data-field="state_name">{{ state_name }}</span> manufacturers face different challenges than the nation as a whole because the composition of manufacturing production is different and is primarily concentrated in non-tradable production - the Bureau of Economic Analysis defines non-tradable goods as goods that have an average life less than three years. The two largest manufacturing sectors in Montana, petroleum and coal, and wood product manufacturing, are not among the seven largest manufacturing sectors nationally, demonstrating how the Montana manufacturing sector differs substantially from the experience of the country.</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div style="width: 50%;">
+                <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Some summary facts about Montana manufacturing in 2020 are:</h3>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li class="list-item">• Over <span data-field="fact_1_value">{{ fact_1_value }}</span> manufacturing firms are in operation in Montana, in-cluding sole proprietors.</li>
+                    <li class="list-item">• Manufacturing accounts for roughly <span data-field="fact_2_value">{{ fact_2_value }}</span> of Montana's econo-mic base.</li>
+                    <li class="list-item">• Manufacturing jobs paid about $<span data-field="fact_3_value">{{ fact_3_value }}</span> in earnings, compared to the state average of $<span data-field="fact_4_value">{{ fact_4_value }}</span>.</li>
+                    <li class="list-item">• Accounts for <span data-field="fact_5_value">{{ fact_5_value }}</span> of total state private income equaling $<span data-field="fact_6_value">{{ fact_6_value }}</span>.</li>
+                    <li class="list-item">• Employing <span data-field="fact_7_value">{{ fact_7_value }}</span> of Montana's nonfarm workforce, with about <span data-field="fact_8_value">{{ fact_8_value }}</span> employees.</li>
+                    <li class="list-item">• Produced <span data-field="fact_9_value">{{ fact_9_value }}</span> of Montana's output with a value of $<span data-field="fact_10_value">{{ fact_10_value }}</span>; grew more than double the national average in employment, in-come and output.</li>
+                </ul>
+            </div>
+
+            <div style="width: 50%;">
+                <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">In the aftermath of the 2020 COVID-19 recession, Montana manu-facturing bounced back relatively quickly from the deep econo-mic dip in the second quarter of 2020. Last year, we predicted that manufacturing output would rebound to pre-COVID levels with a year or so delay. In employment this sector returned to pre-pandemic levels in early 2021. Durable manufacturing is forecast to return to the long-run trend a year or so later, in line with our predictions from a year ago.</h3>
+
+                <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Montana manufacturers are active in global markets as well. The three largest export markets for Montana in 2020 were: chemicals, machinery and transportation equipment, food, beverages and tobacco fell out of second place during the pandemic. By far the largest export market is Canada, accounting for almost 30% of Montana's manufactured exports. In 2020, the remaining largest export markets were: China (2), South Korea (3), Belgium (4), and Japan (5).</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 50%;">
+                <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Manufacturers survey included a question about the effects of the COVID-19 pandemic.</h3>
+                <div class="body-text">
+                    <p>Manufacturing in Montana is predominantly performed by small businesses. The U.S. Census Bureau reports <span data-field="census_fact_1">{{ census_fact_1 }}</span> manufacturing firms with employees in Montana, and <span data-field="census_fact_2">{{ census_fact_2 }}</span> of Montana manufac-turers have five or less employees. There are no manufacturers with 300 or more workers in the state.</p>
+                </div>
+            </div>
+            <div style="width: 50%;">
+                <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">MONTANA MANUFACTURERS SURVEY</h3>
+                <div class="body-text">
+                    <p>This section of the report presents the findings of the 2021 Montana Manufacturers Survey. The initial Montana manufacturers survey was conducted in <span data-field="survey_year">{{ survey_year }}</span>. Since then, the Bureau of Business and Economic Research at the University of Montana has conducted this survey each year. The purpose of the survey is to learn the man-ufacturers' assessment of their plant's economic performance in 2020 and their outlook for 2021. This year, the annual Montana man-</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Highlights from the 2020 manufacturing survey:</h3>
+        <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 30px;">
+            <li class="list-item">• About one-third of manufacturing firms saw an increase in total sales and profits from 2019.</li>
+            <li class="list-item">• Fifty-eight percent of firms did not reduce production during the pandemic.</li>
+            <li class="list-item">• A minority of firms (<span data-field="minority_percent">{{ minority_percent }}</span>) reduced employment;</li>
+            <li class="list-item">• Over one-third of Montana's manufacturing firms experienced a significant worker shortage; and</li>
+            <li class="list-item">• The primary impacts of the COVID-19 pandemic on manufac-turing in 2020 were the inability to find employees and intermedi-ate goods supply either because of shortages or high transpor-tation costs.</li>
+        </ul>
+
+        <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">The primary NIST survey findings from 2020 are as follows:</h3>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            <li class="list-item">• Montana manufacturing clients were very satisfied, with <span data-field="nist_satisfaction_percent">{{ nist_satisfaction_percent }}</span> of respondents saying they relied exclusively on MMEC as a busi-ness service provider.</li>
+            <li class="list-item">• MMEC's net promoter score for 2020 was <span data-field="nist_nps_score">{{ nist_nps_score }}</span>.</li>
+            <li class="list-item">• Staff expertise was again the most important factor for firms to choose MMEC as a service provider.</li>
+            <li class="list-item">• The most important challenges facing surveyed MMEC clients were ongoing continuous improvement/cost reduction strate-gies, employee recruitment and retention, and product innova-tion/development.</li>
+            <li class="list-item">• <span data-field="nist_survey_response_rate">{{ nist_survey_response_rate }}</span> survey respondents said that working with MMEC resulted in <span data-field="nist_benefit_1">{{ nist_benefit_1 }}</span> increase in sales, and <span data-field="nist_benefit_2">{{ nist_benefit_2 }}</span> increase in revenue over the previous 12 months. Since <span data-field="nist_year_since_survey">{{ nist_year_since_survey }}</span>, MMEC has visited in <span data-field="nist_total_visits">{{ nist_total_visits }}</span> created or retained jobs and <span data-field="nist_total_revenue_increase">{{ nist_total_revenue_increase }}</span> in revenue.</li>
+            <li class="list-item">• The Montana return on investment for MMEC during 2020 was <span data-field="nist_roi_percent">{{ nist_roi_percent }}</span>;</li>
+            <li class="list-item">• MMEC clients paid approximately $<span data-field="nist_cost_per_client">{{ nist_cost_per_client }}</span> in fees during 2020, yielding a return on investment of about <span data-field="nist_roi_final">{{ nist_roi_final }}</span>.</li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 100%;">
+            <!-- Left Footer Area -->
+            <div style="width: 50%; padding-bottom: 50px;">
+                <div class="logo-container">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" fill="#333"/>
+                    </svg>
+                    <div class="logo-text">BBER</div>
+                </div>
+                <div class="body-text" style="font-size: 10pt;">
+                    <p><span data-field="bber_department">{{ bber_department }}</span></p>
+                    <p><span data-field="bber_address_line_1">{{ bber_address_line_1 }}</span></p>
+                    <p><span data-field="bber_address_line_2">{{ bber_address_line_2 }}</span></p>
+                    <p><span data-field="bber_city_state_zip">{{ bber_city_state_zip }}</span></p>
+                    <p>Phone: <span data-field="bber_phone">{{ bber_phone }}</span></p>
+                    <p>Email: <span data-field="bber_email">{{ bber_email }}</span></p>
+                    <p>Web: <span data-field="bber_website">{{ bber_website }}</span></p>
+                </div>
+            </div>
+
+            <!-- Right Footer Area (Page Number) -->
+            <div style="width: 50%; text-align: right; padding-bottom: 50px;">
+                <div class="footer">
+                    2021 <span data-field="state_name">{{ state_name }}</span> MANUFACTURING REPORT <span data-field="page_number">{{ page_number }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

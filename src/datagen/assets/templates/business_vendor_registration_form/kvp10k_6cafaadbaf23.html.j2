@@ -1,0 +1,276 @@
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    }
+    .page:last-child { page-break-after: auto; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+    }
+    td {
+        padding: 5px 0;
+        vertical-align: top;
+    }
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+    }
+    .form-group label {
+        width: 150px; /* Adjust as needed for alignment */
+        font-weight: normal;
+    }
+    .form-group input[type="text"], .form-group input[type="email"] {
+        flex-grow: 1;
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin-left: 10px;
+    }
+    .section-header {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .checkbox-group label {
+        font-weight: normal;
+        margin-right: 15px;
+    }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2 style="font-size: 16pt; font-weight: bold;">BUSINESS VENDOR REGISTRATION FORM</h2>
+        <h3 style="font-size: 12pt; font-weight: bold;">PURCHASING USE ONLY</h3>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">Email this form along with W-9 to:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ email_address }}">
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">University of Central Arkansas -Purchasing Department</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ department_name }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">2125 College Ave. Ste. 2 Conway, AR 72034</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ address_line_1 }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Phone: 501-450-3173</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ phone_number }}">
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">Email:</label>
+            <div style="flex-grow: 1;">
+                <input type="email" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ vendor_email }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Contact Accounts Payable at <span data-field="payable_email">{{ payable_email }}</span> to receive payments</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ payable_contact }}">
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">Business Contact Person:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ contact_person_name }}">
+            </div>
+            <label style="width: 150px;">Contact Phone:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ contact_phone }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Legal Business Name:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ legal_business_name }}">
+            </div>
+            <label style="width: 150px;">Business Phone#:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ business_phone }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">SECTION "A" VENDOR MAILING ADDRESS (Required)</div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">Address:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_address }}">
+            </div>
+            <label style="width: 150px;">City:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_city }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Zip Code:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_zip }}">
+            </div>
+            <label style="width: 150px;">State:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_state }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Fax Number:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_fax }}">
+            </div>
+            <label style="width: 150px;">Company Web Address:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_website }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Email Address (if none, enter "N/A"):</label>
+            <div style="flex-grow: 1;">
+                <input type="email" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ mailing_email }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">Section "B" VENDOR REMITTANCE ADDRESS (Required)</div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">Address:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_address }}">
+            </div>
+            <label style="width: 150px;">City:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_city }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Zip Code:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_zip }}">
+            </div>
+            <label style="width: 150px;">State:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_state }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Country:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_country }}">
+            </div>
+            <label style="width: 150px;">Foreign Zip Code:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ remittance_foreign_zip }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">Section "C" BUSINESS CLASSIFICATION (SELECT ALL THAT APPLY)</div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="checkbox-group" style="display: flex; flex-wrap: wrap;">
+            <label><input type="checkbox"> American Indian (AI)</label>
+            <label><input type="checkbox"> Asian (AS)</label>
+            <label><input type="checkbox"> Attorney (AT)</label>
+            <label><input type="checkbox"> Black American (BL)</label>
+            <label><input type="checkbox"> Corporation (CO)</label>
+            <label><input type="checkbox"> Company (CP)</label>
+            <label><input type="checkbox"> Employee Owned (EO)</label>
+            <label><input type="checkbox"> Foreign (FO)</label>
+            <label><input type="checkbox"> Hispanic American (HS)</label>
+            <label><input type="checkbox"> Incorporated (IC)</label>
+            <label><input type="checkbox"> Limited Liability Corporation (LLC)</label>
+            <br>
+            <label><input type="checkbox"> Limited Partnership (LP)</label>
+            <label><input type="checkbox"> Medical (MD)</label>
+            <label><input type="checkbox"> Minority Owned (MN)</label>
+            <label><input type="checkbox"> Nonprofit (NP)</label>
+            <label><input type="checkbox"> Pacific Islander (PI)</label>
+            <label><input type="checkbox"> State Agency (SA)</label>
+            <label><input type="checkbox"> Sole Proprietor (SP)</label>
+            <label><input type="checkbox"> Veteran Owned (VO)</label>
+            <label><input type="checkbox"> Women Owned (WO)</label>
+        </div>
+    </div>
+
+    <div class="section-header">Must Answer:</div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">1. Is the business owner(s) a current University of Central Arkansas student(s)?</label>
+            <div style="flex-grow: 1;">
+                <input type="checkbox"> Yes
+                <input type="checkbox"> No
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">2. Is the business owner(s) a past or current University of Central Arkansas employee?</label>
+            <div style="flex-grow: 1;">
+                <input type="checkbox"> Yes
+                <input type="checkbox"> No
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">If yes, complete the remainder of this section.</label>
+            <div style="flex-grow: 1;">
+                <!-- Placeholder for continuation -->
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">Name & Department:</div>
+
+    <div style="margin-bottom: 20px;">
+        <div class="form-row">
+            <label style="width: 150px;">3. Nepotism: Do you have any relatives employed by the University of Central Arkansas?</label>
+            <div style="flex-grow: 1;">
+                <input type="checkbox"> Yes
+                <input type="checkbox"> No
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">If yes, complete the remainder of this section. (This question is being asked for the sole purpose of ensuring compliance with any applicable law or policy concerning nepotism).</label>
+            <div style="flex-grow: 1;">
+                <!-- Placeholder for continuation -->
+            </div>
+        </div>
+        <div class="form-row">
+            <label style="width: 150px;">Name, Relation, & Department:</label>
+            <div style="flex-grow: 1;">
+                <input type="text" style="width: 100%; border: 1px solid #ccc; padding: 5px;" value="{{ relative_details }}">
+            </div>
+        </div>
+    </div>
+</div>

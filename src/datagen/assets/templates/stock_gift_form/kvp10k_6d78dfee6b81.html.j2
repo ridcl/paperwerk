@@ -1,0 +1,152 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; }
+  .section { margin-bottom: 20px; }
+  .form-row { display: flex; margin-bottom: 10px; }
+  .form-row > div { flex: 1; }
+  .label { font-weight: bold; display: inline-block; width: 150px; }
+  .input-field { border-bottom: 1px solid #000; min-width: 200px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 36px; margin-bottom: 5px;">Wabash.</h1>
+    <h2 style="font-size: 18px; font-weight: normal;">STOCK GIFT FORM</h2>
+  </div>
+
+  <div class="section" style="margin-top: 30px;">
+    <p>The submission of this form notifies <span data-field="organization_name">{{ organization_name }}</span> of an anticipated gift of stock, bond, or security, and the designations for the gift.</p>
+    <p><strong>Instructions:</strong></p>
+    <ul>
+      <li>Complete the form, then either email or send it to the address located at the bottom of the page.</li>
+      <li>Alternative methods include sending the form to your broker to be completed and submitted. However, if this method is chosen, you will need to grant your broker permission before the form can be sent.</li>
+    </ul>
+    <p>Instruct your Broker/Financial Advisor to transfer your gift of securities to <span data-field="custodian_name">{{ custodian_name }}</span> via the DepositoryTrust Company (DTC) transfer system as follows:</p>
+    <p><strong>Morgan Stanley Wealth Management, DTC Number #0015</strong></p>
+    <p>Account Name: <span data-field="account_name">{{ account_name }}</span></p>
+    <p>Wabash Federal ID number: <span data-field="federal_id">{{ federal_id }}</span></p>
+    <p>Account Number: <span data-field="account_number">{{ account_number }}</span></p>
+    <p>Attn: <span data-field="attn_name">{{ attn_name }}</span></p>
+    <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <h3 style="font-weight: bold;">Donor Information:</h3>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Name</div>
+        <div class="input-field" style="height: 20px;">{{ donor.full_name }}</div>
+      </div>
+      <div style="width: 70%;">
+        <div class="label">Class Year</div>
+        <div class="input-field" style="height: 20px;">{{ donor.class_year }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Street address</div>
+        <div class="input-field" style="height: 20px;">{{ donor.street_address }}</div>
+      </div>
+      <div style="width: 20%;">
+        <div class="label">State</div>
+        <div class="input-field" style="height: 20px;">{{ donor.state }}</div>
+      </div>
+      <div style="width: 60%;">
+        <div class="label">Zip code</div>
+        <div class="input-field" style="height: 20px;">{{ donor.zip_code }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Telephone</div>
+        <div class="input-field" style="height: 20px;">{{ donor.phone }}</div>
+      </div>
+      <div style="width: 100%;">
+        <div class="label">E-mail</div>
+        <div class="input-field" style="height: 20px;">{{ donor.email }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <h3 style="font-weight: bold;">Donor Broker Information:</h3>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Brokerage firm</div>
+        <div class="input-field" style="height: 20px;">{{ broker.firm_name }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Broker name</div>
+        <div class="input-field" style="height: 20px;">{{ broker.name }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Broker phone</div>
+        <div class="input-field" style="height: 20px;">{{ broker.phone }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Broker fax</div>
+        <div class="input-field" style="height: 20px;">{{ broker.fax }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <h3 style="font-weight: bold;">Transfer of Securities Information:</h3>
+    <div class="form-row">
+      <div style="width: 20%;">
+        <div class="label">Anticipated date of transfer</div>
+        <div class="input-field" style="height: 20px;">{{ transfer_date }}</div>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">Please describe the securities being transferred: (Indicate the name of each security, number of shares, and the approximate dollar value)</p>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <th style="text-align: left; padding: 5px; width: 50%;">Description</th>
+          <th style="text-align: left; padding: 5px; width: 25%;">Shares</th>
+          <th style="text-align: left; padding: 5px; width: 25%;">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr style="border-bottom: 1px dotted #ccc;">
+          <td style="padding: 5px;"><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td style="padding: 5px;"><span data-field="line_items[{{ loop.index0 }}].shares">{{ item.shares }}</span></td>
+          <td style="padding: 5px;"><span data-field="line_items[{{ loop.index0 }}].value">{{ item.value }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <p>Please provide the designation and distribution for the gift(s): (If the gift is not going to the Wabash Annual Fund)</p>
+    <div style="height: 100px; border: 1px solid #000; margin-top: 10px;">
+      <!-- Placeholder for designation text -->
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <p>If you have any questions about the instructions, please call <span data-field="contact_phone">{{ contact_phone }}</span> or <span data-field="contact_name">{{ contact_name }}</span> at <span data-field="contact_phone_2">{{ contact_phone_2 }}</span>.</p>
+    <p>Email form to: <span data-field="contact_email">{{ contact_email }}</span></p>
+    <p>Or send to: <span data-field="mailing_address">{{ mailing_address }}</span></p>
+    <p style="margin-top: 30px; text-align: center;">Thank you for making a difference!</p>
+  </div>
+</div>

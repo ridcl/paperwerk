@@ -1,0 +1,126 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; margin-bottom: 20px; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+  .contact-info { font-size: 12pt; line-height: 1.4; }
+  .form-row { display: flex; margin-bottom: 15px; align-items: flex-start; }
+  .form-label { width: 150px; font-weight: bold; }
+  .form-input-area { flex-grow: 1; border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .signature-line { margin-top: 60px; display: flex; justify-content: space-between; }
+  .signature-block { width: 45%; }
+  .section-divider { border-top: 1px solid #000; margin: 30px 0; }
+  .checkbox-list { list-style-type: disc; padding-left: 20px; }
+</style>
+<body>
+  <div class="page">
+    <div style="text-align: center;">
+      <h1 style="font-size: 24pt; margin-bottom: 5px;">JMU</h1>
+      <h2 style="font-size: 16pt; margin-top: 0;">JAMES MADISON UNIVERSITY</h2>
+    </div>
+
+    <div class="contact-info" style="margin-top: 30px;">
+      <p><span data-field="address_line_1">{{ address_line_1 }}</span></p>
+      <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+      <p>Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+      <p>Web: <span data-field="website">{{ website }}</span></p>
+    </div>
+
+    <div class="form-row" style="margin-top: 40px;">
+      <div style="width: 200px;">Employee Name:</div>
+      <div style="flex-grow: 1;">
+        <span data-field="employee_name_full">{{ employee_name_full }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">EMPLID:</div>
+      <div style="width: 150px; text-align: right;">
+        <span data-field="employee_id">{{ employee_id }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 150px;">Building:</div>
+      <div style="flex-grow: 1;"><span data-field="building_name">{{ building_name }}</span></div>
+      <div style="width: 150px;">Room:</div>
+      <div style="flex-grow: 1;"><span data-field="room_number">{{ room_number }}</span></div>
+      <div style="width: 150px; text-align: right;">MSC:</div>
+      <div style="width: 150px; text-align: right;"><span data-field="msc_number">{{ msc_number }}</span></div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 150px;">Office Phone:</div>
+      <div style="flex-grow: 1;"><span data-field="office_phone">{{ office_phone }}</span></div>
+      <div style="width: 150px;">Office Fax:</div>
+      <div style="flex-grow: 1;"><span data-field="office_fax">{{ office_fax }}</span></div>
+      <div style="width: 150px;">Cell Phone:</div>
+      <div style="flex-grow: 1;"><span data-field="cell_phone">{{ cell_phone }}</span></div>
+      <div style="width: 150px; text-align: right;">E-Mail:</div>
+      <div style="width: 150px; text-align: right;"><span data-field="email_address">{{ email_address }}</span></div>
+    </div>
+
+    <div style="margin-top: 30px;">
+      Justification for permit request:
+      <div style="border-bottom: 1px solid #000; margin-top: 5px; height: 80px;">
+        <!-- Placeholder for justification text -->
+      </div>
+    </div>
+
+    <div class="signature-line">
+      <div class="signature-block">
+        Employee Signature:
+        <div style="border-bottom: 1px solid #000; margin-top: 5px; height: 30px;" data-field="justification_for_permit_request">{{ justification_for_permit_request }}</div>
+        Date: <span data-field="signature_date">{{ signature_date }}</span>
+      </div>
+      <div class="signature-block" style="text-align: right;">
+        Signature Authority: Dean, Vice President, Associate /Assistant Vice President, Provost or Vice Provost
+        <div style="border-bottom: 1px solid #000; margin-top: 5px; height: 30px;" data-field="date">{{ date }}</div>
+        Date: <span data-field="authority_date">{{ authority_date }}</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      Name: <span data-field="applicant_name">{{ applicant_name }}</span>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 150px;">Division:</div>
+      <div style="flex-grow: 1;"><span data-field="division">{{ division }}</span></div>
+      <div style="width: 150px; text-align: right;">EMPLID:</div>
+      <div style="width: 150px; text-align: right;"><span data-field="applicant_emplid">{{ applicant_emplid }}</span></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <ul class="checkbox-list" style="margin-top: 20px;">
+      <li>
+        <input type="checkbox" disabled>
+        Requests for employee gate permits will be reviewed by Parking and Transit Services on a case-by-case basis.
+      </li>
+      <li>
+        <input type="checkbox" disabled>
+        This form should be completed by the employee and forwarded to the appropriate signature authority prior to being submitted to Parking and Transit Services for review.
+      </li>
+    </ul>
+
+    <div style="margin-top: 50px;">
+      Parking and Transit Services Office Use
+    </div>
+
+    <div class="form-row" style="margin-top: 40px;">
+      <div style="width: 150px;">Date Issued:</div>
+      <div style="flex-grow: 1;"><span data-field="date_issued">{{ date_issued }}</span></div>
+      <div style="width: 150px;">Expiration:</div>
+      <div style="flex-grow: 1;"><span data-field="expiration_date">{{ expiration_date }}</span></div>
+      <div style="width: 150px; text-align: right;">Permit Number:</div>
+      <div style="width: 150px; text-align: right;"><span data-field="permit_number">{{ permit_number }}</span></div>
+    </div>
+
+  </div>
+</body>

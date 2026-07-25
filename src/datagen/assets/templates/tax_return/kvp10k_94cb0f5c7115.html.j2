@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form 990 Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td, th { padding: 5px; text-align: left; vertical-align: top; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .form-title { font-size: 16pt; font-weight: bold; }
+  .section-header { font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .line-item-row td:first-child { width: 5%; }
+  .line-item-row td:nth-child(2) { width: 20%; }
+  .line-item-row td:nth-child(3) { width: 15%; }
+  .line-item-row td:nth-child(4) { width: 15%; }
+  .line-item-row td:nth-child(5) { width: 25%; }
+  .line-item-row td:nth-child(6) { width: 20%; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header-row td {
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990</div>
+      <div style="margin-top: 10px;">
+        <p><strong>Part I</strong></p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt; font-weight: bold;">OMB No. 1545-0047</div>
+      <div style="font-size: 24pt; font-weight: bold;">20<span data-field="tax_year_end_year">{{ tax_year_end_year }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Part I</strong></p>
+    <p><strong>Return of Organization Exempt From Income Tax</strong></p>
+    <p style="font-size: 10pt;">Under section 501(c)(3), 527, or 4947(a)(1) of the Internal Revenue Code (except black lung benefit trust or private foundation)</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>A</strong> For the <span data-field="tax_year_start_date">{{ tax_year_start_date }}</span> calendar year, or tax year beginning <span data-field="tax_year_start_date_month">{{ tax_year_start_date_month }}</span> <span data-field="tax_year_start_date_day">{{ tax_year_start_date_day }}</span>, <span data-field="tax_year_end_date">{{ tax_year_end_date }}</span>, and ending <span data-field="tax_year_end_date">{{ tax_year_end_date }}</span> <span data-field="tax_year_end_date_day">{{ tax_year_end_date_day }}</span></p>
+  </div>
+
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 5%;"><strong>B</strong> Check if applicable:</td>
+      <td style="width: 30%;">
+        <span data-field="organization_name">{{ organization_name }}</span>
+        <br>
+        <span data-field="organization_address_line1">{{ organization_address_line1 }}</span>
+        <br>
+        <span data-field="organization_city_state_zip">{{ organization_city_state_zip }}</span>
+      </td>
+      <td style="width: 15%;">
+        <span data-field="EIN">{{ ein }}</span>
+        <br>
+        <span data-field="organization_phone">{{ organization_phone }}</span>
+      </td>
+      <td style="width: 15%;">
+        <span data-field="form_type">{{ form_type }}</span>
+        <br>
+        <span data-field="filing_status">{{ filing_status }}</span>
+      </td>
+      <td style="width: 25%;">
+        <span data-field="submission_date">{{ submission_date }}</span>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <p><strong>C</strong> Name and address of organization: <span data-field="organization_name">{{ organization_name }}</span>, <span data-field="organization_address_line1">{{ organization_address_line1 }}</span>, <span data-field="organization_city_state_zip">{{ organization_city_state_zip }}</span></p>
+    <p><strong>D</strong> Employer identification number: <span data-field="ein">{{ ein }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>E</strong> Telephone number: <span data-field="organization_phone">{{ organization_phone }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>F</strong> Check if applicable: <span data-field="is_tax_exempt_status">{{ is_tax_exempt_status }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>G</strong> Gross receipts: <span data-field="gross_receipts">{{ gross_receipts }}</span></p>
+    <p><strong>H</strong> Is this a group return for affiliates? <span data-field="is_group_return">{{ is_group_return }}</span></p>
+    <p><strong>I</strong> Are all affiliates included? <span data-field="are_all_affiliates_included">{{ are_all_affiliates_included }}</span></p>
+    <p><strong>J</strong> If "No," attach a list. <span data-field="attach_list_flag">{{ attach_list_flag }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>K</strong> Exempt organization number: <span data-field="exempt_org_number">{{ exempt_org_number }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Summary</div>
+    <p><strong>1</strong> Briefly describe the organization's mission or most significant activities. <span data-field="mission_statement">{{ mission_statement }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Expenses</div>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 20%;">Description</th>
+          <th style="width: 15%;">Amount</th>
+          <th style="width: 15%;">Amount</th>
+          <th style="width: 25%;">Amount</th>
+          <th style="width: 20%;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>1</strong></td>
+          <td><span data-field="expense_description_1">{{ expense_description_1 }}</span></td>
+          <td><span data-field="expense_amount_1_col_1">{{ expense_amount_1_col_1 }}</span></td>
+          <td><span data-field="expense_amount_1_col_2">{{ expense_amount_1_col_2 }}</span></td>
+          <td><span data-field="expense_amount_1_col_3">{{ expense_amount_1_col_3 }}</span></td>
+          <td><span data-field="expense_amount_1_col_4">{{ expense_amount_1_col_4 }}</span></td>
+        </tr>
+        <!-- More line items would go here if the structure allowed for dynamic rows -->
+      </tbody>
+    </table>
+    <p><strong>Total expenses:</strong> <span data-field="total_expenses">{{ total_expenses }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Part II</div>
+    <p><strong>Checklist of Required Schedules</strong></p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 40%;">Description</th>
+          <th style="width: 10%;">Yes</th>
+          <th style="width: 10%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>1</strong></td>
+          <td>Is the organization described in section 501(c)(3) or 4947(a)(1) (other than a private foundation)? If "Yes," complete Schedule A.</td>
+          <td><span data-field="schedule_a_check_1">{{ schedule_a_check_1 }}</span></td>
+          <td><span data-field="schedule_a_check_1_no">{{ schedule_a_check_1_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>2</strong></td>
+          <td>Is the organization required to complete Schedule B, Schedule of Contributors? (see instructions)</td>
+          <td><span data-field="schedule_b_check_2">{{ schedule_b_check_2 }}</span></td>
+          <td><span data-field="schedule_b_check_2_no">{{ schedule_b_check_2_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>3</strong></td>
+          <td>Did the organization engage in direct or indirect political campaign activities on behalf of or in opposition to any candidate for public office? If "Yes," complete Schedule C.</td>
+          <td><span data-field="schedule_c_check_3">{{ schedule_c_check_3 }}</span></td>
+          <td><span data-field="schedule_c_check_3_no">{{ schedule_c_check_3_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4</strong></td>
+          <td>Did the organization engage in lobbying activities? If "Yes," complete Schedule C.</td>
+          <td><span data-field="schedule_c_check_4">{{ schedule_c_check_4 }}</span></td>
+          <td><span data-field="schedule_c_check_4_no">{{ schedule_c_check_4_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>5</strong></td>
+          <td>Is the organization a section 501(c)(3), 501(c)(5), or 501(c)(6) organization that receives membership dues, assessments, or similar amounts as defined in Revenue Procedure 98-197? If "Yes," complete Schedule C, Part III.</td>
+          <td><span data-field="schedule_c_check_5">{{ schedule_c_check_5 }}</span></td>
+          <td><span data-field="schedule_c_check_5_no">{{ schedule_c_check_5_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>6</strong></td>
+          <td>Did the organization maintain any donor advised funds or any similar funds or accounts where donors have the right to provide advice on the distribution or investment of amounts in such funds or accounts? If "Yes," complete Schedule D, Part I.</td>
+          <td><span data-field="schedule_d_check_6">{{ schedule_d_check_6 }}</span></td>
+          <td><span data-field="schedule_d_check_6_no">{{ schedule_d_check_6_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>7</strong></td>
+          <td>Did the organization receive or hold a conservation easement, including easements to preserve open space, the environment, historic land areas, or historic structures? If "Yes," complete Schedule D, Part II.</td>
+          <td><span data-field="schedule_d_check_7">{{ schedule_d_check_7 }}</span></td>
+          <td><span data-field="schedule_d_check_7_no">{{ schedule_d_check_7_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>8</strong></td>
+          <td>Did the organization maintain collections of works of art, historical treasures, or other similar assets? If "Yes," complete Schedule D, Part III.</td>
+          <td><span data-field="schedule_d_check_8">{{ schedule_d_check_8 }}</span></td>
+          <td><span data-field="schedule_d_check_8_no">{{ schedule_d_check_8_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>9</strong></td>
+          <td>Did the organization report an amount in Part X, line 21; serve as a custodian for amounts not listed in Part X; or provide credit counseling, debt management, credit repair, or debt negotiation services? If "Yes," complete Schedule E.</td>
+          <td><span data-field="schedule_e_check_9">{{ schedule_e_check_9 }}</span></td>
+          <td><span data-field="schedule_e_check_9_no">{{ schedule_e_check_9_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>10</strong></td>
+          <td>Did the organization directly or through a related organization, hold assets in term, permanent, or quasi-endowment? If "Yes," complete Schedule D, Part V.</td>
+          <td><span data-field="schedule_d_check_10">{{ schedule_d_check_10 }}</span></td>
+          <td><span data-field="schedule_d_check_10_no">{{ schedule_d_check_10_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>11</strong></td>
+          <td>If the organization's assets are subject to a charitable trust, is the trust governed by a trust instrument? If "Yes," complete Schedule D, Parts VI, VII, VIII, IX, or X as applicable.</td>
+          <td><span data-field="schedule_d_check_11">{{ schedule_d_check_11 }}</span></td>
+          <td><span data-field="schedule_d_check_11_no">{{ schedule_d_check_11_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>12</strong></td>
+          <td>Did the organization receive any grant or contribution from a government entity? If "Yes," complete Schedule G.</td>
+          <td><span data-field="schedule_g_check_12">{{ schedule_g_check_12 }}</span></td>
+          <td><span data-field="schedule_g_check_12_no">{{ schedule_g_check_12_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>13</strong></td>
+          <td>Did the organization maintain an office, employees, or agents outside the United States? If "Yes," complete Schedule F.</td>
+          <td><span data-field="schedule_f_check_13">{{ schedule_f_check_13 }}</span></td>
+          <td><span data-field="schedule_f_check_13_no">{{ schedule_f_check_13_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>14</strong></td>
+          <td>Did the organization have aggregate revenues or expenses of more than $5,000 in any of the following categories: (a) grants or assistance to any organization or entity located outside the United States? (b) grants or assistance to any organization or entity located outside the United States?</td>
+          <td><span data-field="schedule_f_check_14">{{ schedule_f_check_14 }}</span></td>
+          <td><span data-field="schedule_f_check_14_no">{{ schedule_f_check_14_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>15</strong></td>
+          <td>Did the organization report on Part IX, column (A), line 3, more than $5,000 of grants or assistance to any organization or entity located outside the United States? If "Yes," complete Schedule F, Parts III and IV.</td>
+          <td><span data-field="schedule_f_check_15">{{ schedule_f_check_15 }}</span></td>
+          <td><span data-field="schedule_f_check_15_no">{{ schedule_f_check_15_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>16</strong></td>
+          <td>Did the organization report on Part IX, column (A), line 3, more than $5,000 of grants or assistance to any organization or entity located outside the United States? If "Yes," complete Schedule F, Parts III and IV.</td>
+          <td><span data-field="schedule_f_check_16">{{ schedule_f_check_16 }}</span></td>
+          <td><span data-field="schedule_f_check_16_no">{{ schedule_f_check_16_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>17</strong></td>
+          <td>Did the organization have more than 10% of its total assets invested in equity securities? If "Yes," complete Schedule G, Part I.</td>
+          <td><span data-field="schedule_g_check_17">{{ schedule_g_check_17 }}</span></td>
+          <td><span data-field="schedule_g_check_17_no">{{ schedule_g_check_17_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>18</strong></td>
+          <td>Did the organization report more than $15,000 of gross income from gaming activities on Part VIII, line 9a? If "Yes," complete Schedule G, Part III.</td>
+          <td><span data-field="schedule_g_check_18">{{ schedule_g_check_18 }}</span></td>
+          <td><span data-field="schedule_g_check_18_no">{{ schedule_g_check_18_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>19</strong></td>
+          <td>Did the organization operate one or more hospitals? If "Yes," complete Schedule H.</td>
+          <td><span data-field="schedule_h_check_19">{{ schedule_h_check_19 }}</span></td>
+          <td><span data-field="schedule_h_check_19_no">{{ schedule_h_check_19_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>20</strong></td>
+          <td>If "Yes" to line 20a, did the organization attach its audited financial statements to this return? Note: Some Form 990 filers that operate one or more hospitals must attach audited financial statements (see instructions).</td>
+          <td><span data-field="schedule_h_check_20">{{ schedule_h_check_20 }}</span></td>
+          <td><span data-field="schedule_h_check_20_no">{{ schedule_h_check_20_no }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Signature Block</div>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 30%;">Sign Here</td>
+        <td style="width: 30%;">Signature of officer</td>
+        <td style="width: 20%;">Date</td>
+        <td style="width: 20%;">PTIN</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding-top: 10px;">
+          <p>Type or print name and title: <span data-field="signer_name">{{ signer_name }}</span></p>
+          <p>Preparer's signature: <span data-field="preparer_signature">{{ preparer_signature }}</span></p>
+          <p>Date: <span data-field="preparer_date">{{ preparer_date }}</span></p>
+          <p>Check if self-employed: <span data-field="self_employed_check">{{ self_employed_check }}</span></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Paid Preparer</strong></p>
+    <p>Name: <span data-field="paid_preparer_name">{{ paid_preparer_name }}</span></p>
+    <p>Firm's name: <span data-field="paid_preparer_firm_name">{{ paid_preparer_firm_name }}</span></p>
+    <p>Address: <span data-field="paid_preparer_address">{{ paid_preparer_address }}</span></p>
+    <p>Phone: <span data-field="paid_preparer_phone">{{ paid_preparer_phone }}</span></p>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 2</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Statement of Program Service Accomplishments</div>
+    <p><strong>1</strong> Briefly describe the organization's mission:</p>
+    <p><span data-field="mission_statement_part2">{{ mission_statement_part2 }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Program Service Accomplishments</div>
+    <p><strong>2</strong> Did the organization undertake any significant program services during the year which were not listed on the prior Form 990 or 990-EZ?</p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Yes</td>
+        <td style="width: 50%;">No</td>
+      </tr>
+      <tr>
+        <td><span data-field="program_service_new_check_2">{{ program_service_new_check_2 }}</span></td>
+        <td><span data-field="program_service_new_check_2_no">{{ program_service_new_check_2_no }}</span></td>
+      </tr>
+    </table>
+    <p><strong>3</strong> Did the organization cause, conduct, or make significant changes in how it conducts, any program services?</p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Yes</td>
+        <td style="width: 50%;">No</td>
+      </tr>
+      <tr>
+        <td><span data-field="program_service_change_check_3">{{ program_service_change_check_3 }}</span></td>
+        <td><span data-field="program_service_change_check_3_no">{{ program_service_change_check_3_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Program Service Accomplishments (Continued)</div>
+    <p><strong>4</strong> Describe the exempt purpose achievements for each of the organization's three largest program services by expenses. Section 501(c)(3) and 501(c)(4) organizations and section 4947(a)(1) trusts are required to report the amount of grants and allocations to others, the total expenses, and revenue, if any, for each program service reported.</p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;">4a</th>
+          <th style="width: 20%;">Code:</th>
+          <th style="width: 20%;">Expenses $</th>
+          <th style="width: 20%;">Including grants of $</th>
+          <th style="width: 20%;">Revenue $</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td></td>
+          <td><span data-field="program_service_4a_code">{{ program_service_4a_code }}</span></td>
+          <td><span data-field="program_service_4a_expenses">{{ program_service_4a_expenses }}</span></td>
+          <td><span data-field="program_service_4a_grants">{{ program_service_4a_grants }}</span></td>
+          <td><span data-field="program_service_4a_revenue">{{ program_service_4a_revenue }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4b</strong></td>
+          <td>Code: <span data-field="program_service_4b_code">{{ program_service_4b_code }}</span></td>
+          <td>Expenses $ <span data-field="program_service_4b_expenses">{{ program_service_4b_expenses }}</span></td>
+          <td>Including grants of $ <span data-field="program_service_4b_grants">{{ program_service_4b_grants }}</span></td>
+          <td>Revenue $ <span data-field="program_service_4b_revenue">{{ program_service_4b_revenue }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4c</strong></td>
+          <td>Code: <span data-field="program_service_4c_code">{{ program_service_4c_code }}</span></td>
+          <td>Expenses $ <span data-field="program_service_4c_expenses">{{ program_service_4c_expenses }}</span></td>
+          <td>Including grants of $ <span data-field="program_service_4c_grants">{{ program_service_4c_grants }}</span></td>
+          <td>Revenue $ <span data-field="program_service_4c_revenue">{{ program_service_4c_revenue }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4d</strong></td>
+          <td>Other program services. (Describe in Schedule O.)</td>
+          <td>Expenses $ <span data-field="program_service_4d_expenses">{{ program_service_4d_expenses }}</span></td>
+          <td>Including grants of $ <span data-field="program_service_4d_grants">{{ program_service_4d_grants }}</span></td>
+          <td>Revenue $ <span data-field="program_service_4d_revenue">{{ program_service_4d_revenue }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4e</strong></td>
+          <td>Total program service expenses</td>
+          <td><span data-field="program_service_4e_total_expenses">{{ program_service_4e_total_expenses }}</span></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 3</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Checklist of Required Schedules</div>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 50%;">Description</th>
+          <th style="width: 10%;">Yes</th>
+          <th style="width: 10%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>1</strong></td>
+          <td>Is the organization described in section 501(c)(3) or 4947(a)(1) (other than a private foundation)? If "Yes," complete Schedule A.</td>
+          <td><span data-field="checklist_1_yes">{{ checklist_1_yes }}</span></td>
+          <td><span data-field="checklist_1_no">{{ checklist_1_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>2</strong></td>
+          <td>Is the organization required to complete Schedule B, Schedule of Contributors? (see instructions)</td>
+          <td><span data-field="checklist_2_yes">{{ checklist_2_yes }}</span></td>
+          <td><span data-field="checklist_2_no">{{ checklist_2_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>3</strong></td>
+          <td>Did the organization engage in direct or indirect political campaign activities on behalf of or in opposition to any candidate for public office? If "Yes," complete Schedule C.</td>
+          <td><span data-field="checklist_3_yes">{{ checklist_3_yes }}</span></td>
+          <td><span data-field="checklist_3_no">{{ checklist_3_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4</strong></td>
+          <td>Did the organization engage in lobbying activities? If "Yes," complete Schedule C.</td>
+          <td><span data-field="checklist_4_yes">{{ checklist_4_yes }}</span></td>
+          <td><span data-field="checklist_4_no">{{ checklist_4_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>5</strong></td>
+          <td>Is the organization a section 501(c)(3), 501(c)(5), or 501(c)(6) organization that receives membership dues, assessments, or similar amounts as defined in Revenue Procedure 98-197? If "Yes," complete Schedule C, Part III.</td>
+          <td><span data-field="checklist_5_yes">{{ checklist_5_yes }}</span></td>
+          <td><span data-field="checklist_5_no">{{ checklist_5_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>6</strong></td>
+          <td>Did the organization maintain any donor advised funds or any similar funds or accounts where donors have the right to provide advice on the distribution or investment of amounts in such funds or accounts? If "Yes," complete Schedule D, Part I.</td>
+          <td><span data-field="checklist_6_yes">{{ checklist_6_yes }}</span></td>
+          <td><span data-field="checklist_6_no">{{ checklist_6_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>7</strong></td>
+          <td>Did the organization receive or hold a conservation easement, including easements to preserve open space, the environment, historic land areas, or historic structures? If "Yes," complete Schedule D, Part II.</td>
+          <td><span data-field="checklist_7_yes">{{ checklist_7_yes }}</span></td>
+          <td><span data-field="checklist_7_no">{{ checklist_7_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>8</strong></td>
+          <td>Did the organization maintain collections of works of art, historical treasures, or other similar assets? If "Yes," complete Schedule D, Part III.</td>
+          <td><span data-field="checklist_8_yes">{{ checklist_8_yes }}</span></td>
+          <td><span data-field="checklist_8_no">{{ checklist_8_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>9</strong></td>
+          <td>Did the organization report an amount in Part X, line 21; serve as a custodian for amounts not listed in Part X; or provide credit counseling, debt management, credit repair, or debt negotiation services? If "Yes," complete Schedule E.</td>
+          <td><span data-field="checklist_9_yes">{{ checklist_9_yes }}</span></td>
+          <td><span data-field="checklist_9_no">{{ checklist_9_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>10</strong></td>
+          <td>Did the organization directly or through a related organization, hold assets in term, permanent, or quasi-endowment? If "Yes," complete Schedule D, Part V.</td>
+          <td><span data-field="checklist_10_yes">{{ checklist_10_yes }}</span></td>
+          <td><span data-field="checklist_10_no">{{ checklist_10_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>11</strong></td>
+          <td>If the organization's assets are subject to a charitable trust, is the trust governed by a trust instrument? If "Yes," complete Schedule D, Parts VI, VII, VIII, IX, or X as applicable.</td>
+          <td><span data-field="checklist_11_yes">{{ checklist_11_yes }}</span></td>
+          <td><span data-field="checklist_11_no">{{ checklist_11_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>12</strong></td>
+          <td>Did the organization receive any grant or contribution from a government entity? If "Yes," complete Schedule G.</td>
+          <td><span data-field="checklist_12_yes">{{ checklist_12_yes }}</span></td>
+          <td><span data-field="checklist_12_no">{{ checklist_12_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>13</strong></td>
+          <td>Did the organization maintain an office, employees, or agents outside the United States? If "Yes," complete Schedule F.</td>
+          <td><span data-field="checklist_13_yes">{{ checklist_13_yes }}</span></td>
+          <td><span data-field="checklist_13_no">{{ checklist_13_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>14</strong></td>
+          <td>Did the organization have aggregate revenues or expenses of more than $5,000 in any of the following categories: (a) grants or assistance to any organization or entity located outside the United States? (b) grants or assistance to any organization or entity located outside the United States?</td>
+          <td><span data-field="checklist_14_yes">{{ checklist_14_yes }}</span></td>
+          <td><span data-field="checklist_14_no">{{ checklist_14_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>15</strong></td>
+          <td>Did the organization report on Part IX, column (A), line 3, more than $5,000 of grants or assistance to any organization or entity located outside the United States? If "Yes," complete Schedule F, Parts III and IV.</td>
+          <td><span data-field="checklist_15_yes">{{ checklist_15_yes }}</span></td>
+          <td><span data-field="checklist_15_no">{{ checklist_15_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>16</strong></td>
+          <td>Did the organization report on Part IX, column (A), line 3, more than $5,000 of grants or assistance to any organization or entity located outside the United States? If "Yes," complete Schedule F, Parts III and IV.</td>
+          <td><span data-field="checklist_16_yes">{{ checklist_16_yes }}</span></td>
+          <td><span data-field="checklist_16_no">{{ checklist_16_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>17</strong></td>
+          <td>Did the organization have more than 10% of its total assets invested in equity securities? If "Yes," complete Schedule G, Part I.</td>
+          <td><span data-field="checklist_17_yes">{{ checklist_17_yes }}</span></td>
+          <td><span data-field="checklist_17_no">{{ checklist_17_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>18</strong></td>
+          <td>Did the organization report more than $15,000 of gross income from gaming activities on Part VIII, line 9a? If "Yes," complete Schedule G, Part III.</td>
+          <td><span data-field="checklist_18_yes">{{ checklist_18_yes }}</span></td>
+          <td><span data-field="checklist_18_no">{{ checklist_18_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>19</strong></td>
+          <td>Did the organization operate one or more hospitals? If "Yes," complete Schedule H.</td>
+          <td><span data-field="checklist_19_yes">{{ checklist_19_yes }}</span></td>
+          <td><span data-field="checklist_19_no">{{ checklist_19_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>20</strong></td>
+          <td>If "Yes" to line 20a, did the organization attach its audited financial statements to this return? Note: Some Form 990 filers that operate one or more hospitals must attach audited financial statements (see instructions).</td>
+          <td><span data-field="checklist_20_yes">{{ checklist_20_yes }}</span></td>
+          <td><span data-field="checklist_20_no">{{ checklist_20_no }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 4</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Checklist of Required Schedules (continued)</div>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 50%;">Description</th>
+          <th style="width: 10%;">Yes</th>
+          <th style="width: 10%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>21</strong></td>
+          <td>Did the organization report more than $5,000 of grants and other assistance to governments and organizations in the United States on Part IX, column (A), line 11? If "Yes," complete Schedule I, Parts I and II.</td>
+          <td><span data-field="checklist_21_yes">{{ checklist_21_yes }}</span></td>
+          <td><span data-field="checklist_21_no">{{ checklist_21_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>22</strong></td>
+          <td>Did the organization report more than $5,000 of grants and other assistance to individuals in the United States on Part IX, column (A), line 12? If "Yes," complete Schedule I, Parts I and II.</td>
+          <td><span data-field="checklist_22_yes">{{ checklist_22_yes }}</span></td>
+          <td><span data-field="checklist_22_no">{{ checklist_22_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>23</strong></td>
+          <td>Did the organization have a tax-exempt bond issue with an outstanding principal amount of more than $100,000 as of the last day of the year that was issued after December 31, 2002? If "Yes," answer lines 24a through 24d and complete Schedule K. If "No," go to line 25.</td>
+          <td><span data-field="checklist_23_yes">{{ checklist_23_yes }}</span></td>
+          <td><span data-field="checklist_23_no">{{ checklist_23_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>24</strong></td>
+          <td>Did the organization maintain an escrow account other than a refunding escrow at any time during the year? If "Yes," complete Schedule L.</td>
+          <td><span data-field="checklist_24_yes">{{ checklist_24_yes }}</span></td>
+          <td><span data-field="checklist_24_no">{{ checklist_24_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>25</strong></td>
+          <td>Did the organization act as an "other" for bond issuances at or during the tax year? If "Yes," complete Schedule M.</td>
+          <td><span data-field="checklist_25_yes">{{ checklist_25_yes }}</span></td>
+          <td><span data-field="checklist_25_no">{{ checklist_25_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>26</strong></td>
+          <td>Is the organization aware that it engaged in an excess benefit transaction with a disqualified person in a prior year, and that the transaction has not been reported on any of the organization's prior Form 990 or 990-EZ? If "Yes," complete Schedule L, Part I.</td>
+          <td><span data-field="checklist_26_yes">{{ checklist_26_yes }}</span></td>
+          <td><span data-field="checklist_26_no">{{ checklist_26_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>27</strong></td>
+          <td>Is the organization aware that it engaged in an excess benefit transaction with a disqualified person in a prior year, and that the transaction has been reported on any of the organization's prior Form 990 or 990-EZ? If "Yes," complete Schedule L, Part II.</td>
+          <td><span data-field="checklist_27_yes">{{ checklist_27_yes }}</span></td>
+          <td><span data-field="checklist_27_no">{{ checklist_27_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>28</strong></td>
+          <td>Was the organization a party to a business transaction with one of the following parties (see Schedule L, Part IV) for instructions applicable to each party: (a) a former officer, director, trustee, or key employee? (b) a former member of the organization? (c) an entity of which a former officer, director, trustee, or key employee or a family member thereof was an officer, director, trustee, or key employee?</td>
+          <td><span data-field="checklist_28_yes">{{ checklist_28_yes }}</span></td>
+          <td><span data-field="checklist_28_no">{{ checklist_28_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>29</strong></td>
+          <td>Did the organization receive compensation from any related organization or individual? If "Yes," complete Schedule L, Part V.</td>
+          <td><span data-field="checklist_29_yes">{{ checklist_29_yes }}</span></td>
+          <td><span data-field="checklist_29_no">{{ checklist_29_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>30</strong></td>
+          <td>Did the organization receive contributions of art, historical treasures, or other similar assets? If "Yes," complete Schedule M.</td>
+          <td><span data-field="checklist_30_yes">{{ checklist_30_yes }}</span></td>
+          <td><span data-field="checklist_30_no">{{ checklist_30_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>31</strong></td>
+          <td>Did the organization liquidate, terminate, or dissolve and cease operations? If "Yes," complete Schedule N.</td>
+          <td><span data-field="checklist_31_yes">{{ checklist_31_yes }}</span></td>
+          <td><span data-field="checklist_31_no">{{ checklist_31_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>32</strong></td>
+          <td>Did the organization have any unrelated business taxable income? If "Yes," complete Schedule R.</td>
+          <td><span data-field="checklist_32_yes">{{ checklist_32_yes }}</span></td>
+          <td><span data-field="checklist_32_no">{{ checklist_32_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>33</strong></td>
+          <td>Was the organization related to any tax-exempt or taxable entity? If "Yes," complete Schedule R, Parts II, III, and IV, line 1.</td>
+          <td><span data-field="checklist_33_yes">{{ checklist_33_yes }}</span></td>
+          <td><span data-field="checklist_33_no">{{ checklist_33_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>34</strong></td>
+          <td>Is any related organization a controlled entity within the meaning of section 51b(3)(17)?</td>
+          <td><span data-field="checklist_34_yes">{{ checklist_34_yes }}</span></td>
+          <td><span data-field="checklist_34_no">{{ checklist_34_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>35</strong></td>
+          <td>Did the organization pay any amount to an entity that is a controlled entity within the meaning of section 51b(3)(17)? If "Yes," complete Schedule R, Part II, line 2.</td>
+          <td><span data-field="checklist_35_yes">{{ checklist_35_yes }}</span></td>
+          <td><span data-field="checklist_35_no">{{ checklist_35_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>36</strong></td>
+          <td>Did the organization conduct more than 5% of its activities through an entity that is not a related organization and that is treated as a partnership for federal income tax purposes? If "Yes," complete Schedule R, Part IV.</td>
+          <td><span data-field="checklist_36_yes">{{ checklist_36_yes }}</span></td>
+          <td><span data-field="checklist_36_no">{{ checklist_36_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>37</strong></td>
+          <td>Did the organization complete Schedule O and provide explanations in Schedule O for Part VI, lines 11 and 19? Note: All Form 990 filers are required to complete Schedule O.</td>
+          <td><span data-field="checklist_37_yes">{{ checklist_37_yes }}</span></td>
+          <td><span data-field="checklist_37_no">{{ checklist_37_no }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 5</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Statements Regarding Other IRS Filings and Tax Compliance</div>
+    <p><strong>Check if Schedule O contains a response to any question in this Part V</strong></p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 5%;"><strong>1a</strong></td>
+        <td style="width: 50%;">Enter the number reported in Box 3 of Form 1096. Enter -0 if not applicable.</td>
+        <td style="width: 10%;">Yes</td>
+        <td style="width: 10%;">No</td>
+      </tr>
+      <tr>
+        <td><strong>1b</strong></td>
+        <td>Enter the number of Forms W-2G included in line 1a. Enter -0 if not applicable.</td>
+        <td><span data-field="filing_1b_yes">{{ filing_1b_yes }}</span></td>
+        <td><span data-field="filing_1b_no">{{ filing_1b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>2a</strong></td>
+        <td>Enter the number of employees reported on Form W-2G, Transmittal of Wage and Tax Statements.</td>
+        <td><span data-field="filing_2a_yes">{{ filing_2a_yes }}</span></td>
+        <td><span data-field="filing_2a_no">{{ filing_2a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>2b</strong></td>
+        <td>If at least one is reported on line 2a, did the organization file all required federal employment tax returns?</td>
+        <td><span data-field="filing_2b_yes">{{ filing_2b_yes }}</span></td>
+        <td><span data-field="filing_2b_no">{{ filing_2b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>3a</strong></td>
+        <td>Did the organization have unrelated business gross income of $1,000 or more during the year?</td>
+        <td><span data-field="filing_3a_yes">{{ filing_3a_yes }}</span></td>
+        <td><span data-field="filing_3a_no">{{ filing_3a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>3b</strong></td>
+        <td>If "Yes," has it filed a Form 990-T for this year? If "No," provide an explanation in Schedule O.</td>
+        <td><span data-field="filing_3b_yes">{{ filing_3b_yes }}</span></td>
+        <td><span data-field="filing_3b_no">{{ filing_3b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>4a</strong></td>
+        <td>At any time during the calendar year, did the organization have an interest in, or a signature or other authority over, a financial account in a foreign country (such as a bank account, securities account, or other financial account)?</td>
+        <td><span data-field="filing_4a_yes">{{ filing_4a_yes }}</span></td>
+        <td><span data-field="filing_4a_no">{{ filing_4a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>5a</strong></td>
+        <td>Was the organization a party to a prohibited tax shelter transaction at any time during the tax year?</td>
+        <td><span data-field="filing_5a_yes">{{ filing_5a_yes }}</span></td>
+        <td><span data-field="filing_5a_no">{{ filing_5a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>5b</strong></td>
+        <td>Did the organization file Form 8886-T?</td>
+        <td><span data-field="filing_5b_yes">{{ filing_5b_yes }}</span></td>
+        <td><span data-field="filing_5b_no">{{ filing_5b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>6a</strong></td>
+        <td>Does the organization have annual gross receipts that are normally greater than $100,000, and did the organization solicit contributions with every solicitation an express statement that such contributions or gifts were not tax deductible?</td>
+        <td><span data-field="filing_6a_yes">{{ filing_6a_yes }}</span></td>
+        <td><span data-field="filing_6a_no">{{ filing_6a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>7a</strong></td>
+        <td>Does the organization receive a payment in excess of $75 made as a contribution and party for goods and services provided to the payer?</td>
+        <td><span data-field="filing_7a_yes">{{ filing_7a_yes }}</span></td>
+        <td><span data-field="filing_7a_no">{{ filing_7a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>7b</strong></td>
+        <td>Did the organization notify the donor of the value of the goods or services provided?</td>
+        <td><span data-field="filing_7b_yes">{{ filing_7b_yes }}</span></td>
+        <td><span data-field="filing_7b_no">{{ filing_7b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>7c</strong></td>
+        <td>Did the organization receive any funds, directly or indirectly, to pay premiums on a personal benefit contract?</td>
+        <td><span data-field="filing_7c_yes">{{ filing_7c_yes }}</span></td>
+        <td><span data-field="filing_7c_no">{{ filing_7c_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>7d</strong></td>
+        <td>If the organization received a contribution of qualified intellectual property, did the organization file Form 8899 as required?</td>
+        <td><span data-field="filing_7d_yes">{{ filing_7d_yes }}</span></td>
+        <td><span data-field="filing_7d_no">{{ filing_7d_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td>Sponsoring organizations maintaining donor advised funds and section 509(a)(3) supporting organizations. Did the organization maintain donor advised funds during the year?</td>
+        <td><span data-field="filing_8_yes">{{ filing_8_yes }}</span></td>
+        <td><span data-field="filing_8_no">{{ filing_8_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>9a</strong></td>
+        <td>Did the organization make any taxable distributions under section 4967?</td>
+        <td><span data-field="filing_9a_yes">{{ filing_9a_yes }}</span></td>
+        <td><span data-field="filing_9a_no">{{ filing_9a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>9b</strong></td>
+        <td>Did the organization make any taxable distributions under section 4967?</td>
+        <td><span data-field="filing_9b_yes">{{ filing_9b_yes }}</span></td>
+        <td><span data-field="filing_9b_no">{{ filing_9b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>10a</strong></td>
+        <td>Information on related organizations.</td>
+        <td><span data-field="filing_10a_yes">{{ filing_10a_yes }}</span></td>
+        <td><span data-field="filing_10a_no">{{ filing_10a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>10b</strong></td>
+        <td>Gross receipts, included grants and contributions on Part VIII, line 12, for public use of club facilities.</td>
+        <td><span data-field="filing_10b_yes">{{ filing_10b_yes }}</span></td>
+        <td><span data-field="filing_10b_no">{{ filing_10b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>11a</strong></td>
+        <td>Gross income from other sources.</td>
+        <td><span data-field="filing_11a_yes">{{ filing_11a_yes }}</span></td>
+        <td><span data-field="filing_11a_no">{{ filing_11a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>11b</strong></td>
+        <td>Gross income from other sources (Do not net amounts due or paid to other sources against amounts due or received from them).</td>
+        <td><span data-field="filing_11b_yes">{{ filing_11b_yes }}</span></td>
+        <td><span data-field="filing_11b_no">{{ filing_11b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>12a</strong></td>
+        <td>Section 4947(a)(1) non-exempt charitable trusts. Is the organization filing Form 990 in lieu of Form 1041?</td>
+        <td><span data-field="filing_12a_yes">{{ filing_12a_yes }}</span></td>
+        <td><span data-field="filing_12a_no">{{ filing_12a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>12b</strong></td>
+        <td>Section 501(c)(29) qualified nonprofit health plans in more than one state?</td>
+        <td><span data-field="filing_12b_yes">{{ filing_12b_yes }}</span></td>
+        <td><span data-field="filing_12b_no">{{ filing_12b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>13a</strong></td>
+        <td>Note: See the instructions for additional information the organization must report on Schedule O.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>13b</strong></td>
+        <td>Is the organization licensed to issue qualified health plans?</td>
+        <td><span data-field="filing_13b_yes">{{ filing_13b_yes }}</span></td>
+        <td><span data-field="filing_13b_no">{{ filing_13b_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>13c</strong></td>
+        <td>Is the organization licensed to issue health plans?</td>
+        <td><span data-field="filing_13c_yes">{{ filing_13c_yes }}</span></td>
+        <td><span data-field="filing_13c_no">{{ filing_13c_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>14a</strong></td>
+        <td>Did the organization receive any payments for indoor tanning services during the tax year?</td>
+        <td><span data-field="filing_14a_yes">{{ filing_14a_yes }}</span></td>
+        <td><span data-field="filing_14a_no">{{ filing_14a_no }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>14b</strong></td>
+        <td>If "Yes," has it filed a Form 720 to report these payments? If "No," provide an explanation in Schedule O.</td>
+        <td><span data-field="filing_14b_yes">{{ filing_14b_yes }}</span></td>
+        <td><span data-field="filing_14b_no">{{ filing_14b_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 6</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Governance, Management, and Disclosure</div>
+    <p><strong>Section A. Governing Body and Management</strong></p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 50%;">Description</th>
+          <th style="width: 10%;">Yes</th>
+          <th style="width: 10%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>1a</strong></td>
+          <td>Enter the number of voting members of the governing body at the end of the tax year.</td>
+          <td><span data-field="governance_1a_yes">{{ governance_1a_yes }}</span></td>
+          <td><span data-field="governance_1a_no">{{ governance_1a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>1b</strong></td>
+          <td>Enter the number of voting members of the governing body at the beginning of the tax year.</td>
+          <td><span data-field="governance_1b_yes">{{ governance_1b_yes }}</span></td>
+          <td><span data-field="governance_1b_no">{{ governance_1b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>2</strong></td>
+          <td>Did any officer, director, trustee, or key employee have a family relationship or a business relationship with any other officer, director, trustee, or key employee?</td>
+          <td><span data-field="governance_2_yes">{{ governance_2_yes }}</span></td>
+          <td><span data-field="governance_2_no">{{ governance_2_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>3</strong></td>
+          <td>Did the organization delegate control over management duties customarily performed by or under the direct supervision of officers, directors, or trustees, or key employees to a management company or other person?</td>
+          <td><span data-field="governance_3_yes">{{ governance_3_yes }}</span></td>
+          <td><span data-field="governance_3_no">{{ governance_3_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>4</strong></td>
+          <td>Did the organization make any significant changes to its governing documents since the prior Form 990 was filed?</td>
+          <td><span data-field="governance_4_yes">{{ governance_4_yes }}</span></td>
+          <td><span data-field="governance_4_no">{{ governance_4_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>5</strong></td>
+          <td>Does the organization have members or stockholders?</td>
+          <td><span data-field="governance_5_yes">{{ governance_5_yes }}</span></td>
+          <td><span data-field="governance_5_no">{{ governance_5_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>6</strong></td>
+          <td>Does the organization have members, stockholders, or other persons who may elect one or more members of the governing body?</td>
+          <td><span data-field="governance_6_yes">{{ governance_6_yes }}</span></td>
+          <td><span data-field="governance_6_no">{{ governance_6_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>7a</strong></td>
+          <td>Are any decisions of the governing body subject to approval by members, stockholders, or other persons?</td>
+          <td><span data-field="governance_7a_yes">{{ governance_7a_yes }}</span></td>
+          <td><span data-field="governance_7a_no">{{ governance_7a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>7b</strong></td>
+          <td>Are any decisions of the governing body subject to approval by members, stockholders, or other persons?</td>
+          <td><span data-field="governance_7b_yes">{{ governance_7b_yes }}</span></td>
+          <td><span data-field="governance_7b_no">{{ governance_7b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>8</strong></td>
+          <td>Does the organization contemporaneously document the meetings held or written actions undertaken during the year?</td>
+          <td><span data-field="governance_8_yes">{{ governance_8_yes }}</span></td>
+          <td><span data-field="governance_8_no">{{ governance_8_no }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Section B. Policies</strong></p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 5%;"></th>
+          <th style="width: 50%;">Description</th>
+          <th style="width: 10%;">Yes</th>
+          <th style="width: 10%;">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><strong>9</strong></td>
+          <td>Does the organization have local chapters, branches, or affiliates?</td>
+          <td><span data-field="governance_9_yes">{{ governance_9_yes }}</span></td>
+          <td><span data-field="governance_9_no">{{ governance_9_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>10a</strong></td>
+          <td>Does the organization have written policies and procedures governing the activities of such chapters, affiliates, and branches to ensure their operations are consistent with those of the organization?</td>
+          <td><span data-field="governance_10a_yes">{{ governance_10a_yes }}</span></td>
+          <td><span data-field="governance_10a_no">{{ governance_10a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>10b</strong></td>
+          <td>Has the organization provided a copy of this Form 990 to all members of its governing body before filing the Form 990?</td>
+          <td><span data-field="governance_10b_yes">{{ governance_10b_yes }}</span></td>
+          <td><span data-field="governance_10b_no">{{ governance_10b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>11a</strong></td>
+          <td>Does the organization have a written conflict of interest policy? If "No," go to line 13.</td>
+          <td><span data-field="governance_11a_yes">{{ governance_11a_yes }}</span></td>
+          <td><span data-field="governance_11a_no">{{ governance_11a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>11b</strong></td>
+          <td>Does the organization have a written whistleblower policy?</td>
+          <td><span data-field="governance_11b_yes">{{ governance_11b_yes }}</span></td>
+          <td><span data-field="governance_11b_no">{{ governance_11b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>12a</strong></td>
+          <td>Does the organization have a written document retention and destruction policy?</td>
+          <td><span data-field="governance_12a_yes">{{ governance_12a_yes }}</span></td>
+          <td><span data-field="governance_12a_no">{{ governance_12a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>12b</strong></td>
+          <td>Did the organization provide its governing body with a conflict of interest policy, a review and approval by independent persons, comparability data, and contemporaneous substantiation of the deliberation and decision?</td>
+          <td><span data-field="governance_12b_yes">{{ governance_12b_yes }}</span></td>
+          <td><span data-field="governance_12b_no">{{ governance_12b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>13a</strong></td>
+          <td>Are the organization's CEO, Executive Director, or top management official compensated?</td>
+          <td><span data-field="governance_13a_yes">{{ governance_13a_yes }}</span></td>
+          <td><span data-field="governance_13a_no">{{ governance_13a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>13b</strong></td>
+          <td>Did the organization adopt a written policy or procedure requiring the organization to evaluate its compensation?</td>
+          <td><span data-field="governance_13b_yes">{{ governance_13b_yes }}</span></td>
+          <td><span data-field="governance_13b_no">{{ governance_13b_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>14a</strong></td>
+          <td>Did the organization have a written policy or procedure requiring the organization to evaluate its compensation?</td>
+          <td><span data-field="governance_14a_yes">{{ governance_14a_yes }}</span></td>
+          <td><span data-field="governance_14a_no">{{ governance_14a_no }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><strong>14b</strong></td>
+          <td>Did the organization have a written policy or procedure requiring the organization to evaluate its compensation?</td>
+          <td><span data-field="governance_14b_yes">{{ governance_14b_yes }}</span></td>
+          <td><span data-field="governance_14b_no">{{ governance_14b_no }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 7</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Compensation of Officers, Directors, Trustees, Key Employees, Highest Compensated Employees</div>
+    <p><strong>Section A. Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees</strong></p>
+    <p>Complete this table for all persons required to be listed. Report compensation for the calendar year ending with or within the organization's tax year.</p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 10%;">Name and Title</th>
+          <th style="width: 10%;">Average hours per week</th>
+          <th style="width: 10%;">Position (check all that apply)</th>
+          <th style="width: 15%;">Reportable compensation from the organization (W-2/1099-MISC)</th>
+          <th style="width: 15%;">Reportable compensation from related organizations</th>
+          <th style="width: 20%;">Estimated amount of other compensation from related organizations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><span data-field="comp_person_1_name">{{ comp_person_1_name }}</span></td>
+          <td><span data-field="comp_person_1_hours">{{ comp_person_1_hours }}</span></td>
+          <td><span data-field="comp_person_1_position_check">{{ comp_person_1_position_check }}</span></td>
+          <td><span data-field="comp_person_1_comp_org">{{ comp_person_1_comp_org }}</span></td>
+          <td><span data-field="comp_person_1_comp_related">{{ comp_person_1_comp_related }}</span></td>
+          <td><span data-field="comp_person_1_comp_other">{{ comp_person_1_comp_other }}</span></td>
+        </tr>
+        <tr class="line-item-row">
+          <td><span data-field="comp_person_2_name">{{ comp_person_2_name }}</span></td>
+          <td><span data-field="comp_person_2_hours">{{ comp_person_2_hours }}</span></td>
+          <td><span data-field="comp_person_2_position_check">{{ comp_person_2_position_check }}</span></td>
+          <td><span data-field="comp_person_2_comp_org">{{ comp_person_2_comp_org }}</span></td>
+          <td><span data-field="comp_person_2_comp_related">{{ comp_person_2_comp_related }}</span></td>
+          <td><span data-field="comp_person_2_comp_other">{{ comp_person_2_comp_other }}</span></td>
+        </tr>
+        <!-- More rows would be generated here based on the number of listed individuals -->
+      </tbody>
+    </table>
+
+    <p><strong>Section B. Independent Contractors</strong></p>
+    <p>Complete this table for your five highest compensated independent contractors that received more than $100,000 of compensation from the organization.</p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Name and Business address</th>
+          <th style="width: 30%;">Description of services</th>
+          <th style="width: 20%;">Compensation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><span data-field="contractor_1_name">{{ contractor_1_name }}</span></td>
+          <td><span data-field="contractor_1_services">{{ contractor_1_services }}</span></td>
+          <td><span data-field="contractor_1_comp">{{ contractor_1_comp }}</span></td>
+        </tr>
+        <!-- More rows would be generated here -->
+      </tbody>
+    </table>
+    <p><strong>Total number of independent contractors (including but not limited to those listed above) who received more than $100,000 in compensation from the organization:</strong> <span data-field="total_contractors">{{ total_contractors }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="form-title">Form 990 (2010)</div>
+      <div style="font-size: 10pt;">Page 8</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-header">Compensation of Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees (continued)</div>
+    <p>This section continues the table from Page 7.</p>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 10%;">Name and Title</th>
+          <th style="width: 10%;">Average hours per week</th>
+          <th style="width: 10%;">Position (check all that apply)</th>
+          <th style="width: 15%;">Reportable compensation from the organization (W-2/1099-MISC)</th>
+          <th style="width: 15%;">Reportable compensation from related organizations</th>
+          <th style="width: 20%;">Estimated amount of other compensation from related organizations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="line-item-row">
+          <td><span data-field="comp_person_17_name">{{ comp_person_17_name }}</span></td>
+          <td><span data-field="comp_person_17_hours">{{ comp_person_17_hours }}</span></td>
+          <td><span data-field="comp_person_17_position_check">{{ comp_person_17_position_check }}</span></td>
+          <td><span data-field="comp_person_17_comp_org">{{ comp_person_17_comp_org }}</span></td>
+          <td><span data-field="comp_person_17_comp_related">{{ comp_person_17_comp_related }}</span></td>
+          <td><span data-field="comp_person_17_comp_other">{{ comp_person_17_comp_other }}</span></td>
+        </tr>
+        <!-- More rows would be generated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Sub-total:</strong> <span data-field="comp_subtotal">{{ comp_subtotal }}</span></p>
+    <p><strong>Total from continuation sheets to Part VII, Section A:</strong> <span data-field="comp_total_continuation">{{ comp_total_continuation }}</span></p>
+    <p><strong>Total (add lines 1b and 1c):</strong> <span data-field="comp_total_final">{{ comp_total_final }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>3</strong> Did the organization list any former officer, director or trustee, key employee, or highest compensated employee on line 1a? If "Yes," complete Schedule J for such individual.</p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 5%;">Yes</td>
+        <td style="width: 95%;">No</td>
+      </tr>
+      <tr>
+        <td><span data-field="comp_former_yes">{{ comp_former_yes }}</span></td>
+        <td><span data-field="comp_former_no">{{ comp_former_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>4</strong> For any individual listed on line 1a, is the sum of reportable compensation and other compensation from the organization and related organizations greater than $150,000? If "Yes," complete Schedule J for such individual.</p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 5%;">Yes</td>
+        <td style="width: 95%;">No</td>
+      </tr>
+      <tr>
+        <td><span data-field="comp_high_comp_yes">{{ comp_high_comp_yes }}</span></td>
+        <td><span data-field="comp_high_comp_no">{{ comp_high_comp_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>5</strong> Did any person listed on line 1a receive or accrue compensation from any unrelated organization or individual for services rendered to the organization? If "Yes," complete Schedule J for such person.</p>
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 5%;">Yes</td>
+        <td style="width: 95%;">No</td>
+      </tr>
+      <tr>
+        <td><span data-field="comp_unrelated_yes">{{ comp_unrelated_yes }}</span></td>
+        <td><span data-field="comp_unrelated_no">{{ comp_unrelated_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 70%;">
+      <h1 style="font-size: 16pt; margin: 0;">Statement of Revenue</h1>
+      <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">Contributions, gifts, grants and other similar amounts</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">Page 9</p>
+    </div>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">1a</td>
+        <td style="width: 30%;">Federated campaigns</td>
+        <td style="width: 10%;">1b</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">Total revenue</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>b Membership dues</td>
+        <td>1c</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>c Fundraising events</td>
+        <td>1d</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>d Related organizations</td>
+        <td>1e</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>e Government grants (contributions)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>f All other contributions, gifts, grants and similar amounts not included above</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td></td>
+        <td>g Noncash contributions included in lines 1a-1f</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>h Total. Add lines 1a-1f.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 10%;">14,120.</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">14,120.</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="section-title">Program Service Revenue</div>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">2a</td>
+        <td style="width: 30%;">STUDENT ACTIVITY FEES</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">6,350,000.</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+      <tr class="header-row">
+        <td>2b</td>
+        <td>PROGRAM REVENUE</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>278,990.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>c</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>d</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>e</td>
+        <td>All other program service revenue.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>g Total. Add lines 2a-2f.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">6,628,990.</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="section-title">Other Revenue</div>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr class="header-row">
+        <td>3 Investment income (including dividends, interest, other similar amounts)</td>
+        <td colspan="4" style="text-align: right;">577.</td>
+        <td style="width: 10%;">577.</td>
+      </tr>
+      <tr>
+        <td>5 Royalties</td>
+        <td>(i) Real</td>
+        <td>(ii) Personal</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>6a Gross Rents</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">638,534.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>b Less: rental expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>c Rental income or (loss)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">638,534.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7a Gross amount from sales of assets other than inventory</td>
+        <td>(i) Securities</td>
+        <td>(ii) Other</td>
+        <td></td>
+        <td style="width: 20%;">638,534.</td>
+        <td></td>
+        <td>638,534.</td>
+      </tr>
+      <tr>
+        <td>b Less: cost or other basis and sales expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>c Gain or (loss)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>d Net gain or (loss)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>8a Gross income from fundraising events (not including $ of contributions reported on line 1c). See Part IV, line 18.</td>
+        <td colspan="4"></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>b Less: direct expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>c Net income or (loss) from fundraising events</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9a Gross income from gaming activities. See Part IV, line 19.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>b Less: direct expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>c Net income or (loss) from sales of inventory.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>d Miscellaneous Revenue</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="section-title">Balance Sheet</div>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">11A PERSON</td>
+        <td style="width: 30%;">COMMISSION REVENUE</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">219,396.</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+      <tr>
+        <td>c MEETING ROOM FEES</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>131,438.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>d All other revenue</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>125,676.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>e Total. Add lines 11a-11d.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">558,692.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>12 Total revenue. See instructions.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">7,840,913.</td>
+        <td></td>
+        <td>7,105,500.</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 70%;">
+      <h1 style="font-size: 16pt; margin: 0;">Functional Expenses</h1>
+      <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">Section 501(c)(3) and 501(c)(4) organizations must complete all columns. All other organizations must complete column (B), (C), (D), and (E).</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">Page 10</p>
+    </div>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;"></td>
+        <td style="width: 30%;">Do not include amounts reported on lines 6b, 7b, 9b, and 10b of Part VIII.</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">Total expenses</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+      </tr>
+      <tr class="header-row">
+        <td>1</td>
+        <td>Grants and other assistance to governments and organizations in the U.S. See Part IV, line 21.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">58,730.</td>
+        <td></td>
+        <td>58,730.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Grants and other assistance to individuals in the U.S. See Part IV, line 22.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Grants and other assistance to governments, organizations, and individuals outside the U.S. See Part IV, lines 15 and 16.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4 Benefits paid to or for members</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">165,981.</td>
+        <td>99,290.</td>
+        <td>66,691.</td>
+      </tr>
+      <tr>
+        <td>5 Compensation of current officers, directors, trustees, and key employees</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6 Compensation not included above, to disqualified persons (as defined under section 4958(b)(1)) and persons described in section 4958(c)(3)(B)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7 Other salaries and wages</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">2,944,460.</td>
+        <td>2,183,635.</td>
+        <td>79,546.</td>
+      </tr>
+      <tr>
+        <td>8 Payroll taxes</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">851,137.</td>
+        <td>531,596.</td>
+        <td>319,541.</td>
+      </tr>
+      <tr>
+        <td>9 Payroll taxes (non-employees)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">178,024.</td>
+        <td>120,108.</td>
+        <td>57,916.</td>
+      </tr>
+      <tr>
+        <td>a Management</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>b Legal</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>c Accounting</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>d Lobbying</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>e Professional fundraising services. See Part IV, line 17</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>f Investment management fees</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>g Other</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12 Advertising and promotion</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">41,415.</td>
+        <td>41,415.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>13 Office expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">55,947.</td>
+        <td>46,240.</td>
+        <td>9,707.</td>
+      </tr>
+      <tr>
+        <td>14 Information technology</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>15 Royalties</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>16 Occupancy</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,162,293.</td>
+        <td>1,131,260.</td>
+        <td>31,033.</td>
+      </tr>
+      <tr>
+        <td>17 Travel</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">11,940.</td>
+        <td>11,639.</td>
+        <td>301.</td>
+      </tr>
+      <tr>
+        <td>18 Payments of travel or entertainment expenses for any federal, state, or local public officials</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>19 Conferences, conventions, and meetings</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>20 Payments to affiliates</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>21 Depreciation, depletion, and amortization</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">103,681.</td>
+        <td>16,086.</td>
+        <td>87,595.</td>
+      </tr>
+      <tr>
+        <td>24 Other expenses. Itemize expenses not covered above (list miscellaneous expenses in line 24f. If line 24f amount exceeds 10% of line 25, column (A) amount, list line 24f expenses on Schedule O.)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="header-row">
+        <td>a SUPPLIES</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">596,339.</td>
+        <td>579,446.</td>
+        <td>16,893.</td>
+      </tr>
+      <tr class="header-row">
+        <td>b PROFESSIONAL SERVICES</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">228,930.</td>
+        <td>156,894.</td>
+        <td>72,036.</td>
+      </tr>
+      <tr class="header-row">
+        <td>c EQUIPMENT RENTAL</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">126,026.</td>
+        <td>108,630.</td>
+        <td>17,396.</td>
+      </tr>
+      <tr class="header-row">
+        <td>d EXPENDABLE EQUIPMENT</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">70,545.</td>
+        <td>65,053.</td>
+        <td>5,492.</td>
+      </tr>
+      <tr>
+        <td>f All other expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">335,182.</td>
+        <td>257,782.</td>
+        <td>77,400.</td>
+      </tr>
+      <tr class="header-row">
+        <td>25 Total functional expenses. Add lines 1 through 24f.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">7,451,100.</td>
+        <td>5,765,585.</td>
+        <td>1,685,515.</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 70%;">
+      <h1 style="font-size: 16pt; margin: 0;">Balance Sheet</h1>
+      <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">(All amounts in U.S. Dollars)</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">Page 11</p>
+    </div>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">Assets</td>
+        <td style="width: 30%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">Beginning of year</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;">End of year</td>
+      </tr>
+      <tr>
+        <td>1 Cash—non-interest-bearing</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">3,003,581.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">3,410,117.</td>
+      </tr>
+      <tr>
+        <td>2 Savings and temporary cash investments</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3 Pledges and grants receivable, net</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4 Accounts receivable, net</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">38,952.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">49,397.</td>
+      </tr>
+      <tr>
+        <td>5 Receivables from related and former officers, directors, trustees, key employees, and highest compensated employees. Complete Part II of Schedule L.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6 Receivables from other disqualified persons (as defined under section 4958(i)(1)), persons described in section 4958(c)(3)(B), and contributing employees' beneficiary organizations (see instructions)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7 Notes and loans receivable, net</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8 Inventories for sale or use</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9 Prepaid expenses and deferred charges</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">37,378.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">42,678.</td>
+      </tr>
+      <tr>
+        <td>10 Land, buildings, and equipment; cost or other basis. Complete Part VI of Schedule D.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,204,288.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,336,149.</td>
+      </tr>
+      <tr>
+        <td>10b Accumulated depreciation</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,021,349.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">952,819.</td>
+      </tr>
+      <tr>
+        <td>11 Investments—publicly traded securities</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12 Investments—other securities. See Part IV, line 11</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>13 Investments—program-related. See Part IV, line 11</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>14 Intangible assets</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>15 Other assets. See Part IV, line 15 (must equal line 34).</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>4,101,260.</td>
+        <td></td>
+        <td>4,455,011.</td>
+      </tr>
+      <tr>
+        <td>16 Total assets. Add lines 1 through 15 (must equal line 34).</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>5,302,508.</td>
+        <td></td>
+        <td>5,810,830.</td>
+      </tr>
+    </thead>
+  </table>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">Liabilities</td>
+        <td style="width: 30%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 20%;">Beginning of year</td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;"></td>
+        <td style="width: 10%;">End of year</td>
+      </tr>
+      <tr>
+        <td>17 Accounts payable and accrued expenses</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">568,422.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">453,021.</td>
+      </tr>
+      <tr>
+        <td>18 Grants payable</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>19 Tax—exempt bond liabilities</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>20 Other liabilities. Complete Part IV of Schedule D.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>21 Payables to current and former officers, directors, trustees, key employees, highest compensated employees, and disqualified persons. Complete Part II of Schedule L.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>22 Secured mortgages and notes payable to unrelated third parties</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>23 Unsecured notes and loans payable to unrelated third parties</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>24 Total liabilities. Add lines 17 through 23.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,164,742.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">1,223,066.</td>
+      </tr>
+      <tr>
+        <td>25 Organizations that follow SFAS 117, check here $\square$ and complete lines 27 through 29, and lines 33 and 34.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>26 Unrestricted net assets</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">2,241,831.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">2,631,644.</td>
+      </tr>
+      <tr>
+        <td>27 Temporarily restricted net assets</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>28 Permanently restricted net assets</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>29 Organizations that do not follow SFAS 117, check here $\square$ and complete lines 30 through 34.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>30 Capital stock or trust principal, or current funds</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>31 Paid-in or capital surplus, or land, building, or equipment fund</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>32 Retained earnings, endowment, accumulated income, or other funds</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">2,241,831.</td>
+        <td></td>
+        <td></td>
+        <td style="width: 20%;">2,631,644.</td>
+      </tr>
+      <tr>
+        <td>33 Total net assets or fund balances</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>4,101,260.</td>
+        <td></td>
+        <td>4,455,011.</td>
+      </tr>
+      <tr>
+        <td>34 Total liabilities and net assets/fund balances</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 70%;">
+      <h1 style="font-size: 16pt; margin: 0;">Reconciliation of Net Assets</h1>
+      <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">Check if Schedule O contains a response to any question in this Part XI</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">Page 12</p>
+    </div>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 10%;">1</td>
+        <td style="width: 30%;">Total revenue (must equal Part VIII, column (A), line 12)</td>
+        <td style="width: 10%;">2</td>
+        <td style="width: 10%;">Total expenses (must equal Part IX, column (A), line 25)</td>
+        <td style="width: 10%;">3</td>
+        <td style="width: 20%;">Revenue less expenses. Subtract line 2 from line 1</td>
+        <td style="width: 10%;">4</td>
+        <td style="width: 10%;">Net assets or fund balances at beginning of year (must equal Part X, line 33, column (A))</td>
+      </tr>
+      <tr>
+        <td>5 Other changes in net assets or fund balances (explain)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6 Net assets or fund balances at end of year. Combine lines 3, 4, and 5 (must equal Part X, line 33, column (B))</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>2,631,644.</td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="section-title" style="margin-top: 40px;">Financial Statements and Reporting</div>
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr class="header-row">
+        <td>1 Accounting method used to prepare the Form 990:</td>
+        <td style="width: 10%;">Cash</td>
+        <td style="width: 10%;">Accrual</td>
+        <td style="width: 10%;">Other</td>
+      </tr>
+      <tr>
+        <td>2 If the organization changed its method of accounting from a prior year or checked "Other," explain in Schedule O.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3 Were the organization's financial statements compiled or reviewed by an independent accountant?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4 If "Yes" to line 2a or 2b, does the organization have a committee that assumes responsibility for oversight of the audit, review, or compilation of its financial statements and selection of an independent accountant?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5 If the organization changed either its oversight process or selection process during the tax year, explain in Schedule O.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6 If "Yes" to line 2a or 2b, check a box below to indicate whether the financial statements for the year were issued on a separate basis, consolidated basis, or both:</td>
+        <td>Separate basis</td>
+        <td>Consolidated basis</td>
+        <td>Both consolidated and separate basis</td>
+      </tr>
+      <tr>
+        <td>7 As a result of a federal award, was the organization required to undergo an audit or audits as set forth in the Single Audit Act and OMB Circular A-133?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8 If "Yes," did the organization undergo the required audit or audits? If the organization did not undergo the required audit or audits, explain why in Schedule O and describe any steps taken to undergo such audits</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Health History Report</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        td { padding: 5px; border: 1px solid #ccc; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .form-group { flex: 1; margin-right: 20px; }
+        .full-width-table { width: 100%; border-collapse: collapse; }
+        .full-width-table td { border: 1px solid #ccc; padding: 8px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <img src="placeholder_logo.png" alt="Logo" style="display: block; margin: 0 auto 10px;">
+            <h1 style="font-size: 24px; margin: 0;">EDGEWOOD COLLEGE</h1>
+            <h2 style="font-size: 18px; margin: 5px 0 0 0;">Health Services</h2>
+        </div>
+        <h2 style="text-align: center; font-size: 20px;">Student Health History Report</h2>
+        <p style="text-align: center; font-weight: bold; margin-bottom: 30px;">FORM MUST BE COMPLETED PRIOR TO MOVING INTO ANY RESIDENCE HALL AND THE START OF CLASSES</p>
+        <p style="text-align: center; margin-bottom: 30px;">Please print in black ink</p>
+
+        <!-- Personal Information Section -->
+        <div style="margin-bottom: 30px;">
+            <div class="form-row">
+                <div class="form-group" style="width: 30%;">
+                    <label>Name (Last)</label>
+                    <span data-field="full_name_last">{{ full_name_last }}</span>
+                </div>
+                <div class="form-group" style="width: 30%;">
+                    <label>Name (First)</label>
+                    <span data-field="full_name_first">{{ full_name_first }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>MI</label>
+                    <span data-field="full_name_middle">{{ full_name_middle }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>Student I.D.</label>
+                    <span data-field="student_id">{{ student_id }}</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group" style="width: 30%;">
+                    <label>Date of Birth (MM-DD-YY)</label>
+                    <span data-field="date_of_birth">{{ date_of_birth }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>Age</label>
+                    <span data-field="age">{{ age }}</span>
+                </div>
+                <div class="form-group" style="width: 30%;">
+                    <label>Citizenship (Specify Country if Other)</label>
+                    <span data-field="citizenship">{{ citizenship }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>Gender</label>
+                    <span data-field="gender">{{ gender }}</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group" style="width: 30%;">
+                    <label>Home Address</label>
+                    <span data-field="home_address">{{ home_address }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>City</label>
+                    <span data-field="city">{{ city }}</span>
+                </div>
+                <div class="form-group" style="width: 20%;">
+                    <label>State</label>
+                    <span data-field="state">{{ state }}</span>
+                </div>
+                <div class="form-group" style="width: 30%;">
+                    <label>Zip</label>
+                    <span data-field="zip_code">{{ zip_code }}</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group" style="width: 30%;">
+                    <label>Emergency Contact (Name and Phone)</label>
+                    <span data-field="emergency_contact_name">{{ emergency_contact_name }}</span>
+                    <span data-field="emergency_contact_phone">{{ emergency_contact_phone }}</span>
+                </div>
+                <div class="form-group" style="width: 70%;">
+                    <label>Email</label>
+                    <span data-field="email">{{ email }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 1: IMMUNIZATION RECORD -->
+        <h3 class="section-title">PART 1. IMMUNIZATION RECORD (By law, must include all dates of immunizations below)</h3>
+        <table class="full-width-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">DIPHTHERIA – PERTUSSIS – TETANUS (DPT)</th>
+                    <th style="width: 10%;">1</th>
+                    <th style="width: 10%;">2</th>
+                    <th style="width: 10%;">3</th>
+                    <th style="width: 10%;">4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TETANUS – DIPHTHERIA</td>
+                    <td><span data-field="dpt_tetanus_type">{{ dpt_tetanus_type }}</span></td>
+                    <td><span data-field="dpt_tetanus_tdap">{{ dpt_tetanus_tdap }}</span></td>
+                    <td>(please circle one)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>MMR (Measles, Mumps, Rubella)</td>
+                    <td><span data-field="mmr_dose_1">{{ mmr_dose_1 }}</span></td>
+                    <td><span data-field="mmr_dose_2">{{ mmr_dose_2 }}</span></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>POLIO</td>
+                    <td><span data-field="polio_dose_1">{{ polio_dose_1 }}</span></td>
+                    <td><span data-field="polio_dose_2">{{ polio_dose_2 }}</span></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>VARICELLA (Chickenpox)</td>
+                    <td>if you have had Chicken Pox <span data-field="varicella_record_year">{{ varicella_record_year }}</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>HEPATITIS B</td>
+                    <td><span data-field="hep_b_dose_1">{{ hep_b_dose_1 }}</span></td>
+                    <td><span data-field="hep_b_dose_2">{{ hep_b_dose_2 }}</span></td>
+                    <td><span data-field="hep_b_dose_3">{{ hep_b_dose_3 }}</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>MENINGOCOCCAL</td>
+                    <td><span data-field="meningococcal_dose_1">{{ meningococcal_dose_1 }}</span></td>
+                    <td><span data-field="meningococcal_dose_2">{{ meningococcal_dose_2 }}</span></td>
+                    <td><span data-field="meningococcal_dose_3">{{ meningococcal_dose_3 }}</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>HPV VACCINE</td>
+                    <td><span data-field="hpv_dose_1">{{ hpv_dose_1 }}</span></td>
+                    <td><span data-field="hpv_dose_2">{{ hpv_dose_2 }}</span></td>
+                    <td><span data-field="hpv_dose_3">{{ hpv_dose_3 }}</span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PART 2: PERSONAL HEALTH HISTORY -->
+        <h3 class="section-title">PART 2. PERSONAL HEALTH HISTORY</h3>
+        <div style="margin-bottom: 20px;">
+            <p>ALLERGIES: YES <input type="checkbox" data-field="allergies_yes" value="{{ allergies_yes }}"> Please list below NO <input type="checkbox" data-field="allergies_no" value="{{ allergies_no }}"></p>
+            <p>Please list allergies: <span data-field="allergy_list">{{ allergy_list }}</span></p>
+        </div>
+
+        <h4 style="font-weight: bold; margin-top: 20px;">MEDICAL OR HEALTH CONCERNS:</h4>
+        <p style="font-size: 0.9em; margin-bottom: 15px;">Prior or current – Please check boxes below</p>
+        <table class="full-width-table">
+            <tr>
+                <td style="width: 10%;">Chicken Pox</td>
+                <td style="width: 10%;">Migraine Headaches</td>
+                <td style="width: 10%;">Thyroid Disease</td>
+                <td style="width: 10%;">Diabetes</td>
+            </tr>
+            <tr>
+                <td>Whooping Cough</td>
+                <td>Ear, Nose, or Throat problems</td>
+                <td>Eczema</td>
+                <td>Hearing problems</td>
+            </tr>
+            <tr>
+                <td>Polio</td>
+                <td>Sinusitis</td>
+                <td>Hives</td>
+                <td>Eating Disorder</td>
+            </tr>
+            <tr>
+                <td>Tuberculosis</td>
+                <td>Tonsils removed</td>
+                <td>Back injury</td>
+                <td>Vertigo or Dizziness</td>
+            </tr>
+            <tr>
+                <td>Hernia</td>
+                <td>Asthma</td>
+                <td>Heart problems</td>
+                <td>Ulcers</td>
+            </tr>
+            <tr>
+                <td>Menstrual problems</td>
+                <td>Pneumonia</td>
+                <td>Kidney problems</td>
+                <td>Organ transplant</td>
+            </tr>
+            <tr>
+                <td>Mononucleosis</td>
+                <td>Hypertension/Hypotension</td>
+                <td>Bladder problems</td>
+                <td>Surgery(specify)</td>
+            </tr>
+            <tr>
+                <td>Hay Fever</td>
+                <td>Heart Murmur</td>
+                <td>Arthritis</td>
+                <td>Fracture(specify)</td>
+            </tr>
+            <tr>
+                <td>Epilepsy (Seizures)</td>
+                <td>Rheumatic Fever</td>
+                <td>Bowel problems</td>
+                <td>Other (specify below)</td>
+            </tr>
+        </table>
+        <p>Other: <span data-field="other_health_concerns">{{ other_health_concerns }}</span></p>
+
+        <h4 style="font-weight: bold; margin-top: 20px;">A. Do you have an illness or condition including emotional or psychological not listed above, for which you are now being treated? If yes, specify.</h4>
+        <p><span data-field="illness_condition_description">{{ illness_condition_description }}</span></p>
+
+        <h4 style="font-weight: bold; margin-top: 20px;">B. List date(s) and reason(s) for any hospitalizations.</h4>
+        <p><span data-field="hospitalization_details">{{ hospitalization_details }}</span></p>
+
+        <h4 style="font-weight: bold; margin-top: 20px;">C. List current medication(s) you are taking and for what reason(s).</h4>
+        <p><span data-field="medication_details">{{ medication_details }}</span></p>
+
+        <!-- PART 3: EMERGENCY ROOM AND URGENT CARE -->
+        <h3 class="section-title" style="margin-top: 40px;">PART 3. EMERGENCY ROOM AND URGENT CARE</h3>
+        <p style="font-size: 0.9em;">Consult your insurance carrier to identify covered facilities within a 50-mile radius of Edgewood College. This enables us to provide appropriate referrals and helps avoid the need to search for this information in an urgent situation. If you do not have coverage within the region, we recommend you consider the student health plan. Since students are a healthy group in general, insurance premiums tend to be relatively low and may offer a savings over group family plans. See www.wpsic.com/waiu/ for plan information.</p>
+
+        <table class="full-width-table" style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">FACILITY NAME</th>
+                    <th style="width: 25%;">EMERGENCY ROOM</th>
+                    <th style="width: 25%;">URGENT CARE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span data-field="facility_name_1">{{ facility_name_1 }}</span></td>
+                    <td><span data-field="emergency_room_name_1">{{ emergency_room_name_1 }}</span></td>
+                    <td><span data-field="urgent_care_name_1">{{ urgent_care_name_1 }}</span></td>
+                </tr>
+                <tr>
+                    <td><span data-field="facility_name_2">{{ facility_name_2 }}</span></td>
+                    <td><span data-field="emergency_room_name_2">{{ emergency_room_name_2 }}</span></td>
+                    <td><span data-field="urgent_care_name_2">{{ urgent_care_name_2 }}</span></td>
+                </tr>
+                <!-- Add more rows if necessary, though the layout implies a fixed small number -->
+            </tbody>
+        </table>
+        <p>ADDRESS: <span data-field="facility_address">{{ facility_address }}</span></p>
+
+    </div>
+
+    <div class="page">
+        <!-- PART 4: STUDENT VERIFICATION -->
+        <h3 class="section-title">PART 4. STUDENT VERIFICATION</h3>
+        <p style="font-size: 0.9em;">By signing below, I am affirming that I have read the enclosed information regarding Hepatitis B and Meningitis. I am also certifying that the information on this form is complete and accurate to the best of my knowledge.</p>
+
+        <div class="form-row" style="margin-top: 40px;">
+            <div class="form-group" style="width: 50%;">
+                <label>Student Signature</label>
+                <span data-field="student_signature_line">{{ student_signature_line }}</span>
+            </div>
+            <div class="form-group" style="width: 50%; text-align: right;">
+                <label>Date</label>
+                <span data-field="verification_date">{{ verification_date }}</span>
+            </div>
+        </div>
+
+        <!-- PART 5: AUTHORIZATION FOR TREATMENT -->
+        <h3 class="section-title" style="margin-top: 40px;">Part 5. AUTHORIZATION FOR TREATMENT</h3>
+        <p style="font-size: 0.9em;">This is to be completed and signed by students that are under eighteen years old and must have the signature of the student's parent/guardian. In case of serious illness or accident, I give Edgewood College or its representative(s) permission to secure medical and/or surgical care to include transportation to a physician or hospital of their choice, examination, medication, and surgery that is considered necessary for my good health. I agree to be responsible for all medical costs. In the event of a non-serious condition requiring minor care, I approve of care by Edgewood College's licensed professional nursing staff.</p>
+
+        <div class="form-row" style="margin-top: 40px;">
+            <div class="form-group" style="width: 50%;">
+                <label>Student Signature</label>
+                <span data-field="student_signature_auth_line">{{ student_signature_auth_line }}</span>
+            </div>
+            <div class="form-group" style="width: 25%; text-align: center;">
+                <label>Parent/Guardian Signature</label>
+                <span data-field="parent_guardian_signature_line">{{ parent_guardian_signature_line }}</span>
+            </div>
+            <div class="form-group" style="width: 25%; text-align: right;">
+                <label>Date</label>
+                <span data-field="authorization_date">{{ authorization_date }}</span>
+            </div>
+        </div>
+
+        <!-- Return To Section -->
+        <div style="margin-top: 80px; padding-top: 20px; border-top: 1px solid #ccc;">
+            <p style="text-align: center; font-weight: bold; margin-bottom: 10px;">Please return form to:</p>
+            <p style="text-align: center;">EDGEWOOD COLLEGE</p>
+            <p style="text-align: center;">Health Services</p>
+            <p style="text-align: center;">1000 Edgewood College Drive</p>
+            <p style="text-align: center;">Dominican 123</p>
+            <p style="text-align: center;">Madison, WI 53711</p>
+            <p style="text-align: center;">Phone: <span data-field="college_phone">{{ college_phone }}</span></p>
+        </div>
+    </div>
+</body>
+</html>

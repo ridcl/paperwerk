@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proposal Transmittal Form (PTF)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-label {
+    font-weight: bold;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 18pt;">Proposal Transmittal Form (PTF)</h1>
+    <p>Office of Research and Sponsored Programs (ORSP)</p>
+    <p>Eastern Illinois University</p>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div style="width: 30%;">
+      <span class="form-label">Agency Name:</span>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ agency_name }}</div>
+    </div>
+    <div style="width: 30%;">
+      <span class="form-label">Project Dates: Start:</span>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ project_start_date }}</div>
+    </div>
+    <div style="width: 30%;">
+      <span class="form-label">End:</span>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ project_end_date }}</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <span class="form-label">Complete Project Title:</span>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px; margin-top: 5px;">{{ project_title }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <span class="form-label">Please provide a one to two sentence description of the project:</span>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px; margin-top: 5px;">{{ project_description }}</div>
+  </div>
+
+  <div class="section-header" style="text-align: center;">B) PRINCIPAL INVESTIGATOR (PI) OR PROJECT DIRECTOR (PD) INFORMATION</div>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 15%;">PI/PD</th>
+        <th style="width: 25%;">Department</th>
+        <th style="width: 30%;">Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pi in principal_investigators %}
+      <tr>
+        <td><span data-field="principal_investigators[{{ loop.index0 }}].name">{{ pi.name }}</span></td>
+        <td><span data-field="principal_investigators[{{ loop.index0 }}].department">{{ pi.department }}</span></td>
+        <td><span data-field="principal_investigators[{{ loop.index0 }}].email">{{ pi.email }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-header" style="text-align: center;">C) BUDGET SUMMARY</div>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 30%;"></th>
+        <th style="width: 25%;">Direct Cost</th>
+        <th style="width: 25%;">Indirect Cost</th>
+        <th style="width: 20%;">Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amount Requested from Funding Agency</td>
+        <td><span data-field="budget_summary.amount_requested_direct">{{ budget_summary.amount_requested_direct }}</span></td>
+        <td><span data-field="budget_summary.amount_requested_indirect">{{ budget_summary.amount_requested_indirect }}</span></td>
+        <td><span data-field="budget_summary.total_requested">{{ budget_summary.total_requested }}</span></td>
+      </tr>
+      <tr>
+        <td>University Contribution (Cost Share)</td>
+        <td><span data-field="budget_summary.university_contribution_direct">{{ budget_summary.university_contribution_direct }}</span></td>
+        <td><span data-field="budget_summary.university_contribution_indirect">{{ budget_summary.university_contribution_indirect }}</span></td>
+        <td><span data-field="budget_summary.university_contribution_total">{{ budget_summary.university_contribution_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Cost of Project</td>
+        <td><span data-field="budget_summary.total_direct_cost">{{ budget_summary.total_direct_cost }}</span></td>
+        <td><span data-field="budget_summary.total_indirect_cost">{{ budget_summary.total_indirect_cost }}</span></td>
+        <td><span data-field="budget_summary.grand_total">{{ budget_summary.grand_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div style="width: 30%;">
+      <span class="form-label">Grant Accountant:</span>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ grant_accountant_name }}</div>
+    </div>
+    <div style="width: 30%;">
+      <span class="form-label">Date:</span>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ grant_accountant_date }}</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="text-align: center;">D) COST SHARE COMMITMENT</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 20%;">Check as applicable:</td>
+      <td><input type="checkbox"> Required Cost Share</td>
+      <td><input type="checkbox"> Voluntary Committed Cost Share</td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="margin-top: 20px;">Cost Categories:</div>
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Cost Categories:</th>
+        <th style="width: 20%;">Total Dollar Amount</th>
+        <th style="width: 20%;">Source*</th>
+        <th style="width: 15%;">Account (ORG) #</th>
+        <th style="width: 15%;">Authorized Signature</th>
+        <th style="width: 10%;">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in cost_categories %}
+      <tr>
+        <td><span data-field="cost_categories[{{ loop.index0 }}].category_name">{{ category.category_name }}</span></td>
+        <td><span data-field="cost_categories[{{ loop.index0 }}].dollar_amount">{{ category.dollar_amount }}</span></td>
+        <td><span data-field="cost_categories[{{ loop.index0 }}].source">{{ category.source }}</span></td>
+        <td><span data-field="cost_categories[{{ loop.index0 }}].account_number">{{ category.account_number }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px; text-align: right;">
+    <span class="form-label">F&A Waiver:</span>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ fa_waiver_status }}</div>
+  </div>
+
+  <div style="margin-top: 40px; text-align: right;">
+    <span class="form-label">Total:</span>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ total_amount }}</div>
+  </div>
+
+  <p style="font-size: 9pt; margin-top: 50px;">*Source: C (College); D (Department); M (Central Matching Fund); O (Other, Explain)</p>
+  <p style="font-size: 9pt;">The PI/PD certifies that all cost sharing is listed in the table above.</p>
+</div>
+
+<div class="page">
+  <div class="section-header" style="text-align: center;">E) COMPLIANCE</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 20%;">Will this project involve Human Subjects?</td>
+      <td><input type="radio" name="human_subjects" value="yes"> Yes</td>
+      <td><input type="radio" name="human_subjects" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">If yes, is IRB review pending?</td>
+      <td><input type="radio" name="irb_pending" value="yes"> Yes</td>
+      <td><input type="radio" name="irb_pending" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">IRB Protocol #:</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ irb_protocol_number }}</div></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Will this project involve Vertebrate Animals?</td>
+      <td><input type="radio" name="animal_subjects" value="yes"> Yes</td>
+      <td><input type="radio" name="animal_subjects" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">If yes, is IACUC review pending?</td>
+      <td><input type="radio" name="iacuc_pending" value="yes"> Yes</td>
+      <td><input type="radio" name="iacuc_pending" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">IACUC Protocol #:</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ iacuc_protocol_number }}</div></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Does the project involve dual use research of concern (DURC) or pathogens with enhanced pandemic potential (PEPP)?</td>
+      <td><input type="radio" name="dual_use" value="yes"> Yes</td>
+      <td><input type="radio" name="dual_use" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Compliance Director, Research and Sponsored Programs</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ compliance_director_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ compliance_director_date }}</div></td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="text-align: center; margin-top: 30px;">F) PI, CO-PI'S, DEPARTMENT CHAIR(S) & DEAN(S)/DIRECTOR(S) ACKNOWLEDGE AND APPROVE THE FOLLOWING SPECIAL CONSIDERATION(S)</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 20%;">1. Will this project require additional space or facilities?</td>
+      <td><input type="radio" name="req_space" value="yes"> Yes</td>
+      <td><input type="radio" name="req_space" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Facilities Planning and Mgt. Representative</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ facilities_rep_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ facilities_rep_date }}</div></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">2. Will this project require renovation of space or facilities?</td>
+      <td><input type="radio" name="req_renovation" value="yes"> Yes</td>
+      <td><input type="radio" name="req_renovation" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Responsible Unit</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ responsible_unit_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ responsible_unit_date }}</div></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">3. Will this project include Release Time, Buyout Time, or any other payment of salary?</td>
+      <td><input type="radio" name="release_time" value="yes"> Yes</td>
+      <td><input type="radio" name="release_time" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">If yes, complete the <a href="#">Grant Workload and Salary Form</a>. Form must be signed by the Dean and Dept. Chair, and if applicable, the VP.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">4. Is the Responsible Council of Research (RCR) Training Completed?</td>
+      <td><input type="radio" name="rcr_training" value="yes"> Yes</td>
+      <td><input type="radio" name="rcr_training" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">5. Is the Financial Conflict of Interest training completed and/or form submitted to ORSP?</td>
+      <td><input type="radio" name="fci_training" value="yes"> Yes</td>
+      <td><input type="radio" name="fci_training" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">6. Will this project involve purchase of computers?</td>
+      <td><input type="radio" name="purchase_computers" value="yes"> Yes</td>
+      <td><input type="radio" name="purchase_computers" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">If yes to Item 6, the following signature is required.</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ assistant_vice_president_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ assistant_vice_president_date }}</div></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">7. Does this project include courses/workshops to be offered for academic credit through the College of Education?</td>
+      <td><input type="radio" name="academic_credit" value="yes"> Yes</td>
+      <td><input type="radio" name="academic_credit" value="no"> No</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">If yes for Item 7, Credit Component approved by:</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_of_education_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_of_education_date }}</div></td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="text-align: center; margin-top: 30px;">G) DEPARTMENT AND COLLEGE APPROVAL</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 20%;">PI/PD</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_date }}</div></td>
+      <td>Department Chairperson</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_date }}</div></td>
+      <td>Dean of College</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">PI/PD</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_name_2 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_date_2 }}</div></td>
+      <td>Department Chairperson</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_name_2 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_date_2 }}</div></td>
+      <td>Dean of College</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">PI/PD</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_name_3 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dept_chair_pi_pd_date_3 }}</div></td>
+      <td>Department Chairperson</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_name_3 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ dean_college_pi_pd_date_3 }}</div></td>
+      <td>Dean of College</td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="text-align: center; margin-top: 30px;">H) ADMINISTRATIVE APPROVAL</div>
+  <table style="margin-top: 15px;">
+    <tr>
+      <td style="width: 30%;">Director of ORSP</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ director_orsp_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ director_orsp_date }}</div></td>
+      <td>Vice President of Area Submitting Proposal (if applicable)</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ vp_area_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ vp_area_date }}</div></td>
+      <td>Vice President for Business Affairs (if applicable)</td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ vp_business_affairs_name }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; padding-bottom: 2px;">{{ vp_business_affairs_date }}</div></td>
+    </tr>
+  </table>
+
+  <p style="font-size: 9pt; margin-top: 50px;">Revision: {{ revision_number }} **Please note, no previous versions of this form will be accepted.**</p>
+</div>
+
+</body>
+</html>

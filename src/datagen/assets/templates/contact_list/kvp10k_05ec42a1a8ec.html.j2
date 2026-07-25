@@ -1,0 +1,71 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { font-size: 24pt; font-weight: bold; margin-bottom: 20px; }
+  .contact-info p { margin: 2px 0; font-size: 11pt; }
+  .directory-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .directory-table td { padding: 10px 0; border-bottom: 1px solid #ccc; font-size: 11pt; }
+  .directory-table tr:last-child td { border-bottom: none; }
+</style>
+
+<div class="page">
+  <h1>Contact Us</h1>
+
+  <div class="contact-info">
+    <p><strong>Vice President for Finance and Administration/CFO's Leadership Team and Office Personnel</strong></p>
+    <p><span data-field="organization.name">{{ organization.name }}</span></p>
+    <p><span data-field="organization.address_line_1">{{ organization.address_line_1 }}</span></p>
+    <p><span data-field="organization.address_line_2">{{ organization.address_line_2 }}</span></p>
+    <p><span data-field="organization.city_state_zip">{{ organization.city_state_zip }}</span></p>
+    <p>Phone: <span data-field="contact.phone">{{ contact.phone }}</span></p>
+    <p>Fax: <span data-field="contact.fax">{{ contact.fax }}</span></p>
+    <p>Email: <span data-field="contact.email">{{ contact.email }}</span></p>
+  </div>
+
+  <table class="directory-table">
+    <thead>
+      <tr>
+        <td style="width: 60%;"></td>
+        <td style="width: 40%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="directory_entries[{{ 0 }}].full_name">{{ directory_entries[0].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 0 }}].phone">{{ directory_entries[0].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 1 }}].full_name">{{ directory_entries[1].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 1 }}].phone">{{ directory_entries[1].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 2 }}].full_name">{{ directory_entries[2].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 2 }}].phone">{{ directory_entries[2].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 3 }}].full_name">{{ directory_entries[3].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 3 }}].phone">{{ directory_entries[3].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 4 }}].full_name">{{ directory_entries[4].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 4 }}].phone">{{ directory_entries[4].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 5 }}].full_name">{{ directory_entries[5].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 5 }}].phone">{{ directory_entries[5].phone }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="directory_entries[{{ 6 }}].full_name">{{ directory_entries[6].full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="directory_entries[{{ 6 }}].phone">{{ directory_entries[6].phone }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

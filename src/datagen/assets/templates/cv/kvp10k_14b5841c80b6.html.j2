@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { margin-bottom: 20px; }
+  .contact-info p { margin: 2px 0; font-size: 12pt; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
+  .entry { margin-bottom: 15px; }
+  .entry-header { font-weight: bold; }
+  .entry-details { font-size: 11pt; }
+  .publication-list li { margin-bottom: 10px; line-height: 1.4; }
+  .publication-list a { text-decoration: none; color: #000; }
+  .publication-list strong { font-weight: bold; }
+  .sub-section-title { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .footer { position: absolute; bottom: 20px; right: 60px; font-size: 10pt; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .entry { margin-bottom: 15px; }
+  .date-info { font-weight: bold; display: inline-block; width: 100px; }
+  .description-text { display: inline-block; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">{{ author_name }}</div>
+  <div class="header-info">
+    <h1 style="font-size: 16pt; margin: 0;">COMPREHENSIVE CURRICULUM VITAE PROMOTION AND TENURE</h1>
+  </div>
+  <div class="contact-info">
+    <p><strong>{{ full_name }}</strong></p>
+    <p>{{ employer.address }}</p>
+    <p>{{ employer.city_state_zip }}</p>
+    <p>Phone: {{ employer.phone }}</p>
+    <p>Email: {{ employer.email }}</p>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="entry-header">2014</div>
+    <div class="entry-details">
+      <span data-field="education.degree_1">{{ education.degree_1 }}</span>, <span data-field="education.institution_1">{{ education.institution_1 }}</span>, <span data-field="education.location_1">{{ education.location_1 }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">2014</div>
+    <div class="entry-details">
+      <span data-field="education.degree_2">{{ education.degree_2 }}</span>, <span data-field="education.institution_2">{{ education.institution_2 }}</span>, <span data-field="education.location_2">{{ education.location_2 }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">2010</div>
+    <div class="entry-details">
+      <span data-field="education.degree_3">{{ education.degree_3 }}</span>, <span data-field="education.institution_3">{{ education.institution_3 }}</span>, <span data-field="education.location_3">{{ education.location_3 }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">1986</div>
+    <div class="entry-details">
+      <span data-field="education.degree_4">{{ education.degree_4 }}</span>, <span data-field="education.institution_4">{{ education.institution_4 }}</span>, <span data-field="education.location_4">{{ education.location_4 }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">{{ author_name }}</div>
+  <div class="section-title">Scholarship/Research/Creative Activity</div>
+
+  <div class="sub-section-title">Publications in Print –</div>
+  <ul class="publication-list">
+    {% for pub in publications_in_print %}
+    <li>
+      <strong>{{ pub.authors }}</strong>, ({{ pub.year }}). <span data-field="pub_title">{{ pub.title }}</span>. <span data-field="pub_journal">{{ pub.journal }}</span>. <span data-field="pub_doi">{{ pub.doi }}</span>.
+      {% if pub.link %}
+      <br><a href="{{ pub.link }}">Link</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Book chapters</div>
+  <ul class="publication-list">
+    {% for chap in book_chapters %}
+    <li>
+      <strong>{{ chap.authors }}</strong>, ({{ chap.year }}). <span data-field="chap_title">{{ chap.title }}</span>. In <span data-field="chap_book">{{ chap.book_title }}</span>. <span data-field="chap_publisher">{{ chap.publisher }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Works in Press</div>
+  <ul class="publication-list">
+    {% for press in works_in_press %}
+    <li>
+      <strong>{{ press.authors }}</strong>, ({{ press.year }}). <span data-field="press_title">{{ press.title }}</span>. <span data-field="press_journal">{{ press.journal }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Books</div>
+  <ul class="publication-list">
+    {% for book in books %}
+    <li>
+      <strong>{{ book.authors }}</strong>, ({{ book.year }}). <span data-field="book_title">{{ book.title }}</span>. <span data-field="book_publisher">{{ book.publisher }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Encyclopedia articles</div>
+  <ul class="publication-list">
+    {% for enc in encyclopedia_articles %}
+    <li>
+      <strong>{{ enc.authors }}</strong>, ({{ enc.year }}). <span data-field="enc_title">{{ enc.title }}</span>. In <span data-field="enc_book">{{ enc.book_title }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">{{ author_name }}</div>
+  <div class="section-title">Works currently under review</div>
+  <ul class="publication-list">
+    {% for review in works_under_review %}
+    <li>
+      <strong>{{ review.authors }}</strong>, ({{ review.year }}). <span data-field="review_title">{{ review.title }}</span>. <span data-field="review_journal">{{ review.journal }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Referenced Presentations and Proceedings</div>
+  <ul class="publication-list">
+    {% for presentation in presentations_and_proceedings %}
+    <li>
+      <strong>{{ presentation.authors }}</strong>, ({{ presentation.year }}). <span data-field="pres_title">{{ presentation.title }}</span>. Presented at <span data-field="pres_venue">{{ presentation.venue }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Regional/Local</div>
+  <ul class="publication-list">
+    {% for regional in regional_local %}
+    <li>
+      <strong>{{ regional.authors }}</strong>, ({{ regional.year }}). <span data-field="reg_title">{{ regional.title }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Non-Refereed Publications, Presentations and Proceedings</div>
+  <div class="sub-section-title">Publications</div>
+  <ul class="publication-list">
+    {% for non_ref in non_refereed_publications %}
+    <li>
+      <strong>{{ non_ref.authors }}</strong>, ({{ non_ref.year }}). <span data-field="non_ref_title">{{ non_ref.title }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Other</div>
+  <ul class="publication-list">
+    {% for other in other_publications %}
+    <li>
+      <strong>{{ other.authors }}</strong>, ({{ other.year }}). <span data-field="other_title">{{ other.title }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Presentations</div>
+  <ul class="publication-list">
+    {% for present in presentations %}
+    <li>
+      <strong>{{ present.authors }}</strong>, ({{ present.year }}). <span data-field="present_title">{{ present.title }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sub-section-title">Creative Activities and Achievements</div>
+  <div class="sub-section-title">Projects</div>
+  <ul class="publication-list">
+    {% for project in projects %}
+    <li>
+      <strong>{{ project.title }}</strong>. <span data-field="project_description">{{ project.description }}</span>.
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: right;">Barakat CV</div>
+  <div class="section-title"></div>
+  <ul>
+    <li>A total of <span data-field="number_of_faculty_members">{{ number_of_faculty_members }}</span> faculty members from Educational Leadership and Research Methodology (ELRM) and Curriculum Culture and Educational Inquiry (CCEI) departments represented FAU in multiple functions in <span data-field="location">{{ location }}</span>, <span data-field="location_detail">{{ location_detail }}</span>.</li>
+    <li>Partnership team members reflected and presented on the partnership at three National conferences.</li>
+    <li>Over <span data-field="number_of_educators">{{ number_of_educators }}</span> Egyptian public-school teachers and administrators received professional development through a teacher of teacher model.</li>
+    <li>A digital portal for Egyptian educators' professional development is being developed in collaboration with Vodafone (an international communications company that operates in <span data-field="country">{{ country }}</span>).</li>
+  </ul>
+  <div style="margin-top: 30px;">- Other</div>
+  <div class="section-title">Journal of Cases in Educational Leadership. (UCEA). (2016). JCEL December 2016 Spotlight</div>
+  <div class="entry">
+    <p>
+      <span data-field="publication_name">{{ publication_name }}</span>. Available from <a href="{{ publication_url }}"></span>.
+    </p>
+  </div>
+  <div class="section-title"></div>
+  <div class="entry">
+    <p>
+      <span data-field="name">{{ name }}</span>, <span data-field="year">{{ year }}</span>. Interview with Dr. <span data-field="name_two">{{ name_two }}</span>. <span data-field="description_two">{{ description_two }}</span>. <span data-field="url_two">{{ url_two }}</span>.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">Barakat CV</div>
+  <div class="section-title">Service and Professional Development</div>
+  <div class="section-title">Service to Florida Atlantic University:</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Fall <span data-field="year_fall_1">{{ year_fall_1 }}</span> - Present</td>
+        <td style="width: 60%;">FAU - Partnership Coordinator</td>
+        <td style="width: 20%;">Coordinator and Liaison</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_2">{{ year_fall_2 }}</span> - Present</td>
+        <td>Department of Educational Leadership and Research Methodology Scholarship Committee</td>
+        <td>Committee Chair</td>
+      </tr>
+      <tr>
+        <td>Summer <span data-field="year_summer_1">{{ year_summer_1 }}</span></td>
+        <td>Curriculum Development Committee: University-District Partnership Programs</td>
+        <td>Committee Member</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_1">{{ year_spring_1 }}</span></td>
+        <td>Search Committee for School Leaders' Assistant Professor Position</td>
+        <td>Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_3">{{ year_fall_3 }}</span></td>
+        <td>The Third Annual ELLE Chinese Leadership Exchange Program: Guangzhou, China</td>
+        <td>Professional development session presenter /Lunch host</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_2">{{ year_spring_2 }}</span></td>
+        <td>Search Committee for Higher Education Assistant Professor Position</td>
+        <td>Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_4">{{ year_fall_4 }}</span></td>
+        <td>The Second Annual ELLE Chinese Leadership Exchange Program: Guangzhou, China</td>
+        <td>Professional development session presenter /Lunch host</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_5">{{ year_fall_5 }}</span> - Present</td>
+        <td>Guest Speaker in School Leaders Context Class</td>
+        <td>Guest Speaker</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_6">{{ year_fall_6 }}</span> - 15</td>
+        <td>Dissertation of the year Committee</td>
+        <td>Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_7">{{ year_fall_7 }}</span> - 15</td>
+        <td>Technology Committee</td>
+        <td>Committee Member</td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">- College of Education service</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Fall <span data-field="year_fall_8">{{ year_fall_8 }}</span> - Current</td>
+        <td style="width: 60%;">College of Education Scholarship Committee</td>
+        <td style="width: 20%;">Department of ELRM faculty representative Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_9">{{ year_fall_9 }}</span> - 2018</td>
+        <td>Graduate Program Committee</td>
+        <td>Committee Member</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">Barakat CV</div>
+  <div class="section-title"></div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Fall <span data-field="year_fall_10">{{ year_fall_10 }}</span> - Present</td>
+        <td style="width: 60%;">International Committee</td>
+        <td style="width: 20%;">Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_11">{{ year_fall_11 }}</span> - 2014</td>
+        <td>Diversity Committee</td>
+        <td>Committee Member</td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">- Florida Atlantic University service.</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Spring <span data-field="year_spring_3">{{ year_spring_3 }}</span> - Present</td>
+        <td style="width: 60%;">Educational Grants Initiative Team</td>
+        <td style="width: 20%;">ELRM Representative</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_12">{{ year_fall_12 }}</span> - Present</td>
+        <td>University Faculty Senate</td>
+        <td>College of Education Senator</td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">- Service to the Discipline/Profession</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Fall <span data-field="year_fall_13">{{ year_fall_13 }}</span> - Fall 2019</td>
+        <td style="width: 60%;">University Council on Educational Administration (UCEA)</td>
+        <td style="width: 20%;">Plenum Representative</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_4">{{ year_spring_4 }}</span> - Present</td>
+        <td>Education Administration Quarterly</td>
+        <td>Reviewer</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_5">{{ year_spring_5 }}</span></td>
+        <td>AdvancED (External review organization)</td>
+        <td>Accreditation team member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_14">{{ year_fall_14 }}</span> - Present</td>
+        <td>Journal of Cases in Educational Leadership</td>
+        <td>Member of the Editorial Board</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_15">{{ year_fall_15 }}</span> - Present</td>
+        <td>The Professional Educator</td>
+        <td>Member of the Editorial Board</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_16">{{ year_fall_16 }}</span> - Present</td>
+        <td>Leaders for Social Justice Special Interest Group (LSJ-SIG), American Education Research Association (AERA)</td>
+        <td>Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_17">{{ year_fall_17 }}</span> - Present</td>
+        <td>Learning and Teaching in Educational Leadership Special Interest Group (LTEL-SIG), (AERA)</td>
+        <td>Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_18">{{ year_fall_18 }}</span> - Present</td>
+        <td>Florida Association of Professors of Educational Leadership (FAPEL)</td>
+        <td>Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_19">{{ year_fall_19 }}</span> - Present</td>
+        <td>University Council of Educational Administration (UCEA)</td>
+        <td>Conference proposal Reviewer</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_6">{{ year_spring_6 }}</span></td>
+        <td>American Education Research Association (AERA)</td>
+        <td>Conference proposal Reviewer</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title"></div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Fall <span data-field="year_fall_20">{{ year_fall_20 }}</span> - 2015</td>
+        <td style="width: 60%;">Instructional Leadership Performance Tasks Development Team, the Florida Department of Education</td>
+        <td style="width: 20%;">Team Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_21">{{ year_fall_21 }}</span> - 2014</td>
+        <td>Policy Committee, Florida Association of Professors of Educational Leadership (FAPEL)</td>
+        <td>Committee Member</td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_22">{{ year_fall_22 }}</span> - 2015</td>
+        <td>Florida Association for School Administrators (FASA)</td>
+        <td>FAPEL Regional Representative to FASA</td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_7">{{ year_spring_7 }}</span> - 2010-2013</td>
+        <td>Leaders for Social Justice Special Interest Group (LSJ-SIG), American Education Research Association (AERA)</td>
+        <td>Graduate student representative</td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">- Service to the Community</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Spring <span data-field="year_spring_8">{{ year_spring_8 }}</span> - Present</td>
+        <td style="width: 60%;">Daughters of the Nile: Egyptian Women Leaving a Print' Initiative</td>
+        <td style="width: 20%;">Member of the core team committee</td>
+      </tr>
+      <tr>
+        <td>2010-2014</td>
+        <td>International Women for Peace and Understanding (IWPU), Auburn, Alabama</td>
+        <td>Member</td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">- Professional Development</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Spring <span data-field="year_spring_9">{{ year_spring_9 }}</span></td>
+        <td style="width: 60%;">Maintenance of the professional development academy on Leadership and Management and the initiation of a professional learning community for a cohort of 16 Egyptian Educators in Cairo, Egypt.</td>
+        <td style="width: 20%;"></td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_23">{{ year_fall_23 }}</span> - 2018</td>
+        <td>Professional development academy on Leadership and Management to a cohort of 16 Egyptian Educators in Cairo, Egypt.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_10">{{ year_spring_10 }}</span> - 2017</td>
+        <td>Lecture on Leadership and Management to a cohort of 100 Egyptian, Public School Leaders in Cairo, Egypt.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Spring <span data-field="year_spring_11">{{ year_spring_11 }}</span> - 2017</td>
+        <td>Professional development academy on Assessment, 2) Differentiated instruction, 3) classroom management, 4) active learning, 5) TESOL, and 6) early childhood education provided to a cohort of 16 Egyptian Educators in Cairo, Egypt.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_24">{{ year_fall_24 }}</span> - 2016</td>
+        <td>Professional development session on Adaptive leadership presented to the third cohort of Educators from Guangzhou, China on the FAU campus.</td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title"></div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Spring <span data-field="year_spring_12">{{ year_spring_12 }}</span> - 2016</td>
+        <td style="width: 60%;">Professional development academy on 1) Assessment, 2) Data informed decision making and analysis, 3) Management of Active learning, 4) Differentiated instruction, 5) Curriculum design, and 6) Instructional supervision, provided to a cohort of 16 Egyptian Educators in Cairo, Egypt.</td>
+        <td style="width: 20%;"></td>
+      </tr>
+      <tr>
+        <td>Fall <span data-field="year_fall_25">{{ year_fall_25 }}</span> - 2015</td>
+        <td style="width: 60%;">Professional development session on Adaptive leadership presented to the second cohort of Educators from Guangzhou, China on the FAU campus.</td>
+        <td style="width: 20%;"></td>
+      </tr>
+    </thead>
+  </table>
+  <div class="section-title">Honors and Awards</div>
+  <ul>
+    <li>Nominated for the Merriweather Fellowship (<span data-field="year_award_1">{{ year_award_1 }}</span>): Auburn University</li>
+    <li>Nominated for the Holmes scholar (<span data-field="year_award_2">{{ year_award_2 }}</span>): College of Education, Auburn University.</li>
+    <li><span data-field="award_3">{{ award_3 }}</span> (<span data-field="year_award_3">{{ year_award_3 }}</span>): The University Council for Educational Administration (UCEA), Divisions A and L of the American Educational Research Association (AERA), and SAGE Publications.</li>
+    <li>Alma Holliday Endowment for Academic Excellence (<span data-field="year_award_4">{{ year_award_4 }}</span>): College of Education, Auburn University.</li>
+    <li>Outstanding International Graduate Student (<span data-field="year_award_5">{{ year_award_5 }}</span>): Office of International Students, Graduate School, Auburn University.</li>
+    <li>Graduate Student Ambassador, Auburn University <span data-field="year_award_6">{{ year_award_6 }}</span>.</li>
+    <li>Beacon Award for the International General Certificate of Secondary Education (IGCSE) Coordinators (<span data-field="year_award_7">{{ year_award_7 }}</span>): Cambridge International Examination, the British Council, Cairo, Egypt.</li>
+  </ul>
+</div>
+
+</body>
+</html>

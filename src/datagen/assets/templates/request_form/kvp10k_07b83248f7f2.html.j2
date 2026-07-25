@@ -1,0 +1,116 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .address-block {
+    text-align: right;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  .form-section {
+    margin-bottom: 20px;
+  }
+  .line-item-row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .label-col {
+    width: 150px; /* Approximate width for labels */
+    font-weight: normal;
+  }
+  .input-col {
+    flex-grow: 1;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <!-- Logo/Header Area -->
+    <div>
+      <h1 style="font-size: 36px; margin-bottom: -10px;">FAU</h1>
+      <h2 style="font-size: 24px; margin-top: 0;">FLORIDA ATLANTIC UNIVERSITY</h2>
+    </div>
+
+    <!-- Contact Info Area -->
+    <div class="address-block">
+      Office of the Controller -Payroll<br>
+      Administration Bldg, Room 138<br>
+      <span data-field="phone">{{ phone }}</span><br>
+      Fax <span data-field="fax">{{ fax }}</span><br>
+      <span data-field="website">{{ website }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="text-align: center;">REQUEST FOR DUPLICATE W-2</h2>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>There is a <span data-field="fee_amount">{{ fee_amount }}</span> charge to issue a replacement or duplicate W-2 form. Please note that all active employees can view and print W2 forms through self-service in Workday. Terminated employees must submit the request to receive a replacement or duplicate W2 form.</p>
+    <p>Please submit the <span data-field="fee_amount">{{ fee_amount }}</span> fee with link listed below:</p>
+    <p><a href="{{ payment_link }}">{{ payment_link }}</a></p>
+    <p>Please email this completed form to <span data-field="payroll_email">{{ payroll_email }}</span> along with a copy of your photo identification.</p>
+    <p>Please note that requests will not be honored a copy of the photo identification and payment.</p>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <p>Date:</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 20px;" data-field="date">{{ date }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Name:</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 20px;" data-field="name">{{ name }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Social Security Number (Last 4 digits):</p>
+    <p style="font-size: 0.85em; margin-top: 5px;">As per IRS Publication 15 and Florida State Statute 119.071(5)(a2).5.(a3).5.(a2).5.(a4)._ and (5)(a9) your social security number is being requested to search and verify against IRS records.</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 20px;" data-field="social_security_number">{{ social_security_number }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Phone #</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 20px;" data-field="phone_2">{{ phone_2 }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Tax Year(s) Requested</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 20px;" data-field="tax_year_requested">{{ tax_year_requested }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Address:</p>
+    <div style="width: 100%; border-bottom: 1px solid #000; margin-bottom: 40px;" data-field="address">{{ address }}</div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p>Signature</p>
+    <div style="width: 50%; border-bottom: 1px solid #000;" data-field="signature">{{ signature }}</div>
+  </div>
+
+  <div style="font-size: 0.8em; text-align: right;">
+    Revised <span data-field="revision_date">{{ revision_date }}</span>
+  </div>
+</div>

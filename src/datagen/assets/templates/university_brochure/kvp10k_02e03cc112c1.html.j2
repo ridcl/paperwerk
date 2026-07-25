@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office of Graduate, Professional & Interdisciplinary Studies</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 9px;
+    color: #333;
+    margin-bottom: 18px;
+    border-bottom: none;
+  }
+
+  .page-header-title {
+    font-size: 9px;
+    color: #333;
+  }
+
+  .page-header-number {
+    font-size: 9px;
+    color: #333;
+  }
+
+  .two-col {
+    display: flex;
+    gap: 30px;
+  }
+
+  .col-left {
+    flex: 0 0 420px;
+    max-width: 420px;
+  }
+
+  .col-right {
+    flex: 1;
+  }
+
+  h1.main-title {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+
+  .title-divider {
+    border: none;
+    border-top: 2px solid #000;
+    margin-bottom: 10px;
+  }
+
+  .intro-text {
+    font-size: 10.5px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  .section-body {
+    font-size: 10.5px;
+    line-height: 1.55;
+    margin-bottom: 4px;
+  }
+
+  .section-body a, .section-body .link {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .indented {
+    padding-left: 20px;
+  }
+
+  .bullet-list {
+    list-style: none;
+    padding-left: 30px;
+    margin: 6px 0;
+  }
+
+  .bullet-list li {
+    font-size: 10.5px;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: -14px;
+  }
+
+  .bullet-list li a, .bullet-list li .link {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .right-email {
+    font-size: 10.5px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .right-email a, .right-email .link {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .right-mailing-heading {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .right-mailing-body {
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+
+  .small-note {
+    font-size: 8.5px;
+  }
+
+  .schedule-sub {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .schedule-link {
+    text-decoration: underline;
+    color: #000;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-header-title">
+      <span data-field="page_header_title">{{ page_header_title }}</span>
+    </div>
+    <div class="page-header-number">
+      <span data-field="page_number">{{ page_number }}</span>
+    </div>
+  </div>
+
+  <!-- Two Column Layout -->
+  <div class="two-col">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <h1 class="main-title">
+        <span data-field="office_title">{{ office_title }}</span>
+      </h1>
+      <hr class="title-divider">
+
+      <p class="intro-text">
+        <span data-field="intro_paragraph">{{ intro_paragraph }}</span>
+      </p>
+
+      <!-- Our Mission -->
+      <div class="section-heading">Our Mission</div>
+      <div class="section-body">
+        <span data-field="mission_text">{{ mission_text }}</span>
+        <br>
+        <a class="link"><span data-field="mission_link_text">{{ mission_link_text }}</span></a>
+      </div>
+
+      <!-- Hours of Operation -->
+      <div class="section-heading">Hours of Operation</div>
+      <div class="section-body indented">
+        <span data-field="hours_fall_spring_label">{{ hours_fall_spring_label }}</span>
+        <span data-field="hours_fall_spring_value">{{ hours_fall_spring_value }}</span><br>
+        <span data-field="hours_summer_label">{{ hours_summer_label }}</span>
+        <span data-field="hours_summer_value">{{ hours_summer_value }}</span>
+        <span class="small-note"><span data-field="hours_note">{{ hours_note }}</span>
+        <a class="link"><span data-field="hours_email_text">{{ hours_email_text }}</span></a>
+        (<a class="link"><span data-field="hours_email_address">{{ hours_email_address }}</span></a>)
+        <span data-field="hours_visit_text">{{ hours_visit_text }}</span></span>
+      </div>
+
+      <!-- Office Location & Contact Information -->
+      <div class="section-heading">Office Location &amp; Contact Information</div>
+      <div class="section-body indented">
+        Main Office: <span data-field="main_office_location">{{ main_office_location }}</span><br>
+        Phone: <span data-field="main_office_phone">{{ main_office_phone }}</span><br>
+        E-mail: <a class="link"><span data-field="main_office_email">{{ main_office_email }}</span></a>
+        <span data-field="main_office_email_note">{{ main_office_email_note }}</span>
+      </div>
+
+      <!-- Schedule an Appointment -->
+      <div class="section-heading">Schedule an Appointment</div>
+      <div class="section-body">
+        <span data-field="schedule_intro">{{ schedule_intro }}</span>
+        <a class="link"><span data-field="schedule_staff_link">{{ schedule_staff_link }}</span></a>
+        <span data-field="schedule_intro_cont">{{ schedule_intro_cont }}</span>
+      </div>
+      <ul class="bullet-list">
+        {% for appt_link in appointment_links %}
+        <li>
+          Meet with the <a class="link"><span data-field="appointment_links[{{ loop.index0 }}].label">{{ appt_link.label }}</span></a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Mailing Address -->
+      <div class="section-heading">Mailing Address</div>
+      <div class="section-body indented">
+        <span data-field="mailing_division">{{ mailing_division }}</span><br>
+        <span data-field="mailing_office_name">{{ mailing_office_name }}</span><br>
+        <span data-field="mailing_university">{{ mailing_university }}</span><br>
+        <span data-field="mailing_street">{{ mailing_street }}</span><br>
+        <span data-field="mailing_city_state_zip">{{ mailing_city_state_zip }}</span>
+      </div>
+
+      <!-- Graduate Admissions Information -->
+      <div class="section-heading">Graduate Admissions Information</div>
+      <div class="section-body">
+        <span data-field="grad_admissions_text">{{ grad_admissions_text }}</span>
+        <strong><span data-field="grad_admissions_link_label">{{ grad_admissions_link_label }}</span></strong>
+        <span data-field="grad_admissions_text_cont">{{ grad_admissions_text_cont }}</span>
+      </div>
+
+      <!-- Office Location & Contact Information (Admissions) -->
+      <div class="section-heading">Office Location &amp; Contact Information</div>
+      <div class="section-body indented">
+        <div class="schedule-sub">
+          Schedule an Appointment: <a class="schedule-link"><span data-field="grad_appt_link_label">{{ grad_appt_link_label }}</span></a>
+        </div>
+        <br>
+        Main Office: <span data-field="admissions_office_location">{{ admissions_office_location }}</span><br>
+        Phone: <span data-field="admissions_office_phone">{{ admissions_office_phone }}</span>
+      </div>
+
+    </div><!-- end col-left -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <div class="right-email">
+        E-mail: <a class="link"><span data-field="right_email_address">{{ right_email_address }}</span></a>
+        <span data-field="right_email_note">{{ right_email_note }}</span>
+      </div>
+
+      <div class="right-mailing-heading">Mailing Address:</div>
+      <div class="right-mailing-body">
+        <span data-field="right_mailing_office">{{ right_mailing_office }}</span><br>
+        <span data-field="right_mailing_street">{{ right_mailing_street }}</span><br>
+        <span data-field="right_mailing_city_state_zip">{{ right_mailing_city_state_zip }}</span>
+      </div>
+
+    </div><!-- end col-right -->
+
+  </div><!-- end two-col -->
+
+</div><!-- end page -->
+</body>
+</html>

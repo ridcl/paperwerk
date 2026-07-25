@@ -1,0 +1,88 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 30px; margin-bottom: 5px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo/Name -->
+    <h1 style="font-size: 24pt;">Idaho State University</h1>
+    <p style="font-size: 12pt;">Disability Services</p>
+    <p style="font-size: 10pt;">921 South 8th Avenue, Stop 8121, Pocatello, Idaho 83209</p>
+    <p style="font-size: 10pt;">Rendezvous Center Room 125</p>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 40px;">AUTHORIZATION TO DISCLOSE TO SECOND PARTY</h2>
+
+  <div style="margin-top: 30px;">
+    <p>Student/Employee: <span data-field="full_name">{{ full_name }}</span></p>
+    <p>Address: <span data-field="address">{{ address }}</span></p>
+    <p>Disability Services Coordinator: <span data-field="coordinator_name">{{ coordinator_name }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Date of Birth: <span data-field="date_of_birth">{{ date_of_birth }}</span></p>
+    <p>Telephone: <span data-field="phone_number">{{ phone_number }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Release Information to: <span data-field="release_recipient">{{ release_recipient }}</span></p>
+    <p>Second Party Name: <span data-field="second_party_name">{{ second_party_name }}</span></p>
+    <p>Relationship to Student/Employee: <span data-field="relationship_to_second_party">{{ relationship_to_second_party }}</span></p>
+  </div>
+
+  <h3 style="margin-top: 30px;">Extent of Authorization (select one):</h3>
+  <div style="margin-top: 15px;">
+    <input type="checkbox" id="option1">
+    <label for="option1">I authorize the release of my complete Disability Services record including information relating to academic/employment accommodations, medical and psychological information, testing results and reports including diagnoses of disorders and/or disabilities, treatment and disclosure of alcohol and drug abuse, and communicable diseases including HIV or AIDS.</label>
+  </div>
+  <div style="margin-top: 15px;">
+    <input type="checkbox" id="option2">
+    <label for="option2">I authorize the release of my student/employee information relating to the following (fill in line below):</label>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px;" data-field="field_1">{{ field_1 }}</div>
+  </div>
+
+  <p style="margin-top: 40px;">Note: This authorization will expire one (1) year from the date signed.</p>
+
+  <h3 style="margin-top: 30px;">This authorization for release of information covers the following time period:</h3>
+  <div style="margin-top: 10px;">
+    <span data-field="start_date">{{ start_date }}</span> 
+    to 
+    <span data-field="end_date">{{ end_date }}</span> 
+    or 
+    <span data-field="time_period_option">{{ time_period_option }}</span> all past, present, and future periods.
+  </div>
+
+  <h3 style="margin-top: 30px;">Release statement:</h3>
+  <ol style="margin-top: 15px;">
+    <li>I understand that the information used or disclosed may be subject to re-disclosure by the person or class of persons or facility receiving it, and would then no longer be protected by the Health Insurance Portability and Accountability Act of 1996 (HIPAA).</li>
+    <li>I understand that information is disclosed from records protected by Federal confidentiality rules, the Federal rules prohibit the recipient from making any further disclosure of this information unless further disclosure is expressly permitted, in writing, by the person to whom it pertains.</li>
+    <li>I may revoke this authorization by notifying Idaho State University's Disability Services in writing of my desire to revoke it. However, I understand that any action already taken in reliance on this authorization cannot be reversed, and my revocation will not affect those actions.</li>
+    <li>I understand that this authorization is for the above stated purpose only and will not impact my healthcare benefits, treatments, payments, or enrollment.</li>
+  </ol>
+
+  <div style="margin-top: 60px;">
+    <p>Student/Employee Signature: _________________________</p>
+    <p>Date: <span data-field="signature_date">{{ signature_date }}</span></p>
+  </div>
+  <div style="margin-top: 20px;">
+    <p>Second Party Signature: _________________________</p>
+  </div>
+
+  <div style="margin-top: 80px; text-align: center; font-size: 10pt;">
+    <p>Disability Services</p>
+    <p>Phone: <span data-field="phone_number_contact">{{ phone_number_contact }}</span> | Fax: <span data-field="fax_number_contact">{{ fax_number_contact }}</span> | <a href="{{ website_url }}">{{ website_url }}</a></p>
+    <p>ISU is an Equal Opportunity Employer</p>
+  </div>
+</div>

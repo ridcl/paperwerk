@@ -1,0 +1,131 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px 0;
+    text-align: left;
+  }
+  .header {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .signature-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .warning-box {
+    border: 1px solid #000;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 0.9em;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div>
+      <div style="font-size: 2em; font-weight: bold;">L</div>
+      <div style="font-size: 1.2em; font-weight: bold;">Linfield University</div>
+    </div>
+    <div>
+      <span style="font-weight: bold; border: 1px solid #000; padding: 5px 10px;">DEPENDENT</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 0.9em;">Office of Financial Aid | 900 SE Baker Street | Unit A484 | McMinnville, OR 97128</p>
+    <p style="font-size: 0.9em;">Phone: <span data-field="phone_number">{{ phone_number }}</span> | Fax: <span data-field="fax_number">{{ fax_number }}</span> | Email: <span data-field="email_address">{{ email_address }}</span></p>
+  </div>
+
+  <p style="font-size: 0.9em; margin-bottom: 20px;">The Office of Financial Aid at Linfield must receive this completed Asset Form to resolve either a reject or conflicting information of the asset figures you reported on your 2022-2023 Free Application for Federal Student Aid (FAFSA®).</p>
+
+  <div class="section-title">A: STUDENT INFORMATION</div>
+  <table>
+    <tr>
+      <th style="width: 30%;">Student Name:</th>
+      <td><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <th>Student Phone Number:</th>
+      <td><span data-field="student_phone_number">{{ student_phone_number }}</span></td>
+      <th style="width: 30%;">Parent Phone Number:</th>
+      <td><span data-field="parent_phone_number">{{ parent_phone_number }}</span></td>
+    </tr>
+  </table>
+
+  <div class="section-title">B: ASSETS</div>
+  <p style="font-size: 0.9em; margin-bottom: 15px;">Complete the chart below, sign, and return this form to the Office of Financial Aid at Linfield. Figures reported must reflect a "snap shot" of the original date you completed your 2022-2023 FAFSA®. If you had no assets as of this date enter a zero ($0). Refer to the 2022-2023 FAFSA® pdf, page 9, for expanded instructions on what figures to include and what not to include in your answers below at <a href="http://www.fafsa.gov" style="color: blue;">www.fafsa.gov</a>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Asset Questions</th>
+        <th style="width: 25%; text-align: right;">Student Total of Assets</th>
+        <th style="width: 25%; text-align: right;">Parent(s) Total of Assets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>What was your total current balance of cash, savings, and checking accounts? (Do not include student financial aid.)</td>
+        <td style="text-align: right;">$ <span data-field="asset_cash_savings_student">{{ asset_cash_savings_student }}</span></td>
+        <td style="text-align: right;">$ <span data-field="asset_cash_savings_parent">{{ asset_cash_savings_parent }}</span></td>
+      </tr>
+      <tr>
+        <td>What was the net worth of your investments, including real estate, education benefits or savings accounts?</td>
+        <td style="text-align: right;">$ <span data-field="asset_investments_student">{{ asset_investments_student }}</span></td>
+        <td style="text-align: right;">$ <span data-field="asset_investments_parent">{{ asset_investments_parent }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>Note: Do not include the value of the home in which you currently live, the value of life insurance, retirement plans (401K) plans, pension funds, annuities, non-education IRA's, Keogh plans, etc.) or cash, savings and checking accounts already reported above. Net worth means current balance or market value minus debt.</strong></td>
+        <td style="text-align: right;">$ <span data-field="asset_home_net_worth_student">{{ asset_home_net_worth_student }}</span></td>
+        <td style="text-align: right;">$ <span data-field="asset_home_net_worth_parent">{{ asset_home_net_worth_parent }}</span></td>
+      </tr>
+      <tr>
+        <td>What was the net worth of your current businesses and/or investment farms?</td>
+        <td style="text-align: right;">$ <span data-field="asset_business_student">{{ asset_business_student }}</span></td>
+        <td style="text-align: right;">$ <span data-field="asset_business_parent">{{ asset_business_parent }}</span></td>
+      </tr>
+      <tr>
+        <td><strong>Note: Do not include a family farm or family business with 100 or fewer full-time or full-time equivalent employees. Net worth means current market value minus debt.</strong></td>
+        <td style="text-align: right;">$ <span data-field="asset_farm_business_student">{{ asset_farm_business_student }}</span></td>
+        <td style="text-align: right;">$ <span data-field="asset_farm_business_parent">{{ asset_farm_business_parent }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">C: REQUIRED SIGNATURES</div>
+  <p style="font-size: 0.9em; margin-bottom: 15px;">This form must be <strong>signed</strong> by the student & parent certifying all information is complete and correct as reported. Electronic signatures are not accepted. Forms with digital/electronic/typed signatures will be returned. Once form is signed, please submit to the Office of Financial Aid.</p>
+
+  <div class="signature-line">
+    <div>
+      Student Signature (Required) _________________________ Date: <span data-field="student_signature_date">{{ student_signature_date }}</span>
+    </div>
+    <div>
+      Parent Signature (Required) _________________________ Date: <span data-field="parent_signature_date">{{ parent_signature_date }}</span>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <strong>WARNING:</strong> If you purposely give false or misleading information, you may be fined, sent to prison or both.
+  </div>
+</div>

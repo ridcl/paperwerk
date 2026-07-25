@@ -1,0 +1,169 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 0.5em; }
+  .header-info { text-align: center; margin-bottom: 30px; }
+  .address-block { text-align: left; margin-bottom: 20px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { width: 200px; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .signature-line { margin-top: 60px; border-top: 1px solid #000; width: 100%; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px 0; }
+</style>
+
+<div class="page">
+  <div class="header-info">
+    <!-- Placeholder for seal/logo if present, otherwise just text -->
+    <h1>AZRIELI GRADUATE SCHOOL</h1>
+    <h2>OF JEWISH EDUCATION AND ADMINISTRATION</h2>
+    <p>YESHIVA UNIVERSITY</p>
+  </div>
+
+  <div class="address-block">
+    <p>
+      <span data-field="street_address">{{ street_address }}</span><br>
+      <span data-field="phone_number">{{ phone_number }}</span>
+    </p>
+    <p>
+      <span data-field="city_state_zip">{{ city_state_zip }}</span><br>
+      FAX: <span data-field="fax_number">{{ fax_number }}</span>
+    </p>
+  </div>
+
+  <h3 style="text-align: center;">Fanya Gottesfeld Heller Division of Doctoral Studies</h3>
+  <h3 style="text-align: center;">Dissertation Proposal Cover Sheet</h3>
+
+  <div class="form-row">
+    <div class="form-label">Candidate Information:</div>
+    <div style="flex-grow: 1;"></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Name:</div>
+    <div class="form-input"><span data-field="full_name">{{ full_name }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Address:</div>
+    <div class="form-input"><span data-field="address">{{ address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Home Phone:</div>
+    <div class="form-input"><span data-field="home_phone">{{ home_phone }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Work Phone:</div>
+    <div class="form-input"><span data-field="work_phone">{{ work_phone }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Fax:</div>
+    <div class="form-input"><span data-field="fax">{{ fax }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">E-mail:</div>
+    <div class="form-input"><span data-field="email">{{ email }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Specialization (Please check one):</div>
+    <div class="form-input">
+      <span data-field="specialization">{{ specialization }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Educational Leadership:</div>
+    <div class="form-input">
+      <span data-field="educational_leadership">{{ educational_leadership }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Curriculum and Instruction:</div>
+    <div class="form-input">
+      <span data-field="curriculum_instruction">{{ curriculum_instruction }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Proposed Title of Dissertation:</div>
+    <div class="form-input"><span data-field="dissertation_title">{{ dissertation_title }}</span></div>
+  </div>
+
+  <div class="section-title">RESEARCH DESIGN (CHECK ONE):</div>
+  <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+    <div style="text-align: center;">
+      <span data-field="research_design_experimental">{{ research_design_experimental }}</span>
+    </div>
+    <div style="text-align: center;">
+      <span data-field="research_design_quasi_experimental">{{ research_design_quasi_experimental }}</span>
+    </div>
+    <div style="text-align: center;">
+      <span data-field="research_design_historical_philosophical">{{ research_design_historical_philosophical }}</span>
+    </div>
+    <div style="text-align: center;">
+      <span data-field="research_design_survey_research">{{ research_design_survey_research }}</span>
+    </div>
+    <div style="text-align: center;">
+      <span data-field="research_design_qualitative_field_research">{{ research_design_qualitative_field_research }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">THE SIGNATURES BELOW CERTIFY THE FOLLOWING:</div>
+  <ol style="padding-left: 20px;">
+    <li>The Dissertation Committee has met at least once with the candidate and approves the attached proposal for review.</li>
+    <li>The Dissertation Committee endorses the human subjects statement and procedures the candidate has detailed, and a copy of the complete proposal has been transmitted to the University Committee on Clinical Investigations according to their procedures. All proposals involving human subjects must be reviewed and approved by the Committee on Clinical Investigations before the collection of data may begin.</li>
+  </ol>
+
+  <table style="margin-top: 30px;">
+    <tr>
+      <td style="width: 50%;">Member Name (please print) <span data-field="committee_member_name_1">{{ committee_member_name_1 }}</span> Degree (e.g., Ed.D., Ph.D.) <span data-field="committee_member_degree_1">{{ committee_member_degree_1 }}</span> Affiliation <span data-field="committee_member_affiliation_1">{{ committee_member_affiliation_1 }}</span></td>
+      <td style="width: 50%;">Signature of Member</td>
+    </tr>
+    {% for item in committee_members %}
+    <tr>
+      <td style="width: 50%;">Member Name (please print) <span data-field="committee_member_name_{{ loop.index0 + 1 }}">{{ item.name }}</span> Degree (e.g., Ed.D., Ph.D.) <span data-field="committee_member_degree_{{ loop.index0 + 1 }}">{{ item.degree }}</span> Affiliation <span data-field="committee_member_affiliation_{{ loop.index0 + 1 }}">{{ item.affiliation }}</span></td>
+      <td style="width: 50%;">Signature of Member</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <table style="margin-top: 30px;">
+    <tr>
+      <td style="width: 50%;">Chair Name (please print) <span data-field="chair_name">{{ chair_name }}</span> Degree (e.g., Ed.D., Ph.D.) <span data-field="chair_degree">{{ chair_degree }}</span> Affiliation <span data-field="chair_affiliation">{{ chair_affiliation }}</span></td>
+      <td style="width: 50%;">Signature of Chair</td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">Signature of Candidate</div>
+      <div style="width: 45%;">DATE</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">Signature of Director of Doctoral Program</div>
+      <div style="width: 45%;">DATE</div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 80px;">
+    Please attach this as the cover sheet when you submit your accepted proposal to the Director of Doctoral Studies at the Azrieli Graduate School.
+  </p>
+</div>

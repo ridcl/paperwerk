@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.4;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 50%;
+    display: inline-block;
+    margin-top: 50px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1>CSUSB Volunteer Identification Form</h1>
+  <p>Please print legibly to avoid any delays in processing.</p>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 20%;">Name:</td>
+        <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+        <td style="width: 20%;">M.I.</td>
+        <td style="width: 30%;">Coyote ID# (if applicable)</td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td><span data-field="address">{{ address }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Mobile Number:</td>
+        <td><span data-field="mobile_number">{{ mobile_number }}</span></td>
+        <td>E-mail:</td>
+        <td><span data-field="email">{{ email }}</span></td>
+      </tr>
+      <tr>
+        <td>Emergency Contact:</td>
+        <td>Name: <span data-field="emergency_contact.name">{{ emergency_contact.name }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Relationship: <span data-field="emergency_contact.relationship">{{ emergency_contact.relationship }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Department: <span data-field="department">{{ department }}</span></td>
+        <td style="width: 50%;">Supervisor's E-mail: <span data-field="supervisor_email">{{ supervisor_email }}</span></td>
+      </tr>
+      <tr>
+        <td>Volunteer Start Date: <span data-field="volunteer_start_date">{{ volunteer_start_date }}</span></td>
+        <td>Volunteer End Date: <span data-field="volunteer_end_date">{{ volunteer_end_date }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>To be completed by CSUSB supervisor - Describe the assignment and/or duties:</p>
+    <div style="border: 1px solid #000; height: 100px; margin-top: 10px; padding: 10px;">
+      <span data-field="supervisor_description">{{ supervisor_description }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Supervisor's Initials: <span data-field="supervisor_initials">{{ supervisor_initials }}</span></p>
+    <p>Please mark yes or no for the questions below. Will the volunteer:</p>
+    <table style="margin-top: 15px;">
+      <tr>
+        <td>1. Be considered a faculty volunteer (i.e. perform faculty/instruction related work)?</td>
+        <td><span data-field="q1_yes">{{ q1_yes }}</span></td>
+        <td><span data-field="q1_no">{{ q1_no }}</span></td>
+      </tr>
+      <tr>
+        <td>2. Need to drive a vehicle and/or travel on university business?</td>
+        <td><span data-field="q2_yes">{{ q2_yes }}</span></td>
+        <td><span data-field="q2_no">{{ q2_no }}</span></td>
+      </tr>
+      <tr>
+        <td>3. Have regular, direct contact with minors?</td>
+        <td><span data-field="q3_yes">{{ q3_yes }}</span></td>
+        <td><span data-field="q3_no">{{ q3_no }}</span></td>
+      </tr>
+      <tr>
+        <td>4. Have access to criminal offender record information and/or patients' drugs or medication?</td>
+        <td><span data-field="q4_yes">{{ q4_yes }}</span></td>
+        <td><span data-field="q4_no">{{ q4_no }}</span></td>
+      </tr>
+      <tr>
+        <td>5. Have access to Level 1 data?</td>
+        <td><span data-field="q5_yes">{{ q5_yes }}</span></td>
+        <td><span data-field="q5_no">{{ q5_no }}</span></td>
+      </tr>
+      <tr>
+        <td>6. Have access to or control over amounts greater than $10,000 in cash, checks, credit cards, and/or credit card account information?</td>
+        <td><span data-field="q6_yes">{{ q6_yes }}</span></td>
+        <td><span data-field="q6_no">{{ q6_no }}</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Volunteer Background Check Authorization Form</h2>
+  <p>I understand that a background check is required by law for certain CSUSB volunteer assignments. I also understand that any misrepresentation, falsification, or omission of facts herein may be considered cause for dismissal from any volunteer assignment.</p>
+  <p>I, <span data-field="volunteer_name_printed">{{ volunteer_name_printed }}</span>, hereby authorize and request any law enforcement agency, or other persons having personal knowledge about me, to furnish California State University, San Bernardino (CSUSB) or its authorized agent, with information regarding criminal convictions or other information in their possession regarding me in connection with my volunteer role in a assignment in which a background check is required by law. I agree that a photocopy of this information can be furnished to CSUSB, and that it will have the same authority and authenticity as the original.</p>
+
+  <div style="margin-top: 30px;">
+    <p>Campus: <span data-field="campus_name">{{ campus_name }}</span></p>
+    <p>Volunteer's Full Name (Printed): <span data-field="volunteer_full_name_printed">{{ volunteer_full_name_printed }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Signature: _________________________</td>
+        <td style="width: 50%;">Date: <span data-field="signature_date">{{ signature_date }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 style="margin-top: 50px;">STATE PRIVACY NOTICE</h3>
+  <p>The State of California Information Practices Act of 1977 (effective July 1, 1978) requires CSUSB to provide the following information to individuals who are asked to supply information about themselves:</p>
+  <ul>
+    <li>The principle purpose for requesting and collecting the personal information on this form is to conduct background checks. CSUSB policy and federal statute authorize the maintenance of this information.</li>
+    <li>Furnishing all information requested on this form is mandatory.</li>
+    <li>The personal information will be kept confidential and used only in accordance with applicable laws.</li>
+    <li>The personal information will be given to government enforcement agencies if these agencies request such information, or as otherwise required by law.</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">Information Practices Act Notice (Civil Code § 1798.17)</h3>
+  <p>This information is being requested by California State University, San Bernardino (CSUSB). CSUSB is authorized to maintain this information pursuant to Education Code § 89500, 89535. Submission of the information requested on this form is mandatory. Failure to provide the requested information will mean that you will be ineligible for the assignment you are seeking. The principal purpose for which this information is to be used is to assist the University in evaluating your eligibility, qualifications, and suitability for the assignment you are seeking. You have a right of access to records containing personal information maintained by CSUSB. The name, business address and telephone number of the person at CSUSB who is responsible for maintaining the requested information and will be able to inform you of the location of this information is: Lourdes Valdez, CSUSB, 5500 University Parkway San Bernardino, CA 92407 (909) 537-3635.</p>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">STATEMENT ACKNOWLEDGING REQUIREMENT TO REPORT CHILD ABUSE AND NEGLECT</h2>
+  <p style="text-align: center;">[USE FOR LIMITED REPORTERS ONLY]</p>
+
+  <p>INSTRUCTION FOR HUMAN RESOURCES: Provide this form, as well as Attachments A and B of Executive Order 1083 Revised July 21, 2017, to employees who are identified as Limited Reporters. Retain the completed form in the employee's official personnel file.</p>
+
+  <p style="font-weight: bold;">*Exception: Non-Management Personnel Plan employees hired prior to January 1, 1985</p>
+
+  <p>California law requires certain people, known as "Mandated Reporters," to report known or suspected child abuse or neglect. You have been identified as a certain type of Mandated Reporter; you are required by the law to sign this statement acknowledging your legal reporting obligations.</p>
+
+  <p>A copy of the relevant provisions of the law explaining the definition of "Mandated Reporter" (Penal Code § 11165.7), the reporting obligations (Penal Code § 11166), penalty for failure to report abuse or impeding report (Penal Code § 11166.01), the contents of the reports, and the confidentiality of the Mandated Reporter's identity (Penal Code § 11167) is attached.</p>
+
+  <p>Excerpts of California Child Abuse and Neglect Reporting Act may be found on the following website: <a href="https://www.csusb.edu/human-resources/employment/background-check-policy">https://www.csusb.edu/human-resources/employment/background-check-policy</a></p>
+
+  <p>Online training is available to you through Skillsoft. To access this training, please go to <a href="https://ds.calstate.edu/svc/skillsoft&org=csusb">https://ds.calstate.edu/svc/skillsoft&org=csusb</a></p>
+
+  <p>While it is not required, we strongly encourage you to take the training.</p>
+
+  <h3 style="margin-top: 30px;">WHEN REPORTING ABUSE IS REQUIRED</h3>
+  <p>As a Limited Reporter, whenever in your professional capacity or within the scope of your employment and/or volunteering, you have knowledge of or observe a person under the age of 18 years whom you know or reasonably suspect has been the victim of child abuse or neglect on CSU premises or at an official activity of, or program conducted by, the CSU, you must report the suspected incident (Penal Code § 11166(a) and 11165.7(a)(4)).</p>
+
+  <h3 style="margin-top: 30px;">PROCEDURE FOR REPORTING</h3>
+  <p>To make a report, you must do the following:</p>
+  <ul>
+    <li>Immediately, or as soon as practically possible, contact by phone one of the following: police or sheriff's department (including campus police but not including a school district police or security department); a county probation department (if designated by the county to receive mandated reports); or the county welfare department (Child Protective Services or CPS).</li>
+    <li>Within 36 hours of receiving the information concerning the incident: complete Form SS 8572 (available online at <a href="http://ag.ca.gov/childabuse/pdf/8572.pdf">http://ag.ca.gov/childabuse/pdf/8572.pdf</a>) and send, fax or electronically transmit it to the agency that was contacted by phone (Penal Code § 11166(a)).</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Executive Order 1083</h2>
+  <p style="text-align: center;">Revised July 21, 2017</p>
+  <p style="text-align: center;">Attachment C</p>
+
+  <div style="margin-top: 30px;">
+    <p>Names and contact information for agencies that can accept reports are available online at the following websites:</p>
+    <ul>
+      <li>California State University Police Departments (by campus): <a href="http://calstate.edu/strategicinitiatives/UPD/contacts.shtml">http://calstate.edu/strategicinitiatives/UPD/contacts.shtml</a></li>
+      <li>Child Protective Services (by county): <a href="http://www.hwcss.cahawnet.gov/countyinfo/county_contacts/hotline_numbers.asp">http://www.hwcss.cahawnet.gov/countyinfo/county_contacts/hotline_numbers.asp</a></li>
+    </ul>
+    <p>For Sheriffs' Departments (by county): <a href="http://www.calsheriffs.org/sheriffs-offices.html">http://www.calsheriffs.org/sheriffs-offices.html</a></p>
+  </div>
+
+  <p style="margin-top: 30px;">Note: Reporting to a supervisor, a coworker, or other person is not a substitute for making a mandated report to one of the agencies listed above.</p>
+
+  <h3 style="margin-top: 40px;">ABUSE AND NEGLECT THAT MUST BE REPORTED</h3>
+  <p><strong>Physical abuse,</strong> meaning physical injury other than by accidental means inflicted on a child (Penal Code § 11165.6).</p>
+  <p><strong>Sexual assault,</strong> including sex acts with a child, intentional masturbation in the presence of a child, child molestation, and lewd or lascivious acts with a child under 14 years of age or with a child under 16 years of age if the other person is at least ten years older than the child (Penal Code § 11165.1(a)(b)).</p>
+  <p><strong>Sexual exploitation,</strong> including acts relating to child pornography, child prostitution, or performances involving obscene sexual conduct by a child (Penal Code § 11165.1(c)).</p>
+  <p><strong>Statutory rape</strong> involving sexual intercourse between a child under 16 years of age and a person 21 years of age or older, which is also a form of "sexual assault" (Penal Code § 11165.1(a)).</p>
+  <p><strong>Neglect,</strong> meaning the negligent treatment or maltreatment of a child by a parent, guardian or caretaker under circumstances indicating harm or threatened harm to the child's health or welfare (Penal Code § 11165.2).</p>
+  <p><strong>Willful harming or injuring or endangering a child,</strong> meaning a situation in which any person inflicts, or willfully causes or permits a child to suffer, unphysical pain or mental suffering, or causes or permits a child to be placed in a situation in which the child or child's health is endangered (Penal Code § 11165.3).</p>
+  <p><strong>Unlawful corporal punishment,</strong> meaning a situation in which any person willfully inflicts upon a child cruel or inhuman corporal punishment or a physical injury (Penal Code § 11165.4).</p>
+
+  <h3 style="margin-top: 40px;">WHAT IS NOT CHILD ABUSE OR NEGLECT?</h3>
+  <p>The law does not consider the following child abuse or neglect for reporting purposes:</p>
+  <ul>
+    <li>Injuries caused by two children fighting during a mutual altercation (Penal Code § 11165.6).</li>
+    <li>An injury caused by reasonable and necessary force used by a peace officer acting within the course and scope of his or her employment and/or volunteering (Penal Code § 11165.6).</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Executive Order 1083</h2>
+  <p style="text-align: center;">Revised July 21, 2017</p>
+  <p style="text-align: center;">Attachment C</p>
+
+  <h3 style="margin-top: 30px;">IMMINITY AND CONFIDENTIALITY OF REPORTER</h3>
+  <p>Mandated Reporters cannot be held civilly or criminally liable for their reports. Instead, they enjoy immunity from prosecution for their reporting of suspected child abuse (Penal Code § 11172(a)). Both the identity of the person who reports and the report itself are confidential and disclosed only among appropriate agencies (Penal Code § 11167(d)).</p>
+
+  <h3 style="margin-top: 30px;">PENALTY FOR FAILURE TO REPORT ABUSE OR IMPEDING REPORT</h3>
+  <p>A Mandated Reporter who fails to make a required report of abuse, or any administrator or supervisor who impedes or inhibits a report, is guilty of a misdemeanor punishable by up to six months in jail, a fine of $1,000, or both (Penal Code § 11166(a)). A person who knowingly and willfully fails to report or impedes a report of great bodily injury, the Mandated Reporter who fails to make a required report or administrator or supervisor who impedes or inhibits the report is subject to punishment of up to one year in jail, a fine of $5,000, or both (Penal Code Section 11166.01(b)).</p>
+
+  <h3 style="margin-top: 40px;">ACKNOWLEDGMENT</h3>
+  <p>I acknowledge being provided with copies of Penal Code Sections 11165.7, 11166, 11166.01, and 11167. I acknowledge and understand my responsibility and legal obligation to report known or suspected child abuse or neglect in compliance with Penal Code 11166.</p>
+
+  <div style="margin-top: 60px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Volunteer's Name: <span data-field="volunteer_name_acknowledgment">{{ volunteer_name_acknowledgment }}</span></td>
+        <td style="width: 50%;">Date: <span data-field="acknowledgment_date">{{ acknowledgment_date }}</span></td>
+      </tr>
+      <tr>
+        <td>Signature: _________________________</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <p>CSU Volunteer's Signature</p>
+      <div class="signature-line" data-field="csu_volunteer_s_signature">{{ csu_volunteer_s_signature }}</div>
+      <p>Date: <span data-field="volunteer_signature_date">{{ volunteer_signature_date }}</span></p>
+    </div>
+    <div style="width: 50%;">
+      <p>CSUSB Supervisor's Signature</p>
+      <div class="signature-line" data-field="csusb_supervisor_s_signature">{{ csusb_supervisor_s_signature }}</div>
+      <p>Date: <span data-field="supervisor_signature_date">{{ supervisor_signature_date }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">HR/Campus Approval Signature</td>
+        <td style="width: 50%;">Date</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 50px;">
+    <div style="width: 50%;">
+      <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+      <p>Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p>Website: <span data-field="website_url">{{ website_url }}</span></p>
+      <p>Rev: <span data-field="revision_number">{{ revision_number }}</span></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">HR 2015-10<br>Page 3 of 6</div>
+  <p>CSU students who provide service in connection with an academic course or program may be a type of CSU volunteer in certain circumstances. The community agency for which the student is providing services and the university should develop an agreement that articulates the community agency's agreed upon responsibilities for Workers' Compensation and liability coverage prior to the students' placements. See the University Volunteers Handbook and/or contact the systemwide Center for Community Engagement at <span data-field="handbook_url">{{ handbook_url }}</span> for more information.</p>
+
+  <h3 class="section-header">Discrimination and Harassment</h3>
+  <p>Volunteers are included as third parties under CSU's policy prohibiting discrimination and harassment set forth in CSU <span data-field="policy_reference">{{ policy_reference }}</span>.</p>
+
+  <h3 class="section-header">Conditions</h3>
+  <p>CSU volunteers must have the necessary training, equipment, and/or supervision to safely carry out the volunteer services. All CSU volunteers must be supervised by CSU staff or faculty as appropriate to the services being performed. Depending on the particular function performed, the volunteer must meet the appropriate licensing or certificate requirements prior to performance of those duties. If the CSU volunteer is authorized to drive a vehicle on official state business, it must be accordance with university policies and procedures, as determined appropriate in accord with the CSU volunteer duties and responsibilities. Under California Government Code Section 3118, volunteers must comply with all rules and regulations applicable to the CSU and the CSU has the obligation to ensure such compliance.</p>
+
+  <p>An individual who volunteers services in a field which requires a license or certificate must satisfy that requirement prior to performance of those duties. For example, a medical doctor, volunteering services, must have a current license to practice medicine before volunteering.</p>
+
+  <h3 class="section-header">Access to University Resources</h3>
+  <p>Departments may provide provisional services (e.g., email, phone) to CSU volunteers for the purposes and duration of the volunteer assignment. All CSU volunteers are prohibited from inferring or projecting an appearance that they are representing or otherwise making statements on behalf of the CSU unless appropriately authorized to do so. Upon completion of their volunteer service, CSU volunteers' access to provisional services must be terminated (except where otherwise permitted by policy, such as the provision of email to emeritus faculty).</p>
+
+  <p>CSU volunteers may not:</p>
+  <ul>
+    <li>Be granted access to or authority over CSU financial accounts or funds; and</li>
+    <li>Be granted access to confidential information, unless specifically authorized.</li>
+  </ul>
+
+  <p>Campuses may issue keys (e.g., to lockers, desks, offices) to volunteers as appropriate to the assignment/project or position responsibilities. Campuses must have procedures in place to determine and monitor the appropriate issuance of keys, ensure that keys are returned at the end of the volunteer assignment, and to ensure that risks to the CSU are mitigated. Under no circumstances are master keys to be issued to volunteers.</p>
+
+  <h3 class="section-header">Reimbursement of Expenses</h3>
+  <p>CSU policy does not allow for a nominal fee paid to CSU volunteers for services rendered. Although CSU volunteers are not eligible for nominal fees, they are eligible for reimbursement expenses, such as travel expenses and allowances for official State business in accordance with University procedures.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">HR 2015-10<br>Page 4 of 6</div>
+  <h3 class="section-header">Section 553.106 of the Code of Federal Regulations</h3>
+  <p>Volunteers may be reimbursed for expenses (this may include reimbursement for tuition or other materials essential to their volunteer training, transportation and meal costs) for their service without losing their status as volunteers.</p>
+
+  <h3 class="section-header">Other Restrictions</h3>
+  <p>It is not the intent of the CSU that volunteers replace or supplant the work performed by CSU employees (represented or non-represented). As such, CSU volunteers may not be used in full-time, long term assignments. Volunteer assignments are generally expected to be sporadic or of limited duration (e.g., assistance with special events or volunteering on a part-time basis over the course of a term).</p>
+
+  <div style="border-top: 1px solid #000; margin-top: 20px; margin-bottom: 20px;">
+    <p style="text-align: right; font-size: 9pt;">Back to top&sup2;</p>
+    <h4 style="margin: 5px 0;">AFFECTED EMPLOYEE GROUP(S)/UNIT(S)</h4>
+    <p>All volunteers, including any CSU employee who volunteers.</p>
+  </div>
+
+  <div style="border-top: 1px solid #000; margin-top: 20px; margin-bottom: 20px;">
+    <p style="text-align: right; font-size: 9pt;">Back to top&sup2;</p>
+    <h4 style="margin: 5px 0;">IMPLEMENTATION</h4>
+    <p>Campus Human Resources Officers and/or designee(s) responsible for administering volunteer programs should review the remainder of this Policy Letter for more information. Campuses may be required to revise their volunteer policies accordingly.</p>
+  </div>
+
+  <div style="border-top: 1px solid #000; margin-top: 20px; margin-bottom: 20px;">
+    <p style="text-align: right; font-size: 9pt;">Back to top&sup2;</p>
+    <h4 style="margin: 5px 0;">PROCEDURES</h4>
+    <p>CSU volunteers are required to sign and date a CSU volunteer identification document that, at a minimum, contains the following information:</p>
+    <ul>
+      <li>Name, address, telephone number</li>
+      <li>Emergency Contact Information</li>
+      <li>Age, if the volunteer is a minor</li>
+      <li>Assignment, Duties, Department, Supervisor</li>
+      <li>Additional information such as social security number or date of birth may be required if necessary to conduct DMV checks (for volunteers who drive vehicles on state business), process travel expense reimbursements, or meet other legal requirement(s). If social security number or date of birth is not needed, the volunteer is not required to provide this information.</li>
+    </ul>
+  </div>
+
+  <p>An updated document has been provided in Attachment A for campus use and modification, as appropriate. It continues to be important that the identification document be maintained in the campus human resources, payroll or designated office. A current volunteer does not need to complete a new document if the current assignment was made in accordance with previous appointment policy instructions.</p>
+
+  <h3 class="section-header">Volunteers Who Are Minors</h3>
+  <p>CSU volunteers may be under the age of 18. If the campus believes the CSU volunteer may be a minor, campuses should ask the volunteer if he/she is 18 years old or older to determine appropriate restrictions. If the CSU volunteer is under 18 years old, the campus should request the date of birth to determine specific restrictions.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">HR 2015-10<br>Page 5 of 6</div>
+  <p>Although CSU volunteers are not employees, campuses may refer to the CSU Employment of Minors policy for guidelines on restrictions that may apply. This document can be found on Systemwide Human Resources' Employment Policies web page at: <span data-field="policy_url">{{ policy_url }}</span>.</p>
+
+  <p>Any volunteer under the age of 18 must have written permission from a parent or guardian prior to performing volunteer services for the CSU. Refer to Attachment B for a template.</p>
+
+  <h3 class="section-header">Background Checks</h3>
+  <p>Personal identification, fingerprinting, and/or background checks continue to be required as the campus president or chancellor determines appropriate. Background checks are required for volunteers who perform work involving direct contact with minor children at CSU-hosted recreational camps or who perform duties that would regularly require a background check if performed by CSU employees. Sensitive positions are those designated by the CSU as requiring heightened scrutiny of individuals holding the position. The volunteer is required to pass the background check prior to performing such duties (see Attachment C for a template). Pursuant to <span data-field="policy_ref_1">{{ policy_ref_1 }}</span>, the results of a criminal records check may subject a current employee to disciplinary action up to and including termination under <span data-field="policy_ref_2">{{ policy_ref_2 }}</span> for further details.</p>
+
+  <h3 class="section-header">FORMS/TEMPLATES</h3>
+  <ul>
+    <li>Template: Volunteer Identification Form (see Attachment A)</li>
+    <li>Template: Volunteer Release Form for Minors (see Attachment B)</li>
+    <li>Template: Background Check Authorization Form for Volunteers (see Attachment C)</li>
+  </ul>
+
+  <h3 class="section-header">APPENDICES</h3>
+  <ul>
+    <li>Office of General Counsel's <span data-field="handbook_name">{{ handbook_name }}</span></li>
+    <li><span data-field="policy_ref_3">{{ policy_ref_3 }}</span>: Form I-9 Requirements</li>
+    <li><span data-field="policy_ref_4">{{ policy_ref_4 }}</span>: Systemwide Policy Prohibiting Discrimination, Harassment and Retaliation Against Employees and Third Parties and Procedure for Handling Discrimination, Harassment and Retaliation Allegations by Employees and Third Parties</li>
+    <li><span data-field="policy_ref_5">{{ policy_ref_5 }}</span>: CSU Employment of Minors Policy</li>
+    <li><span data-field="policy_ref_6">{{ policy_ref_6 }}</span>: Background Check Policy</li>
+  </ul>
+
+  <h3 class="section-header">DEFINITIONS</h3>
+  <p><strong>Volunteer</strong></p>
+  <p>Section 553.101 of Title 29, Code of Federal Regulations defines a volunteer as "an individual who performs hours of service for a public agency for civic, charitable, or humanitarian reasons, without promise, expectation or receipt of compensation for services rendered... during such hours". In addition, an individual shall be considered a volunteer only where his/her services is offered freely and without pressure or coercion, direct or implied, from an employer.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">HR 2015-10<br>Page 6 of 6</div>
+  <h3 class="section-header">HISTORY & REVISION CONTROL</h3>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Date</td>
+        <td style="width: 20%;">By</td>
+        <td style="width: 60%;">Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>6/14/2005</td>
+        <td>HRM</td>
+        <td>Document revised, HR 2005-26 supersedes HR 2001-38</td>
+      </tr>
+      <tr>
+        <td>12/20/2001</td>
+        <td>HRM</td>
+        <td>HR 2001-38 supersedes FSA 77-71, FSA 78-79, FSA 85-63, and Technical Letter FSR/WC 86-02</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Responsible University Officer:</strong></p>
+  <p>Vice Chancellor of Human Resources</p>
+
+  <p><strong>Policy Owner:</strong></p>
+  <p>HR Management, HRPPDOS</p>
+
+  <p>Questions regarding this HR policy letter should be directed to Systemwide Human Resources at (562) 951-4411 or the campus HR department. This document is available on the Human Resources Management's Website at <span data-field="hr_website_url">{{ hr_website_url }}</span>.</p>
+
+  <p>LL/TL</p>
+</div>
+
+</body>
+</html>

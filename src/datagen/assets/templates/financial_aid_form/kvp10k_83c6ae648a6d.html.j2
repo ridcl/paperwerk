@@ -1,0 +1,197 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 10pt;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 10pt;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .label {
+    font-weight: normal;
+    display: inline-block;
+    width: 150px; /* Approximation for alignment */
+  }
+  .value-container {
+    border-bottom: 1px solid #000;
+    min-width: 200px;
+  }
+  .signature-line {
+    margin-top: 50px;
+    border-top: 1px solid #000;
+    width: 300px;
+    display: inline-block;
+  }
+</style>
+
+<div class="page">
+  <h1>ALABAMA A&M UNIVERSITY</h1>
+  <div class="header-info">
+    <div>
+      Office of Student Financial Aid
+      <br>
+      Study Abroad / Consortium Agreement
+      <br>
+      Return to: <span data-field="return_address">{{ return_address }}</span>
+      <br>
+      Office of Student Financial Aid
+      <br>
+      Post Office Box <span data-field="zip_code">{{ zip_code }}</span>, <span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span>
+      <br>
+      Telephone: (<span data-field="phone_number_1">{{ phone_number_1 }}</span>) Fax: (<span data-field="phone_number_2">{{ phone_number_2 }}</span>)
+      <br>
+      Email: <span data-field="email_address">{{ email_address }}</span>
+    </div>
+    <div>
+      <p>Student Name (Please Print):</p>
+      <div class="form-row">
+        <div style="flex-basis: 50%;">
+          <span data-field="full_name">{{ full_name }}</span>
+        </div>
+        <div style="flex-basis: 50%;">
+          <span data-field="student_id">{{ student_id }}</span>
+        </div>
+      </div>
+      <p>Host School ID:</p>
+      <div class="form-row">
+        <div style="flex-basis: 50%;">
+          <span data-field="host_school_id">{{ host_school_id }}</span>
+        </div>
+        <div style="flex-basis: 50%;">
+          <span data-field="host_school_id_2">{{ host_school_id_2 }}</span>
+        </div>
+      </div>
+      <p>Address:</p>
+      <div class="form-row">
+        <div style="flex-basis: 50%;">
+          <span data-field="address_line_1">{{ address_line_1 }}</span>
+        </div>
+        <div style="flex-basis: 50%;">
+          <span data-field="address_line_2">{{ address_line_2 }}</span>
+        </div>
+      </div>
+      <p>Home Phone Number: ( )</p>
+      <div class="form-row">
+        <div style="flex-basis: 50%;">
+          <span data-field="home_phone">{{ home_phone }}</span>
+        </div>
+        <div style="flex-basis: 50%;">
+          <span data-field="home_phone_2">{{ home_phone_2 }}</span>
+        </div>
+      </div>
+      <p>Name of Host Institution:</p>
+      <div class="form-row">
+        <div style="flex-basis: 100%;">
+          <span data-field="host_institution_name">{{ host_institution_name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>For the purpose of allowing transient student, ____________________________________________________ to receive financial aid from ____________________________________________________ (The Home Institution).</p>
+
+  <p>The above transient student will enroll at the Host Institution for the term listed below (to be completed by the Host Institution):</p>
+
+  <table style="width: 100%; font-size: 10pt;">
+    <tr>
+      <td style="width: 33%;">Term of Enrollment: <span data-field="term_of_enrollment">{{ term_of_enrollment }}</span></td>
+      <td style="width: 33%;">Credit Hours Enrolled: <span data-field="credit_hours_enrolled">{{ credit_hours_enrolled }}</span></td>
+      <td style="width: 33%;">Credit Hour Level: <span data-field="credit_hour_level">{{ credit_hour_level }}</span></td>
+    </tr>
+    <tr>
+      <td>Term beginning and ending dates: <span data-field="term_dates">{{ term_dates }}</span></td>
+      <td>To: <span data-field="to_date">{{ to_date }}</span></td>
+      <td>Grade: <span data-field="grade">{{ grade }}</span></td>
+    </tr>
+    <tr>
+      <td>Tuition: $ <span data-field="tuition_amount">{{ tuition_amount }}</span></td>
+      <td>Room and Board: $ <span data-field="room_board_amount">{{ room_board_amount }}</span></td>
+      <td>Other costs: $ <span data-field="other_costs_amount">{{ other_costs_amount }}</span></td>
+    </tr>
+    <tr>
+      <td colspan="3">Total Cost of Attendance of the above program and term: $ <span data-field="total_cost_of_attendance">{{ total_cost_of_attendance }}</span></td>
+    </tr>
+  </table>
+
+  <p>***The Home Institution (Alabama A&M University) agrees and certifies that:</p>
+  <ol>
+    <li>It is an eligible institution.</li>
+    <li>The above named student is a regular student enrolled in an eligible degree program and is making satisfactory progress toward a degree.</li>
+    <li>It will determine the student's eligibility for financial aid.</li>
+    <li>It will award and disburse any aid it is able to disburse.</li>
+    <li>It will accept, for credit, relevant courses satisfactorily completed at the Host Institution.</li>
+  </ol>
+
+  <p>***The Host Institution agrees and certifies that:</p>
+  <ol>
+    <li>It is an eligible institution as defined by the Department of Education.</li>
+    <li>It will not process any financial assistance during the term specified.</li>
+    <li>It will monitor enrollment and notify Alabama A&M University's study abroad / consortium agreement contact person should this student not complete the above named program on at least a half-time basis.</li>
+  </ol>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <p>For Alabama A&M University (Home) Institution:</p>
+      <p>Name: <span data-field="home_institution_name_2">{{ home_institution_name_2 }}</span></p>
+      <p>Title: <span data-field="home_institution_title">{{ home_institution_title }}</span></p>
+      <p>Address: <span data-field="home_institution_address">{{ home_institution_address }}</span></p>
+      <p>Phone: <span data-field="home_institution_phone">{{ home_institution_phone }}</span></p>
+      <p>Signature & Date:</p>
+      <div class="signature-line"></div>
+    </div>
+    <div style="width: 45%;">
+      <p>For the Host Institution:</p>
+      <p>Name: <span data-field="host_institution_name_2">{{ host_institution_name_2 }}</span></p>
+      <p>Title: <span data-field="host_institution_title">{{ host_institution_title }}</span></p>
+      <p>Address: <span data-field="host_institution_address">{{ host_institution_address }}</span></p>
+      <p>Phone: <span data-field="host_institution_phone">{{ host_institution_phone }}</span></p>
+      <p>Signature & Date:</p>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <p style="margin-top: 60px;">Student Certification and Signature: I certify that all of the information on this form is complete and correct. Warning: If you purposely give false or misleading information on this worksheet, you may be fined, be sentenced to jail or both. The law states that A&M has the right to ask you for information and request additional documentation before you are awarded any financial aid. See the instructions in the Free Application for Federal Student Aid (FAFSA). A&M&M must review the requested information (C.F.R. Title 34, Part 668, the student financial aid program rules).</p>
+
+  <p style="margin-top: 40px;">**Student's Signature:</p>
+  <div class="signature-line"></div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px; font-size: 10pt;">
+    <div>Date: <span data-field="submission_date">{{ submission_date }}</span></div>
+    <div>Revised: 3/3/22</div>
+  </div>
+</div>

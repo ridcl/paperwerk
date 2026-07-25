@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CEHD Inclusion and Diversity Updates</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .header-title {
+    font-size: 48pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 14pt;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-heading {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .content-paragraph {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  .list-item {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .member-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .book-discussion-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .book-discussion-card {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+  .book-card-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .card-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .card-detail {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .action-item-list {
+    list-style-type: decimal;
+    padding-left: 25px;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+  .contact-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+  }
+  .contact-block {
+    width: 45%;
+    font-size: 11pt;
+  }
+  .contact-block h3 {
+    font-size: 14pt;
+    margin-bottom: 15px;
+  }
+  .contact-detail-line {
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-title">CEHD Inclusion and Diversity</div>
+  <div class="header-subtitle">CEHD IDC October 2019 Monthly Updates</div>
+
+  <div class="section-heading">Changes to CEHD IDC Monthly Updates</div>
+  <div class="content-paragraph">Beginning in {{ date_november_2019 }}, there are important changes to note for the CEHD Inclusion and Diversity Committee Monthly Updates:</div>
+
+  <div class="content-paragraph">Updates published four times per academic year:</div>
+  <ul class="list-item">
+    <li>September/October</li>
+    <li>November/December</li>
+    <li>January/February</li>
+    <li>March/April</li>
+  </ul>
+
+  <div class="content-paragraph">Monthly updates published to our link, rather than sent via email. The link is: <a href="{{ updates_link }}">{{ updates_link }}</a></div>
+
+  <div class="content-paragraph">Please submit events, updates, resources and more to your CEHD IDC representative for consideration. Submit one month in advance of desired publication date.</div>
+
+  <div class="section-heading">2019-2020 CEHD IDC Committee Members</div>
+  <ul class="member-list">
+    {% for member in committee_members %}
+    <li>{{ member.name }} - {{ member.role }}</li>
+    {% endfor %}
+  </ul>
+  <div class="content-paragraph" style="margin-top: 20px;">*Currently seeking undergraduate (pending offer) and masters level representatives</div>
+</div>
+
+<div class="page">
+  <div class="section-heading">CEHD IDC Equity Day Book Discussions</div>
+  <div class="content-paragraph">Please join us for our book discussions, to continue conversations from the CEHD 2019 Equity Day. A set of book titles are available in the Swain Education Library and extra copies of some titles are available in departments.</div>
+
+  <div class="book-discussion-grid">
+    <div class="book-discussion-card">
+      <img src="{{ september_book_image_url }}" alt="September Book Cover" class="book-card-image">
+      <div class="card-title">September Book Discussion</div>
+      <div class="card-detail">
+        Book: <span data-field="september_book_title">{{ september_book_title }}</span><br>
+        Facilitator: <span data-field="september_facilitator">{{ september_facilitator }}</span><br>
+        Date: <span data-field="september_date">{{ september_date }}</span><br>
+        Time: <span data-field="september_time">{{ september_time }}</span><br>
+        Location: <span data-field="september_location">{{ september_location }}</span>
+      </div>
+    </div>
+
+    <div class="book-discussion-card">
+      <img src="{{ october_book_image_url }}" alt="October Book Cover" class="book-card-image">
+      <div class="card-title">October Book Discussion</div>
+      <div class="card-detail">
+        Book: <span data-field="october_book_title">{{ october_book_title }}</span><br>
+        Facilitators: <span data-field="october_facilitators">{{ october_facilitators }}</span><br>
+        Date: <span data-field="october_date">{{ october_date }}</span><br>
+        Time: <span data-field="october_time">{{ october_time }}</span><br>
+        Location: <span data-field="october_location">{{ october_location }}</span>
+      </div>
+    </div>
+
+    <div class="book-discussion-card">
+      <img src="{{ november_book_image_url }}" alt="November Book Cover" class="book-card-image">
+      <div class="card-title">November Book Discussion</div>
+      <div class="card-detail">
+        Book: <span data-field="november_book_title">{{ november_book_title }}</span><br>
+        Facilitators: <span data-field="november_facilitators">{{ november_facilitators }}</span><br>
+        Date: <span data-field="november_date">{{ november_date }}</span><br>
+        Time: <span data-field="november_time">{{ november_time }}</span><br>
+        Location: <span data-field="november_location">{{ november_location }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-heading">Updates on CEHD IDC Action Items for 2019-2020</div>
+  <div class="content-paragraph">The CEHD IDC is committed to providing action items that align with the CEHD 2019-2020 Initiative: "Implement Initiatives to increase intercultural development and sensitivity of all faculty, staff, and students in CEHD" and WMU's DMAP: <a href="{{ dmap_link }}">{{ dmap_link }}</a>.</div>
+
+  <div class="section-heading">Action Items for 2019-2020:</div>
+  <ol class="action-item-list">
+    {% for item in action_items %}
+    <li>{{ item.description }}</li>
+    {% endfor %}
+  </ol>
+  <div class="content-paragraph" style="margin-top: 20px;">*To get involved with any of the events, please contact your CEHD IDC Representative.</div>
+</div>
+
+<div class="page">
+  <div class="section-heading">CEHD IDC Contact Information</div>
+  <div class="contact-info-container">
+    <div class="contact-block">
+      <h3>Office Location</h3>
+      <div class="contact-detail-line">Address: <span data-field="office_address">{{ office_address }}</span></div>
+      <div class="contact-detail-line">Phone: <span data-field="office_phone">{{ office_phone }}</span></div>
+    </div>
+    <div class="contact-block">
+      <h3>Contact Details</h3>
+      <div class="contact-detail-line">Email: <span data-field="contact_email">{{ contact_email }}</span></div>
+      <div class="contact-detail-line">Website: <span data-field="contact_website">{{ contact_website }}</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

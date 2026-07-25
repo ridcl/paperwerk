@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virtual Scientific Meeting Guide</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logo-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    /* Placeholder for logo visual */
+    background-color: #ccc;
+  }
+  .logo-text h1 {
+    font-size: 24px;
+    margin: 0;
+    line-height: 1;
+  }
+  .logo-text p {
+    font-size: 12px;
+    margin: 0;
+  }
+  .title-block {
+    margin-top: 50px;
+    text-align: left;
+  }
+  .title-block h2 {
+    font-size: 48px;
+    color: #003366; /* Dark Blue approximation */
+    margin: 0;
+    line-height: 1.1;
+  }
+  .title-block h3 {
+    font-size: 32px;
+    color: #003366;
+    margin: 5px 0 0 0;
+    line-height: 1.2;
+  }
+  .date-info {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  .sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px; /* Approximate width of the vertical bar */
+    padding-top: 100px; /* Adjust to align with main content start */
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #ddd; /* Visual separation */
+  }
+  .sidebar-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 10px 0;
+    font-weight: bold;
+  }
+  .toc-container {
+    margin-top: 40px;
+  }
+  .toc-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+  }
+  .toc-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px dotted #ccc;
+  }
+  .toc-list li:last-child {
+    border-bottom: none;
+  }
+  .section-header {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 40px 0 20px 0;
+  }
+  .info-box {
+    border: 2px solid #003366;
+    padding: 20px;
+    margin: 30px 0;
+    background-color: #f0f8ff;
+  }
+  .info-box h3 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  .join-us-section {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .join-us-section img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  .keynote-speaker-card {
+    display: flex;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    align-items: center;
+  }
+  .speaker-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 30px;
+    object-fit: cover;
+    background-color: #eee;
+  }
+  .speaker-details h2 {
+    margin: 0 0 5px 0;
+    font-size: 22px;
+  }
+  .speaker-details p {
+    margin: 0;
+    font-size: 16px;
+  }
+  .affiliation {
+    font-style: italic;
+    margin-top: 10px;
+  }
+  .abstract-list {
+    margin-top: 30px;
+  }
+  .abstract-item {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  .abstract-text {
+    flex-grow: 1;
+    padding-right: 20px;
+  }
+  .abstract-image {
+    width: 150px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .abstract-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .abstract-meta {
+    font-size: 13px;
+    color: #555;
+  }
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .abstract {
+    font-style: italic;
+    margin-bottom: 1.5em;
+  }
+  .authors {
+    margin-bottom: 1.5em;
+    font-size: 0.9em;
+  }
+  .poster-header {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .poster-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  .poster-authors {
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+  .content-section {
+    margin-bottom: 1.5em;
+  }
+  .content-section h3 {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  td {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 0.8em;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <div class="logo-icon"></div>
+    <div class="logo-text">
+      <h1>MUSC</h1>
+      <p>Medical University of South Carolina</p>
+    </div>
+  </div>
+
+  <div class="title-block">
+    <h2>DART 2020</h2>
+    <h3>Summer Research Day</h3>
+    <div class="date-info">Friday, {{ meeting_date }}</div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-text">VIRTUAL SCIENTIFIC MEETING GUIDE</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="toc-container">
+    <div class="toc-header">TABLE OF CONTENTS</div>
+    <ul class="toc-list">
+      <li>General Schedule................................................................................... 3</li>
+      <li>DART Keynote Speaker.............................................................................. 3</li>
+      <li>Virtual Meeting Information.................................................................... 4</li>
+      <li>Poster Presentations............................................................................ 5</li>
+      <li>Abstracts.................................................................................................. 7-14</li>
+      <li>Special Thanks & Acknowledgments......................................................... 15</li>
+    </ul>
+  </div>
+
+  <div class="section-header" style="margin-top: 80px;">VIRTUAL MEETING INFO</div>
+  <div class="info-box">
+    <h3>JOIN US</h3>
+    <p>Visit <span data-field="meeting_website">{{ meeting_website }}</span></p>
+    <p>Enter the meeting number for the session or click the session title for direct meeting link</p>
+    <p>Live Poster Session: <span data-field="poster_session_number">{{ poster_session_number }}</span></p>
+    <p>Keynote Address: <span data-field="keynote_address">{{ keynote_address }}</span></p>
+    <p>Password: GoDART!</p>
+    <p>Click <a href="#" data-field="join_browser_link">{{ join_browser_link }}</a>. You may be prompted to enter the password a second time.</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <p>QUESTIONS? TROUBLE ACCESSING?</p>
+    <p>Contact <span data-field="contact_email">{{ contact_email }}</span></p>
+    <div style="margin-top: 20px;">
+      <!-- Placeholder for DART logo -->
+      <div style="width: 150px; height: 50px; background-color: #ccc; margin: 0 auto;"></div>
+      <p style="font-size: 12px;">DRUG ABUSE RESEARCH TRAINING</p>
+    </div>
+  </div>
+  <div class="footer">2</div>
+</div>
+
+<div class="page">
+  <div class="section-header">GENERAL SCHEDULE</div>
+  <div style="text-align: center; margin-bottom: 30px;">Friday, {{ general_schedule_date }}</div>
+
+  <div style="display: flex; justify-content: space-around; margin-bottom: 40px;">
+    <div style="text-align: center;">
+      <p style="font-size: 18px;">10:30 a.m. – 12:30 p.m.</p>
+      <p style="font-size: 16px;">|| Live, Virtual Poster Presentations</p>
+    </div>
+    <div style="text-align: center;">
+      <p style="font-size: 18px;">2:00 p.m. – 3:00 p.m.</p>
+      <p style="font-size: 16px;">|| Keynote Speech</p>
+    </div>
+  </div>
+
+  <div class="section-header">KEYNOTE SPEAKER</div>
+  <div class="keynote-speaker-card">
+    <div class="speaker-photo"></div>
+    <div class="speaker-details">
+      <h2><span data-field="keynote_speaker_name">{{ keynote_speaker_name }}</span>, Ph.D.</h2>
+      <p><span data-field="keynote_speaker_affiliation">{{ keynote_speaker_affiliation }}</span></p>
+      <div class="affiliation">Rutgers University</div>
+      <p style="margin-top: 15px;">Friday, {{ keynote_date }}</p>
+      <p>2:00 PM EDT – 3:00 PM EDT</p>
+      <h3>At the Crossroads: What We Know About Treating Traumatic Stress and Addictions</h3>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; font-size: 14px;">
+    <p>
+      <span data-field="keynote_bio_summary">{{ keynote_bio_summary }}</span>
+    </p>
+  </div>
+  <div class="footer">3</div>
+</div>
+
+<div class="page">
+  <div class="section-header">POSTER PRESENTATIONS</div>
+
+  {% for item in poster_presentations %}
+  <div class="abstract-item">
+    <div class="abstract-text">
+      <div class="abstract-title">#{{ loop.index }} || {{ item.title }}</div>
+      <div class="abstract-meta">
+        Presented by <span data-field="poster_presentations[{{ loop.index0 }}].presenter_name">{{ poster_presentations[loop.index0].presenter_name }}</span>, <span data-field="poster_presentations[{{ loop.index0 }}].presenter_degree">{{ poster_presentations[loop.index0].presenter_degree }}</span><br>
+        Undergraduate student from <span data-field="poster_presentations[{{ loop.index0 }}].presenter_institution">{{ poster_presentations[loop.index0].presenter_institution }}</span><br>
+        Mentored by <span data-field="poster_presentations[{{ loop.index0 }}].mentor_name">{{ poster_presentations[loop.index0].mentor_name }}</span>, <span data-field="poster_presentations[{{ loop.index0 }}].mentor_degree">{{ poster_presentations[loop.index0].mentor_degree }}</span><br>
+        Abstract Page {{ item.abstract_page }}
+      </div>
+    </div>
+    <div class="abstract-image"></div>
+  </div>
+  {% endfor %}
+
+  <div class="footer">4</div>
+</div>
+
+<div class="page">
+  <div class="section-header">ABSTRACTS</div>
+
+  {% for item in abstracts %}
+  <div class="abstract-item">
+    <div class="abstract-text">
+      <div class="abstract-title">POSTER #{{ loop.index }}</div>
+      <p><span data-field="abstracts[{{ loop.index0 }}].poster_number">{{ abstracts[loop.index0].poster_number }}</span></p>
+      <p><span data-field="abstracts[{{ loop.index0 }}].abstract_body">{{ abstracts[loop.index0].abstract_body }}</span></p>
+    </div>
+    {% if item.has_image %}
+    <div class="abstract-image"></div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="footer">7</div>
+</div>
+
+<div class="page">
+  <div class="abstract-list">
+    {% for item in abstracts %}
+    <div class="abstract-item">
+      <div class="abstract-text">
+        <div class="abstract-title">POSTER #{{ loop.index }}</div>
+        <p><span data-field="abstracts[{{ loop.index0 }}].poster_number">{{ abstracts[loop.index0].poster_number }}</span></p>
+        <p><span data-field="abstracts[{{ loop.index0 }}].abstract_body">{{ abstracts[loop.index0].abstract_body }}</span></p>
+      </div>
+      {% if item.has_image %}
+      <div class="abstract-image"></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">8</div>
+</div>
+
+<div class="page">
+  <div class="abstract-list">
+    {% for item in abstracts %}
+    <div class="abstract-item">
+      <div class="abstract-text">
+        <div class="abstract-title">POSTER #{{ loop.index }}</div>
+        <p><span data-field="abstracts[{{ loop.index0 }}].poster_number">{{ abstracts[loop.index0].poster_number }}</span></p>
+        <p><span data-field="abstracts[{{ loop.index0 }}].abstract_body">{{ abstracts[loop.index0].abstract_body }}</span></p>
+      </div>
+      {% if item.has_image %}
+      <div class="abstract-image"></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">9</div>
+</div>
+
+<div class="page">
+  <div class="abstract-list">
+    {% for item in abstracts %}
+    <div class="abstract-item">
+      <div class="abstract-text">
+        <div class="abstract-title">POSTER #{{ loop.index }}</div>
+        <p><span data-field="abstracts[{{ loop.index0 }}].poster_number">{{ abstracts[loop.index0].poster_number }}</span></p>
+        <p><span data-field="abstracts[{{ loop.index0 }}].abstract_body">{{ abstracts[loop.index0].abstract_body }}</span></p>
+      </div>
+      {% if item.has_image %}
+      <div class="abstract-image"></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">10</div>
+</div>
+
+
+
+<div class="page">
+  <p>amplitude compared to baseline at the <span data-field="time_point">{{ time_point }}</span> timepoint (paired <span data-field="t_value">{{ t_value }}</span>, <span data-field="p_value">{{ p_value }}</span>, unpaired <span data-field="t_value_2">{{ t_value_2 }}</span>, <span data-field="p_value_2">{{ p_value_2 }}</span>). <span class="section-title">Conclusions:</span> These preliminary results suggest that combining two forms of brain stimulation is safe, feasible, and likely impacts cortical excitability. These data suggest there may be an interaction between the two administered simultaneous, rather than independently. Further completion of the trial, along with increased sample size, and more rigorous statistical analysis is warranted to determine whether combinatory <span data-field="t_value_3">{{ t_value_3 }}</span> may be used as a cortical excitability tool.</p>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #5</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">The Relationship Between Oxytocin and Coping Skills on Recollection in Couples</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Oxytocin is a neuropeptide known for its anxiolytic, prosocial, and pair-bonding effects. However, the literature is mixed regarding how oxytocin affects human behavior depending on contextual and individual characteristics (i.e., sex, coping skills). While oxytocin might increase positive communication among normative couples, other literature reports that oxytocin might enhance detrimental behaviors such as competitiveness, aggression, and anxiety. The present study sought to address whether coping skills moderate the effect of oxytocin on a couples' laboratory-based conflict resolution behaviors compared to placebo. <span class="section-title">Methods:</span> Participants were 30 different-sex couples (n=60) consisting of at least one partner with recent substance misuse. Participants were randomly assigned in a double-blind manner to 40 IU intranasal oxytocin or placebo. Couples completed the Brief COPE (Carrer, 1997) and a 10-minute conflict resolution task. Conflict behaviors were observationally coded by independent rater's blind to drug condition. We hypothesized that: a) adaptive coping skills would increase the effects of oxytocin on frequency of Relationship Enhancing Attributions, and reduce the frequency of Distress Maintaining Attributions; and b) maladaptive coping skills would decrease the effect of oxytocin on frequency of Relationship Enhancing and increase Distress Maintaining Attributions. <span class="section-title">Results:</span> Among men, oxytocin was more strongly associated with a decrease in Distress Maintaining Attributions among men with higher, compared to lower, maladaptive coping (p = .006). For women, Distress Maintaining Attributions were reduced during the couples' task regardless of their coping behaviors. Additionally, oxytocin was more strongly associated with reduced Relationship Enhancing Attributions (p = .03) among women with higher, as compared to lower, adaptive coping. <span class="section-title">Conclusion:</span> Findings suggest that in this sample, women and men had differential responses to oxytocin administration which were influenced by their coping skills.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #6</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Co-morbidity of PTSD and AUD: Using an Animal Model of the Single Prolonged Stress to Examine Stress-Induced Reinstatement of Alcohol-Seeking Behavior</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Alcohol use disorder (AUD) is a chronic relapsing brain disease characterized by an impaired ability to control alcohol use. There is high co-morbidity of AUD and post-traumatic stress disorder (PTSD), and stress is one of the main triggers of relapse. Animal models have been developed to evaluate this issue that involve training rodents to press a lever to obtain alcohol, and acute stress exposure which induces reinstatement of alcohol-seeking behavior after a period of extinction training. This study aims to evaluate the effect of prior stress experience on alcohol-seeking behavior induced by acute stress. <span class="section-title">Methods:</span> A single prolonged stress model (SPS) was used to induce PTSD in rats. After stress was induced, rats were trained to press a lever for alcohol. Adult male and female C57BL/6J mice (24/sex) were trained to lever press for alcohol (ethanol 12% v/v) in operant conditioning chambers. Number of lever responses and alcohol intake were recorded to examine alcohol-seeking behavior. Once lever pressing and alcohol intake stabilized, half of the mice underwent SPS protocol (restraint, forced swim, and exposure to anesthesia). The day after SPS exposure mice resumed alcohol self-administration. <span class="section-title">Results:</span> Initial baseline levels</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #7</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Demographic Predictors of Engagement with a Technology-based Treatment for Depression Among Monolingual Spanish Speakers</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Among Latino adults with limited English proficiency (LEP), <span data-field="percentage">{{ percentage }}</span> report symptoms of depression, but only <span data-field="percentage_2">{{ percentage_2 }}</span> of those symptomatic receive treatment. To extend treatment reach, recent studies have developed and implemented telehealth depression treatments. Yet, predictors of telehealth treatment engagement are unclear. Examining treatment engagement predictors is important to identify subgroups most and least likely to benefit from an mHealth-based treatment and forms the basis for the present study. <span class="section-title">Methods:</span> As part of a large clinical trial, we collected data from <span data-field="number_participants">{{ number_participants }}</span> participants that received iApptival. Demographic predictors included: gender, education, employment, income, relationship status, rurality, age, and symptoms of depression and anxiety. Treatment engagement metrics included: total app sessions, retention at weeks 4 and 8, and time using the app. Given the exploratory nature of this analysis, individual Chi-square and ANOVA analyses were used to examine associations between each demographic predictor and engagement metrics. Results: Measures of rural area and older participants were more likely to engage with iApptival including higher total app sessions and retention at week 8 (p = .05). Gender was not associated with engagement. <span class="section-title">Conclusion:</span> iApptival potentially offers an alternative approach to reduce health disparities and provide evidence-based depression treatment for older Latino adults with LEP who reside in more rural areas.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #8</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Sex Differences in Glutamate Pathologies: Implications in Ketamine Treatment for Depression and Alcohol Use Disorder</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Major depressive disorder (MDD) and alcohol use disorder (AUD) are prevalent psychiatric conditions that are known to occur at different rates between men and women. Furthermore, both MDD and AUD have been associated with glutamatergic dysregulation. Ketamine, an N-methyl-D-aspartate glutamate receptor (NMDA) antagonist, has shown preliminary efficacy in the treatment of MDD and alcohol use disorder (AUD). Numerous studies have shown differences in the regulation of the glutamate system between men and women, which suggests that there may be sex-dependent differences in response to ketamine treatment. The purpose of this review is to summarize the current knowledge of sex-specific outcomes of ketamine treatment for MDD and AUD. <span class="section-title">Methods:</span> A search was conducted using the Scopus database to identify completed human and animal studies discussing the effectiveness of ketamine in the treatment of MDD and AUD. Results: The results show that the efficacy of ketamine in the treatment of MDD and AUD is sex-dependent. <span class="section-title">Results:</span> The results show that the efficacy of ketamine in the treatment of MDD and AUD is sex-dependent. Furthermore, the human trials that have examined sex as a moderator of depression treatment response with ketamine have not found significant sex-based differences. Additionally, previous clinical trials of ketamine treatment for alcohol use disorder did not examine the</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #9</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Does Medication Reduce Alcohol Experimentation in Prescholatics with Attention-Deficit/Hyperactivity Disorder?</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Attention-deficit/hyperactivity disorder (ADHD) is the most common neurodevelopmental disorder in youth. For preschoolers, medication and/or evidence-based behavioral interventions are strongly recommended for treatment of ADHD. Medication can help increase concentration and reduce impulsiveness, while behavioral treatments help parents and teachers manage problematic behaviors in the context in which they occur. Early interventions for ADHD are important, as untreated ADHD increases the likelihood of externalizing behaviors, including substance use. The aim of this study was to examine the differences in early alcohol experimentation in preschoolers who are medicated vs. non-medicated. <span class="section-title">Methods:</span> Baseline data from the Adolescent Brain Cognitive Development (ABCD) Study were used for analyses. The ABCD Study is the largest long-term study of brain development in the United States, consisting of 21 sites and approximately 12,000 youth. Youth (ages 9-10) were categorized as meeting criteria for ADHD if either: (1) they met criteria for current ADHD through parent-reported measures, or (2) they met criteria for ADHD through teacher-reported measures. Alcohol experimentation was defined as any reported alcohol use by the youth. Results: Based on parent report, 25% of the youth (21.5% of total sample; mean age 9.48) reported alcohol experimentation. The percentage of youth with ADHD who reported alcohol experimentation was higher in the medicated group (14.5% of youth reported non-relapsing alcohol sipping, compared to 18.3% of the non-medicated ADHD group). <span class="section-title">Conclusion:</span> The results suggest that medication may reduce early alcohol experimentation in preschoolers with ADHD. Further research should examine older children for whom sipping may be more commonplace. Behavioral treatments for ADHD may be helpful</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #10</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Characterizing Vaping Behavior Among Current Smokers Introduced to E-cigarettes</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> E-cigarette use (i.e., vaping) has risen in prevalence, and health experts agree that pose fewer risks than traditional cigarettes. However, we know relatively little about changes in e-cigarette use across time among current smokers who try e-cigarettes. The goal of this study was to utilize objective methods to characterize changes in e-cigarette use among current smokers who try e-cigarettes. <span class="section-title">Methods:</span> Data were collected from current smokers with limited e-cigarette experience (n=26) participating in a longitudinal study investigating the effects of e-cigarette device characteristics on reinforcement. At baseline, participants sampled an e-cigarette and completed a variety of e-cigarette reinforcement assessments. Participants then took the device home for three weeks, and the device recorded every e-cigarette puff, providing an objective assessment of use. Primary outcomes included the average number of puffs/day and the number of days used/week. <span class="section-title">Results:</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #11</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">The Association of Sleep Quality and Asthma Among Rural Adolescents</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Asthma is a common chronic medical condition among U.S. adolescents. Studies have shown that rural adolescents are more likely to have asthma than their urban counterparts. Rural adolescents are also more vulnerable to poor health outcomes due to limited access to medical care and financial constraints. The most under-served and marginalized communities in the United States are located in rural or non-metropolitan areas, which are more prone to health disparities. Sleep quality is an important factor in overall health and development, which is often compromised among those with uncontrolled asthma, a major risk factor for asthma exacerbations. We hypothesized that worse sleep quality will be associated with higher asthma severity and more frequent asthma exacerbations in rural adolescents. <span class="section-title">Methods:</span> We surveyed <span data-field="number_participants">{{ number_participants }}</span> rural adolescents aged 13-17 years. Sleep quality was assessed using the Pittsburgh Sleep Quality Index (PSQI), and asthma severity was assessed using the Asthma Control Test (ACT). We also collected demographic data, including socioeconomic status and race/ethnicity. <span class="section-title">Results:</span> Adolescents with poorer sleep quality had significantly higher asthma severity scores (ACT score <span data-field="score_1">{{ score_1 }}</span>) and more frequent asthma exacerbations (ACT score <span data-field="score_2">{{ score_2 }}</span>) compared to those with better sleep quality (ACT score &gt; <span data-field="score_3">{{ score_3 }}</span>). Sleep quality was negatively associated with asthma severity (p &lt; .01). <span class="section-title">Conclusion:</span> Future analyses will examine associations between sleep quality, asthma diagnosis, and increased asthma severity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #12</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Cocaine and Memory: The Cell Type-Specific Role of NPAS4 in the Mouse Nucleus Accumbens</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Drug seeking and relapse are driven, in part, by associations between the rewarding effects of drugs and the environment where the drug reward was experienced. Future exposure to this environment leads to an increase in drug-seeking behavior, which is partially driven by plasticity within the nucleus accumbens (NAc). The majority of neurons in the NAc are dopamine D1 or D2 receptor-expressing medium spiny neurons (MSNs), but the mechanisms mediating drug-context memories in these cell types is not well understood. We previously found that cocaine exposure increased the expression of NPAS4 in the NAc. We hypothesized that NPAS4 acts in a cell type-specific manner within the NAc to promote cocaine-conditioned learning and memory. <span class="section-title">Experiment 1: Methods:</span> To identify cell types expressing NPAS4, we used fluorescent in situ hybridization (FISH) on NAc tissue from mice exposed to cocaine. <span class="section-title">Results:</span> We found that <span data-field="cell_type_1">{{ cell_type_1 }}</span> is expressed in both D1 and D2 receptor-expressing MSNs. <span class="section-title">Experiment 2: Methods:</span> To determine which cell type requires NPAS4 for cocaine-reward associations, we used conditional knockout mice. <span class="section-title">Results:</span> Deletion of NPAS4 in D1-MSNs impaired cocaine-conditioned place preference (CPP), indicating that NPAS4 expression within D2-MSNs is required for the development of cocaine-reward associations. <span class="section-title">Conclusion:</span> Findings suggest that NPAS4 expression in D2-MSNs is critical for the development of cocaine-reward associations. Future studies are being conducted to investigate the mechanism of D2-MSN activation after NPAS4 knockdown.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #13</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Severity of Cannabis Use Disorder and Perceived Problems in Adolescents with and Without Depression or Anxiety</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>, <span data-field="author_4">{{ author_4 }}</span>, <span data-field="author_5">{{ author_5 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> The complex relationship between youth cannabis use and mental health disorders such as depression and anxiety remains unclear. Youth may use cannabis to help alleviate depression or anxiety symptoms and thus be at risk for developing a cannabis use disorder (CUD). This study aimed to examine the relationship between cannabis use severity and perceived problems in adolescents with and without depression or anxiety. <span class="section-title">Methods:</span> Emerging adults (18-21) who use cannabis $\ge 3$ times weekly (N=42) tracked their cannabis use via mobile phone on a direct reporting app. Participants completed the Cannabis Use Disorder Scale (CUD-S), the Patient Health Questionnaire-9 (PHQ-9) for depression, and the Generalized Anxiety Disorder-7 (GAD-7) for anxiety. <span class="section-title">Results:</span> Twenty-six percent of participants met criteria for depression and anxiety, compared to those who did not. Cannabis use severity was significantly associated with perceived problems in both depression and anxiety for both groups. However, the relationship was stronger for those with depression. <span class="section-title">Conclusion:</span> Cannabis use severity can be explained by differences in quantity or frequency of use, suggesting that other factors contribute to increased CUD severity among individuals with depression or anxiety.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="poster-header">
+    <div class="poster-title">POSTER #14</div>
+  </div>
+  <div class="content-section">
+    <p><span class="section-title">Impact of a Wellbeing Intervention on Physical Activity Among Early Childhood Education Teachers</span></p>
+    <div class="authors">
+      <span data-field="author_1">{{ author_1 }}</span>, <span data-field="author_2">{{ author_2 }}</span>, <span data-field="author_3">{{ author_3 }}</span>
+    </div>
+    <div class="content-section">
+      <p><span class="section-title">Background:</span> Physical activity is beneficial to overall wellbeing, and has been shown to reduce stress and improve mood (Paluska and Schwenk, 2012). The impacts of living a physically active lifestyle have led to individuals having a higher quality of life. This study investigated the impact of a wellbeing intervention on the physical activity of early childhood education teachers who work in a workplace enhances the attitudes and overall health of the individual workers (Chu et al., 2014). This study examines the effectiveness of a wellbeing intervention on the physical activity of early childhood education teachers. <span class="section-title">Methods:</span> We used the Well Care Well (BCWW) is a statewide ECE program designed to promote health and well-being of the</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="content-section">
+    <p>ECE teachers, across South Carolina, 28 ECE centers voluntarily participated in this study, and data was collected from 349 ECE teachers. Each teacher completed a questionnaire during enrollment in the program, and another questionnaire at the end of the program. The questionnaire included questions about physical activity, perceived stress, and wellbeing. <span class="section-title">Results:</span> The BCWW program showed an increase in physical activity positively correlated to a higher number of hours of engagement in the program, $\beta = .034$, p = .008. At preintervention, <span data-field="percentage_2">{{ percentage_2 }}</span> of teachers reported that they exercised regularly, and at postintervention, <span data-field="percentage_3">{{ percentage_3 }}</span> of teachers reported that they exercised regularly. The wellbeing scores also increased significantly from pre to postintervention, but there was no significant association between hours of engagement in the program and change in physical activity. <span class="section-title">Conclusion:</span> Findings revealed that embedding a wellbeing program into the workplace significantly impacted physical activity among early childhood education teachers. This study suggests that workplace-based wellbeing programs can be an effective strategy for enhancing teachers' ability to provide relationship-based care that better helps children in their classrooms.</p>
+  </div>
+  <div class="footer">
+    <p>14</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 2.5em; margin-bottom: 10px;">SPECIAL THANKS &<br>ACKNOWLEDGMENTS</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-around; margin-bottom: 40px;">
+    <div style="text-align: center;">
+      <h3 style="font-size: 1.2em; margin-bottom: 10px;">DART Administrative Leaders, Staff, & Support</h3>
+      <p style="font-size: 0.9em;">
+        <span data-field="name_1">{{ name_1 }}</span>, <span data-field="name_2">{{ name_2 }}</span>, <span data-field="name_3">{{ name_3 }}</span>, <span data-field="name_4">{{ name_4 }}</span>, <span data-field="name_5">{{ name_5 }}</span><br>
+        <span data-field="name_6">{{ name_6 }}</span>, <span data-field="name_7">{{ name_7 }}</span>, <span data-field="name_8">{{ name_8 }}</span>, <span data-field="name_9">{{ name_9 }}</span>, <span data-field="name_10">{{ name_10 }}</span>
+      </p>
+    </div>
+    <div style="text-align: center;">
+      <h3 style="font-size: 1.2em; margin-bottom: 10px;">DART Research Mentors</h3>
+      <p style="font-size: 0.9em;">
+        <span data-field="mentor_1">{{ mentor_1 }}</span>, <span data-field="mentor_2">{{ mentor_2 }}</span>, <span data-field="mentor_3">{{ mentor_3 }}</span>, <span data-field="mentor_4">{{ mentor_4 }}</span>, <span data-field="mentor_5">{{ mentor_5 }}</span><br>
+        <span data-field="mentor_6">{{ mentor_6 }}</span>, <span data-field="mentor_7">{{ mentor_7 }}</span>, <span data-field="mentor_8">{{ mentor_8 }}</span>, <span data-field="mentor_9">{{ mentor_9 }}</span>, <span data-field="mentor_10">{{ mentor_10 }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h3 style="font-size: 1.2em; margin-bottom: 10px;">DART Summer Seminar Presenters & Near Peer Mentors</h3>
+    <p style="font-size: 0.9em;">
+      <span data-field="presenter_1">{{ presenter_1 }}</span>, <span data-field="presenter_2">{{ presenter_2 }}</span>, <span data-field="presenter_3">{{ presenter_3 }}</span>, <span data-field="presenter_4">{{ presenter_4 }}</span>, <span data-field="presenter_5">{{ presenter_5 }}</span><br>
+      <span data-field="presenter_6">{{ presenter_6 }}</span>, <span data-field="presenter_7">{{ presenter_7 }}</span>, <span data-field="presenter_8">{{ presenter_8 }}</span>, <span data-field="presenter_9">{{ presenter_9 }}</span>, <span data-field="presenter_10">{{ presenter_10 }}</span>
+    </p>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h3 style="font-size: 1.2em; margin-bottom: 10px;">Additional Support</h3>
+    <p style="font-size: 0.9em;">
+      Executive Committee on Education and Training Programs, MUSC<br>
+      Department of Psychiatry and Behavioral Sciences & Department of Neuroscience, MUSC<br>
+      National Institute on Drug Abuse (NIDA R25 DA020537)
+    </p>
+  </div>
+
+  <div style="text-align: center; margin-top: 60px; font-size: 0.9em;">
+    <p>The Drug Abuse Research Training Program (DART) provides a NIDA-sponsored research track for Psychiatry Residents and Summer Fellows at the Medical University of South Carolina.</p>
+    <p>For more information, please visit <a href="education.musc.edu/dart">education.musc.edu/dart</a>.</p>
+  </div>
+</div>
+
+</body>
+</html>

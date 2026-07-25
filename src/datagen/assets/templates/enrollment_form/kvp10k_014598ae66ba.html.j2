@@ -1,0 +1,301 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2, h3 { margin-top: 0; }
+  .form-section { margin-bottom: 30px; }
+  .row { display: flex; margin-bottom: 10px; }
+  .row > div { flex: 1; margin-right: 20px; }
+  .input-group { display: flex; align-items: center; }
+  .input-group label { margin-right: 10px; font-weight: bold; }
+  .input-group input[type="text"], .input-group select { border: 1px solid #ccc; padding: 5px; }
+  .signature-line { border-bottom: 1px solid black; margin-top: 50px; padding-bottom: 5px; }
+</style>
+
+<div class="page">
+  <header style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24pt;">Pro-Flex</h1>
+    <h2 style="font-size: 16pt;">Flexible Spending Account Enrollment Form</h2>
+  </header>
+
+  <div class="form-section">
+    <h3>Step 1: Participant Information</h3>
+    <p><em>*Required Fields</em></p>
+
+    <div class="row">
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="employer_name">Employer Name (Do not abbreviate)</label>
+          <input type="text" style="width: 100%;" data-field="employer_name" value="{{ employer_name }}">
+        </div>
+      </div>
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="department">Department</label>
+          <input type="text" style="width: 100%;" data-field="department" value="{{ department }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="participant_name">Participant Name (First, Mi, Last)</label>
+          <input type="text" style="width: 100%;" data-field="participant_name" value="{{ participant_name }}">
+        </div>
+      </div>
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="ssn">Social Security Number</label>
+          <input type="text" style="width: 100%;" data-field="social_security_number" value="{{ social_security_number }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="mailing_address">Participant Mailing Address</label>
+          <input type="text" style="width: 100%;" data-field="participant_mailing_address" value="{{ participant_mailing_address }}">
+        </div>
+      </div>
+      <div style="flex-basis: 50%;">
+        <div class="input-group">
+          <label for="email_address">Email Address (If provided, all notifications will be sent via email)</label>
+          <input type="text" style="width: 100%;" data-field="participant_mailing_address_2" value="{{ participant_mailing_address_2 }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="flex-basis: 25%;">
+        <div class="input-group">
+          <label for="city">City</label>
+          <input type="text" style="width: 100%;" data-field="city" value="{{ city }}">
+        </div>
+      </div>
+      <div style="flex-basis: 25%;">
+        <div class="input-group">
+          <label for="state">State</label>
+          <input type="text" style="width: 100%;" data-field="state" value="{{ state }}">
+        </div>
+      </div>
+      <div style="flex-basis: 25%;">
+        <div class="input-group">
+          <label for="zip">Zip</label>
+          <input type="text" style="width: 100%;" data-field="zip" value="{{ zip }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <div style="flex-basis: 33%;">
+        <div class="input-group">
+          <label>Day Telephone</label>
+          <input type="text" style="width: 100%;" data-field="day_telephone" value="{{ day_telephone }}">
+        </div>
+      </div>
+      <div style="flex-basis: 33%;">
+        <div class="input-group">
+          <label>Weekly</label>
+          <input type="radio" name="pay_frequency" value="weekly">
+          <label>Bi-Weekly</label>
+          <input type="radio" name="pay_frequency" value="biweekly">
+          <label>Semi-Monthly</label>
+          <input type="radio" name="pay_frequency" value="semimonthly">
+          <label>Monthly</label>
+          <input type="radio" name="pay_frequency" value="monthly">
+          <label>Other</label>
+          <input type="radio" name="pay_frequency" value="other">
+        </div>
+      </div>
+      <div style="flex-basis: 33%;">
+        <div class="input-group">
+          <label>Hire Date (mm/dd/yyyy)</label>
+          <input type="text" style="width: 100%;" data-field="hire_date" value="{{ hire_date }}">
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div style="flex-basis: 50%;">
+            <div class="input-group">
+                <label>Birth Date (mm/dd/yyyy)</label>
+                <input type="text" style="width: 100%;" data-field="birth_date" value="{{ birth_date }}">
+            </div>
+        </div>
+        <div style="flex-basis: 50%;">
+            <div class="input-group">
+                <label>Date of first payroll withholding</label>
+                <input type="text" style="width: 100%;" data-field="date_of_first_payroll_withholding" value="{{ date_of_first_payroll_withholding }}">
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Step 2: Spouse and Dependent Information</h3>
+    <div class="row" style="margin-bottom: 15px;">
+        <div style="flex-basis: 33%;">
+            <div class="input-group">
+                <label>Spouse:</label>
+                <input type="text" style="width: 100%;" data-field="spouse" value="{{ spouse }}">
+            </div>
+        </div>
+        <div style="flex-basis: 33%;">
+            <div class="input-group">
+                <label>Date of Birth</label>
+                <input type="text" style="width: 100%;" data-field="date_of_birth" value="{{ date_of_birth }}">
+            </div>
+        </div>
+        <div style="flex-basis: 33%;">
+            <div class="input-group">
+                <label>Social Security Number</label>
+                <input type="text" style="width: 100%;" data-field="social_security_number_2" value="{{ social_security_number_2 }}">
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <p>Dependent:</p>
+        <div class="row" style="margin-bottom: 10px;">
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Name (Last, First)</label>
+                    <input type="text" style="width: 100%;" data-field="name" value="{{ name }}">
+                </div>
+            </div>
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Date of Birth</label>
+                    <input type="text" style="width: 100%;" data-field="date_of_birth_2" value="{{ date_of_birth_2 }}">
+                </div>
+            </div>
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Social Security Number</label>
+                    <input type="text" style="width: 100%;" data-field="social_security_number_3" value="{{ social_security_number_3 }}">
+                </div>
+            </div>
+        </div>
+        <!-- Assuming multiple dependents are possible, though layout suggests fixed rows -->
+        {% for i in range(3) %}
+        <div class="row" style="margin-bottom: 10px;">
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Dependent:</label>
+                    <input type="text" style="width: 100%;" data-field="dependent" value="{{ dependent }}">
+                </div>
+            </div>
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Date of Birth</label>
+                    <input type="text" style="width: 100%;" data-field="date_of_birth_3" value="{{ date_of_birth_3 }}">
+                </div>
+            </div>
+            <div style="flex-basis: 33%;">
+                <div class="input-group">
+                    <label>Social Security Number</label>
+                    <input type="text" style="width: 100%;" data-field="social_security_number_4" value="{{ social_security_number_4 }}">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Step 3: Election</h3>
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="flex-basis: 33%;">
+            <label>Account Type</label>
+            <input type="text" style="width: 100%;" data-field="account_type" value="{{ account_type }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Election Amount</label>
+            <input type="text" style="width: 100%;" data-field="election_amount" value="{{ election_amount }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Election Amount</label>
+            <input type="text" style="width: 100%;" data-field="election_amount_2" value="{{ election_amount_2 }}">
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="flex-basis: 33%;">
+            <label>Medical Expense Account</label>
+            <input type="text" style="width: 100%;" data-field="medical_expense_account" value="{{ medical_expense_account }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Annually</label>
+            <input type="text" style="width: 100%;" data-field="annually" value="{{ annually }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Annually</label>
+            <input type="text" style="width: 100%;" data-field="annually_2" value="{{ annually_2 }}">
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="flex-basis: 33%;">
+            <label>Dependent Care Reimbursement</label>
+            <input type="text" style="width: 100%;" data-field="dependent_care_reimbursement" value="{{ dependent_care_reimbursement }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Annually</label>
+            <input type="text" style="width: 100%;" data-field="annually_3" value="{{ annually_3 }}">
+        </div>
+        <div style="flex-basis: 33%;">
+            <label>Annually</label>
+            <input type="text" style="width: 100%;" data-field="annually_4" value="{{ annually_4 }}">
+        </div>
+    </div>
+
+    <p style="font-size: 10pt; margin-top: 20px;">Minimum Reimbursement amount for manual check is $25</p>
+  </div>
+
+  <div class="form-section">
+    <h3>Step 4: Authorization or Refusal</h3>
+    <p style="font-size: 10pt; line-height: 1.4;">I hereby elect the benefits indicated above. I have read and understand the enrollment materials (flex brochure, enrollment form, daycare form, direct deposit form and claim form) and I understand that I may change my plan at any time during the plan year, except under certain circumstances. I understand that if I fail to use my benefits, they may be forfeited or modified. I understand that if I am enrolled in a Health Savings Account (HSA) that I cannot enroll in the Medical FSA, and that I can only enroll in the Limited Purpose FSA if my employer offers this and</p>
+    <div class="row" style="margin-top: 40px;">
+        <div style="flex-basis: 50%;">
+            <p>SIGNATURE OF PARTICIPANT</p>
+            <div class="signature-line" data-field="signature_of_participant">{{ signature_of_participant }}</div>
+        </div>
+        <div style="flex-basis: 50%; text-align: right;">
+            <p>DATE</p>
+            <div class="signature-line" data-field="date">{{ date }}</div>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Step 5: Employer Authorization</h3>
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="flex-basis: 50%;">
+            <label>Benefit Effective Date</label>
+            <input type="text" style="width: 100%;" data-field="benefit_effective_date" value="{{ benefit_effective_date }}">
+        </div>
+        <div style="flex-basis: 50%;">
+            <label>Date of first payroll withholding</label>
+            <input type="text" style="width: 100%;" data-field="date_of_first_payroll_withholding_2" value="{{ date_of_first_payroll_withholding_2 }}">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div style="flex-basis: 50%;">
+            <p>SIGNATURE OF EMPLOYER</p>
+            <div class="signature-line" data-field="signature_of_employer">{{ signature_of_employer }}</div>
+        </div>
+        <div style="flex-basis: 50%; text-align: right;">
+            <p>DATE</p>
+            <div class="signature-line" data-field="date_2">{{ date_2 }}</div>
+        </div>
+    </div>
+  </div>
+</div>

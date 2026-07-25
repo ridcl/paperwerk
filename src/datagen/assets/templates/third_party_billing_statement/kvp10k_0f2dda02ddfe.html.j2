@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Third Party Billing Statement</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { margin-top: 0; }
+        .header-logo { float: right; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .form-row > div { width: 48%; }
+        .full-width-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .signature-block { margin-top: 50px; }
+        .signature-line { border-bottom: 1px solid #000; width: 50%; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="placeholder_logo.png" alt="FAMU Logo" style="height: 80px;"/>
+            <div style="margin-top: 10px;">
+                <span style="font-size: 14px;">FLORIDA AGRICULTURAL AND MECHANICAL UNIVERSITY</span>
+            </div>
+        </div>
+
+        <h1 style="text-align: center; font-size: 24px; margin-bottom: 30px;">THIRD PARTY BILLING STATEMENT</h1>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span data-field="department.name">{{ department.name }}</span>
+            <br>
+            <span data-field="department.address_line_1">{{ department.address_line_1 }}</span>
+            <br>
+            <span data-field="department.address_line_2">{{ department.address_line_2 }}</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 12px;">
+            <div>
+                Phone: <span data-field="contact.phone">{{ contact.phone }}</span> - Fax: <span data-field="contact.fax">{{ contact.fax }}</span>
+            </div>
+            <div>
+                Email: <span data-field="contact.email">{{ contact.email }}</span>
+            </div>
+        </div>
+
+        <div class="section-title">Student Information</div>
+        <div class="form-row">
+            <div>
+                Student Name: <span data-field="student_name">{{ student_name }}</span>
+            </div>
+            <div>
+                Student ID: <span data-field="student_id">{{ student_id }}</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                Email Address: <span data-field="student_email">{{ student_email }}</span>
+            </div>
+            <div>
+                Phone Number: <span data-field="student_phone">{{ student_phone }}</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                Billing Semester/Year: <span data-field="billing_period">{{ billing_period }}</span>
+            </div>
+            <div>
+                Billing Amount (All/Partial/Specify): <span data-field="billing_amount">{{ billing_amount }}</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                Name of Agency: <span data-field="agency_name">{{ agency_name }}</span>
+            </div>
+            <div>
+                Agency Contact: <span data-field="agency_contact_name">{{ agency_contact_name }}</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                Agency Address: <span data-field="agency_address">{{ agency_address }}</span>
+            </div>
+            <div>
+                Agency Contact Number: <span data-field="agency_contact_number">{{ agency_contact_number }}</span>
+            </div>
+        </div>
+        <div style="margin-bottom: 30px;">
+            Agency Contact Email: <span data-field="agency_contact_email">{{ agency_contact_email }}</span>
+        </div>
+
+        <div class="section-title">I. Payment Arrangements</div>
+        <ol style="margin-left: 20px; padding-left: 0;">
+            <li>
+                <span data-field="payment_arrangement_1">{{ payment_arrangement_1 }}</span>
+            </li>
+            <li>
+                <span data-field="payment_arrangement_2">{{ payment_arrangement_2 }}</span>
+            </li>
+            <li>
+                <span data-field="payment_arrangement_3">{{ payment_arrangement_3 }}</span>
+            </li>
+        </ol>
+
+        <div class="section-title">II. Eligibility</div>
+        <ol style="margin-left: 20px; padding-left: 0;">
+            <li>
+                <span data-field="eligibility_1">{{ eligibility_1 }}</span>
+            </li>
+            <li>
+                <span data-field="eligibility_2">{{ eligibility_2 }}</span>
+            </li>
+            <li>
+                <span data-field="eligibility_3">{{ eligibility_3 }}</span>
+            </li>
+            <li>
+                <span data-field="eligibility_4">{{ eligibility_4 }}</span>
+            </li>
+            <li>
+                <span data-field="eligibility_5">{{ eligibility_5 }}</span>
+            </li>
+        </ol>
+
+        <div class="section-title">III. Payments</div>
+        <ol style="margin-left: 20px; padding-left: 0;">
+            <li>
+                <span data-field="payment_terms">{{ payment_terms }}</span>
+                <div style="margin-left: 30px;">
+                    <span data-field="payment_recipient_name">{{ payment_recipient_name }}</span>
+                    <br>
+                    <span data-field="payment_recipient_office">{{ payment_recipient_office }}</span>
+                    <br>
+                    ATTN: <span data-field="payment_recipient_attn">{{ payment_recipient_attn }}</span>
+                    <br>
+                    <span data-field="payment_recipient_address_line_1">{{ payment_recipient_address_line_1 }}</span>
+                    <br>
+                    <span data-field="payment_recipient_address_line_2">{{ payment_recipient_address_line_2 }}</span>
+                </div>
+            </li>
+            <li>
+                <span data-field="payment_instructions">{{ payment_instructions }}</span>
+                <div style="margin-left: 30px;">
+                    Fax: <span data-field="payment_fax">{{ payment_fax }}</span>
+                    Email: <span data-field="payment_email">{{ payment_email }}</span>
+                </div>
+            </li>
+        </ol>
+
+        <div class="section-title">IV. Authorization</div>
+        <p style="font-size: 12px;">I authorize Florida A&M University to provide student account information to the agency.</p>
+
+        <div class="signature-block">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    Student Signature:
+                    <div class="signature-line"></div>
+                </div>
+                <div>
+                    Received By:
+                    <div class="signature-line"></div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+                <div>
+                    Date:
+                    <div class="signature-line" style="width: 200px;"></div>
+                </div>
+                <div>
+                    Contract #:
+                    <div class="signature-line" style="width: 200px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: right; font-size: 10px; margin-top: 50px;">
+            SFS <span data-field="document_date">{{ document_date }}</span> OW
+        </div>
+    </div>
+</body>
+</html>

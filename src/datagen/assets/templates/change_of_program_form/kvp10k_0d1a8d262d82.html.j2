@@ -1,0 +1,188 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 10px; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-row > div { flex: 1; padding-right: 20px; }
+  .form-row > div:last-child { padding-right: 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 30px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; font-weight: bold; }
+  .signature-line { border-bottom: 1px solid black; margin-top: 60px; margin-bottom: 5px; display: inline-block; width: 50%; }
+</style>
+<body>
+  <div class="page">
+    <div style="text-align: center;">
+      <h1 style="font-size: 24pt; margin: 0;">CSUDH</h1>
+      <p style="font-size: 10pt; margin: 0;">CALIFORNIA STATE UNIVERSITY, DORWINVILLE HILLS</p>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+      <h2 style="font-size: 14pt; margin: 0;">CHANGE OF PROGRAM (ADD/DROP)</h2>
+      <h3 style="font-size: 12pt; margin: 0;">OFFICE OF ADMISSIONS AND RECORDS (WH 290)</h3>
+    </div>
+
+    <div class="header-info" style="margin-top: 40px;">
+      <div>
+        <p>STUDENT ID:</p>
+        <div style="border-bottom: 1px solid black; width: 300px;" data-field="student_id">{{ student_id }}</div>
+      </div>
+      <div style="text-align: right;">
+        <p>FOR OFFICE USE ONLY</p>
+        <p>SIGNATURE:</p>
+        <div style="border-bottom: 1px solid black; width: 200px;" data-field="signature">{{ signature }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <p>LAST NAME:</p>
+        <div style="border-bottom: 1px solid black; width: 300px;" data-field="last_name">{{ last_name }}</div>
+      </div>
+      <div>
+        <p>FIRST NAME:</p>
+        <div style="border-bottom: 1px solid black; width: 300px;" data-field="first_name">{{ first_name }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <p>PHONE NUMBER:</p>
+        <div style="border-bottom: 1px solid black; width: 300px;" data-field="phone_number">{{ phone_number }}</div>
+      </div>
+      <div>
+        <p>TERM:</p>
+        <div style="border-bottom: 1px solid black; width: 300px;" data-field="term">{{ term }}</div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div style="width: 50%;">
+            <p>LIST ALL COURSES YOU WISH TO ADD BELOW:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">CRN</th>
+                        <th style="width: 10%;">DEPT.</th>
+                        <th style="width: 15%;">COURSE NO.</th>
+                        <th style="width: 15%;">SECTION</th>
+                        <th style="width: 10%;">UNITS</th>
+                        <th style="width: 20%;">INSTRUCTOR SIGNATURE</th>
+                        <th style="width: 15%;">DEPT. CHAIRS SIGNATURE</th>
+                        <th style="width: 10%;">DEAN'S SIGNATURE</th>
+                        <th style="width: 5%;">DATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in added_courses %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><span data-field="added_courses[{{ loop.index0 }}].dept">{{ item.dept }}</span></td>
+                        <td><span data-field="added_courses[{{ loop.index0 }}].course_no">{{ item.course_no }}</span></td>
+                        <td><span data-field="added_courses[{{ loop.index0 }}].section">{{ item.section }}</span></td>
+                        <td><span data-field="added_courses[{{ loop.index0 }}].units">{{ item.units }}</span></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><span data-field="added_courses[{{ loop.index0 }}].date">{{ item.date }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div style="width: 50%;">
+            <p>LIST ALL COURSES YOU WISH TO DROP BELOW:</p>
+            <p style="font-size: 9pt;">NOTE: DEPT. CHAIR APPROVAL IS REQUIRED TO DROP MAT 011, MAT 012, MAT 013, MAT 014, MAT 015, MAT 016, ENG 088, ENG 099</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">CRN</th>
+                        <th style="width: 10%;">DEPT.</th>
+                        <th style="width: 15%;">COURSE NO.</th>
+                        <th style="width: 15%;">SECTION</th>
+                        <th style="width: 10%;">UNITS</th>
+                        <th style="width: 20%;">INSTRUCTOR SIGNATURE</th>
+                        <th style="width: 15%;">DEPT. CHAIRS SIGNATURE</th>
+                        <th style="width: 10%;">DEAN'S SIGNATURE</th>
+                        <th style="width: 5%;">DATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in dropped_courses %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><span data-field="dropped_courses[{{ loop.index0 }}].dept">{{ item.dept }}</span></td>
+                        <td><span data-field="dropped_courses[{{ loop.index0 }}].course_no">{{ item.course_no }}</span></td>
+                        <td><span data-field="dropped_courses[{{ loop.index0 }}].section">{{ item.section }}</span></td>
+                        <td><span data-field="dropped_courses[{{ loop.index0 }}].units">{{ item.units }}</span></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><div style="height: 30px;"></div></td>
+                        <td><span data-field="dropped_courses[{{ loop.index0 }}].date">{{ item.date }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <p>EXCEEDING MAXIMUM UNIT LOAD: TO BE COMPLETED IF YOU WOULD LIKE TO REGISTER FOR MORE THAN 18 UNITS. EXCEEDING MAXIMUM UNIT LOAD FORMS ARE ONLY ACCEPTED STARTING THE FIRST DAY OF THE TERM.</p>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <div class="form-row">
+            <div style="flex: 1;">
+                <p>GPA:</p>
+                <div style="border-bottom: 1px solid black; width: 300px;" data-field="gpa">{{ gpa }}</div>
+            </div>
+            <div style="flex: 1;">
+                <p>CLASS STANDING:</p>
+                <div style="border-bottom: 1px solid black; width: 300px;" data-field="class_standing">{{ class_standing }}</div>
+            </div>
+            <div style="flex: 1;">
+                <p># OF UNITS APPROVED</p>
+                <div style="border-bottom: 1px solid black; width: 300px;" data-field="of_units_approved">{{ of_units_approved }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div class="form-row">
+            <div style="flex: 1;">
+                <p>ADVISORS SIGNATURE:</p>
+                <div class="signature-line" data-field="advisors_signature">{{ advisors_signature }}</div>
+            </div>
+            <div style="flex: 1; text-align: right;">
+                <p>DATE:</p>
+                <div style="border-bottom: 1px solid black; width: 200px;" data-field="date">{{ date }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div class="form-row">
+            <div style="flex: 1;">
+                <p>DEAN'S SIGNATURE:</p>
+                <div class="signature-line" data-field="dean_s_signature">{{ dean_s_signature }}</div>
+            </div>
+            <div style="flex: 1; text-align: right;">
+                <p>DATE:</p>
+                <div style="border-bottom: 1px solid black; width: 200px;" data-field="date_2">{{ date_2 }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: right; font-size: 9pt; margin-top: 100px;">
+        Last Updated: <span data-field="last_updated_date">{{ last_updated_date }}</span>
+    </div>
+  </div>
+</body>

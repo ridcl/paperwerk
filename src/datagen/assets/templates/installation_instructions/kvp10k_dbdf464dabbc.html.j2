@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Installation Instructions</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>NI LabView 2019 Installation Instructions</h1>
+        <p>By <span data-field="author_name">{{ author_name }}</span> | <span data-field="contact_email">{{ contact_email }}</span> | updated <span data-field="update_date">{{ update_date }}</span></p>
+
+        <h2>Student and Off-Campus Installations</h2>
+        <p>Go to <a href="https://support.cise.jmu.edu/iso/NI">https://support.cise.jmu.edu/iso/NI</a> and log in with your JMU eID and password.</p>
+
+        <p><strong>support.cise.jmu.edu - /iso/NI/</strong></p>
+
+        <p>[To Parent Directory]</p>
+
+        <h3>Windows users will need to download and run the Web Installer: <a href="ni-software-platform-bundle-19.1-suite-online-repack.exe">ni-software-platform-bundle-19.1-suite-online-repack.exe</a>. This small application will allow you to install any application from the LabView suite of programs via the internet.</h3>
+
+        <p>Mac users will need to download and the ISO installation media: <a href="lv2019sp1full-linux-mac.iso">lv2019sp1full-linux-mac.iso</a>. This includes individual installs for LabView 2019, Control Design and Simulation Modules 2019, and MathScript 2019.</p>
+    </div>
+
+    <div class="page">
+        <h2>JMU-Owned PCs on the JMU Network</h2>
+        <p>Go to <a href="cise-fs.ad.jmu.edu/installs">cise-fs.ad.jmu.edu/installs</a> using Windows File Explorer. Midway down the page, you will find a listing for LabView Spring 2019:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date modified</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in installed_software %}
+                <tr>
+                    <td><span data-field="installed_software[{{ loop.index0 }}].name">{{ installed_software[loop.index0].name }}</span></td>
+                    <td><span data-field="installed_software[{{ loop.index0 }}].date_modified">{{ installed_software[loop.index0].date_modified }}</span></td>
+                    <td><span data-field="installed_software[{{ loop.index0 }}].type">{{ installed_software[loop.index0].type }}</span></td>
+                    <td><span data-field="installed_software[{{ loop.index0 }}].size">{{ installed_software[loop.index0].size }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <h2>Windows Installation Process</h2>
+        <p>Open the <a href="web installer">web installer</a> you downloaded. The Software Platform Bundle 2019 will install the NI Package Manager before continuing with LabView. By default, the installer will select LabVIEW, NI-DAQmx, NI-488.2, NI-VISA, and PXI Platform Services. At a minimum, you will also want to add <a href="daqexpress">DAQExpress</a>.</p>
+
+        <!-- Placeholder for the complex UI screenshot, represented by static text/structure -->
+        <div style="height: 300px; border: 1px solid #ccc; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+            [Visual representation of Software Platform Bundle selection screen]
+        </div>
+
+        <p>You may select as many products as you like, but please be aware, installing all packages may take over 80GB of space. The <strong>minimum install will take nearly 13.5GB</strong>. You can always run the installer again at a later date to add any additional products. Accept the license agreements and proceed with the install. This may take a half hour or more depending on your product selection.</p>
+    </div>
+
+    <div class="page">
+        <h2>Activation Process</h2>
+        <p>After installation has completed, you will be asked to log in with an NI Account. If you do not already have an account, click <a href="create user account">Create a user account</a> from the installer. Once you have logged in, choose to Enter a serial number and type the 9-digit number provided by your professor into each of the fields.</p>
+
+        <!-- Placeholder for the activation UI screenshot -->
+        <div style="height: 300px; border: 1px solid #ccc; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+            [Visual representation of Serial Number Activation screen]
+        </div>
+
+        <p>Not all products are covered under the license. Click Finish and ignore any remaining activations.</p>
+
+        <!-- Placeholder for the success UI screenshot -->
+        <div style="height: 300px; border: 1px solid #ccc; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+            [Visual representation of Activation Success screen]
+        </div>
+    </div>
+
+    <div class="page">
+        <h2>Mac Installation Process</h2>
+        <p>The file you downloaded earlier (<a href="lv2019sp1full-linux-mac.iso">lv2019sp1full-linux-mac.iso</a>) may be opened with Finder and contains individual installs for LabView 2019:</p>
+
+        <!-- Placeholder for the Mac installation UI screenshot -->
+        <div style="height: 300px; border: 1px solid #ccc; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+            [Visual representation of Mac installation file structure]
+        </div>
+
+        <p><strong>*** Please note, Mac versions of LabView do not offer driver support for NI hardware. ***</strong></p>
+
+        <p>If you receive a message that the installer 'can't be opened because Apple cannot check it for malicious software,' open 'Security & Privacy' from the System Preferences app and tell it to Open Anyway:</p>
+
+        <!-- Placeholder for the security prompt screenshot -->
+        <div style="height: 300px; border: 1px solid #ccc; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+            [Visual representation of Security Prompt]
+        </div>
+    </div>
+
+    <div class="page">
+        <h2>Support</h2>
+        <p>If you have any difficulty installing or licensing LabView, please email <span data-field="support_email">{{ support_email }}</span> for support.</p>
+        <p>Thank you!</p>
+
+        <p><strong>Chrissy Willow Rothgeb</strong></p>
+        <p>Cise IT - Labs and Server Support</p>
+        <p>College of Integrated Science and Engineering | James Madison University</p>
+        <p>540.568.2629 | ISAT/CS 260 | 701 Carrier Drive, Harrisonburg VA 22807</p>
+    </div>
+</body>
+</html>

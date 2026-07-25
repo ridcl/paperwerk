@@ -1,0 +1,171 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 4px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 16pt; margin: 0;">Form W-9</h1>
+      <p style="font-size: 10pt; margin-top: 5px;">(Rev. October 2018)</p>
+      <p style="font-size: 10pt;">Department of the Treasury</p>
+      <p style="font-size: 10pt;">Internal Revenue Service</p>
+    </div>
+    <div style="text-align: right;">
+      <h3 style="font-size: 12pt; margin: 0;">Give Form to the requester. Do not send to the IRS.</h3>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">1. Name (as shown on your tax return). Name is required on this line; do not leave this line blank.</p>
+    <div style="border-bottom: 1px solid black; margin-top: 5px;">
+      <span data-field="full_name" style="display: inline-block; width: 80%;">{{ full_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">2. Business name/address entity name, if different from above</p>
+    <div style="border-bottom: 1px solid black; margin-top: 5px;">
+      <span data-field="employer.name" style="display: inline-block; width: 80%;">{{ employer.name }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">3. Check appropriate box for federal tax classification of the person whose name is entered on line 1. Check only one of the following boxes:</p>
+    <div style="margin-top: 10px;">
+      <label style="margin-right: 15px;"><input type="checkbox"> Individual/sole proprietor or single-member LLC</label>
+      <label style="margin-right: 15px;"><input type="checkbox"> C Corporation</label>
+      <label style="margin-right: 15px;"><input type="checkbox"> S Corporation</label>
+      <label style="margin-right: 15px;"><input type="checkbox"> Partnership</label>
+      <label style="margin-right: 15px;"><input type="checkbox"> Trust/estate</label>
+    </div>
+    <p style="font-size: 10pt; margin-top: 10px;">Exempt payee code (if any)</p>
+    <div style="border-bottom: 1px solid black; width: 150px; margin-top: 5px;">
+      <span data-field="exempt_payee_code">{{ exempt_payee_code }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">4. Exemptions (codes apply only to certain entities, not individuals; see instructions on page 3):</p>
+    <div style="margin-top: 10px;">
+      <label style="margin-right: 15px;"><input type="checkbox"> Exempt from FATCA reporting</label>
+      <label style="margin-right: 15px;"><input type="checkbox"> Exempt from EIN</label>
+    </div>
+    <p style="font-size: 10pt; margin-top: 10px;">Exemption from FATCA reporting code (if any)</p>
+    <div style="border-bottom: 1px solid black; width: 150px; margin-top: 5px;">
+      <span data-field="fatca_exemption_code">{{ fatca_exemption_code }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">5. Address (street, city, state, and zip or none). Instructions.</p>
+    <div style="border-bottom: 1px solid black; margin-top: 5px;">
+      <span data-field="address_line_1" style="display: inline-block; width: 80%;">{{ address_line_1 }}</span>
+    </div>
+    <div style="margin-top: 5px;">
+      <span data-field="city" style="display: inline-block; width: 20%;">{{ city }}</span>
+      <span data-field="state" style="display: inline-block; width: 15%;">{{ state }}</span>
+      <span data-field="zip_code" style="display: inline-block; width: 25%;">{{ zip_code }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">Taxpayer Identification Number (TIN)</p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+      <div style="flex-grow: 1;">
+        <p style="font-size: 10pt; margin: 0;">Enter your TIN in the appropriate box. The TIN provided must match the name given on line 1 to avoid backup withholding. For individuals, this is generally your Social Security Number (SSN). However, for a resident alien, sole proprietor, or disregarded entity, see the instructions for Part I, later. For other entities, it is your Employer Identification Number (EIN), if you do not have a number, see how to get a TIN, later.</p>
+      </div>
+      <div style="text-align: right;">
+        <p style="font-size: 10pt; margin: 0;">Social security number</p>
+        <div style="display: flex; gap: 5px; margin-top: 5px;">
+          <span data-field="ssn_part1" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ssn_part1 }}</span>
+          <span data-field="ssn_part2" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ssn_part2 }}</span>
+          <span data-field="ssn_part3" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ssn_part3 }}</span>
+          <span data-field="ssn_part4" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ssn_part4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">OR</p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+      <div style="flex-grow: 1;">
+        <p style="font-size: 10pt; margin: 0;">Employer identification number</p>
+      </div>
+      <div style="text-align: right;">
+        <div style="display: flex; gap: 5px; margin-top: 5px;">
+          <span data-field="ein_part1" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ein_part1 }}</span>
+          <span data-field="ein_part2" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ein_part2 }}</span>
+          <span data-field="ein_part3" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ein_part3 }}</span>
+          <span data-field="ein_part4" style="width: 30px; text-align: center; border-bottom: 1px solid black;">{{ ein_part4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 11pt;">Part II Certification</p>
+    <p style="font-size: 10pt;">Under penalties of perjury, I certify that:</p>
+    <ol style="font-size: 10pt; line-height: 1.5;">
+      <li>I furnish the correct TIN for myself or for the entity on this form (or I am willing for a number to be issued to me); and</li>
+      <li>I am not subject to backup withholding because: (a) I am exempt from backup withholding, or (b) I have not been notified by the Internal Revenue Service that I am subject to backup withholding as a result of a failure to report all interest or dividends, or (c) the IRS has notified me that I am no longer subject to backup withholding; and</li>
+      <li>I certify that the FATCA code(s) entered on this form (if any) indicating that I am exempt from FATCA reporting is correct.</li>
+    </ol>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <p style="font-size: 10pt;">Under penalties of perjury, I certify that the information provided is correct. If any information provided is incorrect, the IRS may assume that you have failed to report all interest and dividends on your tax return. For certain real estate transactions, I do not agree to mortgage. Install payment for mortgage interest, dividends, and other payments, are not required to sign the certification, but you must provide your correct TIN. See the instructions for Part II, later.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
+    <div style="width: 45%;">
+      <p style="font-size: 11pt;">Sign</p>
+      <div style="border-bottom: 1px solid black; margin-top: 5px;">
+        <span data-field="signature">{{ signature }}</span>
+      </div>
+      <p style="font-size: 10pt; margin-top: 5px;">U.S. person</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 11pt;">Date</p>
+      <div style="border-bottom: 1px solid black; margin-top: 5px;">
+        <span data-field="date">{{ date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 50px;">
+    <h2 style="font-size: 12pt; margin-bottom: 10px;">General Instructions for Taxpayers</h2>
+    <p style="font-size: 10pt;">Section references are to the Internal Revenue Code unless otherwise noted.</p>
+    <p style="font-size: 10pt;">Future developments. For the latest information about developments related to Form W-9 and its instructions, such legislation enacted after they were published, go to www.irs.gov/forms/w9.</p>
+  </div>
+
+  <div class="form-section" style="margin-top: 30px;">
+    <h2 style="font-size: 12pt; margin-bottom: 10px;">Purpose of Form</h2>
+    <p style="font-size: 10pt;">An individual or entity (from whom W-9 is requested) who is required to file an information return with the IRS must obtain your correct taxpayer identification number (TIN) while issuing an information return. The TIN may be an SSN, individual taxpayer identification number (ITIN), adoption taxpayer identification number (ATIN), or employer identification number (EIN). Report on an information return the amount of income that you are reporting an amount on information return. Examples of information returns include, but are not limited to, the following.</p>
+    <ul style="font-size: 10pt; padding-left: 20px; margin-top: 10px;">
+      <li>Form 1099-INT (interest earned or paid)</li>
+    </ul>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px; font-size: 9pt;">
+    <div style="text-align: left;">
+      <span data-field="form_id">{{ form_id }}</span>
+    </div>
+    <div style="text-align: right;">
+      <span data-field="form_version">{{ form_version }}</span>
+    </div>
+  </div>
+</div>

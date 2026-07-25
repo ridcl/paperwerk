@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Memorandum</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .content-paragraph {
+    margin-bottom: 15px;
+  }
+  .conclusion-list li {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 24pt; margin: 0;">Office of Chief Counsel</h1>
+    <h2 style="font-size: 18pt; margin: 5px 0 0 0;">Internal Revenue Service</h2>
+    <h3 style="font-size: 14pt; margin: 5px 0 0 0;">memorandum</h3>
+  </div>
+
+  <div class="header-info">
+    <p>Number: <span data-field="document_number">{{ document_number }}</span></p>
+    <p>Release Date: <span data-field="release_date">{{ release_date }}</span></p>
+    <p>CC: <span data-field="cc_reference">{{ cc_reference }}</span></p>
+    <p>PRESP- <span data-field="presp_number">{{ presp_number }}</span></p>
+    <p>UILC: <span data-field="uilc_code">{{ uilc_code }}</span></p>
+    <p>date: <span data-field="date">{{ date }}</span></p>
+    <p>to: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    <p>Supervisor: <span data-field="recipient_title">{{ recipient_title }}</span></p>
+    <p>Division: <span data-field="recipient_division">{{ recipient_division }}</span></p>
+    <p>from: <span data-field="sender_name">{{ sender_name }}</span></p>
+    <p>Title: <span data-field="sender_title">{{ sender_title }}</span></p>
+    <p>Division: <span data-field="sender_division">{{ sender_division }}</span></p>
+  </div>
+
+  <div style="border-top: 1px solid #000; margin-top: 30px; margin-bottom: 20px;"></div>
+
+  <div class="section-title">subject:</div>
+  <p class="content-paragraph">May the employees of a disregarded entity that is not an eligible employer participate in the § 403(b) or § 457(b) plan of a tax-exempt sponsor?</p>
+
+  <div class="section-title">ISSUES</div>
+  <p class="content-paragraph">Division Counsel has requested assistance on the following issues:</p>
+  <ol>
+    <li><span data-field="issue_1">{{ issue_1 }}</span></li>
+    <li><span data-field="issue_2">{{ issue_2 }}</span></li>
+    <li><span data-field="issue_3">{{ issue_3 }}</span></li>
+  </ol>
+
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 50px;">PRESP- <span data-field="presp_number">{{ presp_number }}</span></div>
+  <div style="text-align: right; margin-bottom: 50px;">2</div>
+
+  <div class="section-title">CONCLUSIONS</div>
+  <p class="content-paragraph">We have concluded that:</p>
+  <ol class="conclusion-list">
+    <li><span data-field="conclusion_1">{{ conclusion_1 }}</span></li>
+    <li><span data-field="conclusion_2">{{ conclusion_2 }}</span></li>
+    <li><span data-field="conclusion_3">{{ conclusion_3 }}</span></li>
+  </ol>
+
+  <div class="section-title">LAW AND ANALYSIS</div>
+  <p class="content-paragraph">Section 1.403(b)-2(b)(8)(ii) states that "a subsidiary or other affiliate of an eligible employer is not an eligible employer ... if the subsidiary or other affiliate is not" an eligible employer itself. This means, in order to participate in a § 403(b) plan, an employer must be an eligible employer (generally, a public school, church, or § 501(c)(3) organization). However, an LLC with a single owner may elect to be classified as an association (and thus a corporation) by filing Form 8832 in accordance with § 301.7701-3(c) or to be disregarded as an entity separate from its owner in accordance with the default classification rules under § 301.7701-3(b). If an entity is a disregarded entity, its activities are treated in the same manner as a sole proprietorship, branch, or division of the owner. See § 301.7701-2(a).</span></p>
+
+  <p class="content-paragraph">Although the § 403(b) regulations provide that a subsidiary or affiliate of an eligible employer must also qualify as an eligible employer in order to participate in a § 403(b) plan, a disregarded entity is treated as a branch or division of the § 501(c)(3) organization that is the plan sponsor and not as a subsidiary or affiliate. Therefore, the employees of a disregarded entity are treated as employees of the § 501(c)(3) organization member for purposes of § 403(b).</p>
+
+  <p class="content-paragraph">As employees of a branch or division of the § 501(c)(3) organization, not only are such individuals eligible to participate in the § 501(c)(3) organization member's § 403(b) plan, such individuals are covered by the universal availability requirement under § 1.403(b)-5(b). This means that the § 501(c)(3) organization must permit all employees (including the employees of the disregarded entity) to make elective deferrals if any employee of the § 501(c)(3) organization is allowed to make elective deferrals to the § 403(b) plan unless the employee falls under a specific exception from the universal availability requirement as set forth in § 1.403(b)-5(b)(4).</p>
+
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 50px;">PRESP- <span data-field="presp_number">{{ presp_number }}</span></div>
+  <div style="text-align: right; margin-bottom: 50px;">3</div>
+
+  <p class="content-paragraph">A similar analysis applies to a single-member LLC disregarded entity whose member sponsors a § 457(b) plan except that under § 457(e)(1), a § 457(b) plan may be sponsored by a governmental entity or any entity exempt from tax under § 501(a). As discussed above, under § 301.7701, the disregarded entity is treated as a branch or division of the tax-exempt organization member, so the employees of the disregarded entity are treated as employees of the tax-exempt organization member and are permitted to participate in the § 457(b) plan of the member. Because no universal availability requirement applies to § 457(b) plans, the employees of a single member LLC disregarded entity are permitted, but not required, to be covered by the § 457(b) plan.</p>
+
+  <p class="content-paragraph">If you have additional questions please contact either <span data-field="contact_person_1">{{ contact_person_1 }}</span> or <span data-field="contact_person_2">{{ contact_person_2 }}</span> at <span data-field="contact_phone">{{ contact_phone }}</span>.</p>
+
+  <p class="content-paragraph" style="font-size: 10pt; margin-top: 50px;">This writing may contain privileged information. Any unauthorized disclosure of this writing may undermine our ability to protect the privileged information. If disclosure is determined to be necessary, please contact this office for our views.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px 0;
+    text-align: left;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-group input[type="text"], .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .signature-area {
+    margin-top: 40px;
+  }
+</style>
+
+<div class="page">
+  <h1 style="font-size: 18pt; margin-bottom: 30px;">COMPRES/University of New Mexico - Non-Employee Expense Reimbursement</h1>
+
+  <div class="form-group">
+    <label>Please complete all sections of this form and attach original receipts for all expenses.</label>
+  </div>
+
+  <table style="width: 50%;">
+    <tr>
+      <td style="width: 30%;">Name:</td>
+      <td><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Institution:</td>
+      <td><span data-field="institution_name">{{ institution_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Address (to mail reimbursement):</td>
+      <td><span data-field="mailing_address">{{ mailing_address }}</span></td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td><span data-field="city">{{ city }}</span></td>
+    </tr>
+    <tr>
+      <td>State, Zip:</td>
+      <td><span data-field="state_zip">{{ state_zip }}</span></td>
+    </tr>
+    <tr>
+      <td>Country:</td>
+      <td><span data-field="country">{{ country }}</span></td>
+    </tr>
+    <tr>
+      <td>E-mail:</td>
+      <td><span data-field="email">{{ email }}</span></td>
+    </tr>
+    <tr>
+      <td>Phone:</td>
+      <td><span data-field="phone">{{ phone }}</span></td>
+    </tr>
+  </table>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <p>If you are a foreign national, you must include a copy of the applicable supporting documents below.</p>
+    <table style="width: 100%; margin-top: 10px;">
+      <tr>
+        <td style="width: 50%; padding: 5px;">
+          <input type="checkbox"> Copy of the following documents are required for all FN:
+        </td>
+        <td style="width: 50%;">
+          <ul style="padding-left: 20px; margin: 0;">
+            <li><span data-field="document_type_1">{{ document_type_1 }}</span> (ID page, number, picture, entry/exit stamps)</li>
+            <li><span data-field="document_type_2">{{ document_type_2 }}</span> (front and back)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 100%; padding-top: 10px;">
+          <p>Additional FN documents required depending on visa status:</p>
+          <ul style="padding-left: 20px; margin: 0;">
+            <li><span data-field="visa_document_1">{{ visa_document_1 }}</span> (For F-1 visa)</li>
+            <li><span data-field="visa_document_2">{{ visa_document_2 }}</span> (Employment Authorization Document for F-1 visa w/t CPT or OPT)</li>
+            <li><span data-field="visa_document_3">{{ visa_document_3 }}</span> (For J-1 visa)</li>
+            <li><span data-field="visa_document_4">{{ visa_document_4 }}</span> (Authorization from Sponsor (for J-1 visa non-University sponsored))</li>
+            <li><span data-field="visa_document_5">{{ visa_document_5 }}</span> (Foreign National Compliance Statement (for "Waiver for Tourism"))</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="form-group" style="margin-top: 30px;">
+    <label>Purpose of Travel</label>
+    <input type="text" style="width: 50%;" placeholder="Enter purpose of travel" data-field="purpose_of_travel" value="{{ purpose_of_travel }}">
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 45%;">
+      <label>Benefit to the University</label>
+      <input type="text" style="width: 100%;" placeholder="Describe benefit" data-field="benefit_to_the_university" value="{{ benefit_to_the_university }}">
+    </div>
+    <div style="width: 45%;">
+      <label>Destination</label>
+      <input type="text" style="width: 100%;" placeholder="Enter destination" data-field="destination" value="{{ destination }}">
+    </div>
+  </div>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Date(s)</th>
+        <th style="width: 45%;">Description of Expense (List receipts individually)</th>
+        <th style="width: 15%;">Expense Type</th>
+        <th style="width: 25%;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].date">{{ line_items[loop.index0].date }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].description">{{ line_items[loop.index0].description }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].expense_type">{{ line_items[loop.index0].expense_type }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].amount">{{ line_items[loop.index0].amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Notes:</label>
+    <textarea rows="4" style="width: 100%;"></textarea>
+  </div>
+
+  <table style="width: 50%; margin-top: 30px;">
+    <tr>
+      <td style="width: 50%;">Total</td>
+      <td style="width: 50%; text-align: right;"><span data-field="total_amount">{{ total_amount }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 50%; padding-top: 20px;">Signature</td>
+      <td style="width: 50%; text-align: right; padding-top: 20px;">Date</td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 50%;">
+      <p>Please attach original receipts for all listed expenses, sign the form and send to:</p>
+      <p>Institute of Meteoritics</p>
+      <p>MSCO3 2050</p>
+      <p>1 University of New Mexico</p>
+      <p>Attn: COMPRES</p>
+      <p>Albuquerque, NM 87131</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p>For UNM Use Only:</p>
+      <p>Date Received:</p>
+      <input type="text" style="width: 60%; border: none; border-bottom: 1px solid #000;" data-field="date_received" value="{{ date_received }}">
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; font-size: 10pt;">
+    <p>or email to:</p>
+    <p><span data-field="email_contact">{{ email_contact }}</span></p>
+    <p>and cc <span data-field="cc_contact">{{ cc_contact }}</span>, <span data-field="cc_contact_2">{{ cc_contact_2 }}</span></p>
+  </div>
+</div>

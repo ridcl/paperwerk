@@ -1,0 +1,128 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .logo-area {
+    /* Placeholder for logo area */
+  }
+  .title-area {
+    text-align: right;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    width: 48%;
+  }
+  .line-item-table {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="page">
+  <div class="header-section">
+    <div class="logo-area">
+      <!-- Placeholder for Montana State University Billings Logo -->
+      <img src="" alt="University Logo" style="height: 80px;">
+    </div>
+    <div class="title-area">
+      <h1 style="font-size: 18pt; margin: 0;">ADVISING WORKSHEET</h1>
+      <h2 style="font-size: 12pt; margin: 2px 0;">MINOR IN ACCOUNTING</h2>
+      <h3 style="font-size: 10pt; margin: 2px 0;">GENERAL BULLETIN 2020-2021</h3>
+      <div style="margin-top: 30px;">
+        <p style="font-size: 10pt;">TRANSFER INSTITUTION(S): _________________________</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>
+        <p>Name: _________________________</p>
+      </div>
+      <div>
+        <p>Student ID #: _________________________</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Montana State University Billings</p>
+    <p>Advising & Career Services</p>
+    <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+    <p>Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+    <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+    <p>Website: <span data-field="website_url">{{ website_url }}</span></p>
+  </div>
+
+  <table class="line-item-table">
+    <thead>
+      <tr>
+        <th style="width: 10%;">Course</th>
+        <th style="width: 25%;">Description</th>
+        <th style="width: 10%;">Credits</th>
+        <th style="width: 15%;">Grade</th>
+        <th style="width: 15%;">Semester</th>
+        <th style="width: 25%;">Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_listings %}
+      <tr>
+        <td><span data-field="course_listings[{{ loop.index0 }}].course_code">{{ item.course_code }}</span></td>
+        <td><span data-field="course_listings[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td><span data-field="course_listings[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Total credits required: <span data-field="total_credits_required">{{ total_credits_required }}</span></td>
+        <td style="width: 50%;">24</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-size: 10pt;">*May satisfy General Education requirements.</p>
+    <p style="font-size: 10pt;">Intended for students who desire sufficient accounting knowledge to enable them to use effectively accounting information in making business and personal finance decisions.</p>
+    <p style="font-size: 10pt;">Certain courses in this program have prerequisites; students should check the course descriptions for required prerequisites.</p>
+  </div>
+</div>

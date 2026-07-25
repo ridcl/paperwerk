@@ -1,0 +1,145 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .section-header { margin-top: 20px; margin-bottom: 10px; font-weight: bold; }
+  .form-row { display: flex; margin-bottom: 10px; }
+  .form-row > div { flex: 1; }
+  .checkbox-group label { margin-right: 15px; }
+  .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+  textarea { width: 100%; height: 150px; border: 1px solid #ccc; padding: 10px; box-sizing: border-box; font-family: inherit; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 36px; margin: 0;">NORFOLK STATE UNIVERSITY</h1>
+      <p style="font-size: 16px; margin-top: 5px;">We see the future in you.</p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 24px; margin: 0;">Purchasing File Documentation</h2>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 30px;">
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div style="width: 20%;">Preparer:</div>
+      <div style="width: 80%;"><span data-field="preparer_name">{{ preparer_name }}</span></div>
+    </div>
+
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div style="width: 20%;">Date:</div>
+      <div style="width: 80%;"><span data-field="date">{{ date }}</span></div>
+    </div>
+
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div style="width: 20%;">Over-the-Counter (OTC):</div>
+      <div style="width: 80%;" class="checkbox-group">
+        <label><input type="checkbox"> Yes</label>
+        <label><input type="checkbox"> No</label>
+      </div>
+    </div>
+
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div style="width: 20%;">eVA Purchase Requisition Number:</div>
+      <div style="width: 80%;"><span data-field="eva_requisition_number">{{ eva_requisition_number }}</span></div>
+    </div>
+
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div style="width: 20%;">Colleague Requisition Number:</div>
+      <div style="width: 80%;"><span data-field="colleague_requisition_number">{{ colleague_requisition_number }}</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div>
+      <h3 class="section-header">Documentation Checklist:</h3>
+      <div style="margin-top: 15px;">
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Mandatory Source is unavailable</label>
+          <label><input type="checkbox"> State Contract vendor is unavailable</label>
+          <label><input type="checkbox"> Term Contract vendor is unavailable</label>
+          <label><input type="checkbox"> Micro-Small vendor is unavailable</label>
+          <label><input type="checkbox"> Small vendor is unavailable</label>
+          <label><input type="checkbox"> Other</label>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Date:</div>
+          <div style="width: 80%;"><span data-field="checklist_date">{{ checklist_date }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Time:</div>
+          <div style="width: 80%;"><span data-field="checklist_time">{{ checklist_time }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Vendor Name:</div>
+          <div style="width: 80%;"><span data-field="vendor_name">{{ vendor_name }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Person Contacted:</div>
+          <div style="width: 80%;"><span data-field="person_contacted">{{ person_contacted }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Telephone Number:</div>
+          <div style="width: 80%;"><span data-field="telephone_number">{{ telephone_number }}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="section-header">Second Documented Attempt</h3>
+      <div style="margin-top: 15px;">
+        <p style="font-size: 12px;">(If the price appears unreasonable contact another Micro-Small or Small vendor)</p>
+        <div class="checkbox-group" style="margin-top: 15px;">
+          <label><input type="checkbox"> Micro-Small vendor is unavailable</label>
+          <label><input type="checkbox"> Small vendor is unavailable</label>
+          <label><input type="checkbox"> Other</label>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Date:</div>
+          <div style="width: 80%;"><span data-field="second_attempt_date">{{ second_attempt_date }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Time:</div>
+          <div style="width: 80%;"><span data-field="second_attempt_time">{{ second_attempt_time }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Vendor Name:</div>
+          <div style="width: 80%;"><span data-field="second_vendor_name">{{ second_vendor_name }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Person Contacted:</div>
+          <div style="width: 80%;"><span data-field="second_person_contacted">{{ second_person_contacted }}</span></div>
+        </div>
+        <div class="form-row" style="margin-bottom: 10px;">
+          <div style="width: 20%;">Telephone Number:</div>
+          <div style="width: 80%;"><span data-field="second_telephone_number">{{ second_telephone_number }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 30px;">
+    <h3 class="section-header">Details of Actions:</h3>
+    <p style="font-size: 14px; margin-bottom: 15px;">Use this area to detail your efforts to secure products or services from a mandatory source vendor, state contract vendor, term contract vendor, micro-Small or Small vendor. Provide a response from each vendor you contacted. If the price appeared unreasonable attach quotes as supporting documentation. Note: remember the purchasing hierarchy.</p>
+    <textarea data-field="details_of_actions">{{ details_of_actions }}</textarea>
+  </div>
+</div>

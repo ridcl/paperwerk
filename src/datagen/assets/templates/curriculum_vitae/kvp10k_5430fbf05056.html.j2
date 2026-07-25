@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .contact-info {
+    margin-bottom: 30px;
+    font-size: 0.9em;
+  }
+  .section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-style: italic;
+    font-size: 0.95em;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a base */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; line-height: 1.5; }
+  .section-title { font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <h1>CURRICULUM VITAE</h1>
+    <p><span data-field="date_prepared">{{ date_prepared }}</span></p>
+    <p><strong>{{ full_name }}</strong></p>
+    <p><span data-field="title">{{ title }}</span></p>
+    <p><span data-field="employer.name">{{ employer.name }}</span></p>
+    <p><span data-field="employer.location">{{ employer.location }}</span></p>
+  </div>
+
+  <div class="contact-info">
+    <p>Home Address: <span data-field="address">{{ address }}</span></p>
+    <p>Telephone: <span data-field="phone">{{ phone }}</span> | Home: <span data-field="home_phone">{{ home_phone }}</span> | Fax: <span data-field="fax">{{ fax }}</span></p>
+    <p>Email: <span data-field="email">{{ email }}</span></p>
+  </div>
+
+  <div class="section-title">EDUCATIONAL BACKGROUND:</div>
+  <div class="entry">
+    <div class="entry-title">{{ education_1_years }}</div>
+    <div class="entry-details">{{ education_1_institution }}</div>
+    <div class="entry-details">{{ education_1_details }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ education_2_years }}</div>
+    <div class="entry-details">{{ education_2_institution }}</div>
+    <div class="entry-details">{{ education_2_details }}</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ education_3_years }}</div>
+    <div class="entry-details">{{ education_3_institution }}</div>
+    <div class="entry-details">{{ education_3_details }}</div>
+  </div>
+
+  <div class="section-title">HONORS AND AWARDS:</div>
+  <div class="entry">
+    <div class="entry-title">Simon Naidel Prize</div>
+    <div class="entry-details">for best performance on theory comprehensive examinations for the academic year <span data-field="prize_year_1">{{ prize_year_1 }}</span>.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Twice nominated by the Department of Economics</div>
+    <div class="entry-details">for the Dean's special award for service to <span data-field="university_name">{{ university_name }}</span> in program development: <span data-field="award_year_1">{{ award_year_1 }}</span>.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Recipient of The Helen Potter Award in Social Economics</div>
+    <div class="entry-details">granted by The Association for Social Economics for the best article appearing in the <span data-field="journal_name">{{ journal_name }}</span> for the year <span data-field="award_year_2">{{ award_year_2 }}</span>.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Recipient of American University Faculty Award for Outstanding Teaching</div>
+    <div class="entry-details">for <span data-field="award_year_3">{{ award_year_3 }}</span>.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Selected by the Dean of the College of Arts and Sciences</div>
+    <div class="entry-details">to receive the <span data-field="award_name">{{ award_name }}</span> for Outstanding Teaching.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Selected as Professor of the Year</div>
+    <div class="entry-details">for <span data-field="professor_year">{{ professor_year }}</span> by Alpha Lambda Delta Honor Society.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">Winner of the <span data-field="essay_contest">{{ essay_contest }}</span></div>
+    <div class="entry-details">(<span data-field="essay_year">{{ essay_year }}</span>). Essay title: "<span data-field="essay_title">{{ essay_title }}</span>"</div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;"><span data-field="page_number">{{ page_number }}</span></div>
+
+  <div class="section-title">EMPLOYMENT HISTORY:</div>
+  <div class="entry">
+    <div class="entry-title">{{ employment_1_years }}</div>
+    <div class="entry-details">{{ employment_1_position }} at the <span data-field="employment_1_institution">{{ employment_1_institution }}</span></div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ employment_2_years }}</div>
+    <div class="entry-details">{{ employment_2_position }} and Teaching Fellow, Department of Economics, <span data-field="employment_2_institution">{{ employment_2_institution }}</span></div>
+  </div>
+  <div class="entry">
+    <div class="entry-title">{{ employment_3_years }}</div>
+    <div class="entry-details">{{ employment_3_position }}: Instructor, Assistant Professor, Associate Professor, Professor, <span data-field="employment_3_institution">{{ employment_3_institution }}</span></div>
+  </div>
+
+  <div class="section-title">PUBLICATIONS:</div>
+
+  <div class="entry">
+    <div class="entry-title">A. BOOK:</div>
+    <ul>
+      <li><span data-field="book_1_title">{{ book_1_title }}</span>, editor, New York: <span data-field="book_1_publisher">{{ book_1_publisher }}</span>, <span data-field="book_1_year">{{ book_1_year }}</span>.</li>
+      <li><span data-field="book_2_title">{{ book_2_title }}</span>, Zagreb: <span data-field="book_2_publisher">{{ book_2_publisher }}</span>, <span data-field="book_2_year">{{ book_2_year }}</span>.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">B. ARTICLES IN PROFESSIONAL JOURNALS:</div>
+    <ul>
+      <li>"{{ article_1_title }}" Working Paper: <span data-field="article_1_source">{{ article_1_source }}</span>, with Michael Cauvel. (Submitted for publication).</li>
+      <li>"{{ article_2_title }}" <span data-field="article_2_source">{{ article_2_source }}</span>.</li>
+      <li>"{{ article_3_title }}" <span data-field="article_3_source">{{ article_3_source }}</span>, August 2, 2018.</li>
+      <li>"{{ article_4_title }}" <span data-field="article_4_source">{{ article_4_source }}</span>, June 27, 2018 (with Quentin Duroy). <span data-field="article_4_url">{{ article_4_url }}</span></li>
+      <li>"{{ article_5_title }}" <span data-field="article_5_source">{{ article_5_source }}</span>, May 2018.</li>
+      <li>"{{ article_6_title }}" <span data-field="article_6_source">{{ article_6_source }}</span>, 9 (1), March 2018: 4-17.</li>
+      <li>"{{ article_7_title }}" <span data-field="article_7_source">{{ article_7_source }}</span>, 11 (2), April 2018: 1-41 (with Aaron Pacitti).</li>
+      <li>"{{ article_8_title }}" <span data-field="article_8_source">{{ article_8_source }}</span>, no. 22, Fall 2017 (with Quentin Duroy).</li>
+      <li>"{{ article_9_title }}" <span data-field="article_9_source">{{ article_9_source }}</span>, 60 (4), July/August 2017: 347-367.</li>
+      <li>"{{ article_10_title }}" <span data-field="article_10_source">{{ article_10_source }}</span>, julio-septiembre de 2017: 179-198.</li>
+      <li>"{{ article_11_title }}" <span data-field="article_11_source">{{ article_11_source }}</span>, January 4, 2017. <span data-field="article_11_url">{{ article_11_url }}</span></li>
+      <li>"{{ article_12_title }}" <span data-field="article_12_source">{{ article_12_source }}</span>, 58 (3), May/June 2015: 197-221 (with Aaron Pacitti).</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;"><span data-field="page_number">{{ page_number }}</span></div>
+
+  <div class="section-title">CONTINUED ARTICLES IN PROFESSIONAL JOURNALS:</div>
+  <ul>
+    <li>"{{ article_13_title }}" <span data-field="article_13_source">{{ article_13_source }}</span>, 48 (3), September 2014: 679-705 (with Aaron Pacitti).</li>
+    <li>"{{ article_14_title }}" <span data-field="article_14_source">{{ article_14_source }}</span>, 26 (3), 2014: 372-391.</li>
+    <li>"{{ article_15_title }}" <span data-field="article_15_source">{{ article_15_source }}</span>, 30 (1), February 2014: 22-40.</li>
+    <li>"{{ article_16_title }}" <span data-field="article_16_source">{{ article_16_source }}</span>, 47 (4), December 2013: 911-37.</li>
+    <li>"{{ article_17_title }}" <span data-field="article_17_source">{{ article_17_source }}</span>, 4 (3), November 2013: 229-42.</li>
+    <li>"{{ article_18_title }}" <span data-field="article_18_source">{{ article_18_source }}</span>, 45 (4), December 2011: 877-900.</li>
+    <li>"{{ article_19_title }}" <span data-field="article_19_source">{{ article_19_source }}</span>, 70 (4), October 2011: 974-1013 (with James F. Smith).</li>
+    <li>"{{ article_20_title }}" <span data-field="article_20_source">{{ article_20_source }}</span>, January 27, 2011, 50 pp. (with Ph.D. candidate Barton Baker): <span data-field="article_20_url">{{ article_20_url }}</span></li>
+    <li>"{{ article_21_title }}" <span data-field="article_21_source">{{ article_21_source }}</span>, 69 (3), July 2010: 963-82.</li>
+    <li>"{{ article_22_title }}" <span data-field="article_22_source">{{ article_22_source }}</span>, February 2012: 15-53 (with Kevin W. Capehart, Ph.D. Candidate).</li>
+    <li>"{{ article_23_title }}" <span data-field="article_23_source">{{ article_23_source }}</span>, edited by Martha Starr, New York: Palgrave Macmillan, 2011: 63-82 (with Ph.D. candidate Barton Baker).</li>
+    <li>"{{ article_24_title }}" <span data-field="article_24_source">{{ article_24_source }}</span>, 45 (4), December 2011: 877-900.</li>
+    <li>"{{ article_25_title }}" <span data-field="article_25_source">{{ article_25_source }}</span>, 7, 1987: 650-54.</li>
+    <li>"{{ article_26_title }}" <span data-field="article_26_source">{{ article_26_source }}</span>, 15 (1), 1988: 58-67.</li>
+    <li>"{{ article_27_title }}" <span data-field="article_27_source">{{ article_27_source }}</span>, 17 (1), Fall 1987: 43-58.</li>
+    <li>"{{ article_28_title }}" <span data-field="article_28_source">{{ article_28_source }}</span>, 14 (7,8,9), 1987: 88-98.</li>
+    <li>"{{ article_29_title }}" <span data-field="article_29_source">{{ article_29_source }}</span>, 16 (1), Fall 1986: 1-15.</li>
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;"><span data-field="page_number">{{ page_number }}</span></div>
+
+  <div class="section-title">CONTINUED ARTICLES IN PROFESSIONAL JOURNALS:</div>
+  <ul>
+    <li>"{{ article_30_title }}" <span data-field="article_30_source">{{ article_30_source }}</span>, 13 (10), December 1986: 26-27.</li>
+    <li>"{{ article_31_title }}" <span data-field="article_31_source">{{ article_31_source }}</span>, 14 (2), February 1986: 165-180.</li>
+    <li>"{{ article_32_title }}" <span data-field="article_32_source">{{ article_32_source }}</span>, XLII (3), December 1984: 369-75.</li>
+    <li>"{{ article_33_title }}" <span data-field="article_33_source">{{ article_33_source }}</span>, VII (3), 1980: 137-148.</li>
+    <li>"{{ article_34_title }}" <span data-field="article_34_source">{{ article_34_source }}</span>, XIV (3), September 1980: 775-780.</li>
+    <li>"{{ article_35_title }}" <span data-field="article_35_source">{{ article_35_source }}</span>, 39 (1), January 1980: 83-94.</li>
+    <li>"{{ article_36_title }}" <span data-field="article_36_source">{{ article_36_source }}</span>, 37, December 1979: 371-87.</li>
+    <li>"{{ article_37_title }}" <span data-field="article_37_source">{{ article_37_source }}</span>, 4 (3), November 2013: 229-42.</li>
+    <li>"{{ article_38_title }}" <span data-field="article_38_source">{{ article_38_source }}</span>, 47 (4), December 2013: 911-37.</li>
+    <li>"{{ article_39_title }}" <span data-field="article_39_source">{{ article_39_source }}</span>, 30 (1), February 2014: 22-40.</li>
+    <li>"{{ article_40_title }}" <span data-field="article_40_source">{{ article_40_source }}</span>, 45 (4), December 2011: 877-900.</li>
+    <li>"{{ article_41_title }}" <span data-field="article_41_source">{{ article_41_source }}</span>, 70 (4), October 2011: 974-1013 (with James F. Smith).</li>
+    <li>"{{ article_42_title }}" <span data-field="article_42_source">{{ article_42_source }}</span>, 45 (4), December 2011: 877-900.</li>
+    <li>"{{ article_43_title }}" <span data-field="article_43_source">{{ article_43_source }}</span>, 15 (1), 1988: 58-67.</li>
+    <li>"{{ article_44_title }}" <span data-field="article_44_source">{{ article_44_source }}</span>, 17 (1), Fall 1987: 43-58.</li>
+    <li>"{{ article_45_title }}" <span data-field="article_45_source">{{ article_45_source }}</span>, 14 (7,8,9), 1987: 88-98.</li>
+    <li>"{{ article_46_title }}" <span data-field="article_46_source">{{ article_46_source }}</span>, 16 (1), Fall 1986: 1-15.</li>
+  </ul>
+
+  <div class="section-title">C. CHAPTERS IN BOOKS:</div>
+  <ul>
+    <li>"{{ chapter_1_title }}" in <span data-field="chapter_1_book">{{ chapter_1_book }}</span>, edited by Anthony Morven Gould, New York: Palgrave Macmillan (forthcoming).</li>
+    <li>"{{ chapter_2_title }}" <span data-field="chapter_2_source">{{ chapter_2_source }}</span>, 68 (1), March 2010: 35-67.</li>
+  </ul>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;"><span>{{ page_number }}</span></div>
+  <p>
+    <span data-field="citation_1">{{ citation_1 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_2">"Mesrulaştırma, Eşleştiril ideoloji ve iktisat," İktisat Risaleleri, edited by {{ editor_name }}, Istanbul: Iz Yayıncılık, 1997: 207-240 (A translation and republication in Turkisk of "Legitimation, Ideology-Critique, and Economics," Social Research, 46, Summer 1979: 291-320).</span>
+  </p>
+  <p>
+    <span data-field="citation_3">"Is There a Significant Future for Workplace Democracy?" Worker Empowerment: The Struggle for Workplace Democracy, edited by {{ author_name }}, New York: Bootstrap Press, 1991: 11-23.</span>
+  </p>
+  <p>
+    <span data-field="citation_4">"The Scope and Goals of Economic Science: A Herbamerian Perspective," Hermeneutics and Economics, edited by {{ editor_name }}, London: Routledge, 1990: 113-33.</span>
+  </p>
+  <p>
+    <span data-field="citation_5">"Economic Reform for Humanity's Greatest Struggle," Capitalism and the 'Evil Empire': Reducing Superpower Conflict through American Economic Reform, edited by {{ author_name }}, New York: New Horizons Press, 1988: 13-30.</span>
+  </p>
+  <p>
+    <span data-field="citation_6">"Economic Democracy and American Politics," Policy-Theoretic Foundations of Ethico-Economics, edited by {{ editor_name }}, Sidney: University of Cape Breton Press, 1988: 125-52.</span>
+  </p>
+</div>
+
+<div class="page">
+  <p>
+    <span data-field="citation_7">{{ citation_7 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_8">1) The Chicago School of Political Economy, edited by {{ author_name }}, East Lansing, Michigan: Michigan State University Press, 1976: 79-93.</span>
+  </p>
+  <p>
+    <span data-field="citation_9">2) The Methodology of Economic Thought, edited by {{ author_name }}, New Brunswick, New Jersey: Transactions Books, 1980: 151-65.</span>
+  </p>
+
+  <h3 class="section-title">C. POPULAR PRESS:</h3>
+  <p>
+    <span data-field="press_article_1">{{ press_article_1 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_2">"Smith, Marx, and Malthus: Ghosts Who Haunt Our Future: Economic Visions and the Future," The Futurist, April 1978 (with {{ author_name }}).</span>
+  </p>
+  <p>
+    <span data-field="press_article_3">{{ press_article_3 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_4">{{ press_article_4 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_5">{{ press_article_5 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_6">{{ press_article_6 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_7">{{ press_article_7 }}</span>
+  </p>
+  <p>
+    <span data-field="press_article_8">{{ press_article_8 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <p>
+    <span data-field="citation_10">{{ citation_10 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_11">{{ citation_11 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_12">{{ citation_12 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_13">{{ citation_13 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_14">{{ citation_14 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_15">{{ citation_15 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_16">{{ citation_16 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_17">{{ citation_17 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_18">{{ citation_18 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_19">{{ citation_19 }}</span>
+  </p>
+  <p>
+    <span data-field="citation_20">{{ citation_20 }}</span>
+    <p style="margin-top: 0;">
+      <span data-field="url_20">{{ url_20 }}</span>
+    </p>
+  </p>
+</div>
+
+<div class="page">
+  <h3 class="section-title">D. BLOG POSTS:</h3>
+  <p>
+    <span data-field="blog_post_1">"What Could the Wealth Gained by The Richest Americans Since 1979 Have Paid For?" Guest Blog in ThinkProgress (Blog site for the Center for American Progress Action Fund), September 14, 2012 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_1">{{ url_1 }}</span>
+  </p>
+  <p>
+    <span data-field="blog_post_2">"It's the Inequality, Stupid!" Huffington Post, October 3, 2012 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_2">{{ url_2 }}</span>
+  </p>
+  <p>
+    <span data-field="blog_post_3">{{ blog_post_3 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <p>
+    <span data-field="article_1">{{ article_1 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_3">{{ url_3 }}</span>
+  </p>
+  <p>
+    <span data-field="article_2">{{ article_2 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_4">{{ url_4 }}</span>
+  </p>
+  <p>
+    <span data-field="article_3">"The Elite's Politics Are Squelching Everyone Else's Right to Culture," Huffington Post, July 9, 2014 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_5">{{ url_5 }}</span>
+  </p>
+  <p>
+    <span data-field="article_4">"Exploding Inequality Is Threatening Our Democracy," Huffington Post, September 24, 2014 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_6">{{ url_6 }}</span>
+  </p>
+  <p>
+    <span data-field="article_5">"Unequal and Unhappy," Huffington Post, January 7, 2015 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_7">{{ url_7 }}</span>
+  </p>
+  <p>
+    <span data-field="article_6">{{ article_6 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_8">{{ url_8 }}</span>
+  </p>
+  <p>
+    <span data-field="article_7">"Soaring Inequality Reverses Educational Progress," Huffington Post, January 16, 2015 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_9">{{ url_9 }}</span>
+  </p>
+  <p>
+    <span data-field="article_8">{{ article_8 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_10">{{ url_10 }}</span>
+  </p>
+  <p>
+    <span data-field="article_9">{{ article_9 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_11">{{ url_11 }}</span>
+  </p>
+  <p>
+    <span data-field="article_10">"Both Parties Are Owned by Wall Street," Huffington Post, June 11, 2015 (with {{ author_name }}).</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_12">{{ url_12 }}</span>
+  </p>
+  <p>
+    <span data-field="article_11">{{ article_11 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_13">{{ url_13 }}</span>
+  </p>
+  <p>
+    <span data-field="article_12">{{ article_12 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_14">{{ url_14 }}</span>
+  </p>
+  <p>
+    <span data-field="article_13">{{ article_13 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_15">{{ url_15 }}</span>
+  </p>
+  <p>
+    <span data-field="article_14">{{ article_14 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <p>
+    <span data-field="article_15">{{ article_15 }}</span>
+  </p>
+  <p>
+    <span data-field="article_16">{{ article_16 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_16">{{ url_16 }}</span>
+  </p>
+  <p>
+    <span data-field="article_17">{{ article_17 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_17">{{ url_17 }}</span>
+  </p>
+  <p>
+    <span data-field="article_18">{{ article_18 }}</span>
+  </p>
+  <p style="margin-top: 0;">
+    <span data-field="url_18">{{ url_18 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <h3 class="section-title">E. BOOK REVIEWS:</h3>
+  <p>
+    <span data-field="book_review_1">{{ book_review_1 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_2">{{ book_review_2 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_3">{{ book_review_3 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_4">{{ book_review_4 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_5">{{ book_review_5 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_6">{{ book_review_6 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_7">{{ book_review_7 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_8">{{ book_review_8 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_9">{{ book_review_9 }}</span>
+  </p>
+  <p>
+    <span data-field="book_review_10">{{ book_review_10 }}</span>
+  </p>
+</div>
+
+<div class="page">
+  <h3 class="section-title">SCHOLARLY PRESENTATIONS:</h3>
+  <p>Available upon request.</p>
+
+  <h3 class="section-title">EDITORIAL AND OTHER PROFESSIONAL ACTIVITIES:</h3>
+  <p>
+    <span data-field="activity_1">{{ activity_1 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_2">{{ activity_2 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_3">{{ activity_3 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_4">{{ activity_4 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_5">{{ activity_5 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_6">{{ activity_6 }}</span>
+  </p>
+  <p>
+    <span data-field="activity_7">{{ activity_7 }}</span>
+  </p>
+</div>
+
+</body>
+</html>

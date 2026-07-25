@@ -1,0 +1,114 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .form-section { margin-bottom: 30px; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+  .signature-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+  .signature-table td { padding: 10px; border: none; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+    <div>
+      <h2 style="font-size: 24px;">LAWRENCE UNIVERSITY</h2>
+    </div>
+    <div style="text-align: right;">
+      <p style="margin: 0;">Financial Aid Office</p>
+      <p style="margin: 0;">{{ employer.address_line_1 }}</p>
+      <p style="margin: 0;">{{ employer.city_state_zip }}</p>
+      <p style="margin: 0;">PHONE: {{ employer.phone }} | FAX: {{ employer.fax }}</p>
+      <p style="margin: 0;">financial.aid@{{ employer.domain }}</p>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; margin-bottom: 30px;">2022-2023 CHILD SUPPORT VERIFICATION FORM</h1>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px;">
+    <div>
+      Student Name: <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div>
+      Lawrence ID or D.O.B: <span data-field="id_dob">{{ id_dob }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Read the instructions on this form carefully. Failure to complete this form may delay the processing of your financial aid.</p>
+    <p>Did you (parent or stepparent reported on the 2022-2023 FAFSA) receive child support in 2020?</p>
+    <p>Please include payments received during 2020 because of divorce, separation, or legal requirement. Check the appropriate box below (YES or NO) and complete the corresponding section.</p>
+    <p>
+      <input type="checkbox" id="no_support" name="no_support">
+      <label for="no_support">NO, I did not receive child support in 2020.</label>
+    </p>
+    <p>
+      <input type="checkbox" id="yes_support" name="yes_support">
+      <label for="yes_support">YES, I received child support in 2020.</label>
+    </p>
+    <p>Please complete the section below to verify the amount of child support that was received in 2020.</p>
+  </div>
+
+  <div class="form-section">
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th style="width: 50%;">PERSON FOR WHOM SUPPORT WAS RECEIVED</th>
+          <th style="width: 30%; text-align: right;">AMOUNT RECEIVED IN 2020</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="text-align: right; margin-top: 20px;">
+      TOTAL RECEIVED IN 2020: $ <span data-field="total_received">{{ total_received }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 style="text-align: center;">CERTIFICATION AND SIGNATURE</h2>
+    <p>By signing this form, we certify that all information on this application is complete and correct. Parent handwritten signature is required.</p>
+    <p>Please reach out to our office if you are not able to provide a handwritten signature. We will provide details on an alternative way to sign this form.</p>
+  </div>
+
+  <table class="signature-table">
+    <tr>
+      <td style="width: 33%;">PARENT SIGNATURE</td>
+      <td style="width: 33%; text-align: center;">DATE</td>
+      <td style="width: 33%;"></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px; font-size: 12px;">
+    <div style="width: 30%;">
+      Secure Upload: <span data-field="upload_link">{{ upload_link }}</span>
+    </div>
+    <div style="width: 30%;">
+      Email: <span data-field="email_address">{{ email_address }}</span>
+    </div>
+    <div style="width: 30%; text-align: right;">
+      Fax: <span data-field="fax_number">{{ fax_number }}</span>
+      <div style="margin-top: 10px; text-align: right;">
+        Financial Aid Office<br>
+        Lawrence University<br>
+        {{ employer.address_line_1 }}<br>
+        {{ employer.city_state_zip }}
+      </div>
+    </div>
+  </div>
+</div>

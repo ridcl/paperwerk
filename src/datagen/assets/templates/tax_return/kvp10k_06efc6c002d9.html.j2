@@ -1,0 +1,468 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 4px 0;
+    vertical-align: top;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 18pt; margin: 0;">Form 1040</h1>
+      <h2 style="font-size: 14pt; margin: 5px 0 0 0;">U.S. Individual Income Tax Return</h2>
+      <p style="font-size: 10pt; margin-top: 10px;">
+        <span data-field="tax_year">{{ tax_year }}</span>
+        <span style="margin-left: 20px;">OMB No. 15-0454-007</span>
+        <span style="margin-left: 20px;">IRS Use Only—Do not write or staple in this space.</span>
+      </p>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">
+        <span data-field="form_number">{{ form_number }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="section-header">Filing Status</div>
+  <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center;">
+      <input type="radio" name="filing_status" value="single">
+      <label style="margin-left: 5px;">Single</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="radio" name="filing_status" value="married_jointly">
+      <label style="margin-left: 5px;">Married filing jointly</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="radio" name="filing_status" value="married_separately">
+      <label style="margin-left: 5px;">Married filing separately (MFS)</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="radio" name="filing_status" value="head_of_household">
+      <label style="margin-left: 5px;">Head of household (HOH)</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="radio" name="filing_status" value="qualifying_widow">
+      <label style="margin-left: 5px;">Qualifying widow(er) (QW)</label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="dependents_check" style="margin-right: 5px;">
+    <label for="dependents_check">If you checked the MFS box, enter the name of spouse. If you checked the HOH or QW box, enter the child's name if the qualifying person is a child but not your dependent.</label>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Your first name and middle initial</p>
+      <p>Last name</p>
+    </div>
+    <div>
+      <p>Your social security number</p>
+      <p>Spouse's social security number</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Home address (number and street). If you have a P.O. box, see instructions.</p>
+      <p>Apt. no.</p>
+    </div>
+    <div>
+      <p>Presidential Election Campaign</p>
+      <p>Check here if you or your spouse filing jointly want to be drug-free.</p>
+      <p>Check a box will be not charge your name or address.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>City, town or post office, state, and ZIP code. If you have a foreign address, also complete spaces below (see instructions).</p>
+    </div>
+    <div>
+      <p>Foreign country name</p>
+      <p>Foreign province/state/city</p>
+      <p>Foreign postal code</p>
+      <p>If more than four dependents, see instructions and $\blacktriangleright$</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="text-align: left; width: 20%;">Standard Deduction</th>
+          <th style="text-align: left; width: 20%;">Someone can claim:</th>
+          <th style="text-align: left; width: 20%;">You as a dependent</th>
+          <th style="text-align: left; width: 20%;">Your spouse as a dependent</th>
+          <th style="text-align: left; width: 20%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-header">Age/Blindness</div>
+  <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+    <div>
+      <p>You: <span data-field="age_you">{{ age_you }}</span></p>
+      <p>Were born before January 2, <span data-field="year_you">{{ year_you }}</span></p>
+      <p>Are blind <input type="checkbox"></p>
+    </div>
+    <div>
+      <p>Spouse: <span data-field="age_spouse">{{ age_spouse }}</span></p>
+      <p>Was born before January 2, <span data-field="year_spouse">{{ year_spouse }}</span></p>
+      <p>Is blind <input type="checkbox"></p>
+    </div>
+  </div>
+
+  <div class="section-header">Dependents (see instructions):</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;"> (1) First name</th>
+        <th style="text-align: left; width: 20%;"> (2) Social security number</th>
+        <th style="text-align: left; width: 20%;"> (3) Relationship to you</th>
+        <th style="text-align: left; width: 20%;">Child tax credit</th>
+        <th style="text-align: left; width: 20%;">Credit for other dependents</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in dependents %}
+      <tr>
+        <td><span data-field="dependents[{{ loop.index0 }}].first_name">{{ item.first_name }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].ssn">{{ item.ssn }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-header">1 Wages, salaries, tips, etc. Attach Form(s) W-2</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">1</th>
+        <th style="text-align: left; width: 20%;">2a Tax-exempt interest</th>
+        <th style="text-align: left; width: 20%;">2b</th>
+        <th style="text-align: left; width: 20%;">b Taxable interest. Attach Sch. B if required</th>
+        <th style="text-align: left; width: 10%;">1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">3 Qualified dividends</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">3a</th>
+        <th style="text-align: left; width: 20%;">3b</th>
+        <th style="text-align: left; width: 20%;">b Ordinary dividends. Attach Sch. B if required</th>
+        <th style="text-align: left; width: 10%;">3b</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">4 IRA distributions</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">4a</th>
+        <th style="text-align: left; width: 20%;">4b</th>
+        <th style="text-align: left; width: 20%;">b Taxable amount</th>
+        <th style="text-align: left; width: 10%;">4b</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">5 Pensions and annuities</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">5a</th>
+        <th style="text-align: left; width: 20%;">5b</th>
+        <th style="text-align: left; width: 20%;">b Taxable amount</th>
+        <th style="text-align: left; width: 10%;">5b</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">6 Capital gain or loss. Attach Schedule D if required; if not checked, here</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">6a</th>
+        <th style="text-align: left; width: 20%;">6b</th>
+        <th style="text-align: left; width: 20%;">b Taxable amount</th>
+        <th style="text-align: left; width: 10%;">6a</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">7 Other income from Schedule 1, line 9</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 10%;">7a</th>
+        <th style="text-align: left; width: 20%;">7b</th>
+        <th style="text-align: left; width: 20%;">b Taxable amount</th>
+        <th style="text-align: left; width: 10%;">7a</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">8 Add lines 1, 2b, 3b, 4b, 5b, 6a, and 7a. This is your total income</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;"></div>
+    <div style="width: 20%; text-align: right;">
+      <p>7a</p>
+      <p>8a</p>
+    </div>
+  </div>
+
+  <div class="section-header">9 Adjustments to income from Schedule 1, line 22</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;"></div>
+    <div style="width: 20%; text-align: right;">
+      <p>8a</p>
+      <p>8b</p>
+    </div>
+  </div>
+
+  <div class="section-header">10 Standard deduction or itemized deductions (from Schedule A)</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;"></div>
+    <div style="width: 20%; text-align: right;">
+      <p>9</p>
+      <p>10</p>
+    </div>
+  </div>
+
+  <div class="section-header">11a Qualified business income deduction. Attach Form 8995 or Form 8995-A</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;"></div>
+    <div style="width: 20%; text-align: right;">
+      <p>11a</p>
+      <p>11b</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see separate instructions.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 14pt; margin: 0;">Form 1040 (2019)</h2>
+      <p style="font-size: 10pt;">Page 2</p>
+    </div>
+  </div>
+
+  <div class="section-header">Refund</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">21a Direct deposit?</th>
+        <th style="text-align: left; width: 20%;">21b</th>
+        <th style="text-align: left; width: 20%;">c Electronic filing</th>
+        <th style="text-align: left; width: 20%;">Savings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">Amount You Owe</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 20%;">23 Amount you owe. Subtract line 19 from line 16. For details on how to pay, see instructions.</th>
+        <th style="text-align: left; width: 20%;">24 Estimated tax penalty (see instructions).</th>
+        <th style="text-align: left; width: 20%;"></th>
+        <th style="text-align: left; width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="amount_owed">{{ amount_owed }}</span></td>
+        <td><span data-field="estimated_tax_penalty">{{ estimated_tax_penalty }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">Third Party Payment</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Do you want to allow another person (other than your paper preparer) to discuss this return with the IRS? See instructions.</p>
+      <p>Yes. Complete below.</p>
+    </div>
+    <div>
+      <p>Check it:</p>
+      <input type="checkbox">
+    </div>
+  </div>
+
+  <div class="section-header">Sign Here</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 25%;">Your signature</th>
+        <th style="text-align: left; width: 25%;">Date</th>
+        <th style="text-align: left; width: 25%;">Your occupation</th>
+        <th style="text-align: left; width: 25%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">Paid Preparer Use Only</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 25%;">Preparer's name</th>
+        <th style="text-align: left; width: 25%;">Preparer's signature</th>
+        <th style="text-align: left; width: 25%;">Date</th>
+        <th style="text-align: left; width: 25%;">PTIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="preparer_name">{{ preparer_name }}</span></td>
+        <td></td>
+        <td></td>
+        <td><span data-field="ptin">{{ ptin }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div>
+      <p>Firm's name</p>
+      <p>Firm's address</p>
+    </div>
+    <div>
+      <p>Phone no.</p>
+      <p>Firm's EIN</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">Go to www.irs.gov/Form1040 for instructions and the latest information.</p>
+    <p style="font-size: 10pt; text-align: right;">Form 1040 (2019)</p>
+  </div>
+</div>

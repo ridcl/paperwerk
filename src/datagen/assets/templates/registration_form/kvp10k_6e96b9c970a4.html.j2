@@ -1,0 +1,173 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { display: flex; flex-direction: column; }
+  .line-input { border-bottom: 1px solid #000; padding-bottom: 2px; margin-top: 5px; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+        <div>
+            <h1 style="font-size: 24pt; margin: 0;">BGSU</h1>
+            <h2 style="font-size: 18pt; margin: 0;">SCHOOL OF ART</h2>
+            <p style="font-size: 12pt; margin-top: 5px;">Saturday Art Youth Program</p>
+        </div>
+        <div style="text-align: right; font-size: 10pt;">
+            <p>Email: <span data-field="email">{{ email }}</span></p>
+            <p>Fax: <span data-field="fax">{{ fax }}</span></p>
+            <p>Mail: <span data-field="mailing_address">{{ mailing_address }}</span></p>
+            <p style="font-size: 9pt; margin-top: 10px;">ATTN: <span data-field="attn_name">{{ attn_name }}</span></p>
+            <p style="font-size: 9pt;">School of Art</p>
+            <p style="font-size: 9pt;">1000 Fine Arts Center</p>
+            <p style="font-size: 9pt;">Bowling Green, Ohio 43403</p>
+        </div>
+    </div>
+
+    <!-- STUDENT INFORMATION -->
+    <h2 style="font-size: 14pt; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 30px;">STUDENT INFORMATION</h2>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 45%;">
+            <label>Last Name:</label>
+            <div class="line-input" data-field="last_name">{{ last_name }}</div>
+        </div>
+        <div class="form-group" style="width: 45%;">
+            <label>First Name:</label>
+            <div class="line-input" data-field="first_name">{{ first_name }}</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 25%;">
+            <label>Date of Birth:</label>
+            <div class="line-input" data-field="date_of_birth">{{ date_of_birth }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>Current Age:</label>
+            <div class="line-input" data-field="current_age">{{ current_age }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>Gender:</label>
+            <div class="line-input" data-field="gender">{{ gender }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>Current School Grade Level:</label>
+            <div class="line-input" data-field="current_school_grade_level">{{ current_school_grade_level }}</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">To assist the instructor with planning a lesson each week, are there any medical or learning interests or disabilities regarding the student that may enhance his/her learning?</p>
+        <div class="line-input" style="height: 80px; margin-top: 5px;" data-field="current_school_grade_level_2">{{ current_school_grade_level_2 }}</div>
+    </div>
+
+    <!-- PARENT/GUARDIAN INFORMATION -->
+    <h2 style="font-size: 14pt; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 40px;">PARENT/GUARDIAN INFORMATION</h2>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 45%;">
+            <label>Name of Parent or Guardian:</label>
+            <div class="line-input" data-field="name_of_parent_or_guardian">{{ name_of_parent_or_guardian }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>City:</label>
+            <div class="line-input" data-field="city">{{ city }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>State:</label>
+            <div class="line-input" data-field="state">{{ state }}</div>
+        </div>
+        <div class="form-group" style="width: 15%;">
+            <label>Zip:</label>
+            <div class="line-input" data-field="zip">{{ zip }}</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 30%;">
+            <label>Home Address:</label>
+            <div class="line-input" data-field="home_address">{{ home_address }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>E-mail:</label>
+            <div class="line-input" data-field="e_mail">{{ e_mail }}</div>
+        </div>
+        <div class="form-group" style="width: 45%;">
+            <!-- Static text block mimicking required email disclaimer -->
+            <p style="font-size: 8pt; margin-top: 5px;">*E-mail address required to receive confirmation, updated newsletters from the teacher and in the event of weather related cancellation, we will contact you through e-mail.</p>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 30%;">
+            <label>Home Phone:</label>
+            <div class="line-input" data-field="home_phone">{{ home_phone }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>Business Address:</label>
+            <div class="line-input" data-field="business_address">{{ business_address }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>City:</label>
+            <div class="line-input" data-field="city_2">{{ city_2 }}</div>
+        </div>
+        <div class="form-group" style="width: 15%;">
+            <label>State:</label>
+            <div class="line-input" data-field="state_2">{{ state_2 }}</div>
+        </div>
+        <div class="form-group" style="width: 15%;">
+            <label>Zip:</label>
+            <div class="line-input" data-field="zip_2">{{ zip_2 }}</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group" style="width: 30%;">
+            <label>Business Phone:</label>
+            <div class="line-input" data-field="business_phone">{{ business_phone }}</div>
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>Fax:</label>
+            <div class="line-input" data-field="fax_2">{{ fax_2 }}</div>
+        </div>
+        <div class="form-group" style="width: 45%;">
+            <label>E-mail:</label>
+            <div class="line-input" data-field="e_mail_2">{{ e_mail_2 }}</div>
+        </div>
+    </div>
+
+    <!-- METHOD OF PAYMENT -->
+    <h2 style="font-size: 14pt; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 40px;">METHOD OF PAYMENT</h2>
+    <p style="font-size: 10pt;">(Total program fee is <span data-field="total_fee">{{ total_fee }}</span> per student)</p>
+
+    <div class="form-row" style="margin-top: 15px;">
+        <div class="form-group" style="width: 30%;">
+            <label>Paid on:</label>
+            <div class="line-input" data-field="paid_on">{{ paid_on }}</div>
+        </div>
+        <div class="form-group" style="width: 70%;">
+            <p style="font-size: 9pt; margin: 0;">(date payment was made) with credit card using the online process.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">Check or Money Orders (only)</p>
+        <div class="line-input" style="height: 20px; margin-top: 5px;" data-field="check_or_money_orders">{{ check_or_money_orders }}</div>
+        <p style="font-size: 9pt; margin-top: 5px;">&bull; Make checks payable to BGSU. Place on the memo line "<span data-field="memo_text">{{ memo_text }}</span>"</p>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p style="font-size: 10pt;">Payment by check or money order will be paid on the first day of <span data-field="program_name">{{ program_name }}</span></p>
+        <div class="line-input" style="height: 20px; margin-top: 5px;" data-field="field_1">{{ field_1 }}</div>
+    </div>
+</div>

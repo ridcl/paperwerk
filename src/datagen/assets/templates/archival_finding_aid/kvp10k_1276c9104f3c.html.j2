@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>University Archives Guide</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; font-size: 13px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Page 1 - Cover */
+  .cover-page { text-align: center; }
+  .cover-university-name {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+  .cover-university-name em {
+    text-transform: none;
+    font-style: italic;
+    letter-spacing: 0;
+  }
+  .cover-logo {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 30px auto;
+    border: 2px solid #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+  }
+  .cover-archive-name {
+    font-size: 22px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    margin-bottom: 60px;
+    line-height: 1.4;
+  }
+  .cover-guide-title {
+    font-size: 28px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    line-height: 1.4;
+    margin-bottom: 30px;
+  }
+  .cover-cubic-feet {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .cover-call-number {
+    font-size: 16px;
+    margin-bottom: 60px;
+  }
+  .cover-prepared {
+    font-size: 14px;
+    margin-top: 40px;
+  }
+
+  /* Page 2 - Contact info page */
+  .contact-block {
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .contact-block a { text-decoration: underline; color: #000; }
+
+  /* Page 3 - TOC */
+  .page-header {
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  .toc-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .toc-entry {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .toc-entry a { text-decoration: underline; color: #000; }
+  .toc-entry-indented {
+    padding-left: 30px;
+  }
+  .toc-dots {
+    flex: 1;
+    border-bottom: 1px dotted #000;
+    margin: 0 4px 3px 4px;
+  }
+
+  /* Page 4 - Guide intro */
+  .guide-title-block {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .guide-title-block h2 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .guide-title-block .call-num {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .guide-title-block .cubic {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .guide-title-block .prepared {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .access-note {
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  .access-note a { text-decoration: underline; color: #000; }
+  .section-heading {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 16px;
+    margin-top: 30px;
+  }
+  .section-body {
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  .page-number {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  /* Inventory table */
+  .inventory-title-block {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .inventory-title-block h2 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .inventory-title-block .call-num {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .inventory-table thead tr {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+  }
+  .inventory-table th {
+    padding: 8px 6px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  .inventory-table th.col-box,
+  .inventory-table th.col-folder {
+    text-align: center;
+    width: 70px;
+  }
+  .inventory-table td {
+    padding: 6px 6px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  }
+  .inventory-table td.col-box,
+  .inventory-table td.col-folder {
+    text-align: center;
+    width: 70px;
+  }
+  .inventory-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 13px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  .page-header {
+    text-align: right;
+    margin-bottom: 30px;
+  }
+
+  .page-header .title-line1 {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .page-header .title-line2 {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .records-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .records-table tr {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .records-table td {
+    padding: 7px 8px;
+    vertical-align: top;
+  }
+
+  .records-table td.description {
+    width: 75%;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .records-table td.box-num {
+    width: 10%;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .records-table td.folder-num {
+    width: 10%;
+    text-align: right;
+    font-size: 13px;
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Cover -->
+<div class="page cover-page">
+  <div class="cover-university-name">
+    <span data-field="university_name">{{ university_name }}</span>
+  </div>
+  <div class="cover-logo">[Seal]</div>
+  <div class="cover-archive-name">
+    <span data-field="archive_center_name">{{ archive_center_name }}</span>
+  </div>
+  <div class="cover-guide-title">
+    <span data-field="guide_title">{{ guide_title }}</span>
+  </div>
+  <div class="cover-cubic-feet">
+    <span data-field="cubic_feet">{{ cubic_feet }}</span> Cubic feet
+  </div>
+  <div class="cover-call-number">
+    <span data-field="call_number">{{ call_number }}</span>
+  </div>
+  <div class="cover-prepared">
+    Prepared by <span data-field="preparer_name">{{ preparer_name }}</span>
+  </div>
+</div>
+
+<!-- PAGE 2: Blank with contact info at bottom -->
+<div class="page">
+  <div class="contact-block">
+    <div><span data-field="contact.archive_name">{{ contact.archive_name }}</span></div>
+    <div><span data-field="contact.street_address">{{ contact.street_address }}</span></div>
+    <div><span data-field="contact.city_state_zip">{{ contact.city_state_zip }}</span></div>
+    <div><span data-field="contact.phone">{{ contact.phone }}</span></div>
+    <div>Fax: <span data-field="contact.fax">{{ contact.fax }}</span></div>
+    <div><a href="#"><span data-field="contact.website">{{ contact.website }}</span></a></div>
+    <div><span data-field="contact.director_name">{{ contact.director_name }}</span>, Director</div>
+  </div>
+</div>
+
+<!-- PAGE 3: Table of Contents -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title">{{ header_records_title }}</span><br>
+    <span data-field="header_call_number">{{ header_call_number }}</span>
+  </div>
+  <div class="toc-title">TABLE OF CONTENTS</div>
+  {% for entry in toc_entries %}
+  <div class="toc-entry {% if entry.indented %}toc-entry-indented{% endif %}">
+    <a href="#"><span data-field="toc_entries[{{ loop.index0 }}].label">{{ entry.label }}</span></a>
+    <span class="toc-dots"></span>
+    <span data-field="toc_entries[{{ loop.index0 }}].page_num">{{ entry.page_num }}</span>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- PAGE 4: Guide intro + Provenance + Arrangement + Agency History (start) -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title_p4">{{ header_records_title_p4 }}</span><br>
+    <span data-field="header_call_number_p4">{{ header_call_number_p4 }}</span>
+  </div>
+
+  <div class="guide-title-block">
+    <h2>Guide to the<br>
+      <span data-field="guide_full_title">{{ guide_full_title }}</span><br>
+      <span data-field="guide_date_range">{{ guide_date_range }}</span>
+    </h2>
+    <div class="call-num"><span data-field="guide_call_number">{{ guide_call_number }}</span></div>
+    <div class="cubic"><span data-field="guide_cubic_feet">{{ guide_cubic_feet }}</span> Cubic feet</div>
+    <div class="prepared">Prepared by <span data-field="guide_preparer">{{ guide_preparer }}</span></div>
+  </div>
+
+  <div class="access-note">
+    <em>Access is granted in accordance with the <a href="#"><span data-field="access_protocol_title">{{ access_protocol_title }}</span></a>.</em>
+  </div>
+
+  <div class="section-heading">PROVENANCE</div>
+  <div class="section-body">
+    <span data-field="provenance_text">{{ provenance_text }}</span>
+  </div>
+
+  <div class="section-heading">ARRANGEMENT</div>
+  <div class="section-body">
+    <span data-field="arrangement_text">{{ arrangement_text }}</span>
+  </div>
+
+  <div class="section-heading">AGENCY HISTORY</div>
+  <div class="section-body">
+    <span data-field="agency_history_part1">{{ agency_history_part1 }}</span>
+  </div>
+
+  <div class="page-number">- <span data-field="page_num_p4">{{ page_num_p4 }}</span> -</div>
+</div>
+
+<!-- PAGE 5: Agency History (continued) + Scope and Content -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title_p5">{{ header_records_title_p5 }}</span><br>
+    <span data-field="header_call_number_p5">{{ header_call_number_p5 }}</span>
+  </div>
+
+  <div class="section-body">
+    <span data-field="agency_history_part2">{{ agency_history_part2 }}</span>
+  </div>
+
+  <div class="section-heading">SCOPE AND CONTENT</div>
+  <div class="section-body">
+    <span data-field="scope_content_text">{{ scope_content_text }}</span>
+  </div>
+
+  <div class="page-number">- <span data-field="page_num_p5">{{ page_num_p5 }}</span> -</div>
+</div>
+
+<!-- PAGE 6: Inventory heading + table (first batch) -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title_p6">{{ header_records_title_p6 }}</span><br>
+    <span data-field="header_call_number_p6">{{ header_call_number_p6 }}</span>
+  </div>
+
+  <div class="inventory-title-block">
+    <h2><span data-field="inventory_section_title">{{ inventory_section_title }}</span><br>
+      <span data-field="inventory_date_range">{{ inventory_date_range }}</span>
+    </h2>
+    <div class="call-num"><span data-field="inventory_call_number">{{ inventory_call_number }}</span></div>
+  </div>
+
+  <div class="access-note" style="margin-bottom:20px;">
+    <em>Access is granted in accordance with the <a href="#"><span data-field="inventory_access_protocol">{{ inventory_access_protocol }}</span></a>.</em>
+  </div>
+
+  <div class="section-heading">INVENTORY</div>
+
+  <table class="inventory-table">
+    <thead>
+      <tr>
+        <th>INVENTORY</th>
+        <th class="col-box">Box</th>
+        <th class="col-folder">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items_p6 %}
+      <tr>
+        <td><span data-field="inventory_items_p6[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td class="col-box"><span data-field="inventory_items_p6[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td class="col-folder"><span data-field="inventory_items_p6[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-number">- <span data-field="page_num_p6">{{ page_num_p6 }}</span> -</div>
+</div>
+
+<!-- PAGE 7: Inventory continued -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title_p7">{{ header_records_title_p7 }}</span><br>
+    <span data-field="header_call_number_p7">{{ header_call_number_p7 }}</span>
+  </div>
+
+  <table class="inventory-table" style="margin-top:20px;">
+    <tbody>
+      {% for item in inventory_items_p7 %}
+      <tr>
+        <td><span data-field="inventory_items_p7[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td class="col-box"><span data-field="inventory_items_p7[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td class="col-folder"><span data-field="inventory_items_p7[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-number">- <span data-field="page_num_p7">{{ page_num_p7 }}</span> -</div>
+</div>
+
+<!-- PAGE 8: Inventory continued -->
+<div class="page">
+  <div class="page-header">
+    <span data-field="header_records_title_p8">{{ header_records_title_p8 }}</span><br>
+    <span data-field="header_call_number_p8">{{ header_call_number_p8 }}</span>
+  </div>
+
+  <table class="inventory-table" style="margin-top:20px;">
+    <tbody>
+      {% for item in inventory_items_p8 %}
+      <tr>
+        <td><span data-field="inventory_items_p8[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td class="col-box"><span data-field="inventory_items_p8[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td class="col-folder"><span data-field="inventory_items_p8[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="page-number">- <span data-field="page_num_p8">{{ page_num_p8 }}</span> -</div>
+</div>
+
+
+
+
+{% for page in pages %}
+<div class="page">
+  <div class="page-header">
+    <div class="title-line1"><span data-field="pages[{{ loop.index0 }}].header_title">{{ page.header_title }}</span></div>
+    <div class="title-line2"><span data-field="pages[{{ loop.index0 }}].header_subtitle">{{ page.header_subtitle }}</span></div>
+  </div>
+
+  <table class="records-table">
+    {% for entry in page.entries %}
+    <tr>
+      <td class="description">
+        <span data-field="pages[{{ loop.index0 }}].entries[{{ loop.index0 }}].description">{{ entry.description }}</span>
+      </td>
+      <td class="box-num">
+        <span data-field="pages[{{ loop.index0 }}].entries[{{ loop.index0 }}].box">{{ entry.box }}</span>
+      </td>
+      <td class="folder-num">
+        <span data-field="pages[{{ loop.index0 }}].entries[{{ loop.index0 }}].folder">{{ entry.folder }}</span>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div class="page-footer">
+    - <span data-field="pages[{{ loop.index0 }}].page_number">{{ page.page_number }}</span> -
+  </div>
+</div>
+{% endfor %}
+
+</body>
+</html>

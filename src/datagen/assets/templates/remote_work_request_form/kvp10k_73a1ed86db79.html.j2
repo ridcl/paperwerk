@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remote Work Request Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 10px; }
+  .header-subtitle { font-size: 12pt; margin-bottom: 30px; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-row > div { flex: 1; }
+  .form-label { font-weight: bold; display: block; margin-bottom: 5px; }
+  .form-input-line { border-bottom: 1px solid #000; width: 100%; }
+  .checkbox-group { margin-top: 10px; }
+  .checkbox-group label { font-weight: normal; display: inline-block; margin-right: 20px; }
+  .signature-line { border-top: 1px solid #000; width: 100%; margin-top: 50px; margin-bottom: 5px; }
+  .footer-text { font-size: 8pt; margin-top: 50px; text-align: center; }
+  .page-footer { display: flex; justify-content: space-between; font-size: 10pt; margin-top: 30px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 48pt; font-weight: bold;">Y</div>
+      <div style="font-size: 18pt; font-weight: bold;">YOUNGSTOWN</div>
+      <div style="font-size: 18pt; font-weight: bold;">STATE</div>
+      <div style="font-size: 18pt; font-weight: bold;">UNIVERSITY</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 10pt;">One University Plaza, Youngstown, Ohio 44555</div>
+      <div style="font-size: 10pt;">Office of Human Resources</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="text-align: center;">
+      <div style="border: 1px solid #000; padding: 10px 20px; display: inline-block;">
+        <div style="font-size: 14pt; font-weight: bold;">REMOTE WORK REQUEST FORM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Employee Information</div>
+
+  <div class="form-row">
+    <div>
+      <span class="form-label">Employee Name:</span>
+      <div class="form-input-line" data-field="employee_name">{{ employee_name }}</div>
+    </div>
+    <div>
+      <span class="form-label">Banner ID:</span>
+      <div class="form-input-line" data-field="banner_id">{{ banner_id }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="form-label">Department:</span>
+      <div class="form-input-line" data-field="department">{{ department }}</div>
+    </div>
+    <div>
+      <span class="form-label">Position:</span>
+      <div class="form-input-line" data-field="position">{{ position }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="form-label">Remote Work Location Address and City:</span>
+      <div class="form-input-line" data-field="remote_work_location_address_and_city">{{ remote_work_location_address_and_city }}</div>
+    </div>
+    <div>
+      <span class="form-label">Remote Work Telephone/Cell Phone Number:</span>
+      <div class="form-input-line" data-field="remote_work_telephone_cell_phone_number">{{ remote_work_telephone_cell_phone_number }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="form-label">Proposed Start Date (Minimum of 14 days prior to submission of form):</span>
+      <div class="form-input-line" data-field="remote_work_telephone_cell_phone_number_2">{{ remote_work_telephone_cell_phone_number_2 }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">Requested Schedule</div>
+
+  <div style="display: flex; margin-bottom: 10px;">
+    <div style="flex: 1; padding-right: 10px;">
+      <span class="form-label">Day of the Week</span>
+    </div>
+    <div style="flex: 1; padding-right: 10px;">
+      <span class="form-label">Schedule (i.e. 9am-5pm)</span>
+    </div>
+    <div style="flex: 1;">
+      <span class="form-label">Remote Yes or No</span>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #000;">
+    {% for day in ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %}
+    <div style="display: flex; border-bottom: 1px solid #000;">
+      <div style="flex: 1; padding: 5px;">{{ day }}</div>
+      <div style="flex: 1; padding: 5px;">
+        <div class="form-input-line" style="height: 20px;" data-field="remote_yes_or_no">{{ remote_yes_or_no }}</div>
+      </div>
+      <div style="flex: 1; padding: 5px;">
+        <div class="form-input-line" style="height: 20px;" data-field="field_1">{{ field_1 }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">I understand and agree that:</div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> I have read and will abide by the Youngstown State University (YSU) Remote Work Guidelines.</label>
+    <br>
+    <label><input type="checkbox"> I have inspected my proposed remote worksite and accurately completed the Remote Worksite Safety and Productivity Checklist.</label>
+    <br>
+    <label><input type="checkbox"> While working remotely I continue to be responsible for following all YSU policies and failure to comply will result in revocation of remote work approval and/or corrective action up to and including termination.</label>
+    <br>
+    <label><input type="checkbox"> I will establish a workspace conducive to productive work and maintain safe work conditions.</label>
+    <br>
+    <label><input type="checkbox"> I am solely responsible for ensuring the safety of the remote work site.</label>
+    <br>
+    <label><input type="checkbox"> I will maintain accurate time reporting (including entering work time, vacation time, and sick time).</label>
+    <br>
+    <label><input type="checkbox"> I will obtain prior written management approval for overtime or any schedule change.</label>
+    <br>
+    <label><input type="checkbox"> I will maintain asset, data and information security. This includes, but is not limited to, operating systems, antivirus/antispare protection, student and employee information, and secured network access.</label>
+    <br>
+    <label><input type="checkbox"> I will conduct remote work only at the pre-approved work site.</label>
+    <br>
+    <label><input type="checkbox"> I will not permit other persons to utilize the work space during business hours.</label>
+    <br>
+    <label><input type="checkbox"> I am liable for any injuries sustained by visitors to my remote work site.</label>
+    <br>
+    <label><input type="checkbox"> I will comply with all safety policies and procedures, including immediately reporting injuries sustained during working hours to my supervisor.</label>
+  </div>
+
+  <div class="section-title">Employee Signature and Date</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <span class="form-label">Manager Review:</span>
+      <div style="display: flex; gap: 30px;">
+        <label><input type="checkbox"> Approve as requested</label>
+        <label><input type="checkbox"> Approve with the following modifications[]</label>
+      </div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="form-input-line" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <label><input type="checkbox"> Denial for the following reason[]</label>
+  </div>
+
+  <div class="section-title">Manager Signature and Date</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <span class="form-label">Manager Signature:</span>
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div class="section-title">Vice-President/Associate Vice-President Review:</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div>
+      <span class="form-label">Vice-President/Associate Vice-President Review:</span>
+      <div style="display: flex; gap: 30px;">
+        <label><input type="checkbox"> Approve Manager Determination</label>
+        <label><input type="checkbox"> Approve Manager Determination with the following modifications[]</label>
+      </div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="form-input-line" data-field="date_2">{{ date_2 }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <label><input type="checkbox"> Disapprove Manager Decision for the following reason[]</label>
+  </div>
+
+  <div class="section-title">Vice-President/Associate Vice-President Signature and Date</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <span class="form-label">Vice-President/Associate Vice-President Signature:</span>
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; font-size: 9pt;">
+    *A determination by the Vice-President/Associate Vice-President that the remote work request is denied/not approved is final. Only submit requests that are approved or approved with modification[s] to the CHRO/Designee.
+  </div>
+
+  <div class="section-title">Chief Human Resources Officer, or Designee, Review:</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div>
+      <span class="form-label">Implementation Confirmed:</span>
+      <div style="display: flex; gap: 30px;">
+        <label><input type="checkbox"> Implementation Confirmed</label>
+        <label><input type="checkbox"> Implementation suspended/delayed due to the following:</label>
+      </div>
+    </div>
+    <div>
+      <span class="form-label">Start Date:</span>
+      <div class="form-input-line" data-field="start_date">{{ start_date }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">Comments/Updates</div>
+  <div style="border: 1px solid #000; height: 100px; margin-bottom: 30px;"></div>
+
+  <div class="section-title">CHRO/Designee Signature and Date</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <span class="form-label">CHRO/Designee Signature:</span>
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div class="footer-text">
+    A completed EMPLOYEE REMOTE WORKSITE SAFETY & PRODUCTIVITY CHECKLIST must be submitted with all REMOTE WORK REQUESTS.
+  </div>
+
+  <div class="page-footer">
+    <div>
+      Original to Personnel File
+      <br>
+      Copy to Employee
+      <br>
+      Copy to Department Manager
+    </div>
+    <div>
+      6.2022
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 48pt; font-weight: bold;">Y</div>
+      <div style="font-size: 18pt; font-weight: bold;">YOUNGSTOWN</div>
+      <div style="font-size: 18pt; font-weight: bold;">STATE</div>
+      <div style="font-size: 18pt; font-weight: bold;">UNIVERSITY</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 10pt;">One University Plaza, Youngstown, Ohio 44555</div>
+      <div style="font-size: 10pt;">Office of Human Resources</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="text-align: center;">
+      <div style="border: 1px solid #000; padding: 10px 20px; display: inline-block;">
+        <div style="font-size: 14pt; font-weight: bold;">EMPLOYEE REMOTE WORKSITE SAFETY & PRODUCTIVITY CHECKLIST</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Instructions</div>
+  <div style="font-size: 10pt; line-height: 1.5;">
+    The following checklist is designed to assess the overall safety and appropriateness of a remote work site. This checklist must be completed and returned with the Remote Work Request Form. The University reserves the right to inspect a remote work location during normal business hours and to terminate or modify a remote work arrangement at any time.
+  </div>
+
+  <div class="section-title">Employee Information (Please Print):</div>
+  <div class="form-row">
+    <div>
+      <span class="form-label">Employee Name:</span>
+      <div class="form-input-line" data-field="employee_name_2">{{ employee_name_2 }}</div>
+    </div>
+    <div>
+      <span class="form-label">Department:</span>
+      <div class="form-input-line" data-field="department_2">{{ department_2 }}</div>
+    </div>
+  </div>
+
+  <div class="section-title">Checklist Items</div>
+
+  {% for i in range(1, 18) %}
+  <div style="margin-bottom: 15px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div style="flex: 3;">
+        <span style="font-weight: bold;">{{ i }}.</span>
+        <span data-field="checklist_questions[{{ i-1 }}]">{{ "Question text placeholder for item " ~ i }}</span>
+      </div>
+      <div style="flex: 1; text-align: right;">
+        <label><input type="checkbox"> YES</label>
+        <label><input type="checkbox"> NO</label>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title" style="margin-top: 30px;">Certification</div>
+  <div style="font-size: 10pt; line-height: 1.5;">
+    I have reviewed the remote worksite safety and productivity checklist and inspected my proposed remote work site for compliance with this checklist. I understand that failure to accurately complete this checklist and/or update my responses could result in modification or termination of a remote work arrangement and/or corrective action up to and including termination.
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">Employee Signature and Date</div>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <span class="form-label">Employee Signature:</span>
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      <span class="form-label">Date:</span>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 50px;">Submission Instructions</div>
+  <div style="font-size: 10pt; line-height: 1.5;">
+    MUST BE SUBMITTED TO YOUR MANAGER WITH THE COMPLETED REMOTE WORK REQUEST AND APPROVAL FORM
+  </div>
+
+  <div class="footer-text">
+    Youngstown State University does not discriminate on the basis of race, color, national origin, sex, sexual orientation, gender identity and/or expression, disability, age, religion or veteran/military status in its programs or activities. Please visit www.ysu.edu/ada-accessibility for contact information for persons designated to handle questions about this policy.
+  </div>
+
+  <div class="page-footer">
+    <div></div>
+    <div>www.ysu.edu</div>
+  </div>
+</div>
+
+</body>
+</html>

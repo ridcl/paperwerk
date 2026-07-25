@@ -1,0 +1,295 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .contact-info {
+    text-align: right;
+    font-size: 0.9em;
+  }
+  .section-title {
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 0;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 1.8em; margin-bottom: 5px;">{{ full_name }}</h1>
+    <p style="margin-top: 0;">Department of Political Science</p>
+    <p style="margin-top: 0;">{{ employer.department }}</p>
+    <p style="margin-top: 0;">{{ employer.institution }}</p>
+  </div>
+  <div class="header-info">
+    <div class="contact-info">
+      <p>Tel: {{ contact.phone }}</p>
+      <p>Fax: {{ contact.fax }}</p>
+      <p>E-mail: {{ contact.email }}</p>
+    </div>
+  </div>
+
+  <div class="section-title">Employment</div>
+  <ul>
+    <li>{{ employment.position_1 }} at {{ employment.employer_1 }} ({{ employment.dates_1 }})</li>
+    <li>{{ employment.position_2 }} at {{ employment.employer_2 }} ({{ employment.dates_2 }})</li>
+    <li>{{ employment.position_3 }} at {{ employment.employer_3 }} ({{ employment.dates_3 }})</li>
+  </ul>
+
+  <div class="section-title">Education</div>
+  <ul>
+    <li>{{ education.degree_1 }} from {{ education.institution_1 }} ({{ education.year_1 }})</li>
+    <li>{{ education.degree_2 }} from {{ education.institution_2 }} ({{ education.year_2 }})</li>
+  </ul>
+
+  <div class="section-title">Fields of Study</div>
+  <ul>
+    {% for field in fields_of_study %}
+      <li>{{ field }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;">Chen CV</div>
+
+  <div class="section-title">Publications</div>
+
+  <div class="section-title">Refereed Books (single-author)</div>
+  <ul>
+    {% for book in refereed_books_single_author %}
+      <li>{{ book.title }} ({{ book.year }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Refereed Edited Books</div>
+  <ul>
+    {% for edited_book in refereed_edited_books %}
+      <li>{{ edited_book.title }} ({{ edited_book.year }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Refereed Journal Articles</div>
+  <ul>
+    {% for article in refereed_journal_articles %}
+      <li>{{ article.title }} ({{ article.year }})</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;">Chen CV</div>
+
+  <div class="section-title">Refereed Book Chapters</div>
+  <ul>
+    {% for chapter in refereed_book_chapters %}
+      <li>{{ chapter.title }} ({{ chapter.year }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Book Reviews and Other Publications</div>
+  <ul>
+    {% for review in book_reviews %}
+      <li>{{ review.title }} ({{ review.year }})</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;">Chen CV</div>
+
+  <div class="section-title">Works in Progress</div>
+  <ul>
+    {% for wip in works_in_progress %}
+      <li>{{ wip.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Conferences, Workshops & Invited Talks</div>
+  <ul>
+    {% for talk in conferences_talks %}
+      <li>{{ talk.description }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.9em;">Chen CV</div>
+
+  <div class="section-title">Professional, University and Departmental Service</div>
+
+  <div class="section-title">Profession</div>
+  <ul>
+    {% for profession in professions %}
+      <li>{{ profession.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">University and College</div>
+  <ul>
+    {% for university_service in university_services %}
+      <li>{{ university_service.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Department</div>
+  <ul>
+    {% for department_service in department_services %}
+      <li>{{ department_service.description }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right;">{{ full_name }} CV</div>
+
+  <div class="section-title">Selected Media</div>
+  <ul>
+    <li>"{{ media_item_1_title }}", {{ media_item_1_source }}, {{ media_item_1_date }}</li>
+    <li>"{{ media_item_2_title }}", {{ media_item_2_source }}, {{ media_item_2_date }}</li>
+    <li>"{{ media_item_3_title }}", {{ media_item_3_source }}, {{ media_item_3_date }}</li>
+  </ul>
+
+  <div class="section-title">Awards and Fellowships</div>
+  <ul>
+    {% for award in awards %}
+    <li>{{ award.description }} ({{ award.year_start }}-{{ award.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Education</div>
+  <ul>
+    {% for education in education_history %}
+    <li>{{ education.institution }} - {{ education.degree }} ({{ education.year_start }}-{{ education.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Other Professional Experiences</div>
+  <ul>
+    {% for experience in professional_experiences %}
+    <li>{{ experience.description }} ({{ experience.year_start }}-{{ experience.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Languages</div>
+  <ul>
+    {% for lang in languages %}
+    <li>{{ lang.name }} ({{ lang.proficiency }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">References</div>
+  <p>Available upon request</p>
+</div>
+
+<div class="page">
+  <div style="text-align: right;">{{ full_name }} CV</div>
+
+  <div class="section-title">Selected Media</div>
+  <ul>
+    <li>"{{ media_item_4_title }}", {{ media_item_4_source }}, {{ media_item_4_date }}</li>
+  </ul>
+
+  <div class="section-title">Awards and Fellowships</div>
+  <ul>
+    {% for award in awards %}
+    <li>{{ award.description }} ({{ award.year_start }}-{{ award.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Education</div>
+  <ul>
+    {% for education in education_history %}
+    <li>{{ education.institution }} - {{ education.degree }} ({{ education.year_start }}-{{ education.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Other Professional Experiences</div>
+  <ul>
+    {% for experience in professional_experiences %}
+    <li>{{ experience.description }} ({{ experience.year_start }}-{{ experience.year_end }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Languages</div>
+  <ul>
+    {% for lang in languages %}
+    <li>{{ lang.name }} ({{ lang.proficiency }})</li>
+    {% endfor %}
+  </ul>
+
+</div>
+</body>
+</html>

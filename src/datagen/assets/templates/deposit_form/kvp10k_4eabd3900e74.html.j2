@@ -1,0 +1,177 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { font-size: 24pt; font-weight: bold; margin-bottom: 5px; }
+  h2 { font-size: 14pt; font-weight: bold; margin-top: 20px; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table th, .line-item-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .line-item-table th { background-color: #f0f0f0; }
+  .signature-line { border-bottom: 1px solid black; margin-top: 50px; display: inline-block; width: 50%; }
+</style>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 28pt; margin: 0;">HAWAII PACIFIC UNIVERSITY</h1>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt;">Office of Student Activities</div>
+      <div style="margin-top: 10px;">Date Received: <span data-field="date_received">{{ date_received }}</span></div>
+      <div style="margin-top: 5px;">By: <span data-field="received_by">{{ received_by }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; border-top: 1px solid black; padding-top: 10px;">
+    <h2 style="font-size: 16pt; margin: 0;">Deposit Form</h2>
+  </div>
+
+  <div style="margin-top: 20px; font-size: 11pt;">
+    Count the cash and checks received. Complete this form, attach the money and ticket log (if applicable), and submit to the Student Life Office at Aloha Tower Marketplace Suite 1400.
+  </div>
+
+  <div class="form-section" style="margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div>
+        RSO Name: <span data-field="rso_name">{{ rso_name }}</span>
+      </div>
+      <div>
+        Phone: <span data-field="phone_number">{{ phone_number }}</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div>
+        Reason for deposit:
+        <div style="border-bottom: 1px solid black; width: 60%;" data-field="phone">{{ phone }}</div>
+      </div>
+      <div>
+        <input type="checkbox" id="fundraiser" name="fundraiser"><label for="fundraiser">Fundraiser</label></div>
+        <div style="margin-left: 20px;"><input type="checkbox" id="club_dues" name="club_dues"><label for="club_dues">Club dues</label></div>
+        <div style="margin-left: 20px;"><input type="checkbox" id="other" name="other"><label for="other">Other:</label></div>
+      </div>
+    </div>
+    <div style="margin-top: 15px; font-size: 10pt;">
+      Please provide the date of the event and describe the event or purpose of the enclosed donations (for use in acknowledgement letters):
+    </div>
+    <div style="border: 1px solid black; height: 60px; margin-top: 5px; padding: 5px;">
+      <!-- Placeholder for description -->
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <th style="width: 50%;">NAME AND COMPLETE ADDRESS</th>
+          <th style="width: 15%; text-align: center;">CHECK #/CASH</th>
+          <th style="width: 15%; text-align: right;">$ AMOUNT</th>
+          <th style="width: 20%; text-align: center;">NON-DONATION PORTION (if applicable)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].check_cash">{{ line_items[loop.index0].check_cash }}</span></td>
+          <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+          <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].non_donation_portion">{{ line_items[loop.index0].non_donation_portion }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 50px; text-align: right;">
+    Total Deposit: <span data-field="total_deposit">{{ total_deposit }}</span>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        <h3 style="font-size: 12pt; margin-bottom: 10px;">FOR OFFICE USE ONLY</h3>
+        <div style="font-size: 10pt;">Verified by Student Life: <span data-field="verified_by_student_life">{{ verified_by_student_life }}</span></div>
+        <div style="font-size: 10pt;">Cash Totals</div>
+        <div style="margin-top: 20px;">
+          <p style="font-size: 10pt;">To Business Office: Please deposit the enclosed donations to the following codes. If you have questions, call extension <span data-field="office_extension">{{ office_extension }}</span></p>
+        </div>
+      </div>
+      <div style="width: 45%;">
+        <table class="line-item-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Detail:</th>
+              <th style="width: 30%; text-align: right;">Total cash in $100 bills</th>
+              <th style="width: 20%; text-align: right;">$</th>
+              <th style="width: 30%; text-align: right;">$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fund:</td>
+              <td style="text-align: right;"><span data-field="detail_fund_cash_100">{{ detail_fund_cash_100 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_fund_amount_1">{{ detail_fund_amount_1 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_fund_amount_2">{{ detail_fund_amount_2 }}</span></td>
+            </tr>
+            <tr>
+              <td>Organization:</td>
+              <td style="text-align: right;"><span data-field="detail_org_cash_100">{{ detail_org_cash_100 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_org_amount_1">{{ detail_org_amount_1 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_org_amount_2">{{ detail_org_amount_2 }}</span></td>
+            </tr>
+            <tr>
+              <td>Account:</td>
+              <td style="text-align: right;"><span data-field="detail_account_cash_100">{{ detail_account_cash_100 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_account_amount_1">{{ detail_account_amount_1 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_account_amount_2">{{ detail_account_amount_2 }}</span></td>
+            </tr>
+            <tr>
+              <td>Program:</td>
+              <td style="text-align: right;"><span data-field="detail_program_cash_100">{{ detail_program_cash_100 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_program_amount_1">{{ detail_program_amount_1 }}</span></td>
+              <td style="text-align: right;"><span data-field="detail_program_amount_2">{{ detail_program_amount_2 }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 20px;">
+          <p style="font-size: 10pt;">Notes:</p>
+          <div style="border-bottom: 1px solid black; height: 40px; margin-top: 5px;" data-field="notes">{{ notes }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; justify-content: space-between; font-size: 11pt;">
+    <div>
+      Total in cash: <span data-field="total_cash">{{ total_cash }}</span>
+    </div>
+    <div>
+      Total in checks: <span data-field="total_checks">{{ total_checks }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 12pt;">
+    <div>
+      Grand total: <span data-field="grand_total">{{ grand_total }}</span>
+    </div>
+    <div>
+      Posted to RSO budget by: <span data-field="posted_by">{{ posted_by }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 10px; display: flex; justify-content: space-between; font-size: 10pt;">
+    <div>
+      Date posted: <span data-field="date_posted">{{ date_posted }}</span>
+    </div>
+    <div>
+      <!-- Empty space for alignment -->
+    </div>
+  </div>
+</div>

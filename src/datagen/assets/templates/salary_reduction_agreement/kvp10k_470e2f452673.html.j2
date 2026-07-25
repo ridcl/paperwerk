@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Salary Reduction Agreement</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24pt;">TEACHERS COLLEGE</h1>
+    <h2 style="font-size: 18pt;">COLUMBIA UNIVERSITY</h2>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <p style="text-align: center;">AGREEMENT FOR SALARY REDUCTION Under Section 403(b)</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Employee Name: _________________________</p>
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+    <div>
+      <p>TC ID Number or UNI: _________________________</p>
+      <span data-field="tc_id">{{ tc_id }}</span>
+    </div>
+    <div>
+      <p>Date: _________________________</p>
+      <span data-field="date">{{ date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Election Type: <span data-field="election_type_new">{{ election_type_new }}</span> New Enrollment &nbsp;&nbsp;&nbsp; <span data-field="election_type_change">{{ election_type_change }}</span> Change Contribution &nbsp;&nbsp;&nbsp; <span data-field="election_type_stop">{{ election_type_stop }}</span> Stop Contribution (SRA only)</p>
+  </div>
+
+  <div class="section-header">Annual Maximum</div>
+  <p>Please check one of the boxes below that applies closest to your situation.</p>
+
+  <div style="margin-top: 15px;">
+    <input type="checkbox" id="box1">
+    <label for="box1">I am under age 50 and I understand that the maximum I may contribute is <span data-field="max_contribution_under_50">{{ max_contribution_under_50 }}</span> in 2022. Additionally, I understand I am not required to contribute this amount.</label>
+  </div>
+  <div style="margin-top: 10px;">
+    <input type="checkbox" id="box2">
+    <label for="box2">I will be at least 50 years of age by December 31, 2022. I understand that individuals 50 and older may contribute <span data-field="max_contribution_over_50">{{ max_contribution_over_50 }}</span>, plus an additional <span data-field="additional_contribution_over_50">{{ additional_contribution_over_50 }}</span> for the Catch-up Provision for a total of <span data-field="total_max_contribution_over_50">{{ total_max_contribution_over_50 }}</span> in 2022. Additionally, I understand I am not required to contribute this amount.</label>
+  </div>
+
+  <div class="section-header" style="margin-top: 40px;">Supplemental Retirement Annuity (Tax-Deferred Annuity)</div>
+  <p>Please reduce my per pay period salary by <span data-field="reduction_percentage">{{ reduction_percentage }}</span> % and contribute this amount to my Supplemental Retirement Annuity account. I understand that in order to adjust or stop the contribution amount I am required to submit another Salary Reduction form. Additionally, I understand that SRA deductions will NOT be taken from the Summer 1 (S1) and Summer 2 (S2) payrolls.</p>
+
+  <div class="section-header" style="margin-top: 40px;">Retirement Annuity (Defined Contribution)</div>
+  <p>Complete this portion of the form if you have:</p>
+  <ol>
+    <li><span data-field="condition_a">{{ condition_a }}</span> a full time TC faculty, instructional or professional staff member for at least two years;</li>
+    <li><span data-field="condition_b">{{ condition_b }}</span> worked at least 1,000 hours in your first year at <span data-field="tc_name">{{ tc_name }}</span> and at least 1,000 hours in the following calendar year in a part time faculty, instructional (not adjunct) or professional staff position;</li>
+    <li><span data-field="condition_c">{{ condition_c }}</span> worked at least 1,000 hours a year in two calendar years following your anniversary year in a part time faculty, instructional (not adjunct) or professional staff position at Teachers College; OR</li>
+    <li><span data-field="condition_d">{{ condition_d }}</span> have completed the RA Prior Service Certification Form seeking credit for prior work at a comparable institution.</li>
+  </ol>
+
+  <div class="section-header" style="margin-top: 40px;">Select the amount you would like to contribute from your gross salary:</div>
+
+  <table class="line-item-table">
+    <thead>
+      <tr>
+        <td style="width: 50%;">I agree to contribute:</td>
+        <td style="width: 25%; text-align: center;">College Matching Contribution:</td>
+        <td style="width: 25%; text-align: center;">College Basic Contribution:</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox"> 0.5%</td>
+        <td style="text-align: center;">1.25%</td>
+        <td style="text-align: center;">5%</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> 1.0%</td>
+        <td style="text-align: center;">2.5%</td>
+        <td style="text-align: center;">5%</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> 1.5%</td>
+        <td style="text-align: center;">3.75%</td>
+        <td style="text-align: center;">5%</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"> 2.0%</td>
+        <td style="text-align: center;">5%</td>
+        <td style="text-align: center;">5%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <input type="checkbox"> I do not wish to contribute any funds and recognize that the College will not contribute any "matching" funds.
+  </div>
+
+  <p style="margin-top: 30px;">This amount will produce a total Employer contribution that does not exceed the Employee's statutory limitation under IRC Section 415 or Section 402(g), whichever is less.</p>
+</div>
+
+<div class="page">
+  <p style="margin-bottom: 30px;">
+    <span data-field="agreement_statement_1">{{ agreement_statement_1 }}</span> if you are eligible for employer contributions, you must elect the maximum matching contribution (2%) before contributing anything to the SRA. If you contributed to another employer's retirement plan this year, please consult with your financial advisor or TIAA-CREF before completing this form.
+  </p>
+  <p style="margin-bottom: 30px;">
+    <span data-field="agreement_statement_2">{{ agreement_statement_2 }}</span> The College's basic contribution starts on the 1st of the month following your two years of full time service unless (a) an exception applies or (b) you submit a new Agreement to notify TC that you have met the two year eligibility and seek to trigger earlier matching contributions.
+  </p>
+
+  <div class="section-header" style="margin-top: 40px;">BY THIS AGREEMENT, made between the Employee and Teachers College, we agree as follows:</div>
+  <p>The Employee's salary will be reduced by the amounts indicated above effective on or after <span data-field="effective_date">{{ effective_date }}</span>, which is a date subsequent to the execution of this Agreement.</p>
+
+  <p style="margin-top: 20px;">This Agreement shall be legally binding and irrevocable for both the College and the Employee while employment continues. However, either party may terminate or otherwise modify this Agreement as of a pay period by giving at least 30 days written notice mailed or delivered to the address of record of the other party.</p>
+
+  <p style="margin-top: 20px;">I certify that (a) I have accurately indicated my salary and my age, (b) I am not FICA exempt, and (c) I am not a non-resident alien.</p>
+
+  <div style="margin-top: 60px;">
+    <p>Signed this _________________________ day of _________________________ , <span data-field="signing_year">{{ signing_year }}</span></p>
+    <p style="margin-top: 50px;">_________________________</p>
+    <p>(Employee Signature)</p>
+    <p style="margin-top: 20px;">_________________________</p>
+    <p>(Employee Name - Print)</p>
+    <p style="margin-top: 20px;">_________________________</p>
+    <p>(Department)</p>
+  </div>
+</div>
+</body>
+</html>

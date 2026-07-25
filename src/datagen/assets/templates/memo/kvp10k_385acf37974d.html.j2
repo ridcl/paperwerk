@@ -1,0 +1,71 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  td {
+    padding: 8px 0;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      ID: <span data-field="document_id">{{ document_id }}</span><br>
+      UILC: <span data-field="uilc_code">{{ uilc_code }}</span>
+    </div>
+    <div>
+      Number: <span data-field="document_number">{{ document_number }}</span><br>
+      Release Date: <span data-field="release_date">{{ release_date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>From: <span data-field="sender_name">{{ sender_name }}</span></p>
+    <p>Sent: <span data-field="sent_date">{{ sent_date }}</span></p>
+    <p>To: <span data-field="recipient_name">{{ recipient_name }}</span></p>
+    <p>Cc: <span data-field="cc_list">{{ cc_list }}</span></p>
+    <p>Bcc: <span data-field="bcc_list">{{ bcc_list }}</span></p>
+  </div>
+
+  <h2 style="font-family: 'DejaVu Sans', sans-serif; font-weight: bold; margin-top: 0;">Subject: FW: Is this answer correct in TCO Training ?</h2>
+
+  <div style="margin-top: 30px;">
+    <p>You asked us whether the "<span data-field="question_summary">{{ question_summary }}</span>" in the TCO Training materials regarding the deductibility of prepaid 2018 state income taxes in 2017 is incorrect. We concur with your assessment that the answer is incorrect and needs to be corrected. We also agree with your interpretation of the statute.</p>
+
+    <p>Under § 164(b)(6)(B), taxpayers may only deduct up to <span data-field="deduction_limit_amount">{{ deduction_limit_amount }}</span> in state and local taxes in taxable years beginning after <span data-field="start_date_1">{{ start_date_1 }}</span> and before <span data-field="end_date_1">{{ end_date_1 }}</span>. As you pointed out, § 164(b)(6)(B) requires that a taxpayer treat state and local taxes pre-paid in tax years before <span data-field="prepaid_year_start">{{ prepaid_year_start }}</span> for a tax imposed for a taxable year after <span data-field="prepaid_year_end">{{ prepaid_year_end }}</span> as paid on the last day of the taxable year for which the tax is imposed.</p>
+
+    <p>The IRS issued an advisory opinion on <span data-field="opinion_date">{{ opinion_date }}</span> (IR-2017-210), which explains that whether a taxpayer may deduct for the prepayment of state or local real property taxes in 2017 depends on the date that real property taxes are assessed. Pre-payment of anticipated real property taxes in 2017 that will not be assessed until 2018 are not deductible in 2017. However, these prepaid taxes would still be deductible in the year of assessment.</p>
+
+    <p>IR-2017-210 provides two examples which illustrate how to implement the above requirement. In Example 2, taxpayers prepaid their county property taxes in 2017 for taxes that would be assessed for the period <span data-field="example_period_start">{{ example_period_start }}</span> - <span data-field="example_period_end">{{ example_period_end }}</span>. These taxpayers could not deduct the prepaid county taxes on their 2017 federal tax return. In Example 1, a county assessed property taxes on <span data-field="example_date_1">{{ example_date_1 }}</span> for the period <span data-field="example_period_2_start">{{ example_period_2_start }}</span> - <span data-field="example_period_2_end">{{ example_period_2_end }}</span>. The county billed taxpayers for two installments of property tax, with the first installment due on <span data-field="installment_date_1">{{ installment_date_1 }}</span> and the second installment due on <span data-field="installment_date_2">{{ installment_date_2 }}</span>. In this particular case, a taxpayer that chooses to pay the second installment on <span data-field="payment_date_2">{{ payment_date_2 }}</span> rather than in 2018 could still claim a deduction for the prepayment on the taxpayer's 2017 federal tax return.</p>
+
+    <p>In Example 1 of the TCO Training materials you provided, the taxpayer prepaid <span data-field="prepaid_amount">{{ prepaid_amount }}</span> in state taxes in 2017 for state taxes that would be assessed in 2018. If the question had asked whether the taxpayer could claim a tax deduction on her 2017 tax return, then the answer would be correct that the taxpayer cannot claim a deduction. However, since the question asks how much</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <p style="font-size: 12pt;">2</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>the taxpayer may deduct in her 2018 return, the taxpayer can claim a <span data-field="deduction_amount">{{ deduction_amount }}</span> deduction in tax year 2018, since 2018 is the taxable year that the state actually imposes the tax.</p>
+
+    <p>Answer: <span data-field="final_answer_amount">{{ final_answer_amount }}</span>. Under section 164(b)(6), for purposes of subparagraph (B) of that section, an amount paid in a taxable year beginning before <span data-field="final_start_date">{{ final_start_date }}</span>, with respect to a State or local income tax for a taxable year beginning after <span data-field="final_end_date">{{ final_end_date }}</span>, shall be treated as paid on the last day of the taxable year for which such tax is imposed (in this case, 2018).</p>
+
+    <p>If you have any other questions, please contact me.</p>
+  </div>
+</div>

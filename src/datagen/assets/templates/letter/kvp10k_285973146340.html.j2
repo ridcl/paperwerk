@@ -1,0 +1,53 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for formal document feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  .address-block { margin-bottom: 20px; }
+  .signature-line { margin-top: 60px; margin-bottom: 5px; border-bottom: 1px solid #000; display: inline-block; width: 150px; }
+</style>
+
+<div class="page">
+  <div class="address-block">
+    USCIS<br>
+    Attn: <span data-field="attn_number">{{ attn_number }}</span><br>
+    <span data-field="street_address">{{ street_address }}</span><br>
+    <span data-field="city_state_zip">{{ city_state_zip }}</span>
+  </div>
+
+  <p>To Whom It May Concern:</p>
+
+  <p>RE: <span data-field="form_type">{{ form_type }}</span> Mailing Address</p>
+
+  <p>Please note that I attend <span data-field="institution_name">{{ institution_name }}</span>, which is a residential college. My on-campus address is <span data-field="on_campus_address">{{ on_campus_address }}</span>.</p>
+
+  <p>I may not have access to my <span data-field="mailing_address_type">{{ mailing_address_type }}</span> when you process my application. Therefore, to ensure the safety of my EAD and/or any necessary correspondence with you concerning my application, please use the mailing address indicated on my <span data-field="form_name">{{ form_name }}</span>. <span data-field="contact_person_name">{{ contact_person_name }}</span>, <span data-field="contact_person_title">{{ contact_person_title }}</span> has recommended this as <span data-field="mailing_preference">{{ mailing_preference }}</span>. The address listed below is for <span data-field="recipient_type">{{ recipient_type }}</span>.</p>
+
+  <p>
+    <span data-field="student_name">({{ student_name }})</span>
+  </p>
+
+  <div class="address-block">
+    <span data-field="contact_person_name">{{ contact_person_name }}</span><br>
+    <span data-field="institution_name">{{ institution_name }}</span><br>
+    <span data-field="street_address">{{ street_address }}</span><br>
+    <span data-field="city_state_zip">{{ city_state_zip }}</span>
+  </div>
+
+  <p>Thank you for your assistance in this matter.</p>
+
+  <p>Sincerely,</p>
+
+  <div style="margin-top: 40px;">
+    <span class="signature-line"></span>
+    <span style="float: right; margin-top: 20px;">Date</span>
+  </div>
+  <div style="clear: both;"></div>
+  <p style="margin-top: 10px;">Signature</p>
+</div>

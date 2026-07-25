@@ -1,0 +1,228 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    width: 200px;
+    margin-top: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 18pt; font-weight: bold;">APPLICATION FOR GRADUATE TRANSFER CREDIT</h1>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 14pt; font-weight: bold;">OAKLAND UNIVERSITY</h2>
+      <p style="margin: 2px 0;">GRADUATE STUDY AND</p>
+      <p style="margin: 2px 0;">LIFELONG LEARNING</p>
+      <p style="margin: 2px 0;">520 O'Dowd Hall</p>
+      <p style="margin: 2px 0;">Rochester, MI 48309-4401</p>
+      <p style="margin: 2px 0;">Phone: 248-370-4156</p>
+    </div>
+  </div>
+
+  <p>Submit original completed form to <span data-field="location_name">{{ location_name }}</span></p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">To be completed by the Student:</h3>
+  <table>
+    <tr>
+      <td style="width: 20%;">Name:</td>
+      <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+      <td style="width: 20%;">Grizzly Number:</td>
+      <td style="width: 30%;"><span data-field="grizzly_number">{{ grizzly_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><span data-field="address">{{ address }}</span></td>
+      <td>(City)</td>
+      <td><span data-field="city">{{ city }}</span></td>
+      <td>(State)</td>
+      <td><span data-field="state">{{ state }}</span></td>
+      <td>(Zip)</td>
+      <td><span data-field="zip">{{ zip }}</span></td>
+    </tr>
+    <tr>
+      <td>E-Mail Address:</td>
+      <td><span data-field="email_address">{{ email_address }}</span></td>
+      <td>Daytime Phone:</td>
+      <td><span data-field="phone_number">{{ phone_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Program:</td>
+      <td><span data-field="program">{{ program }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Course Information</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left; padding: 8px; border-bottom: 1px solid #000;">Institution</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 1px solid #000;">Sem/Yr Taken</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 1px solid #000;">Course Number</th>
+        <th style="text-align: left; padding: 8px; border-bottom: 1px solid #000;">Title</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 1px solid #000;">Credit Hrs Qtr/Sem</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 1px solid #000;">Grade</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 1px solid #000;">OU Requirement Satisfied *</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in course_details %}
+      <tr>
+        <td style="padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].institution">{{ item.institution }}</span></td>
+        <td style="text-align: center; padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].semester_year">{{ item.semester_year }}</span></td>
+        <td style="text-align: center; padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].course_number">{{ item.course_number }}</span></td>
+        <td style="padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].title">{{ item.title }}</span></td>
+        <td style="text-align: center; padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].credit_hours">{{ item.credit_hours }}</span></td>
+        <td style="text-align: center; padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].grade">{{ item.grade }}</span></td>
+        <td style="text-align: center; padding: 5px 0;"><span data-field="course_details[{{ loop.index0 }}].requirement_satisfied">{{ item.requirement_satisfied }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="font-size: 10pt; margin-top: 20px;">I understand that: (1) official transcripts must be on file in Graduate Study and Lifelong Learning. (2) the credit earned must be from an accredited institution and carry a grade of 3.0 (B) or better, (3) courses graded Pass/Fail or Credit/Non-Credit are not transferable, (4) credit must be earned within 6 years of the time the degree will be conferred, (5) courses must have been used toward another degree, (6) only one course credit must be transferred per course (7) the total number of credits transferred, (8) the total number of credits earned, and (9) no more than one credit will be awarded per week of instruction (i.e., a 4-credit course must meet a minimum of 14 hours per week for four weeks - a minimum total of 56 class hours or 47 clock hours of instruction).</p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Student Signature</h3>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 50px;">
+    <div>
+      <span class="signature-line" data-field="student_signature">{{ student_signature }}</span>
+      <p style="margin-top: 5px;">Student Signature</p>
+    </div>
+    <div>
+      <p>Date:</p>
+      <span data-field="student_signature_date">{{ student_signature_date }}</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px; margin-bottom: 15px;">To be completed by Adviser or Chair:</h3>
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 20%;">Comments:</td>
+      <td style="width: 80%;"><span data-field="adviser_comments">{{ adviser_comments }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Name (print or type):</td>
+      <td style="width: 80%;"><span data-field="adviser_name">{{ adviser_name }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Signature:</td>
+      <td style="width: 80%;"><span class="signature-line" style="width: 100%;" data-field="signature">{{ signature }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Date:</td>
+      <td style="width: 80%;"><span data-field="adviser_date">{{ adviser_date }}</span></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="approved_adviser" style="margin-right: 5px;">
+      <label for="approved_adviser">Approved</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="denied_adviser" style="margin-right: 5px;">
+      <label for="denied_adviser">Denied</label>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px; margin-bottom: 15px;">To be completed by GCOI Representative:</h3>
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 20%;">Comments:</td>
+      <td style="width: 80%;"><span data-field="gcoi_comments">{{ gcoi_comments }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Name (print or type):</td>
+      <td style="width: 80%;"><span data-field="gcoi_name">{{ gcoi_name }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Signature:</td>
+      <td style="width: 80%;"><span class="signature-line" style="width: 100%;" data-field="signature_2">{{ signature_2 }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Date:</td>
+      <td style="width: 80%;"><span data-field="gcoi_date">{{ gcoi_date }}</span></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="approved_gcoi" style="margin-right: 5px;">
+      <label for="approved_gcoi">Approved</label>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" id="denied_gcoi" style="margin-right: 5px;">
+      <label for="denied_gcoi">Denied</label>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px; margin-bottom: 15px;">To be completed by Graduate Study and Lifelong Learning:</h3>
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 20%;">Transfer Approved:</td>
+      <td style="width: 80%;"><span data-field="transfer_approved_status">{{ transfer_approved_status }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;"></td>
+      <td style="width: 80%;"><span data-field="transfer_approved_cr_1">{{ transfer_approved_cr_1 }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;"></td>
+      <td style="width: 80%;"><span data-field="transfer_approved_cr_2">{{ transfer_approved_cr_2 }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;"></td>
+      <td style="width: 80%;"><span data-field="transfer_approved_cr_3">{{ transfer_approved_cr_3 }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Total</td>
+      <td style="width: 80%;"><span data-field="transfer_total_cr">{{ transfer_total_cr }}</span></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px;">
+    <div>
+      <p>Director/Representative of Graduate Study:</p>
+      <span class="signature-line" style="width: 200px;" data-field="director_representative_of_graduate_stud">{{ director_representative_of_graduate_stud }}</span>
+      <p style="margin-top: 5px;">Signature</p>
+    </div>
+    <div>
+      <p>Date:</p>
+      <span data-field="director_date">{{ director_date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; justify-content: space-between; font-size: 9pt;">
+    <p>Copies: student, department, student file (original)</p>
+    <p>Date Transfer Credits Posted:</p>
+    <span data-field="posting_date">{{ posting_date }}</span>
+    <p>Revised 02/07</p>
+  </div>
+</div>

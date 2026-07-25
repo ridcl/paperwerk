@@ -1,0 +1,198 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for academic feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { text-align: center; margin-top: 0; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .contact-info { margin-bottom: 30px; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-row > div { flex: 1; }
+  .label-field { display: inline-block; width: 150px; vertical-align: top; }
+  .input-area { border-bottom: 1px solid #000; min-width: 200px; }
+  .section-title { font-weight: bold; margin-top: 25px; margin-bottom: 10px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 48px; margin: 0;">CSUN</h1>
+      <div style="font-size: 12px; text-align: center;">
+        CALIFORNIA<br>
+        STATE UNIVERSITY<br>
+        NORTHRIDGE
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 14px;">Finance & Trust Accounting</div>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; font-size: 24px; margin-bottom: 40px;">TRANSFER OF STATE FUNDS REQUEST</h2>
+  <h3 style="text-align: center; font-size: 18px; margin-bottom: 40px;">CAMPUS</h3>
+
+  <div class="contact-info">
+    <p>University Hall 360</p>
+    <p>Phone: <span data-field="contact.phone">{{ contact.phone }}</span></p>
+    <p>Fax: <span data-field="contact.fax">{{ contact.fax }}</span></p>
+    <p>Mail Code: <span data-field="contact.mail_code">{{ contact.mail_code }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">REQUEST FOR TRANSFER OF FUNDS</p>
+    <hr style="border: 0; border-top: 1px solid #000; margin-top: 5px; margin-bottom: 20px;">
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Service Provider: <span data-field="service_provider">{{ service_provider }}</span>
+    </div>
+    <div style="flex: 1;">
+      Service Recipient: <span data-field="service_recipient">{{ service_recipient }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    Brief Description of Services: – BACK UP DOCUMENTATION MUST BE ATTACHED.
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Fiscal Year: <span data-field="fiscal_year">{{ fiscal_year }}</span>
+    </div>
+    <div style="flex: 1; text-align: right;">
+      Amount: $ <span data-field="amount">{{ amount }}</span>
+    </div>
+  </div>
+
+  <!-- CAMPUS SERVICE PROVIDER SECTION -->
+  <div class="section-title">CAMPUS SERVICE PROVIDER: (Department receiving revenue)</div>
+  <div class="form-row">
+    <div style="flex: 1;">
+      Requisition No.: <span data-field="provider.requisition_no">{{ provider.requisition_no }}</span>
+    </div>
+    <div style="flex: 1;">
+      ACCOUNT: <span data-field="provider.account">{{ provider.account }}</span>
+    </div>
+    <div style="flex: 1;">
+      FUND: <span data-field="provider.fund">{{ provider.fund }}</span>
+    </div>
+    <div style="flex: 1;">
+      DEPT ID: <span data-field="provider.dept_id">{{ provider.dept_id }}</span>
+    </div>
+    <div style="flex: 1;">
+      PROGRAM: <span data-field="provider.program">{{ provider.program }}</span>
+    </div>
+    <div style="flex: 1;">
+      CLASS: <span data-field="provider.class">{{ provider.class }}</span>
+    </div>
+    <div style="flex: 1;">
+      PROJECT: <span data-field="provider.project">{{ provider.project }}</span>
+    </div>
+    <div style="flex: 1; text-align: right;">
+      AMOUNT: $ <span data-field="provider.amount">{{ provider.amount }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Financial Manager: <span data-field="provider.financial_manager">{{ provider.financial_manager }}</span>
+    </div>
+    <div style="flex: 1;">
+      Date: <span data-field="provider.date">{{ provider.date }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Print Name: <span data-field="provider.print_name">{{ provider.print_name }}</span>
+    </div>
+    <div style="flex: 1;">
+      Title: <span data-field="provider.title">{{ provider.title }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Department Contact: <span data-field="provider.department_contact">{{ provider.department_contact }}</span>
+    </div>
+    <div style="flex: 1;">
+      Ext: <span data-field="provider.ext">{{ provider.ext }}</span>
+    </div>
+    <div style="flex: 1;">
+      Mail Code: <span data-field="provider.mail_code">{{ provider.mail_code }}</span>
+    </div>
+    <div style="flex: 1;">
+      Email: <span data-field="provider.email">{{ provider.email }}</span>
+    </div>
+  </div>
+
+  <!-- CAMPUS SERVICE RECIPIENT SECTION -->
+  <div class="section-title">CAMPUS SERVICE RECIPIENT: (Department expending funds)</div>
+  <div class="form-row">
+    <div style="flex: 1;">
+      Requisition No.: <span data-field="recipient.requisition_no">{{ recipient.requisition_no }}</span>
+    </div>
+    <div style="flex: 1;">
+      ACCOUNT: <span data-field="recipient.account">{{ recipient.account }}</span>
+    </div>
+    <div style="flex: 1;">
+      FUND: <span data-field="recipient.fund">{{ recipient.fund }}</span>
+    </div>
+    <div style="flex: 1;">
+      DEPT ID: <span data-field="recipient.dept_id">{{ recipient.dept_id }}</span>
+    </div>
+    <div style="flex: 1;">
+      PROGRAM: <span data-field="recipient.program">{{ recipient.program }}</span>
+    </div>
+    <div style="flex: 1;">
+      CLASS: <span data-field="recipient.class">{{ recipient.class }}</span>
+    </div>
+    <div style="flex: 1;">
+      PROJECT: <span data-field="recipient.project">{{ recipient.project }}</span>
+    </div>
+    <div style="flex: 1; text-align: right;">
+      AMOUNT: $ <span data-field="recipient.amount">{{ recipient.amount }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Financial Manager: <span data-field="recipient.financial_manager">{{ recipient.financial_manager }}</span>
+    </div>
+    <div style="flex: 1;">
+      Date: <span data-field="recipient.date">{{ recipient.date }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Print Name: <span data-field="recipient.print_name">{{ recipient.print_name }}</span>
+    </div>
+    <div style="flex: 1;">
+      Title: <span data-field="recipient.title">{{ recipient.title }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="flex: 1;">
+      Department Contact: <span data-field="recipient.department_contact">{{ recipient.department_contact }}</span>
+    </div>
+    <div style="flex: 1;">
+      Ext: <span data-field="recipient.ext">{{ recipient.ext }}</span>
+    </div>
+    <div style="flex: 1;">
+      Mail Code: <span data-field="recipient.mail_code">{{ recipient.mail_code }}</span>
+    </div>
+    <div style="flex: 1;">
+      Email: <span data-field="recipient.email">{{ recipient.email }}</span>
+    </div>
+  </div>
+
+</div>

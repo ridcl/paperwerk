@@ -1,0 +1,185 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .input-line {
+    border-bottom: 1px solid #000;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .checkbox-group {
+    margin-top: 10px;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-right: 15px;
+  }
+  .signature-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 40%;
+    text-align: center;
+    padding-bottom: 5px;
+  }
+  .footer-info {
+    margin-top: 50px;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="page">
+  <div>
+    <div style="text-align: center;">
+      <div style="font-size: 16pt; font-weight: bold;">ILLINOIS INSTITUTE</div>
+      <div style="font-size: 12pt; font-weight: bold;">OF TECHNOLOGY</div>
+      <div style="font-size: 10pt;">Center for Disability Resources</div>
+    </div>
+    <h1 style="margin-top: 30px;">SIGN LANGUAGE INTERPRETING SERVICES REQUEST FORM</h1>
+    <p style="font-size: 10pt; line-height: 1.5;">Two weeks notice is required for requests for sign-language interpreting service for campus events and activities. Requests for services must be made to CDR, not to individual interpreters or agencies. Students requesting services for their classes must provide a copy of their schedule to CDR at the time the request is made. Requests for services for classes must be made at least four weeks prior to the first week of classes. Late requests will be filled as soon as interpreters can be secured. Students should be aware that at times sign language interpreters can be difficult to secure, especially for requests without adequate notice.</p>
+    <p style="font-size: 10pt; font-weight: bold;">IMPORTANT: * indicates required field</p>
+
+    <div class="form-group">
+      <label>*Name:</label>
+      <div class="input-line" data-field="name">{{ name }}</div>
+    </div>
+    <div class="form-group">
+      <label>*Today's date:</label>
+      <div class="input-line" data-field="today_s_date">{{ today_s_date }}</div>
+    </div>
+    <div class="form-group">
+      <label>IIT ID #:</label>
+      <div class="input-line" data-field="iit_id">{{ iit_id }}</div>
+    </div>
+    <div class="form-group">
+      <label>*Home Phone / TTY:</label>
+      <div class="input-line" data-field="home_phone_tty">{{ home_phone_tty }}</div>
+    </div>
+    <div class="form-group">
+      <label>Mobile Phone:</label>
+      <div class="input-line" data-field="mobile_phone">{{ mobile_phone }}</div>
+    </div>
+    <div class="form-group">
+      <label>*E-mail Address:</label>
+      <div class="input-line" data-field="e_mail_address">{{ e_mail_address }}</div>
+    </div>
+    <div class="form-group">
+      <label>*School Affiliation Event Details:</label>
+      <div class="input-line" data-field="school_affiliation_event_details">{{ school_affiliation_event_details }}</div>
+    </div>
+    <div class="form-group">
+      <label>*Date Interpreters Needed:</label>
+      <div class="input-line" data-field="date_interpreters_needed">{{ date_interpreters_needed }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div style="width: 48%;">
+        <label>*Start Time:</label>
+        <div class="input-line" data-field="start_time">{{ start_time }}</div>
+      </div>
+      <div style="width: 48%;">
+        <label>*End Time:</label>
+        <div class="input-line" data-field="end_time">{{ end_time }}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>*Building Location:</label>
+      <div class="input-line" data-field="building_location">{{ building_location }}</div>
+    </div>
+    <div class="form-group">
+      <label>*Building Room #:</label>
+      <div class="input-line" data-field="building_room">{{ building_room }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div>
+    <div class="form-group">
+      <label>*Description of Event:</label>
+      <div class="input-line" style="height: 100px;" data-field="description_of_event">{{ description_of_event }}</div>
+    </div>
+
+    <div class="form-group">
+      <label>*Number of Participants:</label>
+      <div class="input-line" data-field="number_of_participants">{{ number_of_participants }}</div>
+    </div>
+
+    <div class="form-group">
+      <label>*Language Preference:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> ASL</label>
+        <label><input type="checkbox"> Signed English</label>
+        <label><input type="checkbox"> Combination?</label>
+      </div>
+      <div class="form-group" style="margin-top: 10px;">
+        <label>Other, please explain:</label>
+        <div class="input-line" style="height: 50px;" data-field="other_please_explain">{{ other_please_explain }}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Additional Information:</label>
+      <div class="input-line" style="height: 100px;" data-field="additional_information">{{ additional_information }}</div>
+    </div>
+
+    <h2 style="margin-top: 40px;">Requestor Authorization:</h2>
+    <p style="font-size: 10pt; line-height: 1.5;">I hereby authorize the information on this form is accurate to the best of my knowledge.</p>
+
+    <div class="signature-area">
+      <div style="width: 48%;">
+        <label>Signature</label>
+        <div class="signature-line" data-field="signature">{{ signature }}</div>
+      </div>
+      <div style="width: 48%;">
+        <label>Date</label>
+        <div class="signature-line" data-field="date">{{ date }}</div>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      Send Form To:
+      <div style="font-weight: bold;">IIT Center for Disability Resources</div>
+      <div style="font-size: 10pt;">10 W. 35th Street, Third Floor Chicago, IL 60616</div>
+      <div style="font-size: 10pt;">Email: {{ contact_email }} Fax: {{ contact_fax }}</div>
+    </div>
+  </div>
+</div>

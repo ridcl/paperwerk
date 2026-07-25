@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Equity in Athletics Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; }
+  .header-logo { text-align: center; margin-bottom: 30px; }
+  .header-logo img { max-width: 200px; height: auto; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .sub-header {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; }
+  .header { font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+  .sub-header { font-weight: bold; margin-top: 10px; }
+  .label { font-weight: normal; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Viterbo University Logo -->
+    <span style="font-size: 40px; font-weight: bold;">VITERBO UNIVERSITY</span>
+  </div>
+
+  <h1>Equity in Athletics Disclosure Act Report {{ report_year }}</h1>
+
+  <p>Any coeducational institution of higher education that participates in a federal student financial aid program and has an intercollegiate athletic program must provide information concerning their athletic programs under the Equity in Athletics Disclosure Act of 1994, Section 485(e) and (g) of the Higher Education Act of 1965, 20 U.S.C. 1092, 34 CFR 668.47.</p>
+
+  <p>This act and accompanying federal regulations require that the following information, based on the previous reporting year, be available upon request to students, prospective students, and the public.</p>
+
+  <p>Reporting Year: {{ reporting_year_range }}</p>
+
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#male_female_students">Male/Female Undergraduate Students</a></li>
+    <li><a href="#athlete_participation">Athlete Participation Counts</a></li>
+    <li><a href="#revenue_expenses">Revenue and Expenses</a></li>
+    <li><a href="#eada_info">EADA Institution and Survey Information</a></li>
+  </ol>
+</div>
+
+<div class="page">
+  <h2 id="male_female_students">1. Male/Female Undergraduate Students</h2>
+
+  <p>Male Undergraduate Students: <span data-field="male_undergraduate_students">{{ male_undergraduate_students }}</span></p>
+  <p>Female Undergraduate Students: <span data-field="female_undergraduate_students">{{ female_undergraduate_students }}</span></p>
+  <p>Enrollment numbers are from the IPEDS 12-Month Enrollment Report</p>
+
+  <h2 id="athlete_participation">2. Athlete Participation Counts</h2>
+
+  <h3>Men's Participation</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Number of Participants</th>
+        <th>Number Participating on a Second Team</th>
+        <th>Number Participating on a Third Team</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for team in men_teams %}
+      <tr>
+        <td><span data-field="men_teams[{{ loop.index0 }}].team_name">{{ team.team_name }}</span></td>
+        <td><span data-field="men_teams[{{ loop.index0 }}].participants">{{ team.participants }}</span></td>
+        <td><span data-field="men_teams[{{ loop.index0 }}].second_team_participants">{{ team.second_team_participants }}</span></td>
+        <td><span data-field="men_teams[{{ loop.index0 }}].third_team_participants">{{ team.third_team_participants }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Total Men's Per Sport</td>
+        <td><span data-field="total_men_per_sport">{{ total_men_per_sport }}</span></td>
+        <td><span data-field="total_men_second_team">{{ total_men_second_team }}</span></td>
+        <td><span data-field="total_men_third_team">{{ total_men_third_team }}</span></td>
+      </tr>
+      <tr>
+        <td>Total UNDUPLICATED Men's Athletes</td>
+        <td><span data-field="total_unduplicated_men">{{ total_unduplicated_men }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Women's Participation</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Number of Participants</th>
+        <th>Number Participating on a Second Team</th>
+        <th>Number Participating on a Third Team</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for team in women_teams %}
+      <tr>
+        <td><span data-field="women_teams[{{ loop.index0 }}].team_name">{{ team.team_name }}</span></td>
+        <td><span data-field="women_teams[{{ loop.index0 }}].participants">{{ team.participants }}</span></td>
+        <td><span data-field="women_teams[{{ loop.index0 }}].second_team_participants">{{ team.second_team_participants }}</span></td>
+        <td><span data-field="women_teams[{{ loop.index0 }}].third_team_participants">{{ team.third_team_participants }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Total Women's Per Sport</td>
+        <td><span data-field="total_women_per_sport">{{ total_women_per_sport }}</span></td>
+        <td><span data-field="total_women_second_team">{{ total_women_second_team }}</span></td>
+        <td><span data-field="total_women_third_team">{{ total_women_third_team }}</span></td>
+      </tr>
+      <tr>
+        <td>Total UNDUPLICATED Women's Athletes</td>
+        <td><span data-field="total_unduplicated_women">{{ total_unduplicated_women }}</span></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 id="revenue_expenses">3. Revenue and Expenses</h2>
+
+  <h3>Men's Basketball</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>SPORT</th>
+        <th>Revenue</th>
+        <th>Expenses</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sport_data in men_basketball_sports %}
+      <tr>
+        <td><span data-field="men_basketball_sports[{{ loop.index0 }}].sport_name">{{ sport_data.sport_name }}</span></td>
+        <td>$<span data-field="men_basketball_sports[{{ loop.index0 }}].revenue">{{ sport_data.revenue }}</span></td>
+        <td>$<span data-field="men_basketball_sports[{{ loop.index0 }}].expenses">{{ sport_data.expenses }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Men's Teams Total</td>
+        <td>$<span data-field="men_teams_total_revenue">{{ men_teams_total_revenue }}</span></td>
+        <td>$<span data-field="men_teams_total_expenses">{{ men_teams_total_expenses }}</span></td>
+      </tr>
+      <tr>
+        <td>Total MINUS Basketball</td>
+        <td>$<span data-field="total_minus_basketball_revenue">{{ total_minus_basketball_revenue }}</span></td>
+        <td>$<span data-field="total_minus_basketball_expenses">{{ total_minus_basketball_expenses }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Women's Basketball</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>SPORT</th>
+        <th>Revenue</th>
+        <th>Expenses</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sport_data in women_basketball_sports %}
+      <tr>
+        <td><span data-field="women_basketball_sports[{{ loop.index0 }}].sport_name">{{ sport_data.sport_name }}</span></td>
+        <td>$<span data-field="women_basketball_sports[{{ loop.index0 }}].revenue">{{ sport_data.revenue }}</span></td>
+        <td>$<span data-field="women_basketball_sports[{{ loop.index0 }}].expenses">{{ sport_data.expenses }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Women's Teams Total</td>
+        <td>$<span data-field="women_teams_total_revenue">{{ women_teams_total_revenue }}</span></td>
+        <td>$<span data-field="women_teams_total_expenses">{{ women_teams_total_expenses }}</span></td>
+      </tr>
+      <tr>
+        <td>Total MINUS Basketball</td>
+        <td>$<span data-field="total_minus_basketball_revenue_w">{{ total_minus_basketball_revenue_w }}</span></td>
+        <td>$<span data-field="total_minus_basketball_expenses_w">{{ total_minus_basketball_expenses_w }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Summary Totals</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Revenue</th>
+        <th>Expenses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Men's Teams Total</td>
+        <td>$<span data-field="summary_men_total_revenue">{{ summary_men_total_revenue }}</span></td>
+        <td>$<span data-field="summary_men_total_expenses">{{ summary_men_total_expenses }}</span></td>
+      </tr>
+      <tr>
+        <td>Women's Teams Total</td>
+        <td>$<span data-field="summary_women_total_revenue">{{ summary_women_total_revenue }}</span></td>
+        <td>$<span data-field="summary_women_total_expenses">{{ summary_women_total_expenses }}</span></td>
+      </tr>
+      <tr>
+        <td>Non-Allocated to Any Team</td>
+        <td>$<span data-field="summary_non_allocated_revenue">{{ summary_non_allocated_revenue }}</span></td>
+        <td>$<span data-field="summary_non_allocated_expenses">{{ summary_non_allocated_expenses }}</span></td>
+      </tr>
+      <tr>
+        <td>GRAND TOTAL</td>
+        <td>$<span data-field="grand_total_revenue">{{ grand_total_revenue }}</span></td>
+        <td>$<span data-field="grand_total_expenses">{{ grand_total_expenses }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 id="eada_info">4. EADA Institution and Survey Information</h2>
+
+  <h3>Institution Information</h3>
+  <table>
+    <tr>
+      <td>Institution:</td>
+      <td><span data-field="institution_name">{{ institution_name }}</span></td>
+      <td>User ID:</td>
+      <td><span data-field="user_id">{{ user_id }}</span></td>
+    </tr>
+  </table>
+
+  <h3>Registration</h3>
+  <form>
+    <p>
+      <label for="first_name">First Name *:</label>
+      <input type="text" id="first_name" name="first_name" value="{{ first_name }}">
+    </p>
+    <p>
+      <label for="last_name">Last Name *:</label>
+      <input type="text" id="last_name" name="last_name" value="{{ last_name }}">
+    </p>
+    <p>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" value="{{ title }}">
+    </p>
+    <p>
+      <label for="address1">Address 1 *:</label>
+      <input type="text" id="address1" name="address1" value="{{ address1 }}">
+    </p>
+    <p>
+      <label for="address2">Address 2:</label>
+      <input type="text" id="address2" name="address2" value="{{ address2 }}">
+    </p>
+    <p>
+      <label for="city">City *:</label>
+      <input type="text" id="city" name="city" value="{{ city }}">
+    </p>
+    <p>
+      <label for="state">State *:</label>
+      <input type="text" id="state" name="state" value="{{ state }}">
+    </p>
+    <p>
+      <label for="zip">Zip *:</label>
+      <input type="text" id="zip" name="zip" value="{{ zip }}">
+    </p>
+    <p>
+      <label for="phone">Phone *:</label>
+      <input type="text" id="phone" name="phone" value="{{ phone }}">
+    </p>
+    <p>
+      <label for="extension">Extension:</label>
+      <input type="text" id="extension" name="extension" value="{{ extension }}">
+    </p>
+    <p>
+      <label for="fax">Fax:</label>
+      <input type="text" id="fax" name="fax" value="{{ fax }}">
+    </p>
+    <p>
+      <label for="email_address">E-mail Address *:</label>
+      <input type="email" id="email_address" name="email_address" value="{{ email_address }}">
+    </p>
+    <p>
+      <label for="confirm_email_address">Confirm E-mail Address *:</label>
+      <input type="email" id="confirm_email_address" name="confirm_email_address" value="{{ confirm_email_address }}">
+    </p>
+    <p>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment">{{ comment }}</textarea>
+    </p>
+  </form>
+</div>
+
+<div class="page">
+  <h2>Screening Questions</h2>
+  <p>Please answer these questions carefully as your responses will determine which subsequent data entry screens are appropriate for your institution.</p>
+
+  <fieldset>
+    <legend>1. How will you report Operating (Game-day) Expenses?</legend>
+    <label><input type="radio" name="expense_reporting_method" value="by_team"> By Team</label>
+    <label><input type="radio" name="expense_reporting_method" value="per_participant"> Per Participant</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Select the type of varsity sports teams at your institution.</legend>
+    <label><input type="checkbox" name="sport_type" value="mens_teams"> Men's Teams</label><br>
+    <label><input type="checkbox" name="sport_type" value="womens_teams"> Women's Teams</label><br>
+    <label><input type="checkbox" name="sport_type" value="coed_teams"> Coed Teams</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Do any of your teams have assistant coaches?</legend>
+    <label><input type="radio" name="assistant_coaches" value="yes"> Yes</label>
+    <label><input type="radio" name="assistant_coaches" value="no"> No</label>
+  </fieldset>
+
+  <p>If you save the data on this screen, then return to the screen to make changes, note the following:</p>
+  <ul>
+    <li>If you select an additional type of team remember to include associated data for that type of team on subsequent screens.</li>
+    <li>If you delete a type of team but have already entered associated data on other screens, all associated data for that type of team will be deleted from subsequent screens. However, because the survey system has to recalculate the totals, you must re-save every screen.</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2>Sports Selection - Men's and Women's Teams</h2>
+  <p>Select the varsity sports teams at your institution.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sport</th>
+        <th>Men's</th>
+        <th>Women's</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sport in all_sports %}
+      <tr>
+        <td>{{ sport.name }}</td>
+        <td><input type="checkbox" name="men_sport_{{ sport.id }}" value="{{ sport.id }}"></td>
+        <td><input type="checkbox" name="women_sport_{{ sport.id }}" value="{{ sport.id }}"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p><strong>CAVEAT</strong></p>
+  <p>
+    * If you indicated in the caveat box that your other sports are Dancing and/or Cheerleading, please specify in the caveat box that these are competitive varsity teams (i.e., not pep squads).
+  </p>
+  <p>If you save the data on this screen, then return to the screen to make changes, note the following:</p>
+  <ul>
+    <li>If you select an additional type of team remember to include associated data for that type of team on subsequent screens.</li>
+    <li>If you delete a sport but have already entered associated data on other screens, all associated data for that sport will be deleted from subsequent screens. However, because the survey system has to recalculate the totals, you must re-save every screen.</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2>Athletics Participation - Men's and Women's Teams</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Varsity Teams</th>
+        <th>Men's Teams</th>
+        <th>Women's Teams</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sport in all_sports %}
+      <tr>
+        <td>{{ sport.name }}</td>
+        <td><span data-field="participation_men[{{ loop.index0 }}].participants">{{ sport.men_participants }}</span></td>
+        <td><span data-field="participation_women[{{ loop.index0 }}].participants">{{ sport.women_participants }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Total Participants Men's and Women's Teams</td>
+        <td><span data-field="total_participants_men">{{ total_participants_men }}</span></td>
+        <td><span data-field="total_participants_women">{{ total_participants_women }}</span></td>
+      </tr>
+      <tr>
+        <td>Unduplicated Count of Participants (This is a head count. If an individual participates on more than one team, count that individual only once on this line.)</td>
+        <td><span data-field="total_unduplicated_men">{{ total_unduplicated_men }}</span></td>
+        <td><span data-field="total_unduplicated_women">{{ total_unduplicated_women }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>CAVEAT</strong></p>
+  <p>(For each men's or women's team that includes opposite sex participants, specify the number of male and the number of female students on that team in this caveat box. This does not apply for coed teams. Additionally, provide any other clarifying information here.)</p>
+
+  <p>If you save the data on this screen, then return to the screen to make changes, please note you must re-save every screen because the survey system has to recalculate the totals.</p>
+</div>
+
+<div class="page">
+  <h2>Head Coaches - Men's Teams</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Varsity Team</th>
+        <th>Assigned to a Full-Time Employee</th>
+        <th>Assigned to a Part-Time Employee or Volunteer</th>
+        <th>Assigned to a Full-Time Employee or Volunteer</th>
+        <th>Total Head Coaches</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sport in all_sports %}
+      <tr>
+        <td>{{ sport.name }}</td>
+        <td><span data-field="head_coaches_men[{{ loop.index0 }}].full_time_employee">{{ sport.men_full_time_employee }}</span></td>
+        <td><span data-field="head_coaches_men[{{ loop.index0 }}].part_time_employee_volunteer">{{ sport.men_part_time_employee_volunteer }}</span></td>
+        <td><span data-field="head_coaches_men[{{ loop.index0 }}].full_time_employee_volunteer">{{ sport.men_full_time_employee_volunteer }}</span></td>
+        <td><span data-field="head_coaches_men[{{ loop.index0 }}].total_head_coaches">{{ sport.men_total_head_coaches }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Totals</td>
+        <td><span data-field="head_coaches_men_totals.full_time_employee">{{ head_coaches_men_totals.full_time_employee }}</span></td>
+        <td><span data-field="head_coaches_men_totals.part_time_employee_volunteer">{{ head_coaches_men_totals.part_time_employee_volunteer }}</span></td>
+        <td><span data-field="head_coaches_men_totals.full_time_employee_volunteer">{{ head_coaches_men_totals.full_time_employee_volunteer }}</span></td>
+        <td><span data-field="head_coaches_men_totals.total_head_coaches">{{ head_coaches_men_totals.total_head_coaches }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>CAVEAT</strong></p>
+  <p></p>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .sub-header {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+</style>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Head Coaches - Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    For each women's team, indicate whether the head coach is male or female, was assigned to the team on a full-time or part-time basis, and whether the coach was employed by the institution on a full-time basis or on a part-time or volunteer basis. The Swimming and Diving (combined) fields allow up to 2 head coaches. The Track and Field and Cross Country (combined) fields allow up to 3.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Varsity Teams</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Total Head Coaches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="team_name_1">{{ team_name_1 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_2">{{ team_name_2 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_3">{{ team_name_3 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_4">{{ team_name_4 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_5">{{ team_name_5 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_6">{{ team_name_6 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_7">{{ team_name_7 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_8">{{ team_name_8 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_9">{{ team_name_9 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_10">{{ team_name_10 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_11">{{ team_name_11 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_12">{{ team_name_12 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_13">{{ team_name_13 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_14">{{ team_name_14 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_15">{{ team_name_15 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_16">{{ team_name_16 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_17">{{ team_name_17 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_18">{{ team_name_18 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_19">{{ team_name_19 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_20">{{ team_name_20 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_21">{{ team_name_21 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_22">{{ team_name_22 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_23">{{ team_name_23 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_24">{{ team_name_24 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_25">{{ team_name_25 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_26">{{ team_name_26 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_27">{{ team_name_27 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_28">{{ team_name_28 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_29">{{ team_name_29 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_30">{{ team_name_30 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_31">{{ team_name_31 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_32">{{ team_name_32 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: right; font-weight: bold; margin-top: 10px;">
+    Totals: <span data-field="total_head_coaches">{{ total_head_coaches }}</span>
+  </div>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Head Coaches' Salaries - Men's and Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    Enter any salaries and bonuses that your institution pays head coaches as compensation for coaching. Do not include benefits on this screen.
+    Do not include volunteer coaches in calculating the average salary and the Full-Time Equivalent (FTE) Total.
+    For help calculating the FTE total click on the instructions link on this screen.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Average Annual Institutional Salary per Head Coaching Position (for coaching duties only)</th>
+        <th style="width: 25%;">Men's Teams</th>
+        <th style="width: 25%;">Women's Teams</th>
+        <th style="width: 25%;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="avg_salary_men">{{ avg_salary_men }}</span></td>
+        <td><span data-field="avg_salary_men_value">{{ avg_salary_men_value }}</span></td>
+        <td><span data-field="avg_salary_women_value">{{ avg_salary_women_value }}</span></td>
+        <td><span data-field="avg_salary_total_value">{{ avg_salary_total_value }}</span></td>
+      </tr>
+      <tr>
+        <td>Number of Head Coaching Positions Used to Calculate the Average</td>
+        <td><span data-field="num_positions_men">{{ num_positions_men }}</span></td>
+        <td><span data-field="num_positions_women">{{ num_positions_women }}</span></td>
+        <td><span data-field="num_positions_total">{{ num_positions_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Number of Volunteer Head Coaching Positions (Do not include these coaches in your salary or FTE calculations.)</td>
+        <td><span data-field="volunteer_positions_men">{{ volunteer_positions_men }}</span></td>
+        <td><span data-field="volunteer_positions_women">{{ volunteer_positions_women }}</span></td>
+        <td><span data-field="volunteer_positions_total">{{ volunteer_positions_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Average Annual Institutional Salary per Full-Time Equivalent (FTE)</td>
+        <td><span data-field="avg_fte_men">{{ avg_fte_men }}</span></td>
+        <td><span data-field="avg_fte_women">{{ avg_fte_women }}</span></td>
+        <td><span data-field="avg_fte_total">{{ avg_fte_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Sum of Full-Time Equivalent (FTE) Positions Used to Calculate the Average</td>
+        <td><span data-field="sum_fte_men">{{ sum_fte_men }}</span></td>
+        <td><span data-field="sum_fte_women">{{ sum_fte_women }}</span></td>
+        <td><span data-field="sum_fte_total">{{ sum_fte_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Assistant Coaches - Men's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    For each men's team, indicate whether the assistant coach is male or female, was assigned to the team on a full-time or part-time basis, and whether the coach was employed by the institution on a full-time basis or on a part-time or volunteer basis.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Varsity Teams</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Total Assistant Coaches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="team_name_1">{{ team_name_1 }}</span></td>
+        <td>5</td>
+        <td>3</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_2">{{ team_name_2 }}</span></td>
+        <td>3</td>
+        <td>1</td>
+        <td>3</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_3">{{ team_name_3 }}</span></td>
+        <td>6</td>
+        <td>6</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_4">{{ team_name_4 }}</span></td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_5">{{ team_name_5 }}</span></td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_6">{{ team_name_6 }}</span></td>
+        <td>6</td>
+        <td>6</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_7">{{ team_name_7 }}</span></td>
+        <td>6</td>
+        <td>6</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_8">{{ team_name_8 }}</span></td>
+        <td>0</td>
+        <td>31</td>
+        <td>0</td>
+        <td>31</td>
+        <td>36</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: right; font-weight: bold; margin-top: 10px;">
+    Totals: <span data-field="total_assistant_coaches">{{ total_assistant_coaches }}</span>
+  </div>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Assistant Coaches - Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    For each women's team, indicate whether the assistant coach is male or female, was assigned to the team on a full-time or part-time basis, and whether the coach was employed by the institution on a full-time basis or on a part-time or volunteer basis.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Varsity Teams</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Assigned to Team on a Full-Time Basis</th>
+        <th style="width: 15%;">Part-Time Employee or Volunteer</th>
+        <th style="width: 15%;">Total Assistant Coaches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="team_name_1">{{ team_name_1 }}</span></td>
+        <td>2</td>
+        <td>1</td>
+        <td>6</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_2">{{ team_name_2 }}</span></td>
+        <td>1</td>
+        <td>6</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_3">{{ team_name_3 }}</span></td>
+        <td>2</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_4">{{ team_name_4 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_5">{{ team_name_5 }}</span></td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_6">{{ team_name_6 }}</span></td>
+        <td>6</td>
+        <td>6</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_7">{{ team_name_7 }}</span></td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>9</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: right; font-weight: bold; margin-top: 10px;">
+    Totals: <span data-field="total_assistant_coaches">{{ total_assistant_coaches }}</span>
+  </div>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Assistant Coaches' Salaries - Men's and Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    Enter any salaries and bonuses that your institution pays assistant coaches as compensation for coaching. Do not include benefits on this screen.
+    Do not include volunteer assistant coaches in calculating the average salary and the Full-Time Equivalent (FTE) Total.
+    For help calculating the FTE total click on the instructions link on this screen.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Average Annual Institutional Salary per Assistant Coaching Position (for coaching duties only)</th>
+        <th style="width: 25%;">Men's Teams</th>
+        <th style="width: 25%;">Women's Teams</th>
+        <th style="width: 25%;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="avg_salary_men">{{ avg_salary_men }}</span></td>
+        <td><span data-field="avg_salary_men_value">{{ avg_salary_men_value }}</span></td>
+        <td><span data-field="avg_salary_women_value">{{ avg_salary_women_value }}</span></td>
+        <td><span data-field="avg_salary_total_value">{{ avg_salary_total_value }}</span></td>
+      </tr>
+      <tr>
+        <td>Number of Assistant Coaching Positions Used to Calculate the Average</td>
+        <td><span data-field="num_positions_men">{{ num_positions_men }}</span></td>
+        <td><span data-field="num_positions_women">{{ num_positions_women }}</span></td>
+        <td><span data-field="num_positions_total">{{ num_positions_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Number of Volunteer Assistant Coaching Positions (Do not include these coaches in your salary or FTE calculations.)</td>
+        <td><span data-field="volunteer_positions_men">{{ volunteer_positions_men }}</span></td>
+        <td><span data-field="volunteer_positions_women">{{ volunteer_positions_women }}</span></td>
+        <td><span data-field="volunteer_positions_total">{{ volunteer_positions_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Average Annual Institutional Salary per Full-Time Equivalent (FTE)</td>
+        <td><span data-field="avg_fte_men">{{ avg_fte_men }}</span></td>
+        <td><span data-field="avg_fte_women">{{ avg_fte_women }}</span></td>
+        <td><span data-field="avg_fte_total">{{ avg_fte_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Sum of Full-Time Equivalent (FTE) Positions Used to Calculate the Average</td>
+        <td><span data-field="sum_fte_men">{{ sum_fte_men }}</span></td>
+        <td><span data-field="sum_fte_women">{{ sum_fte_women }}</span></td>
+        <td><span data-field="sum_fte_total">{{ sum_fte_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Athletically Related Student Aid - Men's and Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    Athletically related student aid is any scholarship, grant, or other form of financial assistance, offered by an institution, the terms of which require the recipient to participate in a program of intercollegiate athletics at the institution. Other student aid, of which a student-athlete simply happens to be the recipient, is not athletically related student aid. If you do not have any aid to report, enter a 0.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Amount of Aid</th>
+        <th style="width: 25%;">Men's Teams</th>
+        <th style="width: 25%;">Women's Teams</th>
+        <th style="width: 25%;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="aid_amount_men">{{ aid_amount_men }}</span></td>
+        <td><span data-field="aid_men_value">{{ aid_men_value }}</span></td>
+        <td><span data-field="aid_women_value">{{ aid_women_value }}</span></td>
+        <td><span data-field="aid_total_value">{{ aid_total_value }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="aid_percentage_men">{{ aid_percentage_men }}</span></td>
+        <td><span data-field="aid_men_percent">{{ aid_men_percent }}</span></td>
+        <td><span data-field="aid_women_percent">{{ aid_women_percent }}</span></td>
+        <td><span data-field="aid_total_percent">{{ aid_total_percent }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Recruiting Expenses - Men's and Women's Teams</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    Recruiting expenses are all expenses an institution incurs attributable to recruiting activities. This includes, but is not limited to, travel, lodging, meals, transportation, and entertainment expenses for recruiting purposes for both recruits and personal expenses for recruiting, and other expenses for official and unofficial visits, and all other expenses related to recruiting. If you do not have any recruiting expenses to report, enter a 0.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Total</th>
+        <th style="width: 25%;">Men's Teams</th>
+        <th style="width: 25%;">Women's Teams</th>
+        <th style="width: 25%;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="total_expenses_men">{{ total_expenses_men }}</span></td>
+        <td><span data-field="expenses_men_value">{{ expenses_men_value }}</span></td>
+        <td><span data-field="expenses_women_value">{{ expenses_women_value }}</span></td>
+        <td><span data-field="expenses_total_value">{{ expenses_total_value }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    CAVEAT
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt; margin-bottom: 10px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header-title">Operating (Game-Day) Expenses - Men's and Women's Teams by Team</div>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">
+    Operating expenses are all expenses an institution incurs attributable to home, away, and neutral-site intercollegiate athletic contests (commonly known as "game-day expenses"), for (A) Lodging, meals, transportation, uniforms, and equipment for coaches, team members, support staff (including, but not limited to team managers and trainers), and (B) Officials.
+    For a sport with a men's team and a women's team that have a combined budget, click here for special instructions.
+    Report actual numbers, not budgeted or estimated numbers. Please do not round beyond the next dollar.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Varsity Teams</th>
+        <th style="width: 15%;">Participants</th>
+        <th style="width: 20%;">Operating By Team Expenses</th>
+        <th style="width: 20%;">Operating By Team Total Expenses</th>
+        <th style="width: 30%;">Operating By Team Total Operating Expenses Men's Teams</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="team_name_1">{{ team_name_1 }}</span></td>
+        <td>18</td>
+        <td>1,827,384</td>
+        <td>16</td>
+        <td>2,193,359</td>
+        <td>67,985</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_2">{{ team_name_2 }}</span></td>
+        <td>19</td>
+        <td>1,192,469</td>
+        <td>47</td>
+        <td>1,355,869</td>
+        <td>46,479</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_3">{{ team_name_3 }}</span></td>
+        <td>12</td>
+        <td>1,275,569</td>
+        <td>16</td>
+        <td>1,565,869</td>
+        <td>33,405</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_4">{{ team_name_4 }}</span></td>
+        <td>561</td>
+        <td>6,670</td>
+        <td>14</td>
+        <td>6,454</td>
+        <td>13,089</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_5">{{ team_name_5 }}</span></td>
+        <td>13</td>
+        <td>6,240</td>
+        <td>13</td>
+        <td>1,554,201</td>
+        <td>41,521</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_6">{{ team_name_6 }}</span></td>
+        <td>31</td>
+        <td>730,224</td>
+        <td>37</td>
+        <td>813,302</td>
+        <td>52,716</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_7">{{ team_name_7 }}</span></td>
+        <td>36</td>
+        <td>179,646</td>
+        <td>37</td>
+        <td>174,646</td>
+        <td>12,892</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_8">{{ team_name_8 }}</span></td>
+        <td>34</td>
+        <td>190,646</td>
+        <td>33</td>
+        <td>195,646</td>
+        <td>12,892</td>
+      </tr>
+      <tr>
+        <td><span data-field="team_name_9">{{ team_name_9 }}</span></td>
+        <td>196</td>
+        <td>159,511</td>
+        <td>207</td>
+        <td>1,307,431</td>
+        <td>355,834</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note" style="text-align: center;">
+    Note: This screen is for game-day expenses only.
+  </div>
+</div>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; }
+  .header { font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+  .sub-header { font-weight: bold; margin-top: 10px; }
+  .label { font-weight: normal; }
+</style>
+
+<div class="page">
+  <div style="font-size: 0.9em; margin-bottom: 20px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span> (ID: <span data-field="institution_id">{{ institution_id }}</span>)
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header">Total Expenses - Men's and Women's Teams</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    Enter all expenses attributable to intercollegiate athletic activities. This includes appearance guarantees and options,
+    and options, an athletic conference, tournament or bowl games, concessions, contributions from alumni and others,
+    institutional support, program advertising and sales, radio and television, royalties, signage and other sponsorships,
+    and any other expenses attributable to intercollegiate athletic activities. Please do not round beyond the next dollar.
+    Report actual numbers, not budgeted or estimated numbers. Please do not round beyond the next dollar.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Activity</th>
+        <th style="width: 25%; text-align: right;">Men's Teams</th>
+        <th style="width: 25%; text-align: right;">Women's Teams</th>
+        <th style="width: 25%; text-align: right;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Baseball</td>
+        <td style="text-align: right;"><span data-field="baseball_men">{{ baseball_men }}</span></td>
+        <td style="text-align: right;"><span data-field="baseball_women">{{ baseball_women }}</span></td>
+        <td style="text-align: right;"><span data-field="baseball_total">{{ baseball_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Basketball</td>
+        <td style="text-align: right;"><span data-field="basketball_men">{{ basketball_men }}</span></td>
+        <td style="text-align: right;"><span data-field="basketball_women">{{ basketball_women }}</span></td>
+        <td style="text-align: right;"><span data-field="basketball_total">{{ basketball_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Bowling</td>
+        <td style="text-align: right;"><span data-field="bowling_men">{{ bowling_men }}</span></td>
+        <td style="text-align: right;"><span data-field="bowling_women">{{ bowling_women }}</span></td>
+        <td style="text-align: right;"><span data-field="bowling_total">{{ bowling_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Cross Country</td>
+        <td style="text-align: right;"><span data-field="cross_country_men">{{ cross_country_men }}</span></td>
+        <td style="text-align: right;"><span data-field="cross_country_women">{{ cross_country_women }}</span></td>
+        <td style="text-align: right;"><span data-field="cross_country_total">{{ cross_country_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Golf</td>
+        <td style="text-align: right;"><span data-field="golf_men">{{ golf_men }}</span></td>
+        <td style="text-align: right;"><span data-field="golf_women">{{ golf_women }}</span></td>
+        <td style="text-align: right;"><span data-field="golf_total">{{ golf_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Soccer</td>
+        <td style="text-align: right;"><span data-field="soccer_men">{{ soccer_men }}</span></td>
+        <td style="text-align: right;"><span data-field="soccer_women">{{ soccer_women }}</span></td>
+        <td style="text-align: right;"><span data-field="soccer_total">{{ soccer_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Softball</td>
+        <td style="text-align: right;"><span data-field="softball_men">{{ softball_men }}</span></td>
+        <td style="text-align: right;"><span data-field="softball_women">{{ softball_women }}</span></td>
+        <td style="text-align: right;"><span data-field="softball_total">{{ softball_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Track and Field (Indoor)</td>
+        <td style="text-align: right;"><span data-field="track_indoor_men">{{ track_indoor_men }}</span></td>
+        <td style="text-align: right;"><span data-field="track_indoor_women">{{ track_indoor_women }}</span></td>
+        <td style="text-align: right;"><span data-field="track_indoor_total">{{ track_indoor_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Track and Field (Outdoor)</td>
+        <td style="text-align: right;"><span data-field="track_outdoor_men">{{ track_outdoor_men }}</span></td>
+        <td style="text-align: right;"><span data-field="track_outdoor_women">{{ track_outdoor_women }}</span></td>
+        <td style="text-align: right;"><span data-field="track_outdoor_total">{{ track_outdoor_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Volleyball</td>
+        <td style="text-align: right;"><span data-field="volleyball_men">{{ volleyball_men }}</span></td>
+        <td style="text-align: right;"><span data-field="volleyball_women">{{ volleyball_women }}</span></td>
+        <td style="text-align: right;"><span data-field="volleyball_total">{{ volleyball_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Revenues of all Sports, Except Football and Basketball,</td>
+        <td style="text-align: right;"><span data-field="total_other_sports_men">{{ total_other_sports_men }}</span></td>
+        <td style="text-align: right;"><span data-field="total_other_sports_women">{{ total_other_sports_women }}</span></td>
+        <td style="text-align: right;"><span data-field="total_other_sports_total">{{ total_other_sports_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Combined</td>
+        <td style="text-align: right;"><span data-field="combined_men">{{ combined_men }}</span></td>
+        <td style="text-align: right;"><span data-field="combined_women">{{ combined_women }}</span></td>
+        <td style="text-align: right;"><span data-field="combined_total">{{ combined_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Expenses Men's and Women's Teams</td>
+        <td style="text-align: right;"><span data-field="total_expenses_men">{{ total_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="total_expenses_women">{{ total_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="total_expenses_total">{{ total_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Not Allocated by Gender/Sport (Expenses not attributable to a particular sport or sports)</td>
+        <td style="text-align: right;"><span data-field="not_allocated_men">{{ not_allocated_men }}</span></td>
+        <td style="text-align: right;"><span data-field="not_allocated_women">{{ not_allocated_women }}</span></td>
+        <td style="text-align: right;"><span data-field="not_allocated_total">{{ not_allocated_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Grand Total Expenses</td>
+        <td style="text-align: right;"><span data-field="grand_total_expenses_men">{{ grand_total_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="grand_total_expenses_women">{{ grand_total_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="grand_total_expenses_total">{{ grand_total_expenses_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 50px;">
+    <p style="font-size: 0.8em;">CAVEAT</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 0.9em; margin-bottom: 20px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span> (ID: <span data-field="institution_id">{{ institution_id }}</span>)
+    <br>
+    User ID: <span data-field="user_id">{{ user_id }}</span>
+  </div>
+  <div class="header">Total Revenues - Men's and Women's Teams</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    Your total revenues must cover your total expenses.
+    Enter all revenues attributable to intercollegiate athletic activities. This includes revenues from appearance guarantees
+    and options, an athletic conference, tournament or bowl games, concessions, contributions from alumni and others,
+    institutional support, program advertising and sales, radio and television, royalties, signage and other sponsorships,
+    and any other revenues attributable to intercollegiate athletic activities. Please do not round beyond the next dollar.
+    Report actual numbers, not budgeted or estimated numbers. Please do not round beyond the next dollar.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Activity</th>
+        <th style="width: 25%; text-align: right;">Men's Teams</th>
+        <th style="width: 25%; text-align: right;">Women's Teams</th>
+        <th style="width: 25%; text-align: right;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Baseball</td>
+        <td style="text-align: right;"><span data-field="baseball_men_rev">{{ baseball_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="baseball_women_rev">{{ baseball_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="baseball_total_rev">{{ baseball_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Basketball</td>
+        <td style="text-align: right;"><span data-field="basketball_men_rev">{{ basketball_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="basketball_women_rev">{{ basketball_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="basketball_total_rev">{{ basketball_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Bowling</td>
+        <td style="text-align: right;"><span data-field="bowling_men_rev">{{ bowling_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="bowling_women_rev">{{ bowling_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="bowling_total_rev">{{ bowling_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Cross Country</td>
+        <td style="text-align: right;"><span data-field="cross_country_men_rev">{{ cross_country_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="cross_country_women_rev">{{ cross_country_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="cross_country_total_rev">{{ cross_country_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Golf</td>
+        <td style="text-align: right;"><span data-field="golf_men_rev">{{ golf_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="golf_women_rev">{{ golf_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="golf_total_rev">{{ golf_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Soccer</td>
+        <td style="text-align: right;"><span data-field="soccer_men_rev">{{ soccer_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="soccer_women_rev">{{ soccer_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="soccer_total_rev">{{ soccer_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Softball</td>
+        <td style="text-align: right;"><span data-field="softball_men_rev">{{ softball_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="softball_women_rev">{{ softball_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="softball_total_rev">{{ softball_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Track and Field (Indoor)</td>
+        <td style="text-align: right;"><span data-field="track_indoor_men_rev">{{ track_indoor_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="track_indoor_women_rev">{{ track_indoor_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="track_indoor_total_rev">{{ track_indoor_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Track and Field (Outdoor)</td>
+        <td style="text-align: right;"><span data-field="track_outdoor_men_rev">{{ track_outdoor_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="track_outdoor_women_rev">{{ track_outdoor_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="track_outdoor_total_rev">{{ track_outdoor_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Volleyball</td>
+        <td style="text-align: right;"><span data-field="volleyball_men_rev">{{ volleyball_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="volleyball_women_rev">{{ volleyball_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="volleyball_total_rev">{{ volleyball_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Revenues of all Sports, Except Football and Basketball,</td>
+        <td style="text-align: right;"><span data-field="total_other_sports_men_rev">{{ total_other_sports_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="total_other_sports_women_rev">{{ total_other_sports_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="total_other_sports_total_rev">{{ total_other_sports_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Combined</td>
+        <td style="text-align: right;"><span data-field="combined_men_rev">{{ combined_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="combined_women_rev">{{ combined_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="combined_total_rev">{{ combined_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Total Revenues Men's and Women's Teams</td>
+        <td style="text-align: right;"><span data-field="total_revenues_men">{{ total_revenues_men }}</span></td>
+        <td style="text-align: right;"><span data-field="total_revenues_women">{{ total_revenues_women }}</span></td>
+        <td style="text-align: right;"><span data-field="total_revenues_total">{{ total_revenues_total }}</span></td>
+      </tr>
+      <tr>
+        <td>Not Allocated by Gender/Sport (Revenues not attributable to a particular sport or sports)</td>
+        <td style="text-align: right;"><span data-field="not_allocated_men_rev">{{ not_allocated_men_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="not_allocated_women_rev">{{ not_allocated_women_rev }}</span></td>
+        <td style="text-align: right;"><span data-field="not_allocated_total_rev">{{ not_allocated_total_rev }}</span></td>
+      </tr>
+      <tr>
+        <td>Grand Total for all Teams (includes by team and not allocated by gender/sport)</td>
+        <td style="text-align: right;"><span data-field="grand_total_revenues_men">{{ grand_total_revenues_men }}</span></td>
+        <td style="text-align: right;"><span data-field="grand_total_revenues_women">{{ grand_total_revenues_women }}</span></td>
+        <td style="text-align: right;"><span data-field="grand_total_revenues_total">{{ grand_total_revenues_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 50px;">
+    <p style="font-size: 0.8em;">CAVEAT</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">Summary - Men's and Women's Teams</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    Your Grand Total Revenues must be equal to or greater than your Grand Total Expenses or you will not be able to lock your survey.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Item</th>
+        <th style="width: 25%; text-align: right;">Men's Teams</th>
+        <th style="width: 25%; text-align: right;">Women's Teams</th>
+        <th style="width: 25%; text-align: right;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 Total of Head Coaches' Salaries</td>
+        <td style="text-align: right;"><span data-field="summary_head_coaches_men">{{ summary_head_coaches_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_head_coaches_women">{{ summary_head_coaches_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_head_coaches_total">{{ summary_head_coaches_total }}</span></td>
+      </tr>
+      <tr>
+        <td>2 Total of Assistant Coaches' Salaries</td>
+        <td style="text-align: right;"><span data-field="summary_assistant_coaches_men">{{ summary_assistant_coaches_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_assistant_coaches_women">{{ summary_assistant_coaches_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_assistant_coaches_total">{{ summary_assistant_coaches_total }}</span></td>
+      </tr>
+      <tr>
+        <td>3 Total Salaries (Lines 1+2)</td>
+        <td style="text-align: right;"><span data-field="summary_total_salaries_men">{{ summary_total_salaries_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_salaries_women">{{ summary_total_salaries_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_salaries_total">{{ summary_total_salaries_total }}</span></td>
+      </tr>
+      <tr>
+        <td>4 Athletic Fielded Student Aid</td>
+        <td style="text-align: right;"><span data-field="summary_student_aid_men">{{ summary_student_aid_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_student_aid_women">{{ summary_student_aid_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_student_aid_total">{{ summary_student_aid_total }}</span></td>
+      </tr>
+      <tr>
+        <td>5 Recruiting Expenses</td>
+        <td style="text-align: right;"><span data-field="summary_recruiting_men">{{ summary_recruiting_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_recruiting_women">{{ summary_recruiting_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_recruiting_total">{{ summary_recruiting_total }}</span></td>
+      </tr>
+      <tr>
+        <td>6 Marketing (Game Day Expenses)</td>
+        <td style="text-align: right;"><span data-field="summary_marketing_men">{{ summary_marketing_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_marketing_women">{{ summary_marketing_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_marketing_total">{{ summary_marketing_total }}</span></td>
+      </tr>
+      <tr>
+        <td>7 Summary of Subset Expenses (Lines 3+4+5+6)</td>
+        <td style="text-align: right;"><span data-field="summary_subset_expenses_men">{{ summary_subset_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_subset_expenses_women">{{ summary_subset_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_subset_expenses_total">{{ summary_subset_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>8 Total Expenses for Teams</td>
+        <td style="text-align: right;"><span data-field="summary_total_expenses_men">{{ summary_total_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_expenses_women">{{ summary_total_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_expenses_total">{{ summary_total_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>9 Total Expenses for Teams Minus Subset Expenses (Line 8 - Line 7)</td>
+        <td style="text-align: right;"><span data-field="summary_remaining_expenses_men">{{ summary_remaining_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_remaining_expenses_women">{{ summary_remaining_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_remaining_expenses_total">{{ summary_remaining_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>10 Allocated Expenses (Lines 8+10)</td>
+        <td style="text-align: right;"><span data-field="summary_allocated_expenses_men">{{ summary_allocated_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_allocated_expenses_women">{{ summary_allocated_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_allocated_expenses_total">{{ summary_allocated_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>11 Grand Total Expenses (Lines 8+10)</td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_expenses_men">{{ summary_grand_total_expenses_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_expenses_women">{{ summary_grand_total_expenses_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_expenses_total">{{ summary_grand_total_expenses_total }}</span></td>
+      </tr>
+      <tr>
+        <td>12 Total Revenues for Teams</td>
+        <td style="text-align: right;"><span data-field="summary_total_revenues_men">{{ summary_total_revenues_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_revenues_women">{{ summary_total_revenues_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_total_revenues_total">{{ summary_total_revenues_total }}</span></td>
+      </tr>
+      <tr>
+        <td>13 Not Allocated Revenues</td>
+        <td style="text-align: right;"><span data-field="summary_not_allocated_revenues_men">{{ summary_not_allocated_revenues_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_not_allocated_revenues_women">{{ summary_not_allocated_revenues_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_not_allocated_revenues_total">{{ summary_not_allocated_revenues_total }}</span></td>
+      </tr>
+      <tr>
+        <td>14 Grand Total Revenues (Lines 12+13)</td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_revenues_men">{{ summary_grand_total_revenues_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_revenues_women">{{ summary_grand_total_revenues_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_grand_total_revenues_total">{{ summary_grand_total_revenues_total }}</span></td>
+      </tr>
+      <tr>
+        <td>15 Total Revenues for Teams Minus Total Expenses for Teams (Line 12 - Line 8)</td>
+        <td style="text-align: right;"><span data-field="summary_net_revenue_men">{{ summary_net_revenue_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_net_revenue_women">{{ summary_net_revenue_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_net_revenue_total">{{ summary_net_revenue_total }}</span></td>
+      </tr>
+      <tr>
+        <td>16 Grand Total Revenues Minus Grand Total Expenses (Line 14 - Line 11)</td>
+        <td style="text-align: right;"><span data-field="summary_final_net_revenue_men">{{ summary_final_net_revenue_men }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_final_net_revenue_women">{{ summary_final_net_revenue_women }}</span></td>
+        <td style="text-align: right;"><span data-field="summary_final_net_revenue_total">{{ summary_final_net_revenue_total }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 50px;">
+    <p style="font-size: 0.8em;">To return to a data entry screen, click on the link in the <span data-field="navigation_menu_link">{{ navigation_menu_link }}</span>.</p>
+    <p style="font-size: 0.8em;">To proceed to the Supplemental Information screen, click on the <span data-field="next_button_link">{{ next_button_link }}</span> on this screen.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">Supplemental Information (optional)</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    This screen may be used to help the reader better understand the data you have provided, or to help a prospective
+    student-athlete make an informed choice of an athletic program. Please do not include the names of individuals or write
+    messages to the help desk.
+  </p>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    To explain specific data entered on a previous screen, please use the caveat box on that screen.
+  </p>
+  <div style="height: 150px; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+    <!-- Text area placeholder -->
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">Identification</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    *Please enter/review all applicable information. Required fields are indicated with asterisks (*).
+  </p>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 20%; vertical-align: top;">General Information</td>
+      <td style="width: 80%;"></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Institution Name *</td>
+      <td style="width: 80%;"><span data-field="institution_name_input">{{ institution_name_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Address 1 *</td>
+      <td style="width: 80%;"><span data-field="address1_input">{{ address1_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Address 2</td>
+      <td style="width: 80%;"><span data-field="address2_input">{{ address2_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">City</td>
+      <td style="width: 80%;"><span data-field="city_input">{{ city_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">State *</td>
+      <td style="width: 80%;"><span data-field="state_input">{{ state_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">ZIP Code *</td>
+      <td style="width: 80%;"><span data-field="zip_code_input">{{ zip_code_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Telephone *</td>
+      <td style="width: 80%;"><span data-field="telephone_input">{{ telephone_input }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Athletic Department</td>
+      <td style="width: 80%;"></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Athletic Director Name *</td>
+      <td style="width: 80%;"><span data-field="athletic_director_name_input">{{ athletic_director_name_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Address 1 *</td>
+      <td style="width: 80%;"><span data-field="athletic_address1_input">{{ athletic_address1_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Address 2</td>
+      <td style="width: 80%;"><span data-field="athletic_address2_input">{{ athletic_address2_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">City</td>
+      <td style="width: 80%;"><span data-field="athletic_city_input">{{ athletic_city_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">State *</td>
+      <td style="width: 80%;"><span data-field="athletic_state_input">{{ athletic_state_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">ZIP Code *</td>
+      <td style="width: 80%;"><span data-field="athletic_zip_code_input">{{ athletic_zip_code_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Telephone *</td>
+      <td style="width: 80%;"><span data-field="athletic_telephone_input">{{ athletic_telephone_input }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Chief Administrative Officer</td>
+      <td style="width: 80%;"></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Chief Administrative Officer's Name *</td>
+      <td style="width: 80%;"><span data-field="cao_name_input">{{ cao_name_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Title</td>
+      <td style="width: 80%;"><span data-field="cao_title_input">{{ cao_title_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Telephone *</td>
+      <td style="width: 80%;"><span data-field="cao_telephone_input">{{ cao_telephone_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Fax</td>
+      <td style="width: 80%;"><span data-field="cao_fax_input">{{ cao_fax_input }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 20%; vertical-align: top;">E-mail Address *</td>
+      <td style="width: 80%;"><span data-field="cao_email_input">{{ cao_email_input }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header">EADA General</div>
+  <p style="font-size: 0.9em; margin-bottom: 20px;">
+    Designated Reporting Year
+    <br>
+    Note: The reporting period must be 12 months. The dates for the reporting year should be consistent from year to year.
+    <br>
+    Note: All data entered by graduates by gender must be entered in the numbers below were reported on your institution's 2016-17 IPEDS Survey and should not be changed unless they were reported incorrectly to IPEDS. If the numbers are incorrect, please call the EADA Help Desk to correct them.
+  </p>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Begins: (MM/DD)</td>
+      <td style="width: 20%;"><span data-field="reporting_start_month">{{ reporting_start_month }}</span>/<span data-field="reporting_start_day">{{ reporting_start_day }}</span></td>
+      <td style="width: 20%; vertical-align: top;">Ends: (MM/DD)</td>
+      <td style="width: 20%;"><span data-field="reporting_end_month">{{ reporting_end_month }}</span>/<span data-field="reporting_end_day">{{ reporting_end_day }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Category</th>
+        <th style="width: 25%; text-align: right;">Number</th>
+        <th style="width: 25%; text-align: right;">Percent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Male full-time undergraduates</td>
+        <td style="text-align: right;"><span data-field="male_undergrad_count">{{ male_undergrad_count }}</span></td>
+        <td style="text-align: right;"><span data-field="male_undergrad_percent">{{ male_undergrad_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>Female full-time undergraduates</td>
+        <td style="text-align: right;"><span data-field="female_undergrad_count">{{ female_undergrad_count }}</span></td>
+        <td style="text-align: right;"><span data-field="female_undergrad_percent">{{ female_undergrad_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>Total full-time undergraduates</td>
+        <td style="text-align: right;"><span data-field="total_undergrad_count">{{ total_undergrad_count }}</span></td>
+        <td style="text-align: right;"><span data-field="total_undergrad_percent">{{ total_undergrad_percent }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Athletic Sanctioning Body for the designated reporting year (select one): *</th>
+        <th style="width: 25%; text-align: center;"></th>
+        <th style="width: 25%; text-align: center;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NCAA Division I-FBS</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_i_fbs"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="naia_i"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division I-FCS</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_i_fcs"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="naia_ii"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division I without football</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_i_no_fb"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="njcaa_i"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division II with football</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_ii_fb"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="njcaa_ii"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division II without football</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_ii_no_fb"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="njcaa_iii"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division III with football</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_iii_fb"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="nccaa_i"></td>
+      </tr>
+      <tr>
+        <td>NCAA Division III without football</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="ncaa_iii_no_fb"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="nccaa_ii"></td>
+      </tr>
+      <tr>
+        <td>CCCAA</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="cccaa"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="nwcac"></td>
+      </tr>
+      <tr>
+        <td>Independent</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="independent"></td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="uscaa"></td>
+      </tr>
+      <tr>
+        <td>Other</td>
+        <td style="text-align: center;"><input type="radio" name="sanctioning_body" value="other"></td>
+        <td style="text-align: center;"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <label for="other_description">Other Description:</label>
+    <div style="height: 80px; border: 1px solid #ccc; padding: 10px; margin-top: 5px;"></div>
+  </div>
+
+  <table style="width: 100%; margin-top: 40px;">
+    <tr>
+      <td style="width: 20%; vertical-align: top;">Update Status</td>
+      <td style="width: 80%;"><span data-field="update_status_value">{{ update_status_value }}</span></td>
+    </tr>
+  </table>
+</div></body>
+</html>

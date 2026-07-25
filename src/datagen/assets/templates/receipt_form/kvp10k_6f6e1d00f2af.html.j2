@@ -1,0 +1,116 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .contact-info { margin-bottom: 30px; }
+  .section-divider { border-top: 1px solid #000; margin: 30px 0; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { flex-basis: 30%; }
+  .form-input-area { flex-basis: 65%; border-bottom: 1px solid #000; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <span style="font-size: 24pt; font-weight: bold;">CSUN</span>
+    <div style="font-size: 10pt;">CALIFORNIA STATE UNIVERSITY NORTHRIDGE</div>
+  </div>
+
+  <div style="text-align: right; margin-top: 10px;">
+    <span style="font-weight: bold;">Purchasing &amp; Contract Administration</span>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 30px;">LOST/ITEMIZED RECEIPT FORM (P-CARD)</h1>
+  <p style="text-align: center; font-weight: bold;">ALL FIELDS REQUIRED</p>
+
+  <div class="contact-info">
+    <p>University Hall 180</p>
+    <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+    <p>Fax: <span data-field="fax">{{ fax }}</span></p>
+    <p>Mail Code: <span data-field="mail_code">{{ mail_code }}</span></p>
+    <p>Email: <span data-field="email">{{ email }}</span></p>
+  </div>
+
+  <p>SUBMIT THIS AFFIDAVIT WITH YOUR P-CARD RECONCILIATION PACKET IN LIEU OF THE MISSING RECEIPT.</p>
+  <p>ONE FORM PER MISSING RECEIPT.</p>
+
+  <div class="section-divider"></div>
+
+  <div class="form-row">
+    <div class="form-label">VENDOR/MERCHANT:</div>
+    <div class="form-input-area"><span data-field="vendor_merchant">{{ vendor_merchant }}</span></div>
+    <div class="form-label" style="margin-left: auto;">STATEMENT POST DATE:</div>
+    <div class="form-input-area" style="width: 200px;"><span data-field="statement_post_date">{{ statement_post_date }}</span></div>
+    <div class="form-label" style="margin-left: auto;">TOTAL AMOUNT: $</div>
+    <div class="form-input-area" style="width: 100px;"><span data-field="total_amount">{{ total_amount }}</span></div>
+  </div>
+
+  <p>Detailed description of items purchased:</p>
+  <!-- Assuming line items might be present, though not explicitly detailed in the layout, we use a structure for potential future expansion -->
+  {% if line_items %}
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <th style="text-align: left; padding: 5px;">Description</th>
+          <th style="text-align: right; padding: 5px;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr style="border-bottom: 1px dotted #ccc;">
+          <td style="padding: 5px;"><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td style="padding: 5px; text-align: right;"><span data-field="line_items[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+
+  <p style="margin-top: 40px;">Reason why original itemized receipt/invoice was not obtained:</p>
+  <div style="border-bottom: 1px solid #000; margin-top: 5px; height: 50px;" data-field="field_1">{{ field_1 }}</div>
+
+  <div class="section-divider"></div>
+
+  <p>I CERTIFY BY MY SIGNATURE BELOW THAT THE ABOVE GOODS/SERVICES WERE PURCHASED IN MY NAME VIA THE CSUN PROCUREMENT CARD FOR OFFICIAL UNIVERSITY BUSINESS. THE ABOVE GOODS/SERVICES WERE PURCHASED IN ACCORDANCE WITH THE POLICIES AND PROCEDURES OUTLINED IN THE <span style="font-weight: bold;">PROCUREMENT CARD HANDBOOK</span> AND A DUPLICATE RECEIPT/INVOICE CANNOT BE OBTAINED.</p>
+
+  <div class="form-row" style="margin-top: 40px;">
+    <div class="form-label">P-CARDHOLDER NAME:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="p_cardholder_name">{{ p_cardholder_name }}</div>
+    <div class="form-label" style="margin-left: auto;">EXT.:</div>
+    <div class="form-input-area" style="width: 100px;" data-field="ext">{{ ext }}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">P-CARDHOLDER SIGNATURE:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="p_cardholder_signature">{{ p_cardholder_signature }}</div>
+    <div class="form-label" style="margin-left: auto;">DATE:</div>
+    <div class="form-input-area" style="width: 100px;" data-field="date">{{ date }}</div>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div class="form-label">FINANCIAL APPROVER NAME:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="financial_approver_name">{{ financial_approver_name }}</div>
+    <div class="form-label" style="margin-left: auto;">EXT.:</div>
+    <div class="form-input-area" style="width: 100px;" data-field="ext_2">{{ ext_2 }}</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">FINANCIAL APPROVER SIGNATURE:</div>
+    <div class="form-input-area" style="width: 50%;" data-field="financial_approver_signature">{{ financial_approver_signature }}</div>
+    <div class="form-label" style="margin-left: auto;">DATE:</div>
+    <div class="form-input-area" style="width: 100px;" data-field="date_2">{{ date_2 }}</div>
+  </div>
+
+  <div style="text-align: right; margin-top: 100px; font-size: 9pt;">
+    Rev. 02/19/2020
+  </div>
+</div>

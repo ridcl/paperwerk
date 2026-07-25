@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .publication-entry {
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  .date {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  p, td, span { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  ul { list-style-type: disc; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .item-entry {
+    margin-bottom: 10px;
+  }
+  .date-info {
+    font-size: 0.9em;
+    color: #555;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1 style="text-align: center;">{{ full_name }}</h1>
+    <p style="text-align: center; margin-top: 5px;">{{ employer.department }}</p>
+    <p style="text-align: center;">{{ employer.address_line_1 }}, {{ employer.city }}, {{ employer.state }} {{ employer.zip_code }}</p>
+    <p style="text-align: center;">{{ employer.phone }} | E-mail: {{ employer.email }}</p>
+    <p style="text-align: center;">SSRN Author Page: {{ employer.ssrn_url }}</p>
+    <p style="text-align: center;">Home Page: {{ employer.homepage }}</p>
+  </header>
+
+  <div class="section-title">Main Employment</div>
+  <div>
+    <p>
+      {{ employer.name }} Business School, University of {{ employer.university }}, {{ employer.city }}, {{ employer.state }}, {{ employer.zip_code }}.
+    </p>
+    {% for job in employment_history %}
+      <p>
+        {{ job.title }} at {{ job.employer_name }}. {{ job.start_date }} - {{ job.end_date }}.
+      </p>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Publications</div>
+
+  <div class="section-title">Forthcoming</div>
+  {% for pub in forthcoming_publications %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.date }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2022</div>
+  {% for pub in publications_2022 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2021</div>
+  {% for pub in publications_2021 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2020</div>
+  {% for pub in publications_2020 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2019</div>
+  {% for pub in publications_2019 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2018</div>
+  {% for pub in publications_2018 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2017</div>
+  {% for pub in publications_2017 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2016</div>
+  {% for pub in publications_2016 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2015</div>
+  {% for pub in publications_2015 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2014</div>
+  {% for pub in publications_2014 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2013</div>
+  {% for pub in publications_2013 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2012</div>
+  {% for pub in publications_2012 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2011</div>
+  {% for pub in publications_2011 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2010</div>
+  {% for pub in publications_2010 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2009</div>
+  {% for pub in publications_2009 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2008</div>
+  {% for pub in publications_2008 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">2007</div>
+  {% for pub in publications_2007 %}
+    <div class="publication-entry">
+      <p>
+        {{ pub.title }} (with {{ pub.co_authors | join(', ') }}).
+        <span class="date">{{ pub.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Book Chapter</div>
+  {% for chapter in book_chapters %}
+    <div class="publication-entry">
+      <p>
+        {{ chapter.title }} (edited by {{ chapter.editors | join(', ') }}).
+        <span class="date">{{ chapter.journal_info }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Working Papers</div>
+  {% for paper in working_papers %}
+    <div class="publication-entry">
+      <p>
+        {{ paper.title }} (with {{ paper.co_authors | join(', ') }}).
+        <span class="date">{{ paper.date }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Papers Under Initial Submission</div>
+  {% for paper in initial_submission_papers %}
+    <div class="publication-entry">
+      <p>
+        {{ paper.title }} (with {{ paper.co_authors | join(', ') }}).
+        <span class="date">{{ paper.date }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Inactive Papers</div>
+  {% for paper in inactive_papers %}
+    <div class="publication-entry">
+      <p>
+        {{ paper.title }} (with {{ paper.co_authors | join(', ') }}).
+        <span class="date">{{ paper.date }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Other Research Papers and Publications</div>
+  {% for paper in other_research_papers %}
+    <div class="publication-entry">
+      <p>
+        {{ paper.title }} (with {{ paper.co_authors | join(', ') }}).
+        <span class="date">{{ paper.date }}</span>.
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Research Impact</div>
+  <div>
+    <p>
+      • Ranked <span data-field="impact.rank">{{ impact.rank }}</span> among all Finance academics worldwide (World's Top <span data-field="impact.top_percentile">{{ impact.top_percentile }}</span> Scientists, Stanford University).
+    </p>
+    <p>
+      • Google Scholar Citations: <span data-field="impact.citations">{{ impact.citations }}</span> (total); <span data-field="impact.last_5_years_citations">{{ impact.last_5_years_citations }}</span> (last 5 years); h-index = <span data-field="impact.h_index">{{ impact.h_index }}</span>.
+    </p>
+    <p>
+      • SSRN: <span data-field="impact.ssrn_count">{{ impact.ssrn_count }}</span> papers, <span data-field="impact.ssrn_downloads">{{ impact.ssrn_downloads }}</span> downloads (Rank: <span data-field="impact.ssrn_rank">{{ impact.ssrn_rank }}</span>).
+    </p>
+    <p>
+      • Most cited paper of all time in the <span data-field="impact.most_cited_journal">{{ impact.most_cited_journal }}</span> (as of <span data-field="impact.most_cited_date">{{ impact.most_cited_date }}</span>).
+    </p>
+    <p>
+      • One of the top <span data-field="impact.top_25_percentile">{{ impact.top_25_percentile }}</span> cited articles in the <span data-field="impact.top_25_journal">{{ impact.top_25_journal }}</span> in the past <span data-field="impact.top_25_years">{{ impact.top_25_years }}</span> years (as of January 2018).
+    </p>
+  </div>
+
+  <div class="section-title">Presentations and Discussions</div>
+  <div>
+    <p>
+      C: co-author presented; D: discussant; S: scheduled.
+    </p>
+    {% for presentation in presentations %}
+      <p>
+        • <span data-field="presentation.year">{{ presentation.year }}</span>: {{ presentation.title }} (with {{ presentation.co_authors | join(', ') }}).
+      </p>
+    {% endfor %}
+  </div>
+</div>
+<div class="page">
+  <footer style="text-align: right; font-size: 0.8em; margin-top: 50px;">
+    Alok Kumar's CV (January 20, 2023)
+    <span style="float: right;">{{ page_number }}</span>
+  </footer>
+</div>
+
+
+<div class="page">
+  <p><span data-field="full_name">{{ full_name }}</span></p>
+  <p><span data-field="contact_info">{{ contact_info }}</span></p>
+
+  <h2>Education</h2>
+  <ul>
+    <li><span data-field="education_entry.degree">{{ education_entry.degree }}</span>, <span data-field="education_entry.major">{{ education_entry.major }}</span>, <span data-field="education_entry.institution">{{ education_entry.institution }}</span>, <span data-field="education_entry.years">{{ education_entry.years }}</span>.</li>
+  </ul>
+
+  <h2>Experience</h2>
+  <h3>Professional Experience</h3>
+  <ul>
+    {% for job in professional_experience %}
+    <li>
+      <strong>{{ job.title }}</strong>, <span data-field="job.employer">{{ job.employer }}</span>, <span data-field="job.years">{{ job.years }}</span>.
+      <ul style="margin-top: 5px;">
+        {% for duty in job.duties %}
+        <li>{{ duty }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <h3>Teaching Experience</h3>
+  <ul>
+    {% for teaching_entry in teaching_experience %}
+    <li><span data-field="teaching_entry.role">{{ teaching_entry.role }}</span> at <span data-field="teaching_entry.institution">{{ teaching_entry.institution }}</span>, <span data-field="teaching_entry.years">{{ teaching_entry.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Research & Publications</h3>
+  <h4>Publications</h4>
+  <ul>
+    {% for publication in publications %}
+    <li><span data-field="publication.title">{{ publication.title }}</span>, <span data-field="publication.journal">{{ publication.journal }}</span>, <span data-field="publication.years">{{ publication.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+  <h4>Presentations</h4>
+  <ul>
+    {% for presentation in presentations %}
+    <li><span data-field="presentation.title">{{ presentation.title }}</span> at <span data-field="presentation.conference">{{ presentation.conference }}</span>, <span data-field="presentation.years">{{ presentation.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<div class="page">
+  <h2>Skills</h2>
+  <ul>
+    {% for skill in skills %}
+    <li><span data-field="skills[{{ loop.index0 }}]">{{ skill }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <h2>Awards and Honors</h2>
+  <ul>
+    {% for award in awards %}
+    <li><span data-field="award.name">{{ award.name }}</span>, <span data-field="award.institution">{{ award.institution }}</span>, <span data-field="award.years">{{ award.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Service</h2>
+  <h3>Professional Service</h3>
+  <ul>
+    {% for service in professional_service %}
+    <li><span data-field="service.role">{{ service.role }}</span> at <span data-field="service.organization">{{ service.organization }}</span>, <span data-field="service.years">{{ service.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Reviewer Service</h3>
+  <ul>
+    {% for reviewer in reviewer_service %}
+    <li><span data-field="reviewer.journal">{{ reviewer.journal }}</span>, <span data-field="reviewer.years">{{ reviewer.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<div class="page">
+  <h2>Affiliations</h2>
+  <ul>
+    {% for affiliation in affiliations %}
+    <li><span data-field="affiliation.name">{{ affiliation.name }}</span>, <span data-field="affiliation.years">{{ affiliation.years }}</span>.</li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.8em; margin-top: 5px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+  <div style="margin-bottom: 15px;">
+    <p>17. Undergraduate Curriculum Committee, {{ date_17_1 }}.</p>
+    <p>18. Ph.D. Program Committee, {{ date_17_2 }}.</p>
+    <p>19. Recruiting Committee, {{ date_17_3 }}.</p>
+  </div>
+
+  <div class="section-title">Other Career Highlights</div>
+  <div style="margin-bottom: 15px;">
+    <p>1. Helped increase the enrollment of the MSF Program at MHBS from {{ number_1 }} to {{ number_2 }} in one year, {{ date_18_1 }}.</p>
+    <p>2. Helped raise ${{ amount_1 }} million for the Finance Department Research Fund, {{ date_18_2 }}.</p>
+    <p>3. Started the Finance PhD Program at University of Miami, {{ date_18_3 }}.</p>
+    <p>4. Started the Miami Behavioral Finance Conference, {{ date_18_4 }}.</p>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+  <div class="item-entry">
+    <p><span data-field="employer_1">{{ employer_1 }}</span>, {{ location_1 }}</p>
+    <p><span data-field="role_1">{{ role_1 }}</span> (Part-Time), {{ start_date_1 }} – {{ end_date_1 }}.</p>
+  </div>
+  <div class="item-entry">
+    <p><span data-field="employer_2">{{ employer_2 }}</span>, {{ location_2 }}</p>
+    <p><span data-field="role_2">{{ role_2 }}</span> (Part-Time), {{ start_date_2 }} – {{ end_date_2 }}.</p>
+  </div>
+  <div class="item-entry">
+    <p><span data-field="employer_3">{{ employer_3 }}</span>, {{ location_3 }}</p>
+    <p><span data-field="role_3">{{ role_3 }}</span> (Part-Time), {{ start_date_3 }} – {{ end_date_3 }}.</p>
+  </div>
+  <div class="item-entry">
+    <p><span data-field="employer_4">{{ employer_4 }}</span>, {{ location_4 }}</p>
+    <p><span data-field="role_4">{{ role_4 }}</span>, {{ start_date_4 }} – {{ end_date_4 }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.8em; margin-top: 5px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+  <div class="section-title">Media Citations</div>
+  <div style="margin-bottom: 15px;">
+    <p>1. How to Make Sense of the {{ topic_1 }} News Cycle, {{ publication_1 }}, {{ date_20_1 }}.</p>
+    <p>2. The New York Stock Exchange President Says the Stock Market is Not a Casino. Here's What {{ topic_2 }} Says. {{ publication_2 }}, {{ date_20_2 }}.</p>
+    <p>3. Everything is Gambling Now, {{ publication_3 }}, {{ date_20_3 }}.</p>
+    <p>4. 'This is the Way': The Reddit Traders Who Took on Wall Street's Elite, {{ publication_4 }}, {{ date_20_4 }}.</p>
+    <p>5. These Stocks Are More of a Gamble Than an Investment, {{ publication_5 }}, {{ date_20_5 }}.</p>
+    <p>6. People are Spending Over Three Times More Money 'Gambling' on Hot Stocks than at Casinos and on Lottery Tickets and Sports Betting, {{ publication_6 }}, {{ date_20_6 }}.</p>
+    <p>7. The US Election and Your Investment Portfolio, {{ publication_7 }}, {{ date_20_7 }}.</p>
+    <p>8. Democrats and Republicans Differ as Investors: How to Check Your Bias, {{ publication_8 }}, {{ date_20_8 }}.</p>
+    <p>9. How Investing Ability Changes With Age, {{ publication_9 }}, {{ date_20_9 }}.</p>
+    <p>10. Research Finds Female Analysts are More Accurate, Make Bolder Calls, {{ publication_10 }}, {{ date_20_10 }}.</p>
+    <p>11. Stock Analysts Biases Are Showing, A Study Finds, {{ publication_11 }}, {{ date_20_11 }}. Also, on {{ publication_12 }}, {{ date_20_12 }}.</p>
+    <p>12. How Biases Affect Stock Analyst Predictions, {{ publication_13 }}, {{ date_20_13 }}.</p>
+    <p>13. The Hidden Way Trump and Clinton May Sabotage Your Investments, {{ publication_14 }}, {{ date_20_14 }}.</p>
+    <p>14. The Hidden Way Our Politics Skew Our Investing Choices, {{ publication_15 }}, {{ date_20_15 }}.</p>
+    <p>15. Study Finds Investors Turned Off By Foreign Mutual Fund Manager Names, {{ publication_16 }}, {{ date_20_16 }}.</p>
+    <p>16. Investors Avoid Mutual Fund Managers with Foreign-Sounding Names, {{ publication_17 }}, {{ date_20_17 }}.</p>
+    <p>17. This Is Your Brain on Money: How Investors Trip Themselves Up, {{ publication_18 }}, {{ date_20_18 }}.</p>
+    <p>18. Study Finds Investor Biases Against 'Foreign-Sounding' Names, {{ publication_19 }}, {{ date_20_19 }}.</p>
+    <p>19. Foreign Names 'Sway' Investors, {{ publication_20 }}, {{ date_20_20 }}.</p>
+    <p>20. 1929 Stock Market Chart Doesn't Scare Investors - Yet, {{ publication_21 }}, {{ date_20_21 }}.</p>
+    <p>21. How to Predict Stock Returns: Location, Location, Location, {{ publication_22 }}, {{ date_20_22 }}.</p>
+    <p>22. The Dow Theory's Buy Signal, {{ publication_23 }}, {{ date_20_23 }}.</p>
+    <p>23. Fiscal Cliff Warning Causes Americans to Cut Back on Spending, {{ publication_24 }}, {{ date_20_24 }}.</p>
+    <p>24. Roll of the Dice, {{ publication_25 }}, {{ date_20_25 }}.</p>
+    <p>25. A Ciência Do Otimismo, ISTOÉ Independente (Brazilian news magazine), {{ date_20_26 }}.</p>
+    <p>26. Can Optimism Cure the Economy? {{ publication_27 }}, {{ date_20_27 }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.8em; margin-top: 5px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+  <div style="margin-bottom: 15px;">
+    <p>27. The Glee Market, {{ publication_28 }}, {{ date_20_28 }}.</p>
+    <p>28. Why Stock Market Drops Mess With Your Head, {{ publication_29 }}, {{ date_20_29 }}.</p>
+    <p>29. How Media Excess Can Mess With Your Wealth, {{ publication_30 }}, {{ date_20_30 }}.</p>
+    <p>30. The Catholic Lotto Connection, {{ publication_31 }}, {{ date_20_31 }}.</p>
+    <p>31. Are You a Gambler or an Investor? {{ publication_32 }}, {{ date_20_32 }}. Also, in {{ publication_33 }}, {{ date_20_33 }}.</p>
+    <p>32. Happiness and the Economy, {{ publication_34 }}, {{ date_20_34 }}. Also, on NPR: All Things Considered, {{ date_20_35 }}.</p>
+    <p>33. Sunny Skies Help the Economy, {{ publication_35 }}, {{ date_20_35_2 }}. Also in Business Daily News, Christian Science Monitor, Miami New Times, and Gulf Coast Review.</p>
+    <p>34. Economic Prozac: Enhancing Mood to Drive Recovery, {{ publication_36 }}, {{ date_20_36 }}.</p>
+    <p>35. How to Cope with Your Confirmation Bias? {{ publication_37 }}, {{ date_20_37 }}.</p>
+    <p>36. Gambling, Trading and Correlations, {{ publication_38 }}, {{ date_20_38 }}.</p>
+    <p>37. Older Brains, Worse Trades, {{ publication_39 }}, {{ date_20_39 }}.</p>
+    <p>38. Investors Should Act Their Age, {{ publication_40 }}, {{ date_20_40 }}.</p>
+    <p>39. When a Portfolio Is Red or Blue, {{ publication_41 }}, {{ date_20_41 }}.</p>
+    <p>40. Why the Poor Pick Bad Stocks? Smart Money, {{ publication_42 }}, {{ date_20_42 }}.</p>
+    <p>41. As Stock Losses Loom, Don't Throw a 'Hail Mary', {{ publication_43 }}, {{ date_20_43 }}.</p>
+    <p>42. Lottery's Lure Lost, {{ publication_44 }}, {{ date_20_44 }}.</p>
+    <p>43. Investment Starts at Home, {{ publication_45 }}, {{ date_20_45 }}.</p>
+    <p>44. The Perils of Staying Too Close to Home, {{ publication_46 }}, {{ date_20_46 }}. Reprinted in San Diego Union-Tribune, International Herald Tribune, The Providence Journal, and usnews.com.</p>
+    <p>45. How Now, How Theory? CBS Marketwatch, {{ date_20_47 }}.</p>
+    <p>46. The Global Bet: Investors Who Look Abroad Should Use Caution, {{ publication_48 }}, {{ date_20_48 }}.</p>
+    <p>47. Aging Brings Wisdom, but Not on Investing, {{ publication_49 }}, {{ date_20_49 }}.</p>
+    <p>48. Gamblers Beware: The Stock Market Bites Back, {{ publication_50 }}, {{ date_20_50 }}.</p>
+    <p>49. Gambling versus Investing, {{ publication_51 }}, {{ date_20_51 }}.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 0.8em; margin-top: 5px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+  <div style="margin-bottom: 15px;">
+    <p>50. Surprising News About Timing, {{ publication_52 }}, {{ date_20_52 }}.</p>
+    <p>51. Behind the Numbers, The Globe and Mail Report on Business Magazine, {{ date_20_53 }}.</p>
+    <p>52. A Venerable Market Theory Points to an Extended Slump, {{ publication_54 }}, {{ date_20_54 }}.</p>
+    <p>53. Market Timers Usually Get Clocked, {{ publication_55 }}, {{ date_20_55 }}.</p>
+    <p>54. More Proof for the Dow Theory, {{ publication_56 }}, {{ date_20_56 }}.</p>
+  </div>
+
+  <div class="section-title">Personal</div>
+  <div style="margin-bottom: 15px;">
+    <p>1. Married, with three children.</p>
+    <p>2. Naturalized U.S. citizen.</p>
+    <p>3. Interests: {{ interest_1 }}, {{ interest_2 }}, {{ interest_3 }}, {{ interest_4 }}, {{ interest_5 }}, {{ interest_6 }}, {{ interest_7 }}.</p>
+  </div>
+</div>
+
+</body>
+</html>

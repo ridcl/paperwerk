@@ -1,0 +1,154 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-group { display: flex; flex-direction: column; }
+  .label { font-weight: normal; font-size: 12pt; }
+  .input-area { border-bottom: 1px solid #000; width: 100%; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">NEW YORK STATE</h1>
+      <h2 style="font-size: 18pt; margin: 5px 0 0 0;">Department of Taxation and Finance</h2>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 18pt; margin: 0;">IT-2104</h2>
+      <p style="margin: 5px 0 0 0;">2026</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row" style="margin-bottom: 15px;">
+      <div class="form-group" style="width: 45%;">
+        <span class="label">First name and middle initial</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+      <div class="form-group" style="width: 45%;">
+        <span class="label">Last name</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+    </div>
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div class="form-group" style="width: 45%;">
+        <span class="label">Permanent home address (number and street or rural route)</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+      <div class="form-group" style="width: 45%;">
+        <span class="label">Your Social Security number</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row" style="margin-bottom: 15px;">
+      <div class="form-group" style="width: 30%;">
+        <span class="label">City, village, or post office</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+      <div class="form-group" style="width: 25%;">
+        <span class="label">State</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+      <div class="form-group" style="width: 25%;">
+        <span class="label">ZIP code</span>
+        <div class="input-area" style="height: 20px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px; border: 1px solid #000; padding: 15px;">
+    <p style="font-size: 10pt; margin-top: 0;">Are you a resident of New York City (this includes the Bronx, Brooklyn, Manhattan, Queens, and Staten Island)? <span style="margin-left: 20px;">Yes <input type="checkbox"> No <input type="checkbox"></span></p>
+    <p style="font-size: 10pt; margin-top: 10px;">Are you a resident of Yonkers? <span style="margin-left: 20px;">Yes <input type="checkbox"> No <input type="checkbox"></span></p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">Before making any entries, see <span data-field="instructions_reference">{{ instructions_reference }}</span>, see <span data-field="note_reference">{{ note_reference }}</span>, and if applicable, complete the worksheet in the instructions.</p>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <th style="text-align: left; padding: 5px; width: 50%;"></th>
+          <th style="text-align: center; padding: 5px; width: 25%;"></th>
+          <th style="text-align: center; padding: 5px; width: 25%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">1 Total number of allowances you are claiming for New York State and Yonkers, if applicable (from line 19, if using worksheet)</td>
+          <td style="text-align: center; padding: 5px;"><span data-field="allowances_ny_state">{{ allowances_ny_state }}</span></td>
+          <td style="text-align: center; padding: 5px;"><span data-field="allowances_yonkers">{{ allowances_yonkers }}</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">2 Total number of allowances for New York City (from line 31, if using worksheet)</td>
+          <td style="text-align: center; padding: 5px;"><span data-field="allowances_nyc">{{ allowances_nyc }}</span></td>
+          <td style="text-align: center; padding: 5px;"><span data-field="allowances_nyc_2">{{ allowances_nyc_2 }}</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">Use lines 3, 4, and 5 to have additional withholding per pay period under special agreement with your employer.</td>
+          <td style="text-align: center; padding: 5px;"></td>
+          <td style="text-align: center; padding: 5px;"></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">3 New York State amount</td>
+          <td style="text-align: center; padding: 5px;"><span data-field="withholding_ny_state">{{ withholding_ny_state }}</span></td>
+          <td style="text-align: center; padding: 5px;"></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">4 New York City amount</td>
+          <td style="text-align: center; padding: 5px;"><span data-field="withholding_nyc">{{ withholding_nyc }}</span></td>
+          <td style="text-align: center; padding: 5px;"></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px;">5 Yonkers amount</td>
+          <td style="text-align: center; padding: 5px;"><span data-field="withholding_yonkers">{{ withholding_yonkers }}</span></td>
+          <td style="text-align: center; padding: 5px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>I certify that I am entitled to the number of withholding allowances claimed on this certificate.</p>
+    <p style="margin-top: 20px;">Employee's signature _________________________ Date _________________________</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">Penalty - A penalty of $<span data-field="penalty_amount">{{ penalty_amount }}</span> may be imposed for any false statement you make that decreases the amount of money you have withheld from your wages. You may also be subject to criminal penalties.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">Employer: Keep this certificate with your records.</p>
+    <p>If any of the following apply, mark an X in each corresponding box, complete the additional information requested, and send an additional copy of this form to New York State. See <span data-field="employer_instructions_link">{{ employer_instructions_link }}</span> in the instructions. Visit our website at <span data-field="employer_website_url">{{ employer_website_url }}</span> (search for IT-2104) or scan the QR code.</p>
+    <p style="margin-top: 15px;">A Employee claimed more than 14 exemption allowances for New York State <span style="margin-left: 20px;">A <input type="checkbox"></span></p>
+    <p style="margin-top: 10px;">B Employee is a new hire or a rehire <span style="margin-left: 20px;">B <input type="checkbox"></span></span> First date employed services for pay (mmddyyyy) <div class="input-area" style="width: 150px; display: inline-block;"></div> See Box B instructions:</p>
+    <p style="margin-top: 15px;">You may report new hire information online instead of mailing the form to New York State. Visit <span data-field="online_reporting_url">{{ online_reporting_url }}</span>.</p>
+    <p style="font-size: 10pt; margin-top: 10px;">Note: Employers must report individuals under an <span data-field="independent_contractor_term">{{ independent_contractor_term }}</span> with contracts in excess of $<span data-field="contractor_threshold">{{ contractor_threshold }}</span> using the online reporting website <span data-field="online_reporting_url">{{ online_reporting_url }}</span>, not Form IT-2104.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>Are dependent health insurance benefits available for this employee? <span style="margin-left: 20px;">Yes <input type="checkbox"> No <input type="checkbox"></span></p>
+    <p style="margin-top: 10px;">If Yes, enter the date the employee qualifies (mmddyyyy): <div class="input-area" style="width: 150px; display: inline-block;"></div></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Employer's name and address (Employer: complete this section only if you are sending a copy of this form to the New York State Tax Department) <div class="input-area" style="height: 50px;"></div></p>
+  </div>
+
+  <div style="text-align: right; margin-top: 50px;">
+    <!-- Placeholder for QR Code -->
+    <img src="placeholder_qr_code.png" alt="QR Code" style="width: 100px; height: 100px;">
+    <p style="font-size: 10pt; margin-top: 10px;">www.tax.ny.gov/it2104-2026</p>
+  </div>
+</div>

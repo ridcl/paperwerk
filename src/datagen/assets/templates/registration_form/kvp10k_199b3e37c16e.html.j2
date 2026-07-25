@@ -1,0 +1,160 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for formality */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  .form-section { margin-bottom: 20px; }
+  .line-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .label { font-weight: bold; display: inline-block; width: 150px; }
+  .input-area { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 160px); }
+</style>
+
+<div class="page">
+  <h1 style="text-align: center; font-size: 18pt; margin-bottom: 30px;">Registration Form PTTC Rocky Mountain Region</h1>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Name of Workshop:</span>
+      <span class="input-area">{{ workshop_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Location of Workshop:</span>
+      <span class="input-area">{{ workshop_location }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Workshop Date:</span>
+      <span class="input-area">{{ workshop_date }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Workshop Fee $:</span>
+      <span class="input-area">{{ workshop_fee }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Name:</span>
+      <span class="input-area">{{ full_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Company:</span>
+      <span class="input-area">{{ company_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Address:</span>
+      <span class="input-area">{{ address }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div style="display: flex; gap: 30px;">
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">City:</span>
+          <span class="input-area">{{ city }}</span>
+        </div>
+        <div class="line-item">
+          <span class="label">State:</span>
+          <span class="input-area">{{ state }}</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Zip:</span>
+          <span class="input-area">{{ zip_code }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">Phone:</span>
+          <span class="input-area">{{ phone_number }}</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Fax:</span>
+          <span class="input-area">{{ fax_number }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div style="display: flex; gap: 30px;">
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">Email:</span>
+          <span class="input-area">{{ email_address }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">Payment:</span>
+          <span class="input-area">{{ payment_method }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">School of Mines:</span>
+      <span class="input-area">{{ school_of_mines }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div style="display: flex; gap: 30px;">
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">Card Number:</span>
+          <span class="input-area">{{ card_number }}</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Expiration Date:</span>
+          <span class="input-area">{{ expiration_date }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="line-item">
+          <span class="label">Amount to be charged $:</span>
+          <span class="input-area">{{ amount_to_charge }}</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Name on Card:</span>
+          <span class="input-area">{{ name_on_card }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="line-item">
+      <span class="label">Signature:</span>
+      <span class="input-area" style="border-bottom: 1px solid #000; width: 300px;">{{ signature }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <p style="font-size: 10pt;">Mail or FAX this form to: {{ mailing_address }}</p>
+    <p style="font-size: 10pt;">For information on workshops and other events, contact {{ contact_name }} at {{ contact_email }}.</p>
+    <p style="font-size: 10pt;">NOTE: You may register at a secure site for PTTC events on-line at: <a href="{{ registration_url }}">{{ registration_url }}</a></p>
+  </div>
+</div>

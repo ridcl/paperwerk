@@ -1,0 +1,164 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 4px 0; }
+  .form-section { margin-bottom: 20px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">8821</h1>
+      <p style="font-size: 10pt; margin-top: 5px;">(Rev. January 2018)</p>
+      <p style="font-size: 10pt;">Department of the Treasury</p>
+      <p style="font-size: 10pt;">Internal Revenue Service</p>
+    </div>
+    <div style="text-align: right; font-size: 10pt;">
+      <p>CMS No. 1545-1165</p>
+      <p>For IRS Use Only</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">Tax Information Authorization</p>
+    <p style="font-size: 10pt;">Go to <span data-field="url_link">{{ url_link }}</span> for instructions and the latest information.</p>
+    <p style="font-size: 10pt;">&#9658; Don't sign this form unless all applicable lines have been completed.</p>
+    <p style="font-size: 10pt;">&#9658; Don't use Form 8821 to request copies of your tax returns or to authorize someone to represent you.</p>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">1 Taxpayer information. Taxpayer must sign and date this form on line 7.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 45%;">
+        <p style="font-weight: bold;">Taxpayer name and address</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="taxpayer_name_and_address">{{ taxpayer_name_and_address }}</div>
+      </div>
+      <div style="width: 45%;">
+        <p style="font-weight: bold;">Taxpayer identification number(s)</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="taxpayer_identification_number">{{ taxpayer_identification_number }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">2 Appointee. If you wish to name more than one appointee, attach a list to this form. Check here if a list of additional appointees is attached.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 45%;">
+        <p style="font-weight: bold;">Name and address</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="name_and_address">{{ name_and_address }}</div>
+      </div>
+      <div style="width: 45%;">
+        <p style="font-weight: bold;">CAF No.</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="caf_no">{{ caf_no }}</div>
+        <p style="font-weight: bold;">PTIN</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="ptin">{{ ptin }}</div>
+        <p style="font-weight: bold;">Telephone No.</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="telephone_no">{{ telephone_no }}</div>
+        <p style="font-weight: bold;">Fax No.</p>
+        <div style="border-bottom: 1px solid #000; height: 15px;" data-field="fax_no">{{ fax_no }}</div>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      <label style="font-size: 10pt;">Check if new: Address <input type="checkbox"> Telephone No. <input type="checkbox"> Fax No. <input type="checkbox"></label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">3 Tax Information. Appointee is authorized to inspect and/or receive confidential tax information for the type of tax, forms, periods, and specific matters you list below. See the line 3 instructions.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left; width: 30%;">Type of Tax Information (Income, Employment, Payroll, Excise, Estate, Gift, Civil Penalty, Sec. 6809H Payments, etc.)</th>
+          <th style="text-align: left; width: 25%;">Tax Form Number (1040, 941, 720, etc.)</th>
+          <th style="text-align: left; width: 25%;">Year(s) or Period(s)</th>
+          <th style="text-align: left; width: 20%;">Specific Tax Matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].tax_form_number">{{ item.tax_form_number }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].period">{{ item.period }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].matters">{{ item.matters }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="font-size: 10pt;">By checking here, I authorize access to my IRS records via an Intermediate Service Provider.</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">4 Specific use not recorded on Centralized Authorization File (CAF). If the tax information authorization is for a specific use not recorded on CAF, check this box. See the instructions. If you check this box, skip lines 5 and 6.</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">5 Disclosure of tax information (you must check a box on line 5a or 5b unless the box on line 4 is checked):</p>
+    <div style="margin-top: 10px;">
+      <label style="font-size: 10pt;">a If you want copies of tax information, notices, and other written communications sent to the appointee on an ongoing basis, check this box</label>
+      <div style="float: right;">
+        <input type="checkbox">
+      </div>
+      <br>
+      <label style="font-size: 10pt;">b If you don't want any copies of notices or communications sent to your appointee, check this box</label>
+      <div style="float: right;">
+        <input type="checkbox">
+      </div>
+    </div>
+    <p style="font-size: 10pt; margin-top: 10px;">Note. Appointees will no longer receive forms, publications, and other related materials with the notices.</p>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">6 Retention/revocation of prior tax information authorizations. If the line 4 box is checked, skip this line. If the line 4 box isn't checked, the IRS will automatically revoke all prior Tax Information Authorizations on file unless you check the line 6 box and attach a copy of the Tax Information Authorization(s) that you want to retain.</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 10pt;">To revoke a prior tax information authorization(s) without submitting a new authorization, see the line 6 instructions.</p>
+  </div>
+
+  <div class="form-section">
+    <p style="font-size: 12pt; font-weight: bold;">7 Signature of taxpayer. If signed by a corporate officer, partner, guardian, partnership representative, executor, receiver, administrator, trustee, or party other than the taxpayer, I certify that I have the authority to execute this form with respect to the tax matters and tax periods shown on line 3 above.</p>
+  </div>
+
+  <div class="form-section" style="margin-top: 30px;">
+    <p style="font-size: 12pt; font-weight: bold;">&#9658; IF NOT COMPLETE, SIGNED, AND DATED, THIS TAX INFORMATION AUTHORIZATION WILL BE RETURNED.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <p style="font-weight: bold;">Signature</p>
+      <div style="border-bottom: 1px solid #000; height: 20px;" data-field="signature">{{ signature }}</div>
+      <p style="font-size: 10pt;">Print Name</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-weight: bold;">Date</p>
+      <div style="border-bottom: 1px solid #000; height: 20px;" data-field="date">{{ date }}</div>
+      <p style="font-size: 10pt;">Title (if applicable)</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; font-size: 9pt; display: flex; justify-content: space-between;">
+    <p>For Privacy Act and Paperwork Reduction Act Notice, see instructions.</p>
+    <p>Cat. No. 11596P</p>
+    <p>Form <span data-field="form_number">{{ form_number }}</span> (Rev. 1-2018)</p>
+  </div>
+</div>

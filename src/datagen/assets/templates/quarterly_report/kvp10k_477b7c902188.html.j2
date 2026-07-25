@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .header-title {
+            font-size: 24pt;
+            font-weight: bold;
+        }
+        .header-subtitle {
+            font-size: 14pt;
+            font-weight: normal;
+        }
+        .section-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 12pt;
+        }
+        .toc-entry span:first-child {
+            flex-grow: 1;
+        }
+        .toc-entry span:last-child {
+            font-weight: normal;
+        }
+        .intro-text {
+            font-size: 11pt;
+            line-height: 1.6;
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px; /* Placeholder for chart visualization */
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            color: #555;
+        }
+        .bar-chart-container {
+            width: 100%;
+            height: 350px;
+            margin-top: 20px;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 11pt;
+        }
+        .bar-label {
+            width: 250px;
+            flex-shrink: 0;
+        }
+        .bar-visual {
+            flex-grow: 1;
+            height: 20px;
+            background-color: #eee;
+            position: relative;
+            margin-right: 10px;
+        }
+        .bar-fill {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bar-value {
+            font-size: 10pt;
+            min-width: 100px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 class="header-title">UNIVERSITY OF TENNESSEE AT CHATTANOOGA</h1>
+        <div style="width: 60%; height: 2px; background-color: #003366; margin: 10px auto;"></div>
+    </div>
+    <h2 class="section-title" style="text-align: center; margin-top: 0;">SPONSORED PROGRAM ACTIVITY</h2>
+    <p class="header-subtitle" style="text-align: center;">QUARTERLY REPORT</p>
+</div>
+
+<div class="page">
+    <h2 class="section-title">TABLE OF CONTENTS</h2>
+    <div class="toc-entry">
+        <span>Introduction</span>
+        <span>3</span>
+    </div>
+    <div class="toc-entry">
+        <span>UTC Sponsored Programs – Quarterly Award Comparison</span>
+        <span>4</span>
+    </div>
+    <div class="toc-entry">
+        <span>UTC Sponsored Programs – Quarterly Proposal Comparison</span>
+        <span>5</span>
+    </div>
+    <div class="toc-entry">
+        <span>UTC Sponsored Programs – Awards FY18/FY19 Comparison</span>
+        <span>6</span>
+    </div>
+    <div class="toc-entry">
+        <span>College of Arts & Sciences – Awards & Proposals FY18/FY19 Comparison</span>
+        <span>8</span>
+    </div>
+    <div class="toc-entry">
+        <span>Gary W. Rollins College of Business – Awards & Proposals FY19</span>
+        <span>9</span>
+    </div>
+    <div class="toc-entry">
+        <span>College of Engineering & Computer Science – Awards & Proposals FY18/FY19 Comparison</span>
+        <span>10</span>
+    </div>
+    <div class="toc-entry">
+        <span>College of Health, Education, & Professional Studies – Awards & Proposals FY18/FY19 Comparison</span>
+        <span>11</span>
+    </div>
+    <div class="toc-entry">
+        <span>Admin Units – Awards & Proposals FY18/FY19 Comparison</span>
+        <span>12</span>
+    </div>
+    <div class="toc-entry">
+        <span>Listing of Awards & Proposals By Investigator*</span>
+        <span>13</span>
+    </div>
+    <div class="toc-entry">
+        <span>Office of Research and Sponsored Programs</span>
+        <span>18</span>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">INTRODUCTION</h2>
+    <p style="font-size: 10pt; margin-bottom: 20px;">SECOND QUARTER: {{ report_period_start }} – {{ report_period_end }}</p>
+    <div style="display: flex; gap: 40px;">
+        <div style="flex: 2;">
+            <p class="intro-text">The information contained in this report is drawn from the {{ data_source }} database and provides comparisons of the amounts of external funding for the second quarter of FY {{ fiscal_year_1 }} and FY {{ fiscal_year_2 }}. This report includes all proposals and awards that were reported and approved by {{ approval_date }}. Proposals submitted for internal routing but not yet approved and awards not fully processed as of that date will be included in future quarterly reports. If any of the information in this report does not correspond to your records or you have general questions, please notify {{ contact_email }}.</p>
+        </div>
+        <div style="flex: 1; text-align: center;">
+            <!-- Placeholder for image -->
+            <div style="height: 250px; background-color: #ccc; border: 1px solid #999;"></div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">UTC SPONSORED PROGRAMS – QUARTERLY AWARD COMPARISON</h2>
+    <div class="chart-container">
+        <!-- Placeholder for chart -->
+        <p>Chart comparing Quarterly Awards for Quarter 1 and Quarter 2 (2018 vs 2019)</p>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">UTC SPONSORED PROGRAMS – QUARTERLY PROPOSAL COMPARISON</h2>
+    <div class="chart-container">
+        <!-- Placeholder for chart -->
+        <p>Chart comparing Quarterly Proposals for Quarter 1 and Quarter 2 (2018 vs 2019)</p>
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">UTC SPONSORED PROGRAMS – AWARDS FY18/FY19 COMPARISON</h2>
+    <div class="bar-chart-container">
+        {% for category in award_categories %}
+        <div class="bar-row">
+            <div class="bar-label">{{ category.name }}</div>
+            <div class="bar-visual">
+                <!-- FY18 Bar -->
+                <div class="bar-fill" style="width: {{ category.fy18_percentage }}%;"></div>
+                <!-- FY19 Bar -->
+                <div class="bar-fill" style="width: {{ category.fy19_percentage }}%; background-color: #f0ad4e;"></div>
+            </div>
+            <div class="bar-value">
+                FY18: ${{ category.fy18_amount | intcomma }}<br>
+                FY19: ${{ category.fy19_amount | intcomma }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">UTC SPONSORED PROGRAMS – PROPOSALS FY18/FY19 COMPARISON</h2>
+    <div class="bar-chart-container">
+        {% for category in proposal_categories %}
+        <div class="bar-row">
+            <div class="bar-label">{{ category.name }}</div>
+            <div class="bar-visual">
+                <!-- FY18 Bar -->
+                <div class="bar-fill" style="width: {{ category.fy18_percentage }}%;"></div>
+                <!-- FY19 Bar -->
+                <div class="bar-fill" style="width: {{ category.fy19_percentage }}%; background-color: #f0ad4e;"></div>
+            </div>
+            <div class="bar-value">
+                FY18: ${{ category.fy18_amount | intcomma }}<br>
+                FY19: ${{ category.fy19_amount | intcomma }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="page">
+    <h2 class="section-title">COLLEGE OF ARTS & SCIENCES – AWARDS & PROPOSALS FY18/FY19 COMPARISON</h2>
+    <div style="display: flex; gap: 40px;">
+        <div style="flex: 1;">
+            <h3 style="font-size: 14pt; margin-bottom: 10px;">Awards</h3>
+            <div class="bar-chart-container" style="height: 300px;">
+                {% for discipline in arts_sciences_awards %}
+                <div class="bar-row">
+                    <div class="bar-label">{{ discipline.name }}</div>
+                    <div class="bar-visual">
+                        <div class="bar-fill" style="width: {{ discipline.fy18_percentage }}%;"></div>
+                        <div class="bar-fill" style="width: {{ discipline.fy19_percentage }}%; background-color: #f0ad4e;"></div>
+                    </div>
+                    <div class="bar-value">
+                        FY18: ${{ discipline.fy18_amount | intcomma }}<br>
+                        FY19: ${{ discipline.fy19_amount | intcomma }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <h3 style="font-size: 14pt; margin-bottom: 10px;">Proposals</h3>
+            <div class="bar-chart-container" style="height: 300px;">
+                {% for discipline in arts_sciences_proposals %}
+                <div class="bar-row">
+                    <div class="bar-label">{{ discipline.name }}</div>
+                    <div class="bar-visual">
+                        <div class="bar-fill" style="width: {{ discipline.fy18_percentage }}%;"></div>
+                        <div class="bar-fill" style="width: {{ discipline.fy19_percentage }}%; background-color: #f0ad4e;"></div>
+                    </div>
+                    <div class="bar-value">
+                        FY18: ${{ discipline.fy18_amount | intcomma }}<br>
+                        FY19: ${{ discipline.fy19_amount | intcomma }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .header {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 1.5em; margin: 0;">GARY W. ROLLINS COLLEGE OF BUSINESS – AWARDS & PROPOSALS FY19</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <div class="header">Awards (Total: <span data-field="awards.total_amount">{{ awards.total_amount }}</span>)</div>
+      <div style="height: 300px; display: flex; align-items: flex-end; border-left: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-left: 10px;">
+        <div style="width: 100%; background-color: #f0ad4e; height: 60%; display: flex; align-items: flex-end; justify-content: center;">
+          <span data-field="awards.value">{{ awards.value }}</span>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-right: 10px;">
+          <div style="height: 10%; border-bottom: 1px dotted #ccc;">$2,000</div>
+          <div style="height: 20%; border-bottom: 1px dotted #ccc;">$4,000</div>
+          <div style="height: 30%; border-bottom: 1px dotted #ccc;">$6,000</div>
+          <div style="height: 40%; border-bottom: 1px dotted #ccc;">$8,000</div>
+          <div style="height: 50%; border-bottom: 1px dotted #ccc;">$10,000</div>
+          <div style="height: 60%; border-bottom: 1px dotted #ccc;">$12,000</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px; text-align: center;">
+        <span data-field="awards.category">{{ awards.category }}</span>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="header">Proposals (Total: <span data-field="proposals.total_amount">{{ proposals.total_amount }}</span>)</div>
+      <div style="height: 300px; display: flex; align-items: flex-end; border-left: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-left: 10px;">
+        <div style="width: 100%; background-color: #f0ad4e; height: 80%; display: flex; align-items: flex-end; justify-content: center;">
+          <span data-field="proposals.value">{{ proposals.value }}</span>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-right: 10px;">
+          <div style="height: 0%; border-bottom: 1px dotted #ccc;">$0</div>
+          <div style="height: 10%; border-bottom: 1px dotted #ccc;">$100,000</div>
+          <div style="height: 20%; border-bottom: 1px dotted #ccc;">$200,000</div>
+          <div style="height: 30%; border-bottom: 1px dotted #ccc;">$300,000</div>
+          <div style="height: 40%; border-bottom: 1px dotted #ccc;">$400,000</div>
+          <div style="height: 50%; border-bottom: 1px dotted #ccc;">$500,000</div>
+          <div style="height: 60%; border-bottom: 1px dotted #ccc;">$600,000</div>
+          <div style="height: 70%; border-bottom: 1px dotted #ccc;">$700,000</div>
+          <div style="height: 80%; border-bottom: 1px dotted #ccc;">$800,000</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px; text-align: center;">
+        <span data-field="proposals.category">{{ proposals.category }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 1.5em; margin: 0;">COLLEGE OF ENGINEERING & COMPUTER SCIENCE – AWARDS & PROPOSALS COMPARISON</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <div class="header">Awards</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="eng_awards.fy18_total">{{ eng_awards.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="eng_awards.fy19_total">{{ eng_awards.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_awards.civil_chem_award">{{ eng_awards.civil_chem_award }}</span>
+            <span data-field="eng_awards.civil_chem_fy19">{{ eng_awards.civil_chem_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_awards.computer_science_award">{{ eng_awards.computer_science_award }}</span>
+            <span data-field="eng_awards.computer_science_fy19">{{ eng_awards.computer_science_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_awards.electrical_award">{{ eng_awards.electrical_award }}</span>
+            <span data-field="eng_awards.electrical_fy19">{{ eng_awards.electrical_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_awards.engineering_management_award">{{ eng_awards.engineering_management_award }}</span>
+            <span data-field="eng_awards.engineering_management_fy19">{{ eng_awards.engineering_management_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_awards.mechanical_award">{{ eng_awards.mechanical_award }}</span>
+            <span data-field="eng_awards.mechanical_fy19">{{ eng_awards.mechanical_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="header">Proposals</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="eng_proposals.fy18_total">{{ eng_proposals.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="eng_proposals.fy19_total">{{ eng_proposals.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_proposals.civil_chem_proposal">{{ eng_proposals.civil_chem_proposal }}</span>
+            <span data-field="eng_proposals.civil_chem_fy19">{{ eng_proposals.civil_chem_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_proposals.computer_science_proposal">{{ eng_proposals.computer_science_proposal }}</span>
+            <span data-field="eng_proposals.computer_science_fy19">{{ eng_proposals.computer_science_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_proposals.electrical_proposal">{{ eng_proposals.electrical_proposal }}</span>
+            <span data-field="eng_proposals.electrical_fy19">{{ eng_proposals.electrical_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_proposals.engineering_management_proposal">{{ eng_proposals.engineering_management_proposal }}</span>
+            <span data-field="eng_proposals.engineering_management_fy19">{{ eng_proposals.engineering_management_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="eng_proposals.mechanical_proposal">{{ eng_proposals.mechanical_proposal }}</span>
+            <span data-field="eng_proposals.mechanical_fy19">{{ eng_proposals.mechanical_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 1.5em; margin: 0;">COLLEGE OF HEALTH, EDUCATION, & PROFESSIONAL STUDIES – AWARDS & PROPOSALS COMPARISON</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <div class="header">Awards</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="health_awards.fy18_total">{{ health_awards.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="health_awards.fy19_total">{{ health_awards.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.ccce_award">{{ health_awards.ccce_award }}</span>
+            <span data-field="health_awards.ccce_fy19">{{ health_awards.ccce_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.hhp_award">{{ health_awards.hhp_award }}</span>
+            <span data-field="health_awards.hhp_fy19">{{ health_awards.hhp_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.nursing_award">{{ health_awards.nursing_award }}</span>
+            <span data-field="health_awards.nursing_fy19">{{ health_awards.nursing_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.physical_therapy_award">{{ health_awards.physical_therapy_award }}</span>
+            <span data-field="health_awards.physical_therapy_fy19">{{ health_awards.physical_therapy_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.school_education_award">{{ health_awards.school_education_award }}</span>
+            <span data-field="health_awards.school_education_fy19">{{ health_awards.school_education_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.school_psychology_award">{{ health_awards.school_psychology_award }}</span>
+            <span data-field="health_awards.school_psychology_fy19">{{ health_awards.school_psychology_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_awards.southeast_center_award">{{ health_awards.southeast_center_award }}</span>
+            <span data-field="health_awards.southeast_center_fy19">{{ health_awards.southeast_center_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="header">Proposals</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="health_proposals.fy18_total">{{ health_proposals.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="health_proposals.fy19_total">{{ health_proposals.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.ccce_proposal">{{ health_proposals.ccce_proposal }}</span>
+            <span data-field="health_proposals.ccce_fy19">{{ health_proposals.ccce_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.interior_design_proposal">{{ health_proposals.interior_design_proposal }}</span>
+            <span data-field="health_proposals.interior_design_fy19">{{ health_proposals.interior_design_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.nursing_proposal">{{ health_proposals.nursing_proposal }}</span>
+            <span data-field="health_proposals.nursing_fy19">{{ health_proposals.nursing_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.physical_therapy_proposal">{{ health_proposals.physical_therapy_proposal }}</span>
+            <span data-field="health_proposals.physical_therapy_fy19">{{ health_proposals.physical_therapy_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.school_of_education_proposal">{{ health_proposals.school_of_education_proposal }}</span>
+            <span data-field="health_proposals.school_of_education_fy19">{{ health_proposals.school_of_education_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="health_proposals.southeast_center_proposal">{{ health_proposals.southeast_center_proposal }}</span>
+            <span data-field="health_proposals.southeast_center_fy19">{{ health_proposals.southeast_center_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 1.5em; margin: 0;">ADMIN UNITS – AWARDS & PROPOSALS FY18/FY19 COMPARISON</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <div class="header">Awards</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="admin_awards.fy18_total">{{ admin_awards.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="admin_awards.fy19_total">{{ admin_awards.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.campus_law_award">{{ admin_awards.campus_law_award }}</span>
+            <span data-field="admin_awards.campus_law_fy19">{{ admin_awards.campus_law_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.center_for_enforcement_professional_education_award">{{ admin_awards.center_for_enforcement_professional_education_award }}</span>
+            <span data-field="admin_awards.center_for_enforcement_professional_education_fy19">{{ admin_awards.center_for_enforcement_professional_education_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.cuip_award">{{ admin_awards.cuip_award }}</span>
+            <span data-field="admin_awards.cuip_fy19">{{ admin_awards.cuip_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.enroll_mgmt_student_success_award">{{ admin_awards.enroll_mgmt_student_success_award }}</span>
+            <span data-field="admin_awards.enroll_mgmt_student_success_fy19">{{ admin_awards.enroll_mgmt_student_success_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.simcenter_award">{{ admin_awards.simcenter_award }}</span>
+            <span data-field="admin_awards.simcenter_fy19">{{ admin_awards.simcenter_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.academic_affairs_award">{{ admin_awards.academic_affairs_award }}</span>
+            <span data-field="admin_awards.academic_affairs_fy19">{{ admin_awards.academic_affairs_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_awards.vice_chancellor_for_research_award">{{ admin_awards.vice_chancellor_for_research_award }}</span>
+            <span data-field="admin_awards.vice_chancellor_for_research_fy19">{{ admin_awards.vice_chancellor_for_research_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="header">Proposals</div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bold;">FY18 (Total: <span data-field="admin_proposals.fy18_total">{{ admin_proposals.fy18_total }}</span>)</span>
+          <span style="font-weight: bold;">FY19 (Total: <span data-field="admin_proposals.fy19_total">{{ admin_proposals.fy19_total }}</span>)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.academic_affairs_proposal">{{ admin_proposals.academic_affairs_proposal }}</span>
+            <span data-field="admin_proposals.academic_affairs_fy19">{{ admin_proposals.academic_affairs_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.cuip_proposal">{{ admin_proposals.cuip_proposal }}</span>
+            <span data-field="admin_proposals.cuip_fy19">{{ admin_proposals.cuip_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.disability_resource_center_proposal">{{ admin_proposals.disability_resource_center_proposal }}</span>
+            <span data-field="admin_proposals.disability_resource_center_fy19">{{ admin_proposals.disability_resource_center_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.enroll_mgmt_student_success_proposal">{{ admin_proposals.enroll_mgmt_student_success_proposal }}</span>
+            <span data-field="admin_proposals.enroll_mgmt_student_success_fy19">{{ admin_proposals.enroll_mgmt_student_success_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.library_proposal">{{ admin_proposals.library_proposal }}</span>
+            <span data-field="admin_proposals.library_fy19">{{ admin_proposals.library_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.simcenter_proposal">{{ admin_proposals.simcenter_proposal }}</span>
+            <span data-field="admin_proposals.simcenter_fy19">{{ admin_proposals.simcenter_fy19 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span data-field="admin_proposals.vice_chancellor_for_research_proposal">{{ admin_proposals.vice_chancellor_for_research_proposal }}</span>
+            <span data-field="admin_proposals.vice_chancellor_for_research_fy19">{{ admin_proposals.vice_chancellor_for_research_fy19 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 35%;">INVESTIGATOR</th>
+        <th style="width: 15%; text-align: right;">TOTAL AWARD AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL AWARD COUNT</th>
+        <th style="width: 20%;">COLLABORATING AWARD PROJECTS</th>
+        <th style="width: 15%; text-align: right;">TOTAL PROPOSAL AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL PROPOSAL COUNT</th>
+        <th style="width: 5%;">COLLABORATING PROPOSAL PROJECTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for investigator in investigators %}
+      <tr>
+        <td><span data-field="investigators[{{ loop.index0 }}].full_name">{{ investigator.full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_award_amount">{{ investigator.total_award_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_award_count">{{ investigator.total_award_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_award_projects">{{ investigator.collaborating_award_projects }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_amount">{{ investigator.total_proposal_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_count">{{ investigator.total_proposal_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_proposal_projects">{{ investigator.collaborating_proposal_projects }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 35%;">INVESTIGATOR</th>
+        <th style="width: 15%; text-align: right;">TOTAL AWARD AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL AWARD COUNT</th>
+        <th style="width: 20%;">COLLABORATING AWARD PROJECTS</th>
+        <th style="width: 15%; text-align: right;">TOTAL PROPOSAL AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL PROPOSAL COUNT</th>
+        <th style="width: 5%;">COLLABORATING PROPOSAL PROJECTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for investigator in investigators %}
+      <tr>
+        <td><span data-field="investigators[{{ loop.index0 }}].full_name">{{ investigator.full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_award_amount">{{ investigator.total_award_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_award_count">{{ investigator.total_award_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_award_projects">{{ investigator.collaborating_award_projects }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_amount">{{ investigator.total_proposal_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_count">{{ investigator.total_proposal_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_proposal_projects">{{ investigator.collaborating_proposal_projects }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 35%;">INVESTIGATOR</th>
+        <th style="width: 15%; text-align: right;">TOTAL AWARD AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL AWARD COUNT</th>
+        <th style="width: 20%;">COLLABORATING AWARD PROJECTS</th>
+        <th style="width: 15%; text-align: right;">TOTAL PROPOSAL AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL PROPOSAL COUNT</th>
+        <th style="width: 5%;">COLLABORATING PROPOSAL PROJECTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for investigator in investigators %}
+      <tr>
+        <td><span data-field="investigators[{{ loop.index0 }}].full_name">{{ investigator.full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_award_amount">{{ investigator.total_award_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_award_count">{{ investigator.total_award_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_award_projects">{{ investigator.collaborating_award_projects }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_amount">{{ investigator.total_proposal_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_count">{{ investigator.total_proposal_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_proposal_projects">{{ investigator.collaborating_proposal_projects }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 35%;">INVESTIGATOR</th>
+        <th style="width: 15%; text-align: right;">TOTAL AWARD AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL AWARD COUNT</th>
+        <th style="width: 20%;">COLLABORATING AWARD PROJECTS</th>
+        <th style="width: 15%; text-align: right;">TOTAL PROPOSAL AMOUNT</th>
+        <th style="width: 10%; text-align: center;">TOTAL PROPOSAL COUNT</th>
+        <th style="width: 5%;">COLLABORATING PROPOSAL PROJECTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for investigator in investigators %}
+      <tr>
+        <td><span data-field="investigators[{{ loop.index0 }}].full_name">{{ investigator.full_name }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_award_amount">{{ investigator.total_award_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_award_count">{{ investigator.total_award_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_award_projects">{{ investigator.collaborating_award_projects }}</span></td>
+        <td style="text-align: right;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_amount">{{ investigator.total_proposal_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="investigators[{{ loop.index0 }}].total_proposal_count">{{ investigator.total_proposal_count }}</span></td>
+        <td><span data-field="investigators[{{ loop.index0 }}].collaborating_proposal_projects">{{ investigator.collaborating_proposal_projects }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="text-align: right; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+        }
+        .page:last-child { page-break-after: auto; }
+        body {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .header-title {
+            font-size: 24pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .contact-block {
+            width: 45%;
+        }
+        .contact-block h3 {
+            font-size: 14pt;
+            margin-bottom: 15px;
+        }
+        .contact-item {
+            margin-bottom: 10px;
+        }
+        .contact-item strong {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-title">OFFICE OF RESEARCH AND SPONSORED PROGRAMS</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>INVESTIGATOR</th>
+                    <th>TOTAL AWARD AMOUNT</th>
+                    <th>TOTAL AWARD COUNT</th>
+                    <th>COLLABORATING AWARD PROJECTS</th>
+                    <th>TOTAL PROPOSAL AMOUNT</th>
+                    <th>TOTAL PROPOSAL COUNT</th>
+                    <th>COLLABORATING PROPOSAL PROJECTS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data_table %}
+                <tr>
+                    <td><span data-field="investigator.name">{{ row.investigator_name }}</span></td>
+                    <td><span data-field="investigator.total_award_amount">{{ row.total_award_amount }}</span></td>
+                    <td><span data-field="investigator.total_award_count">{{ row.total_award_count }}</span></td>
+                    <td><span data-field="investigator.collaborating_award_projects">{{ row.collaborating_award_projects }}</span></td>
+                    <td><span data-field="investigator.total_proposal_amount">{{ row.total_proposal_amount }}</span></td>
+                    <td><span data-field="investigator.total_proposal_count">{{ row.total_proposal_count }}</span></td>
+                    <td><span data-field="investigator.collaborating_proposal_projects">{{ row.collaborating_proposal_projects }}</span></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>Grand Total</td>
+                    <td><span data-field="grand_total.total_award_amount">{{ grand_total.total_award_amount }}</span></td>
+                    <td><span data-field="grand_total.total_award_count">{{ grand_total.total_award_count }}</span></td>
+                    <td><span data-field="grand_total.collaborating_award_projects">{{ grand_total.collaborating_award_projects }}</span></td>
+                    <td><span data-field="grand_total.total_proposal_amount">{{ grand_total.total_proposal_amount }}</span></td>
+                    <td><span data-field="grand_total.total_proposal_count">{{ grand_total.total_proposal_count }}</span></td>
+                    <td><span data-field="grand_total.collaborating_proposal_projects">{{ grand_total.collaborating_proposal_projects }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="font-size: 10pt;">*For monthly reports listing projects and amounts, please refer to our <a href="#" style="color: blue;">Sponsored Program Activity Blog!</a></p>
+    </div>
+
+    <div class="page">
+        <div class="contact-info">
+            <div class="contact-block">
+                <h3>Meredith Perry</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.meredith_perry.title">{{ contact.meredith_perry.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.meredith_perry.phone">{{ contact.meredith_perry.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.meredith_perry.email">{{ contact.meredith_perry.email }}</span></div>
+            </div>
+            <div class="contact-block">
+                <h3>Angie Johnson</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.angie_johnson.title">{{ contact.angie_johnson.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.angie_johnson.phone">{{ contact.angie_johnson.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.angie_johnson.email">{{ contact.angie_johnson.email }}</span></div>
+            </div>
+        </div>
+
+        <div class="contact-info" style="margin-top: 50px;">
+            <div class="contact-block">
+                <h3>Todd Doman</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.todd_doman.title">{{ contact.todd_doman.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.todd_doman.phone">{{ contact.todd_doman.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.todd_doman.email">{{ contact.todd_doman.email }}</span></div>
+            </div>
+            <div class="contact-block">
+                <h3>Sam Stanley</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.sam_stanley.title">{{ contact.sam_stanley.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.sam_stanley.phone">{{ contact.sam_stanley.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.sam_stanley.email">{{ contact.sam_stanley.email }}</span></div>
+            </div>
+        </div>
+
+        <div class="contact-info" style="margin-top: 50px;">
+            <div class="contact-block">
+                <h3>Tracey Woodbury</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.tracey_woodbury.title">{{ contact.tracey_woodbury.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.tracey_woodbury.phone">{{ contact.tracey_woodbury.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.tracey_woodbury.email">{{ contact.tracey_woodbury.email }}</span></div>
+            </div>
+            <div class="contact-block">
+                <h3>Terri Bearbower</h3>
+                <div class="contact-item"><strong>Title:</strong> <span data-field="contact.terri_bearbower.title">{{ contact.terri_bearbower.title }}</span></div>
+                <div class="contact-item"><strong>Phone:</strong> <span data-field="contact.terri_bearbower.phone">{{ contact.terri_bearbower.phone }}</span></div>
+                <div class="contact-item"><strong>Email:</strong> <span data-field="contact.terri_bearbower.email">{{ contact.terri_bearbower.email }}</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

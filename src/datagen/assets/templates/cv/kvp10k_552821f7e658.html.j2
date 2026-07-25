@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .header-info { text-align: right; font-size: 10pt; }
+  .section-title { font-weight: bold; margin-top: 15px; margin-bottom: 5px; font-size: 12pt; }
+  .entry-title { font-weight: bold; }
+  .entry-details { font-size: 10pt; }
+  .list-item { margin-bottom: 5px; font-size: 10pt; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; font-size: 10pt; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 40pt; font-weight: bold;">UCF</div>
+      <div style="font-size: 24pt; font-weight: bold;">College of</div>
+      <div style="font-size: 36pt; font-weight: bold;">Business</div>
+    </div>
+    <div class="header-info">
+      <div style="font-weight: bold;">Dr. {{ full_name }}</div>
+      <div style="font-size: 10pt;">Assistant Professor of Marketing</div>
+      <div style="font-size: 10pt;">Department of Marketing</div>
+      <div style="font-size: 10pt;">{{ employer.address }}</div>
+      <div style="font-size: 10pt;">E-mail: {{ employer.email }}</div>
+      <div style="font-size: 10pt;">{{ employer.website }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div style="font-size: 14pt; font-weight: bold;">Dr. {{ full_name }} - Rugar</div>
+    <div style="font-size: 10pt;">Updated {{ date_updated }}</div>
+    <div style="font-size: 10pt;">{{ employer.website }}</div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">Education</div>
+    <div class="entry-details">
+      <span data-field="degree_1">{{ degree_1 }}</span>, {{ major_1 }}
+    </div>
+    <div class="entry-details">
+      <span data-field="university_1">{{ university_1 }}</span>, {{ location_1 }}
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">University Positions</div>
+    <div class="entry-details">
+      <span data-field="position_1">{{ position_1 }}</span> – {{ start_date_1 }} - {{ end_date_1 }}
+    </div>
+    <div class="entry-details">
+      <span data-field="position_2">{{ position_2 }}</span> – {{ start_date_2 }} - {{ end_date_2 }}
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Peer-Reviewed Publications</div>
+    {% for pub in peer_reviewed_publications %}
+      <div class="list-item">
+        <span data-field="pub_type_1">{{ pub.type_1 }}</span>: 
+        <span data-field="pub_citation_1">{{ pub.citation_1 }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Manuscripts Under Review</div>
+    {% for manuscript in manuscripts_under_review %}
+      <div class="list-item">
+        <span data-field="mur_description">{{ manuscript.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Manuscripts In Preparation for Submission</div>
+    {% for manuscript in manuscripts_in_preparation %}
+      <div class="list-item">
+        <span data-field="mip_description">{{ manuscript.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Honors And Awards</div>
+    <div class="entry-details">
+      <span data-field="award_1">{{ award_1 }}</span> – {{ year_1 }}
+    </div>
+    <div class="entry-details">
+      <span data-field="award_2">{{ award_2 }}</span> – {{ year_2 }}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 40pt; font-weight: bold;">UCF</div>
+      <div style="font-size: 24pt; font-weight: bold;">College of</div>
+      <div style="font-size: 36pt; font-weight: bold;">Business</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">Invited Research Presentations & Presenting Author</div>
+    {% for presentation in invited_presentations %}
+      <div class="list-item">
+        <span data-field="ip_description">{{ presentation.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Peer-Reviewed Conference Presentations and Proceedings Publications *Presenting Author</div>
+    {% for presentation in conference_presentations %}
+      <div class="list-item">
+        <span data-field="cpp_description">{{ presentation.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">PhD Students and Mentoring</div>
+    <div class="entry-details">
+      <span data-field="phd_student_1">{{ phd_student_1 }}</span>, {{ phd_student_status_1 }}
+    </div>
+    <div class="entry-details">
+      <span data-field="committee_member_1">{{ committee_member_1 }}</span>
+    </div>
+    <div class="entry-details">
+      <span data-field="mentor">{{ mentor }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 40pt; font-weight: bold;">UCF</div>
+      <div style="font-size: 24pt; font-weight: bold;">College of</div>
+      <div style="font-size: 36pt; font-weight: bold;">Business</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">Courses Taught</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for course in courses_taught %}
+        <li class="list-item">{{ course }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Service</div>
+    <div class="entry-details">
+      <span data-field="service_role_1">{{ service_role_1 }}</span>
+    </div>
+    <div class="entry-details">
+      <span data-field="service_role_2">{{ service_role_2 }}</span>
+    </div>
+    <div class="entry-details">
+      <span data-field="service_role_3">{{ service_role_3 }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Service Initiatives</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for initiative in service_initiatives %}
+        <li class="list-item">{{ initiative }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Department/College Service (UCF)</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for dept_service in dept_college_service %}
+        <li class="list-item">{{ dept_service }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div style="font-size: 40pt; font-weight: bold;">UCF</div>
+      <div style="font-size: 24pt; font-weight: bold;">College of</div>
+      <div style="font-size: 36pt; font-weight: bold;">Business</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">Faculty Development</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for faculty_dev in faculty_development %}
+        <li class="list-item">{{ faculty_dev }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Membership</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for membership in memberships %}
+        <li class="list-item">{{ membership }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">Industry Professional Experience</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for industry_exp in industry_experience %}
+        <li class="list-item">{{ industry_exp }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

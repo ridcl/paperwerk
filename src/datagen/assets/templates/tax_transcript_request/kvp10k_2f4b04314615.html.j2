@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tax Transcript Request Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { margin-top: 0; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .form-section { margin-bottom: 30px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+  .note { font-size: 0.9em; margin-top: 15px; border-left: 3px solid #ccc; padding-left: 10px; }
+  .signature-area { margin-top: 50px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h1 style="font-size: 16pt; font-weight: bold;">4506T-EZ Short Form Request for Individual Tax Return Transcript</h1>
+    <div style="text-align: right;">OMB No. 1545-2154</div>
+  </div>
+
+  <div class="form-section">
+    <p>Department of the Treasury</p>
+    <p>Internal Revenue Service</p>
+  </div>
+
+  <div class="form-section">
+    <p>Tip: Use Form 4506T-EZ to order a 1040 series tax return transcript free of charge, or you can quickly request transcripts by using our automated self-help service tools. Please visit us at IRS.gov and click on "Get Transcript of Your Tax Records" under "Tools" or call 1-800-908-4490.</p>
+  </div>
+
+  <div class="form-section">
+    <p>1a Name shown on tax return. If a joint return, enter the name shown first.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 48%;">
+        <span data-field="full_name">{{ full_name }}</span>
+      </div>
+      <div style="width: 48%;">
+        <p>1b Taxpayer identification number or individual taxpayer identification number on tax return</p>
+        <span data-field="taxpayer_id">{{ taxpayer_id }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>2a If a joint return, enter spouse's name shown on tax return.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 48%;">
+        <span data-field="spouse_name">{{ spouse_name }}</span>
+      </div>
+      <div style="width: 48%;">
+        <p>2b Second social security number or individual taxpayer identification number if joint tax return</p>
+        <span data-field="spouse_taxpayer_id">{{ spouse_taxpayer_id }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>3 Current name, address (including apt., room or suite no.), city, state, and ZIP code (see instructions)</p>
+    <span data-field="current_address">{{ current_address }}</span>
+  </div>
+
+  <div class="form-section">
+    <p>4 Previous address shown on the last return filed if different from line 3 (see instructions)</p>
+    <span data-field="previous_address">{{ previous_address }}</span>
+  </div>
+
+  <div class="form-section">
+    <p>5 Customer file number (if applicable) (see instructions)</p>
+    <span data-field="customer_file_number">{{ customer_file_number }}</span>
+  </div>
+
+  <div class="note">
+    Note: Effective July 2019, the IRS will mail tax transcript requests only to your address of record. See <span data-field="what_s_new_under_future_developments">{{ what_s_new_under_future_developments }}</span> on Page 2 for additional information.
+  </div>
+
+  <div class="form-section">
+    <p>6 Year(s) requested. Enter the year(s) of the return transcript you are requesting (for example, "2008"). Most requests will be processed within 10 business days.</p>
+    <span data-field="requested_years">{{ requested_years }}</span>
+  </div>
+
+  <div class="note">
+    Note: If the IRS is unable to locate a return that matches the taxpayer identity information provided above, or if IRS records indicate that the return has not been filed, the IRS will notify you that it was unable to locate a return, or that a return was not filed, whichever is applicable.
+  </div>
+
+  <div class="note">
+    Caution: Do not sign this form unless all applicable lines have been completed.
+  </div>
+
+  <div class="signature-area">
+    <p>Signature of taxpayer(s). I declare that I am the taxpayer whose name is shown on either line 1a or 2a. If the request applies to a joint return, either spouse must sign. Note: This form must be received by IRS within 120 days of the signature date.</p>
+
+    <div style="margin-top: 20px;">
+      <label>
+        <input type="checkbox"> Statutory attests that he/she has read the attestation clause and upon so reading declares that he/she has the authority to sign the Form 4506T-EZ. See instructions.
+      </label>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+      <div style="width: 45%;">
+        <p>Sign Here</p>
+        <div style="border-bottom: 1px solid black; height: 30px; margin-top: 5px;" data-field="sign_here">{{ sign_here }}</div>
+        <p style="margin-top: 5px;">Signature (see instructions)</p>
+        <p>Date</p>
+      </div>
+      <div style="width: 45%;">
+        <p>Phone number of taxpayer on line 1a or 2a</p>
+        <div style="border-bottom: 1px solid black; height: 30px; margin-top: 5px;" data-field="date">{{ date }}</div>
+        <p style="margin-top: 5px;">Date</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <p>Spouse's signature</p>
+      <div style="border-bottom: 1px solid black; height: 30px; margin-top: 5px;" data-field="spouse_s_signature">{{ spouse_s_signature }}</div>
+      <p style="margin-top: 5px;">Date</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+    <h2 style="font-size: 12pt; font-weight: bold;">Future Developments</h2>
+    <h2 style="font-size: 12pt; font-weight: bold;">General Instructions</h2>
+  </div>
+
+  <div class="form-section">
+    <p>For the latest information about developments related to Form 4506T-EZ, such as legislation enacted after it was published, go to <span data-field="what_s_new_under_future_developments">{{ what_s_new_under_future_developments }}</span>.</p>
+  </div>
+
+  <div class="form-section">
+    <p>What's New: As part of its ongoing efforts to protect taxpayer data, the Internal Revenue Service has updated this form in July 2019. Taxpayers must date this marked tax transcript request form. The taxpayer's address of record.</p>
+  </div>
+
+  <div class="form-section">
+    <p>If a third-party is unable to accept a Tax Transcript Request Form, the third party must either contract with an existing IRS participant or become an IRS participant to receive the transcript. Additional information about the IRS program, go to <span data-field="irs_website">{{ irs_website }}</span> and search IRS.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Caution: Do not sign this form unless all applicable lines have been completed.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Purpose of form. Individuals can use Form 4506T-EZ to request a transcript of a tax return for the current and the prior three years that are requested. The transcript includes most of the original tax return, but does not include any schedules, payments, penalty assessments, or adjustments made to the originally filed return.</p>
+    <p>Taxpayers using this form for a tax year before 1040 based on a tax year beginning in one calendar year and ending in the next calendar year, may use Form 4506T-EZ. Taxpayers using a fiscal tax year must use Form 4506T-EZ. Request for transcript of tax return.</p>
+    <p>Use Form 4506T-EZ to request tax return transcripts, tax account information, W-2 forms, and other tax information. See instructions for non-filing, and record of account.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Customer File Number. The transcripts provided by the IRS have a customer file number. Taxpayers who receive transcripts only display partial personal information, such as name and address. The customer file number is used to identify the transcript.</p>
+    <p>An optional Customer File Number is available to use when requesting a transcript. This number will print on the transcript. See instructions for more information.</p>
+    <p>The customer file number is an optional field on this form.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Automated transcript request. You can quickly request transcripts by using our automated self-help service tools. Please visit us at <span data-field="irs_website">{{ irs_website }}</span> and click on "Get Transcript of Your Tax Records" under "Tools" or call 1-800-908-4490.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Tax Information. The transcripts provided by the IRS include most of the original tax return, but do not include any schedules, payments, penalty assessments, or adjustments made to the originally filed return.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Specific Instructions</p>
+    <p>Line 1a. Enter your employment identification number (EIN) if your request relates to a business. If you are an individual, enter your social security number (SSN) or individual taxpayer identification number (ITIN) on line 1a. If you are requesting Form 1040 that includes Schedule C (Form 1040), enter your SSN or ITIN.</p>
+    <p>Line 3. Enter your current address. If you use a previous address, enter it on line 4.</p>
+    <p>Line 4. Enter the address shown on the last return filed if different from the address entered on line 3.</p>
+    <p>Note: If the addresses on lines 3 and 4 are different and you have not changed your address with the IRS, use line 3.</p>
+    <p>Line 5. Enter up to 10 numeric characters to create a unique customer file number that will appear on the transcript. If you do not have a customer file number, do not enter one.</p>
+    <p>Note: You can use an SSN, name, or any combination of both, we will not input the information and the customer file number will reflect a generic entry of "999999999999".</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+    <h2 style="font-size: 12pt; font-weight: bold;">Privacy Act and Paperwork Reduction Act Notice</h2>
+    <h2 style="font-size: 12pt; font-weight: bold;">Internal Revenue Service</h2>
+  </div>
+
+  <div class="form-section">
+    <p>This form is subject to the Privacy Act of 1974. The information you provide on this form will be used only for the purpose of processing your request for a tax transcript. Sections 6103 and 6106 require you to provide your taxpayer identification number. If you do not provide this information, we may not be able to process your request. The IRS will not disclose your personal information to any outside party.</p>
+  </div>
+
+  <div class="form-section">
+    <p>Routine use of this information includes providing the transcript to you, the taxpayer, or to a third party authorized by you. The IRS will not disclose your personal information to any outside party unless required by law or to fulfill law enforcement requests.</p>
+  </div>
+
+  <div class="form-section">
+    <p>This request is subject to the Paperwork Reduction Act. The IRS is required to obtain your consent before collecting this information. By signing this form, you consent to the IRS collecting this information.</p>
+  </div>
+
+  <div class="form-section">
+    <p>The time needed to complete and file Form 4506T-EZ will vary depending on your request. If you are requesting a transcript, it will take approximately 10 business days. If you are requesting a tax account information, it will take approximately 15 business days. If you are requesting a W-2 form, it will take approximately 20 business days.</p>
+  </div>
+
+  <div class="form-section">
+    <p>If you have concerns concerning the accuracy of the information provided, please contact the IRS. For more information, please visit <span data-field="irs_website">{{ irs_website }}</span>.</p>
+  </div>
+</div>
+
+</body>
+</html>

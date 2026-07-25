@@ -1,0 +1,205 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { text-align: center; font-size: 24pt; margin-bottom: 20px; }
+  .header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+  .form-section { margin-bottom: 30px; }
+  .form-row { display: flex; margin-bottom: 15px; align-items: center; }
+  .form-row > div { flex-grow: 1; padding-right: 10px; }
+  .label { font-weight: bold; display: inline-block; width: 150px; }
+  .input-field { border-bottom: 1px solid #000; min-width: 100px; }
+  .full-width-row { display: flex; margin-bottom: 15px; }
+  .full-width-row > div { flex-grow: 1; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+<body>
+  <div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h1 style="font-size: 18pt;">ALUMNI INFORMATION FORM</h1>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+        <div style="font-size: 12pt;"></div>
+        <div style="font-size: 18pt; font-weight: bold;">TOUGALOO COLLEGE</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">DATE:</div>
+        <div style="flex-grow: 1;"><span data-field="date">{{ date }}</span></div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">NAME:</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>Last: <span data-field="full_name.last">{{ full_name.last }}</span></div>
+            <div>First: <span data-field="full_name.first">{{ full_name.first }}</span></div>
+            <div>Middle: <span data-field="full_name.middle">{{ full_name.middle }}</span></div>
+            <div>Maiden: <span data-field="full_name.maiden">{{ full_name.maiden }}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">Please check the appropriate designation:</div>
+        <div style="flex-grow: 1;">
+          <label><input type="checkbox"> Graduate of Class of <span data-field="graduation_year">{{ graduation_year }}</span></label>
+          <label style="margin-left: 20px;"><input type="checkbox"> Former Student Attended/Years of <span data-field="years_attended">{{ years_attended }}</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">HOME ADDRESS:</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>City: <span data-field="home_address.city">{{ home_address.city }}</span></div>
+            <div>State: <span data-field="home_address.state">{{ home_address.state }}</span></div>
+            <div>Zip + Four: <span data-field="home_address.zip_plus_four">{{ home_address.zip_plus_four }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">HOME TELEPHONE:</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>Area Code: <span data-field="home_phone.area_code">{{ home_phone.area_code }}</span></div>
+            <div>Number: <span data-field="home_phone.number">{{ home_phone.number }}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">WORK TELEPHONE:</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>Area Code: <span data-field="work_phone.area_code">{{ work_phone.area_code }}</span></div>
+            <div>Number: <span data-field="work_phone.number">{{ work_phone.number }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">POSITION:</div>
+        <div style="flex-grow: 1;"><span data-field="position">{{ position }}</span></div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">COMPANY/ORGANIZATIONIZATION:</div>
+        <div style="flex-grow: 1;"><span data-field="company_organization.name">{{ company_organization.name }}</span> - <span data-field="company_organization.matching_gift_program">{{ company_organization.matching_gift_program }}</span></div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">ADDRESS:</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>City: <span data-field="company_address.city">{{ company_address.city }}</span></div>
+            <div>State: <span data-field="company_address.state">{{ company_address.state }}</span></div>
+            <div>Street: <span data-field="company_address.street">{{ company_address.street }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">E-MAIL ADDRESS (ES):</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>HOME - <span data-field="email_address.home">{{ email_address.home }}</span></div>
+            <div>OFFICE - <span data-field="email_address.office">{{ email_address.office }}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">NAME OF SPOUSE:</div>
+        <div style="flex-grow: 1;"><span data-field="spouse_name">{{ spouse_name }}</span></div>
+      </div>
+      <div class="form-row">
+        <div style="width: 100px;">NAMES AND AGES OF CHILDREN:</div>
+        <div style="flex-grow: 1;"><span data-field="children_names_ages">{{ children_names_ages }}</span></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">DATE OF BIRTH:</div>
+        <div style="flex-grow: 1;"><span data-field="date_of_birth">{{ date_of_birth }}</span></div>
+        <div style="width: 100px;">WEDDING DATE:</div>
+        <div style="flex-grow: 1;"><span data-field="wedding_date">{{ wedding_date }}</span></div>
+        <div style="width: 100px;">WERE YOU MARRIED ON CAMPUS?</div>
+        <div style="flex-grow: 1;"><span data-field="married_on_campus">{{ married_on_campus }}</span></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">ORGANIZATIONAL MEMBERSHIPS AT TOUGALOO COLLEGE:</div>
+        <div style="flex-grow: 1;"><span data-field="organizational_memberships">{{ organizational_memberships }}</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 100px;">GRADUATE AND/OR PROFESSIONAL DEGREES (please list degree, year awarded and institution):</div>
+        <div style="flex-grow: 1;"><span data-field="degrees_list">{{ degrees_list }}</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-section">
+      <div style="font-weight: bold; margin-bottom: 10px;">ARE OTHER MEMBERS OF YOUR IMMEDIATE FAMILY TOUGALOO COLLEGE GRADUATES? IF SO, PLEASE PROVIDE THE FOLLOWING: (Continue on back if needed)</div>
+      
+      <!-- Family Member Entry 1 -->
+      <div class="form-row" style="margin-bottom: 10px;">
+        <div style="width: 150px;">FULL NAME</div>
+        <div style="flex-grow: 1;">RELATIONSHIP</div>
+        <div style="flex-grow: 1;">CLASS YEAR</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>Address: <span data-field="family_member_1.address">{{ family_member_1.address }}</span></div>
+            <div>City/State/Zip: <span data-field="family_member_1.city_state_zip">{{ family_member_1.city_state_zip }}</span></div>
+            <div>Phone: <span data-field="family_member_1.phone">{{ family_member_1.phone }}</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family Member Entry 2 (Loop structure implied for multiple entries, but using fixed structure based on layout) -->
+      <div class="form-row" style="margin-bottom: 10px;">
+        <div style="width: 150px;">FULL NAME</div>
+        <div style="flex-grow: 1;">RELATIONSHIP</div>
+        <div style="flex-grow: 1;">CLASS YEAR</div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 20px;">
+            <div>Address: <span data-field="family_member_2.address">{{ family_member_2.address }}</span></div>
+            <div>City/State/Zip: <span data-field="family_member_2.city_state_zip">{{ family_member_2.city_state_zip }}</span></div>
+            <div>Phone: <span data-field="family_member_2.phone">{{ family_member_2.phone }}</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Note: In a real implementation, this section would use a loop for family_members -->
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-section" style="margin-bottom: 20px;">
+      <div style="font-size: 10pt;">Please check if permission given: <span data-field="permission_given">{{ permission_given }}</span>. Permission given to include information in College publications.</div>
+      <div style="font-size: 10pt; margin-top: 10px;">Please email to <span data-field="email_contact">{{ email_contact }}</span>, fax to (601) 977-4492 or mail to: Tougaloo College Alumni Update – P.O. Box 288 - Tougaloo, MS 3917</div>
+    </div>
+
+    <div style="text-align: right; font-size: 10pt;">June 2014</div>
+  </div>
+</body>

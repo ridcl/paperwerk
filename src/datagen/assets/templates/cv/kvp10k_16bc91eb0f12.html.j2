@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-info { text-align: right; font-size: 12pt; }
+  .name-header { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 5px; }
+  .contact-info { text-align: center; font-size: 10pt; margin-bottom: 30px; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
+  .entry { margin-bottom: 15px; }
+  .entry-title { font-weight: bold; font-size: 11pt; }
+  .entry-details { font-size: 10pt; margin-left: 15px; }
+  .list-item { margin-bottom: 5px; font-size: 10pt; }
+  .two-column-layout { display: flex; justify-content: space-between; }
+  .two-column-layout > div { width: 48%; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-info">
+    <span data-field="date">{{ date }}</span>
+  </div>
+  <div class="name-header">
+    <span data-field="full_name">{{ full_name }}</span>
+  </div>
+  <div class="contact-info">
+    <div class="two-column-layout">
+      <div>
+        <strong>Office</strong>
+        <div class="entry-details">
+          <span data-field="address_line_1">{{ address_line_1 }}</span><br>
+          <span data-field="address_line_2">{{ address_line_2 }}</span><br>
+          <span data-field="address_line_3">{{ address_line_3 }}</span><br>
+          <span data-field="city_state_zip">{{ city_state_zip }}</span>
+        </div>
+      </div>
+      <div>
+        <strong>Home</strong>
+        <div class="entry-details">
+          <span data-field="home_address_line_1">{{ home_address_line_1 }}</span><br>
+          <span data-field="home_city_state_zip">{{ home_city_state_zip }}</span><br>
+          <span data-field="home_phone">{{ home_phone }}</span><br>
+          <span data-field="home_email">{{ home_email }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">PROFESSIONAL EXPERIENCE</div>
+  {% for job in professional_experience %}
+    <div class="entry">
+      <div class="entry-title">{{ job.title }}</div>
+      <div class="entry-details">
+        <span data-field="job_employer">{{ job.employer }}</span>, {{ job.start_date }} – {{ job.end_date }}
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">EDUCATION</div>
+  {% for edu in education %}
+    <div class="entry">
+      <div class="entry-title">{{ edu.degree }}</div>
+      <div class="entry-details">
+        <span data-field="edu_institution">{{ edu.institution }}</span>, {{ edu.graduation_year }}. Major fields: {{ edu.major_fields }}.
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">PUBLICATIONS</div>
+  <div class="entry">
+    <div class="entry-title">Journal Articles:</div>
+    {% for pub in journal_articles %}
+      <div class="list-item">{{ pub.title }}<span data-field="pub_journal">{{ pub.journal }}</span>, {{ pub.year }}.</div>
+    {% endfor %}
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Book Chapters:</div>
+    {% for chap in book_chapters %}
+      <div class="list-item">{{ chap.title }}<span data-field="chap_book">{{ chap.book }}</span>, {{ chap.year }}.</div>
+    {% endfor %}
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Book Reviews:</div>
+    {% for review in book_reviews %}
+      <div class="list-item">{{ review.title }}<span data-field="review_book">{{ review.book }}</span>, {{ review.year }}.</div>
+    {% endfor %}
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Reports:</div>
+    {% for report in reports %}
+      <div class="list-item">{{ report.title }}<span data-field="report_source">{{ report.source }}</span>, {{ report.year }}.</div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">WORK IN PROGRESS</div>
+  {% for wip in work_in_progress %}
+    <div class="list-item">{{ wip.description }}</div>
+  {% endfor %}
+</div>
+
+<div class="page">
+  <div class="section-title">RESEARCH AND TEACHING FIELDS</div>
+  <div class="entry-details">
+    <span data-field="research_fields">{{ research_fields }}</span>
+  </div>
+
+  <div class="section-title">PROFESSIONAL ACTIVITIES</div>
+  {% for activity in professional_activities %}
+    <div class="entry">
+      <div class="entry-title">{{ activity.title }}</div>
+      <div class="entry-details">
+        <span data-field="activity_details">{{ activity.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">ACADEMIC SERVICE</div>
+  {% for service in academic_service %}
+    <div class="entry">
+      <div class="entry-title">{{ service.role }}</div>
+      <div class="entry-details">
+        <span data-field="service_details">{{ service.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">UNIVERSITY</div>
+  {% for university_entry in university_entries %}
+    <div class="entry">
+      <div class="entry-title">{{ university_entry.role }}</div>
+      <div class="entry-details">
+        <span data-field="uni_details">{{ university_entry.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="page">
+  <div class="section-title">COORDINATOR ROLES</div>
+  {% for coordinator in coordinator_roles %}
+    <div class="entry">
+      <div class="entry-title">{{ coordinator.role }}</div>
+      <div class="entry-details">
+        <span data-field="coord_details">{{ coordinator.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">MANUSCRIPT REVIEWS</div>
+  {% for review in manuscript_reviews %}
+    <div class="list-item">{{ review.description }}</div>
+  {% endfor %}
+
+  <div class="section-title">ACADEMIC SERVICE (Continued)</div>
+  {% for service in academic_service_continued %}
+    <div class="entry">
+      <div class="entry-title">{{ service.role }}</div>
+      <div class="entry-details">
+        <span data-field="service_details">{{ service.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="page">
+  <div class="section-title">GRANTS</div>
+  {% for grant in grants %}
+    <div class="entry">
+      <div class="entry-title">{{ grant.title }}</div>
+      <div class="entry-details">
+        <span data-field="grant_details">{{ grant.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">AWARDS AND HONORS</div>
+  {% for award in awards_and_honors %}
+    <div class="entry">
+      <div class="entry-title">{{ award.title }}</div>
+      <div class="entry-details">
+        <span data-field="award_details">{{ award.details }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+</style>
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">9</div>
+  <div style="font-size: 11pt; line-height: 1.5;">
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_1_date">{{ employment_entry_1_date }}</span> University of <span data-field="employer_1_name">{{ employer_1_name }}</span>, Department of Political Science, Graduate Committee member.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_2_date">{{ employment_entry_2_date }}</span> University of <span data-field="employer_2_name">{{ employer_2_name }}</span>, Department of Political Science, Undergraduate Committee member.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_3_date">{{ employment_entry_3_date }}</span> University of <span data-field="employer_3_name">{{ employer_3_name }}</span>, Department of Political Science, Undergraduate Committee member, point person in redesigning department's Student Evaluation Form.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_4_date">{{ employment_entry_4_date }}</span> University of <span data-field="employer_4_name">{{ employer_4_name }}</span>, Ph.D. dissertation committee member for <span data-field="committee_member_1_name">{{ committee_member_1_name }}</span>, <span data-field="committee_member_2_name">{{ committee_member_2_name }}</span>, <span data-field="committee_member_3_name">{{ committee_member_3_name }}</span>, <span data-field="committee_member_4_name">{{ committee_member_4_name }}</span>, and <span data-field="committee_member_5_name">{{ committee_member_5_name }}</span>. In progress.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_5_date">{{ employment_entry_5_date }}</span> University of <span data-field="employer_5_name">{{ employer_5_name }}</span>, Master's Thesis Chair for <span data-field="thesis_chair_name_1">{{ thesis_chair_name_1 }}</span>. Completed.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_6_date">{{ employment_entry_6_date }}</span> University of <span data-field="employer_6_name">{{ employer_6_name }}</span>, Master's Thesis Chair for <span data-field="thesis_chair_name_2">{{ thesis_chair_name_2 }}</span>. In progress.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_7_date">{{ employment_entry_7_date }}</span> University of <span data-field="employer_7_name">{{ employer_7_name }}</span>, Master's Thesis committee member for <span data-field="committee_member_6_name">{{ committee_member_6_name }}</span> and <span data-field="committee_member_7_name">{{ committee_member_7_name }}</span>. Completed.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_8_date">{{ employment_entry_8_date }}</span> University of <span data-field="employer_8_name">{{ employer_8_name }}</span>, Master's Defense committee member for <span data-field="defense_member_1_name">{{ defense_member_1_name }}</span>. Completed.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_9_date">{{ employment_entry_9_date }}</span> University of <span data-field="employer_9_name">{{ employer_9_name }}</span>, Master's Defense committee member for <span data-field="defense_member_2_name">{{ defense_member_2_name }}</span> and <span data-field="defense_member_3_name">{{ defense_member_3_name }}</span>. Completed.
+    </div>
+    <div style="margin-bottom: 15px;">
+      <span data-field="employment_entry_10_date">{{ employment_entry_10_date }}</span> University of <span data-field="employer_10_name">{{ employer_10_name }}</span>, chaired preliminary examination committee for <span data-field="exam_committee_name">{{ exam_committee_name }}</span>.
+    </div>
+  </div>
+</div></body>
+</html>

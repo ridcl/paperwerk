@@ -1,0 +1,641 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { display: flex; align-items: center; }
+  .form-group label { margin-right: 10px; font-weight: bold; }
+  .input-field { border-bottom: 1px solid #000; padding: 2px 5px; flex-grow: 1; }
+  .checkbox-group label { font-weight: normal; margin-right: 15px; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 5px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h2 style="font-family: 'DejaVu Sans', sans-serif; font-size: 16pt;">BANNER ALUMNI/DEVELOPMENT DATA RETRIEVAL REQUEST FORM</h2>
+      <p style="font-size: 10pt;">Submit this form to</p>
+      <p style="font-size: 10pt;">Development Information Services</p>
+      <p style="font-size: 10pt;">John Dodge House, Oakland University (fax 248-364-6101)</p>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 12pt; font-weight: bold;">D.I.S. Only</p>
+      <div style="margin-top: 20px;">
+        <p style="font-size: 10pt;">Date Received: <span data-field="date_received">{{ date_received }}</span></p>
+        <p style="font-size: 10pt;">Job #: <span data-field="job_number">{{ job_number }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label>Approved by:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ approved_by }}</div>
+      </div>
+      <div class="form-group">
+        <label>Requestor:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ requestor_name }}</div>
+      </div>
+      <div class="form-group">
+        <label>Campus Address & Email Address:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ campus_address_email }}</div>
+      </div>
+      <div class="form-group">
+        <label>Contact Person's Name:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ contact_person_name }}</div>
+      </div>
+      <div class="form-group">
+        <label>Date Submitted:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ date_submitted }}</div>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div class="form-group">
+        <label>Department:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ department }}</div>
+      </div>
+      <div class="form-group">
+        <label>Phone #:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ phone_number }}</div>
+      </div>
+      <div class="form-group">
+        <label>Date Needed By:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ date_needed_by }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Have you previously requested a similar or identical output?</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 30%;">
+      <div class="form-group">
+        <label>Name of Person who requested previous request:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ previous_requestor_name }}</div>
+      </div>
+      <div class="form-group">
+        <label>Date of the previous request:</label>
+        <div class="input-field" style="flex-grow: 1;">{{ previous_request_date }}</div>
+      </div>
+    </div>
+    <div style="width: 70%; display: flex; justify-content: space-between; align-items: center;">
+      <div class="form-group">
+        <label>YES</label>
+        <input type="radio" name="previous_request_yes" value="yes">
+      </div>
+      <div class="form-group">
+        <label>NO</label>
+        <input type="radio" name="previous_request_no" value="no">
+      </div>
+      <div class="form-group">
+        <label>Maximum number of records:</label>
+        <div class="input-field" style="width: 150px;">{{ max_records }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">How will you use this output? Please check all that apply:</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Contact with alumni or donors</label>
+    <label><input type="checkbox"> Fundraising Solicitation</label>
+    <label><input type="checkbox"> Event Invitation</label>
+    <label><input type="checkbox"> Newsletters</label>
+    <label><input type="checkbox"> Departmental Information</label>
+    <label><input type="checkbox"> Prospecting/Research</label>
+    <label><input type="checkbox"> Management Report</label>
+    <label><input type="checkbox"> Telefund</label>
+    <label><input type="checkbox"> Other:</label>
+  </div>
+
+  <div class="section-header">Please describe your request: (REQUIRED)</div>
+  <div style="border: 1px solid #000; padding: 10px; height: 150px; margin-bottom: 30px;">
+    <div class="input-field" style="height: 100%; border: none;">{{ request_description }}</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">If this is a fundraising solicitation, please indicate the solicitation code & description:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 30%;">
+      <div class="form-group">
+        <label>Include</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> </label>
+          <label><input type="checkbox"> </label>
+          <label><input type="checkbox"> </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Exclude</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> </label>
+          <label><input type="checkbox"> </label>
+          <label><input type="checkbox"> </label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 70%;">
+      <div class="form-group">
+        <label>Records coded as:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Do not solicit (DNS)</label>
+          <label><input type="checkbox"> No fall telefund calls (NFT)</label>
+          <label><input type="checkbox"> No OUAA Magazine (NMG)</label>
+          <label><input type="checkbox"> Never Call (NVC)</label>
+          <label><input type="checkbox"> Never Mail (NVM)</label>
+          <label><input type="checkbox"> No planned giving newsletter (NPG)</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Output Disposition: Check all that apply</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Send to Contact Person listed above via Campus Mail</label>
+        <label><input type="checkbox"> Send to Contact Person listed above via Electronic Mail</label>
+        <label><input type="checkbox"> Send to OU Printing & Mailing Services</label>
+        <label><input type="checkbox"> FTP to Non-OU Mailing Services</label>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Hardcopy Report</label>
+        <label><input type="checkbox"> Datafile</label>
+        <label><input type="checkbox"> Excel file</label>
+        <label><input type="checkbox"> Access Database</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Indicate Name and Address of Non-OU Mailing Services below</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Mail Service Name</label>
+        <div class="input-field" style="flex-grow: 1;">{{ mail_service_name }}</div>
+      </div>
+      <div class="form-group">
+        <label>Mail Service Contact Person's Name & Phone #</label>
+        <div class="input-field" style="flex-grow: 1;">{{ mail_service_contact_name_phone }}</div>
+      </div>
+      <div class="form-group">
+        <label>Mail Service Address</label>
+        <div class="input-field" style="flex-grow: 1;">{{ mail_service_address }}</div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>FTP/e-mail Address</label>
+        <div class="input-field" style="flex-grow: 1;">{{ ftp_email_address }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Report Criteria (Check all that apply. Categories left blank will not affect your selection)</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Constituents</label>
+        <label><input type="checkbox"> Household pairing:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> Single (S)</label>
+          <label><input type="checkbox"> Combined (C)</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label>Organizations</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> Corporation (CORP)</label>
+          <label><input type="checkbox"> Foundations (FOUN)</label>
+          <label><input type="checkbox"> Other Organizations (OTHO)</label>
+          <label><input type="checkbox"> Religious Organization (RELO)</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Include / Exclude (Constituents)</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Alumni (ALUM)</label>
+        <label><input type="checkbox"> Parent (PRNT)</label>
+        <label><input type="checkbox"> Faculty/Staff (FAST)</label>
+        <label><input type="checkbox"> Retired Faculty/Staff (RFAC)</label>
+        <label><input type="checkbox"> OU Foundation Dir. (OUFD)</label>
+        <label><input type="checkbox"> Trustee (TRUS)</label>
+        <label><input type="checkbox"> Other Individual (OTHI)</label>
+        <label><input type="checkbox"> Friend (FRND)</label>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Corporation (CORP)</label>
+        <label><input type="checkbox"> Foundations (FOUN)</label>
+        <label><input type="checkbox"> Other Organizations (OTHO)</label>
+        <label><input type="checkbox"> Religious Organization (RELO)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Record Status:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Exclude: Deceased</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Employment Information: (Check all that apply)</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Current Employer (if in Banner)</label>
+        <label><input type="checkbox"> Current job title (if in Banner)</label>
+        <label><input type="checkbox"> Only employees of (company name, Banner ID if known)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Academic Criteria: (Check all that apply) This section relates to an individual's OU degree information</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> OU undergraduate degree holders</label>
+        <label><input type="checkbox"> OU graduate degree holders</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>School(s):</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> CAS</label>
+          <label><input type="checkbox"> SBA</label>
+          <label><input type="checkbox"> SEHS</label>
+          <label><input type="checkbox"> SOH</label>
+          <label><input type="checkbox"> SON</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Include:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> All Schools</label>
+          <label><input type="checkbox"> Specific Schools</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Degree(s):</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Undergraduate or Graduate</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Include:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> All degrees</label>
+          <label><input type="checkbox"> Undergraduate only</label>
+          <label><input type="checkbox"> Graduate only</label>
+          <label><input type="checkbox"> Preferred degree only</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Class years:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> All class years</label>
+          <label><input type="checkbox"> Specific class years</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Majors:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> (please include major code and descriptions)</label>
+          <label><input type="checkbox"> All majors</label>
+          <label><input type="checkbox"> Specific majors</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Department:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> All departments within school</label>
+          <label><input type="checkbox"> Specific departments within school</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Address Criteria: (Check all that apply) This section relates to a constituent's or organization's mailing address, business address as well as geographic location.</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Include:</label>
+          <div class="checkbox-group" style="margin-left: 20px;">
+            <label><input type="checkbox"> Active preferred address</label>
+            <label><input type="checkbox"> Active permanent address (01)</label>
+            <label><input type="checkbox"> Active Business address (BU)</label>
+          </div>
+          <label><input type="checkbox"> Exclude:</label>
+          <div class="checkbox-group" style="margin-left: 20px;">
+            <label><input type="checkbox"> Active preferred address</label>
+            <label><input type="checkbox"> Active permanent address (01)</label>
+            <label><input type="checkbox"> Active Business address (BU)</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>USA</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Foreign Countries</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>States:</label>
+        <div class="input-field" style="width: 100%;">{{ states }}</div>
+      </div>
+      <div class="form-group">
+        <label>Zipcodes:</label>
+        <div class="input-field" style="width: 100%;">{{ zipcodes }}</div>
+      </div>
+      <div class="form-group">
+        <label>Countries:</label>
+        <div class="input-field" style="width: 100%;">{{ countries }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 100%;">
+      <div class="form-group">
+        <label>Zipcode Radius's: Records within a</label>
+        <div class="input-field" style="width: 30%;">{{ zip_radius }}</div>
+        <label>mile radius of</label>
+        <div class="input-field" style="width: 30%;">{{ zip_code }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Salutations: This section relates to the salutations for a letter and the addressee for the outside of an envelope or piece of mail.</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Salutation:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Joint (FORM) example: Mr. and Mrs. Doe</label>
+          <label><input type="checkbox"> Individual (PRIN) example: Mr. Doe</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Addressee:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Joint (JOIN) example: Mr. and Mrs. John B. Doe</label>
+          <label><input type="checkbox"> Individual (INDI) example: Mr. John B. Doe</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Additional Information: This section relates to various information available in Banner records.</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Activities/Student Activities/Committees/Boards (list can be found in APAACTY by double-clicking in "activity" field.)</label>
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All activities</label>
+          <label><input type="checkbox"> Specific activities</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Athletes (athlete codes are also found in APAACTY by double-clicking in "activity" field.)</label>
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All sports</label>
+          <label><input type="checkbox"> Specific sports</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Donor Information: If your request involves specific gift information, you must complete this section. Check all that apply. To specify more than one population of donors, attach separate request form.</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Gifts</label>
+        <label><input type="checkbox"> Pledges</label>
+        <label><input type="checkbox"> Memo credit</label>
+        <label><input type="checkbox"> Matching Gifts</label>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Date range:</label>
+        <div class="input-field" style="width: 100%;">{{ donor_date_range }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Gifts</label>
+        <label><input type="checkbox"> Pledges</label>
+        <label><input type="checkbox"> Memo credit</label>
+        <label><input type="checkbox"> Matching Gifts</label>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Date range:</label>
+        <div class="input-field" style="width: 100%;">{{ donor_date_range_2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Amount range:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 100%;">
+      <div class="form-group">
+        <label>Designations: (Example) 30085 SEHS Gift Fund</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Include:</label>
+          <div class="checkbox-group" style="margin-left: 20px;">
+            <label><input type="checkbox"> All designations</label>
+            <label><input type="checkbox"> Specific designations</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">School/Division:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All schools/divisions</label>
+          <label><input type="checkbox"> Specific schools/divisions</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Departments:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All departments</label>
+          <label><input type="checkbox"> Specific departments</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">Solicitations:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All solicitations</label>
+          <label><input type="checkbox"> Specific solicitations</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="form-group">
+        <label>Date range:</label>
+        <div class="input-field" style="width: 100%;">{{ solicitation_date_range }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Membership Information: (Check all that apply) This section relates to an individual's participation in an OU membership program.</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> OUAA</label>
+          <label><input type="checkbox"> PCLUB</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Exclude:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> All categories</label>
+          <label><input type="checkbox"> Specific categories</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Membership Status:</div>
+  <div class="form-row" style="margin-top: 10px;">
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Include:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> Active</label>
+          <label><input type="checkbox"> Inactive</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Exclude:</label>
+        <div class="checkbox-group" style="margin-left: 20px;">
+          <label><input type="checkbox"> Expired</label>
+          <label><input type="checkbox"> Delinquent</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">Additional comments</div>
+  <div style="border: 1px solid #000; padding: 10px; height: 150px; margin-bottom: 50px;">
+    <div class="input-field" style="height: 100%; border: none;">{{ additional_comments }}</div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label>Requestor's Signature</label>
+        <div class="input-field" style="flex-grow: 1;" data-field="requestor_s_signature">{{ requestor_s_signature }}</div>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <div class="form-group">
+        <label>Date</label>
+        <div class="input-field" style="flex-grow: 1;">{{ date_signed }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 60px; padding: 20px; border: 1px solid #000; background-color: #f0f0f0;">
+    <p style="font-size: 10pt;">Please Note: Requests must be received by Development Information Services ten working days prior to needed completion date. Emergency requests will be accommodated as the processing schedule allows. Please contact the Director of Development Information Services for help in completing this form.</p>
+  </div>
+</div>

@@ -1,0 +1,240 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  .header-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .logo-text {
+    font-size: 24pt;
+    font-weight: bold;
+    color: #000;
+  }
+  .university-info {
+    margin-left: 20px;
+    text-align: right;
+  }
+  .university-info p {
+    margin: 0;
+    font-size: 10pt;
+  }
+  .form-section {
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .label {
+    font-weight: bold;
+    display: inline-block;
+    width: 150px; /* Approximation for alignment */
+  }
+  .input-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    width: calc(100% - 160px); /* Adjust based on label width */
+  }
+  .center-text {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .footer-section {
+    margin-top: 50px;
+  }
+  .signature-line {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-box {
+    width: 45%;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+  }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <div class="logo-text">FAMU</div>
+    <div class="university-info">
+      <p>FLORIDA</p>
+      <p>AGRICULTURAL AND</p>
+      <p>MECHANICAL</p>
+      <p>UNIVERSITY</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h1 style="text-align: center; font-size: 16pt; margin-bottom: 10px;">1098-T DOCUMENT REQUEST</h1>
+    <p style="text-align: center; font-size: 12pt; margin-top: 0;">Student Financial Services</p>
+    <p style="text-align: center; font-size: 10pt; margin-top: 0;">FHAC Suite G7</p>
+    <p style="text-align: center; font-size: 10pt; margin-top: 0;">Tallahassee, Florida 32307</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 20%;">
+        Phone: <span data-field="phone_number">{{ phone_number }}</span>
+      </div>
+      <div style="width: 20%;">
+        Fax: <span data-field="fax_number">{{ fax_number }}</span>
+      </div>
+      <div style="width: 20%;">
+        Email: <span data-field="email_address">{{ email_address }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 25%;">
+        Year: <span data-field="year">{{ year }}</span>
+      </div>
+      <div style="width: 25%;">
+        Student ID: <span data-field="student_id">{{ student_id }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 30%;">
+        Print Full Name: <span data-field="full_name">{{ full_name }}</span>
+      </div>
+      <div style="width: 30%;">
+        (Last) <span data-field="last_name">{{ last_name }}</span>
+      </div>
+      <div style="width: 20%;">
+        (First) <span data-field="first_name">{{ first_name }}</span>
+      </div>
+      <div style="width: 20%;">
+        (Maiden) <span data-field="middle_name">{{ middle_name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 30%;">
+        Student Mailing Address:
+        <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+          <span data-field="mailing_address_line_1">{{ mailing_address_line_1 }}</span>
+        </div>
+      </div>
+      <div style="width: 25%;">
+        (Street Address) <span data-field="mailing_address_street">{{ mailing_address_street }}</span>
+      </div>
+      <div style="width: 25%;">
+        (Apt #) <span data-field="mailing_address_apt">{{ mailing_address_apt }}</span>
+      </div>
+    </div>
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="width: 30%;">
+        (City) <span data-field="mailing_city">{{ mailing_city }}</span>
+      </div>
+      <div style="width: 25%;">
+        (State) <span data-field="mailing_state">{{ mailing_state }}</span>
+      </div>
+      <div style="width: 25%;">
+        (Zip Code) <span data-field="mailing_zip">{{ mailing_zip }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div style="width: 30%;">
+        Phone: <span data-field="phone_number_mailing">{{ phone_number_mailing }}</span>
+      </div>
+      <div style="width: 30%;">
+        Student Email Address: <span data-field="email_address_mailing">{{ email_address_mailing }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-text">
+    <p style="font-weight: bold;">How to locate your 1098-T Form:</p>
+    <p style="font-size: 10pt;">Note: 1098-T tax information is available to the students via their iRattler account.</p>
+    <ol style="font-size: 10pt; text-align: left; display: inline-block;">
+      <li>Go to "iRattler Campus Solutions"</li>
+      <li>Click on "Classic Home" in the NavBar</li>
+      <li>Select "Self Service"</li>
+      <li>Click on "Campus Finances"</li>
+      <li>Select "View 1098-T"</li>
+    </ol>
+  </div>
+
+  <div class="note" style="text-align: center;">
+    <p style="font-weight: bold;">***Only eligible student will have access to their 1098-T form***</p>
+    <p style="font-size: 10pt;">Students who received scholarships/grants to cover 100% their tuition and related fees are not eligible to receive a 1098-T.</p>
+  </div>
+
+  <div class="note" style="text-align: center;">
+    <p style="font-weight: bold;">***Please note: If you do not have access to your iRattler, please contact FAMU ITS Department at 850-412-HELP (4357).***</p>
+  </div>
+
+  <div class="footer-section">
+    <div class="signature-line">
+      <div>
+        Student Signature:
+        <div class="signature-box" data-field="field_1">{{ field_1 }}</div>
+      </div>
+      <div>
+        Date: <span data-field="signature_date">{{ signature_date }}</span>
+        <div class="signature-box" style="width: 45%;" data-field="date">{{ date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-section" style="margin-top: 80px;">
+    <div class="form-row" style="justify-content: space-between;">
+      <div>
+        Received By:
+        <div class="signature-box" data-field="date_2">{{ date_2 }}</div>
+      </div>
+      <div>
+        Date: <span data-field="received_date">{{ received_date }}</span>
+        <div class="signature-box" style="width: 45%;" data-field="date_3">{{ date_3 }}</div>
+      </div>
+    </div>
+    <div class="form-row" style="margin-top: 30px;">
+      <div>
+        Completed By:
+        <div class="signature-box" data-field="date_4">{{ date_4 }}</div>
+      </div>
+      <div>
+        Request:
+        <label><input type="checkbox" data-field="request_approved" value="{{ request_approved }}">{{ request_approved }}</label>
+        <label><input type="checkbox" data-field="request_denied" value="{{ request_denied }}">{{ request_denied }}</label>
+        Date: <span data-field="completion_date">{{ completion_date }}</span>
+      </div>
+    </div>
+  </div>
+</div>

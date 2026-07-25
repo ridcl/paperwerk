@@ -1,0 +1,136 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { font-size: 18pt; font-weight: bold; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { flex: 1; }
+  .full-width-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .input-field { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .checkbox-group label { margin-right: 15px; }
+  .signature-line { margin-top: 80px; display: flex; justify-content: space-between; }
+</style>
+
+<div class="page">
+  <h1>Payroll Card Employee Application</h1>
+
+  <div class="section-title">I. CARDHOLDER INFORMATION</div>
+
+  <div class="form-row">
+    <div>FIRST NAME</div>
+    <div><span data-field="first_name" class="input-field">{{ first_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>MI</div>
+    <div><span data-field="middle_initial" class="input-field">{{ middle_initial }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>LAST NAME</div>
+    <div><span data-field="last_name" class="input-field">{{ last_name }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>PERMANENT ADDRESS (NO PO BOXES)</div>
+    <div><span data-field="permanent_address" class="input-field" style="flex: 3;">{{ permanent_address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>CITY</div>
+    <div><span data-field="city_permanent" class="input-field">{{ city_permanent }}</span></div>
+    <div>STATE</div>
+    <div><span data-field="state_permanent" class="input-field">{{ state_permanent }}</span></div>
+    <div>ZIP</div>
+    <div><span data-field="zip_permanent" class="input-field">{{ zip_permanent }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>MAILING ADDRESS (IF DIFFERENT FROM PERMANENT)</div>
+    <div><span data-field="mailing_address" class="input-field" style="flex: 3;">{{ mailing_address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>CITY</div>
+    <div><span data-field="city_mailing" class="input-field">{{ city_mailing }}</span></div>
+    <div>STATE</div>
+    <div><span data-field="state_mailing" class="input-field">{{ state_mailing }}</span></div>
+    <div>ZIP</div>
+    <div><span data-field="zip_mailing" class="input-field">{{ zip_mailing }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>( ) PRIMARY PHONE</div>
+    <div><span data-field="phone_number" class="input-field" style="flex: 3;">{{ phone_number }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>E-MAIL ADDRESS (OPTIONAL)</div>
+    <div><span data-field="email_address" class="input-field" style="flex: 3;">{{ email_address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>DATE OF BIRTH (MM/DD/YYYY)</div>
+    <div><span data-field="dob" class="input-field">{{ dob }}</span></div>
+    <div>SOCIAL SECURITY/TAXPAYER ID NUMBER</div>
+    <div><span data-field="ssn" class="input-field">{{ ssn }}</span></div>
+    <div>MOTHER'S MAIDEN NAME</div>
+    <div><span data-field="mother_maiden_name" class="input-field">{{ mother_maiden_name }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <div><input type="checkbox" data-field="is_us_citizen" value="{{ is_us_citizen }}"> U.S. CITIZEN</div>
+    <div><input type="checkbox" data-field="is_non_us_citizen" value="{{ is_non_us_citizen }}"> NON U.S. CITIZEN</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>If you are not a citizen of the United States, please provide one or more of the following forms of identification.</p>
+    <div class="checkbox-group">
+      <label><input type="checkbox" data-field="id_us_alien_card" value="{{ id_us_alien_card }}"> U.S. Alien ID Card</label>
+      <label><input type="checkbox" data-field="id_passport" value="{{ id_passport }}"> Passport</label>
+      <label><input type="checkbox" data-field="id_other_gov_issued" value="{{ id_other_gov_issued }}"> Other Gov't Issued ID</label>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">B. Please fill out the corresponding information:</div>
+
+  <div class="form-row">
+    <div>COUNTRY OF ISSUANCE</div>
+    <div><span data-field="country_of_issuance" class="input-field" style="flex: 3;">{{ country_of_issuance }}</span></div>
+    <div>NUMBER</div>
+    <div><span data-field="id_number" class="input-field" style="flex: 3;">{{ id_number }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>EXPIRATION DATE (MM/DD/YYYY)</div>
+    <div><span data-field="expiration_date" class="input-field" style="flex: 3;">{{ expiration_date }}</span></div>
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">II. CARDHOLDER AGREEMENT-Return your completed signed and dated application to your employer.</div>
+  <p style="font-size: 10pt; line-height: 1.4;">The Authorization Agreement for the Payroll Employee Card account will authorize my employer to directly deposit my periodic salary/compensation payments, net of required tax withholdings, other required withholdings or authorized deductions (a "Payroll Payment") into my designated bank account. I authorize my employer to initiate electronic transfers to my designated bank account for any credit entries in error to my account. I understand that I may withdraw a portion or the entire amount of a Payroll Payment deposited by my employer from time to time in cash via an Automated Teller Machine (ATM) subject to certain withdrawal limits as discussed in the Terms. Cardholder agrees to abide by all terms and conditions of the Payroll Card Program. By signing this application, I hereby authorize Chemical Bank to issue a card to me. I agree that activating my card shall constitute my agreement to: (1) The Program Terms, Conditions, and Disclosures that accompany my card and (2) changes to, or replacements for, those Program Terms, Conditions, and Disclosures that may be sent or made available to me from time to time.</p>
+
+  <div class="signature-line">
+    <div>CARDHOLDER SIGNATURE</div>
+    <div>DATE</div>
+  </div>
+
+  <div class="form-row" style="margin-top: 50px;">
+    <div>COMPANY NAME</div>
+    <div>CLIENT ACCOUNT NUMBER</div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <input type="checkbox" data-field="consent_checkbox" value="{{ consent_checkbox }}"> Pursuant to Michigan law the employee has been provided required notification of options and has failed to return the election notice within 30 days and is presumed to consent to receive pay via a payroll debit card.
+  </div>
+
+  <div class="signature-line" style="margin-top: 100px;">
+    <div>COMPANY SIGNATURE</div>
+    <div>DATE</div>
+  </div>
+</div>

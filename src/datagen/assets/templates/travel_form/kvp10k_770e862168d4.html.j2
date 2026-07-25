@@ -1,0 +1,168 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 8px 0; }
+  .header-title { font-size: 24pt; font-weight: bold; }
+  .form-label { font-weight: bold; display: inline-block; width: 120px; }
+  .form-input { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 130px); }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 18pt; font-weight: bold;">BUILD</h1>
+      <div style="font-size: 10pt;">
+        <span data-field="organization_name">{{ organization_name }}</span><br>
+        <span data-field="organization_address">{{ organization_address }}</span>
+      </div>
+    </div>
+    <div>
+      <h1 class="header-title">Travel Form</h1>
+    </div>
+  </div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Name:</td>
+      <td style="width: 75%;"><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Home Address:</td>
+      <td><span data-field="home_address">{{ home_address }}</span></td>
+    </tr>
+    <tr>
+      <td>CSUN ID:</td>
+      <td><span data-field="csun_id">{{ csun_id }}</span></td>
+    </tr>
+    <tr>
+      <td>Emergency Contact Name:</td>
+      <td><span data-field="emergency_contact_name">{{ emergency_contact_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Conference Name:</td>
+      <td><span data-field="conference_name">{{ conference_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Destination City:</td>
+      <td><span data-field="destination_city">{{ destination_city }}</span></td>
+    </tr>
+    <tr>
+      <td>Start Date:</td>
+      <td><span data-field="start_date">{{ start_date }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Telephone:</td>
+      <td style="width: 75%;"><span data-field="phone_number">{{ phone_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><span data-field="email">{{ email }}</span></td>
+    </tr>
+    <tr>
+      <td>Department:</td>
+      <td><span data-field="department">{{ department }}</span></td>
+    </tr>
+    <tr>
+      <td>Relation:</td>
+      <td><span data-field="relation">{{ relation }}</span></td>
+    </tr>
+    <tr>
+      <td>Phone:</td>
+      <td><span data-field="contact_phone">{{ contact_phone }}</span></td>
+    </tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Expenses</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <td style="width: 70%;">Description</td>
+        <td style="width: 30%; text-align: right;">Estimated Cost</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Expenses Registration</td>
+        <td style="text-align: right;"><span data-field="expense_registration_cost">{{ expense_registration_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Airfare</td>
+        <td style="text-align: right;"><span data-field="expense_airfare_cost">{{ expense_airfare_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Hotel (maximum $875 per night)</td>
+        <td style="text-align: right;"><span data-field="expense_hotel_cost">{{ expense_hotel_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Meal Reimbursement (Up to $55 per day, actual receipts required)</td>
+        <td style="text-align: right;"><span data-field="expense_meal_reimbursement_cost">{{ expense_meal_reimbursement_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Private Car Mileage (See TUC website for current rate, must use MapQuest and shortest distance and submit copy of current driver's license and car insurance)</td>
+        <td style="text-align: right;"><span data-field="expense_mileage_cost">{{ expense_mileage_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Ground Transportation (To/from home to airport & airport to conference hotel)</td>
+        <td style="text-align: right;"><span data-field="expense_ground_transport_cost">{{ expense_ground_transport_cost }}</span></td>
+      </tr>
+      <tr>
+        <td>Other Business Expenses:</td>
+        <td style="text-align: right;"><span data-field="expense_other_business_cost">{{ expense_other_business_cost }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 70%;">Total Cost:</td>
+      <td style="width: 30%; text-align: right;"><span data-field="total_cost">{{ total_cost }}</span></td>
+    </tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <p style="font-size: 10pt;">Completed travel form, conference acceptance, and receipts should be uploaded to: <a href="https://forms.gle/3H2g0W7XA74Fwpz9" style="color: #000;">https://forms.gle/3H2g0W7XA74Fwpz9</a></p>
+
+  <div class="section-title" style="margin-top: 30px;">Additional Required Documents (Must be submitted BEFORE travel begins, or reimbursement is not guaranteed)</div>
+  <ul style="list-style-type: disc; padding-left: 20px; font-size: 10pt;">
+    <li>CSUN Approval of Travel Request Form (Students)</li>
+    <li>Academic Field Trip Waiver Form (Students)</li>
+    <li>Student Air Travel Voluntary Participation Form (Students)</li>
+    <li>Student Authorization to Operate Privately Owned Vehicle Form (Students)</li>
+    <li>Proof of Presentation at Conference (Students)</li>
+    <li>Paper Approval of Travel Request through Department (Mentors) - Please note: Students must also attend same conference in order for mentor to be reimbursed.</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Student Signature:</td>
+      <td style="width: 70%; border-bottom: 1px solid #000;"></td>
+      <td style="width: 10%;">Date:</td>
+      <td style="width: 10%;"></td>
+    </tr>
+    <tr>
+      <td style="width: 30%;">Faculty Mentor Signature:</td>
+      <td style="width: 70%; border-bottom: 1px solid #000;"></td>
+      <td style="width: 10%;">Date:</td>
+      <td style="width: 10%;"></td>
+    </tr>
+  </table>
+</div>

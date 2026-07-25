@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Synthetic Data Generation</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial; }
+        p, td, span { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial; }
+        .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 10px; }
+        .subtitle { font-size: 14pt; margin-bottom: 20px; }
+        .section-title { font-size: 16pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .description-text { font-size: 10pt; line-height: 1.4; margin-bottom: 15px; }
+        .table-header th { text-align: left; padding: 8px; border-bottom: 1px solid #ccc; font-weight: bold; }
+        .table-row td { padding: 8px; border-bottom: 1px solid #eee; }
+        .figure-caption { font-size: 9pt; margin-top: 5px; text-align: center; }
+        .footer { font-size: 8pt; text-align: center; margin-top: 50px; }
+        .image-placeholder { float: right; margin-left: 20px; }
+    </style>
+
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        td, th { padding: 6px; text-align: left; border-bottom: 1px solid #ddd; }
+        .two-col { display: flex; justify-content: space-between; }
+        .two-col > div { width: 49%; }
+    </style>
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td, th { padding: 8px; text-align: left; border: 1px solid #ccc; }
+        .header { font-weight: bold; font-size: 1.2em; margin-bottom: 10px; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .note { font-size: 0.9em; margin-top: 15px; border-left: 3px solid #000; padding-left: 10px; }
+    </style>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .subheader {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .input-field {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 0;
+  }
+  .small-text {
+    font-size: 9pt;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: right; font-size: 10pt; margin-bottom: 20px;">Fiche technique {{ document_revision }} Rev. I</div>
+        <h1 class="header-title">SensyCal FCU200, SensyCal FCU400</h1>
+        <h2 class="subtitle">Calculateurs de mesure universels</h2>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 40px;">
+            <div>
+                <h3 class="section-title">Multifonctions</h3>
+                <p class="description-text"><span data-field="feature_1">{{ feature_1 }}</span></p>
+                <p class="description-text"><span data-field="feature_2">{{ feature_2 }}</span></p>
+                <p class="description-text"><span data-field="feature_3">{{ feature_3 }}</span></p>
+                <p class="description-text"><span data-field="feature_4">{{ feature_4 }}</span></p>
+            </div>
+            <div class="image-placeholder">
+                <!-- Placeholder for image -->
+                <div style="width: 300px; height: 200px; border: 1px solid #ccc; background-color: #f0f0f0;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">Description générale</h2>
+        <p class="description-text">Le FCU est un calculateur universel pour de nombreuses applications de traitement industriel des signaux procédé. Il combine communication des plus modernes et longues années de savoir-faire dans le domaine de la mesure. Un afficheur ACL haute-résolution permet de s'afficher toutes les grandeurs procédé physiques et électriques ainsi que les données de l'appareil, les données de l'enregistreur de données et les jours de relevé.</p>
+        <p class="description-text">Les versions d'appareils supportent sans dispositifs :</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr class="table-header">
+                    <th style="width: 30%;">Type</th>
+                    <th style="width: 70%;">Fonction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-row">
+                    <td>FCU200-W</td>
+                    <td><span data-field="fcu200_w_function">{{ fcu200_w_function }}</span></td>
+                </tr>
+                <tr class="table-row">
+                    <td>FCU400-S</td>
+                    <td><span data-field="fcu400_s_function">{{ fcu400_s_function }}</span></td>
+                </tr>
+                <tr class="table-row">
+                    <td>FCU400-G</td>
+                    <td><span data-field="fcu400_g_function">{{ fcu400_g_function }}</span></td>
+                </tr>
+                <tr class="table-row">
+                    <td>FCU200-T</td>
+                    <td><span data-field="fcu200_t_function">{{ fcu200_t_function }}</span></td>
+                </tr>
+                <tr class="table-row">
+                    <td>FCU400-P</td>
+                    <td><span data-field="fcu400_p_function">{{ fcu400_p_function }}</span></td>
+                </tr>
+                <tr class="table-row">
+                    <td>FCU400-IR</td>
+                    <td><span data-field="fcu400_ir_function">{{ fcu400_ir_function }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">SensyCal FCU200-W - Calculateur de quantité de chaleur</h2>
+        <p class="description-text">Le FCU200-W est un calculateur de quantité de chaleur conçu pour réaliser des bilans thermiques industriels. Il peut être utilisé pour mesurer les quantités de chaleur et de froid, ainsi que le débit des liquides de chauffage.</p>
+        <p class="description-text">Une technologie microélectronique fiable développée selon les normes DIN EN ISO 14541-1 et 14541-2 permet de calculer de quantité de chaleur peut être utilisé conjointement avec tous les débitmètres disponibles sur le marché, par exemple les débitmètres à organe déprimogène, à ultrasons, à turbulons ou à effet vortex, qui mettent à disposition un signal d'impulsion, de fréquence ou en mA.</p>
+        <p class="description-text">Le raccordement de capteurs de température PT100 à un circuit à quatre fils permet une mesure précise de la température.</p>
+        <p class="description-text">La technologie de microprocesseur et l'enregistreur de données intégré permettent de collecter et de suivre de façon fiable les données d'exploitation.</p>
+
+        <h2 class="section-title">Fonctionnement</h2>
+        <p class="description-text">La quantité de chaleur est calculée à l'aide des formules suivantes à partir du volume ou du débit massique et des températures du courant chaud T_h et du courant froid T_c à une pression donnée.</p>
+        <p class="description-text">Q = <span data-field="formula_q">{{ formula_q }}</span></p>
+        <p class="description-text">P = <span data-field="formula_p">{{ formula_p }}</span></p>
+        <p class="description-text">V = <span data-field="formula_v">{{ formula_v }}</span></p>
+        <p class="description-text">E = <span data-field="formula_e">{{ formula_e }}</span></p>
+
+        <h3 class="section-title">Symboles</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+            <thead>
+                <tr class="table-header">
+                    <th style="width: 30%;">Symbole</th>
+                    <th style="width: 70%;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-row">
+                    <td>E</td>
+                    <td>Energie thermique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>V</td>
+                    <td>Volume</td>
+                </tr>
+                <tr class="table-row">
+                    <td>P</td>
+                    <td>Puissance</td>
+                </tr>
+                <tr class="table-row">
+                    <td>Q_h</td>
+                    <td>Débit volumique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>Q_c</td>
+                    <td>Débit massique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_h</td>
+                    <td>Température du courant chaud</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_c</td>
+                    <td>Température du courant froid</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_p</td>
+                    <td>Température du courant chaud</td>
+                </tr>
+                <tr class="table-row">
+                    <td>P_p</td>
+                    <td>Pression absolue</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-title">IMPORTANT (REMARQUE)</h3>
+        <p class="description-text">Les températures T_h et T_c sont mesurées au choix à l'aide de thermomètres à résistance PT100 ou via un transmetteur de température.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">FCU400-S - Calculateur de vapeur</h2>
+        <p class="description-text">Le FCU400-S est un calculateur de vapeur, de débit et de puissance calorifique pour les mesures de quantité industrielle, les bilans thermiques et les mesures destinées à la facturation. Il est utilisé comme calculateur de débit et/ou calculateur de quantité de chaleur ou vapeur saturée ou avec sans reflux condensats.</p>
+        <p class="description-text">Le calculateur de mesure peut être combiné avec tous les débitmètres courants sur le marché, tels que des plaques à orifices, des débitmètres à ultrasons, Swift ou Vortex délivrant un signal d'impulsion, de fréquence ou en mA.</p>
+        <p class="description-text">Lors de la mesure du débit avec des plaques à orifices, le programme standard prévoit le procédé Split-Range, la correction du coefficient de débit et d'expansion.</p>
+        <p class="description-text">Le programme standard permet de traiter les signaux procédé des appareils de mesure suivants :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Transmetteurs de pression dans la conduite de vapeur</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+            <li>Débitmètres dans la conduite de vapeur</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+            <li>Débitmètres dans la conduite des condensats</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+        </ul>
+        <p class="description-text">Le programme standard permet jusqu'à 5 auxiliaires. Les applications suivantes peuvent être réalisées :</p>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 1</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 1</div>
+                <p class="figure-caption">1 Sortie d'impulsion de la quantité de chaleur | 2 Sortie d'impulsion Quantité / Volumes | 3 Sortie d'erreur | 4 Entrée pour capteur de température T1 | 5 Entrée pour capteur de température T2 | 6 Sortie de courant (en option, RS485/MODBUS) | 7 Entrée pour capteur de température T3 | 8 Débitmètre | 9 Température du courant chaud</p>
+            </div>
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 2</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 2</div>
+                <p class="figure-caption">2 Vapeur : calcul du débit, calcul de la puissancecalorifique</p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 3</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 3</div>
+                <p class="figure-caption">3 Vapeur saturée : calcul du débit, calcul de la puissancecalorifique</p>
+            </div>
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 4</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 4</div>
+                <p class="figure-caption">4 Directailer : vapeur/vapeur saturée, Retourneurs condensats</p>
+            </div>
+        </div>
+
+        <h3 class="section-title">Fig. 5</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 5</div>
+        <p class="figure-caption">5 Systèmes ouverts</p>
+
+        <p class="description-text">Les grands physiques « Densité » et « Entaille » de la vapeur et de l'eau sont calculés selon la dernière version en vigueur de la norme industrielle IAPWNS-IF-97.</p>
+        <p class="description-text">Le raccordement de capteurs de température PT100 en circuit à 4 fils permet une mesure précise de la température. La technologie de microprocesseur et les enregistreurs de données intégrés facilitent l'enregistrement fiable et traçable des données de service.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">FCU400-G - Calculateur de débit de gaz, convertisseur de gaz</h2>
+        <p class="description-text">Le FCU400-G est un calculateur et convertisseur de débit de gaz pour les calculs de débit de gaz et les mesures destinées à la facturation. Il est utilisé comme calculateur de débit et/ou calculateur de quantité de chaleur ou vapeur saturée ou avec sans reflux condensats.</p>
+        <p class="description-text">Le calculateur de mesure peut être combiné avec tous les débitmètres courants sur le marché, tels que des plaques à orifices, des débitmètres à ultrasons, Swift ou Vortex délivrant un signal d'impulsion, de fréquence ou en mA.</p>
+        <p class="description-text">Lors de la mesure du débit avec des plaques à orifices, le programme standard prévoit le procédé Split-Range, la correction du coefficient de débit et d'expansion.</p>
+        <p class="description-text">Le programme standard permet de traiter les signaux procédé des appareils de mesure suivants :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Transmetteur de pression</li>
+            <li>Capteur de température (PT100 ou via transmetteur)</li>
+        </ul>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 6</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 6</div>
+                <p class="figure-caption">1 Transmetteur de pression | 2 Calculateur de mesure | 3 Débitmètre | 4 Capteur de température (PT100 ou via transmetteur)</p>
+            </div>
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 7</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 7</div>
+                <p class="figure-caption">7 Correction d'état physique et la conversion du débit calculé selon EN ISO 5167-1 ou VDI/VDO 2040.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Enregistreur de données</h2>
+        <p class="description-text">Enregistrement de jusqu'à 20 grandeurs de service sur 200 périodes.</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>1 totalisateur</li>
+            <li>Valeurs instantanées, valeurs moyennes, valeurs minimales et maximales de toutes les grandeurs procédé</li>
+        </ul>
+
+        <h2 class="section-title">Totalisateur, enregistrement</h2>
+        <p class="description-text">Arrêt du totalisateur en cas de :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Débit = nul</li>
+            <li>Sauvegarde des valeurs du totalisateur en cas de coupure secteur</li>
+        </ul>
+
+        <h2 class="section-title">Sortie impulsions</h2>
+        <p class="description-text">2 sorties impulsions.</p>
+
+        <h2 class="section-title">Paramétrage de l'appareil</h2>
+        <p class="description-text">Le paramétrage de l'appareil s'effectue via le logiciel de paramétrage FCU200 (ParaTool).</p>
+        <p class="description-text">Le paramétrage peut être effectué en usine ou par le client. Pour le paramétrage en usine, le client doit remplir un questionnaire. Lors du paramétrage standard, les valeurs par défaut sont chargées.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">SensyCal FCU200-T - Convertisseur Courant-Impulsion</h2>
+        <p class="description-text">Le FCU200-T est un appareil à deux canaux fonctionnant comme :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Convertisseur Courant-Impulsion</li>
+            <li>Convertisseur Impulsion-Courant</li>
+        </ul>
+        <p class="description-text">L'appareil transforme soit le courant continu en une fréquence d'impulsion proportionnelle ou une fréquence d'impulsion proportionnelle en courant continu.</p>
+        <p class="description-text">Le programme standard permet de traiter les signaux procédé suivants :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>2 signaux mA actifs ou 2 signaux de fréquence/impulsion</li>
+            <li>2 signaux d'impulsion</li>
+        </ul>
+        <p class="description-text">La carte de sortie mA, la carte d'alimentation et la carte RS485/RS232 sont disponibles en option.</p>
+
+        <h2 class="section-title">SensyCal FCU400-P - Combinaison logique des signaux, mesure d'ultra-précision, cumul, etc.</h2>
+        <p class="description-text">Pour l'établissement de bilans thermiques sont nécessaires pour l'optimisation supplémentaire des procédés, le FCU400-P est un calculateur de mesure de température différentielle et un système constitué du calculateur de mesure de température différentielle et de 2 capteurs PT100 de qualité supérieure, précis, couplés et soigneusement calibrés.</p>
+        <p class="description-text">Même dans la plage de mesure basse (ΔT = 1 à 5 K), l'appareil offre un écart de mesure de <span data-field="accuracy_value">{{ accuracy_value }}</span>. Si nécessaire, il peut être calibré et certifié auprès d'un centre de calibrage.</p>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 8</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 8</div>
+                <p class="figure-caption">8 Sortie analogique T1 (en option) | 1 Sortie analogique T2 (en option) | 2 Sortie d'erreur | 3 Entrée pour capteur de température T1 (allier) | 4 Entrée pour capteur de température T2 (retour)</p>
+            </div>
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 9</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 9</div>
+                <p class="figure-caption">9 Entrée pour capteur de température T1 (retour)</p>
+            </div>
+        </div>
+
+        <h3 class="section-title">IMPORTANT (REMARQUE)</h3>
+        <p class="description-text">La variante de raccordement requise (PT100, transmetteur) des entrées de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">FCU400-S - Calculateur de vapeur</h2>
+        <p class="description-text">Le FCU400-S est un calculateur de vapeur, de débit et de puissance calorifique pour les mesures de quantité industrielle, les bilans thermiques et les mesures destinées à la facturation. Il est utilisé comme calculateur de débit et/ou calculateur de quantité de chaleur ou vapeur saturée ou avec sans reflux condensats.</p>
+        <p class="description-text">Le calculateur de mesure peut être combiné avec tous les débitmètres courants sur le marché, tels que des plaques à orifices, des débitmètres à ultrasons, Swift ou Vortex délivrant un signal d'impulsion, de fréquence ou en mA.</p>
+        <p class="description-text">Lors de la mesure du débit avec des plaques à orifices, le programme standard prévoit le procédé Split-Range, la correction du coefficient de débit et d'expansion.</p>
+        <p class="description-text">Le programme standard permet de traiter les signaux procédé des appareils de mesure suivants :</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Transmetteurs de pression dans la conduite de vapeur</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+            <li>Débitmètres dans la conduite de vapeur</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+            <li>Débitmètres dans la conduite des condensats</li>
+            <li>Capteurs de température (PT100 ou via transmetteurs)</li>
+        </ul>
+        <p class="description-text">Le programme standard permet jusqu'à 5 auxiliaires. Les applications suivantes peuvent être réalisées :</p>
+
+        <h3 class="section-title">Fig. 1</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 1</div>
+        <p class="figure-caption">1 Sortie d'impulsion de la quantité de chaleur | 2 Sortie d'impulsion Quantité / Volumes | 3 Sortie d'erreur | 4 Entrée pour capteur de température T1 | 5 Entrée pour capteur de température T2 | 6 Sortie de courant (en option, RS485/MODBUS) | 7 Entrée pour capteur de température T3 | 8 Débitmètre | 9 Température du courant chaud</p>
+
+        <h3 class="section-title">Fig. 2</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 2</div>
+        <p class="figure-caption">2 Vapeur : calcul du débit, calcul de la puissancecalorifique</p>
+
+        <h3 class="section-title">Fig. 3</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 3</div>
+        <p class="figure-caption">3 Vapeur saturée : calcul du débit, calcul de la puissancecalorifique</p>
+
+        <h3 class="section-title">Fig. 4</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 4</div>
+        <p class="figure-caption">4 Directailer : vapeur/vapeur saturée, Retourneurs condensats</p>
+
+        <h3 class="section-title">Fig. 5</h3>
+        <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 5</div>
+        <p class="figure-caption">5 Systèmes ouverts</p>
+
+        <p class="description-text">Les grands physiques « Densité » et « Entaille » de la vapeur et de l'eau sont calculés selon la dernière version en vigueur de la norme industrielle IAPWNS-IF-97.</p>
+        <p class="description-text">Le raccordement de capteurs de température PT100 en circuit à 4 fils permet une mesure précise de la température. La technologie de microprocesseur et les enregistreurs de données intégrés facilitent l'enregistrement fiable et traçable des données de service.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">Mode de fonctionnement</h2>
+        <p class="description-text">Le débit massique est calculé à partir du débit volume et de la densité.</p>
+        <p class="description-text">Lors de la mesure du débit via mesure de la pression différentielle, le débit massique est corrigé en tant que fonction de la température et de la densité. La densité est calculée à partir de la pression différentielle, le débit volume normalisé corrigé en tant que fonction de la température et de la densité pour laquelle la mesure a été conçue.</p>
+        <p class="description-text">La quantité de chaleur est calculée à partir du débit massique et de l'enthalpie (énergie interne de la vapeur ou de l'eau).</p>
+        <p class="description-text">Pour la vapeur et l'eau, la densité et l'enthalpie sont une fonction de pression et de température pour la vapeur saturée une fonction de pression ou de température.</p>
+
+        <p class="description-text">Q_h = <span data-field="mode_q">{{ mode_q }}</span></p>
+        <p class="description-text">P = <span data-field="mode_p">{{ mode_p }}</span></p>
+        <p class="description-text">E = <span data-field="mode_e">{{ mode_e }}</span></p>
+
+        <p class="description-text">Pour la vapeur dans l'eaucondensateur et les condensats dans la conduite de vapeur, ce qui suit :</p>
+        <p class="description-text">P_vapeur = <span data-field="pv_formula">{{ pv_formula }}</span></p>
+        <p class="description-text">P_condensats = <span data-field="pc_formula">{{ pc_formula }}</span></p>
+        <p class="description-text">P_refroidissement = <span data-field="pr_formula">{{ pr_formula }}</span></p>
+
+        <h3 class="section-title">Symboles de formule</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+            <thead>
+                <tr class="table-header">
+                    <th style="width: 30%;">Symbole</th>
+                    <th style="width: 70%;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-row">
+                    <td>E</td>
+                    <td>Energie calorifique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>V</td>
+                    <td>Volume</td>
+                </tr>
+                <tr class="table-row">
+                    <td>P</td>
+                    <td>Puissance</td>
+                </tr>
+                <tr class="table-row">
+                    <td>Q_h</td>
+                    <td>Débit volumique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>Q_c</td>
+                    <td>Débit massique</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_h</td>
+                    <td>Température du courant chaud</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_c</td>
+                    <td>Température du courant froid</td>
+                </tr>
+                <tr class="table-row">
+                    <td>T_p</td>
+                    <td>Température du courant chaud</td>
+                </tr>
+                <tr class="table-row">
+                    <td>P_p</td>
+                    <td>Pression absolue</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-title">IMPORTANT (REMARQUE)</h3>
+        <p class="description-text">Les températures T_h et T_c sont mesurées au choix à l'aide de thermomètres à résistance PT100 ou via un transmetteur de température.</p>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">FCU200-T, FCU200-W, FCU400-G, FCU400-IR, FCU400-P, FCU400-S (SensyCal)</h2>
+        <p class="description-text">Les applications suivantes sont réalisables avec le programme standard :</p>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 7</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 7</div>
+                <p class="figure-caption">7 Sorties impulsions | 2 Sortie erreur | 3 Interface M-BUS | 4 Entrée pour capteur de température T1 | 5 Entrée pour capteur de température T2 | 6 Entrée pour capteur de température T3 | 7 Entrées courant</p>
+            </div>
+            <div style="width: 48%;">
+                <h3 class="section-title">Fig. 8</h3>
+                <div style="width: 100%; height: 150px; border: 1px solid #ccc; background-color: #f0f0f0; text-align: center; line-height: 150px;">Diagramme 8</div>
+                <p class="figure-caption">8 Sortie analogique T1 (en option) | 1 Sortie analogique T2 (en option) | 2 Sortie d'erreur | 3 Entrée pour capteur de température T1 (allier) | 4 Entrée pour capteur de température T2 (retour)</p>
+            </div>
+        </div>
+
+        <h3 class="section-title">Paramétrage de l'appareil</h3>
+        <p class="description-text">Le paramétrage de l'appareil s'effectue via le logiciel de paramétrage FCU200 (ParaTool).</p>
+        <p class="description-text">Le paramétrage peut être effectué en usine ou par le client. Pour le paramétrage en usine, le client doit remplir un questionnaire. Lors du paramétrage standard, les valeurs par défaut sont chargées.</p>
+
+        <h3 class="section-title">Sortie impulsions</h3>
+        <p class="description-text">2 sorties impulsions.</p>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 10pt;">FCU200-T, FCU200-W, FCU400-G, FCU400-IR, FCU400-P, FCU400-S (SensyCal) | {{ document_revision }}</p>
+        </div>
+    </div>
+
+
+
+<div class="page">
+    <h1>SensyCal FCU200, SensyCal FCU400</h1>
+    <h2>Calculateurs de mesure universels</h2>
+
+    <div class="two-col">
+        <div>
+            <h3>Interfaces</h3>
+            <ul>
+                <li>Interfaces M-Bus et optiques (IRDA, ZVEI) pour la lecture des données et la configuration</li>
+                <li>Affichage de tous les paramètres nécessaires sur place sur l'afficheur LCD multi-lignes</li>
+                <li>Affichage de tous les points de mesure et des températures maximales avec désignation du point de mesure</li>
+                <li>Fonction d'enregistreur de données avec horloge en temps réel pour tous les paramètres et valeurs limites</li>
+                <li>Tout dépassement de valeur limite déclenche l'enregistrement du défaut, avec la date et l'heure</li>
+                <li>Dispositions les plus petites sur plage et très bonne résistance (structure modulaire)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Entrées</h3>
+            <p>12 pyromètres max.</p>
+            <p>1 x PT100, plage de mesure 0...200 °C (32...392 °F)</p>
+            <p>3 sorties contact binaires, (pré-alarme, alarme et défaut de l'appareil)</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 20px;">
+        <div>
+            <h3>Sorties</h3>
+            <p>Au de manière alternative</p>
+        </div>
+        <div>
+            <h3>Résolution optique des capteurs</h3>
+            <p>15.1</p>
+            <h3>Raccordement entre le capteur et l'ordinateur de mesure</h3>
+            <p>&lt; 1 s</p>
+            <h3>Précision de la mesure de la température</h3>
+            <p>± 0.75 °C ou ± 0.75 % de la valeur de mesure (c'est la valeur la plus élevée qui s'applique)</p>
+            <h3>Classe de protection</h3>
+            <p>IP 40</p>
+            <h3>Alimentation électrique</h3>
+            <p>24 V CC ± 5 %</p>
+            <h3>Puissance absorbée maximale</h3>
+            <p>10 VA</p>
+            <h3>Température ambiante maximale</h3>
+            <p>70 °C (158 °F)</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>L'utilisation du FCU400-IR présente les avantages suivants :</h3>
+        <ul>
+            <li>Coûts plus faibles</li>
+            <li>Contrôles onéreux, récurrents des points de contact</li>
+            <li>Entretien inutile du système de mesure</li>
+            <li>Sécurité renforcée de l'installation</li>
+            <li>Pas d'incidents grâce à une détection en ligne rapide des points chauds et coupure de l'installation de commutation</li>
+            <li>Aucun contact du système de mesure avec les pièces sous tension</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>Autres détails techniques relatifs au FCU400-IR sur demande.</h3>
+    </div>
+</div>
+
+<div class="page">
+    <h2>Caractéristiques techniques</h2>
+
+    <div class="two-col">
+        <div>
+            <h3>Structure du système</h3>
+            <p>Le calculateur de mesure comprend un appareil de base doté de quatre baies pour modules d'extension.</p>
+            <p>L'appareil de base contient :</p>
+            <ul>
+                <li>Bloc d'alimentation secteur</li>
+                <li>Afficheur ACL avec rétro-éclairage</li>
+                <li>Entrées analogiques</li>
+                <li>2 entrées analogiques pour capteur de température PT100 avec source de courant pouvant circuler à quatre fils ou 2 entrées analogiques 0/4... 20 mA pour transmettre le signal de température</li>
+                <li>2 entrées numériques d'impulsion ou de fréquence pouvant également être utilisées pour les signaux logiques à des fins de commande</li>
+                <li>3 sorties numériques galvaniquement séparées pour la sortie impulsion et la signalisation des erreurs</li>
+                <li>Interface optique en face avant pouvant être utilisée selon la norme IRDA ou ZVEI en fonction du paramétrage.</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Raccordements électriques</h3>
+            <h4>Entrées analogiques</h4>
+            <p>2 x PT100 CEI ou 2 x 0/4... 20 mA</p>
+            <p>Plage de mesure -200 ... 850 °C</p>
+            <p>Résolution 20 bits = 0.0012 K</p>
+            <h4>Entrées numériques EB1, EB2</h4>
+            <p>2 galvaniquement séparées, 24 V passives (optocoupleur), configurables selon DIN 19246 comme :</p>
+            <ul>
+                <li>Entrée impulsion 0.001 s... 3000 s⁻¹</li>
+                <li>Entrée fréquence 0.001 Hz... 10 kHz</li>
+            </ul>
+            <h4>Sorties numériques AB1, AB2 et Err</h4>
+            <p>3 sorties contact binaires, Galvaniquement séparées via optocoupleur.</p>
+            <h4>Alimentation externe</h4>
+            <p>24 V CC ± 5 % ; < 100 mA</p>
+            <h4>Tension d'isolation maximale</h4>
+            <p>500 Vcc (crête-crête)</p>
+            <h4>Fonction</h4>
+            <p>AB1 : sortie impulsions</p>
+            <p>AB2 : sortie impulsions</p>
+            <p>Err : sortie erreur</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 20px;">
+        <div>
+            <h3>Interfaces de communication</h3>
+            <p>La communication s'effectue via le protocole M-Bus selon EN 14344-3, CEI 870-5.</p>
+            <p>Interface optique en face avant</p>
+            <p>Interface électrique via la réglette à bornes de l'appareil</p>
+        </div>
+        <div>
+            <h3>Paramétrage</h3>
+            <p>Le paramétrage de l'appareil s'effectue via le logiciel de paramétrage FCU200 (ParaTool).</p>
+            <p>La lecture des données (grandeurs de service, enregistreur de données, etc.) s'effectue sur le M-Bus ou MODBUS.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>Important (Remarque)</h3>
+        <p>La variante de raccordement requise (PT100, transmetteur) des entrées analogiques doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+    </div>
+</div>
+
+<div class="page">
+    <h2>Alimentation</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tension continue</th>
+                <td>24 V DC ± 20 % (FCU400-IR s.l.)</td>
+            </tr>
+            <tr>
+                <th>Tension alternative</th>
+                <td>110 V CA, 230 V CA, 230 V CA, 230 V CA</td>
+            </tr>
+            <tr>
+                <th>Tension de fonctionnement</th>
+                <td>1...10 V selon l'extension</td>
+            </tr>
+            <tr>
+                <th>24 V AC</th>
+                <td>1...10 V selon l'extension</td>
+            </tr>
+            <tr>
+                <th>110 V AC</th>
+                <td>3...10 V selon l'extension</td>
+            </tr>
+            <tr>
+                <th>230 V AC</th>
+                <td>3...10 V selon l'extension</td>
+            </tr>
+        </thead>
+    </table>
+
+    <h3 style="margin-top: 30px;">Modules d'extension</h3>
+    <p>Les modules d'extension s'enrichissent dans les baies de l'appareil de base.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Désignation du module</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in modules %}
+            <tr>
+                <td><span data-field="modules[{{ loop.index0 }}].designation">{{ item.designation }}</span></td>
+                <td><span data-field="modules[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 style="margin-top: 30px;">Homologations et certifications</h3>
+    <ul>
+        <li>Certification VDE (sécurité électrique)</li>
+        <li>Homologation CSA-NRTL-C</li>
+        <li>Agrément GOST (Russie)</li>
+    </ul>
+</div>
+
+<div class="page">
+    <h2>Tableau de distribution</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Dimensions (largeur x hauteur x profondeur)</th>
+                <td>144 mm x 72 mm x 117 mm</td>
+            </tr>
+            <tr>
+                <th>Dimensions (largeur x hauteur x profondeur)</th>
+                <td>144 mm x 72 mm x 117 mm</td>
+            </tr>
+            <tr>
+                <th>Matériau du boîtier</th>
+                <td>policarbonate</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>env. 0.7 kg (1.54 lb)</td>
+            </tr>
+    </table>
+
+    <h3 style="margin-top: 30px;">Logicel de paramétrage</h3>
+    <p>Le logiciel de paramétrage FCU200 (ParaTool) permet de paramétrer les applications standard.</p>
+    <p>Le logiciel peut être installé et utilisé sur tous les PC courants.</p>
+    <p>Via l'interface optique en face avant (avec tête de lecture optique).</p>
+    <p>Via l'interface M-Bus (avec répéteur M-Bus).</p>
+
+    <div style="margin-top: 30px;">
+        <h3>Fig. 10</h3>
+        <p>Interface RS232/USB | 2 Tête le lecture optique / 3 Calculateur de mesure | 4 Liaison M-Bus (2 fils) | 5 Répéteur M-Bus</p>
+        <p>Remarque liée à la communication :</p>
+        <ul>
+            <li>Les réglages suivants doivent coïncider sous Données d'appareil : le bus, débit en bauds, interface, adresse du bus, débit en bauds, interface.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <h2>Raccordements électriques</h2>
+    <h3>Appareil de base</h3>
+    <p>Fig. 11 : Variante de raccordement pour les transmetteurs de température avec sortie corrective | B Strap enfficable</p>
+    <p>1. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+    <p>2. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+    <p>3. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+    <p>4. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+    <p>5. Sortie impulsions AB1 (Énergie)</p>
+    <p>6. Sortie impulsions AB2 (Énergie)</p>
+    <p>7. Sortie erreur Err</p>
+    <p>8. Interface M-Bus</p>
+    <p>9. Alimentation électrique</p>
+    <p>IMPORTANT (REMARQUE)</p>
+    <p>Si les transmetteurs de température sont reliés de manière galvanique, le strap enfficable B s'avère inutile (entre les bornes 6 et 2).</p>
+    <p>La variante de raccordement requise (PT100 ou transmetteur) des entrées capteur de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+</div>
+
+<div class="page">
+    <h2>SensyCal FCU200, SensyCal FCU400</h2>
+    <h2>Calculateurs de mesure universels</h2>
+
+    <div style="margin-top: 30px;">
+        <h3>Fig. 12</h3>
+        <p>Carte d'alimentation et d'interface (FCU200-W, FCU200-T, FCU400-S, FCU400-P, FCU400-S (SensyCal))</p>
+        <p>IMPORTANT (REMARQUE)</p>
+        <p>La carte d'alimentation peut alimenter soit deux transmetteurs avec 20 V ou un transmetteur avec 40 V (strap enfficable entre X3/X4).</p>
+        <p>Le X de la désignation de la borne des cartes d'extension doit être remplacé par 7, 8 ou 9 (en fonction de la baie choisie, voir aussi - Raccordements électriques/Appareil de base).</p>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>FCU200-W</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>Fig. 13 : schéma de câblage de l'appareil de base FCU200-W</h3>
+        <p>A Variante de raccordement pour les transmetteurs de température avec sortie corrective | B Strap enfficable</p>
+        <p>1. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+        <p>2. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+        <p>3. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+        <p>4. Entrée capteur de température PT100 (0/4... 20 mA)</p>
+        <p>5. Sortie impulsions AB1 (Énergie)</p>
+        <p>6. Sortie impulsions AB2 (Énergie)</p>
+        <p>7. Sortie erreur Err</p>
+        <p>8. Interface M-Bus</p>
+        <p>9. Alimentation électrique</p>
+        <p>IMPORTANT (REMARQUE)</p>
+        <p>Si les transmetteurs de température sont reliés de manière galvanique, le strap enfficable B s'avère inutile (entre les bornes 6 et 2).</p>
+        <p>La variante de raccordement requise (PT100 ou transmetteur) des entrées capteur de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+    </div>
+</div>
+
+
+
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="font-size: 2em;">SensyCal FCU200, SensyCal FCU400</h1>
+        <h2 style="font-size: 1.5em;">Calculateurs de mesure universels</h2>
+    </div>
+
+    <div class="section-title">Fig. 14: Schéma de câblage des modules d'extension FCU200-W (exemple)</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram A -->
+        <div style="text-align: center;">
+            <p>A</p>
+            <!-- Placeholder for Diagram A -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram A Placeholder]</div>
+        </div>
+        <!-- Diagram B -->
+        <div style="text-align: center;">
+            <p>B</p>
+            <!-- Placeholder for Diagram B -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram B Placeholder]</div>
+        </div>
+        <!-- Diagram C -->
+        <div style="text-align: center;">
+            <p>C</p>
+            <!-- Placeholder for Diagram C -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram C Placeholder]</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <p>A Module d'entrée courant pour transmetteur en technique à deux fils, alimentation externe | C Module de sortie courant</p>
+        <p>B Module d'entrée courant pour transmetteur en technique à quatre fils, alimentation externe | C Module de sortie courant</p>
+        <p>1 Strap enfichable externe | 2 Liaison à la terre en option avec le rail de liaison équipotentielle (Gnd)</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 15: Schéma de câblage de l'appareil de base FCU400-S</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram A -->
+        <div style="text-align: center;">
+            <p>A</p>
+            <!-- Placeholder for Diagram A -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram A Placeholder]</div>
+        </div>
+        <!-- Diagram B -->
+        <div style="text-align: center;">
+            <p>B</p>
+            <!-- Placeholder for Diagram B -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram B Placeholder]</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <p>A Variante de raccordement pour les transmetteurs de température avec sortie courant active | B Strap enfichable</p>
+        <p>1 Entrée pour capteur de température | 2 Entrée pour transmetteur pour densité de gaz normalisée | 3 Entrée impulsions/fréquence EB1 (Débit) | 4 Entrée impulsions/fréquence EB2 (Débit) | 5 Sortie impulsions AB1 | 6 Sortie impulsions AB2 | 7 Sortie erreur | 8 Interface (M-BUS) | 9 Alimentation électrique</p>
+    </div>
+
+    <div class="section-title">IMPORTANT (REMARQUE)</div>
+    <div class="note">
+        <p>Si les transmetteurs de température sont reliés de manière galvanique, le strap enfichable B s'avère inutile (entre les bornes 6 et 2).</p>
+        <p>La variante de raccordement requise (Pt100 ou transmetteur) des entrées capteur de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 16: Schéma de câblage du module d'extension FCU400-S (transmetteur de pression et de débit)</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram A -->
+        <div style="text-align: center;">
+            <p>A</p>
+            <!-- Placeholder for Diagram A -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram A Placeholder]</div>
+        </div>
+        <!-- Diagram B -->
+        <div style="text-align: center;">
+            <p>B</p>
+            <!-- Placeholder for Diagram B -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram B Placeholder]</div>
+        </div>
+        <!-- Diagram C -->
+        <div style="text-align: center;">
+            <p>C</p>
+            <!-- Placeholder for Diagram C -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram C Placeholder]</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <p>A Module d'entrée courant pour transmetteur en technique à deux fils, alimentation externe | C Module de sortie courant</p>
+        <p>B Module d'entrée courant pour transmetteur en technique à quatre fils, alimentation externe | C Module de sortie courant</p>
+        <p>1 Strap enfichable externe | 2 Liaison à la terre en option avec le rail de liaison équipotentielle (Gnd)</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 17: Schéma de câblage du module d'extension FCU400-S (débit condensats)</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram A -->
+        <div style="text-align: center;">
+            <p>A</p>
+            <!-- Placeholder for Diagram A -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram A Placeholder]</div>
+        </div>
+        <!-- Diagram B -->
+        <div style="text-align: center;">
+            <p>B</p>
+            <!-- Placeholder for Diagram B -->
+            <div style="width: 200px; height: 200px; border: 1px solid #000; margin: 10px auto;">[Diagram B Placeholder]</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <p>A Module d'entrée courant pour transmetteur en technique à deux fils, alimentation externe | C Module de sortie courant</p>
+        <p>B Module d'entrée courant pour transmetteur en technique à quatre fils, alimentation externe | C Module de sortie courant</p>
+        <p>1 Strap enfichable externe | 2 Liaison à la terre en option avec le rail de liaison équipotentielle (Gnd)</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 18: Schéma de câblage de l'appareil de base FCU400-G</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram -->
+        <div style="width: 600px; height: 250px; border: 1px solid #000; margin: 10px auto;">[Diagram Placeholder]</div>
+    </div>
+
+    <div class="note">
+        <p>A Variante de raccordement pour les transmetteurs de température avec sortie courant active | B Strap enfichable</p>
+        <p>1 Entrée pour capteur de température | 2 Entrée pour transmetteur pour densité de gaz normalisée | 3 Entrée impulsions/fréquence EB1 (Débit) | 4 Entrée impulsions/fréquence EB2 (Débit) | 5 Sortie impulsions AB1 | 6 Sortie impulsions AB2 | 7 Sortie erreur | 8 Interface (M-BUS) | 9 Alimentation électrique</p>
+    </div>
+
+    <div class="section-title">IMPORTANT (REMARQUE)</div>
+    <div class="note">
+        <p>Si les transmetteurs de température sont reliés de manière galvanique, le strap enfichable B s'avère inutile (entre les bornes 6 et 2).</p>
+        <p>La variante de raccordement requise (Pt100 ou transmetteur) des entrées capteur de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 19: Schéma de câblage de l'appareil de base FCU200-T</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram -->
+        <div style="width: 600px; height: 250px; border: 1px solid #000; margin: 10px auto;">[Diagram Placeholder]</div>
+    </div>
+
+    <div class="note">
+        <p>A Module de sortie courant (en option) | B Strap enfichable</p>
+        <p>1 Entrée pour transmetteur en technique à deux fils, alimentation externe | 2 Entrée pour transmetteur avec sortie courant active | 3 Entrée impulsions/fréquence EB1 | 4 Entrée impulsions/fréquence EB2 | 5 Sortie impulsions AB1 | 6 Sortie impulsions AB2 | 7 Sortie erreur | 8 Interface (M-BUS) | 9 Alimentation électrique</p>
+    </div>
+
+    <div class="section-title">IMPORTANT (REMARQUE)</div>
+    <div class="note">
+        <p>Si les transmetteurs sont reliés de manière galvanique, le strap enfichable B s'avère inutile (entre les bornes 6 et 2).</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Fig. 20: Schéma de raccordement FCU400-IR</div>
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <!-- Diagram -->
+        <div style="width: 600px; height: 300px; border: 1px solid #000; margin: 10px auto;">[Diagram Placeholder]</div>
+    </div>
+
+    <div class="note">
+        <p>A Sortie de courant pour module d'extension | B Interface pour module d'extension RS 232 / RS 485 (Modbus, en option)</p>
+        <p>1 Entrée pour capteur infrarouge (1 ... 12) | 2 Entrée pour capteur de température ambiante | 3 Sortie d'alarme | 4 Sortie de courant pour module d'extension | 5 Sortie erreur | 6 Interface (M-BUS) | 7 Alimentation en énergie</p>
+    </div>
+
+    <div class="section-title">IMPORTANT (REMARQUE)</div>
+    <div class="note">
+        <p>Les raccordements pour extension 1, 2 et 3 sont déjà occupés par les capteurs infrarouges. La sortie de courant pour module d'extension et l'interface sont installées au niveau du raccordement 4. Un seul module d'extension peut être installé, soit une sortie de courant, soit une interface.</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Dimensions</div>
+    <div style="text-align: center; margin-top: 30px;">
+        <div style="width: 400px; height: 250px; border: 1px solid #000; margin: 10px auto;">[Diagram Placeholder - Dimensions]</div>
+        <p>Fig. 21: toutes les dimensions en mm (inch)</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Montage mural (rail DIN de 35 mm)</div>
+    <div style="text-align: center; margin-top: 30px;">
+        <div style="width: 700px; height: 350px; border: 1px solid #000; margin: 10px auto;">[Diagram Placeholder - Mounting]</div>
+        <p>Fig. 22: toutes les dimensions en mm (inch)</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Informations de commande</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 30%;">MODELE DE BASE</th>
+                <th style="width: 10%;">V18022</th>
+                <th style="width: 10%;">XX</th>
+                <th style="width: 10%;">X</th>
+                <th style="width: 10%;">X</th>
+                <th style="width: 20%;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>FCU200-W, calculateur de quantité de chaleur, standard, eau, eau de refroidissement, saumure,</td>
+                <td>1</td>
+                <td>10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU200-W, calculateur de quantité de chaleur, autres</td>
+                <td>1</td>
+                <td>19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-S, vapeur / vapeur saturée, standard, puissance thermique / correction de débit</td>
+                <td>1</td>
+                <td>25</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-S, vapeur / vapeur saturée, standard, correction de débit</td>
+                <td>1</td>
+                <td>29</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-S, gaz, standard, correction de débit (qv, Pt)</td>
+                <td>1</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-S, gaz, standard, correction de débit (ap, Pt)</td>
+                <td>1</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-P, applications de processus, ajouter et soustraire (max. 6 entrées)</td>
+                <td>2</td>
+                <td>46</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-P, applications de processus, mesure de température différentielle extrêmement précise</td>
+                <td>2</td>
+                <td>48</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-T, compteur / réélateur un bilan, convertisseur courant-impulsion</td>
+                <td>3</td>
+                <td>57</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU200-T, compteur / réélateur un bilan, convertisseur impulsion-courant</td>
+                <td>3</td>
+                <td>58</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU200-T, compteur / réélateur un bilan, autres</td>
+                <td>3</td>
+                <td>59</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FCU400-IR, contrôle de la température, contrôle de la température par infrarouge</td>
+                <td>4</td>
+                <td>60</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Alimentation</div>
+    <table style="width: 50%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>230 V AC</td>
+                <td>1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24 V AC / DC pour FCU400-IR</td>
+                <td>2</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24 V DC uniquement pour FCU400-IR</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Homologation</div>
+    <table style="width: 50%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sans homologation</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Avec autorisation spéciale (étalonnage certifié) pour FCU200-W (SensyCal W)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Étalonnage pour mesure de température différentielle très précise</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Autres (homologation spéciale)</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Paramétrage</div>
+    <table style="width: 50%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sans paramétrage spécifique au client</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Avec paramétrage spécifique au client</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Boîtier</div>
+    <table style="width: 50%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tableau de commande et boîtier mural, 144 mm x 72 mm</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <div class="section-title">Informations de commande supplémentaires</div>
+
+    <div class="section-title">Module d'extension N° 1</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2 entrées mA et 2 alimentations de convertisseur de mesure (2 x 16 V, 25 mA)</td>
+                <td>101</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2 sorties mA et 2 contacts de valeur limite</td>
+                <td>102</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>105</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>106</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>107</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>108</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Module d'extension N° 2</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2 entrées mA et 2 alimentations de convertisseur de mesure (2 x 16 V, 25 mA)</td>
+                <td>101</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2 sorties mA et 2 contacts de valeur limite</td>
+                <td>102</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>105</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>106</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>107</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>108</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Module d'extension N° 3</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2 entrées mA et 2 alimentations de convertisseur de mesure (2 x 16 V, 25 mA)</td>
+                <td>101</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2 sorties mA et 2 contacts de valeur limite</td>
+                <td>102</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>105</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>106</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>107</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>108</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Module d'extension N° 4</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+                <th>XXX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2 entrées mA et 2 alimentations de convertisseur de mesure (2 x 16 V, 25 mA)</td>
+                <td>101</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2 sorties mA et 2 contacts de valeur limite</td>
+                <td>102</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>105</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>106</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>107</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4 entrées mA (application spéciale)</td>
+                <td>108</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <p>Remarque 1 : Pour les entrées mA, sélectionner le code 101 ; pour les sorties mA, sélectionner le code 102. Alimentation pour entrée passive d'impulsion / de fréquence</p>
+        <p>Remarque 2 : Pour les sorties mA, sélectionner le code 102 ; pour les entrées, sélectionner le code 106 ; pour l'alimentation du signal, sélectionner le code 106</p>
+        <p>Remarque 3 : Pour les entrées, sélectionner le code 105 ; pour les sorties, sélectionner le code 107</p>
+        <p>Remarque 4 : Uniquement avec une alimentation en énergie 24 V DC</p>
+    </div>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .subheader {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .input-field {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 0;
+  }
+  .small-text {
+    font-size: 9pt;
+    color: #555;
+  }
+</style>
+
+<div class="page">
+  <div class="header">SensyCal FCU200, SensyCal FCU400</div>
+  <div class="subheader">Calculateurs de mesure universels</div>
+
+  <div class="section-title">Questionnaires de paramétrage</div>
+  <div class="small-text">IMPORTANT (REMARQUE)</div>
+  <div class="small-text">La variante de raccordement requise (Pt100 ou transmetteur) des entrées capteur de température doit être définie lors de la commande de l'appareil. Une modification de la variante de raccordement sur place n'est pas possible.</div>
+
+  <div class="section-title">FCU200-W</div>
+  <table>
+    <tr>
+      <th style="width: 30%;">Contact (interlocuteur)</th>
+      <th style="width: 30%;">Opérateur</th>
+    </tr>
+    <tr>
+      <td>Tel. / Fax</td>
+      <td>Tel. / Fax</td>
+    </tr>
+    <tr>
+      <td>Pt. de mes.</td>
+      <td><span class="input-field" style="width: 50%;"></span> (2 x 20 caractères)</td>
+      <td>Langue</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Entrées de débitmètre</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">Gén. de fréqu.</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span> F min [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> F max [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+      </tr>
+      <tr>
+        <td>pression absolue [bar]</td>
+        <td><span class="input-field" style="width: 10%;"></span> (pression de service)</td>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> Δp-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> Δp-max</td>
+      </tr>
+      <tr>
+        <td>Débitmètre se trouve ds.</td>
+        <td><span class="input-field" style="width: 10%;"></span> l'arrivée</td>
+        <td><span class="input-field" style="width: 10%;"></span> Pour mesure Δp: transmp. Δp</td>
+        <td><span class="input-field" style="width: 10%;"></span> Extr. de racine</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <tr>
+      <td colspan="4" class="small-text">Pour la mesure de la pression différentielle (orifice, buse, Venturi, sonde de Pitot) veuillez joindre la feuille de calcul.</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Entrées de température</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">T_min</th>
+        <th style="width: 20%;">T_max</th>
+        <th style="width: 20%;">Transmetteur</th>
+        <th style="width: 20%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Sortie impulsions 1</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+      <td style="width: 50%;">Largeur des impulsions [ms]</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sortie impulsions 2</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+      <td style="width: 50%;">Largeur des impulsions [ms]</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Sorties (indiquer les plages de mesure physiques avec unités)</th>
+        <th style="width: 50%;">Sorties (sélectionner signal)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+        <td>(pour toutes les sorties)</td>
+      </tr>
+      <tr>
+        <td>Valeur physique, début</td>
+        <td><span class="input-field" style="width: 10%;"></span> A1</td>
+        <td><span class="input-field" style="width: 10%;"></span> A2</td>
+        <td><span class="input-field" style="width: 10%;"></span> A3</td>
+        <td><span class="input-field" style="width: 10%;"></span> A4</td>
+      </tr>
+      <tr>
+        <td>Valeur physique, fin</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header">FCU400-S</div>
+  <table>
+    <tr>
+      <th style="width: 30%;">Contact (interlocuteur)</th>
+      <th style="width: 30%;">Opérateur</th>
+    </tr>
+    <tr>
+      <td>Tel. / Fax</td>
+      <td>Tel. / Fax</td>
+    </tr>
+    <tr>
+      <td>Pt. de mes.</td>
+      <td><span class="input-field" style="width: 50%;"></span> (2 x 20 caractères)</td>
+      <td>Langue</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Entrées de débitmètre pour débit de vapeur</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">Gén. de fréqu.</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span> F min [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> F max [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+      </tr>
+      <tr>
+        <td>L. de mesure Δp: transmp. Δp</td>
+        <td><span class="input-field" style="width: 10%;"></span> Linéaire</td>
+        <td><span class="input-field" style="width: 10%;"></span> Extr. de rac.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Pour la mesure de la pression différentielle (orifice, buse, Venturi, sonde de Pitot) veuillez joindre la feuille de calcul.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Entrées de débitmètre pour débit de condensat</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">Gén. de fréqu.</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span> F min [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> F max [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+      </tr>
+      <tr>
+        <td>pression absolue [bar]</td>
+        <td><span class="input-field" style="width: 10%;"></span> (pression de service des condensats)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Transmetteur de pression</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">0 ... 20 mA</th>
+        <th style="width: 20%;">4 ... 20 mA</th>
+        <th style="width: 20%;">0 ... 20 mA</th>
+        <th style="width: 20%;">4 ... 20 mA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Surpr. / Prv. Abs.</td>
+        <td><span class="input-field" style="width: 10%;"></span> Pt100, directe</td>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> °C</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Sortie impulsions 1</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Totalisateur</td>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sortie impulsions 2</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Totalisateur</td>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties (indiquer les plages de mesure physiques avec unités)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Sorties (choisir le signal)</th>
+        <th style="width: 50%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+        <td>(pour toutes les sorties)</td>
+      </tr>
+      <tr>
+        <td>Valeur physique, début</td>
+        <td><span class="input-field" style="width: 10%;"></span> A1</td>
+        <td><span class="input-field" style="width: 10%;"></span> A2</td>
+        <td><span class="input-field" style="width: 10%;"></span> A3</td>
+        <td><span class="input-field" style="width: 10%;"></span> A4</td>
+      </tr>
+      <tr>
+        <td>Valeur physique, fin</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="small-text" style="margin-top: 20px;">Suppression du point zéro pour le débit</div>
+  <div class="small-text">(s'applique au calcul du débit, de la puissance, de la quantité, du volume et de l'énergie)</div>
+</div>
+
+<div class="page">
+  <div class="header">FCU400-G</div>
+  <table>
+    <tr>
+      <th style="width: 30%;">Contact (interlocuteur)</th>
+      <th style="width: 30%;">Opérateur</th>
+    </tr>
+    <tr>
+      <td>Tel. / Fax</td>
+      <td>Tel. / Fax</td>
+    </tr>
+    <tr>
+      <td>Pt. de mesure</td>
+      <td><span class="input-field" style="width: 50%;"></span> (2 x 20 caractères)</td>
+      <td>Langue</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Entrées de débitmètre</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">Gén. de fréqu.</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span> F min [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> F max [Hz]</td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-min</td>
+        <td><span class="input-field" style="width: 10%;"></span> qv-max</td>
+      </tr>
+      <tr>
+        <td>L. de mesure Δp: transmp. Δp</td>
+        <td><span class="input-field" style="width: 10%;"></span> Linéaire</td>
+        <td><span class="input-field" style="width: 10%;"></span> Extr. de rac.</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Pour la mesure de la pression différentielle (orifice, buse, Venturi, sonde de Pitot) veuillez joindre la feuille de calcul.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Transmetteur de pression</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">0 ... 20 mA</th>
+        <th style="width: 20%;">4 ... 20 mA</th>
+        <th style="width: 20%;">0 ... 20 mA</th>
+        <th style="width: 20%;">4 ... 20 mA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pr. abs./effect.</td>
+        <td><span class="input-field" style="width: 10%;"></span> Pt100, directe</td>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> °C</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Sortie impulsions 1</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Totalisateur</td>
+      <td style="width: 50%;">Nm3</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties (en option)</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Sorties (choisir le signal)</td>
+      <td style="width: 50%;"></td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties (indiquer les plages de mesure physiques avec unités)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;"></th>
+        <th style="width: 50%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Valeur physique, début</td>
+        <td><span class="input-field" style="width: 10%;"></span> A1</td>
+        <td><span class="input-field" style="width: 10%;"></span> A2</td>
+        <td><span class="input-field" style="width: 10%;"></span> A3</td>
+        <td><span class="input-field" style="width: 10%;"></span> A4</td>
+      </tr>
+      <tr>
+        <td>Valeur physique, fin</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header">FCU200-T</div>
+  <table>
+    <tr>
+      <th style="width: 30%;">Contact (interlocuteur)</th>
+      <th style="width: 30%;">Opérateur</th>
+    </tr>
+    <tr>
+      <td>Tel. / Fax</td>
+      <td>Tel. / Fax</td>
+    </tr>
+    <tr>
+      <td>Pt. de mesure</td>
+      <td><span class="input-field" style="width: 50%;"></span> (2 x 20 caractères)</td>
+      <td>Langue</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Entrées</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Voie 1</th>
+        <th style="width: 15%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">F min [Hz]</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA 1</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>Val. max</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Voie 2</th>
+        <th style="width: 15%;">Gén. d'impuls.</th>
+        <th style="width: 15%;">Gén. de fréqu. 2</th>
+        <th style="width: 15%;">F max [Hz]</th>
+        <th style="width: 20%;">Générateur de mA 2</th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Val. des impuls.</td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+      </tr>
+      <tr>
+        <td>Val. max</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Sortie impulsions 1</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+      <td style="width: 50%;">Largeur de l'impulsion [ms]</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sortie impulsions 2</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Poids de l'impulsion</td>
+      <td style="width: 50%;">Largeur de l'impulsion [ms]</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties (en option)</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">Sorties (indiquer les plages de mesure physiques avec unités)</td>
+      <td style="width: 50%;">Sorties (choisir le signal)</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Sorties (choisir le signal)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 10%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><span class="input-field" style="width: 10%;"></span> 0 ... 20 mA</td>
+        <td><span class="input-field" style="width: 10%;"></span> 4 ... 20 mA</td>
+        <td>(pour toutes les sorties)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="small-text" style="margin-top: 20px;">Une carte d'extension (code 106, avec alimentation 2 x 20 V) est disponible pour les entrées (impulsions, fréquence ou mA).</div>
+</div>
+
+<div class="page">
+  <div class="section-title">Notes</div>
+  <div class="small-text">30 10/18-5.22-FR Rev. I | FCU200-T, FCU200-W, FCU400-G, FCU400-IR, FCU400-P, FCU400-S (SensyCal) | 10/18-5.22-FR Rev. I | 25</div>
+</div>
+
+<div class="page">
+  <div class="section-title">Notes</div>
+  <div class="small-text">30 10/18-5.22-FR Rev. I | FCU200-T, FCU200-W, FCU400-G, FCU400-IR, FCU400-P, FCU400-S (SensyCal) | 10/18-5.22-FR Rev. I | 31</div>
+</div>
+
+<div class="page">
+  <div class="section-title">Contact</div>
+  <table>
+    <tr>
+      <td style="width: 50%;">
+        <strong>ABB France SAS</strong><br>
+        Process Automation<br>
+        <span data-field="address.street">{{ address.street }}</span><br>
+        <span data-field="address.city">{{ address.city }}</span><br>
+        <span data-field="address.postal_code">{{ address.postal_code }}</span><span data-field="address.city_country">{{ address.city_country }}</span><br>
+        Tel: <span data-field="phone.france">{{ phone.france }}</span><br>
+        Fax: <span data-field="phone.france_fax">{{ phone.france_fax }}</span>
+      </td>
+      <td style="width: 50%;">
+        <strong>ABB Inc.</strong><br>
+        Process Automation<br>
+        <span data-field="address.street">{{ address.street }}</span><br>
+        <span data-field="address.city">{{ address.city }}</span><br>
+        <span data-field="address.postal_code">{{ address.postal_code }}</span><span data-field="address.city_country">{{ address.city_country }}</span><br>
+        Tel: <span data-field="phone.usa">{{ phone.usa }}</span><br>
+        Fax: <span data-field="phone.usa_fax">{{ phone.usa_fax }}</span><br>
+        <span data-field="website">{{ website }}</span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="margin-top: 20px;">
+        <strong>ABB Automation Products GmbH</strong><br>
+        Process Automation<br>
+        <span data-field="address.street">{{ address.street }}</span><br>
+        <span data-field="address.city">{{ address.city }}</span><br>
+        <span data-field="address.postal_code">{{ address.postal_code }}</span><span data-field="address.city_country">{{ address.city_country }}</span><br>
+        Tel: <span data-field="phone.germany">{{ phone.germany }}</span><br>
+        Fax: <span data-field="phone.germany_fax">{{ phone.germany_fax }}</span>
+      </td>
+    </tr>
+  </table>
+  <div class="small-text" style="margin-top: 50px; text-align: right;">
+    <span data-field="copyright_info">{{ copyright_info }}</span>
+  </div>
+</div></body>
+</html>

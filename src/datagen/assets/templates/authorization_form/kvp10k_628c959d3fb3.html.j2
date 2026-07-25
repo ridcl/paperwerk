@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Health Information Authorization</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .header-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logo-csun {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .logo-klotz {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: inline-block;
+    width: 150px;
+    font-weight: normal;
+  }
+  .form-group input[type="text"] {
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    width: 50%;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-right: 15px;
+  }
+  .divider {
+    border-top: 1px solid #000;
+    margin: 20px 0;
+  }
+  .acknowledgement-text {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  .signature-line {
+    margin-top: 50px;
+    border-top: 1px solid #000;
+    width: 50%;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <div class="logo-csun">CSUN.</div>
+    <div class="logo-klotz">klotz<br>student health center</div>
+  </div>
+  <h1>AUTHORIZATION TO DISCLOSE HEALTH INFORMATION FROM THE KLOTZ STUDENT HEALTH CENTER</h1>
+
+  <div class="form-group">
+    <label>Name (Print Full Name):</label>
+    <span data-field="full_name" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ full_name }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Date of Birth:</label>
+    <span data-field="date_of_birth" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ date_of_birth }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>CSUN ID Number:</label>
+    <span data-field="csun_id_number" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ csun_id_number }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Phone Number:</label>
+    <span data-field="phone_number" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ phone_number }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Email Address:</label>
+    <span data-field="email_address" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ email_address }}</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>ACKNOWLEDGEMENT</h2>
+
+  <div class="acknowledgement-text">
+    <p>I authorize the use or disclosure of my health information as described below by the Klotz Student Health Center, California State University Northridge, <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city_state_zip">{{ city_state_zip }}</span>. Phone: <span data-field="phone_number_center">{{ phone_number_center }}</span>. Please note: It is not permissible to alter this form. If altered, this could result in reporting to the CSUN's Student Conduct office and will delay the processing of your request.</p>
+    <p>A picture ID (or a copy of the picture ID) is required to release any information.</p>
+  </div>
+
+  <div class="section-title">1. FORMAT OF RECORD</div>
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Hard Copy</label>
+    <label><input type="checkbox"> CD or Flash Drive ($5 Charge)</label>
+    <label><input type="checkbox"> Fax Number:</label>
+  </div>
+  <p style="margin-top: 10px;">Note: We do not release or disclose medical records via email.</p>
+
+  <div class="section-title">2. RECIPIENT INFORMATION</div>
+  <div class="form-group">
+    <label>Recipient Name or Entity:</label>
+    <span data-field="recipient_name" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ recipient_name }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Recipient Street Address:</label>
+    <span data-field="recipient_address" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ recipient_address }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Recipient City, State, and Zip Code/Postal Code:</label>
+    <span data-field="recipient_city_state_zip" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ recipient_city_state_zip }}</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">3. AUTHORIZATION TO RELEASE/DISCLOSE MEDICAL RECORDS</div>
+  <div class="acknowledgement-text">
+    <p>Please complete this section indicating what records are to be released and/or disclosed. The first ten pages are free, each additional page is $0.10. Lab and x-ray results cannot be released until the provider has reviewed the results with the patient. Copies are provided within fifteen (15) days after receipt of this written request.</p>
+  </div>
+
+  <div class="checkbox-group" style="margin-top: 20px;">
+    <label><input type="checkbox"> Consultation Reports/Clinic Notes from</label>
+    <span data-field="consultation_reports_to" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 30%;">{{ consultation_reports_to }}</span>
+    <span data-field="consultation_reports_to_label" style="margin-left: 20px;">{{ consultation_reports_to_label }}</span>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Immunization Record</label>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Most Recent Glasses/Contact Lens Prescription</label>
+  </div>
+
+  <div class="checkbox-group" style="margin-top: 10px;">
+    <label>Laboratory results from</label>
+    <span data-field="lab_results_to" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 30%;">{{ lab_results_to }}</span>
+    <span data-field="lab_results_to_label" style="margin-left: 20px;">{{ lab_results_to_label }}</span>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> X-ray and Imaging Reports from</label>
+    <span data-field="xray_reports_to" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 30%;">{{ xray_reports_to }}</span>
+    <span data-field="xray_reports_to_label" style="margin-left: 20px;">{{ xray_reports_to_label }}</span>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Most recent history and physical</label>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Entire Medical Record</label>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> HIV Test Results</label>
+  </div>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox"> Other:</label>
+    <span data-field="other_details" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 50%;">{{ other_details }}</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">4. OPTIONAL: REVOCATION, DURATION & REDISCLOSURE</div>
+  <div class="acknowledgement-text">
+    <p>I understand I have the right to revoke this authorization at any time. I understand if I revoke this authorization I must do so in writing and present my written revocation to the Health Information Management department. I understand the revocation will not apply to information that has already been released in response to this authorization. I understand the revocation will not apply to my insurance company when the law provides my insurer with the right to contest a claim under my policy. Unless otherwise revoked, this authorization will expire on the following date:</p>
+    <span data-field="expiration_date" style="border-bottom: 1px solid #000; padding-bottom: 2px; display: inline-block; width: 30%;">{{ expiration_date }}</span>
+    <p>(If I fail to specify an expiration date, event or condition, this authorization will expire automatically in 90days)</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">5. SIGNATURE</div>
+  <div class="acknowledgement-text">
+    <p>I understand that authorizing the disclosure of this health information is voluntary. I need not sign this form in order to assure treatment at the SHC. I understand I may inspect or copy the information to be used or disclosed, as provided in 45 CFR § 164.242. I understand any disclosure of information carries with it the potential for an unauthorized re-disclosure and the information may not be protected by federal confidentiality rules. If I have questions about disclosure of my health information, I can contact Dr. Ederlina Landeta, Interim Student Health Center Director, at <span data-field="director_phone">{{ director_phone }}</span>. I understand that I am entitled to receive a copy of this authorization.</p>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        Signature of Patient or Legal Representative
+        <div class="signature-line"></div>
+      </div>
+      <div>
+        If Signed by Legal Representative, Relationship to Patient
+        <div class="signature-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        HEALTH INFORMATION STAFF ONLY
+      </div>
+      <div>
+        Date
+        <div class="signature-line" style="width: 200px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <label><input type="checkbox"> Verification completed with Digital ID Card</label>
+      </div>
+      <div>
+        Records were sent:
+        <div style="margin-top: 10px;">
+          <label><input type="checkbox"> Faxed</label>
+          <label><input type="checkbox"> U.S. Mail</label>
+          <label><input type="checkbox"> Hand Delivered</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 100px;">
+    Witness Signature and Date
+    <div class="signature-line" style="width: 40%;"></div>
+  </div>
+
+</div>
+
+<div class="page">
+  <!-- Placeholder for Page 2 content if needed, matching the structure -->
+</div>
+
+</body>
+</html>

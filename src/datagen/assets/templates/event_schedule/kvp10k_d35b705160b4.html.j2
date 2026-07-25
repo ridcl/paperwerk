@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PAWS Orientation Schedule</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        .header-logo { float: left; }
+        .header-title { float: right; text-align: right; }
+        .section-title { font-size: 24pt; font-weight: bold; margin-bottom: 20px; }
+        .schedule-item { margin-bottom: 15px; }
+        .time-slot { font-weight: bold; display: inline-block; width: 150px; }
+        .event-details { margin-left: 10px; }
+        .bullet-point { margin-left: 20px; }
+        .footer-logo { position: absolute; bottom: 40px; right: 60px; }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  .schedule-item {
+    margin-bottom: 15px;
+  }
+  .time-slot {
+    font-weight: bold;
+  }
+</style>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .section-title {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; height: 100%;">
+            <div class="header-logo" style="width: 40%;">
+                <img src="" alt="University Logo" style="width: 100%;">
+                <div style="text-align: left; margin-top: 10px;">
+                    <h1 style="font-size: 36pt; margin: 0;">FISK</h1>
+                    <h2 style="font-size: 18pt; margin: 0;">UNIVERSITY</h2>
+                    <p style="font-size: 10pt; margin: 2px 0 0 0;">ESTABLISHED 1866</p>
+                </div>
+            </div>
+            <div class="header-title" style="width: 60%; text-align: right;">
+                <h1 style="font-size: 60pt; margin: 0;">P.A.W.S</h1>
+                <p style="font-size: 16pt; margin: 5px 0;">PREPARING, ADVISING, AND WELCOMING STUDENTS</p>
+                <h2 style="font-size: 30pt; margin: 10px 0;">NEW STUDENT ORIENTATION</h2>
+                <p style="font-size: 14pt; margin: 5px 0;">BACK TO THE BASICS; SUCCESS IS IN THE D.E.T.A.I.L.S</p>
+                <h3 style="font-size: 24pt; margin: 10px 0;">{{ orientation_dates }}</h3>
+                <div style="text-align: center; margin-top: 40px;">
+                    <img src="" alt="Mascot Logo" style="width: 100px;">
+                    <h3 style="font-size: 20pt; margin: 10px 0;">DIVISION OF STUDENT AFFAIRS</h3>
+                    <p style="font-size: 12pt;">Follow us on Instagram</p>
+                    <p style="font-size: 12pt;">@{{ social_media_handle }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">P.A.W.S Orientation</h2>
+        <p>P.A.W.S., which stands for <span data-field="paws_full_name">{{ paws_full_name }}</span>, is Fisk University's new student onboarding program that requires the participation of all new students enrolling Fall {{ enrollment_year }}. P.A.W.S. supports new students in making a successful transition to college and becoming acclimated to the campus community by providing them with opportunities to participate in various programs and events.</p>
+        <p>P.A.W.S consists of programs and activities that:</p>
+        <ul style="list-style-type: disc;">
+            <li class="bullet-point">provide first-year and transfer students opportunities to network with their future classmates, prepare for life inside and outside the classroom, and learn to navigate campus life.</li>
+            <li class="bullet-point">support and answer questions about academics, health, safety, college transitions, engagement, and support services through workshops, programs, and speaker series.</li>
+            <li class="bullet-point">provide an opportunity to meet with academic departments, an overview of university resources and technology, and a chance to interact with multiple university offices supporting the Fisk University journey.</li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <h1 class="section-title">P.A.W.S ORIENTATION EVENT AND SESSION SCHEDULE</h1>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="" alt="Mascot Logo" style="width: 150px;">
+        </div>
+
+        <h2 style="font-size: 20pt; margin-top: 30px;">SATURDAY, {{ date_saturday }}</h2>
+        <h3 style="font-size: 18pt;">Parents, Supporters & Students</h3>
+        <div class="schedule-item">
+            <span class="time-slot">New Student Check-In & Move-In:</span>
+            <div class="event-details">
+                <ul style="list-style-type: circle;">
+                    <li><span data-field="saturday_events[0].location">{{ saturday_events[0].location }}</span> ({{ saturday_events[0].time }})</li>
+                    <li><span data-field="saturday_events[1].location">{{ saturday_events[1].location }}</span> ({{ saturday_events[1].time }})</li>
+                    <li><span data-field="saturday_events[2].location">{{ saturday_events[2].location }}</span> ({{ saturday_events[2].time }})</li>
+                    <li><span data-field="saturday_events[3].location">{{ saturday_events[3].location }}</span> ({{ saturday_events[3].time }})</li>
+                </ul>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Fisk Family Cookout:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="saturday_cookout_location">{{ saturday_cookout_location }}</span></p>
+                <p>Meet us at the yard and enjoy music, games, and food.</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Alumni Legacy Reception:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="saturday_reception_location">{{ saturday_reception_location }}</span></p>
+                <p>Office of Alumni Affairs welcomes new students and family members that are graduates of Fisk University.</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"The Link Up" Meet Your Living Learning Center Leaders:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="saturday_linkup_location">{{ saturday_linkup_location }}</span></p>
+                <p>Location: <span data-field="saturday_linkup_location_2">{{ saturday_linkup_location_2 }}</span> (STUDENTS ONLY)</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Crowsthaite Hall & Jubilee Hall:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="saturday_hall_time_1">{{ saturday_hall_time_1 }}</span> | <span data-field="saturday_hall_time_2">{{ saturday_hall_time_2 }}</span></p>
+                <p>New Livingstone Hall & Shane Hall | <span data-field="saturday_hall_time_3">{{ saturday_hall_time_3 }}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">SUNDAY, {{ date_sunday }}</h2>
+        <h3 style="font-size: 18pt;">Parents, Supporters & Students</h3>
+        <div class="schedule-item">
+            <span class="time-slot">Chapel Service:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_chapel_location">{{ sunday_chapel_location }}</span></p>
+                <p>Rev. Dr. <span data-field="sunday_chapel_speaker">{{ sunday_chapel_speaker }}</span>, Dean of Chapel</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Brunch:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_brunch_location">{{ sunday_brunch_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"House Rules" A Discussion on Campus Decorum:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_house_rules_location">{{ sunday_house_rules_location }}</span></p>
+                <p>Presentation on Student Conduct, Campus Safety & Title IX</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"Paid In Full" Financing Your Fisk Education:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_financing_location">{{ sunday_financing_location }}</span></p>
+                <p>Office of Financial Aid and Student Accounts</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">President's Welcome & Parting Ceremony:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_welcome_location">{{ sunday_welcome_location }}</span> (Parents depart campus afterward)</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Dinner:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_dinner_location">{{ sunday_dinner_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">New Student Welcome Rally:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_rally_location">{{ sunday_rally_location }}</span></p>
+                <p>Welcome by the Office of Student Affairs, SGA President, Mister and Miss Fisk University, Fisk Activities Board President, and FUSA Campus Ambassadors.</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Family Meeting:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="sunday_family_meeting_location">{{ sunday_family_meeting_location }}</span> (Orientation Leaders)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">MONDAY, {{ date_monday }}</h2>
+        <h3 style="font-size: 18pt;">STUDENT SUCCESS & ENGAGEMENT – STUDENTS ONLY</h3>
+        <div class="schedule-item">
+            <span class="time-slot">Breakfast:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_breakfast_location">{{ monday_breakfast_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Student Success & Engagement Workshop:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_workshop_location">{{ monday_workshop_location }}</span></p>
+                <p>Facilitator: <span data-field="monday_workshop_facilitator">{{ monday_workshop_facilitator }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Lunch:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_lunch_location">{{ monday_lunch_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"Get Involved, Get Connected" The Campus Life Experience:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_campus_life_location">{{ monday_campus_life_location }}</span></p>
+                <p>Office of Student Activities, Dean of Students, and Events Management</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Get Connected with Career Planning:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_career_planning_location">{{ monday_career_planning_location }}</span></p>
+                <p>Office of Career Planning and Development</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Career Planning and Development Platforms:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_platforms_location">{{ monday_platforms_location }}</span></p>
+                <p>Office of Career Planning and Development</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Dinner:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_dinner_location">{{ monday_dinner_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Students, Faculty & Staff Kickball Game:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_kickball_location">{{ monday_kickball_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Family Meeting:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="monday_family_meeting_location">{{ monday_family_meeting_location }}</span> (FUSA)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">TUESDAY, {{ date_tuesday }}</h2>
+        <h3 style="font-size: 18pt;">ACADEMIC BLUEPRINT – STUDENTS ONLY</h3>
+        <div class="schedule-item">
+            <span class="time-slot">Breakfast:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_breakfast_location">{{ tuesday_breakfast_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Major Fair: Academic Pathways:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_major_fair_location">{{ tuesday_major_fair_location }}</span></p>
+                <p>Meet with academic departments and learn more about majors, programs, and services.</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Lunch:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_lunch_location">{{ tuesday_lunch_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"The Blueprint" The Keys to Academic Success:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_blueprint_location">{{ tuesday_blueprint_location }}</span></p>
+                <p>Academic Excellence & Student Performance (AESP), and Leadership Enrichment and Academic Development (LEAD) Program</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"Bulldog Fiskival":</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_fiskival_location">{{ tuesday_fiskival_location }}</span></p>
+                <p>Meet us at the yard and enjoy music, inflatables, and funnel cakes.</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Dinner:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_dinner_location">{{ tuesday_dinner_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"The Choice Is Yours" Game Show:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_game_show_location">{{ tuesday_game_show_location }}</span></p>
+                <p>Facilitator: <span data-field="tuesday_game_show_facilitator">{{ tuesday_game_show_facilitator }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Family Meeting:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="tuesday_family_meeting_location">{{ tuesday_family_meeting_location }}</span> (SGA)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="section-title">WEDNESDAY, {{ date_wednesday }}</h2>
+        <h3 style="font-size: 18pt;">HEALTH AND WELLNESS – STUDENTS ONLY</h3>
+        <div class="schedule-item">
+            <span class="time-slot">Breakfast:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_breakfast_location">{{ wednesday_breakfast_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Fisk Counseling Center:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_counseling_location">{{ wednesday_counseling_location }}</span></p>
+                <p>Facilitator: <span data-field="wednesday_counseling_facilitator">{{ wednesday_counseling_facilitator }}</span>, Director of Counseling Center</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"Alma Mater Matters":</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_alma_mater_location">{{ wednesday_alma_mater_location }}</span></p>
+                <p>Dr. <span data-field="wednesday_alma_mater_speaker">{{ wednesday_alma_mater_speaker }}</span>, Director of Jubilee Singers</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Lunch:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_lunch_location">{{ wednesday_lunch_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Fisk Fitness Center:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_fitness_location">{{ wednesday_fitness_location }}</span></p>
+                <p><span data-field="wednesday_fitness_manager">{{ wednesday_fitness_manager }}</span>, Fisk Fitness Center Manager</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Get Connected with Fisk Library:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_library_location">{{ wednesday_library_location }}</span></p>
+                <p><span data-field="wednesday_library_assistant">{{ wednesday_library_assistant }}</span>, Library Assistant for Technical Services</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Dinner:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_dinner_location">{{ wednesday_dinner_location }}</span></p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">"The Bulldog Bootcamp":</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_bootcamp_location">{{ wednesday_bootcamp_location }}</span></p>
+                <p>Facilitator: <span data-field="wednesday_bootcamp_facilitator">{{ wednesday_bootcamp_facilitator }}</span>, Fisk Fitness Center Manager</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <span class="time-slot">Family Meeting:</span>
+            <div class="event-details">
+                <p>Location: <span data-field="wednesday_family_meeting_location">{{ wednesday_family_meeting_location }}</span> (Royal Court)</p>
+            </div>
+        </div>
+    </div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  .schedule-item {
+    margin-bottom: 15px;
+  }
+  .time-slot {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <h1 style="font-size: 28pt; margin-bottom: 5px;">THURSDAY, <span data-field="date_day">{{ date_day }}</span>, <span data-field="date_month">{{ date_month }}</span>, <span data-field="date_year">{{ date_year }}</span></h1>
+  <h2 style="font-size: 22pt; margin-top: 0;">ADVISING & REGISTRATION – NEW STUDENTS ONLY</h2>
+  <div style="margin-top: 30px;">
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Breakfast | <span class="time-slot">{{ time_breakfast }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_breakfast">{{ location_breakfast }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Advising & Registration Schedule</p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_advising">{{ location_advising }}</span></p>
+      <ul style="list-style-type: disc; padding-left: 40px; margin-top: 5px;">
+        <li><span class="time-slot">{{ time_advising_a }}</span>: New students with last names beginning with A-H</li>
+        <li><span class="time-slot">{{ time_advising_b }}</span>: New students with last names beginning with O-Z</li>
+      </ul>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Lunch | <span class="time-slot">{{ time_lunch }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_lunch">{{ location_lunch }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Meet the Fisk Administration | <span class="time-slot">{{ time_meet_admin }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_meet_admin">{{ location_meet_admin }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; International Student Orientation | <span class="time-slot">{{ time_international_orientation }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_international_orientation">{{ location_international_orientation }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Hosted by: <span data-field="host_international_orientation">{{ host_international_orientation }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Dinner | <span class="time-slot">{{ time_dinner }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_dinner">{{ location_dinner }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Orientation Leaders Breakout | <span class="time-slot">{{ time_orientation_leaders }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_orientation_leaders">{{ location_orientation_leaders }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 28pt; margin-bottom: 5px;">FRIDAY, <span data-field="date_day">{{ date_day }}</span>, <span data-field="date_month">{{ date_month }}</span>, <span data-field="date_year">{{ date_year }}</span></h1>
+  <h2 style="font-size: 22pt; margin-top: 0;">FISK-YEAR EXPERIENCE – STUDENTS ONLY</h2>
+  <div style="margin-top: 30px;">
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Breakfast | <span class="time-slot">{{ time_breakfast }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_breakfast">{{ location_breakfast }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Assessment Overview and Administer the You Science Survey | <span class="time-slot">{{ time_assessment }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_assessment">{{ location_assessment }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Activity: <span data-field="activity_assessment">{{ activity_assessment }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Lunch | <span class="time-slot">{{ time_lunch }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_lunch">{{ location_lunch }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Dinner | <span class="time-slot">{{ time_dinner }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_dinner">{{ location_dinner }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Freshman Talent Show | <span class="time-slot">{{ time_talent_show }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_talent_show">{{ location_talent_show }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Hosted by: <span data-field="host_talent_show">{{ host_talent_show }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 28pt; margin-bottom: 5px;">SATURDAY, <span data-field="date_day">{{ date_day }}</span>, <span data-field="date_month">{{ date_month }}</span>, <span data-field="date_year">{{ date_year }}</span></h1>
+  <h2 style="font-size: 22pt; margin-top: 0;">LEADERSHIP THROUGH SERVICE – STUDENTS ONLY</h2>
+  <div style="margin-top: 30px;">
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Breakfast | <span class="time-slot">{{ time_breakfast }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_breakfast">{{ location_breakfast }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Leadership Through Service | <span class="time-slot">{{ time_leadership_service }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Activity: <span data-field="activity_leadership_service">{{ activity_leadership_service }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Sponsor: <span data-field="sponsor_leadership_service">{{ sponsor_leadership_service }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Note: <span data-field="note_lunch">{{ note_lunch }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Dinner | <span class="time-slot">{{ time_dinner }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_dinner">{{ location_dinner }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 28pt; margin-bottom: 5px;">SUNDAY, <span data-field="date_day">{{ date_day }}</span>, <span data-field="date_month">{{ date_month }}</span>, <span data-field="date_year">{{ date_year }}</span></h1>
+  <h2 style="font-size: 22pt; margin-top: 0;">WORSHIP SERVICE</h2>
+  <div style="margin-top: 30px;">
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Fisk Family Worship Service & Pinning Ceremony | <span class="time-slot">{{ time_worship_service }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_worship_service">{{ location_worship_service }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Note: <span data-field="note_pinning_ceremony">{{ note_pinning_ceremony }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Attire: <span data-field="attire_worship_service">{{ attire_worship_service }}</span></p>
+    </div>
+    <div class="schedule-item">
+      <p style="margin: 0;">&#9658; Brunch | <span class="time-slot">{{ time_brunch }}</span></p>
+      <p style="margin: 2px 0 0 20px;">Location: <span data-field="location_brunch">{{ location_brunch }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 36pt; text-align: center; margin-top: 100px;">IMPORTANT DATES & ATTIRE TO BRING</h1>
+  <div style="text-align: center; margin-top: 50px;">
+    <!-- Placeholder for logo -->
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 24pt; text-align: center; margin-bottom: 40px;">IMPORTANT PROGRAMS AND EVENTS</h2>
+  <div style="display: flex; justify-content: space-around;">
+    <div style="width: 45%;">
+      <h3 style="text-align: center; margin-bottom: 15px;">PINNING CEREMONY</h3>
+      <p style="text-align: center; margin-bottom: 10px;">Sunday, <span data-field="pinning_date_day">{{ pinning_date_day }}</span>, <span data-field="pinning_date_month">{{ pinning_date_month }}</span>, <span data-field="pinning_date_year">{{ pinning_date_year }}</span></p>
+      <p>This is the culminating event of the <span data-field="program_name">{{ program_name }}</span> Orientation. The members of the Class of <span data-field="class_year">{{ class_year }}</span> will be pinned by their Orientation Leaders in the presence of Fisk faculty, staff, students, alumni, and administration.</p>
+      <p>Attire: <span data-field="attire_pinning_ceremony">{{ attire_pinning_ceremony }}</span></p>
+      <p>Time: <span data-field="time_pinning_ceremony">{{ time_pinning_ceremony }}</span></p>
+      <p>Location: <span data-field="location_pinning_ceremony">{{ location_pinning_ceremony }}</span></p>
+    </div>
+    <div style="width: 45%;">
+      <h3 style="text-align: center; margin-bottom: 15px;">OPENING CONVOCATION</h3>
+      <p style="text-align: center; margin-bottom: 10px;">Thursday, <span data-field="convocation_date_day">{{ convocation_date_day }}</span>, <span data-field="convocation_date_month">{{ convocation_date_month }}</span>, <span data-field="convocation_date_year">{{ convocation_date_year }}</span></p>
+      <p>Young women must wear all white attire.</p>
+      <ul style="list-style-type: disc; padding-left: 20px; margin-top: 10px;">
+        <li>Must be an appropriate length and fit</li>
+        <li>Black, closed-toe pumps</li>
+        <li>Conservative jewelry (preferably pearls)</li>
+      </ul>
+      <p>Young men must wear a conventional dark suit or dark pants with a white shirt, tie, and dress shoes.</p>
+      <p>Time: <span data-field="time_convocation">{{ time_convocation }}</span></p>
+      <p>Location: <span data-field="location_convocation">{{ location_convocation }}</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 24pt; text-align: center; margin-bottom: 40px;">Men's Attire</h2>
+  <div style="display: flex; justify-content: space-around; align-items: flex-start;">
+    <div style="width: 45%; text-align: center;">
+      <p style="font-weight: bold;">Professional | Business Casual</p>
+      <div style="margin-top: 20px;">
+        <!-- Placeholder for image -->
+      </div>
+      <div style="margin-top: 20px; text-align: left;">
+        <p>Keep color palette neutral</p>
+        <p>Tailored suit or sports jacket</p>
+        <p>Tie</p>
+        <p>Tailored suit pants or nice dress pants</p>
+        <p>Primary sock color matches pants color</p>
+        <p>Dress Shoes</p>
+      </div>
+      <div style="margin-top: 20px; text-align: left;">
+        <p>More colors and textures can be incorporated</p>
+        <p>Jacket or vest can be added for a more professional look</p>
+        <p>Collared Shirt</p>
+        <p>Neck tie is optional</p>
+        <p>Belt color should match shoes</p>
+        <p>Khaki pants or nice dress pants</p>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: center;">
+      <h2 style="font-size: 24pt; margin-bottom: 40px;">Women's Attire</h2>
+      <div style="display: flex; justify-content: space-around; align-items: flex-start;">
+        <div style="width: 45%; text-align: center;">
+          <p style="font-weight: bold;">Professional | Business Casual</p>
+          <div style="margin-top: 20px;">
+            <!-- Placeholder for image -->
+          </div>
+          <div style="margin-top: 20px; text-align: left;">
+            <p>Keep color palette neutral</p>
+            <p>Tailored suit jacket or blazer</p>
+            <p>No more than 5 pieces of simple jewelry</p>
+            <p>Tailored suit pants, slacks, knee-length dress or skirt</p>
+            <p>Low heels are acceptable</p>
+          </div>
+          <div style="margin-top: 20px; text-align: left;">
+            <p>More colors and textures can be incorporated</p>
+            <p>Jacket or cardigan can be added for a more professional look</p>
+            <p>No strapless or spaghetti-strap tops</p>
+            <p>Khaki pants, nice dress pants, or fingertip-length skirts</p>
+            <p>Flats or heels (3.5" or less)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 50px; font-weight: bold;">*DRESS FOR SUCCESS WEDNESDAY IS EVERY WEDNESDAY*</p>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 36pt; text-align: center; margin-top: 100px;">P.A.W.S ORIENTATION REMINDERS</h1>
+  <div style="text-align: center; margin-top: 50px;">
+    <!-- Placeholder for logo -->
+  </div>
+</div>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .section-title {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 30%;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h1 style="font-size: 36px; color: #FFC72C;">SAVE THE DATE</h1>
+        <h2 style="font-size: 24px; color: #000;">FALL 2022 NEW STUDENT ORIENTATION</h2>
+      </div>
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 48px; color: #000;">PAWS 2022</h2>
+        <p style="font-size: 18px;">PREPARING, ADVISING & WELCOMING STUDENTS</p>
+      </div>
+      <div style="border: 2px solid #FFC72C; padding: 15px; text-align: center; margin-top: 40px;">
+        <p style="font-size: 16px; font-weight: bold;">FRESHMAN & TRANSFER STUDENTS MOVE-IN DAY - {{ move_in_date }}</p>
+        <p style="font-size: 16px;">PARENTS, SUPPORTERS & STUDENTS SESSION - {{ session_date }}</p>
+        <p style="font-size: 16px;">ORIENTATION WEEK - {{ orientation_week_date }}</p>
+      </div>
+      <div style="margin-top: 40px; text-align: center;">
+        <p style="font-size: 14px; font-weight: bold;">BACK TO THE BASICS: SUCCESS IS IN THE DETAILS</p>
+        <p style="font-size: 12px;">DIVERSITY, ENGAGEMENT, TEAMWORK, ACCOUNTABILITY, INTEGRITY, LEADERSHIP, SERVICE</p>
+      </div>
+    </div>
+    <div style="width: 70%; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="text-align: center;">
+        <h1 style="font-size: 48px; color: #000;">FALL 22 FRESHMAN AND TRANSFER STUDENTS' MOVE-IN DAY</h1>
+        <h2 style="font-size: 32px; color: #000;">SATURDAY, {{ move_in_date }}</h2>
+        <h3 style="font-size: 24px; color: #000; margin-top: 30px;">LIVING LEARNING CENTERS</h3>
+        <div style="margin-top: 20px;">
+          <p style="font-size: 18px;">NEW LIVINGSTONE - {{ time_new_livingstone }}</p>
+          <p style="font-size: 18px;">JUBILEE HALL - {{ time_jubilee_hall }}</p>
+          <p style="font-size: 18px;">CROSTHWAITE - {{ time_crosthwaite }}</p>
+          <p style="font-size: 18px;">MARY D. SHANE - {{ time_mary_d_shane }}</p>
+        </div>
+        <div style="margin-top: 50px; text-align: center;">
+          <p style="font-size: 16px; font-weight: bold;">PROOF OF A NEGATIVE COVID-19 TEST IS REQUIRED TO MOVE IN</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 30px;">
+        <p style="font-size: 16px;">FOLLOW US ON SOCIAL MEDIA</p>
+        <p style="font-size: 14px;">@{{ social_media_handle_1 }} @{{ social_media_handle_2 }} @{{ social_media_handle_3 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 36px;">HOUSING & RESIDENCE LIFE</h1>
+    <h2 style="font-size: 28px;">WHAT TO BRING WHEN YOU COME TO FISK</h2>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 20px; margin-bottom: 15px;">CLOTHES AND CLOTHES HANGERS</h3>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_1 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_2 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_3 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_4 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_5 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_6 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_7 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_clothes_8 }}</li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 20px; margin-bottom: 15px;">IMPORTANT PAPERWORK</h3>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_1 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_2 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_3 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_4 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_5 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_6 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_7 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_paperwork_8 }}</li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 20px; margin-bottom: 15px;">LEAVE IT</h3>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_1 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_2 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_3 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_4 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_5 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_6 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_7 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_leave_8 }}</li>
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 20px; margin-bottom: 15px;">CONSIDER IT</h3>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_1 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_2 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_3 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_4 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_5 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_6 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_7 }}</li>
+        <li style="margin-bottom: 8px;"><span style="font-weight: bold;">&#10003;</span> {{ item_consider_8 }}</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top: 50px; padding: 20px; border: 1px solid #ccc;">
+    <p style="font-size: 14px; font-weight: bold;">SPECIAL NOTE:</p>
+    <p style="font-size: 12px;">{{ special_note_text }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 60px;">
+    <h1 style="font-size: 48px;">INTERACTIVE CAMPUS MAP</h1>
+  </div>
+  <div style="text-align: center;">
+    <img src="{{ campus_map_image_url }}" alt="Campus Map" style="max-width: 100%; height: auto; margin-bottom: 30px;">
+    <p style="font-size: 20px; font-weight: bold;">(<span data-field="map_link_text">{{ map_link_text }}</span>) INTERACTIVE CAMPUS MAP</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 36px;">FISK INTERACTIVE CAMPUS MAP</h1>
+    <img src="{{ campus_map_image_url_2 }}" alt="Campus Map" style="max-width: 100%; height: auto; margin-top: 20px;">
+    <p style="font-size: 14px; margin-top: 10px;">(CLICK HERE) INTERACTIVE CAMPUS MAP</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 36px;">CAMPUS RESOURCES</h1>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted #ccc;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>University Admissions - Phone: {{ phone_admissions }} Email: <a href="mailto:{{ email_admissions }}">{{ email_admissions }}</a></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted #ccc;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>Financial Aid - Phone: {{ phone_financial_aid }} Email: <a href="mailto:{{ email_financial_aid }}">{{ email_financial_aid }}</a></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted #ccc;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>Student Accounts - Phone: {{ phone_student_accounts }} Email: <a href="mailto:{{ email_student_accounts }}">{{ email_student_accounts }}</a></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted #ccc;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>Residence Life & Campus Services - Phone: {{ phone_residence_life }} Email: <a href="mailto:{{ email_residence_life }}">{{ email_residence_life }}</a></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted #ccc;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>AESP/LEAD (Academic Advising) - Phone: {{ phone_aesp_lead }} Email: <a href="mailto:{{ email_aesp_lead }}">{{ email_aesp_lead }}</a></span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+      <span style="font-weight: bold;">&#9658;</span>
+      <span>Registrar - Phone: {{ phone_registrar }} Email: <a href="mailto:{{ email_registrar }}">{{ email_registrar }}</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <h1 style="font-size: 36px;">THE P.A.W.S COMMITTEE WELCOMES YOU TO THE FISK FAMILY!</h1>
+  </div>
+  <div style="display: flex; justify-content: space-around;">
+    <div style="width: 45%; text-align: center; padding: 20px; border: 2px solid #FFC72C;">
+      <h2 style="font-size: 24px;">Dr. {{ dean_name }}</h2>
+      <p style="font-size: 18px;">Dean of Students</p>
+    </div>
+    <div style="width: 45%; text-align: center; padding: 20px; border: 2px solid #FFC72C;">
+      <h2 style="font-size: 24px;">Ms. {{ manager_name }}</h2>
+      <p style="font-size: 18px;">Campus Events Manager</p>
+    </div>
+  </div>
+</div></body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Award Change Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  .header-row td {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    width: 50%;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">DOMINICAN UNIVERSITY</h1>
+      <h2 style="font-size: 18pt; margin: 0;">of CALIFORNIA</h2>
+    </div>
+    <div style="text-align: right; font-size: 10pt;">
+      <p style="margin: 0;">Office of Financial Aid</p>
+      <p style="margin: 0;">Telephone: {{ office_phone }}</p>
+      <p style="margin: 0;">Fax: {{ office_fax }}</p>
+      <p style="margin: 0;">{{ office_address }}</p>
+      <p style="margin: 0;">Email: <a href="mailto:{{ office_email }}">{{ office_email }}</a></p>
+      <p style="margin: 0;">Web site: {{ office_website }}</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 40px; font-size: 16pt;">2021-22 Award Change Form</h2>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 25%;">Student Last Name</td>
+        <td style="width: 25%;">First Name</td>
+        <td style="width: 25%;">Middle Initial</td>
+        <td style="width: 25%;">Dominican Student ID Number</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="student_last_name">{{ student_last_name }}</span></td>
+        <td><span data-field="student_first_name">{{ student_first_name }}</span></td>
+        <td><span data-field="student_middle_initial">{{ student_middle_initial }}</span></td>
+        <td><span data-field="student_id_number">{{ student_id_number }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Street Address:</strong> <span data-field="student_street_address">{{ student_street_address }}</span> | <strong>City:</strong> <span data-field="student_city">{{ student_city }}</span> | <strong>State:</strong> <span data-field="student_state">{{ student_state }}</span> | <strong>Zip:</strong> <span data-field="student_zip">{{ student_zip }}</span> | <strong>Phone Number:</strong> <span data-field="student_phone_number">{{ student_phone_number }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>If you want to reduce the amount of an award for a term <strong>before</strong> it disburses to your student account, you must submit this form to the Office of Financial Aid.</p>
+    <p>If you want to reduce or cancel a loan <strong>after</strong> it disbursed to your student account in a term and your request is within 30 days of the disbursement, please use the <a href="{{ return_disbursed_funds_link }}">Return of Disbursed Funds Form</a> (available in the "Forms and Instructions" tab in the Dominican Financial Aid Portal (aid.dominican.edu)).</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Please complete the appropriate table below to reduce an award. All information regarding loan amount and whether or not a loan has disbursed can be found in the Dominican Financial Aid Portal (aid.dominican.edu).</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Notes:</strong></p>
+    <ul>
+      <li>If you want to decline the full amount of a loan, please enter $0 for the requested amount in the appropriate term(s).</li>
+      <li>If the loan has already disbursed (credited to your student account), and if it is within 30 days of the date the disbursement occurred, use the <a href="{{ return_disbursed_funds_link }}">Return of Disbursed Funds Form</a> instead of this form.</li>
+    </ul>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <thead>
+      <tr class="header-row">
+        <td style="width: 15%;">Loan Type</td>
+        <td style="width: 15%;">Fall 2021 Awarded Amount</td>
+        <td style="width: 15%;">Fall 2021 Requested Amount</td>
+        <td style="width: 15%;">Spring 2022 Awarded Amount</td>
+        <td style="width: 15%;">Spring 2022 Requested Amount</td>
+        <td style="width: 15%;">Summer 2022 Awarded Amount</td>
+        <td style="width: 15%;">Summer 2022 Requested Amount</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="loan_type_1">{{ loan_type_1 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_awarded_1">{{ loan_amount_fall2021_awarded_1 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_requested_1">{{ loan_amount_fall2021_requested_1 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_awarded_1">{{ loan_amount_spring2022_awarded_1 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_requested_1">{{ loan_amount_spring2022_requested_1 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_awarded_1">{{ loan_amount_summer2022_awarded_1 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_requested_1">{{ loan_amount_summer2022_requested_1 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="loan_type_2">{{ loan_type_2 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_awarded_2">{{ loan_amount_fall2021_awarded_2 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_requested_2">{{ loan_amount_fall2021_requested_2 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_awarded_2">{{ loan_amount_spring2022_awarded_2 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_requested_2">{{ loan_amount_spring2022_requested_2 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_awarded_2">{{ loan_amount_summer2022_awarded_2 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_requested_2">{{ loan_amount_summer2022_requested_2 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="loan_type_3">{{ loan_type_3 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_awarded_3">{{ loan_amount_fall2021_awarded_3 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_requested_3">{{ loan_amount_fall2021_requested_3 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_awarded_3">{{ loan_amount_spring2022_awarded_3 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_requested_3">{{ loan_amount_spring2022_requested_3 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_awarded_3">{{ loan_amount_summer2022_awarded_3 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_requested_3">{{ loan_amount_summer2022_requested_3 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="loan_type_4">{{ loan_type_4 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_awarded_4">{{ loan_amount_fall2021_awarded_4 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_requested_4">{{ loan_amount_fall2021_requested_4 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_awarded_4">{{ loan_amount_spring2022_awarded_4 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_requested_4">{{ loan_amount_spring2022_requested_4 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_awarded_4">{{ loan_amount_summer2022_awarded_4 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_requested_4">{{ loan_amount_summer2022_requested_4 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="loan_type_5">{{ loan_type_5 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_awarded_5">{{ loan_amount_fall2021_awarded_5 }}</span></td>
+        <td><span data-field="loan_amount_fall2021_requested_5">{{ loan_amount_fall2021_requested_5 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_awarded_5">{{ loan_amount_spring2022_awarded_5 }}</span></td>
+        <td><span data-field="loan_amount_spring2022_requested_5">{{ loan_amount_spring2022_requested_5 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_awarded_5">{{ loan_amount_summer2022_awarded_5 }}</span></td>
+        <td><span data-field="loan_amount_summer2022_requested_5">{{ loan_amount_summer2022_requested_5 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <p><strong>Parent PLUS</strong></p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Loan Type: <span data-field="loan_type_parent_plus">{{ loan_type_parent_plus }}</span></td>
+        <td>Awarded Amount: <span data-field="loan_amount_parent_plus_awarded">{{ loan_amount_parent_plus_awarded }}</span></td>
+      </tr>
+      <tr>
+        <td>Requested Amount: <span data-field="loan_amount_parent_plus_requested">{{ loan_amount_parent_plus_requested }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Grad PLUS</strong></p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Loan Type: <span data-field="loan_type_grad_plus">{{ loan_type_grad_plus }}</span></td>
+        <td>Awarded Amount: <span data-field="loan_amount_grad_plus_awarded">{{ loan_amount_grad_plus_awarded }}</span></td>
+      </tr>
+      <tr>
+        <td>Requested Amount: <span data-field="loan_amount_grad_plus_requested">{{ loan_amount_grad_plus_requested }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Private</strong></p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Loan Type: <span data-field="loan_type_private">{{ loan_type_private }}</span></td>
+        <td>Awarded Amount: <span data-field="loan_amount_private_awarded">{{ loan_amount_private_awarded }}</span></td>
+      </tr>
+      <tr>
+        <td>Requested Amount: <span data-field="loan_amount_private_requested">{{ loan_amount_private_requested }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p><strong>Other (please specify)</strong></p>
+    <table style="width: 50%;">
+      <tr>
+        <td style="width: 50%;">Loan Type: <span data-field="loan_type_other">{{ loan_type_other }}</span></td>
+        <td>Awarded Amount: <span data-field="loan_amount_other_awarded">{{ loan_amount_other_awarded }}</span></td>
+      </tr>
+      <tr>
+        <td>Requested Amount: <span data-field="loan_amount_other_requested">{{ loan_amount_other_requested }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <h3 style="font-size: 12pt;">STUDENT CERTIFICATION</h3>
+    <p style="font-size: 10pt;">I understand that I am declining or requesting a reduction to one or more of the awards within my financial aid award. I further understand that by declining or reducing an award amount, I am still responsible for any charges owed to Dominican University of California that would've been covered by this/these awards. I understand that this form is not to be used for loans that have already disbursed to my student account. By signing below, I certify that I have read and understand this form and all instructions. I am authorizing the Office of Financial Aid to make the change(s) requested above.</p>
+  </div>
+
+  <div style="margin-top: 100px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        Student Signature
+        <div class="signature-line" data-field="field_1">{{ field_1 }}</div>
+      </div>
+      <div style="width: 45%; text-align: right;">
+        Date
+        <div class="signature-line" data-field="student_signature">{{ student_signature }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

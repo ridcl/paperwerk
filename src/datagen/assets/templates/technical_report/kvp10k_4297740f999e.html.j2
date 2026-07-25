@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .abstract-content {
+    margin-top: 1em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .figure-caption {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+</style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .figure-caption {
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  p {
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .reference-item {
+    margin-bottom: 1em;
+    text-indent: -2em;
+    padding-left: 2em;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt;">Communication in Multicomputers with Nonconvex Faults</h1>
+    <div style="margin-top: 20px;">
+      <span data-field="author_1">{{ author_1 }}</span><br>
+      <span data-field="author_2">{{ author_2 }}</span>
+    </div>
+    <div style="margin-top: 15px;">
+      <span data-field="report_type">{{ report_type }}</span>: <span data-field="report_number">{{ report_number }}</span><br>
+      <span data-field="date">{{ date }}</span>
+    </div>
+  </div>
+  <div style="margin-top: 50px;">
+    <div style="text-align: center;">
+      <span data-field="institution">{{ institution }}</span><br>
+      <span data-field="department">{{ department }}</span><br>
+      <span data-field="address">{{ address }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt;">Abstract</h2>
+  <div class="abstract-content">
+    <p>A technique to enhance multicomputer routers for fault-tolerant routing with modest increase in routing complexity and resource requirements is described. This method handles solid faults in meshes, which includes all convex faults and many practical nonconvex faults, for example, faults in the shape of L or T. A set of examples of the proposed method, adaptive and nonadaptive fault-tolerant routing algorithms using four virtual channels per physical channel are described.</p>
+  </div>
+  <div style="margin-top: 20px;">
+    <p>Keywords: <span data-field="keyword_1">{{ keyword_1 }}</span>, <span data-field="keyword_2">{{ keyword_2 }}</span>, <span data-field="keyword_3">{{ keyword_3 }}</span>, <span data-field="keyword_4">{{ keyword_4 }}</span>, <span data-field="keyword_5">{{ keyword_5 }}</span>, <span data-field="keyword_6">{{ keyword_6 }}</span></p>
+  </div>
+  <div style="margin-top: 50px; font-size: 10pt;">
+    <p>Chalasan's research has been supported in part by a grant from the Graduate School of UW-Madison and the N SF grants CCR-9308696 and ECS-9216308. Boppana's research has been partially supported by NSF Grant CCR-9208784 and DOD/A FO SR Grant F-49820-96-1-0472.</p>
+    <p>A shorter version will be published in IEEE Transactions on Computers</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt;">1 Introduction</h2>
+  <p>Many recent experimental and commercial multicomputers and multicrocessors use direct-connected networks with mesh topology [1, 14, 13, 7, 15]. These computers use the well-known dimension-order or e-cube routing algorithm in conjunction with wormhole switching [9] to provide interpro-cessor communication. In the wormhole technique, a packet is divided into a sequence of ex-size units of data, called its transmitted from source to destination in asynchronous pipelined manner. The rst of the message makes the path and the tail it releases the path the message progresses tow ard its destination.</p>
+  <p>The e-cube routing algorithm is simple and provides high throughput for uniform traf c. The e-cube achieves its simplicity by using, always, a xed path for each source-destination pair, though the underlying network may provide many additional paths of the same length (in hops). There-fore, the e-cube cannot handle even simple node or link faults, because even in one fault disrupts many e-cube communication paths.</p>
+  <p>A adaptive and fault-tolerant routing for multicomputer networks has been the subject of exten-sive research in recent years [2, 3, 4, 6, 8, 10, 11, 12, 16]. Most of the current techniques to handle faults in torus and mesh networks require one or more of the following: (a) new routing algorithms with adaptivity [4, 6, 8, 11, 12], (b) global knowledge of faults, (c) restriction on the shapes, loca-tions, and number of faults [6, 8, 12, 16], and (d) relaxing the constraints of guaranteed delivery, deadlock- or livelock-free routing [16].</p>
+  <p>In this paper, we present fault-tolerant routing methods that can be used to augment the ex-isting fault-tolerant routing algorithms with simple changes to routing logic and with modest in-crease in resources. These techniques rely on local knowledge of faults—each fault-free node needs to know the status of only its links and its neighbors' links—and can be applied as soon as the faults are detected (provided the faults are of speci f shapes). Messages are still delivered correctly with-out livelocks and deadlocks.</p>
+  <p>The fault model is a generalized convex fault model, called solid-fault model. In the convex-fault model, each connected set of faults shares a convex shape (for example, rectangular in 2D meshes) [3, 6]. In the solid-fault model, a connected fault set is such that any dimensional cross section (de-nied in Section 2.1) of the fault region has contiguous faulty components. Fault regions with a va-riety of shapes, for example, convex, T, L, and T in a 2D mesh, are examples of solid faults.</p>
+  <p>Our approach in this paper is to demonstrate techniques to enhance known fault-tolerant routing algorithms to provide communication even under faults. To illustrate this, we apply our techniques to the non-adaptive e-cube and a class of fully-adaptive algorithms [10] for meshes with solid faults. The results presented in this paper expand on our earlier results for convex faults [3, 5].</p>
+  <p>The rest of the paper is organized as follows. Section 2 describes the solid fault model and the concept of fault-rings. Section 3 describes our fault-tolerance techniques for the nonadaptive e-cube</p>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt;">2 Preliminaries</h2>
+  <p>We consider $n$-dimensional mesh networks with faults. A $(k, n)$-mesh has $n$ dimensions, denoted $D_1, \dots, D_n$, and $N = k^n$ nodes. Each node is uniquely indexed by an $n$-tuple in radix $k$. Each node is connected via bidirectional links to two other nodes in each dimension. Given a node $x = (x_1, \dots, x_n)$, its neighbors in $D_i$ are $x \pm e_i$, where $e_i$ is the $i$-th unit vector. If two nodes $x$ and $y$ are connected by a link, then they are linked by $x \sim y$.</p>
+  <p>We assume that a message that reaches its destination is consumed in nite time. If a message has not reached its destination and is blocked due to busy channels, then it will continue to hold the channels it has already acquired and not yet released. Therefore, deadlocks can occur because of cyclic dependencies on channels. To avoid deadlocks, multiple logical or virtual channels are sim-ulated on each physical channel and allocated to messages systematically [9]. When faults occur, the dependencies are even more common, and more virtual channels may need to be used or the use of channels may have to be restricted further. Using extra logic and buffers, multiple virtual channels can be simulated on a physical channel in a demand time-multiplexed manner. We spec-ify the number of virtual channels per physical channel basis and denote the $i$-th virtual channel on a physical channel with $c_i$.</p>
+  <p>In the remainder of this section, we describe the fault model and the concept of fault-rings for 2D meshes. Our results can be extended to multidimensional meshes and torus networks with suit-able modifications. We label the sides of a 2D mesh as North, South, East and West.</p>
+  <h3 style="font-size: 14pt;">2.1 The fault model</h3>
+  <p>We consider both node and link faults. For fault detection, processors test themselves periodically using a suitable self-test algorithm. In addition, each processor sends and receives status signals from each of its neighbors. A link fault is detected by the processors on which it is incident by ex-changing status signals. A processor that fails its self-test stops transmitting signals on all of its links, which appears as link faults to its neighbors. A fault-free processor ignores the incoming signals on its links determined to be faulty. So, faulty nodes do not generate messages.</p>
+  <p>We model multiple simultaneous faults, which could be connected or disjoint. We assume that the mean time to repair faults is quite large, a few hours to many days, and that the existing fault-free processors are still connected and should be used for computations in the mean time. We de-velop fault-tolerant algorithms that can work with only local fault information—each node knows only the status of its links incident on it and its neighbors' links—and can be applied as soon as the faults are detected (provided the faults are of speci f shapes).</p>
+  <p>Before de ning solid faults, we need to de ne cross sections of networks and faults. Each con-nected fault set describes a subnetwork of the original mesh. Given a subnetwork or network, all of its nodes that match with one another in all but one component of their $n$-tuple representations are said to be in the same $D_i$-cross section. For example, in a 2D mesh, each row and each column is a 1-D cross section of the network. The column cross sections of $\mathcal{F}_i$ in Figure 1 are $\{(i, 1), (i, 2), \dots, (i, k)\}$ and its row cross sections are $\{(1, i), (2, i), \dots, (k, i)\}$.</p>
+</div>
+
+<div class="page">
+  <p>
+    $\{(2, 2)\}, \{(3, 2)\}, \{(3, 1)\}, \{(3, 2)\}, \{(3, 3)\}, \text{ and } \{(4, 1), (4, 0), (4, 1), (4, 2)\}$. Sometimes a 1-D cross section of a fault contains just a single faulty link. In similar manner, 2D and higher-dimension cross sections can be de fined.
+  </p>
+  <p>With local knowledge of fault information, handling situations where a message has to travel on a path and retract because it reached a dead-end is complicated. Such situations occur when the node connectivity of a 2D cross section of the network is one. (Node connectivity is the minimum number of nodes that need to be removed to disconnect a network). A pendant node in a 2D plane has only one good link. A pendant node marks itself faulty. This may result in more pendant nodes in the network. Then the new ones will mark themselves faulty. This can be repeated several times, bounded by the diameter of the network. At the end, we have a connected network with no pendant nodes, and the routing algorithm can proceed.</p>
+  <p>A node fault is equivalent to making the links incident on that node faulty. Therefore, given a set $\mathcal{F}$ with one or more node faults and some link faults, we can represent the fault information by a set $\mathcal{F}_L$ which contains all the links incident on the nodes in $\mathcal{F}$ and all the links in $\mathcal{F}$. Two faulty links $a \sim b$ and $c \sim d$ are adjacent if one of the following conditions hold:</p>
+  <ol>
+    <li>$a$ and $b$ have different dimensions and are incident on a common node.</li>
+    <li>$a$ and $b$ are incident on the same node and are adjacent in the mesh topology.</li>
+    <li>$a$ and $b$ are adjacent in the mesh topology and are incident on a common node.</li>
+  </ol>
+  <p>A pair of links adjacent by the above de nition are said to be connected. Two nonadjacent links $a \sim b$ and $c \sim d$ are said to be disconnected. A set of links is connected if there is at least one link inci-dent on the faulty node to which link $a$ is connected. A set of faulty links $\mathcal{F}_L$ with two or more components is connected if every pair of links in $\mathcal{F}_L$ is connected. A set $\mathcal{F}_L$ of faulty links and nodes is connected if the cor-responding set $\mathcal{F}_L$ of faulty links is connected. The fault sets $\mathcal{F}_L = \{(1, 0), (1, 1), (0, 1), (0, 0)\}$ in Figure 1 are examples of connected fault sets. $\mathcal{F}_L = \{(1, 0), (0, 1)\}$ is an example of the connected fault based on the last two adjacency rules given above.</p>
+  <p>A connected fault set $\mathcal{F}_L$ with all of its links given by the set $\mathcal{F}_L$ indicates a solid fault region, or region, if the following condition is satisfied:</p>
+  <p>If two links $a \sim b$ and $c \sim d$ are in the same 1-D cross section, then all the nodes between $a$ and $b$ in the same 1-D cross section are also faulty.</p>
+  <p>A set of faults is valid if each connected fault in the set is a solid fault. All the faults in Figure 1 are shaped faults. The faults $\mathcal{F}_L$ and $\mathcal{F}_R$ are not convex faults.</p>
+  <h3 style="font-size: 14pt;">2.2 Fault rings</h3>
+  <p>For each connected fault region of the network, it is feasible to connect the fault-free components around the fault to form a ring or chain. This is the fault ring, $f$-ring, for that fault and consists</p>
+</div>
+
+<div class="page">
+  <p>
+    <img src="placeholder_figure_1.png" alt="Figure 1" style="max-width: 100%; height: auto; display: block; margin: 20px auto;">
+    <div class="figure-caption">Figure 1: Examples of solid faults in a mesh. Faulty nodes are shown as filled circles, and faulty links are not shown. Thick lines indicate the corresponding fault rings.</div>
+  </p>
+  <p>Of the fault-free nodes and channels that are adjacent (row-wise, column-wise, or diagonally) to one or more components of the fault region, the $f$-rings for the various solid faults in Figure 1 are shown in thick lines. It is noteworthy that a fault-free node is in the $f$-ring only if it is at most two hops away from a faulty node. There can be several fault rings, one for each $f$-region, in a network with multiple faults. Fault rings provide alternate paths to messages blocked by faults.</p>
+  <p>A set of fault rings are said to overlap if they share one or more links. For example, the $f$-rings of $\mathcal{F}_L$ and $\mathcal{F}_R$ in Figure 1 overlap with each other on link $(3, 1) \sim (3, 2)$. Also, if a nonfaulty node has both links in a dimension faulty, overlapping $f$-rings are formed. (If $x$ is not faulty and has both links in a dimension faulty, then it results in overlapping $f$-rings). Forming a fault-ring around a fault region is not possible when the fault region touches one or more boundaries of the network (e.g., $\mathcal{F}_L$ in Figure 1). In this case, a fault-chain, rather than an $f$-ring is formed around the $f$-region.</p>
+  <p>Fault-rings are used to route messages around a fault region. Messages can be routed on an $f$-ring in one of two directions: clockwise (i.e., immediate boundary of the corresponding fault region is the right of a message's path on the fault ring) and counter-clockwise. A node on an $f$-ring identifies its neighbors for each direction of traversal. For $f$-rings formed around solid faults, the neighbors are the same for both directions. In a general case, however, these neighbors can be different. Fault-rings can be constructed for each fault-region using a two-step distributed algorithm.</p>
+  <p>To see this, consider a single fault region in a 2D mesh. In step 1, if a node has a $D_i$-faulty link incident on it, then it sends this information to its $D_i$-neighbors, and vice versa. It is noteworthy that if a node is fault-free and has both links in a dimension faulty, then it results in overlapping $f$-rings, which are not considered in this paper.</p>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt;">2.3 Formation of fault rings</h2>
+  <p>Fault-rings are used to route messages around a fault region. Messages can be routed on an $f$-ring in one of two directions: clockwise (i.e., immediate boundary of the corresponding fault region is the right of a message's path on the fault ring) and counter-clockwise. A node on an $f$-ring identifies its neighbors for each direction of traversal. For $f$-rings formed around solid faults, the neighbors are the same for both directions. In a general case, however, these neighbors can be different. Fault-rings can be constructed for each fault-region using a two-step distributed algorithm.</p>
+  <p>To see this, consider a single fault region in a 2D mesh. In step 1, if a node has a $D_i$-faulty link incident on it, then it sends this information to its $D_i$-neighbors, and vice versa. It is noteworthy that if a node is fault-free and has both links in a dimension faulty, then it results in overlapping $f$-rings, which are not considered in this paper.</p>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt;">3 Fault-Tolerant Nonadaptive Routing</h2>
+  <p>We rst show how to enhance the well-known e-cube routing algorithm to handle solid faults in 2D meshes. The e-cube routes a message in a row until the message reaches a node that is in the same</p>
+</div>
+
+<div class="page">
+  <p style="font-size: 10pt; text-align: center;">1</p>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .figure-caption {
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="placeholder_image_1.png" alt="Figure 3" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Figure 3: Routing of misrouted messages around fault rings.</div>
+  </div>
+  <p style="text-align: justify; line-height: 1.6;">
+    blocked by the fault contained by the f-ring. In such cases, the message is forced to use the f-ring orientation compatible with its travel on the f-ring up to that point. For example, a WE message may be blocked at node <span data-field="node_id_1">{{ node_id_1 }}</span> in Figure 3 after traversing a hop on the f-ring. In that case, the message should traverse the f-ring in the clockwise orientation (Rule 4 in Table 2) to get around the fault.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    In other cases, a message is blocked the rt time it arrives at a node on an f-ring (for example, node <span data-field="node_id_2">{{ node_id_2 }}</span> for a WE message in Figure 3). In such cases, a message may use clockwise or counter clockwise orientation depending on other conditions. The orientations and conditions are given in Table 2.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    If a message takes a normal hop on a link that is not on an f-ring, then the virtual channel to be used is given by the base e cube algorithm. Under the e cube, a message may use any virtual channel in its normal hop without deadlocks. (In fact, with e cube routing, there can be only one type of messages using each physical channel that neither faulty nor part of an f-ring.) Sometimes a message may travel on an f-ring using the base e cube algorithm because its normal hop is on the f-ring. In addition, a message may travel on an f-ring because it is blocked by the corresponding fault. In both cases, messages traveling on f-rings can use only the following virtual channels: EW messages use <span data-field="vc_ew">{{ vc_ew }}</span> as normal, SN messages use <span data-field="vc_sn">{{ vc_sn }}</span> messages use <span data-field="vc_sn_2">{{ vc_sn_2 }}</span> messages use <span data-field="vc_sn_3">{{ vc_sn_3 }}</span>.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    Consider a message <span data-field="message_id_1">{{ message_id_1 }}</span> from <span data-field="node_a">{{ node_a }}</span> to <span data-field="node_b">{{ node_b }}</span> in the mesh with two solid faults in Figure 4. <span data-field="message_id_2">{{ message_id_2 }}</span> is as a WE message and is misrouted in <span data-field="node_c">{{ node_c }}</span> where its e cube hop is blocked by the faulty node <span data-field="fault_node_1">{{ fault_node_1 }}</span>. It is misrouted in the counter-clockwise orientation to (4,1) to be compatible with its previous hop, which is on the f-ring. After re-routed by the base e cube from (4,1) to (4,4), it is blocked by the faulty link (4,4) <span data-field="link_id_1">{{ link_id_1 }}</span>, and is misrouted in the (randomly chosen) clockwise ice orientation. <span data-field="message_id_3">{{ message_id_3 }}</span> is routed as an N message for its nal hop. The use of virtual channels per the enhanced routing logic is as indicated. The hop from (4,3) to (4,4) is by the e cube on a link not on any f-ring; so, any of the four classes of virtual channels may be used for this hop as per the e cube.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="placeholder_image_2.png" alt="Figure 4" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Figure 4: Example of nonadaptive fault tolerant routing.</div>
+  </div>
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">3.2 Proof of deadlock and livelock freedom</h3>
+  <p style="text-align: justify; line-height: 1.6;">
+    Lemma 1. The algorithm Fault-Tolerant-Route routes messages in 2D meshes with solid faults and nonoverlapping f-rings free of deadlocks and livelocks.
+  </p>
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Procedure Fault-Tolerant-Route(Message M) / *Spec is the next hop of M */</h3>
+  <ol style="padding-left: 20px; line-height: 1.6;">
+    <li>Set Message-Type(M).</li>
+    <li>Set Message-Status(M).</li>
+    <li>If M is normal, select the hop speci ed by the base algorithm.</li>
+    <li>If M is misrouted, select the hop along its f-ring orientation.</li>
+    <li>If the selected hop is on an f-ring link, route the message using virtual channel <span data-field="vc_type_1">{{ vc_type_1 }}</span> if M's type is EW, <span data-field="vc_type_2">{{ vc_type_2 }}</span> if WE, <span data-field="vc_type_3">{{ vc_type_3 }}</span> if NS, or <span data-field="vc_type_4">{{ vc_type_4 }}</span> if SN.</li>
+    <li>If the selected hop is not on an f-ring link, route the message using the virtual channel speci ed by the base algorithm.</li>
+  </ol>
+  <div style="text-align: justify; line-height: 1.6; margin-top: 20px;">
+    <p>The virtual channels in each set above indicate the channels used by aparticular dimension message in a 2D plane. Since the 2D plane routing is based on the 2D mesh routing given earlier, each set of virtual channels are used without creating cyclic dependencies. A rigorous proof of deadlock free routing is straight forward and is omitted.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="placeholder_image_3.png" alt="Figure 5" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Figure 5: Fault-tolerant routing algorithm.</div>
+  </div>
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Table 2: Directions to be used for misrouting messages on f-rings.</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Rule No.</th>
+        <th>Message Type</th>
+        <th>Traversed on the f-ring</th>
+        <th>Position of Destination</th>
+        <th>F-Ring Orientation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1a</td>
+        <td>WE</td>
+        <td>No</td>
+        <td>In a row above its row of travel</td>
+        <td>Clockwise</td>
+      </tr>
+      <tr>
+        <td>1b</td>
+        <td>WE</td>
+        <td>No</td>
+        <td>In a row below its row of travel</td>
+        <td>Counter Clockwise</td>
+      </tr>
+      <tr>
+        <td>2a</td>
+        <td>EW</td>
+        <td>No</td>
+        <td>In a row above its row of travel</td>
+        <td>Either orientation</td>
+      </tr>
+      <tr>
+        <td>2b</td>
+        <td>EW</td>
+        <td>No</td>
+        <td>In a row below its row of travel</td>
+        <td>Clockwise</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>NS or SN</td>
+        <td>No</td>
+        <td>In the same row</td>
+        <td>Either orientation</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Any message</td>
+        <td>Yes</td>
+        <td>Don't care</td>
+        <td>Choose the orientation that is being used by the message</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="text-align: justify; line-height: 1.6; margin-top: 20px;">
+    <p>Proof. Each type of messages (EW, WE, SN, and NS) uses a distinct class of virtual channels. This can be easily seen for the virtual channels simulated on physical channels forming f-rings. For each physical channel not on any f-ring, there can be only one type of message using that physical channel because of e cube routing. Therefore, in all cases, each message type has an exclusive set of virtual channels for its hops. Furthermore, row messages (EW and WE) can become column messages, but not vice-versa. Thus, deadlocks among two different types of messages cannot occur, since NS and SN messages do not depend on any other message type. Hence, to prove deadlock-freedom, it is suf cient to show that there are no deadlocks among messages of a speci c type.</p>
+    <p>Deadlocks among NS messages. Deadlockscan be among N messages waiting for virtual channels at nodes on a single f-ring only or at nodes on multiple f-rings. (The NS messages waiting for virtual channels at other nodes will be routed by the deadlock-free e cube and cannot be part of deadlocks.) Furthermore, a N message may use counter clockwise or clockwise orientation to travel on an f-ring. The set of physical channels used for each orientation are disjoint. Misrouted NS messages with clockwise orientation never use the channels on the west-most column of an f-ring. (For example, the link (2,0)-(3,0) constitutes the west-most column of the f-ring for <span data-field="example_ring_1">{{ example_ring_1 }}</span> in Figure 4.) Similarly, N messages misrouted counter clockwise use an f-ring never use the east-most column of the f-ring (for example, the two links between nodes (2,3) and (4,3) for the f-ring of <span data-field="example_ring_2">{{ example_ring_2 }}</span> in Figure 4). Therefore, the paths used by N messages on an f-ring are acyclic. So, a single f-ring does not cause deadlocks among N messages.</p>
+    <p>Let us de ne a relation R on the set of f-rings as follows. Given two f-rings <span data-field="f_ring_1">{{ f_ring_1 }}</span> and <span data-field="f_ring_2">{{ f_ring_2 }}</span>, if there exists a DIM1 column cross section of the network containing nodes on both f-rings and the top-most node <span data-field="top_node_1">{{ top_node_1 }}</span> is above that of <span data-field="top_node_2">{{ top_node_2 }}</span>, then <span data-field="f_ring_1">{{ f_ring_1 }}</span> R <span data-field="f_ring_2">{{ f_ring_2 }}</span>. If <span data-field="f_ring_1">{{ f_ring_1 }}</span> R <span data-field="f_ring_2">{{ f_ring_2 }}</span>, then (a) both f-rings have the same top node in a DIM1 cross section or (b) there exists two DIM1 cross sections such that the top node of <span data-field="f_ring_1">{{ f_ring_1 }}</span> is above that of <span data-field="f_ring_2">{{ f_ring_2 }}</span> and in the other f2 has its top node above that of f1. Case (a) is feasible if <span data-field="f_ring_1">{{ f_ring_1 }}</span> overlaps with <span data-field="f_ring_2">{{ f_ring_2 }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">3.3 Extension to multidimensional meshes</h3>
+  <p style="text-align: justify; line-height: 1.6;">
+    We consider solid faults with nonoverlapping f-rings in a (k,n)-mesh and show how to enhance the e cube to provide communication. The e cube orders the dimensions of the network and routes a message in dimension 0, until the current host node and destination match in dimension 0 component of their n-tuples, and then in dimension 1, and so on, until the message reaches its destination. From the node of solid fault section 2.1, it is easy to verify that each 2D cross section (consists of all nodes that match in all but two components of their n-tuples and the links among them) of a solid fault in a (k,n)-mesh is a valid solid fault in a 2D mesh. Therefore, fault-tolerant routing in a (k,n)-mesh is achieved by using our results for 2D meshes and the planar-adaptive routing technique [6].
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    The routing algorithm to handle nonoverlapping f-rings still needs only four virtual channels per physical channel. Let <span data-field="vc_dim_1">{{ vc_dim_1 }}</span>, <span data-field="vc_dim_2">{{ vc_dim_2 }}</span>, <span data-field="vc_dim_3">{{ vc_dim_3 }}</span>, and <span data-field="vc_dim_4">{{ vc_dim_4 }}</span> denote the set of all 2D planes (2D cross sections of the (k,n)-mesh) formed using dimensions i and i+1 (mod n).
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    A normal message that needs to travel in DIM<span data-field="dim_num_1">{{ dim_num_1 }}</span>, <span data-field="dim_num_2">{{ dim_num_2 }}</span>, <span data-field="dim_num_3">{{ dim_num_3 }}</span>, as per the e cube is a DIM message.
+    <span data-field="dim_message_1">{{ dim_message_1 }}</span> is the next dimension of travel as per the e cube algorithm. A message blocked by a fault uses the f-ring in an appropriate 2D plane that contains the current host node for misrouting. So a DIM message, <span data-field="dim_message_2">{{ dim_message_2 }}</span>, uses a 2D plane of type <span data-field="plane_type_1">{{ plane_type_1 }}</span> for routing and virtual channels of class <span data-field="vc_class_1">{{ vc_class_1 }}</span> or <span data-field="vc_class_2">{{ vc_class_2 }}</span> depending on its direction of travel in DIM<span data-field="dim_num_1">{{ dim_num_1 }}</span>. A DIM message will use an <span data-field="vc_class_3">{{ vc_class_3 }}</span> if it is EW, <span data-field="vc_class_4">{{ vc_class_4 }}</span> if it is WE, <span data-field="vc_class_5">{{ vc_class_5 }}</span> if it is NS, or <span data-field="vc_class_6">{{ vc_class_6 }}</span> if it is SN in DIM<span data-field="dim_num_2">{{ dim_num_2 }}</span>, and <span data-field="vc_class_7">{{ vc_class_7 }}</span> or <span data-field="vc_class_8">{{ vc_class_8 }}</span> in DIM<span data-field="dim_num_3">{{ dim_num_3 }}</span>, otherwise.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    Table 3 indicates the types of planes and virtual channels used in routing various types of messages by the routing algorithm. For n = 2, this usage is the same as described above.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Message type</th>
+        <th>Plane type</th>
+        <th>Virtual channel classes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DIM<span data-field="dim_num_3">{{ dim_num_3 }}</span></td>
+        <td><span data-field="plane_type_2">{{ plane_type_2 }}</span></td>
+        <td><span data-field="vc_class_9">{{ vc_class_9 }}</span> and <span data-field="vc_class_10">{{ vc_class_10 }}</span></td>
+      </tr>
+      <tr>
+        <td>DIM<span data-field="dim_num_4">{{ dim_num_4 }}</span></td>
+        <td><span data-field="plane_type_3">{{ plane_type_3 }}</span></td>
+        <td><span data-field="vc_class_11">{{ vc_class_11 }}</span> and <span data-field="vc_class_12">{{ vc_class_12 }}</span></td>
+      </tr>
+      <tr>
+        <td>DIM<span data-field="dim_num_5">{{ dim_num_5 }}</span>, n even</td>
+        <td><span data-field="plane_type_4">{{ plane_type_4 }}</span></td>
+        <td><span data-field="vc_class_13">{{ vc_class_13 }}</span> and <span data-field="vc_class_14">{{ vc_class_14 }}</span></td>
+      </tr>
+      <tr>
+        <td>DIM<span data-field="dim_num_6">{{ dim_num_6 }}</span>, n odd</td>
+        <td><span data-field="plane_type_5">{{ plane_type_5 }}</span></td>
+        <td><span data-field="vc_class_15">{{ vc_class_15 }}</span> and <span data-field="vc_class_16">{{ vc_class_16 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">4 Fault-Tolerant A Adaptive Routing</h3>
+  <p style="text-align: justify; line-height: 1.6;">
+    The adaptive fault-tolerant routing algorithm described in this section uses the technique developed in the previous section. The fault-tolerant version of the algorithm is based on the general theory developed by Duato [10]. The particular one we use here can provide adaptive routing with as few as two virtual channels: one for deadlock free e cube routing and another for adaptive routing. Since we need four virtual channels for deadlock free routing under faults, we describe the base adaptive algorithm. For fault-free networks using four channels (Figure 6). At any point of routing, a message has two types of hops: the e cube hop and adaptive hops. The e cube hop is the same as before: the hop speci ed by the e cube algorithm. The adaptive hops are all other hops that take the message closer to its destination. Algorithm A tries to route a message M using an adaptive channel <span data-field="adaptive_channel_1">{{ adaptive_channel_1 }}</span>, <span data-field="adaptive_channel_2">{{ adaptive_channel_2 }}</span>, or <span data-field="adaptive_channel_3">{{ adaptive_channel_3 }}</span> along any of the dimensions that take M closer to the destination (Step 2). If this fails, A tries to route M using the non-adaptive channel <span data-field="non_adaptive_channel_1">{{ non_adaptive_channel_1 }}</span> on its e cube hop (Step 3). If this also fails, the same sequence of events is tried after a delay of one cycle.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    To enhance this algorithm for fault-tolerant routing, we classify messages into normal and misrouted categories, as before. While normal messages may have adaptive, misrouted messages do not. The top level description of our fault-tolerant adaptive routing is the same as that for the non-adaptive case in Figure 5, with the algorithm in Figure 6 as the base routing algorithm. An impor tant amendment to the routing is that a message can use an adaptive hop only if it is on an f-ring, then adaptive hops cannot be used; or if M's message e cube hop is not on an f-ring, but one or more of its adaptive hops are on f-rings, then those adaptive hops cannot be used. A message with its e cube hop is faulty or part of an f-ring link, route the message using the virtual channel speci ed by the base algorithm. The adaptivity is used only when the message does not have to travel on f-rings. Whenever a message is not traveling on an f-ring, it reserves virtual channels as speci ed in Table 3 when a message is not traveling on an f-ring, it uses channel <span data-field="channel_id_1">{{ channel_id_1 }}</span> as the nonadaptive channel, and channels <span data-field="channel_id_2">{{ channel_id_2 }}</span>, <span data-field="channel_id_3">{{ channel_id_3 }}</span> as
+  </p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_image_4.png" alt="Figure 6" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Figure 6: Pseudocode of the adaptive algorithm enhanced for fault-tolerance.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="placeholder_image_5.png" alt="Figure 7" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Figure 7: Example of fault-tolerant adaptive routing.</div>
+  </div>
+  <div style="text-align: justify; line-height: 1.6; margin-top: 20px;">
+    <p>adaptive channels as in the original adaptive routing.</p>
+    <p>Once again the virtual channel allocation is crucial for deadlock avoidance. In the fault-tolerant adaptive routing, channels <span data-field="vc_a">{{ vc_a }}</span> to <span data-field="vc_b">{{ vc_b }}</span> are used for messages around f-rings. Virtual channels on links that are not on f-rings are used for normal routing by Adaptive-Algorithm. The four virtual channels on physical channels not on f-rings are partitioned into nonadaptive and adaptive subsets. The channels in the nonadaptive category are <span data-field="vc_non_1">{{ vc_non_1 }}</span>, which are used to ensure deadlock free routing. Furthermore, only one type of messages may use the nonadaptive channel on a physical channel not on an f-ring. Thus, no virtual channel can be used for normal fault-free routing by one message and for misrouting by another. This is the same as in the non-adaptive case. The adaptive channels are used for misrouting only. This is similar to that of the nonadaptive case. Figure 7 gives an example of our method. The message uses speci c channels for its hops on the f-ring links (1,1)-(1,2), (3,4)-(3,5), and (3,5)-(4,5). For its other hops, the message uses virtual channels as per the original adaptive algorithm.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">5 Concluding Remarks</h3>
+  <p style="text-align: justify; line-height: 1.6;">
+    We have presented techniques to enhance the nonadaptive and adaptive algorithms for fault-tolerant wormhole routing in mesh networks. This technique works with local knowledge of faults, handles multiple faults, and guarantees livelock- and deadlock-free routing of all messages. We have used the solid fault model, which generalizes the convex fault model used in previous studies. In the convex fault model, additional fault shapes such as <span data-field="fault_shape_1">{{ fault_shape_1 }}</span>, <span data-field="fault_shape_2">{{ fault_shape_2 }}</span>, and <span data-field="fault_shape_3">{{ fault_shape_3 }}</span> can be handled. Thus, the de nition of solid faults includes the convex fault model as a special case. With the current technology, a block of processors can be laid out on a single board. If a board fails or if adjacent boards fail, such failures can be modeled using the convex fault model. Our algorithms can handle any number and combina tion of convex faults as long as they faulty components do not lie on the boundary of the network. Our algorithms can be extended (using more virtual channels) to handle overlapping f-rings and f-rings in a straight forward manner. Our techniques can thus tolerate a sign cant number of fault patterns in mesh networks.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    The concept of fault-rings is used to route around the fault regions. The main costs of the pro posed fault-tolerant routing technique are (a) a speci al bit in message header to indicate the mis routed status, (b) additional routing logic, which is used by the nodes on f-rings, and (c) additional virtual channels to avoid deadlocks around f-rings. Also, some processing overhead is incurred in forming f-rings.
+  </p>
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">A Making an Arbitrary Fault into a Solid-Fault Region</h3>
+  <p style="text-align: justify; line-height: 1.6;">
+    If a fault is not a solid fault, it can be converted into one by disabling selected processors and links. We present below simple rules to detect and correct situations where a fault is not solid, is on the boundary of the network, or results in overlapping f-rings. To simplify our discussion, we consider 2D meshes.
+  </p>
+  <h4 style="margin-top: 20px; margin-bottom: 10px;">Handling pendant nodes.</h4>
+  <p style="text-align: justify; line-height: 1.6;">
+    A pendant node has only one fault-free link incident on it. Such a node marks itself faulty, since it will result in a nonsolid fault otherwise.
+  </p>
+  <h4 style="margin-top: 20px; margin-bottom: 10px;">Handling fault on network boundaries.</h4>
+  <p style="text-align: justify; line-height: 1.6;">
+    The boundaries of a 2D mesh are top and bottom rows, and left-most and right-most columns.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    If a processor has a faulty link on the network boundary, then it sends a speci al "boundary fault-marker" message on the opposite direction of the faulty link. Soon, all the processors on the bound ary where fault occurred will have the information and mark themselves faulty. The 1-D cross sec tion containing the neighbors of the disabled processors forms the new boundary.
+  </p>
+  <p style="text-align: justify; line-height: 1.6;">
+    When a corner node of the mesh becomes faulty, it triggers this two-step procedure in both dimensions of the network. This results in one row and one column disabled, while it is suf cient
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <p>13</p>
+  </div>
+</div>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  p {
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .reference-item {
+    margin-bottom: 1em;
+    text-indent: -2em;
+    padding-left: 2em;
+  }
+</style>
+
+<div class="page">
+  <div class="content">
+    {% for item in references %}
+    <div class="reference-item">
+      <span data-field="reference_number">{{ loop.index }}</span>. <span data-field="reference_text">{{ item.text }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="content" style="text-align: center; margin-top: 50px;">
+    <span data-field="page_number">{{ page_number }}</span>
+  </div>
+</div></body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+  .logo-area { text-align: left; }
+  .committee-info { text-align: right; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .content-block { line-height: 1.6; margin-bottom: 20px; }
+  .summary-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .summary-table td { padding: 8px 0; border-bottom: 1px solid #ccc; }
+  .footer-note { margin-top: 50px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <img src="placeholder_logo.png" alt="University Logo" style="height: 60px;"/>
+      <h1 style="font-size: 24px; margin-top: 10px;">WRIGHT STATE UNIVERSITY</h1>
+    </div>
+    <div class="committee-info">
+      <h2 style="font-size: 16px;">Finance, Audit, and Infrastructure</h2>
+      <h3 style="font-size: 14px;">COMMITTEE</h3>
+      <p style="margin-top: 10px;">{{ report_date }}</p>
+      <p>MEETING DATE</p>
+    </div>
+  </div>
+
+  <div class="section-title">BOARD OF TRUSTEES</div>
+
+  <div class="content-block">
+    <p>SUBJECT: <span data-field="report_subject">{{ report_subject }}</span></p>
+    <p>PRESENTED BY: <span data-field="presenter_name">{{ presenter_name }}</span></p>
+  </div>
+
+  <div class="section-title">BACKGROUND/CURRENT STATUS/MATTERS REQUIRING ACTION/FINANCIAL IMPLICATIONS:</div>
+
+  <div class="content-block">
+    <p><strong>FY2019 Financial Analysis #1</strong></p>
+    <p>Revenue year to date</p>
+    <p>Year to date tuition and fees through April 30 improved slightly over March for accounting adjustments to properly state summer session revenue. Other revenue categories combined exceeded budget and total revenue exceeds budget to date <span data-field="revenue_exceeds_budget_amount">{{ revenue_exceeds_budget_amount }}</span>.</p>
+    <p>Revenue projected through year end</p>
+    <p>No additional tuition and fees are projected for the year and a shortfall of <span data-field="tuition_shortfall_amount">{{ tuition_shortfall_amount }}</span> is projected for the year. There will be a one-time adjustment to the WSU share of State Appropriations due to a change in the formula, resulting in a surplus for the year of <span data-field="appropriations_surplus_amount">{{ appropriations_surplus_amount }}</span>. A projected decline in auxiliary services revenue is mostly offset by an increase in investment income for the year. Overall, revenue is expected to be <span data-field="overall_revenue_projection">{{ overall_revenue_projection }}</span> under budget.</p>
+    <p>Expenses and transfers year to date</p>
+    <p>Compensation is under budget. The budget for the overages in the Contracted Labor & Information and Communications categories lies in the Other category. Transfers from one budget category to another are not reflected on this report. Scholarships and Fellowships are under budget YTD due to lower enrollment.</p>
+    <p>Expenses and transfers projected through year end</p>
+    <p>A surplus is expected in Compensation due to unfilled positions. Spending in excess of budget in the remaining categories is attributed mainly to the fact that transfers from one budget category to another are not reflected on this report (e.g. from the Other category). The surplus in the "Other" category is predominantly central accounts that were not allocated during the year.</p>
+    <p>Overall, a surplus at year end of <span data-field="overall_surplus_amount">{{ overall_surplus_amount }}</span> is anticipated, roughly <span data-field="surplus_better_than_budget_amount">{{ surplus_better_than_budget_amount }}</span> better than budget.</p>
+    <p>Continued on page 2.</p>
+  </div>
+
+  <div class="section-title">BOARD RESOLUTION REQUESTED:</div>
+  <div class="content-block">
+    <p>For information only</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <img src="placeholder_logo.png" alt="University Logo" style="height: 60px;"/>
+      <h1 style="font-size: 24px; margin-top: 10px;">WRIGHT STATE UNIVERSITY</h1>
+    </div>
+    <div class="committee-info">
+      <h2 style="font-size: 16px;">Finance, Audit, and Infrastructure</h2>
+      <h3 style="font-size: 14px;">COMMITTEE</h3>
+      <p style="margin-top: 10px;">{{ report_date }}</p>
+      <p>Page 2</p>
+    </div>
+  </div>
+
+  <div class="section-title">FY2018 to FY2019 Actual Comparison #2 - This report compares the actual results to date for the current fiscal year as a percent of the annual budget for the current fiscal year to the actual performance for the same time period of the previous year as a percent of the actual annual results of the previous year.</div>
+
+  <div class="content-block">
+    <p>Total revenues for FY19 are <span data-field="fy19_revenue_percent">{{ fy19_revenue_percent }}</span> of budget and should end the year at <span data-field="fy19_revenue_end_percent">{{ fy19_revenue_end_percent }}</span> of budget At this time last year revenue was <span data-field="previous_year_revenue_percent">{{ previous_year_revenue_percent }}</span> of the year end total. Expenses are <span data-field="fy19_expense_percent">{{ fy19_expense_percent }}</span> of the annual budget vs. <span data-field="previous_year_expense_percent">{{ previous_year_expense_percent }}</span> to the total last year. Expenses are projected to be <span data-field="fy19_expense_projected_percent">{{ fy19_expense_projected_percent }}</span> of the budgeted amount for fiscal 2019.</p>
+  </div>
+
+  <div class="section-title">FY2019 to FY2019 Budget to Actual Variance #3 - This report presents the results for the month of March vs. budget and last year.</div>
+
+  <div class="content-block">
+    <p>Tuition and fees were <span data-field="tuition_fees_variance_amount">{{ tuition_fees_variance_amount }}</span> vs. budget of <span data-field="tuition_fees_budget_amount">{{ tuition_fees_budget_amount }}</span> and last year <span data-field="tuition_fees_last_year_amount">{{ tuition_fees_last_year_amount }}</span>.</p>
+    <p>State appropriations were higher than expected due to a recalculation of the subsidy. Sales and Services revenue increased <span data-field="sales_services_increase_amount">{{ sales_services_increase_amount }}</span> as compared to last year from <span data-field="sales_services_last_year_amount">{{ sales_services_last_year_amount }}</span> to <span data-field="sales_services_current_year_amount">{{ sales_services_current_year_amount }}</span> offsetting declines in this category reported last month. The quarterly mark to market for the VIA private equity investment was received causing investment income to be <span data-field="investment_income_variance_amount">{{ investment_income_variance_amount }}</span> better than last year.</p>
+    <p>Compensation is on budget and lower than last year. Other expense categories combined were slightly over the monthly budget and <span data-field="other_expense_overage_amount">{{ other_expense_overage_amount }}</span> over last year.</p>
+  </div>
+</div>
+
+</body>
+</html>

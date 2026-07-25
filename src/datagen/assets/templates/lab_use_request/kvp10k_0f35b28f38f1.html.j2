@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kasitsna Bay Lab Use Request Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; margin-top: 0; }
+  .form-group { margin-bottom: 15px; }
+  .inline-group { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .inline-group > div { width: 48%; }
+  .input-field { width: 100%; padding: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+  .textarea-field { width: 100%; height: 100px; padding: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+  .radio-group label { margin-right: 15px; }
+  .checkbox-group label { margin-right: 15px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right;">
+    <button style="padding: 10px 20px; background-color: #000; color: #fff; border: none; cursor: pointer;">Print form</button>
+  </div>
+  <h1 style="text-align: center;">Kasitsna Bay Lab Use Request Form</h1>
+  <p>Thank you for your interest in the <span data-field="lab_name">{{ lab_name }}</span>! Please read through this entire Lab Use Request Form and rules and then fill out the appropriate sections. You may return your form via e-mail to the <span data-field="lab_email">{{ lab_email }}</span>. We will contact you shortly thereafter to confirm your reservation. Please do not hesitate to contact us if you have questions!</p>
+  <p><a href="{{ lab_website_url }}">{{ lab_website_url }}</a></p>
+
+  <div class="form-group">
+    <p>Your Contact Information:</p>
+    <div class="inline-group">
+      <div>
+        <label for="contact_person">Contact Person:</label><br>
+        <input type="text" id="contact_person" class="input-field" value="{{ contact_person }}">
+      </div>
+      <div>
+        <label for="contact_fax">Contact Fax Number:</label><br>
+        <input type="text" id="contact_fax" class="input-field" value="{{ contact_fax_number }}">
+      </div>
+    </div>
+    <div class="inline-group">
+      <div>
+        <label for="organization_name">Organization Name and Project Title:</label><br>
+        <input type="text" id="organization_name" class="input-field" value="{{ organization_name }}">
+      </div>
+      <div>
+        <label for="contact_phone">Contact Telephone(s):</label><br>
+        <input type="text" id="contact_phone" class="input-field" value="{{ contact_phone }}">
+      </div>
+    </div>
+    <div class="inline-group">
+      <div>
+        <label for="contact_address">Contact Address:</label><br>
+        <input type="text" id="contact_address" class="input-field" value="{{ contact_address }}">
+      </div>
+      <div>
+        <label for="contact_email">Contact E-mail:</label><br>
+        <input type="email" id="contact_email" class="input-field" value="{{ contact_email }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="emergency_contact">Emergency Contact and Telephone:</label><br>
+      <input type="text" id="emergency_contact" class="input-field" value="{{ emergency_contact }}">
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="form-group">
+    <p>Non-UA groups with minors must complete and submit UA's <a href="{{ facilities_agreement_url }}">Facilities/Premise Use Agreement</a> [PDF].</p>
+    <p style="font-weight: bold;">IMPORTANT:</p>
+    <p>Foreign nationals will need to provide basic information to <span data-field="hr_contact">{{ hr_contact }}</span> for a routine U.S. federal facility security clearance. For visits to KBL of more than 3 days, there is a <span data-field="notice_period">{{ notice_period }}</span> notice requirement, so please contact us in plenty of time before your stay at the lab. Visits of 3 days or less require 5 days advance notice.</p>
+  </div>
+
+  <h2 style="margin-top: 30px;">Billing Information</h2>
+  <div class="form-group">
+    <label for="billing_organization">Organization responsible for payment:</label><br>
+    <input type="text" id="billing_organization" class="input-field" value="{{ billing_organization }}">
+  </div>
+  <div class="form-group">
+    <label for="if_uaf_account">If UAF, please list account number (fund, org):</label><br>
+    <input type="text" id="if_uaf_account" class="input-field" value="{{ uaf_account_number }}">
+  </div>
+  <div class="inline-group">
+    <div>
+      <label for="accounts_payable_contact">Accounts Payable Contact:</label><br>
+      <input type="text" id="accounts_payable_contact" class="input-field" value="{{ accounts_payable_contact }}">
+    </div>
+    <div>
+      <label for="phone_number">Phone Number:</label><br>
+      <input type="text" id="phone_number" class="input-field" value="{{ phone_number }}">
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 style="margin-top: 30px;">Accounts Payable Address:</h2>
+  <input type="text" class="input-field" value="{{ accounts_payable_address }}">
+  <div class="form-group">
+    <label for="accounts_payable_email">Accounts Payable E-mail:</label><br>
+    <input type="email" class="input-field" value="{{ accounts_payable_email }}">
+  </div>
+
+  <h2 style="margin-top: 30px;">Please briefly describe the research/activities you plan to conduct at the Kasitsna Bay Lab:</h2>
+  <textarea class="textarea-field" placeholder="Describe research activities...">{{ research_description }}</textarea>
+
+  <div class="divider"></div>
+
+  <h2 style="margin-top: 30px;">Lab Use Request</h2>
+  <div class="inline-group">
+    <div>
+      <label for="date_arrival">Date of Arrival:</label><br>
+      <input type="date" id="date_arrival" class="input-field" value="{{ date_of_arrival }}">
+    </div>
+    <div>
+      <label for="approx_arrival_time">Approximate time of Arrival:</label><br>
+      <input type="time" id="approx_arrival_time" class="input-field" value="{{ approximate_time_of_arrival }}">
+    </div>
+  </div>
+  <div class="inline-group">
+    <div>
+      <label for="date_departure">Date of Departure:</label><br>
+      <input type="date" id="date_departure" class="input-field" value="{{ date_of_departure }}">
+    </div>
+    <div>
+      <label for="approx_departure_time">Approximate time of Departure:</label><br>
+      <input type="time" id="approx_departure_time" class="input-field" value="{{ approximate_time_of_departure }}">
+    </div>
+  </div>
+
+  <div class="inline-group">
+    <div>
+      <label for="method_arrival">Method of Arrival:</label><br>
+      <input type="text" id="method_arrival" class="input-field" value="{{ method_of_arrival }}">
+    </div>
+    <div>
+      <label for="total_visitors">Total Number of Visitors:</label><br>
+      <input type="number" id="total_visitors" class="input-field" value="{{ total_number_of_visitors }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <p>Will you use SCUBA?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="scuba_use" value="yes" {% if scuba_use == 'yes' %}checked{% endif %}> Yes</label>
+      <label><input type="radio" name="scuba_use" value="no" {% if scuba_use == 'no' %}checked{% endif %}> No</label>
+    </div>
+    <p style="font-size: small;">(Please see Lab Rules about SCUBA)</p>
+  </div>
+
+  <div class="form-group">
+    <p>Do you need a boat with an operator?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="boat_operator" value="yes" {% if boat_operator == 'yes' %}checked{% endif %}> Yes</label>
+      <label><input type="radio" name="boat_operator" value="no" {% if boat_operator == 'no' %}checked{% endif %}> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <p>Do you need the OCES system?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="oces_system" value="yes" {% if oces_system == 'yes' %}checked{% endif %}> Yes</label>
+      <label><input type="radio" name="oces_system" value="no" {% if oces_system == 'no' %}checked{% endif %}> No</label>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <p>For boat and/or OCES use, please list which boat and give dates (see rules for use below):</p>
+    <input type="text" class="input-field" value="{{ boat_oces_details }}">
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <p>Will you be bringing hazardous chemicals? (Any material requiring an MSDS under OSHA's Hazard Communication Standard - <a href="{{ osha_link }}">https://www.osha.gov/dsg/hazcom/index.html</a>)</p>
+    <div class="radio-group">
+      <label><input type="radio" name="hazardous_chemicals" value="yes" {% if hazardous_chemicals == 'yes' %}checked{% endif %}> Yes</label>
+      <label><input type="radio" name="hazardous_chemicals" value="no" {% if hazardous_chemicals == 'no' %}checked{% endif %}> No</label>
+    </div>
+    <p style="font-size: small;">If so, you MUST:</p>
+    <ol>
+      <li>Provide a list at least one week prior to your arrival</li>
+      <li>Bring a copy of the MSDS for each chemical</li>
+      <li>Contact lab staff regarding appropriate shipping and removal methods.</li>
+    </ol>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label for="additional_requests">Additional Requests/Comments:</label><br>
+    <textarea class="textarea-field" placeholder="Additional comments...">{{ additional_requests }}</textarea>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 style="margin-top: 30px;">KASITSNA BAY LAB RULES & REGULATIONS</h2>
+
+  <h3 style="margin-top: 15px;">CHEMICALS</h3>
+  <p>No chemicals may be brought to the lab without prior authorization from the lab manager.</p>
+  <p>You MUST bring a copy of the MSDS for each chemical and contact lab staff regarding appropriate shipping and removal methods. Hazardous chemicals may not be disposed of at the Lab. All chemicals brought to the lab must be appropriately labeled, including contents, any warning information, date and name of owner. It is the responsibility of the owner to remove any remaining chemicals from the Lab when the project is completed.</p>
+  <p>Visitors will be required to read the Hazard Communication Plan upon arrival to the lab.</p>
+
+  <h3 style="margin-top: 15px;">COMMUNICATIONS</h3>
+  <p>Cell phone reception is good at the lab. Please bring your own cell phone; there is no landline to the lab. The wireless internet may be accessed for free but no streaming is allowed because of limited bandwidth.</p>
+
+  <h3 style="margin-top: 15px;">FLOAT AND HIKE PLANS</h3>
+  <p>Float and hike plans (even recreational) are a necessity. All boat users are required to fill out the boat float plan log and sign back in after return. When traveling on land, let someone know where you are going and an estimated time of return. Everyone should be aware that black bears occur in the vicinity of the lab. Anyone expecting to hike or jog and not familiar with bear safety should request information from the Site Manager.</p>
+
+  <h3 style="margin-top: 15px;">COLLECTION PERMITS</h3>
+  <p>Collection permits are required before any live samples may be taken and stored at the lab. Under Alaska law, a permit must be obtained from the Alaska Department of Fish and Game (ADF&G) in order to collect, possess, or transport wildlife, fish, shellfish, amphibian, or aquatic plant resources for educational, scientific, or propagative uses. A different set of rules pertains to the passage of ornamental species, or for importing exotic plant/animal specimens into Alaska. A permit from ADF&G is also required for control (including harassment or hazing) of nuisance wild birds or small mammals. Depending on their intended use of fish or aquatic plants, or an educational, wildlife, or scientific collection permit (for mammals, birds, or reptiles). To access application forms and information for various transport and possession permits, visit the <a href="{{ adfg_link }}">ADF&G website</a>.</p>
+
+  <h3 style="margin-top: 15px;">HOUSING UNITS</h3>
+  <p>Please keep the housing units in clean condition. Bedding, sheets and towels are provided. Shower and laundry facilities are only for use by people staying at the lab. Visitors wishing to use the dishwashers or laundry facilities must bring their own LIQUID soap. Report any plumbing, electrical, heating or appliance problems to the Site Manager immediately, even if they seem minor. Visitors will receive written instructions explaining how to clean the premises used and laundering bedding and towels before they leave.</p>
+
+  <h3 style="margin-top: 15px;">MAIL</h3>
+  <p>The address for mail is: <span data-field="lab_mailing_address">{{ lab_mailing_address }}</span></p>
+  <p>Mail will be picked up every day or by two by Lab staff and placed in mailboxes outside housing units. If an urgent mail item is expected, notify the Lab staff. Mail does not come in or leave Seldovia on Saturday or Sunday. For packages, UPS or FEDEX may be sent to the lab; however, it is the recipient's responsibility to track the package and determine when and where it will arrive, as arrival points/times change with carrier contracts on a regular basis.</p>
+
+  <h3 style="margin-top: 15px;">MEDICAL EMERGENCIES/CONDITIONS</h3>
+  <p>Visitors with medical conditions that could cause an emergency, e.g., seizure, should notify lab staff of the nature of the condition, symptoms when expressed, medications taken, emergency treatment, and how to contact your physician.</p>
+
+  <div class="divider"></div>
+
+  <h2 style="margin-top: 30px;">SCUBA</h2>
+  <p>All divers must be AAUS or NOAA certified and APPROVED DIVE PLANS must be on file at the lab before any dives take place. Dive plans must be approved by the UA Diving Safety Office, Dr. Brenda Konar (bhkonar@alaska.edu) or 907-474-5028. It is strongly recommended that divers contact Dr. Konar as early as possible to ensure her availability to discuss requirements, process reciprocity requests, and approve dive plans. All non-UA divers must have approved letters of reciprocity and approved dive plans on file with Dr. Konar prior to any diving approvals. The lab provides dive tanks and a limited amount of dive weights. All other equipment must be provided by the users. Please indicate on the Lab Use Request Form if you will use SCUBA.</p>
+
+  <h2 style="margin-top: 30px;">SHOP AND TOOLS</h2>
+  <p>The Scuba Locker can be used for drying rain gear and Mustang suits. Power tools from the shop are not to be operated without permission of the Site Manager. Tools are not to be taken from the shop without permission of the Site Manager.</p>
+
+  <h2 style="margin-top: 30px;">OCES</h2>
+  <p>The Ocean Acidification Experimental System is available for use to users that are trained on the equipment. Consumables (e.g., gas) to run the system will need to be purchased by the user.</p>
+
+  <h2 style="margin-top: 30px;">VEHICLES</h2>
+  <p>All boat and truck driving laws in the state of Alaska are applicable to lab vehicle users. A UAF driver card needs to be on file with the Lab, and gas used from the lab tanks must be recorded on the clipboard inside the shed next to the tanks.</p>
+  <p>Trucks: All drivers MUST have a current, valid driver's license and UAF Drivers Card in their possession, PRIOR to arrival. Drivers must read the UAF vehicle use policy and sign the required forms. A copy of your driver's license must be provided to the Lab. Cards may be obtained online at <a href="{{ uaf_driver_link }}">https://www.uaf.edu/safety/training/basic-training.php</a>. You should allow 2 weeks to receive your card. A CAT 2 driver form (<a href="{{ cat2_form_link }}">https://www.uaf.edu/safety/files/risk-management/Cat-1-and-II-Forms.pdf</a>) approved by the UAF Lab Director (Katrin Iken, <a href="{{ katrin_email }}">kiken@alaska.edu</a>) is a vehicle use approval. All vehicle use must be coordinated with the Site Manager.</p>
+  <p>All passengers using UAF vehicles are required by law to wear a seatbelt—this means NO passengers shall ride in the truck bed! Report any accidents, vehicle damage, or operating problems to the Site Manager immediately. Do not leave vehicles parked at the Jakob dock overnight, as there are occasional instances of vandalism. Contact Lab staff if you need a vehicle picked up or returned to the dock.</p>
+
+  <h2 style="margin-top: 30px;">BOATS</h2>
+  <p>Boats: Users wanting to use boats need to be at least 18 years of age. Users driving boats (Zodiacs) will have to show a small boat driving certification (e.g., <a href="{{ boat_cert_link }}">https://www.boat-ed.com/alaska</a>), but others are acceptable) and have to show proficiency. Boat drivers must be approved in advance (either by their vessel's Site Manager contact, UAF facilities manager at 907-202-3400). Prior to each use, check out with the Site Manager and fill out a float plan. Each boat user is with an operator only and must be scheduled in advance. Scheduled but unused boat time will be charged at $50/hr (i.e., please do not schedule the boat for 3 days of use when you only need 1 day).</p>
+
+  <h2 style="margin-top: 30px;">VISITORS, CHILDREN, PETS AND FIREARMS</h2>
+  <p>Overnight visitors are not allowed at the Lab.</p>
+  <p>No children are allowed that are not part of the approved group, even if they have a dedicated babysitter. Pets are not allowed on the Lab grounds unless they are an approved service animal. If so, their stay has to be coordinated with Lab staff prior to the visit.</p>
+  <p>Firearms are not allowed. Anyone arriving at the Lab with a firearm must immediately deliver it to the Site Manager for safe storage until departure.</p>
+
+  <h2 style="margin-top: 30px;">PAYMENT AND TERMS</h2>
+  <p>Payment is expected within 30 days of receiving the invoice for your stay. Make checks payable to UAF, and send to Kasitsna Bay Lab, PO Box 75720, Fairbanks, AK 99775. Contact for payments is the CFOS purchasing office, <a href="{{ cfos_link }}">UAF-CFOS-purch@alaska.edu</a>.</p>
+
+  <h2 style="margin-top: 30px;">CONTACT THE KASITSNA BAY LAB</h2>
+  <p>Connie Geagle (UAF Administrative Assistant) – 907-399-4042</p>
+  <p>Hans Pedersen (UAF Facilities Manager) – 907-202-3400</p>
+  <p>Mike Geagle (NOAA Facilities Manager) – 907-399-1108</p>
+</div>
+</body>
+</html>

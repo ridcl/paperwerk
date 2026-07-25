@@ -1,0 +1,157 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { text-align: center; font-weight: bold; margin-bottom: 30px; }
+  .section { margin-bottom: 20px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { flex: 1; margin-right: 20px; }
+  .form-group:last-child { margin-right: 0; }
+  .label { font-weight: bold; display: block; margin-bottom: 5px; }
+  .input-line { border-bottom: 1px solid #000; width: 100%; }
+</style>
+
+<div class="page">
+  <h1>BHSEC ALUMNI</h1>
+  <h2>HIGH SCHOOL TRANSCRIPT REQUEST FORM</h2>
+
+  <div class="section">
+    <p>DO NOT USE THIS FORM BEFORE READING THIS IMPORTANT NOTE:</p>
+    <p>The HS transcript is only required on rare occasions. When a college asks for a final transcript, they usually mean the COLLEGE transcript so please do not use this form unless your school specifically requests the HS transcript.</p>
+  </div>
+
+  <div class="section">
+    <p>Submit this completed form to the appropriate school:</p>
+    <div class="form-row">
+      <div class="form-group">
+        <span class="label">Manhattan campus:</span>
+        <p>{{ manhattan_campus_details }}</p>
+      </div>
+      <div class="form-group">
+        <span class="label">Queens campus:</span>
+        <p>{{ queens_campus_details }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p>By Fax:</p>
+    <p>Attention: Registrar</p>
+    <p>{{ fax_number }}</p>
+    <p>Allow 1-2 weeks for processing.</p>
+    <br>
+    <p>By Fax:</p>
+    <p>Attention: Registrar</p>
+    <p>{{ fax_number_2 }}</p>
+    <p>Allow 1-2 weeks for processing.</p>
+  </div>
+
+  <div class="section">
+    <p>Please Print Clearly</p>
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">Last Name:</span>
+        <div class="input-line" data-field="last_name">{{ last_name }}</div>
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <span class="label">First Name:</span>
+        <div class="input-line" data-field="first_name">{{ first_name }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">Street:</span>
+        <div class="input-line" data-field="street">{{ street }}</div>
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <span class="label">Apt#</span>
+        <div class="input-line" data-field="apt">{{ apt }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">City</span>
+        <div class="input-line" data-field="city">{{ city }}</div>
+      </div>
+      <div class="form-group" style="flex: 2;">
+        <span class="label">State</span>
+        <div class="input-line" data-field="state">{{ state }}</div>
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <span class="label">Zip</span>
+        <div class="input-line" data-field="zip">{{ zip }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">Date of Birth:</span>
+        <div class="input-line" data-field="date_of_birth">{{ date_of_birth }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">Phone where you can be reached:</span>
+        <div class="input-line" data-field="phone_where_you_can_be_reached">{{ phone_where_you_can_be_reached }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">E-Mail:</span>
+        <div class="input-line" data-field="e_mail">{{ e_mail }}</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">Student Signature:</span>
+        <div class="input-line" data-field="student_signature">{{ student_signature }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p>Print Clearly the complete name and address of the admissions office or registrar of the institution you will be attending:</p>
+    <div class="input-line" style="height: 50px;" data-field="student_signature_2">{{ student_signature_2 }}</div>
+  </div>
+
+  <div class="section">
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">(Complete Name of Institution)</span>
+        <div class="input-line" data-field="field_1">{{ field_1 }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <span class="label">(Street Address of the Office of Admission)</span>
+        <div class="input-line" data-field="field_2">{{ field_2 }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="flex: 1;">
+        <span class="label">(City)</span>
+        <div class="input-line" data-field="field_3">{{ field_3 }}</div>
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <span class="label">(State)</span>
+        <div class="input-line" data-field="field_4">{{ field_4 }}</div>
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <span class="label">(Zip Code)</span>
+        <div class="input-line" data-field="field_5">{{ field_5 }}</div>
+      </div>
+    </div>
+  </div>
+</div>

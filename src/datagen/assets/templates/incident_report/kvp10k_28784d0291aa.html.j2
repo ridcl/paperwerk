@@ -1,0 +1,125 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { margin-top: 0; }
+  .header-title { font-weight: bold; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .data-row { display: flex; margin-bottom: 8px; font-size: 12pt; }
+  .data-label { width: 150px; flex-shrink: 0; }
+  .data-value { flex-grow: 1; }
+  .incident-entry { border-bottom: 1px solid #ccc; padding-bottom: 15px; margin-bottom: 15px; }
+  .incident-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px; }
+  .incident-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 11pt; }
+  .incident-details div { display: flex; flex-direction: column; }
+  .incident-details span { font-weight: normal; }
+  .incident-details .label { font-weight: bold; margin-bottom: 2px; }
+</style>
+<div class="page">
+  <div style="margin-bottom: 30px;">
+    <h1 class="header-title">Report Exec Administrator</h1>
+    <p style="font-size: 12pt;">Clery Act Public Crime Log</p>
+    <p style="font-size: 10pt; margin-top: 10px;">From {{ report_date_start }} To {{ report_date_end }}</p>
+  </div>
+
+  {% for incident in incidents %}
+  <div class="incident-entry">
+    <div class="incident-header">
+      <span style="font-weight: bold;">Incident Type:</span>
+      <span style="font-weight: bold;">Incident Occurred Between:</span>
+      <span style="font-weight: bold;">Disposition:</span>
+    </div>
+    <div class="data-row" style="margin-bottom: 15px;">
+      <div class="data-label">Incident Type:</div>
+      <div class="data-value"><span data-field="incident.incident_type">{{ incident.incident_type }}</span></div>
+    </div>
+
+    <div class="incident-details">
+      <div>
+        <span class="label">Location:</span>
+        <div class="data-value"><span data-field="incident.location">{{ incident.location }}</span></div>
+      </div>
+      <div>
+        <span class="label">Date/Time Reported:</span>
+        <div class="data-value"><span data-field="incident.date_time_reported">{{ incident.date_time_reported }}</span></div>
+      </div>
+      <div>
+        <span class="label">Incident Occurred:</span>
+        <div class="data-value"><span data-field="incident.incident_occurred">{{ incident.incident_occurred }}</span></div>
+      </div>
+      <div>
+        <span class="label">Case #:</span>
+        <div class="data-value"><span data-field="incident.case_number">{{ incident.case_number }}</span></div>
+      </div>
+      <div>
+        <span class="label">Int. Ref. #:</span>
+        <div class="data-value"><span data-field="incident.internal_reference">{{ incident.internal_reference }}</span></div>
+      </div>
+      <div>
+        <span class="label">Disposition:</span>
+        <div class="data-value"><span data-field="incident.disposition">{{ incident.disposition }}</span></div>
+      </div>
+    </div>
+
+    <div class="data-row" style="margin-top: 15px;">
+      <div class="data-label">Notes:</div>
+      <div class="data-value"><span data-field="incident.notes">{{ incident.notes }}</span></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="page">
+  <!-- Second page content structure based on the second image -->
+  {% for incident in incidents %}
+  <div class="incident-entry">
+    <div class="incident-header">
+      <span style="font-weight: bold;">Incident Type:</span>
+      <span style="font-weight: bold;">Incident Occurred Between:</span>
+      <span style="font-weight: bold;">Disposition:</span>
+    </div>
+    <div class="data-row" style="margin-bottom: 15px;">
+      <div class="data-label">Incident Type:</div>
+      <div class="data-value"><span data-field="incident.incident_type">{{ incident.incident_type }}</span></div>
+    </div>
+
+    <div class="incident-details">
+      <div>
+        <span class="label">Location:</span>
+        <div class="data-value"><span data-field="incident.location">{{ incident.location }}</span></div>
+      </div>
+      <div>
+        <span class="label">Date/Time Reported:</span>
+        <div class="data-value"><span data-field="incident.date_time_reported">{{ incident.date_time_reported }}</span></div>
+      </div>
+      <div>
+        <span class="label">Incident Occurred:</span>
+        <div class="data-value"><span data-field="incident.incident_occurred">{{ incident.incident_occurred }}</span></div>
+      </div>
+      <div>
+        <span class="label">Case #:</span>
+        <div class="data-value"><span data-field="incident.case_number">{{ incident.case_number }}</span></div>
+      </div>
+      <div>
+        <span class="label">Int. Ref. #:</span>
+        <div class="data-value"><span data-field="incident.internal_reference">{{ incident.internal_reference }}</span></div>
+      </div>
+      <div>
+        <span class="label">Disposition:</span>
+        <div class="data-value"><span data-field="incident.disposition">{{ incident.disposition }}</span></div>
+      </div>
+    </div>
+
+    <div class="data-row" style="margin-top: 15px;">
+      <div class="data-label">Notes:</div>
+      <div class="data-value"><span data-field="incident.notes">{{ incident.notes }}</span></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

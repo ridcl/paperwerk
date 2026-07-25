@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Type Approval Certificate</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { margin-top: 0; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .logo { font-size: 24pt; font-weight: bold; }
+  .certificate-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 30px; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px; text-align: left; }
+  .text-right { text-align: right; }
+  .center-text { text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-info">
+    <div class="logo">DNV GL</div>
+    <div>
+      Certificate No.: <span data-field="certificate_number">{{ certificate_number }}</span>
+    </div>
+  </div>
+  <div class="certificate-title">TYPE APPROVAL CERTIFICATE</div>
+
+  <div class="section-title">This is to certify:</div>
+  <p>That the Contractor <span data-field="contractor_name">{{ contractor_name }}</span></p>
+
+  <div class="section-title">with type designation(s)</div>
+  <p>Contractors <span data-field="contractor_designations">{{ contractor_designations }}</span></p>
+
+  <div class="section-title">Issued to</div>
+  <p><span data-field="issuer_name">{{ issuer_name }}</span>, <span data-field="issuer_location">{{ issuer_location }}</span></p>
+
+  <div class="section-title">is found to comply with</div>
+  <p>DNV GL rules for classification – Ships and offshore units</p>
+
+  <div class="section-title">Application :</div>
+  <p>For installations inside switchboard/enclosures onboard ships and offshore units.</p>
+
+  <div class="section-title">Product(s) approved by this certificate is/are accepted for installation on all vessels classed by DNV GL.</div>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Type</td>
+        <td style="width: 20%; text-align: center;">Rated Voltage (V)</td>
+        <td style="width: 20%; text-align: center;">Rated Current (A)</td>
+        <td style="width: 20%; text-align: center;">Frequency (Hz)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="product_type">{{ product_type }}</span></td>
+        <td class="center-text"><span data-field="rated_voltage">{{ rated_voltage }}</span></td>
+        <td class="center-text"><span data-field="rated_current">{{ rated_current }}</span></td>
+        <td class="center-text"><span data-field="frequency">{{ frequency }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This Certificate is valid until <span data-field="validity_date">{{ validity_date }}</span>.</p>
+  <p>Issued at <span data-field="issuance_location">{{ issuance_location }}</span> on <span data-field="issuance_date">{{ issuance_date }}</span>.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <p>DNV GL local station: <span data-field="local_station">{{ local_station }}</span></p>
+      <p>Approval Engineer: <span data-field="approval_engineer">{{ approval_engineer }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <p>for DNV GL</p>
+      <p>Digitally Signed By: <span data-field="signer_name">{{ signer_name }}</span>, <span data-field="signer_location">{{ signer_location }}</span></p>
+      <p>Signing Date: <span data-field="signing_date">{{ signing_date }}</span></p>
+      <p>Head of Section</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo">DNV GL</div>
+    <div>
+      Job Id: <span data-field="job_id">{{ job_id }}</span><br>
+      Certificate No.: <span data-field="certificate_number">{{ certificate_number }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Name and place of manufacturer</div>
+  <p>Manufacturer: <span data-field="manufacturer_name">{{ manufacturer_name }}</span>, <span data-field="manufacturer_location">{{ manufacturer_location }}</span></p>
+  <p>Manufacturer: <span data-field="manufacturer_name_2">{{ manufacturer_name_2 }}</span>, <span data-field="manufacturer_location_2">{{ manufacturer_location_2 }}</span></p>
+
+  <div class="section-title">Product description</div>
+  <p>Contactors for use up to <span data-field="voltage_rating">{{ voltage_rating }}</span> volt.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;">Poles</td>
+        <td style="width: 30%;">Max. Current</td>
+        <td style="width: 30%;">Frequency</td>
+        <td style="width: 30%;">Coil Voltage</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="poles">{{ poles }}</span></td>
+        <td>see list below</td>
+        <td><span data-field="frequency_range">{{ frequency_range }}</span></td>
+        <td>Various</td>
+      </tr>
+      <tr>
+        <td><span data-field="poles_2">{{ poles_2 }}</span></td>
+        <td><span data-field="max_current_2">{{ max_current_2 }}</span></td>
+        <td><span data-field="frequency_range_2">{{ frequency_range_2 }}</span></td>
+        <td><span data-field="coil_voltage_2">{{ coil_voltage_2 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="poles_3">{{ poles_3 }}</span></td>
+        <td><span data-field="max_current_3">{{ max_current_3 }}</span></td>
+        <td><span data-field="frequency_range_3">{{ frequency_range_3 }}</span></td>
+        <td><span data-field="coil_voltage_3">{{ coil_voltage_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">List of current and power ratings for <span data-field="voltage_rating_2">{{ voltage_rating_2 }}</span> volt. See manufacturers catalogue for current and power ratings for lower voltages.</div>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;">Type</td>
+        <td style="width: 25%; text-align: center;">Nom. Current AC-1, at 690V</td>
+        <td style="width: 25%; text-align: center;">Nom. Current AC-3, at 690V</td>
+        <td style="width: 25%; text-align: center;">Withstand current*, at 40°C</td>
+        <td style="width: 15%; text-align: center;">Max power at 690V</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in product_ratings %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].type">{{ line_items[loop.index0].type }}</span></td>
+        <td class="center-text"><span data-field="line_items[{{ loop.index0 }}].nom_current_ac1">{{ line_items[loop.index0].nom_current_ac1 }}</span></td>
+        <td class="center-text"><span data-field="line_items[{{ loop.index0 }}].nom_current_ac3">{{ line_items[loop.index0].nom_current_ac3 }}</span></td>
+        <td class="center-text"><span data-field="line_items[{{ loop.index0 }}].withstand_current">{{ line_items[loop.index0].withstand_current }}</span></td>
+        <td class="center-text"><span data-field="line_items[{{ loop.index0 }}].max_power">{{ line_items[loop.index0].max_power }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><small>*Withstand current must be derated by 5% as DNV rules state max ambient temp of 45°C onboard ships not 40°C as stated by IEC. Separate case-by-case approval is needed in each case to use the figures as listed.</small></p>
+
+  <div class="section-title">Application/Limitation</div>
+  <p>For installations inside switchboard/enclosures onboard ships and offshore units.</p>
+
+  <div class="section-title">Type Approval documentation</div>
+  <p>Technical info: Manufacturer's catalogue <span data-field="catalogue_reference">{{ catalogue_reference }}</span>.</p>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo">DNV GL</div>
+    <div>
+      Job Id: <span data-field="job_id">{{ job_id }}</span><br>
+      Certificate No.: <span data-field="certificate_number">{{ certificate_number }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Test reports:</div>
+  <p>CB test certificate <span data-field="cb_certificate_number">{{ cb_certificate_number }}</span> dated <span data-field="cb_certificate_date">{{ cb_certificate_date }}</span>. Test report no. <span data-field="test_report_number">{{ test_report_number }}</span> issued <span data-field="test_report_date">{{ test_report_date }}</span>.</p>
+  <p>Witnessed by DNV: <span data-field="witnessed_by_dnv">{{ witnessed_by_dnv }}</span> Test no. <span data-field="test_number">{{ test_number }}</span></p>
+
+  <div class="section-title">Tests carried out</div>
+  <p>Type tests according to <span data-field="type_test_standard">{{ type_test_standard }}</span>.</p>
+  <p>Other tests: Insulation, power supply variation, inclination, vibration, damp heat, dry heat, high voltage.</p>
+
+  <div class="section-title">Marking of product</div>
+  <p>Manufacturers type - standard reference - ratings</p>
+
+  <div class="section-title">Periodical assessment</div>
+  <p>The scope of the periodical assessment is to verify that the conditions stipulated for the Type approval is complied with and that no alterations are made to the product design or choice of materials.</p>
+  <p>The main elements of the assessment are:</p>
+  <ul>
+    <li>Inspection on factory samples, selected at random from the production line (where practicable)</li>
+    <li>Review of test reports and certificates (PCT) and Routines (RT) checked (if not available tests according to PST and RT to be carried out)</li>
+    <li>Review of type approval documentation</li>
+    <li>Review of possible change in design, materials and performance</li>
+    <li>Ensuring traceability between manufacturer's product type marking and Type Approval Certificate.</li>
+  </ul>
+  <p>Assessment to be performed at least every second year.</p>
+
+  <div style="margin-top: 50px;">
+    <p>END OF CERTIFICATE</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <p>Form code: <span data-field="form_code">{{ form_code }}</span></p>
+    <p>Revision: <span data-field="revision">{{ revision }}</span></p>
+    <p>www.dnvgl.com</p>
+  </div>
+  <div style="text-align: right; font-size: 10pt;">Page 1 of 3</div>
+</div>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <p>Form code: <span data-field="form_code">{{ form_code }}</span></p>
+    <p>Revision: <span data-field="revision">{{ revision }}</span></p>
+    <p>www.dnvgl.com</p>
+  </div>
+  <div style="text-align: right; font-size: 10pt;">Page 2 of 3</div>
+</div>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <p>Form code: <span data-field="form_code">{{ form_code }}</span></p>
+    <p>Revision: <span data-field="revision">{{ revision }}</span></p>
+    <p>www.dnvgl.com</p>
+  </div>
+  <div style="text-align: right; font-size: 10pt;">Page 3 of 3</div>
+</div>
+</body>
+</html>

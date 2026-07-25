@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotation Request</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 10px; }
+        td, th { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        .signature-block td { padding: 20px 0; }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <h1 style="text-align: center;">Francis Marion University – Quote Request</h1>
+        <p>Quote Name: <span data-field="quote_name">{{ quote_name }}</span> Date: <span data-field="date">{{ date }}</span></p>
+
+        <h2 style="margin-top: 30px;">I. Scope of Solicitation</h2>
+        <p>ACQUIRE SERVICES & SUPPLIES / EQUIPMENT (JAN 2006): The purpose of this solicitation is to acquire services and supplies or equipment complying with the enclosed description and/or specifications and conditions. [01-1005-1]</p>
+        <p>Francis Marion University is accepting quotes for: A <span data-field="description_summary">{{ description_summary }}</span></p>
+        <p>For an offer to qualify as responsive, offer should provide all detail as indicated in this solicitation. Missing items may deem your quote as non-responsive, and therefore may not be considered by the University.</p>
+        <p>Please see details for a non-mandatory but highly recommended site visit on page 6. A site visit may aid in providing more accuracy for the offer in their quotation.</p>
+    </div>
+
+    <div class="page">
+        <p>The following schedule is required to be completed by the offeror:</p>
+        <p>Please quote your lowest delivered price for the item(s) below. Francis Marion University reserves the right to reject any or all quotes and waive any or all technicalities. Offeror may choose to provide a quotation for one or both of the items below. If you are not providing a quotation for one of the items, please indicate N/A or leave the space blank.</p>
+        <p><strong>Note:</strong> Award will be made for the entirety of this project (Items 1 – 3). Offeror must provide quotation and requested pricing for all of the individual line items. Any and all offers that are not inclusive of all items shall be deemed non-responsive.</p>
+
+        <h3 style="margin-top: 30px;">Itemized Quotation</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Item</th>
+                    <th style="width: 20%;">Quantity</th>
+                    <th style="width: 50%;">Description</th>
+                    <th style="width: 20%;">Item Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><span data-field="quantity_1">{{ quantity_1 }}</span></td>
+                    <td><span data-field="line_items[0].description">{{ line_items[0].description }}</span></td>
+                    <td><span data-field="line_items[0].amount">{{ line_items[0].amount }}</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span data-field="quantity_2">{{ quantity_2 }}</span></td>
+                    <td><span data-field="line_items[1].description">{{ line_items[1].description }}</span></td>
+                    <td><span data-field="line_items[1].amount">{{ line_items[1].amount }}</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><span data-field="quantity_3">{{ quantity_3 }}</span></td>
+                    <td><span data-field="line_items[2].description">{{ line_items[2].description }}</span></td>
+                    <td><span data-field="line_items[2].amount">{{ line_items[2].amount }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: right; font-weight: bold;">Grand Total Price sum of Items 1-3 (excluding sales tax): <span data-field="grand_total">{{ grand_total }}</span></p>
+
+        <h3 style="margin-top: 30px;">Technical Specifications</h3>
+        <p><strong>Indicate specific manufacturer/make/model details of sound masking system parts/equipment and associated materials for University Place 2nd Floor here:</strong></p>
+        <div style="border: 1px solid #ccc; padding: 15px; min-height: 100px;">
+            <span data-field="spec_2nd_floor">{{ spec_2nd_floor }}</span>
+        </div>
+        <p><strong>Identify Manufacturer/Make/Model of sound masking system parts/equipment for University Place 3rd Floor here:</strong></p>
+        <div style="border: 1px solid #ccc; padding: 15px; min-height: 100px;">
+            <span data-field="spec_3rd_floor">{{ spec_3rd_floor }}</span>
+        </div>
+
+        <h3 style="margin-top: 30px;">Offeror Information</h3>
+        <p>Please initial and date here to indicate Offeror's capability and availability in all respects to provide all parts/equipment and installation services in items #1, #2, and #3 upon award. Specific dates for installation to be mutually agreed upon by the Offeror and the University.</p>
+
+        <table class="signature-block">
+            <tr>
+                <td style="width: 50%;">Offeror's Signature</td>
+                <td style="width: 50%;">Date</td>
+            </tr>
+        </table>
+        <p>Signature and Date by authorized individual. By signing here, Offeror affirms that parts quoted/equipment (Item #1 and Item #2) meet the specifications detailed in the "Scope of Work/Specifications" that begin on page 7 of this solicitation, and that Offeror is capable and qualified of completing the installation of the quoted parts/equipment.</p>
+
+        <h3 style="margin-top: 30px;">Vendor's Best Delivery/Installation Date:</h3>
+        <p>Days After Receipt of Order: <span data-field="delivery_date_days">{{ delivery_date_days }}</span></p>
+        <h3 style="margin-top: 30px;">Estimated Time Frame for Installation and Project Completion</h3>
+        <p>Days After Installation Commencement: <span data-field="completion_days">{{ completion_days }}</span></p>
+
+        <h3 style="margin-top: 30px;">Certification</h3>
+        <p>Please Check appropriate line:</p>
+        <p>I certify that I: <span data-field="cert_manufacturer">{{ cert_manufacturer }}</span> AM a manufacturer or an authorized dealer for the items listed.</p>
+        <p>I certify that I: <span data-field="cert_dealer">{{ cert_dealer }}</span> AM NOT a manufacturer or an authorized dealer for the items listed.</p>
+
+        <p style="margin-top: 40px;">Prior to commencement of the work, contractor shall provide to the University a copy of contractor's certificate of liability insurance (ACORD 25) as denoted in the Contractor's Liability Insurance subsection (on page 9 of this solicitation).</p>
+    </div>
+
+    <div class="page">
+        <h2 style="margin-top: 0;">II. INSTRUCTIONS TO OFFERORS – A. GENERAL INSTRUCTIONS</h2>
+        <p>DEFINITIONS, CAPITALIZATION, AND HEADINGS (DEC 2015) CLAUSE HEADINGS USED IN THIS SOLICITATION ARE FOR CONVENIENCE ONLY AND SHALL NOT BE USED TO CONSTRUE MEANING OR INTENT. EVEN IF NOT CAPITALIZED, THE FOLLOWING DEFINITIONS ARE APPLICABLE TO ALL PARTS OF THE SOLICITATION, UNLESS EXPRESSLY PROVIDED OTHERWISE.</p>
+        <p>AUTHORITY means the State Fiscal Accountability Authority or its successor in interest.</p>
+        <p>BUSINESS means any corporation, partnership, individual, sole proprietorship, joint stock company, joint venture, or any other entity.</p>
+        <p>CHANGE ORDER means any written alteration in specifications, delivery point, rate, delivery of period, performance, price, quantity, or other provisions of this contract accomplished by mutual agreement of the parties to the contract. [11-35-3104]</p>
+        <p>CONTRACT means the agreement between the University and the Offeror, including all attachments, addenda, and amendments. [11-35-3109]</p>
+        <p>CONTRACT MODIFICATION means a written order signed by the procurement officer, directing the contractor to make changes which the clause of the contract titled "Changes" if included herein, authorizes the Procurement Officer to order without the prior approval of the contractor. [11-35-3109]</p>
+        <p>COVER PAGE means the page of the original solicitation on which the solicitation is identified by number. Offerors are cautioned that Amendments may modify information provided on the Cover Page.</p>
+        <p>OFFER means the proposal submitted in response to this solicitation. The terms Bid and Proposal are used interchangeably when referring to the Offer. See page 7 of this solicitation.</p>
+        <p>PAGE TWO means the second page of the original solicitation on which the solicitation is labeled Page Two.</p>
+        <p>YOU and YOUR means Offeror.</p>
+        <p>YOU and YOUR means Offeror.</p>
+        <p>SUBCONTRACTOR means any person you contract with to perform or provide any part of the work. OR US we means the using governmental unit.</p>
+        <p>USING GOVERNMENTAL UNIT means the unit(s) of government identified as such on the Cover Page. If the Cover Page identifies more than one using governmental unit, the term "Using Governmental Unit" means any such unit.</p>
+        <p>WORK means all labor, materials, equipment, services, or property of any type, provided or to be provided by the Contractor to fulfill the Contractor's obligations under the Contract. [02-24003-3]</p>
+        <p>AMENDMENTS TO SOLICITATION (JAN 2004): The Solicitation may be amended at any time prior to opening. All actual and prospective Offerors shall acknowledge receipt of any amendment to this solicitation (1) by signing and returning the amendment, (2) by identifying the amendment number and date in the space provided for this purpose on Page Two, (3) by letter, or (4) by submitting a bid that indicates in some way that the bidder received the amendment. (c) If this solicitation is amended, then all terms and conditions which are not modified remain unchanged.</p>
+        <p>AUTHORITY AGENT (FEB 2015)</p>
+        <p>All authority regarding this procurement is vested solely with the responsible Procurement Officer. Unless specifically delegated in writing, the Procurement Officer is the only governmental official authorized to bind the government with regard to this procurement or the resulting contract. [02-24007-1]</p>
+        <p>BID IN ENGLISH & DOLLARS (JAN 2004): Offers submitted in response to this solicitation shall be in the English language and in US dollars, unless otherwise permitted by the Solicitation. [02-24025-1]</p>
+        <p>CODE OF LAWS AVAILABLE (JAN 2006): The South Carolina Code of Laws, including the Consolidated Procurement Code, is available at: <span data-field="sc_code_link">{{ sc_code_link }}</span> The South Carolina Regulations are available at: <span data-field="sc_reg_link">{{ sc_reg_link }}</span> [02-24040-2]</p>
+        <p>DEADLINE FOR SUBMISSION OF OFFER (JAN 2004): Any offer received after the Procurement Officer of the governmental body or his designee has declared that the time set for opening has arrived, shall be rejected unless the offer has been delivered to the designated purchasing office or the governmental body's mail room which services that purchasing office prior to the opening. [R-19-445.2070(G)] [02-24050-1]</p>
+    </div>
+
+    <div class="page">
+        <h2 style="margin-top: 0;">III. SCOPE OF WORK/SPECIFICATIONS</h2>
+        <p>Acquisition: The University is seeking a capable vendor to provide, deliver, and install an automatically-adjusting sound masking system for the 2nd and 3rd floors of Francis Marion University's University Place building. Installation to be initiated with awarded vendor for times and dates mutually agreed upon by the vendor and the University.</p>
+        <p>ACQUIRE SERVICES & SUPPLIES / EQUIPMENT (JAN 2006): The purpose of this solicitation is to acquire services and supplies or equipment complying with the enclosed description and/or specifications and conditions. [01-1005-1]</p>
+
+        <h3 style="margin-top: 30px;">Background Information:</h3>
+        <p>The automatically-adjusting sound masking system sought for purchase, delivery, and installation in this solicitation is to mask noise distractions between the floors of Francis Marion University's University Place building located in downtown Florence, SC 29506. The purchase, delivery, and installation of this system is intended to reduce noise distractions, protect speech privacy, and more in the University Place building.</p>
+
+        <h3 style="margin-top: 30px;">Specifications:</h3>
+        <ul>
+            <li>Francis Marion University seeks an automatically-adjusting sound masking solution for the 2nd and 3rd floors of the University Place located at: <span data-field="university_place_address">{{ university_place_address }}</span>, Florence, SC 29506.</li>
+            <li>System must have the capability to adjust automatically the sound masking ability based on the ambient or current noise levels. Market research has identified this feature as "adaptive adjustment," "adaptive volume adjustment," "adaptive masking," and/or "adaptive volume control," and it is a necessary feature of the sound masking system needed.</li>
+            <li>Must be free from defects in parts.</li>
+            <li>Solution must be a turn-key solution where the contractor provides and delivers all necessary labor, equipment, installation, and materials for a complete job.</li>
+            <li>System must run on normal 120 volt circuits.</li>
+            <li>Equipment shall be installed or mounted in the ceiling and shall match the color of its surrounding area (in most cases, white).</li>
+            <li>The successful bidder shall provide for the delivery of all quoted equipment.</li>
+            <li>The successful bidder shall provide for the full installation of all quoted equipment.</li>
+            <li>The contractor must provide a minimum 5-year warranty on all installed parts and equipment.</li>
+            <li>The contractor must provide a minimum 1-year installation warranty.</li>
+        </ul>
+
+        <h3 style="margin-top: 30px;">Item Details:</h3>
+        <p><strong>Item #1 - Delivery of all necessary sound masking equipment for University Place 2nd floor including a five (5) year parts/equipment warranty</strong></p>
+        <p><strong>Item #2 - Delivery of all necessary sound masking equipment for University Place 3rd floor including a five (5) year parts/equipment warranty</strong></p>
+        <p><strong>Item #3 - Installation of parts/equipment quoted from Item #1 AND Item #2 including a one (1) year installation warranty</strong></p>
+        <p>Provide all labor and materials to install all sound masking equipment quoted from Item #1 and Item #2. In coordination with a University representative, the contractor shall test the equipment to verify proper installation and working order of the installed equipment.</p>
+        <p><strong>Note:</strong> Award will be made for the entirety of this project (Items 1 – 3). Offeror must provide quotation and requested pricing for all of the individual line items.</p>
+    </div>
+
+    <div class="page">
+        <h2 style="margin-top: 0;">IV. GENERAL CONDITIONS</h2>
+        <p>DEFAULT: In case or default by the Contractor, Francis Marion University reserves the right to purchase any or all items in default in the open market, charging the Contractor with any additional costs. The defaulting Contractor shall not be considered a responsible Contractor until the assessed charge has been satisfied.</p>
+        <p>All amendments to and interpretation of this RFQ shall be in writing. The procurement officer shall not be legally bound by any amendment or interpretation that is not in writing.</p>
+        <p>Any contract entered into by Francis Marion University resulting from this quotation shall be subject to cancellation at the end of any fiscal or appropriated year unless otherwise provided by law.</p>
+        <p>Payment will be made in accordance with Section 11-35-45 of the South Carolina Consolidated Procurement Code and Disbursement Regulations. Delay in receiving invoices, as well as errors and omissions on the invoices, will be considered a breach of contract. The University reserves the right to withhold payment or make such deductions as may be necessary to protect the University from loss or damage because of defective work, claims, damages or to pay for repair of correction of materials furnished hereunder.</p>
+        <p>Quoted prices must remain firm for a period of thirty (30) days beyond the Request for Quotation deadline.</p>
+        <p>Francis Marion University shall consider payment discounts in the award of this contract when such discounts are for thirty (30) days or more after final inspection and acceptance of contract requirements. Payment discounts for less than thirty (30) days are encouraged but shall not be a factor in award determination. Please state your discount terms using the above referenced information as the University's position on the matter.</p>
+        <p>All materials and products offered must be guaranteed to meet and comply with the requirements all the specifications, terms and conditions indicated or referred to.</p>
+        <p>The award will be made in accordance with Section 11-35-1550 (b) of the South Carolina Consolidated Procurement Code.</p>
+        <p>The University reserves the right to reject any and all quotations and to cancel the solicitation; waive any and all technicalities; the University reserves the right to reject any quotation in which the delivery time indicated to be of substantial length to cause disruption and/or delay in operation for which the item(s) is/are intended; ambiguous quotations which are uncertain as to terms, delivery, quantity or compliance with specifications may be rejected.</p>
+        <p>The contractor assumes sole responsibility and shall hold harmless Francis Marion University, its directors, officers, employees and agents from and against any and all claims, actions or liabilities of any nature which may arise from the contractor's performance of the work, including but not limited to claims for injury, death, property damage, or loss resulting from the contractor's negligence or failure to perform the work in a workmanlike manner.</p>
+        <p>Contractor agrees not to refer to award of this contract in commercial advertising in such a manner to state or imply that the products or service provided are endorsed or preferred by the University.</p>
+        <p>Upon award of a contract under this quotation, the person, partnership, association or corporation to whom the award is made must comply with the laws of South Carolina that require such person or entity to be authorized and/or licensed to do business in this State. Notwithstanding the fact that applicable statutes may exempt or exclude the successful Contractor from requirements that it be authorized and/or licensed to do business in this State, by submission of this signed quote, the Contractor agrees to comply with all such requirements as may be applicable to the Contractor's performance thereof, including any questions as to the liability for taxes, licenses or fees levied by the State.</p>
+        <p>AWARD TO ONE OFFEROR (JAN 2006): Award will be made to one Offeror.</p>
+        <p>UNIT PRICES REQUIRED (JAN 2006): Unit price to be shown for each item. [02-28-170-1]</p>
+    </div>
+
+    <div class="page">
+        <h2 style="margin-top: 0;">References Required:</h2>
+        <p>Provide three (3) references for whom OFFEROR has provided similar services.</p>
+
+        <h3 style="margin-top: 20px;">1. Agency or Firm Name:</h3>
+        <p>Business Address:</p>
+        <p>Mailing Address:</p>
+        <p>Contact Person:</p>
+        <p>Telephone:</p>
+        <p>Email address:</p>
+        <p>Type of Service:</p>
+        <p>Dates(s) when service provided:</p>
+
+        <h3 style="margin-top: 20px;">2. Agency or Firm Name:</h3>
+        <p>Business Address:</p>
+        <p>Mailing Address:</p>
+        <p>Contact Person:</p>
+        <p>Telephone:</p>
+        <p>Email address:</p>
+        <p>Type of Service:</p>
+        <p>Dates(s) when service provided:</p>
+
+        <h3 style="margin-top: 20px;">3. Agency or Firm Name:</h3>
+        <p>Business Address:</p>
+        <p>Mailing Address:</p>
+        <p>Contact Person:</p>
+        <p>Telephone:</p>
+        <p>Email address:</p>
+        <p>Type of Service:</p>
+        <p>Dates(s) when service provided:</p>
+    </div>
+
+    <div class="page">
+        <h2 style="margin-top: 0;">II. INSTRUCTIONS TO OFFERORS – B. SPECIAL INSTRUCTIONS</h2>
+        <p>DELIVERY/PERFORMANCE LOCATION – SPECIFIED JAN 2006: After award, all deliveries shall be made and all services provided to the following address, unless otherwise specified:</p>
+        <p>Francis Marion University</p>
+        <p><span data-field="delivery_address_line_1">{{ delivery_address_line_1 }}</span></p>
+        <p><span data-field="delivery_address_line_2">{{ delivery_address_line_2 }}</span></p>
+        <p><span data-field="delivery_city_state_zip">{{ delivery_city_state_zip }}</span></p>
+
+        <p>Awarded vendor shall schedule time and date for installation with Mike Richey (or his designee) at:</p>
+        <p>Office Phone: <span data-field="office_phone">{{ office_phone }}</span></p>
+        <p>Email Address: <span data-field="office_email">{{ office_email }}</span></p>
+        <p>Quote with references may be e-mailed to: <span data-field="quote_email">{{ quote_email }}</span></p>
+        <p>Quote with references Must be Received by: <span data-field="submission_deadline">{{ submission_deadline }}</span></p>
+        <p>This Section Must be Completed by the Vendor:</p>
+
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">Company Name:</td>
+                <td style="width: 50%;"></td>
+            </tr>
+            <tr>
+                <td>Authorized Signature:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Authorized Signature (printed):</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>City/State/Zip:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>E-Mail:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Federal ID Number:</td>
+                <td>SC Minority Cert. (# if applicable):</td>
+            </tr>
+        </table>
+
+        <p style="margin-top: 30px;">SITE VISIT (JAN 2006): A HIGHLY RECOMMENDED site visit will be held at the following date, time and location. Your failure to attend will not relieve the Contractor from responsibility for estimating properly the difficulty and cost of successfully performing the work, or for proceeding to successfully perform the work without additional expense to the State. The State assumes no responsibility for any conclusions or interpretations made by the Contractor based on the information made available at the conference. The State assumes no responsibility for any understanding reached or representation made concerning conditions which can affect the work by any of its officers or agents before the execution of the contract, unless that understanding or representation is expressly stated in this contract. (See the Date & Start Time, Contact Person's Name, Contact's Phone Number, and Location listed below).</p>
+        <p>MAXIMUM NUMBER OF REPRESENTATIVES AT SITE VISIT (MJU SEPT 2020): Due to heightened health risks due to the COVID-19 pandemic, no greater than two representatives from any single potential contractor will be allowed to attend this Site Visit.</p>
+        <p>SITE VISIT DATE & START TIME: Non-mandatory, but highly recommended – A University representative will be available on <span data-field="site_visit_date">{{ site_visit_date }}</span> to provide a non-mandatory, but highly recommended site visit site at the installation location to assure a complete understanding of the project. The University Place building is accessible only by University ID card during normal University hours, so vendors should contact Mike Richey, Director of Facilities Engineering and Maintenance at <span data-field="site_visit_contact_email">{{ site_visit_contact_email }}</span> for site visit questions, access, or concerns.</p>
+        <p>Installation Location: <span data-field="installation_address">{{ installation_address }}</span>, Florence, SC 29506</p>
+    </div>
+
+
+
+<div class="page">
+  <h2 style="font-size: 14pt; margin-bottom: 10px;">CHOICE-OF-LAW (JAN 2006):</h2>
+  <p style="font-size: 10pt;">The Agreement, any dispute, claim, or controversy relating to the Agreement, and all the rights and obligations of the parties shall, in all respects, be interpreted, construed, enforced and governed by and under the laws of the State of South Carolina, except its choice of law rules. As used in this paragraph, the term "Agreement" means any transaction or agreement arising out of, relating to, or contemplated by the solicitation. [07-7A010-1]</p>
+
+  <h2 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">CONTRACTOR'S LIABILITY INSURANCE - GENERAL (FEB 2015):</h2>
+  <p style="font-size: 10pt;">Without limiting any of the obligations or liabilities of Contractor, Contractor shall procure from a company or companies lawfully authorized to do business in South Carolina and with a current A.M. Best rating of no less than A: VII, and maintain for the duration of the contract, insurance against claims for injuries to persons or damages to property which may arise from or in connection with the performance of work and the results of that work by the contractor, his agents, representatives, employees or subcontractors. (b) Coverage shall be at least as broad as: (1) Commercial General Liability (CGL): Insurance Services Office (ISO) Form CG 00 01 12 07 covering CG on "occurrence" basis, including products-completed operations, personal and advertising injury, with limits no less than $1,000,000 per occurrence. If a general aggregate limit applies, the general aggregate limit shall be twice the required occurrence limit. This contract shall be considered to be an "insured contract" as defined in the ISO Form CG 00 01. (2) Workers' Compensation: Contractor has no owner or contractor has no owner hired, (Code and non-owner autos code) with limits no less than $1,000,000 per accident for bodily injury and property damage. (3) Worker's Compensation: As required by the State of South Carolina, with Statutory Limits, and Employer's Liability Insurance with limit of no less than $1,000,000 per accident for bodily injury or disease. (e) Every applicable Using Governmental Unit, and the officers, officials, employees and volunteers of any of them, must be covered as additional insured on the CGL policy with respect to liability arising out of work or operations performed by or on behalf of the Contractor including materials, parts or equipment furnished in connection with such work or operations. General liability coverage can be provided in the form of an endorsement to the Contractor's insurance at least as broad as the ISO Form CG 20 10, or if not available, an endorsement that is at least as broad as the ISO Form CG 20 37 if a later version is used. (f) For any claims related to this contract, the Contractor's insurance coverage shall be primary insurance as respects the State, every applicable Using Governmental Unit, and the officers, officials, employees and volunteers of any of them. Any insurance or self-insurance maintained by the State, every applicable Using Governmental Unit, or the officers, officials, employees and volunteers of any of them, shall be excess of the Contractor's insurance and shall not contribute with it. (e) Prior to commencement of the work, the Contractor shall furnish the State with original certificates and amendatory endorsements or copies of the applicable policy language effecting coverage required by this section. All certificates are to be received and approved by the State before work commences. However, failure to obtain the certificates prior to the work beginning shall not relieve the Contractor of the obligation to provide them. The State reserves the right to require complete, certified copies of all required insurance policies, including endorsements, at any time, by this section, at any time. (f) Should any of the above described policies be canceled before the expiration date thereof, notice will be delivered in accordance with the policy provisions. In addition, the Contractor shall notify the State immediately upon receiving any information that any of the coverages required by this section are or will be changed, canceled, or replaced. (g) Contractor hereby grants to the State and every applicable Using Governmental Unit a waiver of any right to subrogation which any insurer of said Contractor may acquire against the State or applicable Using Governmental Unit by virtue of the payment of any loss under such insurance. Contractor agrees to obtain any endorsement that may be necessary to effect this waiver of subrogation, but this provision applies regardless of whether the loss is caused by the Contractor or by any Governmental Unit. Contractor agrees that payment from the insurance of the Contractor or deductibles or self-insured retentions must be declared to and approved by the State. The State may require the Contractor to purchase coverage with a lower deductible or protection or provide rabbit of policy to loss pays and related investigations, claim administration, and defense expenses within the retention. (i) The State reserves the right to modify these requirements, including limits, based on the nature of the risk, prior experience, insurer, coverage, or other special circumstances. [07-7B05E-2]"
+</div>
+
+<div class="page">
+  <h2 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">DISPOSAL OF PACKAGING (JAN 2006):</h2>
+  <p style="font-size: 10pt;">Contractor shall dispose of all wrappings, crating, and other disposable materials pertaining to this contract at the end of each working day and upon completion of installation. [07-7B085-1]</p>
+
+  <h2 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">Information Security - Location of Data:</h2>
+  <p style="font-size: 10pt;">Notwithstanding any other provisions, contractor is prohibited from processing, storing, transmitting, or accessing clinic or client information, outside the continental United States. For clarity, this obligation is a material requirement of this contract and applies to subcontractors at any tier.</p>
+
+  <h2 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">Indemnification - Third Party Claims:</h2>
+  <p style="font-size: 10pt;">Notwithstanding any limitation in this agreement, and to the fullest extent permitted by law, Contractor shall defend and hold harmless Indemnities for and against any and all suits or claims of any character (and all related damages, settlement payments, attorneys' fees, costs, expenses, losses or liabilities) by a third party which are attributable to bodily injury, sickness, disease or death, or to injury to or destruction of tangible property arising out of or in connection with the goods or services acquired hereunder or caused in whole or in part by any act or</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">MATERIAL AND WORKMANSHIP (JAN 2006):</h3>
+  <p style="font-size: 10pt;">Unless otherwise specifically provided in this contract, all equipment, material, and articles incorporated in the work covered by this contract are to be new and of the most suitable grade for the purpose intended. [07-7B20-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">NO INDEMNITY OR DEFENSE (FEB 2015):</h3>
+  <p style="font-size: 10pt;">Any term or condition is void to the extent it requires the State to indemnify, defend, or pay attorney's fees to anyone for any reason. [07-7A045-2]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">NOTICE (JAN 2006):</h3>
+  <p style="font-size: 10pt;">After award, any notices shall be in writing and shall be deemed duly given (1) upon actual delivery, if delivery is by hand, (2) upon receipt by the transmitting party of automated confirmation or answer back from the recipient's device if delivery is by telex, telegram, facsimile, or electronic mail, or (3) upon deposit into the United States mail, if postage is prepaid, a return receipt is requested, and either registered or certified mail is used. (b) Notice to contractor shall be to the address identified as the Notice Address on Page Two. Notice to the state shall be to the Procurement Officer's address on the Cover Page. Either party may designate a different address for notice by giving notice in accordance with this paragraph. [07-7A050-1]</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">OPEN TRADE (JUN 2015):</h3>
+  <p style="font-size: 10pt;">During the contract term, including any renewals or extensions, Contractor will not engage in the boycott of a person or an entity based in or doing business with a jurisdiction with whom South Carolina can enjoy open trade, as defined in SC Code Section 11-35-5300. [07-7A055-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">OWNERSHIP OF DATA & MATERIALS (JAN 2006):</h3>
+  <p style="font-size: 10pt;">All data, material and documentation prepared for the state pursuant to this contract shall belong to the state. [07-7B125-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">PURCHASE ORDERS (JAN 2006):</h3>
+  <p style="font-size: 10pt;">Contractor shall not perform any work prior to the receipt of a purchase order from the using governmental unit. The using governmental unit shall order any supplies or services to be furnished under this contract by issuing a purchase order. Purchase orders may be used to elect any options available under this contract, e.g., quantity, item, delivery date, payment method, but are subject to all terms and conditions of this contract. Purchase orders may be electronic. No particular form is required. An order placed pursuant to the purchasing card provision qualifies as a purchase order. [07-7A065-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">PRICE ADJUSTMENTS (JAN 2006):</h3>
+  <p style="font-size: 10pt;">Method of Adjustment. Any adjustment in the contract price made pursuant to a clause in this contract shall be consistent with this Contract and shall be arrived at through one of the following ways: (a) the most valid approximation of the actual cost to the Contractor (including profit, if otherwise allowed); (b) agreement on a fixed price adjustment before commencement of the performance of the contract or as thereafter as practicable; (c) by unit prices specified in the Contract or subsequently agreed upon; (c) by the costs attributable to the event or situation covered by the relevant clause, including profit if otherwise allowed, as all specified in the Contract; or subsequently agreed upon; (d) in such other manner as the parties may mutually agree; or, (e) in the absence of agreement by the parties, through a unilateral initial written determination by the Procurement Officer of the costs attributable to the event or situation covered by the clause, including profit if otherwise allowed, as all computed by the Procurement Officer in accordance with generally accepted accounting principles, subject to the provisions of Title 11, Chapter 35, Article 17 of the S.C. Code Laws. (2) Submission of Price or Cost Data. Upon request of the Procurement Officer, the contractor shall provide reasonably available factual information to substantiate that the price or cost offered, for any price adjustments is reasonable, consistent with the provisions of Section 11-35-1830. [07-7B160-1]</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">STORAGE OF MATERIALS (JAN 2006):</h3>
+  <p style="font-size: 10pt;">Absent approval of the using governmental unit, Contractor shall not store items on the premises of the using governmental unit prior to the time set for installation. [07-7B235-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">Subcontractor Limitation:</h3>
+  <p style="font-size: 10pt;">Subcontractor may only be assigned upon mutual agreement with the University. Offeror shall provide with their quotation any and all subcontractors for which work is expected to be assigned.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">Survival of Obligations:</h3>
+  <p style="font-size: 10pt;">The parties' rights and obligations which, by their nature, would continue beyond the termination, cancellation, rejection, or expiration of this contract shall survive such termination, cancellation, rejection, or expiration, including, but not limited to, the rights and obligations created by the following clauses: Indemnification - Third Party Claims, Intellectual Property Indemnification, and any provisions regarding warranty or audit.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">Termination:</h3>
+  <p style="font-size: 10pt;">Subject to the provisions below, the contract may be terminated for any reason by the University providing a thirty-day advance notice in writing is given to the contractor.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">TERMINATION FOR CONVENIENCE - SHORT FORM (JAN 2006):</h3>
+  <p style="font-size: 10pt;">The Procurement Officer may terminate this contract in whole or in part, for the convenience of the State. In such a termination, the Procurement Officer may require the contractor to transfer title and deliver to the State in the manner and to the extent directed by the Procurement Officer. (a) Any completed supplies and (b) such partially completed supplies and materials, parts, tools, dies, jigs, fixtures, plans, drawings, information, and contract rights (hereinafter called "manufacturing material") as the contractor has specifically produced or specially acquired for the performance of the terminated part of this contract. Upon such termination, the contractor shall (a) stop work to the extent specified, (b) terminate any subcontractors that are related to the terminated work, and (c) be paid the following amounts without disputation, subject to the other terms of this contract: (i) contract price for work performed and materials furnished up to the date of termination; (ii) reasonable costs of demobilization and remobilization; and (iii) any other reasonable costs that the contractor can demonstrate to the satisfaction of the State. The State shall not be paid for any work performed or costs incurred that reasonably could have been avoided. As a condition of payment, contractor shall submit a detailed accounting of the work performed and costs incurred, including a statement of the amount due because of the termination. The termination of the state beyond what it would have been had the subcontract contained such a clause. [07-7B260-1]</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">Term of Contract - Termination by Contractor (JAN 2006):</h3>
+  <p style="font-size: 10pt;">Contractor may terminate this contract at the end of the initial term, or any renewal term, by providing the Procurement Officer notice of its election to terminate under this contract at least thirty days prior to the expiration of the then current term. [07-7B250-1]</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">WARRANTY - STANDARD (FMU - MARCH 2022):</h3>
+  <p style="font-size: 10pt;">Upon delivery of the product, contractor must provide the manufacturer's standard written warranty OR the length of warranty specified in the Scope of Work/Specifications on page <span data-field="warranty_page_number">{{ warranty_page_number }}</span> whichever is longer. Contractor warrants that either manufacturer, the contractor themselves, and/or any combination of the two will honor the standard written warranty or the warranty length specified in this solicitation.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 10px;">SPECIAL CONDITIONS</h3>
+
+  <h4 style="font-size: 11pt; margin-top: 15px;">LICENSES, PERMITS, INSURANCE:</h4>
+  <p style="font-size: 10pt;">All costs for required licenses, permits and insurance shall be borne by the Contractor.</p>
+
+  <p style="font-size: 10pt;">Francis Marion University requires all contractual activities to be performed in a manner that is consistent with all applicable federal, state and local laws, regulations, rules, rulings and ordinances. These include, but are not limited to: the Occupational Safety and Health Act, The Environmental Protection Act, The South Carolina Hazardous Waste Management Act.</p>
+
+  <p style="font-size: 10pt;">IMPORTANT - Please Note - Contractors, we MUST have your Federal ID (#) (company) or Social Security # (individual) before processing any invoices for payment. Failure to provide this information will result in delay of payments until this information is received. Please include this information with your quote.</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">INSTRUCTIONS TO OFFERORS – SPECIAL INSTRUCTIONS – AWARD CRITERIA</h3>
+
+  <h4 style="font-size: 11pt; margin-top: 15px;">AWARD CRITERIA – BIDS (JAN 2006):</h4>
+  <p style="font-size: 10pt;">Award will be made to the lowest responsible and responsive bidder(s).</p>
+
+  <h4 style="font-size: 11pt; margin-top: 15px;">AWARD TO ONE OFFEROR (JAN 2006):</h4>
+  <p style="font-size: 10pt;">Award will be made to one Offeror. [06-6040-1]</p>
+
+  <h4 style="font-size: 11pt; margin-top: 15px;">COMPETITION FROM PUBLIC ENTITIES (JAN 2006):</h4>
+  <p style="font-size: 10pt;">If a South Carolina governmental entity submits an offer, the Procurement Officer will, when determining the lowest offer, add to the price provided in any offers submitted by nongovernmental entities a percentage equivalent to any applicable sales or use tax. S.C. Code Ann. Regs 117-304.1 (Supp. 2004).</p>
+
+  <h4 style="font-size: 11pt; margin-top: 15px;">UNIT PRICE GOVERNS (JAN 2006):</h4>
+  <p style="font-size: 10pt;">In determining award, unit prices will govern over extended prices unless otherwise stated.</p>
+
+  <p style="font-size: 10pt;">FRANCIS MARION UNIVERSITY STANDARD TERMS AND CONDITIONS (2021): Francis Marion University's standard terms and conditions for purchase orders may be found at <span data-field="fm_procurement_url">{{ fm_procurement_url }}</span>. Terms and Conditions found at that website are not all inclusive, and do not supersede standard terms and conditions of the State of South Carolina.</p>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 12pt; margin-top: 10px;">V. Attachments to Solicitation</h3>
+  <ol style="font-size: 10pt;">
+    <li>Current Floor Plan of University Place building (2nd Floor AND 3rd Floor)</li>
+    <li>Open Trade Representation</li>
+    <li>Vendor Application Form</li>
+  </ol>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">Attachment 1</h3>
+  <!-- Placeholder for image content -->
+</div>
+
+<div class="page">
+  <h3 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">Attachment 2</h3>
+  <h4 style="font-size: 12pt; margin-top: 15px;">OPEN TRADE REPRESENTATION</h4>
+  <p style="font-size: 10pt;">(S.C. Code Ann. §§ 11-35-5300)</p>
+  <p style="font-size: 10pt;">The following representation, which is required by Section 11-35-5300(A), is a material inducement for the State to award a contract to you.</p>
+  <table>
+    <tr>
+      <td style="width: 50%;">Vendor Name (Printed):</td>
+      <td><span data-field="vendor_name_printed">{{ vendor_name_printed }}</span></td>
+    </tr>
+    <tr>
+      <td>By (Authorized Signature):</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Printed Name and Title of Person Signing</td>
+      <td><span data-field="signer_name_title">{{ signer_name_title }}</span></td>
+    </tr>
+    <tr>
+      <td style="width: 50%;">State Vendor No.</td>
+      <td><span data-field="state_vendor_no">{{ state_vendor_no }}</span></td>
+    </tr>
+    <tr>
+      <td>Date Executed</td>
+      <td><span data-field="date_executed">{{ date_executed }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h3 style="font-size: 14pt; margin-top: 20px; margin-bottom: 10px;">Attachment 3</h3>
+  <p style="font-size: 10pt;">Francis Marion University Vendor Application Form</p>
+  <p style="font-size: 10pt;">This information to be completed by FMU:</p>
+  <table>
+    <tr>
+      <td style="width: 50%;">FMU Vendor #:</td>
+      <td><span data-field="fmu_vendor_number">{{ fmu_vendor_number }}</span></td>
+    </tr>
+    <tr>
+      <td>New Vendor:</td>
+      <td><span data-field="new_vendor_name">{{ new_vendor_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Vendor Info Change:</td>
+      <td><span data-field="vendor_info_change">{{ vendor_info_change }}</span></td>
+    </tr>
+  </table>
+
+  <h4 style="font-size: 12pt; margin-top: 20px;">Submit your W-9 form WITH this Vendor Application Form</h4>
+  <p style="font-size: 10pt;">Company Name or Individual Name (as shown on your income tax return):</p>
+  <p style="font-size: 10pt;">Address:</p>
+  <p style="font-size: 10pt;">City: <span data-field="city">{{ city }}</span> State: <span data-field="state">{{ state }}</span> Zip Code: <span data-field="zip_code">{{ zip_code }}</span></p>
+  <p style="font-size: 10pt;">Contact Name: <span data-field="contact_name">{{ contact_name }}</span> Contact E-mail Address: <span data-field="contact_email">{{ contact_email }}</span></p>
+  <p style="font-size: 10pt;">This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p style="font-size: 10pt;">Doing Business As (DBA) Name:</p>
+  <p style="font-size: 10pt;">Address:</p>
+  <p style="font-size: 10pt;">City: <span data-field="city_dba">{{ city_dba }}</span> State: <span data-field="state_dba">{{ state_dba }}</span> Zip Code: <span data-field="zip_code_dba">{{ zip_code_dba }}</span></p>
+  <p style="font-size: 10pt;">This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p style="font-size: 10pt;">Payment Remittance Address:</p>
+  <p style="font-size: 10pt;">City: <span data-field="city_payment">{{ city_payment }}</span> State: <span data-field="state_payment">{{ state_payment }}</span> Zip Code: <span data-field="zip_code_payment">{{ zip_code_payment }}</span></p>
+  <p style="font-size: 10pt;">Contact Name: <span data-field="contact_name_payment">{{ contact_name_payment }}</span> Contact E-mail Address: <span data-field="contact_email_payment">{{ contact_email_payment }}</span></p>
+  <p style="font-size: 10pt;">This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p style="font-size: 10pt;">E-mail Address for receiving Purchase Orders from FMU:</p>
+  <p style="font-size: 10pt;">Would you like to arrange for electronic payment (circle) Yes or No</p>
+  <p style="font-size: 10pt;">South Carolina Small and Minority Business Certification Number</p>
+  <p style="font-size: 10pt;">Expiration Date:</p>
+  <p style="font-size: 10pt;">Signature of Individual Completing Form</p>
+  <p style="font-size: 10pt;">Date</p>
+  <p style="font-size: 10pt;">For FMU Use Only:</p>
+  <p style="font-size: 10pt;">International Vendor Number (FMU will provide):</p>
+  <p style="font-size: 10pt;">Purchasing Keyed by: <span data-field="purchasing_keyed_by">{{ purchasing_keyed_by }}</span> Date: <span data-field="purchasing_date">{{ purchasing_date }}</span> Accounting Reviewed by: <span data-field="accounting_reviewed_by">{{ accounting_reviewed_by }}</span> Date: <span data-field="accounting_date">{{ accounting_date }}</span></p>
+</div>
+
+</body>
+</html>

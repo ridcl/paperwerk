@@ -1,0 +1,167 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 4px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+    <div>
+      <h3 style="margin: 0;">Form 4852</h3>
+      <p style="margin: 5px 0 0 0;">(Rev. Issued October 1987)</p>
+    </div>
+    <div style="text-align: right;">
+      <p style="margin: 0;">OMB No. 1545-0458</p>
+      <p style="margin: 0;">Expires 7-31-90</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">Dept. of the Treasury</p>
+    <p style="margin: 0;">Internal Revenue Service</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">SUBSTITUTE FOR FORM W-2, WAGE AND TAX STATEMENT OR</p>
+    <p style="margin: 0;">FORM W-2P, STATEMENT FOR RECIPIENTS OF ANNUITIES,</p>
+    <p style="margin: 0;">PENSIONS, RETIRED PAY, OR IRA PAYMENTS</p>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p style="margin: 0;">&#x25BA; Attach to Form 1040, 1040A, 1040EZ or 1040X</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 48%;">
+      <p style="margin: 0;">1. NAME (First, middle, last)</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="full_name">{{ full_name }}</span>
+      </div>
+    </div>
+    <div style="width: 48%; text-align: right;">
+      <p style="margin: 0;">2. SOCIAL SECURITY NUMBER</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="ssn">{{ ssn }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">3. ADDRESS (Number, street, city, State, ZIP code)</p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+      <span data-field="address">{{ address }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">4. PLEASE FILL IN THE YEAR AT THE END OF THIS STATEMENT:</p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+      <span data-field="tax_year">{{ tax_year }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">I have been unable to obtain or have received an incorrect Form W-2, Wage and Tax Statement, or Form W-2P, Statement for Recipients of Annuities, Pensions, Retired Pay, or IRA Payments, from my employer or payer named below, and have so notified the Internal Revenue Service. The amounts shown below are my best estimates of all wages or payments paid to me and the Federal taxes withheld by this employer or payer during </p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px; display: inline-block; width: 50%;">
+      <span data-field="period_description">{{ period_description }}</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 48%;">
+      <p style="margin: 0;">5. EMPLOYER'S OR PAYER'S NAME, ADDRESS, AND ZIP CODE</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="employer.name">{{ employer.name }}</span>
+        <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+          <span data-field="employer.address">{{ employer.address }}</span>
+        </div>
+      </div>
+    </div>
+    <div style="width: 48%; text-align: right;">
+      <p style="margin: 0;">6. EMPLOYER'S OR PAYER'S IDENTIFICATION NUMBER (If known)</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="employer.tin">{{ employer.tin }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <th style="text-align: left; width: 25%;">7. ADVANCE EIC (Earned Income Credit) PAYMENTS RECEIVED</th>
+          <th style="text-align: center; width: 15%;">8. FEDERAL INCOME TAX WITHHELD</th>
+          <th style="text-align: center; width: 25%;">9. WAGES, TIPS, OTHER COMPENSATION OR PAYMENTS (See Note Below)</th>
+          <th style="text-align: center; width: 15%;">10. SOCIAL SECURITY TAX WITHHELD</th>
+          <th style="text-align: center; width: 15%;">11. SOCIAL SECURITY WAGES</th>
+          <th style="text-align: center; width: 15%;">12. SOCIAL SECURITY TIPS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- This section is typically for line items, but the source shows a single row structure for totals/summary -->
+        <tr>
+          <td style="border-bottom: 1px solid #000;"></td>
+          <td style="border-bottom: 1px solid #000;"></td>
+          <td style="border-bottom: 1px solid #000;"></td>
+          <td style="border-bottom: 1px solid #000;"></td>
+          <td style="border-bottom: 1px solid #000;"></td>
+          <td style="border-bottom: 1px solid #000;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">NOTE: Include the total of (1) wages paid, (2) noncash payments, (3) tips/reported, and (4) all other compensation before deductions for taxes, insurance, etc.</p>
+    <p style="margin: 0;">13. How did you determine the amounts in items 7 through 12 above?</p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+      <span data-field="determination_method">{{ determination_method }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">14. Give reason Form W-2, W-2P (or W-2c, Statement of Corrected Income and Tax Amounts) was not furnished by employer, or payer, if known, and explain your efforts to get it.</p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+      <span data-field="reason_for_non_furnishing">{{ reason_for_non_furnishing }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="margin: 0;">15. Your signature</p>
+    <div style="border-bottom: 1px solid #000; margin-top: 5px; display: inline-block; width: 50%;">
+      <span data-field="signature">{{ signature }}</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px;">
+    <div style="width: 50%;">
+      <p style="margin: 0;">Under penalties of perjury, I declare that I have examined this statement, and to the best of my knowledge and belief, it is true, correct, and complete.</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="margin: 0;">16. Date</p>
+      <div style="border-bottom: 1px solid #000; margin-top: 5px;">
+        <span data-field="date_signed">{{ date_signed }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; font-size: 10px; display: flex; justify-content: space-between;">
+    <div style="text-align: left;">
+      Por sale by the Superintendent of Documents, U.S. Government Printing Office, Washington, D.C. 20402
+    </div>
+    <div style="text-align: right;">
+      U.S. G.P.O. 1988-205-321<br>Form 4852 (Rev. 10-67)
+    </div>
+  </div>
+</div>

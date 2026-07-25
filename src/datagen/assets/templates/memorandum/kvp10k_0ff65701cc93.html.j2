@@ -1,0 +1,73 @@
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 {
+        font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    }
+    .header-title {
+        font-weight: bold;
+    }
+    .metadata-block {
+        margin-bottom: 20px;
+    }
+    .metadata-line {
+        margin-bottom: 5px;
+    }
+    .signature-block {
+        margin-top: 40px;
+    }
+</style>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 class="header-title">MONMOUTH UNIVERSITY</h1>
+        <p class="header-title" style="font-size: 1.1em;">OFFICE OF THE VICE PRESIDENT FOR ADMINISTRATIVE SERVICES</p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p>Memorandum</p>
+    </div>
+
+    <div class="metadata-block">
+        <div class="metadata-line">
+            <strong>TO:</strong> <span data-field="recipient_group">{{ recipient_group }}</span>
+        </div>
+        <div class="metadata-line">
+            <strong>FROM:</strong> <span data-field="sender.full_name">{{ sender.full_name }}</span><br>
+            <span data-field="sender.title">{{ sender.title }}</span>
+        </div>
+        <div class="metadata-line">
+            <strong>DATE:</strong> <span data-field="date_issued">{{ date_issued }}</span>
+        </div>
+        <div class="metadata-line">
+            <strong>RE:</strong> <span data-field="subject">{{ subject }}</span>
+        </div>
+    </div>
+
+    <div style="line-height: 1.6;">
+        <p>In an effort to alleviate hourly employees concerns about reporting when they are absent from work, we have implemented a new call-out procedure.</p>
+
+        <p>Effective <span data-field="effective_date">{{ effective_date }}</span>, the phone number to call when reporting an <span data-field="absence_type">{{ absence_type }}</span> absence will be <span data-field="phone_number">{{ phone_number }}</span>. You will be calling an automated, voice-activated system that will ask you a series of questions. Listed below are the questions you will be asked. Respond to each question after it is asked.</p>
+
+        <p>You must also call your immediate supervisor to report your absence. You must call out each day you are absent. If you are taking approved, scheduled time off, you do not have to call out.</p>
+
+        <p>You will be given a confirmation number. In addition, a receipt will be sent to your e-mail account, as well as to your immediate supervisor and time and attendance coordinator. You do not have to complete any forms in addition to calling out.</p>
+
+        <p>Thank you for your anticipated cooperation. If you have any questions, please contact <span data-field="contact_person">{{ contact_person }}</span>, time and attendance coordinator, at <span data-field="contact_phone">{{ contact_phone }}</span> or via e-mail at <span data-field="contact_email">{{ contact_email }}</span>.</p>
+    </div>
+
+    <div class="signature-block">
+        <p>Cc: <span data-field="cc_list">{{ cc_list }}</span></p>
+        <div style="margin-top: 60px;">
+            <p style="font-weight: bold;">{{ signature_name }}</p>
+            <p style="font-size: 0.9em;">{{ signature_title }}</p>
+        </div>
+    </div>
+</div>

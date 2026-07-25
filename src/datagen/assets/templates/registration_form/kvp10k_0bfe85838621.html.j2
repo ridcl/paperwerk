@@ -1,0 +1,203 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .form-group { margin-bottom: 15px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <img src="placeholder_logo.png" alt="University Logo" style="height: 70px;"/>
+      <h1 style="margin-top: 10px;">NORTHERN MICHIGAN UNIVERSITY</h1>
+    </div>
+    <div>
+      <h2 style="text-align: right;">Child Welfare Series REGISTRATION FORM</h2>
+      <p style="font-size: 0.9em;">A confirmation will be sent to the email address below.</p>
+      <div style="text-align: right; margin-top: 20px;">
+        <button style="padding: 5px 10px; border: 1px solid #ccc;">Clear Form</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>To Register: Complete the following form. Email to: <span data-field="contact_email">{{ contact_email }}</span>, fax to: (906) 227-2108, or mail to: <span data-field="mailing_address">{{ mailing_address }}</span>. Registrations will be held as pending until payment is received.</p>
+    <p>Questions: Call Continuing Education & Workforce Development (906) 227-2103.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="registrant_name" style="display: block; margin-bottom: 5px;">Registrant Name:</label>
+    <div style="border-bottom: 1px solid black; width: 100%;">
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="company_name" style="display: block; margin-bottom: 5px;">Company Name/Title:</label>
+    <div style="border-bottom: 1px solid black; width: 100%;">
+      <span data-field="employer.name">{{ employer.name }}</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 45%;">
+      <label for="city" style="display: block; margin-bottom: 5px;">City:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="address.city">{{ address.city }}</span>
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <label for="state" style="display: block; margin-bottom: 5px;">State:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="address.state">{{ address.state }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <label for="phone" style="display: block; margin-bottom: 5px;">Phone:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="contact_phone">{{ contact_phone }}</span>
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <label for="email" style="display: block; margin-bottom: 5px;">E-mail:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="contact_email_input">{{ contact_email_input }}</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Select Registration from the below workshop series titles:</h3>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <input type="checkbox" style="margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <span data-field="workshop_title_1">{{ workshop_title_1 }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">
+        Course Date: <span data-field="workshop_date_1">{{ workshop_date_1 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <input type="checkbox" style="margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <span data-field="workshop_title_2">{{ workshop_title_2 }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">
+        Course Date: <span data-field="workshop_date_2">{{ workshop_date_2 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <input type="checkbox" style="margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <span data-field="workshop_title_3">{{ workshop_title_3 }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">
+        Course Date: <span data-field="workshop_date_3">{{ workshop_date_3 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <input type="checkbox" style="margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <span data-field="workshop_title_4">{{ workshop_title_4 }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">
+        Course Date: <span data-field="workshop_date_4">{{ workshop_date_4 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <input type="checkbox" style="margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <span data-field="workshop_title_5">{{ workshop_title_5 }}</span>
+      </div>
+      <div style="width: 150px; text-align: right;">
+        Course Date: <span data-field="workshop_date_5">{{ workshop_date_5 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 20px;">All courses will be held via Zoom. 10:00am - 1:15pm EST unless otherwise noted.</p>
+  <p style="margin-bottom: 30px;">3 SWCE Hours Available Per Session. FREE to all MDHHS and Private Agency Child Welfare Workers & Students, $45.00 all others.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 30%;">
+      <label for="visa" style="display: block; margin-bottom: 5px;">VISA</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="payment_method_visa">{{ payment_method_visa }}</span>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <label for="mc" style="display: block; margin-bottom: 5px;">MC</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="payment_method_mc">{{ payment_method_mc }}</span>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <label for="dis" style="display: block; margin-bottom: 5px;">DIS</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="payment_method_dis">{{ payment_method_dis }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <label for="credit_card" style="display: block; margin-bottom: 5px;">Credit Card #:</label>
+    <div style="border-bottom: 1px solid black; width: 100%;">
+      <span data-field="credit_card_number">{{ credit_card_number }}</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div style="width: 50%;">
+      <label for="expiration_date" style="display: block; margin-bottom: 5px;">Expiration Date:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="expiration_date">{{ expiration_date }}</span>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <label for="card_code" style="display: block; margin-bottom: 5px;">3-digit code (back of card):</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="cvv_code">{{ cvv_code }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 50%;">
+      <label for="total_amount" style="display: block; margin-bottom: 5px;">Total Amount: $</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="total_amount">{{ total_amount }}</span>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <label for="signature" style="display: block; margin-bottom: 5px;">Signature of cardholder:</label>
+      <div style="border-bottom: 1px solid black; width: 100%;">
+        <span data-field="cardholder_signature">{{ cardholder_signature }}</span>
+      </div>
+    </div>
+  </div>
+</div>

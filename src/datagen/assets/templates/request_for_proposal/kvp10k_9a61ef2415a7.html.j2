@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Request for Proposal</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 5px 0; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .signature-block {
+    margin-top: 40px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  .form-row label {
+    width: 150px;
+    font-weight: normal;
+  }
+  .form-row input[type="text"], .form-row select {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  .checkbox-group {
+    margin-top: 10px;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-right: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University of Arkansas Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 18pt; margin: 5px 0 0 0;">REQUEST FOR PROPOSAL</h2>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div>
+      <p>SUBMIT BID RESPONSES TO:</p>
+      <p>By USPS:</p>
+      <p><span data-field="recipient.name">{{ recipient.name }}</span></p>
+      <p><span data-field="recipient.address_line_1">{{ recipient.address_line_1 }}</span></p>
+      <p><span data-field="recipient.address_line_2">{{ recipient.address_line_2 }}</span></p>
+      <p><span data-field="recipient.city_state_zip">{{ recipient.city_state_zip }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <p>BU: <span data-field="bu_code">{{ bu_code }}</span></p>
+      <p>RFP <span data-field="rfp_number">{{ rfp_number }}</span></p>
+      <p>Procurement Official: <span data-field="procurement_official">{{ procurement_official }}</span></p>
+      <p>Proposal Due Date: <span data-field="proposal_due_date">{{ proposal_due_date }}</span></p>
+      <p>Time: <span data-field="proposal_time">{{ proposal_time }}</span></p>
+      <p>Bid Description: <span data-field="bid_description">{{ bid_description }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>By FedEx, UPS or another private carrier to Physical Location:</p>
+    <p><span data-field="physical_location.name">{{ physical_location.name }}</span></p>
+    <p><span data-field="physical_location.address_line_1">{{ physical_location.address_line_1 }}</span></p>
+    <p><span data-field="physical_location.address_line_2">{{ physical_location.address_line_2 }}</span></p>
+    <p><span data-field="physical_location.city_state_zip">{{ physical_location.city_state_zip }}</span></p>
+    <p><span data-field="physical_location.phone">{{ physical_location.phone }}</span></p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div>
+      <p>Company Name:</p>
+      <p><span data-field="bidder.company_name">{{ bidder.company_name }}</span></p>
+      <p>Address:</p>
+      <p><span data-field="bidder.address">{{ bidder.address }}</span></p>
+    </div>
+    <div>
+      <p>Phone:</p>
+      <p><span data-field="bidder.phone">{{ bidder.phone }}</span></p>
+      <p>Fax:</p>
+      <p><span data-field="bidder.fax">{{ bidder.fax }}</span></p>
+      <p>Email:</p>
+      <p><span data-field="bidder.email">{{ bidder.email }}</span></p>
+      <p>Web Site:</p>
+      <p><span data-field="bidder.website">{{ bidder.website }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>SIGNATURE REQUIRED FOR RESPONSE</p>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>THIS OFFICIAL BID SHEET MUST BE SIGNED AND RECEIVED IN A SEALED PACKAGE ALONG WITH BID, COMPANY NAME, RFP NUMBER, AND PROPOSAL DUE DATE MUST BE CLEARLY NOTED ON OUTSIDE OF PACKAGE IN ORDER FOR BID TO BE ACCEPTED.</p>
+    <p>NOTE: Formal bids are NOT accepted by fax or email. All bid submissions must be received and accepted by the Purchasing Office no later than the date and time designated on the official bid document, unless otherwise stated by the Procurement Official.</p>
+    <p>NOTE: The above listed date and time is the LATEST the bid will be accepted. ANY bids received after that time will NOT be considered.</p>
+  </div>
+
+  <div class="section-header">GENERAL CAMPUS BACKGROUND FOR UNIVERSITY OF ARKANSAS</div>
+  <p>Founded in <span data-field="founding_year">{{ founding_year }}</span> as a land-grant institution, the University of Arkansas (UofA), is the flagship campus of the University of Arkansas System. Our students represent all 50 states and more than 120 countries. The UofA has 10 colleges and schools offering more than 260 academic degree programs. As of Fall <span data-field="current_year">{{ current_year }}</span>, student enrollment totaled approximately <span data-field="enrollment_total">{{ enrollment_total }}</span>, with a faculty count of <span data-field="faculty_count">{{ faculty_count }}</span> and a staff count of <span data-field="staff_count">{{ staff_count }}</span>. The UofA is one of the nation's top public research universities and the state's foremost partner and resource for education and economic development. Its public service activities reach every county in the state, and its research impacts communities across the region. The Carnegie Foundation classifies the UofA as having the "highest possible level of research," placing us among the top three percent (3%) of colleges and universities nationwide.</p>
+
+  <div class="section-header">Agencies must submit one (1) signed original, one (1) signed copy, and two (2) soft copies (on CD and/or USB Flash Drive) of your response to this bid. The extra copies are needed for bid evaluation purposes. Please do not send bids responses to different bids in the same envelope.</div>
+
+  <div class="section-header">Additional Redacted Copy Required</div>
+  <p>Proprietary information submitted in response to this RFP will be processed in accordance with applicable State of Arkansas procurement law. Documents pertaining to the RFP become the property of UofA and shall be open to public inspection after a notice of intent to award is formally announced.</p>
+
+  <div class="section-header">Confidentiality</div>
+  <p>It is the responsibility of the Respondent to identify all proprietary information included in their Bid Proposal. The Respondent shall submit one (1) separate electronic copy of the proposal from which any proprietary information has been removed, i.e., a redacted copy (marked "REDACTED COPY"). The redacted copy should reflect the same pagination as the original, show the empty space from which information was redacted, and should be submitted on a CD or flash drive, preferably in a PDF format except for the redacted information, the redacted copy must be identical to the original hard copy. The Respondent shall provide to the Procurement Official a signed statement certifying that the redacted copy on CD/flash drive is protected against restoration of redacted data. The redacted copy may be made public to public inspection under the Freedom of Information Act ("FOIA") without further notice to the Respondent after a notice of intent to award is formally announced. If during a subsequent review process the University determines that specific information redacted by the respondent is subject to disclosure under FOIA, the respondent will be contacted prior to release of the information.</p>
+
+  <div class="section-header">IMPORTANT: Respondents must address each of the requirements of this bid request which is in the format of a Request for Proposal. Vendor's required responses should contain sufficient information and detail for the University to further evaluate the merit of the vendor's response. Failure to respond in this format may result in bid disqualification.</div>
+
+  <div class="section-header">IMPORTANT: If questions are submitted to the University to clarify bid specifications or the scope of the bid, an individual response will be sent to the submitting party only. All question and answer documents will be immediately</div>
+
+  <div class="section-header">Ethical Standards</div>
+  <p>It shall be a breach of ethical standards for a person to be retained, or to retain a person, to solicit or secure a state contract upon an agreement or understanding for a commission, percentage, brokerage, or contingent fee, except for retention of bona fide employees or bona fide established commercial selling agencies maintained by the contractor for the purpose of securing business.</p>
+
+  <div class="section-header">Disclosure</div>
+  <p>A. Contract and Grant Disclosure</p>
+  <p>Disclosure is a condition of this contract and the University of Arkansas cannot enter into any contract for which disclosure is not made. Arkansas's Executive Order 98-04 requires all potential contractors disclose whether the individual or any other who owns or controls the business is a member of the Arkansas General Assembly, a county official, state board or commission member, state employee, or the spouse or family member of any of these. If this applies to the bidder's business, the bidder must state so in writing.</p>
+
+  <p>B. Bidder Conflict of Interest Form</p>
+  <p>Only when applicable, for any Request for Proposal ("RFP") that requires the disclosure of existing conflict of interest circumstances, the Bidder should complete the Bidder Conflict of Interest Form and submit with bid response. It is the responsibility of the Bidder desiring to be considered for a bid award to complete and return this form, along with the Contract and Grant Disclosure and Certification Form. The purpose of these forms is to give bidders an opportunity to disclose any actual or perceived conflicts of interest. The determination of the University of Arkansas ("University") regarding any questions of conflict of interest shall be final.</p>
+
+  <div class="section-header">Arkansas Technology Access Clause</div>
+  <p>When procuring a technology product or when soliciting the development of such a product, the State of Arkansas is required to comply with the provisions of Arkansas Code Annotated § 25-26-201 et seq., as amended by Act 308 of 2013, which expresses the policy of the State to provide individuals who are blind or visually impaired with access to information technology. The State of Arkansas requires that all technology products and services procured by the State of Arkansas must be accessible to individuals with disabilities. This requirement applies to all technology products and services procured by the State of Arkansas. The State of Arkansas requires that all technology products and services procured by the State of Arkansas must be accessible to individuals with disabilities. This requirement applies to all technology products and services procured by the State of Arkansas.</p>
+  <p>Accordingly, the vendor expressly represents and warrants to the State of Arkansas through the procurement process by submission of a Voluntary Product Accessibility Template (VPAT) or similar documentation to demonstrate</p>
+
+  <div class="section-header">Compliance</div>
+  <p>compliance with 36 C.F.R. § 1194.21, as it existed on January 1, 2019 (software applications and operating systems) and 36 C.F.R. § 1194.22, as it existed on January 1, 2019 (web-based internet and information applications) that the technology provided to the purchaser is capable, either by virtue of features included within the technology, or because it is readily adaptable by use with other technology, of</p>
+  <p>providing, to the extent required by Arkansas Code Annotated § 25-26-201 et seq., as amended by Act 308 of 2013, equivalent access for effective use by both visual and non-visual means;</p>
+  <p>presenting information, including prompts used for interactive communications, in formats intended for non-visual use;</p>
+  <p>after being made accessible, integrating into networks for obtaining, retrieving, and disseminating information used by individuals who are not blind or visually impaired;</p>
+  <p>providing effective, interactive control and use of the technology, including without limitation the operating system, software applications, and format of the data presented is readily achievable by nonvisual means;</p>
+  <p>being compatible with information technology used by other individuals with whom the blind or visually impaired individuals interact;</p>
+  <p>integrating into networks used to share communications among employees, program participants, and the public;</p>
+  <p>providing the capability of equivalent access by nonvisual means to telecommunications or other interconnected network services used by persons who are not blind or visually impaired.</p>
+
+  <p>If the information technology product or system being offered by the Vendor does not completely meet these standards, the Vendor must provide an explanation within the Voluntary Product Accessibility Template (VPAT) detailing the deviation from these standards.</p>
+
+  <p>State agencies cannot claim a product as a whole is not reasonably available because no product in the marketplace meets all the standards. Agencies must evaluate products to determine which product best meets the standards. If an agency purchases a product that does not meet the standards, the agency must provide written documentation supporting the selection of a different product, including any required reasonable accommodations.</p>
+
+  <p>For purposes of this section, the phrase "equivalent access" means a substantially similar ability to communicate with, or make use of, the technology, either directly or indirectly, by features incorporated within the technology, or by other reasonable means such as assistive devices or services which would constitute reasonable accommodations under the Americans with Disabilities Act or similar state and federal laws. Examples of methods by which equivalent access may be provided include, but are not limited to, screen readers, braille displays, speech-to-text software, and keyboard navigation, and customizable display appearance. As provided in Arkansas Code Annotated § 25-26-201 et seq., as amended by Act 308 of 2013, if equivalent access is not reasonably available, then individuals who are blind or visually impaired shall be provided a reasonable accommodation as defined in 36 C.F.R. § 1194.21(a) as it existed on January 1, 2019.</p>
+
+  <p>If the information manipulated or presented by the product is inherently visual in nature, so that its meaning cannot be conveyed non-visually, these specifications do not prohibit the purchase or use of an information technology product that does not meet these standards.</p>
+
+  <p>All State of Arkansas electronic and information technology purchases must be accessible as specified by standards listed in Arkansas Act 308. A copy of the act is available here: <a href="http://www.arkleg.state.ar.us/acts/ACT308.pdf">http://www.arkleg.state.ar.us/acts/ACT308.pdf</a>.</p>
+
+  <p>A blank copy of the Voluntary Product Accessibility Template (VPAT) form is available here: <a href="http://procurement.uark.edu/resources/documents/VPAT_Blank.pdf">http://procurement.uark.edu/resources/documents/VPAT_Blank.pdf</a>.</p>
+
+  <p>Note: All vendors should complete the VPAT form as it relates to the scope of the item(s) or commodity requested in the bid solicitation. Our expectation is that the vendor will assign technical personnel who understand accessibility to the task. If a component of a VPAT does not apply, it is up to the vendor to make that notation and explain why in the "Comments" column. The notation can be as simple as "Not a telecommunications or technology product."</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University of Arkansas Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 18pt; margin: 5px 0 0 0;">REQUEST FOR PROPOSAL</h2>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div>
+      <p>SUBMIT BID RESPONSES TO:</p>
+      <p>By USPS:</p>
+      <p><span data-field="recipient.name">{{ recipient.name }}</span></p>
+      <p><span data-field="recipient.address_line_1">{{ recipient.address_line_1 }}</span></p>
+      <p><span data-field="recipient.address_line_2">{{ recipient.address_line_2 }}</span></p>
+      <p><span data-field="recipient.city_state_zip">{{ recipient.city_state_zip }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <p>BU: <span data-field="bu_code">{{ bu_code }}</span></p>
+      <p>RFP <span data-field="rfp_number">{{ rfp_number }}</span></p>
+      <p>Procurement Official: <span data-field="procurement_official">{{ procurement_official }}</span></p>
+      <p>Proposal Due Date: <span data-field="proposal_due_date">{{ proposal_due_date }}</span></p>
+      <p>Time: <span data-field="proposal_time">{{ proposal_time }}</span></p>
+      <p>Bid Description: <span data-field="bid_description">{{ bid_description }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>By FedEx, UPS or another private carrier to Physical Location:</p>
+    <p><span data-field="physical_location.name">{{ physical_location.name }}</span></p>
+    <p><span data-field="physical_location.address_line_1">{{ physical_location.address_line_1 }}</span></p>
+    <p><span data-field="physical_location.address_line_2">{{ physical_location.address_line_2 }}</span></p>
+    <p><span data-field="physical_location.city_state_zip">{{ physical_location.city_state_zip }}</span></p>
+    <p><span data-field="physical_location.phone">{{ physical_location.phone }}</span></p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+    <div>
+      <p>Company Name:</p>
+      <p><span data-field="bidder.company_name">{{ bidder.company_name }}</span></p>
+      <p>Address:</p>
+      <p><span data-field="bidder.address">{{ bidder.address }}</span></p>
+    </div>
+    <div>
+      <p>Phone:</p>
+      <p><span data-field="bidder.phone">{{ bidder.phone }}</span></p>
+      <p>Fax:</p>
+      <p><span data-field="bidder.fax">{{ bidder.fax }}</span></p>
+      <p>Email:</p>
+      <p><span data-field="bidder.email">{{ bidder.email }}</span></p>
+      <p>Web Site:</p>
+      <p><span data-field="bidder.website">{{ bidder.website }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>SIGNATURE REQUIRED FOR RESPONSE</p>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>THIS OFFICIAL BID SHEET MUST BE SIGNED AND RECEIVED IN A SEALED PACKAGE ALONG WITH BID, COMPANY NAME, RFP NUMBER, AND PROPOSAL DUE DATE MUST BE CLEARLY NOTED ON OUTSIDE OF PACKAGE IN ORDER FOR BID TO BE ACCEPTED.</p>
+    <p>NOTE: Formal bids are NOT accepted by fax or email. All bid submissions must be received and accepted by the Purchasing Office no later than the date and time designated on the official bid document, unless otherwise stated by the Procurement Official.</p>
+    <p>NOTE: The above listed date and time is the LATEST the bid will be accepted. ANY bids received after that time will NOT be considered.</p>
+  </div>
+
+  <div class="section-header">PREPARATION OF BIDS</div>
+  <ol>
+    <li>Failure to examine any drawings, specifications, and instructions will be at bidder's risk.</li>
+    <li>All prices and notations must be printed in ink or typewriter. No erasures permitted. Errors may be crossed out and corrections printed in ink or typewriter adjacent and must be initialed in ink by person signing bid.</li>
+    <li>Brand Name References: Unless specified "No Substitute" any catalog brand name or manufacturer's reference used in the bid invitation is descriptive only, not restrictive, and used to indicate the type and quality desired. If bidding on other brands, the bidder must state so in writing.</li>
+    <li>When referenced specifications, the bid must show the manufacturer, brand or trade name, and other descriptions, and should include the manufacturer's illustrations and complete descriptions of the product offered. The University reserves the right to determine whether a substitute offered is equivalent to and meets the standards of the item specified, and the University may require the bidder to supply additional descriptive material, samples, or demonstrators. The bidder guarantees that the product offered will meet or exceed the referenced product and/or specifications identified in this bid invitation. If the bidder takes no exception to the specifications, bidder will be required to furnish the product exactly as specified in the invitation.</li>
+    <li>Samples: Samples or demonstrators, when requested, must be furnished free of expense to the University. Samples not destroyed during reasonable examination will become property of the University unless bidder states otherwise. All demonstrators will be returned after reasonable examination. Each sample should be marked with the bidder's name and address, bid number and item number.</li>
+    <li>Time of Performance: The number of calendar days in which delivery will be made after receipt of order shall be stated in the bid.</li>
+  </ol>
+
+  <div class="section-header">SUBMISSION OF BIDS</div>
+  <ol>
+    <li>Bids, modifications or corrections thereof received after the closing time specified will not be considered.</li>
+  </ol>
+
+  <div class="section-header">ACCEPTANCE OF BIDS</div>
+  <ol>
+    <li>The University reserves the right to accept or reject all or any part of a bid or any and all bids, to waive any informality, and to award the bid best serve the interest of the University.</li>
+    <li>If a bidder fails to state the time within which a bid must be accepted, it is understood and agreed that the University shall have 60 days to accept.</li>
+  </ol>
+
+  <div class="section-header">ERROR IN BID</div>
+  <ol>
+    <li>In case of error in the extension of prices in the bid, the unit price will govern. No bid shall be altered or amended after the specified time for opening bids.</li>
+  </ol>
+
+  <div class="section-header">AWARD</div>
+  <ol>
+    <li>Contracts and purchases will be made or entered into with the lowest responsible bidder meeting specifications or on the basis for best value.</li>
+    <li>When more than one item is specified in the Invitation, the University reserves the right to determine the low bidder either on the basis of the individual items or on the basis of all items included in or as expressly stated in the RFP.</li>
+  </ol>
+
+  <div class="section-header">DELIVERY</div>
+  <ol>
+    <li>The RFP will show the number of days to place a commodity in the University designated location under normal conditions. If the bidder cannot meet the stated delivery, alternate delivery schedules may become a factor in award. The University has the right to extend delivery if reasons appear valid.</li>
+    <li>Delivery shall be made during University work hours only, 8:00 a.m. to 4:30 p.m., unless prior approval for other shipment has been obtained.</li>
+    <li>Packing memoranda shall be enclosed with each shipment.</li>
+  </ol>
+
+  <div class="section-header">ACCEPTANCE AND REJECTION</div>
+  <ol>
+    <li>Final inspection and acceptance or rejection may be made at delivery destination, but all materials and workmanship shall be subject to inspection and testing at all times and places where practicable. During manufacture, the right is reserved to reject articles which contain defects or which do not conform to the specifications. Rejected material shall be returned by and at the expense of the contractor promptly after notification of rejection. Final inspection and acceptance or rejection of the materials or supplies shall be made as promptly as practicable, but failure to inspect and accept or reject materials or supplies shall not impose liability on the University thereof for such materials or supplies as are not in accordance with the specification. In the event necessity requires the use of materials or supplies not conforming to the specification, payment may be made with a proper reduction in price.</li>
+  </ol>
+
+  <div class="section-header">TAXES AND TRADE DISCOUNTS</div>
+  <ol>
+    <li>Do not include state or local sales taxes in bid price.</li>
+    <li>Trade discounts should be deducted from the quoted unit price and net price should be shown in the bid.</li>
+  </ol>
+
+  <div class="section-header">DEFAULT</div>
+  <ol>
+    <li>Back orders, default in promised delivery, or failure to meet specifications authorizes the University to cancel this contract to the defaulting contractor. The contractor must give written notice to the University of the reason and the expected delivery date.</li>
+    <li>Consistent failure to meet delivery without a valid reason may cause removal from the bidders list or suspension of eligibility for award.</li>
+  </ol>
+
+  <div class="section-header">WAIVER</div>
+  <ol>
+    <li>The University reserves the right to waive any General Condition, Special Condition, or minor specification deviation when considered to be in the best interest of the University, so long as such waiver is not given so as to deliberately favor any single vendor and would have the same effect on all vendors.</li>
+  </ol>
+
+  <div class="section-header">CANCELLATION</div>
+  <ol>
+    <li>Any contract or item award may be canceled for cause by either party by giving 30 days written notice of intent to cancel. Cause for cancellation includes, but is not limited to, cost exceeding current market prices for comparable purchases, request for increase in prices during the period of the contract, or failure to perform to contract specifications. The University reserves the right to cancel any contract or item award for any reason, provided that the University gives the contractor written notice of cancellation. Cancellation by the University does not relieve the Contractor of any liability arising out of a default or nonperformance. If a contract is canceled due to a request for increase in prices or failure to perform, that vendor shall be removed from the Qualified Bidders List for a period of 24 months. Cause for the vendor to cancel shall include, but is not limited to the item(s) being discontinued and unavailable from the manufacturer.</li>
+  </ol>
+
+  <div class="section-header">ADDENDA</div>
+  <ol>
+    <li>Addenda modifying plans and/or specifications may be issued if time permits. No addendum will be issued within a period of three (3) working days prior to the time and date set for the bid opening. Should it become necessary to issue an addendum within the three-day period prior to the bid opening, the bid date will be reset giving bidders ample time to answer the addendum.</li>
+    <li>Only written addenda is part of the bid packet and should be considered.</li>
+  </ol>
+
+  <div class="section-header">ALTERNATE BIDS</div>
+  <ol>
+    <li>Unless specifically requested alternate bids will not be considered. An alternate is considered to be a bid that does not comply with the minimum provisions of the specifications.</li>
+  </ol>
+</div>
+
+
+
+
+<div class="page">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Performance Milestone</th>
+        <th style="width: 25%;">Completion Deadline (calculated from the Commencement Date)</th>
+        <th style="width: 25%;">Liquidated Damages</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>If there is a default in the performance of any of the material terms, conditions or covenants contained in this Agreement or Contract</td>
+        <td>3 months</td>
+        <td>20% of the total initial cost and annual fee</td>
+      </tr>
+      <tr>
+        <td>If there is failure to cure in the performance of any material terms, conditions or covenants contained in this Agreement or Contract</td>
+        <td>3 months</td>
+        <td>15% of the total initial cost and annual fee</td>
+      </tr>
+      <tr>
+        <td>If there is failure to perform in the performance of any material terms, conditions or covenants contained in this Agreement or Contract</td>
+        <td>6 months</td>
+        <td>10% of the total initial cost and annual fee</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Prohibition on Contracting</div>
+  <p>In accordance with Ark. Code Ann. § 25-1-503, Vendor hereby certifies to University that Vendor (a) is not currently engaged in a boycott of Israel and (b) agrees for the duration of the Agreement/PO/Contract not to engage in a boycott of Israel. A breach of this certification will be considered a material breach of contract. In the event that Vendor breaches this certification, University may immediately terminate the Agreement/PO/Contract without penalty or further obligation and exercise any rights and remedies available to it by law or in equity.</p>
+
+  <div class="section-title">Provisions of Personal Data – European Union General Data Protection Regulations</div>
+  <p>With respect to any processing of personal data of persons located in, or such data obtained from within, the European Union (EU), each party certifies that it will comply with all applicable laws or regulations related to acceptance, transmission, and/or storage of personal data in accordance with the EU's General Data Protection Regulations (“GDPR”). The parties have verified the specific subject matter and duration of the processing; the nature and purpose of the processing; and the type of personal data and categories of data subject. Vendor (Processor) will only act on the written instructions of University (Controller). Vendor agrees to process personal data in compliance with GDPR in relation to the security of processing, the notification of personal data breaches, data protection impact assessments, answering data subjects' requests, and allowing data subjects to exercise their rights. Vendor will ensure that individuals processing the data are subject to a duty of confidentiality and only engage sub-processors with the prior consent of the University and under a written contract. Vendor consents to audits and inspections as necessary to ensure compliance with these provisions. Vendor shall return, or, at the University's discretion, delete all personal data obtained from the University (and any copies thereof) at the end of the contract and submit whatever information the University needs to ensure that both parties are meeting their GDPR Article 28 obligations.</p>
+
+  <div class="section-title">Dun and Bradstreet DUNS Number</div>
+  <p>We highly encourage all University of Arkansas contract vendors to use a Dun and Bradstreet number (DUNS Number). The D & B DUNS Number is a unique nine digit identification sequence, which provides unique identifiers of single business entities, while linking corporate family structures together. If your business has not registered, you may do so at: <span data-field="duns_registration_link">{{ duns_registration_link }}</span>.</p>
+  <p>If available, please provide your Dun and Bradstreet DUNS Number below:</p>
+  <div class="form-row">
+    <label>DUNS Number:</label>
+    <input type="text" data-field="duns_number" value="{{ duns_number }}">
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <img src="university_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 14pt; margin: 5px 0 0 0;">MINORITY AND WOMEN-OWNED BUSINESS REPORTING</h2>
+  </div>
+
+  <p>It is the policy of the State of Arkansas to support equal opportunity as well as economic development in every sector. In accordance with the Minority and Women-Owned Business Economic Development Act, UA shall support to the fullest all possible participation of companies owned and controlled by minority persons and women in state-funded and state-directed public construction programs and in the purchase of goods and services to meet an annual goal of fifteen percent (15%) of the total expended:</p>
+
+  <ul>
+    <li>Ten percent (10%) for minority business enterprises with two percent (2%) allocated for service-disabled veteran-owned minority business enterprises; and eight percent (8%) for all other minority business enterprises; and</li>
+    <li>Five percent (5%) for women-owned business enterprises</li>
+  </ul>
+
+  <p>Pursuant to Ark. Code Ann. § 19-11-229, 19-11-230 and 22-9-203 the State of Arkansas encourages all small, minority, and women owned business enterprises to submit competitive sealed bids and proposals for University projects, including capital improvement projects. Encouragement is also made to all general contractors that in the event they subcontract portions of their work, consideration is given to the identified groups.</p>
+
+  <p>To ensure the University of Arkansas is meeting its goal to support minority and women-owned businesses, we ask that contractors disclose if they, or, if applicable, any subcontractors, are minority or women-owned businesses.</p>
+
+  <div class="section-title">Instructions:</div>
+  <p>Please check the appropriate statement below:</p>
+  <div class="checkbox-group">
+    <input type="checkbox" id="statement1">
+    <label for="statement1">Minority and Women-Owned Business Information Attached.</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="statement2">
+    <label for="statement2">Minority and Women-Owned Business Information Not Applicable.</label>
+  </div>
+
+  <div class="section-title">Contractor Name</div>
+  <div class="form-row">
+    <label>Mailing Address:</label>
+    <input type="text" data-field="contractor.mailing_address" value="{{ contractor.mailing_address }}">
+  </div>
+  <div class="form-row">
+    <label>City, State & Zip:</label>
+    <input type="text" data-field="contractor.city_state_zip" value="{{ contractor.city_state_zip }}">
+  </div>
+  <div class="form-row">
+    <label>Contractor Signature:</label>
+    <input type="text" data-field="contractor.signature" value="{{ contractor.signature }}">
+  </div>
+  <div class="form-row">
+    <label>Name & Title:</label>
+    <input type="text" data-field="contractor.name_title" value="{{ contractor.name_title }}">
+  </div>
+  <div class="form-row">
+    <label>Date:</label>
+    <input type="text" data-field="contractor.date" value="{{ contractor.date }}">
+  </div>
+
+  <p>The University of Arkansas, Fayetteville Procurement Department (UA), will maintain a database of policies or written responses received from all contractors in response to solicitations issued by UA. For questions, please contact the Procurement Department by calling <span data-field="procurement_phone">{{ procurement_phone }}</span>.</p>
+</div>
+
+<div class="page">
+  <div class="header">
+    <img src="university_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 14pt; margin: 5px 0 0 0;">EQUAL OPPORTUNITY POLICY DISCLAIMER</h2>
+  </div>
+
+  <p>Pursuant to Arkansas Code Annotated § 19-11-104, any prospective contractor who is responding to a formal bid request, request for qualifications, or negotiating a contract with the state for professional, technical, or general services, must submit their most current equal opportunity policy (EO Policy). This applies to any contractor responding to a formal bid request, or entering a service contract, which the total dollar value of the contract is $25,000 or greater.</p>
+
+  <p>Although contractors are encouraged to have a viable EO policy, a response stating the contractor does not have such an EO Policy will be considered that contractor's response and will be acceptable in complying with the requirement. This is a mandatory response requirement when submitting a formal proposal or entering a service contract as outlined above. Submit this completed and signed form, and associated attachments, with your proposal or contract.</p>
+
+  <div class="section-title">Instructions:</div>
+  <p>Please check the appropriate statement below:</p>
+  <div class="checkbox-group">
+    <input type="checkbox" id="eo_statement1">
+    <label for="eo_statement1">Current EO Policy Attached.</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="eo_statement2">
+    <label for="eo_statement2">EO Policy Not Available.</label>
+  </div>
+
+  <div class="section-title">Contractor Name</div>
+  <div class="form-row">
+    <label>Mailing Address:</label>
+    <input type="text" data-field="eo_contractor.mailing_address" value="{{ eo_contractor.mailing_address }}">
+  </div>
+  <div class="form-row">
+    <label>City, State & Zip:</label>
+    <input type="text" data-field="eo_contractor.city_state_zip" value="{{ eo_contractor.city_state_zip }}">
+  </div>
+  <div class="form-row">
+    <label>Contractor Signature:</label>
+    <input type="text" data-field="eo_contractor.signature" value="{{ eo_contractor.signature }}">
+  </div>
+  <div class="form-row">
+    <label>Name & Title:</label>
+    <input type="text" data-field="eo_contractor.name_title" value="{{ eo_contractor.name_title }}">
+  </div>
+  <div class="form-row">
+    <label>Date:</label>
+    <input type="text" data-field="eo_contractor.date" value="{{ eo_contractor.date }}">
+  </div>
+
+  <p>The University of Arkansas, Fayetteville Procurement Department (UA), will maintain a database of policies or written responses received from all contractors in response to solicitations issued by UA. For questions, please contact the Procurement Department by calling <span data-field="procurement_phone_eo">{{ procurement_phone_eo }}</span>.</p>
+</div>
+
+<div class="page">
+  <div class="header">
+    <img src="university_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 14pt; margin: 5px 0 0 0;">ILLEGAL IMMIGRANT CERTIFICATION</h2>
+  </div>
+
+  <p>Pursuant to Arkansas Code Annotated § 19-11-105, state agencies are not allowed to enter into contracts for the procurement of public, professional, technical, or general services, or any category of construction with any contractor who employs or contracts with illegal immigrants. This applies to any contractor responding to a formal bid request, or entering a service contract, which the total dollar value of the contract is $25,000 or greater.</p>
+
+  <p>Contractor(s) must certify with the state, prior to the award of the contract, that they do not employ or contract with any illegal immigrants. This certification process is a mandatory requirement. Submit this completed and signed form, and your online screenshot of certification, with your proposal or contract. Failure to certify may result in rejection of your proposal, and no contract award will be made to a contractor who has not so certified.</p>
+
+  <div class="section-title">Instructions:</div>
+  <ul>
+    <li>Contractor(s) are to certify online: <span data-field="online_certification_link">{{ online_certification_link }}</span></li>
+    <li>Print screenshot of your online certification and submit with proposal or contract.</li>
+    <li>Please check the appropriate statement below and include response:</li>
+  </ul>
+
+  <div class="checkbox-group">
+    <input type="checkbox" id="immigrant_statement1">
+    <label for="immigrant_statement1">We have certified online that we do not employ or contract with any illegal immigrants, and screenshot of certification is attached.</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="immigrant_statement2">
+    <label for="immigrant_statement2">We have NOT certified online at this time, and we understand that no contract can be awarded to our business until we have done so.</label>
+  </div>
+  <div class="form-row">
+    <label>Reason for non-certification:</label>
+    <input type="text" data-field="reason_for_non_certification" value="{{ reason_for_non_certification }}">
+  </div>
+
+  <div class="section-title">Contractor Name</div>
+  <div class="form-row">
+    <label>Mailing Address:</label>
+    <input type="text" data-field="immigrant_contractor.mailing_address" value="{{ immigrant_contractor.mailing_address }}">
+  </div>
+  <div class="form-row">
+    <label>City, State & Zip:</label>
+    <input type="text" data-field="immigrant_contractor.city_state_zip" value="{{ immigrant_contractor.city_state_zip }}">
+  </div>
+  <div class="form-row">
+    <label>Contractor Signature:</label>
+    <input type="text" data-field="immigrant_contractor.signature" value="{{ immigrant_contractor.signature }}">
+  </div>
+  <div class="form-row">
+    <label>Name & Title:</label>
+    <input type="text" data-field="immigrant_contractor.name_title" value="{{ immigrant_contractor.name_title }}">
+  </div>
+  <div class="form-row">
+    <label>Date:</label>
+    <input type="text" data-field="immigrant_contractor.date" value="{{ immigrant_contractor.date }}">
+  </div>
+
+  <p>For purposes of this requirement, “Illegal immigrant” means any person not a citizen of the United States who has:</p>
+  <ul>
+    <li>Entered the United States in violation of the Federal Immigration and Naturalization Act or regulations issued by the act;</li>
+    <li>Legally entered but without the right to be employed in the United States; or</li>
+    <li>Legally entered subject to a time limit but has remained illegally after expiration of the time limit.</li>
+  </ul>
+  <p>For questions, please contact the Procurement Department by calling <span data-field="procurement_phone_immigrant">{{ procurement_phone_immigrant }}</span>.</p>
+</div>
+
+<div class="page">
+  <div class="header">
+    <img src="university_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">BIDDER CONFLICT OF INTEREST FORM</h1>
+  </div>
+
+  <p>For any Request for Proposal (“RFP”) that requires the submission of this form, it is the responsibility of a vendor or individual (“Bidder”) desiring to be considered for a bid award to complete and return this form, along with the attached Contract and Grant Disclosure and Certification Form (together the “Forms”), on or prior to the date stated in the RFP for submission of these Forms. The purpose of these Forms is to give Bidders an opportunity to disclose any actual or perceived conflicts of interest. The determination of the University of Arkansas (“University”) regarding any questions of conflict of interest shall be final.</p>
+
+  <p>A disclosure does not automatically result in the Bidder being removed from consideration. However, the University reserves the right, at the sole discretion of the University, to take any or all of the following actions at any point in the RFP process: (i) request further information from the Bidder, including but not limited to lines of business activity, ownership structure and affiliate information; (ii) review of potential or actual conflicts of interest; and/or (iii) remove a Bidder from consideration.</p>
+
+  <p>A conflict of interest may exist in circumstances including, but not limited to, when (i) a Bidder is unable or potentially unable to provide impartial contract performance due to competing duties or loyalties; (ii) a Bidder’s objectivity in carrying out the contract or its might be otherwise impaired due to competing duties or loyalties; (iii) a Bidder or any of its affiliates is in direct or indirect competition with the University; and/or (iv) a Bidder or any of its affiliates provides significant services or support for any direct or indirect competitor to the University. For purposes of this Form, an “affiliate” is defined as any entity that directly or indirectly controls, is directly or indirectly controlled by, or is under common control with the Bidder or has at least one common owner or shareholder with the Bidder.</p>
+
+  <p>Each Bidder must provide a list of all business activity and affiliates that may create any actual or potential conflict of interest in relation to this procurement. The list should indicate the name of the entity, the relationship, and a description of the conflict. Please use the chart below and attach additional pages as necessary.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Name</th>
+        <th style="width: 30%;">Relationship</th>
+        <th style="width: 50%;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="bidder_conflict.name">{{ bidder_conflict.name }}</span></td>
+        <td><span data-field="bidder_conflict.relationship">{{ bidder_conflict.relationship }}</span></td>
+        <td><span data-field="bidder_conflict.description">{{ bidder_conflict.description }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>I certify under penalty of perjury, to the best of my knowledge and belief, all of the above information is true and complete and that I agree to supplement this information if any further conflicts of interest arise or come to my attention.</p>
+
+  <div class="signature-block">
+    <div class="form-row">
+      <label>Signature:</label>
+      <input type="text" data-field="bidder_signature" value="{{ bidder_signature }}">
+      <div style="width: 150px;">
+        <label>Title:</label>
+        <input type="text" data-field="bidder_title" value="{{ bidder_title }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Bidder Name:</label>
+      <input type="text" data-field="bidder_name" value="{{ bidder_name }}">
+      <div style="width: 150px;">
+        <label>Date:</label>
+        <input type="text" data-field="bidder_date" value="{{ bidder_date }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Contact Person:</label>
+      <input type="text" data-field="bidder_contact_person" value="{{ bidder_contact_person }}">
+      <div style="width: 150px;">
+        <label>Email Address:</label>
+        <input type="text" data-field="bidder_email_address" value="{{ bidder_email_address }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <img src="university_logo.png" alt="University Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">UNIVERSITY OF ARKANSAS</h1>
+    <h2 style="font-size: 14pt; margin: 5px 0 0 0;">RESTRICTION OF BOYCOTT OF ISRAEL CERTIFICATION</h2>
+  </div>
+
+  <p>Pursuant to Arkansas Code Annotated § 25-1-503, a Public Entity shall not enter into a contract valued at $1,000 or greater with a contractor unless the contractor includes a written certification that the contractor is not currently engaged in, and agrees for the duration of the contract not to engage in, a boycott of Israel.</p>
+
+  <p>By signing below, the Contractor agrees and certifies that they do not boycott Israel and will not boycott Israel during any time in which they are entering into, or while in contract with, any Public Entity as defined in § 25-1-503*. If at any time after signing this certification the contractor decides to engage in a boycott of Israel, the contractor must notify the contracting Public Entity in writing.</p>
+
+  <div class="section-title">If a company does boycott Israel, see Arkansas Code Annotated § 25-1-503.</div>
+
+  <div class="section-title">Contractor Name</div>
+  <div class="form-row">
+    <label>Mailing Address:</label>
+    <input type="text" data-field="boycott_contractor.mailing_address" value="{{ boycott_contractor.mailing_address }}">
+  </div>
+  <div class="form-row">
+    <label>City, State & Zip:</label>
+    <input type="text" data-field="boycott_contractor.city_state_zip" value="{{ boycott_contractor.city_state_zip }}">
+  </div>
+  <div class="form-row">
+    <label>Contractor Signature:</label>
+    <input type="text" data-field="boycott_contractor.signature" value="{{ boycott_contractor.signature }}">
+  </div>
+  <div class="form-row">
+    <label>Name & Title:</label>
+    <input type="text" data-field="boycott_contractor.name_title" value="{{ boycott_contractor.name_title }}">
+  </div>
+  <div class="form-row">
+    <label>Date:</label>
+    <input type="text" data-field="boycott_contractor.date" value="{{ boycott_contractor.date }}">
+  </div>
+
+  <p>*“Public Entity” means the State of Arkansas, or a political subdivision of the state, including all boards, commissions, agencies, institutions, authorities, and bodies politic and corporate of the state, created by or in accordance with state law or regulations, and does include colleges, universities, a statewide public employee retirement system, and institutions in Arkansas as well as units of local and municipal government.</p>
+  <p>For questions, please contact the Procurement Department by calling <span data-field="procurement_phone_boycott">{{ procurement_phone_boycott }}</span>.</p>
+</div>
+
+<div class="page">
+  <div class="section-title">CONTRACT AND GRANT DISCLOSURE AND CERTIFICATION FORM</div>
+
+  <p>Failure to complete all of the following information may result in a delay in obtaining a contract, lease, purchase agreement, or grant award with any Arkansas State Agency.</p>
+
+  <div class="form-row">
+    <label>SUBCONTRACTOR:</label>
+    <input type="text" data-field="disclosure.subcontractor_name" value="{{ disclosure.subcontractor_name }}">
+    <label style="width: auto; margin-left: 20px;">IS THIS FOR:</label>
+    <input type="checkbox" id="goods"> <label for="goods">Goods?</label>
+    <input type="checkbox" id="services"> <label for="services">Services?</label>
+    <input type="checkbox" id="both"> <label for="both">Both?</label>
+  </div>
+
+  <div class="form-row">
+    <label>TAXPAYER ID NAME:</label>
+    <input type="text" data-field="disclosure.taxpayer_id_name" value="{{ disclosure.taxpayer_id_name }}">
+    <label>FIRST NAME:</label>
+    <input type="text" data-field="disclosure.taxpayer_first_name" value="{{ disclosure.taxpayer_first_name }}">
+    <label>M.I.:</label>
+    <input type="text" data-field="disclosure.taxpayer_mi" value="{{ disclosure.taxpayer_mi }}">
+  </div>
+
+  <div class="form-row">
+    <label>ADDRESS:</label>
+    <input type="text" data-field="disclosure.address" value="{{ disclosure.address }}">
+  </div>
+
+  <div class="form-row">
+    <label>CITY:</label>
+    <input type="text" data-field="disclosure.city" value="{{ disclosure.city }}">
+    <label>STATE:</label>
+    <input type="text" data-field="disclosure.state" value="{{ disclosure.state }}">
+    <label>ZIP CODE:</label>
+    <input type="text" data-field="disclosure.zip_code" value="{{ disclosure.zip_code }}">
+  </div>
+
+  <p>AS A CONDITION OF OBTAINING, EXTENDING, AMENDING, OR RENEWING A CONTRACT, LEASE, PURCHASE AGREEMENT, OR GRANT AWARD WITH ANY ARKANSAS STATE AGENCY, THE FOLLOWING INFORMATION MUST BE DISCLOSED:</p>
+
+  <div class="section-title">FOR INDIVIDUALS*</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">Position Held</th>
+        <th style="width: 20%;">Mark (✓)</th>
+        <th style="width: 30%;">Name of Position of Job Held</th>
+        <th style="width: 15%;">For How Long?</th>
+        <th style="width: 25%;">What is the person(s) name and how are they related to you? (i.e., Jane Q. Public, spouse, John Q. Public, Jr., child, etc.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>General Assembly</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="individual_disclosure.ga_position">{{ individual_disclosure.ga_position }}</span></td>
+        <td><span data-field="individual_disclosure.ga_duration">{{ individual_disclosure.ga_duration }}</span></td>
+        <td><span data-field="individual_disclosure.ga_relation">{{ individual_disclosure.ga_relation }}</span></td>
+      </tr>
+      <tr>
+        <td>Constitutional Officer</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="individual_disclosure.co_position">{{ individual_disclosure.co_position }}</span></td>
+        <td><span data-field="individual_disclosure.co_duration">{{ individual_disclosure.co_duration }}</span></td>
+        <td><span data-field="individual_disclosure.co_relation">{{ individual_disclosure.co_relation }}</span></td>
+      </tr>
+      <tr>
+        <td>State Board or Commission Member</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="individual_disclosure.sbc_position">{{ individual_disclosure.sbc_position }}</span></td>
+        <td><span data-field="individual_disclosure.sbc_duration">{{ individual_disclosure.sbc_duration }}</span></td>
+        <td><span data-field="individual_disclosure.sbc_relation">{{ individual_disclosure.sbc_relation }}</span></td>
+      </tr>
+      <tr>
+        <td>State Employee</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="individual_disclosure.se_position">{{ individual_disclosure.se_position }}</span></td>
+        <td><span data-field="individual_disclosure.se_duration">{{ individual_disclosure.se_duration }}</span></td>
+        <td><span data-field="individual_disclosure.se_relation">{{ individual_disclosure.se_relation }}</span></td>
+      </tr>
+      <tr>
+        <td>None of the above applies</td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">FOR AN ENTITY (BUSINESS)*</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">Position Held</th>
+        <th style="width: 20%;">Mark (✓)</th>
+        <th style="width: 30%;">Name of Position of Job Held</th>
+        <th style="width: 15%;">From MM/YY</th>
+        <th style="width: 15%;">To MM/YY</th>
+        <th style="width: 10%;">Ownership Interest (%)</th>
+        <th style="width: 10%;">Position of Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>General Assembly</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="entity_disclosure.ga_position">{{ entity_disclosure.ga_position }}</span></td>
+        <td><span data-field="entity_disclosure.ga_from">{{ entity_disclosure.ga_from }}</span></td>
+        <td><span data-field="entity_disclosure.ga_to">{{ entity_disclosure.ga_to }}</span></td>
+        <td><span data-field="entity_disclosure.ga_interest">{{ entity_disclosure.ga_interest }}</span></td>
+        <td><span data-field="entity_disclosure.ga_control">{{ entity_disclosure.ga_control }}</span></td>
+      </tr>
+      <tr>
+        <td>Constitutional Officer</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="entity_disclosure.co_position">{{ entity_disclosure.co_position }}</span></td>
+        <td><span data-field="entity_disclosure.co_from">{{ entity_disclosure.co_from }}</span></td>
+        <td><span data-field="entity_disclosure.co_to">{{ entity_disclosure.co_to }}</span></td>
+        <td><span data-field="entity_disclosure.co_interest">{{ entity_disclosure.co_interest }}</span></td>
+        <td><span data-field="entity_disclosure.co_control">{{ entity_disclosure.co_control }}</span></td>
+      </tr>
+      <tr>
+        <td>State Board or Commission Member</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="entity_disclosure.sbc_position">{{ entity_disclosure.sbc_position }}</span></td>
+        <td><span data-field="entity_disclosure.sbc_from">{{ entity_disclosure.sbc_from }}</span></td>
+        <td><span data-field="entity_disclosure.sbc_to">{{ entity_disclosure.sbc_to }}</span></td>
+        <td><span data-field="entity_disclosure.sbc_interest">{{ entity_disclosure.sbc_interest }}</span></td>
+        <td><span data-field="entity_disclosure.sbc_control">{{ entity_disclosure.sbc_control }}</span></td>
+      </tr>
+      <tr>
+        <td>State Employee</td>
+        <td><input type="checkbox"></td>
+        <td><span data-field="entity_disclosure.se_position">{{ entity_disclosure.se_position }}</span></td>
+        <td><span data-field="entity_disclosure.se_from">{{ entity_disclosure.se_from }}</span></td>
+        <td><span data-field="entity_disclosure.se_to">{{ entity_disclosure.se_to }}</span></td>
+        <td><span data-field="entity_disclosure.se_interest">{{ entity_disclosure.se_interest }}</span></td>
+        <td><span data-field="entity_disclosure.se_control">{{ entity_disclosure.se_control }}</span></td>
+      </tr>
+      <tr>
+        <td>None of the above applies</td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>I certify under penalty of perjury, to the best of my knowledge and belief, all of the above information is true and correct and that I agree to the subcontractor disclosure conditions stated herein.</p>
+
+  <div class="signature-block">
+    <div class="form-row">
+      <label>Signature:</label>
+      <input type="text" data-field="disclosure_signature" value="{{ disclosure_signature }}">
+      <div style="width: 150px;">
+        <label>Title:</label>
+        <input type="text" data-field="disclosure_title" value="{{ disclosure_title }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Vendor Contact Person:</label>
+      <input type="text" data-field="disclosure_vendor_contact_person" value="{{ disclosure_vendor_contact_person }}">
+      <div style="width: 150px;">
+        <label>Phone No.:</label>
+        <input type="text" data-field="disclosure_phone_no" value="{{ disclosure_phone_no }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Agency use only:</label>
+      <input type="text" data-field="disclosure_agency_number" value="{{ disclosure_agency_number }}">
+      <label style="width: auto; margin-left: 20px;">Agency Name:</label>
+      <input type="text" data-field="disclosure_agency_name" value="{{ disclosure_agency_name }}">
+      <label style="width: auto; margin-left: 20px;">Contact Person:</label>
+      <input type="text" data-field="disclosure_agency_contact_person" value="{{ disclosure_agency_contact_person }}">
+      <label style="width: auto; margin-left: 20px;">Phone No.:</label>
+      <input type="text" data-field="disclosure_agency_phone_no" value="{{ disclosure_agency_phone_no }}">
+      <label style="width: auto; margin-left: 20px;">Contract or Grant No.:</label>
+      <input type="text" data-field="disclosure_contract_grant_no" value="{{ disclosure_contract_grant_no }}">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    min-width: 200px;
+    margin-top: 50px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 18pt; margin-bottom: 5px;">ART INTERNSHIP</h1>
+      <h2 style="font-size: 14pt; margin-top: 0;">ACADEMIC CONTRACT</h2>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">Page 1 of 14</p>
+      <p style="font-size: 10pt;">Internship Coordinator</p>
+      <p style="font-size: 10pt;">Department of Art</p>
+      <p style="font-size: 10pt;">University of Wyoming</p>
+      <p style="font-size: 10pt;">Dept. 3138, 1000 E. University Ave.</p>
+      <p style="font-size: 10pt;">Laramie, WY 82071</p>
+      <p style="font-size: 10pt;">Phone: {{ employer.phone }}</p>
+      <p style="font-size: 10pt;">E-mail: {{ employer.email }}</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Student's Name: <span data-field="student.full_name">{{ student.full_name }}</span></p>
+    <p>W#: <span data-field="student.w_number">{{ student.w_number }}</span></p>
+    <p>Email: <span data-field="student.email">{{ student.email }}</span></p>
+    <p>Phone: <span data-field="student.phone">{{ student.phone }}</span></p>
+    <p>Address: <span data-field="student.address">{{ student.address }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Name of Agency/Organization of Internship: <span data-field="agency.name">{{ agency.name }}</span></p>
+    <p>Internship Supervisor: <span data-field="agency.supervisor_name">{{ agency.supervisor_name }}</span></p>
+    <p>Address: <span data-field="agency.address">{{ agency.address }}</span></p>
+    <p>Email: <span data-field="agency.email">{{ agency.email }}</span></p>
+    <p>Period of Internship: From <span data-field="internship.start_date">{{ internship.start_date }}</span> To <span data-field="internship.end_date">{{ internship.end_date }}</span></p>
+    <p>Hours per week on-the-job: <span data-field="internship.hours_per_week">{{ internship.hours_per_week }}</span></p>
+    <p>General assignment for internship: <span data-field="internship.general_assignment">{{ internship.general_assignment }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Faculty Sponsor: <span data-field="faculty_sponsor.full_name">{{ faculty_sponsor.full_name }}</span></p>
+    <p>Email: <span data-field="faculty_sponsor.email">{{ faculty_sponsor.email }}</span></p>
+    <p>Phone: <span data-field="faculty_sponsor.phone">{{ faculty_sponsor.phone }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">DEPARTMENT REQUIREMENTS</h2>
+
+  <ol style="padding-left: 20px;">
+    <li>
+      <p>Academic Credit</p>
+      <table>
+        <thead>
+          <tr>
+            <td style="width: 30%;">Course Number</td>
+            <td style="width: 30%;">Credit Hours</td>
+            <td style="width: 40%;">Grade Option (A-F or S/U)</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-field="course.number">{{ course.number }}</span></td>
+            <td><span data-field="course.credit_hours">{{ course.credit_hours }}</span></td>
+            <td><span data-field="course.grade_option">{{ course.grade_option }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>
+      <p>Academic Assignments and due date for submission (arranged with faculty sponsor): <span data-field="academic_assignments.description">{{ academic_assignments.description }}</span></p>
+      <p>Keep a journal and document the following during your internship:</p>
+      <ul style="list-style-type: disc; padding-left: 40px;">
+        <li>Record of internship activity weekly/semi-weekly</li>
+        <li>Record of new skills and learning acquired in work setting.</li>
+        <li>Record of previous expertise and knowledge applied in work setting.</li>
+        <li>Examples of work developed and record of process.</li>
+        <li>Observations and reflections on internship.</li>
+        <li>Summary of internship experience and contribution to your program.</li>
+      </ul>
+    </li>
+    <li>
+      <p>Intern's Midterm and Final Assessments submitted to faculty sponsor:</p>
+      <p>a. Mid-term assessment to the faculty sponsor by (date): <span data-field="assessment.midterm_date">{{ assessment.midterm_date }}</span></p>
+      <p>b. Final assessment to the faculty sponsor by (date): <span data-field="assessment.final_date">{{ assessment.final_date }}</span></p>
+      <p>Assessment form are available on <a href="http://uwadmnweb.uwyo.edu/art/" style="color: black;">http://uwadmnweb.uwyo.edu/art/</a></p>
+    </li>
+    <li>
+      <p>Intern Supervisor's Midterm and Final Assessments submitted to faculty sponsor:</p>
+      <p>a. Mid-term assessment by (date): <span data-field="supervisor_assessment.midterm_date">{{ supervisor_assessment.midterm_date }}</span></p>
+      <p>b. Final assessment by (date): <span data-field="supervisor_assessment.final_date">{{ supervisor_assessment.final_date }}</span></p>
+      <p>Assessment form are available on <a href="http://uwadmnweb.uwyo.edu/art/" style="color: black;">http://uwadmnweb.uwyo.edu/art/</a></p>
+    </li>
+  </ol>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">AGENCY/ORGANIZATION REQUIREMENTS</h2>
+
+  <ol style="padding-left: 20px;">
+    <li>Agency/organization will provide adequate supervision of intern.</li>
+    <li>Intern will comply with organization's policies and procedures.</li>
+    <li>Intern will fulfill the following specific conditions/responsibilities/tasks identified by the agency/organization:</li>
+  </ol>
+
+  <div style="margin-top: 50px;">
+    <p style="font-weight: bold;">NOTE:</p>
+    <ol style="padding-left: 20px;">
+      <li>Full credit in the course is contingent upon successful completion of the internship practicum and academic assignments outlined in this memorandum.</li>
+      <li>The course call number will be given to the student when this agreement is finalized. The student is responsible for registering for the course.</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p>Printed Name and Signatures:</p>
+    <p>Student: <span data-field="signature.student_name">{{ signature.student_name }}</span></p>
+    <div style="margin-top: 20px;">
+      <span class="signature-line"></span>
+      <span style="margin-left: 20px;">Date: <span data-field="signature.student_date">{{ signature.student_date }}</span></span>
+    </div>
+    <p style="margin-top: 30px;">Intern Supervisor: <span data-field="signature.supervisor_name">{{ signature.supervisor_name }}</span></p>
+    <div style="margin-top: 20px;">
+      <span class="signature-line"></span>
+      <span style="margin-left: 20px;">Date: <span data-field="signature.supervisor_date">{{ signature.supervisor_date }}</span></span>
+    </div>
+    <p style="margin-top: 30px;">Faculty Advisor/Sponsor: <span data-field="signature.faculty_name">{{ signature.faculty_name }}</span></p>
+    <div style="margin-top: 20px;">
+      <span class="signature-line"></span>
+      <span style="margin-left: 20px;">Date: <span data-field="signature.faculty_date">{{ signature.faculty_date }}</span></span>
+    </div>
+    <p style="margin-top: 30px;">Department Head: <span data-field="signature.department_head_name">{{ signature.department_head_name }}</span></p>
+    <div style="margin-top: 20px;">
+      <span class="signature-line"></span>
+      <span style="margin-left: 20px;">Date: <span data-field="signature.department_head_date">{{ signature.department_head_date }}</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 40px;">STUDENT REFLECTION</h2>
+
+  <ol style="padding-left: 20px;">
+    <li>Why have you chosen this site? <span data-field="reflection.q1_answer">{{ reflection.q1_answer }}</span></li>
+    <li>What are your expectations of this internship? <span data-field="reflection.q2_answer">{{ reflection.q2_answer }}</span></li>
+    <li>What do you expect to learn from this internship? <span data-field="reflection.q3_answer">{{ reflection.q3_answer }}</span></li>
+    <li>What profession are you pursuing? <span data-field="reflection.q4_answer">{{ reflection.q4_answer }}</span></li>
+    <li>How does this internship relate to your future professional goals? <span data-field="reflection.q5_answer">{{ reflection.q5_answer }}</span></li>
+  </ol>
+
+  <div style="margin-top: 80px; text-align: center;">
+    <p style="font-weight: bold;">RETURN COMPLETED APPLICATION FORMS TO YOUR FACULTY SPONSOR.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt;">FINAL ASSESSMENT REPORT (SUPERVISOR)</h2>
+      <p style="font-weight: bold; margin-top: 15px;">INSTRUCTIONS:</p>
+      <p>INTERN SUPERVISOR: Please complete this sheet, then forward to: The Internship Coordinator, Department of Art, Dept. 3138, 1000 E. University Ave., Laramie, WY 82071</p>
+      <p>DUE DATE: <span data-field="final_assessment.due_date">{{ final_assessment.due_date }}</span></p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">Page 5 of 14</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Intern's Name: <span data-field="final_assessment.intern_name">{{ final_assessment.intern_name }}</span></p>
+    <p>Intern's Supervisor: <span data-field="final_assessment.supervisor_name">{{ final_assessment.supervisor_name }}</span></p>
+    <p>Name and Address of Agency/Organization: <span data-field="final_assessment.agency_info">{{ final_assessment.agency_info }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Please assess intern's performance and progress at this point with special reference to his/her contribution to your organization's purposes and programs. Please also make any additional comments which you think would be helpful to the intern and the Department.</p>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p>Signature</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+    <p>Date</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt;">FINAL ASSESSMENT REPORT (SUPERVISOR)</h2>
+      <p style="font-weight: bold; margin-top: 15px;">INSTRUCTIONS:</p>
+      <p>INTERN SUPERVISOR: Please complete this sheet, then forward to: The Internship Coordinator, Department of Art, Dept. 3138, 1000 E. University Ave., Laramie, WY 82071</p>
+      <p>DUE DATE: <span data-field="final_assessment_2.due_date">{{ final_assessment_2.due_date }}</span></p>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">Page 7 of 14</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>Intern's Name: <span data-field="final_assessment_2.intern_name">{{ final_assessment_2.intern_name }}</span></p>
+    <p>Intern's Supervisor: <span data-field="final_assessment_2.supervisor_name">{{ final_assessment_2.supervisor_name }}</span></p>
+    <p>Name and Address of Agency/Organization: <span data-field="final_assessment_2.agency_info">{{ final_assessment_2.agency_info }}</span></p>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Please assess intern's performance and progress at this point with special reference to his/her contribution to your organization's purposes and programs. Please also make any additional comments which you think would be helpful to the intern and the Department.</p>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p>Signature</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+    <p>Date</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt;">Please give your assessment of the intern regarding:</h2>
+      <table style="margin-top: 30px;">
+        <thead>
+          <tr>
+            <td style="width: 50%; padding-bottom: 10px;">Attendance and Punctuality</td>
+            <td style="width: 25%; text-align: center;">Excellent</td>
+            <td style="width: 25%; text-align: center;">Satisfactory</td>
+            <td style="width: 25%; text-align: center;">Unsatisfactory</td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Reliability</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Relations with Co-workers</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Supervisory Relations</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Initiative</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Understanding of agency's/organization's goals</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Overall Competence</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows are handled by the static table structure above -->
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">Page 6 of 14</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p>Supervisor's Signature</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+    <p>Date</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h2 style="font-size: 14pt;">Please give your assessment of the intern regarding:</h2>
+      <table style="margin-top: 30px;">
+        <thead>
+          <tr>
+            <td style="width: 50%; padding-bottom: 10px;">Attendance and Punctuality</td>
+            <td style="width: 25%; text-align: center;">Excellent</td>
+            <td style="width: 25%; text-align: center;">Satisfactory</td>
+            <td style="width: 25%; text-align: center;">Unsatisfactory</td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Reliability</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Relations with Co-workers</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Supervisory Relations</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Initiative</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Understanding of agency's/organization's goals</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">Overall Competence</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows are handled by the static table structure above -->
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 50%; text-align: right;">
+      <p style="font-size: 10pt;">Page 8 of 14</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p>Supervisor's Signature</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+    <p>Date</p>
+    <div style="margin-top: 20px;"><span class="signature-line"></span></div>
+  </div>
+</div>
+
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+    }
+    .page:last-child { page-break-after: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 5px 0; }
+    .header-right { text-align: right; }
+</style>
+
+<div class="page">
+    <div class="header-right">Page 9 of 14</div>
+    <div style="margin-top: 30px;">
+        <h1 style="font-size: 18pt; font-weight: bold;">MIDTERM ASSESSMENT REPORT (INTERN)</h1>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p><strong>INSTRUCTIONS:</strong></p>
+        <p>Please complete this sheet and submit it to the Internship Coordinator, Department of Art, Dept. <span data-field="department_number">{{ department_number }}</span>, <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span> <span data-field="zip_code">{{ zip_code }}</span>.</p>
+        <p><strong>DUE DATE:</strong> _________________________</p>
+        <p>Intern's Name: <span data-field="intern_name">{{ intern_name }}</span></p>
+        <p>Intern's Supervisor: <span data-field="supervisor_name">{{ supervisor_name }}</span></p>
+        <p>Name and Address of Agency/Organization: <span data-field="agency_name">{{ agency_name }}</span>, <span data-field="agency_address">{{ agency_address }}</span></p>
+
+        <ol style="margin-top: 20px;">
+            <li>Please describe your activities/responsibilities and relate them to your goals/objectives as stated in the Memorandum of Understanding.</li>
+            <li>Please make any additional comments which you think would be helpful to the Department and the intern agency/organization regarding any aspect of your internship experience. What do we need to know about your current experience? Did you feel sufficiently prepared for this experience?</li>
+        </ol>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <p>Signature _________________________</p>
+        <p>Date _________________________</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-right">Page 10 of 14</div>
+    <div style="margin-top: 30px;">
+        <h1 style="font-size: 18pt; font-weight: bold;">MIDTERM ASSESSMENT REPORT</h1>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p><strong>INSTRUCTIONS:</strong> INTERN SUPERVISOR: Please complete this sheet, then forward to: The Internship Coordinator, Department of Art, Dept. <span data-field="department_number">{{ department_number }}</span>, <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span> <span data-field="zip_code">{{ zip_code }}</span>.</p>
+        <p><strong>DUE DATE:</strong> _________________________</p>
+        <p>Intern's Name: <span data-field="intern_name">{{ intern_name }}</span></p>
+        <p>Intern's Supervisor: <span data-field="supervisor_name">{{ supervisor_name }}</span></p>
+        <p>Name and Address of Agency/Organization: <span data-field="agency_name">{{ agency_name }}</span>, <span data-field="agency_address">{{ agency_address }}</span></p>
+
+        <p style="margin-top: 30px;">Please assess intern's performance and progress at this point with special reference to his/her contribution to your organization's purposes and programs. Please also make additional comments which you think would be helpful to the intern and the Department.</p>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <p>Signature _________________________</p>
+        <p>Date _________________________</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-right">Page 11 of 14</div>
+    <div style="margin-top: 30px;">
+        <p>Please give your assessment of the intern regarding:</p>
+        <table style="margin-top: 20px;">
+            <tr>
+                <td style="width: 30%;">Attendance and Punctuality</td>
+                <td style="width: 20%; text-align: center;">Excellent</td>
+                <td style="width: 20%; text-align: center;">Satisfactory</td>
+                <td style="width: 30%; text-align: center;">Unsatisfactory</td>
+            </tr>
+            <tr>
+                <td>Reliability</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+            <tr>
+                <td>Relations with Co-workers</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+            <tr>
+                <td>Supervisory Relations</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+            <tr>
+                <td>Initiative</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+            <tr>
+                <td>Understanding of agency's/ organization's goals</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+            <tr>
+                <td>Overall Competence</td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+                <td style="text-align: center;"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <p>Supervisor's Signature _________________________</p>
+        <p>Date _________________________</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-right">Page 12 of 14</div>
+    <div style="margin-top: 30px;">
+        <h1 style="font-size: 18pt; font-weight: bold;">ART 4400 INTERNSHIP</h1>
+        <h2 style="font-size: 14pt; font-weight: bold;">INTERNSHIP RATIONALE, PRINCIPLES, AND POLICIES</h2>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p>Frequently a culminating experience for art majors is ART 4400 Internship. This component of the art program is designed to provide majors with an educational experience that will integrate theoretical ideas, gained from the art program into practice. An internship placement is designed to provide majors with the opportunity to develop competencies that are necessary to assume professional responsibilities in public, private, corporate, community, and/or academic settings. The internship should help students meet their professional goals.</p>
+        <p>The following are principles and guidelines that should be used when selecting and planning your internship.</p>
+        <ol style="margin-top: 20px;">
+            <li>Students should play an active role in selecting the internship site.</li>
+            <li>Student should play an active role in planning the internship experience.</li>
+            <li>Student should meet the internship site based on their professional goals.</li>
+            <li>Internship must meet the "real" needs of the agency in terms of needs assessment, program planning, implementation, and evaluation.</li>
+            <li>The internship should be designed to provide the student with a wide variety of opportunities and experiences that are reflective of actual responsibilities of art professionals.</li>
+            <li>The internship should take place under the supervision and guidance of an individual who can create learning experiences out of actual work situations.</li>
+            <li>The intern's supervisor should be knowledgeable in the student's area of specialization.</li>
+            <li>Students should be evaluated in terms of their (a) increased understanding, knowledge, and abilities specific to the internship and (b) contributions to the agency's program.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-right">Page 13 of 14</div>
+    <div style="margin-top: 30px;">
+        <h1 style="font-size: 18pt; font-weight: bold;">Policies</h1>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p>Please read the following policies applicable to ART 4400 Internship. Once you read and understand the policies, please date and sign the form. Please return this form to your faculty sponsor in the art department.</p>
+        <ol style="margin-top: 20px;">
+            <li>I understand that junior level standing and a minimum of 12 hours in the major area are required for ART 4400 Internship.</li>
+            <li>I understand that I must select the site for the Internship Experience under the guidance of my advisor.</li>
+            <li>I understand that it is my responsibility to submit the Academic Contract for ART 4400 Internship before the beginning of the semester or I may not be permitted to enroll until the following semester.</li>
+            <li>I understand that if my faculty sponsor, my advisor or the department head do not approve my internship application, I will not be permitted to enroll in ART 4400 Internship.</li>
+            <li>I understand that it is my responsibility to keep the department head and office manager informed of any address, phone number, and/or name changes.</li>
+            <li>I understand that it is my responsibility to notify my faculty sponsor, my advisor and the department head, if I decide to withdraw from the Internship Experience for any reason.</li>
+        </ol>
+        <p style="margin-top: 30px;">By my signature below, I acknowledge that I have read and understand the ART 4400 Internship Policies listed above and my questions about the policies have been answered satisfactorily.</p>
+        <p style="margin-top: 50px;">Date _________________________</p>
+        <p>Student's Signature _________________________</p>
+        <p>Printed Name _________________________</p>
+    </div>
+</div>
+
+<div class="page">
+    <div class="header-right">Page 14 of 14</div>
+    <div style="margin-top: 100px;">
+        <!-- Blank page content -->
+    </div>
+</div>

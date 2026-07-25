@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .date-range {
+    float: right;
+    font-style: italic;
+    font-size: 10pt;
+  }
+  .job-details, .education-details {
+    margin-bottom: 10px;
+  }
+  .list-item {
+    margin-bottom: 5px;
+    font-size: 10pt;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 4px 0;
+    font-size: 10pt;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}</h1>
+
+  <div class="section-title">Employment</div>
+  {% for job in employment %}
+    <div class="job-details">
+      <div class="entry-title">{{ job.title }}</div>
+      <div class="date-range">{{ job.start_date }} – {{ job.end_date }}</div>
+      <div>{{ job.employer.name }}</div>
+      <div>{{ job.description }}</div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Education</div>
+  {% for edu in education %}
+    <div class="education-details">
+      <div class="entry-title">{{ edu.degree }}</div>
+      <div class="date-range">{{ edu.start_date }} – {{ edu.end_date }}</div>
+      <div>{{ edu.institution.name }}</div>
+      <div>{{ edu.details }}</div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Publications</div>
+  <table>
+    {% for pub in publications %}
+      <tr>
+        <td><span data-field="publications[{{ loop.index0 }}].title">{{ pub.title }}</span></td>
+        <td><span data-field="publications[{{ loop.index0 }}].journal">{{ pub.journal }}</span></td>
+        <td><span data-field="publications[{{ loop.index0 }}].year">{{ pub.year }}</span></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <div class="section-title">Conference Papers</div>
+  {% for conf_paper in conference_papers %}
+    <div class="list-item">{{ conf_paper.title }} ({{ conf_paper.year }})</div>
+  {% endfor %}
+
+  <div class="section-title">Book Chapters</div>
+  {% for book_chap in book_chapters %}
+    <div class="list-item">{{ book_chap.title }} ({{ book_chap.year }})</div>
+  {% endfor %}
+
+  <div class="section-title">Theses</div>
+  {% for thesis in theses %}
+    <div class="list-item">{{ thesis.title }} ({{ thesis.year }})</div>
+  {% endfor %}
+
+  <div class="section-title">Selected Professional Activities</div>
+  {% for activity in professional_activities %}
+    <div class="list-item">{{ activity.description }} ({{ activity.year }})</div>
+  {% endfor %}
+
+  <div class="section-title">Conference and Workshop Organization</div>
+  {% for org_activity in org_activities %}
+    <div class="list-item">{{ org_activity.description }} ({{ org_activity.year }})</div>
+  {% endfor %}
+
+  <div class="section-title">Associate Editor</div>
+  <div class="list-item">{{ editor_activity.description }} ({{ editor_activity.year }})</div>
+
+  <div class="section-title">Teaching at {{ university_name }}</div>
+  {% for course in courses %}
+    <div class="list-item">{{ course.code }}: {{ course.name }}</div>
+  {% endfor %}
+
+  <div class="section-title">Scientific Advisor</div>
+  <div class="list-item">Text IQ ({{ advisor_start_year }} – {{ advisor_end_year }}) <a href="{{ advisor_url }}">Link</a></div>
+
+  <div class="section-title">Other Information</div>
+  <div class="list-item">Email: {{ email }}</div>
+  <div class="list-item">Google Scholar: <a href="{{ scholar_url }}">Link</a></div>
+  <div class="list-item">Patent: {{ patent_description }}</div>
+  <div class="list-item">Master of Liberal Arts (ALM) in History, {{ university_alma }}</div>
+  <div class="list-item">Language efforts: {{ language_efforts }}</div>
+</div>
+
+<div class="page">
+  <!-- Page 2 Content Placeholder -->
+</div>
+
+<div class="page">
+  <!-- Page 3 Content Placeholder -->
+</div>
+
+<div class="page">
+  <!-- Page 4 Content Placeholder -->
+</div>
+
+</body>
+</html>

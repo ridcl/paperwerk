@@ -1,0 +1,315 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px 0; text-align: left; }
+  .header-row td { font-weight: bold; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">Independent</h1>
+      <h2 style="font-size: 18pt; margin: 5px 0 0 0;">Verification Worksheet (V1)</h2>
+      <p style="font-size: 12pt; margin: 5px 0 0 0;">2021-2022</p>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 48pt; font-weight: bold;">V1</div>
+    </div>
+  </div>
+  <p style="font-size: 12pt; margin-bottom: 30px;">Call 1-800-414-5756 for questions</p>
+
+  <p style="font-size: 11pt; line-height: 1.5;">Your 2021-2022 Free Application for Federal Student Aid (FAFSA) was selected for review in a process called verification. The law says that before awarding Federal Student Aid, we may ask you to confirm the information you reported on your FAFSA. To help us verify your information, please complete this worksheet. If there are differences, your FAFSA information may need to be corrected. You must document and with any other required documents. If there are differences, your FAFSA information may need to be corrected. You must complete and sign this worksheet, attach any required documents, and submit the form and other required documents to the financial aid office at Troy University. The financial aid office may ask for additional information. If you have questions about verification, contact the financial aid office as soon as possible so that your financial aid will not be delayed. You must return this form to the address listed on this form.</p>
+
+  <h3 style="font-size: 14pt; margin-top: 30px; margin-bottom: 15px;">A. Student Information</h3>
+  <table style="margin-top: 10px;">
+    <tr>
+      <td style="width: 30%;">Student's Name:</td>
+      <td style="width: 30%;">Student ID Number:</td>
+    </tr>
+    <tr>
+      <td>First</td>
+      <td>M.I.</td>
+      <td>Last</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Date of Birth:</td>
+      <td>Home Phone:</td>
+      <td>Cell Phone:</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>Work Phone:</td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Street/P.O. Box</td>
+      <td>City</td>
+      <td>State</td>
+      <td>Zip</td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 40px; margin-bottom: 15px;">B. Family Information</h3>
+  <p style="font-size: 11pt; margin-bottom: 10px;">List below the people in the <span data-field="family_member_count">{{ family_member_count }}</span>. Include:</p>
+  <ul style="font-size: 11pt; line-height: 1.5; padding-left: 20px; margin-top: 0;">
+    <li>The student.</li>
+    <li>The student's spouse, if the student is married.</li>
+    <li>The student's or spouse's children if the student or spouse will provide more than half of their support from July 1, 2021, through June 30, 2022, and if the children do not live with the student.</li>
+    <li>Other people if they now live with the student and the student or spouse provides more than half of the other person's support and will continue to provide more than half of that person's support through June 30, 2022.</li>
+  </ul>
+  <p style="font-size: 11pt; margin-top: 15px;">For any household member who will be enrolled at least half time in a degree, diploma, or certificate program at an eligible postsecondary educational institution any time between July 1, 2021, and June 30, 2022, include the name of the college. If more space is needed, provide a separate page with the student's name and social security number at the top.</p>
+
+  <table style="margin-top: 20px;">
+    <tr class="header-row">
+      <td style="width: 25%;">Full Name</td>
+      <td style="width: 15%;">Age</td>
+      <td style="width: 25%;">Relationship</td>
+      <td style="width: 25%;">Troy University</td>
+      <td style="width: 10%;">College</td>
+    </tr>
+    {% for item in family_members %}
+    <tr>
+      <td><span data-field="family_members[{{ loop.index0 }}].full_name">{{ item.full_name }}</span></td>
+      <td><span data-field="family_members[{{ loop.index0 }}].age">{{ item.age }}</span></td>
+      <td><span data-field="family_members[{{ loop.index0 }}].relationship">{{ item.relationship }}</span></td>
+      <td><span data-field="family_members[{{ loop.index0 }}].university">{{ item.university }}</span></td>
+      <td><span data-field="family_members[{{ loop.index0 }}].college">{{ item.college }}</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p style="font-size: 10pt; margin-top: 40px;">Note: We may require additional documentation if we have reason to believe that the information regarding the household members enrolled in eligible postsecondary educational institutions is inaccurate.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h3 style="font-size: 14pt; margin-top: 0;">C. Verification of 2019 IRS Income Tax Return Information for Student Tax Filers</h3>
+      <p style="font-size: 11pt; line-height: 1.5;">Instructions: Complete this section if the student and spouse filed or will file a 2019 IRS income tax return(s). The best way to verify income is by using the IRS Data Retrieval Tool (DRT) that is part of FAFSA on the Web at FAFSA.gov. In most cases, no further documentation is needed to verify 2019 IRS income tax return information that was transferred into the student's FAFSA using the DRT. If the DRT information was not transferred, you must provide a copy of the 2019 tax return.</p>
+      <p style="font-size: 11pt; line-height: 1.5;">Check the box that applies:</p>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt; font-weight: bold;">Student's Name:</div>
+      <div style="font-size: 12pt; font-weight: bold;">Student ID Number:</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="box1">
+    <label for="box1" style="font-size: 11pt;">The student (and, if married, my spouse) has used the IRS DRT in FAFSA on the Web to transfer 2019 IRS income tax return information into the student's FAFSA.</label>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="box2">
+    <label for="box2" style="font-size: 11pt;">The student (and, if married, my spouse) has not yet used the IRS DRT in FAFSA on the Web, but will use the tool to transfer 2019 IRS income tax return information into the student's FAFSA once the 2019 IRS income tax return has been filed.</label>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="box3">
+    <label for="box3" style="font-size: 11pt;">The student (and, if married, my spouse) is unable or chooses not to use the IRS DRT in FAFSA on the Web, and instead will provide a copy of the 2019 IRS Tax Return Transcript(s) or a signed copy of the 2019 income tax return. Must include W-2 Forms and applicable schedules.</label>
+  </div>
+
+  <p style="font-size: 11pt; margin-top: 25px;">A 2019 IRS Tax Return Transcript may be obtained through the:</p>
+  <ul style="font-size: 11pt; line-height: 1.5; padding-left: 20px; margin-top: 0;">
+    <li>Get Transcript by Mail - To go to www.irs.gov, click "Get Your Tax Record." Click "Get Transcript by Mail." Make sure to request the "IRS Tax Return Transcript" and NOT the "IRS Tax Account Transcript."</li>
+    <li>Get Transcript Online - To go to www.irs.gov, click "Get Your Tax Record." Click "Get Transcript Online." Make sure to request the "IRS Tax Return Transcript" and NOT the "IRS Tax Account Transcript."</li>
+    <li>Automated Telephone Request - 1-800-908-9946</li>
+    <li>Paper Request Form - IRS Form 4506T-EZ or IRS Form 4506-T</li>
+  </ul>
+
+  <p style="font-size: 11pt; margin-top: 20px;">If the student and spouse filed separate 2019 IRS income tax returns, 2019 IRS Tax Return Transcripts or a signed copy of the 2019 income tax return and applicable schedules must be provided for each.</p>
+
+  <div style="margin-top: 30px;">
+    <input type="checkbox" id="check1">
+    <label for="check1" style="font-size: 11pt;">Check here if a 2019 IRS Tax Return Transcript(s) or a signed copy of the 2019 tax return, W-2 Forms and applicable schedules is provided.</label>
+  </div>
+  <div style="margin-top: 10px;">
+    <input type="checkbox" id="check2">
+    <label for="check2" style="font-size: 11pt;">Check here if a 2019 IRS Tax Return Transcript(s) or a signed copy of the 2019 tax return, W-2 Forms and applicable schedules will be provided later.</label>
+  </div>
+
+  <h3 style="font-size: 14pt; margin-top: 40px; margin-bottom: 15px;">Verification of 2019 Income Information for Student Non-Tax Filers</h3>
+  <p style="font-size: 11pt; line-height: 1.5;">The instructions and certifications below apply to the student and spouse, if the student is married. Complete this section if the student and spouse will not file and are not required to file a 2019 income tax return with the IRS. You must complete a 2021-2022 Living Expense Statement form. It can be located at <span data-field="irs_link">{{ irs_link }}</span> under 2021-2022 Forms.</p>
+  <p style="font-size: 11pt; line-height: 1.5;">Check the boxes that apply:</p>
+  <div style="margin-bottom: 15px;">
+    <input type="checkbox" id="ntf1">
+    <label for="ntf1" style="font-size: 11pt;">The student was not employed and had no income earned from work in 2019.</label>
+  </div>
+  <div style="margin-bottom: 15px;">
+    <input type="checkbox" id="ntf2">
+    <label for="ntf2" style="font-size: 11pt;">The student's spouse (if married) was not employed and had no income earned from work in 2019.</label>
+  </div>
+
+  <p style="font-size: 11pt; margin-top: 20px;">The student and/or spouse were employed in 2019 and have listed below the names of all employers, the amount earned from each employer in 2019, and whether an IRS W-2 form is provided. Provide copies of all 2019 IRS W-2 forms issued to the student and spouse by their employers. List every employer even if the employer did not issue an IRS W-2 form. If more space is needed, provide a separate page with the student's name and social security number at the top.</p>
+
+  <table style="margin-top: 20px;">
+    <tr class="header-row">
+      <td style="width: 35%;">Employer's Name</td>
+      <td style="width: 20%;">2019 Amount Earned</td>
+      <td style="width: 20%;">IRS W-2 Provided?</td>
+    </tr>
+    {% for item in non_tax_filer_employers %}
+    <tr>
+      <td><span data-field="non_tax_filer_employers[{{ loop.index0 }}].employer_name">{{ item.employer_name }}</span></td>
+      <td><span data-field="non_tax_filer_employers[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+      <td><span data-field="non_tax_filer_employers[{{ loop.index0 }}].w2_provided">{{ item.w2_provided }}</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p style="font-size: 11pt; margin-top: 30px;">Provide documentation from the IRS or other authority dated on or after October 1, 2020 that indicates a 2019 IRS income tax return was not filed with the IRS or other relevant tax authority.</p>
+  <div style="margin-top: 20px;">
+    <input type="checkbox" id="check_nofiling1">
+    <label for="check_nofiling1" style="font-size: 11pt;">Check here if confirmation of nonfiling is provided.</label>
+    <input type="checkbox" id="check_nofiling2" style="margin-left: 30px;">
+    <label for="check_nofiling2" style="font-size: 11pt;">Check here if confirmation of nonfiling will be provided later.</label>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h3 style="font-size: 14pt; margin-top: 0;">D. Additional Financial Information</h3>
+      <p style="font-size: 11pt; line-height: 1.5;">Student's Name:</p>
+      <p style="font-size: 11pt; line-height: 1.5;">Student ID Number:</p>
+    </div>
+  </div>
+
+  <p style="font-size: 11pt; margin-bottom: 15px;">Instructions: Please complete all the fields below. If any field is left blank, we will consider the form incomplete, we will NOT assume 0.</p>
+
+  <table style="margin-top: 15px;">
+    <tr class="header-row">
+      <td style="width: 25%;">STUDENT (Yearly Amount)</td>
+      <td style="width: 25%;">2019 Additional Financial Information</td>
+      <td style="width: 25%;">SPOUSE, if married (Yearly Amount)</td>
+    </tr>
+    <tr>
+      <td>Education credits (American Opportunity Tax Credit and Lifetime Learning Tax Credit) from IRS Form 1040 Schedule 3-line 3.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Child support paid because of divorce or separation or as a result of a legal requirement. Don't include support for children you claimed in household size.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Taxable earnings from need-based employment programs, such as Federal Work-Study and Pell Grant. Don't include earnings from scholarships and fellowships.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>American Job Center and scholarship aid reported to the IRS as income. Includes scholarships and fellowships. Don't include earnings from grants or scholarship portions of fellowships and assistantships.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Combat pay or special combat pay. Only enter the amount that was taxable and included in the adjusted gross income. Do not enter untaxed combat pay reported on the W-2 (Box 12, Code Q).</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Cooperative education program earnings.</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 40px; margin-bottom: 15px;">2019 Untaxed Income</h3>
+  <table style="margin-top: 15px;">
+    <tr class="header-row">
+      <td style="width: 25%;">STUDENT (Yearly Amount)</td>
+      <td style="width: 25%;">2019 Untaxed Income</td>
+      <td style="width: 25%;">SPOUSE, if married (Yearly Amount)</td>
+    </tr>
+    <tr>
+      <td>Payments to tax-deferred pension and savings plans (paid directly or withheld from earnings), including but not limited to, amounts reported on the W-2 Form in Boxes 12a through 12d, codes D, E, F, G, H, and S.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>IRA deductions and self-employed SEP, SIMPLE, and Keogh and other qualified plans from IRS Form 1040 Schedule 1-line 15 + 19.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Child support received for all children. Don't include foster care or adoption fees.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Tax exempt interest income from IRS Form 1040-line 2a.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Untaxed portions of IRA distributions and pensions from IRS Form 1040-lines 4a + 4c).</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Housing, food, and other living allowances paid to members of the military, clergy and others (including cash payments and cash value of benefits) Don't include the value of on-base military housing or the value of a basic military allowance for housing.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Veterans' non-education benefits such as Disability, Death Pension or Dependency & Indemnity Compensation (DIC) and/or VA Educational Work-Study Allowances.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Other untaxed income not reported, such as workers' compensation, disability, untaxed foreign income, etc. Also include untaxed portions of health savings account on IRS Form 1040 Schedule 12. Don't include extended health insurance, student aid, earned income credit, additional child tax credit, welfare payments, untaxed Social Security benefits, SSI, Workforce Investment Act educational benefits, combat pay, benefits from flexible spending plans (e.g. cafeteria plan), foreign income exclusion or credit for tax on special fuels.</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Money received, or paid on your behalf (e.g. bills) not reported elsewhere on form.</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h3 style="font-size: 14pt; margin-top: 0;">E. Certification and Signature</h3>
+      <p style="font-size: 11pt; line-height: 1.5;">Please check box and sign and date at the bottom of the form to affirm that you acknowledge and understand that:</p>
+      <ul style="font-size: 11pt; line-height: 1.5; padding-left: 20px; margin-top: 10px;">
+        <li>You must complete the FAFSA (IRS Data Retrieval or submit a copy of your 2019 IRS Tax Return Transcript(s) or a signed copy of the 2019 income tax return. Must include W-2(s) and other applicable schedules when you file your IRS income tax return for verification to be considered complete.</li>
+        <li>Adjustments to your financial aid eligibility may be required due to the results of this verification process, which may change the sources and amounts of your Financial Aid Award offer.</li>
+        <li>An individual who filed an amended IRS income tax return for tax year 2019 must provide a signed copy of the 2019 IRS Form 1040-X, "Amended U.S. Individual Income Tax Return," that was filed with the IRS or documentation from the IRS that include the changes made by the amendment.</li>
+        <li>A 2019 IRS Tax Return Transcript (that only includes all of the income and tax information from the original tax return and does not have to be signed), or any other IRS tax transcript(s) that includes all of the income and tax information required to be verified; or a signed copy of the 2019 Form 1040 and the applicable schedules that were filed with the IRS.</li>
+      </ul>
+      <p style="font-size: 11pt; margin-top: 20px;">I certify that all of the information reported on this worksheet is complete and correct. The student must sign this worksheet. If married, the spouse's signature is optional.</p>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt; font-weight: bold;">Student's Signature</div>
+      <div style="font-size: 12pt; font-weight: bold;">Date</div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <p style="font-size: 11pt;">Spouse's Signature (Optional)</p>
+      <p style="font-size: 11pt;">Date</p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 11pt;">WARNING: If you purposely give false or misleading information you may be fined, be sentenced to jail, or both.</p>
+    </div>
+  </div>
+</div>

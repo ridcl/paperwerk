@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Synthetic Data Generation</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, Helvetica, Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        p { line-height: 1.5; }
+        ul { list-style-type: disc; padding-left: 20px; }
+        .logo-container { text-align: center; margin: 20px 0; }
+        .diagram-container { text-align: center; margin: 40px 0; }
+    </style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .header-text {
+    text-align: center;
+  }
+  .image-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .image-grid > div {
+    flex: 1;
+    margin: 0 10px;
+  }
+  .image-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .product-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .product-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .footer-text {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 20px;
+  }
+</style>
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        ul { list-style-type: disc; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .content-block { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="logo-container">
+        <img src="placeholder_logo.png" alt="Logo" style="width: 150px; height: auto;">
+    </div>
+    <h1 style="text-align: center; font-size: 24pt;">Making Something From Nothing:</h1>
+    <h2 style="text-align: center; font-size: 18pt;">"The Green Machine Turns Waste and Geothermal Heat Into Power"</h2>
+</div>
+
+<div class="page">
+    <h1 style="text-align: center; font-size: 36pt;">Waste Heat</h1>
+    <h2 style="text-align: center; font-size: 24pt;">Making Something From Nothing</h2>
+    <p style="text-align: center; font-size: 14pt;">There is over <span data-field="megawatts">{{ megawatts }}</span> megawatts of free energy</p>
+    <p style="text-align: center; font-size: 14pt;">That's <span data-field="coal_plants_count">{{ coal_plants_count }}</span> Coal fired plants! Energy for the taking</p>
+    <p style="text-align: center; font-size: 10pt; margin-top: 50px;">Assumes global average thermal efficiency of <span data-field="efficiency_percentage">{{ efficiency_percentage }}</span> x <span data-field="total_world_energy">{{ total_world_energy }}</span> total world energy consumption - Dr. <span data-field="researcher_name">{{ researcher_name }}</span>, <span data-field="university_name">{{ university_name }}</span>, <span data-field="date">{{ date }}</span>) Nobel prize winner</p>
+</div>
+
+<div class="page">
+    <ul style="list-style-type: disc;">
+        <li>Waste Heat is Bigger than oil, coal, natural gas and nuclear...Combined</li>
+        <li><span data-field="waste_heat_percentage">{{ waste_heat_percentage }}</span> of all world energy becomes waste heat</li>
+    </ul>
+</div>
+
+<div class="page">
+    <h1 style="text-align: center; font-size: 30pt;">Waste Heat is Zero-Pollution Energy</h1>
+    <ul style="list-style-type: disc;">
+        <li>It's not only Carbon Neutral it's Zero pollution</li>
+        <li>It's free</li>
+        <li>The fuel's been paid for and consumed</li>
+    </ul>
+</div>
+
+<div class="page">
+    <p style="text-align: center; font-size: 16pt;">Just <span data-field="percentage_used">{{ percentage_used }}</span> = <span data-field="megawatts_equivalent">{{ megawatts_equivalent }}</span> megawatts.</p>
+    <p style="text-align: center; font-size: 14pt;">At <span data-field="cost_per_kwh">{{ cost_per_kwh }}</span> per kilowatt-hour</p>
+    <p style="text-align: center; font-size: 18pt; margin: 20px 0;">$<span data-field="annual_value">{{ annual_value }}</span>/year free and non-polluting energy!</p>
+    <p style="text-align: center; font-size: 14pt;">That's equivalent to <span data-field="equivalent_companies">{{ equivalent_companies }}</span></p>
+    <p style="text-align: center; font-size: 14pt;">$<span data-field="annual_savings">{{ annual_savings }}</span>/year companies!!!</p>
+    <p style="text-align: center; font-size: 14pt;">Power <span data-field="homes_powered">{{ homes_powered }}</span> Homes</p>
+    <p style="text-align: center; font-size: 12pt; margin-top: 50px;">This is a local pollution solution</p>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <img src="placeholder_logo.png" alt="Logo" style="width: 150px; height: auto;">
+    </div>
+    <h2 style="text-align: center; font-size: 24pt; margin-top: 30px;">ElectraTherm's Patented Green Machine</h2>
+    <ul style="list-style-type: disc;">
+        <li>ElectraTherm has developed a proprietary heat recovery system that is based on an Organic Rankine Cycle</li>
+        <li>This cycle utilizes a refrigerant as the working fluid</li>
+        <li>This enables them to economically convert relatively small heat sources into power</li>
+        <li>It is called the <span data-field="machine_name">{{ machine_name }}</span></li>
+    </ul>
+</div>
+
+<div class="page">
+    <h2 style="text-align: center; font-size: 24pt;">Gulf Coast GREEN ENERGY Teams Up With ElectraTherm, Inc.</h2>
+    <ul style="list-style-type: disc;">
+        <li>Representative in <span data-field="region">{{ region }}</span> for sales, installation and service</li>
+        <li>In <span data-field="year">{{ year }}</span> GCGE installed first commercial ElectraTherm Green Machine in U.S. at <span data-field="university_name">{{ university_name }}</span></li>
+        <li>Strong technical team to ensure customer service before/after the sale</li>
+    </ul>
+</div>
+
+<div class="page">
+    <h2 style="text-align: center; font-size: 24pt;">Gulf Coast Green Energy</h2>
+    <h1 style="text-align: center; font-size: 36pt; color: #008000;">Here's how they work:</h1>
+    <div class="diagram-container">
+        <!-- Simplified representation of the diagram structure -->
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 50px;">
+            <!-- Left Side -->
+            <div style="text-align: center;">
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Evaporator</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Heat Source</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">High pressure liquid</div>
+            </div>
+            
+            <!-- Center Flow -->
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Heated pressurized Vapor</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Expander</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Pump</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Condenser</div>
+                <div style="border: 2px solid black; padding: 10px;">Receiver tank</div>
+            </div>
+
+            <!-- Right Side -->
+            <div style="text-align: center;">
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Gen</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Low pressure vapor</div>
+                <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px;">Low pressure liquid</div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: left; width: 45%; margin-top: 50px;">
+        <p>Expansion of pressurized vapor produces power. Generator rotation produces electricity.</p>
+        <p>Surplus heat captured by the evaporator is used to "boil" the working fluid into a vapor.</p>
+        <p>Under pressure, the vapor is forced through the screw expander, turning it to spin an electric generator.</p>
+        <p>The vapor is cooled and condensed back into a liquid in the condenser.</p>
+        <p>The working fluid liquid refrigerant is pumped to higher pressure and returned to the evaporator to repeat the process.</p>
+    </div>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .header-text {
+    text-align: center;
+  }
+  .image-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .image-grid > div {
+    flex: 1;
+    margin: 0 10px;
+  }
+  .image-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .product-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .product-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .footer-text {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 20px;
+  }
+</style>
+
+<div class="page">
+  <div class="header-text">
+    <h1 style="font-size: 2.5em; margin-bottom: 5px;">ET Technology</h1>
+    <p style="font-size: 1.5em;">makes electricity</p>
+    <p style="font-size: 1.2em;">from many heat sources including:</p>
+  </div>
+  <div class="image-grid">
+    <div><img src="placeholder_image_1.jpg" alt="Image 1"></div>
+    <div><img src="placeholder_image_2.jpg" alt="Image 2"></div>
+    <div><img src="placeholder_image_3.jpg" alt="Image 3"></div>
+  </div>
+  <div class="image-grid" style="margin-top: 20px;">
+    <div><img src="placeholder_image_4.jpg" alt="Image 4"></div>
+    <div><img src="placeholder_image_5.jpg" alt="Image 5"></div>
+    <div><img src="placeholder_image_6.jpg" alt="Image 6"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h2 style="font-size: 1.8em;">Gulf Coast <span data-field="energy_type_1">{{ energy_type_1 }}</span> Energy</h2>
+    <div style="text-align: right;">
+      <img src="placeholder_logo_1.png" alt="Logo">
+    </div>
+  </div>
+  <h2 style="font-size: 2.2em; margin-bottom: 30px;">ET's Products are:</h2>
+  <ul class="product-list">
+    <li><span data-field="product_feature_1">{{ product_feature_1 }}</span></li>
+    <li><span data-field="product_feature_2">{{ product_feature_2 }}</span></li>
+    <li><span data-field="product_feature_3">{{ product_feature_3 }}</span></li>
+    <li><span data-field="product_feature_4">{{ product_feature_4 }}</span></li>
+    <li><span data-field="product_feature_5">{{ product_feature_5 }}</span></li>
+  </ul>
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 45%;">
+      <img src="placeholder_award_1.png" alt="Award">
+      <div style="text-align: center; margin-top: 10px;">
+        <p style="font-size: 1.2em;">POPULAR SCIENCE</p>
+        <p style="font-size: 1.2em;">BEST OF WHAT'S NEW</p>
+      </div>
+    </div>
+    <div style="width: 45%; text-align: center;">
+      <img src="placeholder_award_2.png" alt="Award">
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 50px;">
+    <p style="font-size: 0.9em;">10</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <img src="placeholder_logo_rpsea.png" alt="Logo">
+    <h1 style="font-size: 1.8em; margin-top: 30px;">RFP2008SP001</h1>
+    <h2 style="font-size: 1.5em; margin-top: 20px;">"Electrical Power Generation</h2>
+    <h2 style="font-size: 1.5em;">from Produced Water: Field Demonstration of</h2>
+    <h2 style="font-size: 1.5em;">Ways to</h2>
+    <h2 style="font-size: 1.5em;">Reduce Operating Costs of Small Producers"</h2>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 1.8em;">Denbury Resources Inc.</h2>
+    <h3 style="font-size: 1.5em;">Green Machine at <span data-field="location_identifier">{{ location_identifier }}</span></h3>
+  </div>
+  <div style="text-align: center; margin-top: 50px;">
+    <img src="placeholder_image_abstract.jpg" alt="Abstract Image">
+    <div style="position: absolute; bottom: 50px; right: 50px; background-color: rgba(255, 255, 255, 0.8); padding: 10px;">
+      <p style="font-size: 1.2em;">Defining Denbury</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 2em;">Denbury - <span data-field="location_identifier">{{ location_identifier }}</span></h2>
+  </div>
+  <ul style="list-style-type: disc; padding-left: 40px; margin-top: 30px;">
+    <li><span data-field="bullet_point_1">GCGE approached Denbury in {{ date_approached }} about participation in a study on power generation from high temperature wells.</span></li>
+    <li><span data-field="bullet_point_2">{{ bullet_point_2 }}</span></li>
+    <li>
+      <span data-field="bullet_point_3">Summerland field is located in {{ county }} County, {{ state }}.</span>
+      <ul style="list-style-type: disc; padding-left: 30px; margin-top: 10px;">
+        <li><span data-field="bullet_point_3a">Well #22 produces {{ production_volume_1 }} from the {{ formation_name }} at {{ depth }} ft. under natural water drive.</span></li>
+        <li><span data-field="bullet_point_3b">The well produces {{ production_volume_2 }} and {{ production_volume_3 }} on down hole ESP artificial lift.</span></li>
+        <li><span data-field="bullet_point_3c">The surface flowing temperature is {{ temperature }} degrees F.</span></li>
+        <li><span data-field="bullet_point_3d">The well is not part of a {{ gas_type }} flood.</span></li>
+        <li><span data-field="bullet_point_3e">Based on calculations from GCGE, the Green Machine can produce {{ power_output }} kW or approximately {{ power_percentage }}% of the power needs of the ESP pump. About a {{ payback_period }} year payout.</span></li>
+        <li><span data-field="bullet_point_3f">Power at the site is provided by {{ utility_provider }}, a rural power cooperative.</span></li>
+        <li><span data-field="bullet_point_3g">Connection will be downstream of a primary meter. Offset ${{ offset_cost }} /kwh vs. selling at ${{ selling_price }}/kwh.</span></li>
+      </ul>
+    </li>
+    <li><span data-field="bullet_point_4">{{ bullet_point_4 }}</span></li>
+  </ul>
+  <div class="footer-text">Denbury Resources Inc.</div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 2em;">Summerland #22 Site</h2>
+    <hr style="width: 50%; margin: 20px auto;">
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="flex: 1; text-align: center;">
+      <img src="placeholder_site_image_1.jpg" alt="Site Image 1" style="width: 100%;">
+      <p style="margin-top: 10px;">#22 Battery. Production Separator</p>
+    </div>
+    <div style="flex: 1; text-align: center;">
+      <img src="placeholder_site_image_2.jpg" alt="Site Image 2" style="width: 100%;">
+      <p style="margin-top: 10px;">Green Machine Location</p>
+    </div>
+  </div>
+  <div class="footer-text">Denbury Resources Inc.</div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+    <div style="text-align: left;">
+      <img src="placeholder_logo_electra.png" alt="Electra Therm Logo">
+      <h1 style="font-size: 2.5em; margin: 5px 0 0 0;">Twin Screw Expanders</h1>
+      <p style="font-size: 1.5em;">An enabling technology...</p>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo_city.png" alt="City University Logo">
+      <p style="font-size: 1.2em;">City University London</p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 50px;">
+    <p style="font-size: 1.2em;">By <span data-field="author_name">{{ author_name }}</span></p>
+    <img src="placeholder_screw_image.jpg" alt="Screw Mechanism">
+    <p style="font-size: 0.8em; margin-top: 10px;">©ElectraTherm, Inc. 2009</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <h1 style="font-size: 2.5em;">Twin Screw Rotors in a Casing</h1>
+    <img src="placeholder_rotor_image.jpg" alt="Rotor Assembly">
+  </div>
+</div>
+
+
+<div class="page">
+    <div class="content-block">
+        <h1>Twin screw expander</h1>
+    </div>
+    <div style="text-align: center; margin: 40px 0;">
+        <!-- Placeholder for Image 1 -->
+        <img src="placeholder_image_1.png" alt="Twin screw expander diagram" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="content-block">
+        <ul>
+            <li>Trapped volume is initially zero</li>
+            <li>Volume of that chamber then increases</li>
+            <li>Further rotation then leads to cut off of the chamber</li>
+            <li>Trapped volume starts to decrease</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="width: 45%;">
+            <!-- Placeholder for Image 2 (Turbine) -->
+            <img src="placeholder_image_2_turbine.png" alt="Turbine image" style="max-width: 100%; height: auto;">
+            <div class="content-block" style="margin-top: 20px;">
+                <h2>Turbo vs. Positive</h2>
+                <ul>
+                    <li>Change of momentum imparted to the fluids</li>
+                    <li>Steady flow of fluids at high velocities</li>
+                </ul>
+            </div>
+        </div>
+        <div style="width: 45%;">
+            <!-- Placeholder for Image 3 (Engine) -->
+            <img src="placeholder_image_3_engine.png" alt="Engine image" style="max-width: 100%; height: auto;">
+            <div class="content-block" style="margin-top: 20px;">
+                <h2>Turbo vs. Positive</h2>
+                <ul>
+                    <li>Admitting a fixed mass of fluid into a working chamber where it is confined and then compressed or expanded and finally discharged</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="width: 45%;">
+            <!-- Placeholder for Image 4 (Screw) -->
+            <img src="placeholder_image_4_screw.png" alt="Screw mechanism image" style="max-width: 100%; height: auto;">
+            <div class="content-block" style="margin-top: 20px;">
+                <h2>Screw vs. other Displacement</h2>
+                <ul>
+                    <li>Moving parts all rotate and hence can run at much higher speeds</li>
+                    <li>Contact forces within them are low</li>
+                    <li>Sealing lines of contact which define the boundaries of each cell chamber, decrease in length as the size of the working chamber decreases and the pressure within it rises</li>
+                    <li>Rolling motion discourages seizure</li>
+                </ul>
+            </div>
+        </div>
+        <div style="width: 45%;">
+            <!-- Placeholder for Image 5 (Screw) -->
+            <img src="placeholder_image_5_screw.png" alt="Screw mechanism image" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content-block">
+        <h2>Expander advantages in small ORCs</h2>
+        <ul>
+            <li>Wet inlet conditions are permissible</li>
+            <li>Adiabatic efficiency can be very similar to turbines</li>
+            <li>Improved rotor profiles mean greater efficiency</li>
+            <li>Lower tip speeds, lower overall speed</li>
+            <li>Mass produced</li>
+            <li>Efficient with varying loads</li>
+            <li>Long service life</li>
+        </ul>
+    </div>
+    <div style="float: right; margin-top: 20px;">
+        <!-- Placeholder for Diagram -->
+        <img src="placeholder_diagram_1.png" alt="System diagram" style="max-width: 300px; height: auto;">
+    </div>
+</div>
+
+<div class="page">
+    <div class="content-block">
+        <h2>Expander Optimization</h2>
+        <ul>
+            <li>Large flow cross sectional area</li>
+            <li>Short sealing line</li>
+            <li>Small blow-hole area</li>
+            <li>Higher flow and smaller leakage rates both increase the volumetric efficiency</li>
+            <li>For low pressure differences, leakage rate will be relatively small and hence the gains achieved by a large cross section area may outweigh the losses associated with a larger blow-hole</li>
+            <li>Similar considerations determine the best choice for the number of lobes since fewer lobes imply greater flow area but increased pressure difference between them</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content-block">
+        <h2>Main/Gate Configuration</h2>
+        <ul>
+            <li>3/5, dry applications, offers a high gear ratio</li>
+            <li>4/6, for both dry and oil-flooded</li>
+            <li>5 main rotor lobes are suitable for higher compressor pressure ratios</li>
+            <li>4/5, arrangement has emerged as the best combination for oil-flooded applications of moderate pressure ratios, permits the smallest overall dimension for the rotors</li>
+            <li>Also, one less lobe in the gate rotor compared with the 4/6 combination can improve the efficiency of rotor manufacturing</li>
+            <li>6/7 for high pressure and large built-in volume ratio refrigeration applications</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="width: 45%;">
+            <!-- Placeholder for N Profile Diagram -->
+            <img src="placeholder_diagram_2.png" alt="N Profile Diagram" style="max-width: 100%; height: auto;">
+            <div class="content-block" style="margin-top: 20px;">
+                <h2>N Profile and More</h2>
+                <ul>
+                    <li>Full tightness, small blow-hole area, large displacement, short sealing lines, small confined volumes, involute rotor contact and proper gate rotor torque distribution together with high rotor mechanical rigidity</li>
+                    <li>Design also involves mathematical modeling to determine the optimum rotor size and speed, shape and position of the suction and discharge ports, taking into account of the limitations imposed by bearing and seal selection.</li>
+                    <li>Goal: Maximize endurance, efficiency, and reliability!</li>
+                </ul>
+            </div>
+        </div>
+        <div style="width: 45%; text-align: right; padding-top: 20px;">
+            <!-- Placeholder for University Logo -->
+            <img src="placeholder_logo.png" alt="University Logo" style="max-width: 150px; height: auto;">
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-top: 100px;">
+        <p>For more information please contact:</p>
+        <p>Loy Sneary, President/CEO</p>
+        <p>{{ address.street_address }}</p>
+        <p>{{ address.city_state_zip }}</p>
+        <p>{{ contact.email }}</p>
+        <p>{{ contact.phone }}</p>
+        <p>{{ contact.website }}</p>
+    </div>
+</div>
+
+</body>
+</html>

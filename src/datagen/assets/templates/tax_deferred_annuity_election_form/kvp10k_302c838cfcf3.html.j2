@@ -1,0 +1,82 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { font-size: 48pt; text-align: center; margin-bottom: 10px; }
+  h2 { font-size: 14pt; text-align: center; margin-top: 0; margin-bottom: 30px; }
+  .section { margin-bottom: 30px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .line-item-table td { padding: 5px 0; }
+  .signature-line { border-bottom: 1px solid black; width: 300px; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <h1>Dickinson</h1>
+  <h2>2020 Tax Deferred Annuity Election Form</h2>
+
+  <div class="section">
+    <p>Name: <span class="signature-line"></span></p>
+  </div>
+
+  <div class="section">
+    <p>RETIREMENT CALCULATIONS You are limited in what you can contribute to your retirement fund by the sections of the IRS code known as 403(b), 415, and 402(g). For most employees, the limit is a maximum of <span data-field="contribution_limit">{{ contribution_limit }}</span> per calendar year. If you are age 50 or older in calendar year <span data-field="current_year">{{ current_year }}</span>, you may contribute an additional <span data-field="catch_up_contribution">{{ catch_up_contribution }}</span>. By executing this Election Form, the employee acknowledges that the election shall continue in effect until either (i) the employee's termination of employment with the college or (ii) the employee gives written notice to the college that this Agreement shall be terminated or changed. The amounts below will be deducted from your paycheck over the course of the year. These deductions are in addition to the amount the college contributes directly to TIAA and/or Fidelity on your behalf.</p>
+  </div>
+
+  <div class="section">
+    <table class="line-item-table">
+      <thead>
+        <tr>
+          <td style="width: 60%;"></td>
+          <td style="width: 20%; text-align: right;">Annual Amt</td>
+          <td style="width: 20%; text-align: right;">Per Pay Amt</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>To TIAA TDA RA (existing participants ONLY)</td>
+          <td><span data-field="tdaa_ra_annual">{{ tdaa_ra_annual }}</span></td>
+          <td><span data-field="tdaa_ra_pay">{{ tdaa_ra_pay }}</span></td>
+        </tr>
+        <tr>
+          <td>To TIAA TDA GSRA</td>
+          <td><span data-field="tdaa_gsra_annual">{{ tdaa_gsra_annual }}</span></td>
+          <td><span data-field="tdaa_gsra_pay">{{ tdaa_gsra_pay }}</span></td>
+        </tr>
+        <tr>
+          <td>To Fidelity</td>
+          <td><span data-field="fidelity_annual">{{ fidelity_annual }}</span></td>
+          <td><span data-field="fidelity_pay">{{ fidelity_pay }}</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="padding-top: 15px;">TOTAL (see limits above)</td>
+          <td style="text-align: right;"><span data-field="total_annual">{{ total_annual }}</span></td>
+          <td style="text-align: right;"><span data-field="total_pay">{{ total_pay }}</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="section" style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div>
+      Signature
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      Date
+      <div class="signature-line"></div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 60px; text-align: center;">
+    <p>Please forward to Human Resource Services and keep a copy for your files. Deductions and retirement contributions will not be made until this form is returned.</p>
+  </div>
+</div>

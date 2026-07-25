@@ -1,0 +1,111 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1 { text-align: center; font-size: 24pt; margin-bottom: 5px; }
+  h2 { text-align: center; font-size: 14pt; margin-top: 20px; margin-bottom: 10px; }
+  .form-section { margin-bottom: 20px; }
+  .field-row { display: flex; margin-bottom: 10px; align-items: center; }
+  .field-label { width: 200px; font-weight: bold; }
+  .field-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .signature-line { margin-top: 60px; border-top: 1px solid #000; width: 300px; }
+  .footer { text-align: center; font-size: 9pt; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 36pt; margin-bottom: 0;">BRYN MAWR</h1>
+    <h2 style="font-size: 18pt; margin-top: 0;">COLLEGE</h2>
+  </div>
+
+  <h2>Student Refund Request Form</h2>
+
+  <div class="form-section">
+    <p>To request a refund of the credit balance on your student account, complete this form and submit it to Student Accounts. Refunds resulting from Title IV funds including Direct Loans, Pell or other Federal aid sources are automatically processed. Refunds resulting from private loans, outside scholarships, or other overpayments must be requested using the form below. All refunds are made payable to the student except for Federal Parent PLUS Loans. For questions please contact Student Accounts.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Student Name:</div>
+      <div class="field-input"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">BMC ID#:</div>
+      <div class="field-input"><span data-field="bmc_id">{{ bmc_id }}</span></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">Refund to be received by the following method:</div>
+      <div style="display: flex; flex-grow: 1; gap: 30px;">
+        <div style="flex-grow: 1;">
+          <div class="field-input" style="border-bottom: 1px solid #000;" data-field="bmc_id_2">{{ bmc_id_2 }}</div>
+          <div style="margin-top: 5px;">
+            <input type="checkbox" style="margin-right: 5px;"> <span data-field="deposit_method_check">{{ deposit_method_check }}</span>
+          </div>
+        </div>
+        <div style="flex-grow: 1;">
+          <div class="field-input" style="border-bottom: 1px solid #000;" data-field="field_1">{{ field_1 }}</div>
+          <div style="margin-top: 5px;">
+            <input type="checkbox" style="margin-right: 5px;"> <span data-field="check_method_check">{{ check_method_check }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">(Please note all refunds are processed by direct deposit if available unless otherwise indicated. To set up direct deposit please contact Accounts Payable at accountspayable@brynmawr.edu)</div>
+      <div style="flex-grow: 1;">
+        <div class="field-input" style="border-bottom: 1px solid #000;" data-field="field_2">{{ field_2 }}</div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">Check to the Following Address:</div>
+      <div style="flex-grow: 1;">
+        <div class="field-input" style="border-bottom: 1px solid #000;" data-field="check_to_the_following_address">{{ check_to_the_following_address }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Amount Requested:</div>
+      <div style="width: 150px;">$</div>
+      <div class="field-input" style="flex-grow: 1;"><span data-field="amount_requested">{{ amount_requested }}</span></div>
+    </div>
+    <p style="font-size: 10pt; margin-top: 5px;">Up to the full credit balance may be requested. Any remaining credit balance will apply to future terms.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <div class="field-label">Date:</div>
+      <div class="field-input"><span data-field="date_requested">{{ date_requested }}</span></div>
+    </div>
+    <div class="field-row">
+      <div class="field-label">Signature:</div>
+      <div class="signature-line"></div>
+    </div>
+    <p style="font-size: 10pt; margin-top: 10px;">Refunds will be processed after the receipt of the refund request form in accordance with the College's schedule. Please allow for a minimum of 14 days for processing.</p>
+  </div>
+
+  <div style="margin-top: 40px; padding: 20px; border: 1px solid #ccc;">
+    <p style="text-align: center; font-weight: bold;">Return this form to:</p>
+    <p style="text-align: center;">Student Accounts</p>
+    <p style="text-align: center;">Cartref, 2nd Floor</p>
+    <p style="text-align: center;">101 North Merion Ave</p>
+    <p style="text-align: center;">Bryn Mawr, PA 19010</p>
+  </div>
+
+  <div class="footer">
+    <p>101 North Merion Avenue | Bryn Mawr, PA 19010</p>
+    <p>610 525 5500 | <span data-field="accounts_email">{{ accounts_email }}</span></p>
+  </div>
+</div>

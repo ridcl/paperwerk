@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PFL Form Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { margin-top: 0; }
+  .section-title { font-weight: bold; margin-bottom: 15px; }
+  .form-group { margin-bottom: 15px; }
+  .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .row > div { width: 48%; }
+  .full-width { width: 100%; }
+  .label { font-weight: bold; display: block; margin-bottom: 5px; }
+  .input-field { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .checkbox-group label { font-weight: normal; margin-right: 15px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px; border: 1px solid #ccc; }
+  .signature-line { border-bottom: 1px solid #000; width: 50%; margin-top: 50px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h2 style="text-align: center;">Request For Paid Family Leave (Form PFL-1)</h2>
+  <h3 style="text-align: center;">INSTRUCTIONS INCLUDED WITH FORM</h3>
+
+  <div class="section-title">Request For Paid Family Leave (Form PFL-1) Instructions</div>
+  <p>To request PFL, the employee requesting PFL must complete Part A of the Request For Paid Family Leave (Form PFL-1). All items on the form are required unless noted as optional. The employee then provides the form to the employer to complete Part B.</p>
+  <p>The employer completes Part B of the Request For Paid Family Leave (Form PFL-1) and returns it to the employee within three days.</p>
+  <p>Additional forms are required depending on the type of leave being requested. The employee requesting leave is responsible for the completion of these forms.</p>
+  <p>The employee submits the completed Request For Paid Family Leave (Form PFL-1) with the required additional form to the employer's PFL insurance carrier listed on Part B of Request For Paid Family Leave (Form PFL-1). The employee should retain a copy of each submitted form for their records.</p>
+</div>
+
+<div class="page">
+  <div class="section-title">PART A - EMPLOYEE INFORMATION (to be completed by the employee)</div>
+  <p>The employee requesting PFL must complete all required information.</p>
+
+  <div class="form-group">
+    <div class="row">
+      <div>
+        <label class="label">1. Employee's legal name (first name, middle initial, last name)</label>
+        <div class="input-field">{{ employee_full_name }}</div>
+      </div>
+      <div>
+        <label class="label">2. Other last names, if any, under which employee has worked</label>
+        <div class="input-field">{{ employee_other_last_names }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">3. Employee's mailing address</label>
+    <div class="row">
+      <div style="width: 50%;">
+        <div class="input-field">{{ employee_street_address }}</div>
+        <div class="input-field">{{ employee_city }}</div>
+      </div>
+      <div style="width: 50%;">
+        <div class="input-field">{{ employee_state }}</div>
+        <div class="input-field">{{ employee_zip_code }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">4. Employee's Social Security Number or TIN</label>
+    <div class="input-field">{{ employee_ssn_tin }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">5. Employee's date of birth (MM/DD/YYYY)</label>
+    <div class="input-field">{{ employee_dob }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">6. Employee's primary telephone number</label>
+    <div class="input-field">{{ employee_phone_number }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">7. Employee's preferred email address while on PFL (if available)</label>
+    <div class="input-field">{{ employee_email_address }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">8. Employee's gender</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="gender" value="Male"> Male</label>
+      <label><input type="radio" name="gender" value="Female"> Female</label>
+      <label><input type="radio" name="gender" value="Not designated/Other"> Not designated/Other</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">9. Employee's preferred language</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="language" value="English"> English</label>
+      <label><input type="checkbox" name="language" value="Español"> Español</label>
+      <label><input type="checkbox" name="language" value="Русский"> Русский</label>
+      <label><input type="checkbox" name="language" value="Polski"> Polski</label>
+      <label><input type="checkbox" name="language" value="中文"> 中文</label>
+      <label><input type="checkbox" name="language" value="Italiano"> Italiano</label>
+      <label><input type="checkbox" name="language" value="Kreyòl ayisyen"> Kreyòl ayisyen</label>
+      <label><input type="checkbox" name="language" value="한국어"> 한국어</label>
+      <label><input type="checkbox" name="language" value="Other"> Other</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">10. Employee's ethnicity/race</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="ethnicity" value="Hispanic/Latino"> Hispanic/Latino</label>
+      <label><input type="checkbox" name="ethnicity" value="White"> White</label>
+      <label><input type="checkbox" name="ethnicity" value="Black or African American"> Black or African American</label>
+      <label><input type="checkbox" name="ethnicity" value="Asian Indian"> Asian Indian</label>
+      <label><input type="checkbox" name="ethnicity" value="Chinese"> Chinese</label>
+      <label><input type="checkbox" name="ethnicity" value="Filipino"> Filipino</label>
+      <label><input type="checkbox" name="ethnicity" value="Japanese"> Japanese</label>
+      <label><input type="checkbox" name="ethnicity" value="Korean"> Korean</label>
+      <label><input type="checkbox" name="ethnicity" value="Vietnamese"> Vietnamese</label>
+      <label><input type="checkbox" name="ethnicity" value="Other Asian"> Other Asian</label>
+      <label><input type="checkbox" name="ethnicity" value="White Native Hawaiian"> White Native Hawaiian</label>
+      <label><input type="checkbox" name="ethnicity" value="Guamanian or Chamorro"> Guamanian or Chamorro</label>
+      <label><input type="checkbox" name="ethnicity" value="Samoan"> Samoan</label>
+      <label><input type="checkbox" name="ethnicity" value="Other Pacific Islander"> Other Pacific Islander</label>
+      <label><input type="checkbox" name="ethnicity" value="Other race"> Other race</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">11. Reason for PFL request:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="reason" value="Bond with child"> Bond with child</label>
+      <label><input type="checkbox" name="reason" value="Care for family member"> Care for family member</label>
+      <label><input type="checkbox" name="reason" value="Military qualifying event"> Military qualifying event</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">12. The family member is employee's:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="relation" value="Child"> Child</label>
+      <label><input type="checkbox" name="relation" value="Spouse"> Spouse</label>
+      <label><input type="checkbox" name="relation" value="Domestic partner"> Domestic partner</label>
+      <label><input type="checkbox" name="relation" value="Parent"> Parent</label>
+      <label><input type="checkbox" name="relation" value="Parent-in-law"> Parent-in-law</label>
+      <label><input type="checkbox" name="relation" value="Grandparent"> Grandparent</label>
+      <label><input type="checkbox" name="relation" value="Grandchild"> Grandchild</label>
+    </div>
+  </div>
+
+  <div class="section-title">PFL-1 (10-17) Page 1 of 4</div>
+</div>
+
+<div class="page">
+  <div class="section-title">PART A - EMPLOYEE INFORMATION (to be completed by the employee) - continued from prior page</div>
+
+  <div class="form-group">
+    <label class="label">13. Will PFL be for a continuous period of time and/or periodic?</label>
+    <div class="row">
+      <div>
+        <label><input type="radio" name="continuous" value="Continuous"> Continuous</label>
+        <label><input type="radio" name="periodic" value="Periodic"> Periodic</label>
+      </div>
+      <div>
+        <label>PFL start date (MM/DD/YYYY):</label>
+        <div class="input-field">{{ pfl_start_date }}</div>
+        <label>PFL end date (MM/DD/YYYY):</label>
+        <div class="input-field">{{ pfl_end_date }}</div>
+        <label>Dates are estimated:</label>
+        <div class="input-field" data-field="dates_are_estimated">{{ dates_are_estimated }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">14. If providing less than 30 day's advance notice to the employer, please explain:</label>
+    <div class="input-field full-width">{{ pfl_notice_explanation }}</div>
+  </div>
+
+  <div class="section-title">Employment Information (to be completed by the employee)</div>
+
+  <div class="form-group">
+    <label class="label">15. Business name</label>
+    <div class="input-field full-width">{{ employee_employer_name }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">16. Employee's date of hire (MM/DD/YYYY)</label>
+    <div class="input-field">{{ employee_hire_date }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">17. Employee's work location</label>
+    <div class="row">
+      <div>
+        <label class="label">City, State</label>
+        <div class="input-field">{{ employee_work_city }}</div>
+        <div class="input-field">{{ employee_work_state }}</div>
+      </div>
+      <div>
+        <label class="label">Zip code</label>
+        <div class="input-field">{{ employee_work_zip_code }}</div>
+        <label class="label">Country (if not U.S.A.)</label>
+        <div class="input-field">{{ employee_work_country }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">18. Employee's average gross weekly wage (This data will be requested of both employee and employer)</label>
+    <div class="input-field">{{ employee_avg_weekly_wage }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">19. Employer's telephone number for contact regarding this request</label>
+    <div class="row">
+      <div>
+        <label>20a. Does employee have more than one employer?</label>
+        <div class="checkbox-group">
+          <label><input type="radio" name="multiple_employers" value="Yes"> Yes</label>
+          <label><input type="radio" name="multiple_employers" value="No"> No</label>
+        </div>
+      </div>
+      <div>
+        <label>20b. If yes, is employee taking PFL from the other employer?</label>
+        <div class="checkbox-group">
+          <label><input type="radio" name="other_employer_pfl" value="Yes"> Yes</label>
+          <label><input type="radio" name="other_employer_pfl" value="No"> No</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">21. Is employee currently receiving Workers' Compensation Lost Wage Benefits?</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="wc_benefits" value="Yes"> Yes</label>
+      <label><input type="radio" name="wc_benefits" value="No"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">22. Do you want a 10% Federal Tax Deduction taken from your PFL benefit?</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="tax_deduction" value="Yes"> Yes</label>
+      <label><input type="radio" name="tax_deduction" value="No"> No</label>
+    </div>
+  </div>
+
+  <p><strong>Disclaimer statement:</strong> Information regarding PFL benefits received by the employee, such as payments received and types of leave, will be provided to the employer.</p>
+  <p>I am hereby making a request for paid family leave benefits under the NYS Workers' Compensation Law. My signature affirms that the information I am providing is true and accurate to the best of my knowledge and belief.</p>
+
+  <div class="row" style="margin-top: 50px;">
+    <div style="width: 50%;">
+      <label class="label">Employee's signature</label>
+      <div class="signature-line" data-field="employee_s_signature">{{ employee_s_signature }}</div>
+      <label class="label" style="margin-top: 10px;">Date signed (MM/DD/YYYY)</label>
+      <div class="input-field">{{ employee_signature_date }}</div>
+    </div>
+    <div style="width: 50%;">
+      <label class="label">Title</label>
+      <div class="input-field full-width">{{ employee_title }}</div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 50px;">PFL-1 (10-17) Page 2 of 4</p>
+</div>
+
+<div class="page">
+  <div class="section-title">PART B - EMPLOYER INFORMATION (to be completed by the employer) - continued from prior page</div>
+
+  <div class="form-group">
+    <label class="label">1. Business's full legal name and mailing address</label>
+    <div class="row">
+      <div style="width: 50%;">
+        <label class="label">Mailing address</label>
+        <div class="input-field">{{ employer_mailing_address }}</div>
+        <div class="input-field">{{ employer_city }}</div>
+      </div>
+      <div style="width: 50%;">
+        <label class="label">City, State</label>
+        <div class="input-field">{{ employer_city_2 }}</div>
+        <label class="label">Zip code</label>
+        <div class="input-field">{{ employer_zip_code }}</div>
+        <label class="label">Country (if not U.S.A.)</label>
+        <div class="input-field">{{ employer_country }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">2. Employer's FEIN</label>
+    <div class="input-field">{{ employer_fein }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">3. Employer's Standard Industrial Classification (SIC) Code</label>
+    <div class="input-field">{{ employer_sic_code }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">4. Employer's contact name for questions related to PFL</label>
+    <div class="input-field">{{ employer_contact_name }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">5. Employer's contact telephone number</label>
+    <div class="input-field">{{ employer_contact_phone }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">6. Employer's contact fax number</label>
+    <div class="input-field">{{ employer_contact_fax }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">7. Employer's contact email address</label>
+    <div class="input-field">{{ employer_contact_email }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">8. Employee's date of hire (MM/DD/YYYY)</label>
+    <div class="input-field">{{ employer_employee_hire_date }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">9a. Indicate occupation (code MUST be provided also):</label>
+    <div class="input-field full-width">{{ employer_occupation_code }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">9b. Indicate the employee's normal work days</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="work_days" value="Mon"> Mon</label>
+      <label><input type="checkbox" name="work_days" value="Tue"> Tue</label>
+      <label><input type="checkbox" name="work_days" value="Wed"> Wed</label>
+      <label><input type="checkbox" name="work_days" value="Thu"> Thu</label>
+      <label><input type="checkbox" name="work_days" value="Fri"> Fri</label>
+      <label><input type="checkbox" name="work_days" value="Sat"> Sat</label>
+      <label><input type="checkbox" name="work_days" value="Sun"> Sun</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">8c. Is the employee considered Full Time (Normal work schedule is 20 hours or more a week) or Part time (Normal work schedule is less than 20 hours per week)?</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="full_time" value="FT"> FT</label>
+      <label><input type="radio" name="full_time" value="PT"> PT</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">9. Enter the last 8 weeks of gross wages for the employee and calculate the average gross weekly wage</label>
+    <table>
+      <thead>
+        <tr>
+          <td style="width: 10%;">Week no.</td>
+          <td style="width: 30%;">Week ending date (MM/DD/YYYY)</td>
+          <td style="width: 20%;">Number of days worked</td>
+          <td style="width: 40%;">Gross amount paid</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(1, 9) %}
+        <tr>
+          <td>{{ i }}</td>
+          <td><div class="input-field">{{ employer_wage_dates[i-1] }}</div></td>
+          <td><div class="input-field">{{ employer_days_worked[i-1] }}</div></td>
+          <td><div class="input-field">{{ employer_gross_wages[i-1] }}</div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <label class="label">Calculated average gross weekly wage:</label>
+    <div class="input-field">{{ calculated_avg_weekly_wage }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">10. If employee received or will receive full wages while on PFL, will employer be requesting reimbursement?</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="reimbursement" value="Yes"> Yes</label>
+      <label><input type="radio" name="reimbursement" value="No"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">10a. If yes, what time period are you requesting reimbursement for? From:</label>
+    <div class="input-field">{{ reimbursement_start_date }}</div>
+    <label class="label">To:</label>
+    <div class="input-field">{{ reimbursement_end_date }}</div>
+  </div>
+
+  <p style="text-align: center; margin-top: 50px;">PFL-1 (10-17) Page 3 of 4</p>
+</div>
+
+<div class="page">
+  <div class="section-title">PFL-1 - CONTINUED FROM PRIOR PAGE</div>
+  <p><strong>Standard Security Life Insurance Company P.O. Box 25339, Farmington, NY 14425</strong></p>
+  <p><strong>Phone: 800-477-0087 | Fax: 585-398-2854 | Emails: claims@sslicny.com</strong></p>
+
+  <div class="section-title">PART A - EMPLOYEE INFORMATION (to be completed by the employee) - continued from prior page</div>
+
+  <div class="form-group">
+    <label class="label">Employee's name (first name, middle initial, last name)</label>
+    <div class="input-field">{{ employee_name_part_a_cont }}</div>
+  </div>
+  <div class="form-group">
+    <label class="label">Employee's date of birth (MM/DD/YYYY)</label>
+    <div class="input-field">{{ employee_dob_part_a_cont }}</div>
+  </div>
+
+  <div class="section-title">PART B - EMPLOYER INFORMATION (to be completed by the employer) - continued from prior page</div>
+
+  <div class="form-group">
+    <label class="label">11a. In the preceding 52 weeks the employee took leave for:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="disability_pfl" value="NYS Disability"> NYS Disability</label>
+      <label><input type="checkbox" name="disability_pfl" value="PFL"> PFL</label>
+      <label><input type="checkbox" name="disability_pfl" value="Both Disability and PFL"> Both Disability and PFL</label>
+      <label><input type="checkbox" name="disability_pfl" value="None"> None</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">11b. Enter the total number of weeks and days taken for both Disability and PFL in the last 52 weeks:</label>
+    <div class="row">
+      <div>
+        <label>Disability:</label>
+        <div class="input-field">{{ disability_weeks }} Weeks</div>
+        <div class="input-field">{{ disability_days }} Days</div>
+      </div>
+      <div>
+        <label>PFL:</label>
+        <div class="input-field">{{ pfl_weeks }} Weeks</div>
+        <div class="input-field">{{ pfl_days }} Days</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">Please provide specific dates for Disability:</label>
+    <div class="input-field full-width">{{ disability_dates }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">Please provide specific dates for PFL:</label>
+    <div class="input-field full-width">{{ pfl_dates }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">12. Is the employee taking Family Medical Leave Act (FMLA) concurrently with PFL?</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="fmla_concurrent" value="Yes"> Yes</label>
+      <label><input type="radio" name="fmla_concurrent" value="No"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">13. PFL insurance carrier's name and mailing address</label>
+    <div class="row">
+      <div>
+        <label class="label">PFL insurance carrier's name</label>
+        <div class="input-field">{{ carrier_name }}</div>
+      </div>
+      <div>
+        <label class="label">Mailing address</label>
+        <div class="input-field">{{ carrier_mailing_address }}</div>
+        <div class="input-field">{{ carrier_city }}</div>
+        <div class="input-field">{{ carrier_state }}</div>
+        <div class="input-field">{{ carrier_zip_code }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">14. PFL insurance carrier's telephone number</label>
+    <div class="input-field">{{ carrier_phone }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">14a. PFL insurance carrier's fax number</label>
+    <div class="input-field">{{ carrier_fax }}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="label">14b. Email:</label>
+    <div class="input-field">{{ carrier_email }}</div>
+  </div>
+
+  <div class="section-title">Declaration and signature</div>
+  <p>I affirm the employee regularly works 20 hours or more per week has been in employment for at least 26 consecutive weeks OR the employee regularly works less than 20 hours per week and has worked at least 175 days.</p>
+  <p>Any person who knowingly and with intent to defraud any insurance company or other person files an application for insurance or statement of claim containing any materially false information, or conceals for the purpose of misleading, information concerning any material fact, commits a fraudulent insurance act, which is a crime, and shall also be subject to a civil penalty not to exceed five thousand dollars and the stated value of the claim for each such violation.</p>
+  <p>I am the person authorized to sign as the employer of the employee requesting PFL. My signature affirms that to the best of my knowledge and belief, the information I have provided is true and accurate.</p>
+
+  <div class="row" style="margin-top: 50px;">
+    <div style="width: 50%;">
+      <label class="label">Employer's authorized signature</label>
+      <div class="signature-line" data-field="employer_s_authorized_signature">{{ employer_s_authorized_signature }}</div>
+      <label class="label" style="margin-top: 10px;">Title</label>
+      <div class="input-field full-width">{{ employer_title }}</div>
+    </div>
+    <div style="width: 50%;">
+      <label class="label">Date signed (MM/DD/YYYY)</label>
+      <div class="input-field">{{ employer_signature_date }}</div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 50px;">PFL-1 (10-17) Page 4 of 4</p>
+</div>
+
+</body>
+</html>

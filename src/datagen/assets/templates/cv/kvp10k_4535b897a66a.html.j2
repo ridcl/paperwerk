@@ -1,0 +1,337 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+
+<div class="page">
+  <h1 style="text-align: center;">{{ full_name }}</h1>
+  <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+    <div>
+      <p>Digital and Computational Studies</p>
+      <p>{{ address_line_1 }}</p>
+      <p>{{ address_line_2 }}</p>
+      <p>{{ city_state_zip }}</p>
+    </div>
+    <div>
+      <p>Phone: {{ phone }}</p>
+      <p>Fax: {{ fax }}</p>
+      <p>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
+    </div>
+  </div>
+
+  <h2 class="section-title">Education</h2>
+  <div>
+    <p>Ph.D. {{ year_phd }}</p>
+    <p>University of {{ university_phd }}</p>
+    <p>Major: {{ major_phd }}</p>
+    <p>Specialization: {{ specialization_phd }}</p>
+    <p>Advisor: {{ advisor_phd }}</p>
+    <p>Fellowships: {{ fellowships_phd }}</p>
+  </div>
+
+  <div>
+    <p>M.S. {{ year_ms }}</p>
+    <p>Northwestern University</p>
+    <p>Fellowships: {{ fellowships_ms }}</p>
+  </div>
+
+  <div>
+    <p>B.A. {{ year_ba }}</p>
+    <p>Northwestern University</p>
+    <p>Major: {{ major_ba }}</p>
+    <p>Honors: {{ honors_ba }}</p>
+  </div>
+
+  <h2 class="section-title">Academic Positions</h2>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 20%;">Years</td>
+        <td style="width: 60%;">Position/Institution</td>
+        <td style="width: 20%;">Location</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ year_pos_1_start }}-{{ year_pos_1_end }}</td>
+        <td>{{ position_1_title }} at {{ position_1_institution }}</td>
+        <td>{{ location_1 }}</td>
+      </tr>
+      <tr>
+        <td>{{ year_pos_2_start }}-{{ year_pos_2_end }}</td>
+        <td>{{ position_2_title }} at {{ position_2_institution }}</td>
+        <td>{{ location_2 }}</td>
+      </tr>
+      <tr>
+        <td>{{ year_pos_3_start }}-{{ year_pos_3_end }}</td>
+        <td>{{ position_3_title }} at {{ position_3_institution }}</td>
+        <td>{{ location_3 }}</td>
+      </tr>
+      <tr>
+        <td>{{ year_pos_4_start }}-{{ year_pos_4_end }}</td>
+        <td>{{ position_4_title }} at {{ position_4_institution }}</td>
+        <td>{{ location_4 }}</td>
+      </tr>
+      <tr>
+        <td>{{ year_pos_5_start }}-{{ year_pos_5_end }}</td>
+        <td>{{ position_5_title }} at {{ position_5_institution }}</td>
+        <td>{{ location_5 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Publications (undergraduate co-authors indicated with *)</h2>
+
+  <h3 style="margin-top: 15px;">Books</h3>
+  <ul>
+    <li>{{ book_1_citation }}</li>
+    <li>{{ book_2_citation }}</li>
+  </ul>
+
+  <h3 style="margin-top: 15px;">Journals</h3>
+  <ul>
+    <li>{{ journal_1_citation }}</li>
+    <li>{{ journal_2_citation }}</li>
+    <li>{{ journal_3_citation }}</li>
+    <li>{{ journal_4_citation }}</li>
+    <li>{{ journal_5_citation }}</li>
+  </ul>
+
+  <h3 style="margin-top: 15px;">Highly Referenced Conferences</h3>
+  <ul>
+    <li>{{ conf_1_citation }}</li>
+    <li>{{ conf_2_citation }}</li>
+    <li>{{ conf_3_citation }}</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Book Chapters</h2>
+  <ul>
+    <li>{{ chapter_1_citation }}</li>
+    <li>{{ chapter_2_citation }}</li>
+  </ul>
+
+  <h2 class="section-title">Comments</h2>
+  <ul>
+    <li>{{ comment_1_citation }}</li>
+    <li>{{ comment_2_citation }}</li>
+    <li>{{ comment_3_citation }}</li>
+  </ul>
+
+  <h2 class="section-title">Other</h2>
+  <ul>
+    <li>{{ other_1_citation }}</li>
+    <li>{{ other_2_citation }}</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Non traditional works</h2>
+  <ul>
+    <li>{{ non_trad_1_citation }}</li>
+    <li>{{ non_trad_2_citation }}</li>
+    <li>{{ non_trad_3_citation }}</li>
+  </ul>
+
+  <h2 class="section-title">Competitive Grants and Awards</h2>
+  <ul>
+    <li>{{ grant_award_1 }}</li>
+    <li>{{ grant_award_2 }}</li>
+    <li>{{ grant_award_3 }}</li>
+    <li>{{ grant_award_4 }}</li>
+    <li>{{ grant_award_5 }}</li>
+  </ul>
+
+  <h2 class="section-title">Other Grants and Awards</h2>
+  <ul>
+    <li>{{ other_grant_1 }}</li>
+    <li>{{ other_grant_2 }}</li>
+    <li>{{ other_grant_3 }}</li>
+  </ul>
+
+  <h2 class="section-title">Professional Activities</h2>
+  <ul>
+    <li>{{ activity_1 }}</li>
+    <li>{{ activity_2 }}</li>
+  </ul>
+</div>
+
+<div class="page">
+  <h2 class="section-title">Selected Media Coverage</h2>
+  <ul>
+    <li>{{ media_1 }}</li>
+    <li>{{ media_2 }}</li>
+    <li>{{ media_3 }}</li>
+    <li>{{ media_4 }}</li>
+    <li>{{ media_5 }}</li>
+  </ul>
+
+  <h2 class="section-title">Students</h2>
+  <ul>
+    {% for student in students %}
+      <li>{{ student.year }} {{ student.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="section-title">Summer Research Supervision</h2>
+  <ul>
+    {% for supervision in supervision %}
+      <li>{{ supervision.year }} {{ supervision.names }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="section-title">Masters Committee Membership</h2>
+  <ul>
+    {% for masters in masters %}
+      <li>{{ masters.year }} {{ masters.names }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="section-title">Doctoral Committee Membership</h2>
+  <ul>
+    {% for doctoral in doctoral %}
+      <li>{{ doctoral.year }} {{ doctoral.names }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+<div class="page">
+  <h2 style="font-weight: bold; margin-bottom: 10px;">Courses Taught</h2>
+  <h3 style="font-weight: bold; margin-top: 0; margin-bottom: 15px;">Computer Science</h3>
+  <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0;">
+    <li><span data-field="course_taught_1">{{ course_taught_1 }}</span></li>
+    <li><span data-field="course_taught_2">{{ course_taught_2 }}</span></li>
+    <li><span data-field="course_taught_3">{{ course_taught_3 }}</span></li>
+    <li><span data-field="course_taught_4">{{ course_taught_4 }}</span></li>
+    <li><span data-field="course_taught_5">{{ course_taught_5 }}</span></li>
+    <li><span data-field="course_taught_6">{{ course_taught_6 }}</span></li>
+  </ul>
+  <h3 style="font-weight: bold; margin-top: 25px; margin-bottom: 15px;">Digital and Computational Studies</h3>
+  <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0;">
+    <li><span data-field="course_taught_7">{{ course_taught_7 }}</span></li>
+    <li><span data-field="course_taught_8">{{ course_taught_8 }}</span></li>
+    <li><span data-field="course_taught_9">{{ course_taught_9 }}</span></li>
+    <li><span data-field="course_taught_10">{{ course_taught_10 }}</span></li>
+    <li><span data-field="course_taught_11">{{ course_taught_11 }}</span></li>
+    <li><span data-field="course_taught_12">{{ course_taught_12 }}</span></li>
+  </ul>
+</div>
+<div class="page">
+  <h2 style="font-weight: bold; margin-bottom: 10px;">Outreach – Robotics Demonstrations</h2>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="text-align: left; padding: 8px; width: 15%;">Year</th>
+        <th style="text-align: left; padding: 8px;">Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in robotics_demos %}
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">{{ item.year }}</td>
+        <td style="padding: 8px;">{{ item.activity }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2 style="font-weight: bold; margin-top: 40px; margin-bottom: 10px;">Campus Demonstrations and Talks</h2>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="text-align: left; padding: 8px; width: 15%;">Year</th>
+        <th style="text-align: left; padding: 8px;">Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in campus_talks %}
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">{{ item.year }}</td>
+        <td style="padding: 8px;">{{ item.activity }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="page">
+  <h2 style="font-weight: bold; margin-bottom: 10px;">College Service</h2>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="text-align: left; padding: 8px; width: 15%;">Year Range</th>
+        <th style="text-align: left; padding: 8px;">Service</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in college_services %}
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">{{ item.year_range }}</td>
+        <td style="padding: 8px;">{{ item.service }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="page">
+  <h2 style="font-weight: bold; margin-bottom: 10px;">Committee Service</h2>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="text-align: left; padding: 8px; width: 15%;">Year Range</th>
+        <th style="text-align: left; padding: 8px;">Committee/Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in committee_service %}
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">{{ item.year_range }}</td>
+        <td style="padding: 8px;">{{ item.committee_role }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

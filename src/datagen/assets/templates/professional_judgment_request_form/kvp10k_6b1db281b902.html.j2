@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Professional Judgment Request Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .line-item-row td { padding: 3px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="width: 30%;">
+      <img src="placeholder_logo.png" alt="Logo" style="width: 100%;">
+    </div>
+    <div style="width: 70%; text-align: right;">
+      <h1 style="font-size: 24pt; margin: 0;">Professional Judgment</h1>
+      <h2 style="font-size: 18pt; margin: 5px 0 0 0;">Request Form, 2021-2022</h2>
+      <h2 style="font-size: 18pt; margin: 5px 0 0 0;">Change of Income</h2>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 20px;">You have indicated that a reduction in income has occurred since the time you originally applied for financial aid by filing the FAFSA. Please complete the worksheet and return it with documentation describing your situation to the Northwestern financial aid office.</p>
+
+  <div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 30px;">
+    <h3 style="margin-bottom: 15px;">PERSONAL INFORMATION</h3>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">
+        <label for="student_name" style="display: block; margin-bottom: 5px;">Student Name</label>
+        <span data-field="full_name" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ full_name }}</span>
+      </div>
+      <div style="width: 30%;">
+        <label for="student_id" style="display: block; margin-bottom: 5px;">Student ID Number</label>
+        <span data-field="student_id_number" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ student_id_number }}</span>
+      </div>
+      <div style="width: 30%;">
+        <label for="student_ssn" style="display: block; margin-bottom: 5px;">Student SSN</label>
+        <span data-field="student_ssn" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ student_ssn }}</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label for="preferred_email" style="display: block; margin-bottom: 5px;">Preferred email address</label>
+      <span data-field="preferred_email" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ preferred_email }}</span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label for="name_of_person" style="display: block; margin-bottom: 5px;">Name of person with an income change</label>
+      <span data-field="name_of_person_with_income_change" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ name_of_person_with_income_change }}</span>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label for="relationship" style="display: block; margin-bottom: 5px;">Relationship to student</label>
+      <span data-field="relationship_to_student" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ relationship_to_student }}</span>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 30px;">
+    <h3 style="margin-bottom: 15px;">Taxable Income:</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr class="line-item-row">
+        <td style="width: 30%;">Actual gross income from 1/1/2019 until 12/31/2019</td>
+        <td style="width: 30%; text-align: right;">$ <span data-field="taxable_income_2019_actual">{{ taxable_income_2019_actual }}</span></td>
+        <td style="width: 40%;"></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>Actual gross income from 1/1/2020 until 1/1/2021</td>
+        <td style="text-align: right;">$ <span data-field="taxable_income_2020_actual">{{ taxable_income_2020_actual }}</span></td>
+        <td></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>Estimated gross income from 1/2021 until 12/31/2021 (Enter same date of income change)</td>
+        <td style="text-align: right;">$ <span data-field="taxable_income_2021_estimated">{{ taxable_income_2021_estimated }}</span></td>
+        <td></td>
+      </tr>
+    </table>
+    <p style="margin-top: 15px;">Explain how this estimate was calculated:</p>
+    <span data-field="income_explanation" style="border-bottom: 1px solid #000; display: block; width: 100%; height: 50px;">{{ income_explanation }}</span>
+  </div>
+
+  <div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 30px;">
+    <h3 style="margin-bottom: 15px;">Income Details:</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr class="line-item-row">
+        <td>Projected other taxable income, such as interest and dividend income, unemployment compensation, taxable IRA or pension distributions, capital gains/losses, etc.</td>
+        <td style="text-align: right;">$ <span data-field="projected_other_taxable_income">{{ projected_other_taxable_income }}</span></td>
+        <td></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>Amount of severance pay</td>
+        <td style="text-align: right;">$ <span data-field="severance_pay_amount">{{ severance_pay_amount }}</span></td>
+        <td></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>2019 or 2020 child support expected</td>
+        <td style="text-align: right;">$ <span data-field="child_support_expected">{{ child_support_expected }}</span></td>
+        <td></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>Projected other untaxed income, such as untaxed portions of pensions, worker's compensation, untaxed IRA contributions, housing benefits, untaxed unemployment benefits, etc.</td>
+        <td style="text-align: right;">$ <span data-field="projected_other_untaxed_income">{{ projected_other_untaxed_income }}</span></td>
+        <td></td>
+      </tr>
+      <tr class="line-item-row">
+        <td>Total projected income</td>
+        <td style="text-align: right;">$ <span data-field="total_projected_income">{{ total_projected_income }}</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 30px;">
+    <h3 style="margin-bottom: 15px;">MARK THE BOX FOR THE CAUSE OF INCOME CHANGE AND PROVIDE DOCUMENTATION AS INDICATED BELOW:</h3>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="loss_job" style="margin-right: 10px;">
+      <label for="loss_job">Loss of job (quit, laid off, terminated, disabled) with no current employment</label>
+      <div style="margin-left: 30px; margin-top: 10px;">
+        <p>Documentation required:</p>
+        <ul>
+          <li><span data-field="doc_loss_job_2019_2020">{{ doc_loss_job_2019_2020 }}</span></li>
+          <li>Final pay stub from previous employer</li>
+          <li>Termination or resignation letter</li>
+          <li>Unemployment payout, if applicable</li>
+          <li>Severance benefit statement, if applicable</li>
+          <li>Explain the situation using space provided at bottom of this form.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="reduced_hours" style="margin-right: 10px;">
+      <label for="reduced_hours">Reduced hours, reduced pay rate, or change in jobs that results in lower gross earnings</label>
+      <div style="margin-left: 30px; margin-top: 10px;">
+        <p>Documentation required:</p>
+        <ul>
+          <li><span data-field="doc_reduced_hours_2019_2020">{{ doc_reduced_hours_2019_2020 }}</span></li>
+          <li>2019 and/or 2020 W2s</li>
+          <li>Most recent pay stub</li>
+          <li>Final pay stub before the change occurred</li>
+          <li>Explain the situation using space provided at bottom of this form.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 30px;">
+    <h3 style="margin-bottom: 15px;">Other Circumstances:</h3>
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="retirement" style="margin-right: 10px;">
+      <label for="retirement">Retirement</label>
+      <div style="margin-left: 30px; margin-top: 10px;">
+        <p>Documentation required:</p>
+        <ul>
+          <li><span data-field="doc_retirement_2019_2020">{{ doc_retirement_2019_2020 }}</span></li>
+          <li>Final pay stub from previous employer</li>
+          <li>Retirement letter (from you to employer, or from employer)</li>
+          <li>Description of amount and type of future retirement income for rest of 2020</li>
+          <li>Explain the situation using space provided at bottom of this form.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="other" style="margin-right: 10px;">
+      <label for="other">Other</label>
+      <div style="margin-left: 30px; margin-top: 10px;">
+        <p>Documentation required:</p>
+        <ul>
+          <li>Explain the situation using space provided at bottom of this form.</li>
+          <li>Other documentation as directed by the financial aid office</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>My signature below confirms that all of the information submitted is true and complete to the best of my knowledge. If asked by an authorized official, I (we) agree to give proof of this information. I (we) also realize that if I (we) do not give proof when asked, the request may not be considered.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div style="width: 45%;">
+      <label for="student_signature" style="display: block; margin-bottom: 5px;">Student Signature</label>
+      <span data-field="student_signature" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ student_signature }}</span>
+      <p style="margin-top: 5px;">(Required if student's income changed)</p>
+    </div>
+    <div style="width: 45%;">
+      <label for="parent_signature" style="display: block; margin-bottom: 5px;">Parent Signature</label>
+      <span data-field="parent_signature" style="border-bottom: 1px solid #000; display: inline-block; width: 80%;">{{ parent_signature }}</span>
+      <p style="margin-top: 5px;">(Required if parent's income changed)</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px; display: flex; justify-content: space-between;">
+    <div style="width: 45%;">
+      <p>Office use only:</p>
+      <p>Original EFC $ <span data-field="original_efc">{{ original_efc }}</span></p>
+      <p>PJ completed by <span data-field="pj_completed_by">{{ pj_completed_by }}</span></p>
+      <p>PJ notes:</p>
+      <span data-field="pj_notes" style="border-bottom: 1px solid #000; display: block; width: 100%; height: 50px;">{{ pj_notes }}</span>
+    </div>
+    <div style="width: 45%;">
+      <p>Adjusted EFC $ <span data-field="adjusted_efc">{{ adjusted_efc }}</span></p>
+      <p>Method of communicating results:</p>
+      <span data-field="method_of_communicating_results" style="border-bottom: 1px solid #000; display: block; width: 100%; height: 50px;">{{ method_of_communicating_results }}</span>
+      <p>PJ date:</p>
+      <span data-field="pj_date">{{ pj_date }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Please mail to Northwestern College Financial Aid Office 101 7th St SW Orange City, IA 51041</p>
+    <p>Email as attachment to <span data-field="email_address">{{ email_address }}</span> (Please do not send tax documents via email)</p>
+    <p>Fax to 712-707-7165</p>
+  </div>
+
+  <div style="margin-top: 50px; border-top: 1px solid #000; padding-top: 10px;">
+    <h3 style="margin-bottom: 15px;">Explanation of income change.</h3>
+    <span data-field="income_change_explanation_area" style="border-bottom: 1px solid #000; display: block; width: 100%; height: 150px;">{{ income_change_explanation_area }}</span>
+  </div>
+</div>
+</body>
+</html>

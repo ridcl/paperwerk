@@ -1,0 +1,169 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2 { text-align: center; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .form-section { margin-bottom: 20px; }
+  .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .row > div { width: 48%; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; }
+  .totals-row td { font-weight: bold; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo/Name -->
+    <span style="font-size: 24px; font-weight: bold;">West Virginia University</span><br>
+    <span style="font-size: 14px;">COLLEGE OF BUSINESS AND ECONOMICS</span>
+  </div>
+
+  <div class="form-section">
+    <h2>Travel Authorization Form</h2>
+  </div>
+
+  <div class="form-section">
+    <div class="row">
+      <div>
+        Date: <span data-field="date_filed">{{ date_filed }}</span>
+      </div>
+      <div>
+        Employee: <span data-field="employee_status">{{ employee_status }}</span>
+        <input type="checkbox" data-field="employee_yes" value="{{ employee_yes }}"> Yes
+        <input type="checkbox" data-field="employee_no" value="{{ employee_no }}"> No
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        Traveler Name: <span data-field="traveler_full_name">{{ traveler_full_name }}</span>
+      </div>
+      <div>
+        Department: <span data-field="department_name">{{ department_name }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        Mailing Address: <span data-field="traveler_mailing_address">{{ traveler_mailing_address }}</span>
+      </div>
+      <div>
+        Travel Start Date: <span data-field="travel_start_date">{{ travel_start_date }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        Email: <span data-field="traveler_email">{{ traveler_email }}</span>
+      </div>
+      <div>
+        Travel End Date: <span data-field="travel_end_date">{{ travel_end_date }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        Travel From (City/State): <span data-field="travel_from_location">{{ travel_from_location }}</span>
+      </div>
+      <div>
+        Travel To (City/State): <span data-field="travel_to_location">{{ travel_to_location }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        Business Purpose: <span data-field="business_purpose">{{ business_purpose }}</span>
+      </div>
+      <div>
+        <!-- Empty space or other field if needed -->
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Important Travel Details/Requests:</h3>
+    <!-- Placeholder for detailed requests -->
+    <p><span data-field="travel_requests_details">{{ travel_requests_details }}</span></p>
+  </div>
+
+  <div class="form-section">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 30%;">Expense Type</th>
+          <th style="width: 25%;">Pcard Charge</th>
+          <th style="width: 25%;">Reimbursable Expense</th>
+          <th style="width: 20%;">Personal Expense</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Expense Line Items -->
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].pcard_amount">{{ item.pcard_amount }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].reimbursable_amount">{{ item.reimbursable_amount }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].personal_amount">{{ item.personal_amount }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr class="totals-row">
+          <td>Total</td>
+          <td><span data-field="total_pcard_charge">{{ total_pcard_charge }}</span></td>
+          <td><span data-field="total_reimbursable_expense">{{ total_reimbursable_expense }}</span></td>
+          <td><span data-field="total_personal_expense">{{ total_personal_expense }}</span></td>
+        </tr>
+        <tr class="totals-row">
+          <td colspan="3">Grand Total</td>
+          <td><span data-field="grand_total">{{ grand_total }}</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <div class="row">
+      <div>
+        State DA: <span data-field="state_da">{{ state_da }}</span>
+      </div>
+      <div>
+        Foundation Fund: <span data-field="foundation_fund">{{ foundation_fund }}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <div>
+        Traveler: <span data-field="traveler_name_signature">{{ traveler_name_signature }}</span>
+      </div>
+      <div>
+        Supervisor: <span data-field="supervisor_name_signature">{{ supervisor_name_signature }}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <div>
+        Date: <span data-field="traveler_date">{{ traveler_date }}</span>
+      </div>
+      <div>
+        Dean: <span data-field="dean_name_signature">{{ dean_name_signature }}</span>
+      </div>
+      <div>
+        Date: <span data-field="dean_date">{{ dean_date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 50px; font-size: 12px; text-align: center;">
+    Completed form should be submitted to department 30 days prior to any travel arrangements being made.
+  </div>
+</div>

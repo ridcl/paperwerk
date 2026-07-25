@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Publications Catalog</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .book-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .book-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  .book-details h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  .book-details p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  .contents-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .contents-list li {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+  }
+  .page-number {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 20px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .header-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .left-column {
+    width: 30%;
+    float: left;
+    margin-right: 40px;
+  }
+  .right-column {
+    width: 70%;
+    float: right;
+  }
+  .book-cover {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  .content-section {
+    margin-bottom: 30px;
+  }
+  .table-of-contents {
+    margin-top: 20px;
+  }
+  .toc-entry {
+    margin-bottom: 10px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: #777;
+  }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  p { line-height: 1.5; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td, th { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 11pt;
+  }
+  .details {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .metadata {
+    font-size: 9pt;
+    color: #555;
+    margin-top: 5px;
+  }
+  .column-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .column {
+    flex: 1;
+  }
+  .divider {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <h1 style="font-size: 2.5em; margin: 0;">Publications</h1>
+    <div style="text-align: right;">
+      <span data-field="publication_year">{{ publication_year }}</span>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <!-- Column 1 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_1">{{ title_1 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_1_name">{{ editor_1_name }}</span>, <span data-field="editor_1_name">{{ editor_1_name }}</span> and <span data-field="editor_1_name">{{ editor_1_name }}</span></p>
+        <p>The increasing worldwide trend in disasters, which will be aggravated by global environmental change (including climate change), urges us to implement new approaches to disaster risk reduction (DRR). This book provides a comprehensive overview of the DRR concept, its evolution, and the various approaches to disaster risk reduction (DRR) is a slow and complex process. The book presents a collection of essays by leading experts from various fields, including environmental science, social sciences, and policy-making, to address the multifaceted nature of DRR.</p>
+        <p><strong>Contributors:</strong> <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span>, <span data-field="contributor_1_name">{{ contributor_1_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_1">{{ isbn_1 }}</span></p>
+        <p>Pages: <span data-field="pages_1">{{ pages_1 }}</span>; Price: <span data-field="price_1">{{ price_1 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_2">{{ title_2 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_2_name">{{ editor_2_name }}</span></p>
+        <p>Climate change adaptation, "building resilience" and "vulnerability and risk reduction" are noble words, but do we really know what is meant by these terms and how to assess them? This book provides a comprehensive overview of the concepts and methodologies used to measure vulnerability to natural hazards, edited by Jörn Birkmann, a leading expert in the field.</p>
+        <p><strong>Contents overview:</strong></p>
+        <ul class="contents-list">
+          <li>Part I: Basic principles and theoretical debates</li>
+          <li>Part II: Vulnerability and environmental change</li>
+          <li>Part III: Global, national and subnational assessment approaches</li>
+        </ul>
+        <p><strong>Contributors:</strong> <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span>, <span data-field="contributor_2_name">{{ contributor_2_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_2">{{ isbn_2 }}</span></p>
+        <p>Pages: <span data-field="pages_2">{{ pages_2 }}</span>; Price: <span data-field="price_2">{{ price_2 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_3">{{ title_3 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_3_name">{{ editor_3_name }}</span></p>
+        <p>Much of the debate on green growth and environmental governance tends to be general and abstract. This book provides a critical examination of the concepts and theories underlying the green economy and good governance, moving beyond the often-cited, yet sometimes superficial, discussions. It explores the complex interplay between economic development, environmental sustainability, and effective governance structures.</p>
+        <p><strong>Contents overview:</strong></p>
+        <ul class="contents-list">
+          <li>Introduction: Framing the debate on the green economy and governance from different angles.</li>
+          <li>Part I: Green economy</li>
+          <li>Part II: Governance</li>
+          <li>Conclusion</li>
+        </ul>
+        <p><strong>Contributors:</strong> <span data-field="contributor_3_name">{{ contributor_3_name }}</span>, <span data-field="contributor_3_name">{{ contributor_3_name }}</span>, <span data-field="contributor_3_name">{{ contributor_3_name }}</span>, <span data-field="contributor_3_name">{{ contributor_3_name }}</span>, <span data-field="contributor_3_name">{{ contributor_3_name }}</span>, <span data-field="contributor_3_name">{{ contributor_3_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_3">{{ isbn_3 }}</span></p>
+        <p>Pages: <span data-field="pages_3">{{ pages_3 }}</span>; Price: <span data-field="price_3">{{ price_3 }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="content-grid">
+    <!-- Column 1 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_4">{{ title_4 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_4_name">{{ editor_4_name }}</span>, <span data-field="editor_4_name">{{ editor_4_name }}</span> and <span data-field="editor_4_name">{{ editor_4_name }}</span></p>
+        <p>A series of humanitarian tragedies in the 1990s (Somalia, 1992-1994; Rwanda, 1994; Bosnia, 1992-1995) demonstrated the failure of the international community to protect civilians in the context of complex emergencies. These brought to life two fundamental questions: what is the responsibility to protect (R2P) and protection of civilians (PoC)?</p>
+        <p><strong>Table of contents:</strong></p>
+        <ul class="contents-list">
+          <li>The responsibility to protect: Game change and regime change, Hugh Breakey</li>
+          <li>The responsibility to protect and the protection of civilians: A view from the United Nations, Angus Francis</li>
+          <li>The responsibility to protect and the protection of civilians: A view from the United Nations, Vesselin Popovski</li>
+          <li>Peacekeeping, civilian protection mandates and the responsibility to protect, Hitoshi Nasu</li>
+          <li>The responsibility to protect and the protection of civilians: A review, Charles Sampford</li>
+          <li>Framing a protection service, Annie Herro and Kavitha Sutharathiraj</li>
+          <li>The relationship between international humanitarian law and responsibility to protect: From sovereignty to protection, <span data-field="contributor_4_name">{{ contributor_4_name }}</span></li>
+          <li>The responsibility to protect civilians from political violence: Locating necessity, <span data-field="contributor_4_name">{{ contributor_4_name }}</span></li>
+          <li>The responsibility to protect and the international refugee regime, Angus Francis</li>
+          <li>Enhancing the capacities of state and regional institutions in transforming responsibility to protect into action, <span data-field="contributor_4_name">{{ contributor_4_name }}</span></li>
+          <li>Towards a "responsibility to provide": Cultivating an ethic of responsible sovereignty in Southeast Asia, <span data-field="contributor_4_name">{{ contributor_4_name }}</span></li>
+          <li>Interaction of the norms of protection, Vesselin Popovski</li>
+        </ul>
+        <p>ISBN: <span data-field="isbn_4">{{ isbn_4 }}</span></p>
+        <p>Pages: <span data-field="pages_4">{{ pages_4 }}</span>; Price: <span data-field="price_4">{{ price_4 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_5">{{ title_5 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_5_name">{{ editor_5_name }}</span> and <span data-field="editor_5_name">{{ editor_5_name }}</span></p>
+        <p>Ethics and International Affairs explores the extent and limits of contemporary international ethics and examines the ways in which the international community has responded to some of the most crucial challenges since the end of the Cold War.</p>
+        <p>At the centre of the book is a discussion of how responsibility is viewed at individual, national, and international levels. The book also addresses the role of international intervention, environmental issues, considerations of gender, international economic justice, and the role of international law in addressing global problems. The book provides a platform to push for the best implementation and articulation of international ethics, offers focus on the necessity to move beyond abstract moral considerations to concrete action.</p>
+        <p><strong>Table of contents:</strong></p>
+        <ul class="contents-list">
+          <li>Introduction to the second edition: International ethics ten years later: Any progress?</li>
+          <li>The ethics of international aid, <span data-field="contributor_5_name">{{ contributor_5_name }}</span></li>
+          <li>International law as an approach to international ethics: A plea for a jurisprudential dialogue, <span data-field="contributor_5_name">{{ contributor_5_name }}</span></li>
+          <li>The ethics of modern diplomacy, Roberto Toscano</li>
+          <li>Violence and ethics: Beyond the reason of state paradigm, Pierre Hassner</li>
+          <li>International justice and international order: The case of Bosnia and Kosovo, David Campbell</li>
+          <li>Environmental ethics in international society, Oran R. Young</li>
+          <li>Ethics, feminism and international affairs, Kimberly Hutchings</li>
+          <li>Does globalization have an ethical problem?, Ethan B. Kapstein</li>
+          <li>Conclusion: The task(s) of international ethics, Nicholas Rengger</li>
+        </ul>
+        <p>ISBN: <span data-field="isbn_5">{{ isbn_5 }}</span></p>
+        <p>Pages: <span data-field="pages_5">{{ pages_5 }}</span>; Price: <span data-field="price_5">{{ price_5 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_6">{{ title_6 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_6_name">{{ editor_6_name }}</span></p>
+        <p>The concept "rule of law" is well established in domestic constitutions and over many centuries has been used to signify the supremacy of law above the rich and the powerful, above the potential arbitrariness or bias of human decisions.</p>
+        <p>This book investigates the concept "international rule of law", which can be a problematic concept. It explores the various dimensions of this concept, including the role of international law, the role of international institutions, and the role of professional ethics in the international arena. It also examines the relationship between international law and professional ethics, particularly in the ethical behaviour of various groups of international actors.</p>
+        <p><strong>Table of contents:</strong></p>
+        <ul class="contents-list">
+          <li>Introduction: Ethical support for the rule of law, Vesselin Popovski</li>
+          <li>"Unqualified human good" or a bit of ruling class chatter?, The rule of law at the international level, <span data-field="contributor_6_name">{{ contributor_6_name }}</span></li>
+          <li>What is "international temporality"?, Frédéric Mégrét</li>
+          <li>Reflections on the rule of law: its significance for North and South as partners in global governance, <span data-field="contributor_6_name">{{ contributor_6_name }}</span></li>
+          <li>Professionals without borders: Global ethics and the international rule of law, Charles Sampford</li>
+          <li>International civil service ethics, professionalism and the rule of law, Lorne Sosin and Vasudha Sinha</li>
+          <li>Judicial ethics at the international criminal tribunals, William Schabas</li>
+          <li>International rule of law? Ethics and impartiality of legal professionals in international criminal tribunals, Chandra Lekha Sriram</li>
+          <li>Conclusions, Vesselin Popovski</li>
+        </ul>
+        <p>ISBN: <span data-field="isbn_6">{{ isbn_6 }}</span></p>
+        <p>Pages: <span data-field="pages_6">{{ pages_6 }}</span>; Price: <span data-field="price_6">{{ price_6 }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="content-grid">
+    <!-- Column 1 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_7">{{ title_7 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_7_name">{{ editor_7_name }}</span>, <span data-field="editor_7_name">{{ editor_7_name }}</span> and <span data-field="editor_7_name">{{ editor_7_name }}</span></p>
+        <p>The increasing worldwide trend in disasters, which will be aggravated by global environmental change (including climate change), urges us to implement new approaches to disaster risk reduction (DRR). This book provides a comprehensive overview of the DRR concept, its evolution, and the various approaches to disaster risk reduction (DRR) is a slow and complex process. The book presents a collection of essays by leading experts from various fields, including environmental science, social sciences, and policy-making, to address the multifaceted nature of DRR.</p>
+        <p><strong>Contributors:</strong> <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span>, <span data-field="contributor_7_name">{{ contributor_7_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_7">{{ isbn_7 }}</span></p>
+        <p>Pages: <span data-field="pages_7">{{ pages_7 }}</span>; Price: <span data-field="price_7">{{ price_7 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_8">{{ title_8 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_8_name">{{ editor_8_name }}</span></p>
+        <p>This book examines the evolving landscape of international environmental law, addressing contemporary challenges such as climate change, biodiversity loss, and pollution. It explores the interplay between international legal frameworks, scientific advancements, and political realities.</p>
+        <p><strong>Contents overview:</strong></p>
+        <ul class="contents-list">
+          <li>Introduction: The state of international environmental law</li>
+          <li>Climate change and international law</li>
+          <li>Biodiversity and international law</li>
+          <li>Pollution and international law</li>
+        </ul>
+        <p><strong>Contributors:</strong> <span data-field="contributor_8_name">{{ contributor_8_name }}</span>, <span data-field="contributor_8_name">{{ contributor_8_name }}</span>, <span data-field="contributor_8_name">{{ contributor_8_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_8">{{ isbn_8 }}</span></p>
+        <p>Pages: <span data-field="pages_8">{{ pages_8 }}</span>; Price: <span data-field="price_8">{{ price_8 }}</span></p>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="book-entry">
+      <img src="placeholder.png" alt="Book Cover" class="book-image">
+      <div class="book-details">
+        <h3><span data-field="title_9">{{ title_9 }}</span></h3>
+        <p>EDITED BY <span data-field="editor_9_name">{{ editor_9_name }}</span></p>
+        <p>This volume addresses the complex political, social, and economic trajectories of Latin America in the 21st century. It examines the challenges of democratic consolidation, inequality, and the impact of global economic shifts on the region.</p>
+        <p><strong>Contents overview:</strong></p>
+        <ul class="contents-list">
+          <li>Political transitions and democratic challenges</li>
+          <li>Socio-economic inequality and development</li>
+          <li>Regional integration and global pressures</li>
+        </ul>
+        <p><strong>Contributors:</strong> <span data-field="contributor_9_name">{{ contributor_9_name }}</span>, <span data-field="contributor_9_name">{{ contributor_9_name }}</span>, <span data-field="contributor_9_name">{{ contributor_9_name }}</span></p>
+        <p>ISBN: <span data-field="isbn_9">{{ isbn_9 }}</span></p>
+        <p>Pages: <span data-field="pages_9">{{ pages_9 }}</span>; Price: <span data-field="price_9">{{ price_9 }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .header-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .left-column {
+    width: 30%;
+    float: left;
+    margin-right: 40px;
+  }
+  .right-column {
+    width: 70%;
+    float: right;
+  }
+  .book-cover {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  .content-section {
+    margin-bottom: 30px;
+  }
+  .table-of-contents {
+    margin-top: 20px;
+  }
+  .toc-entry {
+    margin-bottom: 10px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: #777;
+  }
+</style>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">ENVIRONMENTAL GOVERNANCE FOR SUSTAINABLE DEVELOPMENT</h1>
+        <h2 style="font-size: 1.2em;">EAST ASIAN PERSPECTIVES</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Environmental Governance for Sustainable Development</h1>
+        <h2 style="font-size: 1.2em;">East Asian Perspectives</h2>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        <p>In order to advance global sustainable development it is indispensable to change the course and mode of conventional economic growth in the East Asian region, which has enjoyed rapid economic growth but faces environmental challenges.</p>
+        <p>This volume gives attention to the evolution of multilevel environmental governance in the East Asian region, including both Northeast and Southeast Asia. It examines how effective emerging environmental governance and policy has been and addresses the underlying causes of local, national, regional and global environmental challenges. Topical chapters include those on democratization and its effect on decision-making processes, international environmental aid, economic analysis of environmental production possibilities, and global environmental regimes and subsequent new financial mechanisms, and hybrid systems of environmental governance that emphasize the role of the private sector and civil society in contributing to environmental governance.</p>
+        <p>Special attention is also given to the regional economic and environmental regimes. The volume examines the advantages, challenges and solutions in addressing local, national, regional and global environmental challenges, and in changing the course of economic growth.</p>
+        <p><strong>Akihisa Mori</strong> is an Associate Professor of the Graduate School of Global Environmental Studies, Kyoto University, Japan.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Contents overview:</h3>
+          <div class="toc-entry">
+            <p><strong>Part I:</strong> Environmental governance for sustainable development in the East Asian region</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part II:</strong> Domestic pressures for national environmental governance</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part III:</strong> International assistance for local environmental governance</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part IV:</strong> Regional approaches to economic integration and environmental governance</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part V:</strong> Hybrid Systems in Environmental Governance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>"East Asia is turning into a key region in the world, in terms of both accelerating environmental problems and innovative environmental reform. This very timely and up-to-date volume contains in-depth analyses of the successes and challenges of contemporary environmental governance in various East Asian countries and on multiple topics. Through a large number of detailed and fascinating studies, from multiple perspectives, a unique understanding is offered on how national, regional and international policies, strategies and measures contribute to sustainable development."</p>
+    <p style="margin-top: 30px;">—<span data-field="reviewer_name">{{ reviewer_name }}</span>, <span data-field="reviewer_affiliation">{{ reviewer_affiliation }}</span></p>
+    <p style="margin-top: 20px;">Wageningen University, The Netherlands/Remmon University, China</p>
+    <p style="margin-top: 30px;">ISBN 978-92-808-1219-0</p>
+    <p>400 pages; paper; US$38.00</p>
+    <p>March 2013</p>
+  </div>
+  <div class="footer">United Nations University Press 7</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">LOCAL COMMONS AND DEMOCRATIC ENVIRONMENTAL GOVERNANCE</h1>
+        <h2 style="font-size: 1.2em;"></h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Local Commons and Democratic Environmental Governance</h1>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        <p>The rising tide of globalization poses a direct threat to the viability of small communities worldwide. Such communities, however, are our greatest hope for sustainable environmental governance, as they possess unparalleled ability to directly manage common-pool resources.</p>
+        <p>Providing a much-needed antidote in this age of globalization, this volume advances the idea of collaborative governance as an integration of open and closed commons. Taking into consideration the dimension of conflict resolution, it studies examples of governance structures in various countries around the world to develop a new type of democracy towards multilevel environmental governance that involves the public, private and commons spheres.</p>
+        <p>With contributions from researchers in a wide variety of disciplines, this volume demonstrates through institutional and empirical analyses the essential role of local commons in providing an axis of resistance to increasing environmental devastation and social inequality towards creating a sustainable future for local communities as well as society at large.</p>
+        <p><strong>Takeshi Murata</strong> is a Professor in the Department of Economics at Doshisha University, Japan. <strong>Ken Takeshita</strong> is a Professor of Legal Philosophy in the Law School at Kansai University, Japan.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Contents overview:</h3>
+          <div class="toc-entry">
+            <p><strong>Part I:</strong> Theoretical studies of the commons</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part II:</strong> Institutions of the commons</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part III:</strong> Local commons and survival strategies under globalization</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part IV:</strong> Collaboration, democracy and multilevel environmental governance</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Conclusion</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1223-7</p>
+    <p>440 pages; paper; US$40.00</p>
+    <p>March 2013</p>
+  </div>
+  <div class="footer">United Nations University Press 8</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">REGIONAL INTEGRATION IN EAST ASIA</h1>
+        <h2 style="font-size: 1.2em;">Theoretical and Historical Perspectives</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Regional Integration in East Asia</h1>
+        <p>THEORETICAL AND HISTORICAL PERSPECTIVES</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span>, <span data-field="editor_name_2">{{ editor_name_2 }}</span> AND <span data-field="editor_name_3">{{ editor_name_3 }}</span></p>
+        <p>Asian regional integration has shown remarkable progress since the end of the 1990s, but is currently at a major crossroads amid confusion of debate over the direction and effectiveness of integration, and friction brought about by the rise of non-state actors, the 'inter-nationalization' of internal problems, and the 'internationalization' of internal problems. Signs of instability of the global economy are increasingly complex and multilayered. The challenges of regional integration in East Asia are increasingly complex and multilayered. The challenges of regional integration in East Asia are increasingly complex and multilayered.</p>
+        <p><strong>Regional Integration in East Asia</strong> is the culmination of five years of intensive research on Asian regional integration by Waseda University. It re-examines theoretical approaches to comprehending the actual state of integration in the region and presents the most compelling among them. It also examines the state of regional cooperation in Asia in areas ranging from the economy to energy and the environment, security and education. In addition, the book offers long-term historical perspectives on the process of regional integration of Japan, ASEAN and China, on Asian regional integration. Thus, it sheds light on diverse aspects of regional integration in East Asia and offers a comprehensive portrayal of the actual condition of Asia and the state of endeavours to build regional cooperation and institutions.</p>
+        <p><strong>Satoshi Amako</strong> is a Professor at the Graduate School of Asia-Pacific Studies, Waseda University, Japan. <strong>Shunji Matsuoka</strong> is a Professor at the Graduate School of Asia-Pacific Studies, Waseda University, Japan. <strong>Kenji Horiuchi</strong> is a Research Fellow at the Waseda University Institute of International Studies, Japan.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Table of contents:</h3>
+          <div class="toc-entry">
+            <p><strong>Part I:</strong> Theoretical perspectives on Asian regional integration</p>
+          </div>
+          <div class="toc-entry">
+            <p>Asian and regional integration theory: Between a regional complex and a regional society</p>
+          </div>
+          <div class="toc-entry">
+            <p>Norms and regional institutions: Towards an East Asian community, Hiro Katsumata</p>
+          </div>
+          <div class="toc-entry">
+            <p>East Asian integration and domestic politics, Jemma Kim</p>
+          </div>
+          <div class="toc-entry">
+            <p>Asian approaches to regional integration, Shunji Matsuoka</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part II:</strong> Issues in Asian regional integration</p>
+          </div>
+          <div class="toc-entry">
+            <p>Globalization and regional economic integration in East Asia, Shujiro Urata</p>
+          </div>
+          <div class="toc-entry">
+            <p>Energy and environmental institutions in East Asia, Kenji Horiuchi, Reishi Matsumoto and Katsuya Tanaka</p>
+          </div>
+          <div class="toc-entry">
+            <p>The rise and fall of the debate over East Asian multilateral regional security cooperation, Chihiro Kawakatsu Ueki</p>
+          </div>
+          <div class="toc-entry">
+            <p>Regional integration and cooperation in higher education in Asia, Kazuo Kuroda</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part III: Historical Asian regional integration</p>
+          </div>
+          <div class="toc-entry">
+            <p>Between civilization and anti-civilization: The ideology and activism of early Asians, Naoyuki Umemori</p>
+          </div>
+          <div class="toc-entry">
+            <p>Japan and pan-Asianism: Lost opportunities, Seiko Mimaki</p>
+          </div>
+          <div class="toc-entry">
+            <p>Southeast Asia in the post-war period: The origins and crossroads of Bandung, non-alignment and ASEAN, Sachiko Hirakawa</p>
+          </div>
+          <div class="toc-entry">
+            <p>From Asia-Africa and Asia-Pacific to Asia: China's multilateral cooperation in Asia, Rumi Aoyama</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1222-0</p>
+    <p>388 pages; paper; US$40.00</p>
+    <p>March 2013</p>
+  </div>
+  <div class="footer">United Nations University Press 9</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">BUSINESS AND CLIMATE POLICY</h1>
+        <h2 style="font-size: 1.2em;">The Potentials and Pitfalls of Private Voluntary Programs</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Business and Climate Policy</h1>
+        <p>The Potentials and Pitfalls of Private Voluntary Programs</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        <p>Climate change has become one of the most important and challenging global policy fields. Attention has primarily focused on the successes and failures of states and inter-governmental organizations, but many more actors are involved and contribute to solutions. Business, often seen as spurring climate change, harbours a lot of potential for problem solving. Today, a rich variety of private voluntary programs address climate change.</p>
+        <p>Private voluntary programs are private in the sense that they are initiated by and made up of private actors, but they are not necessarily private in the sense that they are not regulated by the state or programs in that a variety of formal rules, resources and bodies are often established to govern their activities.</p>
+        <p><strong>Business and Climate Policy</strong> assesses the potentials and pitfalls of existing private voluntary programs. The contributors evaluate how effectively different programs meet public and private goals at the national and international levels, and across industries. The lessons learned presented in this book can help to design new programs and improve those that are already in place, and to understand the role of private voluntary programs are active.</p>
+        <p><strong>Karsten Ronit</strong> is an Associate Professor in the Department of Political Science, University of Copenhagen, Denmark.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Table of contents:</h3>
+          <div class="toc-entry">
+            <p><strong>Part I:</strong> Introduction</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part II: Cross-sectoral and multisectoral programs</p>
+          </div>
+          <div class="toc-entry">
+            <p>Private voluntary programs in environmental governance: Climate change and the financial sector, Jennifer Clapp and Jason Thistlewaite</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part III: The role of private voluntary climate programs affecting forests: Assessing their direct and indirect effects, Laura Bozzi, Benjamin Cashore, Kelly Levin and Constance McDermott</p>
+          </div>
+          <div class="toc-entry">
+            <p>Emerging private voluntary programs and climate change: The blind spots of the agricultural sector, Doris Fuchs and Frederic Boll</p>
+          </div>
+          <div class="toc-entry">
+            <p>Climate change, private voluntary programs and the automobile industry, Tony Porter</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part IV: Conclusions</p>
+          </div>
+          <div class="toc-entry">
+            <p>Private voluntary programs in climate policy: Potentials and pitfalls, Karsten Ronit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1214-5</p>
+    <p>276 pages; paper; US$34.00</p>
+    <p>June 2012</p>
+  </div>
+  <div class="footer">United Nations University Press 10</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">AFTER OPPRESSION</h1>
+        <h2 style="font-size: 1.2em;">Transitional Justice in Latin America and Eastern Europe</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">After Oppression</h1>
+        <p>Transitional Justice in Latin America and Eastern Europe</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        <p>"Latin America and Eastern Europe emerged from dictatorship or more less contemporaneously in the 1980s and 90s. The contrast in the ways they dealt with the legacies of human rights violations has been a theme of the emerging field of transitional justice ever since. With the benefit of a quarter century of experience, After Oppression presents the most comprehensive comparative study of those similarities and differences. Editors Mónica Serrano and Vesselin Popovski have assembled a most impressive group of scholars and practitioners to conduct this essential study. They combine intellectual rigor with you-are-there proximity to the challenges, frustrations and signal success of the struggle for justice in our time."</p>
+        <p style="margin-top: 30px;">—<span data-field="reviewer_name">{{ reviewer_name }}</span>, <span data-field="reviewer_affiliation">{{ reviewer_affiliation }}</span></p>
+        <p style="margin-top: 20px;">UN Special Rapporteur on Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment, and Visiting Professor, Washington College of Law</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Contents overview:</h3>
+          <div class="toc-entry">
+            <p><strong>Introduction</strong></p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part I: Latin America</strong></p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part II: Eastern Europe</strong></p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Conclusions</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1208-8</p>
+    <p>544 pages; paper; US$43.00</p>
+    <p>November 2012</p>
+  </div>
+  <div class="footer">United Nations University Press 11</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">EXCORCISING THE DEMONS WITHIN</h1>
+        <h2 style="font-size: 1.2em;">Xenophobia, Violence and Statecraft in Contemporary South Africa</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Excorcising the Demons Within</h1>
+        <p>Xenophobia, Violence and Statecraft in Contemporary South Africa</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span></p>
+        <p>On 11 May 2008, residents of Alexandra Township near Johannesburg turned violently on their neighbours, launching a string of attacks that, two weeks later, left 60 dead, dozens raped and over a hundred thousand displaced. Most of those killed were from beyond South Africa's borders, but at least a third were citizens who, for reasons of ethnicity or nationality, were targeted. The attacks were a shocking display of xenophobic violence, and they reflect an important moment in the country's post-apartheid authoritarianism.</p>
+        <p>This book is a critical analysis of the power, population and place that this book explores. Excorcising the Demons Within makes sense of recent anti-xenophobic violence in South Africa, and it offers a comprehensive analysis of the political, social and economic factors that both produced the conditions for the attacks and has been researched by B. Drawing on an interdisciplinary approach, the book examines the dynamics of xenophobia in South Africa, and the ways in which it is being addressed by the state and civil society while helping to redefine hope.</p>
+        <p>This book is critical of the policies, practices and politics of containment that continue to fuel the xenophobic violence in South Africa. It also offers a critical perspective on the role of the state in the management of xenophobia in South Africa.</p>
+        <p><strong>Loren B. Landau</strong> is Director of the African Centre for Migration & Society at the University of the Witwatersrand, South Africa.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Table of contents:</h3>
+          <div class="toc-entry">
+            <p>Introducing the demons, Loren B. Landau</p>
+          </div>
+          <div class="toc-entry">
+            <p>Media memory: A critical reconstruction of the May 2008 violence, Tamlyn Monson and <span data-field="author_name">{{ author_name }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>People, space and politics: An exploration of factors explaining the 2008 anti-foreigner violence, <span data-field="author_name">{{ author_name }}</span>, <span data-field="author_name_2">{{ author_name_2 }}</span> and <span data-field="author_name_3">{{ author_name_3 }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>Disorder in a changing society: Authority and the micro-politics of violence, Jean Pierre Misago</p>
+          </div>
+          <div class="toc-entry">
+            <p>Xenophobic labour: Genocidal histories of outsiders and the politics of exclusion in Alexandra Township, Noor Niefdaggen</p>
+          </div>
+          <div class="toc-entry">
+            <p>Taking out the trash? A "garbage can" model of immigration policing, Darshan Vengana</p>
+          </div>
+          <div class="toc-entry">
+            <p>Making the law, breaking the law: taking the law into our own hands: Sovereignty and territorial control in three South African settlements, Tamlyn Monson</p>
+          </div>
+          <div class="toc-entry">
+            <p>From defending migrant rights to new political subjectivities: Gauteng migrants' organisations after May 2008, Tara Polzer and Aurelia Segatti</p>
+          </div>
+          <div class="toc-entry">
+            <p>Postscript: Positive values and the politics of outsiders, Loren B. Landau</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1215-2</p>
+    <p>296 pages; paper; US$36.00</p>
+    <p>April 2012</p>
+  </div>
+  <div class="footer">United Nations University Press 12</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">ESCAPING VICTIMHOOD</h1>
+        <h2 style="font-size: 1.2em;">Children, Youth and Post-Conflict Peacebuilding</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Escaping Victimhood</h1>
+        <p>Children, Youth and Post-Conflict Peacebuilding</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        <p>"This volume, focusing on children and youth in post-conflict situations, takes a wide array of varied angles, including children's rights, peacebuilding, and the role of youth in post-conflict peacebuilding. Their voices will not be heard unless they can escape the chains of victimhood and their agency in post-war recovery effort is recognized."</p>
+        <p>By drawing on experiences from post-conflict environments in different parts of the world, this volume examines the challenges and opportunities for children and youth in post-conflict settings, and the ways in which they can be empowered to protect and empower children and youth in post-conflict environments. The volume also examines the role of youth in peacebuilding and the ways in which they can be involved in the process of peacebuilding and the ways in which they can be involved in the process of peacebuilding and the ways in which they can be involved in the process of peacebuilding.</p>
+        <p><strong>Albrecht Schnabel</strong> is a Senior Fellow in the Research Division of the Geneva Centre for Humanitarian Dialogue, and <span data-field="editor_name_2">{{ editor_name_2 }}</span> is an Assistant Professor of History at Marshall University, USA, and a Research Fellow at the Institute for Regional Studies, Kyrgyzstan.</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Contents overview:</h3>
+          <div class="toc-entry">
+            <p><strong>Introduction:</strong> Conceptualizing the roles of children and youth in post-conflict peacebuilding</p>
+          </div>
+          <div class="toc-entry">
+            <p>Opportunities missed: Shielding children and youth in post-conflict recovery and peacebuilding, <span data-field="author_name">{{ author_name }}</span> and <span data-field="author_name_2">{{ author_name_2 }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>Children and youth people in post-conflict peacebuilding, Claire O'Kane, Clare Feinstein and Annette Giertsen</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part II: The scars of armed conflict: Children and youth as actors and victims</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part III: Protecting and engaging children and youth in post-conflict environments</p>
+          </div>
+          <div class="toc-entry">
+            <p>Part IV: Children and youth in peacebuilding, <span data-field="author_name">{{ author_name }}</span>, <span data-field="author_name_2">{{ author_name_2 }}</span> and <span data-field="author_name_3">{{ author_name_3 }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>Conclusion: Escaping and moving beyond victimhood: Children and youth as peacebuilders, Anara Tabyshaleeva and Albrecht Schnabel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1211-4</p>
+    <p>328 pages; paper; US$37.00</p>
+    <p>September 2013</p>
+  </div>
+  <div class="footer">United Nations University Press 13</div>
+</div>
+
+<div class="page">
+  <div class="header-block">
+    <div class="left-column">
+      <div class="book-cover">
+        <h1 style="font-size: 1.5em; margin-bottom: 10px;">FRIEND OR FOE?</h1>
+        <h2 style="font-size: 1.2em;">Dominant Party Systems in Southern Africa</h2>
+        <div style="margin-top: 30px;">
+          <img src="placeholder_cover.png" alt="Cover" style="width: 150px; height: auto;">
+          <p style="margin-top: 10px; font-size: 0.9em;">EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="content-section">
+        <h1 style="font-size: 1.8em;">Friend or Foe?</h1>
+        <p>Dominant Party Systems in Southern Africa</p>
+        <p>Insights from the Developing World</p>
+        <p>EDITED BY <span data-field="editor_name">{{ editor_name }}</span> AND <span data-field="editor_name_2">{{ editor_name_2 }}</span></p>
+        <p>"The excellence of this volume comes to me as no surprise. I was convinced from the outset that this would be a very original and highly relevant work."</p>
+        <p>The comparative efforts of editors de Jager and du Toit thus will be a major contribution to the study of political parties."</p>
+        <p>Professor Emeritus of Political Science, San Francisco State University</p>
+        <div class="table-of-contents">
+          <h3 style="font-size: 1.1em;">Table of contents:</h3>
+          <div class="toc-entry">
+            <p><strong>Part I:</strong> Theoretical Foundations</p>
+          </div>
+          <div class="toc-entry">
+            <p>Introduction, Nicola de Jager and Pierre du Toit</p>
+          </div>
+          <div class="toc-entry">
+            <p><strong>Part II:</strong> Insights from the developing world</p>
+          </div>
+          <div class="toc-entry">
+            <p>The political costs of privatization, Why money, Kenneth Freeman</p>
+          </div>
+          <div class="toc-entry">
+            <p>The dominant party system and democracy: The Congress Party in India, Thiven Reddy</p>
+          </div>
+          <div class="toc-entry">
+            <p>The dominant party system and democracy: The Congress Party in Namibia, <span data-field="author_name">{{ author_name }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>From authoritarianism to nascent democracy in Taiwan: Electoral elements of the dominant party system, <span data-field="author_name">{{ author_name }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>Part III: Dominant party systems in southern Africa</p>
+          </div>
+          <div class="toc-entry">
+            <p>Interrogating the dominant party system in Botswana, David Sebudubudu and <span data-field="author_name">{{ author_name }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>The politics and resource endowment of party dominance in Namibia: The past as the present and the future, Andre du Plessis</p>
+          </div>
+          <div class="toc-entry">
+            <p>South Africa: A democracy in the balance, Nicola de Jager</p>
+          </div>
+          <div class="toc-entry">
+            <p>Heroes fall, oppressors rise: Democratic decay & authoritarianism in Zimbabwe, <span data-field="author_name">{{ author_name }}</span> and <span data-field="author_name_2">{{ author_name_2 }}</span></p>
+          </div>
+          <div class="toc-entry">
+            <p>Conclusion: Resources and the politics of dominant party systems, Pierre du Toit and Nicola de Jager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="content-section" style="margin-top: 50px;">
+    <p>ISBN 978-92-808-1220-6</p>
+    <p>232 pages; paper; US$36.00</p>
+    <p>November 2012</p>
+  </div>
+  <div class="footer">United Nations University Press 14</div>
+</div>
+
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="Logo" style="max-width: 150px; height: auto;">
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 60%;">
+      <h1 style="font-size: 28pt; margin-bottom: 10px;">Jacketed Women</h1>
+      <h2 style="font-size: 14pt; font-weight: normal; margin-top: 0;">Qualitative Research Methodologies on Sexualities and Gender in Africa</h2>
+      <p style="font-size: 10pt; margin-top: 20px;">EDITED BY {{ editor_name_1 }} AND {{ editor_name_2 }}</p>
+      <div style="margin-top: 30px;">
+        <p style="font-size: 10pt;">{{ publication_year }}</p>
+        <p style="font-size: 10pt;">{{ isbn }}</p>
+        <p style="font-size: 10pt;">{{ page_count }} pages; {{ price }}</p>
+        <p style="font-size: 10pt;">{{ publication_date }}</p>
+      </div>
+    </div>
+    <div style="width: 35%; text-align: right;">
+      <div style="text-align: right;">
+        <p style="font-size: 10pt;">{{ publisher_name }}</p>
+        <p style="font-size: 10pt;">{{ copyright_year }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 14pt; margin-bottom: 10px;">Table of contents:</h3>
+    <p style="font-size: 10pt;">{{ toc_content }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; margin-bottom: 10px;">New Titles</h1>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt;">United Nations University Press</p>
+      <p style="font-size: 10pt;">{{ page_number }}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px;">
+    {% for item in new_titles %}
+    <div style="width: 48%; margin-bottom: 30px; border: 1px solid #eee; padding: 15px;">
+      <img src="placeholder_cover_{{ loop.index }}.jpg" alt="Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <h3 style="font-size: 12pt; margin-top: 0;">{{ item.title }}</h3>
+      <p style="font-size: 9pt;">EDITED BY {{ item.editor_name }}</p>
+      <p style="font-size: 9pt;">{{ item.description_snippet }}</p>
+      <p style="font-size: 9pt; margin-top: 10px;">ISBN: {{ item.isbn }}</p>
+      <p style="font-size: 9pt;">{{ item.pages }} pages; {{ item.price }}</p>
+      <p style="font-size: 9pt;">{{ item.publication_date }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; margin-bottom: 10px;">Recently Published</h1>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt;">United Nations University Press</p>
+      <p style="font-size: 10pt;">{{ page_number }}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px;">
+    {% for item in recently_published %}
+    <div style="width: 32%; margin-bottom: 30px; border: 1px solid #eee; padding: 15px;">
+      <img src="placeholder_cover_{{ loop.index }}.jpg" alt="Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <h3 style="font-size: 12pt; margin-top: 0;">{{ item.title }}</h3>
+      <p style="font-size: 9pt;">EDITED BY {{ item.editor_name }}</p>
+      <p style="font-size: 9pt;">{{ item.description_snippet }}</p>
+      <p style="font-size: 9pt; margin-top: 10px;">ISBN: {{ item.isbn }}</p>
+      <p style="font-size: 9pt;">{{ item.pages }} pages; {{ item.price }}</p>
+      <p style="font-size: 9pt;">{{ item.publication_date }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; margin-bottom: 10px;">Recently Published</h1>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt;">United Nations University Press</p>
+      <p style="font-size: 10pt;">{{ page_number }}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px;">
+    {% for item in recently_published_2 %}
+    <div style="width: 32%; margin-bottom: 30px; border: 1px solid #eee; padding: 15px;">
+      <img src="placeholder_cover_{{ loop.index }}.jpg" alt="Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <h3 style="font-size: 12pt; margin-top: 0;">{{ item.title }}</h3>
+      <p style="font-size: 9pt;">EDITED BY {{ item.editor_name }}</p>
+      <p style="font-size: 9pt;">{{ item.description_snippet }}</p>
+      <p style="font-size: 9pt; margin-top: 10px;">ISBN: {{ item.isbn }}</p>
+      <p style="font-size: 9pt;">{{ item.pages }} pages; {{ item.price }}</p>
+      <p style="font-size: 9pt;">{{ item.publication_date }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; margin-bottom: 10px;">Selected Titles</h1>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt;">United Nations University Press</p>
+      <p style="font-size: 10pt;">{{ page_number }}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px;">
+    {% for item in selected_titles %}
+    <div style="width: 32%; margin-bottom: 30px; border: 1px solid #eee; padding: 15px;">
+      <img src="placeholder_cover_{{ loop.index }}.jpg" alt="Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <h3 style="font-size: 12pt; margin-top: 0;">{{ item.title }}</h3>
+      <p style="font-size: 9pt;">EDITED BY {{ item.editor_name }}</p>
+      <p style="font-size: 9pt;">{{ item.description_snippet }}</p>
+      <p style="font-size: 9pt; margin-top: 10px;">ISBN: {{ item.isbn }}</p>
+      <p style="font-size: 9pt;">{{ item.pages }} pages; {{ item.price }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 50%;">
+      <h1 style="font-size: 24pt; margin-bottom: 10px;">Recently Published</h1>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt;">United Nations University Press</p>
+      <p style="font-size: 10pt;">{{ page_number }}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 40px;">
+    {% for item in recently_published_3 %}
+    <div style="width: 32%; margin-bottom: 30px; border: 1px solid #eee; padding: 15px;">
+      <img src="placeholder_cover_{{ loop.index }}.jpg" alt="Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <h3 style="font-size: 12pt; margin-top: 0;">{{ item.title }}</h3>
+      <p style="font-size: 9pt;">EDITED BY {{ item.editor_name }}</p>
+      <p style="font-size: 9pt;">{{ item.description_snippet }}</p>
+      <p style="font-size: 9pt; margin-top: 10px;">ISBN: {{ item.isbn }}</p>
+      <p style="font-size: 9pt;">{{ item.pages }} pages; {{ item.price }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+<div class="page">
+  <h1>Active Titles</h1>
+
+  <div class="column-container">
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_1 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_1">{{ editor_1 }}</span>.
+          <div class="metadata">ISBN {{ isbn_1 }} | {{ publication_date_1 }} | {{ price_1 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_2 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_2">{{ editor_2 }}</span>.
+          <div class="metadata">ISBN {{ isbn_2 }} | {{ publication_date_2 }} | {{ price_2 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_3 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_3">{{ editor_3 }}</span>.
+          <div class="metadata">ISBN {{ isbn_3 }} | {{ publication_date_3 }} | {{ price_3 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_4 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_4">{{ editor_4 }}</span>.
+          <div class="metadata">ISBN {{ isbn_4 }} | {{ publication_date_4 }} | {{ price_4 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_5 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_5">{{ editor_5 }}</span>.
+          <div class="metadata">ISBN {{ isbn_5 }} | {{ publication_date_5 }} | {{ price_5 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_6 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_6">{{ editor_6 }}</span>.
+          <div class="metadata">ISBN {{ isbn_6 }} | {{ publication_date_6 }} | {{ price_6 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_7 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_7">{{ editor_7 }}</span>.
+          <div class="metadata">ISBN {{ isbn_7 }} | {{ publication_date_7 }} | {{ price_7 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_8 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_8">{{ editor_8 }}</span>.
+          <div class="metadata">ISBN {{ isbn_8 }} | {{ publication_date_8 }} | {{ price_8 }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_9 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_9">{{ editor_9 }}</span>.
+          <div class="metadata">ISBN {{ isbn_9 }} | {{ publication_date_9 }} | {{ price_9 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_10 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_10">{{ editor_10 }}</span>.
+          <div class="metadata">ISBN {{ isbn_10 }} | {{ publication_date_10 }} | {{ price_10 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_11 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_11">{{ editor_11 }}</span>.
+          <div class="metadata">ISBN {{ isbn_11 }} | {{ publication_date_11 }} | {{ price_11 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_12 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_12">{{ editor_12 }}</span>.
+          <div class="metadata">ISBN {{ isbn_12 }} | {{ publication_date_12 }} | {{ price_12 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_13 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_13">{{ editor_13 }}</span>.
+          <div class="metadata">ISBN {{ isbn_13 }} | {{ publication_date_13 }} | {{ price_13 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_14 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_14">{{ editor_14 }}</span>.
+          <div class="metadata">ISBN {{ isbn_14 }} | {{ publication_date_14 }} | {{ price_14 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_15 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_15">{{ editor_15 }}</span>.
+          <div class="metadata">ISBN {{ isbn_15 }} | {{ publication_date_15 }} | {{ price_15 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_16 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_16">{{ editor_16 }}</span>.
+          <div class="metadata">ISBN {{ isbn_16 }} | {{ publication_date_16 }} | {{ price_16 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="column-container">
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_17 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_17">{{ editor_17 }}</span>.
+          <div class="metadata">ISBN {{ isbn_17 }} | {{ publication_date_17 }} | {{ price_17 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_18 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_18">{{ editor_18 }}</span>.
+          <div class="metadata">ISBN {{ isbn_18 }} | {{ publication_date_18 }} | {{ price_18 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_19 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_19">{{ editor_19 }}</span>.
+          <div class="metadata">ISBN {{ isbn_19 }} | {{ publication_date_19 }} | {{ price_19 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_20 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_20">{{ editor_20 }}</span>.
+          <div class="metadata">ISBN {{ isbn_20 }} | {{ publication_date_20 }} | {{ price_20 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_21 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_21">{{ editor_21 }}</span>.
+          <div class="metadata">ISBN {{ isbn_21 }} | {{ publication_date_21 }} | {{ price_21 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_22 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_22">{{ editor_22 }}</span>.
+          <div class="metadata">ISBN {{ isbn_22 }} | {{ publication_date_22 }} | {{ price_22 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_23 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_23">{{ editor_23 }}</span>.
+          <div class="metadata">ISBN {{ isbn_23 }} | {{ publication_date_23 }} | {{ price_23 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_24 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_24">{{ editor_24 }}</span>.
+          <div class="metadata">ISBN {{ isbn_24 }} | {{ publication_date_24 }} | {{ price_24 }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_25 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_25">{{ editor_25 }}</span>.
+          <div class="metadata">ISBN {{ isbn_25 }} | {{ publication_date_25 }} | {{ price_25 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_26 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_26">{{ editor_26 }}</span>.
+          <div class="metadata">ISBN {{ isbn_26 }} | {{ publication_date_26 }} | {{ price_26 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_27 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_27">{{ editor_27 }}</span>.
+          <div class="metadata">ISBN {{ isbn_27 }} | {{ publication_date_27 }} | {{ price_27 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_28 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_28">{{ editor_28 }}</span>.
+          <div class="metadata">ISBN {{ isbn_28 }} | {{ publication_date_28 }} | {{ price_28 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_29 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_29">{{ editor_29 }}</span>.
+          <div class="metadata">ISBN {{ isbn_29 }} | {{ publication_date_29 }} | {{ price_29 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_30 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_30">{{ editor_30 }}</span>.
+          <div class="metadata">ISBN {{ isbn_30 }} | {{ publication_date_30 }} | {{ price_30 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_31 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_31">{{ editor_31 }}</span>.
+          <div class="metadata">ISBN {{ isbn_31 }} | {{ publication_date_31 }} | {{ price_31 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_32 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_32">{{ editor_32 }}</span>.
+          <div class="metadata">ISBN {{ isbn_32 }} | {{ publication_date_32 }} | {{ price_32 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="column-container">
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_33 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_33">{{ editor_33 }}</span>.
+          <div class="metadata">ISBN {{ isbn_33 }} | {{ publication_date_33 }} | {{ price_33 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_34 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_34">{{ editor_34 }}</span>.
+          <div class="metadata">ISBN {{ isbn_34 }} | {{ publication_date_34 }} | {{ price_34 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_35 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_35">{{ editor_35 }}</span>.
+          <div class="metadata">ISBN {{ isbn_35 }} | {{ publication_date_35 }} | {{ price_35 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_36 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_36">{{ editor_36 }}</span>.
+          <div class="metadata">ISBN {{ isbn_36 }} | {{ publication_date_36 }} | {{ price_36 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_37 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_37">{{ editor_37 }}</span>.
+          <div class="metadata">ISBN {{ isbn_37 }} | {{ publication_date_37 }} | {{ price_37 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_38 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_38">{{ editor_38 }}</span>.
+          <div class="metadata">ISBN {{ isbn_38 }} | {{ publication_date_38 }} | {{ price_38 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_39 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_39">{{ editor_39 }}</span>.
+          <div class="metadata">ISBN {{ isbn_39 }} | {{ publication_date_39 }} | {{ price_39 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_40 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_40">{{ editor_40 }}</span>.
+          <div class="metadata">ISBN {{ isbn_40 }} | {{ publication_date_40 }} | {{ price_40 }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="entry">
+        <div class="title">{{ title_41 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_41">{{ editor_41 }}</span>.
+          <div class="metadata">ISBN {{ isbn_41 }} | {{ publication_date_41 }} | {{ price_41 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_42 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_42">{{ editor_42 }}</span>.
+          <div class="metadata">ISBN {{ isbn_42 }} | {{ publication_date_42 }} | {{ price_42 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_43 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_43">{{ editor_43 }}</span>.
+          <div class="metadata">ISBN {{ isbn_43 }} | {{ publication_date_43 }} | {{ price_43 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_44 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_44">{{ editor_44 }}</span>.
+          <div class="metadata">ISBN {{ isbn_44 }} | {{ publication_date_44 }} | {{ price_44 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_45 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_45">{{ editor_45 }}</span>.
+          <div class="metadata">ISBN {{ isbn_45 }} | {{ publication_date_45 }} | {{ price_45 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_46 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_46">{{ editor_46 }}</span>.
+          <div class="metadata">ISBN {{ isbn_46 }} | {{ publication_date_46 }} | {{ price_46 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_47 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_47">{{ editor_47 }}</span>.
+          <div class="metadata">ISBN {{ isbn_47 }} | {{ publication_date_47 }} | {{ price_47 }}</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="title">{{ title_48 }}</div>
+        <div class="details">
+          Edited by <span data-field="editor_48">{{ editor_48 }}</span>.
+          <div class="metadata">ISBN {{ isbn_48 }} | {{ publication_date_48 }} | {{ price_48 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

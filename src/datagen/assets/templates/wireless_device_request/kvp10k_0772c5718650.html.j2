@@ -1,0 +1,259 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2 { text-align: center; margin-bottom: 20px; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .contact-info p { margin: 2px 0; }
+  .checkbox-group label { margin-right: 15px; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 30px; display: inline-block; width: 50%; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <span style="font-size: 24px; font-weight: bold;">CSUN</span>
+    <div style="font-size: 12px;">CALIFORNIA UNIVERSITY</div>
+    <div style="font-size: 12px;">NORTHRIDGE</div>
+  </div>
+  <div style="text-align: right; font-size: 12px; margin-top: 10px;">
+    Purchasing & Contract Administration
+  </div>
+
+  <h1 style="text-align: center; margin-top: 40px;">WIRELESS DEVICE REQUEST – STATE PROCURED</h1>
+
+  <div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div class="contact-info">
+        <p>University Hall <span data-field="hall_number">{{ hall_number }}</span></p>
+        <p>Phone: (<span data-field="phone_area_code">{{ phone_area_code }}</span>) <span data-field="phone_number">{{ phone_number }}</span> - <span data-field="phone_extension">{{ phone_extension }}</span></p>
+        <p>Fax: (<span data-field="fax_area_code">{{ fax_area_code }}</span>) <span data-field="fax_number">{{ fax_number }}</span> - <span data-field="fax_extension">{{ fax_extension }}</span></p>
+        <p>Mail Code: <span data-field="mail_code">{{ mail_code }}</span></p>
+        <p>Email: <a href="mailto:{{ email_address }}"><span data-field="email_address">{{ email_address }}</span></a></p>
+      </div>
+      <div style="text-align: right;">
+        <!-- Placeholder for other header info if needed -->
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> NEW REQUEST</label>
+        <label><input type="checkbox"> REPLACEMENT</label>
+        <label><input type="checkbox"> TRANSFER</label>
+        <label><input type="checkbox"> UPGRADE</label>
+        <label><input type="checkbox"> RENEWAL</label>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>CHECK ONE OF THE FOLLOWING:</p>
+      <div style="display: flex; gap: 30px;">
+        <label><input type="checkbox"> Cellular Telephone/Smartphone</label>
+        <label><input type="checkbox"> Wireless Card</label>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div>
+        <p>EMPLOYEE NAME:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="employee_name">{{ employee_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>CSUN ID:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="csun_id">{{ csun_id }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+      <div>
+        <p>DEPARTMENT NAME:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="department_name">{{ department_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>EXT.:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="extension">{{ extension }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px; font-size: 12px;">
+    <p>Contact Purchasing & Contract Administration for information on devices and service plans under contract.</p>
+    <p>Complete this request and obtain approvals. A signed <a href="#" data-field="policy_link">{{ policy_link }}</a> must be attached to this request. The device and/or service will be procured and the employee will be notified to pick up the device from Purchasing & Contract Administration.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">ACKNOWLEDGMENT:</p>
+    <p>I have read the policy and agree to abide by the terms and conditions according to the Acquisition and Use of Portable Communication Equipment and Related Services.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>Employee's Signature:</p>
+        <div class="signature-line" data-field="employee_s_signature">{{ employee_s_signature }}</div>
+      </div>
+      <div>
+        <p>Date:</p>
+        <div class="signature-line" data-field="date">{{ date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">MONTHLY BILLS WILL BE REVIEWED BY:</p>
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>Name:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="reviewer_name">{{ reviewer_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Department Name:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="reviewer_department">{{ reviewer_department }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Ext.:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="reviewer_extension">{{ reviewer_extension }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">REQUIRED CHARTFIELDS:</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px;">
+      <div>ACCT: _________________________</div>
+      <div>FUND: _________________________</div>
+      <div>DEPT ID: _________________________</div>
+      <div>PROGRAM: _________________________</div>
+      <div>CLASS: _________________________</div>
+      <div>PROJECT/CLASS: _________________________</div>
+      <div>AMOUNT $: _________________________</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p style="font-weight: bold;">APPROVAL:</p>
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>Financial Approver:</p>
+        <div class="signature-line" data-field="financial_approver">{{ financial_approver }}</div>
+        <p>Print Name:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="financial_approver_name">{{ financial_approver_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Date:</p>
+        <div class="signature-line" data-field="date_2">{{ date_2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <p>President or Division V.P.'s Signature:</p>
+        <div class="signature-line" data-field="date_3">{{ date_3 }}</div>
+        <p>Print Name:</p>
+        <div style="border-bottom: 1px solid #000; width: 60%;">
+          <span data-field="vp_approver_name">{{ vp_approver_name }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Date:</p>
+        <div class="signature-line" data-field="date_4">{{ date_4 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p style="font-weight: bold; text-align: center;">*PURCHASING & CONTRACT ADMINISTRATION USE ONLY*</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px; font-size: 12px;">
+      <div>
+        <p>REQ #:</p>
+        <div style="border-bottom: 1px solid #000; width: 30%;">
+          <span data-field="req_number">{{ req_number }}</span>
+        </div>
+      </div>
+      <div>
+        <p>Wireless Number:</p>
+        <div style="border-bottom: 1px solid #000; width: 30%;">
+          <span data-field="wireless_number">{{ wireless_number }}</span>
+        </div>
+      </div>
+      <div>
+        <p>President or Division V.P.'s Approval:</p>
+        <div style="border-bottom: 1px solid #000; width: 30%;">
+          <span data-field="vp_approval_signature">{{ vp_approval_signature }}</span>
+        </div>
+        <p style="font-size: 10px;">Initials</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; display: flex; justify-content: space-between; font-size: 12px;">
+    <div>
+      <p>Manufacturer:</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="manufacturer">{{ manufacturer }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Model No.:</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="model_number">{{ model_number }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Serial No.:</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="serial_number">{{ serial_number }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 12px;">
+    <div>
+      <p>Service Plan:</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="service_plan">{{ service_plan }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Monthly Cost: $</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="monthly_cost">{{ monthly_cost }}</span>
+      </div>
+    </div>
+    <div>
+      <p>Plan Provider/Plan Name:</p>
+      <div style="border-bottom: 1px solid #000; width: 30%;">
+        <span data-field="plan_provider">{{ plan_provider }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

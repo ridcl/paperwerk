@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  th {
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 24pt;">[Curriculum Vitae]</h1>
+  </div>
+
+  <div class="section-title">[Personal Information]</div>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 70%;">
+        Name: <span data-field="full_name">{{ full_name }}</span><br>
+        Date of birth: <span data-field="date_of_birth">{{ date_of_birth }}</span><br>
+        Place of birth: <span data-field="place_of_birth">{{ place_of_birth }}</span><br>
+        Email: <span data-field="email">{{ email }}</span><br>
+        Skype account: <span data-field="skype_account">{{ skype_account }}</span><br>
+        Mobile: <span data-field="mobile">{{ mobile }}</span><br>
+        Phone: <span data-field="phone">{{ phone }}</span><br>
+        Nationality: <span data-field="nationality">{{ nationality }}</span>
+      </td>
+      <td style="width: 30%; text-align: right;">
+        <img src="placeholder_image.png" alt="Profile" style="max-width: 100%; height: auto;">
+      </td>
+    </tr>
+  </table>
+
+  <div class="section-title">[Education]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>
+      <strong>Secondary school:</strong> <span data-field="secondary_school_details">{{ secondary_school_details }}</span>.
+    </li>
+    <li>
+      <strong>Undergraduate:</strong> <span data-field="undergraduate_details">{{ undergraduate_details }}</span>.
+      <strong>Thesis title:</strong> <span data-field="undergraduate_thesis_title">{{ undergraduate_thesis_title }}</span>.
+    </li>
+    <li>
+      <strong>Graduate:</strong> <span data-field="graduate_details">{{ graduate_details }}</span>.
+      <strong>Thesis title:</strong> <span data-field="graduate_thesis_title">{{ graduate_thesis_title }}</span>.
+    </li>
+  </ul>
+
+  <div class="section-title">[Work Experiences]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>
+      <strong><span data-field="work_experience_dates_1">{{ work_experience_dates_1 }}</span>:</strong> <span data-field="work_experience_description_1">{{ work_experience_description_1 }}</span>.
+    </li>
+    <li>
+      <strong><span data-field="work_experience_dates_2">{{ work_experience_dates_2 }}</span>:</strong> <span data-field="work_experience_description_2">{{ work_experience_description_2 }}</span>.
+    </li>
+  </ul>
+</div>
+
+<div class="page">
+  <div class="section-title">[Research and Professional Experience]</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Dates</th>
+        <th style="width: 35%;">Title</th>
+        <th style="width: 20%;">Institution</th>
+        <th style="width: 30%;">Skills</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="research_dates_1">{{ research_dates_1 }}</span></td>
+        <td><span data-field="research_title_1">{{ research_title_1 }}</span></td>
+        <td><span data-field="research_institution_1">{{ research_institution_1 }}</span></td>
+        <td>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            {% for skill in research_skills_1 %}
+              <li><span data-field="research_skills_1[{{ loop.index0 }}]">{{ skill }}</span></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span data-field="research_dates_2">{{ research_dates_2 }}</span></td>
+        <td><span data-field="research_title_2">{{ research_title_2 }}</span></td>
+        <td><span data-field="research_institution_2">{{ research_institution_2 }}</span></td>
+        <td>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            {% for skill in research_skills_2 %}
+              <li><span data-field="research_skills_2[{{ loop.index0 }}]">{{ skill }}</span></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span data-field="research_dates_3">{{ research_dates_3 }}</span></td>
+        <td><span data-field="research_title_3">{{ research_title_3 }}</span></td>
+        <td><span data-field="research_institution_3">{{ research_institution_3 }}</span></td>
+        <td>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            {% for skill in research_skills_3 %}
+              <li><span data-field="research_skills_3[{{ loop.index0 }}]">{{ skill }}</span></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">[Skills]</div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <h3 style="margin-top: 0;">Skills</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        {% for skill in general_skills %}
+          <li><span data-field="general_skills[{{ loop.index0 }}]">{{ skill }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="margin-top: 0;">Skills</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        {% for skill in lab_skills %}
+          <li><span data-field="lab_skills[{{ loop.index0 }}]">{{ skill }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">[Languages]</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Reading</th>
+        <th style="width: 20%;">Speaking</th>
+        <th style="width: 20%;">Writing</th>
+        <th style="width: 20%;">Listening</th>
+        <th style="width: 20%;">Overall score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="language_reading_score">{{ language_reading_score }}</span></td>
+        <td><span data-field="language_speaking_score">{{ language_speaking_score }}</span></td>
+        <td><span data-field="language_writing_score">{{ language_writing_score }}</span></td>
+        <td><span data-field="language_listening_score">{{ language_listening_score }}</span></td>
+        <td><span data-field="language_overall_score">{{ language_overall_score }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <ul style="list-style-type: disc; padding-left: 20px; margin-top: 20px;">
+    <li><span data-field="language_notes_1">{{ language_notes_1 }}</span>.</li>
+    <li><span data-field="language_notes_2">{{ language_notes_2 }}</span>.</li>
+  </ul>
+
+  <div class="section-title">[Outside interests and skills]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for interest in interests_skills %}
+      <li><span data-field="interests_skills[{{ loop.index0 }}]">{{ interest }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">[Honors and Awards]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>
+      <strong><span data-field="award_date_1">{{ award_date_1 }}</span>:</strong> <span data-field="award_description_1">{{ award_description_1 }}</span>.
+    </li>
+    <li>
+      <strong><span data-field="award_date_2">{{ award_date_2 }}</span>:</strong> <span data-field="award_description_2">{{ award_description_2 }}</span>.
+    </li>
+    <li>
+      <strong><span data-field="award_date_3">{{ award_date_3 }}</span>:</strong> <span data-field="award_description_3">{{ award_description_3 }}</span>.
+    </li>
+  </ul>
+
+  <div class="section-title">[Supervision of Undergraduate projects]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for project in undergraduate_projects %}
+      <li><span data-field="undergraduate_project_description[{{ loop.index0 }}]">{{ project }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">[Conferences]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for conference in conferences %}
+      <li><span data-field="conference_description[{{ loop.index0 }}]">{{ conference }}</span></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page">
+  <div class="section-title">[Volunteer Activities]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for volunteer in volunteer_activities %}
+      <li><span data-field="volunteer_activity_description[{{ loop.index0 }}]">{{ volunteer }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">[Research group activities]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>
+      Group name: <span data-field="research_group_name">{{ research_group_name }}</span>.
+      Committee: <span data-field="research_group_committee">{{ research_group_committee }}</span>.
+      University: <span data-field="research_group_university">{{ research_group_university }}</span>.
+    </li>
+  </ul>
+
+  <div class="section-title">[Publications]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for publication in publications %}
+      <li>
+        <span data-field="publication_description[{{ loop.index0 }}]">{{ publication }}</span>.
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">[Proposals and Projects]</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    {% for proposal in proposals %}
+      <li><span data-field="proposal_description[{{ loop.index0 }}]">{{ proposal }}</span></li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">[Referees]</div>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Name</th>
+        <th style="width: 20%;">Position</th>
+        <th style="width: 25%;">Institution</th>
+        <th style="width: 15%;">Email</th>
+        <th style="width: 15%;">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="referee_name_1">{{ referee_name_1 }}</span></td>
+        <td><span data-field="referee_position_1">{{ referee_position_1 }}</span></td>
+        <td><span data-field="referee_institution_1">{{ referee_institution_1 }}</span></td>
+        <td><span data-field="referee_email_1">{{ referee_email_1 }}</span></td>
+        <td><span data-field="referee_phone_1">{{ referee_phone_1 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="referee_name_2">{{ referee_name_2 }}</span></td>
+        <td><span data-field="referee_position_2">{{ referee_position_2 }}</span></td>
+        <td><span data-field="referee_institution_2">{{ referee_institution_2 }}</span></td>
+        <td><span data-field="referee_email_2">{{ referee_email_2 }}</span></td>
+        <td><span data-field="referee_phone_2">{{ referee_phone_2 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="referee_name_3">{{ referee_name_3 }}</span></td>
+        <td><span data-field="referee_position_3">{{ referee_position_3 }}</span></td>
+        <td><span data-field="referee_institution_3">{{ referee_institution_3 }}</span></td>
+        <td><span data-field="referee_email_3">{{ referee_email_3 }}</span></td>
+        <td><span data-field="referee_phone_3">{{ referee_phone_3 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="referee_name_4">{{ referee_name_4 }}</span></td>
+        <td><span data-field="referee_position_4">{{ referee_position_4 }}</span></td>
+        <td><span data-field="referee_institution_4">{{ referee_institution_4 }}</span></td>
+        <td><span data-field="referee_email_4">{{ referee_email_4 }}</span></td>
+        <td><span data-field="referee_phone_4">{{ referee_phone_4 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

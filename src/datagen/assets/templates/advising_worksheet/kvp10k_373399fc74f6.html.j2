@@ -1,0 +1,96 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f0f0f0;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">MSU BILLINGS</h1>
+    </div>
+    <div>
+      <h2 style="font-size: 14pt; margin: 0;">ADVISING WORKSHEET</h2>
+      <p style="font-size: 10pt; margin: 2px 0;">MINOR IN COMPUTER SCIENCE</p>
+      <p style="font-size: 10pt; margin: 2px 0;">GENERAL BULLETIN 2018-2019</p>
+      <div style="margin-top: 30px;">
+        <label style="font-size: 10pt;">TRANSFER INSTITUTION(S):</label>
+        <div style="border-bottom: 1px solid #000; margin-top: 3px; width: 50%;" data-field="transfer_institution">{{ transfer_institution }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 45%;">
+      <p style="font-size: 10pt; margin: 0;">Montana State University Billings</p>
+      <p style="font-size: 10pt; margin: 2px 0;">Advising & Career Services</p>
+      <p style="font-size: 10pt; margin: 2px 0;">Phone: {{ contact_phone }}</p>
+      <p style="font-size: 10pt; margin: 2px 0;">Fax: {{ contact_fax }}</p>
+      <p style="font-size: 10pt; margin: 2px 0;">advising@msbillings.edu</p>
+      <p style="font-size: 10pt; margin: 2px 0;"><a href="{{ website_url }}">{{ website_url }}</a></p>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      <p style="font-size: 10pt; margin: 0;">Name: <span data-field="student_name">{{ student_name }}</span></p>
+      <p style="font-size: 10pt; margin: 2px 0;">Student ID #: <span data-field="student_id">{{ student_id }}</span></p>
+    </div>
+  </div>
+
+  <h3 style="font-size: 12pt; margin-bottom: 10px;">Required Courses</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Course</th>
+        <th style="width: 15%;">Credits</th>
+        <th style="width: 35%;">Grade</th>
+        <th style="width: 15%;">Semester</th>
+        <th style="width: 20%;">Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in required_courses %}
+      <tr>
+        <td><span data-field="course_code">{{ course.code }}</span></td>
+        <td><span data-field="course_credits">{{ course.credits }}</span></td>
+        <td><span data-field="course_grade">{{ course.grade }}</span></td>
+        <td><span data-field="course_semester">{{ course.semester }}</span></td>
+        <td><span data-field="course_equivalent">{{ course.equivalent }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <p style="font-size: 10pt;">Total credits required for minor: <span data-field="total_credits">{{ total_credits }}</span></p>
+  </div>
+
+  <p style="font-size: 9pt; margin-top: 40px;">Certain courses in this program have prerequisites; students should check the course descriptions in the General Bulletin for required prerequisites.</p>
+</div>

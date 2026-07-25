@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graduate Survey Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-line { border-top: 1px solid black; margin-top: 0; margin-bottom: 20px; }
+  .footer { font-size: 10px; text-align: center; margin-top: 50px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+  .section-title { font-size: 16pt; font-weight: bold; margin-bottom: 15px; }
+</style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .sub-header {
+    text-align: center;
+    font-size: 12pt;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 15px;
+    line-height: 1.4;
+  }
+  .response-rate-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .bar-chart-container {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+  }
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-top: 20px;
+  }
+  .map-state {
+    position: absolute;
+    background-color: #ccc; /* Placeholder for map shape */
+    border: 1px solid #000;
+  }
+  .map-label {
+    position: absolute;
+    font-size: 10pt;
+    font-weight: bold;
+  }
+</style>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .list-item {
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-line"></div>
+  <h1>GRADUATE SURVEY REPORT</h1>
+  <p style="text-align: center; font-size: 12pt;">{{ report_year }}</p>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="width: 150px; height: auto; margin-bottom: 20px;">
+    <h2 style="font-size: 18pt;">Northern Michigan University</h2>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Career Services</p>
+    <p>{{ university_address_line1 }}</p>
+    <p>{{ university_address_line2 }}</p>
+    <p>Email: <span data-field="university_email">{{ university_email }}</span></p>
+    <p>Web: <span data-field="university_web">{{ university_web }}</span></p>
+  </div>
+  <div class="header-line"></div>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center;">Table of Contents</h2>
+  <table style="width: 100%;">
+    <tr>
+      <td>Executive Summary...................................................................................................................</td>
+      <td style="text-align: right;">2</td>
+    </tr>
+    <tr>
+      <td>Results: All Northern Michigan University Degrees.........................................................................</td>
+      <td style="text-align: right;">3</td>
+    </tr>
+    <tr>
+      <td>Results: Walker L. Cisler College of Business.............................................................................</td>
+      <td style="text-align: right;">6</td>
+    </tr>
+    <tr>
+      <td>Results: College of Arts & Sciences...........................................................................................</td>
+      <td style="text-align: right;">9</td>
+    </tr>
+    <tr>
+      <td>Results: College of Health Sciences and Professional Studies.........................................................</td>
+      <td style="text-align: right;">12</td>
+    </tr>
+    <tr>
+      <td>Appendix A: Departments Represented in Each College..................................................................</td>
+      <td style="text-align: right;">15</td>
+    </tr>
+    <tr>
+      <td>Appendix B: Majors Represented in Each College.........................................................................</td>
+      <td style="text-align: right;">16</td>
+    </tr>
+  </table>
+  <div class="footer">Northern Michigan University {{ report_year }} Graduate Survey Report | Page 1</div>
+</div>
+
+<div class="page">
+  <h1 style="text-align: center;">2013-2014 Graduate Survey Report</h1>
+  <h2 style="text-align: center;">Executive Summary</h2>
+
+  <p>Each year, the Career Services Office is responsible for surveying graduates from all degree programs offered at Northern Michigan University. This survey, and the report which follows, provides a comprehensive picture of the success NMU graduates have as it relates to their career and continuing education endeavors.</p>
+
+  <p>The Executive Summary which follows, along with the comprehensive report on which the summary is based, continues to show the strong success rate of NMU graduates. This success is illustrated by an overall reported employment rate of <span data-field="overall_employment_rate_percent">{{ overall_employment_rate_percent }}</span>. Furthermore, <span data-field="overall_continuing_education_rate_percent">{{ overall_continuing_education_rate_percent }}</span> of those who reported that they were employed indicated that they were satisfied with their current job. And finally, <span data-field="overall_directly_related_percent">{{ overall_directly_related_percent }}</span> of those who indicated that they were employed reported that they felt their current job was directly related to their academic major.</p>
+
+  <p>The categories which follow will illustrate some of the overall data that is presented in the comprehensive report. Readers are encouraged not only to digest the "quick summaries" which follow, but to analyze, share, and celebrate the information which is contained in the report.</p>
+
+  <h3 style="margin-top: 30px;">Survey Year</h3>
+  <p>The Graduate Survey Report encompasses participants from three commencement exercises. The report which follows, the Career Services "Survey Year" encompasses those who graduated in <span data-field="survey_year_start">{{ survey_year_start }}</span>, <span data-field="survey_year_end">{{ survey_year_end }}</span>, and <span data-field="survey_year_end_2">{{ survey_year_end_2 }}</span>.</p>
+
+  <h3 style="margin-top: 30px;">Survey Methodology</h3>
+  <p>During each commencement rehearsal, the Career Services Staff provides all commencement exercise participants with a copy of the graduate survey. Graduates are given an opportunity to complete the survey and return it to the Career Services staff at the end of rehearsal. Once all surveys are collected, the Career Services staff input the results from each student into the database.</p>
+
+  <p>In addition, approximately six (6), ten (10), fourteen (14), and twenty four (24) weeks after each commencement, the Career Services staff emails a reminder to all students who have not yet responded to the survey, in an effort to achieve as high a return rate as possible.</p>
+
+  <div class="footer">Northern Michigan University {{ report_year }} Graduate Survey Report | Page 2</div>
+</div>
+
+<div class="page">
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">RESULTS: ALL NORTHERN MICHIGAN UNIVERSITY DEGREES</h2>
+    <p style="text-align: center; font-size: 12pt;">AUGUST 2013 – MAY 2014</p>
+
+    <p>As you examine the Graduate Survey results, please note:</p>
+    <ul>
+      <li>"Graduating students" includes students who received a:
+        <ul>
+          <li>Master's Degree</li>
+          <li>Bachelor's Degree</li>
+          <li>Degree/Certification from a non-baccalaureate program</li>
+        </ul>
+      </li>
+      <li>Data was collected for students graduating in:
+        <ul>
+          <li>August 2013</li>
+          <li>December 2013</li>
+          <li>May 2014</li>
+        </ul>
+      </li>
+      <li>"Employed" and "Continuing Education" are not mutually exclusive choices on the NMU Graduate Survey. Therefore the cumulative percentages listed for these two choices may exceed 100 percent.</li>
+      <li>If the percentages do not add up to 100 percent, some respondents to the survey have indicated that they are either "employed" and "continuing education" OR "unemployed" and "continuing education."</li>
+      <li>Percentages indicated are the percent of those responding to the survey.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top: 20px;">RESPONSE RATE: <span data-field="overall_response_rate_percent">{{ overall_response_rate_percent }}</span></h3>
+  <p>Career Services staff collected data from <span data-field="total_respondents_count">{{ total_respondents_count }}</span> graduating students at Northern Michigan University, for an overall response rate of <span data-field="overall_response_rate_percent">{{ overall_response_rate_percent }}</span>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Total # of Grads</th>
+        <th># Responding</th>
+        <th>% Responding</th>
+        <th>% Grads Responding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cisler College of Business</td>
+        <td><span data-field="cisler_total_grads">{{ cisler_total_grads }}</span></td>
+        <td><span data-field="cisler_respondents">{{ cisler_respondents }}</span></td>
+        <td><span data-field="cisler_response_rate">{{ cisler_response_rate }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>College of Arts & Sciences</td>
+        <td><span data-field="arts_sciences_total_grads">{{ arts_sciences_total_grads }}</span></td>
+        <td><span data-field="arts_sciences_respondents">{{ arts_sciences_respondents }}</span></td>
+        <td><span data-field="arts_sciences_response_rate">{{ arts_sciences_response_rate }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>College of Professional Studies</td>
+        <td><span data-field="prof_studies_total_grads">{{ prof_studies_total_grads }}</span></td>
+        <td><span data-field="prof_studies_respondents">{{ prof_studies_respondents }}</span></td>
+        <td><span data-field="prof_studies_response_rate">{{ prof_studies_response_rate }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>NMU Overall</td>
+        <td><span data-field="nmu_total_grads">{{ nmu_total_grads }}</span></td>
+        <td><span data-field="nmu_respondents">{{ nmu_respondents }}</span></td>
+        <td><span data-field="overall_response_rate_percent">{{ overall_response_rate_percent }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Totals</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">EMPLOYED: <span data-field="overall_employment_rate_percent">{{ overall_employment_rate_percent }}</span></h2>
+    <p>As the report illustrates, those responding to the survey indicate a very positive employment rate. While reviewing the following, note that the percentage employed combines those who indicate they are employed full-time and those indicating part-time employment.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      <span data-field="employed_and_continuing_note">{{ employed_and_continuing_note }}</span>
+    </p>
+  </div>
+
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">CONTINUING EDUCATION: <span data-field="overall_continuing_education_rate_percent">{{ overall_continuing_education_rate_percent }}</span></h2>
+    <p>A total of <span data-field="continuing_education_respondents_count">{{ continuing_education_respondents_count }}</span> students reported that they would be continuing their education either part-time or full-time beyond graduation.</p>
+  </div>
+
+  <div class="footer">Northern Michigan University {{ report_year }} Graduate Survey Report | Page 4</div>
+</div>
+
+<div class="page">
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">GEOGRAPHIC LOCATION</h2>
+    <p>Michigan remains the state of choice for those indicating that they are employed. <span data-field="michigan_employment_percent">{{ michigan_employment_percent }}</span> of those who indicated that they are employed, reported that they are employed in Michigan.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Degree</th>
+        <th>% Indicating Employment in MI</th>
+        <th>% Indicating Employment Outside MI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bachelor's Degree</td>
+        <td><span data-field="bachelors_mi_percent">{{ bachelors_mi_percent }}</span></td>
+        <td><span data-field="bachelors_outside_mi_percent">{{ bachelors_outside_mi_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>Graduate Degree</td>
+        <td><span data-field="graduate_mi_percent">{{ graduate_mi_percent }}</span></td>
+        <td><span data-field="graduate_outside_mi_percent">{{ graduate_outside_mi_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>Non-Baccalaureate Program</td>
+        <td><span data-field="non_bac_mi_percent">{{ non_bac_mi_percent }}</span></td>
+        <td><span data-field="non_bac_outside_mi_percent">{{ non_bac_outside_mi_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>NMU TOTAL</td>
+        <td><span data-field="overall_mi_percent">{{ overall_mi_percent }}</span></td>
+        <td><span data-field="overall_outside_mi_percent">{{ overall_outside_mi_percent }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="map_michigan.png" alt="Michigan Map" style="width: 300px; height: auto; margin-right: 50px;">
+    <img src="map_us.png" alt="US Map" style="width: 300px; height: auto;">
+  </div>
+
+  <p style="text-align: center; margin-top: 20px;">Of the <span data-field="overall_employment_rate_percent">{{ overall_employment_rate_percent }}</span> of NMU grads that are employed, <span data-field="upper_peninsula_work_percent">{{ upper_peninsula_work_percent }}</span> work in the Upper Peninsula. <span data-field="marquette_county_work_percent">{{ marquette_county_work_percent }}</span> of employed graduates work in Marquette County.</p>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="map_peninsula.png" alt="Peninsula Map" style="width: 300px; height: auto;">
+  </div>
+
+  <div class="footer">Northern Michigan University {{ report_year }} Graduate Survey Report | Page 5</div>
+</div>
+
+<div class="page">
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">NORTHERN MICHIGAN UNIVERSITY</h2>
+    <h3 style="text-align: center;">WALKER L. CISLER COLLEGE OF BUSINESS</h3>
+    <p style="text-align: center; font-size: 12pt;">AUGUST 2013 – MAY 2014</p>
+
+    <p>As you examine the Graduate Survey results, please note:</p>
+    <ul>
+      <li>"Graduating students" includes students who received a:
+        <ul>
+          <li>Master's Degree</li>
+          <li>Bachelor's Degree</li>
+          <li>Degree/Certification from a non-baccalaureate program</li>
+        </ul>
+      </li>
+      <li>Data was collected for students graduating in:
+        <ul>
+          <li>August 2013</li>
+          <li>December 2013</li>
+          <li>May 2014</li>
+        </ul>
+      </li>
+      <li>"Employed" and "Continuing Education" are not mutually exclusive choices on the NMU Graduate Survey. Therefore the cumulative percentages listed for these two choices may exceed 100 percent.</li>
+      <li>If the percentages do not add up to 100 percent, some respondents to the survey have indicated that they are either "employed" and "continuing education" OR "unemployed" and "continuing education."</li>
+      <li>Percentages indicated are the percent of those responding to the survey.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top: 20px;">RESPONSE RATE: <span data-field="cisler_response_rate_percent">{{ cisler_response_rate_percent }}</span></h3>
+  <p>Career Services Staff has collected data from <span data-field="cisler_respondents_count">{{ cisler_respondents_count }}</span> of the <span data-field="cisler_total_grads">{{ cisler_total_grads }}</span> graduating students who received a bachelor's, graduate, or non-baccalaureate degree from the Walker L. Cisler College of Business for the specified timeframe. The average response rate for the Walker L. Cisler College of Business was <span data-field="cisler_response_rate_percent">{{ cisler_response_rate_percent }}</span>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>% Grads Responding</th>
+        <th></th>
+        <th>% Grads Responding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bachelor's</td>
+        <td><span data-field="cisler_bachelors_percent">{{ cisler_bachelors_percent }}</span></td>
+        <td>Graduate</td>
+        <td><span data-field="cisler_graduate_percent">{{ cisler_graduate_percent }}</span></td>
+      </tr>
+      <tr>
+        <td>Non-Baccalaureate Degree</td>
+        <td><span data-field="cisler_non_bac_percent">{{ cisler_non_bac_percent }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">EMPLOYED: <span data-field="cisler_employment_rate_percent">{{ cisler_employment_rate_percent }}</span></h2>
+    <p>As the report illustrates, those responding to the survey indicate a very positive employment rate. While reviewing the following, note that the percentage employed combines those who indicate they are employed full-time and those indicating part-time employment.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      <span data-field="cisler_employed_and_continuing_note">{{ cisler_employed_and_continuing_note }}</span>
+    </p>
+  </div>
+
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+    <h2 style="text-align: center;">CONTINUING EDUCATION: <span data-field="cisler_continuing_education_rate_percent">{{ cisler_continuing_education_rate_percent }}</span></h2>
+    <p>A total of <span data-field="cisler_continuing_education_respondents_count">{{ cisler_continuing_education_respondents_count }}</span> students reported that they would be continuing their education either part-time or full-time beyond graduation.</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Percentage Continuing Education</p>
+    <img src="bar_chart_cisler.png" alt="Bar Chart" style="width: 600px; height: auto;">
+  </div>
+
+  <div class="footer">Northern Michigan University {{ report_year }} Graduate Survey Report | Page 7</div>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .sub-header {
+    text-align: center;
+    font-size: 12pt;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .note {
+    font-size: 10pt;
+    margin-top: 15px;
+    line-height: 1.4;
+  }
+  .response-rate-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .bar-chart-container {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+  }
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-top: 20px;
+  }
+  .map-state {
+    position: absolute;
+    background-color: #ccc; /* Placeholder for map shape */
+    border: 1px solid #000;
+  }
+  .map-label {
+    position: absolute;
+    font-size: 10pt;
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div class="section-title">GEOGRAPHIC LOCATION</div>
+  <p>Michigan remains the state of choice for those indicating that they are employed. <span data-field="percentage_employed_in_mi_general">{{ percentage_employed_in_mi_general }}</span> of those graduates from the Walker L. Cisler College of Business who indicated that they are employed, reported that they are employed in Michigan.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Degree</th>
+        <th>% Indicating Employment in MI</th>
+        <th>% Indicating Employment Outside MI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bachelor's Degree</td>
+        <td><span data-field="degree_employment_mi_bachelor">{{ degree_employment_mi_bachelor }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_bachelor">{{ degree_employment_outside_mi_bachelor }}</span></td>
+      </tr>
+      <tr>
+        <td>Graduate Degree</td>
+        <td><span data-field="degree_employment_mi_graduate">{{ degree_employment_mi_graduate }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_graduate">{{ degree_employment_outside_mi_graduate }}</span></td>
+      </tr>
+      <tr>
+        <td>Non-Baccalaureate Program</td>
+        <td><span data-field="degree_employment_mi_non_bac">{{ degree_employment_mi_non_bac }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_non_bac">{{ degree_employment_outside_mi_non_bac }}</span></td>
+      </tr>
+      <tr>
+        <td>TOTAL</td>
+        <td><span data-field="total_employment_mi">{{ total_employment_mi }}</span></td>
+        <td><span data-field="total_employment_outside_mi">{{ total_employment_outside_mi }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="map-container">
+    <!-- Placeholder for Michigan Map -->
+    <div class="map-state" style="left: 10%; top: 20%;"></div>
+    <div class="map-label" style="left: 35%; top: 40%;">20.0% of grads from the College of Business report they work outside of Michigan</div>
+    <div class="map-state" style="left: 65%; top: 20%;"></div>
+    <div class="map-label" style="left: 75%; top: 40%;">80.0%</div>
+  </div>
+
+  <p>Of the <span data-field="percentage_nmu_grads_employed">{{ percentage_nmu_grads_employed }}</span> of NMU grads from the Walker L. Cisler College of Business that are employed, <span data-field="percentage_upper_peninsula_work">{{ percentage_upper_peninsula_work }}</span> work in the Upper Peninsula. <span data-field="percentage_marquette_county_work">{{ percentage_marquette_county_work }}</span> of employed grads work in Marquette County.</p>
+</div>
+
+<div class="page">
+  <div class="header-title">NORTHERN MICHIGAN UNIVERSITY</div>
+  <div class="sub-header">COLLEGE OF ARTS & SCIENCE</div>
+  <p style="text-align: center; margin-bottom: 30px;">AUGUST 2013 – MAY 2014</p>
+
+  <ul>
+    <li>As you examine the Graduate Survey results, please note:
+      <ul>
+        <li>"Graduating students" includes students who received a:
+          <ul>
+            <li>Master's Degree</li>
+            <li>Bachelor's Degree</li>
+            <li>Degree/Certification from a non-baccalaureate program</li>
+          </ul>
+        </li>
+        <li>Data was collected for students graduating in:
+          <ul>
+            <li>August 2013</li>
+            <li>December 2013</li>
+            <li>May 2014</li>
+          </ul>
+        </li>
+        <li>"Employed" and "Continuing Education" are not mutually exclusive choices on the NMU Graduate Survey. Therefore the cumulative percentages listed for these two choices may exceed 100 percent.</li>
+        <li>If the percentages do not add up to 100 percent, some respondents to the survey have indicated that they are either "employed" and "continuing education" OR "unemployed" and "continuing education."</li>
+        <li>Percentages indicated are the percent of those responding to the survey.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="response-rate-box">
+    <p>RESPONSE RATE: <span data-field="response_rate_arts_science">{{ response_rate_arts_science }}</span></p>
+  </div>
+
+  <p>As the following report illustrates, Career Services staff has collected data from <span data-field="total_respondents_arts_science">{{ total_respondents_arts_science }}</span> of the <span data-field="total_graduating_students_arts_science">{{ total_graduating_students_arts_science }}</span> graduating students who received a master's degree, bachelor's degree, or degree from a non-baccalaureate program within the College of Arts & Science for the specified timeframe. The average response rate was <span data-field="average_response_rate_arts_science">{{ average_response_rate_arts_science }}</span>.</p>
+
+  <div class="bar-chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <p style="text-align: center; font-size: 10pt;">% of Responding Grads</p>
+    <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100%;">
+      <div style="width: 20%; background-color: #4682B4; height: 60%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">32.60%</span></div>
+      <div style="width: 20%; background-color: #FF6347; height: 30%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">13.30%</span></div>
+      <div style="width: 20%; background-color: #3CB371; height: 45%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">14.50%</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">EMPLOYED: <span data-field="employed_rate_arts_science">{{ employed_rate_arts_science }}</span></div>
+  <p>As the report illustrates, those responding to the survey indicate a very positive employment rate. While reviewing the following, note that the percentage employed combines those who indicate they are employed full-time and those indicating part-time employment.</p>
+
+  <div class="bar-chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <p style="text-align: center; font-size: 10pt;">% of Responding Grads</p>
+    <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100%;">
+      <div style="width: 20%; background-color: #4682B4; height: 50%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">24.8%</span></div>
+      <div style="width: 20%; background-color: #FF6347; height: 33%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">16.7%</span></div>
+      <div style="width: 20%; background-color: #3CB371; height: 40%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">20.0%</span></div>
+      <div style="width: 20%; background-color: #4682B4; height: 24%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">24.3%</span></div>
+      <div style="width: 20%; background-color: #FF6347; height: 25%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">25.2%</span></div>
+    </div>
+  </div>
+
+  <p class="note">It should also be noted that "Employed" and "Continuing Education" are not mutually exclusive choices for the respondent. One can, for example, be counted twice, once for indicating that they are employed and once for indicating that they are, at the same time, continuing their education.</p>
+
+  <div class="section-title">CONTINUING EDUCATION: <span data-field="continuing_education_rate_arts_science">{{ continuing_education_rate_arts_science }}</span></div>
+  <p>A total of <span data-field="total_continuing_education_respondents_arts_science">{{ total_continuing_education_respondents_arts_science }}</span> students reported that they would be continuing their education either part-time or full-time beyond graduation.</p>
+
+  <div class="bar-chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <p style="text-align: center; font-size: 10pt;">Percent Continuing Education</p>
+    <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100%;">
+      <div style="width: 20%; background-color: #FF6347; height: 66.7%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">66.7%</span></div>
+      <div style="width: 20%; background-color: #4682B4; height: 10.0%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">10.0%</span></div>
+      <div style="width: 20%; background-color: #FF6347; height: 40.0%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">40.0%</span></div>
+      <div style="width: 20%; background-color: #FF6347; height: 33.9%; position: relative;"><span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10pt;">33.9%</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">GEOGRAPHIC LOCATION</div>
+  <p>Michigan remains the state of choice for those indicating that they are employed. <span data-field="percentage_employed_in_mi_general_2">{{ percentage_employed_in_mi_general_2 }}</span> of those who indicated that they are employed reported that they are employed in Michigan.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Degree</th>
+        <th>% Indicating Employment in MI</th>
+        <th>% Indicating Employment Outside MI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bachelor's Degree</td>
+        <td><span data-field="degree_employment_mi_bachelor_2">{{ degree_employment_mi_bachelor_2 }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_bachelor_2">{{ degree_employment_outside_mi_bachelor_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Graduate Degree</td>
+        <td><span data-field="degree_employment_mi_graduate_2">{{ degree_employment_mi_graduate_2 }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_graduate_2">{{ degree_employment_outside_mi_graduate_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Non-Baccalaureate Program</td>
+        <td><span data-field="degree_employment_mi_non_bac_2">{{ degree_employment_mi_non_bac_2 }}</span></td>
+        <td><span data-field="degree_employment_outside_mi_non_bac_2">{{ degree_employment_outside_mi_non_bac_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>CoPS TOTAL</td>
+        <td><span data-field="total_employment_mi_2">{{ total_employment_mi_2 }}</span></td>
+        <td><span data-field="total_employment_outside_mi_2">{{ total_employment_outside_mi_2 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="map-container">
+    <!-- Placeholder for Michigan Map -->
+    <div class="map-state" style="left: 10%; top: 20%;"></div>
+    <div class="map-label" style="left: 35%; top: 40%;">24.2% of CoPS grads work outside of Michigan</div>
+    <div class="map-state" style="left: 65%; top: 20%;"></div>
+    <div class="map-label" style="left: 75%; top: 40%;">70.9%</div>
+  </div>
+
+  <p>Of the <span data-field="percentage_graduates_cops_employed">{{ percentage_graduates_cops_employed }}</span> of graduates from the College of Professional Studies that are employed, <span data-field="percentage_upper_peninsula_work_2">{{ percentage_upper_peninsula_work_2 }}</span> work in the Upper Peninsula, <span data-field="percentage_marquette_county_work_2">{{ percentage_marquette_county_work_2 }}</span> are employed in Marquette County.</p>
+
+  <div class="map-container">
+    <!-- Placeholder for Michigan Map -->
+    <div class="map-state" style="left: 10%; top: 20%;"></div>
+    <div class="map-label" style="left: 35%; top: 40%;">59.6%</div>
+    <div class="map-state" style="left: 65%; top: 20%;"></div>
+    <div class="map-label" style="left: 75%; top: 40%;">48.2%</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">APPENDIX A: DEPARTMENTS REPRESENTED IN EACH COLLEGE</div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title">College of Arts & Sciences</div>
+    <ul>
+      <li>School of Art and Design</li>
+      <li>Biology</li>
+      <li>Chemistry</li>
+      <li>Communication and Performance Studies</li>
+      <li>Economics</li>
+      <li>English</li>
+      <li>Earth, Environmental and Geographical Studies</li>
+      <li>History</li>
+      <li>Modern Languages and Literatures</li>
+      <li>Mathematics and Computer Science</li>
+      <li>Music</li>
+      <li>Philosophy</li>
+      <li>Physics</li>
+      <li>Political Science</li>
+      <li>Psychology</li>
+      <li>Center for Economic Education and Entrepreneurship</li>
+      <li>Center for Native American Studies</li>
+      <li>Center for Upper Peninsula Studies</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-title">Walker L. Cisler College of Business</div>
+    <div class="section-title">College of Health Sciences and Professional Studies</div>
+    <ul>
+      <li>School of Clinical Sciences</li>
+      <li>School of Education, Leadership, and Public Service</li>
+      <li>School of Health and Human Performance</li>
+      <li>School of Nursing</li>
+      <li>Continuing Education & Workforce Development</li>
+      <li>Criminal Justice</li>
+      <li>Engineering Technology</li>
+      <li>Military Science</li>
+      <li>Social Work</li>
+      <li>Technology and Occupational Sciences</li>
+      <li>Seaborg Center</li>
+    </ul>
+  </div>
+</div>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .list-item {
+    margin-bottom: 5px;
+  }
+</style>
+
+<div class="page">
+  <div class="section-title">APPENDIX B: MAJORS REPRESENTED IN EACH DEGREE TYPE</div>
+  <div class="list-item">
+    <a href="#non-baccalaureate">[Non-Baccalaureate Degrees]</a> |
+    <a href="#bachelor">[Bachelor's Degrees]</a> |
+    <a href="#graduate">[Graduate Degrees]</a>
+  </div>
+
+  <div class="section-title">Non-Baccalaureate Degrees</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_1">{{ non_baccalaureate_major_1 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_2">{{ non_baccalaureate_major_2 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_3">{{ non_baccalaureate_major_3 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_4">{{ non_baccalaureate_major_4 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_5">{{ non_baccalaureate_major_5 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_6">{{ non_baccalaureate_major_6 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_7">{{ non_baccalaureate_major_7 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_8">{{ non_baccalaureate_major_8 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_9">{{ non_baccalaureate_major_9 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_10">{{ non_baccalaureate_major_10 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_11">{{ non_baccalaureate_major_11 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_12">{{ non_baccalaureate_major_12 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_13">{{ non_baccalaureate_major_13 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_14">{{ non_baccalaureate_major_14 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_15">{{ non_baccalaureate_major_15 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_16">{{ non_baccalaureate_major_16 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_17">{{ non_baccalaureate_major_17 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_18">{{ non_baccalaureate_major_18 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_19">{{ non_baccalaureate_major_19 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_20">{{ non_baccalaureate_major_20 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_21">{{ non_baccalaureate_major_21 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_22">{{ non_baccalaureate_major_22 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_23">{{ non_baccalaureate_major_23 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_24">{{ non_baccalaureate_major_24 }}</span>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_25">{{ non_baccalaureate_major_25 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_26">{{ non_baccalaureate_major_26 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="non_baccalaureate_major_27">{{ non_baccalaureate_major_27 }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Bachelor Degrees</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_1">{{ bachelor_major_1 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_2">{{ bachelor_major_2 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_3">{{ bachelor_major_3 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_4">{{ bachelor_major_4 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_5">{{ bachelor_major_5 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_6">{{ bachelor_major_6 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_7">{{ bachelor_major_7 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_8">{{ bachelor_major_8 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_9">{{ bachelor_major_9 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_10">{{ bachelor_major_10 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_11">{{ bachelor_major_11 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_12">{{ bachelor_major_12 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_13">{{ bachelor_major_13 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_14">{{ bachelor_major_14 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_15">{{ bachelor_major_15 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_16">{{ bachelor_major_16 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_17">{{ bachelor_major_17 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_18">{{ bachelor_major_18 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_19">{{ bachelor_major_19 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_20">{{ bachelor_major_20 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_21">{{ bachelor_major_21 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_22">{{ bachelor_major_22 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_23">{{ bachelor_major_23 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_24">{{ bachelor_major_24 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_25">{{ bachelor_major_25 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_26">{{ bachelor_major_26 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_27">{{ bachelor_major_27 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_28">{{ bachelor_major_28 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_29">{{ bachelor_major_29 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_30">{{ bachelor_major_30 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_31">{{ bachelor_major_31 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_32">{{ bachelor_major_32 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_33">{{ bachelor_major_33 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_34">{{ bachelor_major_34 }}</span>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_35">{{ bachelor_major_35 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_36">{{ bachelor_major_36 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_37">{{ bachelor_major_37 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_38">{{ bachelor_major_38 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_39">{{ bachelor_major_39 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_40">{{ bachelor_major_40 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_41">{{ bachelor_major_41 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_42">{{ bachelor_major_42 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_43">{{ bachelor_major_43 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_44">{{ bachelor_major_44 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_45">{{ bachelor_major_45 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_46">{{ bachelor_major_46 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_47">{{ bachelor_major_47 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_48">{{ bachelor_major_48 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_49">{{ bachelor_major_49 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_50">{{ bachelor_major_50 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_51">{{ bachelor_major_51 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_52">{{ bachelor_major_52 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_53">{{ bachelor_major_53 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_54">{{ bachelor_major_54 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_55">{{ bachelor_major_55 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_56">{{ bachelor_major_56 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_57">{{ bachelor_major_57 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_58">{{ bachelor_major_58 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_59">{{ bachelor_major_59 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_60">{{ bachelor_major_60 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_61">{{ bachelor_major_61 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_62">{{ bachelor_major_62 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_63">{{ bachelor_major_63 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_64">{{ bachelor_major_64 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_65">{{ bachelor_major_65 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_66">{{ bachelor_major_66 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_67">{{ bachelor_major_67 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_68">{{ bachelor_major_68 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_69">{{ bachelor_major_69 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_70">{{ bachelor_major_70 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_71">{{ bachelor_major_71 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_72">{{ bachelor_major_72 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_73">{{ bachelor_major_73 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_74">{{ bachelor_major_74 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_75">{{ bachelor_major_75 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_76">{{ bachelor_major_76 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_77">{{ bachelor_major_77 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="bachelor_major_78">{{ bachelor_major_78 }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Graduate Degrees</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_1">{{ graduate_major_1 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_2">{{ graduate_major_2 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_3">{{ graduate_major_3 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_4">{{ graduate_major_4 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_5">{{ graduate_major_5 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_6">{{ graduate_major_6 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_7">{{ graduate_major_7 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_8">{{ graduate_major_8 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_9">{{ graduate_major_9 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_10">{{ graduate_major_10 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_11">{{ graduate_major_11 }}</span>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 45%;">
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_12">{{ graduate_major_12 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_13">{{ graduate_major_13 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_14">{{ graduate_major_14 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_15">{{ graduate_major_15 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_16">{{ graduate_major_16 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_17">{{ graduate_major_17 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_18">{{ graduate_major_18 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_19">{{ graduate_major_19 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_20">{{ graduate_major_20 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_21">{{ graduate_major_21 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_22">{{ graduate_major_22 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_23">{{ graduate_major_23 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_24">{{ graduate_major_24 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_25">{{ graduate_major_25 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_26">{{ graduate_major_26 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_27">{{ graduate_major_27 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_28">{{ graduate_major_28 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_29">{{ graduate_major_29 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_30">{{ graduate_major_30 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_31">{{ graduate_major_31 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_32">{{ graduate_major_32 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_33">{{ graduate_major_33 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_34">{{ graduate_major_34 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_35">{{ graduate_major_35 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_36">{{ graduate_major_36 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_37">{{ graduate_major_37 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_38">{{ graduate_major_38 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_39">{{ graduate_major_39 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_40">{{ graduate_major_40 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_41">{{ graduate_major_41 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_42">{{ graduate_major_42 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_43">{{ graduate_major_43 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_44">{{ graduate_major_44 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_45">{{ graduate_major_45 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_46">{{ graduate_major_46 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_47">{{ graduate_major_47 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_48">{{ graduate_major_48 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_49">{{ graduate_major_49 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_50">{{ graduate_major_50 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_51">{{ graduate_major_51 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_52">{{ graduate_major_52 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_53">{{ graduate_major_53 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_54">{{ graduate_major_54 }}</span>
+      </div>
+      <div class="list-item">
+        <span class="list-item">o</span> <span data-field="graduate_major_55">{{ graduate_major_55 }}</span>
+      </div>
+    </div>
+  </div>
+</div></body>
+</html>

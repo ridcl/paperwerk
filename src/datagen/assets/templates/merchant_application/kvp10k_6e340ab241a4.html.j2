@@ -1,0 +1,249 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { font-size: 24pt; font-weight: bold; margin-bottom: 5px; }
+  h2 { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-group { display: flex; align-items: center; }
+  .label { font-weight: normal; margin-right: 10px; }
+  .input-line { border-bottom: 1px solid #000; flex-grow: 1; margin-left: 5px; }
+  .checkbox-group label { margin-right: 15px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 36pt; margin: 0;">U</h1>
+      <h1 style="font-size: 24pt; margin-top: 5px;">Merchant Application</h1>
+    </div>
+    <div style="text-align: right;">
+      Fax to <span data-field="fax_number">{{ fax_number }}</span>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 20px;">Please complete online, and then print for signatures and fax. Illegible or incomplete applications may delay processing.</p>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Date: <span class="input-line" style="width: 100%;" data-field="fax_to">{{ fax_to }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Department Name: <span class="input-line" style="width: 100%;" data-field="date">{{ date }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Address: <span class="input-line" style="width: 100%;" data-field="department_name">{{ department_name }}</span>
+    </div>
+    <div style="width: 20%;">
+      City: <span class="input-line" style="width: 100%;" data-field="address">{{ address }}</span>
+    </div>
+    <div style="width: 20%;">
+      St: <span class="input-line" style="width: 100%;" data-field="city">{{ city }}</span>
+    </div>
+    <div style="width: 20%;">
+      Zip: <span class="input-line" style="width: 100%;" data-field="st">{{ st }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Contact Name: <span class="input-line" style="width: 100%;" data-field="zip">{{ zip }}</span>
+    </div>
+    <div style="width: 20%;">
+      Phone #: <span class="input-line" style="width: 100%;" data-field="contact_name">{{ contact_name }}</span>
+    </div>
+    <div style="width: 20%;">
+      E-Mail: <span class="input-line" style="width: 100%;" data-field="phone">{{ phone }}</span>
+    </div>
+    <div style="width: 20%;">
+      uNID: <span class="input-line" style="width: 100%;" data-field="e_mail">{{ e_mail }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Cognizant Authority: <span class="input-line" style="width: 100%;" data-field="unid">{{ unid }}</span>
+    </div>
+    <div style="width: 20%;">
+      Phone #: <span class="input-line" style="width: 100%;" data-field="cognizant_authority">{{ cognizant_authority }}</span>
+    </div>
+    <div style="width: 20%;">
+      E-Mail: <span class="input-line" style="width: 100%;" data-field="phone_2">{{ phone_2 }}</span>
+    </div>
+    <div style="width: 20%;">
+      uNID: <span class="input-line" style="width: 100%;" data-field="e_mail_2">{{ e_mail_2 }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 20%;">
+      Dept. Phone #: <span class="input-line" style="width: 100%;" data-field="unid_2">{{ unid_2 }}</span>
+    </div>
+    <div style="width: 20%;">
+      Fax #: <span class="input-line" style="width: 100%;" data-field="dept_phone">{{ dept_phone }}</span>
+    </div>
+    <div style="width: 20%;">
+      Seasonal? <span class="checkbox-group"><input type="checkbox"> Yes <input type="checkbox"> No</span>
+    </div>
+    <div style="width: 20%;">
+      Card Present % <span class="input-line" style="width: 50%;" data-field="no">{{ no }}</span>
+      Mail/Phone Order % <span class="input-line" style="width: 50%;" data-field="card_present">{{ card_present }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Why will you be accepting cards?</p>
+    <div class="checkbox-group" style="margin-top: 5px;">
+      <label><input type="checkbox"> Yes</label>
+      <label><input type="checkbox"> No</label>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Anticipated Annual Visa/MC sales volume: $ <span class="input-line" style="width: 150px;" data-field="no_2">{{ no_2 }}</span></p>
+    <p>Average amount of sale: $ <span class="input-line" style="width: 150px;" data-field="anticipated_annual_visa_mc_sales_volume">{{ anticipated_annual_visa_mc_sales_volume }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>What type of phone system do you use? (Avaya, Skype for Business, Nortel, or Other)</p>
+    <div class="checkbox-group" style="margin-top: 5px;">
+      <label><input type="checkbox"> </label>
+      <label><input type="checkbox"> </label>
+      <label><input type="checkbox"> </label>
+      <label><input type="checkbox"> </label>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Will you be accepting donations with your merchant account? <span class="checkbox-group"><input type="checkbox"> Yes <input type="checkbox"> No</span> If no, do you anticipate taking donations in the future? <span class="checkbox-group"><input type="checkbox"> Yes <input type="checkbox"> No</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h2>Card Types:</h2>
+    <div style="display: flex; gap: 30px; margin-top: 10px;">
+      <div class="form-group">
+        <label><input type="checkbox"> Visa/MasterCard</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> Discover</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> American Express</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> Pin Based Debit</label>
+      </div>
+    </div>
+    <p style="font-size: 10pt; margin-top: 5px;">(External pin pads costs vary)</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h2>Payment Mode:</h2>
+    <div style="display: flex; gap: 30px; margin-top: 10px;">
+      <div class="form-group">
+        <label><input type="checkbox"> Point of Sale Device</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> Purchase or Lease</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox"> *Third Party Software</label>
+      </div>
+      <div class="form-group">
+        <label>For UMarket/ E-Commerce Application: click <a href="#">Here</a></label>
+      </div>
+    </div>
+    <p style="margin-top: 10px;">Select: <span class="input-line" style="width: 300px;" data-field="here">{{ here }}</span></p>
+    <p style="margin-top: 5px;">Trust Commerce Key Pad - $105 ea</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p># of Devices: <span class="input-line" style="width: 100px;" data-field="trust_commerce_key_pad_105_ea">{{ trust_commerce_key_pad_105_ea }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Wells Fargo Checking Account for Deposits:</p>
+    <div style="display: flex; gap: 30px; margin-top: 10px;">
+      <div class="form-group">
+        <label>BU:</label>
+        <span class="input-line" style="width: 100px;" data-field="bu">{{ bu }}</span>
+      </div>
+      <div class="form-group">
+        <label>ORG:</label>
+        <span class="input-line" style="width: 100px;" data-field="org">{{ org }}</span>
+      </div>
+      <div class="form-group">
+        <label>FUND:</label>
+        <span class="input-line" style="width: 100px;" data-field="fund">{{ fund }}</span>
+      </div>
+      <div class="form-group">
+        <label>ACTIVITY:</label>
+        <span class="input-line" style="width: 100px;" data-field="activity">{{ activity }}</span>
+      </div>
+      <div class="form-group">
+        <label>PROJECT:</label>
+        <span class="input-line" style="width: 100px;" data-field="project">{{ project }}</span>
+      </div>
+      <div class="form-group">
+        <label>ACCOUNT:</label>
+        <span class="input-line" style="width: 100px;" data-field="account">{{ account }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p style="font-size: 10pt;">**By signing below, we hereby request a new Merchant Account, and attest that we have read the <a href="#">PCI DSS Requirements for Payment Card Acceptance</a> & <a href="#">University Payment Card Guidelines</a>.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 30%;">
+        Contact Signature: <span class="input-line" style="width: 100%;" data-field="university_payment_card_guidelines">{{ university_payment_card_guidelines }}</span>
+        <p style="margin-top: 5px;">Date: <span class="input-line" style="width: 100px;" data-field="contact_signature">{{ contact_signature }}</span></p>
+      </div>
+      <div style="width: 30%;">
+        Immediate Cognizant Authority Signature: <span class="input-line" style="width: 100%;" data-field="date_2">{{ date_2 }}</span>
+        <p style="margin-top: 5px;">Date: <span class="input-line" style="width: 100px;" data-field="immediate_cognizant_authority_signature">{{ immediate_cognizant_authority_signature }}</span></p>
+      </div>
+      <div style="width: 30%;">
+        Dean or Vice President: <span class="input-line" style="width: 100%;" data-field="date_3">{{ date_3 }}</span>
+        <p style="margin-top: 5px;">Date: <span class="input-line" style="width: 100px;" data-field="dean_or_vice_president">{{ dean_or_vice_president }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-top: 20px;">
+    <h2>FOR INCOME ACCOUNTING USE ONLY:</h2>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="width: 30%;">
+        Date Rec'd: <span class="input-line" style="width: 100%;" data-field="for_income_accounting_use_only">{{ for_income_accounting_use_only }}</span>
+      </div>
+      <div style="width: 30%;">
+        Reviewed & Approved by IA: <span class="input-line" style="width: 100%;" data-field="date_rec_d">{{ date_rec_d }}</span>
+      </div>
+      <div style="width: 30%;">
+        Date: <span class="input-line" style="width: 100%;" data-field="reviewed_approved_by_ia">{{ reviewed_approved_by_ia }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt; text-align: center;">
+    UNIVERSITY OF UTAH • INCOME ACCOUNTING/ STUDENT LOAN SERVICES • <span data-field="ssb_number">{{ ssb_number }}</span> • <span data-field="phone_number">{{ phone_number }}</span>
+  </div>
+</div>

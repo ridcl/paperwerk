@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .header-logo {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .course-info {
+    margin-bottom: 30px;
+  }
+  .section {
+    margin-bottom: 30px;
+  }
+  .list-item {
+    margin-bottom: 10px;
+  }
+  .bullet-list {
+    padding-left: 20px;
+  }
+  .table-row td {
+    padding: 5px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-logo">
+    <img src="placeholder_logo.png" alt="Logo" style="width: 150px; height: auto;">
+    <h1 style="font-size: 18pt;">Johns Hopkins</h1>
+    <h2 style="font-size: 12pt;">Whiting School of Engineering</h2>
+  </div>
+
+  <div class="course-info">
+    <h2 style="font-size: 16pt;">Computer Science EN.601.320, EN 601.420, and EN 601.620</h2>
+    <p style="font-size: 14pt;">Parallel Programming, Fall {{ current_year }}</p>
+    <p style="font-size: 14pt;">Semester, Year ({{ credits }} credits, E)</p>
+  </div>
+
+  <div class="section">
+    <h3>Instructor</h3>
+    <p>Professor <span data-field="instructor.name">{{ instructor.name }}</span>, <span data-field="instructor.email">{{ instructor.email }}</span></p>
+    <p>Office hours: <span data-field="instructor.office_hours">{{ instructor.office_hours }}</span></p>
+    <p>Mondays: <span data-field="instructor.monday_time">{{ instructor.monday_time }}</span>, <a href="{{ instructor.monday_link }}">Link</a></p>
+    <p>Wednesdays: <span data-field="instructor.wednesday_time">{{ instructor.wednesday_time }}</span>, <a href="{{ instructor.wednesday_link }}">Link</a></p>
+    <p>and by appointment</p>
+  </div>
+
+  <div class="section">
+    <h3>Teaching Assistants</h3>
+    <p>Brian Choi, <span data-field="ta1.name">{{ ta1.name }}</span>, <span data-field="ta1.email">{{ ta1.email }}</span></p>
+    <p>Office hours and zoom link are published at <a href="{{ ta1.schedule_link }}">Schedule Link 1</a>.</p>
+    <p>Brian Wheatman, <span data-field="ta2.name">{{ ta2.name }}</span>, <span data-field="ta2.email">{{ ta2.email }}</span></p>
+    <p>Office hours and zoom link are published at <a href="{{ ta2.schedule_link }}">Schedule Link 2</a>.</p>
+  </div>
+
+  <div class="section">
+    <h3>Meetings</h3>
+    <p>Monday, <span data-field="meeting_day">{{ meeting_day }}</span> <span data-field="meeting_date">{{ meeting_date }}</span> <span data-field="meeting_time">{{ meeting_time }}</span> pm</p>
+    <p>Class Zoom link: <a href="{{ zoom_link }}">Zoom Link</a></p>
+  </div>
+
+  <div class="section">
+    <h3>Textbook</h3>
+    <p>The course does not follow a textbook. Lectures will refer to specific material from the following books that are available through the JHU Libraries or online.</p>
+    <p>Required: <span data-field="required_book_1">{{ required_book_1 }}</span>, <span data-field="required_book_1_author">{{ required_book_1_author }}</span>, and <span data-field="required_book_2">{{ required_book_2 }}</span>. Patterns for Parallel Programming. Addison-Wesley, <span data-field="required_book_1_year">{{ required_book_1_year }}</span>. <a href="{{ required_book_1_link }}">Link 1</a></p>
+    <p>Recommended: <span data-field="recommended_book_1">{{ recommended_book_1 }}</span>, <span data-field="recommended_book_1_author">{{ recommended_book_1_author }}</span>. CRC Press, <span data-field="recommended_book_1_year">{{ recommended_book_1_year }}</span>. <a href="{{ recommended_book_1_link }}">Link 2</a></p>
+    <p>Recommended: <span data-field="recommended_book_2">{{ recommended_book_2 }}</span>, <span data-field="recommended_book_2_author">{{ recommended_book_2_author }}</span>. <a href="{{ recommended_book_2_link }}">Link 3</a></p>
+  </div>
+
+  <div class="section">
+    <p>Please refer to <a href="{{ parallel_schedule_link }}">parallel.cs.jhu.edu/schedule.html</a> for all materials related to this course</p>
+  </div>
+
+  <div class="section">
+    <h2>Course Information</h2>
+    <ul class="bullet-list">
+      <li class="list-item">This course prepares the programmer to tackle the massive data sets and huge problem size of modern scientific, cloud, and enterprise computing. Students taking this course will abandon the comfort of serial algorithmic thinking and learn to harness the power of cutting-edge software and hardware technologies. The issue of parallelism spans many architectural levels. Even "single server" systems must parallelize computation in order to exploit the inherent parallelism of recent multi-core processors and many-core accelerators. The course will examine different forms of parallelism using a variety of frameworks, including python multiprocessing, python joblib, Spark, Dask, Ray, and OpenMP. Programming will be mostly in Python with some optimized code written in C++. The course is suitable for second-year undergraduate CS majors and undergraduate and graduate students from other science and engineering disciplines that have prior programming experience.</li>
+      <li class="list-item"><strong>Prerequisites</strong></li>
+      <ul class="bullet-list">
+        <li class="list-item">Intermediate Programming (EN 601.120 or the equivalent)</li>
+        <li class="list-item">Data Structures (EN 601.226 or the equivalent)</li>
+        <li class="list-item">Computer Systems Fundamentals (EN 601.333 or the equivalent)</li>
+      </ul>
+      <li class="list-item"><strong>Elective</strong></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Course Goals</h2>
+    <p>Specific Outcomes for this course are that</p>
+    <ul class="bullet-list">
+      <li class="list-item">Take a computational task and construct an implementation that maximizes parallelism.</li>
+      <li class="list-item">Analyze and instrument an implementation of a computer program for its speedup, scaleup, and parallel efficiency.</li>
+      <li class="list-item">Reason about the loss of parallel efficiency and attribute that loss to factors, including startup costs, interference, and skew.</li>
+      <li class="list-item">Work with a diverse set of programming tools for different parallel environments, including cloud computing, high-performance computing, multicore, and GPU accelerators.</li>
+      <li class="list-item">Analyze how locality, latency, and coherency in the memory hierarchy influence parallel efficiency and improve program design based on the properties of memory.</li>
+    </ul>
+    <p>This course will address the following CSAB ABET Criterion 3 Student Outcomes</p>
+    <p>Graduates of the program will have an ability to:</p>
+    <ol>
+      <li class="list-item">Analyze a complex computing problem and to apply principles of computing and other relevant disciplines to identify solutions.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <ol>
+      <li class="list-item">Design, implement, and evaluate a computing-based solution to meet a given set of computing requirements in the context of the program's discipline.</li>
+      <li class="list-item">Apply computer science theory and software development fundamentals to produce computing-based solutions.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Course Topics</h2>
+    <ul class="bullet-list">
+      <li class="list-item">Amdahl's law and strong scaling</li>
+      <li class="list-item">Multicore architectures</li>
+      <li class="list-item">Shared-memory parallelism</li>
+      <li class="list-item">Gustavson's law and weak scaling</li>
+      <li class="list-item">Distributed computing</li>
+      <li class="list-item">Cloud frameworks for data parallelism</li>
+      <li class="list-item">High performance computing</li>
+      <li class="list-item">GPUs and computing accelerators</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Course Expectations & Grading</h2>
+    <p>The course consists of four substantial programming assignments that last two weeks from assignment to submission. There are two exams: a midterm and a final. These six gradable events make up the vast majority of the evaluation, more than 90%, and are weighted equally.</p>
+    <p>There is no specific formula for grading. Course staff will look at several indexes over the class performance and then factors in class participation and evidence of learning trajectory to make a final decision that is subjective, but informed by statistics. There is no curve. Each student earns a grade that reflects their individual learning and performance in the class.</p>
+    <p>Key Dates</p>
+    <p>Dates for assignments and examination are list on <a href="{{ parallel_schedule_link }}">parallel.cs.jhu.edu/schedule.html</a>.</p>
+    <p>Assignments & Readings</p>
+    <p>All assignments and readings are posted at <a href="{{ parallel_schedule_link }}">parallel.cs.jhu.edu/schedule.html</a>. This page is definitive and students are responsible for any material on this site. Blackboard and gradescope WILL NOT have complete or up to date information.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ethics</h2>
+    <p>The strength of the university depends on academic and personal integrity. In this course, you must be honest and truthful, abiding by the <a href="{{ academic_integrity_policy_link }}">Computer Science Academic Integrity Policy</a>.</p>
+    <p>Cheating is wrong. Cheating hurts our community by undermining academic integrity, creating mistrust, and fostering unfair competition. The university will punish cheaters with failure on an assignment, failure in a course, permanent transcript notation, suspension, and/or expulsion. Offenses may be reported to medical, law or other professional or graduate schools when a cheater applies.</p>
+  </div>
+
+  <div class="section">
+    <p>Violations can include cheating on exams, plagiarism, reuse of assignments without permission, improper use of the Internet and electronic devices, unauthorized collaboration, alteration of graded assignments, forgery and falsification, lying, facilitating academic dishonesty, and unfair competition. Ignorance of these rules is not an excuse.</p>
+    <p>Academic honesty is required in all work you submit to be graded. Except where the instructor specifies group work, you must submit your own work. If you are working on assignments without the help of others. For example, you must not look at anyone else's solutions (including program code) to your homework problems. However, you may discuss assignment specifications (not solutions) with others to be sure you understand what is required by the assignment.</p>
+    <p>If your instructor permits using fragments of source code from outside sources, such as your textbook or on-line resources, you must properly cite the source. Not citing it constitutes plagiarism. Similarly, your group projects must list everyone who participated.</p>
+    <p>Falsifying program output or results is prohibited.</p>
+    <p>Your instructor is free to override parts of this policy for particular assignments. To protect yourself: (1) Ask the instructor if you are not sure what is permissible. (2) Seek help from the instructor, TA or CS, as you are always encouraged to do, rather than from other students. (3) Cite any questionable sources of help you may have received.</p>
+    <p>On every exam, you will sign the following pledge: "I agree to complete this exam without unauthorized assistance from any person, materials or device. [Signed and dated]". Your course instructors will let you know where to find copies of old exams, if they are available.</p>
+    <p>In addition, the specific ethics guidelines for this course are: Students are encouraged to consult with each other and collaborate on all programming assignments. This means that students may look at each other's code, pair program, and even help each other debug. Any code that was written together must have a citation (in code comments) that indicates who developed the code. Any code excerpted from outside sources must have a citation to the source (in code comments).</p>
+    <p>Each assignment involves questions that analyze the assignment and connect the program to course concepts. The answers to these questions must be prepared independently by each student and must be work that is solely their own.</p>
+    <p>Report any violations you witness to the instructor.</p>
+    <p>You can find more information about university misconduct policies on the web at these sites:</p>
+    <ul class="bullet-list">
+      <li class="list-item">For undergraduates: <a href="{{ undergraduate_policy_link }}">http://e-catalog.jhu.edu/undergrad-students/student-life-policies/</a></li>
+      <li class="list-item">For graduate students: <a href="{{ graduate_policy_link }}">http://e-catalog.jhu.edu/grad-students/graduate-specific-policies/</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Personal Wellbeing</h2>
+    <ul class="bullet-list">
+      <li class="list-item">If you are sick please notify me by email so that we can make appropriate accommodations should this affect your ability to attend class, complete assignments, or participate in assessments. The <span data-field="student_health_link">{{ student_health_link }}</span> is open and operational for primary care needs. If you would like to speak with a medical provider, please call 410-516-8270, and staff will determine an appropriate course of action based on your geographic location, presenting symptoms, and insurance needs. Telemedicine visits are available only to people currently in Maryland. See also <a href="{{ student_life_link }}">https://students.jhu.edu/student-life/student-support/absences-from-class/illness-note-policy/</a>.</li>
+      <li class="list-item">The Johns Hopkins COVID-19 Call Center (JHCCC), which can be reached at 833-546-7546 seven days a week from 7 a.m. to 7 p.m., supports all JHU students, faculty, and staff experiencing COVID-19.</li>
+      <li class="list-item">Primarily intended for those currently within driving distance of Baltimore, the JHCCC will evaluate your symptoms, order testing if needed, and conduct contact investigation for those affiliates who test positive. More information on the JHCCC and testing is on the <a href="{{ coronavirus_info_link }}">coronavirus information website</a>.</li>
+      <li class="list-item">All students with disabilities who require accommodations for this course should contact me at their earliest convenience to discuss their specific needs. If you have a documented disability, you must be registered with the JHU Office for Student Disability Services (385 Garland Hall; 410-516-6720) to receive accommodations.</li>
+      <li class="list-item">Students who are struggling with anxiety, stress, depression or other mental health related concerns, please consider connecting with resources through the JHU Counseling Center. The Counseling Center will be providing services remotely to protect the health of students, staff, and communities. Please reach out to get connected and learn about service options based on where you are living this fall at 410-516-8278 and online at <a href="{{ counseling_center_link }}">https://students.jhu.edu/counselingcenter/</a>.</li>
+      <li class="list-item">Student Outreach & Support will be fully operational (virtually) to help support students. Students can self-refer or refer a friend who may need extra support or help getting connected to resources. To connect with SOS, please email <span data-field="sos_email">{{ sos_email }}</span>, call 410-516-7857, or students can schedule to meet with a Case Manager by visiting the Student Outreach & Support website and follow "Schedule an Appointment".</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Classroom Climate</h2>
+    <p>As your instructor, I am committed to creating a classroom environment that values the diversity of experiences and perspectives that all students bring. Everyone here has the right to be treated with dignity and respect. I believe fostering an inclusive climate is</p>
+  </div>
+
+  <div class="page">
+    <h2>Family Accommodations Policy</h2>
+    <p>You are welcome to bring a family member to class on occasional days when your responsibilities require it (for example, emergency childcare is unavailable, or for health needs of a relative). In fact, you may see my children in class on days when their school is closed. Please be sensitive to the classroom environment, and if your family member becomes uncomfortable disruptive, you may leave the classroom and return as needed.</p>
+  </div>
+
+  <div class="page">
+    <h2>University Policy on Incompletes</h2>
+    <p>The university recognizes that the Fall 2020 semester is surrounded with uncertainty and many students may find themselves in unexpected situations where study is difficult if not impossible. Students who are confronted with extraordinary circumstances that interfere with their ability perform their academic work may request an incomplete grade from the instructor. While approval of such a request is not automatic, it is expected that faculty will make every effort to accommodate students dealing with illness in the family and other pandemic-related hardships. The instructor and student must establish a timetable for submitting the unfinished work with a final deadline no later than the end of the third week of the Spring 2021 semester (February 12, 2021). Exceptions to this deadline require a petition from the instructor to the student's academic advising office by February 12, 2021. When entering an Incomplete grade in SIS, faculty must include a reversion grade which represents the grade the student will receive if s/he does not complete the missing work by the agreed-upon deadline.</p>
+    <p>Deadlines for Adding, Dropping and Withdrawing from Courses</p>
+  </div>
+
+  <div class="page">
+    <p>Students may add a course up to <span data-field="add_deadline_1">{{ add_deadline_1 }}</span>. They may drop courses up to <span data-field="drop_deadline_1">{{ drop_deadline_1 }}</span>. Between <span data-field="drop_deadline_2">{{ drop_deadline_2 }}</span> and <span data-field="drop_deadline_3">{{ drop_deadline_3 }}</span>, a student may withdraw from a course with a W on their academic record. A record of the course will remain on the academic record with a W appearing in the grade column to indicate that the student registered and then withdrew from the course.</p>
+    <p>For more information on these and other academic policies, see <a href="{{ catalog_link }}">https://e-catalog.jhu.edu/undergraduate-policies/academic-policies/grading-policies/</a></p>
+    <p>The Office of Academic Support at JHU</p>
+    <p>All programs are free to students, please see below for specifics:</p>
+    <ul class="bullet-list">
+      <li class="list-item"><strong>PILOT Learning - Peer Led Team Learning</strong></li>
+      <ul class="bullet-list">
+        <li class="list-item">Students are organized into small study teams who meet weekly to collaborate on faculty-developed problems-sets. Students work together as a team to solve problems.</li>
+        <li class="list-item">A trained student leader acts as captain and facilitates the weekly meetings using various strategies to foster a collaborative learning environment.</li>
+        <li class="list-item">Registration opens on August 31st at 9pm EST; registration will remain open throughout the semester if space allows.</li>
+        <li class="list-item">Contact: <span data-field="pilot_contact_name">{{ pilot_contact_name }}</span>, <span data-field="pilot_contact_email">{{ pilot_contact_email }}</span></li>
+        <li class="list-item">Instagram: @<span data-field="pilot_instagram">{{ pilot_instagram }}</span></li>
+      </ul>
+      <li class="list-item"><strong>Learning Den Tutoring Program - Small Group Tutoring</strong></li>
+      <ul class="bullet-list">
+        <li class="list-item">Small group, tailored tutoring of 4 students or less which is headed by one tutor. Visit the website (above) to access zoom links for drop-in sessions</li>
+        <li class="list-item">Tutors can assist with but are not limited to:</li>
+        <ul class="bullet-list">
+          <li class="list-item">Assist with homework-like problems</li>
+          <li class="list-item">Assist with course-specific study skills and exam preparation</li>
+        </ul>
+        <li class="list-item">Contact: <span data-field="ldt_contact_name">{{ ldt_contact_name }}</span>, <span data-field="ldt_contact_email">{{ ldt_contact_email }}</span></li>
+        <li class="list-item">Instagram: @<span data-field="ldt_instagram">{{ ldt_instagram }}</span></li>
+      </ul>
+      <li class="list-item"><strong>The Study Consulting Program</strong></li>
+      <ul class="bullet-list">
+        <li class="list-item">Students work one-on-one with a study consultant to set academic goals and develop customized strategies for success. Areas addressed include:</li>
+        <ul class="bullet-list">
+          <li class="list-item">Time management</li>
+          <li class="list-item">Note taking and test preparation</li>
+          <li class="list-item">Mastering large amounts of information</li>
+        </ul>
+        <li class="list-item">Contact: Dr. Sharleen Argamaso - <span data-field="sc_contact_email">{{ sc_contact_email }}</span></li>
+        <li class="list-item">Instagram: @<span data-field="sc_instagram">{{ sc_instagram }}</span></li>
+      </ul>
+      <li class="list-item"><strong>The Writing Center</strong></li>
+      <ul class="bullet-list">
+        <li class="list-item">Undergraduate and graduate students in KSAS/Whiting School of Engineering can schedule 50-min sessions with a Writing Center tutor to</li>
+        <li class="list-item">look over a draft of written work (up to 10 pages) or a personal statement for graduate study.</li>
+        <li class="list-item">Contact: Robert Tinkle - <span data-field="wc_contact_email">{{ wc_contact_email }}</span></li>
+        <li class="list-item">Web Address: <a href="{{ writing_center_link }}">https://krieger.jhu.edu/writingcenter/</a></li>
+      </ul>
+    </ul>
+  </div>
+</body>
+</html>

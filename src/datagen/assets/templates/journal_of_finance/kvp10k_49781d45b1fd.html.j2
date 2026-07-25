@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .contact-info, .date-info {
+    text-align: left;
+  }
+  .contact-info p, .date-info p {
+    margin: 0;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-size: 10pt;
+    color: #555;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+  .summary-table td {
+    padding: 5px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div class="contact-info">
+      <p><span data-field="full_name">{{ full_name }}</span></p>
+    </div>
+    <div class="date-info">
+      <p><span data-field="date_generated">{{ date_generated }}</span></p>
+    </div>
+  </div>
+
+  <div class="section-title">Contact Information</div>
+  <div class="entry">
+    <p><span data-field="affiliation.name">{{ affiliation.name }}</span></p>
+    <p><span data-field="affiliation.location">{{ affiliation.location }}</span></p>
+    <p><span data-field="address.street">{{ address.street }}</span>, <span data-field="address.city">{{ address.city }}</span>, <span data-field="address.zip">{{ address.zip }}</span></p>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <p><span data-field="education.degree_name">{{ education.degree_name }}</span>, <span data-field="education.major">{{ education.major }}</span>, <span data-field="education.institution">{{ education.institution }}</span>, <span data-field="education.year">{{ education.year }}</span>.</p>
+  </div>
+
+  <div class="section-title">Employment</div>
+  {% for job in employment_history %}
+  <div class="entry">
+    <p><span data-field="employment.title">{{ job.title }}</span>, <span data-field="employment.organization">{{ job.organization }}</span>, <span data-field="employment.location">{{ job.location }}</span>, <span data-field="employment.dates">{{ job.dates }}</span>.</p>
+  </div>
+  {% endfor %}
+
+</div>
+
+<div class="page">
+  <div class="section-title">Finance and Economics Publications</div>
+  <ol>
+    {% for pub in finance_publications %}
+    <li>
+      <span data-field="finance_publications[{{ loop.index0 }}].title">{{ finance_publications[loop.index0].title }}</span> ("<span data-field="finance_publications[{{ loop.index0 }}].subtitle">{{ finance_publications[loop.index0].subtitle }}</span>") (<span data-field="finance_publications[{{ loop.index0 }}].authors">{{ finance_publications[loop.index0].authors }}</span>), <span data-field="finance_publications[{{ loop.index0 }}].journal">{{ finance_publications[loop.index0].journal }}</span> <span data-field="finance_publications[{{ loop.index0 }}].volume">{{ finance_publications[loop.index0].volume }}</span>: <span data-field="finance_publications[{{ loop.index0 }}].pages">{{ finance_publications[loop.index0].pages }}</span>, <span data-field="finance_publications[{{ loop.index0 }}].year">{{ finance_publications[loop.index0].year }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="page">
+  <div class="section-title">Working Papers in Finance</div>
+  <ol>
+    {% for wp in working_papers %}
+    <li>
+      <span data-field="working_papers[{{ loop.index0 }}].title">{{ working_papers[loop.index0].title }}</span> ("<span data-field="working_papers[{{ loop.index0 }}].subtitle">{{ working_papers[loop.index0].subtitle }}</span>") (<span data-field="working_papers[{{ loop.index0 }}].authors">{{ working_papers[loop.index0].authors }}</span>).
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="page">
+  <div class="section-title">Awards</div>
+  <ol>
+    {% for award in awards %}
+    <li>
+      <span data-field="awards[{{ loop.index0 }}].award_name">{{ awards[loop.index0].award_name }}</span>, <span data-field="awards[{{ loop.index0 }}].organization">{{ awards[loop.index0].organization }}</span>, <span data-field="awards[{{ loop.index0 }}].year">{{ awards[loop.index0].year }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="page">
+  <div class="section-title">Professional Organizational Activities</div>
+  <ol>
+    {% for activity in professional_activities %}
+    <li>
+      <span data-field="professional_activities[{{ loop.index0 }}].role">{{ professional_activities[loop.index0].role }}</span>, <span data-field="professional_activities[{{ loop.index0 }}].organization">{{ professional_activities[loop.index0].organization }}</span>, <span data-field="professional_activities[{{ loop.index0 }}].dates">{{ professional_activities[loop.index0].dates }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+
+  <div class="section-title">Editorial Responsibilities (Associate Editor)</div>
+  <ol>
+    {% for editorial_assoc in editorial_responsibilities_assoc %}
+    <li>
+      <span data-field="editorial_responsibilities_assoc[{{ loop.index0 }}].journal">{{ editorial_responsibilities_assoc[loop.index0].journal }}</span>, <span data-field="editorial_responsibilities_assoc[{{ loop.index0 }}].dates">{{ editorial_responsibilities_assoc[loop.index0].dates }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+
+  <div class="section-title">Editorial Responsibilities (Referee)</div>
+  <ol>
+    {% for editorial_ref in editorial_responsibilities_ref %}
+    <li>
+      <span data-field="editorial_responsibilities_ref[{{ loop.index0 }}].journal">{{ editorial_responsibilities_ref[loop.index0].journal }}</span>, <span data-field="editorial_responsibilities_ref[{{ loop.index0 }}].dates">{{ editorial_responsibilities_ref[loop.index0].dates }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="page">
+  <div class="section-title">Medical Publications</div>
+  <ol>
+    {% for med_pub in medical_publications %}
+    <li>
+      <span data-field="medical_publications[{{ loop.index0 }}].title">{{ medical_publications[loop.index0].title }}</span> (<span data-field="medical_publications[{{ loop.index0 }}].authors">{{ medical_publications[loop.index0].authors }}</span>), <span data-field="medical_publications[{{ loop.index0 }}].journal">{{ medical_publications[loop.index0].journal }}</span> <span data-field="medical_publications[{{ loop.index0 }}].volume">{{ medical_publications[loop.index0].volume }}</span>: <span data-field="medical_publications[{{ loop.index0 }}].pages">{{ medical_publications[loop.index0].pages }}</span>, <span data-field="medical_publications[{{ loop.index0 }}].year">{{ medical_publications[loop.index0].year }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="page">
+  <div class="section-title">Consulting Experience</div>
+  <ol>
+    {% for consulting in consulting_experience %}
+    <li>
+      <span data-field="consulting_experience[{{ loop.index0 }}].client">{{ consulting_experience[loop.index0].client }}</span>, <span data-field="consulting_experience[{{ loop.index0 }}].role">{{ consulting_experience[loop.index0].role }}</span>, <span data-field="consulting_experience[{{ loop.index0 }}].dates">{{ consulting_experience[loop.index0].dates }}</span>.
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+</body>
+</html>

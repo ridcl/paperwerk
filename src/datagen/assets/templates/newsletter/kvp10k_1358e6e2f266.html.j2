@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Newsletter</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.4;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 24pt;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 14pt;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .column-content {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  .column {
+    flex: 1;
+    font-size: 10pt;
+  }
+  .signature-block {
+    margin-top: 30px;
+    text-align: left;
+  }
+  .signature-name {
+    font-weight: bold;
+    font-size: 11pt;
+  }
+  .signature-title {
+    font-size: 9pt;
+    font-style: italic;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 10pt;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .footer-text {
+    font-size: 8pt;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-title">THE CATTLE CALL</div>
+  <div class="header-subtitle">Newsletter for Alumni of the TCU Ranch Management Program</div>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="section-heading">From the President</div>
+      <div class="signature-block">
+        <div class="signature-name">{{ president_name }}</div>
+        <div class="signature-title">{{ president_title }}</div>
+      </div>
+      <p style="margin-top: 15px;">{{ president_message }}</p>
+    </div>
+    <div style="width: 30%;">
+      <div class="center-text" style="margin-bottom: 10px;">Spring 2009</div>
+      <div style="text-align: center;">
+        <img src="placeholder_image.png" alt="Logo" style="width: 100px; height: auto;">
+        <p style="font-size: 9pt; margin-top: 5px;">{{ contact_info_1 }}</p>
+        <p style="font-size: 9pt;">{{ contact_info_2 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="column-content">
+    <div class="column">
+      <div class="section-heading">{{ section_title_1 }}</div>
+      <p>{{ content_1_paragraph_1 }}</p>
+      <p>{{ content_1_paragraph_2 }}</p>
+      <p>{{ content_1_paragraph_3 }}</p>
+      <p>{{ content_1_paragraph_4 }}</p>
+    </div>
+    <div class="column">
+      <div class="section-heading">{{ section_title_2 }}</div>
+      <p>{{ content_2_paragraph_1 }}</p>
+      <p>{{ content_2_paragraph_2 }}</p>
+      <p>{{ content_2_paragraph_3 }}</p>
+      <p>{{ content_2_paragraph_4 }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="column-content">
+    <div class="column">
+      <div class="section-heading">{{ section_title_3 }}</div>
+      <p>{{ content_3_paragraph_1 }}</p>
+      <p>{{ content_3_paragraph_2 }}</p>
+      <p>{{ content_3_paragraph_3 }}</p>
+    </div>
+    <div class="column">
+      <div class="section-heading">Unique Design</div>
+      <p>{{ unique_design_paragraph_1 }}</p>
+      <p>{{ unique_design_paragraph_2 }}</p>
+      <p>{{ unique_design_paragraph_3 }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center-text" style="margin-bottom: 30px;">ROUNDUP 2009 SPONSORS</div>
+  <p style="text-align: center; font-size: 10pt;">Thanks to our sponsors and their generous contributions for helping to make our evening such a big success.</p>
+
+  <div style="margin-top: 40px;">
+    <h3 style="text-align: center; font-size: 12pt;">Wrangler Level</h3>
+    <ul style="list-style-type: none; padding: 0; text-align: center;">
+      {% for sponsor in wrangler_sponsors %}
+        <li style="margin-bottom: 5px;">{{ sponsor.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="text-align: center; font-size: 12pt;">Cowboy Level</h3>
+    <ul style="list-style-type: none; padding: 0; text-align: center;">
+      {% for sponsor in cowboy_sponsors %}
+        <li style="margin-bottom: 5px;">{{ sponsor.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center-text" style="margin-bottom: 30px;">23rd ANNUAL SUMMER ROUNDUP</div>
+  <div class="center-text" style="margin-bottom: 10px;">Schedule of Events</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Time</th>
+        <th>Event</th>
+        <th style="width: 20%;">Fee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>6:00 pm</td>
+        <td>Pool side Party at Tonkaway Ranch with complimentary hors d'oeuvres by Red Rooster Catering (BYOB)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8:30 am</td>
+        <td>Roping at Tonkaway Ranch Arena - 16373 Tonkaway Lake Road, College Station, TX 77845</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 30%;">Event</th>
+                <th style="width: 20%;">Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Buckle Calf Roping-4 head (rope all calves)</td>
+                <td>50.00</td>
+              </tr>
+              <tr>
+                <td>Calf Ribbon Roping-2 head (rope all calves)</td>
+                <td>25.00</td>
+              </tr>
+              <tr>
+                <td>***Mixed Team Roping 3 head (progressive after 1)</td>
+                <td>30.00/Team</td>
+              </tr>
+              <tr>
+                <td>***Super Buckle Team Roping-3 head (progressive after1)</td>
+                <td>50.00/Team</td>
+              </tr>
+              <tr>
+                <td>***Buckle Class Team Roping-3 head (progressive after1)</td>
+                <td>30.00/Team</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <p style="font-size: 9pt;">* Alumni must rope with wife or husband or son or daughter 18 and under</p>
+          <p style="font-size: 9pt;">** Number of draws per alumni will be determined at roping (hopefully 8 partners)</p>
+          <p style="font-size: 9pt;">For Example: You can head 4 and heal 4</p>
+          <p style="font-size: 9pt;">You can head 8 or heal 8</p>
+          <p style="font-size: 9pt;">*** Both ropers must be alumni from same graduating class (reverse ends are allowed)</p>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <p style="font-size: 9pt;">Kids Events- Dummy Roping (Ropes Provided)</p>
+          <p style="font-size: 9pt;">Boot Scramble</p>
+          <p style="font-size: 9pt;">Moon Bounce</p>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12:00 pm</td>
+        <td>Lunch sponsored and cooked by Novartis Animal Health & Merial Animal Health</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7:00 pm</td>
+        <td>Saturday night Social (BYOB)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Awards presentation</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Kevin Prizlas with Intervet will be donating a custom made saddle for the raffle.</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="center-text" style="margin-bottom: 30px;">23rd ANNUAL SUMMER ROUNDUP</div>
+  <div class="center-text" style="margin-bottom: 10px;">TCU RANCH MANAGEMENT ALUMNI</div>
+  <p style="text-align: center; margin-bottom: 20px;">We invite you to come enjoy a good time with great TCU Alumni at the Tonkaway Ranch Arena located in College Station Texas.</p>
+
+  <div style="margin-bottom: 30px;">
+    <div class="section-heading">REGISTRATION FORM</div>
+    <p style="font-size: 9pt;">Please complete and mail the following registration form by May 25, 2009 to:</p>
+    <p style="font-size: 10pt;">Kyle Kacal '93</p>
+    <p style="font-size: 10pt;">16373 Tonkaway Lake Road</p>
+    <p style="font-size: 10pt;">College Station, Texas 77845</p>
+    <p style="font-size: 9pt;">Website: <a href="#">www.tonkaway.com</a> (Information on the 23rd Annual Summer Roping will be available at this website)</p>
+  </div>
+
+  <table style="font-size: 10pt;">
+    <tr>
+      <td style="width: 20%;">Name</td>
+      <td style="width: 20%;">Year</td>
+      <td style="width: 20%;">Address</td>
+      <td style="width: 20%;">Phone</td>
+    </tr>
+    <tr>
+      <td><span data-field="registration.name">{{ registration.name }}</span></td>
+      <td><span data-field="registration.year">{{ registration.year }}</span></td>
+      <td><span data-field="registration.address">{{ registration.address }}</span></td>
+      <td><span data-field="registration.phone">{{ registration.phone }}</span></td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>State</td>
+      <td>Zip</td>
+    </tr>
+    <tr>
+      <td><span data-field="registration.city">{{ registration.city }}</span></td>
+      <td><span data-field="registration.state">{{ registration.state }}</span></td>
+      <td><span data-field="registration.zip">{{ registration.zip }}</span></td>
+    </tr>
+    <tr>
+      <td>Roping Registration Team Roper</td>
+      <td>Calf Roper</td>
+    </tr>
+    <tr>
+      <td>Total number of person's attending:</td>
+      <td><span data-field="registration.total_attending">{{ registration.total_attending }}</span></td>
+    </tr>
+    <tr>
+      <td>Friday Night Gathering with light hors d'oeuvres at Poolside:</td>
+      <td><span data-field="registration.friday_gathering">{{ registration.friday_gathering }}</span></td>
+    </tr>
+    <tr>
+      <td>Saturday Lunch at Roping:</td>
+      <td>Sponsored by Novartis Animal Health and Merial Animal Health</td>
+    </tr>
+    <tr>
+      <td>Saturday Night Dinner:</td>
+      <td>Adults: <span data-field="registration.adults">{{ registration.adults }}</span></td>
+      <td>Number of Children (12 and under): <span data-field="registration.children">{{ registration.children }}</span></td>
+    </tr>
+    <tr>
+      <td>Donations Appreciated</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>AMOUNT ENCLOSED $</td>
+      <td><span data-field="registration.amount_enclosed">{{ registration.amount_enclosed }}</span></td>
+      <td>Please make checks payable to:</td>
+      <td>"TCU Ranch Management Summer Roping" and mail to Tonkaway Ranch</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Please make your hotel reservations directly to the:</td>
+    </tr>
+    <tr>
+      <td>Towne Place Suites</td>
+      <td>Rate: $119.00 + taxes per night</td>
+      <td>1300 University Drive E.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>College Station, Texas 77840</td>
+      <td></td>
+      <td>979.260.8500</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Confirmation Reference: TCU Ranch Management Summer Roundup Rooms reserved until May 15 reservations received after this date will be accepted on a space availability basis only.</td>
+      <td></td>
+      <td>Other hotels in the area:</td>
+    </tr>
+    <tr>
+      <td>Holiday Inn Express Hotel & Suites- 877.410.6681</td>
+      <td></td>
+      <td>Hyatt Place College Station- 979.846.9800</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Comfort Suites- 979.268.5500</td>
+      <td></td>
+      <td>La Quinata Inn-College Station- 979.696.7777</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

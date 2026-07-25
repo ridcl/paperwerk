@@ -1,0 +1,427 @@
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+    }
+    .page:last-child { page-break-after: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 8px; text-align: left; }
+    .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 10px; }
+    .sub-header { font-size: 14pt; font-weight: bold; margin-top: 30px; margin-bottom: 15px; }
+    .section-title { font-size: 16pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+    .text-block { font-size: 10pt; line-height: 1.5; margin-bottom: 15px; }
+    .two-column { display: flex; justify-content: space-between; }
+    .two-column > div { width: 48%; }
+    .footer { position: absolute; bottom: 50px; width: 100%; font-size: 8pt; color: #555; }
+</style>
+<div class="page">
+    <div style="text-align: center;">
+        <div class="header-title">Wright State University Investment Fund Combined</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <div class="two-column">
+            <div>
+                <div class="section-title">Your Client Portfolio Management Team:</div>
+                <div style="margin-top: 10px;">
+                    <span data-field="client_manager.name">{{ client_manager.name }}</span><br>
+                    <span data-field="client_manager.title">{{ client_manager.title }}</span><br>
+                    <span data-field="client_manager.phone">{{ client_manager.phone }}</span><br>
+                    <span data-field="client_manager.email">{{ client_manager.email }}</span>
+                </div>
+            </div>
+            <div>
+                <div style="margin-top: 10px;">
+                    <span data-field="service_director.name">{{ service_director.name }}</span><br>
+                    <span data-field="service_director.title">{{ service_director.title }}</span><br>
+                    <span data-field="service_director.phone">{{ service_director.phone }}</span><br>
+                    <span data-field="service_director.email">{{ service_director.email }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 40px;">
+        <!-- Placeholder for image/graphic -->
+        <div style="height: 300px; background-color: #ccc; display: flex; align-items: center; justify-content: center; font-size: 12pt;">
+            [Visual Graphic Placeholder]
+        </div>
+    </div>
+    <div class="footer" style="text-align: right;">
+        <span data-field="report_date">{{ report_date }}</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Market and performance overview</div>
+    <div class="two-column">
+        <div>
+            <div class="text-block">
+                A sense of calm retained its grasp on financial markets in February, as stock-market volatility approached multi-year lows and performance across a broad spectrum of asset classes provided investors with cause for celebration.
+            </div>
+            <div class="text-block">
+                The global equity-market rally carried into February, led at a distance by the healthcare sector.
+            </div>
+            <div class="text-block">
+                Global fixed-income markets also continued to advance, driven again by higher-risk market segments.
+            </div>
+            <div class="text-block">
+                The cost of oil (which is priced in U.S. dollars) resumed an upward trend even as the U.S. dollar re-established its ascent; this points to the conviction of the oil-price rally, as a rising U.S. dollar exerts downward pressure on oil prices.
+            </div>
+            <div class="text-block">
+                Equity valuations were elevated in the U.S. versus other locales; but we suspect a combination of economic growth, tax reform and a sharp turnaround in energy-sector profitability will push year-over-year earnings higher.
+            </div>
+        </div>
+        <div>
+            <div class="section-title" style="margin-top: 0;">Financial Markets Review (%)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Asset Class</th>
+                        <th style="width: 50%; text-align: right;">Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U.S. Large Cap</td>
+                        <td style="text-align: right;"><span data-field="market_performance.us_large_cap">{{ market_performance.us_large_cap }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>U.S. Small Cap</td>
+                        <td style="text-align: right;"><span data-field="market_performance.us_small_cap">{{ market_performance.us_small_cap }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Developed Int'l Equity x US</td>
+                        <td style="text-align: right;"><span data-field="market_performance.developed_intl_equity_x_us">{{ market_performance.developed_intl_equity_x_us }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Emerging Markets Equity</td>
+                        <td style="text-align: right;"><span data-field="market_performance.emerging_markets_equity">{{ market_performance.emerging_markets_equity }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>U.S. Investment-Grade Bonds</td>
+                        <td style="text-align: right;"><span data-field="market_performance.us_investment_grade_bonds">{{ market_performance.us_investment_grade_bonds }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Long Duration</td>
+                        <td style="text-align: right;"><span data-field="market_performance.long_duration">{{ market_performance.long_duration }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>High Yield Bonds</td>
+                        <td style="text-align: right;"><span data-field="market_performance.high_yield_bonds">{{ market_performance.high_yield_bonds }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Emerging Markets Debt</td>
+                        <td style="text-align: right;"><span data-field="market_performance.emerging_markets_debt">{{ market_performance.emerging_markets_debt }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Inflation-Linked</td>
+                        <td style="text-align: right;"><span data-field="market_performance.inflation_linked">{{ market_performance.inflation_linked }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Commodities</td>
+                        <td style="text-align: right;"><span data-field="market_performance.commodities">{{ market_performance.commodities }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 20px; font-size: 8pt;">
+                <p>U.S. Large Cap = Russell 1000, U.S. Small Cap = Russell 2000, Developed International Equity x US = MSCI ACWI ex-US, Emerging Markets Equity = MSCI EM, U.S. Investment-Grade Bonds = Bloomberg Barclays U.S. Aggregate, High Yield = Bloomberg Barclays High Yield, Emerging Markets Debt = Bloomberg Barclays Emerging Markets Debt, Inflation-Linked = Bloomberg Barclays TIPS, Commodities = Bloomberg Commodity.</p>
+                <p style="font-size: 7pt;">Source: SEI. Past performance is no guarantee of future results.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Asset summary</div>
+    <div style="display: flex; align-items: center; margin-bottom: 30px;">
+        <div style="width: 50%; text-align: left;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Actual Allocation (%)</div>
+            <div style="font-size: 10pt; margin-bottom: 15px;">Actual (Outer Ring) vs. Target (Inner Ring)</div>
+        </div>
+        <div style="width: 50%; text-align: right;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Summary for periods ending 2/28/2017</div>
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 40px;">
+        <!-- Pie Chart Placeholder -->
+        <div style="width: 40%; height: 300px; background-color: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+            [Pie Chart Placeholder]
+        </div>
+        
+        <!-- Data Table -->
+        <table style="width: 55%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>One Month</th>
+                    <th>Three Month</th>
+                    <th>Year To Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Portfolio Value</td>
+                    <td><span data-field="asset_summary.portfolio_value_one_month">{{ asset_summary.portfolio_value_one_month }}</span></td>
+                    <td><span data-field="asset_summary.portfolio_value_three_month">{{ asset_summary.portfolio_value_three_month }}</span></td>
+                    <td><span data-field="asset_summary.portfolio_value_ytd">{{ asset_summary.portfolio_value_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Net Cash Flows</td>
+                    <td><span data-field="asset_summary.net_cash_flows_one_month">{{ asset_summary.net_cash_flows_one_month }}</span></td>
+                    <td><span data-field="asset_summary.net_cash_flows_three_month">{{ asset_summary.net_cash_flows_three_month }}</span></td>
+                    <td><span data-field="asset_summary.net_cash_flows_ytd">{{ asset_summary.net_cash_flows_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Realized Gains</td>
+                    <td><span data-field="asset_summary.realized_gains_one_month">{{ asset_summary.realized_gains_one_month }}</span></td>
+                    <td><span data-field="asset_summary.realized_gains_three_month">{{ asset_summary.realized_gains_three_month }}</span></td>
+                    <td><span data-field="asset_summary.realized_gains_ytd">{{ asset_summary.realized_gains_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Unrealized Gains</td>
+                    <td><span data-field="asset_summary.unrealized_gains_one_month">{{ asset_summary.unrealized_gains_one_month }}</span></td>
+                    <td><span data-field="asset_summary.unrealized_gains_three_month">{{ asset_summary.unrealized_gains_three_month }}</span></td>
+                    <td><span data-field="asset_summary.unrealized_gains_ytd">{{ asset_summary.unrealized_gains_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Interest</td>
+                    <td><span data-field="asset_summary.interest_one_month">{{ asset_summary.interest_one_month }}</span></td>
+                    <td><span data-field="asset_summary.interest_three_month">{{ asset_summary.interest_three_month }}</span></td>
+                    <td><span data-field="asset_summary.interest_ytd">{{ asset_summary.interest_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Dividends</td>
+                    <td><span data-field="asset_summary.dividends_one_month">{{ asset_summary.dividends_one_month }}</span></td>
+                    <td><span data-field="asset_summary.dividends_three_month">{{ asset_summary.dividends_three_month }}</span></td>
+                    <td><span data-field="asset_summary.dividends_ytd">{{ asset_summary.dividends_ytd }}</span></td>
+                </tr>
+                <tr>
+                    <td>Ending Portfolio Value</td>
+                    <td><span data-field="asset_summary.ending_portfolio_value_one_month">{{ asset_summary.ending_portfolio_value_one_month }}</span></td>
+                    <td><span data-field="asset_summary.ending_portfolio_value_three_month">{{ asset_summary.ending_portfolio_value_three_month }}</span></td>
+                    <td><span data-field="asset_summary.ending_portfolio_value_ytd">{{ asset_summary.ending_portfolio_value_ytd }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div style="display: flex; justify-content: space-around; margin-top: 50px;">
+        <div style="width: 30%;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Total Fixed Alternatives</div>
+            <div style="font-size: 10pt;">48.0%</div>
+        </div>
+        <div style="width: 30%;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Other</div>
+            <div style="font-size: 10pt;">2.1%</div>
+        </div>
+        <div style="width: 30%;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Cash and Equivalents</div>
+            <div style="font-size: 10pt;">3.0%</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+        <div style="width: 30%;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Total Alternatives</div>
+            <div style="font-size: 10pt;">47.0%</div>
+        </div>
+        <div style="width: 30%;">
+            <div style="font-size: 10pt; margin-bottom: 5px;">Total Equity</div>
+            <div style="font-size: 10pt;">58.5%</div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Investment returns</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Total Assets ($)</th>
+                <th>Alloc (%)</th>
+                <th>1 Month</th>
+                <th>3 Month</th>
+                <th>FYTD</th>
+                <th>1 Year</th>
+                <th>3 Year</th>
+                <th>5 Year</th>
+                <th>10 Year</th>
+                <th>6/30/2014</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Portfolio Return</td>
+                <td><span data-field="investment_returns.total_portfolio_assets">{{ investment_returns.total_portfolio_assets }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_alloc">{{ investment_returns.total_portfolio_alloc }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_1_month">{{ investment_returns.total_portfolio_1_month }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_3_month">{{ investment_returns.total_portfolio_3_month }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_fytd">{{ investment_returns.total_portfolio_fytd }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_1_year">{{ investment_returns.total_portfolio_1_year }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_3_year">{{ investment_returns.total_portfolio_3_year }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_5_year">{{ investment_returns.total_portfolio_5_year }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_10_year">{{ investment_returns.total_portfolio_10_year }}</span></td>
+                <td><span data-field="investment_returns.total_portfolio_inception">{{ investment_returns.total_portfolio_inception }}</span></td>
+            </tr>
+            <tr>
+                <td>Total Fixed Income</td>
+                <td><span data-field="investment_returns.total_fixed_income_assets">{{ investment_returns.total_fixed_income_assets }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_alloc">{{ investment_returns.total_fixed_income_alloc }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_1_month">{{ investment_returns.total_fixed_income_1_month }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_3_month">{{ investment_returns.total_fixed_income_3_month }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_fytd">{{ investment_returns.total_fixed_income_fytd }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_1_year">{{ investment_returns.total_fixed_income_1_year }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_3_year">{{ investment_returns.total_fixed_income_3_year }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_5_year">{{ investment_returns.total_fixed_income_5_year }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_10_year">{{ investment_returns.total_fixed_income_10_year }}</span></td>
+                <td><span data-field="investment_returns.total_fixed_income_inception">{{ investment_returns.total_fixed_income_inception }}</span></td>
+            </tr>
+            <tr>
+                <td>Alternatives</td>
+                <td><span data-field="investment_returns.alternatives_assets">{{ investment_returns.alternatives_assets }}</span></td>
+                <td><span data-field="investment_returns.alternatives_alloc">{{ investment_returns.alternatives_alloc }}</span></td>
+                <td><span data-field="investment_returns.alternatives_1_month">{{ investment_returns.alternatives_1_month }}</span></td>
+                <td><span data-field="investment_returns.alternatives_3_month">{{ investment_returns.alternatives_3_month }}</span></td>
+                <td><span data-field="investment_returns.alternatives_fytd">{{ investment_returns.alternatives_fytd }}</span></td>
+                <td><span data-field="investment_returns.alternatives_1_year">{{ investment_returns.alternatives_1_year }}</span></td>
+                <td><span data-field="investment_returns.alternatives_3_year">{{ investment_returns.alternatives_3_year }}</span></td>
+                <td><span data-field="investment_returns.alternatives_5_year">{{ investment_returns.alternatives_5_year }}</span></td>
+                <td><span data-field="investment_returns.alternatives_10_year">{{ investment_returns.alternatives_10_year }}</span></td>
+                <td><span data-field="investment_returns.alternatives_inception">{{ investment_returns.alternatives_inception }}</span></td>
+            </tr>
+            <tr>
+                <td>Other</td>
+                <td><span data-field="investment_returns.other_assets">{{ investment_returns.other_assets }}</span></td>
+                <td><span data-field="investment_returns.other_alloc">{{ investment_returns.other_alloc }}</span></td>
+                <td><span data-field="investment_returns.other_1_month">{{ investment_returns.other_1_month }}</span></td>
+                <td><span data-field="investment_returns.other_3_month">{{ investment_returns.other_3_month }}</span></td>
+                <td><span data-field="investment_returns.other_fytd">{{ investment_returns.other_fytd }}</span></td>
+                <td><span data-field="investment_returns.other_1_year">{{ investment_returns.other_1_year }}</span></td>
+                <td><span data-field="investment_returns.other_3_year">{{ investment_returns.other_3_year }}</span></td>
+                <td><span data-field="investment_returns.other_5_year">{{ investment_returns.other_5_year }}</span></td>
+                <td><span data-field="investment_returns.other_10_year">{{ investment_returns.other_10_year }}</span></td>
+                <td><span data-field="investment_returns.other_inception">{{ investment_returns.other_inception }}</span></td>
+            </tr>
+            <tr>
+                <td>Total Equity</td>
+                <td><span data-field="investment_returns.total_equity_assets">{{ investment_returns.total_equity_assets }}</span></td>
+                <td><span data-field="investment_returns.total_equity_alloc">{{ investment_returns.total_equity_alloc }}</span></td>
+                <td><span data-field="investment_returns.total_equity_1_month">{{ investment_returns.total_equity_1_month }}</span></td>
+                <td><span data-field="investment_returns.total_equity_3_month">{{ investment_returns.total_equity_3_month }}</span></td>
+                <td><span data-field="investment_returns.total_equity_fytd">{{ investment_returns.total_equity_fytd }}</span></td>
+                <td><span data-field="investment_returns.total_equity_1_year">{{ investment_returns.total_equity_1_year }}</span></td>
+                <td><span data-field="investment_returns.total_equity_3_year">{{ investment_returns.total_equity_3_year }}</span></td>
+                <td><span data-field="investment_returns.total_equity_5_year">{{ investment_returns.total_equity_5_year }}</span></td>
+                <td><span data-field="investment_returns.total_equity_10_year">{{ investment_returns.total_equity_10_year }}</span></td>
+                <td><span data-field="investment_returns.total_equity_inception">{{ investment_returns.total_equity_inception }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <div class="section-title">Investment returns</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Total Assets ($)</th>
+                <th>Alloc (%)</th>
+                <th>1 Month</th>
+                <th>3 Month</th>
+                <th>FYTD</th>
+                <th>1 Year</th>
+                <th>3 Year</th>
+                <th>5 Year</th>
+                <th>10 Year</th>
+                <th>6/30/2014</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cash/Cash Equivalents</td>
+                <td><span data-field="cash_equivalents.assets">{{ cash_equivalents.assets }}</span></td>
+                <td><span data-field="cash_equivalents.alloc">{{ cash_equivalents.alloc }}</span></td>
+                <td><span data-field="cash_equivalents.1_month">{{ cash_equivalents.1_month }}</span></td>
+                <td><span data-field="cash_equivalents.3_month">{{ cash_equivalents.3_month }}</span></td>
+                <td><span data-field="cash_equivalents.fytd">{{ cash_equivalents.fytd }}</span></td>
+                <td><span data-field="cash_equivalents.1_year">{{ cash_equivalents.1_year }}</span></td>
+                <td><span data-field="cash_equivalents.3_year">{{ cash_equivalents.3_year }}</span></td>
+                <td><span data-field="cash_equivalents.5_year">{{ cash_equivalents.5_year }}</span></td>
+                <td><span data-field="cash_equivalents.10_year">{{ cash_equivalents.10_year }}</span></td>
+                <td><span data-field="cash_equivalents.inception">{{ cash_equivalents.inception }}</span></td>
+            </tr>
+            <tr>
+                <td>SEI Core Property Fund LP Escrow</td>
+                <td><span data-field="cash_equivalents.escrow_assets">{{ cash_equivalents.escrow_assets }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_alloc">{{ cash_equivalents.escrow_alloc }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_1_month">{{ cash_equivalents.escrow_1_month }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_3_month">{{ cash_equivalents.escrow_3_month }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_fytd">{{ cash_equivalents.escrow_fytd }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_1_year">{{ cash_equivalents.escrow_1_year }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_3_year">{{ cash_equivalents.escrow_3_year }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_5_year">{{ cash_equivalents.escrow_5_year }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_10_year">{{ cash_equivalents.escrow_10_year }}</span></td>
+                <td><span data-field="cash_equivalents.escrow_inception">{{ cash_equivalents.escrow_inception }}</span></td>
+            </tr>
+            <tr>
+                <td>SEI Daily Income Government Fund</td>
+                <td><span data-field="cash_equivalents.daily_income_assets">{{ cash_equivalents.daily_income_assets }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_alloc">{{ cash_equivalents.daily_income_alloc }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_1_month">{{ cash_equivalents.daily_income_1_month }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_3_month">{{ cash_equivalents.daily_income_3_month }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_fytd">{{ cash_equivalents.daily_income_fytd }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_1_year">{{ cash_equivalents.daily_income_1_year }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_3_year">{{ cash_equivalents.daily_income_3_year }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_5_year">{{ cash_equivalents.daily_income_5_year }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_10_year">{{ cash_equivalents.daily_income_10_year }}</span></td>
+                <td><span data-field="cash_equivalents.daily_income_inception">{{ cash_equivalents.daily_income_inception }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <div class="section-title">Disclosures</div>
+    <div class="text-block">
+        The SEI Alternative Funds, with the exception of its structured credit and energy debt products, are “fund-of-funds”, which means that the funds invest in underlying third-party funds. Alternative investments by their nature involve a substantial degree of risk. Investment values and performance information calculated by fund of funds are generally based on investment values reported by the underlying third party funds which may use a number of valuation methods depending on asset class and may provide such valuations on a delayed timeline. For interim reporting, fund of fund valuations are typically estimates and may be subject to later adjustment.
+    </div>
+    <div class="text-block">
+        The value of investments in the SEI Alternative Funds(s), including the structured credit and energy debt products, as presented in this report are calculated pursuant to each fund’s valuation procedures on either a monthly or quarterly basis as described in the Confidential Private Placement Memorandum of the respective fund. All of the investments in the SEI Alternative Funds are subject to the risks inherent in the underlying investments, and the performance of the fund is not indicative of the performance of any single underlying investment.
+    </div>
+    <div class="text-block">
+        The value of investments and performance information for the Alternative Funds provided herein are presented on a monthly or quarterly lag, as noted below, based on the timing of reporting from, or attributable to, the underlying investments. Values and performance information for the SEI Special Situations Fund and SEI Core Property Fund are updated on the calendar quarters and presented on a one month lag. Values and performance information for the SEI Alternative Funds are updated on the calendar months and presented on a one month lag. Past performance does not guarantee future results. This report does not constitute an offer to sell or a solicitation of an offer to buy an interest in any SEI Alternative Fund. Such an offer or solicitation may be made only by means of the Confidential Private Placement Memorandum of such fund.
+    </div>
+    <div class="text-block">
+        The SEI Global Private Assets III, L.P. is valued on a quarterly basis. Returns in this report for the SEI Global Private Asset Fund reflect the Fund’s net asset value as determined as of the end of the prior quarter, plus cash flows for the current quarter. Therefore, the returns shown here may differ from what the Fund’s actual return will be when its value for the current quarter is calculated. Please refer to the SEI Global Private Asset III, L.P.’s Limited Partnership Agreement and Confidential Private Placement Memorandum for further information regarding valuation.
+    </div>
+</div>
+
+<div class="page">
+    <div class="section-title">Disclosures</div>
+    <div class="text-block">
+        Hist Blend: SEI Emerg Mkt Debt: From the period 11/30/2005 through 6/30/2006, the SEI Emerging Market Debt Fund Index was comprised of 100% JP Morgan EMBI Global Diversified Index. From 7/1/2006 through 6/30/2012 the composition was 100% JP Morgan EMBI Global Diversified Index. From 7/1/2012 onward the composition is a 50/50 blend of JP Morgan EMBI Global Diversified Index and the JP Morgan GBI EM Global Diversified Index.
+    </div>
+    <div class="text-block">
+        Hist Blend: SEI High Yield Bond Fund: From the period 12/31/1994 through 12/31/1998, the SEI High Yield Bond Fund Index was comprised of 100% Credit Suisse High Yield Index. From 1/1/1999 through 3/31/2004, the composition was 100% Credit Suisse High Yield Developed Countries Only Index. From 4/1/2004 onward the composition is 100% BoFA ML US High Yield Constrained Index.
+    </div>
+    <div class="text-block">
+        For those SEI Funds which employ the ‘manager of managers’ structure, SEI Investments Management Corporation has ultimate responsibility for the investment performance of the Funds due to its responsibility to oversee the sub-advisors, and recommend their hiring, termination and replacement.
+    </div>
+    <div class="text-block">
+        All performance numbers greater than one year are annualized. All figures in this report are based on trade date and accrual accounting methods. As a result, these figures may not match your custody statement.
+    </div>
+    <div class="text-block">
+        Certain fund benchmarks used to measure performance may be changed by SEI to more appropriately reflect a fund’s investment style.
+    </div>
+    <div class="text-block">
+        The Total Index reported is customized for your account. It is based on the benchmarks for each asset class in which you are invested, weighted based on your target allocations. The Total Index is adjusted to reflect any changes in your target allocations but not changes in your actual allocations which may occur due to changes in the market value of your investments.
+    </div>
+    <div class="text-block">
+        If there has been a change in the financial condition of your organization, please notify your SEI Client Portfolio Manager immediately.
+    </div>
+</div>

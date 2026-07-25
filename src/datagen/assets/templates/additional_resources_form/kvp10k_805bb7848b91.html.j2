@@ -1,0 +1,108 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  td, th { padding: 8px 0; text-align: left; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-row > div { width: 48%; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <h1 style="font-size: 24px; margin: 0;">THE SOLUTION CENTER</h1>
+      <p style="font-size: 12px; margin: 5px 0 0 0;">Financial Aid | Registrar | Student Financial Services</p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 16px; margin: 0;">Additional Resources Form</h2>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div style="width: 48%;">
+        <label for="date">Date:</label><br>
+        <span data-field="date">{{ date }}</span>
+      </div>
+      <div style="width: 48%;">
+        <label for="student_id">Student ID:</label><br>
+        <span data-field="student_id">{{ student_id }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 48%;">
+        <label for="last_name">Last Name:</label><br>
+        <span data-field="last_name">{{ last_name }}</span>
+      </div>
+      <div style="width: 48%;">
+        <label for="first_name">First Name:</label><br>
+        <span data-field="first_name">{{ first_name }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="width: 48%;">
+        <label for="phone_number">Phone Number:</label><br>
+        <span data-field="phone_number">{{ phone_number }}</span>
+      </div>
+      <div style="width: 48%;">
+        <label for="email_address">Email Address:</label><br>
+        <span data-field="email_address">{{ email_address }}</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 20px;">Use this form to report any additional external financial resources you will be receiving for the academic year. External resources include, but are not limited to, private outside scholarships, stipends, or private grants.</p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Indicate the name and specific year/term for which you will receive additional resources in the table below:</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;">Type of Award</th>
+        <th style="width: 20%; text-align: center;">Aid Year</th>
+        <th style="width: 20%; text-align: center;">Fall Amount</th>
+        <th style="width: 20%; text-align: center;">Spring Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].aid_year">{{ item.aid_year }}</span></td>
+        <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].fall_amount">{{ item.fall_amount }}</span></td>
+        <td style="text-align: center;"><span data-field="line_items[{{ loop.index0 }}].spring_amount">{{ item.spring_amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 30px;">Make sure to attach scholarship letters or any other relevant documentation and submit to:</p>
+
+  <div style="margin-top: 20px;">
+    <p><strong>The Solution Center</strong></p>
+    <p><span data-field="address_line_1">{{ address_line_1 }}</span></p>
+    <p><span data-field="city_state_zip">{{ city_state_zip }}</span></p>
+    <p>E: <span data-field="email_address_contact">{{ email_address_contact }}</span></p>
+    <p>P: <span data-field="phone_number_contact">{{ phone_number_contact }}</span></p>
+    <p>F: <span data-field="fax_number_contact">{{ fax_number_contact }}</span></p>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p>Student Signature</p>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10px; text-align: center;">
+    <p>The Solution Center | <span data-field="address_line_1_footer">{{ address_line_1_footer }}</span> | <span data-field="city_state_zip_footer">{{ city_state_zip_footer }}</span> | T: <span data-field="phone_number_footer">{{ phone_number_footer }}</span> | E: <span data-field="email_address_footer">{{ email_address_footer }}</span></p>
+  </div>
+</div>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Syllabus</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+        .section-title { margin-top: 20px; margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1 style="text-align: center;">San José State University</h1>
+        <h2 style="text-align: center;">Department of Hospitality, Tourism and Event Management</h2>
+        <h2 style="text-align: center;">HSPM 130 Hospitality Events Production</h2>
+        <h2 style="text-align: center;">Fall 2020</h2>
+
+        <div style="margin-top: 40px;">
+            <h3 class="section-title">Course and Contact Information</h3>
+            <p>Instructor: <span data-field="instructor_name">{{ instructor_name }}</span></p>
+            <p>Office Location: <span data-field="office_location">{{ office_location }}</span></p>
+            <p>Email: <span data-field="instructor_email">{{ instructor_email }}</span></p>
+            <p>Office Hours: <span data-field="office_hours">{{ office_hours }}</span></p>
+            <p>Class Days/Time: <span data-field="class_days_time">{{ class_days_time }}</span></p>
+            <p>Classroom: <span data-field="classroom">{{ classroom }}</span></p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3 class="section-title">Course Description</h3>
+            <p><span data-field="course_description_text">{{ course_description_text }}</span></p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3 class="section-title">Course Format: Online Course</h3>
+            <p><span data-field="course_format_details">{{ course_format_details }}</span></p>
+            <p>See <a href="http://www.sjsu.edu/policy/F13-2.pdf">University Policy F13-2</a> at http://www.sjsu.edu/policy/F13-2.pdf for more details.</p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3 class="section-title">Course Learning Outcomes (CLO)</h3>
+            <ul>
+                <li><span data-field="clo_1">{{ clo_1 }}</span></li>
+                <li><span data-field="clo_2">{{ clo_2 }}</span></li>
+                <li><span data-field="clo_3">{{ clo_3 }}</span></li>
+                <li><span data-field="clo_4">{{ clo_4 }}</span></li>
+                <li><span data-field="clo_5">{{ clo_5 }}</span></li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <h3 class="section-title">Required Textbook</h3>
+            <ul>
+                <li><span data-field="required_textbook">{{ required_textbook }}</span></li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3 class="section-title">Recommended Textbooks</h3>
+            <ul>
+                {% for book in recommended_textbooks %}
+                <li><span data-field="recommended_textbooks[{{ loop.index0 }}]">{{ book }}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3 class="section-title">Course Requirements and Assignments</h3>
+            <ol>
+                <li>
+                    <strong>Discussions & Participation:</strong> There will be weekly discussions assigned throughout the semester. They will be used to enhance students' understanding of course material. Taken together, these event exercises will count for 15% of the final grade. *<span data-field="discussion_warning">{{ discussion_warning }}</span>*
+                </li>
+                <li>
+                    <strong>Quizzes:</strong> There are three quizzes in this class. Each quiz is based on lectures, online discussion, class exercises, videos, required text and readings, and is worth 15% of the final grade. The total for the 3 quizzes is 45% of the final grade. Use of the textbook or notes will not be allowed during the quizzes. *<span data-field="quiz_warning">{{ quiz_warning }}</span>*
+                </li>
+                <li>
+                    <strong>Event Technology Report:</strong> This assignment intends to help you learn about development and application of software and technology in the festival and event industry. A list of software programs/technologies is provided on Canvas, and you will conduct in-depth research on the technologies that you are interested in. Detailed guidelines will be provided. *<span data-field="report_warning">{{ report_warning }}</span>*
+                </li>
+                <li>
+                    <strong>Group Project on Event Proposal:</strong> Students will work in groups to complete an event project. Information, requirements, and grading criteria for the group project will be provided later in the semester and posted on Canvas. The group project will count for 25% of the final grade. *<span data-field="group_project_warning">{{ group_project_warning }}</span>*
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="page">
+        <h3 class="section-title">Grading Information</h3>
+        <p>Rubrics will be posted on Canvas.</p>
+        <p>Grading will be based on the following assignments:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Assignments</th>
+                    <th>Total %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Discussions & Participation</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>2. Quizzes</td>
+                    <td>45%</td>
+                </tr>
+                <tr>
+                    <td>3. Event Technology Report</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>4. Group Project on Event Proposal</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>All the final grades are based on the percentages as shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Letter Grade</th>
+                    <th>% Earned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A plus</td>
+                    <td>96 to 100</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>93 to 95.99</td>
+                </tr>
+                <tr>
+                    <td>A minus</td>
+                    <td>90 to 92.99</td>
+                </tr>
+                <tr>
+                    <td>B plus</td>
+                    <td>86 to 89.99</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>83 to 85.99</td>
+                </tr>
+                <tr>
+                    <td>B minus</td>
+                    <td>80 to 82.99</td>
+                </tr>
+                <tr>
+                    <td>C plus</td>
+                    <td>76 to 79.99</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>73 to 75.99</td>
+                </tr>
+                <tr>
+                    <td>C minus</td>
+                    <td>70 to 72.99</td>
+                </tr>
+                <tr>
+                    <td>D plus</td>
+                    <td>66 to 69.99</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>63 to 65.99</td>
+                </tr>
+                <tr>
+                    <td>D minus</td>
+                    <td>60 to 62.99</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>59.99 and below</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <h3 class="section-title">Course Policies</h3>
+        <p>Required Computer Skills</p>
+        <p>If this is your first online course, please read the SJSU eCampus Canvas introduction and help web pages (http://www.sjsu.edu/at/ec/canvas/). If you are new to Canvas, you may find valuable resources at http://www.sjsu.edu/at/ec/canvas/student_resources/index.html. Please use a web browser to surf the Canvas pages, which serve as the primary medium for the course. In addition Technical Requirements: <a href="https://guides.instructure.com/m/4214/b/2542-what-are-the-basic-computer-specifications-for-canvas">https://guides.instructure.com/m/4214/b/2542-what-are-the-basic-computer-specifications-for-canvas</a>. To take an online course, it is your responsibility to maintain your computer and related equipment in order to participate in the online portion of the course.</p>
+        <p>System Requirements</p>
+        <p>You may "attend" the on-line class lessons from anywhere you have access to a computer equipped with a reliable Internet connection. Canvas also has a mobile app. You can download it to your mobile devices. If you are operating on a system with a "Firewall" or other security system, those security systems might interrupt your participation or ability to download and open files. Please contact the University Help Desk for help: <a href="http://www.sjsu.edu/students/Technical_Support/">http://www.sjsu.edu/students/Technical_Support/</a>.</p>
+        <p>Canvas Helpful Links</p>
+        <p>Canvas login URL is https://sjsu.instructure.com</p>
+        <p>Username: <span data-field="canvas_username">{{ canvas_username }}</span></p>
+        <p>Password: <span data-field="canvas_password">{{ canvas_password }}</span></p>
+        <p>Please note that you are required to change the password for every 180 days. If you have questions and need more information about Canvas, please contact SJSU eCampus Student Help Webpage: <a href="http://www.sjsu.edu/at/ec/canvas/index.html">http://www.sjsu.edu/at/ec/canvas/index.html</a>.</p>
+        <p>Important Announcements</p>
+        <p>Class syllabus, additional required readings, guidelines for assignments, weekly announcements and other reminders will be posted on Canvas. Important class dates and announcements will be distributed through Canvas mail utility. Please check your emails and Canvas site often every week. Make sure your Canvas email is forwarding appropriately. In Canvas, you may set up an e-mail address where Canvas will forward all announcements to your e-mail account. It is the student's responsibility to read Canvas messages and e-mails regularly. Students are also responsible for keeping track of changes in the course syllabus made by the instructor throughout the semester.</p>
+    </div>
+
+    <div class="page">
+        <h3 class="section-title">Submission Deadlines</h3>
+        <p>The syllabus acts as the overall instructions for this course, including course schedule, assignments, due dates, grading, etc. The due dates (i.e., deadlines) are the designated dates on which the assignments fall due. If you have a late submission, please note our late policies for each assignment. For each assignment, detailed instructions will be distributed along with the assignment being announced in class. The syllabus, assignment instructions, due dates, late policies and other policies together contribute to a normal and positive learning community.</p>
+        <p>Submission Requirements</p>
+        <p>All assignments should be typed and double-spaced using 12-pt, Times New Roman font with 1-inch margins all around in a .doc or .docx format. The Apple Pages or Numbers format files are not accepted. All submissions should be on Canvas. For the Canvas record purpose, please do not email your submissions. Please name your file as "LastName_Assignment_Date." Please include your name, date, assignment name, and course # on the first page of all documents. Please ensure that you properly cite any and all references. If assignments fail to follow this format, points will be deducted.</p>
+        <p>University Policies</p>
+        <p>Per <a href="http://www.sjsu.edu/policy/S16-9">University Policy S16-9</a> (http://www.sjsu.edu/policy/S16-9.pdf), relevant information to all courses, such as academic integrity, accommodations, dropping and adding, consent for recording of class, etc. is available on Office of Graduate and Undergraduate Programs' <a href="http://www.sjsu.edu/gup/syllabusinfo/">Syllabus Information web page</a> at http://www.sjsu.edu/gup/syllabusinfo/. Make sure to visit this page, review and be familiar with these university policies and resources.</p>
+    </div>
+
+    <div class="page">
+        <h3 class="section-title">Course Schedule</h3>
+        <p>* The instructor reserves the right to revise this tentative schedule for the purpose of enhancing the achievement of learning objectives. Any revision will be announced on Canvas. It is the student's responsibility to be aware of all readings, discussions, exams, assignments/project, and changes in the course requirements.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>WEEK</th>
+                    <th>DATE</th>
+                    <th>TOPIC</th>
+                    <th>ASSIGNMENTS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>8/19-8/23</td>
+                    <td>Welcome and Syllabus</td>
+                    <td>Read syllabus<br>Discussion #1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>8/24-8/30</td>
+                    <td>Introduction to Event Production<br>Framework for Event Management</td>
+                    <td>Ferdinand & Kitchin (2017) Chapter 1<br>Silvers (2012) Chapter 1<br>Discussion #2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>8/31-9/6</td>
+                    <td>Creating the Event Plan<br>Developing the Event Site</td>
+                    <td>Silvers (2012) Chapters 2 & 3<br>Discussion #3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>9/7-9/13</td>
+                    <td>Providing the Event Infrastructure<br>Announce the Final Project</td>
+                    <td>Silvers (2012) Chapter 4<br>Discussion #4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>9/14-9/20</td>
+                    <td>Coordinating the Environment<br>Fundamentals of the Production</td>
+                    <td>Silvers (2012) Chapters 6 & 7<br>Discussion #5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>9/21-9/27</td>
+                    <td>Exam 1 Review<br>Exam 1</td>
+                    <td>Exam 1 Study Guide on Canvas<br>Exam 1 due by 9/27</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>9/28-10/4</td>
+                    <td>Staging an Effective Event Experience</td>
+                    <td>Silvers (2012) Chapter 8<br>Discussion #6</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>10/5-10/11</td>
+                    <td>Event Software & Technology</td>
+                    <td>Readings on Canvas<br>Event Technology Report due by 10/11</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10/12-10/18</td>
+                    <td>Food and Beverage Operations<br>Making Event Memories</td>
+                    <td>Silvers (2012) Chapters 10 & 11<br>Discussion #7</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>10/19-10/25</td>
+                    <td>Exam 2 Review<br>Exam 2</td>
+                    <td>Exam 2 Study Guide on Canvas<br>Exam 2 due by 10/25</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>10/26-11/1</td>
+                    <td>Risk Management</td>
+                    <td>Silvers (2012) Chapter 12<br>Ferdinand & Kitchin (2017) Chapter 9<br>Discussion #8</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>11/2-11/8</td>
+                    <td>Event Analytics</td>
+                    <td>Readings on Canvas<br>Discussion #9</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>11/9-11/15</td>
+                    <td>Promoting Events</td>
+                    <td>Ferdinand & Kitchin (2017) Chapter 6<br>Discussion #10</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>11/16-11/22</td>
+                    <td>Vendors and Volunteers</td>
+                    <td>Silvers (2012) Chapter 13</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>11/23-11/29</td>
+                    <td>Thanksgiving Break – No Class</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>11/30-12/6</td>
+                    <td>Exam 3 Review<br>Exam 3</td>
+                    <td>Exam 3 Study Guide on Canvas<br>Exam 3 due by 12/6</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>12/7-12/13</td>
+                    <td>Final Week – Group paper due by 11:59pm, 12/13</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 5px 0;
+    text-align: left;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    width: 48%;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">
+    Division of Institutional Advancement<br>
+    Telephone (404) 458-6085 ext. 2020<br>
+    e-mail todd.blackburn@morrisbrown.edu
+  </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="width: 100px; height: auto;">
+    <h1 style="font-size: 24pt; margin: 10px 0;">MORRIS BROWN COLLEGE</h1>
+  </div>
+
+  <h2 style="text-align: center; font-size: 18pt; margin-top: 40px;">Homecoming Vendor Application ~</h2>
+
+  <p style="text-align: center; font-size: 12pt; margin-bottom: 30px;">Fees Due in by <span data-field="due_date">{{ due_date }}</span><br>
+  (Please TYPE or PRINT your VENDOR information Below. E-mail Completed form to Contact Below)</p>
+
+  <table style="margin-bottom: 30px;">
+    <tr>
+      <td style="width: 30%;">Business Name:</td>
+      <td style="width: 30%;"><span data-field="business_name">{{ business_name }}</span></td>
+      <td style="width: 40%;">Tax ID#:</td>
+      <td style="width: 30%;"><span data-field="tax_id">{{ tax_id }}</span></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><span data-field="address">{{ address }}</span></td>
+      <td>City:</td>
+      <td><span data-field="city">{{ city }}</span></td>
+    </tr>
+    <tr>
+      <td>State:</td>
+      <td><span data-field="state">{{ state }}</span></td>
+      <td>Zip Code:</td>
+      <td><span data-field="zip_code">{{ zip_code }}</span></td>
+    </tr>
+    <tr>
+      <td>Office Phone #:</td>
+      <td><span data-field="office_phone">{{ office_phone }}</span></td>
+      <td>Cell Phone #:</td>
+      <td><span data-field="cell_phone">{{ cell_phone }}</span></td>
+    </tr>
+    <tr>
+      <td>E-Mail:</td>
+      <td><span data-field="email">{{ email }}</span></td>
+      <td>Website:</td>
+      <td><span data-field="website">{{ website }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 14pt; margin-top: 30px;">Description of Items to be Sold</h3>
+  <table style="margin-bottom: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 70%;">Description</th>
+        <th style="width: 30%; text-align: right;">Food and / or Apparel</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].amount">{{ item.amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 50px;">
+    <div>Signature of Applicant: _________________________</div>
+    <div>Date: _________________________</div>
+  </div>
+
+  <h3 style="font-size: 16pt; border-bottom: 1px solid #000; padding-bottom: 5px;">GENERAL MBC VENDOR'S GUIDELINE INFORMATION:</h3>
+
+  <div style="margin-top: 20px;">
+    <p>
+      <span style="font-weight: bold;">EVENT DATE:</span> <span data-field="event_date">{{ event_date }}</span><br>
+      <span style="font-weight: bold;">EVENT TIME:</span> <span data-field="event_time">{{ event_time }}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold;">ALUMNI GROUP TAILGATE FEE:</span> <span data-field="tailgate_fee">{{ tailgate_fee }}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold;">VENDOR FEES:</span> <span data-field="vendor_fees">{{ vendor_fees }}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold;">SET UP SPECS:</span> <span data-field="setup_specs">{{ setup_specs }}</span>
+    </p>
+  </div>
+
+  <p style="margin-top: 40px; font-size: 10pt;">
+    The vendor agrees to assume total responsibility for any liability that may be associated with his/her product(s). The Vendor also agrees to hold Morris Brown College harmless from all liabilities. Vendors must provide their business license, copy of liability insurance, their own tables and insure the "Set-Up & Clean-Up" of their vending area. Morris Brown College reserves the right to cancel privileges granted in this permit at its discretion.
+  </p>
+
+  <div style="margin-top: 60px;">
+    <p>Morris Brown College Disclaimer:</p>
+    <p>
+      Contacts: <span data-field="contact_name">{{ contact_name }}</span><br>
+      E-Mail: <span data-field="contact_email">{{ contact_email }}</span><br>
+      (Vendors Fee is payable in Cash or Money Order ONLY, made payable to Morris Brown College)
+      <br>
+      UNDER NO CIRCUMSTANCES WILL MORRIS BROWN COLLEGE REFUND ANY FEES PAID.
+    </p>
+  </div>
+</div>

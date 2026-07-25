@@ -1,0 +1,200 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <div style="width: 200px; height: 200px; border: 5px solid #ccc; border-radius: 50%; margin: 0 auto;"></div>
+    <h1 style="font-size: 36px; margin-top: 20px; font-weight: bold;">UNDERGRADUATE STUDENT STATISTICS</h1>
+  </div>
+  <div style="position: absolute; bottom: 40px; left: 60px;">
+    <span data-field="academic_year">{{ academic_year }}</span>
+  </div>
+  <div style="position: absolute; bottom: 40px; right: 60px;">
+    <div style="font-size: 12px;">
+      <span data-field="institution_name">{{ institution_name }}</span><br>
+      <span data-field="institution_location">{{ institution_location }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 20px; margin-bottom: 20px;">Undergraduate Statistics by Program</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Degree Program</th>
+        <th style="width: 15%; text-align: center;">Women</th>
+        <th style="width: 15%; text-align: center;">Men</th>
+        <th style="width: 15%; text-align: center;">%</th>
+        <th style="width: 15%; text-align: center;">PROGRAM TOTAL</th>
+        <th style="width: 10%; text-align: center;">Minority</th>
+        <th style="width: 10%; text-align: center;">%</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for program in programs %}
+      <tr>
+        <td><span data-field="program.name">{{ program.name }}</span></td>
+        <td style="text-align: center;"><span data-field="program.women_count">{{ program.women_count }}</span></td>
+        <td style="text-align: center;"><span data-field="program.men_count">{{ program.men_count }}</span></td>
+        <td style="text-align: center;"><span data-field="program.women_percent">{{ program.women_percent }}%</span></td>
+        <td style="text-align: center;"><span data-field="program.total">{{ program.total }}</span></td>
+        <td style="text-align: center;"><span data-field="program.minority_count">{{ program.minority_count }}</span></td>
+        <td style="text-align: center;"><span data-field="program.minority_percent">{{ program.minority_percent }}%</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td style="font-weight: bold;">TOTAL</td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_women">{{ total_women }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_men">{{ total_men }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_percent">{{ total_percent }}%</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_program_total">{{ total_program_total }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_minority">{{ total_minority }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_minority_percent">{{ total_minority_percent }}%</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="text-align: center; font-size: 12px; margin-top: 50px;">
+    Undergraduate Statistics
+  </div>
+  <div style="text-align: right; font-size: 12px; margin-top: 50px;">
+    2015 - 2016
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 20px; margin-bottom: 20px;">Undergraduate Headcount Enrollment by Program</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Degree Program</th>
+        <th style="width: 15%; text-align: center;">2011-2012</th>
+        <th style="width: 15%; text-align: center;">2012-2013</th>
+        <th style="width: 15%; text-align: center;">2013-2014</th>
+        <th style="width: 15%; text-align: center;">2014-2015</th>
+        <th style="width: 15%; text-align: center;">2015-2016</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for year_data in yearly_enrollment %}
+      <tr>
+        <td><span data-field="year_data.program_name">{{ year_data.program_name }}</span></td>
+        <td style="text-align: center;"><span data-field="year_data.count_2011_2012">{{ year_data.count_2011_2012 }}</span></td>
+        <td style="text-align: center;"><span data-field="year_data.count_2012_2013">{{ year_data.count_2012_2013 }}</span></td>
+        <td style="text-align: center;"><span data-field="year_data.count_2013_2014">{{ year_data.count_2013_2014 }}</span></td>
+        <td style="text-align: center;"><span data-field="year_data.count_2014_2015">{{ year_data.count_2014_2015 }}</span></td>
+        <td style="text-align: center;"><span data-field="year_data.count_2015_2016">{{ year_data.count_2015_2016 }}</span></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td style="font-weight: bold;">TOTAL</td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_2011_2012">{{ total_2011_2012 }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_2012_2013">{{ total_2012_2013 }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_2013_2014">{{ total_2013_2014 }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_2014_2015">{{ total_2014_2015 }}</span></td>
+        <td style="text-align: center; font-weight: bold;"><span data-field="total_2015_2016">{{ total_2015_2016 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 16px; margin-bottom: 15px;">Undergraduate Student Headcount Enrollment by Gender</h3>
+    <div style="height: 200px; display: flex; align-items: flex-end; border-left: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-left: 10px;">
+      {% for year in gender_enrollment_years %}
+      <div style="width: 15%; margin-right: 2%;">
+        <div style="height: {{ gender_enrollment_years[loop.index0].total_2015_2016 | float * 100 / 2500 }}%; background-color: #0056b3; margin-bottom: 5px; position: relative;">
+          <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: bold;">{{ gender_enrollment_years[loop.index0].total_2015_2016 }}</span>
+        </div>
+        <div style="font-size: 10px; text-align: center;">{{ gender_enrollment_years[loop.index0].year }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 10px;">
+        <div style="display: flex; align-items: center;"><span style="width: 10px; height: 10px; background-color: #0056b3; margin-right: 5px;"></span>Male</div>
+        <div style="display: flex; align-items: center;"><span style="width: 10px; height: 10px; background-color: #333; margin-right: 5px;"></span>Female</div>
+    </div>
+  </div>
+  <div style="text-align: right; font-size: 12px; margin-top: 50px;">
+    2015 - 2016
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 20px; margin-bottom: 20px;">Undergraduate Student Statistics</h2>
+  <div style="display: flex; justify-content: space-around; margin-bottom: 40px;">
+    <div style="width: 45%;">
+      <h3 style="font-size: 16px; margin-bottom: 15px;">Undergraduate Students by State</h3>
+      <div style="height: 300px; border: 1px solid #ccc; padding: 10px;">
+        <!-- Map visualization placeholder -->
+        <p style="text-align: center; padding-top: 120px;">[Map Visualization]</p>
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <h3 style="font-size: 16px; margin-bottom: 15px;">Undergraduate Students by Residency</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+          <span style="display: inline-block; width: 15px; height: 15px; background-color: #007bff; margin-right: 10px;"></span>
+          Florida Resident: <span data-field="residency_florida_count">{{ residency_florida_count }}</span> (<span data-field="residency_florida_percent">{{ residency_florida_percent }}%</span>)
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: inline-block; width: 15px; height: 15px; background-color: #28a745; margin-right: 10px;"></span>
+          United States (excluding Fla Residents): <span data-field="residency_us_count">{{ residency_us_count }}</span> (<span data-field="residency_us_percent">{{ residency_us_percent }}%</span>)
+        </li>
+        <li style="margin-bottom: 10px;">
+          <span style="display: inline-block; width: 15px; height: 15px; background-color: #6c757d; margin-right: 10px;"></span>
+          International: <span data-field="residency_international_count">{{ residency_international_count }}</span> (<span data-field="residency_international_percent">{{ residency_international_percent }}%</span>)
+        </li>
+        <li style="margin-top: 20px; font-weight: bold;">
+          TOTAL: <span data-field="total_students">{{ total_students }}</span> (<span data-field="total_percent">{{ total_percent }}%</span>)
+        </li>
+      </ul>
+      <div style="margin-top: 30px; font-size: 12px;">
+        <p style="font-size: 10px;">* Students living in Florida residents and nonresidents.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <div style="width: 200px; height: 100px; border: 1px solid #ccc; margin: 0 auto;"></div>
+    <div style="margin-top: 20px;">
+      <span data-field="institution_name">{{ institution_name }}</span><br>
+      <span data-field="institution_location">{{ institution_location }}</span>
+    </div>
+    <div style="margin-top: 50px; font-size: 12px;">
+      <span data-field="address_street">{{ address_street }}</span><br>
+      <span data-field="address_city_state_zip">{{ address_city_state_zip }}</span><br>
+      <span data-field="address_email">{{ address_email }}</span>
+    </div>
+  </div>
+</div>

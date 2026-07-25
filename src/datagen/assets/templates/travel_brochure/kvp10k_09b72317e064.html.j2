@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-image { width: 100%; height: auto; display: block; margin-bottom: 20px; }
+  .section-title { text-align: center; margin-top: 30px; margin-bottom: 15px; }
+  .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .price-table th, .price-table td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+  .price-table th { background-color: #f2f2f2; }
+  .footer-info { margin-top: 50px; text-align: center; }
+  .map-container { display: flex; justify-content: space-between; margin-top: 30px; }
+  .map-item { width: 48%; }
+  .itinerary-day { margin-bottom: 20px; border-left: 3px solid #ccc; padding-left: 15px; }
+  .itinerary-day h3 { margin-top: 0; font-size: 1.1em; }
+  .itinerary-day p { margin-bottom: 5px; font-size: 0.95em; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9em; }
+  .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="date"], .form-group select {
+    width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; font-family: inherit;
+  }
+  .signature-block { margin-top: 40px; display: flex; justify-content: space-between; }
+  .signature-box { width: 45%; border-top: 1px solid black; padding-top: 5px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="placeholder_image.jpg" alt="Header Image" class="header-image">
+    <h1 style="font-size: 2.5em;">Best of Scandinavia</h1>
+    <p>featuring {{ trip_details.countries }}</p>
+    <p>Departure Date: <span data-field="departure_date">{{ trip_details.departure_date }}</span></p>
+  </div>
+  <div style="text-align: center; margin-top: 50px;">
+    <img src="placeholder_logo.png" alt="Logo" style="width: 200px;">
+    <p>CRUISES & TOURS</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Best of Scandinavia</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 48%;">
+      <img src="placeholder_image_1.jpg" alt="Image 1" style="width: 100%; height: auto;">
+    </div>
+    <div style="width: 48%;">
+      <img src="placeholder_image_2.jpg" alt="Image 2" style="width: 100%; height: auto;">
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 48%;">
+      <div class="itinerary-day">
+        <h3>DAY 1 Depart the USA</h3>
+        <p><span data-field="day_1_description">{{ day_1_description }}</span></p>
+      </div>
+      <div class="itinerary-day">
+        <h3>DAY 5 Oslo – Staleheim</h3>
+        <p><span data-field="day_5_description">{{ day_5_description }}</span></p>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="itinerary-day">
+        <h3>DAY 2 Stockholm, Sweden</h3>
+        <p><span data-field="day_2_description">{{ day_2_description }}</span></p>
+      </div>
+      <div class="itinerary-day">
+        <h3>DAY 6 Staleheim – Bergen</h3>
+        <p><span data-field="day_6_description">{{ day_6_description }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 48%;">
+      <div class="itinerary-day">
+        <h3>DAY 3 Stockholm</h3>
+        <p><span data-field="day_3_description">{{ day_3_description }}</span></p>
+      </div>
+      <div class="itinerary-day">
+        <h3>DAY 7 Bergen</h3>
+        <p><span data-field="day_7_description">{{ day_7_description }}</span></p>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <div class="itinerary-day">
+        <h3>DAY 4 Stockholm – Oslo</h3>
+        <p><span data-field="day_4_description">{{ day_4_description }}</span></p>
+      </div>
+      <div class="itinerary-day">
+        <h3>DAY 8 Bergen – Copenhagen</h3>
+        <p><span data-field="day_8_description">{{ day_8_description }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <div class="map-item">
+      <img src="placeholder_map_1.png" alt="Map 1" style="width: 100%; height: auto;">
+      <p style="text-align: center; font-size: 0.9em;">Cruise through the world-famous Sognefjord</p>
+    </div>
+    <div class="map-item">
+      <img src="placeholder_map_2.png" alt="Map 2" style="width: 100%; height: auto;">
+      <p style="text-align: center; font-size: 0.9em;">Tour Highlights</p>
+      <ul style="list-style-type: disc; padding-left: 20px; font-size: 0.9em;">
+        <li><span data-field="highlight_1">{{ highlight_1 }}</span></li>
+        <li><span data-field="highlight_2">{{ highlight_2 }}</span></li>
+        <li><span data-field="highlight_3">{{ highlight_3 }}</span></li>
+        <li><span data-field="highlight_4">{{ highlight_4 }}</span></li>
+        <li><span data-field="highlight_5">{{ highlight_5 }}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 1.8em;">HOTEL ACCOMMODATIONS</h2>
+    <p style="font-size: 0.9em;">Days <span data-field="hotel_days_1">{{ hotel_days_1 }}</span> and <span data-field="hotel_days_2">{{ hotel_days_2 }}</span> - <span data-field="hotel_location_1">{{ hotel_location_1 }}</span>, <span data-field="hotel_location_2">{{ hotel_location_2 }}</span>, <span data-field="hotel_location_3">{{ hotel_location_3 }}</span></p>
+    <p style="font-size: 0.9em;">Days <span data-field="hotel_days_3">{{ hotel_days_3 }}</span> and <span data-field="hotel_days_4">{{ hotel_days_4 }}</span> - <span data-field="hotel_location_4">{{ hotel_location_4 }}</span>, <span data-field="hotel_location_5">{{ hotel_location_5 }}</span>, <span data-field="hotel_location_6">{{ hotel_location_6 }}</span></p>
+    <p style="font-size: 0.9em;">Days <span data-field="hotel_days_5">{{ hotel_days_5 }}</span> and <span data-field="hotel_days_6">{{ hotel_days_6 }}</span> - <span data-field="hotel_location_7">{{ hotel_location_7 }}</span>, <span data-field="hotel_location_8">{{ hotel_location_8 }}</span>, <span data-field="hotel_location_9">{{ hotel_location_9 }}</span></p>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <h2 style="font-size: 1.8em;">BEST OF SCANDINAVIA</h2>
+    <p style="font-size: 1.1em;">2022 Departure</p>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Per Person Twin</th>
+          <th>Single Room Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="price_per_person_twin">{{ price_per_person_twin }}</span></td>
+          <td><span data-field="price_single_room_add">{{ price_single_room_add }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px; padding: 20px; border: 1px solid #ccc;">
+    <p>Includes roundtrip airfare from <span data-field="airfare_origin">{{ airfare_origin }}</span> and inter-country flights between <span data-field="airfare_dest_1">{{ airfare_dest_1 }}</span>, <span data-field="airfare_dest_2">{{ airfare_dest_2 }}</span>, and <span data-field="airfare_dest_3">{{ airfare_dest_3 }}</span>.</p>
+    <p>Travelers Protection Plan (TPP) - <span data-field="tpp_price">{{ tpp_price }}</span> per person optional.</p>
+    <p>Other inclusions include: <span data-field="inclusions_list">{{ inclusions_list }}</span></p>
+    <p>Deposit amount of <span data-field="deposit_amount_1">{{ deposit_amount_1 }}</span> per person, without travel protection, due at time of reservation.</p>
+    <p>Deposit amount of <span data-field="deposit_amount_2">{{ deposit_amount_2 }}</span> per person, including travel protection, due at time of reservation.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 1.2em;">Optional Excursions*</h3>
+      <ul style="list-style-type: disc; padding-left: 20px; font-size: 0.9em;">
+        <li>Royal Canal and Vasa Warship Museum - <span data-field="excursion_price_1">{{ excursion_price_1 }}</span> per person</li>
+        <li>North Zealand - <span data-field="excursion_price_2">{{ excursion_price_2 }}</span> per person</li>
+      </ul>
+      <p style="font-size: 0.8em; margin-top: 10px;">*Note: minimum of 10 travelers required for operation of each excursion</p>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 1.2em;">FOR RESERVATIONS OR INFORMATION CONTACT:</h3>
+      <p>Mayflower Cruises & Tours Group Sales Department</p>
+      <p>800-728-0724</p>
+      <p>UW-Whitewater Contact - Amy Oeding</p>
+      <p>262-472-7033</p>
+      <p>oedinga@uw.edu</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 1.2em;">PAYMENT INFORMATION</h3>
+    <p>Make Checks Payable To: Mayflower Cruises & Tours</p>
+    <p>Mail Deposit To: Mayflower Cruises & Tours</p>
+    <p>650 Warrenville Rd Suite 500</p>
+    <p>Lisle IL 60532</p>
+    <p>Mail Final Payment To: SAME AS ABOVE</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.2em;">YOUR INFORMATION</h3>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+      <div class="form-group">
+        <label>Salutation:</label>
+        <input type="text" value="{{ passenger_info.salutation }}">
+      </div>
+      <div class="form-group">
+        <label>Last:</label>
+        <input type="text" value="{{ passenger_info.last_name }}">
+      </div>
+      <div class="form-group">
+        <label>First:</label>
+        <input type="text" value="{{ passenger_info.first_name }}">
+      </div>
+      <div class="form-group">
+        <label>Suffix:</label>
+        <input type="text" value="{{ passenger_info.suffix }}">
+      </div>
+      <div class="form-group">
+        <label>Middle:</label>
+        <input type="text" value="{{ passenger_info.middle_name }}">
+      </div>
+      <div class="form-group">
+        <label>Nickname:</label>
+        <input type="text" value="{{ passenger_info.nickname }}">
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+      <div class="form-group">
+        <label>Address:</label>
+        <input type="text" value="{{ passenger_info.address }}">
+      </div>
+      <div class="form-group">
+        <label>City:</label>
+        <input type="text" value="{{ passenger_info.city }}">
+      </div>
+      <div class="form-group">
+        <label>State:</label>
+        <input type="text" value="{{ passenger_info.state }}">
+      </div>
+      <div class="form-group">
+        <label>Zip Code:</label>
+        <input type="text" value="{{ passenger_info.zip_code }}">
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+      <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" value="{{ passenger_info.phone }}">
+      </div>
+      <div class="form-group">
+        <label>Email Address:</label>
+        <input type="email" value="{{ passenger_info.email }}">
+      </div>
+      <div class="form-group">
+        <label>Date of Issue:</label>
+        <input type="date" value="{{ passenger_info.date_of_issue }}">
+      </div>
+      <div class="form-group">
+        <label>Date of Expiration:</label>
+        <input type="date" value="{{ passenger_info.date_of_expiration }}">
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+      <div class="form-group">
+        <label>Passport Number:</label>
+        <input type="text" value="{{ passenger_info.passport_number }}">
+      </div>
+      <div class="form-group">
+        <label>Citizenship:</label>
+        <input type="text" value="{{ passenger_info.citizenship }}">
+      </div>
+      <div class="form-group">
+        <label>Date of Birth:</label>
+        <input type="date" value="{{ passenger_info.date_of_birth }}">
+      </div>
+      <div class="form-group">
+        <label>Gender:</label>
+        <select>
+          <option value="Male" {% if passenger_info.gender == 'Male' %}selected{% endif %}>Male</option>
+          <option value="Female" {% if passenger_info.gender == 'Female' %}selected{% endif %}>Female</option>
+        </select>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+      <div class="form-group">
+        <label>Place of Birth:</label>
+        <input type="text" value="{{ passenger_info.place_of_birth }}">
+      </div>
+      <div class="form-group">
+        <label>Relationship:</label>
+        <input type="text" value="{{ passenger_info.relationship }}">
+      </div>
+      <div class="form-group">
+        <label>Emergency Contact:</label>
+        <input type="text" value="{{ passenger_info.emergency_contact }}">
+      </div>
+      <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" value="{{ passenger_info.emergency_phone }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h2 style="font-size: 1.8em;">2021 WORLD HOLIDAYS</h2>
+    <h3 style="font-size: 1.4em;">Travelers Protection Plan</h3>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.2em;">PART A - CANCELLATION FEE WAIVER (CFW)</h3>
+    <p style="font-size: 0.9em;">Should you have to cancel your tour or interrupt your tour en route, we have added a non-refundable Travelers Protection Plan (TPP) in our deposit schedule. If you do not wish to purchase this protection, simply deduct the amount from your deposit. This protection is available for all tours and is subject to the terms and conditions of the TPP.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.2em;">Exclusions</h3>
+    <p style="font-size: 0.9em;">Mayflower Cruises & Tours reserves the right to alter its refund and cancellation policy when a substantial amount of cancellation fees are incurred due to circumstances beyond our control. This includes, but is not limited to, acts of God, natural or man-made disaster, fire, government action, civil disorder, war, hostilities between nations, or unavailability of transportation though no fault of Mayflower Cruises & Tours.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.2em;">PART B - TRAVEL INSURANCE BENEFITS</h3>
+    <p style="font-size: 0.9em;">This part of the Travelers Protection Plan provides the following travel insurance benefits. These Part B Benefits are offered and administered by Trip Mate Insurance Agency, Inc., are underwritten by the insurance carriers listed below and are subject to the terms, conditions and exclusions of the policy.</p>
+    <ul style="list-style-type: disc; padding-left: 20px; font-size: 0.9em;">
+      <li><span data-field="benefit_1">{{ benefit_1 }}</span></li>
+      <li><span data-field="benefit_2">{{ benefit_2 }}</span></li>
+      <li><span data-field="benefit_3">{{ benefit_3 }}</span></li>
+      <li><span data-field="benefit_4">{{ benefit_4 }}</span></li>
+      <li><span data-field="benefit_5">{{ benefit_5 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.2em;">Important!</h3>
+    <p style="font-size: 0.9em;">The Travelers Protection Plan must be purchased by the time of initial payment and may not be purchased at a later date.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h2 style="font-size: 1.8em;">Agreement for Assumption of Risk, Indemnification, Release, and Consent for Emergency Treatment</h2>
+    <p>University of Wisconsin - Whitewater Alumni Association</p>
+    <p>Best of Scandinavia Tour</p>
+    <p>July 6-15, 2022</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>I, <span data-field="participant_name">{{ participant_name }}</span>, agree to participate voluntarily in the University of Wisconsin - Whitewater Foundation, Inc. and Alumni Association activities and related trips.</p>
+    <p>I UNDERSTAND THAT I AM BEING ASKED TO READ EACH OF THE FOLLOWING PARAGRAPHS CAREFULLY. I UNDERSTAND THAT IF I WISH TO DISCUSS ANY OF THE TERMS CONTAINED IN THIS AGREEMENT, I MAY CONTACT GREC RUTZEN, UW-WHITTAWATER VICE CHANCELLOR OF UNIVERSITY ADVANCEMENT, AT (262) 472-3182.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="font-size: 1.1em;">Assumption of Risks:</h3>
+    <p>I understand that not all risks can be foreseen and there are some risks which are unpredictable. I understand that certain inherent risks that cannot be eliminated regardless of the care taken to avoid injuries. I am aware of the risks of participation, which include, but are not limited to, the possibility of physical injury, fatigue, bruises, contusions, broken bones, concussion, paralysis, and even death. I understand that the University and the Foundation have advised me to seek the advice of my physician before participating in any strenuous physical activity. I understand that I have been advised to have health and accident insurance in effect and that no such coverage is provided for me by the University or the Foundation. I know that I am voluntarily participating in this activity and I knowingly assume all such risks.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div class="signature-box">
+        <p>Signature of Parent or Guardian (If Participant is under 18*):</p>
+        <p>Date:</p>
+      </div>
+      <div class="signature-box">
+        <p>Signature of Participant (If Participant is 18+):</p>
+        <p>Date:</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 1.1em;">Hold Harmless, Indemnity and Release:</h3>
+    <p>In consideration of my participation in these activities, I, for myself, spouse, heirs, personal representatives, estate or assigns, agree to defend, hold harmless, indemnify and release the University of Wisconsin-Whitewater and the UW-Whitewater Foundation, Inc., and their officers, directors, employees, agents, volunteers, and all others who are involved, from and against any and all claims, demands, actions, or causes of action of any sort on account of damage to personal property, or personal injury, or death, which may result from my participation in the above-listed program and activities. I hereby assert that my participation is voluntary and that I knowingly assume all such risks.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div class="signature-box">
+        <p>Signature of Parent or Guardian (If Participant is under 18*):</p>
+        <p>Date:</p>
+      </div>
+      <div class="signature-box">
+        <p>Signature of Participant (If Participant is 18+):</p>
+        <p>Date:</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 1.1em;">Consent for Emergency Treatment:</h3>
+    <p>I authorize the University of Wisconsin-Whitewater and/or the UW-Whitewater Foundation, Inc. and its designated representatives to consent, on my behalf, to any emergency medical/hospital care or treatment to be rendered upon the advice of any licensed physician. I agree to be responsible for all necessary charges incurred by any hospitalization or treatment rendered pursuant to this authorization.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div class="signature-box">
+        <p>Signature of Parent or Guardian (If Participant is under 18*):</p>
+        <p>Date:</p>
+      </div>
+      <div class="signature-box">
+        <p>Signature of Participant (If Participant is 18+):</p>
+        <p>Date:</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

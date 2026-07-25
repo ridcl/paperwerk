@@ -1,0 +1,143 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .full-width-line {
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <p>Student Life and Services</p>
+      <p>Building <span data-field="building_number">{{ building_number }}</span>, Room <span data-field="room_number">{{ room_number }}</span></p>
+      <p><span data-field="street_address">{{ street_address }}</span></p>
+      <p><span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span> <span data-field="zip_code">{{ zip_code }}</span></p>
+      <p>Tel: (<span data-field="phone_area_code">{{ phone_area_code }}</span>) <span data-field="phone_number">{{ phone_number }}</span></p>
+      <p>Fax: (<span data-field="fax_area_code">{{ fax_area_code }}</span>) <span data-field="fax_number">{{ fax_number }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="University Logo" style="max-width: 150px;">
+      <p style="font-size: 12px; margin-top: 5px;">UNIVERSITY OF</p>
+      <p style="font-size: 12px;">DISTRICT OF</p>
+      <p style="font-size: 12px;">COLUMBIA</p>
+      <p style="font-size: 12px;">1851</p>
+    </div>
+  </div>
+
+  <table style="margin-top: 30px;">
+    <tr>
+      <td style="width: 50%;">
+        <label> -For Office Use Only - Actions Taken:</label>
+        <br>
+        <input type="checkbox"> Additional Research Conducted
+      </td>
+      <td style="width: 50%;">
+        <input type="checkbox"> Telephoned Student
+        <br>
+        <input type="checkbox"> Sent Written Correspondence
+        <br>
+        <input type="checkbox"> Held Meeting
+        <br>
+        <input type="checkbox"> Referred Student
+      </td>
+    </tr>
+  </table>
+
+  <h2 style="margin-top: 40px; font-weight: bold;">Student Problem / Complaint / Concern Form</h2>
+
+  <div style="margin-top: 20px;">
+    <div class="form-row">
+      <div style="width: 30%;">Date:</div>
+      <div style="width: 70%;"><span data-field="date">{{ date }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Name:</div>
+      <div style="width: 70%;"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Mailing Address:</div>
+      <div style="width: 70%;"><span data-field="mailing_address">{{ mailing_address }}</span></div>
+    </div>
+  </div>
+
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 25%;">Street Address</td>
+      <td style="width: 25%;">City</td>
+      <td style="width: 25%;">State</td>
+      <td style="width: 25%;">Zip Code</td>
+    </tr>
+    <tr>
+      <td><span data-field="address_line_1">{{ address_line_1 }}</span></td>
+      <td><span data-field="city_detail">{{ city_detail }}</span></td>
+      <td><span data-field="state_detail">{{ state_detail }}</span></td>
+      <td><span data-field="zip_code_detail">{{ zip_code_detail }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <div class="form-row">
+      <div style="width: 30%;">Telephone Number: (</div>
+      <div style="width: 70%;"><span data-field="phone_number_detail">{{ phone_number_detail }}</span>)</div>
+    </div>
+    <div class="form-row">
+      <div style="width: 30%;">Email Address:</div>
+      <div style="width: 70%;"><span data-field="email_address">{{ email_address }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    Check one of the following:
+    <span data-field="check_problem">{{ check_problem }}</span> Problem
+    <span data-field="check_complaint">{{ check_complaint }}</span> Complaint
+    <span data-field="check_concern">{{ check_concern }}</span> Concern
+  </div>
+
+  <div style="margin-top: 20px;">
+    Please describe or explain below:
+    <div class="full-width-line" style="height: 150px; margin-top: 10px;" data-field="concern">{{ concern }}</div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    Documentation attached:
+    <span data-field="doc_yes">{{ doc_yes }}</span> yes
+    <span data-field="doc_no">{{ doc_no }}</span> no
+  </div>
+
+  <div style="margin-top: 40px;">
+    Signature:
+    <div class="full-width-line" style="height: 30px; margin-top: 10px;" data-field="no">{{ no }}</div>
+  </div>
+</div>

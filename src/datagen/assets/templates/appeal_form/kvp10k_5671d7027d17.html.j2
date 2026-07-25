@@ -1,0 +1,175 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for document feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  h1, h2, h3 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+</style>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <p>University of Central Missouri</p>
+      <p>Office of Student Financial Services</p>
+      <p>P.O. Box 800</p>
+      <p>Warrensburg, MO 64093-5178</p>
+      <p>Phone: {{ contact_phone }} | Fax: {{ contact_fax }}</p>
+      <p>On-line: <a href="{{ contact_website }}">{{ contact_website }}</a></p>
+      <p>Webpage: <a href="{{ webpage_url }}">{{ webpage_url }}</a></p>
+    </div>
+    <div style="text-align: right;">
+      <h1 style="font-size: 24pt; margin: 0;">Appeal</h1>
+      <h2 style="font-size: 18pt; margin: 5px 0;">Cost-of-Attendance Increase</h2>
+      <div style="margin-top: 50px;">
+        <p>UCM Office use only</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div>
+      <label for="student_name">Student's Name (please print):</label>
+      <div style="border-bottom: 1px solid #000; display: inline-block; min-width: 300px;">
+        <span data-field="full_name">{{ full_name }}</span>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div>
+        <label for="ucm_id">UCM ID Number</label>
+        <div style="border-bottom: 1px solid #000; display: inline-block; min-width: 150px;">
+          <span data-field="ucm_id">{{ ucm_id }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <p>700</p>
+    <div style="display: flex; gap: 5px; margin-top: 5px;">
+      <div style="width: 15%; height: 20px; border-bottom: 1px solid #000;" data-field="ucm_id_number">{{ ucm_id_number }}</div>
+      <div style="width: 15%; height: 20px; border-bottom: 1px solid #000;" data-field="field_1">{{ field_1 }}</div>
+      <div style="width: 15%; height: 20px; border-bottom: 1px solid #000;" data-field="field_2">{{ field_2 }}</div>
+      <div style="width: 15%; height: 20px; border-bottom: 1px solid #000;" data-field="field_3">{{ field_3 }}</div>
+      <div style="width: 15%; height: 20px; border-bottom: 1px solid #000;" data-field="field_4">{{ field_4 }}</div>
+    </div>
+    <div style="margin-top: 5px;">
+      <span data-field="expense_code">{{ expense_code }}</span> EXPEN 20/21
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Enrollment Period (check only one):</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="period_9_month" name="period" value="9_month">
+      <label for="period_9_month">2020/21 9-Month School Year</label>
+      <input type="checkbox" id="period_fall" name="period" value="fall">
+      <label for="period_fall">2020 Fall Semester</label>
+      <input type="checkbox" id="period_spring" name="period" value="spring">
+      <label for="period_spring">2021 Spring Semester</label>
+      <input type="checkbox" id="period_summer" name="period" value="summer">
+      <label for="period_summer">2021 Summer Session</label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>The following circumstance(s) apply to my situation (mark one or more):</p>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="higher_than_normal" name="circumstance" value="higher_than_normal">
+      <label for="higher_than_normal">Higher-than-normal tuition and fee charges. Explain below. You must submit photocopies of documentation (receipts) verifying your higher-than-normal costs.</label>
+    </div>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="transportation" name="circumstance" value="transportation">
+      <label for="transportation">Transportation and travel. Explain below. You must provide documentation.</label>
+    </div>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="childcare" name="circumstance" value="childcare">
+      <label for="childcare">Childcare. You must provide documentation of expenses and child(ren) names and ages from the daycare provider with his/her signature.</label>
+    </div>
+    <div style="margin-top: 10px;">
+      <input type="checkbox" id="other_assistance" name="circumstance" value="other_assistance">
+      <label for="other_assistance">Are you or do you anticipate receiving outside assistance (such as DFS, Head Start, or Voc Rehab) for childcare?</label>
+      <div style="margin-left: 20px; margin-top: 5px;">
+        <input type="radio" name="assistance_yes_no" value="no">
+        <label>No</label>
+        <input type="radio" name="assistance_yes_no" value="yes">
+        <label>Yes, I expect to receive $<span data-field="expected_amount">{{ expected_amount }}</span> from <span data-field="assistance_agency">{{ assistance_agency }}</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Explanation of Circumstances. Be sure to include the amount of additional assistance you wish to be offered.</p>
+    <div style="border: 1px solid #000; height: 150px; padding: 10px; margin-top: 10px;">
+      <p style="height: 100%; overflow: auto;">
+        <span data-field="explanation_text">{{ explanation_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; text-align: center;">
+    <p>(Continue on next page or attach a signed statement to this form.)</p>
+    <p>Please proceed to Page 2 ...</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <p>Page 2 – Appeal: Cost-of-Attendance Increase</p>
+    </div>
+    <div style="text-align: right;">
+      <div>
+        <label for="student_last_name">Student's Last Name</label>
+        <div style="border-bottom: 1px solid #000; display: inline-block; min-width: 300px;">
+          <span data-field="last_name">{{ last_name }}</span>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <label for="ucm_id_page2">UCM # 700</label>
+        <div style="border-bottom: 1px solid #000; display: inline-block; min-width: 150px;">
+          <span data-field="ucm_id_page2">{{ ucm_id_page2 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Explanation of Circumstances (continued)</p>
+    <div style="border: 1px solid #000; height: 300px; padding: 10px; margin-top: 10px;">
+      <p style="height: 100%; overflow: auto;">
+        <span data-field="continued_explanation_text">{{ continued_explanation_text }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <p>(Attach additional page(s) and other supporting documentation, if appropriate).</p>
+  </div>
+
+  <div class="form-section" style="margin-top: 50px;">
+    <p>I certify that the information I've provided is <span style="font-weight: bold;">true and accurate</span> and that I've not in any way misrepresented my financial circumstances. I understand that any changes to my financial aid eligibility and/or award offers will be made at the discretion of the UCM Office of Student Financial Services, in accordance with federal and UCM financial aid regulations and guidelines, and the availability of sufficient funds.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div>
+      <p>Student Signature</p>
+      <div style="border-bottom: 1px solid #000; width: 200px;" data-field="student_signature">{{ student_signature }}</div>
+    </div>
+    <div>
+      <p>Date</p>
+      <div style="border-bottom: 1px solid #000; width: 200px;" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p>Complete and submit this document to the UCM Office of Student Financial Services in person (1100 Ward Edwards Bldg.) or by mail (Student Financial Services, P.O. Box 800, Warrensburg MO 64093-5178), or by fax (660-543-8080). You'll be notified within ten business days.</p>
+  </div>
+</div>

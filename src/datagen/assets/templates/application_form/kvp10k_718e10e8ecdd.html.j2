@@ -1,0 +1,140 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+  .form-group input[type="text"], .form-group textarea { width: 100%; padding: 8px; border: 1px solid #ccc; box-sizing: border-box; font-family: inherit; }
+  .two-column { display: flex; justify-content: space-between; }
+  .two-column > div { width: 48%; }
+  .checkbox-list label { display: block; margin-bottom: 5px; font-weight: normal; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1 style="font-size: 24pt; margin: 0;">HUMBOLDT STATE UNIVERSITY</h1>
+    <p style="font-size: 12pt; margin-top: 5px;">Department of Biological Sciences</p>
+  </div>
+  <h2 style="text-align: center; margin-bottom: 30px;">The Moonstone Crossing Cancer Research Assistantship</h2>
+
+  <div class="two-column">
+    <div>
+      <div class="form-group">
+        <label>Applicant Name</label>
+        <input type="text" value="{{ applicant_name }}">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" value="{{ applicant_email }}">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="text" value="{{ applicant_phone }}">
+      </div>
+      <div class="form-group">
+        <label>Major</label>
+        <input type="text" value="{{ applicant_major }}">
+      </div>
+      <div class="form-group">
+        <label>Graduation Year</label>
+        <input type="text" value="{{ applicant_graduation_year }}">
+        <span style="margin-left: 10px;">HSU ID: <input type="text" value="{{ applicant_hsu_id }}"></span>
+      </div>
+      <div class="form-group">
+        <label>Overall G.P.A.</label>
+        <input type="text" value="{{ applicant_overall_gpa }}">
+      </div>
+      <div class="form-group">
+        <label>Science G.P.A.</label>
+        <input type="text" value="{{ applicant_science_gpa }}">
+      </div>
+
+      <h3 style="margin-top: 30px;">Academic Reference</h3>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" value="{{ academic_reference.name }}">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" value="{{ academic_reference.email }}">
+      </div>
+
+      <h3 style="margin-top: 30px;">Professional Reference</h3>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" value="{{ professional_reference.name }}">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" value="{{ professional_reference.email }}">
+      </div>
+    </div>
+
+    <div>
+      <img src="placeholder_moonstone.png" alt="Moonstone Crossing Logo" style="width: 250px; height: auto; float: right; margin-left: 20px;">
+      <div style="clear: both;"></div>
+
+      <h3 style="margin-top: 30px;">Coursework Completed</h3>
+      <p style="font-size: 10pt; margin-bottom: 10px;">Which of the following courses have you completed (at HSU or equivalent at other institution)</p>
+      <div class="checkbox-list">
+        <label><input type="checkbox"> BIOL105 Introductory Biology</label>
+        <label><input type="checkbox"> BIOL340 Genetics</label>
+        <label><input type="checkbox"> BIOL440 Genetics Laboratory</label>
+        <label><input type="checkbox"> BIOL410 Cell Biology</label>
+        <label><input type="checkbox"> BIOL412 Bacteriology</label>
+        <label><input type="checkbox"> BIOL499 Independent Research</label>
+        <label><input type="checkbox"> CHEM109 General Chemistry Semester I</label>
+        <label><input type="checkbox"> CHEM110 General Chemistry II</label>
+        <label><input type="checkbox"> CHEM321 or 322 Organic Chemistry</label>
+        <label><input type="checkbox"> CHEM432 or CHEM 438 Biochemistry</label>
+        <label><input type="checkbox"> ZOOL110 Introduction to Zoology</label>
+        <label><input type="checkbox"> ZOOL310 Animal Physiology</label>
+        <label><input type="checkbox"> ZOOL476 Principles of Animal Development</label>
+        <label><input type="checkbox"> ZOOL312 Human Physiology</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">The Moonstone Crossing Cancer Research Assistantship</div>
+
+  <h2 style="margin-top: 20px;">Essay Section</h2>
+  <p style="font-size: 10pt;">Please answer each question in 300 words or less:</p>
+
+  <div style="margin-top: 20px;">
+    <p style="font-weight: bold;">1. How have the experiences in your life motivated you to pursue a career in stem cell related cancer research? If you have overcome any specific challenges or obstacles to be in college, please highlight them here.</p>
+    <div style="height: 200px; border: 1px solid #000; margin-top: 10px; padding: 10px; font-family: inherit;">
+      <textarea style="width: 100%; height: 100%; border: none; resize: none; font-family: inherit;">{{ essay_response_1 }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">The Moonstone Crossing Cancer Research Assistantship</div>
+
+  <div style="margin-top: 20px;">
+    <p style="font-weight: bold;">2. Why is doing stem cell related cancer research important to you and how do you see yourself in that role?</p>
+    <div style="height: 200px; border: 1px solid #000; margin-top: 10px; padding: 10px; font-family: inherit;">
+      <textarea style="width: 100%; height: 100%; border: none; resize: none; font-family: inherit;">{{ essay_response_2 }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">The Moonstone Crossing Cancer Research Assistantship</div>
+
+  <div style="margin-top: 20px;">
+    <p style="font-weight: bold;">3. How will this summer research position better prepare you for your future career and what do you hope to learn/achieve with this assistance?</p>
+    <div style="height: 200px; border: 1px solid #000; margin-top: 10px; padding: 10px; font-family: inherit;">
+      <textarea style="width: 100%; height: 100%; border: none; resize: none; font-family: inherit;">{{ essay_response_3 }}</textarea>
+    </div>
+  </div>
+</div>

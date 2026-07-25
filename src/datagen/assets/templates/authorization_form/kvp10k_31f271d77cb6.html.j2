@@ -1,0 +1,129 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Defaulting to serif for document feel */
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1 { text-align: center; font-size: 18pt; margin-bottom: 5px; }
+  h2 { text-align: center; font-size: 14pt; margin-top: 0; margin-bottom: 20px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 11pt; }
+  .form-row div { width: 48%; }
+  .line-input { border-bottom: 1px solid black; display: inline-block; width: 70%; }
+  .section-content { margin-top: 20px; font-size: 11pt; line-height: 1.5; }
+  .signature-block { margin-top: 60px; display: flex; justify-content: space-between; font-size: 10pt; }
+  .signature-line { border-top: 1px solid black; width: 40%; margin-top: 5px; }
+</style>
+
+<div class="page">
+  <h1>Eastern Mennonite University Health Services</h1>
+  <h2>Authorization for Use or Disclosure of Health Information</h2>
+
+  <div class="form-row">
+    <div>
+      Name (please print): <span class="line-input">{{ full_name }}</span>
+    </div>
+    <div>
+      Date of Birth: <span class="line-input">{{ date_of_birth }}</span>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <p>I hereby authorize use or disclosure of my protected health information as described below by:</p>
+  </div>
+
+  <div class="form-row" style="margin-top: 30px;">
+    <div>
+      Name: <span class="line-input">{{ name }}</span>
+    </div>
+    <div>
+      Address: <span class="line-input">{{ address }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      Phone: <span class="line-input">{{ phone }}</span>
+    </div>
+    <div>
+      Fax: <span class="line-input">{{ fax }}</span>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <p>1. The following person or facility may receive disclosure of protected health information about me:</p>
+    <p>
+      <span data-field="facility.name">{{ facility.name }}</span><br>
+      <span data-field="facility.address_line1">{{ facility.address_line1 }}</span><br>
+      <span data-field="facility.address_line2">{{ facility.address_line2 }}</span><br>
+      Phone: <span data-field="facility.phone">{{ facility.phone }}</span><br>
+      Fax: <span data-field="facility.fax">{{ facility.fax }}</span>
+    </p>
+  </div>
+
+  <div class="section-content">
+    <p>2. The specific information that should be disclosed:</p>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <tr>
+        <td style="width: 30%; padding: 5px;">Lab</td>
+        <td style="width: 30%; padding: 5px;">Office Notes</td>
+        <td style="width: 30%; padding: 5px;">X-ray</td>
+        <td style="width: 10%; padding: 5px;">Immunizations</td>
+      </tr>
+    </table>
+    <p style="margin-top: 15px;">Other: (please specify) <span class="line-input">{{ other_disclosure_details }}</span></p>
+  </div>
+
+  <div class="section-content">
+    <p>Dates: from <span class="line-input">{{ date_from }}</span> to <span class="line-input">{{ date_to }}</span></p>
+  </div>
+
+  <div class="section-content">
+    <p>3. I understand that the information used or disclosed may be subject to redisclosure by the person or facility receiving it, and would then no longer be protected by federal privacy regulations.</p>
+  </div>
+
+  <div class="section-content">
+    <p>4. I may revoke this authorization by notifying EMU Health Services in writing. However, I understand that any action already taken in reliance on this authorization cannot be reversed, and my revocation will not affect those actions.</p>
+  </div>
+
+  <div class="section-content">
+    <p>5. This authorization expires ONE YEAR from the date of the signature, OR upon occurrence of the following event that relates to me or to the purpose of the intended use or disclosure of information about me:</p>
+    <p style="border-bottom: 1px solid black; margin-bottom: 20px;">
+      <span class="line-input">{{ expiration_event_details }}</span>
+    </p>
+  </div>
+
+  <div class="section-content" style="text-align: center; margin-top: 40px;">
+    <p style="font-weight: bold;">THIS FORM MUST BE FULLY COMPLETED BEFORE SIGNING.</p>
+  </div>
+
+  <div class="signature-block">
+    <div>
+      Signature of Individual<br>
+      <span class="signature-line"></span>
+    </div>
+    <div>
+      Date of Signature<br>
+      <span class="signature-line"></span>
+    </div>
+  </div>
+
+  <div class="signature-block" style="margin-top: 40px;">
+    <div>
+      Signature of Guardian or Personal Representative<br>
+      <span class="signature-line"></span>
+    </div>
+    <div>
+      Description of authority to act for the individual<br>
+      <span class="signature-line"></span>
+    </div>
+  </div>
+
+  <div style="text-align: right; font-size: 9pt; margin-top: 50px;">
+    Last printed <span data-field="last_printed_date">{{ last_printed_date }}</span>
+  </div>
+</div>

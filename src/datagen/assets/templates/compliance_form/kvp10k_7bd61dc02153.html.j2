@@ -1,0 +1,149 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  .logo-area { }
+  .office-info { text-align: right; }
+  .form-section { margin-bottom: 20px; }
+  .form-row { display: flex; margin-bottom: 15px; align-items: flex-start; }
+  .form-row > div { flex: 1; }
+  .label { font-weight: normal; }
+  .input-line { border-bottom: 1px solid #000; margin-top: 5px; }
+</style>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <!-- Placeholder for FAU Logo -->
+      <img src="" alt="FAU Logo" style="height: 100px;">
+      <div style="font-size: 18pt; font-weight: bold;">FLORIDA ATLANTIC UNIVERSITY</div>
+    </div>
+    <div class="office-info">
+      <div style="font-weight: bold;">OFFICE OF THE CONTROLLER</div>
+      <div>Cash Management</div>
+      <div>Administration Bldg. Room 290</div>
+      <div>tel: {{ contact_phone }}</div>
+      <div>fax: {{ contact_fax }}</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h2 style="text-align: center;">IAT (International ACH Transactions) COMPLIANCE FORM</h2>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p>Any vendor, employee or student receiving ACH/direct deposit payments from Florida Atlantic University and then forwarding those funds to a bank in another country, must complete this form.</p>
+    <p><strong>Instructions:</strong> Complete lines 2 through 10, and return to: <span data-field="return_department">{{ return_department }}</span>; Administration Bldg (10 Room 290 of fax to <span data-field="return_fax">{{ return_fax }}</span>)</p>
+  </div>
+
+  <form>
+    <div class="form-section">
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">1 Name of originator of Payment</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ originator_name }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">2 Beneficiary Name (your name or company name)</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ beneficiary_name }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">3 Beneficiary Address</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ beneficiary_address }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">4 Beneficiary Bank</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ beneficiary_bank }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">5 Employee ID, Student ID, vendor ID (Z number)</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ identifier_number }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">6 Type of payment from FAU (for example: vendor payment, student refund, payroll)</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ payment_type }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">7 Country to which the funds are transferred:</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ transfer_country }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">8 Percentage of payment to be transferred to another country (100% or specify if a lesser %)</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ transfer_percentage }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">9 Method of transferring funds out of U.S.</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">
+            <span data-field="transfer_method_wire">{{ transfer_method_wire }}</span>
+            <span data-field="transfer_method_check">{{ transfer_method_check }}</span>
+            <span data-field="transfer_method_electronic">{{ transfer_method_electronic }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div style="width: 30%;">
+          <div class="label">10 Signature:</div>
+        </div>
+        <div style="width: 70%;">
+          <div class="input-line">{{ signature_line }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+      <button style="padding: 10px 20px; border: 1px solid #000; background-color: #f0f0f0;">Reset Form</button>
+    </div>
+  </form>
+</div>

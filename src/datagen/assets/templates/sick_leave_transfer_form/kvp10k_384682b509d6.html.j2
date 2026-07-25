@@ -1,0 +1,69 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 0.5em; }
+  .section-header { font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 20px; margin-bottom: 15px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 30px; margin-bottom: 5px; }
+  .address-block { text-align: center; font-size: 0.9em; }
+</style>
+
+<div class="page">
+  <div class="address-block">
+    <span data-field="organization.name">{{ organization.name }}</span><br>
+    <span data-field="organization.address_line_1">{{ organization.address_line_1 }}</span>
+  </div>
+
+  <h1>SICK LEAVE TRANSFER FORM</h1>
+
+  <div class="section-header">1. STATEMENT BY TRANSFERRING EMPLOYEE</div>
+  <p>I have accepted employment with the <span data-field="organization.name">{{ organization.name }}</span>. I hereby request that you certify to me that you certify to the <span data-field="organization.name">{{ organization.name }}</span> my accumulated leave of absence for illness or injury, to which I am entitled to under Education Code <span data-field="code.number">{{ code.number }}</span> (Faculty/Administrators), or Education Code <span data-field="code.number">{{ code.number }}</span> (Classified).</p>
+
+  <p>This is to certify that I, <span data-field="full_name">{{ full_name }}</span>, was employed by <span data-field="employer.name">{{ employer.name }}</span>.</p>
+
+  <p>FORMER DISTRICT:</p>
+  <div style="margin-bottom: 20px;">
+    <p>FHDA PART-TIME TO FULL-TIME (16.22.3)*</p>
+    <div class="signature-line" style="width: 50%;" data-field="fhda_part_time_to_full_time">{{ fhda_part_time_to_full_time }}</div>
+    <p>EMPLOYEE SIGNATURE:</p>
+    <div class="signature-line" data-field="employee_signature">{{ employee_signature }}</div>
+    <p>DATE:</p>
+    <div class="signature-line" data-field="date">{{ date }}</div>
+    <p>EMPLOYEE CWID:</p>
+    <div class="signature-line" data-field="employee_cwid">{{ employee_cwid }}</div>
+  </div>
+
+  <div class="section-header">2. RESPONSE BY FORMER DISTRICT</div>
+  <p>This is to certify that the above-named was employed by:</p>
+
+  <div style="margin-top: 20px;">
+    <p>to <span data-field="district.name">{{ district.name }}</span></p>
+    <p>Number of Unused Basic Sick Leave Hours: <span data-field="leave_hours.basic">{{ leave_hours.basic }}</span></p>
+    <p>Number of Unused Sick Leave Days: <span data-field="leave_days.sick">{{ leave_days.sick }}</span></p>
+    <p>Unused*Excess Sick Leave Hours to be transferred: <span data-field="leave_hours.excess">{{ leave_hours.excess }}</span></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Name of certifying official (print): <span data-field="official.name">{{ official.name }}</span></p>
+    <p>Title: <span data-field="official.title">{{ official.title }}</span></p>
+    <p>Signature: <div class="signature-line" data-field="title">{{ title }}</div></p>
+    <p>Date: <span data-field="official.date">{{ official.date }}</span></p>
+    <p>Email: <span data-field="official.email">{{ official.email }}</span></p>
+    <p>Phone: <span data-field="official.phone">{{ official.phone }}</span></p>
+  </div>
+
+  <div class="section-header">3. RETURN THIS FORM TO:</div>
+  <div class="address-block" style="margin-top: 10px;">
+    <span data-field="return_address.organization">{{ return_address.organization }}</span><br>
+    <span data-field="return_address.street">{{ return_address.street }}</span><br>
+    <span data-field="return_address.phone">{{ return_address.phone }}</span>
+  </div>
+  <p style="text-align: right; font-size: 0.8em; margin-top: 40px;">Updated: <span data-field="document_date">{{ document_date }}</span> orig:<span data-field="document_version">{{ document_version }}</span></p>
+</div>

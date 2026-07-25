@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ClinCard Quick Reference Guide</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        .logo-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .logo-greenphire { font-size: 24px; font-weight: bold; }
+        .clincard-logo { font-size: 48px; font-weight: bold; }
+        .powered-by { font-size: 16px; color: #555; }
+        .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+        .toc-list { list-style: none; padding-left: 0; }
+        .toc-list li { margin-bottom: 10px; }
+        .toc-list a { text-decoration: none; color: #333; }
+        .section-header { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .step-list { margin-bottom: 20px; }
+        .step-list li { margin-bottom: 10px; line-height: 1.5; }
+        .code-block { background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: "DejaVu Sans", "Liberation Sans", monospace; }
+        .table-container { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input[type="text"], .form-group input[type="password"], .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+        .button-group button { padding: 10px 20px; margin-right: 10px; cursor: pointer; }
+        .footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 60px; font-size: 12px; color: #777; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="logo-greenphire">greenphire</div>
+    </div>
+    <div style="text-align: center; margin-top: 100px;">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+        <h1 style="margin-top: 30px;">ClinCard Quick Reference Guide</h1>
+        <div class="divider"></div>
+        <p>Version {{ version }}</p>
+        <p>Updated: {{ last_updated }}</p>
+    </div>
+
+    <h2 style="margin-top: 50px;">Table of Contents</h2>
+    <ul class="toc-list">
+        <li><a href="#login">Login to ClinCard</a></li>
+        <li><a href="#register">Register a Subject</a></li>
+        <li><a href="#subject-info">Subject Information</a></li>
+        <li><a href="#lookup">Look Up a Previously Registered Subject</a></li>
+        <li><a href="#assign">Assign a ClinCard</a></li>
+        <li><a href="#add-study">Add a New Study to an Existing Subject</a></li>
+        <li><a href="#request-assistance">Request Assistance</a></li>
+    </ul>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>1</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="login" class="section-header">Login to ClinCard</h2>
+    <div class="step-list">
+        <li>Login to <a href="{{ login_url }}">www.clincard.com</a>.</li>
+        <li>Enter your username and password. *Your login credentials are case sensitive.</li>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 300px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <div style="font-size: 30px;">ClinCard</div>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username*</label>
+                    <input type="text" id="username" value="{{ username_placeholder }}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" value="{{ password_placeholder }}">
+                </div>
+                <div class="button-group" style="text-align: center; margin-top: 20px;">
+                    <button style="background-color: #4CAF50; color: white;">LOGIN</button>
+                    <label style="margin-left: 15px;"><input type="checkbox"> Remember Username</label>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="{{ forgot_password_link }}">Forgot your username/password?</a>
+                    <a href="{{ cardholder_help_link }}">Cardholder? Click Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-list">
+        <li>If you have difficulty logging in, click <a href="{{ forgot_password_link }}">Forgot your username/password?</a>. Enter your email address and click <a href="{{ recover_link }}">Recover</a>.</li>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>This will instantly send you an email with a link that allows you to reset your password.</li>
+            <li>You can also call our site support team:
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Local United States/Canada: {{ local_phone }}</li>
+                    <li>United States Toll Free Number: {{ toll_free_phone }}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 300px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <div style="font-size: 30px;">ClinCard</div>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div style="text-align: center; margin-bottom: 15px;">Password Recovery</div>
+                    <div style="text-align: center; margin-bottom: 20px; font-size: 12px;">To begin the process of recovering your password, please enter your email below.</div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="text" id="email" value="{{ email_placeholder }}">
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <input type="checkbox" id="captcha_check">
+                            <label for="captcha_check">Protected by reCAPTCHA</label>
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 10px;">
+                            <button style="background-color: #4CAF50; color: white;">RECOVER</button>
+                            <button style="background-color: #ccc;">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>2</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="register" class="section-header">Register a Subject</h2>
+    <div class="step-list">
+        <li>Login to <a href="{{ login_url }}">www.clincard.com</a>.</li>
+        <li>Click the <span data-field="register_subject_tab">{{ register_subject_tab }}</span> tab.</li>
+        <li>Select the appropriate Study from the drop-down menu.</li>
+        <li>Enter the information into the form. Fields denoted with a red asterisk (*) are required.</li>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 600px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <div style="font-size: 30px;">Subject Registration</div>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <button style="background-color: #ddd;">Study Status</button>
+                        <button style="background-color: #ddd;">Subject ID*</button>
+                        <button style="background-color: #ddd;">Study*</button>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div class="form-group">
+                                <label for="first_name">Name</label>
+                                <input type="text" id="first_name" value="{{ first_name_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="middle_name">Middle</label>
+                                <input type="text" id="middle_name" value="{{ middle_name_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name*</label>
+                                <input type="text" id="last_name" value="{{ last_name_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn">Social Security Number</label>
+                                <input type="text" id="ssn" value="{{ ssn_placeholder }}">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="country">Address</label>
+                                <select id="country">
+                                    <option value="{{ country_option_1 }}">{{ country_option_1_name }}</option>
+                                    <option value="{{ country_option_2 }}">{{ country_option_2_name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" value="{{ city_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip</label>
+                                <input type="text" id="zip" value="{{ zip_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" value="{{ phone_placeholder }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div class="form-group">
+                                <label for="time_zone">Timezone*</label>
+                                <select id="time_zone">
+                                    <option value="{{ tz_option_1 }}">{{ tz_option_1_name }}</option>
+                                    <option value="{{ tz_option_2 }}">{{ tz_option_2_name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Language</label>
+                                <select id="language">
+                                    <option value="{{ lang_option_1 }}">{{ lang_option_1_name }}</option>
+                                    <option value="{{ lang_option_2 }}">{{ lang_option_2_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="text" id="email" value="{{ email_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject_email">Subject Email Address</label>
+                                <input type="text" id="subject_email" value="{{ subject_email_placeholder }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="sms_opt_in">SMS Opt In</label>
+                                <input type="checkbox" id="sms_opt_in">
+                            </div>
+                            <div class="form-group">
+                                <label for="text_messaging_opt_in">Enable Text Messaging</label>
+                                <input type="checkbox" id="text_messaging_opt_in">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="text-align: center; margin-top: 30px;">
+                        <button style="background-color: #4CAF50; color: white;">REGISTER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-list" style="margin-top: 30px;">
+        <li>If you would like the Subject to receive payment confirmations or appointment reminders, select the "Enable Email Alerts" and "Enable Text Messaging" checkboxes.</li>
+        <li>Click <span data-field="register_button">{{ register_button }}</span>.</li>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>2</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="subject-info" class="section-header">Subject Information</h2>
+    <p>You will be brought to the "Subject Information" screen where you can assign a card number, make a payment, schedule an appointment reminder, replace a ClinCard or edit a Subject's information.</p>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 700px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <button style="background-color: #ddd;">SUBJECT INFORMATION</button>
+                    <button style="background-color: #ddd;">AUDIT HISTORY</button>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <div class="form-group">
+                                <label>Study Name</label>
+                                <span data-field="study_name">{{ study_name_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject ID</label>
+                                <span data-field="subject_id">{{ subject_id_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>No card assigned.</label>
+                                <span data-field="no_card_assigned_status">{{ no_card_assigned_status }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>Study Status</label>
+                                <span data-field="study_status">{{ study_status_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <span data-field="address_placeholder">{{ address_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Timezone</label>
+                                <span data-field="timezone_placeholder">{{ timezone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <span data-field="phone_placeholder">{{ phone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Text Messages</label>
+                                <span data-field="allow_sms_placeholder">{{ allow_sms_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Email</label>
+                                <span data-field="allow_email_placeholder">{{ allow_email_placeholder }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-around; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">ASSIGN CLINCARD</button>
+                            <p style="font-size: 12px; margin-top: 5px;">REQUEST PAYMENT</p>
+                            <p style="font-size: 12px;">REQUEST REIMBURSEMENT</p>
+                            <p style="font-size: 12px;">SCHEDULE APPOINTMENT</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">EDIT SUBJECT</button>
+                            <p style="font-size: 12px; margin-top: 5px;">VIEW HISTORY</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">SCHEDULE APPOINTMENT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>3</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="lookup" class="section-header">Look Up a Previously Registered Subject</h2>
+    <div class="step-list">
+        <li>Login to <a href="{{ login_url }}">www.clincard.com</a>.</li>
+        <li>Click the <span data-field="lookup_tab">{{ lookup_tab }}</span> tab.</li>
+        <li>Enter one of the following pieces of information:
+            <ul style="list-style-type: disc; margin-left: 20px;">
+                <li>First name and/or last name</li>
+                <li>Subject ID</li>
+                <li>Subject's initials</li>
+                <li>Subject's email</li>
+                <li>Last four (4) digits of ClinCard</li>
+            </ul>
+        </li>
+        <li>Click <span data-field="search_button">{{ search_button }}</span>.</li>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 500px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <div style="font-size: 30px;">Look Up Subject</div>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div class="form-group">
+                        <label for="lookup_field">Search Field</label>
+                        <select id="lookup_field">
+                            <option value="name">Name</option>
+                            <option value="id">Subject ID</option>
+                            <option value="initials">Initials</option>
+                            <option value="email">Subject Email</option>
+                            <option value="card_digits">Last 4 Digits of ClinCard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lookup_value">Value</label>
+                        <input type="text" id="lookup_value" value="{{ lookup_value_placeholder }}">
+                    </div>
+                    <div class="button-group" style="text-align: center; margin-top: 20px;">
+                        <button style="background-color: #4CAF50; color: white;">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-list" style="margin-top: 30px;">
+        <li>Results will appear below the "Search Results" header.</li>
+        <li>Click the hyperlink <span data-field="last_name_link">{{ last_name_link }}</span> of the Subject.</li>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>LAST NAME</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST FOUR</th>
+                    <th>LOCATION</th>
+                    <th>STUDY</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span data-field="result_last_name">{{ result_last_name }}</span></td>
+                    <td><span data-field="result_first_name">{{ result_first_name }}</span></td>
+                    <td><span data-field="result_last_four">{{ result_last_four }}</span></td>
+                    <td><span data-field="result_location">{{ result_location }}</span></td>
+                    <td><span data-field="result_study">{{ result_study }}</span></td>
+                    <td><span data-field="result_id">{{ result_id }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>4</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="assign" class="section-header">Assign a ClinCard</h2>
+    <p>Once you have selected an existing Subject or registered a new Subject, you will be brought to the "Subject Information" screen. On the right-hand side of the screen, you will see options that represent the actions you can perform on the Subject.</p>
+    <div class="step-list">
+        <li>Click <span data-field="assign_clincard_button">{{ assign_clincard_button }}</span> and a pop-up screen will appear.</li>
+        <li>In the "New Card" field, enter the token number visible through the window of the ClinCard card package.
+            <ul style="list-style-type: disc; margin-left: 20px;">
+                <li>Note: Do not open the envelope prior to providing to the Subject. The token number is different than the 16-digit card number.</li>
+            </ul>
+        </li>
+        <li>Click <span data-field="assign_button">{{ assign_button }}</span>.</li>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 600px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <button style="background-color: #ddd;">SUBJECT INFORMATION</button>
+                    <button style="background-color: #ddd;">AUDIT HISTORY</button>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <div class="form-group">
+                                <label>Study Name</label>
+                                <span data-field="study_name_placeholder">{{ study_name_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject ID</label>
+                                <span data-field="subject_id_placeholder">{{ subject_id_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>No card assigned.</label>
+                                <span data-field="no_card_assigned_status">{{ no_card_assigned_status }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>Study Status</label>
+                                <span data-field="study_status_placeholder">{{ study_status_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <span data-field="address_placeholder">{{ address_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Timezone</label>
+                                <span data-field="timezone_placeholder">{{ timezone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <span data-field="phone_placeholder">{{ phone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Text Messages</label>
+                                <span data-field="allow_sms_placeholder">{{ allow_sms_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Email</label>
+                                <span data-field="allow_email_placeholder">{{ allow_email_placeholder }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-around; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">ASSIGN CLINCARD</button>
+                            <p style="font-size: 12px; margin-top: 5px;">REQUEST PAYMENT</p>
+                            <p style="font-size: 12px;">REQUEST REIMBURSEMENT</p>
+                            <p style="font-size: 12px;">SCHEDULE APPOINTMENT</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">EDIT SUBJECT</button>
+                            <p style="font-size: 12px; margin-top: 5px;">VIEW HISTORY</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">SCHEDULE APPOINTMENT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="code-block" style="margin-top: 30px;">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 350px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <div style="font-size: 30px;">Assign ClinCard</div>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div class="form-group">
+                        <label for="new_card_token">New Card</label>
+                        <input type="text" id="new_card_token" value="{{ new_card_token_placeholder }}">
+                    </div>
+                    <div class="button-group" style="text-align: center; margin-top: 20px;">
+                        <button style="background-color: #4CAF50; color: white;">ASSIGN</button>
+                        <button style="background-color: #ccc;">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-list" style="margin-top: 30px;">
+        <li>Once the card has successfully been assigned, you will receive a confirmation message at the top of the "Subject Information" screen.</li>
+        <li>Now an option to "Replace ClinCard" appears.</li>
+        <li>In the event that a Subject loses their card, you can replace that card for them by clicking <span data-field="replace_clincard_link">{{ replace_clincard_link }}</span>, and following the steps above, using the token number from a new ClinCard card package.</li>
+        <li>The "Replace ClinCard" process will immediately inactivate the lost card and automatically transfer any available/pending balance to the newly assigned ClinCard.</li>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>5</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="logo-container">
+        <div class="clincard-logo">ClinCard</div>
+        <div class="powered-by">Powered by <span class="logo-greenphire">greenphire</span></div>
+    </div>
+
+    <h2 id="add-study" class="section-header">Add a New Study to an Existing Subject</h2>
+    <p>Once you have selected an existing subject in the system, you will be brought to the "Subject Information" screen. On the right-hand side of the screen, you will see options that represent all of the actions you can perform on the Subject.</p>
+    <div class="step-list">
+        <li>Click <span data-field="edit_subject_button">{{ edit_subject_button }}</span>.</li>
+    </div>
+
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 700px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <button style="background-color: #ddd;">SUBJECT INFORMATION</button>
+                    <button style="background-color: #ddd;">AUDIT HISTORY</button>
+                </div>
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <div class="form-group">
+                                <label>Study Name</label>
+                                <span data-field="study_name_placeholder">{{ study_name_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject ID</label>
+                                <span data-field="subject_id_placeholder">{{ subject_id_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>No card assigned.</label>
+                                <span data-field="no_card_assigned_status">{{ no_card_assigned_status }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>Study Status</label>
+                                <span data-field="study_status_placeholder">{{ study_status_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <span data-field="address_placeholder">{{ address_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Timezone</label>
+                                <span data-field="timezone_placeholder">{{ timezone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <span data-field="phone_placeholder">{{ phone_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Text Messages</label>
+                                <span data-field="allow_sms_placeholder">{{ allow_sms_placeholder }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Allow Email</label>
+                                <span data-field="allow_email_placeholder">{{ allow_email_placeholder }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-around; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">ASSIGN CLINCARD</button>
+                            <p style="font-size: 12px; margin-top: 5px;">REQUEST PAYMENT</p>
+                            <p style="font-size: 12px;">REQUEST REIMBURSEMENT</p>
+                            <p style="font-size: 12px;">SCHEDULE APPOINTMENT</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">EDIT SUBJECT</button>
+                            <p style="font-size: 12px; margin-top: 5px;">VIEW HISTORY</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background-color: #ffc107; color: black; padding: 10px 15px; border: none; cursor: pointer;">SCHEDULE APPOINTMENT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Study Membership</h3>
+    <div class="code-block">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div style="width: 500px;">
+                <div style="border: 1px solid #ccc; padding: 20px;">
+                    <div class="form-group">
+                        <label for="study_select">Study*</label>
+                        <select id="study_select">
+                            <option value="{{ study_option_1 }}">{{ study_option_1_name }}</option>
+                            <option value="{{ study_option_2 }}">{{ study_option_2_name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label for="subject_id_study">Subject ID*</label>
+                            <input type="text" id="subject_id_study" value="{{ subject_id_study_placeholder }}">
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="subject_status_study">Subject Status*</label>
+                            <select id="subject_status_study">
+                                <option value="{{ status_option_1 }}">{{ status_option_1_name }}</option>
+                                <option value="{{ status_option_2 }}">{{ status_option_2_name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-group" style="text-align: center; margin-top: 20px;">
+                        <button style="background-color: #4CAF50; color: white;">+ ADD STUDY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-list" style="margin-top: 30px;">
+        <li>Select the Study from the drop-down menu, enter the new Subject ID, and select the Subject status.</li>
+        <li>Confirm Name, Address and all personal information.</li>
+        <li>Click <span data-field="save_study_button">{{ save_study_button }}</span>.</li>
+        <li>When making payments for a Subject registered to multiple studies, you may be prompted to select the appropriate study before making a payment.</li>
+    </div>
+
+    <div class="footer">
+        <span>&copy; {{ current_year }} greenphire</span>
+        <span>7</span>
+    </div>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  .header-logo {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: #666;
+  }
+  .step-number {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .tab-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .tab-button.active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+  }
+  .content-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    flex: 1;
+    margin-right: 20px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .button-group {
+    text-align: right;
+    margin-top: 20px;
+  }
+  .button-group button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24px;">Request a Payment</h1>
+  </div>
+  <p>
+    <span class="step-number">1.</span> Click <span data-field="action_text_1">{{ action_text_1 }}</span> and pop-up screen will appear
+  </p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <div style="display: flex; border-bottom: 1px solid #ccc;">
+        <div class="tab-button active">SUBJECT INFORMATION</div>
+        <div class="tab-button">AUDIT HISTORY</div>
+      </div>
+      <div class="content-box">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Name</div>
+            <div style="font-size: 14px;">{{ study_name }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Subject ID</div>
+            <div style="font-size: 14px;">{{ subject_id }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">No care assignment.</div>
+            <div style="font-size: 14px;"></div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Status</div>
+            <div style="font-size: 14px;">{{ study_status }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Address</div>
+            <div style="font-size: 14px;">{{ address }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Timezone</div>
+            <div style="font-size: 14px;">{{ timezone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Home Phone</div>
+            <div style="font-size: 14px;">{{ home_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Cell Phone</div>
+            <div style="font-size: 14px;">{{ cell_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Text Messages</div>
+            <div style="font-size: 14px;">{{ allow_text_messages }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Email</div>
+            <div style="font-size: 14px;">{{ allow_email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div style="border: 1px solid #ccc; padding: 20px; height: 100%;">
+        <div style="font-weight: bold; margin-bottom: 15px;">ASSIGN CLINCARD</div>
+        <div style="margin-bottom: 10px;">
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST PAYMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST REIMBURSEMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">CREATE TRAVEL PROFILE</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">EDIT SUBJECT</button>
+          <button style="width: 100%; padding: 8px;">SCHEDULE APPOINTMENT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">2.</span> Select the milestone the subject is being paid.
+  </p>
+  <p>
+    <span class="step-number">3.</span> Add any Notes (not required).
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-size: 18px;">Request Payment</h2>
+  </div>
+  <div class="content-box" style="width: 600px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px;">
+      <div style="font-weight: bold;">To:</div>
+      <div style="font-weight: bold;">Total Payment</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <div style="font-weight: bold;">Study</div>
+        <div style="font-size: 14px;">{{ study_name }}</div>
+        <div style="font-weight: bold; margin-top: 15px;">Milestone</div>
+        <div style="font-size: 14px;">{{ milestone_name }}</div>
+        <div style="font-weight: bold; margin-top: 15px;">Notes</div>
+        <div style="font-size: 14px;">{{ notes }}</div>
+      </div>
+      <div>
+        <div style="font-weight: bold;">Total Payment</div>
+        <div style="font-size: 24px; font-weight: bold;">{{ total_payment }}</div>
+      </div>
+    </div>
+    <div class="button-group">
+      <button style="background-color: #ccc;">BACK</button>
+      <button style="background-color: #ccc;">CANCEL</button>
+      <button style="background-color: #007bff; color: white;">PAY</button>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 30px; font-size: 12px;">
+    <span data-field="disclaimer_text">{{ disclaimer_text }}</span>
+  </p>
+  <p>
+    <span class="step-number">4.</span> Click Pay.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24px;">Make a Miscellaneous Payment</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <div style="display: flex; border-bottom: 1px solid #ccc;">
+        <div class="tab-button active">SUBJECT INFORMATION</div>
+        <div class="tab-button">AUDIT HISTORY</div>
+      </div>
+      <div class="content-box">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Name</div>
+            <div style="font-size: 14px;">{{ study_name }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Subject ID</div>
+            <div style="font-size: 14px;">{{ subject_id }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">No care assignment.</div>
+            <div style="font-size: 14px;"></div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Status</div>
+            <div style="font-size: 14px;">{{ study_status }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Address</div>
+            <div style="font-size: 14px;">{{ address }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Timezone</div>
+            <div style="font-size: 14px;">{{ timezone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Home Phone</div>
+            <div style="font-size: 14px;">{{ home_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Cell Phone</div>
+            <div style="font-size: 14px;">{{ cell_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Text Messages</div>
+            <div style="font-size: 14px;">{{ allow_text_messages }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Email</div>
+            <div style="font-size: 14px;">{{ allow_email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div style="border: 1px solid #ccc; padding: 20px; height: 100%;">
+        <div style="font-weight: bold; margin-bottom: 15px;">ASSIGN CLINCARD</div>
+        <div style="margin-bottom: 10px;">
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST PAYMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST REIMBURSEMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">CREATE TRAVEL PROFILE</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">EDIT SUBJECT</button>
+          <button style="width: 100%; padding: 8px;">SCHEDULE APPOINTMENT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">2.</span> Select "Miscellaneous Payment" in the milestones drop-down menu.
+  </p>
+  <p>
+    <span class="step-number">3.</span> Enter the payment value in the "Amount" field.
+  </p>
+  <p>
+    <span class="step-number">4.</span> Add an appropriate comment in the "Note" field, e.g., Unscheduled Visit, etc.
+  </p>
+  <p>
+    <span class="step-number">5.</span> Click Pay.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24px;">Request a Reimbursement and Receipt Upload</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <div style="display: flex; border-bottom: 1px solid #ccc;">
+        <div class="tab-button active">SUBJECT INFORMATION</div>
+        <div class="tab-button">AUDIT HISTORY</div>
+      </div>
+      <div class="content-box">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Name</div>
+            <div style="font-size: 14px;">{{ study_name }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Subject ID</div>
+            <div style="font-size: 14px;">{{ subject_id }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">No care assignment.</div>
+            <div style="font-size: 14px;"></div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Status</div>
+            <div style="font-size: 14px;">{{ study_status }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Address</div>
+            <div style="font-size: 14px;">{{ address }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Timezone</div>
+            <div style="font-size: 14px;">{{ timezone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Home Phone</div>
+            <div style="font-size: 14px;">{{ home_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Cell Phone</div>
+            <div style="font-size: 14px;">{{ cell_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Text Messages</div>
+            <div style="font-size: 14px;">{{ allow_text_messages }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Email</div>
+            <div style="font-size: 14px;">{{ allow_email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div style="border: 1px solid #ccc; padding: 20px; height: 100%;">
+        <div style="font-weight: bold; margin-bottom: 15px;">ASSIGN CLINCARD</div>
+        <div style="margin-bottom: 10px;">
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST PAYMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST REIMBURSEMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">CREATE TRAVEL PROFILE</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">EDIT SUBJECT</button>
+          <button style="width: 100%; padding: 8px;">SCHEDULE APPOINTMENT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">2.</span> Select the milestone (if applicable) and reimbursement from the milestones drop-down menu.
+  </p>
+  <p>
+    <span class="step-number">2a.</span> Reimbursements options will show applicable to your study ONLY.
+  </p>
+  <div class="content-box" style="width: 600px; margin: 20px auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px;">
+      <div style="font-weight: bold;">Reimbursement request for {{ subject_name }}</div>
+      <div style="font-weight: bold;">Total</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      {% for item in reimbursement_items %}
+        <div style="display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #eee;">
+          <div style="font-size: 14px;">{{ item.description }}</div>
+          <div style="font-size: 14px;">{{ item.amount }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: bold;">
+      <span>TOTAL:</span>
+      <span>{{ total_reimbursement }}</span>
+    </div>
+    <div style="margin-top: 20px;">
+      <div style="border: 1px dashed #ccc; padding: 15px; margin-bottom: 15px;">
+        <div style="font-weight: bold; margin-bottom: 10px;">Upload receipt</div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <input type="file" style="border: 1px solid #ccc; padding: 5px;">
+          <button style="padding: 8px 15px; background-color: #28a745; color: white;">UPLOAD</button>
+        </div>
+        <p style="font-size: 10px; margin-top: 10px;">Accepted file types are pdf, jpg, or png. Uploaded files should not contain information which would reveal subject identity if viewed by other users of the system.</p>
+        <p style="font-size: 10px;">Receipt received but unable to be uploaded</p>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <button style="padding: 10px 20px; background-color: #ccc;">CANCEL</button>
+        <button style="padding: 10px 20px; background-color: #007bff; color: white;">SUBMIT REQUEST</button>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">3.</span> To upload the receipt associated with this request, click Upload.
+  </p>
+  <p>
+    <span class="step-number">4.</span> Check the box if you are unable to upload the receipt for any reason, Greenphire assumes you will keep the receipt on file for that reimbursement.
+  </p>
+  <p>
+    <span class="step-number">5.</span> Once all reimbursements have been entered, click Submit Request.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24px;">Enter Bank Account Information</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <div style="display: flex; border-bottom: 1px solid #ccc;">
+        <div class="tab-button active">REGISTER SUBJECT</div>
+        <div class="tab-button">LOOK UP SUBJECT</div>
+        <div class="tab-button">ADD BANK ACCOUNT</div>
+      </div>
+      <div class="content-box">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Name</div>
+            <div style="font-size: 14px;">{{ study_name }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Subject ID</div>
+            <div style="font-size: 14px;">{{ subject_id }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">No Bank Account.</div>
+            <div style="font-size: 14px;"></div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Status</div>
+            <div style="font-size: 14px;">{{ study_status }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Address</div>
+            <div style="font-size: 14px;">{{ address }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Timezone</div>
+            <div style="font-size: 14px;">{{ timezone }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div style="border: 1px solid #ccc; padding: 20px; height: 100%;">
+        <div style="font-weight: bold; margin-bottom: 15px;">ADD BANK ACCOUNT</div>
+        <div style="margin-bottom: 10px;">
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">EDIT SUBJECT</button>
+          <button style="width: 100%; padding: 8px;">SCHEDULE APPOINTMENT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">1.</span> Click Add Bank Account and a pop-up screen will appear.
+  </p>
+  <p>
+    <span class="step-number">2.</span> Enter the required bank account information.
+  </p>
+  <p>
+    <span class="step-number">3.</span> Click Submit.
+  </p>
+  <p>
+    <span class="step-number">4.</span> Once the card has successfully been assigned, you will receive a confirmation message at the top of the "Subject Information" screen.
+  </p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 24px;">Setup an Appointment Reminder</h1>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      <div style="display: flex; border-bottom: 1px solid #ccc;">
+        <div class="tab-button active">SUBJECT INFORMATION</div>
+        <div class="tab-button">AUDIT HISTORY</div>
+      </div>
+      <div class="content-box">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Name</div>
+            <div style="font-size: 14px;">{{ study_name }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Subject ID</div>
+            <div style="font-size: 14px;">{{ subject_id }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">No care assignment.</div>
+            <div style="font-size: 14px;"></div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 10px;">Study Status</div>
+            <div style="font-size: 14px;">{{ study_status }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Address</div>
+            <div style="font-size: 14px;">{{ address }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Timezone</div>
+            <div style="font-size: 14px;">{{ timezone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Home Phone</div>
+            <div style="font-size: 14px;">{{ home_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Cell Phone</div>
+            <div style="font-size: 14px;">{{ cell_phone }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Text Messages</div>
+            <div style="font-size: 14px;">{{ allow_text_messages }}</div>
+            <div style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Allow Email</div>
+            <div style="font-size: 14px;">{{ allow_email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div style="border: 1px solid #ccc; padding: 20px; height: 100%;">
+        <div style="font-weight: bold; margin-bottom: 15px;">ASSIGN CLINCARD</div>
+        <div style="margin-bottom: 10px;">
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST PAYMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">REQUEST REIMBURSEMENT</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">CREATE TRAVEL PROFILE</button>
+          <button style="width: 100%; padding: 8px; margin-bottom: 5px;">EDIT SUBJECT</button>
+          <button style="width: 100%; padding: 8px;">SCHEDULE APPOINTMENT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">1.</span> Click Schedule Appointment and a pop-up menu will appear.
+  </p>
+  <p>
+    <span class="step-number">2.</span> Use the date and time picker to enter the Subject's next appointment.
+  </p>
+  <p>
+    <span class="step-number">3.</span> Click Schedule.
+  </p>
+  <div class="content-box" style="width: 400px; margin: 20px auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px;">
+      <div style="font-weight: bold;">Schedule Appointment</div>
+      <div style="font-weight: bold;">X</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+      <div>
+        <div style="font-weight: bold;">Study</div>
+        <div style="font-size: 14px;">{{ study_name }}</div>
+      </div>
+      <div>
+        <div style="font-weight: bold;">Appointment Date</div>
+        <div style="font-size: 14px;">{{ appointment_date }}</div>
+      </div>
+      <div>
+        <div style="font-weight: bold;">Appointment Time</div>
+        <div style="font-size: 14px;">{{ appointment_time }}</div>
+      </div>
+    </div>
+    <div class="button-group">
+      <button style="background-color: #28a745; color: white;">SCHEDULE</button>
+      <button style="background-color: #ccc;">CANCEL</button>
+    </div>
+  </div>
+  <p>
+    <span class="step-number">4.</span> The appointment has been stored and will appear at the bottom of the "Subject Information" screen under the header "Upcoming Appointments".
+  </p>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  .header {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .step-list li {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  .button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="logo_clincard.png" alt="ClinCard Logo" style="height: 40px;">
+    <div style="font-size: 10pt; margin-top: 5px;">Powered by <img src="logo_greenphire.png" alt="Greenphire Logo" style="height: 15px;"></div>
+  </div>
+
+  <h1 style="font-size: 24pt; text-align: center; margin-bottom: 40px;">Create a Travel Profile.</h1>
+
+  <ol class="step-list">
+    <li>
+      <p>Click Create Travel Profile.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">TRAVEL TESTER</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">SUBJECT INFORMATION</button>
+        <button class="button">AUDIT HISTORY</button>
+        <button class="button">ASSIGN CLINICARD</button>
+        <button class="button">REQUEST REIMBURSEMENT</button>
+        <button class="button">EDIT PROFILE</button>
+        <button class="button">SCHEDULE APPOINTMENT</button>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+      <div>
+        <p>Subject Name:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.name">{{ subject.name }}</span></div>
+        <p>Subject ID:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.id">{{ subject.id }}</span></div>
+        <p>Sex:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.sex">{{ subject.sex }}</span></div>
+        <p>Date of Birth:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.dob">{{ subject.dob }}</span></div>
+      </div>
+      <div>
+        <p>Study Name:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="study.name">{{ study.name }}</span></div>
+        <p>Study ID:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="study.id">{{ study.id }}</span></div>
+        <p>Email:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.email">{{ subject.email }}</span></div>
+        <p>Phone:</p>
+        <div style="border: 1px solid #eee; padding: 10px;"><span data-field="subject.phone">{{ subject.phone }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>Click Add Travel to Profile.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">Travel Profile</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">REGISTER SUBJECT</button>
+        <button class="button">LOOK UP SUBJECT</button>
+        <button class="button">SUPPORT</button>
+      </div>
+    </div>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>TRAVEL REQUEST TYPE</th>
+          <th>SUBJECT</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for travel_request in travel_requests %}
+        <tr>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].type">{{ travel_request.type }}</span></td>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].subject">{{ travel_request.subject }}</span></td>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].status">{{ travel_request.status }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="margin-top: 20px;">A travel profile has not been created for this subject in this study.</p>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>Select "Travel Type" from drop down menu.</p>
+      <p>You will be brought to a new screen where you will be required to enter information regarding the selected Travel Type.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">Request Travel</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">CANCEL</button>
+        <button class="button">SAVE</button>
+      </div>
+    </div>
+    <form>
+      <label for="travel_type" style="display: block; margin-bottom: 5px;">Travel Type:</label>
+      <select id="travel_type" class="input-field">
+        <option value="">Select a travel type</option>
+        {% for type in travel_types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="study_name" style="display: block; margin-top: 15px; margin-bottom: 5px;">Study:</label>
+      <input type="text" id="study_name" class="input-field" value="{{ study.name }}">
+
+      <label for="travel_date" style="display: block; margin-top: 15px; margin-bottom: 5px;">Travel Date:</label>
+      <input type="date" id="travel_date" class="input-field" value="{{ travel_date }}">
+
+      <label for="destination" style="display: block; margin-top: 15px; margin-bottom: 5px;">Destination:</label>
+      <input type="text" id="destination" class="input-field" value="{{ destination }}">
+
+      <label for="notes" style="display: block; margin-top: 15px; margin-bottom: 5px;">Notes:</label>
+      <textarea id="notes" class="input-field" rows="4">{{ notes }}</textarea>
+
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="button">CANCEL</button>
+        <button type="submit" class="button">ADD TO PROFILE</button>
+      </div>
+    </form>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>Complete the required fields and add any other necessary information, notes, etc. within this screen.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <p style="font-weight: bold; margin-bottom: 10px;">IMPORTANT NOTE:</p>
+    <p>The Subject Name entered into ClinCard needs to be the exact name found on their legal, travel documents (ex. Photo ID, Passport.)</p>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>Click Add to Profile.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">Request Travel</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">CANCEL</button>
+        <button class="button">START OVER</button>
+      </div>
+    </div>
+    <form>
+      <label for="flight_request" style="display: block; margin-bottom: 5px;">Flight request for Travel Tester:</label>
+      <input type="text" id="flight_request" class="input-field" value="{{ flight_request }}">
+
+      <label for="departure_city" style="display: block; margin-top: 15px; margin-bottom: 5px;">Departure City:</label>
+      <input type="text" id="departure_city" class="input-field" value="{{ departure_city }}">
+
+      <label for="arrival_city" style="display: block; margin-top: 15px; margin-bottom: 5px;">Arrival City:</label>
+      <input type="text" id="arrival_city" class="input-field" value="{{ arrival_city }}">
+
+      <label for="preferred_airline" style="display: block; margin-top: 15px; margin-bottom: 5px;">Preferred Airline:</label>
+      <input type="text" id="preferred_airline" class="input-field" value="{{ preferred_airline }}">
+
+      <label for="travel_notes" style="display: block; margin-top: 15px; margin-bottom: 5px;">Travel Notes:</label>
+      <textarea id="travel_notes" class="input-field" rows="4">{{ travel_notes }}</textarea>
+
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="button">ADD TO PROFILE</button>
+        <button type="submit" class="button">START OVER</button>
+      </div>
+    </form>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>Click Submit Request to finalize.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">Request Travel</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">CANCEL</button>
+        <button class="button">START OVER</button>
+      </div>
+    </div>
+    <form>
+      <label for="travel_type_final" style="display: block; margin-bottom: 5px;">Travel Type:</label>
+      <select id="travel_type_final" class="input-field">
+        <option value="">Select a travel type</option>
+        {% for type in travel_types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="study_name_final" style="display: block; margin-top: 15px; margin-bottom: 5px;">Study:</label>
+      <input type="text" id="study_name_final" class="input-field" value="{{ study.name }}">
+
+      <label for="departure_city_final" style="display: block; margin-top: 15px; margin-bottom: 5px;">Departure City:</label>
+      <input type="text" id="departure_city_final" class="input-field" value="{{ departure_city }}">
+
+      <label for="arrival_city_final" style="display: block; margin-top: 15px; margin-bottom: 5px;">Arrival City:</label>
+      <input type="text" id="arrival_city_final" class="input-field" value="{{ arrival_city }}">
+
+      <label for="preferred_airline_final" style="display: block; margin-top: 15px; margin-bottom: 5px;">Preferred Airline:</label>
+      <input type="text" id="preferred_airline_final" class="input-field" value="{{ preferred_airline }}">
+
+      <label for="travel_notes_final" style="display: block; margin-top: 15px; margin-bottom: 5px;">Travel Notes:</label>
+      <textarea id="travel_notes_final" class="input-field" rows="4">{{ travel_notes }}</textarea>
+
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="button">ADD TO PROFILE</button>
+        <button type="submit" class="button">START OVER</button>
+      </div>
+    </form>
+  </div>
+
+  <ol class="step-list">
+    <li>
+      <p>The Site Coordinator or Subject should contact the Travel Partner to complete the booking process.</p>
+    </li>
+    <li>
+      <p>IMPORTANT NOTE: No travel arrangement will be booked until the Subject or Site Coordinator contacts the Travel Partner with specific dates and times.</p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">Travel Profile</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">ADD TRAVEL TO PROFILE</button>
+        <button class="button">EDIT PROFILE</button>
+      </div>
+    </div>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>TRAVEL REQUEST TYPE</th>
+          <th>SUBJECT</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for travel_request in travel_requests %}
+        <tr>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].type">{{ travel_request.type }}</span></td>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].subject">{{ travel_request.subject }}</span></td>
+          <td><span data-field="travel_requests[{{ loop.index0 }}].status">{{ travel_request.status }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="logo_clincard.png" alt="ClinCard Logo" style="height: 40px;">
+    <div style="font-size: 10pt; margin-top: 5px;">Powered by <img src="logo_greenphire.png" alt="Greenphire Logo" style="height: 15px;"></div>
+  </div>
+
+  <h1 style="font-size: 24pt; text-align: center; margin-bottom: 40px;">Request Assistance</h1>
+
+  <p>If you have questions about using ClinCard or how it has been set up for your studies, reach out to the ClinCard Site Success team:</p>
+
+  <ol class="step-list">
+    <li>
+      <p>Submit an email request through the "Support" link on the ClinCard portal.</p>
+    </li>
+    <li>
+      <p>Email us at <span data-field="support_email">{{ support_email }}</span>.</p>
+    </li>
+    <li>
+      <p>Call our Site Success team between the hours of 4:00AM and 10:00PM EST (Monday through Friday)</p>
+      <p>Local United States/Canada: <span data-field="support_phone">{{ support_phone }}</span></p>
+      <p>Toll Free: <span data-field="toll_free_phone">{{ toll_free_phone }}</span></p>
+    </li>
+  </ol>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="font-size: 16pt; margin: 0;">ClinCard</h2>
+      <div style="display: flex; gap: 10px;">
+        <button class="button">REGISTER SUBJECT</button>
+        <button class="button">LOOK UP SUBJECT</button>
+        <button class="button">SUPPORT</button>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <p>Password Changes & Other User Settings</p>
+        <p>How to Reach Us</p>
+      </div>
+      <p>Please visit the User Settings page to update your personal information.</p>
+      <p>For more information, please review the documents below.</p>
+    </div>
+    <div style="margin-top: 20px;">
+      <p>Release Notes</p>
+      <p>2023.11.01: We have made some updates, click here for details.</p>
+      <p>2023.10.15: We have made some updates, click here for details.</p>
+      <p>2023.09.01: We have made some updates, click here for details.</p>
+    </div>
+    <div style="margin-top: 20px;">
+      <p>Contact Support</p>
+      <p>To request further assistance, please fill out the form below or contact us using the information on the right.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #ccc; padding: 20px; margin-top: 30px;">
+    <form>
+      <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+      <input type="text" id="name" class="input-field" value="{{ name }}">
+
+      <label for="subject" style="display: block; margin-top: 15px; margin-bottom: 5px;">Subject:</label>
+      <input type="text" id="subject" class="input-field" value="{{ subject_name }}">
+
+      <label for="email" style="display: block; margin-top: 15px; margin-bottom: 5px;">Email:</label>
+      <input type="email" id="email" class="input-field" value="{{ email_address }}">
+
+      <label for="comments" style="display: block; margin-top: 15px; margin-bottom: 5px;">Comments:</label>
+      <textarea id="comments" class="input-field" rows="4">{{ comments }}</textarea>
+
+      <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="submit" class="button">SEND</button>
+      </div>
+    </form>
+  </div>
+</div>

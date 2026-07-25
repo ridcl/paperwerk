@@ -1,0 +1,213 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1 { text-align: center; font-weight: bold; margin-bottom: 30px; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-row > div { flex: 1; padding-right: 20px; }
+  .form-row label { display: block; font-weight: normal; margin-bottom: 5px; }
+  .form-row input[type="text"], .form-row select { width: 100%; padding: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .checkbox-group { margin-top: 10px; }
+  .checkbox-group label { font-weight: normal; display: inline-block; margin-right: 15px; }
+</style>
+<body>
+  <div class="page">
+    <h1>REQUEST FOR ACADEMIC TRANSCRIPT</h1>
+    <div style="margin-bottom: 20px;">
+      <p>Please mail or fax this request to <span data-field="institution_name">{{ institution_name }}</span>, Office of the Registrar, <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span>, <span data-field="zip_code">{{ zip_code }}</span>.</p>
+      <p>Phone: <span data-field="phone_number">{{ phone_number }}</span> Fax: <span data-field="fax_number">{{ fax_number }}</span> E-mail: <span data-field="email_address">{{ email_address }}</span></p>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 20%;">
+        <label>NAME:</label>
+        <div style="display: flex; gap: 10px;">
+          <div style="flex: 1;"><label>LAST:</label><input type="text" value="{{ full_name.last }}"></div>
+          <div style="flex: 1;"><label>FIRST:</label><input type="text" value="{{ full_name.first }}"></div>
+        </div>
+      </div>
+      <div style="flex-basis: 20%;">
+        <label>MIDDLE/MAIDEN:</label>
+        <input type="text" value="{{ full_name.middle_name }}">
+      </div>
+      <div style="flex-basis: 20%;">
+        <label>NAME ON RECORD:</label>
+        <input type="text" value="{{ full_name.record_name }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 20%;">
+        <label>E NUMBER:</label>
+        <input type="text" value="{{ student_id }}">
+      </div>
+      <div style="flex-basis: 20%;">
+        <label>DATE OF BIRTH:</label>
+        <input type="text" value="{{ date_of_birth }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 33%;">
+        <label>CURRENT ADDRESS:</label>
+        <input type="text" value="{{ current_address.street_address }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>STREET ADDRESS:</label>
+        <input type="text" value="{{ current_address.street_address }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>CITY:</label>
+        <input type="text" value="{{ current_address.city }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 33%;">
+        <label>STATE:</label>
+        <input type="text" value="{{ current_address.state }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>ZIP CODE:</label>
+        <input type="text" value="{{ current_address.zip_code }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>PHONE #:</label>
+        <input type="text" value="{{ current_address.phone }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 33%;">
+        <label>E-MAIL ADDRESS:</label>
+        <input type="text" value="{{ current_address.email }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>SEND TRANSCRIPTS (Check only one):</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Now</label>
+          <label><input type="checkbox"> After grades are posted</label>
+          <label><input type="checkbox"> After graduation is posted</label>
+        </div>
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>Last in attendance at Eastern Illinois University?</label>
+        <select>
+          <option>Semester</option>
+          <option>Year</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section-header">PICK UP TRANSCRIPT: INDICATE THE NUMBER OF TRANSCRIPTS YOU WILL PICK UP IN PERSON.</div>
+    <p>If you are receiving your transcripts yourself, you may choose to have each transcript stamped across the seal of each envelope: "ISSUED TO STUDENT IN A SEALED ENVELOPE. UNOFFICIAL IF SEAL IS BROKEN".</p>
+    <p>Indicate with an "X" in one of the following boxes:</p>
+    <div style="margin-bottom: 20px;">
+      <label><input type="checkbox"> YES</label>
+      <label><input type="checkbox"> NO</label>
+    </div>
+
+    <div class="section-header">QUANTITY FOR MAIL: INDICATE HOW MANY TRANSCRIPTS TO MAIL TO ADDRESS BELOW.</div>
+
+    <div class="form-row">
+      <div style="flex-basis: 50%;">
+        <label>NAME:</label>
+        <input type="text" value="{{ mailing_address.name }}">
+      </div>
+      <div style="flex-basis: 50%;">
+        <label>STREET ADDRESS:</label>
+        <input type="text" value="{{ mailing_address.street_address }}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div style="flex-basis: 33%;">
+        <label>CITY:</label>
+        <input type="text" value="{{ mailing_address.city }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>STATE:</label>
+        <input type="text" value="{{ mailing_address.state }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>ZIP CODE:</label>
+        <input type="text" value="{{ mailing_address.zip_code }}">
+      </div>
+    </div>
+
+    <div class="section-header">Payment should be made by check, cash, money order, or credit card (Visa, MasterCard or Discover only). Transcripts will be sent via U.S. mail. Transcripts may also be picked up in person at the Office of the Registrar.</div>
+
+    <div class="form-row">
+      <div style="flex-basis: 33%;">
+        <label>Credit Card #:</label>
+        <input type="text" value="{{ credit_card_number }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>EXP DATE:</label>
+        <input type="text" value="{{ expiration_date }}">
+      </div>
+      <div style="flex-basis: 33%;">
+        <label>Date:</label>
+        <input type="text" value="{{ submission_date }}">
+      </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <label>Credit Card holder's SIGNATURE:</label>
+      <div style="border-bottom: 1px solid black; width: 60%; margin-top: 5px;" data-field="credit_card_holder_s_signature">{{ credit_card_holder_s_signature }}</div>
+    </div>
+
+    <div class="section-header" style="margin-top: 30px;">**Fees are as follows. Check one processing fee choice:</div>
+
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="flex-basis: 20%;">
+        <input type="checkbox" id="fee_regular">
+        <label for="fee_regular" style="display: inline;">$5.00 for REGULAR Processing (processed in order request is received. $5.00 per copy)</label>
+      </div>
+      <div style="flex-basis: 80%;"></div>
+    </div>
+
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="flex-basis: 20%;">
+        <input type="checkbox" id="fee_rush">
+        <label for="fee_rush" style="display: inline;">$10.00 for RUSH processing (processed next working day after receipt of request. $10.00 per copy)</label>
+      </div>
+      <div style="flex-basis: 80%;"></div>
+    </div>
+
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="flex-basis: 20%;">
+        <input type="checkbox" id="fee_immediate">
+        <label for="fee_immediate" style="display: inline;">$15.00 for IMMEDIATE processing (processed same day. $15.00 per copy). No immediate transcripts mailed after 2:30 p.m. or processed after 4:00 p.m.</label>
+      </div>
+      <div style="flex-basis: 80%;"></div>
+    </div>
+
+    <div class="section-header" style="margin-top: 30px;">Do you want an <span data-field="transcript_type">{{ transcript_type }}</span> transcript faxed? Faxed today for $15.00 </div>
+    <div class="form-row" style="margin-top: 10px;">
+      <div style="flex-basis: 50%;">
+        <label>Name to which transcript should be faxed:</label>
+        <input type="text" value="{{ fax_recipient_name }}">
+      </div>
+      <div style="flex-basis: 50%;">
+        <label>Fax number:</label>
+        <input type="text" value="{{ fax_number }}">
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 40px;">SIGNATURE REQUIRED FOR RELEASE OF ACADEMIC RECORDS</div>
+
+    <div style="margin-top: 50px;">
+      <label>STUDENT SIGNATURE:</label>
+      <div style="border-bottom: 1px solid black; width: 60%; margin-top: 5px;" data-field="student_signature">{{ student_signature }}</div>
+    </div>
+  </div>
+</body>

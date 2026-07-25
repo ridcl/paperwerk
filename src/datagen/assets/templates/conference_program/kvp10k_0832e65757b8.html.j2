@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Conference Program</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .logo-image { width: 100px; height: auto; }
+  .title-block { text-align: center; margin-bottom: 40px; }
+  .title-block h1 { font-size: 24pt; margin-bottom: 5px; }
+  .title-block h2 { font-size: 16pt; margin-top: 0; margin-bottom: 20px; }
+  .event-details { text-align: center; margin-bottom: 50px; }
+  .event-details p { margin: 5px 0; font-size: 12pt; }
+  .host-info { text-align: center; margin-bottom: 50px; }
+  .host-info p { margin: 5px 0; font-size: 12pt; }
+  .footer-logo { text-align: center; margin-top: 50px; }
+  .footer-logo img { width: 150px; height: auto; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+  .list-item { margin-bottom: 15px; line-height: 1.4; }
+  .speaker-info { font-size: 11pt; margin-top: 5px; }
+  .room-info { float: right; font-weight: bold; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+  .contact-info { margin-top: 40px; font-size: 10pt; }
+  .table-header { font-weight: bold; padding: 5px 0; border-bottom: 1px solid #000; }
+  .table-row td { padding: 5px 0; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .section-header { font-weight: bold; margin-bottom: 10px; }
+  .speaker-info { font-size: 0.9em; margin-bottom: 15px; }
+  .presentation-list { list-style: none; padding-left: 0; margin-top: 10px; }
+  .presentation-list li { margin-bottom: 10px; line-height: 1.4; }
+  .room-info { float: right; font-weight: bold; }
+  .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <img src="logo.png" alt="Logo" class="logo-image">
+    <div style="text-align: center;">
+      <h1 style="font-size: 18pt;">American Association for Chinese Studies</h1>
+      <h2 style="font-size: 14pt;">全美中國研究協會</h2>
+    </div>
+  </div>
+  <div class="title-block">
+    <h1 style="font-size: 28pt;">American Association of Chinese Studies</h1>
+    <h2 style="font-size: 18pt;">57th Annual Conference Program</h2>
+  </div>
+  <div class="event-details">
+    <p>Crowne Plaza Hotel Downtown, Houston</p>
+    <p>October 9 – 11, {{ conference_date }}, Houston, Texas</p>
+  </div>
+  <div class="host-info">
+    <p>Hosted by</p>
+    <p>The Center for International Studies</p>
+    <p>University of St. Thomas in Houston, TX</p>
+    <p><a href="http://www.stthom.edu/cis">{{ university_website }}</a></p>
+  </div>
+  <div class="footer-logo">
+    <img src="logo.png" alt="University Logo">
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">AACS 2015 Meeting Program Committee</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 33%;">
+      <h3 style="font-size: 12pt;">Class of 2015</h3>
+      <div class="list-item"><span data-field="committee_members[0].name">{{ committee_members[0].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[1].name">{{ committee_members[1].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[2].name">{{ committee_members[2].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[3].name">{{ committee_members[3].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[4].name">{{ committee_members[4].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[5].name">{{ committee_members[5].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[6].name">{{ committee_members[6].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[7].name">{{ committee_members[7].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[8].name">{{ committee_members[8].name }}</span></div>
+    </div>
+    <div style="width: 33%;">
+      <h3 style="font-size: 12pt;">Class of 2016</h3>
+      <div class="list-item"><span data-field="committee_members[9].name">{{ committee_members[9].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[10].name">{{ committee_members[10].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[11].name">{{ committee_members[11].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[12].name">{{ committee_members[12].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[13].name">{{ committee_members[13].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[14].name">{{ committee_members[14].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[15].name">{{ committee_members[15].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[16].name">{{ committee_members[16].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[17].name">{{ committee_members[17].name }}</span></div>
+    </div>
+    <div style="width: 33%;">
+      <h3 style="font-size: 12pt;">Class of 2017</h3>
+      <div class="list-item"><span data-field="committee_members[18].name">{{ committee_members[18].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[19].name">{{ committee_members[19].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[20].name">{{ committee_members[20].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[21].name">{{ committee_members[21].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[22].name">{{ committee_members[22].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[23].name">{{ committee_members[23].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[24].name">{{ committee_members[24].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[25].name">{{ committee_members[25].name }}</span></div>
+      <div class="list-item"><span data-field="committee_members[26].name">{{ committee_members[26].name }}</span></div>
+    </div>
+  </div>
+  <div style="margin-top: 30px;">
+    <p>President: <span data-field="president_name">{{ president_name }}</span></p>
+    <p>Vice President: <span data-field="vice_president_name">{{ vice_president_name }}</span></p>
+    <p>Executive Director: <span data-field="executive_director_name">{{ executive_director_name }}</span></p>
+  </div>
+  <div class="contact-info">
+    <p>American Association of Chinese Studies, NAC R4/116, The City College of New York – CUNY, Convent Avenue and 138th Street, New York, NY 10031, USA, (212) 650-6206. <a href="http://aacs.ccny.cuny.edu">{{ aacs_website }}</a></p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Conference Hotel - Crowne Plaza Houston – Downtown, 1700 Smith Street, Houston, TX 77002</div>
+  <div style="margin-bottom: 20px;">
+    <p>Tel: {{ hotel_phone_1 }}</p>
+    <p>Fax: {{ hotel_phone_2 }}</p>
+    <p><a href="http://www.cpdowntown.com">{{ hotel_website }}</a></p>
+  </div>
+  <div class="list-item">
+    <p>The Crowne Plaza Houston Downtown is centrally located in the Heart of Houston in the newly revitalized Downtown area. Close to all major area attractions, the Crowne Plaza Houston Downtown is the place where your attendees want to be!</p>
+  </div>
+  <div class="list-item">
+    <p>The AACS appreciates the kind and generous support of the Crowne Plaza Houston – Downtown and Ms. Deangela Guillory, Director, Crowne Meetings.</p>
+  </div>
+
+  <div class="section-title">Parking</div>
+  <div class="list-item">
+    <p>Weekend for guests overnight parking: ${{ weekend_parking_rate }} per night (Friday & Saturday)</p>
+    <p>Event parking: ${{ event_parking_rate }} per day</p>
+  </div>
+
+  <div class="section-title">Transportation to Crowne Plaza Houston Downtown (from Crown Plaza Website)</div>
+  <div class="list-item">
+    <p>Super Shuttle Airport Transfers</p>
+    <p><a href="http://www.supershuttle.com/Locations/IAHAirportShuttleHouston.aspx">{{ shuttle_website }}</a></p>
+  </div>
+  <div class="list-item">
+    <p>From George Bush International Airport (IAH)</p>
+    <p>Distance: {{ distance_iah }} KM South to Houston Downtown</p>
+    <p>Shuttle Charge: ${{ shuttle_charge_iah }} USD (one-way)</p>
+    <p>Taxi Charge: ${{ taxi_charge_iah }} USD (one-way)</p>
+    <p>Time by Taxi: about {{ taxi_time_iah }} minutes at non-rush hour (prior to 4:00 p.m.; after 6:30 p.m. on Fridays)</p>
+    <p>Directions: From airport, take I-45 South to downtown. Exit Take Exit 47D Pierce/Dallas, veer left onto Jefferson St. and go through Brazos St. light. Hotel is immediately on left.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">From William P Hobby Airport (HOU)</div>
+  <div class="list-item">
+    <p>Distance: {{ distance_hou }} KM North to Houston Downtown Hotel</p>
+    <p>Shuttle Charge: ${{ shuttle_charge_hou }} USD (one-way)</p>
+    <p>Taxi Charge: ${{ taxi_charge_hou }} USD (one-way)</p>
+    <p>Time by Taxi: {{ taxi_time_hou }} minutes</p>
+    <p>Directions: From airport, take I-45 North to St. Joseph Parkway/Downtown Destinations Exit and stay to your right. Exit will turn into Pease St. Drive approximately 10 blocks to Smith Street. Hotel is immediately on left on the corner of Pease and Smith.</p>
+  </div>
+
+  <div class="section-title">LightRail</div>
+  <div class="list-item">
+    <p>Station is 4 blocks from Crowne Plaza. Houston's 7.5-mile light rail system connects downtown, Midtown, the Museum District, Texas Medical Center and Reliant Park. See <a href="http://www.visithoustontexas.com/travel-tools/maps-and-transportation/metro-rail/">http://www.visithoustontexas.com/travel-tools/maps-and-transportation/metro-rail/</a>.</p>
+  </div>
+
+  <div class="section-title">AACS Program of Events and Panels</div>
+  <div class="divider"></div>
+
+  <div class="list-item">
+    <p><strong>Registration:</strong> Friday (Bayou Ballroom), Saturday and Sunday (foyer of the Bayou rooms, 2nd floor)</p>
+    <p><strong>October 9, Friday, 6:00 p.m. – 8:00 p.m.</strong> Reception & Registration</p>
+    <p>Crowne Plaza Hotel, The Bayou Ballroom (2nd floor)</p>
+  </div>
+  <div class="list-item">
+    <p><strong>October 10, Saturday, 7:00 – 8:15 a.m.</strong> AACS Board Meeting</p>
+    <p>Bayou Ballroom</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">October 10, Saturday, 8:30 – 10:00 a.m.</div>
+  <div class="list-item">
+    <p><strong>SA1: Innovative Studies of Public Opinion in China and Taiwan</strong></p>
+    <p class="speaker-info">Chair: {{ sa1_chair_name }}, University of California, Merced</p>
+    <p class="speaker-info">Discussant: {{ sa1_discussant_name }}, The University of Houston</p>
+    <div class="room-info">Room: Gulf Coast A</div>
+  </div>
+  <div class="list-item">
+    <p>"Why Younger Generations Are More Pro-Democracy in China? Evidence from the China Survey," {{ sa1_paper_title_1 }}, {{ sa1_author_1 }}</p>
+    <p class="speaker-info">Merced and Dennis L.C Weng, State University of New York at Cortland</p>
+  </div>
+  <div class="list-item">
+    <p>"Clamping Down on Growing National Identity? Case of China's Cross-Strait Policies toward Taiwanese People," {{ sa1_paper_title_2 }}, {{ sa1_author_2 }}</p>
+    <p class="speaker-info">Austin Wang, Duke University</p>
+  </div>
+  <div class="list-item">
+    <p>"Do Economic Conditions Shape Political Support in Authoritarian Regimes? Evidence From China," {{ sa1_paper_title_3 }}, {{ sa1_author_3 }}</p>
+    <p class="speaker-info">Jay Chieh Kao, The University of Texas at Austin</p>
+  </div>
+
+  <div class="section-title">SB1: Chinese Culture: Tradition and Democratic Values</div>
+  <div class="list-item">
+    <p>Chair: {{ sb1_chair_name }}, Azusa Pacific University</p>
+    <p>Discussant: {{ sb1_discussant_name }}, Indianapolis</p>
+    <div class="room-info">Room: Gulf Coast B</div>
+  </div>
+  <div class="list-item">
+    <p>"Is Chinese Traditional Culture Compatible with Democratic Values?" {{ sb1_paper_title_1 }}, {{ sb1_author_1 }}</p>
+    <p class="speaker-info">Yu-long Ling, Franklin College</p>
+  </div>
+  <div class="list-item">
+    <p>"Justifying Ambivalent Filial Piety in Xingshiyan (Exemplary Stories for the World)," {{ sb1_paper_title_2 }}, {{ sb1_author_2 }}</p>
+    <p class="speaker-info">Yenna Wu, University of California, Riverside</p>
+  </div>
+  <div class="list-item">
+    <p>"Chinese Culture and Personality: Collectivistic or Individualistic?" {{ sb1_paper_title_3 }}, {{ sb1_author_3 }}</p>
+    <p class="speaker-info">Linda H. Chiang, Azusa Pacific University</p>
+  </div>
+
+  <div class="section-title">SC1: China and Global Security Regimes</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sc1_chair_name }}, Berkeley</p>
+    <div class="room-info">Room: Houston A</div>
+  </div>
+  <div class="list-item">
+    <p>"Opposing Nonproliferation without Proliferation: Explaining China's Nonproliferation Policy (1963-1978)," {{ sc1_paper_title_1 }}, {{ sc1_author_1 }}</p>
+    <p class="speaker-info">Hong-yu Zhang, University of Georgia</p>
+  </div>
+  <div class="list-item">
+    <p>"The Price of Disrespect in the Context of Strategic Distrust: The Politics of Status in the China-US Relationship," {{ sc1_paper_title_2 }}, {{ sc1_author_2 }}</p>
+    <p class="speaker-info">Ning Liao, New Jersey City University</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">SD1: Sinophone Literature and Cinema in the Era of Technological and Cultural Globality</div>
+  <div class="list-item">
+    <p>Chair: {{ sd1_chair_name }}, Rutgers University</p>
+    <div class="room-info">Room: Houston B</div>
+  </div>
+  <div class="list-item">
+    <p>"Hong Ying's Huger Narrative: Writing in Libidinal Excess and Physiological Emptiness," {{ sd1_paper_title_1 }}, {{ sd1_author_1 }}</p>
+    <p class="speaker-info">Lina Qu, Rutgers University</p>
+  </div>
+  <div class="list-item">
+    <p>"The Lure of the Tarim River: A Disappeared Internet Novel," {{ sd1_paper_title_2 }}, {{ sd1_author_2 }}</p>
+    <p class="speaker-info">Ren-ren Yang, Stanford University</p>
+  </div>
+  <div class="list-item">
+    <p>"The Syncretic City: Modernization, Alienation, and Cybernetic Dissillusionment in Zhu Tianwen's Fin-de-Siècle Splendor," {{ sd1_paper_title_3 }}, {{ sd1_author_3 }}</p>
+    <p class="speaker-info">Virginia Conn, Rutgers University</p>
+  </div>
+  <div class="list-item">
+    <p>"Diaspora Unbound: The Style of Transmission in Wong Kar-wai's The Grandmaster," {{ sd1_paper_title_4 }}, {{ sd1_author_4 }}</p>
+    <p class="speaker-info">Yvette Hsieh, Rutgers University</p>
+  </div>
+
+  <div class="section-title">SE1: Chinese Language Learning and Teaching: Innovations and Reflections</div>
+  <div class="list-item">
+    <p>Chair: {{ se1_chair_name }}, Texas- Rio Grande Valley</p>
+    <div class="room-info">Room: Cougar</div>
+  </div>
+  <div class="list-item">
+    <p>"The Effect of 3D Avatar Animation Videos on Chinese Character Learning," {{ se1_paper_title_1 }}, {{ se1_author_1 }}</p>
+    <p class="speaker-info">Ming-tsan Pierre Lu, Chi-ying J. Wu, & Zoroayka V. Sandoval, University of Texas- Rio Grande Valley</p>
+  </div>
+  <div class="list-item">
+    <p>"Tips and Challenges of Chinese Language Learning: A Novice's Experience," {{ se1_paper_title_2 }}, {{ se1_author_2 }}</p>
+    <p class="speaker-info">Kip Hinton, Ming-tsan Pierre Lu, & Shaghayegh Azadi-Setayesh, University of Texas- Rio Grande Valley</p>
+  </div>
+  <div class="list-item">
+    <p>"Innovative Instructions on Hanzi Shufa (Chinese Calligraphy) for Beginning Learners," {{ se1_paper_title_3 }}, {{ se1_author_3 }}</p>
+    <p class="speaker-info">Ming-tsan Pierre Lu, University of Texas- Rio Grande Valley</p>
+  </div>
+  <div class="list-item">
+    <p>"Comparison of Pre-Service Language Teachers' Educational Training for Secondary Public Schools between China and USA-- Using Shanghai and Texas as an Example," {{ se1_paper_title_4 }}, {{ se1_author_4 }}</p>
+    <p class="speaker-info">Min Zhao, Shanghai International Studies University & Ming-tsan Pierre Lu, University of Texas- Rio Grande Valley</p>
+  </div>
+
+  <div class="list-item" style="margin-top: 30px;">
+    <p><strong>October 10, Saturday, 10:15 – 11:45 a.m.</strong></p>
+    <p><strong>SA2: Nation-Building and Security on Taiwan</strong></p>
+    <p class="speaker-info">Chair/Discussant: Hans Stockton, University of St. Thomas in Houston</p>
+    <div class="room-info">Room: Gulf Coast A</div>
+  </div>
+  <div class="list-item">
+    <p>"Neoclassical Realism Revisited: U.S.-China Rivalry, Nation-Building, and the KMT's "One China" Policy," {{ sa2_paper_title_1 }}, {{ sa2_author_1 }}</p>
+    <p class="speaker-info">Dean Chen, Ramapo College</p>
+  </div>
+  <div class="list-item">
+    <p>"Explaining the Puzzle of Taiwan's Declining Defense Spending," {{ sa2_paper_title_2 }}, {{ sa2_author_2 }}</p>
+    <p class="speaker-info">Kharis Templeman, Stanford University</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">"State Identity Projection from Taipei: A Content Analysis of the Free China Review/ Taiwan Review, 1955 – 2015," {{ sd2_paper_title_1 }}, {{ sd2_author_1 }}</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sd2_chair_name }}, University of St. Thomas</p>
+  </div>
+  <div class="section-title">SB2: Trust and Mistrust at the Grassroots: Rural China Today</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sb2_chair_name }}, Davidson College</p>
+    <div class="room-info">Room: Gulf Coast B</div>
+  </div>
+  <div class="list-item">
+    <p>"Unlikely Bedfellows? Explaining Villagers' Trust in Healthcare Workers in Rural China," {{ sb2_paper_title_1 }}, {{ sb2_author_1 }}</p>
+    <p class="speaker-info">Kerry Ratigan, Amherst College</p>
+  </div>
+  <div class="list-item">
+    <p>"Patrons, Clients and Secretaries: Governance in Chinese Villages," {{ sb2_paper_title_2 }}, {{ sb2_author_2 }}</p>
+    <p class="speaker-info">Lincoln Davidson, Council on Foreign Relations, New York</p>
+  </div>
+
+  <div class="section-title">SC2: China's Rise from US and Taiwan Perspectives</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sc2_chair_name }}, Wisconsin, Madison</p>
+    <div class="room-info">Room: Houston A</div>
+  </div>
+  <div class="list-item">
+    <p>"China's Rise, America's Dilemma," {{ sc2_paper_title_1 }}, {{ sc2_author_1 }}</p>
+    <p class="speaker-info">Lowell Dittmer, Department of Political Science, Berkeley University</p>
+  </div>
+  <div class="list-item">
+    <p>"Who Fears China and Why? Cultural Clash, Democratic Peace or Trade Politics in Taiwanese Sino-Phobia," {{ sc2_paper_title_2 }}, {{ sc2_author_2 }}</p>
+    <p class="speaker-info">Wei-feng Tzeng, University of North Texas and Kuan-Chen Lee, University of Texas at Dallas</p>
+  </div>
+  <div class="list-item">
+    <p>"What Determines China's Allocation of Confucius Institute: Educational, Economic, or Political Interest?" {{ sc2_paper_title_3 }}, {{ sc2_author_3 }}</p>
+    <p class="speaker-info">Jun Xiang, Rutgers University and Wei-Hao Huang, Rutgers University</p>
+  </div>
+  <div class="list-item">
+    <p>"Grand Strategy and China's Search for Prestige," {{ sc2_paper_title_4 }}, {{ sc2_author_4 }}</p>
+    <p class="speaker-info">Lukas Karl Danner, Florida International University</p>
+  </div>
+
+  <div class="section-title">SD2: Between Fantasy & Reality: Narrating Multiple Histories of Taiwan, Hong Kong, and China through Fiction & Cinema</div>
+  <div class="list-item">
+    <p>Chair: {{ sd2_chair_name }}, University of California, Riverside</p>
+    <p>Discussant: {{ sd2_discussant_name }}, Azusa Pacific University</p>
+    <div class="room-info">Room: Houston B</div>
+  </div>
+  <div class="list-item">
+    <p>"Critical Perspectives of Women and Children in Edward Yang's Cinema," {{ sd2_paper_title_1 }}, {{ sd2_author_1 }}</p>
+    <p class="speaker-info">Kai-man Chang, Tulane University</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">"Tales of the Ghost Island: A Haunting Literary Review," {{ sd3_paper_title_1 }}, {{ sd3_author_1 }}</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sd3_chair_name }}, Rhodes College</p>
+  </div>
+  <div class="section-title">"Possible Worlds and Writer's Autonomy in Dung Kai-cheung's The Exploitation of the Works of Nature: Xuxu and Ruzhen," {{ sd3_paper_title_2 }}, {{ sd3_author_2 }}</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sd3_chair_name_2 }}, New College of Florida</p>
+  </div>
+  <div class="section-title">"Political Violence toward Family Relationships in The Blue Kite," {{ sd3_paper_title_3 }}, {{ sd3_author_3 }}</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ sd3_chair_name_3 }}, University of California Riverside</p>
+  </div>
+
+  <div class="section-title">SE2: Gender Representation and Sexuality</div>
+  <div class="list-item">
+    <p>Chair/Discussant: {{ se2_chair_name }}, Columbia University and China Medical University, Taiwan</p>
+    <div class="room-info">Room: Cougar</div>
+  </div>
+  <div class="list-item">
+    <p>"Free Love or Sexual Misconduct: Singing Girls and China's Socialist Transformation: 1945 to the Present," {{ se2_paper_title_1 }}, {{ se2_author_1 }}</p>
+    <p class="speaker-info">Mi Zhao, University of Oregon</p>
+  </div>
+  <div class="list-item">
+    <p>"Flower Market: Representation of Working Women in Republican Guangzhou," {{ se2_paper_title_2 }}, {{ se2_author_2 }}</p>
+    <p class="speaker-info">Roanna Cheung, University of California Los Angeles</p>
+  </div>
+  <div class="list-item">
+    <p>"Taiwan's Localization and Acculturation of Worldwide Discourses about Lesbianism and Women's Bisexuality: Academic, Literary, and Cinematic Exploration of 'Queer Women' in Taiwan," {{ se2_paper_title_3 }}, {{ se2_author_3 }}</p>
+    <p class="speaker-info">Ya-chen Chen, Columbia University and China Medical University, Taiwan</p>
+  </div>
+  <div class="list-item">
+    <p>"Shining after the Rain: Images of Chinese Women in Painting from the Cultural Revolution to the Early 1980s," {{ se2_paper_title_4 }}, {{ se2_author_4 }}</p>
+    <p class="speaker-info">Joy Xiao Chen, Boston University</p>
+  </div>
+
+  <div class="list-item" style="margin-top: 30px;">
+    <p><strong>Oct. 10, Saturday, 12:00 – 1:15</strong> Luncheon Bluebonnet B Ballroom</p>
+  </div>
+  <div class="list-item">
+    <p>Co-Sponsored with the Taipei Economic & Cultural Office, Houston, TX</p>
+    <p>Welcome remarks-- The Honorable Louis M. Hwang, Director General</p>
+  </div>
+  <div class="list-item" style="display: flex; align-items: center; margin-top: 15px;">
+    <p style="flex-grow: 1;">Director General Hwang has been a Foreign Service Officer since 1990. He has served abroad in Washington DC, London, and Houston, and various home posts in Taipei. His home assignments have included the Coordination Council for North American Affairs and the Department of European Affairs. He holds an MPA degree from Idaho State University.</p>
+    <img src="profile.jpg" alt="Director Hwang" style="width: 150px; height: auto; margin-left: 20px;">
+  </div>
+</div>
+
+
+
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-size: 1.5em; margin: 0;">October 10, Saturday, 1:30 – 2:45 p.m.</h2>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SA3: Doing Locally and Regionally but Aiming Globally: Taiwan's Economic Statecraft</h3>
+        <div class="speaker-info">
+          Chair: <span data-field="sa3.chair">{{ sa3.chair }}</span>, <span data-field="sa3.chair_affiliation">{{ sa3.chair_affiliation }}</span>
+          <br>
+          Discussant: <span data-field="sa3.discussant">{{ sa3.discussant }}</span>, <span data-field="sa3.discussant_affiliation">{{ sa3.discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sa3.room">{{ sa3.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sa3.presentation_1">{{ sa3.presentation_1 }}</span></li>
+      <li><span data-field="sa3.presentation_2">{{ sa3.presentation_2 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SB3: Housing and Urbanization</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sb3.chair_discussant">{{ sb3.chair_discussant }}</span>, <span data-field="sb3.chair_discussant_affiliation">{{ sb3.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sb3.room">{{ sb3.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sb3.presentation_1">{{ sb3.presentation_1 }}</span></li>
+      <li><span data-field="sb3.presentation_2">{{ sb3.presentation_2 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-size: 1.5em; margin: 0;">October 10, Saturday, 3:00 – 4:15 p.m.</h2>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SE3: Revisiting Contemporary Chinese Art: A Contextual Approach</h3>
+        <div class="speaker-info">
+          Chair: <span data-field="se3.chair">{{ se3.chair }}</span>, <span data-field="se3.chair_affiliation">{{ se3.chair_affiliation }}</span>
+          <br>
+          Discussant: <span data-field="se3.discussant">{{ se3.discussant }}</span>, <span data-field="se3.discussant_affiliation">{{ se3.discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="se3.room">{{ se3.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="se3.presentation_1">{{ se3.presentation_1 }}</span></li>
+      <li><span data-field="se3.presentation_2">{{ se3.presentation_2 }}</span></li>
+      <li><span data-field="se3.presentation_3">{{ se3.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SA4: Shifting Identity and Electoral Sentiment on Taiwan</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sa4.chair_discussant">{{ sa4.chair_discussant }}</span>, <span data-field="sa4.chair_discussant_affiliation">{{ sa4.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sa4.room">{{ sa4.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sa4.presentation_1">{{ sa4.presentation_1 }}</span></li>
+      <li><span data-field="sa4.presentation_2">{{ sa4.presentation_2 }}</span></li>
+      <li><span data-field="sa4.presentation_3">{{ sa4.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SC4: Maritime Disputes in the Pacific</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sc4.chair_discussant">{{ sc4.chair_discussant }}</span>, <span data-field="sc4.chair_discussant_affiliation">{{ sc4.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sc4.room">{{ sc4.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sc4.presentation_1">{{ sc4.presentation_1 }}</span></li>
+      <li><span data-field="sc4.presentation_2">{{ sc4.presentation_2 }}</span></li>
+      <li><span data-field="sc4.presentation_3">{{ sc4.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SD4: Aspects of Aesthetics and Satire in Chinese Literature</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sd4.chair_discussant">{{ sd4.chair_discussant }}</span>, <span data-field="sd4.chair_discussant_affiliation">{{ sd4.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sd4.room">{{ sd4.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sd4.presentation_1">{{ sd4.presentation_1 }}</span></li>
+      <li><span data-field="sd4.presentation_2">{{ sd4.presentation_2 }}</span></li>
+      <li><span data-field="sd4.presentation_3">{{ sd4.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SA5: Roundtable on Taiwan's 2016 Elections: Retrospect and Prospect</h3>
+        <div class="speaker-info">
+          Chair: <span data-field="sa5.chair">{{ sa5.chair }}</span>, <span data-field="sa5.chair_affiliation">{{ sa5.chair_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sa5.room">{{ sa5.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sa5.presentation_1">{{ sa5.presentation_1 }}</span></li>
+      <li><span data-field="sa5.presentation_2">{{ sa5.presentation_2 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SB5: Human Rights and Local Governance in the PRC</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sb5.chair_discussant">{{ sb5.chair_discussant }}</span>, <span data-field="sb5.chair_discussant_affiliation">{{ sb5.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sb5.room">{{ sb5.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sb5.presentation_1">{{ sb5.presentation_1 }}</span></li>
+      <li><span data-field="sb5.presentation_2">{{ sb5.presentation_2 }}</span></li>
+      <li><span data-field="sb5.presentation_3">{{ sb5.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SC5: China's Impact on Global Trade</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sc5.chair_discussant">{{ sc5.chair_discussant }}</span>, <span data-field="sc5.chair_discussant_affiliation">{{ sc5.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sc5.room">{{ sc5.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sc5.presentation_1">{{ sc5.presentation_1 }}</span></li>
+      <li><span data-field="sc5.presentation_2">{{ sc5.presentation_2 }}</span></li>
+      <li><span data-field="sc5.presentation_3">{{ sc5.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SD5: Military Affairs and History</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sd5.chair_discussant">{{ sd5.chair_discussant }}</span>, <span data-field="sd5.chair_discussant_affiliation">{{ sd5.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sd5.room">{{ sd5.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sd5.presentation_1">{{ sd5.presentation_1 }}</span></li>
+      <li><span data-field="sd5.presentation_2">{{ sd5.presentation_2 }}</span></li>
+      <li><span data-field="sd5.presentation_3">{{ sd5.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SE5: Health and Mental Well-Being</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="se5.chair_discussant">{{ se5.chair_discussant }}</span>, <span data-field="se5.chair_discussant_affiliation">{{ se5.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="se5.room">{{ se5.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="se5.presentation_1">{{ se5.presentation_1 }}</span></li>
+      <li><span data-field="se5.presentation_2">{{ se5.presentation_2 }}</span></li>
+      <li><span data-field="se5.presentation_3">{{ se5.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SuA1: A Post-Mortem on Taiwan's 2014 Nine-in-One Elections</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sua1.chair_discussant">{{ sua1.chair_discussant }}</span>, <span data-field="sua1.chair_discussant_affiliation">{{ sua1.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sua1.room">{{ sua1.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sua1.presentation_1">{{ sua1.presentation_1 }}</span></li>
+      <li><span data-field="sua1.presentation_2">{{ sua1.presentation_2 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SuB1: Images of Society from Literature</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sub1.chair_discussant">{{ sub1.chair_discussant }}</span>, <span data-field="sub1.chair_discussant_affiliation">{{ sub1.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sub1.room">{{ sub1.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sub1.presentation_1">{{ sub1.presentation_1 }}</span></li>
+      <li><span data-field="sub1.presentation_2">{{ sub1.presentation_2 }}</span></li>
+      <li><span data-field="sub1.presentation_3">{{ sub1.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SuC1: Youth Socialization and Activism in Greater China</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="suc1.chair_discussant">{{ suc1.chair_discussant }}</span>, <span data-field="suc1.chair_discussant_affiliation">{{ suc1.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="suc1.room">{{ suc1.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="suc1.presentation_1">{{ suc1.presentation_1 }}</span></li>
+      <li><span data-field="suc1.presentation_2">{{ suc1.presentation_2 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SuD1: Projecting Chinese Culture through Education</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sud1.chair_discussant">{{ sud1.chair_discussant }}</span>, <span data-field="sud1.chair_discussant_affiliation">{{ sud1.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sud1.room">{{ sud1.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sud1.presentation_1">{{ sud1.presentation_1 }}</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">SuA2: Corruption and Party Evaluation</h3>
+        <div class="speaker-info">
+          Chair/Discussant: <span data-field="sua2.chair_discussant">{{ sua2.chair_discussant }}</span>, <span data-field="sua2.chair_discussant_affiliation">{{ sua2.chair_discussant_affiliation }}</span>
+        </div>
+      </div>
+      <div class="room-info">Room: <span data-field="sua2.room">{{ sua2.room }}</span></div>
+    </div>
+    <ul class="presentation-list">
+      <li><span data-field="sua2.presentation_1">{{ sua2.presentation_1 }}</span></li>
+      <li><span data-field="sua2.presentation_2">{{ sua2.presentation_2 }}</span></li>
+      <li><span data-field="sua2.presentation_3">{{ sua2.presentation_3 }}</span></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h3 class="section-header">Special Sections - Undergraduate Student Panels</h3>
+      </div>
+      <div class="room-info">Room: <span data-field="undergrad_panel_room">{{ undergrad_panel_room }}</span></div>
+    </div>
+    <div style="margin-top: 15px;">
+      <h4 style="font-weight: bold;">Undergraduate Panel A: Women's Issues and Classism in China</h4>
+      <div class="speaker-info">
+        Chairs: <span data-field="upa.chair_1">{{ upa.chair_1 }}</span>, <span data-field="upa.chair_2">{{ upa.chair_2 }}</span>, <span data-field="upa.chair_3">{{ upa.chair_3 }}</span>
+      </div>
+      <ul class="presentation-list">
+        <li><span data-field="upa.presentation_1">{{ upa.presentation_1 }}</span></li>
+        <li><span data-field="upa.presentation_2">{{ upa.presentation_2 }}</span></li>
+        <li><span data-field="upa.presentation_3">{{ upa.presentation_3 }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h4 style="font-weight: bold;">Undergraduate Panel B: Cultural Symbols and Traditions throughout China's History</h4>
+      </div>
+      <div class="room-info">Room: <span data-field="upb.room">{{ upb.room }}</span></div>
+    </div>
+    <div style="margin-top: 15px;">
+      <div class="speaker-info">
+        Chair: <span data-field="upb.chair">{{ upb.chair }}</span>, <span data-field="upb.chair_affiliation">{{ upb.chair_affiliation }}</span>
+      </div>
+      <ul class="presentation-list">
+        <li><span data-field="upb.presentation_1">{{ upb.presentation_1 }}</span></li>
+        <li><span data-field="upb.presentation_2">{{ upb.presentation_2 }}</span></li>
+        <li><span data-field="upb.presentation_3">{{ upb.presentation_3 }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h4 style="font-weight: bold;">Undergraduate Panel C: Comparative Attitudes about Sexuality among College Populations</h4>
+      </div>
+      <div class="room-info">Room: <span data-field="upc.room">{{ upc.room }}</span></div>
+    </div>
+    <div style="margin-top: 15px;">
+      <ul class="presentation-list">
+        <li><span data-field="upc.presentation_1">{{ upc.presentation_1 }}</span></li>
+        <li><span data-field="upc.presentation_2">{{ upc.presentation_2 }}</span></li>
+        <li><span data-field="upc.presentation_3">{{ upc.presentation_3 }}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

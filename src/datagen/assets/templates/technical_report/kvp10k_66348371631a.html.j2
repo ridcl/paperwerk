@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Sans", Arial, Helvetica, sans-serif; font-size: 12px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .header-logo {
+    width: 110px;
+    min-width: 110px;
+  }
+  .header-logo-box {
+    border: 1px solid #aaa;
+    width: 100px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #555;
+    background: #f5f5f5;
+  }
+  .header-logo-box .logo-title {
+    font-size: 8px;
+    font-weight: bold;
+    color: #1a3a6b;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .header-logo-box .logo-sub {
+    font-size: 7px;
+    color: #333;
+    text-align: center;
+  }
+  .header-center {
+    flex: 1;
+    text-align: center;
+    padding-top: 10px;
+  }
+  .header-center h1 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+  .header-right {
+    font-size: 9px;
+    text-align: left;
+    line-height: 1.6;
+    min-width: 160px;
+  }
+  .header-right .org-name {
+    font-weight: bold;
+    font-size: 9px;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 16px;
+    margin-top: 10px;
+  }
+
+  /* Form rows */
+  .form-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .form-label {
+    font-size: 12px;
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+  .form-label-plain {
+    font-size: 12px;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+  .field-box {
+    border: 1px solid #555;
+    padding: 1px 5px;
+    min-width: 80px;
+    font-size: 12px;
+    background: #fff;
+    display: inline-block;
+  }
+  .field-box-wide {
+    border: 1px solid #555;
+    padding: 1px 5px;
+    min-width: 200px;
+    font-size: 12px;
+    background: #fff;
+    display: inline-block;
+  }
+  .field-box-xwide {
+    border: 1px solid #555;
+    padding: 1px 5px;
+    min-width: 340px;
+    font-size: 12px;
+    background: #fff;
+    display: inline-block;
+  }
+  .field-box-full {
+    border: 1px solid #555;
+    padding: 1px 5px;
+    width: 100%;
+    font-size: 12px;
+    background: #fff;
+    display: inline-block;
+  }
+
+  /* Two-column row */
+  .two-col-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+    gap: 20px;
+  }
+  .col-left { display: flex; align-items: baseline; flex: 1; }
+  .col-right { display: flex; align-items: baseline; flex: 1; }
+
+  /* Textarea-like boxes */
+  .textarea-box {
+    border: 1px solid #555;
+    padding: 4px 6px;
+    font-size: 12px;
+    background: #fff;
+    min-height: 40px;
+    width: 100%;
+    line-height: 1.5;
+  }
+  .textarea-box-right {
+    border: 1px solid #555;
+    padding: 4px 6px;
+    font-size: 12px;
+    background: #fff;
+    min-height: 40px;
+    flex: 1;
+    line-height: 1.5;
+  }
+
+  /* Indented section */
+  .indented {
+    margin-left: 20px;
+  }
+
+  /* GPS Quality block */
+  .quality-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 6px;
+    margin-left: 20px;
+  }
+
+  /* GPS Data Processing block */
+  .processing-block {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .processing-label {
+    font-size: 12px;
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-right: 4px;
+    padding-top: 2px;
+  }
+  .processing-content {
+    border: 1px solid #555;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #fff;
+    flex: 1;
+    min-height: 80px;
+    line-height: 1.7;
+  }
+
+  /* Mapping blocks */
+  .mapping-block {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .mapping-label {
+    font-size: 12px;
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-right: 4px;
+    padding-top: 2px;
+  }
+  .mapping-content {
+    border: 1px solid #555;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #fff;
+    flex: 1;
+    min-height: 44px;
+    line-height: 1.6;
+  }
+
+  .spacer { margin-bottom: 10px; }
+  .spacer-sm { margin-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">
+      <div class="header-logo-box">
+        <div class="logo-title">TOOLIK FIELD STATION<br>GIS</div>
+        <div class="logo-sub">[logo]</div>
+      </div>
+    </div>
+    <div class="header-center">
+      <h1>GPS Data Collection Documentation<br>(Metadata)</h1>
+    </div>
+    <div class="header-right">
+      <span class="org-name"><span data-field="org.name">{{ org.name }}</span></span><br>
+      <span data-field="org.address_line1">{{ org.address_line1 }}</span><br>
+      <span data-field="org.address_line2">{{ org.address_line2 }}</span><br>
+      <span data-field="org.city_state_zip">{{ org.city_state_zip }}</span><br>
+      <span data-field="org.phone">{{ org.phone }}</span><br>
+      <span data-field="org.email">{{ org.email }}</span>
+    </div>
+  </div>
+
+  <!-- SECTION TITLE -->
+  <div class="section-title">Basis of Bearings and Coordinates</div>
+
+  <!-- Linear Unit -->
+  <div class="form-row">
+    <span class="form-label">Linear unit:</span>
+    <span class="field-box-wide"><span data-field="linear_unit">{{ linear_unit }}</span></span>
+  </div>
+
+  <!-- Geodetic Datum + Epoch -->
+  <div class="two-col-row">
+    <div class="col-left">
+      <span class="form-label">Geodetic datum:</span>
+      <span class="field-box-wide"><span data-field="geodetic_datum">{{ geodetic_datum }}</span></span>
+    </div>
+    <div class="col-right">
+      <span class="form-label">Epoch:</span>
+      <span class="field-box"><span data-field="epoch">{{ epoch }}</span></span>
+    </div>
+  </div>
+
+  <!-- Vertical Datum -->
+  <div class="form-row">
+    <span class="form-label">Vertical datum:</span>
+    <span class="field-box-xwide"><span data-field="vertical_datum">{{ vertical_datum }}</span></span>
+  </div>
+
+  <!-- Coordinate System -->
+  <div class="form-row">
+    <span class="form-label">Coordinate System:</span>
+    <span class="field-box-xwide"><span data-field="coordinate_system">{{ coordinate_system }}</span></span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Feature Description -->
+  <div class="mapping-block">
+    <span class="mapping-label">Feature Description:</span>
+    <div class="mapping-content"><span data-field="feature_description">{{ feature_description }}</span></div>
+  </div>
+
+  <!-- Rover File Name + Base File Name -->
+  <div class="two-col-row">
+    <div class="col-left">
+      <span class="form-label">Rover File Name:</span>
+      <span class="field-box-wide"><span data-field="rover_file_name">{{ rover_file_name }}</span></span>
+    </div>
+    <div class="col-right">
+      <span class="form-label">Base File Name:</span>
+      <span class="field-box-wide"><span data-field="base_file_name">{{ base_file_name }}</span></span>
+    </div>
+  </div>
+
+  <!-- Field Technician -->
+  <div class="form-row">
+    <span class="form-label">Field Technician(who collected data):</span>
+    <span class="field-box-xwide"><span data-field="field_technician">{{ field_technician }}</span></span>
+  </div>
+
+  <!-- PI Name -->
+  <div class="form-row">
+    <span class="form-label">PI Name:</span>
+    <span class="field-box-wide"><span data-field="pi_name">{{ pi_name }}</span></span>
+  </div>
+
+  <!-- GPS Receiver -->
+  <div class="two-col-row">
+    <div class="col-left">
+      <span class="form-label">GPS Reciever:</span>
+      <span class="field-box-wide"><span data-field="gps_receiver">{{ gps_receiver }}</span></span>
+    </div>
+    <div class="col-right">
+      <span class="field-box-wide">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Antenna -->
+  <div class="form-row">
+    <span class="form-label">Antenna:</span>
+    <span class="field-box-wide"><span data-field="antenna">{{ antenna }}</span></span>
+  </div>
+
+  <!-- GPS & Mapping Software -->
+  <div class="two-col-row">
+    <div class="col-left">
+      <span class="form-label">GPS &amp; Mapping Software:</span>
+      <span class="field-box-wide"><span data-field="gps_software">{{ gps_software }}</span></span>
+    </div>
+    <div class="col-right">
+      <span class="form-label-plain">version</span>
+      <span class="field-box-wide"><span data-field="gps_software_version">{{ gps_software_version }}</span></span>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Mapping Conditions -->
+  <div class="mapping-block">
+    <span class="mapping-label">Mapping Conditions:</span>
+    <div class="mapping-content"><span data-field="mapping_conditions">{{ mapping_conditions }}</span></div>
+  </div>
+
+  <!-- Mapping Process -->
+  <div class="mapping-block">
+    <span class="mapping-label">Mapping Process:</span>
+    <div class="mapping-content"><span data-field="mapping_process">{{ mapping_process }}</span></div>
+  </div>
+
+  <!-- GPS Quality Settings -->
+  <div class="form-row">
+    <span class="form-label">GPS Quality Settings:</span>
+  </div>
+  <div class="quality-row">
+    <span class="form-label-plain">HDOP -</span>&nbsp;
+    <span class="field-box-wide"><span data-field="hdop">{{ hdop }}</span></span>
+  </div>
+  <div class="quality-row">
+    <span class="form-label-plain">SNR -</span>&nbsp;
+    <span class="field-box-wide"><span data-field="snr">{{ snr }}</span></span>
+  </div>
+  <div class="quality-row">
+    <span class="form-label-plain">Satellite Elevation Mask -</span>&nbsp;
+    <span class="field-box-wide"><span data-field="satellite_elevation_mask">{{ satellite_elevation_mask }}</span></span>
+  </div>
+  <div class="quality-row">
+    <span class="form-label-plain">Logging Rate -</span>&nbsp;
+    <span class="field-box-wide"><span data-field="logging_rate">{{ logging_rate }}</span></span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Post-Processing Technician -->
+  <div class="form-row">
+    <span class="form-label">Post-Processing Technician:</span>
+    <span class="field-box-wide"><span data-field="post_processing_technician">{{ post_processing_technician }}</span></span>
+  </div>
+
+  <!-- GPS Data Processing -->
+  <div class="processing-block">
+    <span class="processing-label">GPS Data Processing:</span>
+    <div class="processing-content">
+      <span data-field="gps_data_processing_description">{{ gps_data_processing_description }}</span><br><br>
+      <span data-field="gps_data_processing_lat">{{ gps_data_processing_lat }}</span><br>
+      <span data-field="gps_data_processing_lon">{{ gps_data_processing_lon }}</span><br>
+      <span data-field="gps_data_processing_elevation">{{ gps_data_processing_elevation }}</span><br>
+      <br>
+      <span data-field="gps_data_processing_report_file">{{ gps_data_processing_report_file }}</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

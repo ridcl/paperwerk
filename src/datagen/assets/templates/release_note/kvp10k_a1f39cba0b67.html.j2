@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Firmware Update Release</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+  .header-table td {
+    padding: 5px 0;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.9em; }
+  .header-info div { text-align: right; }
+  .content-section { margin-bottom: 30px; }
+  .list-item { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right; margin-bottom: 50px;">
+    <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+  </div>
+  <table class="header-table" style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">
+        <strong>Document class:</strong> <span data-field="document_class">{{ document_class }}</span><br>
+        <strong>Document ID:</strong> <span data-field="document_id">{{ document_id }}</span><br>
+        <strong>Business Unit:</strong> <span data-field="business_unit">{{ business_unit }}</span><br>
+        <strong>Page:</strong> <span data-field="page_number">{{ page_number }}</span><br>
+        <strong>Date:</strong> <span data-field="date">{{ date }}</span>
+      </td>
+      <td style="width: 50%; text-align: right;">
+        <h2 style="font-size: 24px; margin: 0;">Firmware update release</h2>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h1 style="font-size: 24px; margin-bottom: 20px;">Firmware update release 1.1.4 for REX640 control and protection</h1>
+
+  <h2 style="font-size: 18px; margin-top: 30px; margin-bottom: 15px;">Scope</h2>
+  <p style="line-height: 1.5;">This update release 1.1.4 concerns all REX640 (PCL2) protection relay and LHMI deliveries from the factory manufactured earlier than <span data-field="date_threshold">{{ date_threshold }}</span>.</p>
+  <p style="line-height: 1.5;">To verify whether the update applies to the protection relay and the LHMI version at hand, there are three things to check:</p>
+  <ol style="line-height: 1.5;">
+    <li>Product Connectivity Level shall be two (PCL2). This information can be checked from LHMI, WHMI or from the product label. The PCL is a part of product composition code, as the example below shows.</li>
+    <li>Relay Firmware version is 1.1, 1.1.1, 1.1.2 or 1.1.3 This can be checked from LHMI or from WHMI</li>
+    <li>LHMI application version is dated <span data-field="version_date">{{ version_date }}</span>. This can be checked from LHMI only.</li>
+  </ol>
+  <p style="line-height: 1.5; margin-top: 20px;">Following figures show how to locate the above-mentioned information from the LHMI Device Information page and from the WHMI Product Identifiers page. The LHMI Device Information page can be accessed by tapping the menu bar on upper part of the LHMI screen and locating the Device Information button from the lower left-hand corner of the screen. The relay firmware version is referred as "SW version" and the LHMI application version is referred as "HMI version". The "PCL" part of the composition code is pointed out as well.</p>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18px; margin-top: 30px; margin-bottom: 15px;">Fig 1. LHMI Device Information page</h2>
+  <div style="text-align: center; margin-top: 20px;">
+    <!-- Placeholder for image -->
+  </div>
+
+  <h2 style="font-size: 18px; margin-top: 30px; margin-bottom: 15px;">Fig 2. WHMI Product Identifiers page</h2>
+  <div style="text-align: center; margin-top: 20px;">
+    <!-- Placeholder for image -->
+  </div>
+
+  <h2 style="font-size: 18px; margin-top: 30px; margin-bottom: 15px;">Implemented usability improvements</h2>
+  <p style="line-height: 1.5;">The firmware update release includes usability and operational improvements. The following improvements have been implemented:</p>
+
+  <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Cyber Security</h3>
+  <ul style="line-height: 1.5;">
+    <li>Cyber security improvements. Following vulnerability (CVE, Common Vulnerabilities and Exposures) has been identified in the product and fixed by the update:
+      <ul>
+        <li>CVE-2021-22283: MMS file transfer vulnerability.</li>
+        <li>CVE-2022-1596: Insufficient file access control.</li>
+      </ul>
+      Additional details and mitigation methods can be found from mentioned (CVE, Common Vulnerabilities and Exposures) advisory.</li>
+    <li>Also other Cyber Security related updates. Improvement areas including, but not limited to
+      <ul>
+        <li>Cryptography library</li>
+        <li>Webserver</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 style="font-size: 16px; margin-top: 25px; margin-bottom: 10px;">Communication</h3>
+  <ul style="line-height: 1.5;">
+    <li>Improvement in IEC 60870-5-104 secure authentication mode. IEC104 spontaneous event sending does not get interrupted by erroneous SCADA control-key exchange sequence.</li>
+    <li>Improving communication error handling in case of SFP transceiver is unplugged while Line Differential communication is in use.</li>
+    <li>Improved robustness on functionality when disconnecting IEC 60870-5-104 communication.</li>
+    <li>Improvement to IEEE 1588 PTPv2 Time synchronization Timesource field indications fixed. Before relay announced PTPv2 TimeSource-GPS if the relay was previously synced to a GNSS/GPS grandmaster, even GPS connection was lost. Now the REX640 ordinary clock was modified to announce TimeSource=Internal Oscillator regardless of previous state.</li>
+    <li>Enhancements to IEEE 1588 PTPv2 Time synchronization to expedite master negotiation process.</li>
+  </ul>
+  <p style="font-size: 10px; margin-top: 20px;"><sup>1</sup> The relay firmware update may also include some minor usability improvements not listed in this note.</p>
+</div>
+
+<div class="page">
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">
+        <strong>ABB Oy</strong><br>
+        Distribution Solutions<br>
+        P.O. Box 699<br>
+        FI-65101 Vaasa<br>
+        FINLAND
+      </td>
+      <td style="width: 33%; text-align: center;">
+        <strong>Visiting Address</strong><br>
+        Stromberg Park,<br>
+        Muuttitie 2 A,<br>
+        FI-65320 Vaasa<br>
+        FINLAND
+      </td>
+      <td style="width: 34%; text-align: right;">
+        <strong>Phone:</strong> <span data-field="phone">{{ phone }}</span><br>
+        <strong>Fax:</strong> <span data-field="fax">{{ fax }}</span><br>
+        <strong>e-mail:</strong> <span data-field="email">{{ email }}</span><br>
+        <strong>Website:</strong> <span data-field="website">{{ website }}</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+  <div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div style="flex-grow: 1;">
+        <h1 style="font-size: 24pt; font-weight: bold;">ABB</h1>
+      </div>
+    </div>
+    <div class="header-info">
+      <div>Date: <span data-field="date">{{ date }}</span></div>
+      <div>Page: <span data-field="page">{{ page }}</span> / <span data-field="total_pages">{{ total_pages }}</span></div>
+      <div>Subject: <span data-field="subject">{{ subject }}</span></div>
+    </div>
+
+    <div class="content-section">
+      <h2>Tools for updating the REX640 (PCL2) relay</h2>
+      <div class="list-item">
+        <p>Tools needed to update to SW version 1.1.4:</p>
+        <ul>
+          <li class="list-item">PCM600 2.10 (Hotfix 20201215) or later</li>
+          <li class="list-item">REX640 Connectivity package 1.2.1 or later</li>
+          <li class="list-item">Relay Update file version 1.1.4 (REX640_ALL_Config_640_Version_1.1.4_2RCA051238E.cab)</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>Update procedure</h2>
+        <p>Firmware updates represent an integral part of ABB's life cycle management of distribution protection and control relays. The updates ensure optimized usability throughout the relay's entire life cycle by offering the latest improvements. The ideal time for a firmware update would be at device commissioning, during periodical testing or during a maintenance break.</p>
+        <p>All REX640 (PCL2) relays and LHMI product deliveries manufactured later than <span data-field="date_threshold">{{ date_threshold }}</span>, include the stated relay firmware update 1.1.4 or newer.</p>
+        <p>Please note that ABB will not be liable for any direct or indirect costs related to the firmware update procedure. The update procedure shall be performed at the sole responsibility of the possessor of the devices.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div style="flex-grow: 1;">
+        <h1 style="font-size: 24pt; font-weight: bold;">ABB</h1>
+      </div>
+    </div>
+    <div class="header-info">
+      <div>Date: <span data-field="date">{{ date }}</span></div>
+      <div>Page: <span data-field="page">{{ page }}</span> / <span data-field="total_pages">{{ total_pages }}</span></div>
+      <div>Subject: <span data-field="subject">{{ subject }}</span></div>
+    </div>
+
+    <div class="content-section">
+      <h2>Glossary</h2>
+      <p>Abbreviations and acronyms are spelled out in the glossary. The glossary also contains definitions of important terms.</p>
+
+      <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+          <tr style="border-bottom: 1px solid #000;">
+            <th style="text-align: left; padding: 5px; width: 30%;">Abbreviation</th>
+            <th style="text-align: left; padding: 5px;">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for term in glossary_terms %}
+          <tr style="border-bottom: 1px dotted #ccc;">
+            <td style="padding: 5px;"><span data-field="glossary_terms[{{ loop.index0 }}].abbreviation">{{ term.abbreviation }}</span></td>
+            <td style="padding: 5px;"><span data-field="glossary_terms[{{ loop.index0 }}].definition">{{ term.definition }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

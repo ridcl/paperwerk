@@ -1,0 +1,86 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 0.5em; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 8px 0; border-bottom: 1px solid #ccc; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: right; font-size: 12pt;">Form 7</div>
+  
+  <h2 style="text-align: center; margin-top: 40px;">TOUGALOO COLLEGE</h2>
+  <h3 style="text-align: center;">OFFICE OF FINANCIAL AID</h3>
+  <h3 style="text-align: center;">{{ current_year }}</h3>
+
+  <h2 style="text-align: center; margin-top: 30px;">PARENT STATEMENT OF INCOME FOR {{ current_year }}</h2>
+  <p style="text-align: center; font-size: 10pt;">(To be completed only if a tax form will not be filed)</p>
+
+  <div class="form-row">
+    <div style="width: 30%;">Student's Name:</div>
+    <div style="width: 30%; text-align: right;">SSN:</div>
+  </div>
+
+  <p style="margin-bottom: 20px;">Complete the following information, sign the statement below, and submit this to our office.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 25%;"></td>
+        <td style="width: 25%;">Employer(s)</td>
+        <td style="width: 50%;">Wages earned (amount)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="width: 25%;">FATHER</td>
+        <td style="width: 25%;"><span data-field="father.employer_name">{{ father.employer_name }}</span></td>
+        <td style="width: 50%;"><span data-field="father.wages_earned">{{ father.wages_earned }}</span></td>
+      </tr>
+      <tr>
+        <td style="width: 25%;">MOTHER</td>
+        <td style="width: 25%;"><span data-field="mother.employer_name">{{ mother.employer_name }}</span></td>
+        <td style="width: 50%;"><span data-field="mother.wages_earned">{{ mother.wages_earned }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 30px;">Other Income received in {{ current_year }}:</h3>
+
+  <table style="margin-top: 15px;">
+    <tbody>
+      <tr>
+        <td style="width: 30%;">Public Assistant (TANF):</td>
+        <td style="width: 70%;"><span data-field="other_income.tanf">{{ other_income.tanf }}</span> (MONTHLY Benefits) Subsidized Housing (Section 8)</td>
+      </tr>
+      <tr>
+        <td>Child Support:</td>
+        <td><span data-field="other_income.child_support">{{ other_income.child_support }}</span> Social Security Benefits (monthly benefits)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <p style="font-weight: bold;">**CERTIFIED STATEMENT**</p>
+  </div>
+
+  <p style="margin-top: 30px;">I am (We are) not required to file a 2018 U.S. Federal Income Tax Return and have not filed. All information on this form is correct and true to best of my knowledge.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+    <div style="width: 45%;">Parent's Signature _________________________</div>
+    <div style="width: 45%; text-align: right;">Date _________________________</div>
+  </div>
+
+  <div style="text-align: center; margin-top: 100px; font-size: 10pt;">
+    Office of Financial Aid • 500 W. County Line Road • Tougaloo, MS 39174
+  </div>
+</div>

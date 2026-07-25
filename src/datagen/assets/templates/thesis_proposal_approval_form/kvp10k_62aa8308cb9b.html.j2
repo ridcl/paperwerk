@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .university-name {
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e5e1e;
+    line-height: 1.2;
+  }
+
+  .university-name span {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #2e5e1e;
+    letter-spacing: 2px;
+  }
+
+  .contact-info {
+    text-align: right;
+    font-size: 10px;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  .contact-info .dept-title {
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  /* Logo placeholder using CSS */
+  .logo-box {
+    width: 62px;
+    height: 62px;
+    border: 3px solid #2e5e1e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 22px;
+    color: #2e5e1e;
+    flex-shrink: 0;
+  }
+
+  /* Title */
+  .form-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Form rows */
+  .form-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .form-label {
+    font-weight: bold;
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .form-field-line {
+    border-bottom: 1px solid #000;
+    flex: 1;
+    min-width: 80px;
+    height: 18px;
+  }
+
+  .form-field-line span {
+    display: block;
+    padding-bottom: 2px;
+  }
+
+  /* Divider */
+  .divider-thick {
+    border: none;
+    border-top: 2.5px solid #000;
+    margin: 14px 0 14px 0;
+  }
+
+  .divider-thin {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 10px 0;
+  }
+
+  /* Thesis section */
+  .thesis-title-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .credits-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .semester-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+
+  .semester-col {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .semester-label {
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* Checkbox row */
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .checkbox-box {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* Notice text */
+  .notice-text {
+    font-size: 10.5px;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .notice-text a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  /* Signature section */
+  .sig-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+  }
+
+  .sig-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sig-line {
+    border-top: 1px solid #000;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .sig-label {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .sig-name {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  /* Office section */
+  .office-section {
+    border-top: 2.5px solid #000;
+    border-bottom: 2.5px solid #000;
+    padding: 10px 0 10px 0;
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  .office-title {
+    text-align: center;
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .office-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .office-field {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    flex: 1;
+  }
+
+  /* Footer */
+  .footer-text {
+    font-size: 10px;
+    margin-top: 18px;
+    color: #000;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-box">N</div>
+      <div class="university-name">
+        NORTHERN MICHIGAN<br>
+        <span>UNIVERSITY</span>
+      </div>
+    </div>
+    <div class="contact-info">
+      <div class="dept-title">GRADUATE STUDIES &amp; RESEARCH</div>
+      <div><span data-field="university.address_line1">{{ university.address_line1 }}</span></div>
+      <div><span data-field="university.contact_line">{{ university.contact_line }}</span></div>
+      <div><span data-field="university.website">{{ university.website }}</span></div>
+    </div>
+  </div>
+
+  <!-- Form Title -->
+  <div class="form-title">THESIS PROPOSAL APPROVAL FORM</div>
+
+  <!-- DATE and NMU IN -->
+  <div class="form-row">
+    <span class="form-label">DATE:</span>
+    <div class="form-field-line">
+      <span data-field="date">{{ date }}</span>
+    </div>
+    <span class="form-label" style="margin-left:30px;">NMU IN:</span>
+    <div class="form-field-line">
+      <span data-field="nmu_in">{{ nmu_in }}</span>
+    </div>
+  </div>
+
+  <!-- NAME -->
+  <div class="form-row">
+    <span class="form-label">NAME (L,F, MI):</span>
+    <div class="form-field-line" style="flex:1;">
+      <span data-field="full_name">{{ full_name }}</span>
+    </div>
+  </div>
+
+  <!-- GRADUATE PROGRAM -->
+  <div class="form-row">
+    <span class="form-label">GRADUATE PROGRAM:</span>
+    <div class="form-field-line" style="flex:1;">
+      <span data-field="graduate_program">{{ graduate_program }}</span>
+    </div>
+  </div>
+
+  <!-- EMAIL and CELL PHONE -->
+  <div class="form-row">
+    <span class="form-label">EMAIL ADDRESS:</span>
+    <div class="form-field-line" style="flex:1; max-width:220px;">
+      <span data-field="email_address">{{ email_address }}</span>
+    </div>
+    <span class="form-label" style="margin-left:30px;">CELL PHONE NO.:</span>
+    <div class="form-field-line" style="flex:1; max-width:160px;">
+      <span data-field="cell_phone">{{ cell_phone }}</span>
+    </div>
+  </div>
+
+  <hr class="divider-thick">
+
+  <!-- THESIS TITLE -->
+  <div class="thesis-title-row">
+    <span class="form-label">THESIS TITLE:</span>
+    <div class="form-field-line" style="flex:1;">
+      <span data-field="thesis_title">{{ thesis_title }}</span>
+    </div>
+  </div>
+
+  <!-- TOTAL # OF THESIS CREDITS -->
+  <div class="credits-row">
+    <div>
+      <div class="form-label">TOTAL # OF</div>
+      <div class="form-label">THESIS CREDITS</div>
+    </div>
+    <div class="form-field-line" style="max-width:160px;">
+      <span data-field="total_thesis_credits">{{ total_thesis_credits }}</span>
+    </div>
+  </div>
+
+  <!-- FIRST / LAST SEMESTER -->
+  <div class="semester-row">
+    <div class="semester-col">
+      <div>
+        <div class="semester-label">FIRST SEMESTER TAKING</div>
+        <div class="semester-label">THESIS CREDITS:</div>
+      </div>
+      <div class="form-field-line" style="max-width:160px;">
+        <span data-field="first_semester_credits">{{ first_semester_credits }}</span>
+      </div>
+    </div>
+    <div class="semester-col" style="margin-left:20px;">
+      <div>
+        <div class="semester-label">LAST SEMESTER TAKING</div>
+        <div class="semester-label">THESIS CREDITS:</div>
+      </div>
+      <div class="form-field-line" style="max-width:160px;">
+        <span data-field="last_semester_credits">{{ last_semester_credits }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkboxes -->
+  <div class="checkbox-row">
+    <div class="checkbox-item">
+      <span class="checkbox-box"></span>
+      <span>IRB or IACUC approval form attached</span>
+    </div>
+    <div class="checkbox-item">
+      <span class="checkbox-box"></span>
+      <span>NR</span>
+    </div>
+  </div>
+
+  <!-- Notice -->
+  <div class="notice-text">
+    <strong>After meeting with your thesis committee members, complete this form and submit with your thesis prospectus<br>
+    to <a href="#">graduate@nmu.edu</a>. It will then be uploaded to Right Signature for electronic signatures.</strong>
+  </div>
+
+  <!-- Signature rows -->
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">NAME OF THESIS CHAIR</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">SIGNATURE OF THESIS CHAIR</div>
+    </div>
+  </div>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">NAME OF THESIS READER #1</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">SIGNATURE OF THESIS READER #1</div>
+    </div>
+  </div>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">NAME OF THESIS READER #2</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">SIGNATURE OF THESIS READER #2</div>
+    </div>
+  </div>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">NAME OF GRAD PROGRAM DIRECTOR</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">SIGNATURE OF GRAD PROGRAM DIRECTOR</div>
+    </div>
+  </div>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-name"><span data-field="graduate_dean_name">{{ graduate_dean_name }}</span></div>
+      <div class="sig-line"></div>
+      <div class="sig-label">NAME OF GRADUATE DEAN</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label">SIGNATURE OF GRADUATE DEAN</div>
+    </div>
+  </div>
+
+  <!-- Office Section -->
+  <div class="office-section">
+    <div class="office-title">TO BE FILLED OUT BY COLLEGE OF GRADUATE STUDIES &amp; RESEARCH OFFICE</div>
+    <div class="office-row">
+      <div class="office-field">
+        <span class="form-label">DATE RECEIVED:</span>
+        <div class="form-field-line" style="max-width:160px;">
+          <span data-field="date_received">{{ date_received }}</span>
+        </div>
+      </div>
+      <div class="office-field">
+        <span class="form-label">DATE APPROVED:</span>
+        <div class="form-field-line" style="max-width:160px;">
+          <span data-field="date_approved">{{ date_approved }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-text">Updated on <span data-field="updated_date">{{ updated_date }}</span></div>
+
+</div>
+</body>
+</html>

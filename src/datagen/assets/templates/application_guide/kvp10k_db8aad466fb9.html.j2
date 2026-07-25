@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Differential Protection RET 54</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  p { line-height: 1.5; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.9em; }
+  .footer { position: absolute; bottom: 50px; right: 60px; font-size: 0.8em; }
+  .section-title { font-size: 1.2em; margin-top: 20px; margin-bottom: 10px; }
+  .toc-entry { display: flex; justify-content: space-between; margin-bottom: 3px; font-size: 0.9em; }
+  .toc-page { text-align: right; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <h1 style="font-size: 2em;">Differential Protection</h1>
+    <h2 style="font-size: 1.5em;">RET 54_Diff6T function</h2>
+    <p style="margin-top: 10px;">Application and Setting Guide</p>
+  </div>
+  <div class="header-info" style="margin-top: 50px;">
+    <div>
+      <p>Issued: <span data-field="issue_date">{{ issue_date }}</span></p>
+      <p>Version: <span data-field="version">{{ version }}</span></p>
+    </div>
+    <div>
+      <p>1MRS 755916</p>
+      <p>Differential Protection</p>
+      <p>RET 54_Diff6T function</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Contents:</div>
+  <div class="toc-entry">
+    <span>1. Scope</span>
+    <span class="toc-page">6</span>
+  </div>
+  <div class="toc-entry">
+    <span>2. Introduction</span>
+    <span class="toc-page">7</span>
+  </div>
+  <div class="toc-entry">
+    <span>3. Technical implementations</span>
+    <span class="toc-page">7</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1. Protection of two-winding power transformers</span>
+    <span class="toc-page">7</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.1. Vector group matching</span>
+    <span class="toc-page">7</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.2. Transforming ratio correction of CTs</span>
+    <span class="toc-page">8</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.3. Starting ratio</span>
+    <span class="toc-page">9</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.4. Basic setting</span>
+    <span class="toc-page">9</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.5. Turn-point 2</span>
+    <span class="toc-page">10</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.6. Second harmonic blocking (Ratio I2f/I1f)</span>
+    <span class="toc-page">11</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.7. Instantaneous differential current stage (Inst.setting)</span>
+    <span class="toc-page">11</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.8. Fifth harmonic blocking (Ratio I5f/I1f)</span>
+    <span class="toc-page">12</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.1.9. Disturbance recorder</span>
+    <span class="toc-page">13</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.2. Protection of 3-winding power transformers</span>
+    <span class="toc-page">14</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.2.1. Example 1: Short-circuit current fed mainly from the HV side (step-down transformer)</span>
+    <span class="toc-page">15</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.2.2. Example 2: Short-circuit current fed mainly from the LV side (step-up transformer)</span>
+    <span class="toc-page">16</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.2.3. Example 3: Ratio matching with interposing CTs</span>
+    <span class="toc-page">16</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.2.4. Example 4: Vector group with interposing CTs</span>
+    <span class="toc-page">18</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.3. Protection of frequency converter supply transformers</span>
+    <span class="toc-page">18</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4. Protection of generator-transformer block</span>
+    <span class="toc-page">19</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.1. Relay connections</span>
+    <span class="toc-page">20</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.2. Vector group matching, Starting ratio and Basic setting</span>
+    <span class="toc-page">20</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.3. Second turning point</span>
+    <span class="toc-page">21</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.4. Harmonic blocking</span>
+    <span class="toc-page">21</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.5. Protection of a short overhead line or cable line</span>
+    <span class="toc-page">21</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.6. Example 1</span>
+    <span class="toc-page">22</span>
+  </div>
+  <div class="toc-entry">
+    <span>3.4.7. Example 2</span>
+    <span class="toc-page">23</span>
+  </div>
+  <div class="toc-entry">
+    <span>4. SUMMARY</span>
+    <span class="toc-page">25</span>
+  </div>
+  <div class="toc-entry">
+    <span>5. References</span>
+    <span class="toc-page">26</span>
+  </div>
+  <div class="toc-entry">
+    <span>6. List of symbols</span>
+    <span class="toc-page">27</span>
+  </div>
+  <div class="footer">3</div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <p>RET 54_Diff6T function</p>
+      <p>Differential Protection</p>
+    </div>
+    <div>
+      <p>1MRS 755916</p>
+    </div>
+  </div>
+  <div class="section-title">1. Scope</div>
+  <p>The present document introduces the setting calculation for the differential protection function block Diff6T of the protection relay type RET 54. The calculations with illustrative examples apply to two-winding power transformer applications.</p>
+  <p>Further, the document deals with differential protection of three-winding power transformers, frequency converter supply transformers, generator-transformer block and differential protection of short cable and overhead lines. All applications include setting recommendations.</p>
+  <p>Finally, the need for interposing CTs is discussed and illustrated with examples.</p>
+  <p>KEYWORDS: differential protection, power transformer protection, differential relay, Diff6T, RET 54.</p>
+  <div class="footer">5</div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <p>RET 54_Diff6T function</p>
+      <p>Differential Protection</p>
+    </div>
+    <div>
+      <p>1MRS 755916</p>
+  </div>
+  <div class="section-title">2. Introduction</div>
+  <p>Stabilized differential protection provides fast and reliable winding short-circuit, interturn fault, earth-fault and short-circuit protection for power transformers.</p>
+  <p>The differential protection function compares the phase currents on both sides of the object to be protected. Should the differential current of the phase currents in one of the phases exceed the set start value of the stabilized operation characteristic or the instantaneous protection stage, the relay generates an operate signal.</p>
+  <p>The key features of differential relays are speed of operation, stability for out-of-zone faults and sensitivity to in-zone faults. For a reliable and correct operation of the protection relay the current transformers (CT) have to be carefully chosen (see reference "Calculation of the Current Transformer Accuracy Limit Factor") and the relay settings have to be calculated and selected with care.</p>
+  <div class="footer">6</div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <p>RET 54_Diff6T function</p>
+      <p>Differential Protection</p>
+    </div>
+    <div>
+      <p>1MRS 755916</p>
+  </div>
+  <div class="section-title">3. Technical implementations</div>
+  <p>This part of the document describes how to calculate the settings for two-winding power transformer differential protection. Figure 3.1-1 shows an example application for which the calculations will be done.</p>
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for Figure 3.1-1 -->
+    <img src="placeholder_figure_3_1_1.png" alt="Figure 3.1-1" style="max-width: 100%; height: auto;">
+    <p style="font-size: 0.9em; margin-top: 10px;">Fig. 3.1-1 - Example of two-winding power transformer differential protection.</p>
+  </div>
+  <div class="section-title" style="margin-top: 30px;">3.1.1. Vector group matching</div>
+  <p>The vector group of the power transformer is numerically matched on the HV and the LV side by means of the HV connection, LV connection and Clock number settings. Thus no interposing CTs are needed. The matching is based on phase shifting and a numerical delta connection in the relay.</p>
+  <div class="section-title" style="margin-top: 20px;">3.1.1.1. Elimination of the zero-sequence component (I0)</div>
+  <p>If the neutral of a star-connected power transformer is earthed, any earth fault in the network will be perceived by the protection relay as differential current (Fig. 3.1.1.1). For the setting of the I0 elimination, follow the table of vector groups in the Diff6T function block manual (Table 1, pages 28-30)/2.</p>
+  <div style="text-align: center; margin: 20px 0;">
+    <!-- Placeholder for Figure 3.1.1.1 -->
+    <img src="placeholder_figure_3_1_1_1.png" alt="Figure 3.1.1.1" style="max-width: 100%; height: auto;">
+    <p style="font-size: 0.9em; margin-top: 10px;">Fig. 3.1.1.1 - Earth-fault current at a star-connected transformer with neutral earthing.</p>
+  </div>
+  <div class="footer">7</div>
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <p>RET 54_Diff6T function</p>
+      <p>Differential Protection</p>
+    </div>
+    <div>
+      <p>1MRS 755916</p>
+  </div>
+  <div class="section-title">3.1.2. Transforming ratio correction of CTs</div>
+  <p>Often the CT secondary currents differ from the rated current at the rated load of the power transformer. The CT transforming ratios can be corrected on both sides of the power transformer with the protected unit settings. Note that the settings of the protected unit are part of the relay settings and affect all protection function blocks.</p>
+  <p>First, the rated load of the power transformer must be calculated (on both sides) when the apparent power and phase-to-phase voltage are known:</p>
+  <p>$$I_{nT} = \frac{S_n}{\sqrt{3} \times U_n} \quad (1)$$</p>
+  <p>Where <span data-field="InT">{{ InT }}</span> = rated load of the power transformer</p>
+  <p>$$S_n = \text{rated power of the power transformer}$$</p>
+  <p>$$U_n = \text{rated phase-to-phase voltage}$$</p>
+  <p>Next, the settings of the unit can be calculated:</p>
+  <p>$$\text{scaling} = \frac{I_p}{I_{nT}} \quad (2)$$</p>
+  <p>Where <span data-field="Ip">{{ Ip }}</span> = rated primary current of the CT</p>
+  <p>Note that the rated input current (1 A or 5 A) of the relay does not have to be the same for the HV and the LV side. On the HV side, for example, 5 A rated secondary current can be used, while 1 A is used on the LV side, or vice versa. Using 1 A secondary current improves the CT performance (increases the actual accuracy limit factor of the CTs).</p>
+  <div class="footer">8</div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Differential Protection</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; }
+  p, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 10pt; }
+  .section-title { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .figure-caption { font-size: 9pt; margin-top: 5px; margin-bottom: 20px; text-align: center; }
+  .equation { text-align: center; margin: 15px 0; font-size: 11pt; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px; text-align: left; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div>1MRS 755916</div>
+    <div>RET 54_/Diff6T function</div>
+  </div>
+  <h2 style="font-size: 16pt; font-weight: bold;">Differential Protection</h2>
+  <p style="font-size: 12pt;">Application and Setting Guide</p>
+
+  <h3 class="section-title">3.1.3. Starting ratio</h3>
+  <p>Under ideal circumstances, and when there is no fault inside the protection zone, the differential current is zero. However, due to CT inaccuracies and varying tap changer positions (power transformer applications), the differential current deviates from zero in practice. An increasing the load current cause the differential current to grow at the same percentage rate.</p>
+  <p>The <span data-field="starting_ratio">{{ starting_ratio }}</span> setting affects the slope of the relay operating characteristics between the <span data-field="first_point">{{ first_point }}</span> and the <span data-field="second_point">{{ second_point }}</span>: an increase in the load current causes the differential current required for tripping to increase with the set percentage.</p>
+
+  <!-- Figure 3.1.3-1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_3131.png" alt="Figure 3.1.3-1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.1.3-1 Effect of the starting ratio setting on the relay operating characteristics.</div>
+  </div>
+
+  <p>The <span data-field="starting_ratio">{{ starting_ratio }}</span> setting is calculated as the sum of the accuracies of the CTs on both sides, the tap changer regulation range (if not compensated), the relay operation accuracy (4%) and the desired margin (typically 5%).</p>
+
+  <h4 class="section-title">Example</h4>
+  <p>The CT on both sides are rated 5P10 (i.e. the composite error is max. 5%) and the tap changer range is ± 9 x 1.67% (figure 3.1-1).</p>
+  <p>Calculate the starting ratio setting:</p>
+  <p>Starting ratio setting = 5% (HV CT) + 5% (LV CT) + 9 x 1.67% (tap changer) + 4% (relay) + 5% (margin) = 34%</p>
+
+  <h3 class="section-title">3.1.4. Basic setting</h3>
+  <p>The <span data-field="basic_setting">{{ basic_setting }}</span> defines the minimum sensitivity of the protection. Basically, it allows for the no-load current of the power transformer, but it can also be used to influence the overall level of the operation characteristic. At rated current the no-load losses of the power transformer are less than 1 per cent at rated voltage. Should, however, the supply voltage of the transformer suddenly increase due to operational disturbances, the magnetizing current of the transformer increases as</p>
+
+  <!-- Figure 3.1.4-1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_3141.png" alt="Figure 3.1.4-1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.1.4-1 Effect of the basic setting on the relay operating characteristics.</div>
+  </div>
+
+  <p>Taking into account the effective operation area for the <span data-field="starting_ratio">{{ starting_ratio }}</span> setting beginning from <span data-field="base_value">{{ base_value }}</span>, and the no-load losses of the transformer, we get a <span data-field="basic_setting">{{ basic_setting }}</span> = 0.5 x Starting ratio + P, where P represents the no-load losses of the transformer at maximum voltage. Typically, P = 10% is used if the actual value is unknown.</p>
+
+  <h4 class="section-title">Example</h4>
+  <p>The <span data-field="starting_ratio">{{ starting_ratio }}</span> setting is 19% and the transformer no-load losses are assumed to be less than 10%. Calculate the <span data-field="basic_setting">{{ basic_setting }}</span> value:</p>
+  <p>Basic setting = 0.5 x 19% + 10% = 19.5%</p>
+
+  <h3 class="section-title">To be noted when using automatic compensation</h3>
+  <p>There is always a very rare but still existing possibility of a fault in the tap position signal. In such a case the use of automatic compensation can cause problems. The relay, for example, interprets a missing or invalid tap position signal as the minimum (or maximum) tap position, which will lead to false compensation. As a consequence, and in the case of sensitive settings the protection relay might cause operation. This possibility should be considered at least in the <span data-field="basic_setting">{{ basic_setting }}</span> or in the relay configuration (switching to group 2 settings if an invalid signal is detected).</p>
+
+  <h3 class="section-title">3.1.5. Turn-point 2</h3>
+  <p>The <span data-field="turn_point_2">{{ turn_point_2 }}</span> defines the point in the operation characteristics at which the influence of the starting ratio ends and a constant 100% slope begins. Beyond this point, the increase in the differential current is equal to the corresponding increase in the stabilizing current.</p>
+  <p>Finding settings for the differential protection is always balancing between stability and sensitivity. The smaller the 2nd turning-point setting is, the more stable and less sensitive the protection is. And vice versa, the higher the setting is, the more sensitive and less stable the protection is.</p>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>1MRS 755916</div>
+    <div>RET 54_/Diff6T function</div>
+  </div>
+
+  <h3 class="section-title">3.1.6. Second harmonic blocking (Ratio I2/I1)</h3>
+  <p>Power transformers are ferromagnetic devices. At the moment of energization, the power transformer draws a magnetizing inrush current, which is perceived by the differential protection relay solely as a differential current.</p>
+  <p>Because the transformer magnetizing impedance is non-linear, the inrush current contains a lot of second order harmonics. A well-known principle is to detect an inrush situation from the content of the <span data-field="second_harmonic">{{ second_harmonic }}</span> and block the differential protection relay (low-set stage) for the time of the inrush.</p>
+  <p>The recommended setting for the second harmonic blocking is 15% in power transformer protection. It is also recommended to use the default feature for the setting <span data-field="harmonic_blocking_setting">{{ harmonic_blocking_setting }}</span>. The factory default setting is "With deblock". This setting allows a special algorithm to inhibit the second harmonic blocking in case the algorithm detects a fault inside the protected area.</p>
+  <p>The content of <span data-field="second_harmonic">{{ second_harmonic }}</span> in the inrush current depends on transformer construction, material and resonance. Therefore, the setting for the <span data-field="second_harmonic">{{ second_harmonic }}</span> blocking cannot be calculated in a straightforward way. The disturbance recorder can be used for detecting the content of the <span data-field="second_harmonic">{{ second_harmonic }}</span> in the search of the final setting for the second harmonic blocking.</p>
+
+  <!-- Figure 3.1.8-1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_3181.png" alt="Figure 3.1.8-1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.1.8-1 Magnetizing current and its 5th harmonic component in the windings of an overexcited power transformer.</div>
+  </div>
+
+  <p>Figure 3.1.8-1 illustrates how the proportion of the harmonic initially increases until it reaches its maximum, and if the voltage continues rising, the transformer will go into an even deeper saturation and part of the fifth harmonic starts to decline.</p>
+  <p>The main problem when defining the setting values is that the fifth harmonic curve is critical voltage values and the overcapacity of the magnetic circuits depend on the transformer construction, material and resonance. Therefore, the setting for the fifth harmonic is not a function of the transformer. A value often used for blocking is 35%, but its usefulness in each application is different and depends on the transformer characteristics.</p>
+
+  <p>Diff6T also has a separate stable deblocking limit, which can be toggled on and off. This gives the user more options. Sometimes tripping of the differential relay is required even when there is no fault inside the protection area of the relay. In the figure 3.1.8-1, only the blocking is active and the limit is set to 35%. Then the relay is blocked when the line voltage reaches 104%. If the voltage continues to rise, the blocking will disappear when the voltage reaches 137% (no hysteresis). This kind of performance may be considered desirable with this type of transformer. For other transformer types in which the fifth harmonic of the magnetizing current rises to the top point much later, for example, when the voltage approaches 140%, the deblocking limit allows the blocking to be released already at the rising part of the curve. A value often used for this purpose is 100%.</p>
+  <p>It should also be noted that the release of the fifth harmonic blocking due to the set deblocking limit or a decrease in the fifth harmonic content when the overvoltage occurs, is not an absolute guarantee for tripping. Tripping will take place only if the inrush current is still above the threshold of the relay (i.e. the differential current from the relay point of view) exceeds the tripping value at that point of the bias curve and so, for example, the load current has an effect on whether there will be a trip or not. Of this reason, separate overvoltage protection (OV3Low/High function block) is recommended.</p>
+  <p>As a conclusion it can be stated that if the blocking/deblocking feature based on the fifth harmonic is to be used, the magnetization characteristic of the transformer should be known (contact the transformer manufacturer), because when the voltage increases, the degree of saturation and thus the harmonic content of the current depends on the design of the transformer. If the magnetization characteristic is known, or the current waveform has been recorded and the harmonic content has been analyzed while the voltage is increased, the setting values could be defined.</p>
+
+  <h4 class="section-title">Recommendation</h4>
+  <p>Usually, the magnetization characteristic of the power transformer is not known, and therefore it is recommended to set the <span data-field="harmonic_blocking_setting">{{ harmonic_blocking_setting }}</span> = <span data-field="not_in_use">{{ not_in_use }}</span>.</p>
+
+  <h3 class="section-title">3.1.9. Disturbance recorder</h3>
+  <p>The internal disturbance recording function of the relay (MEDREC16) is a powerful tool for analysing, for example, transformer inrush currents and the cause of a trip. Therefore, attention should be paid to the disturbance recorder settings and signals to be recorded as well.</p>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>1MRS 755916</div>
+    <div>RET 54_/Diff6T function</div>
+  </div>
+
+  <h3 class="section-title">3.2. Protection of 3-winding power transformers</h3>
+  <p>Normally the disturbance recorder is to be set to record only relay trip operations. The recommended pre-trig time setting is about 85%. Then a recording will contain 85% of the waveforms before a trip operation and 15% after the tripping.</p>
+  <p>For studying the inrush current (for example <span data-field="second_harmonic">{{ second_harmonic }}</span> content) the recorder should be set to be triggered at the beginning of the inrush with a pre-trig time setting of about 10%.</p>
+  <p>The operation mode of the recorder defines whether the recorder is to memorize the oldest record(s) (<span data-field="saturation_mode">{{ saturation_mode }}</span>) or the newest record(s) (<span data-field="overwrite_mode">{{ overwrite_mode }}</span>).</p>
+
+  <!-- Figure 3.2.1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_321.png" alt="Figure 3.2.1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.2.1 Simplified connection diagram for a 3-winding power transformer and a 2-winding power transformer with two output feeders. No interposing CTs for vector group matching are shown.</div>
+  </div>
+
+  <p>On the double-feeder side of the power transformer the current of the two CTs per phase must be summed by connecting the two CTs of each phase in parallel. Generally this requires interposing CTs (see examples 3 and 4) to handle the vector group and/or ratio mismatch between the two windings/feeders.</p>
+  <p>For the interposing CT, the accuracy limit factor must fulfill the same requirements as the main CTs. Please note that the interposing CT imposes an additional burden to the main CTs.</p>
+  <p>The most important rule in these applications is that, at least 75% of the short-circuit power should be fed on the side of the power transformer with only one connection to the relay (Figure 3.2-2).</p>
+
+  <!-- Figure 3.2.2 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_322.png" alt="Figure 3.2.2" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.2.2 Power direction at short circuit.</div>
+  </div>
+
+  <p>The 75% requirement is important because of the bias current (stabilising current) calculation in the protection relay. The bias current is calculated as:</p>
+  <div class="equation">
+    <span data-field="bias_current_equation">{{ bias_current_equation }}</span>
+    <span style="font-size: 10pt;">(3)</span>
+  </div>
+
+  <p>Where <span data-field="i1_desc">{{ i1_desc }}</span> = secondary current (phasor) on HV side</p>
+  <p>and <span data-field="i2_desc">{{ i2_desc }}</span> = secondary current (phasor) on LV side</p>
+
+  <h4 class="section-title">Example 1: Short-circuit current fed mainly from the HV side (step-down transformer)</h4>
+  <p>Figure 3.2.1-1 illustrates an external fault in a three-winding power transformer application, where most of the short-circuit current is fed from the HV side (where only one CT per phase is connected to the relay).</p>
+
+  <!-- Figure 3.2.1-1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_3211.png" alt="Figure 3.2.1-1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.2.1-1 Power flow directions in example 1.</div>
+  </div>
+
+  <p>The bias current will now be:</p>
+  <div class="equation">
+    <span data-field="bias_current_example1">{{ bias_current_example1 }}</span>
+  </div>
+
+  <p>The actual bias in true three-winding protection would be 100%, but when the mentioned 75% rule is used the bias current with Diff6T is close enough and the stable (stabilized) operation is ensured.</p>
+
+  <h4 class="section-title">Example 2: Short-circuit current fed mainly from the LV side (step-up transformer)</h4>
+  <p>Figure 3.2.2-1 illustrates an external fault in a three-winding power transformer application, where most of the short-circuit power is fed from the LV side, where two CTs per phase are connected to the relay. This example clearly violates the 75% rule.</p>
+
+  <!-- Figure 3.2.2-1 -->
+  <div style="text-align: center; margin: 30px 0;">
+    <!-- Placeholder for diagram -->
+    <img src="placeholder_diagram_3221.png" alt="Figure 3.2.2-1" style="max-width: 400px; height: auto;">
+    <div class="figure-caption">Fig. 3.2.2-1 Power flow directions in example 2.</div>
+  </div>
+
+  <p>The bias current will now be:</p>
+  <div class="equation">
+    <span data-field="bias_current_example2">{{ bias_current_example2 }}</span>
+  </div>
+
+  <p>Note: At external faults, the bias current should be high. With low bias, the relay will operate as a non-stabilized (non-biased) relay. The Diff6T function is not recommended for applications like that.</p>
+
+  <h4 class="section-title">Example 3: Ratio matching with interposing CTs</h4>
+  <p>If the ratios of the main CTs to be connected in parallel are unequal, an interposing CT is required to match the ratio difference. Figure 3.2.3-1 illustrates an example where two output feeders have main CTs of different ratios. Calculate the ratio of the interposing CTs and the relay settings for the application.</p>
+
+</div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Differential Protection</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  p, span, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .figure-caption { font-size: 0.9em; margin-top: 5px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+    <div style="text-align: right; font-size: 0.9em;">RET 54_Diff6T function</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <!-- Figure 3.2.3-1 Placeholder -->
+    <img src="placeholder_diagram_1.png" alt="Figure 3.2.3-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.2.3-1 Matching CT ratios with interposing CTs (one per phase).</p>
+  </div>
+
+  <p style="margin-top: 20px;">The ratio of one of the main CTs on the LV side is <span data-field="ratio_lv_main">{{ ratio_lv_main }}</span>. Therefore, the other main CT with the interposing CT should also have the ratio 100. The main CT is 100 A / 5 A = 20, thus the interposing CT should have the ratio 100/20 = 5, for example 25 A / 5 A.</p>
+
+  <p style="margin-top: 20px;">An alternative connection of the interposing CT is shown in Figure 3.2.3-2. The interposing (summation) CT has both 5 A and 25 A primaries and a 5 A secondary.</p>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <!-- Figure 3.2.3-2 Placeholder -->
+    <img src="placeholder_diagram_2.png" alt="Figure 3.2.3-2" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.2.3-2 Matching CT ratios with summation CT.</p>
+  </div>
+
+  <p style="margin-top: 20px;">The rated current of the HV side is:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>I<span data-field="current_hv_rated">{{ current_hv_rated }}</span> = <span data-field="sn_hv">{{ sn_hv }}</span> / &radic;3 &times; U<span data-field="u_n_hv">{{ u_n_hv }}</span> = <span data-field="value_hv">{{ value_hv }}</span> / &radic;3 &times; 132kV = <span data-field="result_hv">{{ result_hv }}</span></p>
+  </div>
+
+  <p style="margin-top: 20px;">The setting of the protected unit on the HV side is:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>setting = I<span data-field="ip_hv">{{ ip_hv }}</span> = <span data-field="value_ip_hv">{{ value_ip_hv }}</span> / 137.8A &approx; 1.451</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">RET 54_Diff6T function</div>
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <p style="margin-top: 20px;">The rated load and the setting of the protected unit on the LV side are:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>I<span data-field="n_t_lv">{{ n_t_lv }}</span> = <span data-field="s_n_lv">{{ s_n_lv }}</span> / &radic;3 &times; U<span data-field="u_n_lv">{{ u_n_lv }}</span> = <span data-field="value_lv">{{ value_lv }}</span> / &radic;3 &times; 33kV = <span data-field="result_lv">{{ result_lv }}</span></p>
+  </div>
+
+  <p style="margin-top: 20px;">scaling = I<span data-field="ip_lv">{{ ip_lv }}</span> / I<span data-field="n_t_lv">{{ n_t_lv }}</span> = <span data-field="value_scaling">{{ value_scaling }}</span> / 551.1A &approx; 0.907</p>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.2.4. Vector group with interposing CTs</h2>
+  <p style="margin-top: 5px;">Figure 3.2.4-1 illustrates an example of three-winding power transformer protection where interposing CTs are used for vector group matching.</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <!-- Figure 3.2.4-1 Placeholder -->
+    <img src="placeholder_diagram_3.png" alt="Figure 3.2.4-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.2.4-1 Vector group matching with interposing CTs.</p>
+  </div>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.3. Protection of frequency converter supply transformers</h2>
+  <p style="margin-top: 5px;">The RET 54_ can only be used for the protection of the power transformer feeding the frequency converter, as illustrated in Figure 3.3-1.</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <!-- Figure 3.3-1 Placeholder -->
+    <img src="placeholder_diagram_4.png" alt="Figure 3.3-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.3-1 Protection of a power transformer feeding a frequency converter and motor.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">RET 54_Diff6T function</div>
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.4. Protection of generator-transformer block</h2>
+  <p style="margin-top: 5px;">Figure 3.4-1 illustrates three typical generator-transformer block arrangements. The system (a) in the leftmost picture includes the generator, magnetising circuit, power transformer, circuit breaker (CB1), two sets of CTs and the protection relay. The systems (b) and (c) also include an outlet for auxiliary circuits, and system (b) the circuit breaker between the generator and the transformer (CB2).</p>
+
+  <p style="margin-top: 5px;">The protection zone is the area between the generator star-point CTs and the block transformer network side CTs, i.e. the protection covers the stator of the generator, the block transformer, busbars, VTs and the magnetising transformer.</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <!-- Figure 3.4-1 Placeholder -->
+    <img src="placeholder_diagram_5.png" alt="Figure 3.4-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.4-1 Protection of a generator-transformer block.</p>
+  </div>
+
+  <h3 style="font-size: 1.1em; margin-top: 30px;">3.4.1.</h3>
+  <p style="margin-top: 5px;">The relay measures the phase currents on both sides of the generator-transformer block. In the leftmost picture (a) of Fig. 3.4-1 the relay connections are straightforward.</p>
+
+  <p style="margin-top: 5px;">If the auxiliary transformer is located between the generator and the power transformer, it should have its own CTs (as shown in Fig. 3.4-1). Without CTs, the relay sees the summation of the auxiliary circuit as a differential current. However, if the compensation is relatively small, the CTs can be left out and a slightly higher Basic setting should be used.</p>
+
+  <p style="margin-top: 5px;">System (b) features an auxiliary transformer and a circuit breaker between the generator and the power transformer. Because it is possible that the system is used with CB1 closed and CB2 open, the relay must be connected as shown in the figure and the current of the auxiliary circuit must be subtracted from the current on the generator neutral side.</p>
+
+  <p style="margin-top: 5px;">System (c) does not have a CB2. Therefore, the current of the auxiliary circuit can be summed to the power transformer current. The advantage of this connection is that it has a higher stabilizing (bias) current and therefore the protection becomes more stable. The disadvantage is that interposing CTs are required for matching the vector groups before summing.</p>
+
+  <p style="margin-top: 5px;">The CTs which are to be used for summing or subtracting currents should all have the same ratio otherwise interposing CTs are required for ratio matching.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">RET 54_Diff6T function</div>
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.4.2. Vector group matching, Starting ratio and Basic setting</h2>
+  <p style="margin-top: 5px;">The vector group should be set according the the power transformer. The Starting ratio and Basic settings are calculated as shown for the power transformer.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 30px;">3.4.3. Second turning point</h3>
+  <p style="margin-top: 5px;">Typical setting is 1...1.5.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 30px;">3.4.4. Harmonic blocking</h3>
+  <p style="margin-top: 5px;">Generators normally do not need 2nd or 5th harmonic blocking, but the power transformer may require these.</p>
+
+  <p style="margin-top: 5px;">If there is no circuit breaker between the generator and the power transformer (CB2 in Fig. 3.4-1) there will be no inrush current and 2nd harmonic blocking is not needed. Thus, the 2nd harmonic blocking can be disabled.</p>
+
+  <p style="margin-top: 5px;">If there is a generator circuit breaker an inrush current of the power transformer is possible (if the network CB is closed and the generator side CB is open). Then the 2nd harmonic blocking is required. The settings are as shown for the power transformer.</p>
+
+  <p style="margin-top: 5px;">Should the network circuit breaker be opened due to a short circuit in the network, with the generator running at full load, there is an obvious risk of a temporary voltage rise and overmagnetising of the power transformer. Therefore 5th harmonic blocking is recommended in order to avoid unnecessary tripping. Overmagnetising causes thermal stress on the transformer and in case of excessive overmagnetising blocking and 50% for deblocking.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">RET 54_Diff6T function</div>
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.5. Protection of a short overhead line or cable line</h2>
+
+  <p style="margin-top: 5px;">The RET 54_ can be used for differential protection of overhead lines or cable lines. Should the distance between the measuring points be relatively long, interposing CTs might be needed to reduce the burden of the CTs.</p>
+
+  <p style="margin-top: 5px;">The longer the distance between the CT and the protection relay, the higher the CT burden (due to the resistance of the connection wires). Further, the actual accuracy limit factor of the CT may be too low to fulfil the requirements for differential protection.</p>
+
+  <p style="margin-top: 5px;">It is often enough to use 1 A secondary currents instead of 5 A. If, for example, the total resistance of the secondary wires is 1.0 ohm, and 5 A rated secondary current is used, the CT burden will be (5 A)^2 x 1.0 ohm = 25 VA. Instead of oversizing the CT VA rating in order to compensate for the increased burden, the CT ratio should be increased. Should 1 A rated secondary current be used, the burden will only be (1A)^2 x 1.0 ohm = 1 VA.</p>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.5.1. Example 1</h2>
+  <p style="margin-top: 5px;">Figure 3.5.1-1 illustrates an example where the distance between the left-hand side CT and the relay is 1000 metres. Calculate the actual accuracy limit factor of the CTs</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <!-- Figure 3.5.1-1 Placeholder -->
+    <img src="placeholder_diagram_6.png" alt="Figure 3.5.1-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.5.1-1 Example of long distance wiring.</p>
+  </div>
+
+  <p style="margin-top: 20px;">The actual accuracy limit factor can be calculated (see references) as:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_eq">{{ fa_eq }}</span> = F<span data-field="fn_eq">{{ fn_eq }}</span> x <span data-field="sn_eq">{{ sn_eq }}</span> / (<span data-field="sn_eq">{{ sn_eq }}</span> + <span data-field="sa_eq">{{ sa_eq }}</span>) (4)</p>
+  </div>
+
+  <p style="margin-top: 20px;">Where:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>F<span data-field="fn_desc">{{ fn_desc }}</span> = rated CT accuracy limit factor</li>
+    <li>S<span data-field="sn_desc">{{ sn_desc }}</span> = burden arising from the CT secondary winding resistance (I^2R)</li>
+    <li>S<span data-field="sa_desc">{{ sa_desc }}</span> = actual CT burden (burden of wiring, relay and interposing CTs)</li>
+  </ul>
+
+  <p style="margin-top: 20px;">The relay input impedance in the above example is 0.02 ohm. On the right side, the actual accuracy limit factor of CT4 will be:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct4">{{ fa_ct4 }}</span> = 20 x <span data-field="sn_ct4">{{ sn_ct4 }}</span> / (<span data-field="5A">{{ 5A }}</span>)^2 x 0.07\Omega + 14.4VA</p>
+  </div>
+
+  <p style="margin-top: 20px;">On the left side, first calculate the actual limit factor of the 2nd interposing CT.</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct3">{{ fa_ct3 }}</span> = 20 x <span data-field=" (5A)^2 x 0.08\Omega + (5A)^2 x (0.05 + 0.02)\Omega</span> / (<span data-field="5A">{{  (5A)^2 x 0.08\Omega + (5A)^2 x (0.05 + 0.02)\Omega</span> / (<span data-field= }}</span>)^2 x 0.07\Omega + 117.3</p>
+  </div>
+
+  <p style="margin-top: 20px;">Next, the burden of the 1st interposing CT is calculated by adding the burden of the 0.5 A circuit (pilot wire and 2nd interposing CT primary winding resistances) and the burden of the 5 A circuit (2nd interposing CT secondary winding, wire and relay input resistances):</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>S<span data-field="sa_ct2">{{ sa_ct2 }}</span> = (0.5A)^2 x (5.4 + 3.6)\Omega + (5A)^2 x (0.08 + 0.05 + 0.02)\Omega = 6.0VA</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="font-size: 0.9em;">RET 54_Diff6T function</div>
+    <div style="font-size: 0.9em;">1MRS 755916</div>
+  </div>
+  <h1 style="font-size: 1.5em; margin-top: 20px;">Differential Protection</h1>
+  <p style="margin-top: 5px;">Application and Setting Guide</p>
+
+  <p style="margin-top: 20px;">Next, the actual accuracy limit factor of the first interposing CT is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct2">{{ fa_ct2 }}</span> = 20 x <span data-field=" (0.5A)^2 x 3.6\Omega + 20VA</span> / (<span data-field="0.5A">{{  (0.5A)^2 x 3.6\Omega + 20VA</span> / (<span data-field= }}</span>)^2 x 0.07\Omega + 60.6</p>
+  </div>
+
+  <p style="margin-top: 20px;">Next, the burden of the main CT (CT1) is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>S<span data-field="sa_ct1">{{ sa_ct1 }}</span> = (5A)^2 x (0.13 + 0.8)\Omega + (0.5A)^2 x (3.6 + 5.4 + 3.6)\Omega + 8.4VA</p>
+  </div>
+
+  <p style="margin-top: 20px;">Finally, the actual accuracy limit factor of the main CT is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct1">{{ fa_ct1 }}</span> = 20 x <span data-field=" (5A)^2 x 0.07\Omega + 50VA</span> / (<span data-field="5A">{{  (5A)^2 x 0.07\Omega + 50VA</span> / (<span data-field= }}</span>)^2 x 0.07\Omega + 14.4VA</p>
+  </div>
+
+  <h2 style="font-size: 1.2em; margin-top: 40px;">3.5.2. Example 2</h2>
+  <p style="margin-top: 5px;">The relay rated input current (1 A or 5 A) does not have to be the same for the HV side and the LV side. The previous example (Figure 3.5.1-1) can be simplified by using only one set of interposing CTs and the 1 A nominal current input terminals of the relay. Furthermore, the CT sizes can be reduced as shown in Figure 3.5.2-1.</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <!-- Figure 3.5.2-1 Placeholder -->
+    <img src="placeholder_diagram_7.png" alt="Figure 3.5.2-1" style="max-width: 100%; height: auto;">
+    <p class="figure-caption">Fig. 3.5.2-1 Example with only one set of interposing CTs.</p>
+  </div>
+
+  <p style="margin-top: 20px;">The impedance of the 1 A nominal current input of the relay is 0.10 ohm. The actual accuracy limit factor of the interposing CT is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct2_ex2">{{ fa_ct2_ex2 }}</span> = 10 x <span data-field=" (0.5A)^2 x 3.6\Omega + 10VA</span> / (<span data-field="0.5A">{{  (0.5A)^2 x 3.6\Omega + 10VA</span> / (<span data-field= }}</span>)^2 x 3.6\Omega + (0.5A)^2 x (5.4 + 0.10)\Omega = 47.9</p>
+  </div>
+
+  <p style="margin-top: 20px;">Next, the burden of the main CT is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>S<span data-field="sa_ct1_ex2">{{ sa_ct1_ex2 }}</span> = (5A)^2 x (0.13 + 0.8)\Omega + (0.5A)^2 x (3.6 + 5.4 + 0.10)\Omega = 7.53VA</p>
+  </div>
+
+  <p style="margin-top: 20px;">Finally, the actual accuracy limit factor of the main CT is calculated:</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <p>F<span data-field="fa_ct1_ex2">{{ fa_ct1_ex2 }}</span> = 20 x <span data-field=" (5A)^2 x 0.07\Omega + 30VA</span> / (<span data-field="5A">{{  (5A)^2 x 0.07\Omega + 30VA</span> / (<span data-field= }}</span>)^2 x 0.07\Omega + 7.53VA = 68.4</p>
+  </div>
+</div>
+
+</body>
+</html>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .content-body {
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .reference-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .reference-list li {
+    margin-bottom: 10px;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .symbol-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .symbol-table td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .symbol-table .symbol {
+    font-weight: bold;
+    width: 15%;
+  }
+  .symbol-table .description {
+    width: 85%;
+  }
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    font-size: 10pt;
+    color: #555;
+  }
+</style>
+
+<div class="page">
+  <div class="header-row">
+    <div>1MRS 755916</div>
+    <div>Differential Protection</div>
+    <div>RET 54_Diff6T function</div>
+  </div>
+  <div>Application and Setting Guide</div>
+  <div style="margin-top: 40px;">
+    <div class="section-title">4. SUMMARY</div>
+    <div class="content-body">
+      <p>This document describes how to select and calculate the differential protection settings for the <span data-field="ret_54_protection_relay">{{ ret_54_protection_relay }}</span> protection relay. The relay operation principles and the effect of the settings are described and the calculations are presented with examples. Examples and rules apply to two-winding power transformer applications. Furthermore, recommendations for the setting of the relay's internal disturbance recorder are given.</p>
+      <p>Then, a protection application example for three-winding power transformers and a two-winding power transformer with two output feeders is described. The suitability of the <span data-field="ret_54_relay">{{ ret_54_relay }}</span> relay for these applications is illustrated with examples.</p>
+      <p>Next, the suitability of the <span data-field="ret_54_relay">{{ ret_54_relay }}</span> relay for frequency converter applications is discussed. Because the relay operation is based on the set fundamental frequency component of the phase currents, the relay is suitable only for the protection of the power transformer feeding the frequency converter.</p>
+      <p>Finally, the differential protection of a short overhead line or cable line is described with examples of calculating the actual accuracy limit factors of interposing CTs. The calculation examples are also relevant to other applications with a relatively long distance between the CTs and the relay.</p>
+    </div>
+  </div>
+  <div class="footer">25</div>
+</div>
+
+<div class="page">
+  <div class="header-row">
+    <div>1MRS 755916</div>
+    <div>RET 54_Diff6T</div>
+    <div>Differential Protection</div>
+  </div>
+  <div>Application and Setting Guide</div>
+  <div style="margin-top: 40px;">
+    <div class="section-title">5. References</div>
+    <ul class="reference-list">
+      <li><span data-field="reference_1">{{ reference_1 }}</span></li>
+      <li><span data-field="reference_2">{{ reference_2 }}</span></li>
+      <li><span data-field="reference_3">{{ reference_3 }}</span></li>
+    </ul>
+  </div>
+  <div class="footer">26</div>
+</div>
+
+<div class="page">
+  <div class="header-row">
+    <div>1MRS 755916</div>
+    <div>Differential Protection</div>
+    <div>RET 54_Diff6T function</div>
+  </div>
+  <div>Application and Setting Guide</div>
+  <div style="margin-top: 40px;">
+    <div class="section-title">6. List of symbols</div>
+    <table class="symbol-table">
+      <tr>
+        <td class="symbol">Fa</td>
+        <td class="description"><span data-field="symbol_description_fa">{{ symbol_description_fa }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Fn</td>
+        <td class="description"><span data-field="symbol_description_fn">{{ symbol_description_fn }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Ibias</td>
+        <td class="description"><span data-field="symbol_description_ibias">{{ symbol_description_ibias }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Idiff</td>
+        <td class="description"><span data-field="symbol_description_idiff">{{ symbol_description_idiff }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">InT</td>
+        <td class="description"><span data-field="symbol_description_int">{{ symbol_description_int }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Ip</td>
+        <td class="description"><span data-field="symbol_description_ip">{{ symbol_description_ip }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">P'</td>
+        <td class="description"><span data-field="symbol_description_p_prime">{{ symbol_description_p_prime }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Sa</td>
+        <td class="description"><span data-field="symbol_description_sa">{{ symbol_description_sa }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Sin</td>
+        <td class="description"><span data-field="symbol_description_sin">{{ symbol_description_sin }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Snct</td>
+        <td class="description"><span data-field="symbol_description_snct">{{ symbol_description_snct }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Sn</td>
+        <td class="description"><span data-field="symbol_description_sn">{{ symbol_description_sn }}</span></td>
+      </tr>
+      <tr>
+        <td class="symbol">Un</td>
+        <td class="description"><span data-field="symbol_description_un">{{ symbol_description_un }}</span></td>
+      </tr>
+    </table>
+  </div>
+  <div class="footer">27</div>
+</div>
+
+<div class="page">
+  <div class="header-row">
+    <div>1MRS 755916</div>
+    <div>Differential Protection</div>
+    <div>RET 54_Diff6T function</div>
+  </div>
+  <div>Application and Setting Guide</div>
+  <div style="margin-top: 40px;">
+    <!-- Content for page 4/5 is empty in the source, maintaining structure -->
+  </div>
+  <div class="footer">28</div>
+</div>
+
+<div class="page">
+  <!-- Footer/Contact Information Area -->
+  <div style="position: absolute; bottom: 50px; left: 60px; font-family: Arial, sans-serif; font-size: 10pt;">
+    <img src="placeholder_logo.png" alt="ABB Logo" style="width: 150px; height: auto; margin-bottom: 10px;">
+    <div>ABB Oy</div>
+    <div>Distribution Automation</div>
+    <div>P.O. Box 699</div>
+    <div>FI-45101 Vasa</div>
+    <div>FINLAND</div>
+    <div>Tel: {{ contact_tel }}</div>
+    <div>Fax: {{ contact_fax }}</div>
+    <div>www.abb.com/substationautomation</div>
+  </div>
+  <div class="footer"></div>
+</div>

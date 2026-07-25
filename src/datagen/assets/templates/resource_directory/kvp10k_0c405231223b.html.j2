@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addiction Resources</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 13px; color: #222; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  h1.doc-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    margin-bottom: 8px;
+  }
+  .disclaimer {
+    text-align: center;
+    font-style: italic;
+    font-size: 11.5px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .city-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a8fa0;
+    margin-bottom: 18px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  }
+  .city-heading .subtitle {
+    font-size: 14px;
+    font-weight: normal;
+    color: #1a8fa0;
+  }
+  .two-col {
+    display: flex;
+    gap: 30px;
+  }
+  .col {
+    flex: 1;
+  }
+  .resource-entry {
+    margin-bottom: 18px;
+  }
+  .resource-name {
+    font-weight: bold;
+    color: #1a8fa0;
+    font-size: 13px;
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+  .resource-detail {
+    font-size: 13px;
+    color: #222;
+    line-height: 1.6;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11.5px;
+    color: #444;
+    line-height: 1.6;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 13px; color: #222; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .page-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    margin-bottom: 8px;
+  }
+  .disclaimer {
+    text-align: center;
+    font-style: italic;
+    font-size: 11.5px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .city-heading-center {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a7fa0;
+    margin-bottom: 22px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  }
+  .city-heading-left {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a7fa0;
+    margin-bottom: 14px;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  }
+  .two-col {
+    display: flex;
+    gap: 0;
+  }
+  .col {
+    flex: 1;
+    padding-right: 20px;
+  }
+  .col:last-child { padding-right: 0; }
+
+  .resource-block {
+    margin-bottom: 20px;
+  }
+  .resource-name {
+    font-weight: bold;
+    color: #1a7fa0;
+    font-size: 13px;
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+  .resource-detail {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #222;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .city-heading-small {
+    font-size: 14px;
+    font-weight: normal;
+    color: #1a7fa0;
+  }
+</style>
+</head>
+<body>
+
+{# ===================== PAGE 1 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="city-heading">
+    <span data-field="pages[0].city_heading">{{ pages[0].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[0].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[0].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[0].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[0].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[0].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[0].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[0].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[0].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[0].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[0].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 2 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[1].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[1].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[1].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[1].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[1].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[1].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[1].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[1].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[1].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[1].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 3 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[2].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[2].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[2].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[2].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[2].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+          {% if entry.phone2 %}<br><span data-field="pages[2].left_entries[{{ loop.index0 }}].phone2">{{ entry.phone2 }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[2].right_entries %}
+      <div class="resource-entry">
+        {% if entry.section_heading %}
+        <div class="city-heading" style="text-align:left; font-size:16px; margin-bottom:10px;">
+          <span data-field="pages[2].right_entries[{{ loop.index0 }}].section_heading">{{ entry.section_heading }}</span>
+          {% if entry.section_subtitle %} <span class="subtitle"><span data-field="pages[2].right_entries[{{ loop.index0 }}].section_subtitle">{{ entry.section_subtitle }}</span></span>{% endif %}
+        </div>
+        {% endif %}
+        {% if entry.name %}
+        <div class="resource-name"><span data-field="pages[2].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        {% endif %}
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[2].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[2].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[2].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 4 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="two-col">
+    <div class="col">
+      {% for section in pages[3].left_sections %}
+      <div class="city-heading" style="text-align:left; font-size:16px; margin-bottom:10px; margin-top: {% if loop.index0 > 0 %}18px{% else %}0{% endif %};">
+        <span data-field="pages[3].left_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+      </div>
+      {% for entry in section.entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[3].left_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[3].left_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[3].left_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[3].left_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for section in pages[3].right_sections %}
+      <div class="city-heading" style="text-align:left; font-size:16px; margin-bottom:10px; margin-top: {% if loop.index0 > 0 %}18px{% else %}0{% endif %};">
+        <span data-field="pages[3].right_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+      </div>
+      {% for entry in section.entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[3].right_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[3].right_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[3].right_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[3].right_sections[{{ loop.index0 }}].entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 5 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="city-heading">
+    <span data-field="pages[4].city_heading">{{ pages[4].city_heading }}</span>
+    <span class="subtitle"><span data-field="pages[4].city_subtitle">{{ pages[4].city_subtitle }}</span></span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[4].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[4].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[4].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[4].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[4].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[4].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[4].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[4].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[4].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[4].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 6 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="city-heading">
+    <span data-field="pages[5].city_heading">{{ pages[5].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[5].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[5].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[5].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[5].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[5].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[5].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[5].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[5].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[5].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[5].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 7 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="city-heading" style="text-align:center; font-size:16px; margin-bottom:14px;">
+        <span data-field="pages[6].left_city_heading">{{ pages[6].left_city_heading }}</span>
+      </div>
+      {% for entry in pages[6].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[6].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[6].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[6].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[6].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      <div class="city-heading" style="text-align:center; font-size:16px; margin-bottom:14px;">
+        <span data-field="pages[6].right_city_heading">{{ pages[6].right_city_heading }}</span>
+        {% if pages[6].right_city_subtitle %} <span class="subtitle"><span data-field="pages[6].right_city_subtitle">{{ pages[6].right_city_subtitle }}</span></span>{% endif %}
+      </div>
+      {% for entry in pages[6].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[6].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[6].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[6].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[6].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 8 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="city-heading">
+    <span data-field="pages[7].city_heading">{{ pages[7].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[7].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[7].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[7].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[7].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[7].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for entry in pages[7].right_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[7].right_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[7].right_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[7].right_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[7].right_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+{# ===================== PAGE 9 ===================== #}
+<div class="page">
+  <h1 class="doc-title">Addiction Resources</h1>
+  <p class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    New Mexico Health Care Authority for any of the services or opinions of the corporation or organization.
+  </p>
+
+  <div class="city-heading">
+    <span data-field="pages[8].city_heading">{{ pages[8].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for entry in pages[8].left_entries %}
+      <div class="resource-entry">
+        <div class="resource-name"><span data-field="pages[8].left_entries[{{ loop.index0 }}].name">{{ entry.name }}</span></div>
+        <div class="resource-detail">
+          {% if entry.website %}<span data-field="pages[8].left_entries[{{ loop.index0 }}].website">{{ entry.website }}</span><br>{% endif %}
+          {% if entry.address %}<span data-field="pages[8].left_entries[{{ loop.index0 }}].address">{{ entry.address }}</span><br>{% endif %}
+          {% if entry.phone %}<span data-field="pages[8].left_entries[{{ loop.index0 }}].phone">{{ entry.phone }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span data-field="footer.program">{{ footer.program }}</span><br>
+    <span data-field="footer.department">{{ footer.department }}</span><br>
+    <span data-field="footer.date">{{ footer.date }}</span>
+  </div>
+</div>
+
+
+
+
+<!-- PAGE 1: Single city, two-column resources -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[0].disclaimer_authority">{{ pages[0].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="city-heading-center">
+    <span data-field="pages[0].city_heading">{{ pages[0].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for resource in pages[0].left_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[0].left_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[0].left_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[0].left_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[0].left_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[0].left_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for resource in pages[0].right_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[0].right_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[0].right_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[0].right_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[0].right_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[0].right_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 2: Two cities side by side -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[1].disclaimer_authority">{{ pages[1].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[1].left_city_heading">{{ pages[1].left_city_heading }}</span>
+      </div>
+      {% for resource in pages[1].left_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[1].left_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[1].left_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[1].left_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[1].left_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[1].left_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[1].right_city_heading">{{ pages[1].right_city_heading }}</span>
+      </div>
+      {% for resource in pages[1].right_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[1].right_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[1].right_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[1].right_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[1].right_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[1].right_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 3: Multiple cities, two-column layout with sub-city headings -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[2].disclaimer_authority">{{ pages[2].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <!-- Left column: multiple city sections -->
+      {% for section in pages[2].left_sections %}
+      <div style="margin-bottom: 10px;">
+        <div class="city-heading-left" style="font-size:18px; margin-bottom:10px;">
+          <span data-field="pages[2].left_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+          {% if section.city_subheading %} <span class="city-heading-small" data-field="pages[2].left_sections[{{ loop.index0 }}].city_subheading">{{ section.city_subheading }}</span>{% endif %}
+        </div>
+        {% for resource in section.resources %}
+        <div class="resource-block">
+          <div class="resource-name"><span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+          <div class="resource-detail">
+            {% if resource.name2 %}<span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span><br>{% endif %}
+            {% if resource.website %}<span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+            {% if resource.address_line1 %}<span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+            {% if resource.address_line2 %}<span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+            <span data-field="pages[2].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for section in pages[2].right_sections %}
+      <div style="margin-bottom: 10px;">
+        <div class="city-heading-left" style="font-size:18px; margin-bottom:10px;">
+          <span data-field="pages[2].right_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+          {% if section.city_subheading %} <span class="city-heading-small" data-field="pages[2].right_sections[{{ loop.index0 }}].city_subheading">{{ section.city_subheading }}</span>{% endif %}
+        </div>
+        {% for resource in section.resources %}
+        <div class="resource-block">
+          <div class="resource-name"><span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+          <div class="resource-detail">
+            {% if resource.name2 %}<span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span><br>{% endif %}
+            {% if resource.website %}<span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+            {% if resource.address_line1 %}<span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+            {% if resource.address_line2 %}<span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+            <span data-field="pages[2].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 4: Two cities side by side -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[3].disclaimer_authority">{{ pages[3].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[3].left_city_heading">{{ pages[3].left_city_heading }}</span>
+      </div>
+      {% for resource in pages[3].left_resources %}
+      <div class="resource-block">
+        <div class="resource-name">
+          <span data-field="pages[3].left_resources[{{ loop.index0 }}].name">{{ resource.name }}</span>
+          {% if resource.name2 %}<br><span data-field="pages[3].left_resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span>{% endif %}
+        </div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[3].left_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[3].left_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[3].left_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[3].left_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[3].right_city_heading">{{ pages[3].right_city_heading }}</span>
+      </div>
+      {% for resource in pages[3].right_resources %}
+      <div class="resource-block">
+        <div class="resource-name">
+          <span data-field="pages[3].right_resources[{{ loop.index0 }}].name">{{ resource.name }}</span>
+          {% if resource.name2 %}<br><span data-field="pages[3].right_resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span>{% endif %}
+        </div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[3].right_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[3].right_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[3].right_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[3].right_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 5: Single city, two-column resources -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[4].disclaimer_authority">{{ pages[4].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="city-heading-center">
+    <span data-field="pages[4].city_heading">{{ pages[4].city_heading }}</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for resource in pages[4].left_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[4].left_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[4].left_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[4].left_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[4].left_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[4].left_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for resource in pages[4].right_resources %}
+      <div class="resource-block">
+        <div class="resource-name">
+          <span data-field="pages[4].right_resources[{{ loop.index0 }}].name">{{ resource.name }}</span>
+          {% if resource.name2 %}<br><span data-field="pages[4].right_resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span>{% endif %}
+        </div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[4].right_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[4].right_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[4].right_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[4].right_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 6: Two cities side by side, with sub-city in left column -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[5].disclaimer_authority">{{ pages[5].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      {% for section in pages[5].left_sections %}
+      <div style="margin-bottom: 10px;">
+        <div class="city-heading-left" style="font-size:18px; margin-bottom:10px;">
+          <span data-field="pages[5].left_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+        </div>
+        {% for resource in section.resources %}
+        <div class="resource-block">
+          <div class="resource-name"><span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+          <div class="resource-detail">
+            {% if resource.name2 %}<span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span><br>{% endif %}
+            {% if resource.website %}<span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+            {% if resource.address_line1 %}<span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+            {% if resource.address_line2 %}<span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+            <span data-field="pages[5].left_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      {% for section in pages[5].right_sections %}
+      <div style="margin-bottom: 10px;">
+        <div class="city-heading-left" style="font-size:18px; margin-bottom:10px;">
+          <span data-field="pages[5].right_sections[{{ loop.index0 }}].city_heading">{{ section.city_heading }}</span>
+        </div>
+        {% for resource in section.resources %}
+        <div class="resource-block">
+          <div class="resource-name">
+            <span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name">{{ resource.name }}</span>
+            {% if resource.name2 %}<br><span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span>{% endif %}
+          </div>
+          <div class="resource-detail">
+            {% if resource.website %}<span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+            {% if resource.address_line1 %}<span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+            {% if resource.address_line2 %}<span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+            <span data-field="pages[5].right_sections[{{ loop.index0 }}].resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+<!-- PAGE 7: Two cities side by side -->
+<div class="page">
+  <div class="page-title">Addiction Resources</div>
+  <div class="disclaimer">
+    These resources are provided for informational purposes only. They do not constitute an endorsement or approval by the<br>
+    <span data-field="pages[6].disclaimer_authority">{{ pages[6].disclaimer_authority }}</span> for any of the services or opinions of the corporation or organization.
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[6].left_city_heading">{{ pages[6].left_city_heading }}</span>
+      </div>
+      {% for resource in pages[6].left_resources %}
+      <div class="resource-block">
+        <div class="resource-name"><span data-field="pages[6].left_resources[{{ loop.index0 }}].name">{{ resource.name }}</span></div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[6].left_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[6].left_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[6].left_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[6].left_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      <div class="city-heading-left">
+        <span data-field="pages[6].right_city_heading">{{ pages[6].right_city_heading }}</span>
+      </div>
+      {% for resource in pages[6].right_resources %}
+      <div class="resource-block">
+        <div class="resource-name">
+          <span data-field="pages[6].right_resources[{{ loop.index0 }}].name">{{ resource.name }}</span>
+          {% if resource.name2 %}<br><span data-field="pages[6].right_resources[{{ loop.index0 }}].name2">{{ resource.name2 }}</span>{% endif %}
+        </div>
+        <div class="resource-detail">
+          {% if resource.website %}<span data-field="pages[6].right_resources[{{ loop.index0 }}].website">{{ resource.website }}</span><br>{% endif %}
+          {% if resource.address_line1 %}<span data-field="pages[6].right_resources[{{ loop.index0 }}].address_line1">{{ resource.address_line1 }}</span><br>{% endif %}
+          {% if resource.address_line2 %}<span data-field="pages[6].right_resources[{{ loop.index0 }}].address_line2">{{ resource.address_line2 }}</span><br>{% endif %}
+          <span data-field="pages[6].right_resources[{{ loop.index0 }}].phone">{{ resource.phone }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer">
+    <span data-field="footer_line1">{{ footer_line1 }}</span><br>
+    <span data-field="footer_line2">{{ footer_line2 }}</span><br>
+    <span data-field="footer_line3">{{ footer_line3 }}</span>
+  </div>
+</div>
+
+</body>
+</html>

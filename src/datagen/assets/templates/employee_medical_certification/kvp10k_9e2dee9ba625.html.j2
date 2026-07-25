@@ -1,0 +1,228 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-label { width: 30%; }
+  .form-input { width: 65%; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <span style="font-size: 12px;">Confidential</span>
+    <h1 style="font-size: 18px; margin: 0;">Northeastern State University</h1>
+    <span style="font-size: 12px;">Confidential</span>
+  </div>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span style="font-size: 14px;">Office of Human Resources</span>
+  </div>
+
+  <h2 style="font-size: 14px; margin-bottom: 20px;">Employee Medical Certification</h2>
+
+  <p style="font-size: 12px; margin-bottom: 20px;">The employee listed below has requested a work accommodation. Information requested relates only to the condition for which the employee requests an accommodation under the Americans with Disabilities (ADA) and ADA Amendment Act.</p>
+
+  <h3 style="font-size: 12px; margin-top: 25px; margin-bottom: 10px;">Employee Information</h3>
+  <table style="font-size: 12px;">
+    <tr>
+      <td style="width: 30%;">Last Name</td>
+      <td style="width: 70%;"><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td><span data-field="employer.name">{{ employer.name }}</span></td>
+    </tr>
+    <tr>
+      <td>Job Title</td>
+      <td><span data-field="job_title">{{ job_title }}</span></td>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td><span data-field="full_name_first">{{ full_name_first }}</span></td>
+    </tr>
+    <tr>
+      <td>Campus</td>
+      <td><span data-field="employer.campus">{{ employer.campus }}</span></td>
+    </tr>
+    <tr>
+      <td>Date Started in this Position</td>
+      <td><span data-field="start_date">{{ start_date }}</span></td>
+    </tr>
+  </table>
+
+  <p style="font-size: 12px; margin-top: 30px;">I authorize my medical provider <span data-field="medical_provider.name">{{ medical_provider.name }}</span> to release information below from my medical files to Northeastern State University, Office of Human Resources, for evaluation purposes of my request for an ADA reasonable accommodation.</p>
+
+  <table style="font-size: 12px; width: 100%;">
+    <tr>
+      <td style="width: 50%;">Signature</td>
+      <td style="width: 50%; text-align: right;">Date</td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 12px; margin-top: 30px; margin-bottom: 10px;">Medical Provider Information</h3>
+  <table style="font-size: 12px;">
+    <tr>
+      <td style="width: 30%;">Name</td>
+      <td style="width: 70%;"><span data-field="medical_provider.name">{{ medical_provider.name }}</span></td>
+    </tr>
+    <tr>
+      <td>Street Address</td>
+      <td><span data-field="medical_provider.address">{{ medical_provider.address }}</span></td>
+    </tr>
+    <tr>
+      <td>Telephone Number</td>
+      <td><span data-field="medical_provider.phone">{{ medical_provider.phone }}</span></td>
+    </tr>
+    <tr>
+      <td>Specialization/Type of Practice</td>
+      <td><span data-field="medical_provider.specialty">{{ medical_provider.specialty }}</span></td>
+    </tr>
+    <tr>
+      <td>City, State, Zip</td>
+      <td><span data-field="medical_provider.location">{{ medical_provider.location }}</span></td>
+    </tr>
+    <tr>
+      <td>Fax Number</td>
+      <td><span data-field="medical_provider.fax">{{ medical_provider.fax }}</span></td>
+    </tr>
+    <tr>
+      <td>Email Address</td>
+      <td><span data-field="medical_provider.email">{{ medical_provider.email }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 12px; margin-top: 30px; margin-bottom: 10px;">Medical Provider Questions</h3>
+  <p style="font-size: 12px; margin-bottom: 15px;">Attached is a copy of the employee job description which helps identify the essential functions of the position and includes the physical demands of the work. Please use this information to help in providing the requested information.</p>
+
+  <p style="font-size: 12px; margin-bottom: 15px;">Does this person have physical or mental impairment that substantially limits one or more major life activities? YES <input type="checkbox"> NO <input type="checkbox"></p>
+
+  <p style="font-size: 12px; margin-bottom: 15px;">What is the impairment?</p>
+
+  <table style="font-size: 12px; margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">Is the impairment permanent?</td>
+      <td>YES <input type="checkbox"> NO <input type="checkbox"></td>
+      <td>If no, how long will the impairment last?</td>
+    </tr>
+    <tr>
+      <td>Which major life activity(s) is (are) affected?</td>
+      <td>
+        <table style="width: 100%;">
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Walking</td>
+            <td><input type="checkbox"></td>
+            <td>Hearing</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Interacting with others</td>
+            <td><input type="checkbox"></td>
+            <td>Kneeling</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Performing manual task</td>
+            <td><input type="checkbox"></td>
+            <td>Speaking</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Learning</td>
+            <td><input type="checkbox"></td>
+            <td>Breathing</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Toileting</td>
+            <td><input type="checkbox"></td>
+            <td>Climbing</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Bending</td>
+            <td><input type="checkbox"></td>
+            <td>Pushing</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Crouching</td>
+            <td><input type="checkbox"></td>
+            <td>Reaching overhead</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td style="width: 10%;"></td>
+            <td>Lifting or carrying</td>
+            <td><input type="checkbox"></td>
+            <td>List limitations in pounds</td>
+            <td><input type="checkbox"></td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table style="width: 100%;">
+          <tr>
+            <td>Seeing</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Sleeping</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Concentrating</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Thinking</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Arriving as scheduled</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Kneeling</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Using fine motor skills</td>
+            <td><input type="checkbox"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size: 12px; margin-bottom: 15px;">Other, please explain.</p>
+
+  <div style="border: 1px solid #ccc; height: 100px; margin-bottom: 20px; padding: 10px;">
+    <p style="font-size: 12px;">Please describe any suggested accommodation(s) to enable this individual to perform the essential function(s) of the job.</p>
+  </div>
+
+  <table style="font-size: 12px; width: 100%;">
+    <tr>
+      <td style="width: 50%;">Medical Provider Signature</td>
+      <td style="width: 50%; text-align: right;">Date</td>
+    </tr>
+  </table>
+
+  <p style="font-size: 12px; margin-top: 40px;">Please return the completed form to the employee or mail confidentially to:</p>
+  <p style="font-size: 12px; margin-top: 5px;">Northeastern State University, Office of Human Resources, <span data-field="mailing_address">{{ mailing_address }}</span>, <span data-field="zip_code">{{ zip_code }}</span></p>
+</div>

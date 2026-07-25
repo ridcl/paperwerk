@@ -1,0 +1,129 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-group { margin-bottom: 15px; }
+  .label { display: inline-block; width: 150px; vertical-align: top; }
+  .input-area { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 160px); }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; width: 200px; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+        <div>
+            <h2 style="font-size: 16pt; margin: 0;">Submit completed form to:</h2>
+            <p style="margin: 5px 0 0 0;"><span data-field="submission_email">{{ submission_email }}</span></p>
+        </div>
+        <div style="text-align: right;">
+            <h1 style="font-size: 24pt; margin: 0;">PNCBANK</h1>
+            <h2 style="font-size: 14pt; margin: 5px 0 0 0;">Billing Inquiry Form</h2>
+        </div>
+    </div>
+
+    <p style="font-size: 10pt; line-height: 1.4;">
+        If you believe an item on your statement is in error, complete and sign this form. We must hear from you no later than 60 days after we send you the first bill on which the error or problem occurred. Please be as complete as possible when explaining your inquiry and remember to include relevant documents. Insufficient documentation may delay the resolution of your inquiry. Also, please be sure to make a good faith effort to resolve with the merchant prior to filing a dispute.
+    </p>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+        <div style="width: 45%;">
+            <div class="form-group">
+                <div class="label">Primary Cardholder Name (Please Print)</div>
+                <div class="input-area"><span data-field="cardholder_name">{{ cardholder_name }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Daytime Phone ( )</div>
+                <div class="input-area"><span data-field="daytime_phone">{{ daytime_phone }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Card No.</div>
+                <div class="input-area"><span data-field="card_number">{{ card_number }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Transaction Date</div>
+                <div class="input-area"><span data-field="transaction_date">{{ transaction_date }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Posted Date</div>
+                <div class="input-area"><span data-field="posted_date">{{ posted_date }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Amount in question $</div>
+                <div class="input-area"><span data-field="amount_in_question">{{ amount_in_question }}</span></div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">Merchant Name</div>
+                <div class="input-area"><span data-field="merchant_name">{{ merchant_name }}</span></div>
+            </div>
+        </div>
+
+        <div style="width: 50%; text-align: right;">
+            <div class="form-group">
+                <div class="label" style="width: auto;">Please send completed form via mail, fax, or email:</div>
+                <p style="margin: 0;">PNC</p>
+                <p style="margin: 0;">P.O. Box <span data-field="mailing_box">{{ mailing_box }}</span></p>
+                <p style="margin: 0;">Kalamazoo, MI <span data-field="zip_code">{{ zip_code }}</span></p>
+                <p style="margin: 10px 0 0 0;">or</p>
+                <p style="margin: 0;">Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+                <p style="margin: 0;">Email: <span data-field="billing_email">{{ billing_email }}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="margin-bottom: 10px;">Primary Cardholder Signature</h3>
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 45%;">
+                <p style="margin-bottom: 5px;">Check the ONE box below that best fits your situation and supply the requested items or information.</p>
+                <ol style="padding-left: 20px; margin-top: 10px;">
+                    <li><input type="checkbox" style="margin-right: 5px;"> I credit for $ <span data-field="credit_amount">{{ credit_amount }}</span> was not applied to my card number. (Attach credit slip)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> The amount charged to my card number is incorrect. The correct amount is $ <span data-field="correct_amount">{{ correct_amount }}</span>. (Attach copy of the sales slip that shows the correct amount.)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> I certify that the charge listed above was not made by me or any person authorized by me. Nor were the goods or services for this charge received by me or anyone authorized by me. The card (circle one) is / is not in my possession. (Attach detail letter outlining your attempts to resolve with merchant)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> Although I did participate in a transaction with the merchant, I was billed for additional transactions that I did not authorize. The valid charge was billed to my card number on <span data-field="unauthorized_date">{{ unauthorized_date }}</span>. (Date) (Attach copy of the authorized sales slip)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> I have not received the merchandise for this transaction. Expected date of delivery was <span data-field="expected_delivery_date">{{ expected_delivery_date }}</span>. (Date) I contacted the merchant on <span data-field="contact_date">{{ contact_date }}</span> and the merchant response was <span data-field="merchant_response">{{ merchant_response }}</span>.</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> I have (circle one) returned/cancelled merchandise/service on <span data-field="return_date">{{ return_date }}</span>. (Provide proof of return or cancellation number)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> Merchandise that was shipped arrived damaged and/or defective on <span data-field="damage_date">{{ damage_date }}</span>. (Date). I returned it on <span data-field="return_date_damaged">{{ return_date_damaged }}</span>. (Date). (Please provide merchant response)</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> My card was used to secure this purchase, however, payment was made by (circle one) cash, check or other credit card. (Please provide a legible copy of front and back of cancelled check, cash receipt or other card statement showing transaction.</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> Other. A detailed letter of explanation is requested for any situation that does not fit one of the above categories. This may include, but is not limited to, goods that are defective, returned, or damaged (please describe the extent of the damage). Include copies of any signed receipts, invoices, or hotel cancellation numbers.</li>
+                    <li><input type="checkbox" style="margin-right: 5px;"> Please disregard the previous inquiry in the amount of $ <span data-field="disregard_amount">{{ disregard_amount }}</span>. The matter is now resolved</li>
+                </ol>
+            </div>
+            <div style="width: 50%;">
+                <div style="margin-top: 100px;">
+                    <p style="margin-bottom: 5px;">Date:</p>
+                    <div class="signature-line" data-field="date">{{ date }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 50%;">
+                <div class="form-group">
+                    <div class="label">Program Administrator</div>
+                    <div class="input-area"><span data-field="program_administrator">{{ program_administrator }}</span></div>
+                </div>
+            </div>
+            <div style="width: 50%;">
+                <div class="form-group">
+                    <div class="label">Daytime Phone ( )</div>
+                    <div class="input-area"><span data-field="admin_daytime_phone">{{ admin_daytime_phone }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

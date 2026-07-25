@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application for Permission to Publish Text or Images</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .logo-area {
+            text-align: left;
+        }
+        .contact-info {
+            text-align: right;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        .form-group input[type="text"], .form-group textarea {
+            width: 100%;
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+            box-sizing: border-box;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .divider {
+            border-top: 1px solid #000;
+            margin: 20px 0;
+        }
+        .signature-line {
+            margin-top: 60px;
+        }
+        .footer-section {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-info">
+            <div class="logo-area">
+                <!-- Placeholder for Logo -->
+            </div>
+            <div class="contact-info">
+                <p>Raymond H. Center Library</p>
+                <p>Trinity College of Florida</p>
+                <p><span data-field="address.street">{{ address.street }}</span></p>
+                <p><span data-field="address.city_state_zip">{{ address.city_state_zip }}</span></p>
+                <p><span data-field="phone">{{ phone }}</span>, ext. <span data-field="extension">{{ extension }}</span></p>
+            </div>
+        </div>
+
+        <h1 style="text-align: center;">Application for Permission to Publish Text or Images</h1>
+
+        <div class="section-title">Instructions and Policies:</div>
+        <ol>
+            <li>Please type, sign and submit all request forms via fax, email attachment or in person.</li>
+            <li>Complete all forms in their entirety.</li>
+            <li>Please make sure to sign all forms. Unsigned forms will be returned.</li>
+            <li>Illegible, incomplete and/or unsigned forms will be delayed or returned.</li>
+            <li>When permission to publish Trinity College of Florida's archive materials is granted, it is for <span data-field="usage_term">{{ usage_term }}</span>. In order for the same materials to be authorized for publication again, you must reapply for permission.</li>
+        </ol>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Patron Contact Information</div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" value="{{ patron_name }}">
+        </div>
+        <div class="form-group">
+            <label>Organization</label>
+            <input type="text" value="{{ organization_name }}">
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" value="{{ address_line_1 }}">
+        </div>
+        <div class="form-group">
+            <label>City, State, Zip</label>
+            <input type="text" value="{{ city_state_zip_patron }}">
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" value="{{ phone_patron }}">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" value="{{ email_patron }}">
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Material Requested for Use/Publication</div>
+        <div class="checkbox-group">
+            <label><input type="checkbox"> Photograph</label>
+            <label><input type="checkbox"> Audio Recording</label>
+            <label><input type="checkbox"> College Publication</label>
+            <br>
+            <label><input type="checkbox"> Book, Yearbook</label>
+            <label><input type="checkbox"> Senior Thesis</label>
+            <label><input type="checkbox"> Documents, Papers, Correspondence</label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Publication Details</div>
+        <div class="form-group">
+            <label>Title/Description</label>
+            <input type="text" value="{{ publication_title }}">
+        </div>
+        <div class="form-group">
+            <label>Author/Producer</label>
+            <input type="text" value="{{ author_producer }}">
+        </div>
+        <div class="form-group">
+            <label>Publisher/Production</label>
+            <input type="text" value="{{ publisher_production }}">
+        </div>
+        <div class="form-group">
+            <label>Release/Broadcast Date</label>
+            <input type="text" value="{{ release_date }}">
+        </div>
+        <div class="form-group">
+            <label>Placement</label>
+            <input type="text" value="{{ placement }}">
+        </div>
+        <div class="form-group">
+            <label>Print Run/Circulation</label>
+            <input type="text" value="{{ print_run_circulation }}">
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="form-group" style="margin-top: 20px;">
+            <label>I will donate a copy of this publication to the Raymond H. Center Library?</label>
+            <label style="display: inline-block; margin-right: 30px;">Yes</label>
+            <label style="display: inline-block;">No</label>
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="section-title">Requesting Permission to Publish the Following Material</div>
+
+        <p>Description of material to be used: Please include exact information regarding the material used by attaching to this form a copy of every photo or quote that will be used in publication.</p>
+
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            <li>I will credit all materials as follows:</li>
+            <li>Courtesy of <span data-field="library_name">{{ library_name }}</span>/Trinity College of Florida</li>
+            <li>I agree to all the Terms and Conditions outlined by the librarian, this form and the Raymond H. Center Library website and assume full responsibility and any attendant liability for the fair use of materials requested in total compliance with the copyright law of the United States (Title 17, United States Code) or other rights of third parties that may arise through the use of the requested materials, and further agree to hold harmless the Raymond H. Center Library and Trinity College of Florida from and against any and all damages and claims.</li>
+            <li>By signing below, I acknowledge that this request constitutes a <span data-field="usage_restriction">{{ usage_restriction }}</span>. Also, I agree to contact the Raymond H. Center Library for permission to use, duplicate or distribute images or text outside the context of this request.</li>
+        </ul>
+
+        <div class="signature-line">
+            <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+                <div>
+                    <label>Authorized Signature</label>
+                    <div style="border-bottom: 1px solid #000; width: 300px;" data-field="authorized_signature">{{ authorized_signature }}</div>
+                    <label>Print Name</label>
+                    <div style="border-bottom: 1px solid #000; width: 300px;" data-field="print_name">{{ print_name }}</div>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <div style="border-bottom: 1px solid #000; width: 150px;" data-field="date">{{ date }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="text-align: center; background-color: #f00; color: white; padding: 15px; margin-bottom: 30px;">
+            DO NOT mark below- For Raymond H. Library Staff Use Only
+        </div>
+
+        <div class="footer-section">
+            <div class="form-group">
+                <label>Permission Granted by:</label>
+                <div style="border-bottom: 1px solid #000; width: 400px;" data-field="permission_granted_by">{{ permission_granted_by }}</div>
+            </div>
+            <div class="form-group">
+                <label>Permission Denied by:</label>
+                <div style="border-bottom: 1px solid #000; width: 400px;" data-field="permission_denied_by">{{ permission_denied_by }}</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+                <div>
+                    <label>Signature</label>
+                    <div style="border-bottom: 1px solid #000; width: 200px;" data-field="signature">{{ signature }}</div>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <div style="border-bottom: 1px solid #000; width: 200px;" data-field="date_2">{{ date_2 }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

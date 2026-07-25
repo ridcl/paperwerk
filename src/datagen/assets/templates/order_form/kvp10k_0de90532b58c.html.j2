@@ -1,0 +1,135 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { text-align: center; margin-bottom: 20px; }
+  .form-group { margin-bottom: 15px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .line-item-table td { padding: 5px 0; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+
+<div class="page">
+  <!-- Header Area -->
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 48px; font-weight: bold; margin-bottom: -10px;">
+      <!-- Placeholder for University Logo/Name -->
+      <span style="font-family: Georgia, serif;">[Logo Placeholder]</span>
+    </div>
+    <div style="font-size: 18px; font-weight: bold;">
+      HEIDELBERG UNIVERSITY
+    </div>
+    <div style="font-size: 18px; font-weight: bold;">
+      MEDIA COMMUNICATION CENTER
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h1 style="text-align: center; font-size: 16px; margin-bottom: 30px;">
+    2019 COMMENCEMENT DVD ORDER FORM
+  </h1>
+
+  <!-- Personal Information Section -->
+  <div style="border: 1px solid #000; padding: 20px; margin-bottom: 30px;">
+    <div class="form-group">
+      Name: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ full_name }}</span>
+    </div>
+    <div class="form-group">
+      Mailing Address: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ mailing_address }}</span>
+    </div>
+
+    <!-- City, State, Zip Row -->
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">
+        City: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ city }}</span>
+      </div>
+      <div style="width: 30%;">
+        State: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ state }}</span>
+      </div>
+      <div style="width: 30%;">
+        Zip: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ zip }}</span>
+      </div>
+    </div>
+
+    <!-- Phone and Email Row -->
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 50%;">
+        Phone number: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ phone_number }}</span>
+      </div>
+      <div style="width: 50%;">
+        E-mail Address: <span style="display: inline-block; width: 100%; border-bottom: 1px solid #000;">{{ email_address }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Summary Section -->
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 50%;">
+      Cost: $20.00 per Commencement DVD
+    </div>
+    <div style="width: 50%; text-align: right;">
+      Order Total: <span data-field="order_total">{{ order_total }}</span>
+    </div>
+  </div>
+
+  <!-- Quantity Request -->
+  <div class="form-group" style="margin-bottom: 30px;">
+    Number of Commencement copies requested: <span style="display: inline-block; width: 150px; border-bottom: 1px solid #000;">{{ quantity_requested }}</span> @$20.00 <span style="display: inline-block; width: 100px; border-bottom: 1px solid #000;">{{ total_cost }}</span>
+  </div>
+
+  <!-- Payment Instructions -->
+  <div style="margin-bottom: 30px;">
+    <p style="font-size: 12px;">
+      Please include this form with your check or money order made payable to Heidelberg University.
+    </p>
+    <p style="font-size: 12px;">
+      ACCT #: <span data-field="account_number">{{ account_number }}</span>
+    </p>
+  </div>
+
+  <!-- Receipt Line -->
+  <div class="divider"></div>
+  <div style="text-align: center; margin-top: 10px;">
+    Receipt: _________________________
+  </div>
+  <div class="divider"></div>
+
+  <!-- Date and Amount Paid -->
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 45%;">
+      Date Ordered: <span style="display: inline-block; width: 200px; border-bottom: 1px solid #000;">{{ date_ordered }}</span>
+    </div>
+    <div style="width: 45%; text-align: right;">
+      Amount Paid: $ <span style="display: inline-block; width: 100px; border-bottom: 1px solid #000;">{{ amount_paid }}</span>
+    </div>
+  </div>
+
+  <!-- Contact Information Section -->
+  <div style="margin-top: 40px; border: 1px solid #000; padding: 20px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 50%;">
+        Contact Information:
+        <div style="font-size: 12px;">
+          <span data-field="contact_name">{{ contact_name }}</span><br>
+          <span data-field="contact_address">{{ contact_address }}</span><br>
+          <span data-field="contact_city_state_zip">{{ contact_city_state_zip }}</span>
+        </div>
+      </div>
+      <div style="width: 50%; text-align: right;">
+        E mail: <span data-field="contact_email">{{ contact_email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align: center; margin-top: 50px; font-size: 12px;">
+    Orders should ship 4 to 6 weeks after event.
+  </div>
+</div>

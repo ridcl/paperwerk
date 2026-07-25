@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transfer Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+  .form-group input[type="text"], .form-group input[type="email"] { width: 100%; border-bottom: 1px solid #000; padding: 5px 0; }
+  .two-column { display: flex; justify-content: space-between; }
+  .two-column > div { width: 48%; }
+  .checkbox-group label { font-weight: normal; display: inline-block; margin-right: 15px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">3+1 TRANSFER APPLICATION</h1>
+      <p style="font-size: 10pt; margin: 5px 0 0 0;">Counseling, Advising and Transfer Services • <span data-field="contact_info.address">{{ contact_info.address }}</span></p>
+      <p style="font-size: 10pt; margin: 0;">Phone: <span data-field="contact_info.phone">{{ contact_info.phone }}</span> • Email: <span data-field="contact_info.email">{{ contact_info.email }}</span></p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 18pt; margin: 0;">College of DuPage</h2>
+    </div>
+  </header>
+
+  <div class="form-group">
+    <label for="first_name">First name:</label>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+      <span data-field="full_name_first">{{ full_name_first }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="last_name">Last name:</label>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+      <span data-field="full_name_last">{{ full_name_last }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="street_address">Street address:</label>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+      <span data-field="address.street">{{ address.street }}</span>
+    </div>
+  </div>
+
+  <div class="two-column">
+    <div class="form-group">
+      <label for="city">City:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="address.city">{{ address.city }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="state">State:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="address.state">{{ address.state }}</span>
+      </div>
+    </div>
+    <div class="form-group" style="width: 25%;">
+      <label for="zip">ZIP:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="address.zip">{{ address.zip }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-column">
+    <div class="form-group">
+      <label for="birthdate">Birthdate (mm/dd/yyyy):</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="birthdate">{{ birthdate }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="student_id">COD student ID number:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="student_id">{{ student_id }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-column">
+    <div class="form-group">
+      <label for="email_address">Email address:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="email_address">{{ email_address }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone_number">Preferred phone number:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="phone_number">{{ phone_number }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="current_program">Current program of study at College of DuPage:</label>
+    <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+      <span data-field="current_program">{{ current_program }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>When do you anticipate completing the required associate degree program?</label>
+    <div style="margin-top: 10px;">
+      <span data-field="completion_fall">{{ completion_fall }}</span> Fall
+      <span data-field="completion_spring">{{ completion_spring }}</span> Spring
+      <span data-field="completion_summer">{{ completion_summer }}</span> Summer
+      <span data-field="completion_year">{{ completion_year }}</span> Year
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="form-group" style="font-size: 10pt;">
+    <p>In order to pursue courses in the 3+1 program you will also need to complete an application for admission at the respective partner institution. Please consult with the partner institution to which you are applying about the best time to complete this application.</p>
+  </div>
+
+  <div class="form-group" style="font-size: 10pt;">
+    <p>College of DuPage, in compliance with the Family Educational Rights and Privacy Act (FERPA), is required to protect the privacy of student education records. The College cannot disclose non-directory or personally identifiable information to a third party without the student's written consent.</p>
+  </div>
+
+  <div class="form-group" style="font-size: 10pt;">
+    <p>I hereby authorize College of DuPage to release my academic record to: <span data-field="partner_institution_name">{{ partner_institution_name }}</span> for the purpose of facilitating my 3+1 program application.</p>
+  </div>
+
+  <div class="two-column" style="margin-top: 30px;">
+    <div class="form-group">
+      <label>Signature:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="signature">{{ signature }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Date:</label>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 2px;">
+        <span data-field="date">{{ date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="font-size: 10pt; margin-top: 30px;">
+    <p>Completed applications can be emailed to <span data-field="application_email">{{ application_email }}</span>. Please use your COD student email account to send in your application. If you have any trouble accessing the digital signature, please contact <span data-field="signature_contact_email">{{ signature_contact_email }}</span>.</p>
+  </div>
+
+  <div class="form-group" style="font-size: 10pt;">
+    <p>For ADA accommodations, please email <span data-field="ada_email">{{ ada_email }}</span> with the event title in the subject line and your accommodation request. Please email two weeks in advance.</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16pt; margin-bottom: 20px;">PROGRAM SELECTED</h2>
+
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Benedictine University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_1" value="{{ program_selected_1 }}"> AAS in Nursing / BS in Nursing (hybrid)</label><br>
+        <label><input type="checkbox" data-field="program_selected_2" value="{{ program_selected_2 }}"> AAS in Human Services Generalist / BA in Human Services</label><br>
+        <label><input type="checkbox" data-field="program_selected_3" value="{{ program_selected_3 }}"> AAS in Addictions Counseling / BA in Human Services</label>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and National Louis University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_4" value="{{ program_selected_4 }}"> AAS in Hospitality Management / BS in Hospitality and Tourism Management</label><br>
+        <label><input type="checkbox" data-field="program_selected_5" value="{{ program_selected_5 }}"> AAS in Culinary Arts / BS in Hospitality and Tourism Management</label><br>
+        <label><input type="checkbox" data-field="program_selected_6" value="{{ program_selected_6 }}"> AAS in Meeting and Event Planning / BS in Hospitality and Tourism Management</label>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Concordia University Chicago</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_7" value="{{ program_selected_7 }}"> AAS in Dental Hygiene / BA in Healthcare Management (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_8" value="{{ program_selected_8 }}"> AAS in Management / BA in Healthcare Management (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_9" value="{{ program_selected_9 }}"> AAS in Respiratory Care / BA in Healthcare Management (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_10" value="{{ program_selected_10 }}"> AAS in Diagnostic Medical Imaging Radiography / BA in Healthcare Management (online)</label>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Roosevelt University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_11" value="{{ program_selected_11 }}"> AAS in Hospitality Management / BS in Hospitality and Tourism Management</label><br>
+        <label><input type="checkbox" data-field="program_selected_12" value="{{ program_selected_12 }}"> AAS in Culinary Arts / BS in Hospitality and Tourism Management</label><br>
+        <label><input type="checkbox" data-field="program_selected_13" value="{{ program_selected_13 }}"> AAS in Meeting and Event Planning / BS in Hospitality and Tourism Management</label><br>
+        <label><input type="checkbox" data-field="program_selected_14" value="{{ program_selected_14 }}"> AAS in Restaurant Management / BS in Hospitality and Tourism Management</label>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Governors State University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_15" value="{{ program_selected_15 }}"> AAS in Nursing / BS in Nursing (online)</label>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Valley City State University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_16" value="{{ program_selected_16 }}"> AA / BS in Education in Technology Education (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_17" value="{{ program_selected_17 }}"> AA / BS in Elementary Education (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_18" value="{{ program_selected_18 }}"> AA / BS in Secondary Education with English concentration (online)</label>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and Lewis University</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_19" value="{{ program_selected_19 }}"> AAS in Accounting / BS in Accounting</label><br>
+        <label><input type="checkbox" data-field="program_selected_20" value="{{ program_selected_20 }}"> Associate in Arts / BA in Criminal Justice (hybrid)</label><br>
+        <label><input type="checkbox" data-field="program_selected_21" value="{{ program_selected_21 }}"> CIS: Application and Technical Support Specialist / BS in Computer Science (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_22" value="{{ program_selected_22 }}"> CIS: Software Development / BS in Computer Science (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_23" value="{{ program_selected_23 }}"> CIT: Computer and Information Technology / BS in Information Technology (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_24" value="{{ program_selected_24 }}"> CIT: Cybersecurity and Defense / BS in Cybersecurity (online)</label>
+      </div>
+    </div>
+    <div style="width: 48%;">
+      <h3 style="font-size: 12pt; margin-bottom: 10px;">College of DuPage and [Partner University Name]</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" data-field="program_selected_25" value="{{ program_selected_25 }}"> AA / BS in Secondary Education with History or Social Science concentration (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_26" value="{{ program_selected_26 }}"> AA / BS in Secondary Education with Mathematics concentration (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_27" value="{{ program_selected_27 }}"> AAS in Horticulture / Bachelor of Applied Science in Management (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_28" value="{{ program_selected_28 }}"> AAS in Landscape Contracting and Management / Bachelor of Applied Science in Management (online)</label><br>
+        <label><input type="checkbox" data-field="program_selected_29" value="{{ program_selected_29 }}"> AAS in Sustainable Urban Agriculture / Bachelor of Applied Science in Management (online)</label>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { margin-top: 0; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .header-logo img { max-width: 200px; height: auto; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { flex: 1; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .line-item-table td { padding: 8px 0; border-bottom: 1px solid #ccc; }
+  .signature-line { margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo -->
+    <div style="font-size: 30px; font-weight: bold;">UNK</div>
+    <div style="text-align: center;">
+      UNIVERSITY<br>
+      OF NEBRASKA<br>
+      KEARNEY
+    </div>
+  </div>
+
+  <h2 style="text-align: center;">REPLACEMENT DIPLOMA REQUEST FORM</h2>
+
+  <p>UNK Replacement Diplomas (available to all graduates) are available for <span data-field="cost_replacement_diploma_1">{{ cost_replacement_diploma_1 }}</span>, and an additional <span data-field="cost_replacement_diploma_2">{{ cost_replacement_diploma_2 }}</span> for a diploma cover (optional). Please allow <span data-field="processing_time_weeks">{{ processing_time_weeks }}</span> weeks for processing.</p>
+
+  <p>Kearney State College Diplomas (only available for graduates prior to 1991) are available for <span data-field="cost_kearney_diploma_1">{{ cost_kearney_diploma_1 }}</span>, and an additional <span data-field="cost_kearney_diploma_2">{{ cost_kearney_diploma_2 }}</span> for a diploma cover (optional). The timeline for processing is approximately <span data-field="processing_time_kearney">{{ processing_time_kearney }}</span> weeks after ordering.</p>
+
+  <div class="section-title">REQUIRED INFORMATION:</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Name* (as you'd like it to appear on your diploma):</label>
+      <div style="display: flex; gap: 20px;">
+        <div style="flex: 1;">First: <span data-field="full_name_first">{{ full_name_first }}</span></div>
+        <div style="flex: 1;">Middle: <span data-field="full_name_middle">{{ full_name_middle }}</span></div>
+        <div style="flex: 1;">Last: <span data-field="full_name_last">{{ full_name_last }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 50%;">
+      Student ID: _________________________
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 50%;">
+      Graduation Date: _________________________
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="width: 50%;">
+      Date of Birth: _________________________
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      Current Phone Number: ( <span data-field="phone_area_code">{{ phone_area_code }}</span> ) <span data-field="phone_prefix">{{ phone_prefix }}</span> - <span data-field="phone_line">{{ phone_line }}</span>
+    </div>
+    <div class="form-group">
+      Current Address:
+      <div style="margin-top: 5px;">
+        Street: <span data-field="address_street">{{ address_street }}</span>
+      </div>
+      <div style="display: flex; gap: 20px; margin-top: 5px;">
+        <div style="flex: 1;">City: <span data-field="address_city">{{ address_city }}</span></div>
+        <div style="flex: 1;">State: <span data-field="address_state">{{ address_state }}</span></div>
+        <div style="flex: 1;">Zip: <span data-field="address_zip">{{ address_zip }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signature-line">
+    Signature: _________________________
+  </div>
+
+  <div class="section-title">Items Ordered:</div>
+
+  <table class="line-item-table">
+    <thead>
+      <tr>
+        <th style="text-align: left;">Description</th>
+        <th style="text-align: right;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="line_items[0].description">{{ line_items[0].description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[0].amount">{{ line_items[0].amount }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="line_items[1].description">{{ line_items[1].description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[1].amount">{{ line_items[1].amount }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="line_items[2].description">{{ line_items[2].description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[2].amount">{{ line_items[2].amount }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="line_items[3].description">{{ line_items[3].description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[3].amount">{{ line_items[3].amount }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 20px;">Total Fee Enclosed: $<span data-field="total_fee">{{ total_fee }}</span></p>
+
+  <p style="font-size: 0.9em; margin-top: 30px;">*Fee should be made out to University of Nebraska – Kearney (UNK).</p>
+
+  <p style="margin-top: 30px;">Please mail the above information and fee to the following address:</p>
+
+  <div style="margin-top: 20px; font-size: 0.9em;">
+    University of Nebraska – Kearney<br>
+    <span data-field="mailing_street_1">{{ mailing_street_1 }}</span><br>
+    <span data-field="mailing_street_2">{{ mailing_street_2 }}</span><br>
+    <span data-field="mailing_city">{{ mailing_city }}</span>, <span data-field="mailing_state">{{ mailing_state }}</span> <span data-field="mailing_zip">{{ mailing_zip }}</span>
+  </div>
+</div>

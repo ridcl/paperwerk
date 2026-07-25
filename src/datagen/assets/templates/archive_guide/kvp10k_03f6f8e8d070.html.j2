@@ -1,0 +1,119 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .center { text-align: center; }
+  .right { text-align: right; }
+  .left { text-align: left; }
+  .divider { border-top: 1px solid #000; margin: 10px 0; }
+</style>
+<div class="page">
+  <div class="center">
+    <span style="font-size: 24pt;">University of Pennsylvania</span>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Seal Image -->
+      <div style="width: 100px; height: 100px; border: 1px solid #ccc; margin: 0 auto;"></div>
+    </div>
+    <span style="font-size: 16pt;">The University Archives</span>
+    <span style="font-size: 16pt;">and Records Center</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 18pt;">A Guide to the</span>
+    <span style="font-size: 18pt;">Free Public Lectures by the Faculty Collection</span>
+    <span style="font-size: 14pt; margin-top: 10px;">1913-1920</span>
+    <span style="font-size: 12pt; margin-top: 20px;">7.0 Volume/s</span>
+    <span style="font-size: 12pt; margin-top: 5px;">UPG 80.1</span>
+  </div>
+</div>
+<div class="page">
+  <div class="left">
+    <span style="font-size: 12pt;">The University Archives and Records Center</span>
+    <span style="font-size: 12pt;">{{ address_line_1 }}</span>
+    <span style="font-size: 12pt;">{{ city_state_zip }}</span>
+    <span style="font-size: 12pt;">{{ phone_number }}</span>
+    <span style="font-size: 12pt;">Fax: {{ fax_number }}</span>
+    <span style="font-size: 12pt;">{{ website_url }}</span>
+    <span style="font-size: 12pt;">{{ director_name }}, Director</span>
+  </div>
+</div>
+<div class="page">
+  <div class="center" style="margin-bottom: 40px;">
+    <span style="font-size: 14pt;">Free Public Lectures by the Faculty Collection</span>
+    <span style="font-size: 14pt;">UPG 80.1</span>
+  </div>
+  <div class="center" style="margin-bottom: 30px;">
+    <span style="font-size: 18pt;">TABLE OF CONTENTS</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <td style="padding: 5px 0;"><span data-field="toc_arrangement">{{ toc_arrangement }}</span></td>
+      <td style="width: 100px;">.</td>
+      <td style="width: 50px; text-align: right;">1</td>
+    </tr>
+    <tr>
+      <td style="padding: 5px 0;"><span data-field="toc_inventory">{{ toc_inventory }}</span></td>
+      <td style="width: 100px;">.</td>
+      <td style="width: 50px; text-align: right;">2</td>
+    </tr>
+    <tr>
+      <td style="padding: 5px 0;"><span data-field="toc_reference_collection">{{ toc_reference_collection }}</span></td>
+      <td style="width: 100px;">.</td>
+      <td style="width: 50px; text-align: right;">2</td>
+    </tr>
+  </table>
+</div>
+<div class="page">
+  <div class="center" style="margin-bottom: 20px;">
+    <span style="font-size: 18pt;">Guide to the</span>
+    <span style="font-size: 18pt;">Free Public Lectures by the Faculty Collection</span>
+    <span style="font-size: 14pt; margin-top: 10px;">1913-1920</span>
+    <span style="font-size: 12pt; margin-top: 20px;">UPG 80.1</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 80px;">
+    <span style="font-size: 16pt;">ARRANGEMENT</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">The following inventory is available for these files located in the Reference Collection.</span>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <div class="center" style="margin-bottom: 20px;">
+    <span style="font-size: 14pt;">Free Public Lectures by the Faculty Collection</span>
+    <span style="font-size: 14pt;">1913-1920</span>
+    <span style="font-size: 12pt; margin-top: 10px;">UPG 80.1</span>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 60px;">
+    <span style="font-size: 16pt;">REFERENCE COLLECTION:</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="padding: 8px; text-align: left; width: 50%;"></th>
+        <th style="padding: 8px; text-align: center; width: 25%;">Box</th>
+        <th style="padding: 8px; text-align: center; width: 25%;">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in reference_collection %}
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;"><span data-field="reference_collection[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="padding: 8px; text-align: center;"><span data-field="reference_collection[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="padding: 8px; text-align: center;"><span data-field="reference_collection[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

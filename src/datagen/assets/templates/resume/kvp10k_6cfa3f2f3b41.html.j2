@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Resume</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .contact-info p {
+    margin: 2px 0;
+    font-size: 0.9em;
+  }
+  .section-title {
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .job-entry, .education-entry, .research-entry {
+    margin-bottom: 15px;
+  }
+  .job-header, .education-header, .research-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+  .job-details, .education-details, .research-details {
+    margin-left: 20px;
+    font-size: 0.95em;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+  }
+  .publication-item {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+  }
+  .citation-text {
+    font-style: italic;
+    display: block;
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="font-size: 2em; font-weight: bold;">{{ full_name }}</div>
+  <div class="header-info">
+    <div class="contact-info">
+      <p>Phone: {{ phone }}</p>
+      <p>Email: {{ email }}</p>
+      <p>Website: {{ website }}</p>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="education-entry">
+    <div class="education-header">
+      <span>{{ university_name_1 }}</span>
+      <span>{{ location_1 }}</span>
+    </div>
+    <div class="education-details">
+      <p>Ph.D. in Computer Science, College of Computer and Information Science, {{ graduation_year_1 }}</p>
+      <p>Advisor: {{ advisor_name_1 }}</p>
+    </div>
+  </div>
+
+  <div class="section-title">Summary</div>
+  <ul>
+    <li>I enjoy coding idea into the up and running system that can make people's life better.</li>
+    <li>Strong expertise in networking, wireless networks, and embedded system.</li>
+    <li>A blend of experiences in both agile product development and applied research.</li>
+    <li>Hands-on experience in software, firmware and full stack development.</li>
+    <li>Proven track record of designing, developing and deploying production-ready system.</li>
+    <li>Strong interest in working on cutting edge networking technologies, internet-of-things and robotics.</li>
+  </ul>
+
+  <div class="section-title">Project Experience</div>
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ project_title_1 }}</span>
+      <span>{{ company_name_1 }} Research Center</span>
+    </div>
+    <div class="job-details">
+      <p>2013/8-present</p>
+      <ul>
+        <li><span data-field="project_description_1">{{ project_description_1 }}</span> {{ project_description_1 }}</li>
+        <li>Key contributor to the design and development of Qualcomm Snapdragon Drone Reference Platform. Mainly in charge of</li>
+        <li>PX4 flight control stack development and integration on Qualcomm Snapdragon DSP using C and C++.</li>
+        <li>Designed and implemented sensor drivers on Snapdragon DSP, including RC, InvenSense MPU950 IMU, barometer, ESC, etc.</li>
+        <li>Designed and developed SDK for peripheral bus and file system access</li>
+        <li>Made significant contributions to the first platform bring-up and provided external customers with critical support to meet their deadlines</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ project_title_2 }}</span>
+      <span>{{ company_name_2 }}</span>
+    </div>
+    <div class="job-details">
+      <p>2012/9-2013/1</p>
+      <ul>
+        <li><span data-field="project_description_2">{{ project_description_2 }}</span> {{ project_description_2 }}</li>
+        <li>Developed an Android service for mobile traffic signature collection and obfuscation.</li>
+        <li>Implemented a network traffic sniffer on gateway and developed a C pc parser</li>
+        <li>Built a framework for automated classifier model validation and upgrade on network gateway</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ project_title_3 }}</span>
+      <span>{{ company_name_3 }}</span>
+    </div>
+    <div class="job-details">
+      <p>2005-2008</p>
+      <ul>
+        <li><span data-field="project_description_3">{{ project_description_3 }}</span> {{ project_description_3 }}</li>
+        <li>Implemented BaPu, a C based user space middleware running on OpenWRT powered Wi-Fi Access Point.</li>
+        <li>Conducted a large scale measurement in Boston and show the significant network throughput gain achieved by BaPu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ project_title_4 }}</span>
+      <span>{{ company_name_4 }}</span>
+    </div>
+    <div class="job-details">
+      <p>2008/6-2008/8</p>
+      <ul>
+        <li><span data-field="project_description_4">{{ project_description_4 }}</span> {{ project_description_4 }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ project_title_5 }}</span>
+      <span>{{ company_name_5 }}</span>
+    </div>
+    <div class="job-details">
+      <p>2007/5-2007/8</p>
+      <ul>
+        <li><span data-field="project_description_5">{{ project_description_5 }}</span> {{ project_description_5 }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Honors and Awards</div>
+  <div class="research-entry">
+    <div class="research-header">
+      <span>{{ award_year_1 }}</span>
+      <span>{{ award_name_1 }}</span>
+    </div>
+    <div class="research-details">
+      <p>{{ award_description_1 }}</p>
+    </div>
+  </div>
+
+  <div class="research-entry">
+    <div class="research-header">
+      <span>{{ award_year_2 }}</span>
+      <span>{{ award_name_2 }}</span>
+    </div>
+    <div class="research-details">
+      <p>{{ award_description_2 }}</p>
+    </div>
+  </div>
+
+  <div class="section-title">Start-up Experience</div>
+  <div class="job-entry">
+    <div class="job-header">
+      <span>{{ startup_title }}</span>
+      <span>{{ startup_company }}</span>
+    </div>
+    <div class="job-details">
+      <p>2007-2010</p>
+      <ul>
+        <li>Co-founder of "<span data-field="startup_product_name">{{ startup_product_name }}</span>" http://www.petsnextdoor.com and the software lead for the web version application. We acquired over 100K users over 3 months, and was selected to interview with the top startup incubator and accelerator, Y Combinator.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Patent</div>
+  <div class="publication-item">
+    <p>[<span data-field="patent_number_1">{{ patent_number_1 }}</span>]</p>
+    <p><span data-field="patent_title_1">{{ patent_title_1 }}</span>, Patent Pub. No. US2014/031290 A1, Oct. 30, 2014.</p>
+  </div>
+
+  <div class="section-title">Highlighted Publications</div>
+  {% for pub in publications %}
+  <div class="publication-item">
+    <p>[<span data-field="publication_number">{{ loop.index0 + 1 }}</span>]</p>
+    <p><span data-field="publication_authors">{{ pub.authors }}</span></p>
+    <p><span data-field="publication_title">{{ pub.title }}</span></p>
+    <span class="citation-text">{{ pub.citation }}</span>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">Thesis</div>
+  <div class="publication-item">
+    <p>[<span data-field="thesis_number">{{ thesis_number }}</span>]</p>
+    <p><span data-field="thesis_title">{{ thesis_title }}</span></p>
+    <span class="citation-text">Ph.D. Thesis, {{ thesis_university }}.</span>
+  </div>
+
+</div>
+
+<div class="page">
+  <!-- Page 2 content if necessary, based on layout structure -->
+</div>
+
+</body>
+</html>

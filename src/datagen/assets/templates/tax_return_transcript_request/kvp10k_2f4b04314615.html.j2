@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Form 4506T-EZ</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Liberation Sans", Arial, Helvetica, sans-serif; font-size: 8.5px; color: #000; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* PAGE 1 STYLES */
+  .header-row { display: flex; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 4px; }
+  .form-label-block { min-width: 110px; border-right: 2px solid #000; padding-right: 10px; margin-right: 10px; }
+  .form-number { font-size: 28px; font-weight: bold; font-family: "Liberation Sans", Arial, sans-serif; }
+  .form-number-prefix { font-size: 11px; font-weight: normal; }
+  .form-date { font-size: 8px; }
+  .form-title-block { flex: 1; }
+  .form-title { font-size: 18px; font-weight: bold; font-family: "Liberation Sans", Arial, sans-serif; line-height: 1.2; }
+  .omb-block { text-align: right; font-size: 8px; min-width: 100px; }
+  .dept-block { font-size: 7.5px; line-height: 1.4; margin-top: 4px; }
+  .instructions-row { display: flex; align-items: flex-start; border-bottom: 1px solid #000; padding: 3px 0; }
+  .instructions-center { flex: 1; text-align: center; font-size: 8px; }
+  .instructions-center p { margin: 1px 0; }
+  .tip-box { border-bottom: 1px solid #000; padding: 4px 0; font-size: 8px; line-height: 1.4; }
+  .tip-box b { font-weight: bold; }
+
+  .fields-table { width: 100%; border-collapse: collapse; }
+  .fields-table td { border: 1px solid #000; padding: 4px 6px; vertical-align: top; font-size: 8px; }
+  .fields-table .field-label { font-size: 7.5px; font-weight: normal; }
+  .fields-table .field-header { font-weight: bold; text-align: center; font-size: 8px; }
+  .field-input-line { border-bottom: 1px solid #000; min-height: 18px; margin-top: 4px; width: 100%; display: block; }
+
+  .section-row { border-bottom: 1px solid #000; padding: 4px 6px; font-size: 8px; min-height: 40px; }
+  .section-label { font-size: 8px; }
+  .section-input { border-bottom: 1px solid #000; min-height: 16px; margin-top: 6px; }
+
+  .years-row { display: flex; gap: 20px; margin-top: 8px; padding: 0 6px; }
+  .year-field { flex: 1; border-bottom: 1px solid #000; min-height: 16px; }
+
+  .note-box { font-size: 8px; line-height: 1.4; padding: 4px 0; border-bottom: 1px solid #000; }
+  .caution-box { font-size: 8px; line-height: 1.4; padding: 4px 0; border-bottom: 1px solid #000; }
+  .signature-block { font-size: 8px; line-height: 1.4; padding: 4px 0; }
+  .attestation-row { display: flex; align-items: flex-start; gap: 6px; font-size: 8px; padding: 6px 0; }
+  .checkbox { width: 10px; height: 10px; border: 1px solid #000; display: inline-block; flex-shrink: 0; margin-top: 1px; }
+
+  .sign-area { display: flex; align-items: flex-start; margin-top: 6px; }
+  .sign-here-label { font-weight: bold; font-size: 10px; min-width: 40px; margin-right: 10px; line-height: 1.2; }
+  .sign-lines { flex: 1; }
+  .sign-line-row { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 6px; }
+  .sig-field { flex: 2; border-bottom: 1px solid #000; min-height: 22px; font-size: 8px; padding-bottom: 2px; }
+  .date-field { flex: 1; border-bottom: 1px solid #000; min-height: 22px; font-size: 8px; padding-bottom: 2px; }
+  .date-label { font-size: 8px; }
+  .phone-box { border: 1px solid #000; padding: 4px; font-size: 8px; min-width: 120px; text-align: center; }
+  .sign-right { display: flex; flex-direction: column; align-items: flex-end; min-width: 130px; margin-left: 10px; }
+
+  .footer-bar { position: absolute; bottom: 20px; left: 60px; right: 60px; border-top: 1px solid #000; padding-top: 4px; display: flex; justify-content: space-between; font-size: 8px; }
+
+  /* PAGE 2 STYLES */
+  .p2-header { display: flex; justify-content: space-between; border-bottom: 1px solid #000; padding-bottom: 3px; margin-bottom: 6px; font-size: 8px; }
+  .p2-body { display: flex; gap: 14px; }
+  .p2-col1 { flex: 1.1; font-size: 7.8px; line-height: 1.45; }
+  .p2-col2 { flex: 1; font-size: 7.8px; line-height: 1.45; }
+  .p2-col3 { flex: 1.1; font-size: 7.8px; line-height: 1.45; }
+  .p2-col1 h3, .p2-col3 h3 { font-size: 10px; font-family: "Liberation Serif", Georgia, serif; margin-bottom: 4px; }
+  .p2-col1 h4 { font-size: 8.5px; margin: 6px 0 2px 0; }
+  .p2-col3 h4 { font-size: 8.5px; margin: 6px 0 2px 0; }
+  .p2-col1 p, .p2-col3 p { margin-bottom: 4px; }
+  .mail-table { width: 100%; border-collapse: collapse; font-size: 7.8px; }
+  .mail-table th { border: 1px solid #000; padding: 3px 4px; font-weight: bold; text-align: left; background: #fff; }
+  .mail-table td { border: 1px solid #000; padding: 3px 4px; vertical-align: top; }
+  .specific-section h3 { font-size: 10px; font-family: "Liberation Serif", Georgia, serif; margin: 6px 0 3px 0; }
+  .specific-section p { margin-bottom: 3px; font-size: 7.8px; line-height: 1.4; }
+  .divider { border-top: 1px solid #000; margin: 5px 0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="header-row">
+    <div class="form-label-block">
+      <div style="font-size:9px;">Form</div>
+      <div class="form-number">4506T-EZ</div>
+      <div class="form-date">(June 2019)</div>
+    </div>
+    <div class="form-title-block">
+      <div class="form-title">Short Form Request for Individual Tax Return Transcript</div>
+    </div>
+    <div class="omb-block">OMB No. 1545-2154</div>
+  </div>
+
+  <!-- Dept + Instructions row -->
+  <div style="display:flex; border-bottom:1px solid #000; padding-bottom:4px; margin-bottom:4px;">
+    <div class="dept-block" style="min-width:130px; border-right:1px solid #000; padding-right:8px; margin-right:8px;">
+      Department of the Treasury<br>Internal Revenue Service
+    </div>
+    <div style="flex:1; font-size:8px; line-height:1.5;">
+      <p><b>&#9658; Request may not be processed if the form is incomplete or illegible.</b></p>
+      <p><b>&#9658; For more information about Form 4506T-EZ, visit <i>www.irs.gov/form4506tez</i>.</b></p>
+    </div>
+  </div>
+
+  <!-- Tip -->
+  <div class="tip-box" style="margin-bottom:4px;">
+    <b>Tip.</b> Use Form 4506T-EZ to order a 1040 series tax return transcript free of charge, or you can quickly request transcripts by using our automated self-help service tools. Please visit us at IRS.gov and click on "Get Transcript of Your Tax Records" under "Tools" or call 1-800-908-9946.
+  </div>
+
+  <!-- Fields 1a/1b and 2a/2b -->
+  <table class="fields-table" style="margin-bottom:0;">
+    <tr>
+      <td style="width:55%; border-bottom:none;">
+        <span class="field-label"><b>1a</b> Name shown on tax return. If a joint return, enter the name shown first.</span>
+        <div class="field-input-line"><span data-field="taxpayer_name_1a">{{ taxpayer_name_1a }}</span></div>
+      </td>
+      <td style="width:45%; border-bottom:none;">
+        <div class="field-header">1b First social security number or individual taxpayer<br>identification number on tax return</div>
+        <div class="field-input-line"><span data-field="ssn_itin_1b">{{ ssn_itin_1b }}</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="border-top:none;">
+        <span class="field-label"><b>2a</b> If a joint return, enter spouse's name shown on tax return.</span>
+        <div class="field-input-line"><span data-field="spouse_name_2a">{{ spouse_name_2a }}</span></div>
+      </td>
+      <td style="border-top:none;">
+        <div class="field-header">2b Second social security number or individual<br>taxpayer identification number if joint tax return</div>
+        <div class="field-input-line"><span data-field="spouse_ssn_itin_2b">{{ spouse_ssn_itin_2b }}</span></div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Field 3 -->
+  <div class="section-row">
+    <span class="section-label"><b>3</b>&nbsp; Current name, address (including apt., room, or suite no.), city, state, and ZIP code (see instructions)</span>
+    <div class="section-input"><span data-field="current_address">{{ current_address }}</span></div>
+  </div>
+
+  <!-- Field 4 -->
+  <div class="section-row">
+    <span class="section-label"><b>4</b>&nbsp; Previous address shown on the last return filed if different from line 3 (see instructions)</span>
+    <div class="section-input"><span data-field="previous_address">{{ previous_address }}</span></div>
+  </div>
+
+  <!-- Field 5 -->
+  <div class="section-row" style="min-height:55px;">
+    <span class="section-label"><b>5</b>&nbsp; Customer file number (if applicable) (see instructions)</span>
+    <div class="section-input"><span data-field="customer_file_number">{{ customer_file_number }}</span></div>
+  </div>
+
+  <!-- Note -->
+  <div class="note-box" style="margin-top:6px;">
+    <b>Note:</b> Effective July 2019, the IRS will mail tax transcript requests only to your address of record. See <b>What's New</b> under <b>Future Developments</b> on Page 2 for additional information.
+  </div>
+
+  <!-- Field 6 -->
+  <div style="border-bottom:1px solid #000; padding:4px 6px; font-size:8px;">
+    <b>6&nbsp; Year(s) requested.</b> Enter the year(s) of the return transcript you are requesting (for example, "2008"). Most requests will be processed within 10 business days.
+    <div class="years-row">
+      {% for year in requested_years %}
+      <div class="year-field"><span data-field="requested_years[{{ loop.index0 }}]">{{ year }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Note italic -->
+  <div style="font-size:8px; font-style:italic; line-height:1.4; padding:4px 0; border-bottom:1px solid #000;">
+    <b>Note.</b> <i>If the IRS is unable to locate a return that matches the taxpayer identity information provided above, or if IRS records indicate that the return has not been filed, the IRS will notify you that it was unable to locate a return, or that a return was not filed, whichever is applicable.</i>
+  </div>
+
+  <!-- Caution -->
+  <div class="caution-box">
+    <b>Caution.</b> Do not sign this form unless all applicable lines have been completed.
+  </div>
+
+  <!-- Signature of taxpayer(s) -->
+  <div class="signature-block">
+    <p><b>Signature of taxpayer(s).</b> I declare that I am the taxpayer whose name is shown on either line 1a or 2a. If the request applies to a joint return, <b>either</b> spouse must sign. <b>Note:</b> This form must be received by IRS within 120 days of the signature date.</p>
+  </div>
+
+  <!-- Attestation checkbox -->
+  <div class="attestation-row">
+    <span class="checkbox"></span>
+    <span><b>Signatory attests that he/she has read the attestation clause and upon so reading declares that he/she has the authority to sign the Form 4506T-EZ.</b> See instructions.</span>
+  </div>
+
+  <!-- Sign Here area -->
+  <div style="display:flex; align-items:flex-start; margin-top:6px;">
+    <div style="font-weight:bold; font-size:11px; min-width:45px; margin-right:8px; line-height:1.3;">Sign<br>Here</div>
+    <div style="flex:1;">
+      <!-- Phone number box top right -->
+      <div style="display:flex; justify-content:flex-end; margin-bottom:4px;">
+        <div style="border:1px solid #000; padding:3px 6px; font-size:7.8px; text-align:center; min-width:130px;">
+          Phone number of taxpayer<br>on line 1a or 2a<br>
+          <div style="border-bottom:1px solid #000; min-height:14px; margin-top:2px;"><span data-field="taxpayer_phone">{{ taxpayer_phone }}</span></div>
+        </div>
+      </div>
+      <!-- Signature line 1 -->
+      <div style="display:flex; align-items:flex-end; gap:10px; margin-bottom:6px;">
+        <div style="flex:1;">
+          <div style="font-size:7.8px; margin-bottom:1px;">&#9658; <b>Signature</b> (see instructions)</div>
+          <div style="border-bottom:1px solid #000; min-height:20px;"><span data-field="taxpayer_signature">{{ taxpayer_signature }}</span></div>
+        </div>
+        <div style="min-width:120px;">
+          <div style="font-size:7.8px; margin-bottom:1px;">Date</div>
+          <div style="border-bottom:1px solid #000; min-height:20px;"><span data-field="signature_date">{{ signature_date }}</span></div>
+        </div>
+      </div>
+      <!-- Spouse signature line -->
+      <div style="display:flex; align-items:flex-end; gap:10px;">
+        <div style="flex:1;">
+          <div style="font-size:7.8px; margin-bottom:1px;">&#9658; <b>Spouse's signature</b></div>
+          <div style="border-bottom:1px solid #000; min-height:20px;"><span data-field="spouse_signature">{{ spouse_signature }}</span></div>
+        </div>
+        <div style="min-width:120px;">
+          <div style="font-size:7.8px; margin-bottom:1px;">Date</div>
+          <div style="border-bottom:1px solid #000; min-height:20px;"><span data-field="spouse_signature_date">{{ spouse_signature_date }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-bar">
+    <span><b>For Privacy Act and Paperwork Reduction Act Notice, see page 2.</b></span>
+    <span>Cat. No. 54185S</span>
+    <span>Form <b>4506T-EZ</b> (Rev. 6-2019)</span>
+  </div>
+
+</div><!-- end page 1 -->
+
+
+<!-- PAGE 2 -->
+<div class="page">
+
+  <div class="p2-header">
+    <span>Form 4506T-EZ (Rev. 6-2019)</span>
+    <span><b>Page 2</b></span>
+  </div>
+
+  <div style="font-size:7.8px; line-height:1.4; margin-bottom:5px;">
+    Section references are to the Internal Revenue Code unless otherwise noted.
+  </div>
+
+  <div class="p2-body">
+
+    <!-- Column 1 -->
+    <div class="p2-col1">
+      <h3>Future Developments</h3>
+      <p>For the latest information about developments related to Form 4506T-EZ, such as legislation enacted after it was published, go to <i>www.irs.gov/form4506tez</i>.</p>
+      <p><b>What's New.</b> As part of its ongoing efforts to protect taxpayer data, the Internal Revenue Service announced that in July 2019, it will stop all third-party mailings of requested transcripts. After this date masked Tax Transcripts will only be mailed to the taxpayer's address of record.</p>
+      <p>If a third-party is unable to accept a Tax Transcript mailed to the taxpayer, they may either contract with an existing IVES participant or become an IVES participant themselves. For additional information about the IVES program, go to <i>www.irs.gov</i> and search IVES.</p>
+
+      <h3>General Instructions</h3>
+      <p><b>Caution.</b> Do not sign this form unless all applicable lines have been completed.</p>
+      <p><b>Purpose of form.</b> Individuals can use Form 4506T-EZ to request a tax return transcript for the current and the prior three years that includes most lines of the original tax return. The tax return transcript will not show payments, penalty assessments, or adjustments made to the originally filed return. Form 4506T-EZ cannot be used by taxpayers who file Form 1040 based on a tax year beginning in one calendar year and ending in the following year (fiscal tax year). Taxpayers using a fiscal tax year must file Form 4506-T, Request for Transcript of Tax Return, to request a return transcript.</p>
+      <p>Use Form 4506-T to request tax return transcripts, tax account information, W-2 information, 1099 information, verification of non-filing, and record of account.</p>
+      <p><b>Customer File Number.</b> The transcripts provided by the IRS have been modified to protect taxpayers' privacy. Transcripts only display partial personal information, such as the last four digits of the taxpayer's Social Security Number. Full financial and tax information, such as wages and taxable income, are shown on the transcript.</p>
+      <p>An optional Customer File Number field is available to use when requesting a transcript. This number will print on the transcript. See Line 5 instructions for specific requirements. The customer file number is an optional field and not required.</p>
+      <p><b>Automated transcript request.</b> You can quickly request transcripts by using our automated self-help service tools. Please visit us at IRS.gov and click on "Get Transcript of Your Tax Records" under "Tools" or call 1-800-908-9946.</p>
+      <p><b>Where to file.</b> Mail or fax Form 4506T-EZ to the address below for the state you lived in when the return was filed.</p>
+      <p>If you are requesting more than one transcript or other product and the chart below shows two different addresses, send your request to the address based on the address of your most recent return.</p>
+    </div>
+
+    <!-- Column 2: Mail table + Specific Instructions -->
+    <div class="p2-col2">
+      <table class="mail-table">
+        <tr>
+          <th>If you filed an individual return and lived in:</th>
+          <th>Mail or fax to the "Internal Revenue Service" at:</th>
+        </tr>
+        {% for row in mail_routing %}
+        <tr>
+          <td><span data-field="mail_routing[{{ loop.index0 }}].states">{{ row.states }}</span></td>
+          <td><span data-field="mail_routing[{{ loop.index0 }}].address">{{ row.address }}</span></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <div class="specific-section" style="margin-top:8px;">
+        <h3>Specific Instructions</h3>
+        <p><b>Line 1b.</b> Enter your employer identification number (EIN) if your request relates to a business return. Otherwise, enter the first social security number (SSN) or your individual taxpayer identification number (ITIN) shown on the return. For example, if you are requesting Form 1040 that includes Schedule C (Form 1040), enter your SSN.</p>
+        <p><b>Line 3.</b> Enter your current address. If you use a P.O. box, include it on this line.</p>
+        <p><b>Line 4.</b> Enter the address shown on the last return filed if different from the address entered on line 3.</p>
+        <p><b>Note.</b> If the address on lines 3 and 4 are different and you have not changed your address with the IRS, file Form 8822, Change of Address.</p>
+        <p><b>Line 5.</b> Enter up to 10 numeric characters to create a unique customer file number that will appear on the transcript. The customer file number <u>should not</u> contain an SSN. Completion of this line is not required.</p>
+        <p><b>Note.</b> If you use an SSN, name or combination of both, we will not input the information and the customer file number will reflect a generic entry of "9999999999" on the transcript.</p>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="p2-col3">
+      <p><b>Signature and date.</b> Form 4506T-EZ must be signed and dated by the taxpayer listed on line 1a or 2a. The IRS must receive Form 4506T-EZ within 120 days of the date signed by the taxpayer or it will be rejected. Ensure that all applicable lines are completed before signing.</p>
+      <p><i>You must check the box in the signature area to acknowledge you have the authority to sign and request the information. The form will not be processed and returned to you if the box is unchecked</i></p>
+      <p>Transcripts of jointly filed tax returns may be furnished to either spouse. Only one signature is required. Sign Form 4506T-EZ exactly as your name appeared on the original return. If you changed your name, also sign your current name.</p>
+      <div class="divider"></div>
+      <h4>Privacy Act and Paperwork Reduction Act Notice.</h4>
+      <p>We ask for the information on this form to establish your right to gain access to the requested tax information under the Internal Revenue Code. We need this information to properly identify the tax information and respond to your request. If you request a transcript, sections 6103 and 6109 require you to provide this information, including your SSN. If you do not provide this information, we may not be able to process your request. Providing false or fraudulent information may subject you to penalties.</p>
+      <p>Routine uses of this information include giving it to the Department of Justice for civil and criminal litigation, and cities, states, the District of Columbia, and U.S. commonwealths and possessions for use in administering their tax laws. We may also disclose this information to other countries under a tax treaty, to federal and state agencies to enforce federal nontax criminal laws, or to federal law enforcement and intelligence agencies to combat terrorism.</p>
+      <p>You are not required to provide the information requested on a form that is subject to the Paperwork Reduction Act unless the form displays a valid OMB control number. Books or records relating to a form or its instructions must be retained as long as their contents may become material in the administration of any Internal Revenue law. Generally, tax returns and return information are confidential, as required by section 6103.</p>
+      <p>The time needed to complete and file Form 4506T-EZ will vary depending on individual circumstances. The estimated average time is: <b>Learning about the law or the form,</b> 9 min.; <b>Preparing the form,</b> 18 min.; and <b>Copying, assembling, and sending the form to the IRS,</b> 20 min.</p>
+      <p>If you have comments concerning the accuracy of these time estimates or suggestions for making Form 4506T-EZ simpler, we would be happy to hear from you. You can write to:</p>
+      <p style="margin-left:10px;">
+        Internal Revenue Service<br>
+        Tax Forms and Publications Division<br>
+        1111 Constitution Ave. NW, IR-6526<br>
+        Washington, DC 20224
+      </p>
+      <p>Do not send the form to this address. Instead, see <i>Where to file</i> on this page.</p>
+    </div>
+
+  </div><!-- end p2-body -->
+
+</div><!-- end page 2 -->
+
+</body>
+</html>

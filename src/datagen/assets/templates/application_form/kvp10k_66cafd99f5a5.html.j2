@@ -1,0 +1,75 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the document's appearance */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { text-align: center; font-weight: bold; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .address-block { text-align: center; margin-bottom: 30px; font-size: 0.9em; }
+  .form-section { margin-bottom: 25px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { font-weight: bold; width: 150px; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .signature-line { border-top: 1px solid #000; margin-top: 80px; margin-bottom: 5px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <h1 style="font-size: 36px; margin: 0;">HARRIET L. WILKES</h1>
+    <h2 style="font-size: 48px; margin: 5px 0 0 0;">HONORS COLLEGE</h2>
+    <h3 style="font-size: 24px; margin: 5px 0 0 0;">FLORIDA ATLANTIC UNIVERSITY</h3>
+  </div>
+
+  <div class="address-block">
+    <p>John D. MacArthur Campus • <span data-field="phone">{{ phone }}</span> • <span data-field="email">{{ email }}</span></p>
+  </div>
+
+  <div class="form-section">
+    <p><strong>Verification of Study Abroad for Students who do not dual enroll</strong></p>
+    <p>This form must be filled out by students who study abroad with a university other than FAU and who do not dual enroll in FAU study abroad credits. If the university transcripts provided to FAU clearly indicate that the courses are "Study Abroad" then students need not submit this form or further documentation. Submit to the Associate Dean (HC 133).</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div class="form-label">DATE:</div>
+      <div class="form-input"><span data-field="date">{{ date }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="form-label">NAME:</div>
+      <div class="form-input"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="form-label">EMAIL:</div>
+      <div class="form-input"><span data-field="email">{{ email }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="form-label">Location of Study Abroad:</div>
+      <div class="form-input"><span data-field="study_location">{{ study_location }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Attach documentation that your coursework was taken abroad. This may be a letter from the university sponsoring your study abroad certifying that the coursework was taken abroad, or other proof.</p>
+  </div>
+
+  <div style="margin-top: 100px;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 45%;">
+        <div class="signature-line"></div>
+        <div style="margin-top: 10px;">Approved:</div>
+        <div style="margin-top: 5px;">Associate Dean</div>
+      </div>
+      <div style="width: 45%;">
+        <div class="signature-line"></div>
+        <div style="margin-top: 10px;">Date</div>
+        <div style="margin-top: 5px;"><span data-field="approval_date">{{ approval_date }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

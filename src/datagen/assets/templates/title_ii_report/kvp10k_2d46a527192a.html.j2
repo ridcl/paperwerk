@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title II Reports</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+        .header-title { font-size: 24pt; font-weight: bold; }
+        .section-heading { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+        .sub-heading { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+        .data-label { font-weight: bold; display: inline-block; width: 150px; }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td, th { padding: 8px 0; text-align: left; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 8px 0;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div style="display: flex; align-items: center;">
+                <div style="font-size: 36pt; font-weight: bold; margin-right: 10px;">title<span style="font-size: 24pt;">ii</span></div>
+                <div style="font-size: 18pt; font-weight: bold;">highereducationact</div>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <button style="padding: 10px 20px; background-color: #0056b3; color: white; border: none; cursor: pointer;">VIEW TITLE II REPORTS</button>
+                <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer;">SUBMIT REPORTS</button>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 10pt; margin-bottom: 20px;">
+            <div>About Title II</div>
+            <div>Contacts</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div style="font-size: 18pt; font-weight: bold;">{{ institution_name }}</div>
+            <div style="font-size: 24pt; font-weight: bold;">2015</div>
+            <div>Title II Reports</div>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <div style="font-size: 14pt; font-weight: bold;">Complete Report Card</div>
+            <div style="font-size: 10pt;">AY {{ academic_year }}</div>
+        </div>
+
+        <div class="section-heading">Institution Information</div>
+        <div style="margin-top: 20px;">
+            <p>Name of Institution: <span data-field="institution.name">{{ institution.name }}</span></p>
+            <p>Institution/Program Type: <span data-field="institution.program_type">{{ institution.program_type }}</span></p>
+            <p>Academic Year: <span data-field="institution.academic_year">{{ institution.academic_year }}</span></p>
+            <p>State: <span data-field="institution.state">{{ institution.state }}</span></p>
+            <p>Address: <span data-field="institution.address">{{ institution.address }}</span></p>
+            <p>Contact Name: <span data-field="institution.contact_name">{{ institution.contact_name }}</span></p>
+            <p>Phone: <span data-field="institution.phone">{{ institution.phone }}</span></p>
+            <p>Email: <span data-field="institution.email">{{ institution.email }}</span></p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>Is your institution a member of an HEA Title II Teacher Quality Partnership (TQP) grant awarded by the U.S. Department of Education? <span data-field="is_tqp_member">{{ is_tqp_member }}</span></p>
+            <p>No</p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>If yes, provide the following:</p>
+            <p>Award year: <span data-field="award_year">{{ award_year }}</span></p>
+            <p>Grantee name: <span data-field="grantee_name">{{ grantee_name }}</span></p>
+            <p>Project name: <span data-field="project_name">{{ project_name }}</span></p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>Grant number: <span data-field="grant_number">{{ grant_number }}</span></p>
+            <p>List partner districts/LEAs: <span data-field="partner_districts_leas">{{ partner_districts_leas }}</span></p>
+            <p>List other partners: <span data-field="other_partners">{{ other_partners }}</span></p>
+            <p>Project Type: <span data-field="project_type">{{ project_type }}</span></p>
+        </div>
+
+        <div class="section-heading">Section I.a Program Information</div>
+        <p>List each teacher preparation program included in your traditional route. Indicate if your program or programs participate in a Teacher Quality Partnership Grant awarded by the U.S. Department of Education as described at <a href="http://www2.ed.gov/about/offices/list/toiqp/index.html">http://www2.ed.gov/about/offices/list/toiqp/index.html</a>.</p>
+        
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Teacher Preparation Programs</th>
+                    <th style="width: 30%;">Teacher Quality Partnership Grant Member?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for program in teacher_prep_programs %}
+                <tr>
+                    <td><span data-field="teacher_prep_programs[{{ loop.index0 }}].program_name">{{ program.program_name }}</span></td>
+                    <td><span data-field="teacher_prep_programs[{{ loop.index0 }}].is_tqp_member">{{ program.is_tqp_member }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <p>Total number of teacher preparation programs: <span data-field="total_programs">{{ total_programs }}</span></p>
+        </div>
+
+        <div class="section-heading">Section I.b Admissions</div>
+        <p>Indicate when students are formally admitted into your initial teacher certification program:</p>
+        <p>Sophomore year: <span data-field="admissions_sophomore_year">{{ admissions_sophomore_year }}</span></p>
+        <p>Does your initial teacher certification program conditionally admit students? <span data-field="conditionally_admit_students">{{ conditionally_admit_students }}</span></p>
+        <p>Provide a link to your website where additional information about admissions requirements can be found: <span data-field="admissions_website_link">{{ admissions_website_link }}</span></p>
+        <p>Please provide any additional comments about or exceptions to the admissions information provided above:</p>
+        <p><span data-field="admissions_comments">{{ admissions_comments }}</span></p>
+
+        <div class="sub-heading">Section I.b Undergraduate Requirements</div>
+        <p>Please provide the following information about your teacher preparation program's entry and exit requirements. (<a href="https://www2.ed.gov/about/offices/list/toiqp/index.html">S205(a)(1)(C)(i)</a>)</p>
+        <p>Are there initial teacher certification programs at the undergraduate level? <span data-field="undergrad_programs_exist">{{ undergrad_programs_exist }}</span></p>
+
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Element</th>
+                    <th style="width: 25%;">Required for Entry</th>
+                    <th style="width: 25%;">Required for Exit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Transcript</td>
+                    <td><span data-field="undergrad_requirements.transcript_entry">{{ undergrad_requirements.transcript_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.transcript_exit">{{ undergrad_requirements.transcript_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Fingerprint check</td>
+                    <td><span data-field="undergrad_requirements.fingerprint_entry">{{ undergrad_requirements.fingerprint_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.fingerprint_exit">{{ undergrad_requirements.fingerprint_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Background check</td>
+                    <td><span data-field="undergrad_requirements.background_entry">{{ undergrad_requirements.background_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.background_exit">{{ undergrad_requirements.background_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum number of courses/credits/semester hours completed</td>
+                    <td><span data-field="undergrad_requirements.min_courses_entry">{{ undergrad_requirements.min_courses_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.min_courses_exit">{{ undergrad_requirements.min_courses_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA</td>
+                    <td><span data-field="undergrad_requirements.min_gpa_entry">{{ undergrad_requirements.min_gpa_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.min_gpa_exit">{{ undergrad_requirements.min_gpa_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA in content area coursework</td>
+                    <td><span data-field="undergrad_requirements.gpa_content_entry">{{ undergrad_requirements.gpa_content_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.gpa_content_exit">{{ undergrad_requirements.gpa_content_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA in professional education coursework</td>
+                    <td><span data-field="undergrad_requirements.gpa_prof_entry">{{ undergrad_requirements.gpa_prof_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.gpa_prof_exit">{{ undergrad_requirements.gpa_prof_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum ACT score</td>
+                    <td><span data-field="undergrad_requirements.act_entry">{{ undergrad_requirements.act_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.act_exit">{{ undergrad_requirements.act_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum SAT score</td>
+                    <td><span data-field="undergrad_requirements.sat_entry">{{ undergrad_requirements.sat_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.sat_exit">{{ undergrad_requirements.sat_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum basic skills test score</td>
+                    <td><span data-field="undergrad_requirements.basic_skills_entry">{{ undergrad_requirements.basic_skills_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.basic_skills_exit">{{ undergrad_requirements.basic_skills_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Subject area/academic content test or other subject matter verification</td>
+                    <td><span data-field="undergrad_requirements.subject_test_entry">{{ undergrad_requirements.subject_test_entry }}</span></td>
+                    <td><span data-field="undergrad_requirements.subject_test_exit">{{ undergrad_requirements.subject_test_exit }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <p>Recommendation(s):</p>
+            <table style="width: 50%;">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Element</th>
+                        <th style="width: 25%;">Required for Entry</th>
+                        <th style="width: 25%;">Required for Exit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Essay or personal statement</td>
+                        <td><span data-field="undergrad_recommendations.essay_entry">{{ undergrad_recommendations.essay_entry }}</span></td>
+                        <td><span data-field="undergrad_recommendations.essay_exit">{{ undergrad_recommendations.essay_exit }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Interview</td>
+                        <td><span data-field="undergrad_recommendations.interview_entry">{{ undergrad_recommendations.interview_entry }}</span></td>
+                        <td><span data-field="undergrad_recommendations.interview_exit">{{ undergrad_recommendations.interview_exit }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Other Praxis II Content Exam</td>
+                        <td><span data-field="undergrad_recommendations.praxis_other_entry">{{ undergrad_recommendations.praxis_other_entry }}</span></td>
+                        <td><span data-field="undergrad_recommendations.praxis_other_exit">{{ undergrad_recommendations.praxis_other_exit }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>What is the minimum GPA required for admission into the program? <span data-field="min_gpa_admission">{{ min_gpa_admission }}</span></p>
+            <p>What was the median GPA of individuals accepted into the program in academic year {{ academic_year }}? <span data-field="median_gpa_accepted">{{ median_gpa_accepted }}</span></p>
+            <p>What is the minimum GPA required for completing the program? <span data-field="min_gpa_completion">{{ min_gpa_completion }}</span></p>
+            <p>What was the median GPA of individuals completing the program in academic year {{ academic_year }}? <span data-field="median_gpa_completing">{{ median_gpa_completing }}</span></p>
+            <p>Please provide any additional comments about the information provided above:</p>
+            <p><span data-field="undergrad_additional_comments">{{ undergrad_additional_comments }}</span></p>
+        </div>
+
+        <div class="section-heading">Section I.b Postgraduate Requirements</div>
+        <p>Please provide the following information about your teacher preparation program's entry and exit requirements. (<a href="https://www2.ed.gov/about/offices/list/toiqp/index.html">S205(a)(1)(C)(i)</a>)</p>
+        <p>Are there initial teacher certification programs at the postgraduate level? <span data-field="postgrad_programs_exist">{{ postgrad_programs_exist }}</span></p>
+
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Element</th>
+                    <th style="width: 25%;">Required for Entry</th>
+                    <th style="width: 25%;">Required for Exit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Transcript</td>
+                    <td><span data-field="postgrad_requirements.transcript_entry">{{ postgrad_requirements.transcript_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.transcript_exit">{{ postgrad_requirements.transcript_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Fingerprint check</td>
+                    <td><span data-field="postgrad_requirements.fingerprint_entry">{{ postgrad_requirements.fingerprint_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.fingerprint_exit">{{ postgrad_requirements.fingerprint_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Background check</td>
+                    <td><span data-field="postgrad_requirements.background_entry">{{ postgrad_requirements.background_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.background_exit">{{ postgrad_requirements.background_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum number of courses/credits/semester hours completed</td>
+                    <td><span data-field="postgrad_requirements.min_courses_entry">{{ postgrad_requirements.min_courses_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.min_courses_exit">{{ postgrad_requirements.min_courses_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA</td>
+                    <td><span data-field="postgrad_requirements.min_gpa_entry">{{ postgrad_requirements.min_gpa_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.min_gpa_exit">{{ postgrad_requirements.min_gpa_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA in content area coursework</td>
+                    <td><span data-field="postgrad_requirements.gpa_content_entry">{{ postgrad_requirements.gpa_content_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.gpa_content_exit">{{ postgrad_requirements.gpa_content_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum GPA in professional education coursework</td>
+                    <td><span data-field="postgrad_requirements.gpa_prof_entry">{{ postgrad_requirements.gpa_prof_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.gpa_prof_exit">{{ postgrad_requirements.gpa_prof_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum ACT score</td>
+                    <td><span data-field="postgrad_requirements.act_entry">{{ postgrad_requirements.act_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.act_exit">{{ postgrad_requirements.act_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum SAT score</td>
+                    <td><span data-field="postgrad_requirements.sat_entry">{{ postgrad_requirements.sat_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.sat_exit">{{ postgrad_requirements.sat_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Minimum basic skills test score</td>
+                    <td><span data-field="postgrad_requirements.basic_skills_entry">{{ postgrad_requirements.basic_skills_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.basic_skills_exit">{{ postgrad_requirements.basic_skills_exit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Subject area/academic content test or other subject matter verification</td>
+                    <td><span data-field="postgrad_requirements.subject_test_entry">{{ postgrad_requirements.subject_test_entry }}</span></td>
+                    <td><span data-field="postgrad_requirements.subject_test_exit">{{ postgrad_requirements.subject_test_exit }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <p>Recommendation(s):</p>
+            <table style="width: 50%;">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Element</th>
+                        <th style="width: 25%;">Required for Entry</th>
+                        <th style="width: 25%;">Required for Exit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Essay or personal statement</td>
+                        <td><span data-field="postgrad_recommendations.essay_entry">{{ postgrad_recommendations.essay_entry }}</span></td>
+                        <td><span data-field="postgrad_recommendations.essay_exit">{{ postgrad_recommendations.essay_exit }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Interview</td>
+                        <td><span data-field="postgrad_recommendations.interview_entry">{{ postgrad_recommendations.interview_entry }}</span></td>
+                        <td><span data-field="postgrad_recommendations.interview_exit">{{ postgrad_recommendations.interview_exit }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Other Praxis II Content Exam</td>
+                        <td><span data-field="postgrad_recommendations.praxis_other_entry">{{ postgrad_recommendations.praxis_other_entry }}</span></td>
+                        <td><span data-field="postgrad_recommendations.praxis_other_exit">{{ postgrad_recommendations.praxis_other_exit }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>What is the minimum GPA required for admission into the program? <span data-field="min_gpa_postgrad_admission">{{ min_gpa_postgrad_admission }}</span></p>
+            <p>What was the median GPA of individuals accepted into the program in academic year {{ academic_year }}? <span data-field="median_gpa_postgrad_accepted">{{ median_gpa_postgrad_accepted }}</span></p>
+            <p>What is the minimum GPA required for completing the program? <span data-field="min_gpa_postgrad_completion">{{ min_gpa_postgrad_completion }}</span></p>
+            <p>What was the median GPA of individuals completing the program in academic year {{ academic_year }}? <span data-field="median_gpa_postgrad_completing">{{ median_gpa_postgrad_completing }}</span></p>
+            <p>Please provide any additional comments about the information provided above:</p>
+            <p><span data-field="postgrad_additional_comments">{{ postgrad_additional_comments }}</span></p>
+        </div>
+
+        <div class="section-heading">Section I.c Enrollment</div>
+        <p>Provide the number of students in the teacher preparation program in the following categories. Note that you must report on the number of students by ethnicity and race separately. Individuals who are non-Hispanic/Latino will be reported in one of the race categories. Also note that individuals can belong to one or more racial groups, so the sum of the members of each racial category may not necessarily add up to the total number of students enrolled.</p>
+        <p>For the purpose of Title II reporting, an enrolled student is defined as a student who has been admitted to a teacher preparation program, but who has not completed the program during the academic year being reported. An individual who completed the program during the academic year being reported is counted as a program completer and not an enrolled student.</p>
+        <p>Additional guidance on reporting race and ethnicity data.</p>
+
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Ethnicity</th>
+                    <th style="width: 20%;">2013-14</th>
+                    <th style="width: 20%;">2014-15</th>
+                    <th style="width: 30%;">Number enrolled</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hispanic/Latino of any race:</td>
+                    <td><span data-field="enrollment_hispanic_2013_14">{{ enrollment_hispanic_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_hispanic_2014_15">{{ enrollment_hispanic_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_hispanic_total">{{ enrollment_hispanic_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>American Indian or Alaska Native:</td>
+                    <td><span data-field="enrollment_ai_2013_14">{{ enrollment_ai_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_ai_2014_15">{{ enrollment_ai_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_ai_total">{{ enrollment_ai_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>Asian:</td>
+                    <td><span data-field="enrollment_asian_2013_14">{{ enrollment_asian_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_asian_2014_15">{{ enrollment_asian_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_asian_total">{{ enrollment_asian_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>Black or African American:</td>
+                    <td><span data-field="enrollment_black_2013_14">{{ enrollment_black_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_black_2014_15">{{ enrollment_black_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_black_total">{{ enrollment_black_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>Native Hawaiian or Other Pacific Islander:</td>
+                    <td><span data-field="enrollment_pacific_2013_14">{{ enrollment_pacific_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_pacific_2014_15">{{ enrollment_pacific_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_pacific_total">{{ enrollment_pacific_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>White:</td>
+                    <td><span data-field="enrollment_white_2013_14">{{ enrollment_white_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_white_2014_15">{{ enrollment_white_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_white_total">{{ enrollment_white_total }}</span></td>
+                </tr>
+                <tr>
+                    <td>Two or more races:</td>
+                    <td><span data-field="enrollment_two_or_more_2013_14">{{ enrollment_two_or_more_2013_14 }}</span></td>
+                    <td><span data-field="enrollment_two_or_more_2014_15">{{ enrollment_two_or_more_2014_15 }}</span></td>
+                    <td><span data-field="enrollment_two_or_more_total">{{ enrollment_two_or_more_total }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-heading">Section I.d Supervised Clinical Experience</div>
+        <p>Provide the following information about supervised clinical experience in 2013-14.</p>
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Description</th>
+                    <th style="width: 30%;">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Average number of clock hours of supervised clinical experience required prior to student teaching</td>
+                    <td><span data-field="clinical_avg_hours_prior">{{ clinical_avg_hours_prior }}</span></td>
+                </tr>
+                <tr>
+                    <td>Average number of clock hours required for student teaching</td>
+                    <td><span data-field="clinical_avg_hours_student_teaching">{{ clinical_avg_hours_student_teaching }}</span></td>
+                </tr>
+                <tr>
+                    <td>Average number of clock hours required for mentoring/induction support</td>
+                    <td><span data-field="clinical_avg_hours_mentoring">{{ clinical_avg_hours_mentoring }}</span></td>
+                </tr>
+                <tr>
+                    <td>Number of full-time equivalent faculty supervising clinical experience during this academic year</td>
+                    <td><span data-field="clinical_fte_faculty">{{ clinical_fte_faculty }}</span></td>
+                </tr>
+                <tr>
+                    <td>Number of adjunct faculty supervising clinical experience during this academic year (IHE and PreK-12 staff)</td>
+                    <td><span data-field="clinical_adjunct_faculty">{{ clinical_adjunct_faculty }}</span></td>
+                </tr>
+                <tr>
+                    <td>Number of students in supervised clinical experience during this academic year</td>
+                    <td><span data-field="clinical_students_count">{{ clinical_students_count }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Please provide any additional information about or descriptions of the supervised clinical experiences:</p>
+        <p><span data-field="clinical_additional_info">{{ clinical_additional_info }}</span></p>
+
+        <div class="section-heading">Section I.e Teachers Prepared by Subject Area</div>
+        <p>Please provide the number of teachers prepared by subject area for academic year 2013-14. For the purposes of this section, number prepared means the number of program completers. "Subject area" refers to the subject area(s) an individual has been prepared to teach. An individual can be counted in more than one subject area. If no individuals were prepared in a particular subject area, please leave that cell blank. (S205(b)(1)(H))</p>
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Subject Area</th>
+                    <th style="width: 30%;">Number Prepared</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in subject_area_teachers %}
+                <tr>
+                    <td><span data-field="subject_area_teachers[{{ loop.index0 }}].subject_area">{{ subject.subject_area }}</span></td>
+                    <td><span data-field="subject_area_teachers[{{ loop.index0 }}].number_prepared">{{ subject.number_prepared }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="section-heading">Section I.e Teachers Prepared by Academic Major</div>
+        <p>Please provide the number of teachers prepared by academic major for academic year 2013-14. For the purposes of this section, "Academic major" refers to the actual major(s) declared by the program completer. An individual can be counted in more than one academic major. If no individuals were prepared in a particular academic major, please leave that cell blank. (S205(b)(1)(H))</p>
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Academic Major</th>
+                    <th style="width: 30%;">Number Prepared</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for major in academic_major_teachers %}
+                <tr>
+                    <td><span data-field="academic_major_teachers[{{ loop.index0 }}].major">{{ major.major }}</span></td>
+                    <td><span data-field="academic_major_teachers[{{ loop.index0 }}].number_prepared">{{ major.number_prepared }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+<div class="page">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 70%;">Subject</th>
+        <th style="width: 15%; text-align: right;">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Teacher Education - Biology</td>
+        <td style="text-align: right;"><span data-field="count_biology">{{ count_biology }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Chemistry</td>
+        <td style="text-align: right;"><span data-field="count_chemistry">{{ count_chemistry }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Drama and Dance</td>
+        <td style="text-align: right;"><span data-field="count_drama_dance">{{ count_drama_dance }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - French</td>
+        <td style="text-align: right;"><span data-field="count_french">{{ count_french }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - German</td>
+        <td style="text-align: right;"><span data-field="count_german">{{ count_german }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - History</td>
+        <td style="text-align: right;"><span data-field="count_history">{{ count_history }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Physics</td>
+        <td style="text-align: right;"><span data-field="count_physics">{{ count_physics }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Spanish</td>
+        <td style="text-align: right;"><span data-field="count_spanish">{{ count_spanish }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Speech</td>
+        <td style="text-align: right;"><span data-field="count_speech">{{ count_speech }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Geography</td>
+        <td style="text-align: right;"><span data-field="count_geography">{{ count_geography }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Latin</td>
+        <td style="text-align: right;"><span data-field="count_latin">{{ count_latin }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Psychology</td>
+        <td style="text-align: right;"><span data-field="count_psychology_te">{{ count_psychology_te }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Earth Science</td>
+        <td style="text-align: right;"><span data-field="count_earth_science">{{ count_earth_science }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - English as a Second Language</td>
+        <td style="text-align: right;"><span data-field="count_esl">{{ count_esl }}</span></td>
+      </tr>
+      <tr>
+        <td>Teacher Education - Bilingual, Multilingual, and Multicultural Education</td>
+        <td style="text-align: right;"><span data-field="count_bilingual">{{ count_bilingual }}</span></td>
+      </tr>
+      <tr>
+        <td>Education - Curriculum and Instruction</td>
+        <td style="text-align: right;"><span data-field="count_curriculum_instruction">{{ count_curriculum_instruction }}</span></td>
+      </tr>
+      <tr>
+        <td>Education - Social and Philosophical Foundations of Education</td>
+        <td style="text-align: right;"><span data-field="count_social_philosophical">{{ count_social_philosophical }}</span></td>
+      </tr>
+      <tr>
+        <td>Liberal Arts/Humanities</td>
+        <td style="text-align: right;"><span data-field="count_liberal_arts_humanities">{{ count_liberal_arts_humanities }}</span></td>
+      </tr>
+      <tr>
+        <td>Psychology</td>
+        <td style="text-align: right;"><span data-field="count_psychology_general">{{ count_psychology_general }}</span></td>
+      </tr>
+      <tr>
+        <td>Social Sciences</td>
+        <td style="text-align: right;"><span data-field="count_social_sciences">{{ count_social_sciences }}</span></td>
+      </tr>
+      <tr>
+        <td>Anthropology</td>
+        <td style="text-align: right;"><span data-field="count_anthropology">{{ count_anthropology }}</span></td>
+      </tr>
+      <tr>
+        <td>Economics</td>
+        <td style="text-align: right;"><span data-field="count_economics">{{ count_economics }}</span></td>
+      </tr>
+      <tr>
+        <td>Geography and Cartography</td>
+        <td style="text-align: right;"><span data-field="count_geography_cartography">{{ count_geography_cartography }}</span></td>
+      </tr>
+      <tr>
+        <td>Political Science and Government</td>
+        <td style="text-align: right;"><span data-field="count_political_science">{{ count_political_science }}</span></td>
+      </tr>
+      <tr>
+        <td>Sociology</td>
+        <td style="text-align: right;"><span data-field="count_sociology">{{ count_sociology }}</span></td>
+      </tr>
+      <tr>
+        <td>Visual and Performing Arts</td>
+        <td style="text-align: right;"><span data-field="count_visual_performing_arts">{{ count_visual_performing_arts }}</span></td>
+      </tr>
+      <tr>
+        <td>History</td>
+        <td style="text-align: right;"><span data-field="count_history_general">{{ count_history_general }}</span></td>
+      </tr>
+      <tr>
+        <td>Foreign Languages</td>
+        <td style="text-align: right;"><span data-field="count_foreign_languages">{{ count_foreign_languages }}</span></td>
+      </tr>
+      <tr>
+        <td>Family and Consumer Sciences/Human Sciences</td>
+        <td style="text-align: right;"><span data-field="count_family_consumer_sciences">{{ count_family_consumer_sciences }}</span></td>
+      </tr>
+      <tr>
+        <td>English Language/Literature</td>
+        <td style="text-align: right;"><span data-field="count_english_language_literature">{{ count_english_language_literature }}</span></td>
+      </tr>
+      <tr>
+        <td>Philosophy and Religious Studies</td>
+        <td style="text-align: right;"><span data-field="count_philosophy_religious_studies">{{ count_philosophy_religious_studies }}</span></td>
+      </tr>
+      <tr>
+        <td>Agriculture</td>
+        <td style="text-align: right;"><span data-field="count_agriculture">{{ count_agriculture }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-header">Section I.f Program Completers</div>
+  <p>Provide the total number of teacher preparation program completers in each of the following academic years:</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Academic Year</th>
+        <th style="width: 30%;">Completers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="year_completers_2013_14">{{ year_completers_2013_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="completers_2013_14">{{ completers_2013_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_completers_2012_13">{{ year_completers_2012_13 }}</span></td>
+        <td style="text-align: right;"><span data-field="completers_2012_13">{{ completers_2012_13 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="year_completers_2011_12">{{ year_completers_2011_12 }}</span></td>
+        <td style="text-align: right;"><span data-field="completers_2011_12">{{ completers_2011_12 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">Section II Annual Goals - Mathematics</div>
+  <p>Each institution of higher education (IHE) that conducts a traditional teacher preparation program (including programs that offer any ongoing professional development programs) or alternative route to state credential program, and that enrolls students receiving Federal assistance under this Act, shall set annual quantifiable goals for increasing the number of prospective teachers trained in teacher shortage areas designated by the Secretary (205(a)(1)(A)(ii), 206(a)).</p>
+  <p>Information about teacher shortage areas can be found at <a href="http://www2.ed.gov/about/offices/list/ope/pol/tsa.html">http://www2.ed.gov/about/offices/list/ope/pol/tsa.html</a>.</p>
+  <p>Please provide the information below about your program's goals to increase the number of prospective teachers in mathematics in each of three academic years.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Academic Year</th>
+        <th style="width: 30%;">Goal Met?</th>
+        <th style="width: 40%;">Goal Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="math_year_2013_14">{{ math_year_2013_14 }}</span></td>
+        <td><span data-field="math_goal_met_2013_14">{{ math_goal_met_2013_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="math_prospective_teachers_2013_14">{{ math_prospective_teachers_2013_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="math_year_2014_15">{{ math_year_2014_15 }}</span></td>
+        <td><span data-field="math_goal_met_2014_15">{{ math_goal_met_2014_15 }}</span></td>
+        <td style="text-align: right;"><span data-field="math_prospective_teachers_2014_15">{{ math_prospective_teachers_2014_15 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="math_year_2015_16">{{ math_year_2015_16 }}</span></td>
+        <td><span data-field="math_goal_met_2015_16">{{ math_goal_met_2015_16 }}</span></td>
+        <td style="text-align: right;"><span data-field="math_prospective_teachers_2015_16">{{ math_prospective_teachers_2015_16 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Description of strategies used to achieve goal, if applicable:</p>
+  <p><span data-field="math_strategies_description">{{ math_strategies_description }}</span></p>
+  <p>Description of steps to improve performance in meeting goal or lessons learned in meeting goal, if applicable:</p>
+  <p><span data-field="math_improvement_steps">{{ math_improvement_steps }}</span></p>
+  <p>Provide any additional comments, exceptions and explanations below:</p>
+  <p><span data-field="math_additional_comments">{{ math_additional_comments }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-header">Section II Annual Goals - Science</div>
+  <p>Each institution of higher education (IHE) that conducts a traditional teacher preparation program (including programs that offer any ongoing professional development programs) or alternative route to state credential program, and that enrolls students receiving Federal assistance under this Act, shall set annual quantifiable goals for increasing the number of prospective teachers trained in teacher shortage areas designated by the Secretary (205(a)(1)(A)(ii), 206(a)).</p>
+  <p>Information about teacher shortage areas can be found at <a href="http://www2.ed.gov/about/offices/list/ope/pol/tsa.html">http://www2.ed.gov/about/offices/list/ope/pol/tsa.html</a>.</p>
+  <p>Please provide the information below about your program's goals to increase the number of prospective teachers in science in each of three academic years.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Academic Year</th>
+        <th style="width: 30%;">Goal Met?</th>
+        <th style="width: 40%;">Goal Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="science_year_2013_14">{{ science_year_2013_14 }}</span></td>
+        <td><span data-field="science_goal_met_2013_14">{{ science_goal_met_2013_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="science_prospective_teachers_2013_14">{{ science_prospective_teachers_2013_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="science_year_2014_15">{{ science_year_2014_15 }}</span></td>
+        <td><span data-field="science_goal_met_2014_15">{{ science_goal_met_2014_15 }}</span></td>
+        <td style="text-align: right;"><span data-field="science_prospective_teachers_2014_15">{{ science_prospective_teachers_2014_15 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="science_year_2015_16">{{ science_year_2015_16 }}</span></td>
+        <td><span data-field="science_goal_met_2015_16">{{ science_goal_met_2015_16 }}</span></td>
+        <td style="text-align: right;"><span data-field="science_prospective_teachers_2015_16">{{ science_prospective_teachers_2015_16 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Description of strategies used to achieve goal, if applicable:</p>
+  <p><span data-field="science_strategies_description">{{ science_strategies_description }}</span></p>
+  <p>Description of steps to improve performance in meeting goal or lessons learned in meeting goal, if applicable:</p>
+  <p><span data-field="science_improvement_steps">{{ science_improvement_steps }}</span></p>
+  <p>Provide any additional comments, exceptions and explanations below:</p>
+  <p><span data-field="science_additional_comments">{{ science_additional_comments }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-header">Section II Annual Goals - Special Education</div>
+  <p>Each institution of higher education (IHE) that conducts a traditional teacher preparation program (including programs that offer any ongoing professional development programs) or alternative route to state credential program, and that enrolls students receiving Federal assistance under this Act, shall set annual quantifiable goals for increasing the number of prospective teachers trained in teacher shortage areas designated by the Secretary (205(a)(1)(A)(ii), 206(a)).</p>
+  <p>Information about teacher shortage areas can be found at <a href="http://www2.ed.gov/about/offices/list/ope/pol/tsa.html">http://www2.ed.gov/about/offices/list/ope/pol/tsa.html</a>.</p>
+  <p>Please provide the information below about your program's goals to increase the number of prospective teachers in special education in each of three academic years.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Academic Year</th>
+        <th style="width: 30%;">Goal Met?</th>
+        <th style="width: 40%;">Goal Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="sp_ed_year_2013_14">{{ sp_ed_year_2013_14 }}</span></td>
+        <td><span data-field="sp_ed_goal_met_2013_14">{{ sp_ed_goal_met_2013_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="sp_ed_prospective_teachers_2013_14">{{ sp_ed_prospective_teachers_2013_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="sp_ed_year_2014_15">{{ sp_ed_year_2014_15 }}</span></td>
+        <td><span data-field="sp_ed_goal_met_2014_15">{{ sp_ed_goal_met_2014_15 }}</span></td>
+        <td style="text-align: right;"><span data-field="sp_ed_prospective_teachers_2014_15">{{ sp_ed_prospective_teachers_2014_15 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="sp_ed_year_2015_16">{{ sp_ed_year_2015_16 }}</span></td>
+        <td><span data-field="sp_ed_goal_met_2015_16">{{ sp_ed_goal_met_2015_16 }}</span></td>
+        <td style="text-align: right;"><span data-field="sp_ed_prospective_teachers_2015_16">{{ sp_ed_prospective_teachers_2015_16 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Description of strategies used to achieve goal, if applicable:</p>
+  <p><span data-field="sp_ed_strategies_description">{{ sp_ed_strategies_description }}</span></p>
+  <p>Description of steps to improve performance in meeting goal or lessons learned in meeting goal, if applicable:</p>
+  <p><span data-field="sp_ed_improvement_steps">{{ sp_ed_improvement_steps }}</span></p>
+  <p>Provide any additional comments, exceptions and explanations below:</p>
+  <p><span data-field="sp_ed_additional_comments">{{ sp_ed_additional_comments }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-header">Section II Annual Goals - Instruction of Limited English Proficient Students</div>
+  <p>Each institution of higher education (IHE) that conducts a traditional teacher preparation program (including programs that offer any ongoing professional development programs) or alternative route to state credential program, and that enrolls students receiving Federal assistance under this Act, shall set annual quantifiable goals for increasing the number of prospective teachers trained in teacher shortage areas designated by the Secretary (205(a)(1)(A)(ii), 206(a)).</p>
+  <p>Information about teacher shortage areas can be found at <a href="http://www2.ed.gov/about/offices/list/ope/pol/tsa.html">http://www2.ed.gov/about/offices/list/ope/pol/tsa.html</a>.</p>
+  <p>Please provide the information below about your program's goals to increase the number of prospective teachers in instruction of limited English proficient students in each of three academic years.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Academic Year</th>
+        <th style="width: 30%;">Goal Met?</th>
+        <th style="width: 40%;">Goal Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="lepf_year_2013_14">{{ lepf_year_2013_14 }}</span></td>
+        <td><span data-field="lepf_goal_met_2013_14">{{ lepf_goal_met_2013_14 }}</span></td>
+        <td style="text-align: right;"><span data-field="lepf_prospective_teachers_2013_14">{{ lepf_prospective_teachers_2013_14 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="lepf_year_2014_15">{{ lepf_year_2014_15 }}</span></td>
+        <td><span data-field="lepf_goal_met_2014_15">{{ lepf_goal_met_2014_15 }}</span></td>
+        <td style="text-align: right;"><span data-field="lepf_prospective_teachers_2014_15">{{ lepf_prospective_teachers_2014_15 }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="lepf_year_2015_16">{{ lepf_year_2015_16 }}</span></td>
+        <td><span data-field="lepf_goal_met_2015_16">{{ lepf_goal_met_2015_16 }}</span></td>
+        <td style="text-align: right;"><span data-field="lepf_prospective_teachers_2015_16">{{ lepf_prospective_teachers_2015_16 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Description of strategies used to achieve goal, if applicable:</p>
+  <p><span data-field="lepf_strategies_description">{{ lepf_strategies_description }}</span></p>
+  <p>Description of steps to improve performance in meeting goal or lessons learned in meeting goal, if applicable:</p>
+  <p><span data-field="lepf_improvement_steps">{{ lepf_improvement_steps }}</span></p>
+  <p>Provide any additional comments, exceptions and explanations below:</p>
+  <p><span data-field="lepf_additional_comments">{{ lepf_additional_comments }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-header">Section II Assurances</div>
+  <p>Please certify that your institution is in compliance with the following assurances. (205(a)(1)(A)(iii), 206(b)). Note: Be prepared to provide documentation and evidence for your responses, when requested, to support the following assurances.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Assurance</th>
+        <th style="width: 30%;">Compliance</th>
+        <th style="width: 40%;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Preparation responds to the identified needs of the local educational agencies or States where the program completers are likely to teach, based on past hiring and recruitment trends.</td>
+        <td><span data-field="assurance_prep_responds">{{ assurance_prep_responds }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Preparation is closely linked with the needs of schools and the instructional decisions new teachers face in the classroom.</td>
+        <td><span data-field="assurance_closely_linked">{{ assurance_closely_linked }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Prospective special education teachers are prepared in core academic subjects and to instruct in core academic subjects.</td>
+        <td><span data-field="assurance_special_ed_prepared">{{ assurance_special_ed_prepared }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Prospective general education teachers are prepared to provide instruction to students with disabilities.</td>
+        <td><span data-field="assurance_general_ed_disabilities">{{ assurance_general_ed_disabilities }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Prospective general education teachers are prepared to provide instruction to limited English proficient students.</td>
+        <td><span data-field="assurance_general_ed_lepf">{{ assurance_general_ed_lepf }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Prospective general education teachers are prepared to provide instruction to students from low-income families.</td>
+        <td><span data-field="assurance_general_ed_low_income">{{ assurance_general_ed_low_income }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Prospective teachers are prepared to effectively teach in urban and rural schools, as applicable.</td>
+        <td><span data-field="assurance_urban_rural">{{ assurance_urban_rural }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Describe your institution's most successful strategies in meeting the assurances listed above:</p>
+  <p><span data-field="assurance_successful_strategies">{{ assurance_successful_strategies }}</span></p>
+</div>
+
+<div class="page">
+  <div class="section-header">Section III Assessment Pass Rates</div>
+  <p>No assessment pass rates have been reported.</p>
+  <p>**Please note that pass rates will be provided to Westat by the state or the testing company or companies (or entities). You do not need to upload or submit any files for this section.</p>
+  <p>You will be notified via email once pass rates have been uploaded. Please be sure to review the pass rates for accuracy once they are uploaded. Westat expects to receive and upload pass rate files for most programs by mid-April.</p>
+
+  <div class="section-header">Section III Summary Pass Rates</div>
+  <p>No summary pass rates have been reported.</p>
+  <p>**Please note that pass rates will be provided to Westat by the state or the testing company or companies (or entities). You do not need to upload or submit any files for this section.</p>
+  <p>You will be notified via email once pass rates have been uploaded. Please be sure to review the pass rates for accuracy once they are uploaded. Westat expects to receive and upload pass rate files for most programs by mid-April.</p>
+
+  <div class="section-header">Section IV Low-Performing</div>
+  <p>Provide the following information about the approval or accreditation of your teacher preparation program.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Question</th>
+        <th style="width: 70%;">Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Is your teacher preparation program currently approved or accredited?</td>
+        <td><span data-field="low_performing_approved">{{ low_performing_approved }}</span></td>
+      </tr>
+      <tr>
+        <td>If yes, please specify the organization(s) that approved or accredited your program:</td>
+        <td><span data-field="low_performing_accrediting_body">{{ low_performing_accrediting_body }}</span></td>
+      </tr>
+      <tr>
+        <td>Is your teacher preparation program currently under a designation as "low-performing" by the state (as per section 207(a) of the HEA of 2008)?</td>
+        <td><span data-field="low_performing_designation">{{ low_performing_designation }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header">Section V Use of Technology</div>
+  <p><span data-field="technology_use_description">{{ technology_use_description }}</span></p>
+</div>
+
+
+
+
+<div class="page">
+  <p>Provide the following information about the use of technology in your teacher preparation program. Please note that choosing 'yes' indicates that your teacher preparation program would be able to provide evidence upon request.</p>
+  <p>Does your program prepare teachers to:</p>
+  <ul>
+    <li>integrate technology effectively into curricula and instruction</li>
+    <li><span data-field="yes_integrate_technology">{{ yes_integrate_technology }}</span></li>
+    <li>use technology effectively to collect data to improve teaching and learning</li>
+    <li><span data-field="yes_collect_data">{{ yes_collect_data }}</span></li>
+    <li>use technology effectively to manage data to improve teaching and learning</li>
+    <li><span data-field="yes_manage_data">{{ yes_manage_data }}</span></li>
+    <li>use technology effectively to analyze data to improve teaching and learning</li>
+    <li><span data-field="yes_analyze_data">{{ yes_analyze_data }}</span></li>
+  </ul>
+  <p>Provide a description of the evidence that your program uses to show that it prepares teachers to integrate technology effectively into curricula and instruction, and to use technology effectively to collect, manage, and analyze data in order to improve teaching and learning for the purpose of increasing student academic achievement. Include a description of the evidence your program uses to show that it prepares teachers to use the principles of universal design for learning, as applicable. Include planning activities and a timeline if any of the four elements listed above are not currently in place.</p>
+  <p>Methods of using appropriate technologies are included in our courses. Reading and Learning Clinics teach students to use technology effectively to collect, manage, and analyze student learning. The principles of universal design are embedded in the pre-student teaching field experiences. Educational technology to which students are exposed has increased through the use of student technology fees.</p>
+  <p>The Evidences of Professional Growth process is used in junior and senior level initial preparation and is also used in graduate level preparation. Refining that process is the focus of the CAPE Standard 5: Program Quality Assurance and Continuing Improvement.</p>
+  <h3 class="section-header">Section VI Teacher Training</h3>
+  <p>Provide the following information about your teacher preparation program. Please note that choosing 'yes' indicates that your teacher preparation program would be able to provide evidence upon request.</p>
+  <p>Does your program prepare general education teachers to:</p>
+  <ul>
+    <li>teach students with disabilities effectively</li>
+    <li><span data-field="yes_teach_disabilities_general">{{ yes_teach_disabilities_general }}</span></li>
+    <li>participate as a member of individualized education program teams</li>
+    <li><span data-field="yes_participate_iep_general">{{ yes_participate_iep_general }}</span></li>
+    <li>teach students who are limited English proficient effectively</li>
+    <li><span data-field="yes_teach_lep_general">{{ yes_teach_lep_general }}</span></li>
+  </ul>
+  <p>Provide a description of the evidence your program uses to show that it prepares general education teachers to teach students with disabilities effectively, including training related to participation as a member of individualized education program teams, as defined in section 614(d)(1)(B) of the Individuals with Disabilities Education Act, and to effectively teach students who are limited English proficient. Include planning activities and a timeline if any of the three elements listed above are not currently in place.</p>
+</div>
+
+<div class="page">
+  <p>children with exceptional learning needs. Examines the services and strategies to provide for individual needs of each student with disabilities in the least restrictive environment. This course also provides students with an in-school practicum experience. The scope of this course includes special education, gifted and talented and students who consider English as their second language. The College of Education has also revised their Broadfield Elementary Education Program to include 5 additional classes in the areas of Special Education, Assessment, Technology, Reading, and Classroom Management.</p>
+  <p>The College of Education is initiating a TESOL certificate program at the graduate level.</p>
+  <p>Does your program prepare special education teachers to:</p>
+  <ul>
+    <li>teach students with disabilities effectively</li>
+    <li><span data-field="yes_teach_disabilities_special">{{ yes_teach_disabilities_special }}</span></li>
+    <li>participate as a member of individualized education program teams</li>
+    <li><span data-field="yes_participate_iep_special">{{ yes_participate_iep_special }}</span></li>
+    <li>teach students who are limited English proficient effectively</li>
+    <li><span data-field="yes_teach_lep_special">{{ yes_teach_lep_special }}</span></li>
+  </ul>
+  <p>Provide a description of the evidence your program uses to show that it prepares special education teachers to teach students with disabilities effectively, including training related to participation as a member of individualized education program teams, as defined in section 614(d)(1)(B) of the Individuals with Disabilities Education Act, and to effectively teach students who are limited English proficient. Include planning activities and a timeline if any of the three elements listed above are not currently in place.</p>
+  <p>Montana State University offers a B. S. degree with a double major in Special Education at both the elementary and secondary levels. A graduate student may earn a Master of Science in Special Education or a Post Master's Supervisory Endorsement in Special Education. Special Education programs require course work in Diagnostic Teaching of Reading, Learning Disabilities, Emotional Disturbance, Developmental Disabilities, teaching learning and behavior in schools,legal and current issues in Special Education,and multi-tiered systems of support. All three of the areas listed above are addressed in our current curriculum.</p>
+  <p>Assessment Pass Rate is completed by the Montana Office of Public Instruction.</p>
+  <p>Supporting Files</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="margin: 0;">Complete Report Card</h2>
+    <span data-field="report_date">{{ report_date }}</span>
+  </div>
+  <p>This is a United States Department of Education computer system.</p>
+  <div style="display: flex; justify-content: space-between; font-size: 0.9em; margin-top: 20px;">
+    <span>About Title II</span>
+    <span>Technical Assistance</span>
+    <span>Privacy Policy</span>
+    <span>Contacts</span>
+  </div>
+</div>
+
+</body>
+</html>

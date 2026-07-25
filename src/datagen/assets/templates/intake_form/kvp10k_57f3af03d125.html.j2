@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Generation Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-label { font-weight: bold; }
+  .input-field { border-bottom: 1px solid #000; flex-grow: 1; margin-left: 10px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .divider { border-top: 1px solid #000; margin: 20px 0; }
+  .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+  .full-width-field { width: 100%; border-bottom: 1px solid #000; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 36px; margin-bottom: 5px;">Language-Literacy Center</h1>
+    <h2 style="font-size: 18px; margin-top: 0;">UNIVERSITY OF THE PACIFIC</h2>
+    <p style="font-size: 14px;">757 Brookside Road, Stockton, CA 95211</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="grid-2-col">
+    <div>
+      <div class="form-row">
+        <span class="form-label">Date:</span>
+        <span class="input-field">{{ date }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Student's Name:</span>
+        <span class="input-field">{{ student_name }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Address:</span>
+        <span class="input-field">{{ address }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Phone 1:</span>
+        <span class="input-field">{{ phone_1 }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Phone 2:</span>
+        <span class="input-field">{{ phone_2 }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">E-mail:</span>
+        <span class="input-field">{{ email }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Referred by (Name):</span>
+        <span class="input-field">{{ referred_by_name }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Parents' Names:</span>
+        <span class="input-field">{{ parents_names }}</span>
+      </div>
+    </div>
+    <div>
+      <div class="form-row">
+        <span class="form-label">Date of Birth:</span>
+        <span class="input-field">{{ date_of_birth }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Age:</span>
+        <span class="input-field">{{ age }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">City/Zip:</span>
+        <span class="input-field">{{ city_zip }}</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Mobile:</span>
+        <span class="input-field">{{ mobile_1 }}</span>
+        <span style="margin-left: 10px;">work</span>
+        <span style="margin-left: 10px;">home</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Mobile:</span>
+        <span class="input-field">{{ mobile_2 }}</span>
+        <span style="margin-left: 10px;">work</span>
+        <span style="margin-left: 10px;">home</span>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Relationship:</span>
+        <span class="input-field">{{ relationship }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <span class="form-label">Status of child's parents:</span>
+    <span class="input-field">
+      <span data-field="parent_status_married">{{ parent_status_married }}</span>
+      <span data-field="parent_status_divorced">{{ parent_status_divorced }}</span>
+      <span data-field="parent_status_separated">{{ parent_status_separated }}</span>
+      <span data-field="parent_status_foster">{{ parent_status_foster }}</span>
+      <span data-field="parent_status_other">{{ parent_status_other }}</span>
+    </span>
+  </div>
+
+  <div class="form-row">
+    <span class="form-label">Who is the primary caregiver for the child?</span>
+    <span class="input-field">{{ primary_caregiver }}</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">DEVELOPMENTAL HISTORY</div>
+  <div class="form-row">
+    <span class="form-label">Age your child:</span>
+    <span class="input-field">{{ age_child }}</span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Sat up alone:</span>
+    <span class="input-field">{{ sat_up_alone }}</span>
+    <span class="form-label" style="margin-left: 50px;">Walked alone:</span>
+    <span class="input-field">{{ walked_alone }}</span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Spoke first words:</span>
+    <span class="input-field">{{ spoke_first_words }}</span>
+    <span class="form-label" style="margin-left: 50px;">Spoke first phrases/sentences:</span>
+    <span class="input-field">{{ spoke_phrases_sentences }}</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">MEDICAL HISTORY</div>
+  <div class="form-row">
+    <span class="form-label">Does your child have any of the following?</span>
+    <span class="input-field">
+      <span data-field="medical_wear_glasses">{{ medical_wear_glasses }}</span>
+      <span data-field="medical_history_ear_infections">{{ medical_history_ear_infections }}</span>
+      <span data-field="medical_hearing_impairment">{{ medical_hearing_impairment }}</span>
+      <span data-field="medical_wear_hearing_aids">{{ medical_wear_hearing_aids }}</span>
+    </span>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <span class="form-label">Has your child been diagnosed with any of the following?</span>
+    <span class="input-field">
+      <span data-field="diagnosis_autism_spectrum">{{ diagnosis_autism_spectrum }}</span>
+      <span data-field="diagnosis_add_adhd">{{ diagnosis_add_adhd }}</span>
+      <span data-field="diagnosis_fragile_x_syndrome">{{ diagnosis_fragile_x_syndrome }}</span>
+      <span data-field="diagnosis_down_syndrome">{{ diagnosis_down_syndrome }}</span>
+      <span data-field="diagnosis_learning_disability">{{ diagnosis_learning_disability }}</span>
+      <span data-field="diagnosis_speech_language_delay">{{ diagnosis_speech_language_delay }}</span>
+      <span data-field="diagnosis_emotional_behavioral_disorder">{{ diagnosis_emotional_behavioral_disorder }}</span>
+      <span data-field="diagnosis_intellectual_disability">{{ diagnosis_intellectual_disability }}</span>
+      <span data-field="diagnosis_other_condition">{{ diagnosis_other_condition }}</span>
+    </span>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <span class="form-label">Has your child had any serious illnesses, injuries or surgeries?</span>
+    <span class="input-field">
+      <span data-field="illness_1_description">{{ illness_1_description }}</span>
+      <span data-field="illness_1_length">{{ illness_1_length }}</span>
+      <span data-field="illness_1_age">{{ illness_1_age }}</span>
+    </span>
+  </div>
+
+  {% for i in range(1, 3) %}
+  <div class="form-row" style="margin-top: 10px;">
+    <span class="form-label">
+      {{ "Illness (" ~ i ~ ")" if i == 1 else "Injury (" ~ i ~ ")" }}
+    </span>
+    <span class="input-field">
+      <span data-field="illness_{{ i }}_description">{{ illness_i_description }}</span>
+      <span data-field="illness_{{ i }}_length">{{ illness_i_length }}</span>
+      <span data-field="illness_{{ i }}_age">{{ illness_i_age }}</span>
+    </span>
+  </div>
+  {% endfor %}
+
+  <div class="form-row" style="margin-top: 10px;">
+    <span class="form-label">Surgery:</span>
+    <span class="input-field">
+      <span data-field="surgery_description">{{ surgery_description }}</span>
+      <span data-field="surgery_length">{{ surgery_length }}</span>
+      <span data-field="surgery_completeness">{{ surgery_completeness }}</span>
+    </span>
+  </div>
+
+  <div class="form-row" style="margin-top: 10px;">
+    <span class="form-label">Take medication for:</span>
+    <span class="input-field">
+      <span data-field="medication_description">{{ medication_description }}</span>
+      <span data-field="medication_degree">{{ medication_degree }}</span>
+    </span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">SCHOOL HISTORY</div>
+  <div class="form-row">
+    <span class="form-label">School:</span>
+    <span class="input-field">{{ school_name }}</span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Has your child repeated a grade?</span>
+    <span class="input-field">{{ repeated_grade_status }}</span>
+    <span class="form-label" style="margin-left: 50px;">Grade(s) repeated:</span>
+    <span class="input-field">{{ repeated_grade }}</span>
+    <span class="form-label" style="margin-left: 50px;">Grade:</span>
+    <span class="input-field">{{ grade }}</span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Favorite subject(s):</span>
+    <span class="input-field">{{ favorite_subject }}</span>
+    <span class="form-label" style="margin-left: 50px;">Most difficult:</span>
+    <span class="input-field">{{ most_difficult }}</span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Is your child currently receiving special education?</span>
+    <span class="input-field">
+      <span data-field="special_ed_type_speech_language">{{ special_ed_type_speech_language }}</span>
+      <span data-field="special_ed_resource">{{ special_ed_resource }}</span>
+      <span data-field="special_ed_special_day_class">{{ special_ed_special_day_class }}</span>
+      <span data-field="special_ed_other">{{ special_ed_other }}</span>
+    </span>
+  </div>
+  <div class="form-row">
+    <span class="form-label">Number of years:</span>
+    <span class="input-field">{{ years_special_ed }}</span>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <span class="form-label">Your child/adolescent was referred for additional help with language/literacy problems (reading/writing). Please provide any additional comments, concerns or wishes for your child here:</span>
+    <div class="full-width-field" style="height: 150px; border: 1px solid #000; padding: 10px; margin-top: 5px;">
+      <span data-field="additional_comments">{{ additional_comments }}</span>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top: 50px;"></div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Thank you for completing this form. Please mail it or scan and email it to the LLC Co-Directors at:</p>
+  </div>
+
+  <div class="grid-2-col" style="margin-top: 20px;">
+    <div>
+      <div class="form-row">
+        <span class="form-label">US Mail:</span>
+        <span class="input-field">Language-Literacy Center<br>University of the Pacific<br>Speech-Language Pathology & Audiology Dept.<br>3601 Pacific Ave.<br>Stockton, CA 95210</span>
+      </div>
+    </div>
+    <div>
+      <div class="form-row">
+        <span class="form-label">Email:</span>
+        <span class="input-field">{{ co_director_email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="font-size: 24px;">UNIVERSITY OF THE PACIFIC</h2>
+    <p style="font-size: 16px;">Thomas J. Long School of Pharmacy and Health Sciences</p>
+  </div>
+</div>
+</body>
+</html>

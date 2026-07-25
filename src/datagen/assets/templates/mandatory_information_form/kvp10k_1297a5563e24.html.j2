@@ -1,0 +1,144 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { text-align: center; font-size: 24pt; margin-bottom: 5px; }
+  h2 { text-align: center; font-size: 16pt; margin-top: 0; margin-bottom: 30px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 11pt; }
+  .form-label { flex-basis: 30%; }
+  .form-input-area { flex-basis: 65%; border-bottom: 1px solid #000; }
+  .full-width-field { width: 100%; border-bottom: 1px solid #000; margin-bottom: 15px; }
+  .radio-group label { margin-right: 15px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 10pt; }
+  th, td { padding: 8px 5px; text-align: left; border-bottom: 1px solid #ccc; }
+  th { font-weight: bold; }
+</style>
+
+<div class="page">
+  <!-- Logo Placeholder (Visual element, no data field needed) -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <!-- Placeholder for Geneva College Logo -->
+  </div>
+
+  <h1>GENEVA COLLEGE</h1>
+  <h2>International Student Mandatory Information Form</h2>
+
+  <!-- Section 1: Personal Information -->
+  <div class="form-row">
+    <div class="form-label">Name as it appears on passport:</div>
+    <div class="form-input-area"><span data-field="full_name" class="full-width-field">{{ full_name }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Given/First Name:</div>
+    <div class="form-input-area"><span data-field="personal_info.first_name" class="full-width-field">{{ personal_info.first_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Middle Name (if applicable):</div>
+    <div class="form-input-area"><span data-field="personal_info.middle_name" class="full-width-field">{{ personal_info.middle_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="form-label">Family/Last Name:</div>
+    <div class="form-input-area"><span data-field="personal_info.last_name" class="full-width-field">{{ personal_info.last_name }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Major or Degree Program:</div>
+    <div class="form-input-area"><span data-field="major_degree" class="full-width-field">{{ major_degree }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Country of Citizenship:</div>
+    <div class="form-input-area"><span data-field="citizenship_country" class="full-width-field">{{ citizenship_country }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Country of Birth:</div>
+    <div class="form-input-area"><span data-field="birth_country" class="full-width-field">{{ birth_country }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Date of Birth (MM/DD/YYYY):</div>
+    <div class="form-input-area" style="display: flex; gap: 10px;">
+      <span data-field="date_of_birth_month" style="flex-basis: 20%; border-bottom: 1px solid #000;">{{ date_of_birth_month }}</span>
+      <span data-field="date_of_birth_day" style="flex-basis: 20%; border-bottom: 1px solid #000;">{{ date_of_birth_day }}</span>
+      <span data-field="date_of_birth_year" style="flex-basis: 20%; border-bottom: 1px solid #000;">{{ date_of_birth_year }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Gender (Circle One):</div>
+    <div class="form-input-area radio-group">
+      <label><span data-field="gender_male">{{ gender_male }}</span></label>
+      <label><span data-field="gender_female">{{ gender_female }}</span></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">If currently hold a United States visa, what type of visa do you currently hold?</div>
+    <div class="form-input-area"><span data-field="visa_type" class="full-width-field">{{ visa_type }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Home address outside of the United States:</div>
+    <div class="form-input-area" style="height: 80px;"><span data-field="home_address" class="full-width-field" style="height: 80px;">{{ home_address }}</span></div>
+  </div>
+
+  <!-- Section 2: I-20 Mailing Address -->
+  <div class="section-title">If different, address you want your I-20 mailed to:</div>
+  <div class="form-input-area" style="height: 80px;"><span data-field="mailing_address" class="full-width-field" style="height: 80px;">{{ mailing_address }}</span></div>
+
+  <div class="form-row">
+    <div class="form-label">Current phone number:</div>
+    <div class="form-input-area"><span data-field="phone_number" class="full-width-field">{{ phone_number }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Current e-mail address:</div>
+    <div class="form-input-area"><span data-field="email_address" class="full-width-field">{{ email_address }}</span></div>
+  </div>
+
+  <!-- Section 3: Dependents Information -->
+  <div class="section-title">Will you bring any dependents (spouse, children) with you during your studies in the USA?</div>
+  <div class="form-row">
+    <div class="form-input-area radio-group">
+      <label><span data-field="dependents_yes">{{ dependents_yes }}</span></label>
+      <label><span data-field="dependents_no">{{ dependents_no }}</span></label>
+    </div>
+  </div>
+
+  <div class="section-title">If yes, please list:</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Relationship</th>
+        <th>Citizenship</th>
+        <th>Date of Birth (MM/DD/YYYY)</th>
+        <th>Country of Birth</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in dependents %}
+      <tr>
+        <td><span data-field="dependents[{{ loop.index0 }}].full_name">{{ dependents[loop.index0].full_name }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].relationship">{{ dependents[loop.index0].relationship }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].citizenship">{{ dependents[loop.index0].citizenship }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].dob">{{ dependents[loop.index0].dob }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].birth_country">{{ dependents[loop.index0].birth_country }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].gender">{{ dependents[loop.index0].gender }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

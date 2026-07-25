@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enrollment History Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+  .header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    SUNY OLD WESTBURY
+  </div>
+  <h1 style="text-align: center;">2021-2022 Unusual Enrollment History Form</h1>
+  <p>Your 2021-2022 Free Application for Federal Student Aid (FAFSA) was selected for review due to your unusual enrollment history in college. Federal regulations dictate that we must ask you for additional information before determining your eligibility for federal student aid. The purpose of this form is to analyze your receipt of Pell Grants and/or Federal Direct Loans over the past four years.</p>
+
+  <h2 class="section-title">STUDENT INFORMATION</h2>
+  <table>
+    <tr>
+      <td style="width: 20%;">Last Name:</td>
+      <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+      <td style="width: 20%;">First Name:</td>
+      <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Student ID:</td>
+      <td><span data-field="student_id">{{ student_id }}</span></td>
+      <td>Email:</td>
+      <td><span data-field="email">{{ email }}</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Middle Initial:</td>
+      <td><span data-field="middle_initial">{{ middle_initial }}</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Date of Birth:</td>
+      <td><span data-field="date_of_birth">{{ date_of_birth }}</span></td>
+    </tr>
+  </table>
+
+  <h2 class="section-title">SCHOOLS ATTENDED</h2>
+  <p>Please list all colleges attended during the time frame listed below. If you attended multiple schools during the indicated timeframe, attach an additional page listing all schools you attended and include your name and Student ID at the top of each page.</p>
+  <p>You must attach an academic transcript from each college attended. Please note: If any transcript is unclear, you will be required to provide official academic transcripts.</p>
+  <p>Failure to report all colleges with attached transcripts will result in the denial of your request for federal financial aid at SUNY Old Westbury.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Name of college</th>
+        <th style="width: 25%;">Dates attended</th>
+        <th style="width: 25%;">Did you earn credits?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in schools_attended %}
+      <tr>
+        <td><span data-field="schools_attended[{{ loop.index0 }}].name">{{ schools_attended[loop.index0].name }}</span></td>
+        <td><span data-field="schools_attended[{{ loop.index0 }}].dates_attended">{{ schools_attended[loop.index0].dates_attended }}</span></td>
+        <td><span data-field="schools_attended[{{ loop.index0 }}].earned_credits">{{ schools_attended[loop.index0].earned_credits }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="section-title">EXTENUATING CIRCUMSTANCES</h2>
+  <p>If personal reasons explain your failure to earn academic credit in any semester attended which financial aid was utilized, you must attach third party documentation to corroborate your claim or you will be denied federal financial aid at SUNY Old Westbury.</p>
+  <p>Examples of extenuating circumstances include:</p>
+  <ul>
+    <li>Death of an immediate family member</li>
+    <li>Documented hospitalization or illness of self, child or parent</li>
+    <li>Military Withdrawal</li>
+    <li>Other circumstances not addressed in the above categories, submit a written statement that explains your situation including supporting documentation.</li>
+  </ul>
+
+  <h2 class="section-title">CERTIFICATION AND SIGNATURES</h2>
+  <p>Each person signing this form certifies that all of the information reported on it is complete and correct.</p>
+
+  <table>
+    <tr>
+      <td style="width: 33%;">Student's Name</td>
+      <td style="width: 33%;">Student's Signature</td>
+      <td style="width: 33%;">Date</td>
+    </tr>
+    <tr>
+      <td><span data-field="student_name_print">{{ student_name_print }}</span></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h2 class="section-title" style="margin-top: 40px;">Financial Aid Advisor's Name</h2>
+  <p>Office of Financial Aid</p>
+  <p><span data-field="advisor_name">{{ advisor_name }}</span></p>
+
+  <h2 class="section-title">Advisor's Signature</h2>
+  <p>Office Use only:</p>
+  <p>Tel: <span data-field="advisor_phone">{{ advisor_phone }}</span></p>
+  <p>P.O. Box <span data-field="advisor_address_line1">{{ advisor_address_line1 }}</span>, <span data-field="advisor_city">{{ advisor_city }}</span> <span data-field="advisor_state">{{ advisor_state }}</span> <span data-field="advisor_zip">{{ advisor_zip }}</span></p>
+
+  <h2 class="section-title">Date</h2>
+  <p>Fax: <span data-field="fax_number">{{ fax_number }}</span></p>
+  <p>www.<span data-field="institution_website">{{ institution_website }}</span></p>
+</div>
+</body>
+</html>

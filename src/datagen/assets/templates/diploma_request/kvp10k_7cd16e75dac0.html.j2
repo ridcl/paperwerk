@@ -1,0 +1,112 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .line-input {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    width: calc(100% - 10px);
+    margin-top: 5px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 36px; margin: 0;">
+        <img src="placeholder_logo.png" alt="University Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">
+        TRANSLAVYNIA UNIVERSITY
+      </h1>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 24px; margin: 0;">Duplicate/Replacement Diploma Request</h2>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px; font-size: 14px; line-height: 1.5;">
+    <p>All diplomas, regardless of degree or date of graduation, will be 8x10 in.</p>
+    <p>Diploma orders take 4-6 weeks to be processed.</p>
+    <p>All diplomas, regardless of date of graduation will be signed by the current president of the university.</p>
+    <p>The charge for a new diploma is <span data-field="fee_amount">{{ fee_amount }}</span>. <a href="#" style="color: blue;">Make a check or money order payable to: Transylvania University.</a> To pay online, please visit our <a href="#" style="color: blue;">virtual terminal</a>.</p>
+    <p>Submit this completed form and payment to:</p>
+    <p>Transylvania University</p>
+    <p>Office of the Registrar</p>
+    <p>300 N. Broadway</p>
+    <p>Lexington, KY <span data-field="zip_code">{{ zip_code }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div style="width: 45%;">
+        <p>Student ID:</p>
+        <div class="line-input" data-field="student_id">{{ student_id }}</div>
+      </div>
+      <div style="width: 45%;">
+        <p>Date of Birth:</p>
+        <div class="line-input" data-field="date_of_birth">{{ date_of_birth }}</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>Email or Phone:</p>
+      <div class="line-input" data-field="email_or_phone">{{ email_or_phone }}</div>
+    </div>
+
+    <h3 style="margin-top: 30px; margin-bottom: 15px;">NAME</h3>
+
+    <div style="margin-bottom: 20px;">
+      <p>Full Legal Name While Attending:</p>
+      <div class="line-input" data-field="full_legal_name_while_attending">{{ full_legal_name_while_attending }}</div>
+      <p style="font-size: 12px; margin-top: 5px;">(First, Middle, Last)</p>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p>Year Degree Awarded:</p>
+      <div class="line-input" data-field="year_degree_awarded">{{ year_degree_awarded }}</div>
+    </div>
+
+    <h3 style="margin-top: 30px; margin-bottom: 15px;">Address (to mail diploma to)</h3>
+
+    <div style="margin-bottom: 15px;">
+      <p>Line 1:</p>
+      <div class="line-input" data-field="line_1">{{ line_1 }}</div>
+    </div>
+    <div style="margin-bottom: 15px;">
+      <p>Line 2:</p>
+      <div class="line-input" data-field="line_2">{{ line_2 }}</div>
+    </div>
+    <div style="margin-bottom: 30px;">
+      <p>Line 3:</p>
+      <div class="line-input" data-field="line_3">{{ line_3 }}</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+      <div style="width: 45%;">
+        <p>Signature:</p>
+        <div class="line-input" data-field="signature">{{ signature }}</div>
+      </div>
+      <div style="width: 45%;">
+        <p>Date:</p>
+        <div class="line-input" data-field="date">{{ date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; padding-top: 20px; border-top: 1px solid #000;">
+    <h3 style="margin-top: 0; margin-bottom: 10px;">Office of the Registrar</h3>
+    <p>Phone: <span data-field="phone_number">{{ phone_number }}</span></p>
+    <p>Email: <span data-field="email_address">{{ email_address }}</span></p>
+  </div>
+</div>

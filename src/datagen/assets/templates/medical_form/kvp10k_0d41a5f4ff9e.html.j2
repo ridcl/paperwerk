@@ -1,0 +1,128 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic a document layout */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .header-title { font-size: 18pt; font-weight: bold; }
+  .section-heading { font-size: 12pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <div style="font-size: 14pt; font-weight: bold;">
+            <span style="color: #a00;">Well Cornell Medicine</span>
+            <span style="font-size: 10pt;">Cardiothoracic Surgery</span>
+        </div>
+        <div style="font-size: 14pt; font-weight: bold;">
+            NewYork-Presbyterian
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span style="font-weight: bold;">Enter Current Date:</span>
+        <span data-field="current_date">{{ current_date }}</span>
+    </div>
+
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Patient's Name</th>
+                <th style="width: 15%;">Date of Birth</th>
+                <th style="width: 20%;">Patient's Phone#</th>
+                <th style="width: 25%;">Person completing the form</th>
+                <th style="width: 15%;">Relationship to patient</th>
+                <th style="width: 10%;">Contact Phone#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span data-field="patient_name">{{ patient_name }}</span></td>
+                <td><span data-field="date_of_birth">{{ date_of_birth }}</span></td>
+                <td><span data-field="patient_phone">{{ patient_phone }}</span></td>
+                <td><span data-field="form_completer_name">{{ form_completer_name }}</span></td>
+                <td><span data-field="relationship_to_patient">{{ relationship_to_patient }}</span></td>
+                <td><span data-field="contact_phone">{{ contact_phone }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-heading">PREFERRED PHARMACY</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 25%;">PHARMACY NAME</th>
+                <th style="width: 30%;">PHARMACY ADDRESS</th>
+                <th style="width: 25%;">PHARMACY PHONE NUMBER</th>
+                <th style="width: 20%;">PHARMACY FAX NUMBER</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span data-field="preferred_pharmacy.name">{{ preferred_pharmacy.name }}</span></td>
+                <td><span data-field="preferred_pharmacy.address">{{ preferred_pharmacy.address }}</span></td>
+                <td><span data-field="preferred_pharmacy.phone">{{ preferred_pharmacy.phone }}</span></td>
+                <td><span data-field="preferred_pharmacy.fax">{{ preferred_pharmacy.fax }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-heading">MEDICATIONS LIST</div>
+    <p style="font-size: 10pt; margin-bottom: 15px;">Please include PLAIVIX, FISH OIL, COUMADIN, ASPIRIN OR any blood thinning medication</p>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Medication Name</th>
+                <th style="width: 25%;">Prescribing doctor's name</th>
+                <th style="width: 30%;">Purpose for medication</th>
+                <th style="width: 15%;">Dose (ex. 2mg, 1tsp)</th>
+                <th style="width: 10%;">How Often? (ex. 3x/day)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in medications %}
+            <tr>
+                <td><span data-field="medications[{{ loop.index0 }}].name">{{ medications[loop.index0].name }}</span></td>
+                <td><span data-field="medications[{{ loop.index0 }}].doctor_name">{{ medications[loop.index0].doctor_name }}</span></td>
+                <td><span data-field="medications[{{ loop.index0 }}].purpose">{{ medications[loop.index0].purpose }}</span></td>
+                <td><span data-field="medications[{{ loop.index0 }}].dose">{{ medications[loop.index0].dose }}</span></td>
+                <td><span data-field="medications[{{ loop.index0 }}].frequency">{{ medications[loop.index0].frequency }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="section-heading">ALLERGIES</div>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Name of Drug</th>
+                <th style="width: 70%;">Allergic Reaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in allergies %}
+            <tr>
+                <td><span data-field="allergies[{{ loop.index0 }}].drug_name">{{ allergies[loop.index0].drug_name }}</span></td>
+                <td><span data-field="allergies[{{ loop.index0 }}].reaction">{{ allergies[loop.index0].reaction }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="section-heading" style="margin-top: 30px;">Notes</div>
+    <div style="border: 1px solid #ccc; height: 100px; padding: 10px;">
+        <span data-field="notes">{{ notes }}</span>
+    </div>
+
+    <div style="margin-top: 50px; font-size: 9pt; text-align: center; border-top: 1px solid #ccc; padding-top: 10px;">
+        <span data-field="footer_address">{{ footer_address }}</span> | <span data-field="footer_phone">{{ footer_phone }}</span> | <span data-field="footer_email">{{ footer_email }}</span>
+    </div>
+</div>

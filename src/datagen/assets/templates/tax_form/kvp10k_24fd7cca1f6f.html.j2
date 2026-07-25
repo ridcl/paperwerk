@@ -1,0 +1,109 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .form-section {
+    margin-bottom: 20px;
+  }
+  .line-item-row {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .line-item-cell {
+    flex-grow: 1;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 18pt; font-weight: bold;">MASSACHUSETTS EMPLOYEE'S WITHHOLDING EXEMPTION CERTIFICATE</h1>
+      <div style="margin-top: 10px;">
+        Rev. <span data-field="revision_number">{{ revision_number }}</span>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for seal/logo -->
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p>Print full name: <span data-field="full_name">{{ full_name }}</span></p>
+    <p>Social Security No.: <span data-field="ssn">{{ ssn }}</span></p>
+    <p>Print home address: <span data-field="address_line_1">{{ address_line_1 }}</span></p>
+    <p>City: <span data-field="city">{{ city }}</span> State: <span data-field="state">{{ state }}</span> Zip: <span data-field="zip_code">{{ zip_code }}</span></p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 48%;">
+      <h2 style="font-size: 12pt; font-weight: bold;">EMPLOYEE:</h2>
+      <p>Rate the form from W-4 with your employer. Other wise, Massachusetts In-come Withholding form from your wages without exemptions.</p>
+    </div>
+    <div style="width: 48%;">
+      <h2 style="font-size: 12pt; font-weight: bold;">HOW TO CLAIM YOUR WITHHOLDING EXEMPTIONS</h2>
+      <ol style="padding-left: 20px;">
+        <li>If your personal exemption. Write the figure "1". If you are age 65 or over or will be before next year, write "2".</li>
+        <li>If MARRIED and if exemption for spouse is allowed, write the figure "4". If your spouse is age 65 or over or will be before next year and if otherwise qualified, write "5". See Instruction C.</li>
+        <li>Write the number of your qualified dependents. See Instruction D.</li>
+        <li>Add the number of exemptions which you have claimed above and write the total... <span data-field="total_exemptions">{{ total_exemptions }}</span>.</li>
+        <li>Additional withholding per pay period under agreement with employer $ <span data-field="additional_withholding">{{ additional_withholding }}</span>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h2 style="font-size: 12pt; font-weight: bold;">EMPLOYER: DO NOT withhold if Box D is checked.</h2>
+    <div style="margin-top: 15px;">
+      <label style="margin-right: 15px;">A. Check if you will file as head of household on your tax return.</label>
+      <label style="margin-right: 15px;">B. Check if you are blind.</label>
+      <label style="margin-right: 15px;">C. Check if spouse is blind and not subject to withholding.</label>
+      <label style="margin-right: 15px;">D. Check if you are a full-time student engaged in seasonal, part-time or temporary employment whose estimated annual income will not exceed $8,000.</label>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p>I certify that the number of withholding exemptions claimed on this certificate does not exceed the number to which I am entitled.</p>
+    <div style="margin-top: 20px;">
+      (Date): <span data-field="date_signed">{{ date_signed }}</span> (Signed): <span data-field="signature_placeholder">{{ signature_placeholder }}</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h3 style="font-size: 11pt; font-weight: bold;">THIS FORM MAY BE REPRODUCED</h3>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <h2 style="font-size: 12pt; font-weight: bold;">THE COMMONWEALTH OF MASSACHUSETTS • DEPARTMENT OF REVENUE</h2>
+    <p>A. NUMBER — If you claim MORE than the correct number of exemptions, civil and criminal penalties may be imposed. You may claim a smaller number of exemptions. If you do not file a certificate, your employer must withhold on the basis of no exemptions.</p>
+    <p>If you expect to owe more income tax than will be withheld, you may enter a smaller number of exemptions or enter into an agreement with your employer to have additional amounts withheld.</p>
+    <p>You should claim the total number of exemptions to which you are entitled to prevent excessive overwithholding — unless you have a significant amount of other income.</p>
+    <p>B. CHANGES — You may file a new certificate at any time if the number of exemptions increases. You must file a new certificate within 10 days if the number of exemptions previously claimed by you decreases. For example, if during the year your dependent son's income indicates that</p>
+    <p>IF YOU CLAIM THE SAME NUMBER OF EXEMPTIONS FOR MASSACHUSETTS AND U.S. INCOME TAXES, COMPLETE U.S. FORM W-4 ONLY.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p>C. SPOUSE — If your spouse is not working or if he or she is working but not claiming the personal exemption or the age 65 or over exemption, you must claim the same number of exemptions as he or she. However, you should not claim withholding exemptions for your spouse or for any dependents that will not be claimed on your annual tax return.</p>
+    <p>If claiming a wife or husband, write "4" in line 2. Using "4" is the withholding system adjustment for the $4,400 exemption for a spouse.</p>
+    <p>D. DEPENDENT(S) — You may claim an exemption in line 3 for each dependent child under age 18. If you claim an exemption for a Federal Income Tax Law. In addition, if one or more of your dependents will be under age 12 at year end, add "1" to your dependents total for line 3.</p>
+    <p>YOU ARE NOT ALLOWED TO CLAIM "FEDERAL WITHHOLDING DEDUCTIONS AND ADJUSTMENTS" UNDER THE MASSACHUSETTS WITHHOLDING SYSTEM.</p>
+    <p>IF YOU HAVE INCOME NOT SUBJECT TO WITHHOLDING, YOU ARE URGED TO HAVE ADDITIONAL AMOUNTS WITHHELD TO COVER YOUR TAX LIABILITY ON SUCH INCOME. SEE LINE 5.</p>
+  </div>
+
+</div>

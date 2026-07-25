@@ -1,0 +1,91 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .form-section { margin-bottom: 20px; }
+  .field-label { display: block; margin-bottom: 5px; font-weight: normal; }
+  .field-input { border-bottom: 1px solid #ccc; width: 100%; padding: 5px 0; }
+</style>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24px; margin: 0;">CENTER FOR RESEARCH IN HUMAN MOVEMENT VARIABILITY</h1>
+      <h2 style="font-size: 18px; margin: 0;">MOVEMENT ANALYSIS CORE</h2>
+    </div>
+    <div style="text-align: right;">
+      <p style="margin: 0; font-size: 12px;">MOVCENTR</p>
+      <p style="margin: 0; font-size: 12px;">{{ address_line_1 }}</p>
+      <p style="margin: 0; font-size: 12px;">{{ city_state_zip }}</p>
+    </div>
+  </header>
+
+  <h2 style="font-size: 20px; margin-bottom: 20px;">Equipment Request Form</h2>
+
+  <p style="font-size: 14px; line-height: 1.5;">
+    Please complete the areas below regarding a request for new equipment. When submitting the form, attach quotes for the new equipment and competitive quotes from other companies, if available.
+    Refer to the <a href="{{ movan_website_url }}">MOVAN website</a> for a current list of equipment locations and resources available.
+    Complete all fields and send a copy to <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.
+  </p>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Requested Equipment:</label>
+    <div class="field-input" style="height: 60px;">
+      <span data-field="requested_equipment_description">{{ requested_equipment_description }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Cost (in USD if quote not provided):</label>
+    <div class="field-input">
+      <span data-field="requested_equipment_cost">{{ requested_equipment_cost }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Proposed Use of Equipment:</label>
+    <div class="field-input" style="height: 100px;">
+      <span data-field="proposed_use_description">{{ proposed_use_description }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Proposed Location of Equipment:</label>
+    <div class="field-input" style="height: 60px;">
+      <span data-field="proposed_location">{{ proposed_location }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Is there equipment like it already in the building? If so, what makes this equipment different and better?</label>
+    <div class="field-input" style="height: 120px;">
+      <span data-field="differentiation_justification">{{ differentiation_justification }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Are software licenses perpetual or subscription based?</label>
+    <div class="field-input">
+      <span data-field="software_license_type">{{ software_license_type }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="field-label" style="font-weight: bold;">Does this equipment require a dedicated machine or are MOVAN laptops sufficient?</label>
+    <div class="field-input" style="height: 100px;">
+      <span data-field="hardware_requirements">{{ hardware_requirements }}</span>
+    </div>
+  </div>
+
+  <footer style="position: absolute; bottom: 50px; right: 60px; font-size: 10px; color: #777;">
+    v1.0
+  </footer>
+</div>

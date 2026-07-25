@@ -1,0 +1,166 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { font-weight: bold; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { width: 30%; }
+  .form-input-area { width: 65%; border-bottom: 1px solid #000; }
+  .section-divider { border-top: 1px solid #000; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+  th { background-color: #f0f0f0; }
+</style>
+
+<div class="page">
+    <h1>STUDENT/SPOUSE TAX FILING STATEMENT for {{ tax_year }} TAXES</h1>
+
+    <div class="form-row">
+        <div class="form-label">Student's Name:</div>
+        <div class="form-input-area"><span data-field="student_full_name">{{ student_full_name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div class="form-label">UCF ID:</div>
+        <div class="form-input-area"><span data-field="ucf_id">{{ ucf_id }}</span></div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-label">Address:</div>
+        <div class="form-input-area"><span data-field="student_address">{{ student_address }}</span></div>
+    </div>
+    <div class="form-row">
+        <div class="form-label">Date:</div>
+        <div class="form-input-area"><span data-field="submission_date">{{ submission_date }}</span></div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-label">City:</div>
+        <div class="form-input-area"><span data-field="student_city">{{ student_city }}</span></div>
+    </div>
+    <div class="form-row">
+        <div class="form-label">State/Zip:</div>
+        <div class="form-input-area"><span data-field="student_state_zip">{{ student_state_zip }}</span></div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-label">Spouse's Name:</div>
+        <div class="form-input-area"><span data-field="spouse_full_name">{{ spouse_full_name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div class="form-label">Phone:</div>
+        <div class="form-input-area"><span data-field="spouse_phone">{{ spouse_phone }}</span></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2>INSTRUCTIONS:</h2>
+    <p>Each non-filer is required to complete and sign this form. If both student and spouse are non-filers, it will require both signatures.</p>
+
+    <h2>1. Were you (and your spouse, if married) required to file a 2020 tax return?</h2>
+    <p>If not sure, please visit the IRS website at <a href="http://www.irs.gov/pub/irs-pdf/p501.pdf">www.irs.gov/pub/irs-pdf/p501.pdf</a> for the requirements to file a tax return.</p>
+
+    <p><strong>Student:</strong>
+        <label><input type="radio" name="student_filed" value="yes"> Yes</label>
+        <label><input type="radio" name="student_filed" value="no"> No</label>
+    </p>
+    <p><strong>Spouse (if married):</strong>
+        <label><input type="radio" name="spouse_filed" value="yes"> Yes</label>
+        <label><input type="radio" name="spouse_filed" value="no"> No</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="statement_1_checkbox">
+        <label for="statement_1_checkbox">If, yes, you must provide a signed copy of the 2020 tax return or 2020 tax return transcript.</label>
+    </p>
+    <p>
+        <input type="checkbox" id="statement_2_checkbox">
+        <label for="statement_2_checkbox">If, no, each non-filer is required to provide the IRS Verification of Non-Filing Letter and submit it along with this form. To request this letter, go to www.irs.gov and complete the form 4506-T.</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="statement_3_checkbox">
+        <label for="statement_3_checkbox">I attempted to obtain the Verification of Non-Filing Letter from the IRS or other tax authorities and was unable to obtain the required documentation.</label>
+    </p>
+
+    <div class="section-divider"></div>
+
+    <h2>2. List all employers and amounts earned in 2020.</h2>
+    <p><strong>- If self-employed, list "Self-employed" as the employer and report the income earned.</strong></p>
+    <p><strong>- If you (and/or your spouse) did not work at all in 2020, write N/A for name of employer(s).</strong></p>
+    <p>You MUST submit copies of ALL 2020 W-2s. Your file will not be completed if all W-2s are not provided</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 50%;">Student</th>
+                <th style="width: 50%;">Spouse (if married)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 50%;">
+                    <label>Name of Employer(s) in 2020:</label>
+                    <div style="border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
+                    <label>Amount Earned in 2020:</label>
+                    <div style="border-bottom: 1px solid #000;"></div>
+                </td>
+                <td style="width: 50%;">
+                    <label>Name of Employer(s) in 2020:</label>
+                    <div style="border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
+                    <label>Amount Earned in 2020:</label>
+                    <div style="border-bottom: 1px solid #000;"></div>
+                </td>
+            </tr>
+            {% for item in student_employment %}
+            <tr>
+                <td style="width: 50%;">
+                    <span data-field="student_employment[{{ loop.index0 }}].employer_name">{{ item.employer_name }}</span>
+                    <br>
+                    <span data-field="student_employment[{{ loop.index0 }}].amount">{{ item.amount }}</span>
+                </td>
+                <td style="width: 50%;">
+                    <span data-field="spouse_employment[{{ loop.index0 }}].employer_name">{{ item.employer_name }}</span>
+                    <br>
+                    <span data-field="spouse_employment[{{ loop.index0 }}].amount">{{ item.amount }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="section-divider"></div>
+
+    <div class="form-row" style="margin-top: 50px;">
+        <div style="width: 50%;">
+            <p>Student's Signature</p>
+            <div style="border-bottom: 1px solid #000; margin-top: 50px;"></div>
+        </div>
+        <div style="width: 50%;">
+            <p>Date</p>
+            <div style="border-bottom: 1px solid #000; margin-top: 50px;"></div>
+        </div>
+    </div>
+
+    <div class="form-row" style="margin-top: 50px;">
+        <div style="width: 50%;">
+            <p>Spouse's Signature</p>
+            <div style="border-bottom: 1px solid #000; margin-top: 50px;"></div>
+        </div>
+        <div style="width: 50%;">
+            <p>Date</p>
+            <div style="border-bottom: 1px solid #000; margin-top: 50px;"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px; font-size: small;">
+        <p>Submit complete forms at <span data-field="submission_url">{{ submission_url }}</span>. Route this form to Verification / Taxes / Identity & Statement of Educational Purpose</p>
+        <p>Phone: <span data-field="phone_number">{{ phone_number }}</span> • Fax: <span data-field="fax_number">{{ fax_number }}</span> • Web: <span data-field="website">{{ website }}</span> | A Division of Student Success and Well-being</p>
+    </div>
+</div>

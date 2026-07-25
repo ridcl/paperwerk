@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+        .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+        .left-column { width: 40%; }
+        .right-column { width: 60%; }
+        .contact-info p { margin: 5px 0; }
+        .divider { border-top: 1px solid #ccc; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td { padding: 8px 0; }
+        .info-box { border: 1px solid #ddd; padding: 15px; margin-top: 20px; }
+        .calendar-icon { width: 100px; height: 100px; margin: 20px auto; display: block; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-section">
+            <div class="left-column">
+                <h1 style="font-size: 28px; margin-bottom: 5px;">Internationalization Office</h1>
+                <h2 style="font-size: 22px; margin-top: 0;">Exchange Student Factsheet</h2>
+            </div>
+            <div class="right-column">
+                <h2 style="font-size: 20px;">Contacts</h2>
+                <div class="contact-info">
+                    <p><strong>{{ contacts[0].name }}</strong></p>
+                    <p>Office Advisor / International Program (UIP)</p>
+                    <p><span data-field="contacts[0].email">{{ contacts[0].email }}</span></p>
+                    <p><strong>{{ contacts[1].name }}</strong></p>
+                    <p>Office Advisor / International Agreements</p>
+                    <p><span data-field="contacts[1].email">{{ contacts[1].email }}</span></p>
+                    <p><strong>{{ contacts[2].name }}</strong></p>
+                    <p>Mobility Programs - In/Out</p>
+                    <p><span data-field="contacts[2].email">{{ contacts[2].email }}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Address</h2>
+                <p><span data-field="address.street">{{ address.street }}</span></p>
+                <p><span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span></p>
+                <p><span data-field="address.zip">{{ address.zip }}</span></p>
+            </div>
+            <div class="right-column" style="text-align: right;">
+                <p>Phone: {{ contacts[0].phone }}</p>
+                <p>Office Email: <span data-field="contacts[0].email">{{ contacts[0].email }}</span></p>
+                <p>Web: <span data-field="contacts[0].website">{{ contacts[0].website }}</span> / <span data-field="contacts[0].international_link">{{ contacts[0].international_link }}</span></p>
+            </div>
+        </div>
+
+        <img src="placeholder_calendar_icon.png" alt="Calendar Icon" class="calendar-icon">
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Academic Calendar (2020)</h2>
+                <p>First Semester (February - July)</p>
+                <ul>
+                    <li>Classes begin: <span data-field="academic_calendar.first_semester_start">{{ academic_calendar.first_semester_start }}</span></li>
+                    <li>Classes ends: <span data-field="academic_calendar.first_semester_end">{{ academic_calendar.first_semester_end }}</span></li>
+                </ul>
+                <p>Second Semester (August - December)</p>
+                <ul>
+                    <li>Classes begins: <span data-field="academic_calendar.second_semester_start">{{ academic_calendar.second_semester_start }}</span></li>
+                    <li>Classes ends: <span data-field="academic_calendar.second_semester_end">{{ academic_calendar.second_semester_end }}</span></li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2 style="font-size: 20px;">Deadlines and Application Procedures</h2>
+                <h3 style="font-size: 16px; margin-top: 15px;">First Semester</h3>
+                <ul>
+                    <li>Nomination Deadline: <span data-field="deadlines.first_semester_nomination">{{ deadlines.first_semester_nomination }}</span></li>
+                    <li>Application Deadline: <span data-field="deadlines.first_semester_application">{{ deadlines.first_semester_application }}</span></li>
+                </ul>
+                <h3 style="font-size: 16px; margin-top: 15px;">Second Semester</h3>
+                <ul>
+                    <li>Nomination Deadline: <span data-field="deadlines.second_semester_nomination">{{ deadlines.second_semester_nomination }}</span></li>
+                    <li>Application Deadline: <span data-field="deadlines.second_semester_application">{{ deadlines.second_semester_application }}</span></li>
+                </ul>
+                <p>Nomination should be done by the home institutions' international office by email. The email should include: Students' full name, e-mail, desired field area and length of stay.</p>
+                <p>The application should be done by the student after the nomination has been submitted. Once nomination is received, students will be given access to the application documents.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Obtaining a Visa and CRNM</h2>
+                <h3 style="font-size: 16px; margin-top: 15px;">Before arriving in Brazil:</h3>
+                <p>In order to obtain a student visa, students should contact the nearest Brazilian Embassy/Consulate and get information about the necessary documents.</p>
+                <h3 style="font-size: 16px; margin-top: 15px;">After arriving in Brazil:</h3>
+                <p>All foreigners are obliged by law to report to the Federal Police within 90 days of their arrival in Brazil. Failure to do so will incur a daily fine. To register with the Federal Police as a foreigner (Carteira de Registro Nacional Migratório - CRNM) students must attend the headquarters of the Federal Police in Itajaí.</p>
+            </div>
+            <div class="right-column">
+                <h3 style="font-size: 16px; margin-top: 15px;">Required documents:</h3>
+                <ul>
+                    <li>Valid travel document (passport);</li>
+                    <li>original and copies of the all used (written/stamped) pages;</li>
+                    <li>Visa and visa request form;</li>
+                    <li>two recent colored photos (3x4), front side, with white background, and no date;</li>
+                    <li>Payment of corresponding fee (The form "Carteira de Estrangeiro - Primeira (1ª) Via" - R$ 204,77).</li>
+                </ul>
+                <p>*The international Office will assist exchange students with the CRNM procedures.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Health Insurance</h2>
+                <p>All students are required to have health insurance from their home country, which covers medical repatriation.</p>
+                <p>Students should have sufficient health insurance for the whole time of their stay in Brazil.</p>
+                <p>Careful attention should be given to the Brazilian Consulate requirements.</p>
+            </div>
+            <div class="right-column">
+                <h2 style="font-size: 20px;">Welcome/Orientation Day</h2>
+                <p>Besides having a lecture on Brazilian southern culture and lifestyles, exchange students will have a campus tour and the opportunity to meet academic coordinators.</p>
+                <p>Registration is made at the Internationalization Office.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Academic Information</h2>
+                <h3 style="font-size: 16px; margin-top: 15px;">Number of Credits</h3>
+                <p>The minimum number of credits required to be enrolled at Univali is 12 per semester.</p>
+                <p>A student at Univali takes, on average, 20 credits per semester. 20 credits total approx. 360 hours per semester.</p>
+                <h3 style="font-size: 16px; margin-top: 15px;">Class Attendance</h3>
+                <p>75% of attendance is mandatory for all classes.</p>
+                <h3 style="font-size: 16px; margin-top: 15px;">Grading</h3>
+                <p>The minimum grade for approval is 6.0 in a scale which ranges from 6.0 to 10.0.</p>
+            </div>
+            <div class="right-column">
+                <h2 style="font-size: 20px;">Language of Instruction</h2>
+                <p>Predominantly in Portuguese. Students who wish to attend classes offered in Portuguese should have Portuguese language proficiency equivalent to B2 of the Common European Framework.</p>
+                <p>Course Catalogue: <span data-field="language_of_instruction.catalogue">{{ language_of_instruction.catalogue }}</span></p>
+                <h2 style="font-size: 20px; margin-top: 30px;">Language Requirements</h2>
+                <p>Exchange students can choose from some disciplines that are conducted either in English or Spanish (International Program) in order to return home with 30 ECTS points.</p>
+                <p>Students who wish the International Program but who are not native speakers of English or Spanish should have language proficiency equivalent to B2 of the Common European Framework.</p>
+                <h2 style="font-size: 20px; margin-top: 30px;">Language Support</h2>
+                <p>Univali offers a free Portuguese Language Course (Basic Level/ A1) for all exchange students from partner universities.</p>
+                <h2 style="font-size: 20px; margin-top: 30px;">International Program</h2>
+                <p>Course Catalogue: <span data-field="international_program.catalogue">{{ international_program.catalogue }}</span></p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div class="left-column">
+                <h2 style="font-size: 20px;">Practical Information</h2>
+                <h3 style="font-size: 16px; margin-top: 15px;">Transportation</h3>
+                <p>Itajaí is covered by a good bus network that takes almost anywhere. Students can request 50% discount on the fare. For this, students need to register, proving the following documents:</p>
+                <ul>
+                    <li>Proof of Enrollment</li>
+                    <li>Proof of address in Brazil</li>
+                    <li>Student ID.</li>
+                </ul>
+                <h3 style="font-size: 16px; margin-top: 15px;">Accommodation</h3>
+                <p>As there are no student residences on campus, the international office will assist international students with accommodation.</p>
+                <h3 style="font-size: 16px; margin-top: 15px;">Cost of Living</h3>
+                <table>
+                    <tr>
+                        <td>Housing</td>
+                        <td>R$ <span data-field="cost_of_living.housing">{{ cost_of_living.housing }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Meals</td>
+                        <td>R$ <span data-field="cost_of_living.meals">{{ cost_of_living.meals }}</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right-column">
+                <table>
+                    <tr>
+                        <td>Local Transportation</td>
+                        <td>R$ <span data-field="estimated_expenses.local_transportation">{{ estimated_expenses.local_transportation }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Personal</td>
+                        <td>R$ <span data-field="estimated_expenses.personal">{{ estimated_expenses.personal }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Expenses per Month</td>
+                        <td>Approx. R$ <span data-field="estimated_expenses.total">{{ estimated_expenses.total }}</span> Reais</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Quickly Facts About Univali</h2>
+            <p style="font-size: 18px;">One of the largest and most important Brazilian universities</p>
+            <p style="font-size: 24px; font-weight: bold; margin: 15px 0;">Over <span data-field="university_stats.students">{{ university_stats.students }}</span> Students</p>
+            <p style="font-size: 18px;">Over <span data-field="university_stats.undergraduate_courses">{{ university_stats.undergraduate_courses }}</span> undergraduate courses</p>
+            <p style="font-size: 18px;">
+                <span data-field="university_stats.international_disciplines">{{ university_stats.international_disciplines }}</span> International Disciplines
+            </p>
+            <p style="font-size: 24px; font-weight: bold; margin: 15px 0;">
+                <span data-field="university_stats.partnerships">{{ university_stats.partnerships }}</span> partnerships worldwide
+            </p>
+            <p style="font-size: 18px;">
+                <span data-field="university_stats.double_degree_programs">{{ university_stats.double_degree_programs }}</span> Double Degree Programs
+            </p>
+            <p style="font-size: 16px; margin-top: 20px;">UNIVALI maintains a laboratory of analyses and drug production, Univali FM Radio, TV Univali, among others.</p>
+            <p style="font-size: 18px; margin-top: 20px;">Ranked in several World University Rankings</p>
+        </div>
+    </div>
+</body>
+</html>

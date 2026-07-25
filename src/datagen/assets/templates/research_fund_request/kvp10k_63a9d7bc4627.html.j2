@@ -1,0 +1,121 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic form layout */
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+  .form-group label {
+    width: 180px; /* Approximate width for labels */
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .form-group input[type="text"], .form-group textarea {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  .two-column-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .two-column-section > div {
+    width: 48%;
+  }
+  .checkbox-group {
+    margin-top: 20px;
+  }
+  .checkbox-group label {
+    margin-right: 20px;
+    font-weight: normal;
+  }
+</style>
+
+<div class="page">
+  <h1 style="text-align: center; font-size: 24pt; margin-bottom: 5px;">Comprehensive Research Fund Request</h1>
+  <p style="text-align: center; font-size: 12pt; margin-top: 0;">Attach copy of quote if available</p>
+  <p style="text-align: center; font-size: 10pt; margin-top: 20px;">Submit request to your chair and dean. If both approve, your dean then emails the request and an email stating the college's support to <span data-field="contact_email">{{ contact_email }}</span></p>
+
+  <div class="form-group">
+    <label for="date_of_request">Date of Request</label>
+    <input type="text" id="date_of_request" style="border: none; border-bottom: 1px solid #000;" data-field="date_of_request" value="{{ date_of_request }}">
+  </div>
+
+  <div class="form-group">
+    <label for="faculty_name">Faculty Name</label>
+    <input type="text" id="faculty_name" style="border: none; border-bottom: 1px solid #000;" data-field="faculty_name" value="{{ faculty_name }}">
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" style="border: none; border-bottom: 1px solid #000;" data-field="title" value="{{ title }}">
+  </div>
+
+  <div class="two-column-section">
+    <div class="form-group">
+      <label for="total_equipment_cost">Total Equipment Cost</label>
+      <input type="text" id="total_equipment_cost" style="border: none; border-bottom: 1px solid #000;" data-field="total_equipment_cost" value="{{ total_equipment_cost }}">
+    </div>
+    <div class="form-group">
+      <label for="amount_requested">Amount Requested</label>
+      <input type="text" id="amount_requested" style="border: none; border-bottom: 1px solid #000;" data-field="amount_requested" value="{{ amount_requested }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 10px;">
+    <label for="other_funds">List source and amount of other funds</label>
+    <textarea id="other_funds" rows="3" style="border: 1px solid #000;"></textarea>
+  </div>
+
+  <div class="form-group" style="margin-top: 15px;">
+    <label for="purpose_of_equipment">Purpose of Equipment</label>
+    <textarea id="purpose_of_equipment" rows="6" style="border: 1px solid #000;"></textarea>
+  </div>
+
+  <div class="form-group" style="margin-top: 15px;">
+    <label for="justification">What makes this purchase a good investment for State of Texas ?</label>
+    <textarea id="justification" rows="6" style="border: 1px solid #000;"></textarea>
+  </div>
+
+  <div class="checkbox-group">
+    <label>ORSP Use Only</label>
+    <label><input type="radio" name="approved_status" value="approved"> Approved</label>
+    <label><input type="radio" name="approved_status" value="not_approved"> Not Approved</label>
+  </div>
+
+  <div class="two-column-section" style="margin-top: 20px;">
+    <div class="form-group">
+      <label for="amount_approved">Amount approved</label>
+      <input type="text" id="amount_approved" style="border: none; border-bottom: 1px solid #000;" data-field="amount_approved" value="{{ amount_approved }}">
+    </div>
+    <div class="form-group">
+      <label for="fop">FOP</label>
+      <input type="text" id="fop" style="border: none; border-bottom: 1px solid #000;" data-field="fop" value="{{ fop }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 15px;">
+    <label for="final_report_received">Final report received</label>
+    <input type="text" id="final_report_received" style="border: none; border-bottom: 1px solid #000;" data-field="final_report_received" value="{{ final_report_received }}">
+  </div>
+</div>

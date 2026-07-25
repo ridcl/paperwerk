@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quote Request</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td, th { padding: 8px; text-align: left; border: 1px solid #ccc; }
+  .header-section { margin-bottom: 30px; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+</style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  td, th {
+    padding: 8px 0;
+    text-align: left;
+  }
+  .section-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+</style>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 5px;
+    text-align: left;
+  }
+  .signature-line {
+    border-top: 1px solid black;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-section">
+    <h1 style="font-size: 20pt;">Francis Marion University – Quote Request</h1>
+    <p>Quote Name and Number: <span data-field="quote_name_number">{{ quote_name_number }}</span> – <span data-field="quote_description">{{ quote_description }}</span></p>
+    <p>Date: <span data-field="date">{{ date }}</span></p>
+    <p>Francis Marion University is accepting quotes for a contractor to print and deliver FMU Academic Catalogs as described herein.</p>
+    <p>The following schedule is required to be completed by the offeror:</p>
+    <p>Please quote your lowest delivered price for the item(s) below. Francis Marion University reserves the right to reject any or all quotes and to waive any or all technicalities.</p>
+    <p>Notes:</p>
+    <ol>
+      <li>Exclude Sales Tax in your bid prices.</li>
+      <li>Include freight/shipping. FOB Destination included to Florence, SC.</li>
+      <li>The attached Terms and Conditions apply to all quotes and supersedes Offeror's Terms and Conditions.</li>
+    </ol>
+  </div>
+
+  <div class="section-title">Item Details</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">Item</th>
+        <th style="width: 20%;">Quantity</th>
+        <th style="width: 50%;">Description</th>
+        <th style="width: 15%; text-align: right;">Unit Price</th>
+        <th style="width: 15%; text-align: right;">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><span data-field="line_items[{{ loop.index0 }}].quantity">{{ item.quantity }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].unit_price">{{ item.unit_price }}</span></td>
+        <td style="text-align: right;"><span data-field="line_items[{{ loop.index0 }}].total_price">{{ item.total_price }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>Total Price (excluding sales tax): <span data-field="total_price_excluding_tax">{{ total_price_excluding_tax }}</span></p>
+
+  <div class="section-title">Optional Costs</div>
+  <p>Optional costs will be used to adjust the cost for changes to specifications. All items marked must be filled out or bid may be rejected for being non-responsive.</p>
+  <table>
+    <tr>
+      <td style="width: 50%;">Cost per <span data-field="optional_cost_1_quantity">{{ optional_cost_1_quantity }}</span> additional quantities at pressrun</td>
+      <td style="text-align: right;"><span data-field="optional_cost_1_price">{{ optional_cost_1_price }}</span></td>
+    </tr>
+    <tr>
+      <td>Cost per <span data-field="optional_cost_2_quantity">{{ optional_cost_2_quantity }}</span> additional quantities within 6 months after press run</td>
+      <td style="text-align: right;"><span data-field="optional_cost_2_price">{{ optional_cost_2_price }}</span></td>
+    </tr>
+  </table>
+  <p>Cost per signature to: <span data-field="cost_per_signature">{{ cost_per_signature }}</span></p>
+  <p>Delete <span data-field="delete_signature_count">{{ delete_signature_count }}</span> page signature $ <span data-field="delete_signature_price">{{ delete_signature_price }}</span></p>
+
+  <div class="section-title">Vendor's Best Delivery Date: <span data-field="vendor_best_delivery_date">{{ vendor_best_delivery_date }}</span></div>
+  <div class="section-title">Days After Receipt of Order: <span data-field="days_after_receipt_of_order">{{ days_after_receipt_of_order }}</span></div>
+
+  <div class="section-title">Delivery/Performance Location – Specified Jan 2006: After award, all deliveries shall be made and all services provided to the following address, unless otherwise specified:</div>
+  <p>Francis Marion University</p>
+  <p><span data-field="delivery_address_street">{{ delivery_address_street }}</span></p>
+  <p><span data-field="delivery_address_city_state_zip">{{ delivery_address_city_state_zip }}</span></p>
+
+  <div class="section-title">Quote may be e-mailed to: <span data-field="email_address">{{ email_address }}</span> or faxed to <span data-field="fax_number">{{ fax_number }}</span></div>
+  <div class="section-title">Quote must be received by: <span data-field="submission_deadline_date">{{ submission_deadline_date }}</span> at <span data-field="submission_deadline_time">{{ submission_deadline_time }}</span></div>
+  <p>This section must be completed by the Vendor:</p>
+
+  <table>
+    <tr>
+      <td style="width: 20%;">Company Name:</td>
+      <td><span data-field="company_name">{{ company_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Authorized Signature:</td>
+      <td><span data-field="authorized_signature">{{ authorized_signature }}</span></td>
+    </tr>
+    <tr>
+      <td>Authorized Signature (printed):</td>
+      <td><span data-field="authorized_signature_printed">{{ authorized_signature_printed }}</span></td>
+    </tr>
+    <tr>
+      <td>Date:</td>
+      <td><span data-field="date_signed">{{ date_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><span data-field="address_signed">{{ address_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>City/State/Zip:</td>
+      <td><span data-field="city_state_zip_signed">{{ city_state_zip_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>Phone Number:</td>
+      <td><span data-field="phone_number_signed">{{ phone_number_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>Fax Number:</td>
+      <td><span data-field="fax_number_signed">{{ fax_number_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>E-Mail:</td>
+      <td><span data-field="email_signed">{{ email_signed }}</span></td>
+    </tr>
+    <tr>
+      <td>Federal ID Number:</td>
+      <td><span data-field="federal_id_number">{{ federal_id_number }}</span></td>
+    </tr>
+    <tr>
+      <td>SC Minority Cert. # (if applicable):</td>
+      <td><span data-field="sc_minority_cert_number">{{ sc_minority_cert_number }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div class="section-title">I. SCOPE OF SOLICITATION</div>
+  <p>ACQUIRE SERVICES & SUPPLIES / EQUIPMENT (JAN 2006): The purpose of this solicitation is to acquire services and supplies or equipment complying with the enclosed description and/or specifications and conditions. [01-1005-1]</p>
+
+  <div class="section-title">II. INSTRUCTIONS TO OFFERORS – A. GENERAL INSTRUCTIONS</div>
+  <p>AMENDMENTS TO SOLICITATION (JAN 2004): (a) The Solicitation may be amended at any time prior to opening. All actual and prospective Offerors should monitor the following web site for the issuance of Amendments: <span data-field="amendment_website_url">{{ amendment_website_url }}</span> (b) Offerors shall acknowledge receipt of any amendment to this Solicitation by signing and returning the amendment. (c) By identifying the amendment, the Offeror shall acknowledge that the amendment is incorporated into the Solicitation. (d) If the amendment is not acknowledged, it shall be deemed that the amendment is not incorporated.</p>
+  <p>AUTHORIZED AGENT (FEB 2015): All authority regarding this procurement is vested solely with the responsible Procurement Officer. Unless specifically delegated in writing, the Procurement Officer is the only government official authorized to bind the government with regard to this procurement or the resulting contract. [02-2A007-1]</p>
+
+  <div class="section-title">BID IN ENGLISH & DOLLARS (JAN 2004): Offers submitted in response to this solicitation shall be in the English language and in US dollars, unless otherwise permitted by the Solicitation. [02-2A025-1]</div>
+
+  <div class="section-title">AUTHORITY AS PROCUREMENT AGENT (DEC 2015): The Procurement Officer is an employee of the Authority acting on behalf of the Using Governmental Unit(s) pursuant to the Consolidated Procurement Code. Any contracts awarded as a result of this procurement are between the Contractor and the Using Governmental Unit(s). The Authority is not a party to such contracts, unless and to the extent that the Authority is a using governmental unit, and bears no liability for any party's losses arising out of or relating in any way to the contract. [02-2A030-3]</div>
+
+  <div class="section-title">CERTIFICATE OF INDEPENDENT PRICE DETERMINATION (MAY 2008): GIVING FALSE, MISLEADING, OR INCOMPLETE INFORMATION ON THIS CERTIFICATION MAY render YOU SUBJECT TO PROSECUTION UNDER SECTION 16-10 OF THE SOUTH CAROLINA CODE OF LAWS AND OTHER APPLICABLE LAWS. (a) By submitting an offer, the offeror certifies that the information contained in this certification is true and correct. (b) The offeror understands that the submission of a false or misleading statement, representation, or certification may result in the rejection of the offer, termination of the contract, or other legal action.</div>
+
+  <div class="section-title">Disclaimer of Liability</div>
+  <p>The solicitation and all related documents are provided for informational purposes only. The Authority makes no warranty or representation as to the accuracy or completeness of the information contained herein. The Authority shall not be liable for any errors or omissions in the Solicitation or any resulting damages.</p>
+</div>
+
+<div class="page">
+  <div class="section-title">Disclaimer of Liability (Continued)</div>
+  <p>The Authority reserves the right to modify, amend, or cancel this Solicitation at any time without notice. Any modifications or amendments will be made available to all interested parties through the official procurement website.</p>
+
+  <div class="section-title">RESPONSIBILITY REQUIREMENTS</div>
+  <p>(a) The Contractor shall be responsible for all costs and expenses associated with the performance of the contract, including but not limited to labor, materials, equipment, travel, and overhead. (b) The Contractor shall comply with all applicable federal, state, and local laws, regulations, rules, and ordinances. (c) The Contractor shall maintain adequate insurance coverage as required by the contract.</div>
+
+  <div class="section-title">LICENSES, PERMITS, & INSURANCE (FMU – APR 2022): All costs for required licenses, permits and insurance shall be borne by the Contractor.</div>
+
+  <div class="section-title">OFFERING BY LOT (JAN 2006): Offers may be submitted for one or more complete lots. Failure to offer on all items within a lot will be reason for rejection. [02-2B095-1]</div>
+
+  <div class="section-title">PROTEST – CPO – MMO ADDRESS (JUN 2006): Any protest must be addressed to the Chief Procurement Officer, Materials Management, and submitted in writing.</div>
+  <p>Chief Procurement Officer</p>
+  <p>Materials Management</p>
+  <p>Francis Marion University</p>
+  <p><span data-field="cpo_address_street">{{ cpo_address_street }}</span></p>
+  <p><span data-field="cpo_address_city_state_zip">{{ cpo_address_city_state_zip }}</span></p>
+  <p>(b) by mail or delivery to 1201 Main Street, Suite 600, Columbia, SC 29201. [02-2B122-1]</p>
+
+  <div class="section-title">QUALIFIED PRODUCTS LIST (JAN 2006): Only products that are on the qualified products list. [02-2B125-1]</div>
+
+  <div class="section-title">UNIT PRICES REQUIRED (JAN 2006): Unit price to be shown for each item. [02-2B170-1]</div>
+
+  <div class="section-title">COMPLIANCE (FMU – APR 2022): Francis Marion University requires all contractual activities to be performed in a manner that is consistent with all applicable federal, state and local laws, regulations, rules and ordinances. These include, but are not limited to: Occupational Safety and Health Act, The Environmental Protection Act, The South Carolina Hazardous Waste Management Act.</div>
+
+  <div class="section-title">NOTE – IMPORTANT (FMU – APR 2022): Contractors, we MUST have your Federal ID (#) (company) or Social Security # (individual) before processing any invoices for payment. Failure to provide this information will result in delay of payments until this information is received. Please include this information with your quote – see Attachment #2.</div>
+
+  <div class="section-title">III. SCOPE OF WORK / SPECIFICATIONS</div>
+  <p>PRINTING MANUAL (JAN 2006): The South Carolina Government Printing Services manual, dated January 1, 1998, governs both the procurement and any resulting contract and is hereby incorporated by reference. You are responsible for obtaining a copy of the manual. The manual is available at <span data-field="printing_manual_url">{{ printing_manual_url }}</span>.</p>
+  <p>Contractor must follow the additional specifications listed on the "State of S.C. Printing Specification Sheet" (see Attachment #3).</p>
+  <p>NOTE: In the additional specifications listed on the State of S.C. Printing Specification Sheet, the flat size is 16.5" by 10.75", except for the cover, which is 17" by 10.75" to allow for the spine on the perfect bound product. The finished size is 8.25" by 10.75".</p>
+
+  <div class="section-title">Overrun/Underrun: Exact count requested with no underage; overages exceeding 200 will not be accepted.</div>
+
+  <div class="section-title">Contractor Liaison: Contractor shall establish a contract liaison to conference with University personnel to ensure complete understanding of all requirements.</div>
+  <p>Note: Contractor shall be responsible for the cost of and transportation of all copy and proofs, including overnight delivery charges.</p>
+
+  <div class="section-title">Liquidated Damages: Contractor to be assessed $100.00 per day to be deducted from the final invoice if product is not received by the established delivery date.</div>
+</div>
+
+<div class="page">
+  <div class="section-title">Note Regarding Alternate Stock: Alternate stock may be bid for consideration as an "equal", but if an alternate stock is bid, a sample of the product must be included in your quote package. The University will make final determination as to the equality of substitutes offered. Our preference is for stock as specified.</div>
+
+  <div class="section-title">Delivery / Performance Location – Specified Jan 2006: After award, all deliveries shall be made and all services provided to the following address, unless otherwise specified:</div>
+  <p>Francis Marion University</p>
+  <p>Central Receiving</p>
+  <p><span data-field="delivery_address_street_2">{{ delivery_address_street_2 }}</span></p>
+  <p><span data-field="delivery_address_city_state_zip_2">{{ delivery_address_city_state_zip_2 }}</span></p>
+
+  <div class="section-title">Delivery Contact:</div>
+  <p>Vendor should coordinate all deliveries with Tori Payne at 843-661-1270.</p>
+
+  <div class="section-title">Contract Administration: Questions or problems arising after award of this contract shall be directed to:</div>
+  <p>Tori Payne</p>
+  <p>Design Project Coordinator</p>
+  <p>(843) 661-1270</p>
+  <p>Tori.payne@fman.edu</p>
+  <p>OR</p>
+  <p>FMU Purchasing Office</p>
+  <p>Stokes Admin. Building, Ste. 102</p>
+  <p>Phone: (843) 661-1160</p>
+
+  <div class="section-title">IV. AWARD CRITERIA – BIDS (JAN 2006): Award will be made to the lowest responsible and responsive bidder(s). [06-6020-1]</div>
+
+  <div class="section-title">AWARD TO ONE OFFEROR (JAN 2006): Award will be made to one Offeror. [06-6040-1]</div>
+
+  <div class="section-title">DISCUSSIONS AND NEGOTIATIONS – OPTIONAL (FEB 2015): Submit your best terms from both a price and a technical standpoint. Your proposal may be evaluated and your offer accepted without any discussions, negotiations, or prior notice. Ordinarily, the Authority reserves the right to reject any or all offers, waive any or all technicalities, and to award the contract to the bidder whose proposal is deemed to be the best value to the Authority. The Authority reserves the right to negotiate with any or all bidders.</div>
+
+  <div class="section-title">QUALITY – NEW (JAN 2006): All items must be new. [03-3060-1]</div>
+
+  <div class="section-title">UNIT PRICE GOVERNS (JAN 2006): In determining award, unit prices will govern over extended prices unless otherwise stated. [06-6075-1]</div>
+
+  <div class="section-title">V. TERMS AND CONDITIONS – A. GENERAL</div>
+  <p>ASSIGNMENT, NOVATION, AND CHANGE OF NAME, IDENTITY, OR STRUCTURE (FEB 2015): (a) Contractor shall not assign this contract, or its rights, obligations, or any other interest arising from this contract, or delegate any of its performance obligations, without the express written consent of the responsible Procurement Officer. The foregoing restriction does not apply to a transfer that is a result of a merger, consolidation, or sale of substantially all of the assets of the Contractor. (b) The Contractor shall not change its name, identity, or structure without the express written consent of the responsible Procurement Officer. [02-2A025-1]</p>
+
+  <div class="section-title">BANKRUPTCY – GENERAL (FEB 2015): (a) Notice. In the event the Contractor enters into proceedings relating to bankruptcy, whether voluntary or involuntary, the Contractor agrees to furnish written notification of the bankruptcy to the Using Governmental Unit. This notification shall be furnished within two (2) days of the initiation of the proceedings relating to the bankruptcy filing.</div>
+
+  <div class="section-title">CHOICE-OF-LAW (JAN 2006): The Agreement, any dispute, claim, or controversy relating to the Agreement, and all the rights and obligations of the parties shall be interpreted, construed, enforced, and governed by and under the laws of the State of South Carolina, excluding its conflict of laws rules.</div>
+
+  <div class="section-title">CONTRACT DOCUMENTS & ORDER OF PRECEDENCE (FEB 2015): (a) Any contract resulting from this solicitation shall consist of the following documents, in the order of precedence listed below: (1) This Solicitation; (2) Any amendments to this Solicitation; (3) The State of S.C. Printing Specification Sheet (Attachment #3); (4) The Agreement; and (5) Any other documents incorporated by reference. In the event of a conflict between any of these documents, the document listed first in this order of precedence shall govern. (b) Any document signed or otherwise agreed to by persons other than the Procurement Officer shall be void and of no effect. [02-2A015-2]</div>
+</div>
+
+<div class="page">
+  <div class="section-title">DISPUTES (JAN 2006): (1) Choice-of-Forum. All disputes, claims, or controversies relating to the Agreement shall be resolved exclusively in the state or federal courts located in the State of South Carolina. (2) Venue. The venue for any such action shall be in the State of South Carolina. [07-7A015-2]</div>
+
+  <div class="section-title">EQUAL OPPORTUNITY (JAN 2006): Contractor is referred to and shall comply with all applicable provisions, if any, of Title 41, Part 1, of the Civil Rights Act of 1964, as amended. Contractor shall not discriminate on the basis of race, color, religion, sex, national origin, age, disability, or any other protected characteristic.</div>
+
+  <div class="section-title">FALSE CLAIMS (JAN 2006): According to the S.C. Code of Laws Section 16-13-240, "a person who by false premise or representation obtains the property of another by fraud or deceit shall be guilty of a crime." The Contractor warrants that all claims submitted are true and correct. [07-7A035-1]</div>
+
+  <div class="section-title">FIXED PRICING REQUIRED (JAN 2006): Any pricing provided by contractor shall include all costs for performing the work, including all labor, materials, equipment, overhead, profit, taxes, and all other charges. No additional costs shall be incurred by the Authority. [07-7A040-1]</div>
+
+  <div class="section-title">NO INDEMNITY OR DEFENSE (FEB 2015): Any term or condition is void to the extent it requires the State to indemnify, defend, or hold harmless the Contractor. [02-2A025-1]</div>
+
+  <div class="section-title">NOTICE (JAN 2006): (a) After award, any notices shall be in writing and shall be deemed duly given upon actual delivery, if delivery by hand, facsimile, electronic mail, or mail (if postmarked on the date of mailing) or upon receipt, if received and registered or certified mail is used. (b) Notice to contractor shall be to the address identified as the Contractor's address in the bid proposal. (c) The Authority reserves the right to send notices to any other address it deems appropriate. [07-7A050-1]</div>
+
+  <div class="section-title">OPEN TRADE (JUN 2015): During the contract term, including any renewals or extensions, Contractor will not engage in the boycott of any person or entity based on race, color, religion, sex, national origin, or any other protected characteristic. [07-7A055-1]</div>
+
+  <div class="section-title">PAYMENT & INTEREST (FEB 2021): (a) The State shall pay the Contractor, after the submission of proper invoices or vouchers, the prices stipulated in this contract for supplies delivered and accepted or services rendered and accepted, less any deductions authorized by the contract. (b) The State shall pay interest on any amounts due to the Contractor that are not paid within the time period specified in the contract, at the rate of one percent (1%) per month or the maximum rate permitted by law, whichever is less.</div>
+</div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  td, th {
+    padding: 8px 0;
+    text-align: left;
+  }
+  .section-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+</style>
+<div class="page">
+  <p>provides the Contractor's exclusive means of recovering any type of interest from the Owner. Contractor waives imposition of an interest penalty unless the invoice submitted specifies that the late penalty is applicable. Except as set forth in this paragraph, the State shall not be liable for the payment of interest on any debt or claim arising out of or related to this contract for any reason. (d) Amounts due to the State shall bear interest at the rate of interest established by the South Carolina Comptroller General pursuant to the provisions of the South Carolina Code of Laws, Title 12, Chapter 12, Section 12-30. (e) Any other basis for interest, including but not limited to general (pre- and post-judgment) or specific interest pursuant to the South Carolina Code of Laws, Title 34, Chapter 21, Section 21-30, shall not apply. (f) The Contractor agrees to pay interest on any amount due to the State if the State is late in making payment, provided that the State shall have all rights of law, including claim of interest, pursuant to the provisions of the South Carolina Code of Laws.</p>
+  <p>PUBLICITY (JAN 2006): Contractor shall not publish any comments or quotes by States employees, or include the State in either news releases or a published list of customers, without the prior written approval of the Procurement Officer. [07-7A06-1]</p>
+  <p>PURCHASE ORDERS (JAN 2006): Contractor shall not perform any work prior to the receipt of a purchase order from the using department. The using governmental unit shall order any supplies or services to be furnished under this contract by issuing a purchase order. Purchase orders may be used to elect any options available under this contract, e.g., quantity, item, delivery date, payment method, but are subject to all terms and conditions of this contract. Purchase orders may be electronic. No particular form is required. An order placed pursuant to the purchasing card provision qualifies as a purchase order. [07-7A065-1]</p>
+  <p>SURVIVAL OF OBLIGATIONS (JAN 2006): The parties' rights and obligations which, by their nature, would continue beyond the termination, cancellation, rejection, or expiration of this contract shall survive such termination, cancellation, rejection, or expiration, including, but not limited to, the rights and obligations created by the law of the State, including indemnification. Third Party Claims, Intellectual Property Indemnification, and any provisions regarding warranty or audit. [07-7A075-1]</p>
+</div>
+<div class="page">
+  <p>TAXES (JAN 2006): Any tax the contractor may be required to collect or pay upon the sale, use or delivery of the products shall be paid by the State, and such sums shall be due and payable to the contractor upon acceptance. Any personal property taxes levied upon the contractor shall be the responsibility of the contractor. The contractor shall not be responsible for any sales, use, or excise tax, or any other tax applicable to any tax negotiation with, or action against, the taxing authority. Contractor agrees to refund any tax collected, which is subsequently determined not to be proper and for which a refund has been paid to the contractor by the taxing authority. In the event that the contractor fails to pay, or delays in paying, any taxes, amounts paid by the State to contractor, contractor shall be liable for all interest on such unpaid taxes, and the State shall have the right to recover such unpaid taxes, plus interest, from the contractor. Contractor's net income or assets shall be the sole responsibility of the contractor. [07-7A080-1]</p>
+  <p>TERMINATION DUE TO UNAVAILABILITY OF FUNDS (JAN 2006): Payment and performance obligations for succeeding fiscal periods shall be subject to the availability and appropriation of funds therefor. When funds are not appropriated or otherwise made available to support continuation of performance in a subsequent fiscal period, the contract shall be canceled. In the event of a cancellation pursuant to this paragraph, contractor will be reimbursed the unutilized remuneration, reasonably incurred, nonrecurring costs. Contractor will not be reimbursed any costs amortized beyond the initial contract term. [07-7A085-1]</p>
+  <p>THIRD PARTY BENEFICIARY (JAN 2006): This Contract is made solely and specifically among and for the benefit of the parties hereto, and their respective successors and assigns, and no other person will have any rights, interest, or claims hereunder or be entitled to any benefits under or on account of this Contract as a third party beneficiary or otherwise. [07-7A090-1]</p>
+  <p>WAIVER (JAN 2006): The State does not waive any prior or subsequent breach of the terms of the Contract by making payments on the Contract, by failing to terminate the Contract for lack of performance, or by failing to strictly or promptly insist upon any term of the Contract. Only the Procurement Officer has actual authority to waive any of the State's rights under this Contract. Any waiver must be in writing. [07-7A095-1]</p>
+  <h3 class="section-title">VI. TERMS & CONDITIONS - B. SPECIAL</h3>
+  <p>BANKRUPTCY - GOVERNMENT INFORMATION (FEB 2015): (a) All government information (as defined in the clause herein entitled "Information Security - Definitions") shall belong exclusively to the State, and Contractor has no legal or equitable interest in, or claim to, such information. Contractor acknowledges and agrees that in the event Contractor enters into proceedings relating to bankruptcy, whether voluntary or involuntary, government information in its possession under and/or control will not be considered property of the Contractor, and the Contractor shall not have any right to claim such information as property of the Contractor. (b) The Contractor agrees to make for filing bankruptcy, and Contractor further agrees to turn over to the State, before such filing, all government information that is in Contractor's possession in a format that can be readily utilized by the State. (c) In order to protect the integrity and availability of government information, Contractor shall take reasonable measures to evaluate and monitor the financial circumstances of any subcontractor that will process, store, transmit or access government information. [07-7B007-1]</p>
+</div>
+<div class="page">
+  <p>OFFICES (JAN 2006): In the event of a contract modification, by a written order, at any time, and without notice to any surety, the Procurement Officer shall be authorized to make appropriate adjustments, make changes within the general scope of this contract in any one or more of the following: (a) drawings, design specifications, or other technical data; (b) quantities of goods or services; (c) delivery dates; (d) payment schedules; (e) time accordance therewith; (b) method of shipment or packing; (c) place of delivery; (d) description of services to be performed; (e) time</p>
+  <p>Page 9</p>
+</div>
+<div class="page">
+  <p>of performance (i.e., hours of the day, days of the week, etc.); (f) place of performance of the services. Subparagraphs (a) to (c) apply only if supplies are furnished under this contract. Subparagraphs (d) to (f) apply only if services are performed under this contract. Adjustments of Price or Time for Performance. If any such change increases or decreases the contractor's cost, or of the time required for performance of any part of the work under this contract, whether or not changed by the order, an adjustment in price or time shall be made. The contractor shall submit a written proposal for the adjustment within thirty (30) days after receipt of the change order. Any adjustment in contract price made pursuant to this clause shall be determined in accordance with the Price Adjustment Clause of this Contract. Failure of the parties to agree to an adjustment shall not excuse the contractor from proceeding with the contract as changed.</p>
+  <p>CISG (JAN 2006): The parties expressly give notice that the State's obligations under the CISG shall not apply to this agreement. [07-7B030-1]</p>
+  <p>COMPLIANCE WITH LAWS (JAN 2006): During the term of the contract, contractor shall comply with all applicable provisions of laws, codes, ordinances, rules, regulations, and tariffs. [07-7B035-1]</p>
+</div>
+<div class="page">
+  <p>CONTRACT DOCUMENTS & ORDER OF PRECEDENCE - SOFTWARE LICENSING-SINGLE AGENCY (FEB 2015): Notwithstanding the clause entitled "Contract Documents & Order of Precedence," but as provided in the clause titled "Software Licensing - Single Agency," any contract awarded pursuant to this solicitation shall not include a software licensing agreement. Further, the document titled "Software Licensing - Single Agency," which is attached hereto as an exhibit, is offered as information only and does not form part of the contract. [07-7B042-1]</p>
+  <p>CONTRACT LAW (JAN 2006): No sales may be made pursuant to this contract for any item or service that is not expressly listed. No sales may be made pursuant to this contract after expiration of this contract. Violation of this provision may result in termination of this contract and may subject contractor to suspension or debarment. [07-7B045-1]</p>
+  <p>CONTRACTOR'S LIABILITY INSURANCE - GENERAL (FEB 2015): (a) Without limiting any of the obligations or liabilities of Contractor, Contractor shall procure from a company or companies lawfully authorized to do business in South Carolina and with a minimum limit of liability of not less than $1,000,000.00 per occurrence, including coverage for bodily injury, property damage, and contractual liability. (b) Contractor shall maintain insurance coverage for all risks of the work and the results of that work by the contractor, his agents, representatives, employees or subcontractors. (c) Coverage shall be at least as broad as (1) Commercial General Liability (CGL) Insurance (Office File No. 00 Form CC 01 72 covering CGL on an "occurrence" basis, including coverage for bodily injury, property damage, and contractual liability; (2) Workers' Compensation Insurance (Office File No. 00 Form CC 01 72 covering Workers' Compensation; and (3) Automobile Liability Insurance with minimum limits of not less than $1,000,000.00 per accident for bodily injury or death. (d) Contractor shall provide proof of insurance to the State upon request. The State reserves the right to require additional insurance coverage, including, but not limited to, professional liability, environmental liability, and other insurance, at the State's sole discretion. The State reserves the right to require Contractor to maintain insurance coverage with specific carriers and endorsements acceptable to the State. [07-7B052-1]</p>
+</div>
+<div class="page">
+  <p>OFFSHORE CONTRACTING PROHIBITED (FEB 2015): No part of the resulting contract from this solicitation may be performed by any person or entity located outside of the United States or by means, methods, or communications that, in whole or in part, take place offshore of the United States. [07-7B121-1]</p>
+  <p>OWNERSHIP OF DATA & MATERIALS (JAN 2006): All data, material and documentation prepared for the state pursuant to this contract shall belong exclusively to the State. [07-7B125-1]</p>
+  <p>PRICE ADJUSTMENTS (JAN 2006): (1) Method of Adjustment. Any adjustment in the contract price made pursuant to a clause in this contract shall be consistent with this Contract and shall be arrived at through whichever one of the following ways is the most appropriate: (a) by unit prices specified in the contract; (b) by a fixed price; (c) by a cost-plus formula; or (d) by a negotiated price. (2) Adjustment Period. Any adjustment to the contract price shall be made within thirty (30) days after the event or situation covered by the relevant clause, including profit if otherwise allowed, all as specified in the Contract; or subsequently agreed upon; (d) by costs attributable to the event or situation covered by the relevant clause, including overhead and profit, as specified in the Contract. (3) Adjustment Procedure. The contractor shall submit a written proposal for the adjustment within thirty (30) days after the event or situation covered by the relevant clause, including profit if otherwise allowed, all as specified in the Contract. The Procurement Officer shall have the sole discretion to evaluate and approve or reject the contractor's proposal. The State reserves the right to require the contractor to submit additional information to substantiate the price or cost offered, for any price adjustment, as deemed reasonable. [07-7B160-1]</p>
+  <p>PRINTING MANUAL (JAN 2006): The South Carolina Government Printing Services manual, dated January 1, 1998, governs both the procurement and any resulting contract and is hereby incorporated by reference. You are responsible for obtaining a copy of the manual. This manual is available at www.procurement.sc.gov. [07-7B190-1]</p>
+  <p>Page 12</p>
+</div>
+<div class="page">
+  <p>RELATIONSHIP OF THE PARTIES (JAN 2006): Neither party is an employee, agent, partner, or joint venturer of the other. Neither party has the right or ability to bind the other to any agreement with a third party or to incur any obligation or liability on behalf of the other party. [07-7B205-1]</p>
+  <p>SHIPPING / RISK OF LOSS (JAN 2006): F.O.B. Destination. Destination is the shipping dock of the Using Governmental Unit's designated receiving site, or other location, as specified herein. (See Delivery Clause) [07-7B220-1]</p>
+  <p>TERMINATION FOR CONVENIENCE - INDEFINITE DELIVERY / INDEFINITE QUANTITY CONTRACTS (JAN 2006): Unless the termination so provided, a termination for convenience shall not operate to terminate any purchase orders issued prior to the effective date of termination. [07-7B255-1]</p>
+  <p>TERMINATION FOR CONVENIENCE - SHORT FORM (JAN 2006): The Procurement Officer may terminate this contract in whole or in part, for the convenience of the State. In such a termination, the Procurement Officer may require the contractor to transfer title of all goods or services furnished under this contract to the State, and the contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit. The contractor shall be entitled to payment for all goods or services furnished, and for all work performed, up to the date of termination, provided that the contractor shall submit within three (3) days after receipt of a written notice of termination a detailed statement of all goods or services furnished and all work performed, including the cost of labor, materials, overhead, and profit.</p>
+  <p>Page 13</p>
+</div>
+<div class="page">
+  <p>VII. MISCELLANEOUS CLAUSES</p>
+  <p>All amendments to and interpretation of this RFQ shall be in writing. The procurement officer shall not be legally bound by any amendment or interpretation that is not in writing.</p>
+  <p>Quoted prices must remain firm for a period of thirty (30) days beyond the Request for Quotation deadline.</p>
+  <p>The State reserves the right to reject any and all quotations, or any portion thereof, if the State determines that the quotation is not in compliance with the requirements of this RFQ, or if the State determines that the quotation is not in compliance with the requirements of this RFQ. The State reserves the right to reject any and all quotations, or any portion thereof, if the State determines that the quotation is not in compliance with the requirements of this RFQ. The State reserves the right to reject any and all quotations, or any portion thereof, if the State determines that the quotation is not in compliance with the requirements of this RFQ.</p>
+  <p>Any contract entered into by Francis Marion University resulting from this quotation shall be subject to cancellation at the end of any fiscal or appropriated year unless otherwise provided by law.</p>
+  <p>Page 14</p>
+</div>
+<div class="page">
+  <p>ATTACHMENT #1</p>
+  <h3 style="text-align: center;">VENDOR APPLICATION</h3>
+  <p style="text-align: center;">Francis Marion University</p>
+  <p style="text-align: center;">Vendor Application Form</p>
+  <p style="text-align: right; font-size: 0.9em;">This information to be completed by FMU:</p>
+  <p>FMU Vendor #: <span data-field="fmu_vendor_number">{{ fmu_vendor_number }}</span></p>
+  <p>New Vendor: <span data-field="new_vendor_name">{{ new_vendor_name }}</span></p>
+  <p>Vendor Info Change: <span data-field="vendor_info_change">{{ vendor_info_change }}</span></p>
+  <p>Submit your W-9 form WITH this Vendor Application Form</p>
+  <p>Company Name or Individual Name (as shown on your income tax return): <span data-field="company_name">{{ company_name }}</span></p>
+  <p>Address: <span data-field="address">{{ address }}</span></p>
+  <p>City: <span data-field="city">{{ city }}</span> State: <span data-field="state">{{ state }}</span> Zip Code: <span data-field="zip_code">{{ zip_code }}</span></p>
+  <p>Contact Name: <span data-field="contact_name">{{ contact_name }}</span> Contact E-mail Address: <span data-field="contact_email">{{ contact_email }}</span></p>
+  <p>This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p>If you have a "Doing Business As" name, please include here: <span data-field="dba_name">{{ dba_name }}</span></p>
+  <p>Doing Business As (DBA) Name: <span data-field="dba_name_2">{{ dba_name_2 }}</span></p>
+  <p>Address: <span data-field="address_2">{{ address_2 }}</span></p>
+  <p>City: <span data-field="city_2">{{ city_2 }}</span> State: <span data-field="state_2">{{ state_2 }}</span> Zip Code: <span data-field="zip_code_2">{{ zip_code_2 }}</span></p>
+  <p>This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p>Payment Remittance Address: <span data-field="payment_address">{{ payment_address }}</span></p>
+  <p>City: <span data-field="payment_city">{{ payment_city }}</span> State: <span data-field="payment_state">{{ payment_state }}</span> Zip Code: <span data-field="payment_zip_code">{{ payment_zip_code }}</span></p>
+  <p>Contact Name: <span data-field="payment_contact_name">{{ payment_contact_name }}</span> Contact E-mail Address: <span data-field="payment_contact_email">{{ payment_contact_email }}</span></p>
+  <p>This is also my address where Purchase orders should be sent (circle) Yes or No</p>
+  <p>E-mail Address for receiving Purchase Orders from FMU: <span data-field="fmu_email_address">{{ fmu_email_address }}</span></p>
+  <p>Would you like to arrange for electronic payment (circle): Yes or No</p>
+  <p>South Carolina Small and Minority Business Certification Number: <span data-field="sc_smb_number">{{ sc_smb_number }}</span> Expiration Date: <span data-field="sc_smb_expiration_date">{{ sc_smb_expiration_date }}</span></p>
+  <p>Signature of Individual Completing Form _________________________ Date: <span data-field="signature_date">{{ signature_date }}</span></p>
+  <p>For FMU Use Only:</p>
+  <p>International Vendor Number (FMU will provide): <span data-field="international_vendor_number">{{ international_vendor_number }}</span></p>
+  <p>Purchasing Keyed by: <span data-field="purchasing_keyed_by">{{ purchasing_keyed_by }}</span> Date: <span data-field="purchasing_date">{{ purchasing_date }}</span> Accounting Reviewed by: <span data-field="accounting_reviewed_by">{{ accounting_reviewed_by }}</span> Date: <span data-field="accounting_date">{{ accounting_date }}</span></p>
+  <p>Orig - April 4, 2017</p>
+  <p>Page 15</p>
+</div>
+<div class="page">
+  <p>ATTACHMENT #2</p>
+  <h3 style="text-align: center;">OPEN TRADE REPRESENTATION FORM</h3>
+  <p>(S.C. Code Ann. §§ 11-35-5300)</p>
+  <p>The following representation, which is required by Section 11-35-5300(A), is a material inducement for the State to award a contract to you.</p>
+  <p>I, the official named below, certify I am duly authorized to execute this certification on behalf of the vendor identified below, and, as of the date of my signature, the vendor identified below is not currently engaged in the boycott of a person or an entity based in or doing business with a jurisdiction with whom South Carolina can enjoy open trade, as defined in SC Code Section 11-35-5300.</p>
+  <p>Vendor Name (Printed): <span data-field="vendor_name_printed">{{ vendor_name_printed }}</span> State Vendor No.: <span data-field="state_vendor_no">{{ state_vendor_no }}</span></p>
+  <p>By (Authorized Signature) _________________________ Date Executed: <span data-field="date_executed">{{ date_executed }}</span></p>
+  <p>Printed Name and Title of Person Signing <span data-field="signer_name_title">{{ signer_name_title }}</span> [Not used]</p>
+  <p>Page 16</p>
+</div>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 5px;
+    text-align: left;
+  }
+  .signature-line {
+    border-top: 1px solid black;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+</style>
+
+<div class="page">
+  <h1 style="text-align: center; font-size: 18pt; margin-bottom: 10px;">ATTACHMENT #3</h1>
+  <h2 style="text-align: center; font-size: 14pt; margin-top: 0;">STATE OF S.C. PRINTING SPECIFICATION SHEET</h2>
+  <p style="font-size: 10pt; margin-bottom: 20px;">The S.C. Government Printing Services Manual (1-1-90) shall be made a part of all Printing Procurement by reference. MARK THE BOXES AND FILL IN THE BLANKS THAT ARE APPLICABLE. SEE ATTACHED SPECIFICATIONS.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">VENDOR: <span data-field="vendor_name">{{ vendor_name }}</span></td>
+      <td style="width: 30%;">AGENCY: <span data-field="agency_name">{{ agency_name }}</span></td>
+      <td style="width: 40%;">PHONE NUMBER: <span data-field="phone_number">{{ phone_number }}</span></td>
+    </tr>
+    <tr>
+      <td>CONTRACT: <span data-field="contract_number">{{ contract_number }}</span></td>
+      <td>DATE: <span data-field="date">{{ date }}</span></td>
+      <td>PAGE: <span data-field="page_number">{{ page_number }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">AUTHORIZED SIGNATURE</h3>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">
+      <div class="signature-line" data-field="authorized_signature_2">{{ authorized_signature_2 }}</div>
+      <p style="text-align: center; margin-top: 10px; font-size: 10pt;">Authorized Signature</p>
+    </div>
+    <div style="width: 45%;">
+      <div class="signature-line" data-field="authorized_signature_3">{{ authorized_signature_3 }}</div>
+      <p style="text-align: center; margin-top: 10px; font-size: 10pt;">Acceptance</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 40px;">SPECIFICATIONS</h3>
+
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">INK:</td>
+      <td style="width: 10%;">Text:</td>
+      <td style="width: 10%;">Color:</td>
+      <td style="width: 10%;">Color:</td>
+      <td style="width: 10%;">Color:</td>
+      <td style="width: 10%;">Color:</td>
+      <td style="width: 30%;">Other:</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="checkbox"> 1 Color</td>
+      <td><input type="checkbox"> 2 Color</td>
+      <td><input type="checkbox"> 3 Color</td>
+      <td><input type="checkbox"> 4 Color Process</td>
+      <td><input type="checkbox"> Blends (No_</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="checkbox"> 1 Color</td>
+      <td><input type="checkbox"> 2 Color</td>
+      <td><input type="checkbox"> 3 Color</td>
+      <td><input type="checkbox"> 4 Color Process</td>
+      <td><input type="checkbox"> Blends (No_</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="checkbox"> 1 Color</td>
+      <td><input type="checkbox"> 2 Color</td>
+      <td><input type="checkbox"> 3 Color</td>
+      <td><input type="checkbox"> 4 Color Process</td>
+      <td><input type="checkbox"> Blends (No_</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">COVERAGE</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 20%;">Covers 1 & 4 (Front & Back):</td>
+      <td><input type="checkbox"> 1 Color</td>
+      <td><input type="checkbox"> 2 Color</td>
+      <td><input type="checkbox"> 3 Color</td>
+      <td><input type="checkbox"> 4 Color Process</td>
+      <td><input type="checkbox"> Blends (No_</td>
+    </tr>
+    <tr>
+      <td style="width: 20%;">Covers 2 & 3 (Inside Back):</td>
+      <td><input type="checkbox"> 1 Color</td>
+      <td><input type="checkbox"> 2 Color</td>
+      <td><input type="checkbox"> 3 Color</td>
+      <td><input type="checkbox"> 4 Color Process</td>
+      <td><input type="checkbox"> Blends (No_</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">MECHANICAL</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Electronic:</td>
+      <td><input type="checkbox"> Transmission</td>
+      <td><input type="checkbox"> Modem</td>
+      <td><input type="checkbox"> E-mail</td>
+      <td><input type="checkbox"> Other:</td>
+      <td><input type="checkbox"> ftp upload</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Media Format:</td>
+      <td><input type="checkbox"> IBM Comp.</td>
+      <td><input type="checkbox"> Macintosh</td>
+      <td><input type="checkbox"> Other:</td>
+      <td><input type="checkbox"> File Copied to Media</td>
+      <td><input type="checkbox"> File Printed to Media</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Media Type:</td>
+      <td><input type="checkbox"> 3.5" Floppy</td>
+      <td><input type="checkbox"> 44/820/0/70</td>
+      <td><input type="checkbox"> Syquest</td>
+      <td><input type="checkbox"> E31 Suggest</td>
+      <td><input type="checkbox"> 3.5" Magneto Optical</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Other:</td>
+      <td><input type="checkbox"> ftp upload</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">LAYOUT</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Layout Program:</td>
+      <td><input type="checkbox"> Quark Express (Vers. <span data-field="quark_version">{{ quark_version }}</span>)</td>
+      <td><input type="checkbox"> PageMaker (Vers. <span data-field="pagemaker_version">{{ pagemaker_version }}</span>)</td>
+      <td><input type="checkbox"> Other:</td>
+      <td><input type="checkbox"> InDesign CS6</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Graphics Program:</td>
+      <td><input type="checkbox"> Illustrator (Vers. <span data-field="illustrator_version">{{ illustrator_version }}</span>)</td>
+      <td><input type="checkbox"> Freehand (Vers. <span data-field="freehand_version">{{ freehand_version }}</span>)</td>
+      <td><input type="checkbox"> Photoshop (Vers. <span data-field="photoshop_version">{{ photoshop_version }}</span>)</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Typeset provided by:</td>
+      <td><input type="checkbox"> Vendor</td>
+      <td><input type="checkbox"> Agency</td>
+      <td><input type="checkbox"> Typeface</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Color Separating by:</td>
+      <td><input type="checkbox"> Vendor</td>
+      <td><input type="checkbox"> Agency</td>
+      <td><input type="checkbox"> Color Tracing by:</td>
+      <td><input type="checkbox"> Vendor</td>
+      <td><input type="checkbox"> Agency</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">PRINTER</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Printer:</td>
+      <td><input type="checkbox"> PostScript</td>
+      <td><input type="checkbox"> PCL</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">IMAGING</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Imaging Resolution Required:</td>
+      <td><input type="checkbox"> 600 dpi</td>
+      <td><input type="checkbox"> 1200 dpi</td>
+      <td><input type="checkbox"> 2400 dpi</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">B&W Scans:</td>
+      <td><input type="checkbox"> Line Screen Required:</td>
+      <td><input type="checkbox"> Scan Resolution Required:</td>
+      <td><input type="checkbox"> Size:</td>
+      <td><input type="checkbox"> (No_</td>
+      <td><input type="checkbox"> Size:</td>
+      <td><input type="checkbox"> (No_</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">FOUR-COLOR SCANS:</td>
+      <td><input type="checkbox"> Line Screen Required:</td>
+      <td><input type="checkbox"> Scan Resolution Required:</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">SEPARATIONS</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Provided by:</td>
+      <td><input type="checkbox"> Printer</td>
+      <td><input type="checkbox"> Agency</td>
+      <td><input type="checkbox"> Min. size(No_</td>
+      <td><input type="checkbox"> % Page (No_</td>
+      <td><input type="checkbox"> Full Page (No_</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Agency will provide:</td>
+      <td><input type="checkbox"> Transparency</td>
+      <td><input type="checkbox"> Print</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Type of proof:</td>
+      <td><input type="checkbox"> Match Print</td>
+      <td><input type="checkbox"> Dye Sublimation</td>
+      <td><input type="checkbox"> Other:</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">PROOFS</h3>
+  <table style="margin-top: 20px;">
+    <tr>
+      <td style="width: 10%;">Folding:</td>
+      <td><input type="checkbox"> Yes (No_</td>
+      <td><input type="checkbox"> No_</td>
+      <td><input type="checkbox"> Special Applications:</td>
+      <td><input type="checkbox"> Die Cut</td>
+      <td><input type="checkbox"> Scoring</td>
+      <td><input type="checkbox"> Perforations (No_</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Binding:</td>
+      <td><input type="checkbox"> Saddle Stitch</td>
+      <td><input type="checkbox"> Perfect Bind</td>
+      <td><input type="checkbox"> Side Staple</td>
+      <td><input type="checkbox"> 3 Hole Drill</td>
+    </tr>
+    <tr>
+      <td style="width: 10%;">Packaging:</td>
+      <td><input type="checkbox"> Plastic Bind (Color</td>
+      <td><input type="checkbox"> Wire Bind</td>
+      <td><input type="checkbox"> Other:</td>
+      <td><input type="checkbox"> 300 spiral, black coil</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">DELIVERY</h3>
+  <p style="font-size: 10pt; margin-bottom: 10px;">PACKAGING: <span data-field="packaging_details">{{ packaging_details }}</span> per box - boxes must be labeled</p>
+  <p style="font-size: 10pt; margin-bottom: 10px;">COPY READY DATE: <span data-field="copy_ready_date">{{ copy_ready_date }}</span> - FMU will have 7 calendar days to review Blue Line draft from vendor.</p>
+  <p style="font-size: 10pt; margin-bottom: 10px;">DELIVERY DATE REQUIRED: <span data-field="delivery_date">{{ delivery_date }}</span> - Approx. June 17th (or 21 calendar days from receipt of Blue Line Draft/approved proof).</p>
+  <p style="font-size: 10pt; margin-bottom: 20px;">Inside Delivery: <span data-field="inside_delivery_details">{{ inside_delivery_details }}</span></p>
+  <p style="font-size: 10pt; margin-bottom: 20px;">ALL COPY, PROOFS, ETC. MUST BE RECEIVED AND DELIVERED IN PERSON BY CONTRACTOR REPRESENTATIVE WHO IS KNOWNLEGABLE AND CAPABLE OF DISCUSSING THE CONTRACT.</p>
+</div></body>
+</html>

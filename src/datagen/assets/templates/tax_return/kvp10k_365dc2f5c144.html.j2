@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form 990-PF Template</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        td { padding: 4px 8px; text-align: left; }
+        .header-row td { font-weight: bold; }
+        .form-label { font-weight: normal; }
+    </style>
+
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        td, th { padding: 8px 0; text-align: left; }
+        .header { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+        <div>
+            <h1 style="font-size: 24pt; margin: 0;">Form 990-PF</h1>
+            <p style="font-size: 10pt; margin-top: 5px;">Department of the Treasury</p>
+            <p style="font-size: 10pt;">Internal Revenue Service</p>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 14pt; font-weight: bold;">OMB No. 1545-0052</div>
+            <div style="font-size: 14pt; font-weight: bold;">1996</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <p style="font-size: 12pt;">For calendar year <span data-field="tax_year">{{ tax_year }}</span>, or tax year beginning <span data-field="tax_year_start">{{ tax_year_start }}</span>.</p>
+        <p style="font-size: 12pt;">Note: The organization may be able to use a copy of this return to satisfy state reporting requirements.</p>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <div style="width: 48%;">
+            <p style="font-size: 12pt;">Use the IRS <span data-field="instructions_ref">{{ instructions_ref }}</span>.</p>
+            <p style="font-size: 12pt;">Otherwise, please print <span data-field="instructions_ref_2">{{ instructions_ref_2 }}</span>.</p>
+            <p style="font-size: 12pt;">See Specific <span data-field="instructions_ref_3">{{ instructions_ref_3 }}</span>.</p>
+        </div>
+        <div style="width: 48%;">
+            <p style="font-size: 12pt;">A Employer identification number</p>
+            <p style="font-size: 12pt;">Number and street (or P.O. box number if mail is not delivered to street address)</p>
+            <p style="font-size: 12pt;">Room/suite</p>
+            <p style="font-size: 12pt;">B State registration number (see Instruction F)</p>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <p style="font-size: 12pt;">C If exemption application is pending, check here <span data-field="exemption_pending_check">{{ exemption_pending_check }}</span></p>
+        <p style="font-size: 12pt;">D Foreign organizations, check here <span data-field="foreign_org_check">{{ foreign_org_check }}</span></p>
+        <p style="font-size: 12pt;">E If private foundation status was terminated, check here <span data-field="terminated_check">{{ terminated_check }}</span></p>
+        <p style="font-size: 12pt;">F If the foundation is in a 60-month termination period, check here <span data-field="termination_period_check">{{ termination_period_check }}</span></p>
+        <p style="font-size: 12pt;">G If address changed, check here <span data-field="address_changed_check">{{ address_changed_check }}</span></p>
+    </div>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part I Analysis of Revenue and Expenses (The total of amounts in columns (b), (c), and (d) may not necessarily equal the amounts in column (a) (see page 8 of the instructions)).</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Revenue</td>
+                <td style="width: 15%;">a) Revenue and other support</td>
+                <td style="width: 15%;">b) Net investment income</td>
+                <td style="width: 25%;">c) Adjusted net income</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Contributions, gifts, grants, etc., received (attach schedule)</td>
+                <td><span data-field="revenue_contributions">{{ revenue_contributions }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Contributions from split-interest trusts</td>
+                <td><span data-field="revenue_split_interest">{{ revenue_split_interest }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Interest on savings and temporary cash investments</td>
+                <td><span data-field="revenue_interest">{{ revenue_interest }}</span></td>
+                <td><span data-field="revenue_net_investment_income">{{ revenue_net_investment_income }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Dividends and interest from securities</td>
+                <td><span data-field="revenue_dividends">{{ revenue_dividends }}</span></td>
+                <td><span data-field="revenue_dividends_net_investment_income">{{ revenue_dividends_net_investment_income }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Gross rents</td>
+                <td><span data-field="revenue_gross_rents">{{ revenue_gross_rents }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Net rental income or (loss)</td>
+                <td><span data-field="revenue_net_rental">{{ revenue_net_rental }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Net gain or (loss) from sale of assets not on line 10</td>
+                <td><span data-field="revenue_gain_loss_sale">{{ revenue_gain_loss_sale }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Capital gain net income (from Part IV, line 2)</td>
+                <td><span data-field="revenue_capital_gain">{{ revenue_capital_gain }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Income modifications</td>
+                <td><span data-field="revenue_income_modifications">{{ revenue_income_modifications }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Losses from less returns and allowances</td>
+                <td><span data-field="revenue_losses_returns">{{ revenue_losses_returns }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>Less: Cost of goods sold</td>
+                <td><span data-field="revenue_cogs">{{ revenue_cogs }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>Gross profit or (loss) (attach schedule)</td>
+                <td><span data-field="revenue_gross_profit">{{ revenue_gross_profit }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Other income (attach schedule)</td>
+                <td><span data-field="revenue_other_income">{{ revenue_other_income }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Total (add lines 1 through 11).</td>
+                <td><span data-field="revenue_total">{{ revenue_total }}</span></td>
+                <td><span data-field="total_net_investment_income">{{ total_net_investment_income }}</span></td>
+                <td><span data-field="total_adjusted_net_income">{{ total_adjusted_net_income }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Operating and Administrative Expenses</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">13</td>
+                <td style="width: 35%;">Operating and Administrative Expenses</td>
+                <td style="width: 15%;">a) Salaries and wages</td>
+                <td style="width: 15%;">b) Other operating expenses</td>
+                <td style="width: 25%;">c) Total operating expenses</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>13</td>
+                <td>Compensation of officers, directors, trustees, etc.</td>
+                <td><span data-field="expense_officer_comp">{{ expense_officer_comp }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Other employee salaries and wages</td>
+                <td><span data-field="expense_employee_salaries">{{ expense_employee_salaries }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Pension plans, employee benefits</td>
+                <td><span data-field="expense_pension">{{ expense_pension }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>16a</td>
+                <td>Legal fees (attach schedule)</td>
+                <td><span data-field="expense_legal_fees">{{ expense_legal_fees }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>16b</td>
+                <td>Accounting fees (attach schedule)</td>
+                <td><span data-field="expense_accounting_fees">{{ expense_accounting_fees }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Other professional fees (attach schedule)</td>
+                <td><span data-field="expense_other_professional">{{ expense_other_professional }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Interest</td>
+                <td><span data-field="expense_interest">{{ expense_interest }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Taxes (attach schedule) (see page 11 of the instructions)</td>
+                <td><span data-field="expense_taxes">{{ expense_taxes }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Depreciation (attach schedule) and depletion</td>
+                <td><span data-field="expense_depreciation">{{ expense_depreciation }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Occupancy</td>
+                <td><span data-field="expense_occupancy">{{ expense_occupancy }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>Travel, conferences, and meetings</td>
+                <td><span data-field="expense_travel">{{ expense_travel }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>Printing and publications</td>
+                <td><span data-field="expense_printing">{{ expense_printing }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>Other expenses (attach schedule)</td>
+                <td><span data-field="expense_other">{{ expense_other }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>Total operating and administrative expenses (add lines 13 through 24)</td>
+                <td><span data-field="total_operating_expenses">{{ total_operating_expenses }}</span></td>
+                <td></td>
+                <td><span data-field="total_operating_expenses_sum">{{ total_operating_expenses_sum }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Operating, Gifts, Grants, and Disbursements</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">26</td>
+                <td style="width: 35%;">Total expenses and disbursements (add lines 24 and 25)</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>27a</td>
+                <td>Excess of revenue over expenses and disbursements (line 12 minus line 26)</td>
+                <td><span data-field="excess_revenue_expenses">{{ excess_revenue_expenses }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>Net investment income (if negative, enter -0-)</td>
+                <td><span data-field="net_investment_income_negative">{{ net_investment_income_negative }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>Adjusted net income (if negative, enter -0-)</td>
+                <td><span data-field="adjusted_net_income_negative">{{ adjusted_net_income_negative }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part II Balance Sheets</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Cash—non-interest-bearing</td>
+                <td style="width: 15%;">a) Book Value</td>
+                <td style="width: 15%;">b) Fair Market Value</td>
+                <td style="width: 25%;">c) Fair Market Value</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>Savings and temporary cash investments</td>
+                <td><span data-field="asset_savings_book">{{ asset_savings_book }}</span></td>
+                <td><span data-field="asset_savings_fmv">{{ asset_savings_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Accounts receivable</td>
+                <td><span data-field="asset_receivable_book">{{ asset_receivable_book }}</span></td>
+                <td><span data-field="asset_receivable_fmv">{{ asset_receivable_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Less: allowance for doubtful accounts</td>
+                <td><span data-field="asset_allowance_doubtful">{{ asset_allowance_doubtful }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Pledges receivable</td>
+                <td><span data-field="asset_pledge_receivable">{{ asset_pledge_receivable }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Less: allowance for doubtful accounts</td>
+                <td><span data-field="asset_allowance_pledge">{{ asset_allowance_pledge }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Grants receivable</td>
+                <td><span data-field="asset_grants_receivable">{{ asset_grants_receivable }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Investments</td>
+                <td><span data-field="asset_investments_book">{{ asset_investments_book }}</span></td>
+                <td><span data-field="asset_investments_fmv">{{ asset_investments_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Other notes and loans receivable (attach schedule)</td>
+                <td><span data-field="asset_other_notes_book">{{ asset_other_notes_book }}</span></td>
+                <td><span data-field="asset_other_notes_fmv">{{ asset_other_notes_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Less: allowance for doubtful accounts</td>
+                <td><span data-field="asset_allowance_other_notes">{{ asset_allowance_other_notes }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Inventories for sale or use</td>
+                <td><span data-field="asset_inventories_book">{{ asset_inventories_book }}</span></td>
+                <td><span data-field="asset_inventories_fmv">{{ asset_inventories_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Investments—US and state government obligations (attach schedule)</td>
+                <td><span data-field="asset_us_gov_obligations_book">{{ asset_us_gov_obligations_book }}</span></td>
+                <td><span data-field="asset_us_gov_obligations_fmv">{{ asset_us_gov_obligations_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Investments—corporate stock (attach schedule)</td>
+                <td><span data-field="asset_corp_stock_book">{{ asset_corp_stock_book }}</span></td>
+                <td><span data-field="asset_corp_stock_fmv">{{ asset_corp_stock_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Investments—non-corporate bonds (attach schedule)</td>
+                <td><span data-field="asset_non_corp_bonds_book">{{ asset_non_corp_bonds_book }}</span></td>
+                <td><span data-field="asset_non_corp_bonds_fmv">{{ asset_non_corp_bonds_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Investments—land, buildings, and equipment (basis)</td>
+                <td><span data-field="asset_land_buildings_equipment_basis">{{ asset_land_buildings_equipment_basis }}</span></td>
+                <td><span data-field="asset_land_buildings_equipment_fmv">{{ asset_land_buildings_equipment_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Less: accumulated depreciation (attach schedule)</td>
+                <td><span data-field="asset_accumulated_depreciation">{{ asset_accumulated_depreciation }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Investments—other (attach schedule)</td>
+                <td><span data-field="asset_other_investments_book">{{ asset_other_investments_book }}</span></td>
+                <td><span data-field="asset_other_investments_fmv">{{ asset_other_investments_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Total assets (to be completed by all filers—see page 13 of the instructions).</td>
+                <td><span data-field="total_assets_book">{{ total_assets_book }}</span></td>
+                <td><span data-field="total_assets_fmv">{{ total_assets_fmv }}</span></td>
+                <td></td>
+            </tr>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Liabilities</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">19</td>
+                <td style="width: 35%;">Accounts payable and accrued expenses</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>20</td>
+                <td>Grants payable</td>
+                <td><span data-field="liability_grants_payable">{{ liability_grants_payable }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Loans from officers, directors, trustees, and other disqualified persons</td>
+                <td><span data-field="liability_loans_disqualified">{{ liability_loans_disqualified }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>Mortgages and other notes payable (attach schedule)</td>
+                <td><span data-field="liability_mortgages_notes">{{ liability_mortgages_notes }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>Other liabilities (describe)</td>
+                <td><span data-field="liability_other">{{ liability_other }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>Total liabilities (add lines 17 through 22).</td>
+                <td><span data-field="total_liabilities">{{ total_liabilities }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Net Assets</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">25</td>
+                <td style="width: 35%;">Net Assets</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>26</td>
+                <td>Net assets (Total Assets minus Total Liabilities)</td>
+                <td><span data-field="net_assets_book">{{ net_assets_book }}</span></td>
+                <td><span data-field="net_assets_fmv">{{ net_assets_fmv }}</span></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part III Analysis of Changes in Net Assets or Fund Balances</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Total net assets or fund balances at beginning of year—Part II, column (a), line 30, (must agree with end-of-year figure reported on prior year's return)</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>Enter amount from Part I, line 27a.</td>
+                <td><span data-field="change_from_part_i_27a">{{ change_from_part_i_27a }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Other increases not included in line 2 (itemize)</td>
+                <td><span data-field="change_other_increases">{{ change_other_increases }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Add lines 1, 2, and 3.</td>
+                <td><span data-field="total_increases">{{ total_increases }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Decreases not included in line 2 (itemize)</td>
+                <td><span data-field="change_other_decreases">{{ change_other_decreases }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Total net assets or fund balances at end of year (line 4 minus line 5)—Part II, column (b), line 30.</td>
+                <td><span data-field="total_net_assets_end_year">{{ total_net_assets_end_year }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part IV Capital Gains and Losses for Tax on Investment Income</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1a</td>
+                <td style="width: 35%;">Description of property sold (e.g., real estate, 2-story brick warehouse, or common stock, 200 shs. MLC Co.)</td>
+                <td style="width: 15%;">b) How acquired</td>
+                <td style="width: 15%;">c) Date acquired</td>
+                <td style="width: 25%;">d) Date sold</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td><span data-field="capital_gain_description_a">{{ capital_gain_description_a }}</span></td>
+                <td><span data-field="capital_gain_acquired_b">{{ capital_gain_acquired_b }}</span></td>
+                <td><span data-field="capital_gain_date_acquired_c">{{ capital_gain_date_acquired_c }}</span></td>
+                <td><span data-field="capital_gain_date_sold_d">{{ capital_gain_date_sold_d }}</span></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td><span data-field="capital_gain_description_b">{{ capital_gain_description_b }}</span></td>
+                <td><span data-field="capital_gain_acquired_b_2">{{ capital_gain_acquired_b_2 }}</span></td>
+                <td><span data-field="capital_gain_date_acquired_c_2">{{ capital_gain_date_acquired_c_2 }}</span></td>
+                <td><span data-field="capital_gain_date_sold_d_2">{{ capital_gain_date_sold_d_2 }}</span></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td><span data-field="capital_gain_description_c">{{ capital_gain_description_c }}</span></td>
+                <td><span data-field="capital_gain_acquired_b_3">{{ capital_gain_acquired_b_3 }}</span></td>
+                <td><span data-field="capital_gain_date_acquired_c_3">{{ capital_gain_date_acquired_c_3 }}</span></td>
+                <td><span data-field="capital_gain_date_sold_d_3">{{ capital_gain_date_sold_d_3 }}</span></td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td><span data-field="capital_gain_description_d">{{ capital_gain_description_d }}</span></td>
+                <td><span data-field="capital_gain_acquired_b_4">{{ capital_gain_acquired_b_4 }}</span></td>
+                <td><span data-field="capital_gain_date_acquired_c_4">{{ capital_gain_date_acquired_c_4 }}</span></td>
+                <td><span data-field="capital_gain_date_sold_d_4">{{ capital_gain_date_sold_d_4 }}</span></td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td><span data-field="capital_gain_description_e">{{ capital_gain_description_e }}</span></td>
+                <td><span data-field="capital_gain_acquired_b_5">{{ capital_gain_acquired_b_5 }}</span></td>
+                <td><span data-field="capital_gain_date_acquired_c_5">{{ capital_gain_date_acquired_c_5 }}</span></td>
+                <td><span data-field="capital_gain_date_sold_d_5">{{ capital_gain_date_sold_d_5 }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;"></td>
+                <td style="width: 35%;">Complete only for assets showing gain in column (h) and owned by the foundation on 12/31/69</td>
+                <td style="width: 15%;">i) Gains (Col. (h) gain minus Col. (g) loss)</td>
+                <td style="width: 15%;">j) Losses (Col. (g) loss minus Col. (h) gain)</td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td><span data-field="capital_gain_item_a">{{ capital_gain_item_a }}</span></td>
+                <td><span data-field="capital_gain_gain_i_a">{{ capital_gain_gain_i_a }}</span></td>
+                <td><span data-field="capital_gain_loss_j_a">{{ capital_gain_loss_j_a }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td><span data-field="capital_gain_item_b">{{ capital_gain_item_b }}</span></td>
+                <td><span data-field="capital_gain_gain_i_b">{{ capital_gain_gain_i_b }}</span></td>
+                <td><span data-field="capital_gain_loss_j_b">{{ capital_gain_loss_j_b }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td><span data-field="capital_gain_item_c">{{ capital_gain_item_c }}</span></td>
+                <td><span data-field="capital_gain_gain_i_c">{{ capital_gain_gain_i_c }}</span></td>
+                <td><span data-field="capital_gain_loss_j_c">{{ capital_gain_loss_j_c }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td><span data-field="capital_gain_item_d">{{ capital_gain_item_d }}</span></td>
+                <td><span data-field="capital_gain_gain_i_d">{{ capital_gain_gain_i_d }}</span></td>
+                <td><span data-field="capital_gain_loss_j_d">{{ capital_gain_loss_j_d }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td><span data-field="capital_gain_item_e">{{ capital_gain_item_e }}</span></td>
+                <td><span data-field="capital_gain_gain_i_e">{{ capital_gain_gain_i_e }}</span></td>
+                <td><span data-field="capital_gain_loss_j_e">{{ capital_gain_loss_j_e }}</span></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;"></td>
+                <td style="width: 35%;">2 Capital gain net income or (net capital loss).</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td>Net short-term capital gain or (loss) as defined in sections 1222(s) and (6):</td>
+                <td><span data-field="capital_gain_short_term">{{ capital_gain_short_term }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>If gain, also enter in Part I, column (c) (see page 10 and 14 of the instructions).</td>
+                <td><span data-field="capital_gain_short_term_part_i">{{ capital_gain_short_term_part_i }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>If loss, enter -0 in Part I, line 8.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part V Qualification Under Section 4940(e) for Reduced Tax on Net Investment Income</h2>
+
+    <p style="font-size: 12pt;">(For optional use by domestic private foundations subject to the section 4940(e) tax on net investment income.)</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">If section 4940(d)(2) applies, leave this blank.</td>
+                <td style="width: 35%;">Was the organization liable for the section 4940 tax on the distributable amount of any year in the base period? <span data-field="liable_4940_tax">{{ liable_4940_tax }}</span> <span data-field="not_liable_4940_tax">{{ not_liable_4940_tax }}</span></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Enter the appropriate amount in each column for each year; see page 15 of the instructions before making any entries.</td>
+                <td><span data-field="qualifying_distribution_year_1">{{ qualifying_distribution_year_1 }}</span></td>
+                <td><span data-field="qualifying_distribution_year_2">{{ qualifying_distribution_year_2 }}</span></td>
+                <td><span data-field="qualifying_distribution_year_3">{{ qualifying_distribution_year_3 }}</span></td>
+                <td><span data-field="qualifying_distribution_year_4">{{ qualifying_distribution_year_4 }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">2</td>
+                <td style="width: 35%;">Total of line 1, column (d)</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td>Average distribution ratio for the 5-year base period—divide the total on line 2 by 5, or by the number of years the foundation has been in existence if less than 5 years.</td>
+                <td><span data-field="average_distribution_ratio">{{ average_distribution_ratio }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Enter the net value of noncharitable-use assets for 1996 from Part X, line 5.</td>
+                <td><span data-field="net_value_noncharitable_use_assets">{{ net_value_noncharitable_use_assets }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Multiply line 4 by line 3</td>
+                <td><span data-field="multiplied_line_4_by_3">{{ multiplied_line_4_by_3 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Enter 1% of net investment income (1% of Part I, line 27b).</td>
+                <td><span data-field="one_percent_net_investment_income">{{ one_percent_net_investment_income }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Add lines 5 and 6</td>
+                <td><span data-field="sum_lines_5_and_6">{{ sum_lines_5_and_6 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Enter qualifying distributions from Part XII, line 4.</td>
+                <td><span data-field="qualifying_distributions_part_xii_line_4">{{ qualifying_distributions_part_xii_line_4 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>If line 8 is equal to or greater than line 7, check the box in Part VI, line 1b, and complete that part using a 1% tax rate. See the Part VI instructions on page 15.</td>
+                <td><span data-field="qualifying_distribution_check">{{ qualifying_distribution_check }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part VI Excise Tax on Investment Income (Section 4940(a), 4940(b), 4940(e), or 4948—see page 15 of the instructions)</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1a</td>
+                <td style="width: 35%;">Exempt operating foundations described in section 4940(d)(2), check here <span data-field="exempt_op_foundation_check">{{ exempt_op_foundation_check }}</span> and enter "N/A" on line 1.</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span data-field="excise_tax_line_1">{{ excise_tax_line_1 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>C all other domestic organizations enter 2 of line 27b. Exempt foreign organizations enter 49 of line 27b.</td>
+                <td><span data-field="excise_tax_line_2">{{ excise_tax_line_2 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Add lines 1 and 2.</td>
+                <td><span data-field="excise_tax_line_3">{{ excise_tax_line_3 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Subtitle A income (taxable income section 4940(a)(1)) trusts and taxable foundations only. Others enter -0-</td>
+                <td><span data-field="excise_tax_line_4">{{ excise_tax_line_4 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Tax on investment income (line 3 minus line 4 but not less than -0-)</td>
+                <td><span data-field="excise_tax_line_5">{{ excise_tax_line_5 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Credits/Payments:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>A 1996 estimated tax payments and 1995 overpayment credited to 1996</td>
+                <td><span data-field="excise_tax_line_7a">{{ excise_tax_line_7a }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>B Exempt foreign organizations—tax withheld at source</td>
+                <td><span data-field="excise_tax_line_8b">{{ excise_tax_line_8b }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>C Tax paid with application for extension of time to file (Form 2758)</td>
+                <td><span data-field="excise_tax_line_9c">{{ excise_tax_line_9c }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>D Backing withholdings (if applicable)</td>
+                <td><span data-field="excise_tax_line_10d">{{ excise_tax_line_10d }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Total credits and payments (add lines 6 through 10).</td>
+                <td><span data-field="excise_tax_line_11">{{ excise_tax_line_11 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Enter any PENALTY for underpayment of estimated tax. Check here <span data-field="penalty_check">{{ penalty_check }}</span> if Form 2205 is attached</td>
+                <td><span data-field="excise_tax_line_12">{{ excise_tax_line_12 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>OVERPAYMENT. If line 7 minus line 5 and 8 is more than line 7, enter AMOUNT OVERPAID.</td>
+                <td><span data-field="excise_tax_line_13">{{ excise_tax_line_13 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>REFUNDED. If line 7 minus line 5 and 8 is less than line 7, enter AMOUNT REFUNDED.</td>
+                <td><span data-field="excise_tax_line_14">{{ excise_tax_line_14 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part VII Statements Regarding Activities</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1a</td>
+                <td style="width: 35%;">During the tax year, did the organization attempt to influence any national, state, or local legislation or did it participate in any lobbying activities?</td>
+                <td style="width: 15%;">Yes</td>
+                <td style="width: 15%;">No</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1b</td>
+                <td>Did it spend more than $100 during the year (either directly or indirectly) for political purposes (see page 16 of the instructions) for definition?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>1c</td>
+                <td>Did the organization file Form 1120-POL for this year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>1d</td>
+                <td>Enter the amount (if any) of taxes on political expenditures (section 4955) paid by the organization during the 1996 tax year.</td>
+                <td><span data-field="tax_on_political_expenditures">{{ tax_on_political_expenditures }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Has the organization dedicated any assets to political campaign activities?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Has the organization made any changes, not previously reported to the IRS, in its governing instrument, articles of incorporation, or bylaws, or other similar instruments? If yes, attach a conformed copy of the changes.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Did the organization have unrealized business gross income of $1,000 or more during the year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Did the organization have a tax-exempt status under section 501(c)(3) that was revoked or suspended?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Are the requirements of section 506(b) relating to sections 4941 through 4945 satisfied either:</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>By language in the governing instrument; or</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>By state legislation that effectively amends the governing instrument so that no mandatory directions that conflict with the state law remain in the governing instrument?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Did the organization have at least $5,000 in assets at any time during the year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Enter the states to which the foundation reports with or which it is registered (see page 16 of the instructions).</td>
+                <td><span data-field="states_reported_to">{{ states_reported_to }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Is the answer to line 7, has the organization furnished a copy of Form 990-PF to the Attorney General (or designee) of each state as required by General Instruction G? If "No," attach explanation</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Is the organization claiming status as a private operating foundation within the meaning of section 4942(j)(3) or 4942(j)(5) for year 1996 or the taxable year beginning in 1996 (see instructions for Part XIV on page 22)? If "Yes," complete Part XIV.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Did any persons become substantial contributors during the tax year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Did any donor request to see either the organization's annual return or its exemption application (or both)?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Did the organization comply pursuant to the instructions? (See General Instruction Q.)</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>The books are in care of</td>
+                <td><span data-field="books_custodian">{{ books_custodian }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Section 4947(a)(1) nonexempt charitable trusts filing Form 990-PF in lieu of Form 1041—Check here and enter the amount of tax-exempt interest received or accrued during the year.</td>
+                <td><span data-field="tax_exempt_interest_amount">{{ tax_exempt_interest_amount }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part VIII Statements Regarding Activities for Which Form 4720 May Be Required</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Self-dealing (section 4941):</td>
+                <td style="width: 15%;">Yes</td>
+                <td style="width: 15%;">No</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>(1) Engaging in the sale or exchange, or leasing of property with a disqualified person?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>(2) Furnishing goods, services, or facilities to (or accepting from) a disqualified person?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>(3) Paying compensation to, or paying or reimbursing the expenses of, a disqualified person?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>(4) Transferring any income or assets to a disqualified person (or make of any other available funds)?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>(5) Engaging in any prohibited transaction with a disqualified person? Check "No" after termination of agreement to make a grant to or to employ the official for a period after termination of agreement.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>If any answer is "Yes" to lines 1a-1c), did any of the acts fail to qualify under the exceptions described in Regulations section 53.4941(d) or 53.4942(d)? If "Yes," attach explanation.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Organizations relying on a current Notice regarding disaster assistance check here <span data-field="disaster_notice_check">{{ disaster_notice_check }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Did the organization engage in any of the acts described in line 1a, then other excepted acts, etc.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Taxes on failure to distribute income (section 4943) (does not apply for years the organization was a private foundation)</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Taxes on investment income (line 3 minus line 4 but not less than -0-)</td>
+                <td><span data-field="tax_on_investment_income">{{ tax_on_investment_income }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Credits/Payments:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part IX Statements Regarding Activities</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1a</td>
+                <td style="width: 35%;">During the tax year, did the organization attempt to influence any national, state, or local legislation or did it participate in any lobbying activities?</td>
+                <td style="width: 15%;">Yes</td>
+                <td style="width: 15%;">No</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1b</td>
+                <td>Did it spend more than $100 during the year (either directly or indirectly) for political purposes (see page 16 of the instructions) for definition?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>1c</td>
+                <td>Did the organization file Form 1120-POL for this year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>1d</td>
+                <td>Enter the amount (if any) of taxes on political expenditures (section 4955) paid by the organization during the 1996 tax year.</td>
+                <td><span data-field="tax_on_political_expenditures_ix">{{ tax_on_political_expenditures_ix }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Has the organization dedicated any assets to political campaign activities?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Has the organization made any changes, not previously reported to the IRS, in its governing instrument, articles of incorporation, or bylaws, or other similar instruments? If yes, attach a conformed copy of the changes.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Did the organization have unrealized business gross income of $1,000 or more during the year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Did the organization have a tax-exempt status under section 501(c)(3) that was revoked or suspended?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Are the requirements of section 506(b) relating to sections 4941 through 4945 satisfied either:</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>By language in the governing instrument; or</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>By state legislation that effectively amends the governing instrument so that no mandatory directions that conflict with the state law remain in the governing instrument?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Did the organization have at least $5,000 in assets at any time during the year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Enter the states to which the foundation reports with or which it is registered (see page 16 of the instructions).</td>
+                <td><span data-field="states_reported_to_ix">{{ states_reported_to_ix }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Is the answer to line 7, has the organization furnished a copy of Form 990-PF to the Attorney General (or designee) of each state as required by General Instruction G? If "No," attach explanation</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Is the organization claiming status as a private operating foundation within the meaning of section 4942(j)(3) or 4942(j)(5) for year 1996 or the taxable year beginning in 1996 (see instructions for Part XIV on page 22)? If "Yes," complete Part XIV.</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Did any persons become substantial contributors during the tax year?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Did any donor request to see either the organization's annual return or its exemption application (or both)?</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Did the organization comply pursuant to the instructions? (See General Instruction Q.)</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part VII Information About Officers, Directors, Trustees, Foundation Managers, Highly Paid Employees, and Contractors</h2>
+
+    <p style="font-size: 12pt;">List all officers, directors, trustees, foundation managers and their compensation (see page 17 of the instructions):</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Name and address</td>
+                <td style="width: 15%;">b) Title and average hours per week devoted to position</td>
+                <td style="width: 15%;">c) Compensation</td>
+                <td style="width: 25%;">d) Contributions to employee benefit plans and deferred compensation</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span data-field="officer_name_address_1">{{ officer_name_address_1 }}</span></td>
+                <td><span data-field="officer_title_hours_1">{{ officer_title_hours_1 }}</span></td>
+                <td><span data-field="officer_compensation_1">{{ officer_compensation_1 }}</span></td>
+                <td><span data-field="officer_benefit_1">{{ officer_benefit_1 }}</span></td>
+            </tr>
+            <!-- Loop for multiple officers -->
+            {% for i in range(1, 6) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td><span data-field="officer_name_address_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="officer_title_hours_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="officer_compensation_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="officer_benefit_{{ i }}">{{ ' ' }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="font-size: 12pt; margin-top: 20px;">Total number of other employees paid over $50,000.</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">2</td>
+                <td style="width: 35%;">Compensation of five highest-paid employees (other than those included on line 1—see page 17 of the instructions). If none, enter "NONE."</td>
+                <td style="width: 15%;">b) Title and average hours per week devoted to position</td>
+                <td style="width: 15%;">c) Compensation</td>
+                <td style="width: 25%;">d) Contributions to employee benefit plans and deferred compensation</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1, 6) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td><span data-field="highest_paid_employee_name_address_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="highest_paid_employee_title_hours_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="highest_paid_employee_compensation_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="highest_paid_employee_benefit_{{ i }}">{{ ' ' }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="font-size: 12pt; margin-top: 20px;">Total number of other persons paid more than $50,000.</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">3</td>
+                <td style="width: 35%;">Five highest-paid independent contractors for professional services—(see page 18 of the instructions). If none, enter "NONE."</td>
+                <td style="width: 15%;">b) Type of service</td>
+                <td style="width: 15%;">c) Compensation</td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1, 6) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td><span data-field="independent_contractor_name_address_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="independent_contractor_service_type_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="independent_contractor_compensation_{{ i }}">{{ ' ' }}</span></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="font-size: 12pt; margin-top: 20px;">Total number of others receiving over $50,000 for professional services</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">Part IX-A</td>
+                <td style="width: 35%;">Summary of Direct Charitable Activities</td>
+                <td style="width: 15%;">Expenses</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1, 5) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td><span data-field="charitable_activity_description_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="charitable_activity_expense_{{ i }}">{{ ' ' }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Part IX-B Summary of Program-Related Investments (see page 18 of the instructions)</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;"></td>
+                <td style="width: 35%;">Description of program-related investments made by the foundation during the tax year.</td>
+                <td style="width: 15%;">Amount</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1, 3) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td><span data-field="pari_description_{{ i }}">{{ ' ' }}</span></td>
+                <td><span data-field="pari_amount_{{ i }}">{{ ' ' }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part X Minimum Investment Return</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Fair market value of assets not used (or held for use) directly in carrying out charitable, etc., purposes.</td>
+                <td style="width: 15%;">a) Book Value</td>
+                <td style="width: 15%;">b) Fair Market Value</td>
+                <td style="width: 25%;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>A average monthly fair market value of securities</td>
+                <td><span data-field="min_return_securities_book">{{ min_return_securities_book }}</span></td>
+                <td><span data-field="min_return_securities_fmv">{{ min_return_securities_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>B average of monthly cash balances</td>
+                <td><span data-field="min_return_cash_book">{{ min_return_cash_book }}</span></td>
+                <td><span data-field="min_return_cash_fmv">{{ min_return_cash_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>C fair market value of all other assets (see page 19 of the instructions).</td>
+                <td><span data-field="min_return_other_assets_book">{{ min_return_other_assets_book }}</span></td>
+                <td><span data-field="min_return_other_assets_fmv">{{ min_return_other_assets_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>D total (add lines 1a, b, and c)</td>
+                <td><span data-field="min_return_total_assets_book">{{ min_return_total_assets_book }}</span></td>
+                <td><span data-field="min_return_total_assets_fmv">{{ min_return_total_assets_fmv }}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>E reduction claimed for blockage or other factors reported on lines 1a and 1c (attach detailed explanation)</td>
+                <td><span data-field="min_return_reduction_claimed">{{ min_return_reduction_claimed }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>F acquisition indebtedness applicable to line 1 assets</td>
+                <td><span data-field="min_return_acquisition_indebtedness">{{ min_return_acquisition_indebtedness }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>G cash deemed held for charitable activities—Enter 1½% of line 3 for greater amount, see page 20 of the instructions.</td>
+                <td><span data-field="min_return_cash_deemed_held">{{ min_return_cash_deemed_held }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>H net value of noncharitable-use assets—Line 3 minus line 4. (Enter in Part V, line 4.)</td>
+                <td><span data-field="min_return_net_value_noncharitable_use_assets">{{ min_return_net_value_noncharitable_use_assets }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Minimum investment return. (Enter 5% of line 5.)</td>
+                <td><span data-field="min_return_5_percent_total_assets">{{ min_return_5_percent_total_assets }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 10px;">Part XI Distributable Amount</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr class="header-row">
+                <td style="width: 10%;">1</td>
+                <td style="width: 35%;">Distributable amount for 1996 from Part XI, line 7.</td>
+                <td style="width: 15%;">a) Corpus</td>
+                <td style="width: 15%;">b) Years prior to 1995</td>
+                <td style="width: 25%;">c) 1995</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>Undistributed income, if any, as of the end of 1995:</td>
+                <td><span data-field="distributable_undistributed_income_1995_corpus">{{ distributable_undistributed_income_1995_corpus }}</span></td>
+                <td><span data-field="distributable_undistributed_income_1995_prior_years">{{ distributable_undistributed_income_1995_prior_years }}</span></td>
+                <td><span data-field="distributable_undistributed_income_1995_1995">{{ distributable_undistributed_income_1995_1995 }}</span></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Total for prior years: 19—19</td>
+                <td><span data-field="distributable_total_prior_years">{{ distributable_total_prior_years }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>From 1991</td>
+                <td><span data-field="distributable_from_1991">{{ distributable_from_1991 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>From 1992</td>
+                <td><span data-field="distributable_from_1992">{{ distributable_from_1992 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>From 1993</td>
+                <td><span data-field="distributable_from_1993">{{ distributable_from_1993 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>From 1994</td>
+                <td><span data-field="distributable_from_1994">{{ distributable_from_1994 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>From 1995</td>
+                <td><span data-field="distributable_from_1995">{{ distributable_from_1995 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Total of lines 3a through e</td>
+                <td><span data-field="distributable_total_lines_3a_e">{{ distributable_total_lines_3a_e }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Applied to undistributed income from Part XII, line 4.</td>
+                <td><span data-field="distributable_applied_to_part_xii_line_4">{{ distributable_applied_to_part_xii_line_4 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Applied to 1996 distributable amount</td>
+                <td><span data-field="distributable_applied_1996">{{ distributable_applied_1996 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Remaining amount distributed out of corpus</td>
+                <td><span data-field="distributable_remaining_corpus">{{ distributable_remaining_corpus }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Remaining amount distributed out of earnings</td>
+                <td><span data-field="distributable_remaining_earnings">{{ distributable_remaining_earnings }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Enter the net total of each column as indicated below:</td>
+                <td><span data-field="distributable_net_total_corpus">{{ distributable_net_total_corpus }}</span></td>
+                <td><span data-field="distributable_net_total_prior_years">{{ distributable_net_total_prior_years }}</span></td>
+                <td><span data-field="distributable_net_total_1995">{{ distributable_net_total_1995 }}</span></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Corpus. Add lines 3a, 4c, and 4e. Subtract line 5 minus line 4b.</td>
+                <td><span data-field="distributable_corpus_calc">{{ distributable_corpus_calc }}</span></td>
+                <td><span data-field="distributable_corpus_prior_calc">{{ distributable_corpus_prior_calc }}</span></td>
+                <td><span data-field="distributable_corpus_1995_calc">{{ distributable_corpus_1995_calc }}</span></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Prior years' undistributed income (line 2b minus line 4b)</td>
+                <td><span data-field="distributable_prior_years_calc">{{ distributable_prior_years_calc }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Enter the amount of prior years' undistributed income for which a notice of deficiency has been issued, or on which the section 4942(a) tax has been previously assessed.</td>
+                <td><span data-field="distributable_prior_years_tax_assessed">{{ distributable_prior_years_tax_assessed }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Subtract line 6c from line 6b. Taxable amount—see page 21 of the instructions.</td>
+                <td><span data-field="distributable_taxable_amount">{{ distributable_taxable_amount }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Undistributed income for 1996 (line 2a minus line 11)</td>
+                <td><span data-field="distributable_undistributed_1996">{{ distributable_undistributed_1996 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Undistributed income for 1996 (line 2a minus line 11)</td>
+                <td><span data-field="distributable_undistributed_1996_2">{{ distributable_undistributed_1996_2 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Amounts treated as distributions out of corpus to satisfy requirements imposed by section 170b(i)(E) or 4942(j)(3) (see page 21 of the instructions).</td>
+                <td><span data-field="distributable_corpus_satisfy_req">{{ distributable_corpus_satisfy_req }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>Excess distributions carryover from 1991</td>
+                <td><span data-field="distributable_carryover_1991">{{ distributable_carryover_1991 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>Excess distributions carryover to 1997 (line 6a minus line 7 and 8)</td>
+                <td><span data-field="distributable_carryover_1997">{{ distributable_carryover_1997 }}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>Analysis of line 9:</td>
+                <td><span data-field="distributable_analysis_9_a">{{ distributable_analysis_9_a }}</span></td>
+                <td><span data-field="distributable_analysis_9_b">{{ distributable_analysis_9_b }}</span></td>
+                <td><span data-field="distributable_analysis_9_c">{{ distributable_analysis_9_c }}</span></td>
+                <td><span data-field="distributable_analysis_9_d">{{ distributable_analysis_9_d }}</span></td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>Excess from 1992</td>
+                <td><span data-field="distributable_excess_1992">{{ distributable_excess_1992 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>Excess from 1993</td>
+                <td><span data-field="distributable_excess_1993">{{ distributable_excess_1993 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>Excess from 1994</td>
+                <td><span data-field="distributable_excess_1994">{{ distributable_excess_1994 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>Excess from 1995</td>
+                <td><span data-field="distributable_excess_1995">{{ distributable_excess_1995 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>Excess from 1996</td>
+                <td><span data-field="distributable_excess_1996">{{ distributable_excess_1996 }}</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <p style="font-size: 10pt;">Form 990-PF (1996)</p>
+        </div>
+        <div style="text-align: right; font-size: 10pt;">Page <span data-field="page_number">{{ page_number }}</span></div>
+    </div>
+
+    <h2 style="font-size: 12pt; margin-top: 20px; margin-bottom: 10px;">Part XIV Private Operating Foundations (see page 22 of the instructions and Part VII-A, question 9)</h2>
+
+    <p style="margin-bottom: 15px;">
+        <span style="font-weight: bold;">1a</span> If the foundation has received a ruling or determination letter that it is a private operating foundation, and the ruling is effective for 1996, enter the date of the ruling.
+        <span style="margin-left: 30px;">&#9658;</span>
+        <span style="font-weight: bold;">b</span> Check box to indicate whether the organization is a private operating foundation described in section <span data-field="section_number_a">{{ section_number_a }}</span> or <span data-field="section_number_b">{{ section_number_b }}</span>.
+    </p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Tax year</th>
+                <th style="width: 15%;">Prior 3 years</th>
+                <th style="width: 15%;"></th>
+                <th style="width: 15%;"></th>
+                <th style="width: 20%;">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span data-field="tax_year_1996">{{ tax_year_1996 }}</span></td>
+                <td><span data-field="prior_year_1">{{ prior_year_1 }}</span></td>
+                <td><span data-field="prior_year_2">{{ prior_year_2 }}</span></td>
+                <td><span data-field="prior_year_3">{{ prior_year_3 }}</span></td>
+                <td><span data-field="total_value">{{ total_value }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">2a</span> <span data-field="description_2a">{{ description_2a }}</span> of line 2a.
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">c</span> Qualifying distributions from Part XIII, line 4 for each year listed:
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">d</span> Amounts included in line 2c not used directly for active conduct of exempt activities.
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">e</span> Qualifying distributions made directly for active conduct of exempt activities (line 2e minus line 2d).
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">3</span> Complete 3a, b, or c for the alternative test relied upon:
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">a</span> "Assets" alternative test—enter:
+        <ol type="a">
+            <li>Value of all assets <span data-field="asset_value">{{ asset_value }}</span>.</li>
+            <li>Value of assets qualifying under section <span data-field="section_4942j3b">{{ section_4942j3b }}</span>: <span data-field="asset_value_j3b">{{ asset_value_j3b }}</span>.</li>
+            <li>"Endowment" alternative test—enter: <span data-field="endowment_value">{{ endowment_value }}</span>.</li>
+            <li>"Support" alternative test—enter: <span data-field="support_value">{{ support_value }}</span>.</li>
+        </ol>
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">c</span> "Support" alternative test—enter:
+        <ol type="a">
+            <li>Total support other than gross investment income (interest, dividends, rents, payments on securities, etc.) <span data-field="support_total">{{ support_total }}</span>.</li>
+            <li>Support from general public or 5 or more exempt organizations as provided in section <span data-field="section_4942j3b_support">{{ section_4942j3b_support }}</span>.</li>
+            <li>Largest amount of support from an exempt organization, <span data-field="support_largest">{{ support_largest }}</span>.</li>
+            <li>Gross investment income, <span data-field="gross_investment_income">{{ gross_investment_income }}</span>.</li>
+        </ol>
+    </p>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <p style="font-size: 10pt;">Part XV Supplementary Information (Complete this part only if the organization had $5,000 or more in assets at any time during the year—see page 22 of the instructions.)</p>
+        </div>
+    </div>
+
+    <h2 style="font-size: 12pt; margin-top: 20px; margin-bottom: 10px;">Part XV Grants and Contributions Paid During the Year or Approved for Future Payment</h2>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Name and address (home or business)</th>
+                <th style="width: 30%;">Recipient</th>
+                <th style="width: 30%;">If recipient is an individual, show any relationship to any foundation manager or substantial contributor</th>
+                <th style="width: 20%;">Purpose of grant or contribution</th>
+                <th style="width: 10%;">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in grants_and_contributions %}
+            <tr>
+                <td><span data-field="grants_and_contributions[{{ loop.index0 }}].name_address">{{ grants_and_contributions[loop.index0].name_address }}</span></td>
+                <td><span data-field="grants_and_contributions[{{ loop.index0 }}].recipient">{{ grants_and_contributions[loop.index0].recipient }}</span></td>
+                <td><span data-field="grants_and_contributions[{{ loop.index0 }}].relationship">{{ grants_and_contributions[loop.index0].relationship }}</span></td>
+                <td><span data-field="grants_and_contributions[{{ loop.index0 }}].purpose">{{ grants_and_contributions[loop.index0].purpose }}</span></td>
+                <td><span data-field="grants_and_contributions[{{ loop.index0 }}].amount">{{ grants_and_contributions[loop.index0].amount }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="width: 50%;">
+            <p style="font-weight: bold;">Total</p>
+        </div>
+        <div style="width: 20%; text-align: right;">
+            <p style="font-weight: bold;">3a</p>
+        </div>
+    </div>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">b</span> Approved for future payment
+    </p>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="width: 50%;">
+            <p style="font-weight: bold;">Total</p>
+        </div>
+        <div style="width: 20%; text-align: right;">
+            <p style="font-weight: bold;">3b</p>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <p style="font-size: 10pt;">Part XVI Analysis of Income-Producing Activities</p>
+        </div>
+        <div style="text-align: right; font-size: 10pt;">Page <span data-field="page_number">{{ page_number }}</span></div>
+    </div>
+
+    <p style="margin-bottom: 15px;">Enter gross amounts unless otherwise indicated.</p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 20%;">Unrelated business income</th>
+                <th style="width: 15%;">Excluded by section 512, 513, or 514</th>
+                <th style="width: 25%;">Related or exempt function income (See page 23 of the instructions.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 Program service revenue:</td>
+                <td><span data-field="income_1a">{{ income_1a }}</span></td>
+                <td><span data-field="income_1b">{{ income_1b }}</span></td>
+                <td><span data-field="income_1c">{{ income_1c }}</span></td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td><span data-field="income_1a_a">{{ income_1a_a }}</span></td>
+                <td><span data-field="income_1b_a">{{ income_1b_a }}</span></td>
+                <td><span data-field="income_1c_a">{{ income_1c_a }}</span></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td><span data-field="income_1a_b">{{ income_1a_b }}</span></td>
+                <td><span data-field="income_1b_b">{{ income_1b_b }}</span></td>
+                <td><span data-field="income_1c_b">{{ income_1c_b }}</span></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td><span data-field="income_1a_c">{{ income_1a_c }}</span></td>
+                <td><span data-field="income_1b_c">{{ income_1b_c }}</span></td>
+                <td><span data-field="income_1c_c">{{ income_1c_c }}</span></td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td><span data-field="income_1a_d">{{ income_1a_d }}</span></td>
+                <td><span data-field="income_1b_d">{{ income_1b_d }}</span></td>
+                <td><span data-field="income_1c_d">{{ income_1c_d }}</span></td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td><span data-field="income_1a_e">{{ income_1a_e }}</span></td>
+                <td><span data-field="income_1b_e">{{ income_1b_e }}</span></td>
+                <td><span data-field="income_1c_e">{{ income_1c_e }}</span></td>
+            </tr>
+            <tr>
+                <td>f</td>
+                <td><span data-field="income_1a_f">{{ income_1a_f }}</span></td>
+                <td><span data-field="income_1b_f">{{ income_1b_f }}</span></td>
+                <td><span data-field="income_1c_f">{{ income_1c_f }}</span></td>
+            </tr>
+            <tr>
+                <td>2 Membership dues and assessments.</td>
+                <td><span data-field="income_2">{{ income_2 }}</span></td>
+                <td><span data-field="income_2_b">{{ income_2_b }}</span></td>
+                <td><span data-field="income_2_c">{{ income_2_c }}</span></td>
+            </tr>
+            <tr>
+                <td>3 Interest on savings and temporary cash investments</td>
+                <td><span data-field="income_3">{{ income_3 }}</span></td>
+                <td><span data-field="income_3_b">{{ income_3_b }}</span></td>
+                <td><span data-field="income_3_c">{{ income_3_c }}</span></td>
+            </tr>
+            <tr>
+                <td>4 Dividends and interest from securities</td>
+                <td><span data-field="income_4">{{ income_4 }}</span></td>
+                <td><span data-field="income_4_b">{{ income_4_b }}</span></td>
+                <td><span data-field="income_4_c">{{ income_4_c }}</span></td>
+            </tr>
+            <tr>
+                <td>5 Net rental income or (loss) from real estate:</td>
+                <td><span data-field="income_5">{{ income_5 }}</span></td>
+                <td><span data-field="income_5_b">{{ income_5_b }}</span></td>
+                <td><span data-field="income_5_c">{{ income_5_c }}</span></td>
+            </tr>
+            <tr>
+                <td>b Not debt-financed property.</td>
+                <td><span data-field="income_5b">{{ income_5b }}</span></td>
+                <td><span data-field="income_5b_b">{{ income_5b_b }}</span></td>
+                <td><span data-field="income_5b_c">{{ income_5b_c }}</span></td>
+            </tr>
+            <tr>
+                <td>6 Net rental income or (loss) from personal property</td>
+                <td><span data-field="income_6">{{ income_6 }}</span></td>
+                <td><span data-field="income_6_b">{{ income_6_b }}</span></td>
+                <td><span data-field="income_6_c">{{ income_6_c }}</span></td>
+            </tr>
+            <tr>
+                <td>7 Other investment income</td>
+                <td><span data-field="income_7">{{ income_7 }}</span></td>
+                <td><span data-field="income_7_b">{{ income_7_b }}</span></td>
+                <td><span data-field="income_7_c">{{ income_7_c }}</span></td>
+            </tr>
+            <tr>
+                <td>8 Gain or (loss) from sales of assets other than inventory</td>
+                <td><span data-field="income_8">{{ income_8 }}</span></td>
+                <td><span data-field="income_8_b">{{ income_8_b }}</span></td>
+                <td><span data-field="income_8_c">{{ income_8_c }}</span></td>
+            </tr>
+            <tr>
+                <td>9 Net income or (loss) from special events</td>
+                <td><span data-field="income_9">{{ income_9 }}</span></td>
+                <td><span data-field="income_9_b">{{ income_9_b }}</span></td>
+                <td><span data-field="income_9_c">{{ income_9_c }}</span></td>
+            </tr>
+            <tr>
+                <td>10 Gross profit or (loss) from sales of inventory</td>
+                <td><span data-field="income_10">{{ income_10 }}</span></td>
+                <td><span data-field="income_10_b">{{ income_10_b }}</span></td>
+                <td><span data-field="income_10_c">{{ income_10_c }}</span></td>
+            </tr>
+            <tr>
+                <td>11 Other revenue:</td>
+                <td><span data-field="income_11">{{ income_11 }}</span></td>
+                <td><span data-field="income_11_b">{{ income_11_b }}</span></td>
+                <td><span data-field="income_11_c">{{ income_11_c }}</span></td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td><span data-field="income_11a">{{ income_11a }}</span></td>
+                <td><span data-field="income_11b_a">{{ income_11b_a }}</span></td>
+                <td><span data-field="income_11c_a">{{ income_11c_a }}</span></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td><span data-field="income_11b">{{ income_11b }}</span></td>
+                <td><span data-field="income_11b_b">{{ income_11b_b }}</span></td>
+                <td><span data-field="income_11c_b">{{ income_11c_b }}</span></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td><span data-field="income_11c">{{ income_11c }}</span></td>
+                <td><span data-field="income_11c_b">{{ income_11c_b }}</span></td>
+                <td><span data-field="income_11c_c">{{ income_11c_c }}</span></td>
+            </tr>
+            <tr>
+                <td>12 Subtotal (add columns (b), (d), and (e))</td>
+                <td><span data-field="subtotal_12">{{ subtotal_12 }}</span></td>
+                <td><span data-field="subtotal_12b">{{ subtotal_12b }}</span></td>
+                <td><span data-field="subtotal_12c">{{ subtotal_12c }}</span></td>
+            </tr>
+            <tr>
+                <td>13 TOTAL (add line 12, columns (b), (d), and (e))</td>
+                <td><span data-field="total_13">{{ total_13 }}</span></td>
+                <td><span data-field="total_13b">{{ total_13b }}</span></td>
+                <td><span data-field="total_13c">{{ total_13c }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 20px;">(See worksheet in line 13 instructions on page 23 to verify calculations.)</p>
+
+    <h2 style="font-size: 12pt; margin-top: 30px; margin-bottom: 10px;">Part XVI-B Relationship of Activities to the Accomplishment of Exempt Purposes</h2>
+    <p style="margin-bottom: 15px;">Explain below how each activity for which income is reported in column (e) of Part XVI-A contributed importantly to the accomplishment of the organization's exempt purposes (other than by providing funds for such purposes). (See page 23 of the instructions.)</p>
+
+    <div style="height: 200px; border: 1px solid #ccc; margin-top: 10px; padding: 10px;">
+        <p style="font-size: 10pt;">Line No. <span data-field="line_no_xvi_b">{{ line_no_xvi_b }}</span></p>
+        <div style="height: 150px; border-top: 1px solid #eee; margin-top: 5px;"></div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <p style="font-size: 10pt;">Part XVII Information Regarding Transfers To And Transactions With Noncharitable Exempt Organizations</p>
+        </div>
+        <div style="text-align: right; font-size: 10pt;">Page <span data-field="page_number">{{ page_number }}</span></div>
+    </div>
+
+    <p style="margin-bottom: 15px;">
+        <span style="font-weight: bold;">1</span> Did the organization directly or indirectly engage in any of the following with any other organization described in section 501(c) of the Code (other than section 501(c)(3) organizations) or in section 527, relating to political organizations?
+    </p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">a</span> Transfers from the reporting organization to a noncharitable exempt organization of:
+    </p>
+
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">Other Transactions:</span>
+    </p>
+
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(1) Sales of assets to a noncharitable exempt organization</span>
+    </p>
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(2) Purchases of assets from a noncharitable exempt organization</span>
+    </p>
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(3) Rental of facilities or equipment</span>
+    </p>
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(4) Reimbursement arrangements</span>
+    </p>
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(5) Loans or loan guarantees</span>
+    </p>
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">Yes</th>
+                <th style="width: 5%;">No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;"><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">(6) Sharing of facilities, equipment, mailing lists, other assets, or paid employees.</span>
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">d</span> To the answer to any of the above is "Yes," complete the following schedule. Column (b) should always show the fair market value of the goods, other assets, or services given by the reporting organization. If the organization received less than fair market value in any transaction or sharing arrangement, show in column (d) the value of the goods, other assets, or services received.
+    </p>
+
+    <table style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Line no.</th>
+                <th style="width: 20%;">Amount involved</th>
+                <th style="width: 30%;">Name of noncharitable exempt organization</th>
+                <th style="width: 30%;">Description of transfers, transactions, and sharing arrangements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in transfer_details %}
+            <tr>
+                <td><span data-field="transfer_details[{{ loop.index0 }}].line_no">{{ transfer_details[loop.index0].line_no }}</span></td>
+                <td><span data-field="transfer_details[{{ loop.index0 }}].amount_involved">{{ transfer_details[loop.index0].amount_involved }}</span></td>
+                <td><span data-field="transfer_details[{{ loop.index0 }}].organization_name">{{ transfer_details[loop.index0].organization_name }}</span></td>
+                <td><span data-field="transfer_details[{{ loop.index0 }}].description">{{ transfer_details[loop.index0].description }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="margin-top: 30px;">
+        <span style="font-weight: bold;">2a</span> Is the organization directly or indirectly affiliated with, or related to, one or more tax-exempt organizations described in section 501(c) of the Code (other than section 501(c)(3)) or in section 527?
+        <span style="margin-left: 30px;">&#9658;</span> Yes <input type="checkbox"> No <input type="checkbox">
+    </p>
+
+    <p style="margin-top: 15px;">
+        <span style="font-weight: bold;">b</span> If "Yes," complete the following schedule.
+    </p>
+
+    <table style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Name of organization</th>
+                <th style="width: 30%;">Type of organization</th>
+                <th style="width: 40%;">Description of relationship</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in related_organizations %}
+            <tr>
+                <td><span data-field="related_organizations[{{ loop.index0 }}].name">{{ related_organizations[loop.index0].name }}</span></td>
+                <td><span data-field="related_organizations[{{ loop.index0 }}].type">{{ related_organizations[loop.index0].type }}</span></td>
+                <td><span data-field="related_organizations[{{ loop.index0 }}].description">{{ related_organizations[loop.index0].description }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <p style="font-size: 10pt;">Part XVIII Public Inspection</p>
+        </div>
+        <div style="text-align: right; font-size: 10pt;">Page <span data-field="page_number">{{ page_number }}</span></div>
+    </div>
+
+    <p style="margin-bottom: 15px;">
+        <span style="font-weight: bold;">1</span> Enter the date the notice of availability of the annual return appeared in a newspaper.
+    </p>
+    <div style="width: 300px; border-bottom: 1px solid #000; margin-bottom: 15px;">
+        <span data-field="date_notice_appeared">{{ date_notice_appeared }}</span>
+    </div>
+
+    <p style="margin-bottom: 15px;">
+        <span style="font-weight: bold;">2</span> Enter the name of the newspaper.
+    </p>
+    <div style="width: 300px; border-bottom: 1px solid #000; margin-bottom: 15px;">
+        <span data-field="newspaper_name">{{ newspaper_name }}</span>
+    </div>
+
+    <p style="margin-bottom: 15px;">
+        <span style="font-weight: bold;">3</span> Check here if you indicate that you have attached a copy of the newspaper notice required by the instructions on page 24.
+        <span style="margin-left: 30px;">&#9658;</span> <input type="checkbox">
+    </p>
+
+    <p style="margin-top: 20px;">
+        Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer or fiduciary) is based on all information of which preparer has any knowledge.
+    </p>
+
+    <table style="margin-top: 40px;">
+        <tr>
+            <td style="width: 50%;">
+                <p style="font-weight: bold;">Signature of officer or trustee</p>
+                <div style="height: 30px; border-bottom: 1px solid #000;"></div>
+                <p style="font-size: 9pt;">Preparer's signature</p>
+            </td>
+            <td style="width: 50%; text-align: right;">
+                <p style="font-weight: bold;">Date</p>
+                <div style="width: 100px; border-bottom: 1px solid #000; display: inline-block;"></div>
+                <p style="font-weight: bold; margin-top: 10px;">Title</p>
+                <div style="width: 100px; border-bottom: 1px solid #000; display: inline-block;"></div>
+            </td>
+        </tr>
+    </table>
+
+    <table style="margin-top: 20px;">
+        <tr>
+            <td style="width: 50%;">
+                <p style="font-weight: bold;">Preparer's name (or yours if self-employed)</p>
+                <div style="height: 30px; border-bottom: 1px solid #000;"></div>
+            </td>
+            <td style="width: 50%; text-align: right;">
+                <p style="font-weight: bold;">Check if self-employed</p>
+                <div style="width: 100px; border-bottom: 1px solid #000; display: inline-block;"></div>
+                <p style="font-weight: bold; margin-top: 10px;">EIN</p>
+                <div style="width: 100px; border-bottom: 1px solid #000; display: inline-block;"></div>
+            </td>
+        </tr>
+    </table>
+
+    <table style="margin-top: 20px;">
+        <tr>
+            <td style="width: 50%;">
+                <p style="font-weight: bold;">Address</p>
+                <div style="height: 30px; border-bottom: 1px solid #000;"></div>
+            </td>
+            <td style="width: 50%; text-align: right;">
+                <p style="font-weight: bold;">ZIP code</p>
+                <div style="width: 100px; border-bottom: 1px solid #000; display: inline-block;"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Report</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            right: 60px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .title-block {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title-block h1 {
+            font-size: 36pt;
+            margin-bottom: 10px;
+        }
+        .title-block h2 {
+            font-size: 24pt;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .metadata {
+            margin-top: 20px;
+            font-size: 10pt;
+        }
+        .section-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .data-table th {
+            background-color: #f0f0f0;
+        }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .section-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .summary-table th {
+    text-align: center;
+  }
+  .chart-container {
+    width: 100%;
+    height: 300px; /* Approximate height for visual representation */
+    margin-top: 20px;
+    position: relative;
+  }
+  .legend {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+  }
+  .legend div {
+    display: flex;
+    align-items: center;
+  }
+  .legend span {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="title-block">
+            <h1>Assessing Core Competencies:</h1>
+            <h2>Results of Critical Thinking Skills Testing</h2>
+        </div>
+        <div class="divider"></div>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span data-field="author_name">{{ author_name }}</span>
+            <div style="font-size: 12pt;">{{ year }} {{ author_surname }}</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+            <div style="width: 50%;">
+                <div style="font-size: 10pt;">Academic and Student Affairs</div>
+                <div style="font-size: 10pt;">Office of Institutional Effectiveness</div>
+                <div style="font-size: 10pt;">{{ address_line_1 }}</div>
+                <div style="font-size: 10pt;">{{ address_line_2 }}</div>
+                <div style="font-size: 10pt;">{{ phone_number }}</div>
+                <div style="font-size: 10pt;">{{ website }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">Critical Thinking Skills Assessment - Graduating Seniors Median Scores</div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Skill/Attribute</th>
+                    {% for year in years %}
+                    <th>{{ year }} Spring</th>
+                    <th>{{ year }} Fall</th>
+                    {% endfor %}
+                    <th>Ten-Semester Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OVERALL SCORE</td>
+                    {% for year in years %}
+                    <td><span data-field="overall_score_median_{{ year }}_spring">{{ overall_score_median_year_spring }}</span></td>
+                    <td><span data-field="overall_score_median_{{ year }}_fall">{{ overall_score_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="overall_score_ten_semester_average">{{ overall_score_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Analysis</td>
+                    {% for year in years %}
+                    <td><span data-field="analysis_median_{{ year }}_spring">{{ analysis_median_year_spring }}</span></td>
+                    <td><span data-field="analysis_median_{{ year }}_fall">{{ analysis_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="analysis_ten_semester_average">{{ analysis_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Deduction</td>
+                    {% for year in years %}
+                    <td><span data-field="deduction_median_{{ year }}_spring">{{ deduction_median_year_spring }}</span></td>
+                    <td><span data-field="deduction_median_{{ year }}_fall">{{ deduction_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="deduction_ten_semester_average">{{ deduction_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Evaluation</td>
+                    {% for year in years %}
+                    <td><span data-field="evaluation_median_{{ year }}_spring">{{ evaluation_median_year_spring }}</span></td>
+                    <td><span data-field="evaluation_median_{{ year }}_fall">{{ evaluation_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="evaluation_ten_semester_average">{{ evaluation_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Explanation</td>
+                    {% for year in years %}
+                    <td><span data-field="explanation_median_{{ year }}_spring">{{ explanation_median_year_spring }}</span></td>
+                    <td><span data-field="explanation_median_{{ year }}_fall">{{ explanation_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="explanation_ten_semester_average">{{ explanation_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Induction</td>
+                    {% for year in years %}
+                    <td><span data-field="induction_median_{{ year }}_spring">{{ induction_median_year_spring }}</span></td>
+                    <td><span data-field="induction_median_{{ year }}_fall">{{ induction_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="induction_ten_semester_average">{{ induction_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Inference</td>
+                    {% for year in years %}
+                    <td><span data-field="inference_median_{{ year }}_spring">{{ inference_median_year_spring }}</span></td>
+                    <td><span data-field="inference_median_{{ year }}_fall">{{ inference_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="inference_ten_semester_average">{{ inference_ten_semester_average }}</span></td>
+                </tr>
+                <tr>
+                    <td>Interpretation</td>
+                    {% for year in years %}
+                    <td><span data-field="interpretation_median_{{ year }}_spring">{{ interpretation_median_year_spring }}</span></td>
+                    <td><span data-field="interpretation_median_{{ year }}_fall">{{ interpretation_median_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="interpretation_ten_semester_average">{{ interpretation_ten_semester_average }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size: 10pt;">
+            Aggregate sample of CCTST Four Year College Students.
+            <br>
+            Students, average: <span data-field="student_average_score">{{ student_average_score }}</span>
+            <span style="margin-left: 20px;">percentile score: <span data-field="student_percentile_score">{{ student_percentile_score }}</span></span>
+        </div>
+        <div style="font-size: 9pt; margin-top: 10px;">
+            National Percentile Comparison Group for OVERALL SCORE: Regional 4 Yr Open-Enrollment Universities
+            <br>
+            Percentile Score is time sensitive. Percentile Ranking as of November 2018.
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">Critical Thinking Skills Assessment - Graduating Seniors Mean Scores</div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Skill/Attribute</th>
+                    {% for year in years %}
+                    <th>{{ year }} Spring</th>
+                    <th>{{ year }} Fall</th>
+                    {% endfor %}
+                    <th>Ten-Semester Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OVERALL SCORE</td>
+                    {% for year in years %}
+                    <td><span data-field="overall_score_mean_{{ year }}_spring">{{ overall_score_mean_year_spring }}</span></td>
+                    <td><span data-field="overall_score_mean_{{ year }}_fall">{{ overall_score_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="overall_score_ten_semester_average_mean">{{ overall_score_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Analysis</td>
+                    {% for year in years %}
+                    <td><span data-field="analysis_mean_{{ year }}_spring">{{ analysis_mean_year_spring }}</span></td>
+                    <td><span data-field="analysis_mean_{{ year }}_fall">{{ analysis_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="analysis_ten_semester_average_mean">{{ analysis_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Deduction</td>
+                    {% for year in years %}
+                    <td><span data-field="deduction_mean_{{ year }}_spring">{{ deduction_mean_year_spring }}</span></td>
+                    <td><span data-field="deduction_mean_{{ year }}_fall">{{ deduction_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="deduction_ten_semester_average_mean">{{ deduction_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Evaluation</td>
+                    {% for year in years %}
+                    <td><span data-field="evaluation_mean_{{ year }}_spring">{{ evaluation_mean_year_spring }}</span></td>
+                    <td><span data-field="evaluation_mean_{{ year }}_fall">{{ evaluation_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="evaluation_ten_semester_average_mean">{{ evaluation_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Explanation</td>
+                    {% for year in years %}
+                    <td><span data-field="explanation_mean_{{ year }}_spring">{{ explanation_mean_year_spring }}</span></td>
+                    <td><span data-field="explanation_mean_{{ year }}_fall">{{ explanation_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="explanation_ten_semester_average_mean">{{ explanation_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Induction</td>
+                    {% for year in years %}
+                    <td><span data-field="induction_mean_{{ year }}_spring">{{ induction_mean_year_spring }}</span></td>
+                    <td><span data-field="induction_mean_{{ year }}_fall">{{ induction_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="induction_ten_semester_average_mean">{{ induction_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Inference</td>
+                    {% for year in years %}
+                    <td><span data-field="inference_mean_{{ year }}_spring">{{ inference_mean_year_spring }}</span></td>
+                    <td><span data-field="inference_mean_{{ year }}_fall">{{ inference_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="inference_ten_semester_average_mean">{{ inference_ten_semester_average_mean }}</span></td>
+                </tr>
+                <tr>
+                    <td>Interpretation</td>
+                    {% for year in years %}
+                    <td><span data-field="interpretation_mean_{{ year }}_spring">{{ interpretation_mean_year_spring }}</span></td>
+                    <td><span data-field="interpretation_mean_{{ year }}_fall">{{ interpretation_mean_year_fall }}</span></td>
+                    {% endfor %}
+                    <td><span data-field="interpretation_ten_semester_average_mean">{{ interpretation_ten_semester_average_mean }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size: 10pt;">
+            Aggregate sample of CCTST Four Year College Students.
+            <br>
+            Students, average: <span data-field="student_average_score_mean">{{ student_average_score_mean }}</span>
+            <span style="margin-left: 20px;">percentile score: <span data-field="student_percentile_score_mean">{{ student_percentile_score_mean }}</span></span>
+        </div>
+        <div style="font-size: 9pt; margin-top: 10px;">
+            National Percentile Comparison Group for OVERALL SCORE: Regional 4 Yr Open-Enrollment Universities
+            <br>
+            Percentile Score is time sensitive. Percentile Ranking as of November 2018.
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">OVERALL SCORE</div>
+        <div style="font-size: 10pt;">
+            The Reasoning Skills Overall score describes overall strength in using reasoning to form reflective judgments about what to believe or what to do. High Overall scores are attained by test takers who excel in the sustained, focused and integrated application of core thinking skills measured on this test, including analysis, interpretation, inference, evaluation, explanation, induction and deduction. The Overall score predicts the capacity for success in educational or workplace settings which demand reasoned decision making and thoughtful problem solving.
+        </div>
+
+        <div class="section-title">INDUCTION</div>
+        <div style="font-size: 10pt;">
+            Induction decision making in contexts of uncertainty relies on inductive reasoning skills when we draw inferences about what we think is probably true based on analogies, case studies, prior experience, statistical analyses, simulations, hypotheticals, and patterns recognized in familiar objects, events, or experiences. Induction is a process of moving from specific observations to general conclusions and is a key component of critical thinking.
+        </div>
+
+        <div class="section-title">EXPLANATION</div>
+        <div style="font-size: 10pt;">
+            Explanatory reasoning skills, when exercised prior to making a final decision about what to believe or what to do, enable us to describe the evidence, reasons, and assumptions that support a conclusion. Explanatory skills enable people to discover, to test and to articulate the reasons for beliefs, events, actions and decisions.
+        </div>
+
+        <div class="section-title">INTERPRETATION</div>
+        <div style="font-size: 10pt;">
+            Interpretative skills are used to determine the precise meaning and significance of a message or signal, whether it is a gesture, sign, set of data, written or spoken words, diagram, icon, chart or graph. Correct interpretation depends on understanding the message in its context and in terms of who sent it, and for what purpose.
+        </div>
+
+        <div class="section-title">INFERENCE</div>
+        <div style="font-size: 10pt;">
+            Inference skills enable us to draw conclusions from reasons and evidence. We use inference when we offer thoughtful suggestions and hypotheses. Inference skills indicate the necessary or the very probable consequences of a given set of facts and conditions. Conclusions, hypotheses, recommendations or decisions that are based on faulty analysis, misinformation, bad data or biased evaluations can turn out to be mistaken, even if they have been reached using excellent inference skills.
+        </div>
+
+        <div class="section-title">EVALUATION</div>
+        <div style="font-size: 10pt;">
+            Evaluative reasoning skills enable us to assess the credibility of sources of information and the claims they make. And, we use these skills to determine the strength or weakness of arguments. Applying evaluation skills we can judge the quality of analyses, interpretations, explanations, inferences, opinions, beliefs, ideas, proposals, and decisions. Strong explanation skills can support high quality evaluation by providing the evidence, reasons, methods, criteria, or assumptions behind the claims made and the conclusions reached.
+        </div>
+
+        <div class="section-title">ANALYSIS</div>
+        <div style="font-size: 10pt;">
+            Analytical reasoning skills enable people to identify assumptions, reasons and claims, and to examine how they interact in the formation of arguments. We use analysis to gather information from charts, graphs, diagrams, spoken language and documents. People with strong analytical skills attend to patterns and to details. They identify the elements of a situation and determine how those parts interact. Strong interpretation skills can support high quality analysis by providing insights into the significance of what a person is saying or what something means.
+        </div>
+
+        <div class="section-title">DEDUCTION</div>
+        <div style="font-size: 10pt;">
+            Deduction decision making in contexts where rules, operating conditions, core beliefs, values, policies, principles, procedures and terminology completely determine the outcome depends on strong deductive reasoning skills. Deductive reasoning moves with exacting precision from the assumed truth of a set of beliefs to a conclusion which cannot be false if those beliefs are true. Deductive validity is rigorously logical and clear-cut. Deductive validity leaves no room for uncertainty, unless one alters the meanings of words or the grammar of the language.
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">CCTST OVERALL SCORE</div>
+        <div style="font-size: 10pt;">
+            CCTST OVERALL Scores can be interpreted as to their relative strength using qualitative descriptors. This is useful for studying both individuals and groups.
+        </div>
+
+        <div style="margin-top: 20px;">
+            <table style="width: 60%;">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Descriptor</th>
+                        <th style="width: 35%;">Score Range</th>
+                        <th style="width: 35%;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Superior</td>
+                        <td><span data-field="superior_range">{{ superior_range }}</span></td>
+                        <td>This result indicates critical thinking skill that is superior to the vast majority of test takers. Skills at the superior level are consistent with the potential for more advanced learning and leadership.</td>
+                    </tr>
+                    <tr>
+                        <td>Strong</td>
+                        <td><span data-field="strong_range">{{ strong_range }}</span></td>
+                        <td>The result is consistent with the potential for academic success and career development.</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td><span data-field="moderate_range">{{ moderate_range }}</span></td>
+                        <td>This result indicates the potential for skills-related challenges when engaged in reflective problem solving and reflective decision-making associated with learning or employee development.</td>
+                    </tr>
+                    <tr>
+                        <td>Weak</td>
+                        <td><span data-field="weak_range">{{ weak_range }}</span></td>
+                        <td>This result is predictive of difficulties with educational and employment related demands for reflective problem solving and reflective decision making.</td>
+                    </tr>
+                    <tr>
+                        <td>Not Manifested</td>
+                        <td><span data-field="not_manifested_range">{{ not_manifested_range }}</span></td>
+                        <td>This result is consistent with possible insufficient test taker effort, cognitive fatigue, or possible reading or language comprehension issues.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div style="font-size: 10pt;">Table 2 displays the score ranges that correspond to the qualitative descriptions in Table 1. A score of 86 and higher for CCTST OVERALL indicates a superior score. This score is currently earned by approximately 15% of the undergraduate national sample (2018). Scores of 69 and lower display weak overall skill or no manifestation of critical thinking skills, and have been associated with poor performance educationally, in the workplace, and on professional licensure examination.</div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <div style="text-align: center;">
+                <div style="width: 100px; height: 100px; border: 2px solid black; margin: 0 auto;"></div>
+                <div style="margin-top: 10px;">CCTST</div>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <div style="font-size: 10pt;">Qualitative Description of the OVERALL Score</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <table style="width: 80%; margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">CCTST OVERALL Score</th>
+                        <th style="width: 25%;">Not Manifested</th>
+                        <th style="width: 25%;">Weak</th>
+                        <th style="width: 20%;">Moderate</th>
+                        <th style="width: 20%;">Strong</th>
+                        <th style="width: 20%;">Superior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>100-point versions</td>
+                        <td><span data-field="score_range_not_manifested">{{ score_range_not_manifested }}</span></td>
+                        <td><span data-field="score_range_weak">{{ score_range_weak }}</span></td>
+                        <td><span data-field="score_range_moderate">{{ score_range_moderate }}</span></td>
+                        <td><span data-field="score_range_strong">{{ score_range_strong }}</span></td>
+                        <td><span data-field="score_range_superior">{{ score_range_superior }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">Insight Assessment</div>
+        <div style="font-size: 10pt;">
+            Measuring Thinking Worldwide
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 50%;">
+                <div style="font-size: 10pt;">Customer: {{ customer_name }}</div>
+                <div style="font-size: 10pt;">Test/Survey: {{ test_name }}</div>
+                <div style="font-size: 10pt;">Report Date: {{ report_date }}</div>
+                <div style="font-size: 10pt;">Assignment: {{ assignment_number }} - {{ assignment_name }}</div>
+            </div>
+            <div style="width: 40%; text-align: right;">
+                <!-- Placeholder for Insight Assessment Logo -->
+                <div style="width: 100px; height: auto;"></div>
+            </div>
+        </div>
+
+        <div class="section-title">California Critical Thinking Skills Test (CCTST). The CCTST measures the reasoning skills humans brings use in the process of reflectively deciding what to believe or what to do.</div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Skill/Attribute Name</th>
+                    <th>N</th>
+                    <th>Mean</th>
+                    <th>Median</th>
+                    <th>Standard Deviation</th>
+                    <th>SE Mean</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OVERALL</td>
+                    <td data-field="overall_n">{{ overall_n }}</td>
+                    <td data-field="overall_mean">{{ overall_mean }}</td>
+                    <td data-field="overall_median">{{ overall_median }}</td>
+                    <td data-field="overall_sd">{{ overall_sd }}</td>
+                    <td data-field="overall_se_mean">{{ overall_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Analysis</td>
+                    <td data-field="analysis_n">{{ analysis_n }}</td>
+                    <td data-field="analysis_mean">{{ analysis_mean }}</td>
+                    <td data-field="analysis_median">{{ analysis_median }}</td>
+                    <td data-field="analysis_sd">{{ analysis_sd }}</td>
+                    <td data-field="analysis_se_mean">{{ analysis_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Interpretation</td>
+                    <td data-field="interpretation_n">{{ interpretation_n }}</td>
+                    <td data-field="interpretation_mean">{{ interpretation_mean }}</td>
+                    <td data-field="interpretation_median">{{ interpretation_median }}</td>
+                    <td data-field="interpretation_sd">{{ interpretation_sd }}</td>
+                    <td data-field="interpretation_se_mean">{{ interpretation_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Inference</td>
+                    <td data-field="inference_n">{{ inference_n }}</td>
+                    <td data-field="inference_mean">{{ inference_mean }}</td>
+                    <td data-field="inference_median">{{ inference_median }}</td>
+                    <td data-field="inference_sd">{{ inference_sd }}</td>
+                    <td data-field="inference_se_mean">{{ inference_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Evaluation</td>
+                    <td data-field="evaluation_n">{{ evaluation_n }}</td>
+                    <td data-field="evaluation_mean">{{ evaluation_mean }}</td>
+                    <td data-field="evaluation_median">{{ evaluation_median }}</td>
+                    <td data-field="evaluation_sd">{{ evaluation_sd }}</td>
+                    <td data-field="evaluation_se_mean">{{ evaluation_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Explanation</td>
+                    <td data-field="explanation_n">{{ explanation_n }}</td>
+                    <td data-field="explanation_mean">{{ explanation_mean }}</td>
+                    <td data-field="explanation_median">{{ explanation_median }}</td>
+                    <td data-field="explanation_sd">{{ explanation_sd }}</td>
+                    <td data-field="explanation_se_mean">{{ explanation_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Induction</td>
+                    <td data-field="induction_n">{{ induction_n }}</td>
+                    <td data-field="induction_mean">{{ induction_mean }}</td>
+                    <td data-field="induction_median">{{ induction_median }}</td>
+                    <td data-field="induction_sd">{{ induction_sd }}</td>
+                    <td data-field="induction_se_mean">{{ induction_se_mean }}</td>
+                </tr>
+                <tr>
+                    <td>Deduction</td>
+                    <td data-field="deduction_n">{{ deduction_n }}</td>
+                    <td data-field="deduction_mean">{{ deduction_mean }}</td>
+                    <td data-field="deduction_median">{{ deduction_median }}</td>
+                    <td data-field="deduction_sd">{{ deduction_sd }}</td>
+                    <td data-field="deduction_se_mean">{{ deduction_se_mean }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 30px; font-size: 10pt;">
+            Based on the distribution of the overall score percentiles for the test takers in this group, as compared to an aggregate sample of CCTST Four Year College Students, the average percentile score of this group of test takers is <span data-field="average_percentile_score">{{ average_percentile_score }}</span>.
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">Insight Assessment</div>
+        <div style="font-size: 10pt;">
+            Measuring Thinking Worldwide
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div style="width: 50%;">
+                <div style="font-size: 10pt;">Customer: {{ customer_name }}</div>
+                <div style="font-size: 10pt;">Test/Survey: {{ test_name }}</div>
+                <div style="font-size: 10pt;">Report Date: {{ report_date }}</div>
+                <div style="font-size: 10pt;">Assignment: {{ assignment_number }} - {{ assignment_name }}</div>
+            </div>
+            <div style="width: 40%; text-align: right;">
+                <!-- Placeholder for Insight Assessment Logo -->
+                <div style="width: 100px; height: auto;"></div>
+            </div>
+        </div>
+
+        <div class="section-title">Descriptive Information: OVERALL</div>
+
+        <div style="margin-top: 20px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>N</th>
+                        <th>Mean</th>
+                        <th>Median</th>
+                        <th>Standard Deviation</th>
+                        <th>SE Mean</th>
+                        <th>Minimum</th>
+                        <th>Maximum</th>
+                        <th>Quartile 1</th>
+                        <th>Quartile 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OVERALL</td>
+                        <td data-field="overall_n_desc">{{ overall_n_desc }}</td>
+                        <td data-field="overall_mean_desc">{{ overall_mean_desc }}</td>
+                        <td data-field="overall_median_desc">{{ overall_median_desc }}</td>
+                        <td data-field="overall_sd_desc">{{ overall_sd_desc }}</td>
+                        <td data-field="overall_se_mean_desc">{{ overall_se_mean_desc }}</td>
+                        <td data-field="overall_min_desc">{{ overall_min_desc }}</td>
+                        <td data-field="overall_max_desc">{{ overall_max_desc }}</td>
+                        <td data-field="overall_q1_desc">{{ overall_q1_desc }}</td>
+                        <td data-field="overall_q3_desc">{{ overall_q3_desc }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div style="font-size: 10pt;">The Overall Score describes overall strength in using reasoning to form reflective judgments about what to believe or what to do. To score well overall, the test taker must excel in the sustained, focused and integrated application of core reasoning skills including analysis, interpretation, inference, evaluation, explanation, induction and deduction. The Overall Score predicts the capacity for success in educational or workplace settings which demand reasoned decision making and thoughtful problem solving.</div>
+            <div style="font-size: 10pt; margin-top: 15px;">The descriptive information reported below indicates strengths and weaknesses in specific areas. These results are useful for understanding group characteristics, for comparing and contrasting similar groups on specific attributes or skills, and for guiding the development of more targeted educational or training programs.</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-container">
+                <!-- Placeholder for University Logo -->
+                <div style="width: 80px; height: auto;"></div>
+                <div>
+                    <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF GUAM</div>
+                    <div style="font-size: 10pt;">UNIBETSUDAT GUAM</div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 10pt;">December {{ current_date }}</div>
+        </div>
+
+        <div class="section-title">Descriptive Information: Analysis</div>
+
+        <div style="margin-top: 20px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>N</th>
+                        <th>Mean</th>
+                        <th>Median</th>
+                        <th>Standard Deviation</th>
+                        <th>SE Mean</th>
+                        <th>Minimum</th>
+                        <th>Maximum</th>
+                        <th>Quartile 1</th>
+                        <th>Quartile 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Analysis</td>
+                        <td data-field="analysis_n_desc">{{ analysis_n_desc }}</td>
+                        <td data-field="analysis_mean_desc">{{ analysis_mean_desc }}</td>
+                        <td data-field="analysis_median_desc">{{ analysis_median_desc }}</td>
+                        <td data-field="analysis_sd_desc">{{ analysis_sd_desc }}</td>
+                        <td data-field="analysis_se_mean_desc">{{ analysis_se_mean_desc }}</td>
+                        <td data-field="analysis_min_desc">{{ analysis_min_desc }}</td>
+                        <td data-field="analysis_max_desc">{{ analysis_max_desc }}</td>
+                        <td data-field="analysis_q1_desc">{{ analysis_q1_desc }}</td>
+                        <td data-field="analysis_q3_desc">{{ analysis_q3_desc }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div style="font-size: 10pt;">Analytical skills are used to identify assumptions, reasons, themes, and the evidence used in making arguments or offering explanations. Analytical skills enable us to consider all the key elements in any given situation, and to determine how those elements relate to one another. People with strong analytical skills notice important patterns and details. People use analysis to gather the most relevant information from spoken language, documents, signs, charts, graphs, and diagrams.</div>
+        </div>
+    </div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .section-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .summary-table th {
+    text-align: center;
+  }
+  .chart-container {
+    width: 100%;
+    height: 300px; /* Approximate height for visual representation */
+    margin-top: 20px;
+    position: relative;
+  }
+  .legend {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+  }
+  .legend div {
+    display: flex;
+    align-items: center;
+  }
+  .legend span {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Interpretation</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="interpretation.n">{{ interpretation.n }}</span></td>
+        <td><span data-field="interpretation.mean">{{ interpretation.mean }}</span></td>
+        <td><span data-field="interpretation.median">{{ interpretation.median }}</span></td>
+        <td><span data-field="interpretation.std_dev">{{ interpretation.std_dev }}</span></td>
+        <td><span data-field="interpretation.se_mean">{{ interpretation.se_mean }}</span></td>
+        <td><span data-field="interpretation.minimum">{{ interpretation.minimum }}</span></td>
+        <td><span data-field="interpretation.maximum">{{ interpretation.maximum }}</span></td>
+        <td><span data-field="interpretation.quartile_1">{{ interpretation.quartile_1 }}</span></td>
+        <td><span data-field="interpretation.quartile_3">{{ interpretation.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Interpretation</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Interpretation is the process of discovering, determining, or assigning meaning. Interpretation skills can be applied to anything, e.g. written messages, charts, diagrams, maps, graphs, memes, and verbal and non-verbal exchanges. People apply their interpretive skills to behaviors, events, and social interactions when deciding what they think something means in a given context.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Inference</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="inference.n">{{ inference.n }}</span></td>
+        <td><span data-field="inference.mean">{{ inference.mean }}</span></td>
+        <td><span data-field="inference.median">{{ inference.median }}</span></td>
+        <td><span data-field="inference.std_dev">{{ inference.std_dev }}</span></td>
+        <td><span data-field="inference.se_mean">{{ inference.se_mean }}</span></td>
+        <td><span data-field="inference.minimum">{{ inference.minimum }}</span></td>
+        <td><span data-field="inference.maximum">{{ inference.maximum }}</span></td>
+        <td><span data-field="inference.quartile_1">{{ inference.quartile_1 }}</span></td>
+        <td><span data-field="inference.quartile_3">{{ inference.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Inference</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Inference skills enable us to draw conclusions from reasons, evidence, observations, experiences, or our values and beliefs. Using Inference, we can predict the most likely consequences of the options we may be considering. Inference enables us to see the logical consequences of the assumptions we may be making. Sound inferences rely on accurate information. People with strong inference skills draw logical or highly reliable conclusions using all forms of analogical, probabilistic, empirical, and mathematical reasoning.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Evaluation</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="evaluation.n">{{ evaluation.n }}</span></td>
+        <td><span data-field="evaluation.mean">{{ evaluation.mean }}</span></td>
+        <td><span data-field="evaluation.median">{{ evaluation.median }}</span></td>
+        <td><span data-field="evaluation.std_dev">{{ evaluation.std_dev }}</span></td>
+        <td><span data-field="evaluation.se_mean">{{ evaluation.se_mean }}</span></td>
+        <td><span data-field="evaluation.minimum">{{ evaluation.minimum }}</span></td>
+        <td><span data-field="evaluation.maximum">{{ evaluation.maximum }}</span></td>
+        <td><span data-field="evaluation.quartile_1">{{ evaluation.quartile_1 }}</span></td>
+        <td><span data-field="evaluation.quartile_3">{{ evaluation.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Evaluation</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Evaluative skills are used to assess the credibility of the claims people make or post, and to assess the quality of the reasoning people display when they make arguments or give explanations. We can also apply our evaluation skills to assess the quality of many other elements that are important for good thinking, such as analyses, interpretations, explanations, inferences, options, opinions, beliefs, hypotheses, proposals, and decisions. People with strong evaluation skills can judge the quality of arguments and the credibility of speakers and writers.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Explanation</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="explanation.n">{{ explanation.n }}</span></td>
+        <td><span data-field="explanation.mean">{{ explanation.mean }}</span></td>
+        <td><span data-field="explanation.median">{{ explanation.median }}</span></td>
+        <td><span data-field="explanation.std_dev">{{ explanation.std_dev }}</span></td>
+        <td><span data-field="explanation.se_mean">{{ explanation.se_mean }}</span></td>
+        <td><span data-field="explanation.minimum">{{ explanation.minimum }}</span></td>
+        <td><span data-field="explanation.maximum">{{ explanation.maximum }}</span></td>
+        <td><span data-field="explanation.quartile_1">{{ explanation.quartile_1 }}</span></td>
+        <td><span data-field="explanation.quartile_3">{{ explanation.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Explanation</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Explanation is the process of justifying what we have decided to do or what we have decided to believe. People with strong explanation skills provide the evidence, methods, and considerations they actually relied on when making their judgment. Explanations can include our assumptions, reasons, values, and beliefs. Strong explanations enable others to understand and to evaluate our decisions.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Induction</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="induction.n">{{ induction.n }}</span></td>
+        <td><span data-field="induction.mean">{{ induction.mean }}</span></td>
+        <td><span data-field="induction.median">{{ induction.median }}</span></td>
+        <td><span data-field="induction.std_dev">{{ induction.std_dev }}</span></td>
+        <td><span data-field="induction.se_mean">{{ induction.se_mean }}</span></td>
+        <td><span data-field="induction.minimum">{{ induction.minimum }}</span></td>
+        <td><span data-field="induction.maximum">{{ induction.maximum }}</span></td>
+        <td><span data-field="induction.quartile_1">{{ induction.quartile_1 }}</span></td>
+        <td><span data-field="induction.quartile_3">{{ induction.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Induction</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Inductive reasoning relies on estimating likely outcomes. Decision making in contexts of uncertainty relies on inductive reasoning. Inductive decisions can be based on analogies, case studies, prior experience, statistical analyses, simulations, hypotheticals, trusted testimony, and the patterns we may recognize in a set of events, experiences, symptoms or behaviors. Inductive reasoning always leaves open the possibility, however remote, that a highly probable conclusion might be mistaken. Although it does not yield certainty, inductive reasoning can provide a solid basis for confidence in our conclusions and a reasonable basis for action.</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Insight Assessment</div>
+      <div style="font-size: 12pt; font-weight: normal;">Measuring Thinking Worldwide</div>
+    </div>
+    <div style="text-align: right;">
+      <!-- Placeholder for Logo -->
+      <div style="width: 150px; height: 100px; border: 1px solid #ccc; text-align: center; line-height: 100px;">INSIGHT ASSESSMENT</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>Customer: <span data-field="customer.name">{{ customer.name }}</span></p>
+    <p>Test/Survey: <span data-field="test_survey_name">{{ test_survey_name }}</span></p>
+    <p>Report Date: <span data-field="report_date">{{ report_date }}</span></p>
+    <p>Assignment: <span data-field="assignment_id">{{ assignment_id }}</span></p>
+  </div>
+
+  <div class="section-heading">Descriptive Information: Deduction</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Standard Deviation</th>
+        <th>SE Mean</th>
+        <th>Minimum</th>
+        <th>Maximum</th>
+        <th>Quartile 1</th>
+        <th>Quartile 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="deduction.n">{{ deduction.n }}</span></td>
+        <td><span data-field="deduction.mean">{{ deduction.mean }}</span></td>
+        <td><span data-field="deduction.median">{{ deduction.median }}</span></td>
+        <td><span data-field="deduction.std_dev">{{ deduction.std_dev }}</span></td>
+        <td><span data-field="deduction.se_mean">{{ deduction.se_mean }}</span></td>
+        <td><span data-field="deduction.minimum">{{ deduction.minimum }}</span></td>
+        <td><span data-field="deduction.maximum">{{ deduction.maximum }}</span></td>
+        <td><span data-field="deduction.quartile_1">{{ deduction.quartile_1 }}</span></td>
+        <td><span data-field="deduction.quartile_3">{{ deduction.quartile_3 }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Deduction</div>
+  <div class="chart-container">
+    <!-- Placeholder for Bar Chart -->
+    <div style="height: 100%; display: flex; align-items: flex-end; border-left: 1px solid #000; border-bottom: 1px solid #000; padding-left: 10px;">
+      <!-- Bars would be generated here based on data -->
+    </div>
+  </div>
+  <div class="legend">
+    <div><span style="background-color: red;"></span> Not Manifested</div>
+    <div><span style="background-color: orange;"></span> Weak</div>
+    <div><span style="background-color: gold;"></span> Moderate</div>
+    <div><span style="background-color: green;"></span> Strong</div>
+    <div><span style="background-color: blue;"></span> Superior</div>
+  </div>
+
+  <p style="margin-top: 20px;">Deductive reasoning is rigorously logical and clear cut. Deductive skills are used whenever we determine the precise logical consequences of a given set of rules, conditions, beliefs, values, policies, principles, procedures, or terminology. Deductive reasoning is deciding what to believe or what to do in precisely defined contexts that rely on strict rules and logic. Deductive validity results in a conclusion which absolutely cannot be false, if the assumptions or premises from which we started all are true. Deductive validity leaves no room for uncertainty. That is, unless we decide to change the very meanings of our words or the grammar of our language.</p>
+</div></body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Consumer Sentiment Index</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+  .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 10px; }
+  .logo-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+  .logo { font-size: 20pt; font-weight: bold; }
+  .chart-container { margin-top: 30px; }
+  .chart-title { font-size: 12pt; font-weight: bold; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="logo-container">
+    <div class="logo">KBC</div>
+    <div class="logo">ESRI</div>
+  </div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="header-title">CONSUMER SENTIMENT INDEX, {{ current_month }} {{ current_year }}</div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; gap: 40px;">
+    <div style="flex: 1;">
+      <p style="font-size: 11pt; line-height: 1.6;">
+        <span data-field="sentiment_summary_paragraph_1">Consumer Sentiment declined marginally overall this month to {{ current_index_value }}. There were however, clear differences between certain aspects of the survey this month. The index of current conditions fell to {{ current_conditions_index }} this month from {{ previous_conditions_index }} in April. On the other hand, the index of consumer expectations increased marginally compared to last month by {{ expectations_change }} index points driven by improving perceptions of expected household finances. The short term trend has remained relatively flat in the last few months as expectations have dis-improved since late last year while perceptions of current conditions remain relatively positive.</span>
+      </p>
+    </div>
+    <div style="flex: 1;">
+      <div class="chart-container">
+        <div class="chart-title">Chart 1: Consumer Sentiment Index</div>
+        <!-- Placeholder for Chart 1 -->
+        <div style="height: 300px; border: 1px solid #ccc; background-color: #f9f9f9;">[Chart 1 Placeholder]</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 15px;">General Economic Situation</h2>
+    <p style="font-size: 11pt; line-height: 1.6;">
+      <span data-field="economic_situation_paragraph_1">Results of the survey this month point towards elevated uncertainty amongst consumers regarding the outlook for the economy. Consumers in particular are more pessimistic about employment prospects over the next year, falling by {{ employment_change }} index points down to {{ employment_index }}. Respondents also revised down their outlook for the economy as a whole with a {{ outlook_change }} percentage point drop in positive responses in May.</span>
+    </p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; gap: 40px; margin-top: 50px;">
+    <div style="flex: 1;">
+      <div class="chart-container">
+        <div class="chart-title">Chart 3: Index of Current Economic Conditions</div>
+        <!-- Placeholder for Chart 3 -->
+        <div style="height: 300px; border: 1px solid #ccc; background-color: #f9f9f9;">[Chart 3 Placeholder]</div>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="chart-container">
+        <div class="chart-title">Chart 2: Index of Consumer Expectations</div>
+        <!-- Placeholder for Chart 2 -->
+        <div style="height: 300px; border: 1px solid #ccc; background-color: #f9f9f9;">[Chart 2 Placeholder]</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; gap: 40px;">
+    <div style="flex: 1;">
+      <p style="font-size: 11pt; line-height: 1.6;">
+        <span data-field="buying_climate_paragraph">The buying climate also weakened compared to last month. This component fell by {{ buying_climate_change }} index points down to {{ buying_climate_index }} driven by a {{ percentage_change }} percentage point fall in the proportion of positive responses indicating consumers are increasingly hesitant to make any large household purchases.</span>
+      </p>
+    </div>
+    <div style="flex: 1;">
+      <div class="chart-container">
+        <div class="chart-title">Table 1: Survey Index Results</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Measure</th>
+              <th>Long-Run Average</th>
+              <th>&Delta; month-on-month</th>
+              <th>May {{ current_year }}</th>
+              <th>April {{ current_year }}</th>
+              <th>May {{ previous_year }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overall Consumer Sentiment Index</td>
+              <td>{{ overall_sentiment_long_run }}</td>
+              <td>{{ overall_sentiment_change }}</td>
+              <td><span data-field="overall_sentiment_may">{{ overall_sentiment_may }}</span></td>
+              <td><span data-field="overall_sentiment_april">{{ overall_sentiment_april }}</span></td>
+              <td><span data-field="overall_sentiment_prev_may">{{ overall_sentiment_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Index of Current Conditions</td>
+              <td>{{ current_conditions_long_run }}</td>
+              <td>{{ current_conditions_change }}</td>
+              <td><span data-field="current_conditions_may">{{ current_conditions_may }}</span></td>
+              <td><span data-field="current_conditions_april">{{ current_conditions_april }}</span></td>
+              <td><span data-field="current_conditions_prev_may">{{ current_conditions_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Index of Consumer Expectations</td>
+              <td>{{ expectations_long_run }}</td>
+              <td>{{ expectations_change_val }}</td>
+              <td><span data-field="expectations_may">{{ expectations_may }}</span></td>
+              <td><span data-field="expectations_april">{{ expectations_april }}</span></td>
+              <td><span data-field="expectations_prev_may">{{ expectations_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Personal Financial Situation over last 12 months</td>
+              <td>{{ personal_financial_long_run }}</td>
+              <td>{{ personal_financial_change }}</td>
+              <td><span data-field="personal_financial_may">{{ personal_financial_may }}</span></td>
+              <td><span data-field="personal_financial_april">{{ personal_financial_april }}</span></td>
+              <td><span data-field="personal_financial_prev_may">{{ personal_financial_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Personal Financial Situation over next 12 months</td>
+              <td>{{ personal_financial_next_long_run }}</td>
+              <td>{{ personal_financial_next_change }}</td>
+              <td><span data-field="personal_financial_next_may">{{ personal_financial_next_may }}</span></td>
+              <td><span data-field="personal_financial_next_april">{{ personal_financial_next_april }}</span></td>
+              <td><span data-field="personal_financial_next_prev_may">{{ personal_financial_next_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>General Economic Outlook</td>
+              <td>{{ general_economic_long_run }}</td>
+              <td>{{ general_economic_change }}</td>
+              <td><span data-field="general_economic_may">{{ general_economic_may }}</span></td>
+              <td><span data-field="general_economic_april">{{ general_economic_april }}</span></td>
+              <td><span data-field="general_economic_prev_may">{{ general_economic_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Outlook for Unemployment</td>
+              <td>{{ unemployment_long_run }}</td>
+              <td>{{ unemployment_change }}</td>
+              <td><span data-field="unemployment_may">{{ unemployment_may }}</span></td>
+              <td><span data-field="unemployment_april">{{ unemployment_april }}</span></td>
+              <td><span data-field="unemployment_prev_may">{{ unemployment_prev_may }}</span></td>
+            </tr>
+            <tr>
+              <td>Major Purchases</td>
+              <td>{{ major_purchases_long_run }}</td>
+              <td>{{ major_purchases_change }}</td>
+              <td><span data-field="major_purchases_may">{{ major_purchases_may }}</span></td>
+              <td><span data-field="major_purchases_april">{{ major_purchases_april }}</span></td>
+              <td><span data-field="major_purchases_prev_may">{{ major_purchases_prev_may }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 9pt; margin-top: 15px;">
+          <sup>1) Index values: Quarter 4, 1995 = 100.</sup><br>
+          <sup>2) Average value between May 2012 and May 2017.</sup>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-bottom: 40px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Disclaimer</h3>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="disclaimer_text">{{ disclaimer_text }}</span>
+    </p>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Notes</h3>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="notes_text">{{ notes_text }}</span>
+    </p>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="data_collection_text">The data are obtained from telephone interviews during the first two weeks of the month with around {{ sample_size }} completed questionnaires. The data are re-weighted in line with gender, age and level of educational attainment to ensure the data were fully representative of the national population of adults. Each index is calculated by computing the relative scores (the percent giving favourable replies minus the percent giving unfavourable replies) for each question used in the different indices. Those who reply "Don't Know", "Remain the same" are excluded from the index calculations. Each relative score is rounded to the nearest whole number. The sum of the relative scores is then divided by the base period total for each index. More details on www.esri.ie.</span>
+    </p>
+  </div>
+
+  <div style="margin-top: 80px;">
+    <p style="font-size: 10pt; line-height: 1.5;">
+      For further information contact
+    </p>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="contact_person_1">{{ contact_person_1 }}</span> - Chief Economist, KBC Bank Ireland - (01) {{ phone_number_1 }} {{ phone_number_2 }}
+    </p>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      or
+    </p>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="contact_person_2">{{ contact_person_2 }}</span> - Senior Research Officer, ESRI - (01) {{ phone_number_3 }} {{ phone_number_4 }}
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 100px;">
+    <p style="font-size: 10pt; line-height: 1.5;">
+      <span data-field="historical_data_note">{{ historical_data_note }}</span>
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 100px; text-align: center;">
+    <p style="font-size: 10pt; line-height: 1.5;">
+      KBC Bank Ireland, Sandwith Street, Dublin 2, Tel: 01-664 6889, Fax: 01-664 6898, Web: www.kbc.ie
+    </p>
+    <p style="font-size: 10pt; line-height: 1.5;">
+      ESRI, Whitaker Square, Sir John Rogerson's Quay, Dublin 2, Tel: 01-863 2000, Web: www.esri.ie
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

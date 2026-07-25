@@ -1,0 +1,210 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 5px; border: 1px solid #ccc; text-align: left; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .label-col { width: 200px; }
+  .input-col { flex-grow: 1; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 24pt;">Kankakee Community College</h1>
+    <p style="font-size: 12pt;">100 College Drive • Kankakee, IL 60901-6505</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p>Today's date: <span data-field="today_date">{{ today_date }}</span></p>
+    </div>
+    <div>
+      <p>Check one:</p>
+      <label><input type="checkbox"> Credit Division</label><br>
+      <label><input type="checkbox"> Continuing Education and Career Services</label><br>
+      <label><input type="checkbox"> Adult Education</label><br>
+      <label><input type="checkbox"> High school credit</label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>Change for which term: Fall <span data-field="fall_term">{{ fall_term }}</span> Spring <span data-field="spring_term">{{ spring_term }}</span> Summer <span data-field="summer_term">{{ summer_term }}</span></p>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>PLEASE PRINT.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="width: 30%;">
+      <p>Name:</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="name">{{ name }}</div>
+    </div>
+    <div style="width: 30%;">
+      <p>LAST</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="last">{{ last }}</div>
+    </div>
+    <div style="width: 30%;">
+      <p>FIRST</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="first">{{ first }}</div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+    <div style="width: 30%;">
+      <p>Student I.D. no.:</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="student_i_d_no">{{ student_i_d_no }}</div>
+    </div>
+    <div style="width: 70%;">
+      <p>Complete your change of schedule and email to <span data-field="email_address">{{ email_address }}</span> using your KCC student email. Questions? Talk with an advisor at Student Services Room 222 or call 815-802-8500.</p>
+    </div>
+  </div>
+
+  <!-- Withdrawal Request Table -->
+  <h2 style="margin-top: 30px;">Withdrawal request</h2>
+  <p>Students are responsible for providing correct course and section numbers on the schedule below. Please check for accuracy.</p>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;">Course prefix</td>
+        <td style="width: 10%;">Course no.</td>
+        <td style="width: 10%;">Section no.</td>
+        <td style="width: 40%;">Course title</td>
+        <td style="width: 15%;">Sem. hrs.</td>
+        <td style="width: 15%;">Instructor/division</td>
+        <td style="width: 10%;">Instructor's signature</td>
+        <td style="width: 10%;">Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in withdrawal_items %}
+      <tr>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].course_prefix">{{ withdrawal_items[loop.index0].course_prefix }}</span></td>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].course_no">{{ withdrawal_items[loop.index0].course_no }}</span></td>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].section_no">{{ withdrawal_items[loop.index0].section_no }}</span></td>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].course_title">{{ withdrawal_items[loop.index0].course_title }}</span></td>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].sem_hrs">{{ withdrawal_items[loop.index0].sem_hrs }}</span></td>
+        <td><span data-field="withdrawal_items[{{ loop.index0 }}].instructor_division">{{ withdrawal_items[loop.index0].instructor_division }}</span></td>
+        <td><div style="height: 20px;"></div></td>
+        <td><div style="height: 20px;"></div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Reason for Withdrawal Checkboxes -->
+  <h2 style="margin-top: 30px;">Reason for withdrawal</h2>
+  <p>Check only one:</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+    <label><input type="checkbox"> BT - Better class time</label>
+    <label><input type="checkbox"> CH - Class too hard</label>
+    <label><input type="checkbox"> DS - Lack of disability services</label>
+    <label><input type="checkbox"> EC - Employment conflict</label>
+    <label><input type="checkbox"> FI - Financial problems</label>
+    <label><input type="checkbox"> FP - Family problems</label>
+    <label><input type="checkbox"> HH - Health problems</label>
+    <label><input type="checkbox"> IW - Insufficient career help</label>
+    <label><input type="checkbox"> JW - Institutional withdrawal</label>
+    <label><input type="checkbox"> JP - Could not get help to find job</label>
+    <label><input type="checkbox"> LI - Lack of interest</label>
+    <label><input type="checkbox"> MO - Moving</label>
+    <label><input type="checkbox"> PC - Professor concerns</label>
+    <label><input type="checkbox"> TC - Too many classes</label>
+    <label><input type="checkbox"> TP - Travel problems</label>
+    <label><input type="checkbox"> UC - Unavailable child care</label>
+    <label><input type="checkbox"> WA - Called to active duty</label>
+  </div>
+
+  <!-- Comments Section -->
+  <h2 style="margin-top: 30px;">Comments:</h2>
+  <div style="border: 1px solid black; height: 80px; margin-bottom: 30px;"></div>
+
+  <!-- Add Request Table -->
+  <h2 style="margin-top: 30px;">Add request</h2>
+  <p>Students are responsible for providing correct course and section numbers on the schedule below. Please check for accuracy.</p>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 10%;">Course prefix</td>
+        <td style="width: 10%;">Course no.</td>
+        <td style="width: 10%;">Section no.</td>
+        <td style="width: 40%;">Course title</td>
+        <td style="width: 10%;">Sem. hrs.</td>
+        <td style="width: 10%;">Days</td>
+        <td style="width: 20%;">Times/Location</td>
+        <td style="width: 10%;">Auth. signature/prereq. met</td>
+        <td style="width: 10%;">Instructor Overload</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in add_items %}
+      <tr>
+        <td><span data-field="add_items[{{ loop.index0 }}].course_prefix">{{ add_items[loop.index0].course_prefix }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].course_no">{{ add_items[loop.index0].course_no }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].section_no">{{ add_items[loop.index0].section_no }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].course_title">{{ add_items[loop.index0].course_title }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].sem_hrs">{{ add_items[loop.index0].sem_hrs }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].days">{{ add_items[loop.index0].days }}</span></td>
+        <td><span data-field="add_items[{{ loop.index0 }}].times_location">{{ add_items[loop.index0].times_location }}</span></td>
+        <td><div style="height: 20px;"></div></td>
+        <td><div style="height: 20px;"></div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Certification and Signature -->
+  <p>I certify the above information has been verified as correct, and I will notify the Office of Admissions and Registration of further changes in writing.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 30%;">
+      <p>Student's signature</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="student_s_signature">{{ student_s_signature }}</div>
+      <p>Date</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="date">{{ date }}</div>
+    </div>
+    <div style="width: 30%;">
+      <p>Checker's initials</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="checker_s_initials">{{ checker_s_initials }}</div>
+      <p>Date</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="date_2">{{ date_2 }}</div>
+    </div>
+  </div>
+
+  <!-- For Office Use Only -->
+  <h2 style="margin-top: 50px;">For office use only.</h2>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 30%;">
+      <p>SH enrolled in after change</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="sh_enrolled_in_after_change">{{ sh_enrolled_in_after_change }}</div>
+    </div>
+    <div style="width: 70%;">
+      <p>Total withdrawal "0" SH above) and Title IV aid recipient, provide the Office of Financial Aid with copy of change of schedule and bill prior to processing the change of schedule and enter the last date attended. <span data-field="month_date">{{ month_date }}</span> <span data-field="day_date">{{ day_date }}</span> Year of last attendance</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 30%;">
+      <p>If less than 6 SH and Title IV Loan Recipient, then student must contact the Office of Financial Aid.</p>
+      <div style="border-bottom: 1px solid black; height: 20px;" data-field="year_of_last_attendance">{{ year_of_last_attendance }}</div>
+    </div>
+    <div style="width: 70%;">
+      <p>Student I.D. no.: <span data-field="student_id_no_final">{{ student_id_no_final }}</span></p>
+    </div>
+  </div>
+
+  <div style="text-align: right; margin-top: 50px; font-size: 10pt;">
+    REV. 8/2015<br>
+    web REV. 6/2016
+  </div>
+</div>

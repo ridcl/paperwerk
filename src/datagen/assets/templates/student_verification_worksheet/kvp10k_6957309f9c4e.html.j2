@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Verification Worksheet</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { margin-top: 0; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .header-logo img { max-width: 200px; height: auto; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { width: 48%; }
+  .full-width-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container th, .table-container td { border: 1px solid #000; padding: 8px; text-align: left; }
+  .table-container th { background-color: #f0f0f0; }
+  .signature-area { margin-top: 50px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for logo -->
+    <span style="font-size: 36px; font-weight: bold;">WESTMONT</span>
+  </div>
+  <h1 style="text-align: center;">2022-2023 Independent Student Verification Worksheet</h1>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <span style="font-weight: bold;">NEW</span>
+    <p style="margin-top: 10px;">All students who complete the FAFSA and who filed a tax return for 2020 must also submit either a signed copy of their 2020 Federal Income Tax Return or an IRS Tax Return Transcript. Students who did not file a tax return for 2020 must submit a Verification of Non-Filing Letter. The Verification of Non-Filing Letter can be ordered on-line at <a href="#" style="color: #000;">irs.gov/individuals/Get-Transcript</a>.</p>
+  </div>
+
+  <div class="section-title">STUDENT INFORMATION</div>
+  <div class="form-row">
+    <div>Last Name: <span data-field="last_name">{{ last_name }}</span></div>
+    <div>First Name: <span data-field="first_name">{{ first_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>M.I.: <span data-field="middle_initial">{{ middle_initial }}</span></div>
+    <div>Westmont ID Number or Last 4 digits of Social Security Number: <span data-field="westmont_id">{{ westmont_id }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Address: <span data-field="address">{{ address }}</span></div>
+    <div>Birthdate: <span data-field="birthdate">{{ birthdate }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>City: <span data-field="city">{{ city }}</span></div>
+    <div>Student's Permanent Telephone: <span data-field="student_phone">{{ student_phone }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>E-mail Address: <span data-field="email">{{ email }}</span></div>
+    <div>Student's Cell Phone: <span data-field="cell_phone">{{ cell_phone }}</span></div>
+  </div>
+
+  <div class="section-title">FAMILY INFORMATION</div>
+  <p>List everyone in your household, including:</p>
+  <ul>
+    <li>yourself and <span data-field="spouse_status">{{ spouse_status }}</span></li>
+    <li>your spouse if you have one, and</li>
+    <li>your children, if you will provide more than half of their support from July 1, 2022 through June 30, 2023, even if they don't live with you, and</li>
+    <li>other people only if they now live with you and you provide more than half of their support and will continue to provide more than half of their support from July 1, 2022 through June 30, 2023.</li>
+  </ul>
+
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 10%;">#</th>
+        <th style="width: 30%;">Full Name</th>
+        <th style="width: 20%;">Age as of Dec. 31, 2022</th>
+        <th style="width: 20%;">Relationship to this student</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 8) %}
+      <tr>
+        <td>{{ i }}</td>
+        <td><span data-field="household_members[{{ i-1 }}].full_name">{{ household_members[i-1].full_name }}</span></td>
+        <td><span data-field="household_members[{{ i-1 }}].age">{{ household_members[i-1].age }}</span></td>
+        <td><span data-field="household_members[{{ i-1 }}].relationship">{{ household_members[i-1].relationship }}</span></td>
+        <td><span data-field="household_members[{{ i-1 }}].notes">{{ household_members[i-1].notes }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 40px;">STUDENT TAX INFORMATION</div>
+  <p>Check here if you are providing or will provide the required Verification of Non-Filing Letter because you did not file and were not required to file a 2020 Federal Income Tax Return.</p>
+  <input type="checkbox">
+
+  <p>A Verification of Non-Filing Letter is required to show that an individual did not file taxes in 2020. The letter can be printed or saved to your computer directly from the IRS website. Go to <a href="#" style="color: #000;">http://www.irs.gov/individuals/Get-Transcript</a> to set up an account and obtain your Non-Filing Letter. If you are unable to set up an account online, you may print out, complete and fax or mail the IRS Form 4506-T Request for Transcript of Tax Return, found at <a href="#" style="color: #000;">https://www.irs.gov/pub/irs-pdf/f4506tf.pdf</a>, to receive it by mail (check box 7 to request Verification of Non-Filing).</p>
+
+  <p>If you did not file, please list the sources and amounts for any income you received in 2020.</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">EMPLOYERS/SOURCES OF INCOME FOR 2020</th>
+        <th style="width: 25%;">TOTAL AMOUNT OF INCOME RECEIVED IN 2020</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 5) %}
+      <tr>
+        <td><span data-field="income_sources[{{ i-1 }}].description">{{ income_sources[i-1].description }}</span></td>
+        <td><span data-field="income_sources[{{ i-1 }}].amount">{{ income_sources[i-1].amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 30px;">STUDENT MARITAL STATUS</div>
+  <p>As of the day that I first completed the 2022-2023 FAFSA, I was</p>
+  <input type="radio" name="marital_status" value="single"> Single (continue to next page)
+  <input type="radio" name="marital_status" value="separated"> Separated/Divorced (continue to next page)
+  <input type="radio" name="marital_status" value="married"> Married/remarried
+
+  <div class="section-title" style="margin-top: 30px;">SPOUSE'S TAX INFORMATION (IF STUDENT IS MARRIED)</div>
+  <p>Check here if you are providing or will provide the required Verification of Non-Filing Letter because your spouse did not file and was not required to file a 2020 Federal Income Tax Return.</p>
+  <input type="checkbox">
+
+  <p>A Verification of Non-Filing Letter is required to show that an individual did not file taxes in 2020. The letter can be printed or saved to your computer directly from the IRS website. Go to <a href="#" style="color: #000;">http://www.irs.gov/individuals/Get-Transcript</a> to set up an account and obtain your Non-Filing Letter. If you are unable to set up an account online, you may print out, complete and fax or mail the IRS Form 4506-T Request for Transcript of Tax Return, found at <a href="#" style="color: #000;">https://www.irs.gov/pub/irs-pdf/f4506tf.pdf</a>, to receive it by mail (check box 7 to request Verification of Non-Filing).</p>
+
+  <p>If your spouse did not file a tax return but had income from any source in 2020, please list the sources and amounts below. Please also include a copy of their employer-generated W-2(s) for 2020.</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">EMPLOYERS/SOURCES OF INCOME FOR 2020</th>
+        <th style="width: 25%;">TOTAL AMOUNT OF INCOME RECEIVED IN 2020</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 5) %}
+      <tr>
+        <td><span data-field="spouse_income_sources[{{ i-1 }}].description">{{ spouse_income_sources[i-1].description }}</span></td>
+        <td><span data-field="spouse_income_sources[{{ i-1 }}].amount">{{ spouse_income_sources[i-1].amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 40px;">ASSET INFORMATION</div>
+  <p>Report the value of the items below as of the date you filed the FAFSA.</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Asset</th>
+        <th style="width: 25%;">Student</th>
+        <th style="width: 25%;">Spouse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cash, savings and checking accounts (as of the date you filed the FAFSA).</td>
+        <td><span data-field="asset_cash_student">{{ asset_cash_student }}</span></td>
+        <td><span data-field="asset_cash_spouse">{{ asset_cash_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Net worth of your investments, including real estate (as of the date you filed the FAFSA). Do not include your primary residence or the value of bona fide retirement accounts. Provide exact figures only; do not round.</td>
+        <td><span data-field="asset_investments_student">{{ asset_investments_student }}</span></td>
+        <td><span data-field="asset_investments_spouse">{{ asset_investments_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Net worth of your current business and/or inventory (as of the date you filed the FAFSA). Do not include a farm that you own and control (more than 50% ownership) and has fewer than 100 employees.</td>
+        <td><span data-field="asset_business_student">{{ asset_business_student }}</span></td>
+        <td><span data-field="asset_business_spouse">{{ asset_business_spouse }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 30px;">ADDITIONAL FINANCIAL INFORMATION</div>
+  <p>Report annual amounts from 2020</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Financial Aid, including earnings from need-based employment programs, such as Federal Work-Study, as well as any taxable grants and scholarships included in your adjusted gross income.</th>
+        <th style="width: 25%;">Student</th>
+        <th style="width: 25%;">Spouse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="additional_aid_student">{{ additional_aid_student }}</span></td>
+        <td><span data-field="additional_aid_spouse">{{ additional_aid_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Combat pay or special combat pay. Only enter the amount that was taxable and included in your adjusted gross income. Do not enter untaxed combat pay.</td>
+        <td><span data-field="combat_pay_student">{{ combat_pay_student }}</span></td>
+        <td><span data-field="combat_pay_spouse">{{ combat_pay_spouse }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 30px;">UNTAXED INCOME</div>
+  <p>Report annual amounts from 2020</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Payments to tax-deferred pension and savings plans</th>
+        <th style="width: 25%;">Student</th>
+        <th style="width: 25%;">Spouse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="untaxed_pension_student">{{ untaxed_pension_student }}</span></td>
+        <td><span data-field="untaxed_pension_spouse">{{ untaxed_pension_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Child support received (Do not include foster care or adoption payments)</td>
+        <td><span data-field="untaxed_child_support_student">{{ untaxed_child_support_student }}</span></td>
+        <td><span data-field="untaxed_child_support_spouse">{{ untaxed_child_support_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Housing, food and other living allowances paid to members of the military, clergy and others (including cash payments and cash value benefits). Do not include the value of on-base military housing or the value of basic military allowance for housing.</td>
+        <td><span data-field="untaxed_housing_student">{{ untaxed_housing_student }}</span></td>
+        <td><span data-field="untaxed_housing_spouse">{{ untaxed_housing_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Worker's Compensation and/or Disability</td>
+        <td><span data-field="untaxed_workers_comp_student">{{ untaxed_workers_comp_student }}</span></td>
+        <td><span data-field="untaxed_workers_comp_spouse">{{ untaxed_workers_comp_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Veterans Noneducation Benefits</td>
+        <td><span data-field="untaxed_veterans_benefits_student">{{ untaxed_veterans_benefits_student }}</span></td>
+        <td><span data-field="untaxed_veterans_benefits_spouse">{{ untaxed_veterans_benefits_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Money received (including from your parent(s) or expenses paid on your behalf)</td>
+        <td><span data-field="untaxed_money_received_student">{{ untaxed_money_received_student }}</span></td>
+        <td><span data-field="untaxed_money_received_spouse">{{ untaxed_money_received_spouse }}</span></td>
+      </tr>
+      <tr>
+        <td>Other untaxed income</td>
+        <td><span data-field="untaxed_other_income_student">{{ untaxed_other_income_student }}</span></td>
+        <td><span data-field="untaxed_other_income_spouse">{{ untaxed_other_income_spouse }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 50px;">SIGNATURE</div>
+  <p>By signing this worksheet, I/we certify that all the information is complete and correct:</p>
+
+  <div class="signature-area">
+    <div class="form-row">
+      <div>Student's handwritten signature: _________________________</div>
+      <div>Date: _________________________</div>
+    </div>
+    <div class="form-row" style="margin-top: 30px;">
+      <div>Spouse's handwritten signature: _________________________</div>
+      <div>Date: _________________________</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 50px;">Submit this completed form to:</div>
+  <p>Westmont College</p>
+  <p>Office of Financial Aid</p>
+  <p>955 La Paz Road</p>
+  <p>Santa Barbara, CA 93108</p>
+  <p>Email: <span data-field="submission_email">{{ submission_email }}</span></p>
+  <p>Questions? Call our Financial Aid Help Line at (888) 963-4624.</p>
+
+</div>
+
+<div class="page">
+  <!-- Page 2 Content -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <span style="font-size: 18px; font-weight: bold;">STUDENT TAX INFORMATION</span>
+  </div>
+
+  <p>Check here if you are providing or will provide the required Verification of Non-Filing Letter because you did not file and were not required to file a 2020 Federal Income Tax Return.</p>
+  <input type="checkbox">
+
+  <p>A Verification of Non-Filing Letter is required to show that an individual did not file taxes in 2020. The letter can be printed or saved to your computer directly from the IRS website. Go to <a href="#" style="color: #000;">http://www.irs.gov/individuals/Get-Transcript</a> to set up an account and obtain your Non-Filing Letter. If you are unable to set up an account online, you may print out, complete and fax or mail the IRS Form 4506-T Request for Transcript of Tax Return, found at <a href="#" style="color: #000;">https://www.irs.gov/pub/irs-pdf/f4506tf.pdf</a>, to receive it by mail (check box 7 to request Verification of Non-Filing).</p>
+
+  <div class="section-title" style="margin-top: 30px;">STUDENT MARITAL STATUS</div>
+  <p>As of the day that I first completed the 2022-2023 FAFSA, I was</p>
+  <input type="radio" name="marital_status_p2" value="single"> Single (continue to next page)
+  <input type="radio" name="marital_status_p2" value="separated"> Separated/Divorced (continue to next page)
+  <input type="radio" name="marital_status_p2" value="married"> Married/remarried
+
+  <div class="section-title" style="margin-top: 30px;">SPOUSE'S TAX INFORMATION (IF STUDENT IS MARRIED)</div>
+  <p>Check here if you are providing or will provide the required Verification of Non-Filing Letter because your spouse did not file and was not required to file a 2020 Federal Income Tax Return.</p>
+  <input type="checkbox">
+
+  <p>A Verification of Non-Filing Letter is required to show that an individual did not file taxes in 2020. The letter can be printed or saved to your computer directly from the IRS website. Go to <a href="#" style="color: #000;">http://www.irs.gov/individuals/Get-Transcript</a> to set up an account and obtain your Non-Filing Letter. If you are unable to set up an account online, you may print out, complete and fax or mail the IRS Form 4506-T Request for Transcript of Tax Return, found at <a href="#" style="color: #000;">https://www.irs.gov/pub/irs-pdf/f4506tf.pdf</a>, to receive it by mail (check box 7 to request Verification of Non-Filing).</p>
+
+  <p>If your spouse did not file a tax return but had income from any source in 2020, please list the sources and amounts below. Please also include a copy of their employer-generated W-2(s) for 2020.</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th style="width: 50%;">EMPLOYERS/SOURCES OF INCOME FOR 2020</th>
+        <th style="width: 25%;">TOTAL AMOUNT OF INCOME RECEIVED IN 2020</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 5) %}
+      <tr>
+        <td><span data-field="spouse_income_sources_p2[{{ i-1 }}].description">{{ spouse_income_sources_p2[i-1].description }}</span></td>
+        <td><span data-field="spouse_income_sources_p2[{{ i-1 }}].amount">{{ spouse_income_sources_p2[i-1].amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+<div class="page">
+  <!-- Page 3 Content -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <span style="font-size: 18px; font-weight: bold;">SIGNATURE</span>
+  </div>
+
+  <p>By signing this worksheet, I/we certify that all the information is complete and correct:</p>
+
+  <div class="signature-area">
+    <div class="form-row">
+      <div>Student's handwritten signature: _________________________</div>
+      <div>Date: _________________________</div>
+    </div>
+    <div class="form-row" style="margin-top: 30px;">
+      <div>Spouse's handwritten signature: _________________________</div>
+      <div>Date: _________________________</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 50px;">Submit this completed form to:</div>
+  <p>Westmont College</p>
+  <p>Office of Financial Aid</p>
+  <p>955 La Paz Road</p>
+  <p>Santa Barbara, CA 93108</p>
+  <p>Email: <span data-field="submission_email_p3">{{ submission_email_p3 }}</span></p>
+  <p>Questions? Call our Financial Aid Help Line at (888) 963-4624.</p>
+
+</div>
+
+</body>
+</html>

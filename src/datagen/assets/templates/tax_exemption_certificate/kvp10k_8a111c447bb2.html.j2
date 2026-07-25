@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sales Tax Exemption Certificate</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  .header { font-weight: bold; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; margin-bottom: 10px; align-items: center; }
+  .form-row > div { flex: 1; }
+  .checkbox-group label { margin-right: 15px; font-weight: normal; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .table-container th, .table-container td { border: 1px solid #000; padding: 8px; text-align: left; }
+  .table-container th { background-color: #f0f0f0; }
+  .signature-block { margin-top: 50px; display: flex; justify-content: space-between; }
+  .signature-line { width: 45%; border-top: 1px solid #000; padding-top: 5px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">WISCONSIN SALES AND USE TAX EXEMPTION CERTIFICATE</div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div style="flex: 1;">
+      Purchaser's Business Name: <span data-field="purchaser_business_name">{{ purchaser_business_name }}</span>
+    </div>
+    <div style="flex: 1;">
+      Purchaser's Address: <span data-field="purchaser_address">{{ purchaser_address }}</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    The above purchaser, whose signature appears on the reverse side of this form, claims exemption from Wisconsin state, county, baseball or football stadium, local exposition, and premier resort sales or use tax on the purchase, lease, license, or rental of tangible personal property, property under sec. 77.52(1)(b), items under sec. 77.52(1)(c), goods under sec. 77.52(1)(d), or taxable services, as indicated by the box(es) checked below.
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    I hereby certify that I am engaged in the business of selling, leasing, licensing, or renting:
+    <div style="margin-left: 20px;">
+      (Purchaser's description of property or services purchased (itemize property, items, goods or services purchased)):
+      <div style="border: 1px solid #000; padding: 10px; margin-top: 5px;">
+        <span data-field="purchaser_description_of_property_or_services">{{ purchaser_description_of_property_or_services }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Seller's Name</div>
+  <div class="section-title">Seller's Address</div>
+
+  <div class="section-title">REASON FOR EXEMPTION</div>
+
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Resale (Enter purchaser's seller permit or use tax certificate number)</label>
+  </div>
+
+  <div class="section-title">Manufacturing and Biotechnology</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Tangible personal property (TPP) or item under s.77.52(1)(b) that is used exclusively and directly by a manufacturer in manufacturing an article of TPP or items or property under s.77.52(1)(b) (or c) that is destined for sale and that becomes an ingredient or component part of the article of TPP or items or property under s.77.52(1)(b) (or c) destined for sale or is consumed or destroyed or loses its identity in the manufacture of an article of TPP or items or property under s.77.52(1)(b) (or c) destined for sale.</label>
+    <label><input type="checkbox"> Machines and specific processing equipment and repair parts or replacements thereof, exclusively and directly used by a manufacturer in manufacturing tangible personal property or items or property under s.77.52(1)(b) (or c) and safety attachments for those machines and equipment.</label>
+    <label><input type="checkbox"> The repair, service, alteration, fitting, cleaning, painting, coating, towing, inspection, and maintenance of machines and specific processing equipment, that the above purchaser would be authorized to purchase without sales or use tax, at the time the service is performed. Tools used to repair exempt machines are not exempt.</label>
+  </div>
+
+  <div class="section-title">Fuel and Electricity Consumption</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Fuel and electricity consumed in manufacturing tangible personal property or items or property under s.77.52(1)(b) (or c) in this state.</label>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 20px;">
+    <div style="flex: 1;">Percent of fuel exempt: <span data-field="percent_of_fuel_exempt">{{ percent_of_fuel_exempt }}</span> %</div>
+    <div style="flex: 1;">Percent of electricity exempt: <span data-field="percent_of_electricity_exempt">{{ percent_of_electricity_exempt }}</span> %</div>
+  </div>
+
+  <div class="section-title">Portion of Amount</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Portion of the amount of fuel converted to steam or related process. Percent of fuel exempt: <span data-field="percent_of_fuel_exempt_steam">{{ percent_of_fuel_exempt_steam }}</span> %</label>
+  </div>
+
+  <div class="section-title">Farming</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Farming (To qualify for this exemption, the purchaser must use item(s) exclusively and directly in the business of farming, including dairy farming, agriculture, horticulture, floriculture, silviculture, or custom farming services.)</label>
+    <label><input type="checkbox"> Tractors (except lawn and garden tractors), all terrain vehicles (ATV) and farm machines, including accessories, attachments, and parts, lubricants, nonpowered equipment, and other tangible personal property or items or property under s.77.52(1)(b) (or c) that are used exclusively and directly, or are consumed or lose their identities in the business of farming. This includes services to the property and items above.</label>
+    <label><input type="checkbox"> Feed, seeds for planting, plants, fertilizer, soil conditioners, sprays, pesticides, and fungicides.</label>
+    <label><input type="checkbox"> Breeding and other livestock, poultry, and farm work stock.</label>
+  </div>
+
+  <div class="section-title">Other</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Containers for fruits, vegetables, grain, hay, and silage (including containers used to transfer merchandise to customers), and plastic bags, sleeves, and sheeting used to store or cover hay and silage. Baling twine and baling wire.</label>
+    <label><input type="checkbox"> Animal waste containers or component parts thereof (may only mark certificate as "Single Purchase").</label>
+    <label><input type="checkbox"> Animal bedding, medicine for farm livestock, and milk house supplies.</label>
+  </div>
+
+  <div class="section-title">Governmental Units and Other Exempt Entities</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> The United States and its unincorporated agencies and instrumentalities.</label>
+    <label><input type="checkbox"> Any federally recognized American Indian tribe or band in this state.</label>
+    <label><input type="checkbox"> Wisconsin state and local governmental units, including the State of Wisconsin or any agency thereof, Wisconsin counties, cities, villages, or towns, and Wisconsin public schools, school districts, universities, or technical college districts.</label>
+    <label><input type="checkbox"> Organizations organized and operated exclusively for religious, charitable, scientific, or educational purposes, or for the prevention of cruelty to children or animals. CES Number: <span data-field="ces_number">{{ ces_number }}</span> (Required for Wisconsin organizations).</label>
+  </div>
+
+  <div class="section-title">Other</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Containers and other packaging, packing, and shipping materials, used to transfer merchandise to customers of the purchaser.</label>
+    <label><input type="checkbox"> Trailers and accessories, attachments, parts, supplies, materials, and service for motor trucks, tractors, and trailers which are used exclusively in common or contract carriage under LC, IC, or MC No. (if applicable).</label>
+    <label><input type="checkbox"> Machines and specific processing equipment used exclusively and directly in a fertilizer blending, feed milling, or grain drying operation, including repair parts, replacements, and safety attachments.</label>
+    <label><input type="checkbox"> Building materials acquired solely and used solely in the construction or repair of holding structures used for weighing and drying feed or fertilizer ingredients into a mix or for storage of such grain, if such structures are used in a fertilizer blending, feed milling, or grain drying operation.</label>
+    <label><input type="checkbox"> Tangible personal property purchased by a person who is licensed to operate a commercial radio or television station in Wisconsin. Such property is used exclusively and directly in the operation or integration of various sources of program material for commercial radio or television transmissions that are generally available to the public free of charge without a subscription or service agreement.</label>
+    <label><input type="checkbox"> Fuel and electricity consumed in the operation or integration of various sources of program material for commercial radio or television transmissions that are generally available to the public free of charge without a subscription or service agreement.</label>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 20px;">
+    <div style="flex: 1;">Percent of fuel exempt: <span data-field="percent_of_fuel_exempt_radio">{{ percent_of_fuel_exempt_radio }}</span> %</div>
+    <div style="flex: 1;">Percent of electricity exempt: <span data-field="percent_of_electricity_exempt_radio">{{ percent_of_electricity_exempt_radio }}</span> %</div>
+  </div>
+
+  <div class="section-title">Portion of Amount</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Tangible personal property and items, property and goods under s.77.52(1)(b), (c), and (d) to be resold by on my behalf where</label>
+  </div>
+
+  <div class="section-title">Electricity, Natural Gas, Fuel</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Electricity, natural gas, fuel oil, propane, coal, steam, corn, and wood (including wood pellets which are 100% wood) used for fuel for residential or farm use.</label>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 20px;">
+    <div style="flex: 1;">% of Electricity Exempt: <span data-field="percent_of_electricity_exempt_fuel">{{ percent_of_electricity_exempt_fuel }}</span> %</div>
+    <div style="flex: 1;">% of Natural Gas Exempt: <span data-field="percent_of_natural_gas_exempt_fuel">{{ percent_of_natural_gas_exempt_fuel }}</span> %</div>
+    <div style="flex: 1;">% of Fuel Exempt: <span data-field="percent_of_fuel_exempt_fuel">{{ percent_of_fuel_exempt_fuel }}</span> %</div>
+  </div>
+
+  <div class="section-title">Residential</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Residential</label>
+  </div>
+
+  <div class="section-title">Farm</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Farm</label>
+  </div>
+
+  <div class="form-row" style="margin-bottom: 30px;">
+    <div style="flex: 1;">Address Delivered: <span data-field="address_delivered">{{ address_delivered }}</span></div>
+    <div style="flex: 1;"></div>
+  </div>
+
+  <div class="section-title">Percent of Printed Advertising Material</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Percent of printed advertising material solely for out-of-state use.</label>
+  </div>
+
+  <div class="section-title">Other Exemptions</div>
+  <div class="checkbox-group" style="margin-bottom: 20px;">
+    <label><input type="checkbox"> Catalogs, and envelopes in which the catalogs are mailed, that are designed to advertise and promote the sale of merchandise or to advertise the services of individual business firms.</label>
+    <label><input type="checkbox"> Computers and servers used primarily to store copies of the product that are sent to a digital printer, a plate-making machine, or a printing press or are used primarily in process or prepress activities, by persons whose NAICS code is 323111, 323117, or 323120.</label>
+    <label><input type="checkbox"> Purchases from out-of-state sellers of tangible personal property that are temporarily stored, remain idle, and not used in this state and that are then delivered and used solely outside this state, by persons whose NAICS code is 323111, 323117, or 323120.</label>
+    <label><input type="checkbox"> Other purchases exempted by law. (State items and exemption).</label>
+  </div>
+
+  <div style="margin-top: 40px; margin-bottom: 30px;">
+    I hereby certify that if the item(s) being purchased are not used in an exempt manner, I will remit use tax on the purchase price at the time of first taxable use. I understand that failure to remit the use tax may result in a future liability that may include tax, interest, and penalty.
+  </div>
+
+  <div class="signature-block">
+    <div style="width: 45%;">
+      Signature of Purchaser:
+      <div class="signature-line"></div>
+      Print or Type Name: <span data-field="purchaser_name">{{ purchaser_name }}</span>
+    </div>
+    <div style="width: 45%;">
+      Title: <span data-field="purchaser_title">{{ purchaser_title }}</span>
+      Date: <span data-field="purchase_date">{{ purchase_date }}</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

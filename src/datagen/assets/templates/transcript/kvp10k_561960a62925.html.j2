@@ -1,0 +1,127 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+  .form-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .form-table th, .form-table td { border: 1px solid #000; padding: 8px; text-align: left; }
+  .form-table th { background-color: #f0f0f0; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 60px; margin-bottom: 5px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <img src="placeholder_logo.png" alt="University Logo" style="height: 80px;">
+    </div>
+    <div style="text-align: right;">
+      <div style="font-weight: bold;">Office of the Registrar</div>
+      <div>UNABox5044</div>
+      <div>Florence, AL 35632</div>
+      <div>Fax: 256.765.4349</div>
+      <div>registrar@una.edu</div>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 40px;">University of NORTH ALABAMA</h1>
+
+  <h2 style="text-align: center; margin-top: 50px;">Undergraduate</h2>
+  <h2 style="text-align: center;">Repeat/Recompute Application</h2>
+
+  <div style="margin-top: 30px;">
+    <table class="form-table" style="width: 50%;">
+      <tr>
+        <td style="width: 30%;">Name:</td>
+        <td style="width: 70%;"><span data-field="full_name">{{ full_name }}</span></td>
+      </tr>
+      <tr>
+        <td>UNA Email Address:</td>
+        <td><span data-field="una_email">{{ una_email }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>L Number: <span data-field="l_number">{{ l_number }}</span></p>
+    <p>Graduating this semester: <input type="radio" name="graduating" value="yes"> YES <input type="radio" name="graduating" value="no"> NO</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>
+      *You will be notified when this form has been processed via your <span data-field="una_email">{{ una_email }}</span>.
+    </p>
+    <h3 style="text-align: center; margin-top: 20px;">Recomputation of Course Grades</h3>
+    <p>
+      Undergraduate students may identify <span data-field="number_of_courses">{{ number_of_courses }}</span> courses (up to 12hours) for recomputing. Courses in which a grade of A or B have been earned cannot be repeated for computation. Only the most recent grade will be used for determining progress and the grade point average; however, the previous grade will remain on the transcript. Credit in a course may be used only one time toward meeting graduation requirement. A repeat/recompute is only allowed once per course; multiple repeat/recomputes for the same course are not permitted. <a href="#" style="text-decoration: underline;">Submit this form to the Office of the Registrar for processing.</a>
+    </p>
+  </div>
+
+  <table class="form-table" style="margin-top: 30px;">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Course Number</th>
+        <th style="width: 35%;">Full Course Title</th>
+        <th style="width: 15%;">First Attempt</th>
+        <th style="width: 15%;">Second Attempt</th>
+        <th style="width: 20%;">First Semester Taken</th>
+        <th style="width: 20%;">Semester Repeated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><span data-field="line_items[{{ loop.index0 }}].course_number">{{ item.course_number }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].course_title">{{ item.course_title }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].first_attempt_grade">{{ item.first_attempt_grade }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].second_attempt_grade">{{ item.second_attempt_grade }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].first_semester_taken">{{ item.first_semester_taken }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].semester_repeated">{{ item.semester_repeated }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <p>
+      <span style="font-weight: bold;">•</span> I understand that all grades shall remain on my permanent record and the grades in the original courses listed above will only be eliminated from the computation of my grade point average.
+    </p>
+    <p>
+      <span style="font-weight: bold;">•</span> I understand that this application is final and I may not elect at a future date to count any of the excluded courses listed above toward satisfaction for degree requirements. I also understand that I will not be eligible for academic honors if approved for a second chance provision.
+    </p>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%;">Student's Signature</td>
+        <td style="width: 50%; text-align: right;">Date</td>
+      </tr>
+      <tr>
+        <td class="signature-line"></td>
+        <td class="signature-line"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <p>Office Use Only</p>
+    <div style="margin-top: 20px;">
+      <label><input type="checkbox"> Meets Policy Guidelines</label>
+      <label style="margin-left: 300px;"><input type="checkbox"> Does Not Meet Policy Guidelines</label>
+    </div>
+    <p>REASON: ____________________________________________________________________</p>
+  </div>
+
+  <div style="margin-top: 100px; display: flex; justify-content: space-between;">
+    <div>Registrar Staff Signature</div>
+    <div>Date</div>
+  </div>
+</div>

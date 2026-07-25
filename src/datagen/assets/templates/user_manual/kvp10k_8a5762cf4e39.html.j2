@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; }
+        .header-logo { font-size: 48px; font-weight: bold; }
+        .title { font-size: 36px; font-weight: bold; margin-top: 20px; }
+        .footer-text { font-size: 10px; color: #555; margin-top: 30px; }
+        .copyright { font-size: 10px; color: #777; }
+        .section-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+        .subsection-title { font-size: 18px; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
+        .table-content { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .table-content td { padding: 8px 0; }
+        .toc-entry { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px; }
+        .toc-entry span:first-child { flex-grow: 1; }
+        .toc-entry span:last-child { font-weight: bold; }
+    </style>
+
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, Helvetica, Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, Helvetica, Arial, sans-serif; }
+        p, td, span { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+    </style>
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3, h4 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td, th { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        .caution {
+            border: 1px solid #f0ad4e;
+            background-color: #fcf8e3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td, th { padding: 8px 0; text-align: left; }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 1</div>
+    <div style="display: flex; align-items: center; margin-bottom: 40px;">
+        <div class="header-logo" style="margin-right: 10px;">G</div>
+        <div style="font-size: 30px; font-weight: bold;">GATAN</div>
+    </div>
+    <div class="title">Turbo Pumping Station</div>
+    <div class="title" style="font-size: 30px;">Model {{ model_number }}</div>
+
+    <div class="copyright">
+        Copyright &copy; {{ copyright_year }} Gatan Inc. All rights reserved.
+    </div>
+
+    <div style="margin-top: 100px; text-align: left;">
+        <div style="font-size: 10px;">Gatan, Inc.</div>
+        <div style="font-size: 10px;">{{ address_line_1 }}</div>
+        <div style="font-size: 10px;">{{ city_state_zip }}</div>
+        <div style="font-size: 10px;">T {{ phone_number }}</div>
+        <div style="font-size: 10px;">{{ support_email }}</div>
+        <div style="font-size: 10px;">{{ website_url }}</div>
+    </div>
+
+    <!-- Decorative graphic element placeholder -->
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 200px; background-image: url('placeholder_graphic.svg'); background-size: cover;"></div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 2</div>
+    <div style="text-align: center; margin-top: 100px;">
+        <div style="font-size: 14px; font-weight: bold;">Copyright {{ copyright_year }} Gatan Inc. All Rights Reserved.</div>
+        <div style="font-size: 10px; margin-top: 10px;">All rights reserved. No parts of this work may be reproduced in any form or by any means—graphic, electronic, or mechanical, including photocopying, recording, taping, or information storage and retrieval systems—without the written permission of the publisher.</div>
+        <div style="font-size: 10px; margin-top: 20px;">Products that are referred to in this document may be either trademarks and/or registered trademarks of the respective owners. The publisher and the author make no claim to these trademarks.</div>
+        <div style="font-size: 10px; margin-top: 20px;">While every precaution has been taken in the preparation of this document, the publisher and the author assume no responsibility for errors or omissions, or for damages resulting from the use of information contained in this document or from the use of programs and source code that may accompany it. In no event shall the publisher and the author be liable for any loss of profit or any other commercial damage caused or alleged to have been caused directly or indirectly by it.</div>
+    </div>
+
+    <div style="margin-top: 150px; text-align: left;">
+        <div style="font-size: 14px; font-weight: bold;">Publisher</div>
+        <div style="font-size: 12px;">Gatan Inc.</div>
+        <div style="font-size: 14px; font-weight: bold; margin-top: 15px;">Technical editors</div>
+        <div style="font-size: 12px;">Gatan Holder Team</div>
+        <div style="font-size: 14px; font-weight: bold; margin-top: 15px;">Document version</div>
+        <div style="font-size: 12px;">{{ document_version }}</div>
+        <div style="font-size: 14px; font-weight: bold; margin-top: 15px;">Website</div>
+        <div style="font-size: 12px;">{{ website_url }}</div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 3</div>
+    <div style="text-align: center; margin-top: 80px;">
+        <div class="section-title">Table of Contents</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        {% for section in table_of_contents %}
+        <div class="toc-entry">
+            <span>{{ section.title }}</span>
+            <span>{{ section.page_number }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 4</div>
+    <div style="margin-top: 50px;">
+        {% for section in table_of_contents %}
+        {% if section.page_number == 21 %}
+        <div class="toc-entry">
+            <span>{{ section.title }}</span>
+            <span>{{ section.page_number }}</span>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 5</div>
+    <div class="section-title">1 Operators safety summary</div>
+
+    <div class="subsection-title">1.1 General information</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        The general safety information in this part of the summary is for both operating and servicing personnel. Specific warnings and cautions will be found through-out the manual where they apply, but may not appear in this summary.
+    </div>
+
+    <div class="subsection-title">1.2 Terms</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        In This Manual:
+        <br>
+        CAUTION statements identify conditions or practices that could result in damage to the equipment or other property.
+        <br>
+        WARNING statements identify conditions or practices that could result in personal injury or loss of life.
+        <br>
+        As Marked on Equipment:
+        <br>
+        CAUTION indicates a personal injury hazard not immediately accessible as one reads the marking, or a hazard to property including the equipment itself.
+        <br>
+        DANGER indicates a personal injury hazard immediately accessible as one reads the marking.
+    </div>
+
+    <div class="subsection-title">1.3 Symbols</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        In This Manual:
+        <div style="display: flex; align-items: center; margin-top: 10px;">
+            <span style="font-size: 20px; margin-right: 10px;">&#9888;</span>
+            <span>This symbol indicates where applicable cautionary or other information is to be found.</span>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: left;">
+        <div style="font-size: 14px; font-weight: bold;">Turbo Pumping Station</div>
+        <div style="font-size: 12px;">Model {{ model_number }}</div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 6</div>
+    <div class="subsection-title">Operators safety summary</div>
+
+    <div style="font-size: 12px; line-height: 1.5;">
+        As Marked on Equipment:
+        <div style="display: flex; align-items: center; margin-top: 10px;">
+            <span style="font-size: 20px; margin-right: 10px;">&#9888;</span>
+            <span>DANGER – High voltage</span>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 10px;">
+            <span style="font-size: 20px; margin-right: 10px;">&#9888;</span>
+            <span>Protective ground (earth) terminal</span>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 10px;">
+            <span style="font-size: 20px; margin-right: 10px;">&#9888;</span>
+            <span>ATTENTION – refer to manual</span>
+        </div>
+    </div>
+
+    <div class="subsection-title">1.4 Power source</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        This product is intended to operate connected to a power source that will not apply more than 250 volts rms between the supply conductors or between either supply conductor and ground. A protective ground connection by way of the grounding conductor in the power cord is essential for safe operation.
+    </div>
+
+    <div class="subsection-title">1.5 Grounding the product</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        This product is grounded through the grounding conductor of the power module power cord. To avoid electrical shock, plug the power cord into a properly wired receptacle before connecting to the product input or output terminals. A protective ground connection by way of the grounding conductor in the power cord is essential for safe operation.
+    </div>
+
+    <div class="subsection-title">1.6 Danger arising from loss of ground</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        This product is grounded through the grounding conductor of the power module power cord. To avoid electrical shock, plug the power cord into a properly wired receptacle before connecting to the product input or output terminals. A protective ground connection by way of the grounding conductor in the power cord is essential for safe operation.
+    </div>
+
+    <div class="subsection-title">1.7 Use the proper fuse</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        To avoid fire hazard, use only the fuse of correct type, voltage rating and current rating as specified in the parts list for your product. Refer fuse replacement to qualified service personnel.
+    </div>
+
+    <div style="margin-top: 50px; text-align: left;">
+        <div style="font-size: 14px; font-weight: bold;">Turbo Pumping Station</div>
+        <div style="font-size: 12px;">Model {{ model_number }}</div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 7</div>
+    <div class="subsection-title">1.8 Do not operate in explosive atmospheres</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        To avoid explosion, do not operate this product in an explosive atmosphere unless it has been specifically certified for such operation.
+    </div>
+
+    <div class="subsection-title">1.9 Do not operate without covers</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        To avoid personal injury, do not operate this product without covers or panels installed. Do not apply power to this product while making internal changes.
+    </div>
+
+    <div style="margin-top: 50px; text-align: left;">
+        <div style="font-size: 14px; font-weight: bold;">Turbo Pumping Station</div>
+        <div style="font-size: 12px;">Model {{ model_number }}</div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right; font-size: 10px;">Page 8</div>
+    <div class="section-title">2 Service safety summary</div>
+    <div style="text-align: center; margin-top: 20px;">
+        <div style="font-size: 16px; font-weight: bold;">FOR QUALIFIED SERVICE PERSONNEL ONLY</div>
+        <div style="font-size: 12px;">Refer also to the preceding operator's safety instructions</div>
+    </div>
+
+    <div class="subsection-title">2.1 Do not service alone</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        To avoid personal injury, do not operate this product without covers or panels installed. Do not apply power to this product while making internal changes.
+    </div>
+
+    <div class="subsection-title">2.2 Use care when servicing with power on</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        To avoid personal injury, do not operate this product without covers or panels installed. Do not apply power to this product while making internal changes.
+    </div>
+
+    <div class="subsection-title">2.3 Power source</div>
+    <div style="font-size: 12px; line-height: 1.5;">
+        This product is intended to operate connected to a power source that will not apply more than 250 volts rms between the supply conductors or between either supply conductor and ground. A protective ground connection by way of the grounding conductor in the power cord is essential for safe operation.
+    </div>
+
+    <div style="margin-top: 50px; text-align: left;">
+        <div style="font-size: 14px; font-weight: bold;">Turbo Pumping Station</div>
+        <div style="font-size: 12px;">Model {{ model_number }}</div>
+    </div>
+</div>
+
+
+
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 9</div>
+
+    <h1 style="font-size: 24pt; margin-top: 30px;">3 Introduction</h1>
+
+    <h2 style="font-size: 14pt; margin-top: 20px;">3.1 Description</h2>
+    <p>The Model 655 is a completely self-contained, compact, lightweight, bench top pumping station incorporating the latest diaphragm pump and molecular drag pump (MDP) technologies to produce a clean dry vacuum in the <span data-field="vacuum_level">{{ vacuum_level }}</span> Torr range. The pumping time from atmosphere to near the base pressure is typically less than 5 minutes, the pressure being monitored by a simple Penning gauge. The turbo pumping station is oil free and will not contaminate the cryosorption pump used in Gatan's closed dewar-type cold holders even when the dewar is filled with nitrogen.</p>
+    <p>The Model 655-0500 module has been designed specifically for evacuating and leak checking specimen holders of TEMs. Titrating and heating operations may be performed and viewed directly through a Pyrex glass work chamber while the specimen is under vacuum. Two large butterfly valves are provided between the pump and the specimen holder module so that it is possible to isolate either the specimen rod or a spare pumping port (normally used for dewar evacuation).</p>
+    <p>The Model 655, 1100 Vacuum Store module has been developed to offer storage of 3 smaller samples in the 655. Each module contains two storage capsules that hold six sample each (655.11300) can be added to increase the total number of samples from the standard 12 to 18 per module. The storage capsules incorporate a removable 6 grid array that makes it convenient to transfer samples between the 655 and the TEM specimen preparation equipment.</p>
+    <p>The Model 655 operates on less than 300 watts and accepts universal input voltage between 100 to 240VAC. The station is designed for simplicity and ease of operation, the diaphragm pump, the molecular drag pump (MDP) and the Penning gauge all being controlled by a single ON/OFF switch mounted at the rear panel. In addition to the switch there is a Penning gauge meter and four colored indicator lights to show the operating mode of the MDP. Upon startup the yellow indicator will light; once the MDP reaches the normal running speed without any errors, two green LEDs will light at the right.</p>
+    <p>Yellow LED indicates power is ON to the controller.</p>
+    <p>Red LED indicates a pump shut down due to an overload or time out failure.</p>
+    <p>Green LED indicates the MDP has no errors.</p>
+    <p>Green LED indicates the MDP has reached &gt; 80% of its normal running speed.</p>
+    <p>The rear panel of the instrument houses a fused connector for the power cord along with the ON/OFF power switch and the cabinet cooling fan. The MDP inside the cabinet has a pumping speed of 80 liters/sec at an ultimate pressure of about 1 x 10<sup>-6</sup> Torr. This characteristic enables the pump to be backed by an oil-free diaphragm pump thus producing a clean, compact vacuum system with minimum power consumption. The diaphragm pump used in the Model 655 was chosen for its low vibration, low maintenance and easy start-up characteristics.</p>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 10</div>
+
+    <p>A three way solenoid valve operates to seal off and maintain the specimen holder module and the MDP under vacuum when power is switched OFF. The same valve also vents the diaphragm pump so that the system may be restarted easily under vacuum thus allowing the ultimate vacuum to be achieved within a matter of minutes.</p>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_1.png" alt="Model 655 Workstation with TEM Holder Module" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 1: Model 655 Turbo Pumping Station with holder</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Model 655 Workstation with TEM Holder Module</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 11</div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_2.png" alt="Model 655 Turbo Pumping Station wiring diagram" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 2: Model 655 Turbo Pumping Station wiring diagram</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Turbo Pumping Station</p>
+        <p style="font-size: 10pt;">Model 655</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 12</div>
+
+    <h2 style="font-size: 14pt; margin-top: 20px;">3.2 Specimen holder module</h2>
+    <p>The Model 655.05 specimen holder module (TEM Module) is an attachment to the Model 655 turbo pumping station and is used for evacuating and checking the operation of TEM specimen holders. When placed in the module the specimen holder protrudes into a Pyrex glass tube so that the specimen region can be viewed closely while under vacuum. The specimen rod can be isolated from the vacuum station by closing butterfly valve V1. The Penning gauge is placed between this valve and a second butterfly valve V2 which isolates the vacuum station from the dewar evacuation port. In this location the Penning gauge is useful for simple leak checking procedures. The specimen holder module is an invaluable tool for diagnosing faults in the more complicated types of specimen holder.</p>
+    <p>a. Checking the shutter mechanism of the Model 626 and 915 cryostainer holders.</p>
+    <p>b. Evacuating dewar on Model 613, 626, 636, 671, 910 and 915 cold holders.</p>
+    <p>c. Leak checking specimen holders and specimen holder dewar.</p>
+    <p>d. Testing cooling and heating rates of hot and cold stages.</p>
+    <p>e. Observing the deformation behavior of specimens in Model 654 and 671 straining stages.</p>
+    <p>f. Observing the tilt behavior of Model 636, 646, 648, 652, 915 and 925 holders.</p>
+    <p>g. Evacuating helium transfer lines.</p>
+    <p>h. Checking the operation of indexed Model 677 and 910 multiple specimen holders.</p>
+    <p>The module can be expanded to accept up to four specimen rods. The optional expansion kits (655.05400) can be chosen to suit any combination of side entry specimen holder types. This feature is particularly useful in laboratories having several different types of microscopes each having cold holders that require periodic evacuation.</p>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 13</div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_3.png" alt="Vacuum stack diagram" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 3: Vacuum stack</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Turbo Pumping Station</p>
+        <p style="font-size: 10pt;">Model 655</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 14</div>
+
+    <h2 style="font-size: 14pt; margin-top: 20px;">3.3 Vacuum store module</h2>
+    <p>The 655.11000 Vacuum Store module shown in figure 4 holds 12 specimens under vacuum in the 655. This module is included when the 655 is ordered for storage only. Six specimens are stored in each specimen capsule 655.11300 (see figure 5). The specimens can be viewed through a Pyrex window that is mounted in a removable flange. The 6 grid arrays can be marked for identification using a pen such as (Ted Pella #27175) or equivalent. The capsule has a sliding valve that when moved toward the vacuum source evacuates the 6 grid array. Moving the sliding valve away from the vacuum source vents the capsule. The capsule can be connected to the specimen holder module and other storage modules can be combined with TEM modules for a system that can evacuate a specimen holder and a vacuum store module simultaneously. The vacuum store module can be connected to the specimen holder module to isolate either vacuum store modules or TEM Modules. Placing the butterfly valve above the TEM module and the vacuum store module allows the specimen holder to be evacuated while the specimens are stored. The vacuum store module can be used to store specimens that are not currently being analyzed, or to store specimens that are being analyzed but require periodic evacuation.</p>
+    <p>The storage capsules are held into the module housing by socket set screws. To remove a capsule the retaining screw must be loosened and the capsule pulled out of the housing. A third capsule can be added to any Vacuum Store housing by removing the blanking plug. The blanking plug is also held into the housing with a set screw.</p>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_4.png" alt="Vacuum store module diagram" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 4: Vacuum store module</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Turbo Pumping Station</p>
+        <p style="font-size: 10pt;">Model 655</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 15</div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_5.png" alt="Vacuum store capsule diagram" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 5: Vacuum store capsule</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Turbo Pumping Station</p>
+        <p style="font-size: 10pt;">Model 655</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: left; font-size: 10pt;">Introduction</div>
+    <div style="text-align: right; font-size: 10pt;">Page 16</div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <img src="placeholder_image_6.png" alt="Storage only system with second vacuum store module" style="max-width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 10pt; margin-top: 10px;">Figure 6: 655 Storage only system with second vacuum store module</p>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-size: 10pt;">Turbo Pumping Station</p>
+        <p style="font-size: 10pt;">Model 655</p>
+    </div>
+</div>
+
+
+
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Introduction</span>
+        <span style="font-size: 12pt;">Page 17</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">Figure 7: {{ figure_title }}</h3>
+
+    <!-- Image Placeholder for Figure 7 -->
+    <div style="text-align: center; margin-top: 40px;">
+        <!-- Visual representation of the complex machinery diagram -->
+        <img src="placeholder_diagram.png" alt="Figure 7 Diagram" style="max-width: 100%; height: auto;">
+        <p style="font-size: 10pt; margin-top: 10px;">
+            <span data-field="component_1_label">{{ component_1_label }}</span><br>
+            <span data-field="component_2_label">{{ component_2_label }}</span><br>
+            <span data-field="component_3_label">{{ component_3_label }}</span><br>
+            <span data-field="component_4_label">{{ component_4_label }}</span>
+        </p>
+    </div>
+
+    <div style="margin-top: 80px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div style="text-align: left;">
+            <span style="font-size: 12pt;">Turbo Pumping Station</span><br>
+            <span style="font-size: 10pt;">Model {{ model_number }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Introduction</span>
+        <span style="font-size: 12pt;">Page 18</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">3.4 Unpacking and assembly</h3>
+
+    <p style="text-align: justify;">
+        The packing list contained with the Turbo Pumping Station must first be checked to verify your order and also to note if there is any discrepancy between the list and what has been received. The turbo pumping station is shipped disassembled (four basic parts) to reduce the risk of damage to the specimen holder module. Additionally, for shipping purposes only, the diaphragm pump is securely held in place with a locking screw which must be removed prior to starting the pumping station. Remove the locking screw by allowing the left side of the station to overhang the edge of the bench slightly, then reaching under the base remove the locking screw. Once removed, the screw should be stored in the position indicated, on the bottom, to allow it to be used again in the event the station must be returned to the factory for repair. Assembly is relatively easy and is started by removing the plastic dust covers, one from the top of the molecular drag pump (MDP) and one from the bottom of the specimen holder module. The orientation of the Pyrex viewing tube should be on the front of the specimen holder module. The orientation of the Pyrex viewing tube should be on the front of the specimen holder module. The insertion of the two screws into the flange and lightly tighten. These screws need only be snug since they fit into a groove in the flange of the MDP thus preventing the specimen holder module from lifting off. Next remove the dust caps from the Penning gauge tube and the gauge port at the rear of the specimen holder module, insert the gauge tube and connect the cable coming from the rear panel of the pumping station. Plug the power cord into the instrument connector on the rear panel and plug the other end into the mains supply. The turbo pumping station is now ready to turn ON.
+    </p>
+
+    <p style="text-align: justify;">
+        Should expansion kits have been ordered they are installed on top of each other between the butterfly valve manifold and the standard chamber (see figure 3). If it is required to evacuate more than 2 dewar simultaneously a second valve assembly (<span data-field="part_number">{{ part_number }}</span>) should be installed in place of the blanking plug shown in figure 3.
+    </p>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Operation</span>
+        <span style="font-size: 12pt;">Page 19</span>
+    </div>
+
+    <h2 style="font-size: 24pt; margin-top: 10px;">4 Operation</h2>
+
+    <div class="caution">
+        <p style="font-weight: bold; margin-bottom: 5px;">Caution:</p>
+        <p style="font-size: 10pt;">When the turbo pump is operating and atmosphere exists in the workstation and any TEM or specimen storage modules, the recommended practice to open any of the butterfly valves (V1, V2 or an extra valve installed above the workstation) is to actuate them slowly to avoid dumping a large volume of atmosphere into the turbo pump. These valves are operated by rotating them in a counter clockwise direction starting from a horizontal closed position to a vertical open position. This rotation should be performed using an interval of between 10 to 15 seconds. If a pump failure condition should happen to occur while operating any of these valves, it can be cleared by using the power switch at the rear of the unit. Turn this switch off and wait for 30 seconds and then restart the unit.</p>
+    </div>
+
+    <p style="text-align: justify;">
+        A large volume of atmosphere dumped into the system can cause the cold cathode gauge to go into an error mode. The gauge does this as a protective measure to keep its internal components from being damaged. The error mode is indicated by a solid yellow LED on the back of the gauge and the meter on the front panel will be pegged completely off scale to the left. Note that the vacuum pumps will continue to run. The cold cathode gauge can be reset by turning off the main power switch and turning it back on after five seconds.
+    </p>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">4.1 Start-up procedure</h3>
+    <ol style="padding-left: 20px;">
+        <li>Close UPPER butterfly valve V1 (turn knob to the horizontal position, as shown in figure 3) and open LOWER valve V2.</li>
+        <li>Close the dewar evacuation valve, V3 (turn fully clockwise).</li>
+        <li>Insert a specimen holder (or blanking plug) into the specimen rod adaptor assembly.</li>
+        <li>Turn ON the main power switch located on the rear panel. The diaphragm pump will start and the sound from the MDP will be heard to increase in pitch. When the MDP reaches &gt; 80% of its normal operating speed the second green LED on the front panel will light.</li>
+        <li>The vacuum reading observed on the Penning gauge meter should decrease quickly to the 10<sup>-5</sup> Torr range.</li>
+        <li>If the second green LED is lit, the UPPER butterfly valve V1 can be opened (rotate knob CCW until it points straight up) to evacuate the specimen holder chamber. If the system is leak tight the pressure will slowly decrease to the 10<sup>-6</sup> Torr range.</li>
+    </ol>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Operation</span>
+        <span style="font-size: 12pt;">Page 20</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">4.2 Procedure for evacuating a cold holder dewar</h3>
+    <ol style="padding-left: 20px;">
+        <li>Close V1 and remove the blanking plug to vent the specimen chamber (see figure 1).</li>
+        <li>Slide the cold holder fully into the specimen holder adaptor. (The adaptor must be the correct type for the holder).</li>
+        <li>Take the plastic hose attached to pumping port No.1 and connect it to the valve on the dewar. Check that the other plastic hose attached to pumping port No.2 is secured on the rear blanking post.</li>
+        <li>Open V1 to evacuate the specimen holder chamber and wait for the vacuum reading to reach the 10<sup>-5</sup> Torr range.</li>
+        <li>Open V3 (turn fully clockwise- a partially open valve will severely reduce the pumping speed).</li>
+        <li>When the pressure reaches the 10<sup>-5</sup> Torr range open the valve on the dewar (turn the valve fully counterclockwise but do not pull it out as this will vent the dewar).</li>
+        <li>Connect the Model 900 SmartSet Cold Stage Controller or Model 1905 Temperature Controller to the dewar. Pump on the dewar while running the Bakeout Cycle for at least two hours to regenerate the cryosorption pump.</li>
+        <li>Close the dewar evacuation valve until finger tight, then switch off the heater and disconnect the heater cable.</li>
+    </ol>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">4.3 Procedure for leak checking a cold holder dewar</h3>
+    <ol style="padding-left: 20px;">
+        <li>Close V1 and remove the blanking plug to vent the specimen chamber.</li>
+        <li>Slide the cold holder fully into the specimen holder adaptor. (The adaptor must be the correct type for the holder).</li>
+        <li>Take the plastic hose attached to pumping port No.1 and connect it to the valve on the dewar. Check that the other plastic hose attached to pumping port No.2 is secured on the rear blanking post.</li>
+        <li>Open V1 to evacuate the specimen holder chamber and wait for the vacuum reading to reach the 10<sup>-5</sup> Torr range.</li>
+        <li>Open V3 (turn fully clockwise- a partially open valve will severely reduce the pumping speed).</li>
+        <li>When the pressure reaches the 10<sup>-5</sup> Torr range open the valve on the dewar (turn the valve fully counterclockwise but do not pull it out as this will vent the dewar).</li>
+        <li>Connect the Model 900 SmartSet Cold Stage Controller or Model 1905 Temperature Controller to the dewar. Pump on the dewar while running the Bakeout Cycle for at least two hours to regenerate the cryosorption pump.</li>
+        <li>Close the dewar evacuation valve until finger tight, then switch off the heater and disconnect the heater cable.</li>
+    </ol>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Operation</span>
+        <span style="font-size: 12pt;">Page 21</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">4.4 Specimen holder removal</h3>
+    <p style="text-align: justify;">
+        The specimen holder can be pulled out of the adaptor at any time after first closing the upper butterfly valve V1 and the appropriate dewar evacuation valve V3. If the holder is going to be removed for some time it is advisable to replace it with a blanking plug and then to re-evacuate the chamber. This will reduce the amount of water vapor that is adsorbed onto the chamber walls and hence shorten the pump down time when the holder is re-inserted.
+    </p>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">4.5 Shut down procedure</h3>
+    <p style="text-align: justify;">
+        The procedure is to insert a specimen holder or blanking plug into the adaptor and then to evacuate the module. The pumping station is then switched OFF. The vacuum will remain in the station and the station may be restarted at any time while still under vacuum.
+    </p>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Maintenance</span>
+        <span style="font-size: 12pt;">Page 22</span>
+    </div>
+
+    <h2 style="font-size: 24pt; margin-top: 10px;">5 Maintenance</h2>
+
+    <div class="caution">
+        <p style="font-size: 10pt;">Due to the simple design of the turbo pumping station only three items require periodic servicing. Maintenance must be performed on both the diaphragm pump and the MDP at the prescribed intervals in order for the pumping station to maintain its low base pressure and high pumping speed. This will require removal and disassembly of the pump or pumps at the time of service. The third item, the Penning gauge tube, may be removed and serviced with the pumps operating and under vacuum.</p>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">Service Item Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 30%;">Service item</th>
+                <th style="width: 20%;">Interval</th>
+                <th style="width: 30%;">Maintenance</th>
+                <th style="width: 20%;">Symptom</th>
+                <th style="width: 20%;">Replacement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Diaphragm pump</td>
+                <td>Variable</td>
+                <td>Replace diaphragms</td>
+                <td>Poor base pressure</td>
+                <td>Kit #10546</td>
+            </tr>
+            <tr>
+                <td>MDP</td>
+                <td>Once per year</td>
+                <td>Replace oil cartridge</td>
+                <td>N/A</td>
+                <td>#05577</td>
+            </tr>
+            <tr>
+                <td>Gauge tube</td>
+                <td>Variable</td>
+                <td>Rebuild</td>
+                <td>Erratic reading</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="text-align: justify; margin-top: 20px;">
+        Servicing of any component inside the pumping station console requires venting the vacuum system to atmosphere, removing the complete specimen holder module from the MDP and removing the console cover.
+    </p>
+    <ol style="padding-left: 20px;">
+        <li>Turn OFF mains switch located on the back of the unit.</li>
+        <li>Unplug the line cord from the rear of the pumping station.</li>
+        <li>Disconnect the coaxial cable from the Penning gauge tube.</li>
+        <li>Vent the specimen holder module to atmosphere.</li>
+        <li>Loosen the two red thumbscrews around the base of the specimen holder module and lift it from the MDP.</li>
+        <li>Remove the 8 screws holding the cover to the base, 2 on each side, and 4 on top, and lift off the cover.</li>
+        <li>Place the shipping cap on the MDP or cover it with aluminum foil to hold the inlet screen in place and prevent the entry of dust.</li>
+    </ol>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Maintenance</span>
+        <span style="font-size: 12pt;">Page 23</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">5.1 Servicing the diaphragm pump</h3>
+    <p style="text-align: justify;">
+        In order to service the diaphragm pump, it must first be removed from the cabinet. Remove the diaphragm pump from the pumping station by: (1) Unscrew the fastener that retains the small connector that supplies power to the pump and unplug the connector. (2) Disconnect the vacuum hose running from the diaphragm pump to the MDP by pulling the hose off of the fitting on the pump. (3) Undo the two slide latch fasteners that hold the pump in place and lift out the pump. Please refer to the "Maintenance" section of the Pfeiffer manual for complete details for replacing the diaphragm. Once fully assembled, the pump can be placed back into the cabinet. (1) Position the pump over the latching studs and secure it by locking the slide fasteners. (2) Connect the vacuum hose pushing it back onto the pump fitting. (3) Plug in the electrical cable and tighten the screw that retains the connector.
+    </p>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">5.2 Servicing the molecular drag pump</h3>
+    <p style="text-align: justify;">
+        The MDP is lubricated at the factory prior to shipping but must be re-lubricated approximately once a year. In order to service the pump, it must first be removed from the cabinet. Before removing the MDP from the pumping station make sure the inlet flange is protected with the plastic shipping cap or aluminum foil. (1) Unplug the connector that supplies power to the pump and disconnect the vacuum hose running from the MDP to the MDP. (2) Disconnect the vacuum hose by undoing the KF clamp at the port on the side of the MDP. Cover the port with aluminum foil to prevent dust from entering the pump. (3) Disconnect the ground strap at the cabinet base. (4) Remove the four red thumbscrews to remove the MDP. Please refer to the "Maintenance" section of the Pfeiffer manual for complete details for replacing the MDP. Once fully assembled, the pump can be placed back into the cabinet. (1) Attach the ground strap to the cabinet base. (2) Attach the vacuum hose by reconnecting the KF fitting. (4) Attach the electrical cable to the MDP electrical connector. Slide the connector latch to retain the connector.
+    </p>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">5.3 Servicing the cold cathode gauge</h3>
+    <p style="text-align: justify;">
+        Contamination of the measuring chamber within the tube will affect the pressure reading and generally produce an indication that the pressure is too low. If contamination becomes severe, instability may occur resulting in short-term fluctuations in the pressure reading. If the gauge tube is contaminated, it must be replaced.
+    </p>
+    <p style="text-align: justify;">
+        Remove the gauge head as follows:
+    </p>
+    <ol style="padding-left: 20px;">
+        <li>Close V2 the lower butterfly valve and vent the specimen holder module thru the pumping port.</li>
+        <li>Disconnect the cable from the gauge tube by first unscrewing the retaining screw at the center of the connector.</li>
+        <li>Pull the gauge tube straight out of its vacuum port.</li>
+    </ol>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <span style="font-size: 12pt;">Maintenance</span>
+        <span style="font-size: 12pt;">Page 24</span>
+    </div>
+
+    <h3 style="font-size: 14pt; margin-top: 30px;">Figure 8: Cold cathode gauge</h3>
+
+    <!-- Image Placeholder for Figure 8 -->
+    <div style="text-align: center; margin-top: 40px;">
+        <img src="placeholder_gauge_diagram.png" alt="Figure 8 Diagram" style="max-width: 80%; height: auto;">
+        <p style="font-size: 10pt; margin-top: 10px;">
+            <span data-field="gauge_part_1">{{ gauge_part_1 }}</span>, <span data-field="gauge_part_2">{{ gauge_part_2 }}</span>, <span data-field="gauge_part_3">{{ gauge_part_3 }}</span>, <span data-field="gauge_part_4">{{ gauge_part_4 }}</span>, <span data-field="gauge_part_5">{{ gauge_part_5 }}</span>
+        </p>
+    </div>
+
+    <h4 style="font-size: 12pt; margin-top: 40px;">Disassemble the gauge head as follows:</h4>
+    <ol style="padding-left: 20px;">
+        <li>Unfasten the hexagon socket set screw (4) and carefully remove the complete measuring chamber (3) from the electronics unit (5).</li>
+        <li>Remove the retaining ring (1) as well as the ionization chamber (2) from the measuring chamber (3).</li>
+        <li>Check the ionization chamber and the measuring chamber for contamination.</li>
+        <li>If the ionization chamber is contaminated only: Replace the ionization chamber.</li>
+        <li>If the measuring chamber is severely contaminated: Try cleaning or replace the gauge.</li>
+    </ol>
+
+    <p style="text-align: justify; margin-top: 30px;">
+        Using an ohmmeter, make the following measurements on the contact pins.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 30%;">Measurement between pins</th>
+                <th style="width: 20%;">Possible cause</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 + 4</td>
+                <td>&lt;= 40 Ω</td>
+                <td>Pirani filament rupture (PFR) 36x only</td>
+            </tr>
+            <tr>
+                <td>1 + 2</td>
+                <td>&gt; 1078 Ω at 20 °C</td>
+                <td>Pirani temperature sensor rupture (PFR) 36x only</td>
+            </tr>
+            <tr>
+                <td>5 + measuring chamber</td>
+                <td>&lt;=</td>
+                <td>Contamination, short circuit cold cathode</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Diagram Placeholder for Measuring Chamber -->
+    <div style="text-align: center; margin-top: 40px;">
+        <img src="placeholder_chamber_diagram.png" alt="Measuring Chamber Diagram" style="max-width: 60%; height: auto;">
+        <p style="font-size: 10pt;">
+            <span data-field="chamber_part_1">{{ chamber_part_1 }}</span>, <span data-field="chamber_part_2">{{ chamber_part_2 }}</span>, <span data-field="chamber_part_3">{{ chamber_part_3 }}</span>, <span data-field="chamber_part_4">{{ chamber_part_4 }}</span>, <span data-field="chamber_part_5">{{ chamber_part_5 }}</span>
+        </p>
+    </div>
+
+    <div style="margin-top: 80px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div style="text-align: left;">
+            <span style="font-size: 12pt;">Turbo Pumping Station</span><br>
+            <span style="font-size: 10pt;">Model {{ model_number }}</span>
+        </div>
+    </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td, th { padding: 8px 0; text-align: left; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Maintenance</span>
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Page 25</span>
+  </div>
+
+  <h2 style="font-family: 'DejaVu Sans', sans-serif; font-size: 14pt; margin-bottom: 10px;">Figure 9: Replacing a new ionization chamber and ignition aid</h2>
+
+  <div style="display: flex; justify-content: center; margin: 40px 0;">
+    <!-- Placeholder for the diagram -->
+    <div style="position: relative; width: 300px; height: 300px;">
+      <img src="placeholder_diagram.png" alt="Diagram" style="width: 100%; height: 100%;">
+      <div style="position: absolute; top: 10%; left: 20%; font-size: 12pt;">2</div>
+      <div style="position: absolute; top: 40%; left: 50%; font-size: 12pt;">1</div>
+      <div style="position: absolute; top: 20%; right: 20%; font-size: 12pt;">3</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p style="margin-bottom: 15px;">
+      a. Remove the ignition aid with the removing tool.
+    </p>
+    <p style="margin-bottom: 15px;">
+      b. Rub the inside walls of the measuring chamber (3) up to the groove for the retaining ring to a bright finish using a polishing cloth.
+    </p>
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+      <span style="color: red; font-size: 16pt; margin-right: 10px;">&#9888;</span>
+      <p style="margin: 0;">The sealing surfaces must only be worked concentrically.</p>
+    </div>
+    <p style="margin-bottom: 15px;">
+      Do not bend the anode.
+    </p>
+    <p style="margin-bottom: 15px;">
+      c. Insert the new ignition aid into the mounting tool and slide it onto the anode.
+    </p>
+    <p style="margin-bottom: 15px;">
+      d. Slide a new ionization chamber (2) into the measuring chamber (3) until the mechanical stop is reached and mount the retaining ring (1).
+    </p>
+    <p style="margin-top: 30px;">
+      Reverse the disassembly steps to reassemble the gauge. Be very careful not to bend the contact pins when inserting the measuring chamber into the electronics unit.
+    </p>
+    <p>
+      Replace the gauge tube into its port and reconnect the cable. Start-up the pumping system if necessary and open V2. If the pressure does not improve, contact your local <span data-field="contact_info.office_name">{{ contact_info.office_name }}</span> office.
+    </p>
+  </div>
+
+  <div style="position: absolute; bottom: 50px; left: 60px; font-family: 'DejaVu Sans', sans-serif; font-size: 10pt;">
+    Turbo Pumping Station<br>
+    Model <span data-field="model_number">{{ model_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Spares</span>
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Page 26</span>
+  </div>
+
+  <h1 style="font-family: 'DejaVu Sans', sans-serif; font-size: 36pt; margin-bottom: 40px;">6 Spares</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Part Number</th>
+        <th style="width: 70%;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in spares %}
+      <tr>
+        <td><span data-field="spares[{{ loop.index0 }}].part_number">{{ item.part_number }}</span></td>
+        <td><span data-field="spares[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="position: absolute; bottom: 50px; left: 60px; font-family: 'DejaVu Sans', sans-serif; font-size: 10pt;">
+    Turbo Pumping Station<br>
+    Model <span data-field="model_number">{{ model_number }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Warranty</span>
+    <span style="font-family: 'DejaVu Sans', sans-serif; font-size: 12pt;">Page 27</span>
+  </div>
+
+  <h1 style="font-family: 'DejaVu Sans', sans-serif; font-size: 36pt; margin-bottom: 40px;">7 Warranty</h1>
+
+  <p style="margin-bottom: 20px;">
+    <span data-field="product_name">{{ product_name }}</span> products are warranted per the terms and conditions outlined in the product warranty. Contact <span data-field="contact_info.support_url">{{ contact_info.support_url }}</span>. Contact <span data-field="product_name">{{ product_name }}</span> customer service at <span data-field="contact_info.support_url">{{ contact_info.support_url }}</span>.
+  </p>
+
+  <div style="position: absolute; bottom: 50px; left: 60px; font-family: 'DejaVu Sans', sans-serif; font-size: 10pt;">
+    Turbo Pumping Station<br>
+    Model <span data-field="model_number">{{ model_number }}</span>
+  </div>
+</div></body>
+</html>

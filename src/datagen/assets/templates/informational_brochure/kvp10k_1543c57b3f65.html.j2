@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Synthetic Data Generation</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+        .logo-container { position: absolute; top: 50px; right: 50px; }
+        .map-container { position: absolute; top: 150px; left: 50px; width: 400px; height: 400px; }
+        .title-section { margin-top: 100px; }
+        .policy-section { margin-top: 50px; }
+        .payment-deadline-section { margin-top: 100px; }
+        .refund-policy-section { margin-top: 50px; }
+        .financial-aid-disbursement-section { margin-top: 50px; }
+        .payment-types-section { margin-top: 50px; }
+        .application-section { margin-top: 50px; }
+        .example-section { margin-top: 50px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logo-container {
+    text-align: right;
+  }
+  .logo-container img {
+    max-width: 150px;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <!-- Map Placeholder -->
+            <div style="border: 1px solid #ccc; height: 100%; background-color: #eee;">
+                <!-- Map visualization area -->
+            </div>
+        </div>
+
+        <div class="title-section">
+            <h1 style="font-size: 48px; font-weight: bold;">Navigate the Island:</h1>
+            <h2 style="font-size: 32px; font-weight: normal;">Understanding Student Financial Refunds</h2>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2 style="font-size: 36px; font-weight: bold;">Refund Policy</h2>
+            <p style="font-size: 18px;">Section <span data-field="policy.section_number">{{ policy.section_number }}</span> in Title <span data-field="policy.title">{{ policy.title }}</span> of the CSU Code of Regulations</p>
+            <p style="margin-top: 30px;">Refunds are processed in accordance to the guidelines published by the CSU. The policy for regulations on Title V student fee refunds can be found on the California State University web site at the following link: <a href="https://calstate.policystat.com"><span data-field="policy.website_link">{{ policy.website_link }}</span></a></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="payment-deadline-section" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex-grow: 1;">
+                <h2 style="font-size: 36px; color: red; font-weight: bold;">Fall <span data-field="payment_deadline.term">{{ payment_deadline.term }}</span></h2>
+                <p style="font-size: 24px; font-weight: bold;">Payment Deadline is</p>
+                <p style="font-size: 36px; font-weight: bold;">Tuesday, <span data-field="payment_deadline.date">{{ payment_deadline.date }}</span></p>
+                <p style="font-size: 20px;">by <span data-field="payment_deadline.time">{{ payment_deadline.time }}</span>.</p>
+            </div>
+            <div style="width: 300px; text-align: center;">
+                <div style="background-color: #f0ad4e; color: white; padding: 15px; border-radius: 5px; font-weight: bold;">
+                    Fall <span data-field="payment_deadline.term">{{ payment_deadline.term }}</span><br>
+                    TERM OFFICIALLY<br>
+                    BEGINS<br>
+                    <span data-field="payment_deadline.start_date">{{ payment_deadline.start_date }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="width: 50%;">
+                <p>Payments must be received on time. You may be subject to disenrollment if fees are not paid by the payment due date.</p>
+                <p><a href="https://www.csuci.edu/sbs/fees-and-due-dates.htm"><span data-field="payment_deadline.info_link">{{ payment_deadline.info_link }}</span></a></p>
+            </div>
+            <div style="width: 50%; text-align: center;">
+                <!-- Image Placeholder -->
+                <div style="height: 250px; background-color: #ccc;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="refund-policy-section">
+            <h2 style="font-size: 36px; font-weight: bold;">Payment of Student Refunds</h2>
+            <p>Students are not required to request a refund. Any refund for which a student is eligible will be "automatic" when a student follows campus-established procedures to cancel registration, drop courses, or withdraw for the academic period.</p>
+            <p>Any refund due a student is to be applied first toward any required return of student financial aid funds from federal, state, institutional, or external sources and then, the balance may be returned to the student.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="financial-aid-disbursement-section" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="width: 50%;">
+                <h2 style="font-size: 36px; font-weight: bold;">Financial aid will begin disbursements to student accounts on</h2>
+                <h1 style="font-size: 40px; color: red; font-weight: bold;">Thursday, <span data-field="aid_disbursement.date">{{ aid_disbursement.date }}</span></h1>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>You'll be able to view the types of financial aid you may be expecting at this time.</li>
+                    <li>Any earned financial aid (FA) disbursed in excess of your account balance will be refunded to you.</li>
+                </ul>
+                <p style="margin-top: 20px;"><a href="https://www.csuci.edu/sbs/payments-and-refunds.htm"><span data-field="aid_disbursement.link">{{ aid_disbursement.link }}</span></a></p>
+            </div>
+            <div style="width: 50%; text-align: center;">
+                <!-- Image Placeholder -->
+                <div style="height: 250px; background-color: #ccc;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="payment-types-section" style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div style="width: 50%;">
+                <h2 style="font-size: 36px; font-weight: bold;">What type of payments can be refunded?</h2>
+                <h3 style="font-size: 22px; margin-top: 20px;">FINANCIAL AID</h3>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Grants</li>
+                    <li>Loans</li>
+                    <li>Scholarships</li>
+                    <li>Parent Plus Loans (to parent only)</li>
+                    <li>Third Party Sponsorships</li>
+                    <li>Dept. of Rehabilitation, VA,</li>
+                    <li>Private employee sponsor</li>
+                </ul>
+                <h3 style="font-size: 22px; margin-top: 30px;">OUT-OF-POCKET PAYMENTS (Personal payments)</h3>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Credit Card</li>
+                    <li>Cash</li>
+                    <li>Check</li>
+                </ul>
+                <p style="margin-top: 30px;">Financial Aid Office contact email: <span data-field="payment_types.email">{{ payment_types.email }}</span></p>
+                <p>Types of Aid: <a href="https://www.csuci.edu/financialaid/05_01_Types_of_Aid_Main.htm"><span data-field="payment_types.aid_link">{{ payment_types.aid_link }}</span></a></p>
+            </div>
+            <div style="width: 50%; text-align: center;">
+                <!-- Image Placeholder -->
+                <div style="height: 350px; background-color: #ccc;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="application-section">
+            <h2 style="font-size: 36px; font-weight: bold;">All financial aid and out-of-pocket payments are applied directly to the student account</h2>
+            <p style="font-size: 20px; margin-top: 20px;">* FEDERAL AID * CASH * CHECKS * WAIVERS * 3RD PARTY SPONSORS * SCHOLARSHIPS</p>
+            <p>Be sure to review your transactions through your <span data-field="application.portal_name">{{ application.portal_name }}</span>.</p>
+            <p>It is up to you to monitor your account and step in to cover any fees that may not be covered by your financial aid BEFORE the published payment deadline to prevent dis-enrollment from classes.</p>
+            <p>There is no guarantee your financial aid will apply onto your student account before the payment deadline. It's a good idea to have other options lined up to cover fees should this occur.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="logo-container">
+            <!-- Placeholder for SU Logo -->
+            <div style="border: 2px solid red; width: 100px; height: 100px; text-align: center; line-height: 100px; font-weight: bold; color: red;">SU</div>
+            <div style="text-align: center; margin-top: 5px;">
+                <div style="font-size: 14px;">California State University</div>
+                <div style="font-size: 12px;">CHANNEL ISLANDS</div>
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2 style="font-size: 36px; font-weight: bold;">Example 1 – If aid comes in after payment deadline and I pay out of pocket what happens on my student account? Will I get reimbursed?</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account Activity</th>
+                        <th>Transactions</th>
+                        <th>Item</th>
+                        <th>Term</th>
+                        <th>Charge</th>
+                        <th>Payment</th>
+                        <th>Refund</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span data-field="example.date_1">{{ example.date_1 }}</span></td>
+                        <td>Refund</td>
+                        <td><span data-field="example.transaction_1_item">{{ example.transaction_1_item }}</span></td>
+                        <td><span data-field="example.transaction_1_term">{{ example.transaction_1_term }}</span></td>
+                        <td></td>
+                        <td></td>
+                        <td><span data-field="example.transaction_1_refund">{{ example.transaction_1_refund }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_2">{{ example.date_2 }}</span></td>
+                        <td>State University Grant</td>
+                        <td><span data-field="example.transaction_2_item">{{ example.transaction_2_item }}</span></td>
+                        <td><span data-field="example.transaction_2_term">{{ example.transaction_2_term }}</span></td>
+                        <td></td>
+                        <td></td>
+                        <td><span data-field="example.transaction_2_refund">{{ example.transaction_2_refund }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_3">{{ example.date_3 }}</span></td>
+                        <td>Reception & Athletics Fee</td>
+                        <td><span data-field="example.transaction_3_item">{{ example.transaction_3_item }}</span></td>
+                        <td><span data-field="example.transaction_3_term">{{ example.transaction_3_term }}</span></td>
+                        <td>70</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_4">{{ example.date_4 }}</span></td>
+                        <td>Student Body Center Fee</td>
+                        <td><span data-field="example.transaction_4_item">{{ example.transaction_4_item }}</span></td>
+                        <td><span data-field="example.transaction_4_term">{{ example.transaction_4_term }}</span></td>
+                        <td>162</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_5">{{ example.date_5 }}</span></td>
+                        <td>Payments ACH E-Check</td>
+                        <td><span data-field="example.transaction_5_item">{{ example.transaction_5_item }}</span></td>
+                        <td><span data-field="example.transaction_5_term">{{ example.transaction_5_term }}</span></td>
+                        <td></td>
+                        <td>3403</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_6">{{ example.date_6 }}</span></td>
+                        <td>Tuition Fee - Ugrad Full Time</td>
+                        <td><span data-field="example.transaction_6_item">{{ example.transaction_6_item }}</span></td>
+                        <td><span data-field="example.transaction_6_term">{{ example.transaction_6_term }}</span></td>
+                        <td>2871</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_7">{{ example.date_7 }}</span></td>
+                        <td>Student Representation Fee</td>
+                        <td><span data-field="example.transaction_7_item">{{ example.transaction_7_item }}</span></td>
+                        <td><span data-field="example.transaction_7_term">{{ example.transaction_7_term }}</span></td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_8">{{ example.date_8 }}</span></td>
+                        <td>Instructionally Related Fee</td>
+                        <td><span data-field="example.transaction_8_item">{{ example.transaction_8_item }}</span></td>
+                        <td><span data-field="example.transaction_8_term">{{ example.transaction_8_term }}</span></td>
+                        <td>60</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_9">{{ example.date_9 }}</span></td>
+                        <td>Materials, Service & Facil Fee</td>
+                        <td><span data-field="example.transaction_9_item">{{ example.transaction_9_item }}</span></td>
+                        <td><span data-field="example.transaction_9_term">{{ example.transaction_9_term }}</span></td>
+                        <td>65</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_10">{{ example.date_10 }}</span></td>
+                        <td>Associated Student Fee</td>
+                        <td><span data-field="example.transaction_10_item">{{ example.transaction_10_item }}</span></td>
+                        <td><span data-field="example.transaction_10_term">{{ example.transaction_10_term }}</span></td>
+                        <td>75</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_11">{{ example.date_11 }}</span></td>
+                        <td>Health Services Fee</td>
+                        <td><span data-field="example.transaction_11_item">{{ example.transaction_11_item }}</span></td>
+                        <td><span data-field="example.transaction_11_term">{{ example.transaction_11_term }}</span></td>
+                        <td>95</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_12">{{ example.date_12 }}</span></td>
+                        <td>Health Facility Fee</td>
+                        <td><span data-field="example.transaction_12_item">{{ example.transaction_12_item }}</span></td>
+                        <td><span data-field="example.transaction_12_term">{{ example.transaction_12_term }}</span></td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span data-field="example.date_13">{{ example.date_13 }}</span></td>
+                        <td>Tuition & Fees - Total</td>
+                        <td></td>
+                        <td></td>
+                        <td>3403</td>
+                        <td>-7474</td>
+                        <td>-4071</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <div style="width: 50%;">
+                    <p>1. Fees post on <span data-field="example.step_1_date">{{ example.step_1_date }}</span></p>
+                    <p>2. Pmt Deadline is <span data-field="example.step_2_date">{{ example.step_2_date }}</span></p>
+                    <p>3. Financial aid not yet applied</p>
+                    <p>4. Personal E-Check payment posts on <span data-field="example.step_4_date">{{ example.step_4_date }}</span></p>
+                    <p>5. Financial aid post on <span data-field="example.step_5_date">{{ example.step_5_date }}</span></p>
+                    <p>6. SUG pays $2871 Tuition Fee</p>
+                    <p>7. Sub Loan pays $532 Mandatory Fees</p>
+                    <p>8. $3403-Reimbursement back to student for e-check payment</p>
+                    <p style="font-weight: bold;">= $4071 REFUND</p>
+                </div>
+                <div style="width: 50%;">
+                    <!-- Image Placeholder -->
+                    <div style="height: 300px; background-color: #ccc;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logo-container {
+    text-align: right;
+  }
+  .logo-container img {
+    max-width: 150px;
+    height: auto;
+  }
+</style>
+
+<div class="page">
+  <div class="header-box">
+    <div>
+      <h2>Account Activity</h2>
+    </div>
+    <div class="logo-container">
+      <!-- Placeholder for University Logo -->
+      <div style="font-size: 24px; font-weight: bold; color: #A50026;">SU</div>
+      <div style="font-size: 12px; text-align: center;">California State University</div>
+      <div style="font-size: 10px; text-align: center;">CHANNEL ISLANDS</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label>View by:</label>
+    <select style="padding: 5px;">
+      <option>All</option>
+    </select>
+  </div>
+
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <label>From:</label>
+    <input type="text" value="{{ start_date }}" style="padding: 5px; margin-right: 10px;">
+    <label>To:</label>
+    <input type="text" value="{{ end_date }}" style="padding: 5px; margin-right: 10px;">
+    <select style="padding: 5px; margin-right: 10px;">
+      <option>All Terms</option>
+    </select>
+    <button style="padding: 5px;">Go</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Transactions</th>
+        <th>Posted Date</th>
+        <th>Item</th>
+        <th>Find</th>
+        <th>View All</th>
+        <th>Term</th>
+        <th>Charge</th>
+        <th>Payment</th>
+        <th>Refund</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+      <tr>
+        <td><span data-field="transaction.id">{{ transaction.id }}</span></td>
+        <td><span data-field="transaction.posted_date">{{ transaction.posted_date }}</span></td>
+        <td><span data-field="transaction.item_description">{{ transaction.item_description }}</span></td>
+        <td><span data-field="transaction.find_status">{{ transaction.find_status }}</span></td>
+        <td><span data-field="transaction.view_all_status">{{ transaction.view_all_status }}</span></td>
+        <td><span data-field="transaction.term">{{ transaction.term }}</span></td>
+        <td><span data-field="transaction.charge_amount">{{ transaction.charge_amount }}</span></td>
+        <td><span data-field="transaction.payment_amount">{{ transaction.payment_amount }}</span></td>
+        <td><span data-field="transaction.refund_amount">{{ transaction.refund_amount }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <p>Currency used is in <span data-field="currency_unit">{{ currency_unit }}</span>.</p>
+    </div>
+    <div>
+      <p>First <span data-field="total_transactions_count">{{ total_transactions_count }}</span> Last</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-box">
+    <div style="text-align: left;">
+      <p>Wednesday, <span data-field="date_1">{{ date_1 }}</span></p>
+      <p>Monday, <span data-field="date_2">{{ date_2 }}</span></p>
+    </div>
+    <div class="logo-container">
+      <!-- Placeholder for University Logo -->
+      <div style="font-size: 24px; font-weight: bold; color: #A50026;">SU</div>
+      <div style="font-size: 12px; text-align: center;">California State University</div>
+      <div style="font-size: 10px; text-align: center;">CHANNEL ISLANDS</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="text-align: center;">FINANCIAL AID AND</h2>
+    <h2 style="text-align: center;">OUT-OF-POCKET REFUNDS BEGIN PROCESSING ON</h2>
+    <h2 style="text-align: center;">THE FOLLOWING PUBLISHED DATES BELOW AFTER</h2>
+    <h2 style="text-align: center;">THE START OF TERM.</h2>
+  </div>
+
+  <div style="display: flex; justify-content: space-around; margin-top: 50px;">
+    <div style="width: 45%;">
+      <h3 style="color: #A50026;">FINANCIAL AID</h3>
+      <p>Refunds begin processing on</p>
+      <h3 style="color: #A50026;">{{ financial_aid_start_date }}</h3>
+    </div>
+    <div style="width: 45%;">
+      <h3 style="color: #A50026;">OUT-OF-POCKET</h3>
+      <p>Refunds begin processing on</p>
+      <h3 style="color: #A50026;">{{ out_of_pocket_start_date }}</h3>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>How will I receive my refund?</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 50%;">
+      <h3 style="color: #A50026;">Direct Deposit</h3>
+      <ul>
+        <li><span style="font-weight: bold;">&#10003;</span> Fastest way to receive your refund. Electronic transfer.</li>
+        <li><span style="font-weight: bold;">&#10003;</span> Enroll in Direct Deposit in your myCI portal.</li>
+        <li><span style="font-weight: bold;">&#10003;</span> Takes <span data-field="direct_deposit_time">{{ direct_deposit_time }}</span></li>
+      </ul>
+    </div>
+    <div style="width: 45%; text-align: center;">
+      <!-- Placeholder Image -->
+      <div style="height: 250px; background-color: #eee; border: 1px solid #ccc;"></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="color: #A50026;">Paper Check</h3>
+    <ul>
+      <li><span style="font-weight: bold;">&#10003;</span> Checks will be mailed to the mailing address on file.</li>
+      <li><span style="font-weight: bold;">&#10003;</span> Automatically refunded as check if not enrolled in Direct Deposit</li>
+      <li><span style="font-weight: bold;">&#10003;</span> Please allow <span data-field="paper_check_processing_time">{{ paper_check_processing_time }}</span> for processing</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>How to enroll in direct deposit in your myCI student portal</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 50%;">
+      <ol>
+        <li>In the Student Finances section, on the left-hand side of the page, you will see the "Enroll in Direct Deposit" link. Select the link.</li>
+        <li>You will be required to complete three fields: bank routing number, bank account number and account type.</li>
+        <li>For checking information, the bank routing number and the bank account number can be found on the bottom of your paper checks.</li>
+        <li><span style="color: red;">*Caution:</span> Please do not enter the number on your debit card - this is not your account number.</li>
+        <li>For savings information, please contact your bank to determine the bank routing number and bank account number.</li>
+        <li>Read and agree to the terms and conditions, then select "Submit". Your next refund will be processed using direct deposit.</li>
+      </ol>
+    </div>
+    <div style="width: 45%;">
+      <!-- Placeholder Image -->
+      <div style="height: 350px; background-color: #eee; border: 1px solid #ccc;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>How will I get reimbursed for the out-of-pocket payments I made once financial aid applies to my student account?</h1>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="font-weight: bold;">REFUNDS GO BACK TO ORIGINAL PAYMENT SOURCE</h2>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 50%;">
+      <ul>
+        <li><span style="font-weight: bold;">&#10003;</span> Refunds for credit/debit card payments will be refunded back to the card that was used. Credit card payments are transacted in your myCI portal via the Cashnet payment system within the student portal. (<span data-field="credit_card_fee_rate">{{ credit_card_fee_rate }}</span>)</li>
+        <li><span style="font-weight: bold;">&#10003;</span> Cash and Electronic Check payments are a free payment option in myCI portal and will be refunded back as a paper check- unless you've enrolled in direct deposit. Then it will automatically be refunded as direct deposit.</li>
+      </ul>
+    </div>
+    <div style="width: 45%; text-align: center;">
+      <!-- Placeholder Image -->
+      <div style="height: 250px; background-color: #eee; border: 1px solid #ccc;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>How can I contact Student Business Services?</h1>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div style="width: 50%;">
+      <div style="margin-bottom: 20px;">
+        <h3 style="color: #A50026;">&#9679; Contact Us:</h3>
+        <ul>
+          <li>Sage Hall, Enrollment Center</li>
+          <li>Phone: (<span data-field="phone_area_code">{{ phone_area_code }}</span>) <span data-field="phone_number">{{ phone_number }}</span></li>
+          <li>Phone Hours: Mon. – Fri. <span data-field="phone_hours">{{ phone_hours }}</span></li>
+          <li>Cashier Window Hours: Mon. – Fri. <span data-field="cashier_hours">{{ cashier_hours }}</span></li>
+          <li>Email: <span data-field="contact_email">{{ contact_email }}</span></li>
+        </ul>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h3 style="color: #A50026;">&#9679; Resources:</h3>
+        <ul>
+          <li>Website: <span data-field="website_url">{{ website_url }}</span></li>
+          <li>"How to" PDF documents</li>
+          <li>Important updates</li>
+        </ul>
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <!-- Placeholder Image -->
+      <div style="height: 350px; background-color: #eee; border: 1px solid #ccc;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>Questions?</h1>
+  </div>
+  <div style="text-align: center; margin-top: 100px;">
+    <!-- Placeholder Image -->
+    <div style="height: 500px; background-color: #eee; border: 1px solid #ccc;"></div>
+  </div>
+</div></body>
+</html>

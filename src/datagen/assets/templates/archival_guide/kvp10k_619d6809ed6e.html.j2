@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+  .left {
+    text-align: left;
+  }
+  .divider {
+    border-top: 1px solid #000;
+    margin: 10px 0;
+  }
+</style>
+
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a close approximation */
+    }
+    .page:last-child { page-break-after: auto; }
+    /* Basic styling to mimic document structure */
+    .header-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        font-size: 12pt;
+    }
+    .content-list {
+        line-height: 1.6;
+    }
+    .list-item {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .page-footer {
+        position: absolute;
+        bottom: 50px;
+        left: 60px;
+        font-size: 10pt;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="center">
+    <span style="font-size: 18pt;">University of Pennsylvania</span>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Logo -->
+      <img src="placeholder_logo.png" alt="University Logo" style="width: 100px; height: auto;">
+    </div>
+    <span style="font-size: 14pt;">The University Archives</span>
+    <span style="font-size: 14pt;">and Records Center</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 16pt;">A Guide to the</span>
+    <span style="font-size: 16pt;">Vice President for Coordinated</span>
+    <span style="font-size: 16pt;">Planning Publication Records</span>
+    <span style="font-size: 16pt;">{{ publication_years }}</span>
+    <div style="margin-top: 20px;">
+      <span style="font-size: 12pt;">{{ cubic_footage }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="left">
+    <span style="font-size: 12pt;">The University Archives and Records Center</span>
+    <div style="font-size: 12pt;">
+      <span data-field="address_line_1">{{ address_line_1 }}</span><br>
+      <span data-field="address_line_2">{{ address_line_2 }}</span><br>
+      <span data-field="city_state_zip">{{ city_state_zip }}</span><br>
+      <span data-field="phone">{{ phone }}</span><br>
+      <span data-field="fax">{{ fax }}</span><br>
+      <span data-field="website">{{ website }}</span><br>
+      <span data-field="director_name">{{ director_name }}</span>, Director
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 100px;">
+    <span style="font-size: 14pt;">Vice President for Coordinated Planning Publication Records</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 16pt;">{{ guide_title }}</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+    <div style="margin-top: 20px;">
+      <span style="font-size: 12pt;">{{ cubic_footage }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 100px;">
+    <span style="font-size: 14pt;">ARRANGEMENT</span>
+    <div class="divider" style="width: 50%;"></div>
+  </div>
+  <div class="center" style="margin-top: 20px;">
+    <span style="font-size: 12pt;">This collection has not been fully processed. The following preliminary inventory is available.</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">VICE PRESIDENT FOR COORDINATED PLANNING PUBLICATION RECORDS</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 16pt;">Vice President for Coordinated Planning Publication Records</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">{{ publication_years }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">INVENTORY</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="text-align: left; padding: 8px; width: 70%;"></th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Box</th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items %}
+      <tr style="border-bottom: 1px dotted #ccc;">
+        <td style="padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">VICE PRESIDENT FOR COORDINATED PLANNING PUBLICATION RECORDS</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 16pt;">Vice President for Coordinated Planning Publication Records</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">{{ publication_years }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">INVENTORY</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="text-align: left; padding: 8px; width: 70%;"></th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Box</th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items %}
+      <tr style="border-bottom: 1px dotted #ccc;">
+        <td style="padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">VICE PRESIDENT FOR COORDINATED PLANNING PUBLICATION RECORDS</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 16pt;">Vice President for Coordinated Planning Publication Records</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">{{ publication_years }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB {{ report_number }}</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" data-field="protocols_link">{{ protocols_link }}</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 14pt;">INVENTORY</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="text-align: left; padding: 8px; width: 70%;"></th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Box</th>
+        <th style="text-align: center; padding: 8px; width: 15%;">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items %}
+      <tr style="border-bottom: 1px dotted #ccc;">
+        <td style="padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="text-align: center; padding: 8px;"><span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a close approximation */
+    }
+    .page:last-child { page-break-after: auto; }
+    /* Basic styling to mimic document structure */
+    .header-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        font-size: 12pt;
+    }
+    .content-list {
+        line-height: 1.6;
+    }
+    .list-item {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .page-footer {
+        position: absolute;
+        bottom: 50px;
+        left: 60px;
+        font-size: 10pt;
+        color: #555;
+    }
+</style>
+
+<div class="page">
+    <div class="header-info">
+        <div>Vice President for Coordinated Planning Publication Records</div>
+        <div>UPB 101.8</div>
+    </div>
+
+    <div class="content-list">
+        <div class="list-item">
+            <div>Preliminary Submission for University of <span data-field="organization_name">{{ organization_name }}</span> Office of Planning and Design. Project No. <span data-field="project_number">{{ project_number }}</span></div>
+            <div><span data-field="page_number">{{ page_number }}</span></div>
+        </div>
+
+        <div class="list-item">
+            <div>Graduate Academic Facilities for Geology and Geophysics alterations to Hayden Hall Old Fine Arts Building. John S. Sabatino Associates, A.L.A. Architects. Philadelphia, Pa., Allabach and Rennis Lewis Tower Building, 15th and Locust Streets, Philadelphia, Pa., Meridian Engineers, 1776 Benjamin Franklin, Philadelphia, Pa., Jan. 20, 1971</div>
+            <div><span data-field="page_number">{{ page_number }}</span></div>
+        </div>
+
+        <div class="list-item">
+            <div>Specifications for the Alterations In the Palestra of the University of Pennsylvania for a Cafeteria.</div>
+            <div><span data-field="page_number">{{ page_number }}</span></div>
+        </div>
+
+        <div class="list-item">
+            <div>Women's Residence Houses, University of Pennsylvania, Chestnut Street between 33rd and 34th Streets. Philadelphia, Pa., The Specifications Review Issue, Jan. 20, 1967.</div>
+            <div><span data-field="page_number">{{ page_number }}</span></div>
+        </div>
+    </div>
+
+    <div class="page-footer">- <span data-field="page_number">{{ page_number }}</span> -</div>
+</div></body>
+</html>

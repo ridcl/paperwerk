@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application for Graduate Admission</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-header { margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { margin-bottom: 5px; font-weight: normal; }
+  .form-group input[type="text"], .form-group input[type="date"], .form-group select { border: 1px solid #ccc; padding: 5px; width: 100%; box-sizing: border-box; }
+  .full-width-field { width: 100%; }
+  .signature-line { border-bottom: 1px solid black; width: 300px; margin-top: 50px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo.png" alt="Fisk University Logo" style="width: 150px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt;">FISK</h1>
+    <h2 style="font-size: 14pt;">APPLICATION FOR GRADUATE ADMISSION</h2>
+  </div>
+
+  <div class="section-header">
+    NOTICE: If you are looking to apply to the Fisk-Vanderbilt Masters-to-PhD Bridge Program, please request application materials from <span data-field="coordinator_name">{{ coordinator_name }}</span>, Program Coordinator, at <span data-field="coordinator_email">{{ coordinator_email }}</span>.
+  </div>
+
+  <h3 style="margin-top: 30px;">BIOGRAPHICAL INFORMATION</h3>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Legal Name</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" style="flex: 2;" placeholder="First Name" data-field="legal_name" value="{{ legal_name }}">
+        <input type="text" style="flex: 1;" placeholder="Middle" data-field="legal_name_2" value="{{ legal_name_2 }}">
+        <input type="text" style="flex: 1;" placeholder="Last" data-field="legal_name_3" value="{{ legal_name_3 }}">
+        <input type="text" style="flex: 1;" placeholder="Suffix" data-field="legal_name_4" value="{{ legal_name_4 }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Preferred Name</label>
+      <input type="text" class="full-width-field" placeholder="First/Middle/Last" data-field="preferred_name" value="{{ preferred_name }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Former Name(s)</label>
+      <input type="text" class="full-width-field" placeholder="First/Middle/Last" data-field="former_name" value="{{ former_name }}">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Date of Birth</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="date_of_birth" value="{{ date_of_birth }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Sex</label>
+      <div style="display: flex; gap: 20px;">
+        <label><input type="radio" name="sex" value="Male"> Male</label>
+        <label><input type="radio" name="sex" value="Female"> Female</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>If you would like the opportunity, we invite you to share more about your gender identity. (optional)</label>
+    <input type="text" class="full-width-field" placeholder="Enter gender identity" data-field="female" value="{{ female }}">
+  </div>
+
+  <h3 style="margin-top: 30px;">What are your pronouns? (optional)</h3>
+  <div class="form-group" style="margin-bottom: 20px;">
+    <input type="text" class="full-width-field" placeholder="Enter pronouns" data-field="what_are_your_pronouns" value="{{ what_are_your_pronouns }}">
+  </div>
+
+  <h3 style="margin-top: 30px;">CONTACT INFORMATION</h3>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Preferred phone</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" style="flex: 3;" placeholder="Home" data-field="preferred_phone" value="{{ preferred_phone }}">
+        <input type="text" style="flex: 2;" placeholder="Mobile" data-field="preferred_phone_2" value="{{ preferred_phone_2 }}">
+      </div>
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Alternate phone(optional)</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" style="flex: 3;" placeholder="Home" data-field="alternate_phone" value="{{ alternate_phone }}">
+        <input type="text" style="flex: 2;" placeholder="Mobile" data-field="alternate_phone_2" value="{{ alternate_phone_2 }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Include area, country, and/or city code</label>
+      <input type="text" class="full-width-field" data-field="alternate_phone_3" value="{{ alternate_phone_3 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Include area, country, and/or city code</label>
+      <input type="text" class="full-width-field" data-field="field_1" value="{{ field_1 }}">
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">Email address</h3>
+  <div class="form-group" style="margin-bottom: 20px;">
+    <input type="text" class="full-width-field" placeholder="Enter email address" data-field="email_address" value="{{ email_address }}">
+  </div>
+
+  <h3 style="margin-top: 30px;">Permanent Home Address</h3>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Number, Street, and Apartment number</label>
+      <input type="text" class="full-width-field" data-field="number_street_and_apartment_number" value="{{ number_street_and_apartment_number }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>City/town</label>
+      <input type="text" class="full-width-field" data-field="city_town" value="{{ city_town }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>State/Province</label>
+      <input type="text" class="full-width-field" data-field="state_province" value="{{ state_province }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Country</label>
+      <input type="text" class="full-width-field" data-field="country" value="{{ country }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Zip Code</label>
+      <input type="text" class="full-width-field" data-field="zip_code" value="{{ zip_code }}">
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">Alternate Home Address (optional)</h3>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Number, Street, and Apartment number</label>
+      <input type="text" class="full-width-field" data-field="number_street_and_apartment_number_2" value="{{ number_street_and_apartment_number_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>City/town</label>
+      <input type="text" class="full-width-field" data-field="city_town_2" value="{{ city_town_2 }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>State/Province</label>
+      <input type="text" class="full-width-field" data-field="state_province_2" value="{{ state_province_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Country</label>
+      <input type="text" class="full-width-field" data-field="country_2" value="{{ country_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Zip Code</label>
+      <input type="text" class="full-width-field" data-field="zip_code_2" value="{{ zip_code_2 }}">
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="form-group" style="flex: 1;">
+      <label>From</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="from" value="{{ from }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>to</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="to" value="{{ to }}">
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <p>Please submit your completed application to <span data-field="submission_email">{{ submission_email }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo.png" alt="Fisk University Logo" style="width: 150px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt;">FISK</h1>
+    <h2 style="font-size: 14pt;">APPLICATION FOR GRADUATE ADMISSION</h2>
+  </div>
+
+  <h3 style="margin-top: 30px;">DEMOGRAPHIC INFORMATION</h3>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Citizenship Status</label>
+      <div style="display: flex; gap: 20px;">
+        <label><input type="radio" name="citizenship" value="US Citizen"> US Citizen</label>
+        <label><input type="radio" name="citizenship" value="US Dual Citizen"> US Dual Citizen</label>
+        <label><input type="radio" name="citizenship" value="US Permanent Resident"> US Permanent Resident</label>
+        <label><input type="radio" name="citizenship" value="US refugee or asylee"> US refugee or asylee</label>
+        <label><input type="radio" name="citizenship" value="Other"> Other</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Non-US citizenship(s)</label>
+    <input type="text" class="full-width-field" placeholder="List non-US citizenships" data-field="non_us_citizenship" value="{{ non_us_citizenship }}">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Currently held US visa type</label>
+      <input type="text" class="full-width-field" data-field="currently_held_us_visa_type" value="{{ currently_held_us_visa_type }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Date issued</label>
+      <input type="text" class="full-width-field" data-field="date_issued" value="{{ date_issued }}">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Birthplace</label>
+      <input type="text" class="full-width-field" placeholder="City/state/country" data-field="birthplace" value="{{ birthplace }}">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Years lived in the US</label>
+      <input type="text" class="full-width-field" data-field="years_lived_in_the_us" value="{{ years_lived_in_the_us }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Years lived outside the US</label>
+      <input type="text" class="full-width-field" data-field="years_lived_outside_the_us" value="{{ years_lived_outside_the_us }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Race (optional) (You may select one or more.)</label>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+      <label><input type="checkbox"> American Indian or Alaska Native</label>
+      <label><input type="checkbox"> Asian (including Indian subcontinent and Philippines)</label>
+      <label><input type="checkbox"> Black or African American (including Africa and Caribbean)</label>
+      <label><input type="checkbox"> Native Hawaiian or other Pacific Islander</label>
+      <label><input type="checkbox"> White (including Middle East)</label>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Are you enrolled in a federally recognized tribe?</label>
+    <div style="display: flex; gap: 30px;">
+      <label><input type="radio" name="tribe_enrolled" value="Yes"> Yes</label>
+      <label><input type="radio" name="tribe_enrolled" value="No"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 10px;">
+    <label>If yes, please enter Tribal Enrollment Number.</label>
+    <input type="text" class="full-width-field" data-field="no" value="{{ no }}">
+  </div>
+
+  <h3 style="margin-top: 30px;">EDUCATION</h3>
+  <p>Please list all post-secondary institutions you have attended since graduating from high school. If you have attended more than 2 post-secondary institutions, please include them on a separate page. (All post-secondary institutions listed will require a transcript. Please see the Application Submission section for more details on submitting your transcript.)</p>
+
+  <h4 style="margin-top: 20px;">Post-Secondary Institution #1</h4>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Name of Institution</label>
+      <input type="text" class="full-width-field" data-field="name_of_institution" value="{{ name_of_institution }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Academic Major</label>
+      <input type="text" class="full-width-field" data-field="academic_major" value="{{ academic_major }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Country</label>
+      <input type="text" class="full-width-field" data-field="country_3" value="{{ country_3 }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>City/town</label>
+      <input type="text" class="full-width-field" data-field="city_town_3" value="{{ city_town_3 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>State/Province</label>
+      <input type="text" class="full-width-field" data-field="state_province_3" value="{{ state_province_3 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Graduation (or end) date</label>
+      <input type="text" class="full-width-field" data-field="graduation_date" value="{{ graduation_date }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Did you earn a degree from this institution?</label>
+    <div style="display: flex; gap: 30px;">
+      <label><input type="radio" name="degree_1" value="Yes"> Yes</label>
+      <label><input type="radio" name="degree_1" value="No"> No</label>
+    </div>
+  </div>
+
+  <h4 style="margin-top: 30px;">Post-Secondary Institution #2</h4>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Name of Institution</label>
+      <input type="text" class="full-width-field" data-field="name_of_institution_2" value="{{ name_of_institution_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Academic Major</label>
+      <input type="text" class="full-width-field" data-field="academic_major_2" value="{{ academic_major_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Country</label>
+      <input type="text" class="full-width-field" data-field="country_4" value="{{ country_4 }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>City/town</label>
+      <input type="text" class="full-width-field" data-field="city_town_4" value="{{ city_town_4 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>State/Province</label>
+      <input type="text" class="full-width-field" data-field="state_province_4" value="{{ state_province_4 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Graduation (or end) date</label>
+      <input type="text" class="full-width-field" data-field="graduation_date_2" value="{{ graduation_date_2 }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Did you earn a degree from this institution?</label>
+    <div style="display: flex; gap: 30px;">
+      <label><input type="radio" name="degree_2" value="Yes"> Yes</label>
+      <label><input type="radio" name="degree_2" value="No"> No</label>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">ACADEMIC INTEREST</h3>
+  <p>To what graduate program at Fisk University are you applying?</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+    <label><input type="checkbox"> Biology</label>
+    <label><input type="checkbox"> Chemistry</label>
+    <label><input type="checkbox"> Physics</label>
+    <label><input type="checkbox"> Healthcare Management</label>
+    <label><input type="checkbox"> Psychology (General)</label>
+    <label><input type="checkbox"> Psychology (Clinical)</label>
+    <label><input type="checkbox"> Social Justice</label>
+  </div>
+
+  <h3 style="margin-top: 30px;">TESTING</h3>
+  <p>(You may skip this section if it does not apply to you.)</p>
+
+  <h4 style="margin-top: 20px;">TOEFL</h4>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Date</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="date" value="{{ date }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Total Score</label>
+      <input type="text" class="full-width-field" data-field="total_score" value="{{ total_score }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Paper-delivered</label>
+      <div style="display: flex; gap: 10px;"><label><input type="radio" name="toefl_delivery" value="Yes"> Yes</label><label><input type="radio" name="toefl_delivery" value="No"> No</label></div>
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Home or Internet-based</label>
+      <div style="display: flex; gap: 10px;"><label><input type="radio" name="toefl_delivery_type" value="Home"> Home</label><label><input type="radio" name="toefl_delivery_type" value="Internet"> Internet</label></div>
+    </div>
+  </div>
+
+  <h4 style="margin-top: 20px;">IELTS</h4>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Date</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="date_2" value="{{ date_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Total Score</label>
+      <input type="text" class="full-width-field" data-field="total_score_2" value="{{ total_score_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Paper-delivered</label>
+      <div style="display: flex; gap: 10px;"><label><input type="radio" name="ielts_delivery" value="Yes"> Yes</label><label><input type="radio" name="ielts_delivery" value="No"> No</label></div>
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Home or Internet-based</label>
+      <div style="display: flex; gap: 10px;"><label><input type="radio" name="ielts_delivery_type" value="Home"> Home</label><label><input type="radio" name="ielts_delivery_type" value="Internet"> Internet</label></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">REFERENCES</h3>
+  <p>Please list the names and addresses of three persons you have asked to provide a recommendation. At least two should be former instructors in the major field, acquainted with your educational background and personal character. (The School of Graduate Studies will contact them directly to request letters of recommendation on your behalf.)</p>
+
+  <h4 style="margin-top: 20px;">Reference #1</h4>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Name of Reference</label>
+      <input type="text" class="full-width-field" data-field="name_of_reference" value="{{ name_of_reference }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Relationship</label>
+      <input type="text" class="full-width-field" data-field="relationship" value="{{ relationship }}">
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <p>Please submit your completed application to <span data-field="submission_email">{{ submission_email }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo.png" alt="Fisk University Logo" style="width: 150px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt;">FISK</h1>
+    <h2 style="font-size: 14pt;">APPLICATION FOR GRADUATE ADMISSION</h2>
+  </div>
+
+  <h3 style="margin-top: 30px;">Institution/Organization</h3>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Name of Reference #2</label>
+      <input type="text" class="full-width-field" data-field="name_of_reference_2" value="{{ name_of_reference_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Relationship</label>
+      <input type="text" class="full-width-field" data-field="relationship_2" value="{{ relationship_2 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Email Address (preferably with a .edu domain)</label>
+      <input type="text" class="full-width-field" data-field="email_address_2" value="{{ email_address_2 }}">
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">Institution/Organization</h3>
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>Name of Reference #3</label>
+      <input type="text" class="full-width-field" data-field="name_of_reference_3" value="{{ name_of_reference_3 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Relationship</label>
+      <input type="text" class="full-width-field" data-field="relationship_3" value="{{ relationship_3 }}">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Email Address (preferably with a .edu domain)</label>
+      <input type="text" class="full-width-field" data-field="email_address_3" value="{{ email_address_3 }}">
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">PERSONAL STATEMENT</h3>
+  <p>A personal statement describing your interest in the program, your background and career goals, and why the program would be a good fit for you, and vice versa. You may also highlight your unique skills and qualifications for admission. Please submit your personal statement on a separate document. (1,000 word limit)</p>
+
+  <h3 style="margin-top: 30px;">FINANCIAL ASSISTANCE</h3>
+  <div class="form-row">
+    <div class="form-group" style="flex: 1;">
+      <label>Will you require financial assistance?</label>
+      <div style="display: flex; gap: 30px;">
+        <label><input type="radio" name="financial_need" value="Yes"> Yes</label>
+        <label><input type="radio" name="financial_need" value="No"> No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Please check here if you are not eligible for U.S. federal aid. You will have to complete the Graduate Affidavit of Support prior to enrollment.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>Financial support at Fisk will generally be limited to tuition scholarships and research assistantships. The research assistantships are provided by faculty who have on-going research projects with external support. To help us evaluate your request, please complete a <a href="#">Free Application for Federal Student Aid (FAFSA)</a> and have it sent to Fisk University using code 003490. (If you are not eligible for U.S. federal aid, please see link above.)</label>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <p>Please submit your completed application to <span data-field="submission_email">{{ submission_email }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo.png" alt="Fisk University Logo" style="width: 150px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt;">FISK</h1>
+    <h2 style="font-size: 14pt;">APPLICATION FOR GRADUATE ADMISSION</h2>
+  </div>
+
+  <h3 style="margin-top: 30px;">APPLICATION SUBMISSION</h3>
+  <p>In addition to this completed application, the following materials are required to be considered for graduate admission to Fisk University:</p>
+  <ol style="margin-left: 20px;">
+    <li>Personal statement</li>
+    <li>Three letters of recommendation</li>
+    <li>Transcripts from all post-secondary institutions you have attended since graduating from high school (unofficial transcripts are acceptable for admission application review, and you must have official transcripts submitted upon enrollment)</li>
+    <li>Resume or curriculum vitae that includes the following: (a) all work experience since you graduated from high school, (b) any academic honors, memberships in honorary societies, and memberships in extracurricular activities, and (c) any research experience, research papers you have authored or co-authored, and conference presentations or panels you have led or co-led.</li>
+    <li>TOEFL or IELTS scores (self-reported scores are acceptable for admission application review, and you must have official scores submitted upon enrollment) ***if English is not your native language or your country's official language is not English***</li>
+  </ol>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <p>Please submit your completed application to <span data-field="submission_email">{{ submission_email }}</span>.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="logo.png" alt="Fisk University Logo" style="width: 150px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt;">FISK</h1>
+    <h2 style="font-size: 14pt;">APPLICATION FOR GRADUATE ADMISSION</h2>
+  </div>
+
+  <h3 style="margin-top: 30px;">IMPORTANT PRIVACY NOTICE</h3>
+  <p>Under the terms of the Family Educational Rights and Privacy Act (FERPA), you can review letters of recommendation and accompanying forms after post-enrollment. For more information on FERPA follow this link: <a href="http://www.ed.gov/policy/gen/guid/fpcpo/ferpa/index.html">http://www.ed.gov/policy/gen/guid/fpcpo/ferpa/index.html</a></p>
+
+  <p>By signing this form, I authorize every school that I have attended to release all requested records and recommendations to Fisk University. I also authorize employees at Fisk University to confidentially contact my current and former schools should they have questions about the information submitted on my behalf.</p>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>I waive my right to review all recommendations and supporting documents submitted by me or on my behalf.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-group" style="margin-top: 10px;">
+    <label>I DO NOT waive my right to review all recommendations and supporting documents submitted by me or on my behalf.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>I understand that my waiver or no waiver selection above cannot be changed after any recommendation or application submission.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-row" style="margin-top: 50px;">
+    <div class="form-group" style="flex: 1;">
+      <label>Signature</label>
+      <div class="signature-line" data-field="signature">{{ signature }}</div>
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Date</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="date_3" value="{{ date_3 }}">
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 50px; text-align: center;">
+    <p>My signature below is certification of the following (check each box below):</p>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <label>The information that I presented in this application is correct and complete. I understand that deliberately falsifying information may result in dismissal from Fisk University without a degree.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-group" style="margin-top: 10px;">
+    <label>I understand all the materials that are required to be considered for graduate admission at Fisk University.</label>
+    <input type="checkbox" class="full-width-field">
+  </div>
+
+  <div class="form-row" style="margin-top: 50px;">
+    <div class="form-group" style="flex: 1;">
+      <label>Signature</label>
+      <div class="signature-line" data-field="signature_2">{{ signature_2 }}</div>
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label>Date</label>
+      <input type="text" class="full-width-field" placeholder="mm/dd/yyyy" data-field="date_4" value="{{ date_4 }}">
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; text-align: center;">
+    <p>Please submit your completed application to <span data-field="submission_email">{{ submission_email }}</span>.</p>
+  </div>
+</div>
+</body>
+</html>

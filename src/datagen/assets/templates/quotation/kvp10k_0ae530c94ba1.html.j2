@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotation</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .header-section { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .logo-section { width: 30%; }
+        .quotation-details { width: 70%; }
+        .footer-summary { margin-top: 40px; width: 40%; float: right; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-section">
+            <div class="logo-section">
+                <div style="font-size: 24px; font-weight: bold;">QuestingHound</div>
+                <div style="font-size: 12px;">technology partners</div>
+                <div style="font-size: 10px;">3155 SW 10th Street, Suite N</div>
+                <div style="font-size: 10px;">Deerfield Beach, FL 33442</div>
+                <div style="font-size: 10px;">Phone: {{ contact.phone }}</div>
+            </div>
+            <div class="quotation-details">
+                <h1 style="font-size: 20px; font-weight: bold;">Quotation (Open)</h1>
+                <p>Date: <span data-field="quotation.date">{{ quotation.date }}</span></p>
+                <p>Modified Date: <span data-field="quotation.modified_date">{{ quotation.modified_date }}</span></p>
+                <p>Doc #: <span data-field="quotation.doc_number">{{ quotation.doc_number }}</span></p>
+                <p>Description: <span data-field="quotation.description">{{ quotation.description }}</span></p>
+                <p>SalesRep: <span data-field="quotation.sales_rep">{{ quotation.sales_rep }}</span></p>
+                <p>Customer Contact: <span data-field="quotation.customer_contact">{{ quotation.customer_contact }}</span></p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 45%;">
+                <h2 style="font-size: 16px; font-weight: bold;">Payment Method</h2>
+                <p>Terms: <span data-field="payment_terms">{{ payment_terms }}</span></p>
+                <h2 style="font-size: 16px; font-weight: bold;">Shipping Info</h2>
+                <p>Delivery Method: <span data-field="shipping_method">{{ shipping_method }}</span></p>
+                <p>Carrier Account: <span data-field="carrier_account">{{ carrier_account }}</span></p>
+                <p>Shipping Instructions: <span data-field="shipping_instructions">{{ shipping_instructions }}</span></p>
+            </div>
+            <div style="width: 45%;">
+                <h2 style="font-size: 16px; font-weight: bold;">Bill To</h2>
+                <p><span data-field="bill_to.company_name">{{ bill_to.company_name }}</span></p>
+                <p><span data-field="bill_to.address_line_1">{{ bill_to.address_line_1 }}</span></p>
+                <p><span data-field="bill_to.city_state_zip">{{ bill_to.city_state_zip }}</span></p>
+                <p><span data-field="bill_to.phone">{{ bill_to.phone }}</span></p>
+                <p><span data-field="bill_to.email">{{ bill_to.email }}</span></p>
+                <h2 style="font-size: 16px; font-weight: bold;">Ship To</h2>
+                <p><span data-field="ship_to.company_name">{{ ship_to.company_name }}</span></p>
+                <p><span data-field="ship_to.address_line_1">{{ ship_to.address_line_1 }}</span></p>
+                <p><span data-field="ship_to.city_state_zip">{{ ship_to.city_state_zip }}</span></p>
+                <p><span data-field="ship_to.phone">{{ ship_to.phone }}</span></p>
+                <p><span data-field="ship_to.email">{{ ship_to.email }}</span></p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;">#</th>
+                    <th style="width: 50%;">Description</th>
+                    <th style="width: 15%; text-align: right;">Tax</th>
+                    <th style="width: 15%; text-align: right;">Qty</th>
+                    <th style="width: 15%; text-align: right;">Unit Price</th>
+                    <th style="width: 10%; text-align: right;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in line_items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+                    <td style="text-align: right;">{{ item.tax }}</td>
+                    <td style="text-align: right;">{{ item.quantity }}</td>
+                    <td style="text-align: right;">{{ item.unit_price }}</td>
+                    <td style="text-align: right;">{{ item.total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer-summary">
+            <p>Subtotal: <span data-field="summary.subtotal">{{ summary.subtotal }}</span></p>
+            <p>Tax (0.000%): <span data-field="summary.tax">{{ summary.tax }}</span></p>
+            <p>Shipping: <span data-field="summary.shipping">{{ summary.shipping }}</span></p>
+            <p style="font-weight: bold; font-size: 1.1em;">Total: <span data-field="summary.total">{{ summary.total }}</span></p>
+        </div>
+    </div>
+</body>
+</html>

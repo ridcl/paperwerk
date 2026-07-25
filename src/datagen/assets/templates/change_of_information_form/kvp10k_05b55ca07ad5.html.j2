@@ -1,0 +1,156 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { text-align: center; font-size: 24pt; margin-bottom: 10px; }
+  h2 { font-size: 14pt; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { width: 150px; font-weight: bold; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .section-divider { border-top: 1px solid #000; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+  .signature-line { border-bottom: 1px solid #000; width: 50%; margin-top: 30px; }
+</style>
+<body>
+  <div class="page">
+    <h1>MONTANATECH</h1>
+    <div style="text-align: right; font-size: 10pt;">enrollment@mtech.edu</div>
+
+    <h2>CHANGE OF INFORMATION FORM</h2>
+    <p>Please provide the following information to update your records. Return completed form to Enrollment Services Office or enrollment@mtech.edu.</p>
+
+    <div style="margin-top: 30px;">
+      <p>UPDATING EMAIL ADDRESS: CONTACT I.T. HELP DESK – MG 107C</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Name Change Section -->
+    <h2>NAME CHANGE:</h2>
+    <table>
+      <tr>
+        <td style="width: 20%;">NAME:</td>
+        <td style="width: 80%;"><span data-field="name_change.old_name">{{ name_change.old_name }}</span></td>
+      </tr>
+      <tr>
+        <td>ID #:</td>
+        <td><span data-field="name_change.id">{{ name_change.id }}</span></td>
+      </tr>
+    </table>
+
+    <h2>OLD NAME INFORMATION</h2>
+    <table>
+      <tr>
+        <td>NAME:</td>
+        <td><span data-field="old_name_info.name">{{ old_name_info.name }}</span></td>
+      </tr>
+      <tr>
+        <td>ID #:</td>
+        <td><span data-field="old_name_info.id">{{ old_name_info.id }}</span></td>
+      </tr>
+    </table>
+
+    <h2>NEW NAME INFORMATION</h2>
+    <table>
+      <tr>
+        <td>NAME:</td>
+        <td><span data-field="new_name_info.name">{{ new_name_info.name }}</span></td>
+      </tr>
+      <tr>
+        <td>ID #:</td>
+        <td><span data-field="new_name_info.id">{{ new_name_info.id }}</span></td>
+      </tr>
+    </table>
+
+    <p style="font-size: 9pt; margin-top: 15px;">NOTE: In order to change your name, we need proof of your name change (i.e. Marriage License, Divorce Paperwork, Social Security Card, or some other legal document)</p>
+
+    <div class="section-divider"></div>
+
+    <!-- Address/Phone Change Section -->
+    <h2>ADDRESS AND/OR TELEPHONE NUMBER CHANGE:</h2>
+
+    <!-- Old Address/Phone -->
+    <h3>OLD ADDRESS/PHONE INFORMATION</h3>
+    <table>
+      <tr>
+        <td style="width: 20%;">PHONE #:</td>
+        <td><span data-field="old_contact.phone">{{ old_contact.phone }}</span></td>
+      </tr>
+      <tr>
+        <td>CELL PHONE #:</td>
+        <td><span data-field="old_contact.cell_phone">{{ old_contact.cell_phone }}</span></td>
+      </tr>
+      <tr>
+        <td>ADDRESS:</td>
+        <td><span data-field="old_contact.address">{{ old_contact.address }}</span></td>
+      </tr>
+      <tr>
+        <td>TYPE:</td>
+        <td><span data-field="old_contact.type">{{ old_contact.type }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-top: 10px;">Circle all that apply: MA BI PR</td>
+      </tr>
+    </table>
+
+    <!-- New Address/Phone -->
+    <h3>NEW ADDRESS/PHONE INFORMATION</h3>
+    <table>
+      <tr>
+        <td style="width: 20%;">PHONE #:</td>
+        <td><span data-field="new_contact.phone">{{ new_contact.phone }}</span></td>
+      </tr>
+      <tr>
+        <td>CELL PHONE #:</td>
+        <td><span data-field="new_contact.cell_phone">{{ new_contact.cell_phone }}</span></td>
+      </tr>
+      <tr>
+        <td>ADDRESS:</td>
+        <td><span data-field="new_contact.address">{{ new_contact.address }}</span></td>
+      </tr>
+      <tr>
+        <td>TYPE:</td>
+        <td><span data-field="new_contact.type">{{ new_contact.type }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-top: 10px;">Circle all that apply: MA BI PR</td>
+      </tr>
+    </table>
+
+    <!-- Signature and Completion -->
+    <p>Signature: _________________________</p>
+
+    <div style="margin-top: 40px;">
+      <p>
+        <input type="checkbox" style="margin-right: 5px;">By checking this box, I'm providing my electronic signature indicating that the information provided above is true to the best of my knowledge.
+      </p>
+    </div>
+
+    <table style="width: 100%; margin-top: 50px;">
+      <tr>
+        <td style="width: 33%;">Enrollment Services Office Use Only:</td>
+        <td style="width: 33%;">Completed: _________________________</td>
+        <td style="width: 33%;">Initials: _________________________</td>
+      </tr>
+      <tr>
+        <td>Forwarded: _________________________</td>
+        <td>Date: _________________________</td>
+        <td>Name Change: <input type="checkbox" style="margin-right: 5px;"> YES</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Address/Phone # Updated: <input type="checkbox" style="margin-right: 5px;"> YES</td>
+        <td></td>
+      </tr>
+    </table>
+
+  </div>
+</body>

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Learning Assessment Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+  th { background-color: #f2f2f2; }
+  .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 10px; }
+  .subtitle { font-size: 14pt; margin-bottom: 20px; }
+  .section-heading { font-size: 16pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .metadata p { margin: 2px 0; font-size: 10pt; }
+  .two-column-layout { display: flex; justify-content: space-between; }
+  .two-column-layout > div { width: 48%; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.4;
+    color: #000;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .header-title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .section-heading {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  .sub-heading {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .list-item {
+    margin-bottom: 10px;
+  }
+  .signature-block {
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+  <h2 class="subtitle">STUDENT LEARNING ASSESSMENT REPORT, {{ report_year }}</h2>
+  <div class="metadata" style="margin-bottom: 30px;">
+    <p>PROGRAM: <span data-field="program_name">{{ program_name }}</span></p>
+    <p>SUBMITTED BY: <span data-field="submitter_name">{{ submitter_name }}</span></p>
+    <p>DATE: {{ report_date }}</p>
+  </div>
+
+  <h3 class="section-heading">Executive Summary: Description of Assessment Process</h3>
+  <p>List all of the program's learning outcomes, as of the assessment year's catalog: (regardless of whether or not they are being assessed this year)</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">CIDA Standard</th>
+        <th style="width: 45%;">Learning Outcome</th>
+        <th style="width: 15%;">Year of Last Assessment</th>
+        <th style="width: 15%;">Assessed This Year (Y/Yes)</th>
+        <th style="width: 10%;">Year of Next Planned Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in assessment_table %}
+      <tr>
+        <td><span data-field="assessment_table[{{ loop.index0 }}].cida_standard">{{ item.cida_standard }}</span></td>
+        <td><span data-field="assessment_table[{{ loop.index0 }}].learning_outcome">{{ item.learning_outcome }}</span></td>
+        <td><span data-field="assessment_table[{{ loop.index0 }}].year_last_assessment">{{ item.year_last_assessment }}</span></td>
+        <td><span data-field="assessment_table[{{ loop.index0 }}].assessed_this_year">{{ item.assessed_this_year }}</span></td>
+        <td><span data-field="assessment_table[{{ loop.index0 }}].year_next_planned">{{ item.year_next_planned }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Course Assessment</h3>
+  <p>Provide a brief description of the assessment process used including how results are shared and discussed and strengths, challenges, and planned improvements to the process, providing evidence of a culture of continuous improvement based on assessment. If there is something that is impeding your ability to implement improvements, please comment on those issues (generally not more than two paragraphs, may use bullet points):</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">CIDA Standard 8 Design Process</h4>
+  <p>The {{ program_name }} curriculum map identifies the following courses as the primary location for evidence of student achievement in this category.</p>
+  <ul>
+    <li><span data-field="course_assessment_8_1">{{ course_assessment_8_1 }}</span></li>
+    <li><span data-field="course_assessment_8_2">{{ course_assessment_8_2 }}</span></li>
+  </ul>
+  <p>Student projects are often include healthcare, education, hospitality, and retail.</p>
+  <p>Interior design faculty assessed the thesis project completed by each enrolled student. Data is aggregated across all sections to access student learning outcomes defined by the Interior Design program.</p>
+  <p>Thesis committee members also assessed the projects during the final thesis defense using the department's thesis defense rubric.</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Practice Studio II (ID-306)</h4>
+  <p>This is a 3rd year design studio where students design individual and group projects. The project practice area focuses on workplace design.</p>
+  <p>Interior design faculty assessed the projects completed by each enrolled student. Data is aggregated across all sections to access student learning outcomes defined by the Interior Design program.</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Exit Survey</h4>
+  <p>Students that completed ID-409 during the assessment year were provided an exit survey where they were asked to self-report their competence in this SLA.</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">CIDA Standard 9 Communication</h4>
+  <p>The {{ program_name }} curriculum map identifies the following courses as the primary location for evidence of student achievement in this category.</p>
+  <ul>
+    <li><span data-field="course_assessment_9_1">{{ course_assessment_9_1 }}</span></li>
+    <li><span data-field="course_assessment_9_2">{{ course_assessment_9_2 }}</span></li>
+  </ul>
+  <p>Interior design faculty assessed the projects completed by each enrolled student. Data is aggregated across all sections to access student learning outcomes defined by the Interior Design program.</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">CIDA Standard 10 History</h4>
+  <p>The {{ program_name }} curriculum map identifies the following courses as the primary location for evidence of student achievement in this category.</p>
+  <ul>
+    <li><span data-field="course_assessment_10_1">{{ course_assessment_10_1 }}</span></li>
+  </ul>
+  <p>Foundation Studio III (ID-204) is a 2nd year design studio where students design individual and group projects. The project practice area focuses on residential design.</p>
+  <p>Interior design faculty assessed the projects completed by each enrolled student. Data is aggregated across all sections to access student learning outcomes defined by the Interior Design program.</p>
+
+  <p style="margin-top: 30px;">Exit Survey – This SLA was unintentionally omitted from last year's exit survey which means there is no data to report on this standard.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Course Assessment (continued)</h3>
+  <p>The {{ program_name }} curriculum map identifies the following courses as the primary location for evidence of student achievement in this category.</p>
+  <ul>
+    <li><span data-field="course_assessment_11_1">{{ course_assessment_11_1 }}</span></li>
+    <li><span data-field="course_assessment_11_2">{{ course_assessment_11_2 }}</span></li>
+  </ul>
+  <p>Interior design faculty assessed the projects completed by each enrolled student. Data is aggregated across all sections to access student learning outcomes defined by the Interior Design program.</p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Assessment strengths include sampling of student work across multiple courses in the curriculum. Because department learning outcomes should be evident in all upper level design studios, the assessment process has the potential to indicate student achievement across the program.</h4>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Assessment challenges include:</h4>
+  <ul>
+    <li>CIDA standards include multiple substandard that are specific competencies under the umbrella standard. While faculty looked specifically at sub-standards when evaluating SLAs, the exit survey only assesses the umbrella standard.</li>
+    <li>Under the current assessment model where faculty assess student achievement within their courses, an undue burden falls on faculty teaching ID-409 and other upper level courses. Beginning in Fall 2019, the department is piloting a department-wide evaluation protocol that will collect assessment data from a majority of full-time faculty for each course under course assessment.</li>
+  </ul>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Closing the Loop: Progress on Planned Improvements from Prior Year</h3>
+  <table style="margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Outcome</th>
+        <th style="width: 35%;">Planned Improvement</th>
+        <th style="width: 35%;">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for improvement in planned_improvements %}
+      <tr>
+        <td><span data-field="planned_improvements[{{ loop.index0 }}].outcome">{{ improvement.outcome }}</span></td>
+        <td><span data-field="planned_improvements[{{ loop.index0 }}].planned_improvement">{{ improvement.planned_improvement }}</span></td>
+        <td><span data-field="planned_improvements[{{ loop.index0 }}].update">{{ improvement.update }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Provide a response to last year's University Assessment Committee review of the program's learning assessment report:</h3>
+  <p>Response to the Dean's letter from the {{ prior_year }} Program Review is attached as a separate document.</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Outcomes Assessment 2018-2019</h3>
+
+  <h4 class="section-heading" style="margin-top: 20px;">Learning Outcome 8 (CIDA Standard 8 Design Process which includes 8.a, 8.e, 8.g.)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Outcome Measures</th>
+        <th style="width: 30%;">Performance Standard</th>
+        <th style="width: 30%;">Data Collection</th>
+        <th style="width: 20%;">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for outcome_8 in outcomes_8 %}
+      <tr>
+        <td><span data-field="outcomes_8[{{ loop.index0 }}].outcome_measures">{{ outcome_8.outcome_measures }}</span></td>
+        <td><span data-field="outcomes_8[{{ loop.index0 }}].performance_standard">{{ outcome_8.performance_standard }}</span></td>
+        <td><span data-field="outcomes_8[{{ loop.index0 }}].data_collection">{{ outcome_8.data_collection }}</span></td>
+        <td><span data-field="outcomes_8[{{ loop.index0 }}].result">{{ outcome_8.result }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Learning Outcome 8 (continued)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Outcome Measures</th>
+        <th style="width: 30%;">Performance Standard</th>
+        <th style="width: 30%;">Data Collection</th>
+        <th style="width: 20%;">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for outcome_8_cont in outcomes_8_cont %}
+      <tr>
+        <td><span data-field="outcomes_8_cont[{{ loop.index0 }}].outcome_measures">{{ outcome_8_cont.outcome_measures }}</span></td>
+        <td><span data-field="outcomes_8_cont[{{ loop.index0 }}].performance_standard">{{ outcome_8_cont.performance_standard }}</span></td>
+        <td><span data-field="outcomes_8_cont[{{ loop.index0 }}].data_collection">{{ outcome_8_cont.data_collection }}</span></td>
+        <td><span data-field="outcomes_8_cont[{{ loop.index0 }}].result">{{ outcome_8_cont.result }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Interpretation of Results</h4>
+  <p>Analysis and Implications: What does this result tell you about the extent to which your students achieved this outcome? What are the strengths and weaknesses that this result highlights, and what are the implications for your curriculum or your program?</p>
+  <ul>
+    <li><span data-field="interpretation_1">{{ interpretation_1 }}</span></li>
+    <li><span data-field="interpretation_2">{{ interpretation_2 }}</span></li>
+  </ul>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Strengths:</h4>
+  <p><span data-field="strengths">{{ strengths }}</span></p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Opportunities:</h4>
+  <p><span data-field="opportunities">{{ opportunities }}</span></p>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Discuss planned curricular or program improvements for this year based on assessment of outcome:</h4>
+  <ol>
+    <li><span data-field="improvement_plan_1">{{ improvement_plan_1 }}</span></li>
+    <li><span data-field="improvement_plan_2">{{ improvement_plan_2 }}</span></li>
+  </ol>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="University Logo" style="height: 50px;">
+    <h1 class="header-title">MARYMOUNT UNIVERSITY</h1>
+  </div>
+
+  <h3 class="section-heading">Learning Outcome 9: (CIDA Standard 9 Communication which includes 9.b, 9.d, and 9.e.)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Outcome Measures</th>
+        <th style="width: 30%;">Performance Standard</th>
+        <th style="width: 30%;">Data Collection</th>
+        <th style="width: 20%;">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for outcome_9 in outcomes_9 %}
+      <tr>
+        <td><span data-field="outcomes_9[{{ loop.index0 }}].outcome_measures">{{ outcome_9.outcome_measures }}</span></td>
+        <td><span data-field="outcomes_9[{{ loop.index0 }}].performance_standard">{{ outcome_9.performance_standard }}</span></td>
+        <td><span data-field="outcomes_9[{{ loop.index0 }}].data_collection">{{ outcome_9.data_collection }}</span></td>
+        <td><span data-field="outcomes_9[{{ loop.index0 }}].result">{{ outcome_9.result }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 class="section-heading" style="margin-top: 30px;">Learning Outcome 9 (continued)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Outcome Measures</th>
+        <th style="width: 30%;">Performance Standard</th>
+        <th style="width: 30%;">Data Collection</th>
+        <th style="width: 20%;">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for outcome_9_cont in outcomes_9_cont %}
+      <tr>
+        <td><span data-field="outcomes_9_cont[{{ loop.index0 }}].outcome_measures">{{ outcome_9_cont.outcome_measures }}</span></td>
+        <td><span data-field="outcomes_9_cont[{{ loop.index0 }}].performance_standard">{{ outcome_9_cont.performance_standard }}</span></td>
+        <td><span data-field="outcomes_9_cont[{{ loop.index0 }}].data_collection">{{ outcome_9_cont.data_collection }}</span></td>
+        <td><span data-field="outcomes_9_cont[{{ loop.index0 }}].result">{{ outcome_9_cont.result }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 16pt; font-weight: bold;">MARYMOUNT</div>
+    <div style="font-size: 12pt;">UNIVERSITY</div>
+  </div>
+  <div class="section-heading">Learning Outcome 9 (continued)</div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 15%;">ID-409</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Unacceptable Outcomes</th>
+          <th style="width: 25%;">Acceptable Outcomes</th>
+          <th style="width: 20%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 9.b.</td>
+          <td><span data-field="id_409_responses_b">{{ id_409_responses_b }}</span></td>
+          <td><span data-field="id_409_unacceptable_b_0">{{ id_409_unacceptable_b_0 }}</span></td>
+          <td><span data-field="id_409_acceptable_b_1">{{ id_409_acceptable_b_1 }}</span></td>
+          <td><span data-field="id_409_total_b">{{ id_409_total_b }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 9.d.</td>
+          <td><span data-field="id_409_responses_d">{{ id_409_responses_d }}</span></td>
+          <td><span data-field="id_409_unacceptable_d_0">{{ id_409_unacceptable_d_0 }}</span></td>
+          <td><span data-field="id_409_acceptable_d_1">{{ id_409_acceptable_d_1 }}</span></td>
+          <td><span data-field="id_409_total_d">{{ id_409_total_d }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 9.e.</td>
+          <td><span data-field="id_409_responses_e">{{ id_409_responses_e }}</span></td>
+          <td><span data-field="id_409_unacceptable_e_0">{{ id_409_unacceptable_e_0 }}</span></td>
+          <td><span data-field="id_409_acceptable_e_1">{{ id_409_acceptable_e_1 }}</span></td>
+          <td><span data-field="id_409_total_e">{{ id_409_total_e }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="id_409_total_responses">{{ id_409_total_responses }}</span></td>
+          <td><span data-field="id_409_total_unacceptable">{{ id_409_total_unacceptable }}</span></td>
+          <td><span data-field="id_409_total_acceptable">{{ id_409_total_acceptable }}</span></td>
+          <td><span data-field="id_409_grand_total">{{ id_409_grand_total }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 15%;">ID-306</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Unacceptable Outcomes</th>
+          <th style="width: 25%;">Acceptable Outcomes</th>
+          <th style="width: 20%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 9.b.</td>
+          <td><span data-field="id_306_responses_b">{{ id_306_responses_b }}</span></td>
+          <td><span data-field="id_306_unacceptable_b_0">{{ id_306_unacceptable_b_0 }}</span></td>
+          <td><span data-field="id_306_acceptable_b_1">{{ id_306_acceptable_b_1 }}</span></td>
+          <td><span data-field="id_306_total_b">{{ id_306_total_b }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 9.d.</td>
+          <td><span data-field="id_306_responses_d">{{ id_306_responses_d }}</span></td>
+          <td><span data-field="id_306_unacceptable_d_0">{{ id_306_unacceptable_d_0 }}</span></td>
+          <td><span data-field="id_306_acceptable_d_1">{{ id_306_acceptable_d_1 }}</span></td>
+          <td><span data-field="id_306_total_d">{{ id_306_total_d }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 9.e.</td>
+          <td><span data-field="id_306_responses_e">{{ id_306_responses_e }}</span></td>
+          <td><span data-field="id_306_unacceptable_e_0">{{ id_306_unacceptable_e_0 }}</span></td>
+          <td><span data-field="id_306_acceptable_e_1">{{ id_306_acceptable_e_1 }}</span></td>
+          <td><span data-field="id_306_total_e">{{ id_306_total_e }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="id_306_total_responses">{{ id_306_total_responses }}</span></td>
+          <td><span data-field="id_306_total_unacceptable">{{ id_306_total_unacceptable }}</span></td>
+          <td><span data-field="id_306_total_acceptable">{{ id_306_total_acceptable }}</span></td>
+          <td><span data-field="id_306_grand_total">{{ id_306_grand_total }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-heading" style="margin-top: 40px;">Unacceptable Outcomes | Acceptable Outcomes</div>
+  <div style="margin-bottom: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">EXIT SURVEY</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Strongly Disagree (0)</th>
+          <th style="width: 25%;">Disagree (1)</th>
+          <th style="width: 15%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 9</td>
+          <td><span data-field="exit_survey_responses_9">{{ exit_survey_responses_9 }}</span></td>
+          <td><span data-field="exit_survey_strongly_disagree_9_0">{{ exit_survey_strongly_disagree_9_0 }}</span></td>
+          <td><span data-field="exit_survey_disagree_9_1">{{ exit_survey_disagree_9_1 }}</span></td>
+          <td><span data-field="exit_survey_total_9">{{ exit_survey_total_9 }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="exit_survey_total_responses">{{ exit_survey_total_responses }}</span></td>
+          <td><span data-field="exit_survey_total_strongly_disagree">{{ exit_survey_total_strongly_disagree }}</span></td>
+          <td><span data-field="exit_survey_total_disagree">{{ exit_survey_total_disagree }}</span></td>
+          <td><span data-field="exit_survey_grand_total">{{ exit_survey_grand_total }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">EXIT SURVEY</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Strongly Agree (3)</th>
+          <th style="width: 25%;">Agree (2)</th>
+          <th style="width: 15%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 9</td>
+          <td><span data-field="exit_survey_responses_9_agree">{{ exit_survey_responses_9_agree }}</span></td>
+          <td><span data-field="exit_survey_strongly_agree_9_3">{{ exit_survey_strongly_agree_9_3 }}</span></td>
+          <td><span data-field="exit_survey_agree_9_2">{{ exit_survey_agree_9_2 }}</span></td>
+          <td><span data-field="exit_survey_total_9_agree">{{ exit_survey_total_9_agree }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="exit_survey_total_responses_agree">{{ exit_survey_total_responses_agree }}</span></td>
+          <td><span data-field="exit_survey_total_strongly_agree">{{ exit_survey_total_strongly_agree }}</span></td>
+          <td><span data-field="exit_survey_total_agree">{{ exit_survey_total_agree }}</span></td>
+          <td><span data-field="exit_survey_grand_total_agree">{{ exit_survey_grand_total_agree }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-heading" style="margin-top: 40px;">Analysis and Implications:</div>
+  <div class="list-item">
+    <p>Data collected for <span data-field="data_source_1">{{ data_source_1 }}</span> was below the department's acceptable level of student performance.</p>
+  </div>
+  <div class="list-item">
+    <p>The remaining subcategories for this SLA measured above acceptable levels.</p>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Strengths:</div>
+  <div class="list-item">
+    <p>Self-reported data in the exit survey trended higher for students when compared to faculty assessment in both ID-306 and ID-409. Overall faculty assessment in ID-409 and ID-306 indicates strong demonstration of student understanding for this SLA.</p>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Opportunities:</div>
+  <div class="list-item">
+    <p>While student projects/results demonstrated design solutions that require understanding and using an appropriate design process, direct evidence (ideation drawings) was not present within a significant number of student capstone books and capstone posters.</p>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Discuss planned curricular or program improvements for this year based on assessment of outcome:</div>
+  <div class="list-item">
+    <p>CIDA Standard 9.d - The department will modify requirements for ID-409 final deliverables (capstone book and capstone poster) in the Spring 2020 semester to explicitly require inclusion of process work.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 16pt; font-weight: bold;">MARYMOUNT</div>
+    <div style="font-size: 12pt;">UNIVERSITY</div>
+  </div>
+  <div class="section-heading">Learning Outcome 10: (CIDA Standard 10 History – 10.f)</div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Outcome Measures</th>
+          <th style="width: 30%;">Performance Standard</th>
+          <th style="width: 30%;">Data Collection</th>
+          <th style="width: 20%;">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Explain how student learning will be measured and indicate whether it is direct or indirect.</td>
+          <td>Define the acceptable level of student performance.</td>
+          <td>Discuss the process for collecting this data: who conducted the assessment, when, and how?</td>
+          <td><span data-field="result_10_1">{{ result_10_1 }}</span></td>
+        </tr>
+        <tr>
+          <td>Outcomes in ID-409 Senior Capstone II were measured by Interior Design faculty.</td>
+          <td>80% of students will be assessed as demonstrating "adequate", "strong", or "superior" evidence for this learning outcome.</td>
+          <td>In ID-409, this outcome is measured in each student's Capstone Poster and Capstone Book using the assessment rubric. The rubric is completed by the department chair.</td>
+          <td><span data-field="result_10_2">{{ result_10_2 }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard rubrics provide direct measures with categorical data.</td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_10_3">{{ result_10_3 }}</span></td>
+        </tr>
+        <tr>
+          <td>Outcomes in ID-204 Foundation Studio III were measured by Interior Design faculty.</td>
+          <td>80% of students will be assessed as demonstrating "adequate", "strong", or "superior" evidence for this learning outcome.</td>
+          <td>In ID-204, this outcome is measured via assessment rubric. The assessment rubric is completed by the teaching faculty for this course at the end of the semester.</td>
+          <td><span data-field="result_10_4">{{ result_10_4 }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard rubrics provide direct measures with categorical data.</td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_10_5">{{ result_10_5 }}</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_10_6">{{ result_10_6 }}</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_10_7">{{ result_10_7 }}</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_10_8">{{ result_10_8 }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <div style="font-size: 16pt; font-weight: bold;">MARYMOUNT</div>
+    <div style="font-size: 12pt;">UNIVERSITY</div>
+  </div>
+  <div class="section-heading">Learning Outcome 11: (CIDA Standard 11 Design Elements – 11.c. and 11.d.)</div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Outcome Measures</th>
+          <th style="width: 30%;">Performance Standard</th>
+          <th style="width: 30%;">Data Collection</th>
+          <th style="width: 20%;">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Explain how student learning will be measured and indicate whether it is direct or indirect.</td>
+          <td>Define the acceptable level of student performance.</td>
+          <td>Discuss the process for collecting this data: who conducted the assessment, when, and how?</td>
+          <td><span data-field="result_11_1">{{ result_11_1 }}</span></td>
+        </tr>
+        <tr>
+          <td>Outcomes in ID-203 Foundation Studio II were measured by Interior Design faculty.</td>
+          <td>80% of students will be assessed as demonstrating "adequate", "strong", or "superior" evidence for this learning outcome.</td>
+          <td>In ID-203, this outcome is measured in each student's Capstone Poster and Capstone Book using the assessment rubric. The rubric is completed by the department chair.</td>
+          <td><span data-field="result_11_2">{{ result_11_2 }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard rubrics provide direct measures with categorical data.</td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_11_3">{{ result_11_3 }}</span></td>
+        </tr>
+        <tr>
+          <td>Outcomes in ID-102 Foundation Studio I were measured by Interior Design faculty.</td>
+          <td>80% of students will be assessed as demonstrating "adequate", "strong", or "superior" evidence for this learning outcome.</td>
+          <td>In ID-102, this outcome is measured via assessment rubric. The assessment rubric is completed by the teaching faculty for this course at the end of the semester.</td>
+          <td><span data-field="result_11_4">{{ result_11_4 }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard rubrics provide direct measures with categorical data.</td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_11_5">{{ result_11_5 }}</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_11_6">{{ result_11_6 }}</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span data-field="result_11_7">{{ result_11_7 }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-heading" style="margin-top: 40px;">S11 - Design Elements</div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">ID-203</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Unacceptable Outcomes</th>
+          <th style="width: 25%;">Acceptable Outcomes</th>
+          <th style="width: 15%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 11c</td>
+          <td><span data-field="s11_id203_responses_c">{{ s11_id203_responses_c }}</span></td>
+          <td><span data-field="s11_id203_unacceptable_c_0">{{ s11_id203_unacceptable_c_0 }}</span></td>
+          <td><span data-field="s11_id203_acceptable_c_1">{{ s11_id203_acceptable_c_1 }}</span></td>
+          <td><span data-field="s11_id203_total_c">{{ s11_id203_total_c }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 11d</td>
+          <td><span data-field="s11_id203_responses_d">{{ s11_id203_responses_d }}</span></td>
+          <td><span data-field="s11_id203_unacceptable_d_0">{{ s11_id203_unacceptable_d_0 }}</span></td>
+          <td><span data-field="s11_id203_acceptable_d_1">{{ s11_id203_acceptable_d_1 }}</span></td>
+          <td><span data-field="s11_id203_total_d">{{ s11_id203_total_d }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="s11_id203_total_responses">{{ s11_id203_total_responses }}</span></td>
+          <td><span data-field="s11_id203_total_unacceptable">{{ s11_id203_total_unacceptable }}</span></td>
+          <td><span data-field="s11_id203_total_acceptable">{{ s11_id203_total_acceptable }}</span></td>
+          <td><span data-field="s11_id203_grand_total">{{ s11_id203_grand_total }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">ID-102</th>
+          <th style="width: 15%;">Responses</th>
+          <th style="width: 25%;">Unacceptable Outcomes</th>
+          <th style="width: 25%;">Acceptable Outcomes</th>
+          <th style="width: 15%;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard 11c</td>
+          <td><span data-field="s11_id102_responses_c">{{ s11_id102_responses_c }}</span></td>
+          <td><span data-field="s11_id102_unacceptable_c_0">{{ s11_id102_unacceptable_c_0 }}</span></td>
+          <td><span data-field="s11_id102_acceptable_c_1">{{ s11_id102_acceptable_c_1 }}</span></td>
+          <td><span data-field="s11_id102_total_c">{{ s11_id102_total_c }}</span></td>
+        </tr>
+        <tr>
+          <td>Standard 11d</td>
+          <td><span data-field="s11_id102_responses_d">{{ s11_id102_responses_d }}</span></td>
+          <td><span data-field="s11_id102_unacceptable_d_0">{{ s11_id102_unacceptable_d_0 }}</span></td>
+          <td><span data-field="s11_id102_acceptable_d_1">{{ s11_id102_acceptable_d_1 }}</span></td>
+          <td><span data-field="s11_id102_total_d">{{ s11_id102_total_d }}</span></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-field="s11_id102_total_responses">{{ s11_id102_total_responses }}</span></td>
+          <td><span data-field="s11_id102_total_unacceptable">{{ s11_id102_total_unacceptable }}</span></td>
+          <td><span data-field="s11_id102_total_acceptable">{{ s11_id102_total_acceptable }}</span></td>
+          <td><span data-field="s11_id102_grand_total">{{ s11_id102_grand_total }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-heading" style="margin-top: 40px;">Analysis and Implications:</div>
+  <div class="list-item">
+    <p>Data collected in both ID-203 and ID-102 were above the department's acceptable level of student performance with significant strength identified in ID-102.</p>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Discuss planned curricular or program improvements for this year based on assessment of outcome:</div>
+  <div class="list-item">
+    <p>The department does not plan any adjustments to this portion of our curriculum.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-heading" style="margin-top: 20px;">Appendices (please only include items that will help reviewers understand your process – for example, test questions, rubrics, survey questions, more detailed description of assessment measures, summary tables of survey results, etc.)</div>
+
+  <div class="sub-heading" style="margin-top: 20px;">Response to Dean's Letter provided in attached document: Component 7 - Action Plan Progress – Interior Design (B.A.).docx</div>
+
+  <div class="sub-heading" style="margin-top: 20px;">Exit Survey Questions for CIDA Standards 8 and 9</div>
+
+  <div class="sub-heading" style="margin-top: 20px;">CIDA s8 - Design Process</div>
+  <div style="margin-bottom: 20px;">
+    <p>I comprehend and use all aspects of the design process to identify and explore design problems through the generation of multiple design concepts and design responses to programmatic requirements and generation of creative solutions that enhance the human experience in interior environments.</p>
+    <div style="margin-top: 15px;">
+      <label><input type="radio" name="s8_strongly_agree"> Strongly agree</label><br>
+      <label><input type="radio" name="s8_agree"> Agree</label><br>
+      <label><input type="radio" name="s8_disagree"> Disagree</label><br>
+      <label><input type="radio" name="s8_strongly_disagree"> Strongly disagree</label>
+    </div>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 20px;">CIDA s9 - Design Communication</div>
+  <div style="margin-bottom: 20px;">
+    <p>I am an effective communicator both visually and verbally.</p>
+    <div style="margin-top: 15px;">
+      <label><input type="radio" name="s9_strongly_agree"> Strongly Agree</label><br>
+      <label><input type="radio" name="s9_agree"> Agree</label><br>
+      <label><input type="radio" name="s9_disagree"> Disagree</label><br>
+      <label><input type="radio" name="s9_strongly_disagree"> Strongly Disagree</label>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sub-heading" style="margin-top: 20px;">Program Name: Interior Design (B.A.)</div>
+  <div class="sub-heading" style="margin-top: 10px;">Review Year: <span data-field="review_year">{{ review_year }}</span></div>
+  <div class="sub-heading" style="margin-top: 10px;">Date: <span data-field="review_date">{{ review_date }}</span></div>
+
+  <div class="section-heading" style="margin-top: 30px;">Component 7 – Reporting on Action Plan Progress</div>
+  <div class="list-item">
+    <p>The purpose of this section is to report on progress with the action plan developed from the program review. This report should be submitted with the Student Learning Outcomes Assessment report one year after the program review is completed. The Academic Planning and Budgeting Committee will review this document.</p>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Task 1 – Respond to the Dean's Letter</div>
+  <div class="list-item">
+    <p>The Interior Design department is continuing to explore opportunities for interdisciplinary connections at Marymount. Since receiving this letter, the department has accomplished the following towards this goal:</p>
+    <ul style="list-style-type: disc; margin-left: 20px;">
+      <li class="list-item">
+        <span data-field="task1_item_1">{{ task1_item_1 }}</span> - Department participation in the Spring 2018 Ethics Awareness week focused on Ethics and Food.
+      </li>
+      <li class="list-item">
+        <span data-field="task1_item_2">{{ task1_item_2 }}</span> - Design-A-Thon which incorporated faculty from the physical therapy department and students from Arlington Tech (High School).
+      </li>
+    </ul>
+    <p>Moving forward, the ID department is engaging interdisciplinary connections on and off campus with the following initiatives:</p>
+    <ul style="list-style-type: disc; margin-left: 20px;">
+      <li class="list-item">
+        <span data-field="task1_item_3">{{ task1_item_3 }}</span> - Exploration of interdisciplinary courses with History (e.g. Museum Studies).
+      </li>
+      <li class="list-item">
+        <span data-field="task1_item_4">{{ task1_item_4 }}</span> - Department-hosted Design-A-Thon to include participation from other departments across campus.
+      </li>
+    </ul>
+  </div>
+
+  <div class="sub-heading" style="margin-top: 25px;">Task 2 – Report on action plan progress. Please identify the following:</div>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li class="list-item">
+      <strong>Goals</strong> - What did the program plan to accomplish over the next five years?
+    </li>
+    <li class="list-item">
+      <strong>Action Taken</strong> - Describe any actions taken to achieve goal. Include in this description the dates and any relevant information.
+    </li>
+    <li class="list-item">
+      <strong>Progress</strong> - Describe any milestones achieved and what is required or necessary to achieve goal if goal has not been achieved.
+    </li>
+  </ul>
+</div>
+
+<div class="page">
+  <div class="sub-heading" style="margin-top: 20px;">Goal | Strategy to Achieve Goal | Action Taken | Progress</div>
+  <div style="margin-top: 15px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Goal</th>
+          <th style="width: 30%;">Strategy to Achieve Goal</th>
+          <th style="width: 30%;">Action Taken</th>
+          <th style="width: 20%;">Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Modify curriculum to support changing CIDA standards.</td>
+          <td>Annual review of CIDA standards and CIDA future scans.</td>
+          <td>The department evaluated new CIDA standards as part of the curriculum session at the Summer 2019 department retreat.</td>
+          <td>In Progress. The department's anticipated 2020-21 curriculum revision will address changes to CIDA standards.</td>
+        </tr>
+        <tr>
+          <td>Modify curriculum to support the weaknesses the faculty identified when assessing the course projects and student work outcomes for CIDA accreditation.</td>
+          <td>CIDA standards identified to outcomes in a single course will be implemented in studio work.</td>
+          <td>The department evaluated these weaknesses as part of the curriculum session at the Summer 2019 department retreat.</td>
+          <td>In Progress. The department is actively reviewing these weaknesses with an anticipated 2020-21 curriculum revision.</td>
+        </tr>
+        <tr>
+          <td>Strengthen transfer of knowledge from lecture & skills based courses to studios.</td>
+          <td>Modify lecture courses to actively engage students in key content areas. Modify studio courses to reinforce application of key content.</td>
+          <td>The department has partnered with local organizations to create portfolio review and mock interview opportunities for our 4th year students.</td>
+          <td>In Progress. The department will continue to work on expanding opportunities for career advice with professional organizations and practitioners.</td>
+        </tr>
+        <tr>
+          <td>Improve advising outcomes related to career advice and future education.</td>
+          <td>Work with faculty to increase career counseling with students.</td>
+          <td>The department has hired a seventh TT faculty line (currently approved for a search).</td>
+          <td>In Progress. Full-time faculty (including continuing instructors) are teaching evening and late afternoon courses in the graduate program.</td>
+        </tr>
+        <tr>
+          <td>Increase quantity of full-time faculty teaching evening and late-afternoon courses.</td>
+          <td>Hire seventh FT faculty line (currently approved for a search).</td>
+          <td>The department lost two TT faculty in 2018-19 (retirement and resignation) and currently has 6 full-time TT faculty and 2 Continuing Instructor lines.</td>
+          <td>In Progress.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

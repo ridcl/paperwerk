@@ -1,0 +1,141 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .centered {
+    text-align: center;
+  }
+</style>
+
+<div class="page">
+  <div class="centered" style="margin-top: 100px;">
+    <div style="font-size: 48px; font-weight: bold;">University of Baguio</div>
+    <div style="font-size: 48px; font-weight: bold;">Bills Pay</div>
+  </div>
+  <div style="position: absolute; bottom: 50px; right: 60px; font-size: 12px; color: #555;">
+    <img src="placeholder_logo.png" alt="Metrobank Logo" style="height: 20px; vertical-align: middle;">
+    <span style="margin-left: 5px;">Metrobank</span>
+    <span style="display: block; font-size: 10px;">You're in good hands</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 20px; font-weight: bold;">Any Metrobank branch nationwide</h2>
+  <p style="margin-top: 10px;">Go to any Metrobank branch</p>
+  <p>At the forms table, get a <span data-field="document_type">{{ document_type }}</span> and fill in the following information:</p>
+
+  <h3 style="margin-top: 20px; font-size: 16px; font-weight: bold;">Company Name:</h3>
+  <p><span data-field="company_name">{{ company_name }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Subscriber Name:</h3>
+  <p><span data-field="subscriber_name">{{ subscriber_name }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Subscriber Number:</h3>
+  <p><span data-field="subscriber_number">{{ subscriber_number }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Reference Number:</h3>
+  <p><span data-field="reference_number">{{ reference_number }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Telephone Number:</h3>
+  <p><span data-field="telephone_number">{{ telephone_number }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Mode of Payment:</h3>
+  <p><span data-field="mode_of_payment">{{ mode_of_payment }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Amount of Payment:</h3>
+  <p><span data-field="amount_of_payment">{{ amount_of_payment }}</span></p>
+
+  <h3 style="margin-top: 15px; font-size: 16px; font-weight: bold;">Payment Breakdown:</h3>
+  <p><span data-field="payment_breakdown">{{ payment_breakdown }}</span></p>
+
+  <p style="margin-top: 20px;">Queue in the branch and wait for your number to be called</p>
+  <p>Present the accomplished payment slip and amount to be paid to the Metrobank teller</p>
+  <p>The Metrobank teller will process your transaction</p>
+  <p style="margin-top: 30px;">You're done!</p>
+
+  <div style="position: absolute; bottom: 50px; left: 60px; font-size: 10px; color: #555;">
+    <img src="placeholder_logo.png" alt="Meaningful Banking Logo" style="height: 15px; vertical-align: middle;">
+    <span style="margin-left: 5px;">Meaningful Banking</span>
+    <div style="margin-top: 5px;">2021 Metropolitan Bank & Trust Company</div>
+    <div style="font-size: 8px;">This document is for internal use only and may contain privileged, proprietary or otherwise private information. It must not be released to other parties in whatever form without prior consent of the authors.</div>
+  </div>
+  <div style="position: absolute; bottom: 50px; right: 60px; font-size: 12px; color: #555;">
+    <img src="placeholder_logo.png" alt="Metrobank Logo" style="height: 20px; vertical-align: middle;">
+    <span style="margin-left: 5px;">Metrobank</span>
+    <span style="display: block; font-size: 10px;">You're in good hands</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="centered" style="margin-top: 100px;">
+    <div style="font-size: 48px; font-weight: bold;">Metrobank</div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Payment For:</th>
+          <th style="width: 25%;">OP Code</th>
+          <th style="width: 25%;">Fee Description</th>
+          <th style="width: 25%;">OPCode</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in fee_codes %}
+        <tr>
+          <td><span data-field="fee_codes[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td><span data-field="fee_codes[{{ loop.index0 }}].op_code">{{ item.op_code }}</span></td>
+          <td><span data-field="fee_codes[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+          <td><span data-field="fee_codes[{{ loop.index0 }}].op_code">{{ item.op_code }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div class="centered" style="margin-top: 100px;">
+    <div style="font-size: 48px; font-weight: bold;">Meaningful Banking</div>
+  </div>
+  <div style="margin-top: 30px; text-align: center; font-size: 14px;">
+    <p>Taking our promise of "You're in Good Hands" to the next level.</p>
+    <p>Metrobanks seeks to move, change and grow together with our customers by providing the most relevant products and services that help fulfill their purpose and dreams.</p>
+  </div>
+
+  <div style="position: absolute; bottom: 50px; left: 60px; font-size: 10px; color: #555;">
+    <img src="placeholder_logo.png" alt="Meaningful Banking Logo" style="height: 15px; vertical-align: middle;">
+    <span style="margin-left: 5px;">Meaningful Banking</span>
+    <div style="margin-top: 5px;">2021 Metropolitan Bank & Trust Company</div>
+    <div style="font-size: 8px;">This document is for internal use only and may contain privileged, proprietary or otherwise private information. It must not be released to other parties in whatever form without prior consent of the authors.</div>
+  </div>
+  <div style="position: absolute; bottom: 50px; right: 60px; font-size: 12px; color: #555;">
+    <img src="placeholder_logo.png" alt="Metrobank Logo" style="height: 20px; vertical-align: middle;">
+    <span style="margin-left: 5px;">Metrobank</span>
+    <span style="display: block; font-size: 10px;">You're in good hands</span>
+  </div>
+</div>

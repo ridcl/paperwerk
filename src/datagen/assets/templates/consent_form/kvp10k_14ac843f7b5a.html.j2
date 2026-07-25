@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Consent Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-row > div { width: 48%; }
+  .full-width-field { width: 100%; margin-bottom: 15px; }
+  .signature-line { border-bottom: 1px solid black; margin-top: 30px; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 18pt; margin: 0;">Oregon Health & Science University</h1>
+    <h2 style="font-size: 14pt; margin: 2px 0;">Hospitals and Clinics</h2>
+    <h3 style="font-size: 12pt; margin: 2px 0;">School of Dentistry</h3>
+    <p style="font-size: 10pt; margin: 2px 0;">Department of Pediatric Dentistry</p>
+    <p style="font-size: 10pt; margin: 2px 0;">611 SW Campus Drive</p>
+    <p style="font-size: 10pt; margin: 2px 0;">Portland, Oregon 97239</p>
+    <p style="font-size: 10pt; margin: 2px 0;">Phone: <span data-field="phone">{{ phone }}</span>, Fax: <span data-field="fax">{{ fax }}</span></p>
+  </div>
+
+  <div class="header-info">
+    <div>
+      <p>ACCOUNT NO.: <span data-field="account_no">{{ account_no }}</span></p>
+      <p>MED. REC. NO.: <span data-field="med_rec_no">{{ med_rec_no }}</span></p>
+      <p>NAME: <span data-field="full_name">{{ full_name }}</span></p>
+      <p>BIRTHDATE: <span data-field="birthdate">{{ birthdate }}</span></p>
+    </div>
+    <div>
+      <p>Patient Identification</p>
+    </div>
+  </div>
+
+  <h2 style="font-size: 14pt; margin-top: 30px;">PARENTAL/LEGAL GUARDIAN DESIGNATING CAREGIVER TO CONSENT FOR DENTAL TREATMENT OF A MINOR CHILD</h2>
+
+  <p>Please fill out the following form and provide copies to each person responsible for caring for your child. Please note:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>You must complete a separate form for each child and if there will be more than one person you are designating as a Caregiver.</li>
+    <li>If all blanks are not filled out completely, or if the form is illegible, the consent will not be considered valid.</li>
+    <li>This consent form is only valid for 90 days from the date of your signature below.</li>
+  </ul>
+
+  <div class="section-title">CHILD'S INFORMATION</div>
+  <div class="form-row">
+    <div>
+      <label>Child's Full Name (Last, First, Middle)</label><br>
+      <div class="full-width-field"><span data-field="child_full_name">{{ child_full_name }}</span></div>
+    </div>
+    <div>
+      <label>Date of Birth</label><br>
+      <div class="full-width-field"><span data-field="child_dob">{{ child_dob }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>Home Address</label><br>
+      <div class="full-width-field"><span data-field="child_address">{{ child_address }}</span></div>
+    </div>
+    <div>
+      <label>Home Phone Number</label><br>
+      <div class="full-width-field"><span data-field="child_phone">{{ child_phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>City, State, Zip Code</label><br>
+      <div class="full-width-field"><span data-field="child_city_state_zip">{{ child_city_state_zip }}</span></div>
+    </div>
+    <div>
+      <label>Full Name of Parental Contact (Last, First, Middle)</label><br>
+      <div class="full-width-field"><span data-field="parental_contact_name">{{ parental_contact_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>Phone Number</label><br>
+      <div class="full-width-field"><span data-field="parental_contact_phone">{{ parental_contact_phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">CAREGIVER INFORMATION</div>
+  <div class="form-row">
+    <div>
+      <label>Full Name of Caregiver (Last, First and Middle) <span style="font-weight: bold;">Please print</span></label><br>
+      <div class="full-width-field"><span data-field="caregiver_full_name">{{ caregiver_full_name }}</span></div>
+    </div>
+    <div>
+      <label>Phone Number</label><br>
+      <div class="full-width-field"><span data-field="caregiver_phone">{{ caregiver_phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>Relationship to Child</label><br>
+      <div class="full-width-field"><span data-field="caregiver_relationship">{{ caregiver_relationship }}</span></div>
+    </div>
+  </div>
+
+  <p style="margin-top: 30px;">I hereby give the above named Caregiver authorization to consent for all routine dental treatment for the above named Child that may be required during my absence. I do not authorize the Caregiver to consent to any treatment involving sedation or intra-operative medication, other than local anesthetic. I agree to pay for all services provided to my child authorized by Caregiver in my absence. (Note: Consent for treatment is not required in emergency situations.)</p>
+
+  <p style="margin-top: 30px;">This authorization shall be effective until 90 days from the date of my signature below, unless earlier revoked in understanding I can revoke this by sending written notice to:</p>
+
+  <div style="margin-top: 20px;">
+    <p>OHSU School of Dentistry, Department of Pediatric Dentistry</p>
+    <p>611 SW Campus Drive, Portland, Oregon 97239</p>
+    <p>Phone: <span data-field="school_phone">{{ school_phone }}</span>, Fax: <span data-field="school_fax">{{ school_fax }}</span></p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 100px;">
+    <div>
+      <p>ONLINE 7/09</p>
+    </div>
+    <div>
+      <p>CO-4773</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 60px; margin-bottom: 10px;">
+    <h1 style="font-size: 18pt; margin: 0;">Oregon Health & Science University</h1>
+    <h2 style="font-size: 14pt; margin: 2px 0;">Hospitals and Clinics</h2>
+    <h3 style="font-size: 12pt; margin: 2px 0;">School of Dentistry</h3>
+    <p style="font-size: 10pt; margin: 2px 0;">Department of Pediatric Dentistry</p>
+    <p style="font-size: 10pt; margin: 2px 0;">611 SW Campus Drive</p>
+    <p style="font-size: 10pt; margin: 2px 0;">Portland, Oregon 97239</p>
+    <p style="font-size: 10pt; margin: 2px 0;">Phone: <span data-field="phone">{{ phone }}</span>, Fax: <span data-field="fax">{{ fax }}</span></p>
+  </div>
+
+  <div class="header-info">
+    <div>
+      <p>ACCOUNT NO.: <span data-field="account_no">{{ account_no }}</span></p>
+      <p>MED. REC. NO.: <span data-field="med_rec_no">{{ med_rec_no }}</span></p>
+      <p>NAME: <span data-field="full_name">{{ full_name }}</span></p>
+      <p>BIRTHDATE: <span data-field="birthdate">{{ birthdate }}</span></p>
+    </div>
+    <div>
+      <p>Patient Identification</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 40px;">(initial) I have completed and/or read the attached medical history form and there are no changes.</p>
+  <div class="full-width-field" style="height: 100px;"></div>
+
+  <p style="margin-top: 20px;">OR</p>
+
+  <p style="margin-top: 10px;">(initial) I have read the attached medical history form and the following has changed (please print and be thorough). Please let us know if any medication has been changed, added or discontinued.</p>
+  <div class="full-width-field" style="height: 150px;"></div>
+
+  <div class="section-title" style="margin-top: 40px;">PARENTAL/LEGAL GUARDIAN CONSENT FOR DENTAL TREATMENT OF A MINOR CHILD</div>
+
+  <p>By signing below, I declare that I am the parent or legal guardian of the Child named above and that I have legal authority to designate this Caregiver to give consent for my Child's dental care.</p>
+
+  <div class="form-row">
+    <div>
+      <label>Printed name of Parent/Legal Guardian (circle one)</label><br>
+      <div class="full-width-field"><span data-field="printed_parent_name">{{ printed_parent_name }}</span></div>
+    </div>
+    <div>
+      <label>Date</label><br>
+      <div class="full-width-field"><span data-field="printed_parent_date">{{ printed_parent_date }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>Signature of Parent/Legal Guardian (circle one)</label><br>
+      <div class="signature-line" style="width: 100%;" data-field="signature_of_parent_legal_guardian">{{ signature_of_parent_legal_guardian }}</div>
+    </div>
+    <div>
+      <label>Date</label><br>
+      <div class="full-width-field"><span data-field="parent_signature_date">{{ parent_signature_date }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label>Signature of Witness to Parent/Legal Guardian's signature (Witness may not be caregiver listed above)</label><br>
+      <div class="signature-line" style="width: 100%;" data-field="date">{{ date }}</div>
+    </div>
+    <div>
+      <label>Date</label><br>
+      <div class="full-width-field"><span data-field="witness_signature_date">{{ witness_signature_date }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 100px;">
+    <p>ONLINE 7/09</p>
+    <p style="float: right;">CO-4773</p>
+  </div>
+</div>
+</body>
+</html>

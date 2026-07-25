@@ -1,0 +1,99 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { margin-bottom: 20px; }
+  .section { margin-bottom: 30px; }
+  .metadata-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .metadata-table td { padding: 5px 0; }
+</style>
+
+<div class="page">
+    <div class="header-info">
+        <h1 style="font-size: 24pt;">{{ organization_name }}</h1>
+        <p>PO Box {{ po_box_number }}</p>
+        <p>{{ city_state_zip }}</p>
+    </div>
+
+    <div class="section">
+        <h2 style="font-size: 18pt;">Statement of Award</h2>
+        <p>Posting Date: <span data-field="posting_date">{{ posting_date }}</span></p>
+        <p>Amended Date: <span data-field="amended_date">{{ amended_date }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>This is a statement of award and serves as acceptance of your offer.</p>
+        <p>Contractor should not perform work prior to the receipt of a purchase order from {{ organization_name }}. The University assumes no liability for any expenses incurred prior to the effective date of the contract and issuance of a purchase order.</p>
+    </div>
+
+    <div class="section">
+        <table class="metadata-table">
+            <tr>
+                <td style="width: 150px;">Solicitation:</td>
+                <td><span data-field="solicitation_id">{{ solicitation_id }}</span></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><span data-field="description">{{ description }}</span></td>
+            </tr>
+            <tr>
+                <td>Issue Date:</td>
+                <td><span data-field="issue_date">{{ issue_date }}</span></td>
+            </tr>
+            <tr>
+                <td>Opening Date/Time:</td>
+                <td><span data-field="opening_date_time">{{ opening_date_time }}</span></td>
+            </tr>
+            <tr>
+                <td>Award Date:</td>
+                <td><span data-field="award_date">{{ award_date }}</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <table class="metadata-table">
+            <tr>
+                <td style="width: 150px;">Awarded To:</td>
+                <td><span data-field="awardee.name">{{ awardee.name }}</span></td>
+            </tr>
+            <tr>
+                <td style="width: 150px;">Address:</td>
+                <td><span data-field="awardee.address">{{ awardee.address }}</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <p>Evaluated Amount: <span data-field="evaluated_amount">{{ evaluated_amount }}</span></p>
+        <p>Note: After award, the awarded vendor (Creasey Printing) contacted due to various reasons. Creasey was no longer able to meet the University's schedule at the price originally quoted. This award has been amended to reflect the next lowest, responsible, and responsive bidder, Professional Printers.</p>
+    </div>
+
+    <div class="section">
+        <p>Any actual bidder, offeror, contractor, or subcontractor who is aggrieved in connection with the intended award or award of a contract shall notify the appropriate chief procurement officer in writing of its intent to protest within seven business days of the date that award or notification of intent to award, whichever is earlier, is posted and sent in accordance with this code. Any actual bidder, offeror, contractor, or subcontractor who is aggrieved is aggrieved by the award and has timely filed a protest and has timely notified the appropriate chief procurement officer of its intent to protest, may protest to the appropriate chief procurement officer in the manner stated in subsection (2) within fifteen days of the date award or notification of intent to award, whichever is earlier, is posted and sent in accordance with this code; except that a matter that could have been raised pursuant to subsection (a) as a protest of the solicitation may not be raised as a protest of the award or intended award of a contract.</p>
+    </div>
+
+    <div class="section">
+        <p>PROTEST – CPO ADDRESS – MMO: Any protest must be addressed to the Chief Procurement Officer, Materials Management Office, and submitted in writing.</p>
+        <p>(a) by email to <span data-field="cpo_email">{{ cpo_email }}</span>;</p>
+        <p>(b) by facsimile at <span data-field="cpo_fax">{{ cpo_fax }}</span>, or</p>
+        <p>(c) by post or delivery to:</p>
+        <p>CHIEF PROCUREMENT OFFICER</p>
+        <p>MATERIALS MANAGEMENT OFFICE</p>
+        <p>{{ office_address_line1 }}</p>
+        <p>{{ city_state_zip_office }}</p>
+    </div>
+
+    <div class="section" style="margin-top: 80px;">
+        <p>Leslie A. Shupp</p>
+        <p>Director of Purchasing</p>
+    </div>
+</div>

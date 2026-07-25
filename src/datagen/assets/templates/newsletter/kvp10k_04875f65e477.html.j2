@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The URBS Post</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .header-title { font-size: 24pt; font-weight: bold; }
+  .subtitle { font-size: 12pt; }
+  .section-title { font-size: 16pt; font-weight: bold; margin-bottom: 15px; }
+  .column-content { display: flex; gap: 40px; }
+  .column { flex: 1; }
+  .list-item { margin-bottom: 8px; }
+  .signature-block { margin-top: 20px; }
+  .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 10pt; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  td { padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">Newsletter of</div>
+      <div class="subtitle">CSUN Department of Urban Studies and Planning</div>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="URBS Post Logo" style="width: 150px;">
+      <div style="text-align: right; margin-top: 10px;">
+        <div style="font-size: 10pt;">Fall {{ current_year }}</div>
+        <div style="font-size: 10pt;">Issue</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">INSIDE THIS ISSUE:</div>
+        <div style="margin-top: 10px;">
+          <div class="list-item">Campus Spotlight <span data-field="campus_spotlight_pages">{{ campus_spotlight_pages }}</span></div>
+          <div class="list-item">Faculty Publications <span data-field="faculty_publications_pages">{{ faculty_publications_pages }}</span></div>
+          <div class="list-item">Community Partners <span data-field="community_partners_pages">{{ community_partners_pages }}</span></div>
+          <div class="list-item">Alumni <span data-field="alumni_pages">{{ alumni_pages }}</span></div>
+          <div class="list-item">Masters of Urban Planning <span data-field="mup_pages">{{ mup_pages }}</span></div>
+          <div class="list-item">Students' News <span data-field="students_news_pages">{{ students_news_pages }}</span></div>
+          <div class="list-item">Contact Us <span data-field="contact_pages">{{ contact_pages }}</span></div>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">CHAIR'S MESSAGE</div>
+        <p>The Department of Urban Studies and Planning is flourishing.</p>
+        <p>The department currently boasts approximately {{ current_faculty_count }} undergraduate majors, {{ current_graduate_count }} graduate majors, and {{ current_staff_count }} staff members. We are proud to have a diverse and talented community of students, faculty, and staff.</p>
+        <p>The Master's program has proved to be a strong draw for the department and has seen consistent growth in enrollment over the past few years. We are excited about the future of the program and the department.</p>
+        <p>We thank all our students, faculty, and staff for their dedication and hard work. We look forward to another successful year.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">FULL TIME FACULTY</div>
+        <div class="list-item">
+          <span data-field="faculty.full_name">{{ faculty.full_name_1 }}</span>, <span data-field="faculty.title_1">{{ faculty.title_1 }}</span>
+        </div>
+        <div class="list-item">
+          <span data-field="faculty.full_name">{{ faculty.full_name_2 }}</span>, <span data-field="faculty.title_2">{{ faculty.title_2 }}</span>
+        </div>
+        <div class="list-item">
+          <span data-field="faculty.full_name">{{ faculty.full_name_3 }}</span>, <span data-field="faculty.title_3">{{ faculty.title_3 }}</span>
+        </div>
+        <div class="list-item">
+          <span data-field="faculty.full_name">{{ faculty.full_name_4 }}</span>, <span data-field="faculty.title_4">{{ faculty.title_4 }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">ALUMNI ELECTED AS APA PRESIDENT: KURT CHRISTIANSEN, FAICP</div>
+        <p>Our department's alumni Kurt Christiansen, FAICP was elected as President for American Planners Association (APA). He will assume office on January 1, {{ next_year }}. The APA is the economic and community development director for the City of Azusa, California. Previously, he served as community development director for Yorba Linda and development services director for Sierra Madre. He served as press secretary for the City of Azusa, California, where he chaired the Charter Presidents Council, and a member of the APA Governance Committee and the Membership Committee. He also served as the co-chair of the local host committee for the 2012 APA National Planning Conference in Los Angeles. He is a member of the California State University, Northridge, Urban Planning and Studies Department Alumni Council. Kurt was an honoree at the 2012 CSUN Vol-unteer Service Awards ceremony. He graduated from CSUN in {{ graduation_year }} with a bachelor's degree in Urban Studies and Planning and completed a Master's degree in Urban Planning from the Uni-versity of California, Los Angeles, in {{ mup_graduation_year }}.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">PART-TIME FACULTY</div>
+        <div class="list-item">
+          <span data-field="part_time_faculty.full_name">{{ part_time_faculty.full_name_1 }}</span>, <span data-field="part_time_faculty.title_1">{{ part_time_faculty.title_1 }}</span>
+        </div>
+        <div class="list-item">
+          <span data-field="part_time_faculty.full_name">{{ part_time_faculty.full_name_2 }}</span>, <span data-field="part_time_faculty.title_2">{{ part_time_faculty.title_2 }}</span>
+        </div>
+        <div class="list-item">
+          <span data-field="part_time_faculty.full_name">{{ part_time_faculty.full_name_3 }}</span>, <span data-field="part_time_faculty.title_3">{{ part_time_faculty.title_3 }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">WELCOMING MIRNA</div>
+        <p>Mirna Reyes joined the Department of Urban Studies and Planning in Decem-ber {{ start_year }}, as the administrative support coordinator. She graduated from Cali-fornia State University Northridge (CSUN) with a major in sociology in {{ graduation_year }}. Her professional background includes over {{ years_of_experience }} years of work in the non-profit sector, providing administrative and community development services. In her free-time, she enjoys meditation, traveling and learning about different cultures. She also mentors youth on higher education opportunities, resources and quality access.</p>
+        <div class="signature-block">
+          <p>Mirna Reyes</p>
+          <p>Administrative Support Coordinator</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">STAFF</div>
+        <div class="list-item">
+          <span data-field="staff.full_name">{{ staff.full_name_1 }}</span> (Administrative Support Coordinator)
+        </div>
+        <div class="list-item">
+          <span data-field="staff.full_name">{{ staff.full_name_2 }}</span> (Administrative Support Assistant)
+        </div>
+        <div class="list-item">
+          <span data-field="staff.full_name">{{ staff.full_name_3 }}</span> (Student Assistant)
+        </div>
+        <div class="list-item">
+          <span data-field="staff.full_name">{{ staff.full_name_4 }}</span> (Lab Assistants)
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">URBAN STUDIES AND PLANNING</div>
+        <div style="text-align: center; margin-top: 20px;">
+          <img src="placeholder_csun_logo.png" alt="CSUN Logo" style="width: 200px;">
+          <p style="font-size: 12pt; margin-top: 10px;">CSUN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div style="font-size: 14pt; font-weight: bold;">Page 2</div>
+    <div style="font-size: 14pt; font-weight: bold;">The URBS Post, Fall {{ current_year }}</div>
+  </div>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <div class="section-title">GRADUATES (SPRING {{ current_spring }})</div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_1 }}</span> (Masters of Urban Planning (MUP))
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_2 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_3 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_4 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_5 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_6 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_7 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_8 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_9 }}</span>
+      </div>
+      <div class="list-item">
+        <span data-field="graduate.full_name">{{ graduate.full_name_10 }}</span>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="section-title">CSUN SUSTAINABILITY CENTER</div>
+      <p>The Associated Students (AS) at California State University, Northridge (CSUN) has de-signed and constructed a new {{ center_name }} Sustainability Center. The new AS Sus-tainability Center is a multi-functional space, serving primarily as an expanded central col-lection space for campus recyclables. It also serves as the public face and administrative hub of the Center for its programs and services. In addition, it is home to the administration of the {{ center_department }} and the {{ center_office }} office. The Center is a beacon of sustainability for the university community, providing a dedicated space for environmental programs, services and issues related to the environment and sustainability. The Center will also serve as a meeting space for student organizations, faculty, and staff. The Center is designed to be a zero-net-energy building, meaning that solar panels will be the main source of electricity. The Sustainability Cen-ter will also feature a large collection of recycled materials, providing a visible reminder of the importance of sustainability. The building also includes administrative offices, shower rooms and a com-posting toilet.</p>
+      <img src="placeholder_sustainability_center.jpg" alt="Sustainability Center" style="width: 100%; margin-top: 15px;">
+      <p style="font-size: 9pt; text-align: center; margin-top: 5px;">Gensler | California State University, Northridge | Associated Students Sustainability Center</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">FACULTY PUBLICATIONS</div>
+        <div class="list-item">
+          <span data-field="publication.title_1">{{ publication.title_1 }}</span>, <span data-field="publication.authors_1">{{ publication.authors_1 }}</span>, <span data-field="publication.journal_1">{{ publication.journal_1 }}</span>, {{ publication.year_1 }}
+        </div>
+        <div class="list-item">
+          <span data-field="publication.title_2">{{ publication.title_2 }}</span>, <span data-field="publication.authors_2">{{ publication.authors_2 }}</span>, <span data-field="publication.journal_2">{{ publication.journal_2 }}</span>, {{ publication.year_2 }}
+        </div>
+        <div class="list-item">
+          <span data-field="publication.title_3">{{ publication.title_3 }}</span>, <span data-field="publication.authors_3">{{ publication.authors_3 }}</span>, <span data-field="publication.journal_3">{{ publication.journal_3 }}</span>, {{ publication.year_3 }}
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">COMMUNITY PARTNERS: THE CITY OF LOS ANGELES</div>
+        <p>The City of Los Angeles has long been an important community partner for the Department of Urban Studies and Planning. This has been especially true with respect to the Planning Department as well as the planning staff employed independently by the city councilmembers in the City of Los Angeles. The department has worked closely with the City of Los Angeles on various projects, including the {{ project_name_1 }} (in Spring {{ year_1 }}) and {{ project_name_2 }} (in Fall {{ year_2 }}). Christina Nguyen ({{ cg_id }}) in Spring {{ year_1 }} and Alvaro Barbagan in Fall {{ year_2 }}. City planners, Elena Nuno-Odommel and Adam Vallan, have done a superb job supporting and mentoring these interns. The city also provided many other internship opportunities. Many students have also found rewarding planning internships working in the district offices of Los Angeles City Councilmembers. Alumni Patricia Steyer ({{ ps_id }}), Claudia Rodriguez ({{ cr_id }}), Andy Rodriguez ({{ ar_id }}), Dana Yedoyan ({{ dy_id }}), Sergio Carvalho ({{ sc_id }}), and others have worked with the City of Los Angeles. The department of Transportation and Humberto Quintana ({{ hq_id }}) in the Mayor's office. Many CSUN graduates also pursued their careers with the City of Los Angeles in planning and related fields. These include Alena James ({{ aj_id }}), John Strickland ({{ js_id }}), Anna Vidal ({{ av_id }}), Claudia Rodriguez ({{ cr_id }}), Andy Rodriguez ({{ ar_id }}), Alisha Marshall ({{ am_id }}), and Karapatian ({{ k_id }}), Hatim Fateh ({{ hf_id }}), Ruben Rubi ({{ rr_id }}) and Olga Ayala ({{ oa_id }}).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div style="font-size: 14pt; font-weight: bold;">Page 3</div>
+    <div style="font-size: 14pt; font-weight: bold;">The URBS Post, Fall {{ current_year }}</div>
+  </div>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <div class="section-title">ALUMNI</div>
+      <div class="list-item">
+        <span data-field="alumni.full_name">{{ alumni.full_name_1 }}</span> ({{ alumni.role_1 }})
+      </div>
+      <div class="list-item">
+        <span data-field="alumni.full_name">{{ alumni.full_name_2 }}</span> ({{ alumni.role_2 }})
+      </div>
+      <div class="list-item">
+        <span data-field="alumni.full_name">{{ alumni.full_name_3 }}</span> ({{ alumni.role_3 }})
+      </div>
+      <div class="list-item">
+        <span data-field="alumni.full_name">{{ alumni.full_name_4 }}</span> ({{ alumni.role_4 }})
+      </div>
+      <div class="list-item">
+        <span data-field="alumni.full_name">{{ alumni.full_name_5 }}</span> ({{ alumni.role_5 }})
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="section-title">MASTERS OF URBAN PLANNING (MUP), FIRST GRADUATES: NEW COHORT</div>
+      <p>The Department of Urban Studies and Planning graduated its first co-hort of the Masters of Urban Plan-ning (MUP) program in May, {{ graduation_year }}. Congratulations graduates!</p>
+      <p>The department also accepted its third cohort of students and classes began in Fall {{ start_year }}. Now we have a total of {{ total_students }} students in the graduate program.</p>
+      <div style="margin-top: 20px;">
+        <img src="placeholder_mup_grad.jpg" alt="MUP Graduates" style="width: 100%;">
+      </div>
+      <div style="margin-top: 20px; text-align: center;">
+        <div style="font-size: 12pt; font-weight: bold;">THANK YOU!</div>
+        <p>THANK YOU to our alumni who volun-teered to help on MOCK INTERVIEWS on April 19, 2017.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; gap: 40px;">
+      <div style="flex: 1;">
+        <div class="section-title">STUDENT NEWS</div>
+        <div class="list-item">
+          <span data-field="student.full_name">{{ student.full_name_1 }}</span> was the recipient of the {{ award_name_1 }} scholarship. He received a scholarship of ${{ award_amount_1 }} in recognition of his academic achievements.
+        </div>
+        <div class="list-item">
+          <span data-field="student.full_name">{{ student.full_name_2 }}</span> was awarded the {{ award_name_2 }} scholarship.
+        </div>
+        <div class="list-item">
+          <span data-field="student.full_name">{{ student.full_name_3 }}</span> was awarded the {{ award_name_3 }} scholarship.
+        </div>
+        <div class="list-item">
+          <span data-field="student.full_name">{{ student.full_name_4 }}</span> was awarded the {{ award_name_4 }} scholarship.
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div class="section-title">THANKS</div>
+        <p>The Urban Planning Students Association election was held in Spring {{ election_year }}.</p>
+        <p>We would like to thank our alumni who volunteered to help on MOCK INTERVIEWS on April 19, 2017.</p>
+        <p>Our undergraduate students Raquel Rivera and Jordan Barbakow presented their re-search at the annual Southern California Association of Governments (SCAG) conference at Palm Desert on May {{ conference_month }} 27, {{ conference_year }}.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <div style="text-align: center;">
+      <img src="placeholder_csun_main_logo.png" alt="CSUN Main Logo" style="width: 300px;">
+      <div style="margin-top: 20px;">
+        <div style="font-size: 18pt; font-weight: bold;">CSUN</div>
+        <div style="font-size: 12pt;">CALIFORNIA STATE UNIVERSITY</div>
+        <div style="font-size: 12pt;">NORTHRIDGE</div>
+      </div>
+      <div style="margin-top: 30px;">
+        <div style="font-size: 12pt;">Department of Urban Studies and Planning</div>
+        <div style="font-size: 12pt;">Sierra Hall 220</div>
+        <div style="font-size: 12pt;">18111 Northhoff Street</div>
+        <div style="font-size: 12pt;">Northridge CA 91330-8259</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center;">
+    <div style="font-size: 20pt; font-weight: bold; margin-bottom: 10px;">THE URBS POST</div>
+    <div style="font-size: 12pt; margin-bottom: 30px;">Newsletter of the Department of Urban Studies and Planning</div>
+    <div style="font-size: 14pt; font-weight: bold; margin-bottom: 30px;">College of Social and Behavioral Sciences</div>
+  </div>
+
+  <div style="display: flex; gap: 60px; margin-bottom: 50px;">
+    <div style="flex: 1;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="placeholder_website_icon.png" alt="Website Icon" style="width: 50px;">
+        <p style="font-size: 10pt;">LEARN MORE AT</p>
+        <p style="font-size: 14pt; font-weight: bold;">http://www.csun.edu/urbs</p>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="section-title" style="font-size: 14pt;">Explore, Learn, and Practice</div>
+      <p style="font-size: 12pt;">In a world class city</p>
+      <p style="font-size: 12pt;">*** CSUN Shines in Los Angeles ***</p>
+      <div class="signature-block" style="margin-top: 30px;">
+        <p>Department of Urban Studies and Planning, SH 220</p>
+        <p>California State University, Northridge</p>
+        <p>18111 Northhoff Street, Northridge CA 91330-8259</p>
+        <p>Phone: 818-677-2904 | Fax: 818-677-9850</p>
+        <p>http://www.csun.edu/urbs</p>
+        <p>@CSUN_URBS</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 60px;">
+    <div style="flex: 1;">
+      <div class="section-title" style="font-size: 14pt;">LEARN MORE AT</div>
+      <p>The goal of <span data-field="urbs_post_name">{{ urbs_post_name }}</span> is to maintain communication with our alumni, faculty, and students.</p>
+      <p>We love correspondence from our alumni! Please keep in touch with us. We would like to know what you are doing, along with learning about exciting events and accomplishments in your life. Please keep us updated on any changes of home and e-mail addresses.</p>
+    </div>
+    <div style="flex: 1;">
+      <div class="section-title" style="font-size: 14pt;">Internships</div>
+      <p>We are expanding our internship program. Let us know if your company offers internships and we will share this information with our students.</p>
+      <div class="section-title" style="font-size: 14pt; margin-top: 20px;">Donations</div>
+      <p>Please consider giving; no donation is too small. Donations provide both finan-cial support and encouragement to students. Information on ways to give can be found at: <span data-field="donation_url">{{ donation_url }}</span> or call 818-677-4372.</p>
+      <p style="margin-top: 20px;">Let us know if you have suggestions on how we can improve our newsletter. We hope to hear from you!!</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

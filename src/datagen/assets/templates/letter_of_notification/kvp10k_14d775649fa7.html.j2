@@ -1,0 +1,146 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td, th { padding: 8px; text-align: left; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; margin-bottom: 5px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <!-- Placeholder for logo/header -->
+    <span style="font-size: 24pt; font-weight: bold;">ADHE</span>
+    <div style="font-size: 10pt;">ARKANSAS DEPARTMENT OF HIGHER EDUCATION</div>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">Letter of Notification</h2>
+
+  <p style="font-size: 10pt; line-height: 1.5;">
+    A Letter of Notification is required for programmatic and organizational changes that do not require prior review by the Coordinating Board unless requested. The Letter of Notification with supporting documentation must be submitted to ADHE by the established deadlines. All changes in existing programs/units or requests for new programs/units may be approved by the ADHE Director for immediate implementation. This form must be included with the supporting documentation submitted to the Coordinating Board meeting. This form sets forth the relevant criteria and compliance procedures for institutions submitting letters of notification.
+  </p>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">New or Existing Program Modification</h3>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 20%;">Title or CIP change</td>
+      <td style="width: 80%;"><span data-field="title_or_cip_change">{{ title_or_cip_change }}</span></td>
+    </tr>
+    <tr>
+      <td>Program reconfiguration-program created out of closely allied existing program(s) "attach copy of "before and after" curriculum</td>
+      <td><span data-field="program_reconfiguration_details">{{ program_reconfiguration_details }}</span></td>
+    </tr>
+    <tr>
+      <td>Program curriculum revision or existing program offered online "attach copy of "before and after" curriculum</td>
+      <td><span data-field="program_curriculum_revision_details">{{ program_curriculum_revision_details }}</span></td>
+    </tr>
+    <tr>
+      <td>Establishment of administrative unit or reorganization of existing administrative unit "attach copy of "before and after" organization chart</td>
+      <td><span data-field="administrative_unit_establishment_details">{{ administrative_unit_establishment_details }}</span></td>
+    </tr>
+    <tr>
+      <td>New certificate program (e.g. certification of proficiency, technical certificate, or graduate certificate)</td>
+      <td><span data-field="new_certificate_program_details">{{ new_certificate_program_details }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Program Deletion/Inactivate or Reactivation</h3>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td><span data-field="delete_program_option">{{ delete_program_option }}</span></td>
+      <td><span data-field="delete_program_details">{{ delete_program_details }}</span></td>
+    </tr>
+    <tr>
+      <td><span data-field="place_program_option">{{ place_program_option }}</span></td>
+      <td><span data-field="place_program_details">{{ place_program_details }}</span></td>
+    </tr>
+    <tr>
+      <td><span data-field="reactivation_option">{{ reactivation_option }}</span></td>
+      <td><span data-field="reactivation_details">{{ reactivation_details }}</span></td>
+    </tr>
+  </table>
+
+  <table style="margin-bottom: 30px;">
+    <tr>
+      <td style="width: 30%;">Program/Certificate/Option</td>
+      <td style="width: 30%;">Degree and CIP Code</td>
+      <td style="width: 40%;">Intended Date of Deletion/Inactivation MMYY</td>
+    </tr>
+    <!-- Assuming this table structure implies a single row for summary, but keeping it generic -->
+    <tr>
+      <td><span data-field="program_option_summary">{{ program_option_summary }}</span></td>
+      <td><span data-field="degree_cip_code_summary">{{ degree_cip_code_summary }}</span></td>
+      <td><span data-field="deletion_inactivation_date_summary">{{ deletion_inactivation_date_summary }}</span></td>
+    </tr>
+  </table>
+
+  <div style="border: 1px solid #000; padding: 15px; margin-bottom: 30px;">
+    <p style="font-size: 10pt; margin: 0;">
+      <span data-field="reason_for_proposed_action">{{ reason_for_proposed_action }}</span>
+    </p>
+  </div>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Establishing a New Off-Campus Location</h3>
+  <div style="margin-bottom: 30px;">
+    <input type="checkbox" id="new_off_campus" style="margin-right: 5px;">
+    <label for="new_off_campus"><span data-field="new_off_campus_location_label">{{ new_off_campus_location_label }}</span></label>
+  </div>
+
+  <h3 style="margin-top: 30px; margin-bottom: 15px;">Form Approval(s)</h3>
+
+  <table style="margin-bottom: 40px;">
+    <tr>
+      <td style="width: 50%;">
+        <p>Name of Provost/Chief Academic Officer: <span data-field="provost_name">{{ provost_name }}</span></p>
+        <div class="signature-line"></div>
+        <p style="margin-top: 5px;">Date: <span data-field="provost_date">{{ provost_date }}</span></p>
+      </td>
+      <td style="width: 50%; text-align: right;">
+        <p>Signature</p>
+        <div class="signature-line"></div>
+        <p style="margin-top: 5px;">Date</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 50%;">
+        <p>President/Chancellor Approval Date: <span data-field="president_approval_date">{{ president_approval_date }}</span></p>
+        <p>Board of Trustee Approval or Notification Date: <span data-field="board_approval_date">{{ board_approval_date }}</span></p>
+      </td>
+      <td style="width: 50%;">
+        <!-- Placeholder for second signature block if needed -->
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size: 10pt; margin-bottom: 20px;">
+    Institution: <span data-field="institution_name">{{ institution_name }}</span>
+  </p>
+
+  <table style="width: 100%; margin-bottom: 30px;">
+    <tr>
+      <td style="width: 33%;">Contact Person/Title: <span data-field="contact_person_title">{{ contact_person_title }}</span></td>
+      <td style="width: 33%;">Contact Phone Number: <span data-field="contact_phone_number">{{ contact_phone_number }}</span></td>
+      <td style="width: 33%;">Contact Email Address: <span data-field="contact_email_address">{{ contact_email_address }}</span></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; justify-content: space-around; margin-bottom: 40px;">
+    <button style="padding: 10px 20px; border: 1px solid #000; background-color: #eee;">SAVE</button>
+    <button style="padding: 10px 20px; border: 1px solid #000; background-color: #eee;">ATTACH</button>
+    <button style="padding: 10px 20px; border: 1px solid #000; background-color: #eee;">SHOW ATTACHMENTS</button>
+  </div>
+
+  <p style="font-size: 10pt; text-align: center; margin-top: 50px;">
+    Please save and email this form and supporting documents to: <span data-field="submission_email_address">{{ submission_email_address }}</span>
+  </p>
+</div>

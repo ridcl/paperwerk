@@ -1,0 +1,404 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">WESTERN MICHIGAN UNIVERSITY</h1>
+      <p style="margin: 0;">Human Resources</p>
+      <p style="margin: 0;">1300 Sobart Administration Building, Mail Stop 5217</p>
+      <p style="margin: 0;">Phone: (269) 387-3620 Fax: (269) 387-3441</p>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 12pt; margin: 0;">INS</p>
+    </div>
+  </div>
+
+  <h2 style="font-size: 14pt; margin-top: 30px; margin-bottom: 15px;">Life Insurance Enrollment and Change Form</h2>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Employee Information</td>
+      <td style="width: 30%;">Effective Date</td>
+      <td style="width: 20%;">Date of Hire</td>
+      <td style="width: 20%;">Department</td>
+      <td style="width: 20%;">Employee ID No.</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>First Name</td>
+      <td>MI</td>
+      <td>Date of Birth</td>
+      <td>Gender</td>
+    </tr>
+    <tr>
+      <td><span data-field="full_name">{{ full_name }}</span></td>
+      <td><span data-field="first_name">{{ first_name }}</span></td>
+      <td><span data-field="middle_initial">{{ middle_initial }}</span></td>
+      <td><span data-field="date_of_birth">{{ date_of_birth }}</span></td>
+      <td><input type="radio" name="gender" value="M"> M <input type="radio" name="gender" value="F"> F</td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <p>Email Address: <span data-field="email_address">{{ email_address }}</span></p>
+    <p>Daytime Phone Number: <span data-field="phone_number">{{ phone_number }}</span></p>
+  </div>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Enrollment Information – Employee Coverage</h3>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Type of Enrollment (check one):</td>
+      <td><input type="checkbox"> Enroll upon hire</td>
+      <td><input type="checkbox"> Enroll through evidence of insurability</td>
+      <td><input type="checkbox"> Beneficiary change</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"> Terminate coverage</td>
+      <td><input type="checkbox"> Reinstate – return from leave</td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Basic Life Insurance (automatic enrollment) – Please provide beneficiaries</h3>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Beneficiary Designation</th>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 10%;">First Name</th>
+        <th style="width: 10%;">MI</th>
+        <th style="width: 15%;">Change</th>
+        <th style="width: 15%;">Primary or Contingent</th>
+        <th style="width: 10%;">Total Primary = 100%</th>
+        <th style="width: 10%;">Contingent = 100%</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in basic_life_beneficiaries %}
+      <tr>
+        <td><span data-field="basic_life_beneficiaries[{{ loop.index0 }}].designation">{{ basic_life_beneficiaries[loop.index0].designation }}</span></td>
+        <td><span data-field="basic_life_beneficiaries[{{ loop.index0 }}].last_name">{{ basic_life_beneficiaries[loop.index0].last_name }}</span></td>
+        <td><span data-field="basic_life_beneficiaries[{{ loop.index0 }}].first_name">{{ basic_life_beneficiaries[loop.index0].first_name }}</span></td>
+        <td><span data-field="basic_life_beneficiaries[{{ loop.index0 }}].middle_initial">{{ basic_life_beneficiaries[loop.index0].middle_initial }}</span></td>
+        <td>
+          <input type="checkbox"> Add
+          <input type="checkbox"> Remove
+        </td>
+        <td>
+          <input type="checkbox"> Primary
+          <input type="checkbox"> Contingent
+        </td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Additional 1 life insurance</h3>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Beneficiary Designation</td>
+      <td style="width: 20%;">Last Name</td>
+      <td style="width: 10%;">First Name</td>
+      <td style="width: 10%;">MI</td>
+      <td style="width: 15%;">Change</td>
+      <td style="width: 15%;">Primary or Contingent</td>
+      <td style="width: 10%;">Total Primary = 100%</td>
+      <td style="width: 10%;">Contingent = 100%</td>
+    </tr>
+    <tr>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].designation">{{ additional_1_life_beneficiaries[loop.index0].designation }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].last_name">{{ additional_1_life_beneficiaries[loop.index0].last_name }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].first_name">{{ additional_1_life_beneficiaries[loop.index0].first_name }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].middle_initial">{{ additional_1_life_beneficiaries[loop.index0].middle_initial }}</span></td>
+      <td>
+        <input type="checkbox"> Add
+        <input type="checkbox"> Remove
+      </td>
+      <td>
+        <input type="checkbox"> Primary
+        <input type="checkbox"> Contingent
+      </td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    {% for item in additional_1_life_beneficiaries %}
+    <tr>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].designation">{{ additional_1_life_beneficiaries[loop.index0].designation }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].last_name">{{ additional_1_life_beneficiaries[loop.index0].last_name }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].first_name">{{ additional_1_life_beneficiaries[loop.index0].first_name }}</span></td>
+      <td><span data-field="additional_1_life_beneficiaries[{{ loop.index0 }}].middle_initial">{{ additional_1_life_beneficiaries[loop.index0].middle_initial }}</span></td>
+      <td>
+        <input type="checkbox"> Add
+        <input type="checkbox"> Remove
+      </td>
+      <td>
+        <input type="checkbox"> Primary
+        <input type="checkbox"> Contingent
+      </td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Additional 2 life insurance</h3>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Beneficiary Designation</td>
+      <td style="width: 20%;">Last Name</td>
+      <td style="width: 10%;">First Name</td>
+      <td style="width: 10%;">MI</td>
+      <td style="width: 15%;">Change</td>
+      <td style="width: 15%;">Primary or Contingent</td>
+      <td style="width: 10%;">Total Primary = 100%</td>
+      <td style="width: 10%;">Contingent = 100%</td>
+    </tr>
+    <tr>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].designation">{{ additional_2_life_beneficiaries[loop.index0].designation }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].last_name">{{ additional_2_life_beneficiaries[loop.index0].last_name }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].first_name">{{ additional_2_life_beneficiaries[loop.index0].first_name }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].middle_initial">{{ additional_2_life_beneficiaries[loop.index0].middle_initial }}</span></td>
+      <td>
+        <input type="checkbox"> Add
+        <input type="checkbox"> Remove
+      </td>
+      <td>
+        <input type="checkbox"> Primary
+        <input type="checkbox"> Contingent
+      </td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    {% for item in additional_2_life_beneficiaries %}
+    <tr>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].designation">{{ additional_2_life_beneficiaries[loop.index0].designation }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].last_name">{{ additional_2_life_beneficiaries[loop.index0].last_name }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].first_name">{{ additional_2_life_beneficiaries[loop.index0].first_name }}</span></td>
+      <td><span data-field="additional_2_life_beneficiaries[{{ loop.index0 }}].middle_initial">{{ additional_2_life_beneficiaries[loop.index0].middle_initial }}</span></td>
+      <td>
+        <input type="checkbox"> Add
+        <input type="checkbox"> Remove
+      </td>
+      <td>
+        <input type="checkbox"> Primary
+        <input type="checkbox"> Contingent
+      </td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div style="margin-top: 50px;">
+    <p>HR-102 (04/17)</p>
+    <p style="text-align: right;">Page 1 of 2</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 15px;">Please complete page 2 – beneficiary information, employee signature and date</h2>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Beneficiary Information</h3>
+  <p>Please complete for each beneficiary listed on page 1</p>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 20%;">First Name</th>
+        <th style="width: 10%;">MI</th>
+        <th style="width: 15%;">Social Security Number</th>
+        <th style="width: 15%;">Date of Birth</th>
+        <th style="width: 20%;">Relationship</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].last_name">{{ beneficiaries[loop.index0].last_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].first_name">{{ beneficiaries[loop.index0].first_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].middle_initial">{{ beneficiaries[loop.index0].middle_initial }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].ssn">{{ beneficiaries[loop.index0].ssn }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].date_of_birth">{{ beneficiaries[loop.index0].date_of_birth }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].relationship">{{ beneficiaries[loop.index0].relationship }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Address</th>
+        <th style="width: 15%;">City</th>
+        <th style="width: 15%;">State</th>
+        <th style="width: 15%;">Zip Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].address">{{ beneficiaries[loop.index0].address }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].city">{{ beneficiaries[loop.index0].city }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].state">{{ beneficiaries[loop.index0].state }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].zip_code">{{ beneficiaries[loop.index0].zip_code }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 20%;">First Name</th>
+        <th style="width: 10%;">MI</th>
+        <th style="width: 15%;">Social Security Number</th>
+        <th style="width: 15%;">Date of Birth</th>
+        <th style="width: 20%;">Relationship</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].last_name">{{ beneficiaries[loop.index0].last_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].first_name">{{ beneficiaries[loop.index0].first_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].middle_initial">{{ beneficiaries[loop.index0].middle_initial }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].ssn">{{ beneficiaries[loop.index0].ssn }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].date_of_birth">{{ beneficiaries[loop.index0].date_of_birth }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].relationship">{{ beneficiaries[loop.index0].relationship }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Address</th>
+        <th style="width: 15%;">City</th>
+        <th style="width: 15%;">State</th>
+        <th style="width: 15%;">Zip Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].address">{{ beneficiaries[loop.index0].address }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].city">{{ beneficiaries[loop.index0].city }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].state">{{ beneficiaries[loop.index0].state }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].zip_code">{{ beneficiaries[loop.index0].zip_code }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 20%;">First Name</th>
+        <th style="width: 10%;">MI</th>
+        <th style="width: 15%;">Social Security Number</th>
+        <th style="width: 15%;">Date of Birth</th>
+        <th style="width: 20%;">Relationship</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].last_name">{{ beneficiaries[loop.index0].last_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].first_name">{{ beneficiaries[loop.index0].first_name }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].middle_initial">{{ beneficiaries[loop.index0].middle_initial }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].ssn">{{ beneficiaries[loop.index0].ssn }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].date_of_birth">{{ beneficiaries[loop.index0].date_of_birth }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].relationship">{{ beneficiaries[loop.index0].relationship }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Address</th>
+        <th style="width: 15%;">City</th>
+        <th style="width: 15%;">State</th>
+        <th style="width: 15%;">Zip Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in beneficiaries %}
+      <tr>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].address">{{ beneficiaries[loop.index0].address }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].city">{{ beneficiaries[loop.index0].city }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].state">{{ beneficiaries[loop.index0].state }}</span></td>
+        <td><span data-field="beneficiaries[{{ loop.index0 }}].zip_code">{{ beneficiaries[loop.index0].zip_code }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <p>
+      <input type="checkbox"> I wish to apply for the insurance indicated above, or authorize the changes noted on reverse side.
+    </p>
+    <p>
+      <input type="checkbox"> I authorize deductions from my wages to cover my contribution, if required, toward the cost of insurance. I understand that my deduction will change if my coverage costs change.
+    </p>
+    <p>
+      <input type="checkbox"> I understand that if I waive any of these insurance coverages, and at a later date wish to request such coverage for myself, I will be required to furnish evidence of insurability.
+    </p>
+    <p>
+      <input type="checkbox"> To the best of my knowledge and belief, the information I have provided is complete and correct.
+    </p>
+    <p>Date: <span data-field="signature_date">{{ signature_date }}</span></p>
+  </div>
+
+  <table style="width: 100%; margin-top: 50px;">
+    <tr>
+      <td style="width: 33%;">Employee Signature</td>
+      <td style="width: 33%;">HR USE ONLY</td>
+      <td style="width: 34%;">Update ABBR Panel</td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <tr>
+      <td style="width: 33%;">Employee Group</td>
+      <td style="width: 33%;">Deduction Begin Date</td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 50px;">
+    <p>HR-720 (04/17)</p>
+    <p style="text-align: right;">Page 2 of 2</p>
+  </div>
+</div>

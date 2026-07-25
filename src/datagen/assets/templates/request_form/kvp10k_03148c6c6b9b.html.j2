@@ -1,0 +1,136 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  h1, h2, h3 { text-align: center; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  td { padding: 8px 0; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-group { flex: 1; margin-right: 20px; }
+  .form-group:last-child { margin-right: 0; }
+  .signature-line { margin-top: 50px; display: flex; justify-content: space-between; }
+</style>
+
+<div class="page">
+  <header style="text-align: center;">
+    <h1 style="font-size: 24pt; margin-bottom: 5px;">UNIVERSITY OF HARTFORD</h1>
+  </header>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-size: 10pt;">Please write legibly if you decide to print and fill out manually. Thank you.</p>
+    <button style="float: right; padding: 5px 10px; border: 1px solid #ccc;">Clear Form</button>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">REQUEST FOR MOBILE DEVICE</h2>
+
+  <h3 style="text-align: center; margin-bottom: 20px;">USER INFORMATION</h3>
+
+  <table>
+    <tr>
+      <td style="width: 20%;">Name:</td>
+      <td style="width: 30%;"><span data-field="full_name">{{ full_name }}</span></td>
+      <td style="width: 20%;">Current Cell#:</td>
+      <td style="width: 30%;"><span data-field="current_cell">{{ current_cell }}</span></td>
+    </tr>
+    <tr>
+      <td>Second Line: <span data-field="employer.name">{{ employer.name }}</span></td>
+      <td>University ID:</td>
+      <td><span data-field="university_id">{{ university_id }}</span></td>
+      <td>Ext#:</td>
+      <td><span data-field="extension">{{ extension }}</span></td>
+    </tr>
+    <tr>
+      <td>Current address: <span data-field="current_address">{{ current_address }}</span></td>
+      <td>Dept, Building & Room#:</td>
+      <td><span data-field="department_room">{{ department_room }}</span></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>City: <span data-field="city">{{ city }}</span></td>
+      <td>State: <span data-field="state">{{ state }}</span></td>
+      <td>ZIP Code: <span data-field="zip_code">{{ zip_code }}</span></td>
+    </tr>
+    <tr>
+      <td>E-Mail address: <span data-field="email_address">{{ email_address }}</span></td>
+      <td>Default Fund:</td>
+      <td><span data-field="default_fund">{{ default_fund }}</span></td>
+      <td>Default Org:</td>
+      <td><span data-field="default_organization">{{ default_organization }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="text-align: center; margin-top: 40px; margin-bottom: 20px;">PLEASE DEFINE BUSINESS NEED FOR MOBILE DEVICE</h3>
+  <div style="height: 150px; border: 1px solid #ccc; margin-bottom: 40px;"></div>
+
+  <h3 style="text-align: center; margin-bottom: 20px;">ADDITIONAL QUESTIONS</h3>
+
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td style="width: 30%;">Will you be importing a number from another carrier?</td>
+      <td style="width: 10%;">YES</td>
+      <td style="width: 10%;">NO</td>
+      <td>If so, what is the phone number?</td>
+      <td><span data-field="imported_phone_number">{{ imported_phone_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Whose name is the account under?</td>
+      <td><span data-field="account_holder_name">{{ account_holder_name }}</span></td>
+      <td>Who is the carrier?</td>
+      <td><span data-field="carrier_name">{{ carrier_name }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-bottom: 30px; padding: 15px; border: 1px solid #f00; background-color: #fff0f0;">
+    <p style="font-weight: bold; text-align: center;">You will need to contact your carrier to authorize The University to assume liability for your number.</p>
+  </div>
+
+  <h3 style="text-align: center; margin-top: 50px; margin-bottom: 20px;">SIGNATURES</h3>
+
+  <div class="signature-line">
+    <div>
+      Applicant's Signature:
+      <div style="height: 50px; border-bottom: 1px solid black; margin-top: 5px;" data-field="signatures">{{ signatures }}</div>
+      Date: <span data-field="applicant_signature_date">{{ applicant_signature_date }}</span>
+    </div>
+    <div>
+      Supervisor's Signature:
+      <div style="height: 50px; border-bottom: 1px solid black; margin-top: 5px;" data-field="date">{{ date }}</div>
+      Date: <span data-field="supervisor_signature_date">{{ supervisor_signature_date }}</span>
+    </div>
+  </div>
+
+  <div class="signature-line" style="margin-top: 40px;">
+    <div>
+      University Officer Approval: (Required)
+      <div style="height: 50px; border-bottom: 1px solid black; margin-top: 5px;" data-field="date_2">{{ date_2 }}</div>
+      Date: <span data-field="officer_approval_date">{{ officer_approval_date }}</span>
+    </div>
+    <div></div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p style="font-weight: bold;">For Internal Use Only:</p>
+    <table style="margin-top: 15px;">
+      <tr>
+        <td style="width: 30%;">Date Application Received:</td>
+        <td><span data-field="date_received">{{ date_received }}</span></td>
+        <td style="width: 30%;">Processed By:</td>
+        <td><span data-field="processed_by">{{ processed_by }}</span></td>
+        <td style="width: 15%;">Date:</td>
+        <td><span data-field="processing_date">{{ processing_date }}</span></td>
+      </tr>
+      <tr>
+        <td>Procurement</td>
+        <td><span data-field="procurement_status">{{ procurement_status }}</span></td>
+        <td>Rev.09/2017</td>
+      </tr>
+    </table>
+  </div>
+</div>

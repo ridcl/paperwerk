@@ -1,0 +1,190 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic the visual structure */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px 0;
+    text-align: left;
+  }
+  .header-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 30px;
+  }
+  .day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0;
+  }
+  .day-cell {
+    text-align: center;
+    padding: 5px 0;
+    border: 1px solid #eee;
+  }
+  .event-row {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .event-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  .description-section {
+    margin-top: 40px;
+  }
+  .description-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div style="font-size: 24px; font-weight: bold;">
+      <span data-field="theme_title">{{ theme_title }}</span>
+    </div>
+    <div style="font-size: 36px; font-weight: bold; text-align: right;">
+      <span data-field="calendar_year">{{ calendar_year }}</span> Calendar
+    </div>
+  </div>
+
+  <!-- Calendar Grid Simulation (Simplified for layout matching) -->
+  <div class="calendar-grid" style="margin-bottom: 20px;">
+    <div class="day-header">15</div>
+    <div class="day-header">16</div>
+    <div class="day-header">17</div>
+    <div class="day-header">18</div>
+    <div class="day-header">19</div>
+    <div class="day-header">20</div>
+    <div class="day-header">21</div>
+    <!-- ... other days ... -->
+  </div>
+
+  <!-- Main Content Table -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">THEME</th>
+        <th style="width: 45%;">ONLINE SEMINAR*</th>
+        <th style="width: 40%;">DESCRIPTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Row 1 -->
+      <tr>
+        <td><span data-field="theme_jan">{{ theme_jan }}</span></td>
+        <td><span data-field="seminar_jan_title">{{ seminar_jan_title }}</span><br><span data-field="seminar_jan_details">{{ seminar_jan_details }}</span></td>
+        <td><span data-field="desc_jan">{{ desc_jan }}</span></td>
+      </tr>
+      <!-- Row 2 -->
+      <tr>
+        <td><span data-field="theme_feb">{{ theme_feb }}</span></td>
+        <td><span data-field="seminar_feb_title">{{ seminar_feb_title }}</span><br><span data-field="seminar_feb_details">{{ seminar_feb_details }}</span></td>
+        <td><span data-field="desc_feb">{{ desc_feb }}</span></td>
+      </tr>
+      <!-- Row 3 -->
+      <tr>
+        <td><span data-field="theme_mar">{{ theme_mar }}</span></td>
+        <td><span data-field="seminar_mar_title">{{ seminar_mar_title }}</span><br><span data-field="seminar_mar_details">{{ seminar_mar_details }}</span></td>
+        <td><span data-field="desc_mar">{{ desc_mar }}</span></td>
+      </tr>
+      <!-- Row 4 -->
+      <tr>
+        <td><span data-field="theme_apr">{{ theme_apr }}</span></td>
+        <td><span data-field="seminar_apr_title">{{ seminar_apr_title }}</span><br><span data-field="seminar_apr_details">{{ seminar_apr_details }}</span></td>
+        <td><span data-field="desc_apr">{{ desc_apr }}</span></td>
+      </tr>
+      <!-- Row 5 -->
+      <tr>
+        <td><span data-field="theme_may">{{ theme_may }}</span></td>
+        <td><span data-field="seminar_may_title">{{ seminar_may_title }}</span><br><span data-field="seminar_may_details">{{ seminar_may_details }}</span></td>
+        <td><span data-field="desc_may">{{ desc_may }}</span></td>
+      </tr>
+      <!-- Row 6 -->
+      <tr>
+        <td><span data-field="theme_jun">{{ theme_jun }}</span></td>
+        <td><span data-field="seminar_jun_title">{{ seminar_jun_title }}</span><br><span data-field="seminar_jun_details">{{ seminar_jun_details }}</span></td>
+        <td><span data-field="desc_jun">{{ desc_jun }}</span></td>
+      </tr>
+      <!-- Row 7 -->
+      <tr>
+        <td><span data-field="theme_jul">{{ theme_jul }}</span></td>
+        <td><span data-field="seminar_jul_title">{{ seminar_jul_title }}</span><br><span data-field="seminar_jul_details">{{ seminar_jul_details }}</span></td>
+        <td><span data-field="desc_jul">{{ desc_jul }}</span></td>
+      </tr>
+      <!-- Row 8 -->
+      <tr>
+        <td><span data-field="theme_aug">{{ theme_aug }}</span></td>
+        <td><span data-field="seminar_aug_title">{{ seminar_aug_title }}</span><br><span data-field="seminar_aug_details">{{ seminar_aug_details }}</span></td>
+        <td><span data-field="desc_aug">{{ desc_aug }}</span></td>
+      </tr>
+      <!-- Row 9 -->
+      <tr>
+        <td><span data-field="theme_sep">{{ theme_sep }}</span></td>
+        <td><span data-field="seminar_sep_title">{{ seminar_sep_title }}</span><br><span data-field="seminar_sep_details">{{ seminar_sep_details }}</span></td>
+        <td><span data-field="desc_sep">{{ desc_sep }}</span></td>
+      </tr>
+      <!-- Row 10 -->
+      <tr>
+        <td><span data-field="theme_oct">{{ theme_oct }}</span></td>
+        <td><span data-field="seminar_oct_title">{{ seminar_oct_title }}</span><br><span data-field="seminar_oct_details">{{ seminar_oct_details }}</span></td>
+        <td><span data-field="desc_oct">{{ desc_oct }}</span></td>
+      </tr>
+      <!-- Row 11 -->
+      <tr>
+        <td><span data-field="theme_nov">{{ theme_nov }}</span></td>
+        <td><span data-field="seminar_nov_title">{{ seminar_nov_title }}</span><br><span data-field="seminar_nov_details">{{ seminar_nov_details }}</span></td>
+        <td><span data-field="desc_nov">{{ desc_nov }}</span></td>
+      </tr>
+      <!-- Row 12 -->
+      <tr>
+        <td><span data-field="theme_dec">{{ theme_dec }}</span></td>
+        <td><span data-field="seminar_dec_title">{{ seminar_dec_title }}</span><br><span data-field="seminar_dec_details">{{ seminar_dec_details }}</span></td>
+        <td><span data-field="desc_dec">{{ desc_dec }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <div>
+      <strong>LET US HELP</strong><br>
+      TOLL-FREE: <span data-field="toll_free_number">{{ toll_free_number }}</span><br>
+      WEBSITE: <span data-field="website_url">{{ website_url }}</span> &gt; My Portal Login &gt; Work-Life<br>
+      USERNAME: <span data-field="username">{{ username }}</span> | PASSWORD: <span data-field="password">{{ password }}</span>
+    </div>
+    <div>
+      Always Available | Free | Confidential
+    </div>
+    <div>
+      <span data-field="logo_placeholder">{{ logo_placeholder }}</span>
+    </div>
+  </div>
+</div>

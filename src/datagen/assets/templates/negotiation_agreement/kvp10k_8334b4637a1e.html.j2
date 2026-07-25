@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agreement Template</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        .center { text-align: center; }
+        .right { text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div style="font-size: 12pt; font-weight: bold;">DEPARTMENT OF THE NAVY</div>
+            <div style="font-size: 10pt;">OFFICE OF NAVAL RESEARCH</div>
+            <div style="font-size: 10pt;">875 NORTH RANDOLPH STREET</div>
+            <div style="font-size: 10pt;">SUITE 1425</div>
+            <div style="font-size: 10pt;">ARLINGTON, VA 22203-1995</div>
+        </div>
+        <div style="text-align: right; margin-bottom: 40px;">
+            <div style="font-size: 10pt;">IN REPLY REFER TO:</div>
+            <div style="font-size: 10pt;">Agreement Date: <span data-field="agreement_date">{{ agreement_date }}</span></div>
+        </div>
+
+        <h1 style="text-align: center; font-size: 18pt; margin-bottom: 40px;">NEGOTIATION AGREEMENT</h1>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+            <div>
+                <div style="font-size: 12pt; font-weight: bold;">INSTITUTION:</div>
+                <div style="font-size: 14pt; font-weight: bold;">UNIVERSITY OF ALASKA</div>
+                <div style="font-size: 12pt;">FAIRBANKS, ALASKA 99775</div>
+            </div>
+        </div>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            The Employee Fringe Benefit rates contained herein are for use on grants, contracts and/or other agreements issued or awarded to the University of Alaska (UA) by all Federal Agencies of the United States of America, in accordance with the cost principles mandated by 2 CFR 220. These rates shall be used for forward pricing and billing purposes for UA's Fiscal Year (FY) <span data-field="fiscal_year">{{ fiscal_year }}</span>. This rate agreement supersedes all previous rate agreements/determinations for Fiscal Year(s) <span data-field="previous_years">{{ previous_years }}</span>.
+        </p>
+
+        <h2 style="font-size: 12pt; margin-top: 40px; margin-bottom: 15px;">Section I: RATES - TYPE: PROVISIONAL (Prov)</h2>
+
+        <h3 style="font-size: 11pt; margin-top: 25px; margin-bottom: 10px;">Fringe Benefits Rates:</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%;">TYPE</th>
+                    <th style="width: 20%;">FROM</th>
+                    <th style="width: 20%;">TO</th>
+                    <th style="width: 25%;">Staff Benefits Base (%)</th>
+                    <th style="width: 20%;">Leave Benefits (%)</th>
+                    <th style="width: 20%;">Employee Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fringe_benefit_rates %}
+                <tr>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].type">{{ item.type }}</span></td>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].from_date">{{ item.from_date }}</span></td>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].to_date">{{ item.to_date }}</span></td>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].staff_base">{{ item.staff_base }}</span></td>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].leave_rate">{{ item.leave_rate }}</span></td>
+                    <td><span data-field="fringe_benefit_rates[{{ loop.index0 }}].employee_category">{{ item.employee_category }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="font-size: 9pt; margin-top: 30px;">
+            <p>Notes:
+                <sup style="font-size: 9pt;">1</sup> Alaska Higher Education Crafts and Trade Employees
+                <sup style="font-size: 9pt;">2</sup> Administrative/Professional/Technical
+                <sup style="font-size: 9pt;">3</sup> United Academics
+                <sup style="font-size: 9pt;">4</sup> University of Alaska Federation of Teachers
+            </p>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 style="text-align: center; font-size: 14pt; margin-bottom: 30px;">DISTRIBUTION BASES</h2>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            (a) Staff benefits rates are applied to base salaries plus overtime, miscellaneous pay, and leave accrual provisions.
+        </p>
+        <p style="font-size: 10pt; line-height: 1.5;">
+            (b) Leave benefits rates are applied to base salaries excluding: overtime, miscellaneous pay, and paid leave.
+        </p>
+
+        <h2 style="font-size: 14pt; margin-top: 40px; margin-bottom: 20px;">SECTION II - GENERAL TERMS AND CONDITIONS</h2>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            A. LIMITATIONS: Use of the rates set forth under Section I is subject to any statutory or administrative limitations and is applicable to a given grant, contract or other agreement only to the extent that funds are available and consistent with any and all limitations of cost clauses or provisions, if any, contained therein. Acceptance of any or all of the rates agreed to herein is predicated upon all the following conditions: (1) that no other than those incurred by the grantee/contractor were included in its indirect cost pool as cost accepted and that all such costs are legal obligations of the grantee/contractor and allowable under governing cost principles; (2) that the same costs that have been treated as indirect costs are not claimed as direct costs; (3) that similar types of costs, in like circumstances, have been accorded consistent accounting treatment; (4) that the information provided by the contractor/grantee, which was used as the basis for the acceptance of the rates agreed to herein and expressly relied upon by the Government in negotiating the said rates, is not subsequently found to be materially incomplete or inaccurate.
+        </p>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            B. ACCOUNTING CHANGES: The rates contained in Section I of this agreement are based on the accounting system in effect at the time this agreement was negotiated. Changes to the method(s) of accounting for costs, which affects the amount of reimbursement resulting from the use of these rates, require the written approval of the authorized representative of the cognizant negotiating agency for the Government prior to implementation of any such changes. Such changes include but are not limited to changes in the charging of a particular type of cost from indirect to direct. Failure to obtain such approval may result in subsequent cost disallowances.
+        </p>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            C. PROVISIONAL RATES: The provisional rates contained in this agreement are subject to unilateral amendment by the Government or bilateral amendment by the contracting parties at any time.
+        </p>
+
+        <p style="font-size: 10pt; line-height: 1.5;">
+            D. USE BY OTHER FEDERAL AGENCIES: The rates set forth in Section I hereof were negotiated in accordance with and under the authority set forth in 2 CFR 220. Accordingly, such rates shall be applied to the extent provided in such regulations to grants, contracts and other transactions to which 2 CFR 220 is applicable, subject to any limitations in part A of this section. Copies of this document may be provided by either party to other Federal agencies which have or intend to issue or award grants and contracts using these rates or to otherwise provide such agencies with documentary notice of this agreement and its terms and conditions.
+        </p>
+    </div>
+
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 80px;">
+            <div style="width: 45%;">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <div style="font-size: 12pt; font-weight: bold;">Accepted:</div>
+                    <div style="margin-top: 40px;">
+                        <div style="font-size: 14pt; font-weight: bold;">Ashok Roy</div>
+                        <div style="font-size: 10pt;">Chief Financial Officer</div>
+                        <div style="margin-top: 50px;">
+                            Date: <span data-field="acceptance_date_uoa">{{ acceptance_date_uoa }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 45%;">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <div style="font-size: 12pt; font-weight: bold;">FOR THE U.S. GOVERNMENT:</div>
+                    <div style="margin-top: 40px;">
+                        <div style="font-size: 14pt; font-weight: bold;">David F. Godfrey</div>
+                        <div style="font-size: 10pt;">Contracting Officer</div>
+                        <div style="margin-top: 50px;">
+                            Date: <span data-field="acceptance_date_gov">{{ acceptance_date_gov }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <p style="font-size: 10pt;">For information concerning this agreement contact:</p>
+            <p style="font-size: 10pt;">DAVID F. GODFREY, Contracting Officer</p>
+            <p style="font-size: 10pt;">Office of Naval Research</p>
+            <p style="font-size: 10pt;">875 North Randolph Street</p>
+            <p style="font-size: 10pt;">Arlington, VA 22203-1995</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 10pt;">
+            <div>
+                <p>Phone: <span data-field="contact_phone">{{ contact_phone }}</span></p>
+                <p>E-mail: <span data-field="contact_email">{{ contact_email }}</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

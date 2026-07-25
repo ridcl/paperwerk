@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>White Paper Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  p, td {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .header-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .header-subtitle {
+    font-size: 12pt;
+    margin-top: 0;
+  }
+  .section-heading {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    right: 60px;
+    font-size: 9pt;
+    color: #555;
+    text-align: center;
+  }
+  .logo {
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #000;
+  }
+  .abstract-content {
+    margin-top: 20px;
+  }
+  .figure-caption {
+    font-size: 9pt;
+    margin-top: 10px;
+    text-align: center;
+  }
+</style>
+
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+    p, span, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt; margin-bottom: 10px;">White paper, {{ publication_date }}</div>
+  <h1 style="font-size: 24pt; font-weight: bold; margin-bottom: 10px;">Advanced process control for grinding circuits</h1>
+  <h2 style="font-size: 16pt; font-weight: normal; margin-top: 0;">Unlock the unknown potential of your mill</h2>
+
+  <img src="placeholder_image.jpg" alt="Mill interior" style="width: 100%; height: auto; margin: 30px 0;">
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 30px;">
+    <div style="flex: 1; padding-right: 40px;">
+      <p>Recent copper price evolution pushes modern mining industry even harder to achieve highest production with maximum efficiency. Advanced process control (APC) for grinding is one important tool to operate this most energy intense area in an optimal way, finding the best trade-offs between highest throughput, energy efficiency and product quality based on variable ore properties, production targets and management priorities.</p>
+    </div>
+    <div style="flex: 1;">
+      <div style="text-align: right; font-size: 10pt; margin-top: 50px;">Power and productivity for a better world™</div>
+      <div class="logo">ABB</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    2 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="flex: 1;">
+      <h2 class="section-heading">Abstract</h2>
+      <div class="abstract-content">
+        <p>Recent copper price evolution pushes modern mining industry even harder to achieve highest production with maximum efficiency. Operations are bound by numerous contractual and environmental conditions that bring a high degree of complexity to both the operators controlling the process and the plant managers assessing the circuit's potential and setting the production goals.</p>
+        <p>Advanced process control (APC) for grinding is one important tool to operate this most energy intense area in an optimal way, finding the best trade-offs between highest throughput, energy efficiency and product quality based on changing ore properties, production targets and management priorities.</p>
+        <p>ABB's state of the art control and optimization software platform enables user to design a controller based on model predictive control (MPC). The paper and the presentation show the technology used and the results achieved through an APC controller in pilot project <span data-field="project_name">{{ project_name }}</span>. Sweden. Furthermore possibilities to interconnect grinding with other areas as stockpile management and flotation with various interconnected APC controllers will be shown. Finally, an example of the return on investment and the payback times based on the increased throughput and better product quality will be presented.</p>
+      </div>
+    </div>
+    <div style="flex: 1; margin-left: 40px;">
+      <p><strong>Author:</strong> <span data-field="author_name">{{ author_name }}</span></p>
+      <p><strong>Email:</strong> <span data-field="author_email">{{ author_email }}</span></p>
+      <p><strong>Company:</strong> <span data-field="company_name">{{ company_name }}</span></p>
+      <p><strong>Address:</strong> <span data-field="company_address">{{ company_address }}</span></p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top: 40px;">Keywords</h2>
+  <p>Advanced process control, model predictive control, grinding circuit, optimization, energy efficiency</p>
+
+  <div class="footer">
+    2 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">Introduction</h2>
+  <p>Depending on the ore characteristics and the targeted plant capacity, the design of the grinding circuit may vary significantly. Typically, the circuit consists of several mills (rod, ball, SAG, AG) in series and/or parallel with a number of classifiers and sumps at appropriate locations (see Figure 1).</p>
+  <p>The goal of the grinding section is to reduce the ore particle size to a level that enables efficient separation between gangue and precious metals in the subsiding processing step. The trade-off between quality and quantity has to be made. It is also crucial to execute this process step at the lowest possible energy and grinding media consumption.</p>
+
+  <div style="display: flex; justify-content: space-around; align-items: center; margin: 30px 0;">
+    <div style="text-align: center;">
+      <img src="placeholder_diagram.png" alt="Grinding circuit schematic" style="width: 40%;">
+      <p class="figure-caption">Figure 1 – Typical grinding circuit scheme</p>
+    </div>
+    <div style="flex: 1; padding-left: 50px;">
+      <p>An optimal grinding process controller must manage to maintain a given fresh feed level while keeping the product size within a given range. To accomplish the aforementioned, it is necessary to manipulate the ore feed rate, water feed rate and the mill speed. These variables will have a direct impact on mill load, torque, power draw and a slurry density. Disturbances adding another degree of complexity to this control problem are ore size and the amount of circulating load.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Current Operation Strategy</h2>
+  <p>Often, in wet grinding operation there are no proper feedback control loops, but rather operator enters feed forward signals, such as the fresh feed rate to control the mill power signal.</p>
+  <p>In most cases, the chosen control goal is to maintain circulating load at a given target. This is accomplished by monitoring this magnitude and controlling it by changes in fresh feed flow. Additionally, in some cases, there exist sensors to measure the slurry density at the mill output and this is used to control the water addition rates.</p>
+
+  <div class="footer">
+    3 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">Methodology</h2>
+  <p>In current schemes, the resultant control actions are determined entirely on current data and thus are “reactive” by definition. Whether the history nor the immediate evolution of the system is taken into consideration. Consequently, it becomes difficult to deal with the constraints of the process and its dynamics.</p>
+  <p>The obvious result of the aforementioned situation is high variability of the key process variables leading to product quality outside the specified limits, increased energy consumption, and high grinding media costs.</p>
+
+  <h3 style="font-size: 14pt; font-weight: bold; margin-top: 25px;">Model Predictive Control</h3>
+  <p>Model Predictive Control (MPC) is a simple iterative procedure: according to a prediction of the short- to medium-term evolution of the process, a sequence of future optimal control actions is chosen. The sequence of the sequence is then applied to the plant. As the system is evolving, new information becomes available, the sequence is recalculated and replaces the previous one. Each sequence is computed by means of optimizing the performance while protecting the system from constraint violations.</p>
+
+  <div style="display: flex; justify-content: space-around; align-items: center; margin: 30px 0;">
+    <div style="text-align: center;">
+      <img src="placeholder_mpc_diagram.png" alt="MPC concept diagram" style="width: 45%;">
+      <p class="figure-caption">Figure 2 – Model Predictive Control basic idea</p>
+    </div>
+    <div style="flex: 1; padding-left: 50px;">
+      <p><strong>past</strong> &rarr; <strong>future</strong></p>
+      <p>Predicted outputs</p>
+      <p>Manipulated u(t+k) Inputs</p>
+      <p>t+1 &rarr; t+m &rarr; t+p</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    4 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">Advantages and benefits of the proposed technology</h2>
+  <p>With an accurate model of the physical processes in a plant, taking into consideration explicit material balances and estimation of the involved time delays, MPC enables one to predict the effect of given control decisions and disturbances on the grinding process. Given this prediction, it becomes possible to take timely control actions in any situation and facilitate the fulfillment of given targets.</p>
+  <p>The expected results are:</p>
+  <ul>
+    <li>Increased production due to tighter control to process targets.</li>
+    <li>Longer lifetime of mill structure and liners.</li>
+    <li>Reduced consumption of grinding media.</li>
+    <li>Less upsets events downstream due to better control of the grinding process.</li>
+    <li>This will also lead to more consistent final product quality.</li>
+  </ul>
+
+  <h3 style="font-size: 14pt; font-weight: bold; margin-top: 25px;">800xA APC: ABB Implementation of Model Predictive Control</h3>
+  <p>800xA APC is a model predictive control engine fully integrated in the 800xA system. ABB's distributed control system (DCS), 800xA APC is available as an add-on to the 800xA system. In addition there is a tool, the Model Builder, for modeling, controller tuning, and what if analysis.</p>
+
+  <div style="display: flex; justify-content: space-around; align-items: center; margin: 30px 0;">
+    <div style="width: 45%;">
+      <img src="placeholder_model_builder.png" alt="Model Builder diagram" style="width: 100%;">
+      <p class="figure-caption">Figure 3 – ABB's Model Builder displaying a typical grinding circuit</p>
+    </div>
+    <div style="width: 45%;">
+      <!-- Placeholder for text description related to the diagram -->
+    </div>
+  </div>
+
+  <div class="footer">
+    5 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">800xA APC real time components</h2>
+  <p>In 800xA APC there is a dedicated control module for a model predictive control. Using this control module, the MPC algorithm is easily connected to measured signals and to the PIDs downstream. Once the basic configuration is finished, a number of tailored made faceplates are generated. These faceplates contain the information that the operators and the APC engineer need to work (see Figure 4).</p>
+
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="placeholder_operator_faceplate.png" alt="Operator faceplate" style="width: 80%;">
+    <p class="figure-caption">Figure 4 – Operator faceplate</p>
+  </div>
+
+  <h3 style="font-size: 14pt; font-weight: bold; margin-top: 25px;">Implementation of MPC in pilot grinding circuit</h3>
+  <p>The grinding circuit consists of two lines with one Autogenous mill (AG) and one pebble mill (PM). The primary objective of the grinding circuit is to grind as much material within a certain particle size distribution. According to Bond's equation, the more energy is put into the system, the finer the product one obtains. Generally speaking, higher fill level and speed of the mill lead to more energy consumption and finer product.</p>
+  <p>The control structure consists of two levels of controllers (see Figure 5). The supervisory controller takes two inputs from the operator: the setpoint of the particle size and the absolute maximal throughput. The SC tries to minimize Expression 1, which leads to a trade-off between the deviation from a given particle size setpoint and maximal throughput (note the opposed signs, leading to minimization or maximization respectively).</p>
+  <p>min(|<span data-field="particle_size_deviation">{{ particle_size_deviation }}</span>| - <span data-field="feed_rate_limit">{{ feed_rate_limit }}</span>) (SC)</p>
+  <p>min(|<span data-field="AG_load_deviation">{{ AG_load_deviation }}</span>| + <span data-field="PM_load_deviation">{{ PM_load_deviation }}</span> - <span data-field="PM_torque">{{ PM_torque }}</span>) (LC)</p>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="placeholder_control_structure.png" alt="Control structure diagram" style="width: 90%;">
+    <p class="figure-caption">Figure 5 – Control structure of pilot grinding circuit</p>
+  </div>
+
+  <div class="footer">
+    6 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <p>Based on the measured particle size of the product, the setpoint for the loads and the high limit of the throughput for the mills are calculated and passed to the low-level controller.</p>
+  <p>The LC's will then attempt to run at these setpoints (see Expression 2) by manipulating speed and the actual feed without violating constraints such as torque and power draw.</p>
+
+  <p><strong>ABB process performance services</strong></p>
+  <p>ABB offers services from the estimation of the potential of an APC controller to the implementation and maintenance of it. It has to be mentioned that a drift in the process or change of equipment have to be counteracted by fine-tuning or readapting the model.</p>
+
+  <div class="footer">
+    7 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">Results and discussion</h2>
+  <p>The evaluation phase of 800xA APC at the pilot grinding circuit will end in <span data-field="end_date">{{ end_date }}</span>. Final results will be presented at the conference. Nevertheless preliminary results indicating the correct behavior of the controller can be shown.</p>
+
+  <p>Figure 6 shows how the setpoints of AG load given by the supervisory control are followed by the low-level controller. If a limit such as a torque constraint shown in Figure 7 is reached, the low-level controller approaches the setpoint as close as possible without violating any constraints. Solid lines in the figures are measured values, the dotted lines are predictions of the MPC controller.</p>
+
+  <div style="text-align: center; margin: 30px 0;">
+    <img src="placeholder_ag_load_chart.png" alt="AG load chart" style="width: 90%;">
+    <p class="figure-caption">Figure 6 – AG mill load during APC ON and OFF phases</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="placeholder_ag_torque_chart.png" alt="AG torque chart" style="width: 90%;">
+    <p class="figure-caption">Figure 7 – AG mill load and torque predictions</p>
+  </div>
+
+  <div class="footer">
+    8 White paper | <span data-field="document_title">{{ document_title }}</span>
+  </div>
+</div>
+
+
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+    p, span, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+</style>
+
+<div class="page">
+    <p>Figure 8 shows the particle size (P80) during 4 days with on and off intervals. During the offline phase, particle size is not specifically controlled. When APC is online, the particle size setpoint is smoothly followed. Having a dynamic setpoint for particle allows the operator to react to changing ore properties and daily production targets, ensuring the optimal trade-off between production quality and quantity.</p>
+    <div style="text-align: center; margin-top: 30px;">
+        <!-- Placeholder for the graph image -->
+        <img src="placeholder_graph.png" alt="Particle Size Graph" style="max-width: 100%; height: auto;">
+        <p style="margin-top: 10px;">Figure 8 – Particle size during APC ON and OFF phases</p>
+    </div>
+</div>
+
+<div class="page">
+    <h2>Conclusion</h2>
+    <p>Final results will be presented at the conference.</p>
+
+    <h2>Further applications of model predictive control</h2>
+    <p>MPC is generic and can be used in any area of the plant. For instance, the processes crushing and flotation preceding and succeeding grinding can be controlled and interconnected with APC, such that e.g. a disturbance in ore hardness will already be registered in the crushing area and according actions will be taken before the material enters the grinding and flotation stage. Merging individually treated processes into one optimization problem leads to better and easier control of the plant. Further control and optimization packages are under development.</p>
+
+    <h2>Acknowledgements</h2>
+    <p><span data-field="acknowledgements.organization">{{ acknowledgements.organization }}</span>, <span data-field="acknowledgements.group">{{ acknowledgements.group }}</span>. http://www.abb.com/CPM</p>
+    <p><span data-field="acknowledgements.organization">{{ acknowledgements.organization }}</span>, <span data-field="acknowledgements.group">{{ acknowledgements.group }}</span>. http://www.abb.com/mining</p>
+
+    <h2>Nomenclature</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="text-align: left; padding-right: 20px;">Symbol</th>
+                <th style="text-align: left;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding-right: 20px;">APC</td>
+                <td><span data-field="nomenclature.apc">{{ nomenclature.apc }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">AG</td>
+                <td><span data-field="nomenclature.ag">{{ nomenclature.ag }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">MPC</td>
+                <td><span data-field="nomenclature.mpc">{{ nomenclature.mpc }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">PM</td>
+                <td><span data-field="nomenclature.pm">{{ nomenclature.pm }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">PSA</td>
+                <td><span data-field="nomenclature.psa">{{ nomenclature.psa }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">SP</td>
+                <td><span data-field="nomenclature.sp">{{ nomenclature.sp }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">L_AG</td>
+                <td><span data-field="nomenclature.l_ag">{{ nomenclature.l_ag }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">T_PM</td>
+                <td><span data-field="nomenclature.t_pm">{{ nomenclature.t_pm }}</span></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 20px;">W_S</td>
+                <td><span data-field="nomenclature.w_s">{{ nomenclature.w_s }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="page">
+    <h2 style="text-align: center;">Co-authors</h2>
+    <div style="display: flex; justify-content: space-around; margin-top: 40px;">
+        <div style="text-align: center;">
+            <img src="placeholder_photo1.jpg" alt="Author Photo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 5px;">
+            <p style="margin-top: 10px; font-weight: bold;"><span data-field="co_author_1.full_name">{{ co_author_1.full_name }}</span></p>
+            <p><span data-field="co_author_1.email">{{ co_author_1.email }}</span></p>
+        </div>
+        <div style="text-align: center;">
+            <img src="placeholder_photo2.jpg" alt="Author Photo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 5px;">
+            <p style="margin-top: 10px; font-weight: bold;"><span data-field="co_author_2.full_name">{{ co_author_2.full_name }}</span></p>
+            <p><span data-field="co_author_2.email">{{ co_author_2.email }}</span></p>
+        </div>
+        <div style="text-align: center;">
+            <img src="placeholder_photo3.jpg" alt="Author Photo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 5px;">
+            <p style="margin-top: 10px; font-weight: bold;"><span data-field="co_author_3.full_name">{{ co_author_3.full_name }}</span></p>
+            <p><span data-field="co_author_3.email">{{ co_author_3.email }}</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <h2 style="text-align: center;">Contact us</h2>
+    <div style="width: 50%; margin-left: auto; margin-right: auto;">
+        <p><span data-field="contact.company_name">{{ contact.company_name }}</span></p>
+        <p><span data-field="contact.department">{{ contact.department }}</span></p>
+        <p><span data-field="contact.address_line_1">{{ contact.address_line_1 }}</span></p>
+        <p><span data-field="contact.address_line_2">{{ contact.address_line_2 }}</span></p>
+        <p><span data-field="contact.phone">{{ contact.phone }}</span></p>
+        <p><span data-field="contact.email">{{ contact.email }}</span></p>
+        <p>ABB's Mining business is represented in the following countries:
+            {% for country in contact.countries %}
+                <span data-field="contact.countries[{{ loop.index0 }}]">{{ country }}</span>,
+            {% endfor %}
+        </p>
+        <p>For contact details, please visit our website: <a href="http://www.abb.com/mining">{{ "http://www.abb.com/mining" }}</a></p>
+        <p>We reserve all rights in this document and in the subject matter and illustrations contained therein.</p>
+        <p>Any reproduction, disclosure to third parties or utilization of its contents — in whole or in parts — is forbidden without prior written consent of ABB.</p>
+        <p>© <span data-field="copyright.year">{{ copyright.year }}</span> ABB. All rights reserved.</p>
+    </div>
+</div></body>
+</html>

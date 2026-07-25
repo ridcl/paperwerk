@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Release Note</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        td { padding: 5px 0; }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 80px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 20%;">Document class</td>
+                <td>Release Note</td>
+            </tr>
+            <tr>
+                <td>Document ID</td>
+                <td><span data-field="document_id">{{ document_id }}</span></td>
+            </tr>
+            <tr>
+                <td>Business Unit</td>
+                <td><span data-field="business_unit">{{ business_unit }}</span></td>
+            </tr>
+            <tr>
+                <td>Page</td>
+                <td><span data-field="page_number">{{ page_number }}</span></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><span data-field="date">{{ date }}</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <h2 style="font-size: 24px;">Firmware update release 4.1.8 for 615 series IEC product version 4.0 FP1 (E) protection relays</h2>
+
+        <h3 style="font-size: 18px; margin-top: 30px;">Scope</h3>
+        <p>Firmware update release 4.1.8 is for the following 615 series protection relays:</p>
+        <ul>
+            <li><span data-field="relays[0]">{{ relays[0] }}</span></li>
+            <li><span data-field="relays[1]">{{ relays[1] }}</span></li>
+            <li><span data-field="relays[2]">{{ relays[2] }}</span></li>
+            <li><span data-field="relays[3]">{{ relays[3] }}</span></li>
+            <li><span data-field="relays[4]">{{ relays[4] }}</span></li>
+        </ul>
+        <p>To verify that the firmware update applies to the protection relay version, ensure that the second and last two characters of the order code on the label on top of the human-machine interface (HMI) match the corresponding characters of the order code in Fig. 1.</p>
+        <p>Fig. 1 Order code of the 615 series protection relays</p>
+        <div style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; font-family: monospace;">
+            X<span data-field="order_code_prefix">{{ order_code_prefix }}</span>XXXXXXXXXXXXX<span data-field="order_code_suffix">{{ order_code_suffix }}</span>
+        </div>
+        <p>To identify the current firmware (SW) revision of the 615 series protection relay, please refer to Fig. 2.</p>
+        <p>Fig. 2. The firmware revision of the 615 series protection relay</p>
+        <table style="margin-top: 15px;">
+            <tr>
+                <td style="width: 30%;">Product identifiers</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Order code</td>
+                <td><span data-field="product_order_code">{{ product_order_code }}</span></td>
+            </tr>
+            <tr>
+                <td>Production date</td>
+                <td><span data-field="production_date">{{ production_date }}</span></td>
+            </tr>
+            <tr>
+                <td>Configuration name</td>
+                <td><span data-field="config_name">{{ config_name }}</span></td>
+            </tr>
+            <tr>
+                <td>SW Version</td>
+                <td><span data-field="sw_version">{{ sw_version }}</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 20%;">Date</td>
+                <td><span data-field="date">{{ date }}</span></td>
+                <td style="width: 20%;">Page</td>
+                <td><span data-field="page_number">{{ page_number }}</span></td>
+                <td style="width: 20%;">Subject</td>
+                <td>Firmware update release</td>
+            </tr>
+        </table>
+
+        <h2 style="font-size: 24px;">Implemented usability improvements</h2>
+        <p>The firmware update release includes usability and operational improvements. The following improvements have been implemented:</p>
+
+        <h3 style="font-size: 18px; margin-top: 30px;">Firmware update release 4.1.8:</h3>
+        <h4 style="font-size: 16px; margin-top: 15px;">Cyber Security</h4>
+        <ul>
+            <li>Cyber Security improvements to the "Ripple20" vulnerability in TCP/IP communication stack for normal product usage conditions. Following vulnerabilities has been identified in the product and fixed by the update:
+                <ul>
+                    <li><span data-field="cve_id_1">{{ cve_id_1 }}</span></li>
+                    <li><span data-field="cve_id_2">{{ cve_id_2 }}</span></li>
+                    <li><span data-field="cve_id_3">{{ cve_id_3 }}</span></li>
+                    <li><span data-field="cve_id_4">{{ cve_id_4 }}</span></li>
+                    <li><span data-field="cve_id_5">{{ cve_id_5 }}</span></li>
+                </ul>
+            </li>
+            <li>Note! Some of the security scanners might still report existence of Ripple20 vulnerability after the update. This is a false positive, since the scanners indicate the presence of the IP stack, without being able to check the vulnerability and its fixes.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Supervision</h4>
+        <ul>
+            <li>Improving Time counter rollover in relay's communication module that may have caused internal relay fault with error code <span data-field="error_code_1">{{ error_code_1 }}</span> COM card error and relay to self-reboot after time interval(s) which is divisible by ~50 days from previous restart.</li>
+            <li>Self-supervision improvement for composition detection.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Communication</h4>
+        <ul>
+            <li>Improvement on GOOSE receiving. In a system where one relay is receiving GOOSE communication from multiple senders, it is possible that a communication break in one sender might impact handling of received values from other senders.</li>
+            <li><span data-field="relays_comm_improvement">{{ relays_comm_improvement }}</span>: Improvement at protection communication resoration.</li>
+            <li>In situation where <span data-field="relays_comm_condition">{{ relays_comm_condition }}</span> was powered OFF and ON repeatedly, sometimes protection communication was not restored properly and relay was indicating Code 50 Protection Comm. ("Error in protection communication.").</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 20%;">Date</td>
+                <td><span data-field="date">{{ date }}</span></td>
+                <td style="width: 20%;">Page</td>
+                <td><span data-field="page_number">{{ page_number }}</span></td>
+                <td style="width: 20%;">Subject</td>
+                <td>Firmware update release</td>
+            </tr>
+        </table>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.7:</h2>
+        <ul>
+            <li>SNTP time synchronization performance improvement</li>
+        </ul>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.6:</h2>
+        <h4 style="font-size: 16px; margin-top: 15px;">Protection</h4>
+        <ul>
+            <li>The improvement for the Wattmetric-based earth-fault protection WPWDE increases the function sensitivity in intermittent earth-faults when the fault has fault resistance > 100 Ohm.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Communication</h4>
+        <ul>
+            <li>Limitation to the maximum number of files that can be opened by the MMS client. This improves the situation with certain types of MMS clients stressing the relay's filesystem and then causing the Internal Fault "File system error" (Fault code 7).</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Engineering</h4>
+        <ul>
+            <li>Improved "Current value" setting range of CCBRBRF from 1.00 to 2.00 in local HMI.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Supervision</h4>
+        <ul>
+            <li>Self-supervision performance improvement to the internal CPU memory supervision.</li>
+            <li>Self-supervision recovery time improved in case of IRF Code 83.</li>
+            <li>Self-supervision recovery handling improved in case of IRF Code 79.</li>
+            <li>Internal diagnostic improvement for the self-supervision.</li>
+        </ul>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.5:</h2>
+        <h4 style="font-size: 16px; margin-top: 15px;">Control</h4>
+        <ul>
+            <li>Improvement to the synchcheck function for preventing unexpected short-period reset of SYNC_OK output. The reset could have been in vector shift situations earlier.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 20%;">Date</td>
+                <td><span data-field="date">{{ date }}</span></td>
+                <td style="width: 20%;">Page</td>
+                <td><span data-field="page_number">{{ page_number }}</span></td>
+                <td style="width: 20%;">Subject</td>
+                <td>Firmware update release</td>
+            </tr>
+        </table>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.4:</h2>
+        <h4 style="font-size: 16px; margin-top: 15px;">Control</h4>
+        <ul>
+            <li>Improvement to the synchcheck function for preventing unexpected short-period reset of SYNC_OK output. The reset could have been in very rare situations earlier even when the synchronism conditions were fulfilled and voltages were aligned on both sides of the breaker.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Communication</h4>
+        <ul>
+            <li>Ethernet redundancy PRP protocol functionality enhanced at relay restart situations. This enhancement prevents short period connection of the LAN A and LAN B networks during relay startup.</li>
+            <li>Improvement to relay communication stack software to handle if IEC 61850 Edition 2 fixed length GOOSE messages is wrongly configured to the relay.</li>
+        </ul>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.3:</h2>
+        <h4 style="font-size: 16px; margin-top: 15px;">Control</h4>
+        <ul>
+            <li>Manual control of function block OLATCC1 is now enabled for "Operator" user of the relay.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">HMI</h4>
+        <ul>
+            <li>The Local HMI object control selection behavior improved while user log in and log out.</li>
+            <li>Improved the fault recorder to not show "out of range" after the relay has been restarted.</li>
+            <li>Web HMI functionality together with Russian language in some configurations improved.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Protection</h4>
+        <ul>
+            <li>Improvement to Intermittent earth-fault protection function (INTRPTFE) in "Intermittent EF" mode in case of very small earth fault current to and high earth fault voltage Uo.</li>
+            <li>Improvement to Intermittent earth-fault protection function (INTRPTFE) to avoid cyclic restart of the timer. The cyclic reset time is proportional to the fault current frequency deviation from the nominal frequency. The issue can be seen only when using longer operate time settings.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Communication</h4>
+        <ul>
+            <li>The relay is able to start up normally even if vertical communication data sets are empty or not available at all.</li>
+            <li>Behavior of the data attribute LD0.LPHD1.PhyHealth.stVal update has been improved in the restart situation.</li>
+            <li>The improvement to avoid very rare situation of the communication breaks in the Ethernet port.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 20%;">Date</td>
+                <td><span data-field="date">{{ date }}</span></td>
+                <td style="width: 20%;">Page</td>
+                <td><span data-field="page_number">{{ page_number }}</span></td>
+                <td style="width: 20%;">Subject</td>
+                <td>Firmware update release</td>
+            </tr>
+        </table>
+
+        <h2 style="font-size: 24px;">Firmware update release 4.1.2:</h2>
+        <ul>
+            <li>Channel supervision when using HSR has been improved.</li>
+            <li>ARP table size increased to hold more client IPs.</li>
+            <li>The performance enhancement for system communication (MMS) event sending during extremely high event loads.</li>
+            <li>The visibility improvement of the files to be accessed with MMS file transfer.</li>
+            <li>Improved GOOSE sending performance at high application load, e.g. when using complex configuration.</li>
+            <li>Improved refreshing logic of current measurement value for Modbus protocol.</li>
+            <li>Improvement in the time stamp of the disturbance recording for protection relays, preventing that the Uo value is constantly zero in IEC 103 disturbance recording.</li>
+            <li>Improvement in the time stamp of the disturbance recording for preventing that minutes in the IEC 103 disturbance record might occasionally be incorrect.</li>
+            <li>The transmission handling of the disturbance recorder has been improved for IEC 103 protocol when uploading the data.</li>
+            <li>CRC check sum calculation improved for retransmitted variable-length messages with certain masters in IEC 103 protocol.</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 20px;">Supervision</h4>
+        <ul>
+            <li>Audit trail handling is improved during restart situation.</li>
+            <li>Improved failure tolerance of the file system for preventing a possible file opening failure, resulting in "File system error" on the Local HMI after restarting the relay.</li>
+            <li>Self-supervision coverage of the RAM memory has been improved.</li>
+            <li>Unnecessary warning is not any more generated by the self-supervision of the RTD measurements in REM615 motor protection relay.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: right;">
+        <h1 style="font-size: 48px; margin: 0;">ABB</h1>
+    </div>
+    <div style="margin-top: 100px;">
+        <h2 style="font-size: 24px;">Update procedure</h2>
+        <p>Firmware updates represent an integral part of ABB's life cycle management of distribution protection and control relays. The updates ensure optimized usability throughout the relay's entire life cycle by offering the latest improvements. The ideal time for a firmware update would be at device commissioning, during periodical testing or a maintenance break.</p>
+        <p>All 615 series IEC version 4.0 FP1 (E) product deliveries manufactured later than <span data-field="date_threshold">{{ date_threshold }}</span>, include the stated relay firmware update 4.1.8.</p>
+        <p>Please note that ABB will not be liable for any direct or indirect costs related to the firmware update procedure. The update procedure shall be performed at the sole responsibility of the possessor of the installed base.</p>
+    </div>
+</div>
+
+</body>
+</html>

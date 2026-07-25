@@ -1,0 +1,116 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .address-block { text-align: center; font-size: 0.9em; margin-bottom: 30px; }
+  .form-section { margin-bottom: 30px; }
+  .line-item-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; margin-bottom: 50px; }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <div style="font-size: 36px; font-weight: bold; margin-bottom: 5px;">THE COOK HOTEL</div>
+    <div style="font-size: 20px; font-weight: normal;">and Conference Center at LSU</div>
+  </div>
+  <div class="address-block">
+    <div style="font-size: 0.9em;">{{ employer.address_line_1 }}</div>
+    <div style="font-size: 0.9em;">{{ employer.city_state_zip }}</div>
+    <div style="font-size: 0.9em;">Telephone: {{ employer.phone }} | Telefax: {{ employer.fax }}</div>
+    <div style="font-size: 0.9em;">{{ employer.website }}</div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 18px; font-weight: bold;">CREDIT CARD AUTHORIZATION FORM</h2>
+  </div>
+
+  <div class="form-section">
+    <p>I authorize The Cook Hotel and Conference Center at LSU to charge my credit card for the following guest(s) and agree to pay according to my credit card agreement:</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div style="width: 30%;">Guest Name</div>
+      <div style="width: 20%;">Confirmation #</div>
+      <div style="width: 20%;">Arrival</div>
+      <div style="width: 30%;">Departure</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <div style="width: 30%; border-bottom: 1px solid #000;">{{ guest_name }}</div>
+      <div style="width: 20%; border-bottom: 1px solid #000;">{{ confirmation_number }}</div>
+      <div style="width: 20%; border-bottom: 1px solid #000;">{{ arrival_date }}</div>
+      <div style="width: 30%; border-bottom: 1px solid #000;">{{ departure_date }}</div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Additional Guest(s)</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <div style="width: 30%; border-bottom: 1px solid #000;">{{ additional_guest_name }}</div>
+      <div style="width: 20%; border-bottom: 1px solid #000;" data-field="additional_guest">{{ additional_guest }}</div>
+      <div style="width: 20%; border-bottom: 1px solid #000;" data-field="additional_guest_2">{{ additional_guest_2 }}</div>
+      <div style="width: 30%; border-bottom: 1px solid #000;" data-field="additional_guest_3">{{ additional_guest_3 }}</div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Room Rate (check one):</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <div style="width: 30%;"></div>
+      <div style="width: 20%; border-bottom: 1px solid #000;">{{ room_rate_deluxe }}</div>
+      <div style="width: 20%;"></div>
+      <div style="width: 30%;"></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <div style="width: 30%;"></div>
+      <div style="width: 20%; border-bottom: 1px solid #000;">{{ room_rate_suite }}</div>
+      <div style="width: 20%;"></div>
+      <div style="width: 30%;"></div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Card Holder Name</p>
+    <div style="border-bottom: 1px solid #000; width: 100%;">{{ card_holder_name }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Hosting Department</p>
+    <div style="border-bottom: 1px solid #000; width: 100%;">{{ hosting_department }}</div>
+  </div>
+
+  <div class="form-section">
+    <p>Hosting Individual</p>
+    <div style="border-bottom: 1px solid #000; width: 100%;">{{ hosting_individual }}</div>
+  </div>
+
+  <div class="form-section" style="display: flex; align-items: center; margin-top: 30px;">
+    <div style="width: 150px;">Telephone</div>
+    <div style="flex-grow: 1; border-bottom: 1px solid #000;">({{ phone_area }}) - {{ phone_number }}</div>
+  </div>
+
+  <div class="form-section" style="display: flex; align-items: center; margin-top: 20px;">
+    <div style="width: 150px;">Email Address</div>
+    <div style="flex-grow: 1; border-bottom: 1px solid #000;">{{ email_address }}</div>
+  </div>
+
+  <div class="form-section" style="display: flex; align-items: center; margin-top: 20px;">
+    <div style="width: 150px;">Credit Card Number</div>
+    <div style="flex-grow: 1; border-bottom: 1px solid #000;">{{ credit_card_number }}</div>
+    <div style="width: 100px; text-align: right;">Exp. Date: {{ expiration_date }} /</div>
+  </div>
+
+  <div class="form-section">
+    <p>Card Holder Signature</p>
+    <div class="signature-line" style="width: 100%;" data-field="card_holder_signature">{{ card_holder_signature }}</div>
+  </div>
+
+  <div style="font-size: 0.85em; margin-top: 50px;">
+    <p style="margin: 0;">* Please be advised, the guest(s) named above will be asked to provide a form of photo of identification and personal credit card to cover any incidentals they incur at check-in.</p>
+  </div>
+</div>

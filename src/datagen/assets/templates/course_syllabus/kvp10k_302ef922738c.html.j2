@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Syllabus Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; }
+  .header-title { font-size: 24pt; font-weight: bold; margin-bottom: 5px; }
+  .header-subtitle { font-size: 14pt; margin-bottom: 20px; }
+  .section-heading { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .sub-heading { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .content-paragraph { font-size: 11pt; line-height: 1.5; margin-bottom: 10px; }
+  .list-item { font-size: 11pt; line-height: 1.5; margin-bottom: 5px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 20px; font-size: 11pt; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; font-weight: bold; }
+  .schedule-table td:nth-child(1), .schedule-table td:nth-child(2), .schedule-table td:nth-child(3) { text-align: center; }
+  .footer { text-align: center; font-size: 10pt; margin-top: 50px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center;">
+    <div class="header-title">BIO1030 Biology Today</div>
+    <div class="header-subtitle">Course Syllabus</div>
+    <div style="font-size: 12pt;">Winter Semester, {{ current_year }}</div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="font-size: 11pt;">Instructor: Dr. {{ instructor_name }}</div>
+    <div style="font-size: 11pt;">Building and office number: {{ building_office }}</div>
+    <div style="font-size: 11pt;">Office phone: {{ office_phone }}</div>
+    <div style="font-size: 11pt;">Email address: <a href="mailto:{{ instructor_email }}">{{ instructor_email }}</a></div>
+    <div style="font-size: 11pt;">Web address: <a href="{{ course_website }}">{{ course_website }}</a></div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">CLASS MEETING LOCATION</div>
+    <div class="content-paragraph">
+      {{ meeting_location }}
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-heading">CLASS MEETING TIME</div>
+    <div class="content-paragraph">
+      {{ meeting_days }} from {{ start_time }} – {{ end_time }}
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="section-heading">COURSE DESCRIPTION AND OBJECTIVES</div>
+    <div class="content-paragraph">
+      {{ course_description }}
+    </div>
+    <div class="content-paragraph">
+      {{ objectives_summary }}
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="sub-heading">Students will be able describe:</div>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      {% for item in learning_outcomes %}
+        <li class="list-item">{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">COURSE PREREQUISITES</div>
+    <div class="content-paragraph">
+      {{ prerequisites_statement }}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 0;">
+    <div class="section-heading">OFFICE HOURS</div>
+    <div class="content-paragraph">
+      {{ office_hours_details }}
+    </div>
+    <div class="content-paragraph">
+      {{ appointment_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">EXAMS</div>
+    <div class="content-paragraph">
+      {{ exam_details }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">COURSE CREDITS</div>
+    <div class="content-paragraph">
+      {{ credit_info }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">TEXT BOOK AND LECTURE SLIDES:</div>
+    <div class="content-paragraph">
+      {{ textbook_info }}
+    </div>
+    <div class="content-paragraph">
+      {{ slides_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">EXAM DATES</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exam in exam_dates %}
+        <tr>
+          <td>{{ exam.exam_name }}</td>
+          <td>{{ exam.date }}</td>
+          <td>{{ exam.time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="content-paragraph" style="font-size: 10pt;">
+      {{ final_exam_note }}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 0;">
+    <div class="section-heading">EXAM FORMATS</div>
+    <div class="content-paragraph">
+      {{ exam_format_details }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">GRADING</div>
+    <div class="content-paragraph">
+      {{ grading_policy }}
+    </div>
+    <div class="content-paragraph">
+      {{ total_point_distribution_intro }}
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Points</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for component in grading_components %}
+        <tr>
+          <td>{{ component.name }}</td>
+          <td>{{ component.points }}</td>
+          <td>{{ component.weight }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="content-paragraph">
+      {{ grade_scale_intro }}
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Total Points</th>
+          <th>% of available marks</th>
+          <th>Final Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for grade in grade_scale %}
+        <tr>
+          <td>{{ grade.points_range }}</td>
+          <td>{{ grade.percentage }}</td>
+          <td>{{ grade.letter_grade }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="content-paragraph" style="margin-top: 15px;">
+      {{ grade_policy_notes }}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 0;">
+    <div class="section-heading">STUDENT ACCOMMODATIONS</div>
+    <div class="content-paragraph">
+      {{ accommodations_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">CHEATING</div>
+    <div class="content-paragraph">
+      {{ cheating_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">POSTING OF EXAM GRADES</div>
+    <div class="content-paragraph">
+      {{ grade_posting_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">SPECIAL CONSIDERATIONS FOR INDIVIDUALS WITH DISABILITIES</div>
+    <div class="content-paragraph">
+      {{ disability_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">RELIGIOUS HOLIDAY CONFLICTS</div>
+    <div class="content-paragraph">
+      {{ religious_holiday_policy }}
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="section-heading">ADD/DROP POLICY</div>
+    <div class="content-paragraph">
+      {{ add_drop_policy }}
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 0;">
+    <div class="section-heading">SCHEDULE OF TOPICS COVERED</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Day of the week</th>
+          <th>Book Chapter</th>
+          <th>Topic</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for topic in topics %}
+        <tr>
+          <td>{{ topic.date }}</td>
+          <td>{{ topic.day_of_week }}</td>
+          <td>{{ topic.book_chapter }}</td>
+          <td>{{ topic.topic }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 50px;">
+    <div class="footer">Page {{ page_number }}</div>
+  </div>
+</div>
+
+</body>
+</html>

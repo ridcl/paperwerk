@@ -1,0 +1,355 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .form-group { margin-bottom: 15px; }
+  .inline-fields { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .field-label { font-weight: bold; display: block; margin-bottom: 3px; }
+  .field-input { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .radio-group label { margin-right: 15px; }
+  .signature-line { display: flex; justify-content: space-between; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <h1 style="text-align: center;">Information for Students Seeking Re-Admission to Meredith College</h1>
+  <p>A degree-seeking student who was previously enrolled at Meredith but did not complete the semester immediately preceding the term she wishes to enter must apply for re-admission to the College. Exceptions are students on approved leave of absence and those visiting another institution with the approval of Meredith College. Readmission is not guaranteed.</p>
+  <p><strong>Office of Admissions</strong><br>
+  <span data-field="office_address_line1">{{ office_address_line1 }}</span><br>
+  <span data-field="office_address_line2">{{ office_address_line2 }}</span></p>
+  <p>FAX: <span data-field="office_fax">{{ office_fax }}</span><br>
+  <span data-field="office_email">{{ office_email }}</span></p>
+
+  <p>A complete application includes:</p>
+  <ul>
+    <li>Completed and signed application;</li>
+    <li>$40 non-refundable application fee or acceptable fee waiver;</li>
+    <li>A 250 word essay that includes an explanation of activities during time away from Meredith College and a plan for success at Meredith;</li>
+    <li>If other colleges or universities were attended since Meredith College, an official transcript from each institution must be submitted;</li>
+    <li>School Report: School Official Recommendation form, completed and signed by the most recent institution attended since Meredith College (if applicable)</li>
+  </ul>
+
+  <p><strong>Additional Conditions for Re-Admission</strong></p>
+  <ul>
+    <li>In addition to the application materials required from the student, the Office of Admissions will obtain other credentials and recommendations from a variety of campus constituencies. The student's previous academic and personal records will also be considered.</li>
+    <li>If adequate health information is not on file at the college, a student accepted for re-admission is required to submit the necessary medical records.</li>
+  </ul>
+
+  <div style="text-align: right; margin-top: 100px;">
+    <h2 style="font-size: 30px;">MEREDITH</h2>
+    <h3 style="font-size: 18px;">COLLEGE</h3>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 30px;">MEREDITH</h2>
+      <h3 style="font-size: 18px;">COLLEGE</h3>
+    </div>
+    <div style="text-align: right;">
+      <p>Office of Admissions<br>
+      <span data-field="office_address_line1">{{ office_address_line1 }}</span><br>
+      <span data-field="office_address_line2">{{ office_address_line2 }}</span></p>
+      <p>(919) 760-8581 or 1-800-MEREDITH • FAX (919) 760-2348<br>
+      <span data-field="office_email">{{ office_email }}</span></p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 40px;">Application Undergraduate Re-Admission</h2>
+  <p>Application Status (please respond to each statement or question)</p>
+
+  <div class="form-group">
+    <label class="field-label">I am applying for re-admission beginning in the</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="start_term" value="fall"> Fall</label>
+      <label><input type="radio" name="start_term" value="spring"> Spring</label>
+      <label><input type="radio" name="start_term" value="summer"> Summer</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">I plan to reside:</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="residence" value="on_campus"> On-Campus, if eligible</label>
+      <label><input type="radio" name="residence" value="off_campus"> Off-Campus (Commuter), if eligible</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Will you be applying for financial aid?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="financial_aid" value="yes"> Yes</label>
+      <label><input type="radio" name="financial_aid" value="no"> No</label>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">Personal Information (All information provided is kept strictly confidential and only used by Meredith College)</h3>
+
+  <div class="form-group">
+    <label class="field-label">Legal name</label>
+    <div class="inline-fields">
+      <span data-field="legal_name_first" class="field-input">{{ legal_name_first }}</span>
+      <span data-field="legal_name_middle" class="field-input">{{ legal_name_middle }}</span>
+      <span data-field="legal_name_last" class="field-input">{{ legal_name_last }}</span>
+      <span data-field="legal_name_preferred" class="field-input">{{ legal_name_preferred }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">U.S. Social Security number</label>
+    <div class="inline-fields">
+      <span data-field="ssn_part1" class="field-input">{{ ssn_part1 }}</span> - <span data-field="ssn_part2" class="field-input">{{ ssn_part2 }}</span> - <span data-field="ssn_part3" class="field-input">{{ ssn_part3 }}</span> (optional)
+      <span data-field="dob_month" class="field-input">{{ dob_month }}</span> / <span data-field="dob_day" class="field-input">{{ dob_day }}</span> / <span data-field="dob_year" class="field-input">{{ dob_year }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Permanent address</label>
+    <div class="inline-fields">
+      <span data-field="address_street" class="field-input">{{ address_street }}</span>, <span data-field="address_city" class="field-input">{{ address_city }}</span> <span data-field="address_state" class="field-input">{{ address_state }}</span> <span data-field="address_zip" class="field-input">{{ address_zip }}</span>
+      <span data-field="address_country" class="field-input">{{ address_country }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Mailing address (if different)</label>
+    <div class="inline-fields">
+      <span data-field="mailing_address_street" class="field-input">{{ mailing_address_street }}</span>, <span data-field="mailing_address_city" class="field-input">{{ mailing_address_city }}</span> <span data-field="mailing_address_state" class="field-input">{{ mailing_address_state }}</span> <span data-field="mailing_address_zip" class="field-input">{{ mailing_address_zip }}</span>
+      <span data-field="mailing_address_country" class="field-input">{{ mailing_address_country }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">E-mail</label>
+    <div class="inline-fields">
+      <span data-field="email_address" class="field-input">{{ email_address }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Employer</label>
+    <div class="inline-fields">
+      <span data-field="employer_name" class="field-input">{{ employer_name }}</span>
+      <span data-field="employer_job_title" class="field-input">{{ employer_job_title }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Type of business</label>
+    <div class="inline-fields">
+      <span data-field="business_type" class="field-input">{{ business_type }}</span>
+    </div>
+  </div>
+
+  <p>The Office of Admissions will contact you a number of ways regarding your application, however, we wish to know your preference for how we communicate with you. Please check all that apply:</p>
+  <div class="radio-group">
+    <label><input type="checkbox" name="contact_pref" value="email"> Email</label>
+    <label><input type="checkbox" name="contact_pref" value="cell_phone"> Cell Phone</label>
+    <label><input type="checkbox" name="contact_pref" value="home_phone"> Home Phone</label>
+    <label><input type="checkbox" name="contact_pref" value="text_message"> Text Message</label>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Are you a veteran?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="veteran" value="yes"> Yes</label>
+      <label><input type="radio" name="veteran" value="no"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Are you a North Carolina resident?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="nc_resident" value="yes"> Yes</label>
+      <label><input type="radio" name="nc_resident" value="no"> No</label>
+    </div>
+  </div>
+
+  <p>If other, please specify country & complete applicable questions below.</p>
+
+  <h3 style="margin-top: 30px;">Educational Institutions Attended Since Leaving Meredith</h3>
+  <p>Please list all colleges or universities you've attended since leaving Meredith, also include attendance dates:</p>
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="padding: 8px; text-align: left; width: 50%;">College or University Attended</th>
+        <th style="padding: 8px; text-align: left; width: 50%;">Attendance Dates (ex: fall 2009; fall 2011-spring 2011)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(5) %}
+      <tr style="border-bottom: 1px solid #ccc;">
+        <td style="padding: 8px;"><span data-field="institution_name[{{ i }}]">{{ institution_name[i] }}</span></td>
+        <td style="padding: 8px;"><span data-field="institution_dates[{{ i }}]">{{ institution_dates[i] }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <label class="field-label">If you are able, please indicate the name of your academic advisor while at Meredith College:</label>
+    <div class="inline-fields">
+      <span data-field="advisor_name" class="field-input">{{ advisor_name }}</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 30px;">Character Statement (Attach additional sheet(s) if needed.)</h3>
+  <p>1. Have you ever been found responsible for a disciplinary violation at your school, whether related to academic misconduct or behavioral misconduct, that resulted in your probation, suspension, removal, dismissal or expulsion from your institution? <span data-field="char_statement_q1_yes">{{ char_statement_q1_yes }}</span> <span data-field="char_statement_q1_no">{{ char_statement_q1_no }}</span></p>
+  <p>2. Have you ever been convicted of a misdemeanor, felony or other crime? <span data-field="char_statement_q2_yes">{{ char_statement_q2_yes }}</span> <span data-field="char_statement_q2_no">{{ char_statement_q2_no }}</span></p>
+  <p>If you answered yes to either or both questions, please attach an explanation outlining the approximate date and circumstances of each incident.</p>
+
+  <h3 style="margin-top: 30px;">Essay</h3>
+  <p>A 250 word essay that includes an explanation of activities during time away from Meredith College and a plan for success at Meredith.</p>
+
+  <h3 style="margin-top: 30px;">The Honor System</h3>
+  <p>The Honor System is a long-standing tradition and a basis for all life at Meredith College. Based upon the principles of integrity, fulfillment of community obligations and responsibility to others, the purpose of the Honor System is to maintain an atmosphere of trust and honor throughout the Meredith community. The willingness of each student to accept full responsibility for her actions and to abide by the standards set by her peers is imperative to a community of mutual trust. Every student who attends Meredith must commit herself to abide by and uphold Meredith's Honor Code and system of self-government through signing the Honor Pledge during orientation. When you sign your application to Meredith College, you indicate that you are aware of the importance of the Honor System and, if enrolled, will be responsible for ensuring that the Honor System is at all times the standard for individual and community behavior.</p>
+
+  <h3 style="margin-top: 30px;">Condition of Re-Admission</h3>
+  <p>This application is made with the understanding and agreement that the applicant, upon admission, will be subject to the rules and regulations of Meredith College governing admission and retention of students, as outlined in the catalogue statement titled "Condition of Admission."</p>
+
+  <h3 style="margin-top: 30px;">Student Statement</h3>
+  <p>I certify that all information given in this application is complete and accurate. By signing and submitting this application, I indicate my willingness to accept both the responsibilities and privileges of the Honor System of Meredith College and all other conditions of admission.</p>
+
+  <div class="signature-line">
+    <div>
+      <p>Signature:</p>
+      <div style="border-bottom: 1px solid #000; width: 200px;" data-field="signature">{{ signature }}</div>
+    </div>
+    <div>
+      <p>Date:</p>
+      <div style="border-bottom: 1px solid #000; width: 150px;" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+
+  <p style="margin-top: 50px;">Enclose a $40 non-refundable application fee along with Application. (Credit card payment available by calling the Office of Admissions at 1-800-MEREDITH)</p>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h2 style="font-size: 30px;">MEREDITH</h2>
+      <h3 style="font-size: 18px;">COLLEGE</h3>
+    </div>
+    <div style="text-align: right;">
+      <p>Office of Admissions<br>
+      <span data-field="office_address_line1">{{ office_address_line1 }}</span><br>
+      <span data-field="office_address_line2">{{ office_address_line2 }}</span></p>
+      <p>(919) 760-8581 or 1-800-MEREDITH • FAX (919) 760-2348<br>
+      <span data-field="office_email">{{ office_email }}</span></p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 40px;">School Report: School Official Recommendation (if applicable)</h2>
+
+  <p>To the Applicant:</p>
+  <p>Please complete the shaded box below and give this form to the <span data-field="recipient_title">{{ recipient_title }}</span></p>
+
+  <div class="form-group">
+    <label class="field-label">Name</label>
+    <div class="inline-fields">
+      <span data-field="recommender_first" class="field-input">{{ recommender_first }}</span>
+      <span data-field="recommender_middle" class="field-input">{{ recommender_middle }}</span>
+      <span data-field="recommender_last" class="field-input">{{ recommender_last }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Address</label>
+    <div class="inline-fields">
+      <span data-field="recommender_address_street" class="field-input">{{ recommender_address_street }}</span>, <span data-field="recommender_address_city" class="field-input">{{ recommender_address_city }}</span> <span data-field="recommender_address_state" class="field-input">{{ recommender_address_state }}</span> <span data-field="recommender_address_zip" class="field-input">{{ recommender_address_zip }}</span>
+      <span data-field="recommender_address_country" class="field-input">{{ recommender_address_country }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Applying for:</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="applying_for_term" value="august"> August</label>
+      <label><input type="radio" name="applying_for_term" value="january"> January</label>
+      <span data-field="applying_year" class="field-input">{{ applying_year }}</span>
+    </div>
+  </div>
+
+  <p><strong>To the College Official:</strong></p>
+  <ol>
+    <li>Complete any information requested on the <span data-field="form_side">{{ form_side }}</span> of this form.</li>
+    <li>Return this form directly to the Office of Admissions. This information will be held in confidence.</li>
+  </ol>
+
+  <div class="form-group">
+    <label class="field-label">1. Is the student in good standing and eligible to return to your institution?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="good_standing" value="yes"> YES</label>
+      <label><input type="radio" name="good_standing" value="no"> NO</label>
+      <label><input type="radio" name="good_standing" value="not_applicable"> "NO," please state reason</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">2. Has the applicant ever been found responsible for a disciplinary violation at your school, whether related to academic misconduct or behavioral misconduct, that resulted in the applicant's probation, suspension, removal, dismissal, or expulsion from your institution?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="disciplinary_violation_yes"> YES</label>
+      <label><input type="radio" name="disciplinary_violation_no"> NO</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">b. To your knowledge, has the applicant ever been convicted of a misdemeanor, felony or other crime?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="criminal_conviction_yes"> YES</label>
+      <label><input type="radio" name="criminal_conviction_no"> NO</label>
+    </div>
+  </div>
+
+  <p>If you answered yes to either or both questions, please attach a separate sheet of paper or use your written recommendation to give the approximate date of each incident and explain the circumstances.</p>
+
+  <div class="form-group">
+    <label class="field-label">3. On what basis is this information given?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="basis_records" value="records"> Records</label>
+      <label><input type="radio" name="basis_knowledge" value="knowledge"> Personal knowledge of student</label>
+      <label><input type="radio" name="basis_other"> Other (please specify)</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">4. Do you recommend this student for admission to Meredith College?</label>
+    <div class="inline-fields">
+      <label><input type="radio" name="recommendation_yes"> YES</label>
+      <label><input type="radio" name="recommendation_no"> NO</label>
+      <label><input type="radio" name="recommendation_dont_know"> Do not know student</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="field-label">Comments (attach additional page as needed):</label>
+    <div style="border-bottom: 1px solid #000; height: 80px;" data-field="comments">{{ comments }}</div>
+  </div>
+
+  <div class="signature-line">
+    <div>
+      <p>Signature</p>
+      <div style="border-bottom: 1px solid #000; width: 200px;" data-field="signature_2">{{ signature_2 }}</div>
+    </div>
+    <div>
+      <p>Title</p>
+      <div style="border-bottom: 1px solid #000; width: 200px;" data-field="title">{{ title }}</div>
+    </div>
+    <div>
+      <p>Date</p>
+      <div style="border-bottom: 1px solid #000; width: 150px;" data-field="date_2">{{ date_2 }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 100px; text-align: center;">
+    <h2 style="font-size: 30px;">MEREDITH</h2>
+    <h3 style="font-size: 18px;">COLLEGE</h3>
+  </div>
+</div>

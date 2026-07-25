@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Disability Information and Verification Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-logo { text-align: center; margin-bottom: 20px; }
+  .header-logo img { max-width: 200px; height: auto; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-label { display: inline-block; width: 150px; margin-bottom: 10px; }
+  .form-field { border-bottom: 1px solid #000; display: inline-block; width: calc(100% - 160px); margin-bottom: 10px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .line-item-table td { padding: 8px 0; border-bottom: 1px solid #ccc; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 30px; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <h1 style="text-align: center;">Kalamazoo College Disability Information and Verification Form</h1>
+
+  <div class="section-title">Information and Instructions:</div>
+  <p>Kalamazoo College Disability Services provides accommodations for students with diagnosed disabilities. The documentation provided regarding the diagnosis must demonstrate a disability covered under Section 504 of the Rehabilitation Act of 1973 and Title II of the Americans with Disabilities Act (ADA) of 1990. The ADA defines a disability as a physical or mental impairment that substantially limits one or more major life activities.</p>
+  <p>In order to register with Disability Services, students are required to provide documentation from a qualified professional. Depending on the nature of a student's disability, qualified professionals could include a medical doctor, psychiatrist, or licensed psychologist. All documentation must be current (within the last three years) and relevant.</p>
+  <p>To facilitate the documentation process, Disability Services has provided this Disability Information and Verification form to be completed by the student (Section 1) and a qualified professional (Sections 2-3). As you complete the form and complete the other documentation, please note the following:</p>
+  <ol>
+    <li>Thoroughly complete the form. Inadequate information, incomplete answers and/or illegible handwriting will delay the eligibility review process by necessitating follow up contact for clarification.</li>
+    <li>The qualified medical professional should attach any reports which provide information regarding the disability diagnosis (e.g. psychoeducational assessments, neuropsychological test results, etc.). If a comprehensive diagnostic report is available that provides the requested information, copies of that report can be submitted for documentation in lieu of this form as long as the report addresses and answers the questions included in this form.</li>
+    <li>Individualized Educational Programs (IEPs), 504 plans, and letters from qualified medical professional(s) may also be submitted but are not sufficient documentation without the completion of this form OR submission of comprehensive diagnostic reports.</li>
+  </ol>
+  <p>The information that the student/caregiver provides, and all documentation will be kept in a student's confidential file in the Dean of Students Office. The information will only be disclosed with the student's permission or otherwise permitted or required by law. The student will have access to the information in the file.</p>
+</div>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <h1 style="text-align: center;">Kalamazoo College Disability Information and Verification Form</h1>
+
+  <p>Please submit the signed and completed form and other documentation to:</p>
+  <p>
+    <span data-field="contact_name">{{ contact_name }}</span><br>
+    <span data-field="contact_title">{{ contact_title }}</span><br>
+    <span data-field="contact_address_line1">{{ contact_address_line1 }}</span><br>
+    <span data-field="contact_city_state_zip">{{ contact_city_state_zip }}</span>
+  </p>
+  <p>Fax: <span data-field="contact_fax">{{ contact_fax }}</span></p>
+  <p>Email: <span data-field="contact_email">{{ contact_email }}</span> (PDF documents only)</p>
+  <p>If you have any questions regarding this form or documentation, please call <span data-field="contact_phone">{{ contact_phone }}</span>.</p>
+
+  <div class="section-title">SECTION 1: STUDENT INFORMATION (to be completed by the student)</div>
+  <table style="width: 100%;">
+    <tr>
+      <td class="form-label">First Name:</td>
+      <td class="form-field"><span data-field="student.first_name">{{ student.first_name }}</span></td>
+      <td class="form-label">Last:</td>
+      <td class="form-field"><span data-field="student.last_name">{{ student.last_name }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Date of Birth:</td>
+      <td class="form-field"><span data-field="student.dob">{{ student.dob }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Status (check one):</td>
+      <td class="form-field"><span data-field="student.status_check">{{ student.status_check }}</span></td>
+      <td class="form-label"></td>
+      <td class="form-field"><span data-field="student.admitted_status">{{ student.admitted_status }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Cell Phone (domestic only):</td>
+      <td class="form-field"><span data-field="student.cell_phone">{{ student.cell_phone }}</span></td>
+      <td class="form-label"></td>
+      <td class="form-field"></td>
+    </tr>
+    <tr>
+      <td class="form-label">Campus Box (current student):</td>
+      <td class="form-field"><span data-field="student.campus_box">{{ student.campus_box }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Permanent Home Address:</td>
+      <td class="form-field"><span data-field="student.home_address">{{ student.home_address }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">K Email Address:</td>
+      <td class="form-field"><span data-field="student.k_email">{{ student.k_email }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Other Email Address:</td>
+      <td class="form-field"><span data-field="student.other_email">{{ student.other_email }}</span></td>
+    </tr>
+</div>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <div class="section-title">SECTION 2: DIAGNOSTIC INFORMATION (to be completed by a qualified professional)</div>
+  <p>The College requests information relevant to the accommodation(s) being sought in this instance only. Information that is not relevant to this specific request is not necessary.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td class="form-label">1. First date of contact with student:</td>
+      <td class="form-field"><span data-field="diag.first_contact_date">{{ diag.first_contact_date }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">2. Last date of contact with student:</td>
+      <td class="form-field"><span data-field="diag.last_contact_date">{{ diag.last_contact_date }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">3. Is the student currently under your care?</td>
+      <td class="form-field"><span data-field="diag.currently_under_care">{{ diag.currently_under_care }}</span></td>
+      <td class="form-label"></td>
+      <td class="form-field"><span data-field="diag.not_currently_under_care">{{ diag.not_currently_under_care }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">4. Primary Diagnosis and Date of Diagnosis:</td>
+      <td class="form-field"><span data-field="diag.primary_diagnosis">{{ diag.primary_diagnosis }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">5. Secondary Diagnosis and Date of Diagnosis:</td>
+      <td class="form-field"><span data-field="diag.secondary_diagnosis">{{ diag.secondary_diagnosis }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">6. What is the severity of the condition?</td>
+      <td class="form-field"><span data-field="diag.severity_mild">{{ diag.severity_mild }}</span></td>
+      <td class="form-label">Mild</td>
+      <td class="form-field"><span data-field="diag.severity_moderate">{{ diag.severity_moderate }}</span></td>
+      <td class="form-label">Moderate</td>
+      <td class="form-field"><span data-field="diag.severity_severe">{{ diag.severity_severe }}</span></td>
+      <td class="form-label">Severe</td>
+    </tr>
+    <tr>
+      <td class="form-label">7. Describe the symptoms that meet the criteria for this diagnosis. Please attach test results and diagnostic reports.</td>
+      <td class="form-field"><span data-field="diag.symptom_description">{{ diag.symptom_description }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">8. If applicable, describe relevant history of remediation (i.e. pharmacological, medical devices, etc. Include information about current medications and other treatment plans, including the effectiveness of such efforts and potential adverse side effects.</td>
+      <td class="form-field"><span data-field="diag.remediation_history">{{ diag.remediation_history }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">9. Describe the expected duration and/or progression of the disorder. If applicable, please include information about fluctuation of symptoms.</td>
+      <td class="form-field"><span data-field="diag.duration_progression">{{ diag.duration_progression }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">10. What is your DSM-V multi-axial diagnosis and ICD code(s) for this student?</td>
+      <td class="form-field"><span data-field="diag.dsm_icd_code">{{ diag.dsm_icd_code }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <div class="section-title">SECTION 2 (Continued)</div>
+  <p>11. In addition to the DSM-V criteria, how did you arrive at your diagnosis? Please check all relevant items below, adding brief notes you think might be helpful to use as we determine which accommodations and services are appropriate for the student.</p>
+  <table style="width: 100%;">
+    <tr>
+      <td class="form-label" style="width: 100%;">Structured or unstructured interviews with the student:</td>
+      <td class="form-field"><span data-field="diag.interview_notes">{{ diag.interview_notes }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Interview with other persons:</td>
+      <td class="form-field"><span data-field="diag.other_person_notes">{{ diag.other_person_notes }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Behavioral observations:</td>
+      <td class="form-field"><span data-field="diag.behavioral_observations">{{ diag.behavioral_observations }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Developmental history:</td>
+      <td class="form-field"><span data-field="diag.developmental_history">{{ diag.developmental_history }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Educational history:</td>
+      <td class="form-field"><span data-field="diag.educational_history">{{ diag.educational_history }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Medical history:</td>
+      <td class="form-field"><span data-field="diag.medical_history">{{ diag.medical_history }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Neuro-psychological testing, including name(s) and date(s) of testing:</td>
+      <td class="form-field"><span data-field="diag.neuropsych_testing">{{ diag.neuropsych_testing }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Psycho-psychological testing, including name(s) and date(s) of testing:</td>
+      <td class="form-field"><span data-field="diag.psychopsych_testing">{{ diag.psychopsych_testing }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Standardized or non-standardized rating scales:</td>
+      <td class="form-field"><span data-field="diag.rating_scales">{{ diag.rating_scales }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label" style="width: 100%;">Other (please specify):</td>
+      <td class="form-field"><span data-field="diag.other_specifiy">{{ diag.other_specifiy }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <div class="section-title">SECTION 2 (Continued)</div>
+  <p>12. To the extent possible, please provide information about how the student's condition may affect the student with respect to various life activities.</p>
+
+  <table class="line-item-table">
+    <thead>
+      <tr>
+        <td style="width: 20%;">Life Activity</td>
+        <td style="width: 10%;">No Impact</td>
+        <td style="width: 10%;">Mild Impact</td>
+        <td style="width: 10%;">Moderate Impact</td>
+        <td style="width: 10%;">Severe Impact</td>
+        <td style="width: 10%;">Don't Know</td>
+        <td style="width: 10%;">N/A</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Seeing</td><td><span data-field="life_activity_seeing_no">{{ life_activity_seeing_no }}</span></td><td><span data-field="life_activity_seeing_mild">{{ life_activity_seeing_mild }}</span></td><td><span data-field="life_activity_seeing_moderate">{{ life_activity_seeing_moderate }}</span></td><td><span data-field="life_activity_seeing_severe">{{ life_activity_seeing_severe }}</span></td><td><span data-field="life_activity_seeing_dk">{{ life_activity_seeing_dk }}</span></td><td><span data-field="life_activity_seeing_na">{{ life_activity_seeing_na }}</span></td></tr>
+      <tr><td>Hearing</td><td><span data-field="life_activity_hearing_no">{{ life_activity_hearing_no }}</span></td><td><span data-field="life_activity_hearing_mild">{{ life_activity_hearing_mild }}</span></td><td><span data-field="life_activity_hearing_moderate">{{ life_activity_hearing_moderate }}</span></td><td><span data-field="life_activity_hearing_severe">{{ life_activity_hearing_severe }}</span></td><td><span data-field="life_activity_hearing_dk">{{ life_activity_hearing_dk }}</span></td><td><span data-field="life_activity_hearing_na">{{ life_activity_hearing_na }}</span></td></tr>
+      <tr><td>Speaking</td><td><span data-field="life_activity_speaking_no">{{ life_activity_speaking_no }}</span></td><td><span data-field="life_activity_speaking_mild">{{ life_activity_speaking_mild }}</span></td><td><span data-field="life_activity_speaking_moderate">{{ life_activity_speaking_moderate }}</span></td><td><span data-field="life_activity_speaking_severe">{{ life_activity_speaking_severe }}</span></td><td><span data-field="life_activity_speaking_dk">{{ life_activity_speaking_dk }}</span></td><td><span data-field="life_activity_speaking_na">{{ life_activity_speaking_na }}</span></td></tr>
+      <tr><td>Sitting</td><td><span data-field="life_activity_sitting_no">{{ life_activity_sitting_no }}</span></td><td><span data-field="life_activity_sitting_mild">{{ life_activity_sitting_mild }}</span></td><td><span data-field="life_activity_sitting_moderate">{{ life_activity_sitting_moderate }}</span></td><td><span data-field="life_activity_sitting_severe">{{ life_activity_sitting_severe }}</span></td><td><span data-field="life_activity_sitting_dk">{{ life_activity_sitting_dk }}</span></td><td><span data-field="life_activity_sitting_na">{{ life_activity_sitting_na }}</span></td></tr>
+      <tr><td>Standing</td><td><span data-field="life_activity_standing_no">{{ life_activity_standing_no }}</span></td><td><span data-field="life_activity_standing_mild">{{ life_activity_standing_mild }}</span></td><td><span data-field="life_activity_standing_moderate">{{ life_activity_standing_moderate }}</span></td><td><span data-field="life_activity_standing_severe">{{ life_activity_standing_severe }}</span></td><td><span data-field="life_activity_standing_dk">{{ life_activity_standing_dk }}</span></td><td><span data-field="life_activity_standing_na">{{ life_activity_standing_na }}</span></td></tr>
+      <tr><td>Walking</td><td><span data-field="life_activity_walking_no">{{ life_activity_walking_no }}</span></td><td><span data-field="life_activity_walking_mild">{{ life_activity_walking_mild }}</span></td><td><span data-field="life_activity_walking_moderate">{{ life_activity_walking_moderate }}</span></td><td><span data-field="life_activity_walking_severe">{{ life_activity_walking_severe }}</span></td><td><span data-field="life_activity_walking_dk">{{ life_activity_walking_dk }}</span></td><td><span data-field="life_activity_walking_na">{{ life_activity_walking_na }}</span></td></tr>
+      <tr><td>Breathing</td><td><span data-field="life_activity_breathing_no">{{ life_activity_breathing_no }}</span></td><td><span data-field="life_activity_breathing_mild">{{ life_activity_breathing_mild }}</span></td><td><span data-field="life_activity_breathing_moderate">{{ life_activity_breathing_moderate }}</span></td><td><span data-field="life_activity_breathing_severe">{{ life_activity_breathing_severe }}</span></td><td><span data-field="life_activity_breathing_dk">{{ life_activity_breathing_dk }}</span></td><td><span data-field="life_activity_breathing_na">{{ life_activity_breathing_na }}</span></td></tr>
+      <tr><td>Eating</td><td><span data-field="life_activity_eating_no">{{ life_activity_eating_no }}</span></td><td><span data-field="life_activity_eating_mild">{{ life_activity_eating_mild }}</span></td><td><span data-field="life_activity_eating_moderate">{{ life_activity_eating_moderate }}</span></td><td><span data-field="life_activity_eating_severe">{{ life_activity_eating_severe }}</span></td><td><span data-field="life_activity_eating_dk">{{ life_activity_eating_dk }}</span></td><td><span data-field="life_activity_eating_na">{{ life_activity_eating_na }}</span></td></tr>
+      <tr><td>Sleeping</td><td><span data-field="life_activity_sleeping_no">{{ life_activity_sleeping_no }}</span></td><td><span data-field="life_activity_sleeping_mild">{{ life_activity_sleeping_mild }}</span></td><td><span data-field="life_activity_sleeping_moderate">{{ life_activity_sleeping_moderate }}</span></td><td><span data-field="life_activity_sleeping_severe">{{ life_activity_sleeping_severe }}</span></td><td><span data-field="life_activity_sleeping_dk">{{ life_activity_sleeping_dk }}</span></td><td><span data-field="life_activity_sleeping_na">{{ life_activity_sleeping_na }}</span></td></tr>
+      <tr><td>Lifting</td><td><span data-field="life_activity_lifting_no">{{ life_activity_lifting_no }}</span></td><td><span data-field="life_activity_lifting_mild">{{ life_activity_lifting_mild }}</span></td><td><span data-field="life_activity_lifting_moderate">{{ life_activity_lifting_moderate }}</span></td><td><span data-field="life_activity_lifting_severe">{{ life_activity_lifting_severe }}</span></td><td><span data-field="life_activity_lifting_dk">{{ life_activity_lifting_dk }}</span></td><td><span data-field="life_activity_lifting_na">{{ life_activity_lifting_na }}</span></td></tr>
+      <tr><td>Performing manual tasks</td><td><span data-field="life_activity_manual_tasks_no">{{ life_activity_manual_tasks_no }}</span></td><td><span data-field="life_activity_manual_tasks_mild">{{ life_activity_manual_tasks_mild }}</span></td><td><span data-field="life_activity_manual_tasks_moderate">{{ life_activity_manual_tasks_moderate }}</span></td><td><span data-field="life_activity_manual_tasks_severe">{{ life_activity_manual_tasks_severe }}</span></td><td><span data-field="life_activity_manual_tasks_dk">{{ life_activity_manual_tasks_dk }}</span></td><td><span data-field="life_activity_manual_tasks_na">{{ life_activity_manual_tasks_na }}</span></td></tr>
+      <tr><td>Performing self-care tasks</td><td><span data-field="life_activity_self_care_no">{{ life_activity_self_care_no }}</span></td><td><span data-field="life_activity_self_care_mild">{{ life_activity_self_care_mild }}</span></td><td><span data-field="life_activity_self_care_moderate">{{ life_activity_self_care_moderate }}</span></td><td><span data-field="life_activity_self_care_severe">{{ life_activity_self_care_severe }}</span></td><td><span data-field="life_activity_self_care_dk">{{ life_activity_self_care_dk }}</span></td><td><span data-field="life_activity_self_care_na">{{ life_activity_self_care_na }}</span></td></tr>
+      <tr><td>Learning</td><td><span data-field="life_activity_learning_no">{{ life_activity_learning_no }}</span></td><td><span data-field="life_activity_learning_mild">{{ life_activity_learning_mild }}</span></td><td><span data-field="life_activity_learning_moderate">{{ life_activity_learning_moderate }}</span></td><td><span data-field="life_activity_learning_severe">{{ life_activity_learning_severe }}</span></td><td><span data-field="life_activity_learning_dk">{{ life_activity_learning_dk }}</span></td><td><span data-field="life_activity_learning_na">{{ life_activity_learning_na }}</span></td></tr>
+      <tr><td>Thinking</td><td><span data-field="life_activity_thinking_no">{{ life_activity_thinking_no }}</span></td><td><span data-field="life_activity_thinking_mild">{{ life_activity_thinking_mild }}</span></td><td><span data-field="life_activity_thinking_moderate">{{ life_activity_thinking_moderate }}</span></td><td><span data-field="life_activity_thinking_severe">{{ life_activity_thinking_severe }}</span></td><td><span data-field="life_activity_thinking_dk">{{ life_activity_thinking_dk }}</span></td><td><span data-field="life_activity_thinking_na">{{ life_activity_thinking_na }}</span></td></tr>
+      <tr><td>Concentrating</td><td><span data-field="life_activity_concentrating_no">{{ life_activity_concentrating_no }}</span></td><td><span data-field="life_activity_concentrating_mild">{{ life_activity_concentrating_mild }}</span></td><td><span data-field="life_activity_concentrating_moderate">{{ life_activity_concentrating_moderate }}</span></td><td><span data-field="life_activity_concentrating_severe">{{ life_activity_concentrating_severe }}</span></td><td><span data-field="life_activity_concentrating_dk">{{ life_activity_concentrating_dk }}</span></td><td><span data-field="life_activity_concentrating_na">{{ life_activity_concentrating_na }}</span></td></tr>
+      <tr><td>Managing external distractions</td><td><span data-field="life_activity_ext_distractions_no">{{ life_activity_ext_distractions_no }}</span></td><td><span data-field="life_activity_ext_distractions_mild">{{ life_activity_ext_distractions_mild }}</span></td><td><span data-field="life_activity_ext_distractions_moderate">{{ life_activity_ext_distractions_moderate }}</span></td><td><span data-field="life_activity_ext_distractions_severe">{{ life_activity_ext_distractions_severe }}</span></td><td><span data-field="life_activity_ext_distractions_dk">{{ life_activity_ext_distractions_dk }}</span></td><td><span data-field="life_activity_ext_distractions_na">{{ life_activity_ext_distractions_na }}</span></td></tr>
+      <tr><td>Managing internal distractions</td><td><span data-field="life_activity_int_distractions_no">{{ life_activity_int_distractions_no }}</span></td><td><span data-field="life_activity_int_distractions_mild">{{ life_activity_int_distractions_mild }}</span></td><td><span data-field="life_activity_int_distractions_moderate">{{ life_activity_int_distractions_moderate }}</span></td><td><span data-field="life_activity_int_distractions_severe">{{ life_activity_int_distractions_severe }}</span></td><td><span data-field="life_activity_int_distractions_dk">{{ life_activity_int_distractions_dk }}</span></td><td><span data-field="life_activity_int_distractions_na">{{ life_activity_int_distractions_na }}</span></td></tr>
+      <tr><td>Initiating to work (activating)</td><td><span data-field="life_activity_initiating_no">{{ life_activity_initiating_no }}</span></td><td><span data-field="life_activity_initiating_mild">{{ life_activity_initiating_mild }}</span></td><td><span data-field="life_activity_initiating_moderate">{{ life_activity_initiating_moderate }}</span></td><td><span data-field="life_activity_initiating_severe">{{ life_activity_initiating_severe }}</span></td><td><span data-field="life_activity_initiating_dk">{{ life_activity_initiating_dk }}</span></td><td><span data-field="life_activity_initiating_na">{{ life_activity_initiating_na }}</span></td></tr>
+      <tr><td>Sustaining focus</td><td><span data-field="life_activity_focus_no">{{ life_activity_focus_no }}</span></td><td><span data-field="life_activity_focus_mild">{{ life_activity_focus_mild }}</span></td><td><span data-field="life_activity_focus_moderate">{{ life_activity_focus_moderate }}</span></td><td><span data-field="life_activity_focus_severe">{{ life_activity_focus_severe }}</span></td><td><span data-field="life_activity_focus_dk">{{ life_activity_focus_dk }}</span></td><td><span data-field="life_activity_focus_na">{{ life_activity_focus_na }}</span></td></tr>
+      <tr><td>Remembering (memorizing)</td><td><span data-field="life_activity_memory_no">{{ life_activity_memory_no }}</span></td><td><span data-field="life_activity_memory_mild">{{ life_activity_memory_mild }}</span></td><td><span data-field="life_activity_memory_moderate">{{ life_activity_memory_moderate }}</span></td><td><span data-field="life_activity_memory_severe">{{ life_activity_memory_severe }}</span></td><td><span data-field="life_activity_memory_dk">{{ life_activity_memory_dk }}</span></td><td><span data-field="life_activity_memory_na">{{ life_activity_memory_na }}</span></td></tr>
+      <tr><td>Managing stress</td><td><span data-field="life_activity_stress_no">{{ life_activity_stress_no }}</span></td><td><span data-field="life_activity_stress_mild">{{ life_activity_stress_mild }}</span></td><td><span data-field="life_activity_stress_moderate">{{ life_activity_stress_moderate }}</span></td><td><span data-field="life_activity_stress_severe">{{ life_activity_stress_severe }}</span></td><td><span data-field="life_activity_stress_dk">{{ life_activity_stress_dk }}</span></td><td><span data-field="life_activity_stress_na">{{ life_activity_stress_na }}</span></td></tr>
+      <tr><td>Making/keeping appointments</td><td><span data-field="life_activity_appointments_no">{{ life_activity_appointments_no }}</span></td><td><span data-field="life_activity_appointments_mild">{{ life_activity_appointments_mild }}</span></td><td><span data-field="life_activity_appointments_moderate">{{ life_activity_appointments_moderate }}</span></td><td><span data-field="life_activity_appointments_severe">{{ life_activity_appointments_severe }}</span></td><td><span data-field="life_activity_appointments_dk">{{ life_activity_appointments_dk }}</span></td><td><span data-field="life_activity_appointments_na">{{ life_activity_appointments_na }}</span></td></tr>
+      <tr><td>Submitting assignments in a timely manner</td><td><span data-field="life_activity_submission_no">{{ life_activity_submission_no }}</span></td><td><span data-field="life_activity_submission_mild">{{ life_activity_submission_mild }}</span></td><td><span data-field="life_activity_submission_moderate">{{ life_activity_submission_moderate }}</span></td><td><span data-field="life_activity_submission_severe">{{ life_activity_submission_severe }}</span></td><td><span data-field="life_activity_submission_dk">{{ life_activity_submission_dk }}</span></td><td><span data-field="life_activity_submission_na">{{ life_activity_submission_na }}</span></td></tr>
+      <tr><td>Sensory functioning/integrating</td><td><span data-field="life_activity_sensory_no">{{ life_activity_sensory_no }}</span></td><td><span data-field="life_activity_sensory_mild">{{ life_activity_sensory_mild }}</span></td><td><span data-field="life_activity_sensory_moderate">{{ life_activity_sensory_moderate }}</span></td><td><span data-field="life_activity_sensory_severe">{{ life_activity_sensory_severe }}</span></td><td><span data-field="life_activity_sensory_dk">{{ life_activity_sensory_dk }}</span></td><td><span data-field="life_activity_sensory_na">{{ life_activity_sensory_na }}</span></td></tr>
+      <tr><td>Attending class (regularly/on time)</td><td><span data-field="life_activity_attending_no">{{ life_activity_attending_no }}</span></td><td><span data-field="life_activity_attending_mild">{{ life_activity_attending_mild }}</span></td><td><span data-field="life_activity_attending_moderate">{{ life_activity_attending_moderate }}</span></td><td><span data-field="life_activity_attending_severe">{{ life_activity_attending_severe }}</span></td><td><span data-field="life_activity_attending_dk">{{ life_activity_attending_dk }}</span></td><td><span data-field="life_activity_attending_na">{{ life_activity_attending_na }}</span></td></tr>
+      <tr><td>Understanding directions</td><td><span data-field="life_activity_directions_no">{{ life_activity_directions_no }}</span></td><td><span data-field="life_activity_directions_mild">{{ life_activity_directions_mild }}</span></td><td><span data-field="life_activity_directions_moderate">{{ life_activity_directions_moderate }}</span></td><td><span data-field="life_activity_directions_severe">{{ life_activity_directions_severe }}</span></td><td><span data-field="life_activity_directions_dk">{{ life_activity_directions_dk }}</span></td><td><span data-field="life_activity_directions_na">{{ life_activity_directions_na }}</span></td></tr>
+      <tr><td>Communicating</td><td><span data-field="life_activity_communicating_no">{{ life_activity_communicating_no }}</span></td><td><span data-field="life_activity_communicating_mild">{{ life_activity_communicating_mild }}</span></td><td><span data-field="life_activity_communicating_moderate">{{ life_activity_communicating_moderate }}</span></td><td><span data-field="life_activity_communicating_severe">{{ life_activity_communicating_severe }}</span></td><td><span data-field="life_activity_communicating_dk">{{ life_activity_communicating_dk }}</span></td><td><span data-field="life_activity_communicating_na">{{ life_activity_communicating_na }}</span></td></tr>
+      <tr><td>Social interactions</td><td><span data-field="life_activity_social_no">{{ life_activity_social_no }}</span></td><td><span data-field="life_activity_social_mild">{{ life_activity_social_mild }}</span></td><td><span data-field="life_activity_social_moderate">{{ life_activity_social_moderate }}</span></td><td><span data-field="life_activity_social_severe">{{ life_activity_social_severe }}</span></td><td><span data-field="life_activity_social_dk">{{ life_activity_social_dk }}</span></td><td><span data-field="life_activity_social_na">{{ life_activity_social_na }}</span></td></tr>
+      <tr><td>Writing (manual writing)</td><td><span data-field="life_activity_writing_manual_no">{{ life_activity_writing_manual_no }}</span></td><td><span data-field="life_activity_writing_manual_mild">{{ life_activity_writing_manual_mild }}</span></td><td><span data-field="life_activity_writing_manual_moderate">{{ life_activity_writing_manual_moderate }}</span></td><td><span data-field="life_activity_writing_manual_severe">{{ life_activity_writing_manual_severe }}</span></td><td><span data-field="life_activity_writing_manual_dk">{{ life_activity_writing_manual_dk }}</span></td><td><span data-field="life_activity_writing_manual_na">{{ life_activity_writing_manual_na }}</span></td></tr>
+      <tr><td>Writing (written expression)</td><td><span data-field="life_activity_writing_written_no">{{ life_activity_writing_written_no }}</span></td><td><span data-field="life_activity_writing_written_mild">{{ life_activity_writing_written_mild }}</span></td><td><span data-field="life_activity_writing_written_moderate">{{ life_activity_writing_written_moderate }}</span></td><td><span data-field="life_activity_writing_written_severe">{{ life_activity_writing_written_severe }}</span></td><td><span data-field="life_activity_writing_written_dk">{{ life_activity_writing_written_dk }}</span></td><td><span data-field="life_activity_writing_written_na">{{ life_activity_writing_written_na }}</span></td></tr>
+      <tr><td>Reading (visually)</td><td><span data-field="life_activity_reading_visual_no">{{ life_activity_reading_visual_no }}</span></td><td><span data-field="life_activity_reading_visual_mild">{{ life_activity_reading_visual_mild }}</span></td><td><span data-field="life_activity_reading_visual_moderate">{{ life_activity_reading_visual_moderate }}</span></td><td><span data-field="life_activity_reading_visual_severe">{{ life_activity_reading_visual_severe }}</span></td><td><span data-field="life_activity_reading_visual_dk">{{ life_activity_reading_visual_dk }}</span></td><td><span data-field="life_activity_reading_visual_na">{{ life_activity_reading_visual_na }}</span></td></tr>
+      <tr><td>Reading (comprehension)</td><td><span data-field="life_activity_reading_comp_no">{{ life_activity_reading_comp_no }}</span></td><td><span data-field="life_activity_reading_comp_mild">{{ life_activity_reading_comp_mild }}</span></td><td><span data-field="life_activity_reading_comp_moderate">{{ life_activity_reading_comp_moderate }}</span></td><td><span data-field="life_activity_reading_comp_severe">{{ life_activity_reading_comp_severe }}</span></td><td><span data-field="life_activity_reading_comp_dk">{{ life_activity_reading_comp_dk }}</span></td><td><span data-field="life_activity_reading_comp_na">{{ life_activity_reading_comp_na }}</span></td></tr>
+    </tbody>
+  </table>
+
+  <p>13. In addition to those mentioned above, please describe if there are any other functional limitations of this condition for this student in an educational setting.</p>
+  <div class="form-field"><span data-field="diag.other_functional_limitations">{{ diag.other_functional_limitations }}</span></div>
+
+  <p>14. Describe any recommendations that you may have regarding academic accommodations or auxiliary aids for this student.</p>
+  <div class="form-field"><span data-field="diag.academic_recommendations">{{ diag.academic_recommendations }}</span></div>
+
+  <p>15. Describe whether there are particular situations or environmental conditions that would exacerbate the condition of the student's symptoms.</p>
+  <div class="form-field"><span data-field="diag.exacerbating_conditions">{{ diag.exacerbating_conditions }}</span></div>
+
+  <p>16. Please provide any other information that you think would be useful to know in working with the student to establish reasonable accommodations for their disability.</p>
+  <div class="form-field"><span data-field="diag.other_info">{{ diag.other_info }}</span></div>
+</div>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for Logo -->
+    <span style="font-size: 48px; font-weight: bold;">K</span>
+    <span style="font-size: 24px; font-weight: normal;">KALAMAZOO</span>
+    <span style="font-size: 18px; font-weight: normal;">COLLEGE</span>
+  </div>
+
+  <div class="section-title">Section 3: Qualified Provider Information and Verification Form</div>
+  <p>By signing below, you affirm that the above information is accurate to the best of your knowledge and provided in accordance with your best professional judgement.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td class="form-label">Provider Signature:</td>
+      <td class="signature-line"></td>
+    </tr>
+    <tr>
+      <td class="form-label">Provider Name (Print):</td>
+      <td class="signature-line"><span data-field="provider.name">{{ provider.name }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Date:</td>
+      <td class="signature-line"><span data-field="provider.date">{{ provider.date }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Title:</td>
+      <td class="signature-line"><span data-field="provider.title">{{ provider.title }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">License #:</td>
+      <td class="signature-line"><span data-field="provider.license_number">{{ provider.license_number }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Address:</td>
+      <td class="signature-line"><span data-field="provider.address">{{ provider.address }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Phone Number:</td>
+      <td class="signature-line"><span data-field="provider.phone_number">{{ provider.phone_number }}</span></td>
+    </tr>
+    <tr>
+      <td class="form-label">Email:</td>
+      <td class="signature-line"><span data-field="provider.email">{{ provider.email }}</span></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

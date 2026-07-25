@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .job-entry, .publication-entry, .project-entry {
+    margin-bottom: 15px;
+  }
+  .job-header, .pub-header, .proj-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+  .job-details, .pub-details, .proj-details {
+    font-size: 10pt;
+    color: #555;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    font-size: 10pt;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1 style="text-align: center; margin-bottom: 5px;">{{ full_name }}</h1>
+  <div style="text-align: center; font-size: 10pt; margin-bottom: 30px;">
+    <span data-field="contact.email">{{ contact.email }}</span> |
+    <span data-field="contact.phone">{{ contact.phone }}</span> |
+    <span data-field="contact.linkedin">{{ contact.linkedin }}</span>
+  </div>
+
+  <div class="section-title">Publications</div>
+  <div class="publication-list">
+    {% for pub in publications %}
+    <div class="publication-entry">
+      <div class="pub-header">
+        <span>{{ pub.title }}</span>
+        <span>{{ pub.year }}</span>
+      </div>
+      <div class="pub-details">
+        {{ pub.authors }}
+        <br>
+        {{ pub.journal_info }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Conference and Seminar Presentations</div>
+  <div class="presentation-list">
+    {% for pres in presentations %}
+    <div class="presentation-entry">
+      <div class="pub-header">
+        <span>{{ pres.title }}</span>
+        <span>{{ pres.year }}</span>
+      </div>
+      <div class="pub-details">
+        {{ pres.details }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Research Experience</div>
+  <div class="research-list">
+    {% for research in research_experiences %}
+    <div class="research-entry">
+      <div class="proj-header">
+        <span>{{ research.title }}</span>
+        <span>{{ research.dates.start }} - {{ research.dates.end }}</span>
+      </div>
+      <div class="proj-details">
+        <p>{{ research.description }}</p>
+        <ul>
+          {% for bullet in research.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Software</div>
+  <div class="software-list">
+    {% for software in software_projects %}
+    <div class="software-entry">
+      <div class="proj-header">
+        <span>{{ software.name }}</span>
+        <span>{{ software.dates.start }} - {{ software.dates.end }}</span>
+      </div>
+      <div class="proj-details">
+        <p>{{ software.description }}</p>
+        <ul>
+          {% for bullet in software.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Professional Affiliations</div>
+  <div class="affiliation-list">
+    {% for affiliation in affiliations %}
+    <div class="affiliation-entry">
+      <div class="proj-header">
+        <span>{{ affiliation.name }}</span>
+        <span>{{ affiliation.dates.start }} - {{ affiliation.dates.end }}</span>
+      </div>
+      <div class="proj-details">
+        <p>{{ affiliation.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+  .address-block { text-align: right; font-size: 11pt; line-height: 1.4; }
+  .sender-info { text-align: left; font-size: 11pt; line-height: 1.4; }
+  .content-body { font-size: 11pt; line-height: 1.6; text-align: justify; }
+  .salutation { margin-top: 30px; margin-bottom: 20px; }
+  .closing { margin-top: 40px; margin-bottom: 20px; }
+  .signature-block { display: flex; justify-content: space-between; margin-top: 60px; }
+  .footer-notes { margin-top: 60px; font-size: 9pt; line-height: 1.5; }
+  .note-item { margin-bottom: 10px; }
+</style>
+<div class="page">
+  <div class="header-info">
+    <div class="sender-info">
+      <p><span data-field="full_name">{{ sender_name }}</span></p>
+      <p><span data-field="employer.name">{{ sender_employer }}</span></p>
+      <p><span data-field="employer.title">{{ sender_title }}</span></p>
+    </div>
+    <div class="address-block">
+      <p><span data-field="address.street">{{ address.street }}</span></p>
+      <p><span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span> <span data-field="address.zip">{{ address.zip }}</span></p>
+      <p>Telephone: <span data-field="phone">{{ phone }}</span></p>
+      <p>Facsimile: <span data-field="fax">{{ fax }}</span></p>
+      <p>Legal:<span data-field="legal_contact">{{ legal_contact }}</span></p>
+    </div>
+  </div>
+
+  <div style="text-align: right; margin-bottom: 10px;">
+    <span data-field="date">{{ date }}</span>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <p>TO: <span data-field="recipient.name">{{ recipient.name }}</span>, <span data-field="recipient.title">{{ recipient.title }}</span></p>
+    <p>FROM: <span data-field="sender.name">{{ sender.name }}</span>, <span data-field="sender.title">{{ sender.title }}</span></p>
+    <p>RE: <span data-field="subject">{{ subject }}</span></p>
+  </div>
+
+  <div class="content-body">
+    <p>You asked that I provide guidance regarding governance use of University resources with respect to union organizing activities. In short, no University employee or University-funded employee group may use University resources to engage in or promote union organizing or union activities.<sup>1</sup> This is the case for a number of reasons.</p>
+
+    <p>By law,<sup>2</sup> University resources may only be used for a public purpose.<sup>3</sup> Informing employees regarding the potential benefits of union membership, posting or providing union literature, and assessing employee interest in union representation are quintessential union organizing activities. Unions are and must be legally separate entities from the employers with whom they bargain. In addition, union activities are separate from and at times adverse to those of public employers. As a result, using University resources to perform union functions violates the public purpose requirement. Thus University resources may not be used to perform these or similar functions.</p>
+
+    <p>In addition, if a University-supported employee group engages in or supports union-related activities, it subjects the University to the risk of an unfair labor practice. AS 23.40.110, makes it an unfair labor practice for an employer or its agent to:</p>
+
+    <ol>
+      <li>dominate or interfere with the formation, existence, or administration of an organization.</li>
+      <li><span data-field="action_description">{{ action_description }}</span></li>
+    </ol>
+
+    <p>A union may allege “interference” if an employer is perceived as providing resources to or “dealing” with another “organization.”</p>
+
+    <p>Please convey this information to University administrators and governance leadership to ensure that there is no misunderstanding regarding the limits of appropriate governance activity, and to ensure that prompt action is taken to ensure that no University resources are used for union activity.</p>
+  </div>
+
+  <div class="closing">
+    <p>cc: <span data-field="cc_list">{{ cc_list }}</span></p>
+  </div>
+
+  <div class="signature-block">
+    <div>
+      <p style="margin-bottom: 50px;">&nbsp;</p>
+      <p><span data-field="signer_name">{{ signer_name }}</span>, Chancellor</p>
+    </div>
+  </div>
+
+  <div class="footer-notes">
+    <div class="note-item"><sup>1</sup> Employees may of course express their opinion regarding unions or solicit union membership during their free time on University premises, so long as it does not interfere with work being performed by others.</div>
+    <div class="note-item"><sup>2</sup> Alaska Constitution, Article IX, Section 6.</div>
+    <div class="note-item"><sup>3</sup> The Alaska Executive Branch Ethics Act also prohibits public employees from using state time, property, equipment, or facilities to benefit employees “personally” or “financially” interests as those terms are defined in AS 39.52.960.</div>
+    <div class="note-item"><sup>4</sup> Performing functions that a union would otherwise perform for itself is the equivalent of paying union expenses.</div>
+  </div>
+</div>

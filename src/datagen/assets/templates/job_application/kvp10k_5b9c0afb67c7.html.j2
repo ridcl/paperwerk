@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  td, th {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  .header-title {
+    text-align: center;
+    font-size: 24pt;
+    margin-bottom: 10px;
+  }
+  .section-heading {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    width: 48%;
+  }
+  .full-width-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">
+    Submit to: <span data-field="submitter.department">{{ submitter.department }}</span><br>
+    <span data-field="submitter.university">{{ submitter.university }}</span><br>
+    <span data-field="submitter.address">{{ submitter.address }}</span><br>
+    Phone: <span data-field="submitter.phone">{{ submitter.phone }}</span><br>
+    Fax: <span data-field="submitter.fax">{{ submitter.fax }}</span><br>
+    <span data-field="submitter.website">{{ submitter.website }}</span>
+  </div>
+  <div style="text-align: center; margin-top: 40px;">
+    <div class="header-title">Southwestern University</div>
+  </div>
+  <div style="text-align: center; margin-top: 10px;">
+    <h1 style="font-size: 16pt;">APPLICATION FOR EMPLOYMENT</h1>
+  </div>
+
+  <div class="section-heading">EQUAL OPPORTUNITY EMPLOYER:</div>
+  <p style="font-size: 10pt;">Southwestern University is committed to the principal of equal opportunity for all persons without regard to race, color, religion, age, sex, disability, national origin, or any other characteristic protected by law.</p>
+
+  <div class="section-heading">General Information</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Name</th>
+        <th style="width: 25%;">Last</th>
+        <th style="width: 25%;">First</th>
+        <th style="width: 25%;">Middle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="personal_info.name">{{ personal_info.name }}</span></td>
+        <td><span data-field="personal_info.last_name">{{ personal_info.last_name }}</span></td>
+        <td><span data-field="personal_info.first_name">{{ personal_info.first_name }}</span></td>
+        <td><span data-field="personal_info.middle_name">{{ personal_info.middle_name }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Address (Street/Route/P.O. Box)</th>
+        <th style="width: 25%;">City</th>
+        <th style="width: 25%;">State</th>
+        <th style="width: 25%;">Zip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="personal_info.address">{{ personal_info.address }}</span></td>
+        <td><span data-field="personal_info.city">{{ personal_info.city }}</span></td>
+        <td><span data-field="personal_info.state">{{ personal_info.state }}</span></td>
+        <td><span data-field="personal_info.zip_code">{{ personal_info.zip_code }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Telephone (Day)</th>
+        <th style="width: 25%;">Telephone (Evening)</th>
+        <th style="width: 25%;">Email Address</th>
+        <th style="width: 25%;">Date of application</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="personal_info.phone_day">{{ personal_info.phone_day }}</span></td>
+        <td><span data-field="personal_info.phone_evening">{{ personal_info.phone_evening }}</span></td>
+        <td><span data-field="personal_info.email">{{ personal_info.email }}</span></td>
+        <td><span data-field="application_date">{{ application_date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Do you have a valid driver's license?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+        <th style="width: 25%;">If you are employed, may we contact your present employer?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="driver_license_status">{{ driver_license_status }}</span></td>
+        <td><span data-field="driver_license_yes">{{ driver_license_yes }}</span></td>
+        <td><span data-field="driver_license_no">{{ driver_license_no }}</span></td>
+        <td><span data-field="contact_employer_status">{{ contact_employer_status }}</span></td>
+        <td><span data-field="contact_employer_yes">{{ contact_employer_yes }}</span></td>
+        <td><span data-field="contact_employer_no">{{ contact_employer_no }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">State</th>
+        <th style="width: 25%;">Lic.#</th>
+        <th style="width: 25%;">Exp. Date</th>
+        <th style="width: 25%;">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="license_state">{{ license_state }}</span></td>
+        <td><span data-field="license_number">{{ license_number }}</span></td>
+        <td><span data-field="license_expiry_date">{{ license_expiry_date }}</span></td>
+        <td><span data-field="license_type">{{ license_type }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Can you show proof of eligibility to work in this country?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+        <th style="width: 25%;">Have you been convicted of a felony?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="work_eligibility_status">{{ work_eligibility_status }}</span></td>
+        <td><span data-field="work_eligibility_yes">{{ work_eligibility_yes }}</span></td>
+        <td><span data-field="work_eligibility_no">{{ work_eligibility_no }}</span></td>
+        <td><span data-field="felony_status">{{ felony_status }}</span></td>
+        <td><span data-field="felony_yes">{{ felony_yes }}</span></td>
+        <td><span data-field="felony_no">{{ felony_no }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Are you over 18 years of age?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+        <th style="width: 25%;">Have you been employed under any other name? If yes, please list:</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="age_status">{{ age_status }}</span></td>
+        <td><span data-field="age_yes">{{ age_yes }}</span></td>
+        <td><span data-field="age_no">{{ age_no }}</span></td>
+        <td><span data-field="other_name_status">{{ other_name_status }}</span></td>
+        <td><span data-field="other_name_yes">{{ other_name_yes }}</span></td>
+        <td><span data-field="other_name_no">{{ other_name_no }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Have you ever been employed by Southwestern University?</th>
+        <th style="width: 25%;">Yes</th>
+        <th style="width: 25%;">No</th>
+        <th style="width: 25%;">Date available:</th>
+        <th style="width: 25%;">Available for:</th>
+        <th style="width: 25%;">Expected rate of pay</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="swu_employment_status">{{ swu_employment_status }}</span></td>
+        <td><span data-field="swu_yes">{{ swu_yes }}</span></td>
+        <td><span data-field="swu_no">{{ swu_no }}</span></td>
+        <td><span data-field="date_available">{{ date_available }}</span></td>
+        <td>
+          <span data-field="available_full_time">{{ available_full_time }}</span>
+          <span data-field="available_part_time">{{ available_part_time }}</span>
+          <span data-field="available_temporary">{{ available_temporary }}</span>
+        </td>
+        <td><span data-field="expected_pay_rate">{{ expected_pay_rate }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-heading">Education and Training</div>
+  <p style="font-size: 10pt;">Education: Circle Highest Grade Completed</p>
+  <div style="text-align: center; margin-bottom: 10px;">
+    <span data-field="grade_1">{{ grade_1 }}</span>
+    <span data-field="grade_2">{{ grade_2 }}</span>
+    <span data-field="grade_3">{{ grade_3 }}</span>
+    <span data-field="grade_4">{{ grade_4 }}</span>
+    <span data-field="grade_5">{{ grade_5 }}</span>
+    <span data-field="grade_6">{{ grade_6 }}</span>
+    <span data-field="grade_7">{{ grade_7 }}</span>
+    <span data-field="grade_8">{{ grade_8 }}</span>
+    <span data-field="grade_9">{{ grade_9 }}</span>
+    <span data-field="grade_10">{{ grade_10 }}</span>
+    <span data-field="grade_11">{{ grade_11 }}</span>
+    <span data-field="grade_12">{{ grade_12 }}</span>
+    <span data-field="ged">{{ ged }}</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Name and Location of College, University, Business or Trade School</th>
+        <th style="width: 15%;">Dates Attended</th>
+        <th style="width: 20%;">Degrees Awarded</th>
+        <th style="width: 15%;">Title</th>
+        <th style="width: 20%;">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in education_history %}
+      <tr>
+        <td><span data-field="education_history[{{ loop.index0 }}].school_name">{{ education_history[loop.index0].school_name }}</span></td>
+        <td>
+          From: <span data-field="education_history[{{ loop.index0 }}].start_date">{{ education_history[loop.index0].start_date }}</span>
+          To: <span data-field="education_history[{{ loop.index0 }}].end_date">{{ education_history[loop.index0].end_date }}</span>
+        </td>
+        <td><span data-field="education_history[{{ loop.index0 }}].degree_awarded">{{ education_history[loop.index0].degree_awarded }}</span></td>
+        <td><span data-field="education_history[{{ loop.index0 }}].degree_title">{{ education_history[loop.index0].degree_title }}</span></td>
+        <td><span data-field="education_history[{{ loop.index0 }}].completion_date">{{ education_history[loop.index0].completion_date }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p style="font-size: 10pt; margin-top: 10px;">Please list any other training and education which would further qualify you for the position.</p>
+
+  <div class="section-heading">References (Give name, address and telephone number of three persons (not related) who are familiar with your work that we may contact.)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Name</th>
+        <th style="width: 35%;">Address</th>
+        <th style="width: 25%;">Telephone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in references %}
+      <tr>
+        <td><span data-field="references[{{ loop.index0 }}].name">{{ references[loop.index0].name }}</span></td>
+        <td><span data-field="references[{{ loop.index0 }}].address">{{ references[loop.index0].address }}</span></td>
+        <td><span data-field="references[{{ loop.index0 }}].phone">{{ references[loop.index0].phone }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-heading">Employment Record</div>
+  <p style="font-size: 10pt;">Instructions: Beginning with your most recent job, list below jobs which you have held and specifically describe duties performed. Include any job-related military service assignments or volunteer work. You may exclude organizations which indicate race, color, religion, gender, national origin, disability or other protected status. You may attach a resume if you wish, but you must fill out this section fully. If you need additional space, please continue on a separate sheet of paper.</p>
+
+  {% for i in range(1, 5) %}
+  <div style="margin-bottom: 20px;">
+    <h3 style="font-size: 12pt; margin-bottom: 5px;">{{ i }}. Job Title</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Employer Name</th>
+          <th style="width: 15%;">From</th>
+          <th style="width: 15%;">To</th>
+          <th style="width: 25%;">Immediate Supervisor</th>
+          <th style="width: 10%;">Last Salary (Hr./Mo., or Yr.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="employment_record[{{ i-1 }}].employer_name">{{ employment_record[i-1].employer_name }}</span></td>
+          <td><span data-field="employment_record[{{ i-1 }}].start_date">{{ employment_record[i-1].start_date }}</span></td>
+          <td><span data-field="employment_record[{{ i-1 }}].end_date">{{ employment_record[i-1].end_date }}</span></td>
+          <td><span data-field="employment_record[{{ i-1 }}].supervisor_name">{{ employment_record[i-1].supervisor_name }}</span></td>
+          <td><span data-field="employment_record[{{ i-1 }}].last_salary">{{ employment_record[i-1].last_salary }}</span></td>
+        </tr>
+        <tr>
+          <td colspan="5" style="height: 50px;">
+            <div style="border: 1px solid #000; padding: 5px;">
+              <span data-field="employment_record[{{ i-1 }}].duties">{{ employment_record[i-1].duties }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" style="height: 30px;">
+            <div style="border: 1px solid #000; padding: 5px;">
+              Reason for Leaving: <span data-field="employment_record[{{ i-1 }}].reason_leaving">{{ employment_record[i-1].reason_leaving }}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+
+  <div class="section-heading">Special Skills/Qualifications</div>
+  <p style="font-size: 10pt;">Add any additional special job-related skills or qualifications you may have received from your experiences (for example, licenses / certifications, foreign language proficiency, office/computer skills).</p>
+  <div style="height: 100px; border: 1px solid #000; padding: 10px; margin-bottom: 20px;">
+    <span data-field="special_skills">{{ special_skills }}</span>
+  </div>
+
+  <div class="section-heading">Applicant's Statement (Please read and sign below.)</div>
+  <p style="font-size: 10pt;">I certify that all answers given in this application are true and complete. I authorize investigation of all statements contained in this application for employment, as may be necessary in arriving at an employment decision and do not hold Southwestern University or any other individual involved in this investigation liable for any inaccuracies or omissions in this process. I also understand that false or misleading information given in my interview or this application may result in elimination from consideration for employment or discharge at any time. I further understand that, if employed, I will abide by all policies, rules and procedures of Southwestern University.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      Signature: _________________________
+    </div>
+    <div>
+      Date: _________________________
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 80px; font-size: 10pt;">
+    University at Maple • Mailing Address: P.O. Box 770 • Georgetown, Texas 78627-0770<br>
+    Telephone: 512-863-5788 • Fax 512-863-5788 • Web Site: http://www.southwestern.edu
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transportation Contract</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2 { font-weight: bold; }
+  .header-info { margin-bottom: 20px; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-row > div { flex: 1; }
+  .signature-block { margin-top: 50px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <img src="placeholder_logo.png" alt="University Logo" style="max-width: 150px; height: auto;">
+    <h1 style="margin-top: 10px;">Shawnee State UNIVERSITY</h1>
+  </div>
+  <div class="header-info">
+    <h2 style="text-align: center;">Transportation Contract</h2>
+    <p>940 Second Street, Portsmouth, Ohio {{ city_state_zip }} • Phone {{ phone_number }} • Fax {{ fax_number }}</p>
+  </div>
+
+  <div class="section-title">Charter Company Name:</div>
+  <div class="form-row">
+    <div>Charter Company Name:</div>
+    <div><span data-field="charter_company_name">{{ charter_company_name }}</span></div>
+  </div>
+
+  <div class="section-title">Payment Address (city, state, zip):</div>
+  <div class="form-row">
+    <div>Payment Address (city, state, zip):</div>
+    <div><span data-field="payment_address">{{ payment_address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Contact Name:</div>
+    <div><span data-field="contact_name">{{ contact_name }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Phone #:</div>
+    <div><span data-field="contact_phone">{{ contact_phone }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Fax #:</div>
+    <div><span data-field="contact_fax">{{ contact_fax }}</span></div>
+  </div>
+
+  <div class="section-title">Charter Information:</div>
+  <div class="form-row">
+    <div>Payment:</div>
+    <div>
+      <input type="checkbox" id="purchase_order" name="purchase_order">
+      <label for="purchase_order">Purchase Order #</label>
+      <span data-field="purchase_order_number">{{ purchase_order_number }}</span>
+      (to be added by SSU Purchasing Dept. when issued)
+      <input type="checkbox" id="purchasing_card" name="purchasing_card">
+      <label for="purchasing_card">Purchasing Card</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>Charter Group:</div>
+    <div><span data-field="charter_group">{{ charter_group }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Charter Ordered By:</div>
+    <div><span data-field="charter_ordered_by">{{ charter_ordered_by }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Phone #:</div>
+    <div><span data-field="charter_phone_2">{{ charter_phone_2 }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Fax #:</div>
+    <div><span data-field="charter_fax_2">{{ charter_fax_2 }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Charter Destination:</div>
+    <div><span data-field="charter_destination">{{ charter_destination }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Departure Date:</div>
+    <div><span data-field="departure_date">{{ departure_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Report Time:</div>
+    <div><span data-field="report_time_departure">{{ report_time_departure }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Location:</div>
+    <div><span data-field="location_departure">{{ location_departure }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div>Return Date:</div>
+    <div><span data-field="return_date">{{ return_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Report Time:</div>
+    <div><span data-field="report_time_return">{{ report_time_return }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Location:</div>
+    <div><span data-field="location_return">{{ location_return }}</span></div>
+  </div>
+
+  <div class="section-title">Special Instructions:</div>
+  <div><span data-field="special_instructions">{{ special_instructions }}</span></div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Charter includes</td>
+      <td style="width: 25%;">vehicle(s):</td>
+      <td style="width: 25%;">Coach #</td>
+      <td style="width: 25%;">Seats per Coach:</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><span data-field="coach_number_1">{{ coach_number_1 }}</span></td>
+      <td><span data-field="seats_per_coach_1">{{ seats_per_coach_1 }}</span></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><span data-field="coach_number_2">{{ coach_number_2 }}</span></td>
+      <td><span data-field="seats_per_coach_2">{{ seats_per_coach_2 }}</span></td>
+    </tr>
+    <!-- More rows for coaches if needed, but keeping it simple based on layout -->
+  </table>
+
+  <div class="section-title">Contract Charges:</div>
+  <div class="form-row">
+    <div>Flat Rate</div>
+    <div><span data-field="flat_rate_amount">{{ flat_rate_amount }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Road, Bridge, and Tunnel Tolls</div>
+    <div><span data-field="toll_amount">{{ toll_amount }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Overnight Charge</div>
+    <div><span data-field="overnight_charge">{{ overnight_charge }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Hotel Rooms</div>
+    <div><span data-field="hotel_rooms_amount">{{ hotel_rooms_amount }}</span> @ <span data-field="hotel_rate">{{ hotel_rate }}</span></div>
+  </div>
+  <div class="form-row">
+    <div>Other Charges (itemize):</div>
+    <div><span data-field="other_charges">{{ other_charges }}</span></div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div style="text-align: right;">Total $</div>
+    <div><span data-field="total_amount">{{ total_amount }}</span></div>
+  </div>
+
+  <div class="section-title" style="margin-top: 40px;">Terms and Conditions</div>
+  <p>The terms of this contract incorporate by reference the Shawnee State University Transportation Terms & Conditions which are posted on the University's web site and are available upon request. NO COACH IS CONFIRMED WITHOUT A SIGNED CONTRACT AND A PURCHASE ORDER OR SSU PURCHASING CARD.</p>
+
+  <div class="signature-block">
+    <div class="form-row">
+      <div>ACCEPTED BY</div>
+      <div><span data-field="accepted_by_ssu">{{ accepted_by_ssu }}</span></div>
+    </div>
+    <div class="form-row" style="margin-top: 50px;">
+      <div>Signature</div>
+      <div><span data-field="signature_line_1">{{ signature_line_1 }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Name and Title</div>
+      <div><span data-field="name_and_title_1">{{ name_and_title_1 }}</span></div>
+    </div>
+    <div class="form-row">
+      <div>Date</div>
+      <div><span data-field="date_1">{{ date_1 }}</span></div>
+    </div>
+  </div>
+
+  <p style="margin-top: 100px; font-size: small;">This contract is legally sufficient if the Terms & Conditions are not altered by either party. Shawnee State University Office of General Counsel</p>
+</div>
+
+<div class="page">
+  <div class="section-title">Transportation Terms & Conditions</div>
+
+  <div class="section-title">1. RESERVATION POLICY.</div>
+  <p>A purchase order or University purchasing card (a Visa credit card) will authorize and assure the University's exclusive use of a vehicle. NO COACH WILL BE CONFIRMED WITHOUT A SIGNED CONTRACT.</p>
+
+  <div class="section-title">2. PAYMENT POLICY.</div>
+  <p>No deposit shall be required. Trips reserved with a purchase order shall be paid in full within 7 days of receipt of an invoice by the University, at the conclusion of the trip. Trips reserved with a University purchasing card may be billed on the date of the trip. If the University's purchasing card is used, the Contractor must provide an itemized receipt for the charge to the person whose name appears on the purchasing card.</p>
+
+  <div class="section-title">3. COST.</div>
+  <p>Cost is based on services listed on the specific contract and is subject to change in accordance with the actual itinerary. The University is responsible for parking fees and tolls.</p>
+
+  <div class="section-title">4. CANCELLATION/REFUND.</div>
+  <p>In the event the University notifies the Contractor in writing (including fax) of the University's intent to cancel the University's agreement more than fourteen (14) days prior to departure, no fee will be charged. Should the University cancel less than fourteen (14) days prior to departure, a fee of {{ cancellation_fee_percentage }}% will be charged. Should the University cancel less than 48 hours or less prior to departure, the Contractor's failure to pick up within two (2) hours of the designated time constitutes cause for the University to cancel the contract without any liability to the Contractor.</p>
+
+  <div class="section-title">5. WAIVER OF CONSEQUENTIAL DAMAGES.</div>
+  <p>It is understood by the University that the Contractor is not responsible for delays or cancellations due to acts of God, terrorism, national emergencies, or construction.</p>
+
+  <div class="section-title">6. DAMAGE/FOOD AND BEVERAGE.</div>
+  <p>Food and soft drinks must be approved by the Contractor. Where applicable, the University will assign chassis transportation through the coach. Trash must be placed in proper containers. Any damage done to the vehicle by the University beyond normal wear and tear may be charged to the University by the Contractor. The Contractor must provide documentation with detail of the cleaning or repair charges. Contractor must notify University Purchasing Department of the nature and extent of the damage within 48 hours after completion of the trip.</p>
+
+  <div class="section-title">7. SUBCONTRACTING DUE TO CHANGES OR BREAKDOWNS.</div>
+  <p>In the event the Contractor must subcontract the transportation to another commercial bus operator as a result of last minute changes (i.e. departure time changes, date changes) the University will be responsible for all charges only on any pricing differential with prior approval by the University. The Contractor must notify the University of the subcontracting arrangement prior to the trip. If the scheduled time the Contractor must provide at its cost another vehicle to meet the event's schedule, if repairs associated with vehicle breakdowns do not conflict with the event's scheduled time but the University chooses not to wait, the University will negotiate any increase depending on the circumstances surrounding the breakdown and the action taken by the Contractor to remedy the situation. All documentation relating to any increase must be provided by the Contractor.</p>
+
+  <div class="section-title">8. SMOKING.</div>
+  <p>While on board, the "NO SMOKING" policy shall be enforced. Regular stops are made depending on the length of the trip.</p>
+
+  <div class="section-title">10. DRIVERS.</div>
+  <p>Drivers shall work under DOT regulations: 10-hour driving time with 15-hour total. The University is responsible for providing hotel accommodations for the driver on overnight trips. The University shall be billed for the total cost of room & taxes only.</p>
+
+  <div class="section-title">11. INSURANCE.</div>
+  <p>The Contractor must supply proof of $10 million commercial liability insurance prior to any charter services being provided to the University. The Contractor's insurance certificate must name the University as an Additional Insured. Proof of such insurance must be mailed or faxed to: Shawnee State University, Pat Carson, Director of Purchasing, 940 Second Street, Portsmouth, Ohio {{ city_state_zip }}; Fax: {{ fax_number }}.</p>
+
+  <div class="section-title">12. INDEMNIFICATION.</div>
+  <p>The Contractor agrees to indemnify, defend, and hold harmless Shawnee State University, its trustees, officers, employees, and agents from and against any claim, damage, liability, injury, expense or loss including, but not limited to, reasonable attorney's fees and costs, by reason of any suit, claim, demand, judgment or cause of action arising out of or related to the transportation of the University's employees and guests as provided by the Contractor except for claims resulting from willful misconduct of the University's employees, students, or guests.</p>
+</div>
+</body>
+</html>

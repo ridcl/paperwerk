@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.6;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .header-title {
+    font-size: 24pt;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .author-list {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 11pt;
+  }
+  .abstract-section {
+    margin-bottom: 40px;
+  }
+  .section-heading {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+  .figure-caption {
+    font-size: 10pt;
+    margin-top: 10px;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .footer {
+    text-align: center;
+    font-size: 10pt;
+    margin-top: 50px;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p, td, span { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .figure-caption { font-size: 0.9em; margin-top: 5px; text-align: center; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+</style>
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a base */
+    }
+    .page:last-child { page-break-after: auto; }
+    /* Basic styling to mimic academic/reference list appearance */
+    .reference-list {
+        line-height: 1.5;
+        font-size: 11pt;
+    }
+    .reference-item {
+        margin-bottom: 0.5em;
+        text-indent: -20px; /* Mimicking hanging indent */
+        padding-left: 20px;
+    }
+    .reference-item strong {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt; margin-bottom: 20px;">WORKING PAPER 18 JANUARY 2022</div>
+  <h1 class="header-title">THE EFFECT OF COVID CERTIFICATES ON VACCINE UPTAKE, HEALTH OUTCOMES AND THE ECONOMY</h1>
+  <div class="author-list">
+    <span data-field="author_list">{{ author_list }}</span>
+  </div>
+  <div class="abstract-section">
+    <p>In the COVID-19 pandemic, governments have, among other measures, mandated the use of COVID certificates to prove vaccination, recovery or a recent negative test, and have required individuals to show certificates to access shops, restaurants, and education or workplaces. While arguments for and against COVID certificates have focused on reducing transmission and ethical concerns, the incentive effects of COVID certificates on vaccine uptake, health outcomes and the economy have not yet been investigated. To estimate these effects, we construct a synthetic control model on innovation diffusion theory for France, Germany and Italy. We estimate that the announcement of COVID certificates during summer 2021 led to increased vaccine uptake in France of <span data-field="france_uptake_increase">{{ france_uptake_increase }}</span>, in Germany <span data-field="germany_uptake_increase">{{ germany_uptake_increase }}</span>, and in Italy <span data-field="italy_uptake_increase">{{ italy_uptake_increase }}</span>. These effects are substantial and persist over time.</p>
+  </div>
+  <div style="text-align: center; font-size: 10pt; margin-top: 50px;">
+    <span data-field="acknowledgements">{{ acknowledgements }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2 class="section-heading">Introduction</h2>
+  <p>The COVID-19 pandemic has forced many governments to implement previously unthinkable policies. Initially, while some countries aimed to eliminate the virus, others aimed to slow its spread to protect health systems and to win time until vaccines or treatment became widely available. Public health measures intended to reduce transmissions have included public venue closures, limitations on social contacts and travel restrictions. These measures are informed by mathematical simulations <span data-field="math_ref">{{ math_ref }}</span> and by analyses estimating their causal effects on the dynamics of the epidemic <span data-field="epidemic_ref">{{ epidemic_ref }}</span>. COVID certificates – certifying vaccination, recovery or a recent negative test – enable through digitisation, targeted interventions dependent on an individual’s risk of transmitting the virus or experiencing a severe form of the disease. As with other policy choices, the use of COVID certificates has often been questioned for ethical and political reasons <span data-field="ethics_ref">{{ ethics_ref }}</span>, while advocates have mainly focused on the potential to help control the spread of the virus <span data-field="control_ref">{{ control_ref }}</span>. We argue that the incentive effect on vaccine uptake may be most critical. As vaccines are increasingly available, hesitancy and refusal to be vaccinated have become the main obstacles to high vaccine coverage in many parts of the world <span data-field="hesitancy_ref">{{ hesitancy_ref }}</span>. Historically, policymakers have considered several options to increase vaccine uptake, ranging from communication and outreach strategies to monetary (dis)incentives and mandates <span data-field="policy_options_ref">{{ policy_options_ref }}</span>. The impact of COVID certificates on vaccine uptake, health outcomes, and the economy has not yet been investigated.</p>
+  <h2 class="section-heading">COVID certificates spur vaccination</h2>
+  <p>In Europe, the use of COVID certificates for travel was agreed upon within the European Union [EU] in June 2021 <span data-field="eu_date">{{ eu_date }}</span>. Several member states, including France, Germany and Italy, subsequently adopted COVID certificates for many domestic activities. We focus on these countries as they introduced COVID certificates at similar times to regulate entry to public venues, restaurants, cafes, bars, shops, etc. [on 12 July 2021, 10 August 2021, and 22 July 2021, respectively; see Methods A]. The three countries also have comparable per-capita vaccine supply <span data-field="supply_comparison">{{ supply_comparison }}</span>, demographics, health infrastructure and economies. Our objective is to offer an approximate measure of the effect of the widespread use of COVID certificates, specifically how much they incentivised vaccine uptake, reduced adverse health outcomes and strengthened the economy. This study may thus help to inform decision-making on whether, when, and how to employ COVID certificates.</p>
+  <p>We estimate the COVID certificate’s contribution to vaccine uptake in France, Germany, and Italy by constructing counterfactuals, i.e. by modelling vaccine uptake without the intervention, using innovation diffusion theory. Innovation diffusion theory was introduced to model how new ideas and technologies spread <span data-field="diffusion_theory_ref">{{ diffusion_theory_ref }}</span>, and among other applications, has been used to study the uptake of medical innovations <span data-field="medical_innovation_ref">{{ medical_innovation_ref }}</span>, in particular vaccines <span data-field="vaccine_ref">{{ vaccine_ref }}</span>. The theory captures the way in which an innovation – the vaccine – is gradually taken up by a population, with early adopters subsequently joined by followers <span data-field="adoption_process_ref">{{ adoption_process_ref }}</span>. Mathematically, the model relies on growth through with capacity limits and two critical parameters. On the one hand, the ‘coefficient of innovation’ is the instantaneous rate at which a non-vaccinated person opts to get vaccinated, independent of how many people are already vaccinated. On the other hand, the ‘coefficient of imitation’ is the rate at which a non-vaccinated person is influenced by the fraction of vaccinated people in their decision to get vaccinated. This micro-founded model has been widely used due to its tractability and interpretability (Methods B) <span data-field="model_ref">{{ model_ref }}</span>.</p>
+  <p>Findings. The effects of COVID certificates on vaccine uptake turned out to be sizeable (Fig. 1). On the day of their announcements, in France, 53.8% of the population had received at least one dose of a</p>
+</div>
+
+<div class="page">
+  <p>COVID-19 vaccine, in Germany 62.5%, and in Italy 61.6%. By the end of 2021, the first-dose vaccine uptake had risen to 78.2%, 73.5%, and 80.1%, respectively. How much of this increase can be attributed to COVID certificates? To answer this question, we estimate the counterfactual without COVID certificates to be approximately 65.2% in France, 67.3% in Germany, and 70.4% in Italy (Methods B). More precisely, we attribute 13.0% [95% CI: 9.2–14.9%] percentage points (p.p.) of vaccine uptake for France, 6.2% [2.6–6.9] p.p. for Germany, and 9.7% [5.4–12.3] p.p. for Italy to the incentives created by COVID certificates. All three countries further extended the use of COVID certificates in the months following their adoption, ranging from their requirement in workplaces to the integration of a booster dose. Our estimates include the incentives created by these additional extensions. The overall effect is significant in France and Italy, but only from end of November 2021 onwards in Germany, when the use of COVID certificates was extended to workplaces (Fig. 1). The results are in line with studies analysing the immediate period after the intervention in various countries using cross-country or state comparisons <span data-field="comparison_ref">{{ comparison_ref }}</span> and are overall more substantial than previously predicted.</p>
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Figure 1: Estimated vaccine uptake with and without COVID certificates</p>
+    <!-- Placeholder for Figure 1 visualization -->
+  </div>
+  <p>The cumulative proportion of the whole population who received at least one COVID-19 vaccine dose in the actual intervention deployment (blue) and in the no-intervention counterfactual scenario (red). The red shaded area is the 95% confidence interval. The black dashed vertical line is the date of the announcement of the COVID certificate.</p>
+  <p>Importantly, the effect of COVID certificates on vaccine uptake was also sizeable among the older population. By the end of 2021, we attribute for France 8.9 [8.0–9.4] p.p. to the incentives created by COVID certificates among the population over 60 years old, and for Italy 4.4 [2.9–5.2] p.p. (Methods B). Germany did not publish age-dependent vaccine uptake statistics until mid-September 2021, so we cannot build a counterfactual for vaccine uptake among the older population in Germany.</p>
+  <h2 class="section-heading">Impact of COVID certificates on health outcomes</h2>
+  <p>The effectiveness of COVID-19 vaccines against hospitalisation, ICU admission, and death has been well documented, including for the Delta variant, which was prevalent throughout the period of study. We estimate the average effectiveness, considering the various vaccines and waning immunity, at 81% after one dose and 92% after two doses (Methods C) <span data-field="effectiveness_ref">{{ effectiveness_ref }}</span>. We focus on the direct protection provided by vaccines, but omit the contribution of vaccines to reducing overall transmission and the fact that COVID certificates may alter epidemic dynamics.</p>
+  <p>To estimate the impact of vaccine uptake on health outcomes, we construct counterfactuals for second-dose vaccine uptake based on the observed lag between the first and second doses. Booster uptake does not factor in our model, as during the period under consideration, there were not enough data to estimate its effect. We also use a simplified model for the impact of COVID certificates on health outcomes. Findings. We estimate the number of hospital admissions and deaths that would have occurred from the announcement of COVID certificates until the end of 2021 (Methods C and Fig. 2). In France, an additional 32,065 [26,566–35,306] hospital admissions would have occurred, in Germany 5,229 [1,774–6,822], and in Italy 8,735 [2,999–12,261]. Additional deaths in France would have been 3,979 [3,453–4,298], in Germany 1,133 [312–1,358], and in Italy 1,331 [502–1,794]. Thus, from the introduction until the end of 2021, the expected number of hospital admissions [and deaths] would have been 31.3% [31.7%] higher in France, 5.0% [5.6%] higher in Germany, and 15.5% [14.0%] higher in Italy. Notably, the impact of additional vaccine uptake compounds over time, and while the effect is significant for France and Italy over the entire period, it only becomes significant for Germany by the end of November. In the last week of 2021, without the accumulated difference in vaccine uptake, there would have been approximately 46% [49%] more hospital admissions [deaths] in France, 14% [11%] more in Germany, and 29% [26%] more in Italy (Fig. 2).</p>
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Figure 2: Estimated hospital admissions and deaths with and without COVID certificates</p>
+    <!-- Placeholder for Figure 2 visualization -->
+  </div>
+  <h2 class="section-heading">Impact of COVID certificates on economic activity</h2>
+  <p>COVID certificates may spur economic recovery in the short run, as newly vaccinated people can safely resume in-person economic activities, including working on-site, and consuming goods as well as services in brick-and-mortar businesses (direct effect). Furthermore, an indirect effect results from avoiding restrictions, through public health measures, on social, education, and economic activities. Here, we conduct a quantitative analysis of the overall economic effect of COVID certificates based on the weekly GDP estimates provided by the OECD Weekly Tracker <span data-field="oecd_ref">{{ oecd_ref }}</span>. Resorting to a high-frequency indicator of economic activity is necessary to exploit the weekly variations in vaccinations rates to identify the effect of vaccine uptake on economic activity. This paper innovates compared to previous analyses <span data-field="innovation_ref">{{ innovation_ref }}</span>, as the use of a high-frequency GDP proxy allows quantitative estimates of the economic impact of variations in vaccination rates.</p>
+  <p>The impact of COVID certificates on the economy is modelled through its effect on vaccine uptake and the elasticity of the latter to weekly GDP, using data from all OECD and G20 member countries as used by the OECD Weekly Tracker (Methods D). The average effect of vaccination on GDP is estimated using a closed-form model in which weekly GDP is regressed on first-dose vaccination, lagged by a month to account for the time between first and second dose and time to full effectiveness. In addition, health outcomes, also lagged by a month, are controlled for, as they may be confounding factors influencing both vaccine uptake and GDP. Furthermore, we control for vaccination and health outcomes of the main trade partners to avoid the potentially confounding effect of trade and other economic spillovers <span data-field="trade_ref">{{ trade_ref }}</span>, and for average weekly temperature, which influences virus diffusion <span data-field="temp_ref">{{ temp_ref }}</span>. Finally, we add week and country fixed effects to control for any common seasonal effects and any country-specific but time-invariant effects, such as demographic or geographical characteristics.</p>
+</div>
+
+<div class="page">
+  <p>Findings. The average effect of a 1 p.p. increase in the share of vaccinated people on weekly GDP one month later is 0.052 [0.042–0.061] p.p. A complete vaccination roll-out would thus drive GDP up by 5.2 p.p., which corresponds to approximately 85% of the loss observed in 2020. We estimate counterfactual weekly GDP trajectories for France, Germany, and Italy based on estimated counterfactual vaccine uptake (Fig. 3). By the end of 2021, without the policy intervention, weekly GDP would have been 0.6 [0.5–0.8]% lower in France, 0.3 [0.1–0.4]% lower in Germany, and 0.5 [0.3–0.6]% lower in Italy, amounting to GDP losses across the second half of 2021 of €6.0 [5.9 – 6.1] billion in France, €1.4 [1.3 – 1.5] billion in Germany, and €2.1 [2.0 – 2.2] billion in Italy (Methods D).</p>
+  <p>We corroborate our findings with robustness checks regarding the statistical method, the choice of lag between vaccination and GDP, and the modelling assumption that the vaccine-GDP relationship did not vary substantially across the considered time period (Methods D).</p>
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Figure 3: Estimated weekly GDP with and without COVID certificates</p>
+    <!-- Placeholder for Figure 3 visualization -->
+  </div>
+  <h2 class="section-heading">COVID certificates may have prevented lockdowns</h2>
+  <p>By increasing vaccine uptake, COVID certificates reduced the number of patients in ICUs and thus contributed to reducing the likelihood of stricter public measures, including lockdowns. While such decisions are ultimately made by governments, their anticipation and perceived uncertainty are harmful to the economy, also in the mid- and long-term <span data-field="economic_harm_ref">{{ economic_harm_ref }}</span>. It is thus instructive to consider the evolution of ICU patients over time and to use levels of previous lockdowns as benchmarks. We exclude the first lockdowns from the analysis, as they represent unrealistic benchmarks for future government action due to unprecedented uncertainty. In France, the number of COVID-19 patients in ICUs per million was 44.9 when the second lockdown was announced [28 October 2020] and 74.8 when the third lockdown was announced [31 March 2021]. In Germany, it was 54.3 [second lockdown, 13 December 2020], in Italy 53.0 [second lockdown, 12 December 2020] and 60.2 [third lockdown, 27 March 2021].</p>
+  <p>Findings. By the end of 2021, in France, the number of COVID-19 patients in ICUs was 52.4 per million. We estimate it would have been 76.1 [72.4–78.3] without the introduction of COVID certificates, i.e. for the central estimate, an increase of 45% (Methods C). The policy intervention may thus have been instrumental in preventing the high pressure on ICUs that prompted previous lockdowns (Fig. 4). By contrast, the additional vaccine uptake in Germany was not sufficient to avert high pressure on ICUs.</p>
+  <div style="text-align: center; margin-top: 30px;">
+    <p>Figure 4: Estimated ICU patients with and without COVID certificates</p>
+    <!-- Placeholder for Figure 4 visualization -->
+  </div>
+  <h2 class="section-heading">Discussion</h2>
+  <p>COVID certificates have had a sizeable, robust positive effect on vaccination rates, health outcomes, and the economy in France, Germany, and Italy. In our analysis, we aimed to make prudent assumptions on model inputs such as vaccine effectiveness and lags between infection and health outcomes. In addition to the evaluated temporary effect, the incentives created by COVID certificates may be lasting, as parts of the population might have remained unvaccinated without the intervention.</p>
+  <p>Even though COVID certificates were introduced in similar contexts – i.e. the three largest EU countries, at a time when vaccination campaigns were slowing down, and infections were increasing rapidly – the magnitude of the impacts varied significantly from one country to the other and from the intervention to the end of 2021. This variation may be due to differences in government implementation, the timing of announcements, and the extent of their use. For example, the announcements in France and Italy were particularly striking, as they were made by the central government, while in Germany, the use of certificates was more decentralized. Furthermore, COVID certificates were introduced more gradually in Germany with different rules and enforcement levels across its federal states. Further studies should complement our work by assessing the broader effect of COVID certificates on the development of the epidemic. Additionally, long-term social and economic costs and benefits need to be considered as more data will become available.</p>
+  <p>COVID certificates appear to be an attractive, more inclusive alternative to vaccine mandates, focusing on the added benefits of getting vaccinated or tested rather than on punitive measures for not doing so. As countries grapple with the highly contagious Omicron variant, COVID certificates might play a decisive role in increasing and maintaining vaccine-induced protection. Nevertheless, governments’ policy decisions on COVID certificates should also consider additional factors, such as supply of vaccines and tests, political trust, and accessibility for marginalised groups, in</p>
+</div>
+
+<div class="page">
+  <p>order not to threaten social cohesion or exacerbate already existing inequalities <span data-field="inequality_ref">{{ inequality_ref }}</span>. Finally, international coordination and mutual acceptance of COVID certificates are crucial to prevent deepening the divide between different regions <span data-field="coordination_ref">{{ coordination_ref }}</span>.</p>
+  <h3 style="font-size: 12pt; margin-top: 40px;">Author contributions.</h3>
+  <p>M.B. et al. designed the study, built the model, collected data, finalised the analysis, interpreted the findings, and wrote the manuscript. L.G.J. collected and analysed data. P.A. and P.M. provided guidance, interpreted the findings, and commented on and revised previous versions of this manuscript. All authors read and approved the final manuscript. The corresponding authors had full access to all the data used in the study and had final responsibility for the decision to submit for publication.</p>
+  <h3 style="font-size: 12pt; margin-top: 20px;">Competing interests.</h3>
+  <p>A.F. is a member of the French COVID-19 Scientific Council and a member of the French National Institute of Health and Medical Research. P.M. chairs the French Council of Economic Analysis, an independent council attached to the Prime Minister. G.B.W. is a member of the G20 High Level Independent Panel on Financing the Global Commons for Pandemic Preparedness and Response. The authors declare no other competing interests.</p>
+  <div class="footer">
+    <p>8</p>
+  </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  p, td, span { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  .figure-caption { font-size: 0.9em; margin-top: 5px; text-align: center; }
+</style>
+
+<div class="page">
+  <h2 style="font-size: 1.5em; margin-bottom: 10px;">Methods</h2>
+  <h3 style="font-size: 1.1em; margin-top: 20px;">A. Data sources</h3>
+  <p style="line-height: 1.6;">All data were retrieved in the first week of <span data-field="data_retrieval_date">{{ data_retrieval_date }}</span>.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Health data.</h3>
+  <p style="line-height: 1.6;">For all OECD and EU countries, the share of the population who received one dose of a COVID-19 vaccine, two doses of a COVID-19 vaccine, hospital admissions per 1 million, daily ICU patients per 1 million, daily deaths per 1 million, and population estimates have been retrieved from <span data-field="data_source_1">{{ data_source_1 }}</span>. For France age-stratified data on hospital admissions, ICU patients, and deaths was retrieved from official government sources and deaths outside hospitals from the French Institute for Demographic Studies (INED). For Italy age-stratified data on deaths was also retrieved from INED.</p>
+
+  <p style="line-height: 1.6;">Age-stratified vaccine uptake statistics for France and Italy were both retrieved from the European Centre of Disease Prevention and Control [note that such data is not available for Germany].</p>
+
+  <p style="line-height: 1.6;">The share of different vaccines used until the end of 2021 in France, Germany, and Italy (made by <span data-field="vaccine_manufacturer_1">{{ vaccine_manufacturer_1 }}</span>, <span data-field="vaccine_manufacturer_2">{{ vaccine_manufacturer_2 }}</span>, <span data-field="vaccine_manufacturer_3">{{ vaccine_manufacturer_3 }}</span>, <span data-field="vaccine_manufacturer_4">{{ vaccine_manufacturer_4 }}</span>) have been retrieved from the official government sources.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">OECD Weekly Tracker.</h3>
+  <p style="line-height: 1.6;">The OECD Weekly Tracker (short 'Tracker') provides weekly estimates of economic activity based on Google Trends data and performs well across the 46 OECD and G20 countries in forecast simulations. The Tracker's methodology relies on a machine learning algorithm, which extracts signals from search intensities related to approximately 250 categories of search keywords to infer a timely picture of the economy. It is trained on official GDP series to predict weekly GDP from the weekly Google Trends series. It provides estimates of weekly GDP relative to the pre-crisis trend.</p>
+
+  <p style="line-height: 1.6;">The Tracker is based on several Google Trends variables that were hand-picked to cover a wide range of aspects of economic activity. Importantly, for our analysis, the Tracker only uses search behaviour on economic variables and not health variables. Data about search behaviours can be informative about consumption (e.g., related to searches for 'vehicles', 'household appliances'), labour markets (e.g., 'unemployment benefits'), housing (e.g., 'real estate agency', 'mortgage'), business services (e.g., 'venture capital', 'bankruptcy'), industrial activity (e.g., 'maritime transport', 'agricultural equipment') and economic sentiment (e.g., 'recession'), and poverty (e.g., 'food bank'). Signals about multiple facets of the economy can be aggregated to infer a timely picture of the macroeconomic.</p>
+
+  <p style="line-height: 1.6;">The relationship between the search volume indices and GDP, $f$, is learnt at the quarterly frequency using official quarterly GDP series and quarterly aggregates of the search indices. It is then used to disaggregate GDP growth at the weekly frequency by applying $f$ to the weekly search indices. The relationship between Google Trends variables and GDP growth is fitted using a neural network. It is trained using a dataset comprising the whole panel of observations from 46 countries.</p>
+</div>
+
+<div class="page">
+  <p style="line-height: 1.6;">Figure 5: The OECD Weekly Tracker is a proxy of weekly GDP relative to the pre-crisis trend</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_1.png" alt="Figure 5" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 5: The OECD Weekly Tracker is a proxy of weekly GDP relative to the pre-crisis trend</div>
+  </div>
+
+  <p style="line-height: 1.6;">Since it was released in December 2020, the Tracker has shed light on major policy issues related to the economic impact of lockdowns, infection waves, vaccination campaigns, and economic policy responses. The high-frequency nature of the Tracker makes it a relevant tool to assess the impact of COVID-19 policy responses. The Tracker series for France, Germany, and Italy are shown in Fig. 6.</p>
+
+  <p style="line-height: 1.6;">Figure 6: OECD Weekly Tracker for France, Germany, and Italy</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_2.png" alt="Figure 6" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 6: OECD Weekly Tracker for France, Germany, and Italy</div>
+  </div>
+
+  <p style="line-height: 1.6;">Note: The Tracker provides an estimate of weekly GDP relative to the pre-crisis trend based on Google Trends search data and machine learning.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Vaccine acceptance</h3>
+  <p style="line-height: 1.6;">Vaccine acceptance is taken from the University of Maryland Social Data Science Center “Global COVID-19 Trends and Impact Survey” in partnership with Facebook. The survey is administered to a representative sample of Facebook users daily and includes questions on symptoms, social distancing behaviour, vaccine acceptance, mental health issues, and financial constraints. The acceptance rates used in this paper are built as the quarterly average of the proportion of respondents that said to 'definitely' or 'probably' choosing to get vaccinated if a COVID-19 vaccine was offered to them over the first quarter of 2021. For the United States, acceptance rates were complemented using</p>
+</div>
+
+<div class="page">
+  <p style="line-height: 1.6;">data from the Johns Hopkins Center for Communication Programs. The acceptance rate for Malta was imputed using the median across countries.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Mobility.</h3>
+  <p style="line-height: 1.6;">A mobility index is built from the Google Mobility reports, which document mobility per type of destination relative to the pre-crisis levels at a daily frequency. The mobility index used in this paper is the simple average of mobility towards workplaces and places of retail and recreation.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Temperature.</h3>
+  <p style="line-height: 1.6;">Daily temperature series for the 46 OECD and G20 countries across 2020 and 2021 were collected from the National Oceanic and Atmospheric Administration's National Centers for Environmental Information. The Global Historical Climatology Network daily (GHCN) provides daily climate summaries from land surface stations across the globe. Temperature data for each station were averaged at the country level.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Policy interventions.</h3>
+  <p style="line-height: 1.6;">For each country, we consider the date when COVID certificates for day-to-day use were announced, see Table 1.</p>
+
+  <h4 style="font-size: 1em; margin-top: 15px;">Table 1: COVID certificates: announcement date and regulations for France, Germany, and Italy</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Announcement</th>
+        <th>Places where COVID certificates are required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Germany</td>
+        <td><span data-field="announcement_date_1">{{ announcement_date_1 }}</span></td>
+        <td>Health care places (e.g., hospitals, care homes), hospitality venues, events, indoor entertainment venues, and public transport.</td>
+      </tr>
+      <tr>
+        <td>Italy</td>
+        <td><span data-field="announcement_date_2">{{ announcement_date_2 }}</span></td>
+        <td>Health care places (e.g., hospitals, care homes), hospitality venues, events, indoor entertainment venues, and public transport.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="line-height: 1.6;">The extension to workplaces was announced on <span data-field="workplace_extension_date">{{ workplace_extension_date }}</span> in Italy and on <span data-field="workplace_extension_date_2">{{ workplace_extension_date_2 }}</span> in Germany.</p>
+
+  <p style="line-height: 1.6;">OECD and EU countries that announced the use of COVID certificates before 22 September 2021. Australia, Chile, Colombia, Croatia, Cyprus, Denmark, Estonia, Finland, France, Germany, Greece, Ireland, Israel, Italy, Latvia, Lithuania, Luxembourg, Mexico, Portugal, Romania, Slovakia, Slovenia, Spain, Switzerland, the United States.</p>
+</div>
+
+<div class="page">
+  <p style="line-height: 1.6;"><sup>1</sup> <a href="https://www.google.com/covid/19/mobility/">https://www.google.com/covid/19/mobility/</a></p>
+  <p style="line-height: 1.6;"><sup>2</sup> <a href="https://www.elysee.fr/emmanuel-macron/2021/07/12/adresse-aux-français-12-juillet-2021">https://www.elysee.fr/emmanuel-macron/2021/07/12/adresse-aux-français-12-juillet-2021</a></p>
+  <p style="line-height: 1.6;"><sup>3</sup> <a href="https://www.covid.gov/covid-19-vaccine-tracker/">https://www.covid.gov/covid-19-vaccine-tracker/</a></p>
+  <p style="line-height: 1.6;"><sup>4</sup> <a href="https://www.bundesregierung.de/breg-en/news/974340/1949352/df/31d49364432b6313e6e6ac496621-08-10-mpk-data.pdf?download=1">https://www.bundesregierung.de/breg-en/news/974340/1949352/df/31d49364432b6313e6e6ac496621-08-10-mpk-data.pdf?download=1</a></p>
+  <p style="line-height: 1.6;"><sup>5</sup> <a href="https://www.bundesregierung.de/breg-en/news/federal-regional-consultation-coronavirus-1949666">https://www.bundesregierung.de/breg-en/news/federal-regional-consultation-coronavirus-1949666</a></p>
+  <p style="line-height: 1.6;"><sup>6</sup> <a href="https://www.presidenza.it/articoli/comunicato-stampa-del-consiglio-dei-ministri-n-30/15714">https://www.presidenza.it/articoli/comunicato-stampa-del-consiglio-dei-ministri-n-30/15714</a></p>
+  <p style="line-height: 1.6;"><sup>7</sup> <a href="https://www.euronews.com/2021/07/23/italy-to-roll-out-covid-health-pass-for-bars-restaurants-and-museums">https://www.euronews.com/2021/07/23/italy-to-roll-out-covid-health-pass-for-bars-restaurants-and-museums</a></p>
+  <p style="line-height: 1.6;"><sup>8</sup> <a href="https://www.reuters.com/world/europe/italy-mandatory-covid-health-pass-works-seek-untroubled-launch-2021-10-15/">https://www.reuters.com/world/europe/italy-mandatory-covid-health-pass-works-seek-untroubled-launch-2021-10-15/</a></p>
+  <p style="line-height: 1.6;"><sup>9</sup> <a href="https://www.bundesgesundheitsministerium.de/ministerium/gesetze-und-verordnungen/guv-20-tp-ifsg.html">https://www.bundesgesundheitsministerium.de/ministerium/gesetze-und-verordnungen/guv-20-tp-ifsg.html</a></p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Table 2: Use of COVID certificates in OECD and EU countries (November 2021)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Announcement</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for country in countries_table_2 %}
+      <tr>
+        <td>{{ country.country }}</td>
+        <td>{{ country.announcement }}</td>
+        <td><span data-field="source_url_{{ loop.index0 }}">{{ country.source }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="line-height: 1.6;"><sup>10</sup> <a href="https://www.google.com/covid/19/mobility/">https://www.google.com/covid/19/mobility/</a></p>
+  <p style="line-height: 1.6;"><sup>11</sup> <a href="https://www.covid.gov/covid-19-vaccine-tracker/">https://www.covid.gov/covid-19-vaccine-tracker/</a></p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Innovation diffusion theory</h3>
+  <p style="line-height: 1.6;">The impact of COVID certificates on vaccination uptake is estimated using innovation diffusion theory and validated by the synthetic control method.</p>
+
+  <p style="line-height: 1.6;">Innovation diffusion theory attempts to formalise the way in which an innovation is gradually taken up by a population, where early adopters are then joined by followers. The model relies on growth models with capacity limits, i.e. logistic curves. In our context, vaccines are the innovation that every eligible person may choose to adopt.</p>
+
+  <p style="line-height: 1.6;">Denote by $t_0$ the date when the vaccine is introduced and by $x(t) \in [0, 1]$ the cumulative fraction of the population who has received at least one dose at time $t$. Thus, by assumption, $x(t) \in [0, 1]$ for all $t$, the function $x(t)$ is nondecreasing, and $x(t) = 0$ for all $t \le t_0$. The innovation diffusion model depends on three additional parameters: $\alpha > 0$ is the 'coefficient of innovation', $\beta$ is the instantaneous rate at which a non-vaccinated person opts to get vaccinated, independent of how many people are already vaccinated; $\gamma \ge 0$ is the 'coefficient of imitation', i.e. the rate at which a non-vaccinated person is influenced by the fraction of vaccinated people; and $K \ge 1$ is the capacity, i.e. the fraction of the population that is eventually eligible and willing to get vaccinated.</p>
+
+  <p style="line-height: 1.6;">Mathematically, the innovation diffusion model is described by the ordinary differential equation</p>
+  <div style="text-align: center; margin: 15px 0;">
+    $$f'(t) = \left(1 - \frac{x(t)}{K}\right) \left(p + q x(t)\right), \quad t \ge t_0 \text{ and } f'(t) = 0 \text{ elsewhere.}$$
+  </div>
+
+  <p style="line-height: 1.6;">The unique solution to the latter differential equation is given by:</p>
+  <div style="text-align: center; margin: 15px 0;">
+    $$f(t) = \frac{K}{1 + e^{-\alpha(t-t_0)}} \quad \text{for } t \ge t_0 \text{ and } f(t) = 0 \text{ elsewhere.}$$
+  </div>
+
+  <p style="line-height: 1.6;">Logistic functions model the diffusion of an innovation in the absence of major shocks, including supply shortages or policy interventions. While this is the case over the time period considered [i.e. date of announcement of COVID certificate to 31 December 2021], an extension to 2022 may be less appropriate due to the exogenous shock caused by the Omicron variant becoming dominant in France, Germany, and Italy.</p>
+
+  <p style="line-height: 1.6;">Parameters $t_0, p, q$, and $K$ are estimated using the least-square method to fit the data on vaccine uptake. The fit is computed three months before the announcement of a country's COVID certificate and then extended to the end of the year; the start date is chosen because by the majority of the adult population was eligible for vaccination. We use the function 'curve fit' from Python's package 'scipy.optimize' over vaccine uptake and synthetic counterfactuals. We use block bootstrap to account for time dependence in the data with 1,000 iterations and 30 non-overlapping blocks. The 95% confidence intervals are shown and reported throughout.</p>
+</div>
+
+<div class="page">
+  <p style="line-height: 1.6;">Figure 7: Realised and counterfactual vaccination rates for the population over age 60</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_3.png" alt="Figure 7" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 7: Realised and counterfactual vaccination rates for the population over age 60</div>
+  </div>
+
+  <p style="line-height: 1.6;">The cumulative proportion of the population over age 60 who received at least one COVID-19 vaccine dose in the actual intervention deployment (blue) and in the no-intervention counterfactual scenario (red). The red shaded area is the 95% confidence interval. The counterfactual scenario is estimated via innovation diffusion theory. The black dashed vertical line is the date of the announcement of the COVID certificate.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Model validation via synthetic control.</h3>
+  <p style="line-height: 1.6;">Fig. 8 shows the estimated vaccination uptake via synthetic control for France, Germany, and Italy. Its computation is described below. The synthetic control for</p>
+
+  <p style="line-height: 1.6;">each country falls within the 95% confidence interval of the counterfactual based on innovation diffusion theory. This gives additional validation for the model choice and findings.</p>
+
+  <p style="line-height: 1.6;">Figure 8: Estimated vaccine uptake via synthetic control and innovation diffusion theory with and without COVID certificates</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_4.png" alt="Figure 8" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 8: Estimated vaccine uptake via synthetic control and innovation diffusion theory with and without COVID certificates</div>
+  </div>
+
+  <p style="line-height: 1.6;">The cumulative proportion of the whole population who received at least one COVID-19 vaccine dose in the actual intervention deployment (blue), in the no-intervention counterfactual scenario via innovation diffusion theory (red), and in the synthetic control scenario (green). The red shaded area is the 95% confidence interval of the counterfactual scenario via innovation diffusion theory. Note that the synthetic control scenario ends on 22 September 2021, when the method becomes infeasible. The black dashed vertical line is the date of the announcement of the COVID certificate.</p>
+
+  <h3 style="font-size: 1.1em; margin-top: 20px;">Synthetic Control.</h3>
+  <p style="line-height: 1.6;">Synthetic control provides a counterfactual based on the evolution of non-treated countries, i.e. countries that did not implement COVID certificates. This counterfactual is computed as a weighted average of the non-treated countries. To this end, we define the control group as the OECD and EU countries that did not resort to COVID certificates during this period. The weights applied to the non-treated units are chosen to minimise the error of the synthetic control in the pre-treatment period. The impact of COVID certificates on vaccination uptake is estimated as the difference between vaccination after the implementation of the policy and the counterfactual - 14 countries feature in the donor pool of non-treated countries and include OECD and EU countries that did not implement COVID mandates before 22 September 2021 and have sufficient data availability (see list above). We posit that after this date the synthetic control method is no longer feasible due to an insufficient donor pool.</p>
+
+  <p style="line-height: 1.6;">For each treated country (France, Germany, Italy), the synthetic first-dose vaccination rate ($\text{SV}_{i,t}$) is computed as a weighted average of the vaccination rates in the donor countries:</p>
+  <div style="text-align: center; margin: 15px 0;">
+    $$\text{SV}_{i,t} = \sum_{j \in \text{donor}} w_{ij} \text{V}_{j,t},$$
+  </div>
+
+  <p style="line-height: 1.6;">where $j = 14$ is the number of countries in the donor pool, and $w_{ij}$ is the weight associated with $\text{V}_{j,t}$ and the vaccination rate in country $j$. The weights are in the interval $[0, 1]$ and sum to one to avoid extrapolation.<sup>10</sup> They are chosen to minimise the error prior to the treatment, which occurs in $t_0$:</p>
+  <div style="text-align: center; margin: 15px 0;">
+    $$\min \sum_{j \in \text{donor}} \left( \text{V}_{j,t} - \sum_{j \in \text{donor}} w_{ij} \text{V}_{j,t} \right)^2 + \sum_{k=1}^K \lambda_k \left( \text{X}_{i,t} - \sum_{j \in \text{donor}} w_{ij} \text{X}_{j,t} \right)^2.$$
+  </div>
+
+  <p style="line-height: 1.6;">The weights $w_{ij}$ are chosen to minimise a composite loss function that includes, on the left, the mean squared prediction error of the pre-treatment outcome, and on the right, the mean squared prediction errors of $K$ covariates, whose respective importance is weighted by the coefficients $\lambda_k$ for $k$ between 1</p>
+</div>
+
+<div class="page">
+  <p style="line-height: 1.6;">and $K$. The covariates are selected on the basis of their predictive power of vaccination, and include annual GDP per capita, the average fatality and cases over the pre-treatment period, the share of the population aged over 65, the average mobility index, and the average vaccine acceptance over the first quarter of 2021. The covariate weights are assumed to be constant ($\lambda_k = \lambda$ for all $k$), and the weight applied to all the covariates $\lambda$ is optimised using five-fold cross-validation.</p>
+
+  <p style="line-height: 1.6;">Figure 9: Country weights for synthetic control for France, Germany, and Italy</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_5.png" alt="Figure 9" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 9: Country weights for synthetic control for France, Germany, and Italy</div>
+  </div>
+
+  <p style="line-height: 1.6;">The significance of the results is assessed using placebo tests. A synthetic vaccination rate $\text{SV}_{i,t}$ is built for each country $i$ in the donor pool (placebos); see Fig. 10.</p>
+
+  <p style="line-height: 1.6;">Figure 10: Placebos for France, Germany, and Italy</p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="placeholder_chart_6.png" alt="Figure 10" style="max-width: 80%; height: auto;">
+    <div class="figure-caption">Figure 10: Placebos for France, Germany, and Italy</div>
+  </div>
+
+  <p style="line-height: 1.6;">Inference is performed by comparing the ratio of the root mean squared prediction errors ($\text{RMSPE}$) of the synthetic vaccination rate for the treated country after and before the treatment to the distribution of these $\text{RMSPE}$ ratios over the placebos. The ratio between the post-intervention $\text{RMSPE}$ and pre-intervention $\text{RMSPE}$ for unit $i$ is</p>
+  <div style="text-align: center; margin: 15px 0;">
+    $$\text{T}_i = \frac{\text{RMSPE}_{i(\text{post-intervention})}}{\text{RMSPE}_{i(\text{pre-intervention})}}.$$
+  </div>
+
+  <p style="line-height: 1.6;">A p-value for the inferential procedure based on the permutation distribution of $\text{T}_i$ is given by the rank of the treated country's ratio divided by the size of the donor pool. The $\text{RMSPE}$ ratios and their permutation distributions for the synthetic vaccination rates in France, Germany, and Italy are shown</p>
+</div>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+</style>
+<div class="page">
+  <p>In Fig. 11, the causal estimates for <span data-field="country_a">{{ country_a }}</span> and <span data-field="country_b">{{ country_b }}</span> are statistically significant with a p-value equal to <span data-field="p_value_1">{{ p_value_1 }}</span> (i.e., <span data-field="p_value_2">{{ p_value_2 }}</span>), while the estimates for <span data-field="country_c">{{ country_c }}</span> are not significant.</p>
+  <h2>Figure 11: RMSPE ratios for <span data-field="country_a">{{ country_a }}</span>, <span data-field="country_b">{{ country_b }}</span>, and <span data-field="country_c">{{ country_c }}</span></h2>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2"></th>
+        <th colspan="3">France</th>
+        <th colspan="3">Germany</th>
+        <th colspan="3">Italy</th>
+      </tr>
+      <tr>
+        <th>FRA</th>
+        <th>SWE</th>
+        <th>POL</th>
+        <th>AUS</th>
+        <th>ITA</th>
+        <th>HUN</th>
+        <th>AUS</th>
+        <th>SWE</th>
+        <th>POL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HUN</td>
+        <td>TUR</td>
+        <td>NOR</td>
+        <td>NOR</td>
+        <td>NOR</td>
+        <td>TUR</td>
+        <td>NOR</td>
+        <td>SWE</td>
+        <td>TUR</td>
+      </tr>
+      <tr>
+        <td>NOR</td>
+        <td>AUS</td>
+        <td>NOR</td>
+        <td>SWE</td>
+        <td>SWE</td>
+        <td>SWE</td>
+        <td>SWE</td>
+        <td>SWE</td>
+        <td>SWE</td>
+      </tr>
+      <tr>
+        <td>KOR</td>
+        <td>SWE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+      </tr>
+      <tr>
+        <td>MLT</td>
+        <td>TUR</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+      </tr>
+      <tr>
+        <td>TUR</td>
+        <td>NOR</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+        <td>POL</td>
+      </tr>
+      <tr>
+        <td>NZL</td>
+        <td>NOR</td>
+        <td>NZL</td>
+        <td>NZL</td>
+        <td>NZL</td>
+        <td>NZL</td>
+        <td>NZL</td>
+        <td>NZL</td>
+        <td>NZL</td>
+      </tr>
+      <tr>
+        <td>CZE</td>
+        <td>NOR</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+        <td>CZE</td>
+      </tr>
+      <tr>
+        <td>GBR</td>
+        <td>NOR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+        <td>GBR</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="center">0</td>
+        <td colspan="3" class="center">100</td>
+        <td colspan="3" class="center">300</td>
+        <td colspan="3" class="center">0</td>
+        <td colspan="3" class="center">10</td>
+        <td colspan="3" class="center">20</td>
+        <td colspan="3" class="center">30</td>
+      </tr>
+    </tfoot>
+  </table>
+  <p>Overfitting may be an issue with synthetic control. The RMSPE ratios that are used for inference can be recast as follows in the absence of policy intervention:</p>
+  <p>RMSPE (<span data-field="out_of_sample">{{ out_of_sample }}</span>)</p>
+  <p>RMSPE (<span data-field="in_sample">{{ in_sample }}</span>)</p>
+</div>
+<div class="page">
+  <h3>C. Impact on health outcomes</h3>
+  <p><strong>Vaccine effectiveness.</strong> We compute vaccine effectiveness against hospitalisation, ICU admission, and deaths between one week and six months after inoculation when infected with the <span data-field="variant_name">{{ variant_name }}</span> variant—the dominant strain of <span data-field="virus_name">{{ virus_name }}</span> in France, Germany, and Italy over the considered time period—by taking the weighted average over the different types of vaccines (see Table 3).</p>
+  <h4>Table 3. Distribution of the different types of vaccines in France, Germany, and Italy by 31 December 2021</h4>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>France</th>
+        <th>Germany</th>
+        <th>Italy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BioNTech/Pfizer</td>
+        <td><span data-field="bioNTech_france">{{ bioNTech_france }}</span>%</td>
+        <td><span data-field="bioNTech_germany">{{ bioNTech_germany }}</span>%</td>
+        <td><span data-field="bioNTech_italy">{{ bioNTech_italy }}</span>%</td>
+      </tr>
+      <tr>
+        <td>Moderna</td>
+        <td><span data-field="moderna_france">{{ moderna_france }}</span>%</td>
+        <td><span data-field="moderna_germany">{{ moderna_germany }}</span>%</td>
+        <td><span data-field="moderna_italy">{{ moderna_italy }}</span>%</td>
+      </tr>
+      <tr>
+        <td>AstraZeneca</td>
+        <td><span data-field="astraZeneca_france">{{ astraZeneca_france }}</span>%</td>
+        <td><span data-field="astraZeneca_germany">{{ astraZeneca_germany }}</span>%</td>
+        <td><span data-field="astraZeneca_italy">{{ astraZeneca_italy }}</span>%</td>
+      </tr>
+      <tr>
+        <td>Janssen Pharmaceutica NV</td>
+        <td><span data-field="janssen_france">{{ janssen_france }}</span>%</td>
+        <td><span data-field="janssen_germany">{{ janssen_germany }}</span>%</td>
+        <td><span data-field="janssen_italy">{{ janssen_italy }}</span>%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>For mRNA vaccines [<span data-field="bioNTech_pfizer_note">{{ bioNTech_pfizer_note }}</span> and <span data-field="moderna_note">{{ moderna_note }}</span>], conservative estimates for the effectiveness are <span data-field="effectiveness_percentage_1">{{ effectiveness_percentage_1 }}</span>% after one dose and <span data-field="effectiveness_percentage_2">{{ effectiveness_percentage_2 }}</span>% after two doses. The second estimate integrates the effect of waning</p>
+</div>
+<div class="page">
+  <p>immunity, as the protection against severe outcomes is higher than <span data-field="immunity_threshold_1">{{ immunity_threshold_1 }}</span>% up to <span data-field="immunity_threshold_2">{{ immunity_threshold_2 }}</span> weeks after inoculation and above <span data-field="immunity_threshold_3">{{ immunity_threshold_3 }}</span>% for AstraZeneca's vaccine, comparable estimates are <span data-field="comparable_effectiveness_1">{{ comparable_effectiveness_1 }}</span>% after one dose and <span data-field="comparable_effectiveness_2">{{ comparable_effectiveness_2 }}</span>% after two doses. Here, waning immunity explains the lower effectiveness of two AstraZeneca doses versus one. Finally, for Janssen Pharmaceutica NV, the effectiveness after the single dose is estimated at <span data-field="janssen_effectiveness">{{ janssen_effectiveness }}</span>%.</p>
+  <p>The overall vaccine effectiveness against hospital admissions, ICU admissions, and deaths is approximately the same and is also similar across France, Germany, and Italy, namely <span data-field="overall_effectiveness_percentage">{{ overall_effectiveness_percentage }}</span>% protection after one dose and <span data-field="overall_effectiveness_percentage_2">{{ overall_effectiveness_percentage_2 }}</span>% after two doses. We do not include the additional protection provided by boosters, as the calculations we perform are only concerned with individuals who were not fully vaccinated before the COVID certificate; therefore, they were not eligible for a booster shot over the period of study.</p>
+  <p><strong>Realised health outcomes by vaccine status.</strong> Let <span data-field="X_t">{{ X_t }}</span> denote the realised health outcome [ie hospital admissions and patients, ICU admissions and patients, and deaths, for a given country] at time <span data-field="t">{{ t }}</span>, and let <span data-field="X_t(v)">{{ X_t(v) }}</span> denote the same outcome by vaccine status <span data-field="v">{{ v }}</span> ∈ {0, 1, 2}. When the data by vaccine status are not available, we can derive them from Bayes' rule and the level of protection against the health outcome by vaccine status, <span data-field="beta_v">{{ beta_v }}</span>(v). The <span data-field="X_t(v)">{{ X_t(v) }}</span> satisfies the following linear system:</p>
+  <p><span data-field="X_t(v)">{{ X_t(v) }}</span> = <span data-field="beta_v">{{ beta_v }}</span> * <span data-field="X_t(0)">{{ X_t(0) }}</span> + <span data-field="beta_v_prime">{{ beta_v_prime }}</span> * <span data-field="X_t(1)">{{ X_t(1) }}</span> + <span data-field="beta_v_double_prime">{{ beta_v_double_prime }}</span> * <span data-field="X_t(2)">{{ X_t(2) }}</span>, for all <span data-field="v">{{ v }}</span> ∈ {0, 1, 2}.</p>
+  <p>This system admits a unique solution, given by</p>
+  <p><span data-field="X_t(v)">{{ X_t(v) }}</span> = <span data-field="X_t_hat">{{ X_t_hat }}</span> * <span data-field="beta_v_hat">{{ beta_v_hat }}</span>, for all <span data-field="v">{{ v }}</span> ∈ {0, 1, 2}.</p>
+  <p>Note that vaccine uptake has been lagged by <span data-field="lag_days">{{ lag_days }}</span> days to account for the lag between infection and the health outcome, <span data-field="I_lag">{{ I_lag }}</span>, and <span data-field="I_lag_prime">{{ I_lag_prime }}</span>, the lag between vaccination and full effectiveness, <span data-field="I_vaccine">{{ I_vaccine }}</span>, and the duration of the health hazard, <span data-field="I_stay">{{ I_stay }}</span> and <span data-field="I_stay_prime">{{ I_stay_prime }}</span>, which are only relevant for hospital admissions and ICU patients. For example, for a patient who is in an ICU at time <span data-field="t">{{ t }}</span> on average, their admission occurred at time <span data-field="t_minus_lag_icu">{{ t_minus_lag_icu }}</span>, their infection at time <span data-field="t_minus_lag_infection">{{ t_minus_lag_infection }}</span>, and at that time <span data-field="t_minus_lag_icu_infection">{{ t_minus_lag_icu_infection }}</span>, people were fully protected by vaccination.</p>
+</div>
+<div class="page">
+  <h3>D. Impact on the economy</h3>
+  <p>We estimate the average impact of a marginal increase in vaccination rates on economic activity using two-way fixed-effect regressions. The measure of economic activity used in this paper is the OECD Weekly Tracker, a proxy of weekly GDP relative to the pre-crisis trend, which is available for 46 countries with no population delay (Methods A). It is regressed on vaccination rates along with controls as well as country and week fixed effects. To estimate the average total effect of vaccination on GDP, we use the following closed-form model:</p>
+  <p><span data-field="T_i,w">{{ T_i,w }}</span> = <span data-field="beta_1">{{ beta_1 }}</span> * <span data-field="I_i,w">{{ I_i,w }}</span> + <span data-field="beta_2">{{ beta_2 }}</span> * <span data-field="I_i,w_lag">{{ I_i,w_lag }}</span> + <span data-field="I_i,w_lag_prime">{{ I_i,w_lag_prime }}</span> * <span data-field="I_i,w_lag_prime_prime">{{ I_i,w_lag_prime_prime }}</span> + <span data-field="sigma_w">{{ sigma_w }}</span>.</p>
+  <p>Weekly GDP is proxied by the Tracker <span data-field="Tracker_name">{{ Tracker_name }}</span> and is regressed on the share of vaccinated people lagged by <span data-field="l_weeks">{{ l_weeks }}</span> [i.e., <span data-field="l_weeks_value">{{ l_weeks_value }}</span>], as well as three vectors of controls, week, and country dummies. The first controls vector <span data-field="controls_vector_1">{{ controls_vector_1 }}</span> includes lagged cases, deaths, reproduction rate, and mobility index, which may have impacted both past vaccine uptake decisions and present weekly GDP. The model also reverts confounding effects that could emerge from trade and other spillover due to the relative synchronicity of vaccination campaigns across countries by controlling for vaccination and deaths in the main trading partners [<span data-field="trading_partners_note">{{ trading_partners_note }}</span>]. The vector <span data-field="X_i,w">{{ X_i,w }}</span> is the weighted average of vaccination rates and deaths in country <span data-field="i"">{{ i }}</span>'s main 10 trading partners, i.e.</p>
+  <p><span data-field="V_i,w">{{ V_i,w }}</span> = <span data-field="sum_over_j">{{ sum_over_j }}</span> <span data-field="V_j,w">{{ V_j,w }}</span> * <span data-field="w_j">{{ w_j }}</span>,</p>
+  <p>where <span data-field="V_j,w">{{ V_j,w }}</span> is the vaccination rate in trading partner <span data-field="j"">{{ j }}</span> and <span data-field="w_j">{{ w_j }}</span> is the share of exports from country <span data-field="i"">{{ i }}</span> to trade partner <span data-field="j"">{{ j }}</span> in total exports from country <span data-field="i"">{{ i }}</span>. The same formula is used to build the vector of weighted average death rates in trading partners. Last, the model includes the vector of average weekly temperatures <span data-field="Z_i,w">{{ Z_i,w }}</span>, which can influence virus transmission.</p>
+</div>
+<div class="page">
+  <p>The model is estimated using data from <span data-field="data_period">{{ data_period }}</span> OECD and <span data-field="data_period_2">{{ data_period_2 }}</span> countries (see Table 4). Denote by <span data-field="p">{{ p }}</span> <span data-field="p_value_3">{{ p_value_3 }}</span> <span data-field="p_value_4">{{ p_value_4 }}</span> and <span data-field="p_value_5">{{ p_value_5 }}</span>. The average effect of a 1 p.p. increase in the share of vaccinated people after a month is <span data-field="avg_effect_1">{{ avg_effect_1 }}</span> p.p. in weekly GDP. This order of magnitude seems plausible and implies that the impact was permanent, that 100% vaccination uptake would increase GDP by <span data-field="max_gdp_increase">{{ max_gdp_increase }}</span> p.p. which broadly corresponds to 85% of the average GDP loss suffered in 2020 by the countries in the sample. This is consistent with the notion that a complete vaccination would not be sufficient to return to pre-crisis trends due to partial vaccine effectiveness and the waning of vaccine-provided immunity. Adding controls for deaths and vaccination in trade partners decreases the main estimate from <span data-field="main_estimate_1">{{ main_estimate_1 }}</span>% to <span data-field="main_estimate_2">{{ main_estimate_2 }}</span>% by partially accounting for the confounding effect of trade spillover, finally, the third column models the direct effect by controlling for current cases, deaths, and reproduction rates. This indicates that 83% of the total economic effect of vaccination is through the direct effect on individual behaviour, while the remaining 17% is related to the effect through the impact on virus circulation, however, we do not estimate the indirect effects independently, as we do not estimate a policy response function.</p>
+  <h4>Table 4: Regression results for vaccination-GDP elasticity</h4>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Baseline</th>
+        <th>Controls (trade partners)</th>
+        <th>Direct effect</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vaccinated people [per]</td>
+        <td><span data-field="baseline_vacc_coeff">{{ baseline_vacc_coeff }}</span></td>
+        <td><span data-field="controls_vacc_coeff">{{ controls_vacc_coeff }}</span></td>
+        <td><span data-field="direct_vacc_coeff">{{ direct_vacc_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Cases [lag]</td>
+        <td><span data-field="baseline_cases_coeff">{{ baseline_cases_coeff }}</span></td>
+        <td><span data-field="controls_cases_coeff">{{ controls_cases_coeff }}</span></td>
+        <td><span data-field="direct_cases_coeff">{{ direct_cases_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Deaths [lag]</td>
+        <td><span data-field="baseline_deaths_coeff">{{ baseline_deaths_coeff }}</span></td>
+        <td><span data-field="controls_deaths_coeff">{{ controls_deaths_coeff }}</span></td>
+        <td><span data-field="direct_deaths_coeff">{{ direct_deaths_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Reproduction rate [lag]</td>
+        <td><span data-field="baseline_r0_coeff">{{ baseline_r0_coeff }}</span></td>
+        <td><span data-field="controls_r0_coeff">{{ controls_r0_coeff }}</span></td>
+        <td><span data-field="direct_r0_coeff">{{ direct_r0_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Mobility index [lag]</td>
+        <td><span data-field="baseline_mobility_coeff">{{ baseline_mobility_coeff }}</span></td>
+        <td><span data-field="controls_mobility_coeff">{{ controls_mobility_coeff }}</span></td>
+        <td><span data-field="direct_mobility_coeff">{{ direct_mobility_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Temperature [lag]</td>
+        <td><span data-field="baseline_temp_coeff">{{ baseline_temp_coeff }}</span></td>
+        <td><span data-field="controls_temp_coeff">{{ controls_temp_coeff }}</span></td>
+        <td><span data-field="direct_temp_coeff">{{ direct_temp_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Vaccination of trade partners</td>
+        <td><span data-field="baseline_trade_vacc_coeff">{{ baseline_trade_vacc_coeff }}</span></td>
+        <td><span data-field="controls_trade_vacc_coeff">{{ controls_trade_vacc_coeff }}</span></td>
+        <td><span data-field="direct_trade_vacc_coeff">{{ direct_trade_vacc_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Deaths in trade partners</td>
+        <td><span data-field="baseline_trade_deaths_coeff">{{ baseline_trade_deaths_coeff }}</span></td>
+        <td><span data-field="controls_trade_deaths_coeff">{{ controls_trade_deaths_coeff }}</span></td>
+        <td><span data-field="direct_trade_deaths_coeff">{{ direct_trade_deaths_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>GDP of partners</td>
+        <td><span data-field="baseline_partner_gdp_coeff">{{ baseline_partner_gdp_coeff }}</span></td>
+        <td><span data-field="controls_partner_gdp_coeff">{{ controls_partner_gdp_coeff }}</span></td>
+        <td><span data-field="direct_partner_gdp_coeff">{{ direct_partner_gdp_coeff }}</span></td>
+      </tr>
+      <tr>
+        <td>Observed</td>
+        <td class="center"><span data-field="obs_baseline">{{ obs_baseline }}</span></td>
+        <td class="center"><span data-field="obs_controls">{{ obs_controls }}</span></td>
+        <td class="center"><span data-field="obs_direct">{{ obs_direct }}</span></td>
+      </tr>
+      <tr>
+        <td>Adjusted R2</td>
+        <td class="center"><span data-field="adj_r2_baseline">{{ adj_r2_baseline }}</span></td>
+        <td class="center"><span data-field="adj_r2_controls">{{ adj_r2_controls }}</span></td>
+        <td class="center"><span data-field="adj_r2_direct">{{ adj_r2_direct }}</span></td>
+      </tr>
+      <tr>
+        <td>Residual Std. Error</td>
+        <td class="center"><span data-field="rse_baseline">{{ rse_baseline }}</span></td>
+        <td class="center"><span data-field="rse_controls">{{ rse_controls }}</span></td>
+        <td class="center"><span data-field="rse_direct">{{ rse_direct }}</span></td>
+      </tr>
+      <tr>
+        <td>F Statistic</td>
+        <td class="center"><span data-field="f_stat_baseline">{{ f_stat_baseline }}</span></td>
+        <td class="center"><span data-field="f_stat_controls">{{ f_stat_controls }}</span></td>
+        <td class="center"><span data-field="f_stat_direct">{{ f_stat_direct }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><span data-field="p_value_6">{{ p_value_6 }}</span> <span data-field="p_value_7">{{ p_value_7 }}</span> <span data-field="p_value_8">{{ p_value_8 }}</span> <span data-field="p_value_9">{{ p_value_9 }}</span> <span data-field="p_value_10">{{ p_value_10 }}</span></p>
+</div>
+<div class="page">
+  <p>The model is used to derive estimates of the counterfactual weekly GDPs without COVID certificates by subtracting the model-based estimation of the impact of COVID certificates on weekly GDP, say <span data-field="delta_i,w">{{ delta_i,w }}</span>, from the observed weekly GDP series:</p>
+  <p><span data-field="T_i,w_counterfactual">{{ T_i,w_counterfactual }}</span> = <span data-field="T_i,w">{{ T_i,w }}</span> - <span data-field="delta_i,w">{{ delta_i,w }}</span></p>
+  <p>where <span data-field="delta_i,w">{{ delta_i,w }}</span> = <span data-field="beta_1_delta">{{ beta_1_delta }}</span> * <span data-field="I_i,w">{{ I_i,w }}</span> - <span data-field="beta_2_delta">{{ beta_2_delta }}</span> * <span data-field="I_i,w_lag">{{ I_i,w_lag }}</span> - <span data-field="beta_3_delta">{{ beta_3_delta }}</span> * <span data-field="I_i,w_lag_prime">{{ I_i,w_lag_prime }}</span>.</p>
+  <p>Confidence intervals for counterfactual weekly GDP are derived from the fact that the estimate of the causal impact of COVID certificate on weekly GDP is the product of two random variables:</p>
+  <p><span data-field="Var_delta_i,w">{{ Var_delta_i,w }}</span> = <span data-field="Var_beta_1_delta">{{ Var_beta_1_delta }}</span> * <span data-field="Var_I_i,w">{{ Var_I_i,w }}</span> + <span data-field="beta_1_delta">{{ beta_1_delta }}</span>^2 * <span data-field="Var_I_i,w">{{ Var_I_i,w }}</span> + <span data-field="Var_beta_2_delta">{{ Var_beta_2_delta }}</span> * <span data-field="Var_I_i,w_lag">{{ Var_I_i,w_lag }}</span> + <span data-field="beta_2_delta">{{ beta_2_delta }}</span>^2 * <span data-field="Var_I_i,w_lag">{{ Var_I_i,w_lag }}</span> + <span data-field="Var_beta_3_delta">{{ Var_beta_3_delta }}</span> * <span data-field="Var_I_i,w_lag_prime">{{ Var_I_i,w_lag_prime }}</span> + <span data-field="beta_3_delta">{{ beta_3_delta }}</span>^2 * <span data-field="Var_I_i,w_lag_prime">{{ Var_I_i,w_lag_prime }}</span></p>
+  <p><strong>Robustness checks.</strong> We complemented our analysis with robustness checks regarding the statistical method, the choice of lag, and the modelling assumption that the vaccine-GDP relationship did not vary substantially across the considered time period.</p>
+  <p>Two-way fixed effects regressions. A recent literature [<span data-field="lit_ref_1">{{ lit_ref_1 }}</span>] has shed light on the limitations of two-way fixed effects regressions when the treatment effect is heterogeneous. Alternative estimators have been proposed, which limit the risk of bias by restricting the comparisons between units and times. This literature is still young, and there are currently no satisfactory options for cases where the treatment is dynamic, continuous, and staggered. Experiments with the DID estimator [<span data-field="did_ref">{{ did_ref }}</span>] were inconclusive, as this estimator is primarily designed for discrete treatments and does not seem to provide reliable results in regard to analysing continuous differences in treatment intensities.</p>
+  <p><strong>Choice of lag.</strong> The main model regresses weekly activity over the vaccination rate lagged by <span data-field="l_weeks_main">{{ l_weeks_main }}</span> weeks, which is equal to 4 in the favourite specification. The coefficients of interest were computed for all values of <span data-field="l_weeks_range_start">{{ l_weeks_range_start }}</span> to <span data-field="l_weeks_range_end">{{ l_weeks_range_end }}</span>. Fig. 12 shows that the main estimates are robust to the choice of lag parameter.</p>
+  <h4>Figure 12: Main regression coefficients for various lag values</h4>
+  <div style="height: 250px; border: 1px solid #ccc; margin-top: 10px;">[Placeholder for Figure 12]</div>
+  <p><strong>Time-varying relationship between vaccination and GDP.</strong> We considered a model with time-varying effects using Double Machine Learning [<span data-field="dml_ref">{{ dml_ref }}</span>]. This approach uses machine learning to capture non-linearities and complex interactions while correcting for the bias caused by penalised loss functions.</p>
+  <h4>Figure 13: Time-varying estimate of the impact of vaccination on economic activity</h4>
+  <div style="height: 250px; border: 1px solid #ccc; margin-top: 10px;">[Placeholder for Figure 13]</div>
+</div>
+<div class="page">
+  <h4>References</h4>
+  <ol>
+    <li><span data-field="ref_1">{{ ref_1 }}</span></li>
+    <li><span data-field="ref_2">{{ ref_2 }}</span></li>
+    <li><span data-field="ref_3">{{ ref_3 }}</span></li>
+    <li><span data-field="ref_4">{{ ref_4 }}</span></li>
+    <li><span data-field="ref_5">{{ ref_5 }}</span></li>
+    <li><span data-field="ref_6">{{ ref_6 }}</span></li>
+    <li><span data-field="ref_7">{{ ref_7 }}</span></li>
+    <li><span data-field="ref_8">{{ ref_8 }}</span></li>
+    <li><span data-field="ref_9">{{ ref_9 }}</span></li>
+    <li><span data-field="ref_10">{{ ref_10 }}</span></li>
+    <li><span data-field="ref_11">{{ ref_11 }}</span></li>
+    <li><span data-field="ref_12">{{ ref_12 }}</span></li>
+    <li><span data-field="ref_13">{{ ref_13 }}</span></li>
+    <li><span data-field="ref_14">{{ ref_14 }}</span></li>
+    <li><span data-field="ref_15">{{ ref_15 }}</span></li>
+    <li><span data-field="ref_16">{{ ref_16 }}</span></li>
+    <li><span data-field="ref_17">{{ ref_17 }}</span></li>
+    <li><span data-field="ref_18">{{ ref_18 }}</span></li>
+    <li><span data-field="ref_19">{{ ref_19 }}</span></li>
+    <li><span data-field="ref_20">{{ ref_20 }}</span></li>
+    <li><span data-field="ref_21">{{ ref_21 }}</span></li>
+    <li><span data-field="ref_22">{{ ref_22 }}</span></li>
+    <li><span data-field="ref_23">{{ ref_23 }}</span></li>
+    <li><span data-field="ref_24">{{ ref_24 }}</span></li>
+  </ol>
+</div>
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif fonts as a base */
+    }
+    .page:last-child { page-break-after: auto; }
+    /* Basic styling to mimic academic/reference list appearance */
+    .reference-list {
+        line-height: 1.5;
+        font-size: 11pt;
+    }
+    .reference-item {
+        margin-bottom: 0.5em;
+        text-indent: -20px; /* Mimicking hanging indent */
+        padding-left: 20px;
+    }
+    .reference-item strong {
+        font-weight: bold;
+    }
+</style>
+
+<div class="page">
+    <div class="reference-list">
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+        <div class="reference-item">
+            <span data-field="reference_number">{{ reference_number }}</span> <span data-field="citation_text">{{ citation_text }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-top: 50px; font-size: 10pt; color: #666;">
+        <span data-field="page_number">{{ page_number }}</span>
+    </div>
+    <div style="position: absolute; bottom: 50px; left: 60px; right: 60px; text-align: center; font-size: 10pt; color: #333;">
+        <div style="display: inline-block; width: 100px; height: 30px; background-color: #333; margin-bottom: 5px;"></div>
+        <div style="font-family: Arial, sans-serif; font-size: 10pt;">
+            <span data-field="company_name">{{ company_name }}</span>
+        </div>
+    </div>
+    <div style="position: absolute; bottom: 20px; left: 60px; right: 60px; text-align: center; font-size: 9pt; color: #666;">
+        <p style="margin: 0 0 5px 0;">&copy; <span data-field="copyright_year">{{ copyright_year }}</span>. All rights reserved. Short sections, not to exceed two paragraphs, may be quoted in the original language without explicit permission provided that the source is acknowledged. Opinions expressed in this publication are those of the author(s) alone.</p>
+        <p style="margin: 0;">Bruegel, Rue de la Charité 33, B-1210 Brussels</p>
+        <p style="margin: 0;">[<span data-field="phone_number">{{ phone_number }}</span>] | <span data-field="email_address">{{ email_address }}</span></p>
+        <p style="margin: 0;">www.<span data-field="website_domain">{{ website_domain }}</span></p>
+    </div>
+</div></body>
+</html>

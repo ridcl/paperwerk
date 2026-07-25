@@ -1,0 +1,133 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2 { text-align: center; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .form-section { margin-bottom: 30px; }
+  .signature-line { border-bottom: 1px solid #000; margin-top: 50px; margin-bottom: 50px; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <span style="font-size: 24pt; font-weight: bold;">FAMU</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 10pt;">FLORIDA AGRICULTURAL AND MECHANICAL UNIVERSITY</span>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 50px;">REQUEST TO WAIVE LATE PAYMENT FEE</h2>
+
+  <div class="form-section">
+    <p>Student Financial Services</p>
+    <p>FHAC Suite <span data-field="suite_number">{{ suite_number }}</span></p>
+    <p>Tallahassee, Florida <span data-field="zip_code">{{ zip_code }}</span></p>
+  </div>
+
+  <div class="form-section" style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <div>
+      Phone: <span data-field="phone_number">{{ phone_number }}</span> - Fax: <span data-field="fax_number">{{ fax_number }}</span> - Email: <span data-field="email_address">{{ email_address }}</span>
+    </div>
+    <div>
+      Student ID #: <span data-field="student_id">{{ student_id }}</span>
+    </div>
+  </div>
+
+  <div class="form-section" style="font-size: 10pt;">
+    <p>TERM (Check One):</p>
+    <div style="display: flex; gap: 20px;">
+      <label><input type="checkbox"> FALL</label>
+      <label><input type="checkbox"> SPRING</label>
+      <label><input type="checkbox"> SUMMER</label>
+      <label>YEAR: <span data-field="academic_year">{{ academic_year }}</span></label>
+    </div>
+  </div>
+
+  <div class="form-section" style="font-size: 10pt;">
+    <p>PRINT FULL NAME:</p>
+    <p style="display: flex; gap: 10px;">
+      <span style="width: 100px;">(LAST)</span>
+      <span style="width: 100px;">(FIRST)</span>
+      <span style="width: 100px;">(MIDDLE)</span>
+      <span style="width: 100px;">(MAIDEN)</span>
+    </p>
+  </div>
+
+  <div class="form-section" style="font-size: 10pt;">
+    <p>STUDENT ADDRESS:</p>
+    <p style="display: flex; gap: 10px;">
+      <span style="width: 150px;">Street Address:</span>
+      <span style="flex-grow: 1;"></span>
+    </p>
+  </div>
+
+  <div class="form-section" style="font-size: 10pt;">
+    <p>Phone: (<span data-field="phone_area_code">{{ phone_area_code }}</span>) <span data-field="phone_prefix">{{ phone_prefix }}</span> - <span data-field="phone_line">{{ phone_line }}</span></p>
+  </div>
+
+  <div class="form-section">
+    <p>PLEASE ANSWER THE FOLLOWING QUESTIONS BELOW BEFORE COMPLETING THIS REQUEST:</p>
+
+    <div style="margin-top: 15px;">
+      <p>A. Were you assessed the late fee due to a problem with financial aid? <span class="checkbox-group"><label><input type="checkbox"> YES</label><label><input type="checkbox"> NO</label></span></p>
+      <p>B. Were you assessed the late fee due to an university error? If yes, attach a letter from the department that made the error and explanation below.</p>
+      <p>C. Were you assessed the late fee due to extraordinary circumstances such as illness or death in the family? If yes, attach any supporting documentation such as doctor's note, obituary, or a copy of death certificate and explain below.</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>PLEASE NOTE: LACK OF FUNDS IS NOT A VALID REASON TO WAIVE A LATE FEE. IT IS THE RESPONSIBILITY OF THE STUDENT TO MAKE ARRANGEMENTS OR PAY BY THE FEE PAYMENT DEADLINE.</p>
+    <p>EXPLANATION:</p>
+    <div style="height: 100px; border-bottom: 1px solid #000;" data-field="explanation">{{ explanation }}</div>
+  </div>
+
+  <div class="form-section" style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <div style="width: 45%;">
+      <p>STUDENT'S SIGNATURE</p>
+      <div class="signature-line" data-field="student_s_signature">{{ student_s_signature }}</div>
+    </div>
+    <div style="width: 45%;">
+      <p>DATE</p>
+      <div class="signature-line" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+
+  <div class="form-section" style="text-align: center;">
+    <p>FOR OFFICE USE ONLY:</p>
+    <p>Request: <span class="checkbox-group"><label><input type="checkbox"> Approved</label><label><input type="checkbox"> Denied</label></span></p>
+  </div>
+
+  <div class="form-section">
+    <p>Comments/Reasons Denied:</p>
+    <div style="height: 80px; border-bottom: 1px solid #000;" data-field="comments_reasons_denied">{{ comments_reasons_denied }}</div>
+  </div>
+
+  <div class="form-section" style="display: flex; justify-content: space-between; font-size: 10pt;">
+    <div style="width: 45%;">
+      <p>Supervisor's Signature:</p>
+      <div class="signature-line" data-field="supervisor_s_signature">{{ supervisor_s_signature }}</div>
+    </div>
+    <div style="width: 45%;">
+      <p>Date:</p>
+      <div class="signature-line" data-field="date_2">{{ date_2 }}</div>
+    </div>
+  </div>
+
+  <div class="form-section" style="text-align: right; font-size: 10pt;">
+    <p>FOR LATE PAYMENT FEE APPEALS ONLY</p>
+    <p>Request: <span class="checkbox-group"><label><input type="checkbox"> Approved</label><label><input type="checkbox"> Denied</label></span></p>
+  </div>
+
+  <div class="form-section">
+    <p>Signature:</p>
+    <div class="signature-line" data-field="signature">{{ signature }}</div>
+  </div>
+</div>

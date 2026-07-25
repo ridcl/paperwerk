@@ -1,0 +1,171 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <div style="font-size: 24px; font-weight: bold;">DEPHH</div>
+      <div style="font-size: 14px;">LAWRENCE UNIVERSITY</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-weight: bold;">Financial Aid Office</div>
+      <div style="font-size: 12px;">711 E Boldt Way</div>
+      <div style="font-size: 12px;">Appleton, WI 54911</div>
+      <div style="font-size: 12px;">PHONE: {{ phone }} | FAX: {{ fax }}</div>
+      <div style="font-size: 12px;">financial.aid@lawrence.edu</div>
+    </div>
+  </div>
+
+  <h1 style="text-align: center; font-size: 20px; margin-bottom: 30px;">2022-2023 HOUSEHOLD INFORMATION FORM</h1>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <div style="font-weight: bold;">STUDENT NAME</div>
+      <div style="border-bottom: 1px solid #000; width: 50%;" data-field="student_name">{{ student_name }}</div>
+    </div>
+    <div>
+      <div style="font-weight: bold;">LAWRENCE ID OR D.O.B</div>
+      <div style="border-bottom: 1px solid #000; width: 50%;" data-field="lawrence_id_or_d_o_b">{{ lawrence_id_or_d_o_b }}</div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 16px; margin-bottom: 15px;">A. STUDENT'S FAMILY INFORMATION</h2>
+  <p style="font-size: 13px; margin-bottom: 15px;">Verify the number of people reported on your FAFSA. If more space is needed, attach a separate page.</p>
+
+  <p style="font-size: 13px; margin-bottom: 10px;">1) List your parent(s) reported on the 2022-2023 FAFSA. If your biological/adoptive parents are not married, your Custodial Parent for Federal Student Aid purposes is the parent you lived with more during the past 12 months. If you did not live with one parent more than the other, the parent who provided more financial support during the last 12 months is your Custodial Parent. If your Custodial Parent is remarried, include your step-parent.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">NAME</td>
+      <td style="width: 33%;">AGE</td>
+      <td style="width: 33%;">RELATION TO STUDENT</td>
+    </tr>
+    <tr>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student">{{ relation_to_student }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student_2">{{ relation_to_student_2 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student_3">{{ relation_to_student_3 }}</div></td>
+    </tr>
+  </table>
+
+  <p style="font-size: 13px; margin-top: 20px; margin-bottom: 10px;">2) Who else is included on your FAFSA? List your Sibling(s) and Others.</p>
+  <p style="font-size: 13px; margin-bottom: 15px;">List your sibling(s) who meet either of the following, even if they do not live with the parent(s) listed above:</p>
+  <ul style="font-size: 13px; margin-top: 0;">
+    <li>If your sibling/step-sibling will receive more than half of his/her support between July 1, 2022 and June 30, 2023 from your parent(s) listed above, or</li>
+    <li>If your sibling/step-sibling is required to provide parent data when completing the 2022-2023 FAFSA.</li>
+  </ul>
+
+  <p style="font-size: 13px; margin-top: 15px; margin-bottom: 10px;">List Others if they live with your parent(s) listed above and will receive more than half of their financial support between July 1, 2022 and June 30, 2023 from your parent(s) listed above.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">NAME</td>
+      <td style="width: 33%;">AGE</td>
+      <td style="width: 33%;">RELATION TO STUDENT</td>
+    </tr>
+    {% for i in range(5) %}
+    <tr>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student_4">{{ relation_to_student_4 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student_5">{{ relation_to_student_5 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="relation_to_student_6">{{ relation_to_student_6 }}</div></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p style="font-size: 13px; margin-top: 20px; margin-bottom: 10px;">3) Will any of the people listed above for #2 be enrolled in college for the 2022-2023 academic year (7/1/2022-6/30/2023)?</p>
+  <div style="margin-bottom: 20px;">
+    <label style="font-size: 13px; margin-right: 20px;">No</label>
+    <label style="font-size: 13px; margin-right: 20px;">Yes - Complete the section below.</label>
+  </div>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 33%; padding-bottom: 5px;">NAME OF PERSON</th>
+        <th style="text-align: left; width: 33%; padding-bottom: 5px;">NAME OF COLLEGE</th>
+        <th style="text-align: left; width: 33%; padding-bottom: 5px;">ENROLLED AT LEAST 1/2 TIME?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(5) %}
+      <tr>
+        <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="enrolled_at_least_1_2_time">{{ enrolled_at_least_1_2_time }}</div></td>
+        <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="enrolled_at_least_1_2_time_2">{{ enrolled_at_least_1_2_time_2 }}</div></td>
+        <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="enrolled_at_least_1_2_time_3">{{ enrolled_at_least_1_2_time_3 }}</div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 16px; margin-bottom: 15px;">B. CERTIFICATION AND SIGNATURES</h2>
+  <p style="font-size: 13px; margin-bottom: 15px;">By signing this form, we certify that all information on this application is complete and correct. <strong>Both student and parent handwritten signatures are required.</strong></p>
+  <p style="font-size: 13px; margin-bottom: 20px;">Please reach out to our office if you are not able to provide a handwritten signature. We will provide details on an alternative way to sign this form.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">STUDENT SIGNATURE</td>
+      <td style="width: 33%;">DATE</td>
+      <td style="width: 33%;">PARENT SIGNATURE</td>
+      <td style="width: 33%;">DATE</td>
+    </tr>
+    <tr>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="date">{{ date }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="date_2">{{ date_2 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="date_3">{{ date_3 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="date_4">{{ date_4 }}</div></td>
+    </tr>
+  </table>
+
+  <p style="font-size: 13px; margin-top: 40px;">Return completed form to the Lawrence University Financial Aid Office.</p>
+
+  <table style="margin-top: 40px;">
+    <tr>
+      <td style="width: 25%; padding-bottom: 5px;">Secure Upload</td>
+      <td style="width: 25%; padding-bottom: 5px;">Email</td>
+      <td style="width: 25%; padding-bottom: 5px;">Fax</td>
+      <td style="width: 25%; padding-bottom: 5px;">Mail</td>
+    </tr>
+    <tr>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="mail">{{ mail }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="mail_2">{{ mail_2 }}</div></td>
+      <td><div style="border-bottom: 1px solid #000; height: 30px;" data-field="mail_3">{{ mail_3 }}</div></td>
+      <td>
+        <div style="font-size: 12px;">Financial Aid Office</div>
+        <div style="font-size: 12px;">Lawrence University</div>
+        <div style="font-size: 12px;">711 E Boldt Way</div>
+        <div style="font-size: 12px;">Appleton, WI 54911</div>
+      </td>
+    </tr>
+  </table>
+</div>

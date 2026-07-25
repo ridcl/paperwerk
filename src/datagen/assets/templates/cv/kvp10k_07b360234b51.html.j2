@@ -1,0 +1,94 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2, h3 { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; gap: 40px;">
+    <!-- Left Column (Image and Contact Info) -->
+    <div style="width: 30%;">
+      <img src="" alt="Faculty Photo" style="width: 100%; height: auto; border-radius: 5px;">
+      <div style="margin-top: 20px;">
+        <p><strong>Name/Credentials</strong></p>
+        <p><span data-field="full_name">{{ full_name }}</span></p>
+        <p><strong>Title</strong></p>
+        <p><span data-field="title">{{ title }}</span></p>
+        <p><strong>Email</strong></p>
+        <p><span data-field="email">{{ email }}</span></p>
+        <p><strong>Phone</strong></p>
+        <p><span data-field="phone">{{ phone }}</span></p>
+        <p><strong>Fax</strong></p>
+        <p><span data-field="fax">{{ fax }}</span></p>
+        <p><strong>Campus Address</strong></p>
+        <p><span data-field="address">{{ address }}</span></p>
+        <p><strong>Office</strong></p>
+        <p><span data-field="office">{{ office }}</span></p>
+      </div>
+    </div>
+
+    <!-- Right Column (Affiliation and Education) -->
+    <div style="width: 70%;">
+      <h1 style="font-size: 24pt; margin-bottom: 5px;">Troy University</h1>
+      <h2 style="font-size: 16pt; margin-top: 0;">School of Nursing</h2>
+      <h3 style="font-size: 14pt; margin-top: 20px;">Faculty BIO</h3>
+
+      <h3 style="margin-top: 30px;">Education</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li><span data-field="education.degree_1">{{ education.degree_1 }}</span>, <span data-field="education.institution_1">{{ education.institution_1 }}</span></li>
+        <li><span data-field="education.degree_2">{{ education.degree_2 }}</span>, <span data-field="education.institution_2">{{ education.institution_2 }}</span></li>
+      </ul>
+
+      <h3 style="margin-top: 30px;">Publications or Presentations</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        {% for pub in publications %}
+          <li><span data-field="publications[{{ loop.index0 }}].title">{{ pub.title }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; gap: 40px;">
+    <!-- Left Column (Awards and Interests) -->
+    <div style="width: 35%;">
+      <h3 style="font-weight: bold;">Grants and Projects</h3>
+      <p><span data-field="grants_projects_description">{{ grants_projects_description }}</span></p>
+
+      <h3 style="font-weight: bold; margin-top: 20px;">Honors, Awards, Boards, Certifications, and Professional Organizations</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li><span data-field="honors_awards_1">{{ honors_awards_1 }}</span></li>
+      </ul>
+
+      <h3 style="font-weight: bold; margin-top: 20px;">Research Interest</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        {% for interest in research_interests %}
+          <li><span data-field="research_interests[{{ loop.index0 }}]">{{ interest }}</span></li>
+        {% endfor %}
+      </ul>
+
+      <h3 style="font-weight: bold; margin-top: 20px;">Clinical Focus</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        {% for focus in clinical_focus %}
+          <li><span data-field="clinical_focus[{{ loop.index0 }}]">{{ focus }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Right Column (Empty/Filler for layout balance) -->
+    <div style="width: 65%;">
+      <!-- This area is left blank to mirror the layout structure -->
+    </div>
+  </div>
+</div>

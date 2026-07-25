@@ -1,0 +1,100 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+  .form-group {
+    flex: 1;
+  }
+  .line-input {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    min-width: 100px; /* Adjust as needed for visual spacing */
+  }
+  .signature-line {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    min-width: 200px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    right: 60px;
+    font-size: 10pt;
+    color: #555;
+  }
+</style>
+
+<div class="page">
+  <div>
+    <div style="margin-bottom: 30px;">
+      <span style="font-weight: bold;">{{ institution_name }}</span><br>
+      Office of the Registrar
+    </div>
+
+    <h2 style="margin-bottom: 20px;">Preferred Name Request</h2>
+    <p style="margin-bottom: 30px;">For Title IX name accommodation requests</p>
+
+    <div class="form-row">
+      <div class="form-group" style="width: 30%;">
+        Student ID: <span class="line-input" style="display: inline-block; width: 200px;">{{ student_id }}</span>
+      </div>
+      <div class="form-group" style="width: 30%;">
+        Date of Birth: <span class="line-input" style="display: inline-block; width: 150px;">{{ date_of_birth }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="width: 30%;">
+        Last Name: <span class="line-input" style="display: inline-block; width: 200px;">{{ last_name }}</span>
+      </div>
+      <div class="form-group" style="width: 30%;">
+        First Name: <span class="line-input" style="display: inline-block; width: 200px;">{{ first_name }}</span>
+      </div>
+      <div class="form-group" style="width: 30%;">
+        Middle: <span class="line-input" style="display: inline-block; width: 200px;">{{ middle_name }}</span>
+      </div>
+    </div>
+
+    <div class="form-row" style="margin-top: 40px;">
+      <div class="form-group" style="width: 30%;">
+        Student Signature: <span class="signature-line">{{ student_signature }}</span>
+      </div>
+      <div class="form-group" style="width: 30%;">
+        Date: <span class="signature-line">{{ signature_date }}</span>
+      </div>
+    </div>
+
+    <p style="margin-top: 40px;">*Include a copy of government issued photo ID</p>
+    <p style="margin-top: 10px;">**This form is not for a legal name change.</p>
+    <p style="margin-top: 30px; font-size: 10pt;">*In order to be processed when digitally signed, this form must be submitted to the Registrar's Office via the student's TWU e-mail.</p>
+  </div>
+
+  <div class="footer">
+    TWU Office of the Registrar • {{ address }} • E-mail: {{ email }} • Fax: {{ fax }} • Phone: {{ phone }}
+  </div>
+</div>

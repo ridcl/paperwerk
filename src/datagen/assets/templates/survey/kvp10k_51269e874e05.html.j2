@@ -1,0 +1,1343 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logo-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+  .title-block {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .title-block h1 {
+    font-size: 28pt;
+    margin: 0;
+  }
+  .title-block h2 {
+    font-size: 16pt;
+    margin: 5px 0 0 0;
+  }
+  .intro-text {
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  .bullet-list {
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  .bullet-list li {
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .question-block {
+    margin-bottom: 25px;
+    padding-top: 10px;
+  }
+  .question-text {
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  .radio-options label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .radio-options input[type="radio"] {
+    margin-right: 10px;
+  }
+  .grid-options {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .grid-options div {
+    flex: 1;
+  }
+  .grid-options .radio-group {
+    margin-top: 10px;
+  }
+  .grid-options .radio-group label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+  }
+  .text-area-container {
+    margin-top: 10px;
+  }
+  .text-area-container textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+  .icon-section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .icon-section .icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  .icon-section .description {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div class="header-logo">
+    <div class="logo-icon"></div>
+    <div>
+      <h1>{{ organization_name }}</h1>
+    </div>
+  </div>
+  <div class="title-block">
+    <div style="text-align: center; margin-top: 20px;">
+      <div style="font-size: 40pt; margin-bottom: 10px;">M I D D I</div>
+      <h2>{{ assessment_title }}</h2>
+    </div>
+  </div>
+
+  <div class="intro-text">
+    <p>We are asking you to take a survey to help the {{ organization_name }} plan their work in the <strong>next five years</strong>. This plan will be used to apply for federal funding to maintain {{ organization_name }} as {{ organization_description }}.</p>
+  </div>
+
+  <div class="bullet-list">
+    <ul>
+      <li>The mission of {{ organization_name }} is to contribute to inclusive communities and quality of life for people with developmental disabilities and their families through education, community support and services, research, and communication.</li>
+      <li>We want to learn about the needs of you and others in Michigan. This will help {{ organization_name }} better serve people with intellectual and developmental disabilities (I/DD) and their families.</li>
+      <li>You are invited to participate in the survey if you live or work in Michigan and are 18 years or older.</li>
+      <li>The survey will take about 10-20 minutes to complete. Please only take the survey once. Your responses do not include your name and are private.</li>
+    </ul>
+  </div>
+
+  <div class="bullet-list">
+    <ul>
+      <li>If you need assistance completing the survey or would like to do the survey over the phone, please call {{ phone_number }}.</li>
+      <li>At the end of the survey, you will have the option to be entered into a drawing to <strong>receive one of ten $50 Target gift cards</strong>. You will be automatically redirected to this form. To keep your survey responses private, the surveys will be kept separate from your contact info for the drawing.</li>
+    </ul>
+  </div>
+
+  <p>Thank you for your time!</p>
+
+  <div class="section-title">What is your connection to the disability community? (Check all that apply)</div>
+  <div class="radio-options">
+    <label><input type="checkbox" data-field="connection_checkboxes[{{ loop.index0 }}]" value="{{ connection_checkboxes[loop.index0] }}"> Person with I/DD</label>
+    <label><input type="checkbox" data-field="connection_checkboxes[{{ loop.index0 }}]" value="{{ connection_checkboxes[loop.index0] }}"> Family member of a person with I/DD</label>
+    <label><input type="checkbox" data-field="connection_checkboxes[{{ loop.index0 }}]" value="{{ connection_checkboxes[loop.index0] }}"> Provider of services to people with I/DD and/or their family members</label>
+    <label><input type="checkbox" data-field="connection_checkboxes[{{ loop.index0 }}]" value="{{ connection_checkboxes[loop.index0] }}"> Policymaker or advocate for people with I/DD</label>
+  </div>
+
+  <div class="section-title">The first part of survey will ask questions about your needs in these areas:</div>
+  <div class="bullet-list">
+    <ul>
+      <li>Direct Support Workers</li>
+      <li>Getting Older</li>
+      <li>Criminal Justice</li>
+      <li>Education</li>
+      <li>Transitioning to Adulthood</li>
+      <li>Employment</li>
+      <li>Health and Wellness</li>
+      <li>Accessing Healthcare</li>
+      <li>Mental Health</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div class="bullet-list">
+    <ul>
+      <li>Social Inclusion</li>
+      <li>Housing</li>
+      <li>Self-determination</li>
+      <li>Legal Authority and Rights</li>
+      <li>Transportation</li>
+      <li>Family Support</li>
+    </ul>
+  </div>
+
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>DIRECT SUPPORT WORKERS</strong> – Direct Support Workers include professionals who support and work with individuals with I/DD.
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">1a. How much need do people with I/DD have for <strong>direct support workers</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="direct_support_need_a" data-field="direct_support_need_a_value" value="{{ direct_support_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="direct_support_need_b" data-field="direct_support_need_b_value" value="{{ direct_support_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="direct_support_need_c" data-field="direct_support_need_c_value" value="{{ direct_support_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">1b. When thinking about <strong>direct support workers</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="direct_support_importance_a" data-field="direct_support_importance_a_value" value="{{ direct_support_importance_a_value }}"> Good pay and benefits for direct support workers</label>
+      <label><input type="radio" name="direct_support_importance_b" data-field="direct_support_importance_b_value" value="{{ direct_support_importance_b_value }}"> Finding good direct support workers</label>
+      <label><input type="radio" name="direct_support_importance_c" data-field="direct_support_importance_c_value" value="{{ direct_support_importance_c_value }}"> Training for direct support workers on topics such as person centered planning</label>
+      <label><input type="radio" name="direct_support_importance_d" data-field="direct_support_importance_d_value" value="{{ direct_support_importance_d_value }}"> Other, please specify: <input type="text" data-field="direct_support_other_specify" value="{{ direct_support_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">1c. Use the space below to share any comments about <strong>direct support workers</strong>.</div>
+    <div class="text-area-container">
+      <textarea data-field="direct_support_comments">{{ direct_support_comments }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>GETTING OLDER</strong> – Getting Older includes supports for aging and age-related health conditions for individuals with I/DD.
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">2a. How much need do people with I/DD have related to <strong>getting older</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="getting_older_need_a" data-field="getting_older_need_a_value" value="{{ getting_older_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="getting_older_need_b" data-field="getting_older_need_b_value" value="{{ getting_older_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="getting_older_need_c" data-field="getting_older_need_c_value" value="{{ getting_older_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">2b. When thinking about <strong>getting older</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="getting_older_importance_a" data-field="getting_older_importance_a_value" value="{{ getting_older_importance_a_value }}"> Services and supports for people with I/DD who are aging</label>
+      <label><input type="radio" name="getting_older_importance_b" data-field="getting_older_importance_b_value" value="{{ getting_older_importance_b_value }}"> Understanding how age-related disorders (for example, memory loss or poor vision) impact people with I/DD</label>
+      <label><input type="radio" name="getting_older_importance_c" data-field="getting_older_importance_c_value" value="{{ getting_older_importance_c_value }}"> Other, please specify: <input type="text" data-field="getting_older_other_specify" value="{{ getting_older_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">2c. Use the space below to share any comments about <strong>getting older</strong>.</div>
+    <div class="text-area-container">
+      <textarea data-field="getting_older_comments">{{ getting_older_comments }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>CRIMINAL JUSTICE</strong> – Criminal Justice includes individuals with I/DD who are victims of a crime or who are accused of a crime. Criminal Justice also includes how the police interact with the I/DD community.
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">3a. How much need do people with I/DD have related to <strong>criminal justice</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="criminal_justice_need_a" data-field="criminal_justice_need_a_value" value="{{ criminal_justice_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="criminal_justice_need_b" data-field="criminal_justice_need_b_value" value="{{ criminal_justice_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="criminal_justice_need_c" data-field="criminal_justice_need_c_value" value="{{ criminal_justice_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">3b. When thinking about <strong>criminal justice</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="criminal_justice_importance_a" data-field="criminal_justice_importance_a_value" value="{{ criminal_justice_importance_a_value }}"> Support for people with I/DD who are victims of a crime</label>
+      <label><input type="radio" name="criminal_justice_importance_b" data-field="criminal_justice_importance_b_value" value="{{ criminal_justice_importance_b_value }}"> Help for people with I/DD who are accused of a crime</label>
+      <label><input type="radio" name="criminal_justice_importance_c" data-field="criminal_justice_importance_c_value" value="{{ criminal_justice_importance_c_value }}"> Training for the criminal justice system (for example, police, lawyers, or judges) on how to interact with people with I/DD</label>
+      <label><input type="radio" name="criminal_justice_importance_d" data-field="criminal_justice_importance_d_value" value="{{ criminal_justice_importance_d_value }}"> Other, please specify: <input type="text" data-field="criminal_justice_other_specify" value="{{ criminal_justice_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">3c. Use the space below to share any comments about <strong>criminal justice</strong>.</div>
+    <div class="text-area-container">
+      <textarea data-field="criminal_justice_comments">{{ criminal_justice_comments }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>EDUCATION</strong> – Education includes the education of individuals with I/DD from birth to kindergarten through twelfth grade (or until age 26).
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">4a. How much need do people with I/DD have in <strong>education</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="education_need_a" data-field="education_need_a_value" value="{{ education_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="education_need_b" data-field="education_need_b_value" value="{{ education_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="education_need_c" data-field="education_need_c_value" value="{{ education_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">4b. When thinking about <strong>education</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="education_importance_a" data-field="education_importance_a_value" value="{{ education_importance_a_value }}"> Using the best teaching methods and positive behavior supports</label>
+      <label><input type="radio" name="education_importance_b" data-field="education_importance_b_value" value="{{ education_importance_b_value }}"> Early intervention to provide supports and services for students with I/DD</label>
+      <label><input type="radio" name="education_importance_c" data-field="education_importance_c_value" value="{{ education_importance_c_value }}"> Training for educators and school staff on inclusion</label>
+      <label><input type="radio" name="education_importance_d" data-field="education_importance_d_value" value="{{ education_importance_d_value }}"> Other, please specify: <input type="text" data-field="education_other_specify" value="{{ education_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">4c. Use the space below to share any comments about <strong>education</strong>.</div>
+    <div class="text-area-container">
+      <textarea data-field="education_comments">{{ education_comments }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>TRANSITIONING TO ADULTHOOD</strong> – Transitioning to Adulthood includes the transition of individuals with I/DD to life after school and living in the community.
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">5a. How much need do people with I/DD have related to <strong>transitioning to adulthood</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="transition_need_a" data-field="transition_need_a_value" value="{{ transition_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="transition_need_b" data-field="transition_need_b_value" value="{{ transition_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="transition_need_c" data-field="transition_need_c_value" value="{{ transition_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">5b. When thinking about <strong>transitioning to adulthood</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="transition_importance_a" data-field="transition_importance_a_value" value="{{ transition_importance_a_value }}"> Access to jobs and housing</label>
+      <label><input type="radio" name="transition_importance_b" data-field="transition_importance_b_value" value="{{ transition_importance_b_value }}"> Supports for college or other programs</label>
+      <label><input type="radio" name="transition_importance_c" data-field="transition_importance_c_value" value="{{ transition_importance_c_value }}"> Training for school transition coordinators</label>
+      <label><input type="radio" name="transition_importance_d" data-field="transition_importance_d_value" value="{{ transition_importance_d_value }}"> Other, please specify: <input type="text" data-field="transition_other_specify" value="{{ transition_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">5c. Use the space below to share any comments about <strong>transitioning to adulthood</strong>.</div>
+    <div class="text-area-container">
+      <textarea data-field="transition_comments">{{ transition_comments }}</textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="icon-section">
+    <div class="icon"></div>
+    <div class="description">
+      <strong>EMPLOYMENT</strong> – Employment includes having a job with good pay and benefits for individuals with I/DD. Employment also includes being able to learn new skills at a job and job promotions.
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">6a. How much need do people with I/DD have related to <strong>employment</strong>?</div>
+    <div class="grid-options">
+      <div>
+        <p>A lot of need</p>
+        <div class="radio-group"><input type="radio" name="employment_need_a" data-field="employment_need_a_value" value="{{ employment_need_a_value }}"></div>
+      </div>
+      <div>
+        <p>Some need</p>
+        <div class="radio-group"><input type="radio" name="employment_need_b" data-field="employment_need_b_value" value="{{ employment_need_b_value }}"></div>
+      </div>
+      <div>
+        <p>Little or No need</p>
+        <div class="radio-group"><input type="radio" name="employment_need_c" data-field="employment_need_c_value" value="{{ employment_need_c_value }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="question-text">6b. When thinking about <strong>employment</strong>, what is most important? (Please select only one response)</div>
+    <div class="radio-options">
+      <label><input type="radio" name="employment_importance_a" data-field="employment_importance_a_value" value="{{ employment_importance_a_value }}"> Job opportunities for individuals with I/DD that include good pay and benefits</label>
+      <label><input type="radio" name="employment_importance_b" data-field="employment_importance_b_value" value="{{ employment_importance_b_value }}"> Career supports for individuals with I/DD (for example, learning to write a resume or how to go on an interview)</label>
+      <label><input type="radio" name="employment_importance_c" data-field="employment_importance_c_value" value="{{ employment_importance_c_value }}"> Other, please specify: <input type="text" data-field="employment_other_specify" value="{{ employment_other_specify }}"></label>
+    </div>
+  </div>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #333;
+  }
+  h2, h3 {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+  }
+  .question-block {
+    margin-bottom: 20px;
+  }
+  .radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .radio-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  .radio-option label {
+    margin-top: 5px;
+    font-size: 0.9em;
+  }
+  textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-family: inherit;
+  }
+</style>
+
+<div class="page">
+  <div class="question-block">
+    <p>
+      <span data-field="training_option_1">{{ training_option_1 }}</span> Training for employment specialists
+    </p>
+    <p>
+      <span data-field="training_option_2">{{ training_option_2 }}</span> Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 200px; margin-left: 10px;">
+    </p>
+    <p>6c. Use the space below to share any comments about <span data-field="employment_topic">{{ employment_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">HEALTH AND WELLNESS</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Health and Wellness includes supports for people with I/DD to live a healthy life.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>7a. How much need do people with I/DD have related to <span data-field="health_and_wellness_topic">{{ health_and_wellness_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>7b. When thinking about <span data-field="health_and_wellness_topic">{{ health_and_wellness_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="health_and_wellness_importance">
+        <label>Practicing healthy lifestyle habits (for example, exercise or healthy eating)</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="health_and_wellness_importance">
+        <label>Preventing future health issues (for example, diabetes or high blood pressure)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>
+      <span data-field="accessing_programs_option_1">{{ accessing_programs_option_1 }}</span> Accessing programs and equipment (for example, wheelchairs or lifts)
+    </p>
+    <p>
+      <span data-field="accessing_programs_option_2">{{ accessing_programs_option_2 }}</span> Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 200px; margin-left: 10px;">
+    </p>
+    <p>7c. Use the space below to share any comments about <span data-field="health_and_wellness_topic">{{ health_and_wellness_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+
+  <div class="question-block">
+    <p>7d. How much need do you think people with I/DD have for the following wellness areas?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      <p>Getting healthy food</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="food_need"></div>
+        <div class="radio-option"><input type="radio" name="food_need"></div>
+        <div class="radio-option"><input type="radio" name="food_need"></div>
+      </div>
+      <p>Having time to exercise</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="exercise_need"></div>
+        <div class="radio-option"><input type="radio" name="exercise_need"></div>
+        <div class="radio-option"><input type="radio" name="exercise_need"></div>
+      </div>
+      <p>Getting enough sleep</p>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="sleep_need"></div>
+        <div class="radio-option"><input type="radio" name="sleep_need"></div>
+        <div class="radio-option"><input type="radio" name="sleep_need"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">ACCESSING HEALTHCARE</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Accessing Healthcare includes being able to make an appointment with a healthcare provider and having insurance.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>8a. How much need do people with I/DD have for <span data-field="accessing_healthcare_topic">{{ accessing_healthcare_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>8b. When thinking about <span data-field="accessing_healthcare_topic">{{ accessing_healthcare_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="healthcare_importance">
+        <label>Communication with health providers</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="healthcare_importance">
+        <label>Affordability of healthcare</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="healthcare_importance">
+        <label>Healthcare practices that put the patient's needs and wishes first</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="healthcare_importance">
+        <label>Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 150px; margin-left: 10px;"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>8c. Use the space below to share any comments about <span data-field="access_to_healthcare_topic">{{ access_to_healthcare_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+
+  <div class="question-block">
+    <p>8d. How much need do you think people with I/DD have for the following health care services?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      <p>Annual physicals with primary care provider</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="physical_need"></div>
+        <div class="radio-option"><input type="radio" name="physical_need"></div>
+        <div class="radio-option"><input type="radio" name="physical_need"></div>
+      </div>
+      <p>Women's health exams (such as pelvic exam and breast screening)</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="women_health_need"></div>
+        <div class="radio-option"><input type="radio" name="women_health_need"></div>
+        <div class="radio-option"><input type="radio" name="women_health_need"></div>
+      </div>
+      <p>Dental care</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="dental_need"></div>
+        <div class="radio-option"><input type="radio" name="dental_need"></div>
+        <div class="radio-option"><input type="radio" name="dental_need"></div>
+      </div>
+      <p>Vision checks</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="vision_need"></div>
+        <div class="radio-option"><input type="radio" name="vision_need"></div>
+        <div class="radio-option"><input type="radio" name="vision_need"></div>
+      </div>
+      <p>Hearing checks</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="hearing_need"></div>
+        <div class="radio-option"><input type="radio" name="hearing_need"></div>
+        <div class="radio-option"><input type="radio" name="hearing_need"></div>
+      </div>
+      <p>Screenings for chronic conditions</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="chronic_screening_need"></div>
+        <div class="radio-option"><input type="radio" name="chronic_screening_need"></div>
+        <div class="radio-option"><input type="radio" name="chronic_screening_need"></div>
+      </div>
+      <p>Vaccinations</p>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="vaccination_need"></div>
+        <div class="radio-option"><input type="radio" name="vaccination_need"></div>
+        <div class="radio-option"><input type="radio" name="vaccination_need"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">MENTAL HEALTH</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Mental Health includes supports for people with I/DD to have positive mental health.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>9a. How much need do people with I/DD have related to <span data-field="mental_health_topic">{{ mental_health_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>9b. When thinking about <span data-field="mental_health_topic">{{ mental_health_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="mental_health_importance">
+        <label>Access to mental health services</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="mental_health_importance">
+        <label>Mental health providers trained to work with individuals with I/DD</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="mental_health_importance">
+        <label>Community education about the differences between mental health and disability</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="mental_health_importance">
+        <label>Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 150px; margin-left: 10px;"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>9c. Use the space below to share any comments about <span data-field="mental_health_topic">{{ mental_health_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+
+  <div class="question-block">
+    <p>9d. How much need do you think people with I/DD have for the following mental health care services?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      <p>Screening for mental illness</p>
+      <div class="radio-group" style="margin-bottom: 10px;">
+        <div class="radio-option"><input type="radio" name="mental_screening_need"></div>
+        <div class="radio-option"><input type="radio" name="mental_screening_need"></div>
+        <div class="radio-option"><input type="radio" name="mental_screening_need"></div>
+      </div>
+      <p>Getting help with mental health needs</p>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="mental_help_need"></div>
+        <div class="radio-option"><input type="radio" name="mental_help_need"></div>
+        <div class="radio-option"><input type="radio" name="mental_help_need"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">SOCIAL INCLUSION</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Social Inclusion includes making sure individuals with I/DD can fully participate in their community.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>10a. How much need do people with I/DD have in <span data-field="social_inclusion_topic">{{ social_inclusion_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>10b. When thinking about <span data-field="social_inclusion_topic">{{ social_inclusion_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="social_inclusion_importance">
+        <label>Opportunities for recreation, leisure, and religious activities to build connections and friendships</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="social_inclusion_importance">
+        <label>Accessibility of programs and places</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="social_inclusion_importance">
+        <label>Being included in social situations without discrimination and/or bias</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="social_inclusion_importance">
+        <label>Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 150px; margin-left: 10px;"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>10c. Use the space below to share any comments about <span data-field="social_inclusion_topic">{{ social_inclusion_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">HOUSING</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Housing includes access to affordable and safe housing for individuals with I/DD.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>11a. How much need do people with I/DD have in <span data-field="housing_topic">{{ housing_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>11b. When thinking about <span data-field="housing_topic">{{ housing_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="housing_importance">
+        <label>Affordable and safe housing in the community</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="housing_importance">
+        <label>Accessible housing</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="housing_importance">
+        <label>Training on housing for Supports Coordinators and other professionals</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="housing_importance">
+        <label>Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 150px; margin-left: 10px;"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>11c. Use the space below to share any comments about <span data-field="housing_topic">{{ housing_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-header">
+    <div class="icon"></div>
+    <div>
+      <h3 style="margin: 0;">SELF-DETERMINATION</h3>
+      <p style="font-size: 0.9em; margin: 2px 0 0 0;">Self-Determination includes individuals with I/DD making their own decisions about their life and services they receive.</p>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>12a. How much need do people with I/DD have related to <span data-field="self_determination_topic">{{ self_determination_topic }}</span>?</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>A lot of need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Some need</label>
+      </div>
+      <div class="radio-option">
+        <div class="icon" style="font-size: 24px;">+</div>
+        <label>Little or No need</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>12b. When thinking about <span data-field="self_determination_topic">{{ self_determination_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="self_determination_importance">
+        <label>Hiring one's own support workers</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="self_determination_importance">
+        <label>Training on how to better advocate for yourself or others</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="self_determination_importance">
+        <label>Having Person-Centered Planning or Individual Education Plans (IEP)/Individual Transition Plans (ITP) be led by the person with I/DD, with support from others as needed</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="self_determination_importance">
+        <label>Other, please specify: <input type="text" style="border: none; border-bottom: 1px solid #ccc; width: 150px; margin-left: 10px;"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>12c. Use the space below to share any comments about <span data-field="self_determination_topic">{{ self_determination_topic }}</span>.</p>
+    <textarea></textarea>
+  </div>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling for readability, mimicking document structure */
+  h2, h3 { font-weight: bold; margin-top: 1.5em; margin-bottom: 0.5em; }
+  .section-header { display: flex; align-items: center; margin-bottom: 1em; }
+  .icon { margin-right: 10px; font-size: 1.2em; }
+  .question-block { margin-bottom: 1.5em; }
+  .radio-group label, .checkbox-group label { display: block; margin-bottom: 0.5em; }
+  .input-field { border: 1px solid #ccc; padding: 5px; width: 90%; box-sizing: border-box; }
+</style>
+
+<div class="page">
+  <div class="question-block">
+    <div class="section-header">
+      <span class="icon">&#128100;</span>
+      <strong>LEGAL AUTHORITY AND RIGHTS</strong> – Legal Authority and Rights includes supported decision-making, guardianship, and alternatives to guardianship.
+    </div>
+    <p>13a. How much need do people with I/DD have related to <span data-field="legal_authority_and_rights_need_level">{{ legal_authority_and_rights_need_level }}</span>?</p>
+    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+      <div style="text-align: center;">
+        <p>A lot of need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_a" value="high"> <span data-field="need_a_selection">{{ need_a_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Some need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_b" value="medium"> <span data-field="need_b_selection">{{ need_b_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Little or No need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_c" value="low"> <span data-field="need_c_selection">{{ need_c_selection }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>13b. When thinking about <span data-field="legal_authority_and_rights_topic">{{ legal_authority_and_rights_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <label><input type="radio" name="importance_13b" value="awareness"> Increased awareness of individual rights</label>
+      <label><input type="radio" name="importance_13b" value="training"> Training for individuals with I/DD and families on supported decision-making</label>
+      <label><input type="radio" name="importance_13b" value="education"> Education for judges, attorneys, supports coordinators/case managers, and educators on alternatives to guardianship (for example, Power of Attorney or Representative Payee)</label>
+      <label><input type="radio" name="importance_13b" value="other"> Other, please specify: <input type="text" class="input-field" data-field="importance_13b_other_specify" value="{{ importance_13b_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>13c. Use the space below to share any comments about <span data-field="legal_authority_and_rights_comments">{{ legal_authority_and_rights_comments }}</span>.</p>
+    <div style="height: 100px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <div class="section-header">
+      <span class="icon">&#128663;</span>
+      <strong>TRANSPORTATION</strong> – Transportation includes transportation resources for individuals with I/DD.
+    </div>
+    <p>14a. How much need do people with I/DD have related to <span data-field="transportation_need_level">{{ transportation_need_level }}</span>?</p>
+    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+      <div style="text-align: center;">
+        <p>A lot of need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_a_trans" value="high"> <span data-field="need_a_trans_selection">{{ need_a_trans_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Some need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_b_trans" value="medium"> <span data-field="need_b_trans_selection">{{ need_b_trans_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Little or No need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_c_trans" value="low"> <span data-field="need_c_trans_selection">{{ need_c_trans_selection }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>14b. When thinking about <span data-field="transportation_topic">{{ transportation_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <label><input type="radio" name="importance_14b" value="access"> Access to transportation options (for example, public transit, ride-share, taxi, or train)</label>
+      <label><input type="radio" name="importance_14b" value="affordability"> Affordable transportation options</label>
+      <label><input type="radio" name="importance_14b" value="reliability"> Reliable transportation options</label>
+      <label><input type="radio" name="importance_14b" value="other"> Other, please specify: <input type="text" class="input-field" data-field="importance_14b_other_specify" value="{{ importance_14b_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>14c. Use the space below to share any comments about <span data-field="transportation_comments">{{ transportation_comments }}</span>.</p>
+    <div style="height: 100px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <div class="section-header">
+      <span class="icon">&#128104;</span>
+      <strong>FAMILY SUPPORT</strong> – Family Support includes supports for family members and caregivers of individuals with I/DD.
+    </div>
+    <p>15a. How much need do people with I/DD have related to <span data-field="family_support_need_level">{{ family_support_need_level }}</span>?</p>
+    <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+      <div style="text-align: center;">
+        <p>A lot of need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_a_fam" value="high"> <span data-field="need_a_fam_selection">{{ need_a_fam_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Some need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_b_fam" value="medium"> <span data-field="need_b_fam_selection">{{ need_b_fam_selection }}</span></div>
+      </div>
+      <div style="text-align: center;">
+        <p>Little or No need</p>
+        <div style="margin-top: 5px;"><input type="radio" name="need_c_fam" value="low"> <span data-field="need_c_fam_selection">{{ need_c_fam_selection }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>15b. When thinking about <span data-field="family_support_topic">{{ family_support_topic }}</span>, what is most important? (Please select only one response)</p>
+    <div class="radio-group">
+      <label><input type="radio" name="importance_15b" value="caregiver_support"> Caregiver supports including respite care, self-care, and stress management</label>
+      <label><input type="radio" name="importance_15b" value="aging_support"> Supports for caregivers who are getting older</label>
+      <label><input type="radio" name="importance_15b" value="other"> Other, please specify: <input type="text" class="input-field" data-field="importance_15b_other_specify" value="{{ importance_15b_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>15c. Use the space below to share any comments about <span data-field="family_support_comments">{{ family_support_comments }}</span>.</p>
+    <div style="height: 100px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <p>16a. Please choose the 3 areas you think have the greatest need:</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="area_16a" value="legal_authority_and_rights"> Legal authority and rights</label>
+      <label><input type="checkbox" name="area_16a" value="family_support"> Family support</label>
+      <label><input type="checkbox" name="area_16a" value="self_determination"> Self-determination</label>
+      <label><input type="checkbox" name="area_16a" value="direct_support_workers"> Direct support workers</label>
+      <label><input type="checkbox" name="area_16a" value="education"> Education</label>
+      <label><input type="checkbox" name="area_16a" value="transitioning_to_adulthood"> Transitioning to adulthood</label>
+      <label><input type="checkbox" name="area_16a" value="criminal_justice"> Criminal justice</label>
+      <label><input type="checkbox" name="area_16a" value="health_and_wellness"> Health and wellness</label>
+      <label><input type="checkbox" name="area_16a" value="social_inclusion"> Social inclusion</label>
+      <label><input type="checkbox" name="area_16a" value="accessing_healthcare"> Accessing healthcare</label>
+      <label><input type="checkbox" name="area_16a" value="getting_older"> Getting older</label>
+      <label><input type="checkbox" name="area_16a" value="employment"> Employment</label>
+      <label><input type="checkbox" name="area_16a" value="transportation"> Transportation</label>
+      <label><input type="checkbox" name="area_16a" value="housing"> Housing</label>
+      <label><input type="checkbox" name="area_16a" value="mental_health"> Mental health</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>16b. Are there any other topics or issues that are important to people with I/DD?</p>
+    <div style="height: 60px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+
+  <div class="question-block">
+    <p>Now we are going to ask you questions about your experience with the COVID-19 pandemic</p>
+  </div>
+
+  <div class="question-block">
+    <div class="section-header">
+      <span class="icon">&#128187;</span>
+      <strong>COVID-19 EXPERIENCE</strong>
+    </div>
+    <p>17a. Please choose which 3 areas you think have been most impacted by the COVID-19 pandemic:</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="area_17a" value="housing"> Housing</label>
+      <label><input type="checkbox" name="area_17a" value="health_and_wellness"> Health and wellness</label>
+      <label><input type="checkbox" name="area_17a" value="getting_older"> Getting older</label>
+      <label><input type="checkbox" name="area_17a" value="direct_support_workers"> Direct support workers</label>
+      <label><input type="checkbox" name="area_17a" value="family_support"> Family support</label>
+      <label><input type="checkbox" name="area_17a" value="accessing_healthcare"> Accessing healthcare</label>
+      <label><input type="checkbox" name="area_17a" value="employment"> Employment</label>
+      <label><input type="checkbox" name="area_17a" value="legal_authority_and_rights"> Legal authority and rights</label>
+      <label><input type="checkbox" name="area_17a" value="transportation"> Transportation</label>
+      <label><input type="checkbox" name="area_17a" value="self_determination"> Self-determination</label>
+      <label><input type="checkbox" name="area_17a" value="social_inclusion"> Social inclusion</label>
+      <label><input type="checkbox" name="area_17a" value="transitioning_to_adulthood"> Transitioning to adulthood</label>
+      <label><input type="checkbox" name="area_17a" value="criminal_justice"> Criminal justice</label>
+      <label><input type="checkbox" name="area_17a" value="mental_health"> Mental health</label>
+      <label><input type="checkbox" name="area_17a" value="education"> Education</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>17b. Is there any other area that was greatly impacted by the COVID-19 pandemic?</p>
+    <div style="height: 60px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <p>18a. Think about the changes to daily life during the COVID-19 pandemic. Are there any of these changes that you want to see continue? (Check all that apply)</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="change_18a" value="outdoor_events"> Outdoor events</label>
+      <label><input type="checkbox" name="change_18a" value="telehealth"> Telehealth and telemedicine</label>
+      <label><input type="checkbox" name="change_18a" value="food_delivery"> Food delivery options</label>
+      <label><input type="checkbox" name="change_18a" value="online_educational_webinars"> Online educational webinars</label>
+      <label><input type="checkbox" name="change_18a" value="online_social_events"> Online social events</label>
+      <label><input type="checkbox" name="change_18a" value="video_conferencing"> Video conferencing</label>
+      <label><input type="checkbox" name="change_18a" value="face_masks"> Face masks</label>
+      <label><input type="checkbox" name="change_18a" value="specific_hours"> Specific hours for certain populations (for example, grocery stores open to seniors only for certain hours of the day)</label>
+      <label><input type="checkbox" name="change_18a" value="working_from_home"> Working from home</label>
+      <label><input type="checkbox" name="change_18a" value="social_distancing"> Social distancing</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>18b. Are there other changes due to the pandemic that you would like to continue?</p>
+    <div style="height: 60px; border: 1px solid #ccc; margin-top: 5px;"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <p>19. In the past year, what facets of the COVID-19 pandemic have negatively impacted your daily life? (Check all that apply)</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="impact_19" value="access_food"> Access to food</label>
+      <label><input type="checkbox" name="impact_19" value="challenges_communicating"> Challenges communicating your needs</label>
+      <label><input type="checkbox" name="impact_19" value="access_healthcare"> Access to healthcare</label>
+      <label><input type="checkbox" name="impact_19" value="change_income_loss"> Change in income or loss of employment</label>
+      <label><input type="checkbox" name="impact_19" value="access_household_items"> Access to household items (for example, getting enough toiletries or cleaning supplies)</label>
+      <label><input type="checkbox" name="impact_19" value="death_loved_one"> Death of a loved one</label>
+      <label><input type="checkbox" name="impact_19" value="access_mental_health"> Access to mental health resources</label>
+      <label><input type="checkbox" name="impact_19" value="changes_living_arrangement"> Changes to your living arrangement</label>
+      <label><input type="checkbox" name="impact_19" value="access_public_transportation"> Access to public transportation</label>
+      <label><input type="checkbox" name="impact_19" value="personal_illness"> Personal illness</label>
+      <label><input type="checkbox" name="impact_19" value="social_isolation"> Social isolation</label>
+      <label><input type="checkbox" name="impact_19" value="access_covid_vaccination"> Access to a COVID-19 vaccination</label>
+      <label><input type="checkbox" name="impact_19" value="other_impact"> Other, please specify: <input type="text" class="input-field" data-field="impact_19_other_specify" value="{{ impact_19_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>20. What is your current COVID-19 vaccine status?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="vaccine_status" value="fully_vaccinated"> Fully vaccinated</label>
+      <label><input type="radio" name="vaccine_status" value="partially_vaccinated"> Partially vaccinated</label>
+      <label><input type="radio" name="vaccine_status" value="not_vaccinated"> Not vaccinated</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>What are some reasons that you have not been vaccinated? (Please check all that apply)</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="reason_not_vaccinated" value="cannot_get_appointment"> Cannot get a vaccine appointment</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="site_not_accessible"> Vaccine site is not accessible</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="no_transportation"> No transportation to a vaccine appointment</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="homebound"> Homebound</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="rely_on_someone"> Rely on someone to take me to an appointment</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="language_barrier"> Language barrier</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="vaccine_not_safe"> Concerned the vaccine is not safe</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="not_sure"> Not sure the vaccine works</label>
+      <label><input type="checkbox" name="reason_not_vaccinated" value="other_reason"> Other, please specify: <input type="text" class="input-field" data-field="reason_not_vaccinated_other_specify" value="{{ reason_not_vaccinated_other_specify }}"></label>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="question-block">
+    <h3>Demographic Information</h3>
+    <p>21. What is your age?</p>
+    <select class="input-field" data-field="age">
+      <option value="">Select Age</option>
+      <!-- Options would be dynamically generated -->
+    </select>
+  </div>
+
+  <div class="question-block">
+    <p>22. Are you:</p>
+    <div class="radio-group">
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label><input type="radio" name="gender" value="transgender"> Transgender</label>
+      <label><input type="radio" name="gender" value="non_binary"> Non-binary</label>
+      <label><input type="radio" name="gender" value="other_gender"> Other, please specify: <input type="text" class="input-field" data-field="gender_other_specify" value="{{ gender_other_specify }}"></label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>23. What categories describe you? (Check all that apply)</p>
+    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+      <label><input type="checkbox" name="ethnicity" value="american_indian"> American Indian or Alaska Native</label>
+      <label><input type="checkbox" name="ethnicity" value="arab_middle_eastern"> Arab, Middle Eastern, or North African</label>
+      <label><input type="checkbox" name="ethnicity" value="asian"> Asian</label>
+      <label><input type="checkbox" name="ethnicity" value="black_african"> Black or African American</label>
+      <label><input type="checkbox" name="ethnicity" value="hispanic_latinx"> Hispanic or Latinx</label>
+      <label><input type="checkbox" name="ethnicity" value="native_hawaiian"> Native Hawaiian or Other Pacific Islander</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>24. What is your zip code?</p>
+    <input type="text" class="input-field" data-field="zip_code" value="{{ zip_code }}">
+  </div>
+
+  <div class="question-block">
+    <p>25. Did someone help you complete this survey?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="assisted" value="yes"> Yes</label>
+      <label><input type="radio" name="assisted" value="no"> No</label>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <p>Please provide the name and contact for the person who assisted you:</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div>
+        <p>First name:</p>
+        <input type="text" class="input-field" data-field="helper.first_name" value="{{ helper.first_name }}">
+      </div>
+      <div>
+        <p>Last name:</p>
+        <input type="text" class="input-field" data-field="helper.last_name" value="{{ helper.last_name }}">
+      </div>
+      <div>
+        <p>Email:</p>
+        <input type="text" class="input-field" data-field="helper.email" value="{{ helper.email }}">
+      </div>
+      <div>
+        <p>Street Address:</p>
+        <input type="text" class="input-field" data-field="helper.street_address" value="{{ helper.street_address }}">
+      </div>
+      <div>
+        <p>City:</p>
+        <input type="text" class="input-field" data-field="helper.city" value="{{ helper.city }}">
+      </div>
+      <div>
+        <p>State:</p>
+        <input type="text" class="input-field" data-field="helper.state" value="{{ helper.state }}">
+      </div>
+      <div>
+        <p>Zip Code:</p>
+        <input type="text" class="input-field" data-field="helper.zip_code" value="{{ helper.zip_code }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="question-block" style="margin-top: 30px;">
+    <p>THANK YOU for your time and responses to this survey. Once you submit you will be redirected to a contact form. If you would like to be entered in the drawing for one of ten $50 Target gift cards, please complete the contact form. To keep your survey answers private, your contact information will not be attached to your survey answers.</p>
+  </div>
+</div>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1 { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 30px; }
+  p { font-size: 12pt; line-height: 1.5; margin-bottom: 15px; }
+</style>
+
+<div class="page">
+  <h1>Please click "SUBMIT" to submit your survey answers</h1>
+  <p>If you have any questions about the survey, please contact <span data-field="contact_name">{{ contact_name }}</span> at <span data-field="contact_email">{{ contact_email }}</span> or <span data-field="contact_phone">{{ contact_phone }}</span>.</p>
+  <p>If you would like more information about {{ organization_name }}, please contact <span data-field="info_person_name">{{ info_person_name }}</span>, by email: <span data-field="info_person_email">{{ info_person_email }}</span> or by phone at <span data-field="info_person_phone">{{ info_person_phone }}</span>.</p>
+  <p>You can also visit our web site at: <a href="{{ website_url }}">{{ website_url }}</a></p>
+  <p style="text-align: center; margin-top: 50px; font-size: 10pt;">Powered by Qualtrics</p>
+</div>

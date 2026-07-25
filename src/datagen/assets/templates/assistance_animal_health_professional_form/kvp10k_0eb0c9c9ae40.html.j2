@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assistance Animal Health Professional Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+  .logo-area { text-align: left; }
+  .contact-info { text-align: right; font-size: 10pt; }
+  .form-section { margin-bottom: 30px; }
+  .field-row { display: flex; margin-bottom: 15px; }
+  .field-row label { width: 150px; font-weight: normal; }
+  .field-row span { flex-grow: 1; border-bottom: 1px solid #000; }
+  .checkbox-group label { font-weight: normal; display: block; margin-bottom: 5px; }
+  .textarea-container { width: 100%; height: 150px; border: 1px solid #000; padding: 10px; box-sizing: border-box; margin-top: 10px; }
+  .signature-area { display: flex; justify-content: space-between; margin-top: 80px; }
+  .signature-block { width: 45%; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <div style="font-size: 40pt; line-height: 0.8;">
+        <span style="font-family: 'DejaVu Serif', serif;">W</span>
+        <span style="font-family: 'DejaVu Serif', serif;">C</span>
+      </div>
+      <h1 style="font-size: 24pt; margin-top: -10px;">University of<br>CINCINNATI</h1>
+    </div>
+    <div class="contact-info">
+      <p>Accessibility Resources</p>
+      <p>Division of Student Affairs</p>
+      <p>PO Box 21021</p>
+      <p>Cincinnati, OH 45221-0213</p>
+      <p>210 University Pavilion</p>
+      <p>Tel: (513)-556-6823</p>
+      <p>Fax: (513)-556-1383</p>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 40px;">Assistance Animal Health Professional Form</h2>
+
+  <div class="form-section">
+    <div class="field-row">
+      <label>Student's Name:</label>
+      <span>{{ student_name }}</span>
+    </div>
+    <div class="field-row">
+      <label>Date of Birth:</label>
+      <span>{{ date_of_birth }}</span>
+    </div>
+    <div class="field-row">
+      <label>Animal Name:</label>
+      <span>{{ animal_name }}</span>
+    </div>
+    <div class="field-row">
+      <label>Type of animal:</label>
+      <span>{{ animal_type }}</span>
+    </div>
+    <div class="field-row">
+      <label>Age of animal:</label>
+      <span>{{ animal_age }}</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>The above-named student has indicated that you are the physician or mental health provider who has prescribed that having an Assistance Animal in University housing would be a significant factor in alleviating one or more of the identified symptoms or effects of the student's disability. So that we may better evaluate the request for this accommodation, please answer the following questions:</p>
+
+    <h3 style="margin-top: 20px;">Information About the Student's Disability</h3>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> Has a disability that meets the definition of a disability as defined by the American's with Disabilities Act and Section 504 of the Rehabilitation Act of 1973</label>
+      <label><input type="checkbox"> Has a medical condition that impacts them but does not rise to the level of a disability</label>
+      <label><input type="checkbox"> Does not have a condition that would require the requested accommodation</label>
+    </div>
+
+    <div class="field-row" style="margin-top: 20px;">
+      <label>2. What is the nature of the student's disability? What is the diagnosis and how is the student substantially limited in a residential setting by this diagnosis or impairment?</label>
+      <div class="textarea-container">
+        {{ disability_nature_description }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <label>3. Does the student require ongoing treatment? Please explain.</label>
+      <div class="textarea-container">
+        {{ ongoing_treatment_explanation }}
+      </div>
+    </div>
+    <div class="field-row">
+      <label>4. How long have you been working with the student regarding this diagnosis?</label>
+      <div class="textarea-container">
+        {{ duration_of_treatment }}
+      </div>
+    </div>
+    <div class="field-row">
+      <label>5. How are the symptoms/disability currently being treated or controlled? Describe other medical treatments, therapies, devices, or regimens prescribed including compliance, and response to intervention.</label>
+      <div class="textarea-container">
+        {{ current_treatment_description }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <label>6. Is this an animal that you specifically prescribed as part of treatment for the student? If so, please explain how the recommended Assistance Animal mitigates the symptoms association with the stated diagnosis.</label>
+      <div class="textarea-container">
+        {{ assistance_animal_mitigation_explanation }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="field-row">
+      <label>7. In your experience working with the student, is there evidence that an Assistance Animal has proved beneficial to mitigate symptoms associated with their disability? If so, please explain.</label>
+      <div class="textarea-container">
+        {{ assistance_animal_benefit_evidence }}
+      </div>
+    </div>
+    <div class="field-row">
+      <label>8. In your opinion, how important is it for the student's well-being that the Assistance Animal reside on campus? What consequences, in terms of disability symptomatology, may result if the accommodation is not approved?</label>
+      <div class="textarea-container">
+        {{ importance_to_wellbeing_consequences }}
+      </div>
+    </div>
+    <div class="field-row">
+      <label>9. Have you discussed the responsibilities associated with properly caring for an animal while engaged in typical college activities and residing in campus housing? Do you believe those responsibilities might exacerbate the student's symptoms in any way? (If you have not had this conversation with the student, we will discuss with the student at a later date.)</label>
+      <div class="textarea-container">
+        {{ responsibility_discussion }}
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 50px;">Thank you for taking the time to complete this form. If we need additional information, we may contact you at a later date.</p>
+  <p style="text-align: center; margin-top: 20px;">This form must be returned to the student for them to upload with their online request form.</p>
+
+  <div class="signature-area">
+    <div class="signature-block">
+      <p><strong>CERTIFYING PROFESSIONAL</strong></p>
+      <div class="field-row" style="margin-top: 30px;">
+        <label>Name & Title:</label>
+        <span>{{ certifier_name_title }}</span>
+      </div>
+      <div class="field-row">
+        <label>Place of Employment:</label>
+        <span>{{ certifier_employer_name }}</span>
+      </div>
+      <div class="field-row">
+        <label>Address:</label>
+        <span>{{ certifier_address }}</span>
+      </div>
+      <div class="field-row">
+        <label>Daytime Phone:</label>
+        <span>{{ certifier_phone }}</span>
+      </div>
+      <div class="field-row">
+        <label>Fax Number:</label>
+        <span>{{ certifier_fax }}</span>
+      </div>
+      <div class="field-row">
+        <label>Type of Specialty or license:</label>
+        <span>{{ certifier_specialty }}</span>
+      </div>
+      <div class="field-row" style="margin-top: 50px;">
+        <label>Signature of Certifying Professional</label>
+        <span></span>
+      </div>
+      <div class="field-row" style="margin-top: 50px;">
+        <label>Date</label>
+        <span>{{ certifier_date }}</span>
+      </div>
+      <div class="field-row" style="margin-top: 30px;">
+        <label>Print Name</label>
+        <span>{{ certifier_print_name }}</span>
+      </div>
+      <div class="field-row" style="margin-top: 30px;">
+        <label>License #/State Date</label>
+        <span>{{ certifier_license_state_date }}</span>
+      </div>
+    </div>
+    <div class="signature-block">
+      <!-- Empty space for balance -->
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 80px;">This form must be returned to the student for them to upload with their online request form.</p>
+</div>
+
+</body>
+</html>

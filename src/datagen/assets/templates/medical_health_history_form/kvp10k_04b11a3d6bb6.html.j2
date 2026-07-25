@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medical Health History Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .header-logo {
+    float: right;
+    font-size: 12pt;
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .form-row label {
+    width: 150px;
+    font-weight: normal;
+  }
+  .form-row input[type="text"], .form-row select {
+    flex-grow: 1;
+    border-bottom: 1px solid #000;
+    padding: 2px 5px;
+  }
+  .grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 15px;
+  }
+  .grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 15px;
+  }
+  .table-container {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+    font-size: 10pt;
+  }
+  .table-container th {
+    background-color: #f0f0f0;
+  }
+  .checkbox-group label {
+    font-weight: normal;
+    margin-right: 15px;
+  }
+  .signature-line {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .signature-box {
+    width: 30%;
+    text-align: center;
+  }
+  .signature-box div {
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1>Medical Health History Form</h1>
+  </div>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span class="header-logo">FRESNO PACIFIC UNIVERSITY</span>
+  </div>
+  <p>Please submit these forms and all medical records and/or immunizations to the confidential email below. Please contact the Health Center for any questions or concerns related to past or current medical issues. Email: <span data-field="health_center_email">{{ health_center_email }}</span>. Phone: <span data-field="health_center_phone">{{ health_center_phone }}</span></p>
+
+  <div class="section-title">Personal Information</div>
+  <div class="form-row">
+    <label>Name</label>
+    <span data-field="full_name_first">{{ full_name_first }}</span> <span data-field="full_name_middle">{{ full_name_middle }}</span> <span data-field="full_name_last">{{ full_name_last }}</span>
+  </div>
+  <div class="form-row">
+    <label>Mailing address</label>
+    <span data-field="mailing_address_street">{{ mailing_address_street }}</span>, <span data-field="mailing_address_city">{{ mailing_address_city }}</span>, <span data-field="mailing_address_state">{{ mailing_address_state }}</span> <span data-field="mailing_address_zip">{{ mailing_address_zip }}</span>, <span data-field="mailing_address_country">{{ mailing_address_country }}</span>
+  </div>
+  <div class="form-row">
+    <label>Cell phone</label>
+    <span data-field="cell_phone">{{ cell_phone }}</span>
+  </div>
+  <div class="form-row">
+    <label>Email address</label>
+    <span data-field="email_address">{{ email_address }}</span>
+  </div>
+  <div class="form-row">
+    <label>Birth date</label>
+    <span data-field="birth_date">{{ birth_date }}</span>
+  </div>
+  <div class="form-row">
+    <label>Gender</label>
+    <span data-field="gender">{{ gender }}</span>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <label style="width: auto;">I am a/an (check all that apply):</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> On-campus resident</label>
+      <label><input type="checkbox"> Commuter</label>
+      <label><input type="checkbox"> International student</label>
+      <label><input type="checkbox"> US citizen but live outside the country</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <label>Your physician's name</label>
+    <span data-field="physician_name">{{ physician_name }}</span>
+  </div>
+  <div class="form-row">
+    <label>Physician's address</label>
+    <span data-field="physician_address_street">{{ physician_address_street }}</span>, <span data-field="physician_address_city">{{ physician_address_city }}</span>, <span data-field="physician_address_state">{{ physician_address_state }}</span> <span data-field="physician_address_zip">{{ physician_address_zip }}</span>
+  </div>
+
+  <div class="section-title">Personal History</div>
+  <p>Have you ever been diagnosed with or had problems with the following:</p>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th>Condition</th>
+        <th>Yes</th>
+        <th>No</th>
+        <th>Condition</th>
+        <th>Yes</th>
+        <th>No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ADD/ADHD</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Eye/Vision Difficulties</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Allergies</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Heart Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Anemia</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>High Blood Pressure</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Asthma</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>HIV/AIDS</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Bipolar Disorder</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Kidney Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Cancer</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Learning Disability</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Celiac Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Liver Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Chickenpox</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Lung Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Crohn's Disease</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Malaria</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Depression</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Menstrual Disorders</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Diabetes</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Mental Health Inpatient</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Eating Disorder</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Meningsitis</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Epilepsy/Seizures</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td>Neurology Problems</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Other disorders or illnesses (please list)</td>
+        <td><span data-field="other_illnesses_list">{{ other_illnesses_list }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 30px;">Other Health Information</div>
+  <div class="form-row">
+    <label>Allergies (medications, foods, environmental, etc.)</label>
+    <span data-field="allergies_details">{{ allergies_details }}</span>
+  </div>
+  <div class="form-row">
+    <label>Current/on-going medical problems</label>
+    <span data-field="current_medical_problems">{{ current_medical_problems }}</span>
+  </div>
+  <div class="form-row">
+    <label>Current medications (dosage/amount used)</label>
+    <span data-field="current_medications">{{ current_medications }}</span>
+  </div>
+  <div class="form-row">
+    <label>Previous hospitalizations or surgeries</label>
+    <span data-field="previous_hospitalizations">{{ previous_hospitalizations }}</span>
+  </div>
+  <div class="form-row" style="margin-top: 20px;">
+    <label>Do you have a history of any chemical dependency (including alcohol), eating disorder (including anorexia or bulimia), depression or any mental health problem? Please explain</label>
+    <span data-field="chemical_dependency_history">{{ chemical_dependency_history }}</span>
+  </div>
+  <p style="font-size: 9pt; margin-top: 40px;">Revised 5/2021</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1>Medical Health History Form</h1>
+  </div>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span class="header-logo">FRESNO PACIFIC UNIVERSITY</span>
+  </div>
+  <p>Please submit these forms and all medical records and/or immunizations to the confidential email below. Please contact the Health Center for any questions or concerns related to past or current medical issues. Email: <span data-field="health_center_email">{{ health_center_email }}</span>. Phone: <span data-field="health_center_phone">{{ health_center_phone }}</span></p>
+
+  <div class="section-title">Immunizations/Vaccinations</div>
+  <p>Fresno Pacific University requires the following immunization records, questionnaires, or waivers in accordance with California state law. Please use the checklist below to submit the required immunizations/vaccinations:</p>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label><input type="checkbox"> Hepatitis B: Full immunization series (Required for first-time enrollees 18 years of age or younger. Highly recommended to all students.)</label>
+      <div style="margin-top: 10px;">
+        <label>Dose #1: <span data-field="hep_b_dose1">{{ hep_b_dose1 }}</span></label>
+        <label>Dose #2: <span data-field="hep_b_dose2">{{ hep_b_dose2 }}</span></label>
+        <label>Dose #3: <span data-field="hep_b_dose3">{{ hep_b_dose3 }}</span></label>
+      </div>
+    </div>
+    <div>
+      <label><input type="checkbox"> Measles/Mumps/Rubella (MMR):</label>
+      <div style="margin-top: 10px;">
+        <label>Dose #1: <span data-field="mmr_dose1">{{ mmr_dose1 }}</span></label>
+        <label>Dose #2: <span data-field="mmr_dose2">{{ mmr_dose2 }}</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label><input type="checkbox"> Meningitis Advisory and Information: Signature required (page 4 of Health Form)</label>
+    </div>
+    <div>
+      <label><input type="checkbox"> Tetanus, Diphtheria and Pertussis (Tdap): One dose within the last 10 years.</label>
+      <div style="margin-top: 10px;">
+        <label>Dose #1: <span data-field="tdap_dose1">{{ tdap_dose1 }}</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label><input type="checkbox"> Tuberculosis (TB) Screening Questionnaire: (page 3 of Health Form).</label>
+    </div>
+    <div>
+      <label><input type="checkbox"> Varicella (Chickenpox): Two doses on or after first birthday OR proof of having history of Chickenpox disease.</label>
+      <div style="margin-top: 10px;">
+        <label>Dose #1: <span data-field="varicella_dose1">{{ varicella_dose1 }}</span></label>
+        <label>Dose #2: <span data-field="varicella_dose2">{{ varicella_dose2 }}</span></label>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;">The following immunizations are recommended but not required:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Poliovirus (three doses of OPV, four doses of IPV or four doses of any combination of OPV and IPV)</li>
+    <li>Influenza Vaccine (annual)</li>
+    <li>COVID-19 Vaccine (Note: FPU is working with institutions across the state to determine if the vaccine will be mandatory for students this upcoming academic year. Stay tuned with the latest campus updates by visiting our main website at <span data-field="university_website">{{ university_website }}</span>.)</li>
+  </ul>
+
+  <p style="margin-top: 20px;">For international students and U.S. citizens living abroad, the following immunization records are also required:</p>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>Proof of a negative Tuberculosis Skin Test PPD (Mantoux) within the past 12 months.</li>
+    <li>For a positive skin test, a chest x-ray is required and a copy of your results must be provided.</li>
+    <li>Completed polio series (three doses of OPV, four doses of IPV or four doses of any combination of OPV and IPV).</li>
+  </ul>
+
+  <div class="section-title" style="margin-top: 30px;">Consents for Medical/Mental Health Treatment and History</div>
+  <p>This section must be completed by the student and/or parent or legal guardian.</p>
+
+  <div class="form-row" style="margin-top: 15px;">
+    <label>For students who will be <span data-field="age_threshold">{{ age_threshold }}</span> years of age upon the start of classes:</label>
+    <p style="flex-grow: 1; margin: 0;">I hereby give my consent for medical staff to communicate my personal health history with, and only with, Fresno Pacific University staff if it is beneficial to my well-being and/or safety.</p>
+  </div>
+
+  <div class="signature-line">
+    <div class="signature-box">
+      <p>SIGNATURE OF STUDENT</p>
+      <div></div>
+      <p>PRINTED NAME OF STUDENT</p>
+      <div></div>
+      <p>DATE</p>
+      <div></div>
+    </div>
+    <div class="signature-box">
+      <p>For students who will be under the age of <span data-field="age_threshold_minor">{{ age_threshold_minor }}</span> upon the start of classes:</p>
+      <p style="margin-top: 10px;">I hereby give consent to any necessary emergency examination, anesthetic, surgery or treatment and/or hospital care for the minor child listed below under general or special supervision of an FPU representative and on the advice of any physician or surgeon licensed to practice medicine. I hereby give consent to any necessary emergency mental health evaluation, treatment and/or hospital care to be rendered for the minor child listed below under general or special supervision of an FPU representative and on the advice of any physician, psychologist or counselor licensed to practice medicine, psychotherapy or counseling. I understand this is to be used only if I cannot be reached and I understand that this is to allow emergency treatment to be initiated without delay and the staff will continue efforts to contact me.</p>
+    </div>
+  </div>
+
+  <div class="signature-line" style="margin-top: 50px;">
+    <div class="signature-box">
+      <p>SIGNATURE OF PARENT/LEGAL GUARDIAN</p>
+      <div></div>
+      <p>PRINTED NAME OF PARENT/LEGAL GUARDIAN</p>
+      <div></div>
+      <p>DATE</p>
+      <div></div>
+    </div>
+    <div class="signature-box">
+      <p>I hereby give my consent for medical staff to communicate my child's personal health history with, and only with, Fresno Pacific University staff if it is beneficial for their well-being and/or safety. This consent will be valid as long as the above-named is a minor and at Fresno Pacific University.</p>
+    </div>
+  </div>
+
+  <div class="signature-line" style="margin-top: 50px;">
+    <div class="signature-box">
+      <p>I do hereby state that I am the parent or legal guardian of</p>
+      <p style="margin-top: 10px;">STUDENT'S NAME (PRINTED)</p>
+      <div></div>
+    </div>
+  </div>
+
+  <p style="font-size: 9pt; margin-top: 40px;">Revised 5/2021</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1>Medical Health History Form</h1>
+  </div>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span class="header-logo">FRESNO PACIFIC UNIVERSITY</span>
+  </div>
+  <p>Please submit these forms and all medical records and/or immunizations to the confidential email below. Please contact the Health Center for any questions or concerns related to past or current medical issues. Email: <span data-field="health_center_email">{{ health_center_email }}</span>. Phone: <span data-field="health_center_phone">{{ health_center_phone }}</span></p>
+
+  <div class="section-title">Tuberculosis (TB) Screening Questionnaire</div>
+  <p>Please answer the following questions:</p>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label>Have you ever had a positive TB skin test?</label>
+      <div style="margin-top: 10px;">
+        <label><input type="radio"> Yes</label>
+        <label><input type="radio"> No</label>
+      </div>
+    </div>
+    <div>
+      <label>Have you ever had close contact with anyone who was sick with TB?</label>
+      <div style="margin-top: 10px;">
+        <label><input type="radio"> Yes</label>
+        <label><input type="radio"> No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label>Were you born in one of the countries listed below and arrived in the U.S. within the past five years?</label>
+      <div style="margin-top: 10px;">
+        <label><input type="radio"> Yes</label>
+        <label><input type="radio"> No</label>
+      </div>
+    </div>
+    <div>
+      <label>Have you ever traveled 'to' or 'in' one or more of the countries listed below?</label>
+      <div style="margin-top: 10px;">
+        <label><input type="radio"> Yes</label>
+        <label><input type="radio"> No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label>Have you ever been vaccinated with Bacillus Calmette-Guérin (BCG)?</label>
+      <div style="margin-top: 10px;">
+        <label><input type="radio"> Yes</label>
+        <label><input type="radio"> No</label>
+      </div>
+    </div>
+    <div>
+      <label>If the answer to all of the above questions is NO, no further testing or further action is required.</label>
+    </div>
+  </div>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <label>If the answer is YES to any of the above questions, did you receive a chest x-ray and/or treatment?</label>
+    <span data-field="chest_xray_treatment_details">{{ chest_xray_treatment_details }}</span>
+  </div>
+
+  <p style="margin-top: 20px;">FPU skin test results should be submitted to the Health Center prior to the start of classes.</p>
+  <p style="font-size: 9pt;">Failure to do so may result in Fresno University administratively dropping your courses.</p>
+
+  <div class="section-title" style="margin-top: 30px;">Countries List</div>
+  <p style="font-size: 9pt;">* The significance of the travel exposure should be discussed with a health care provider and evaluated.</p>
+
+  <div class="grid-3col" style="margin-top: 15px;">
+    <div style="font-size: 9pt;">Afghanistan | Algeria | Angola | Argentina | Armenia | Azerbaijan | Bahrain | Bangladesh | Belarus | Belize | Benin | Bhutan | Bolivia | Bosnia and Herzegovina | Botswana | Brazil | Brunei Darussalam | Bulgaria | Burkina Faso | Burundi | Cambodia | Cameroon | Cape Verde | Central African Republic | Chad | China | Colombia | Comoros | Congo | Costa Rica | Côte d'Ivoire | Croatia | Cuba | Democratic People's Republic of Korea | Djibouti | Dominican Republic | Ecuador | El Salvador | Equatorial Guinea | Eritrea | Estonia | Ethiopia | Gabon | Gambia | Georgia | Ghana | Guatemala | Guinea | Guinea-Bissau | Haiti | Honduras | India | Indonesia | Iran | Iraq | Israel | Japan | Jordan | Kazakhstan | Kenya | Kiribati | Kuwait | Kyrgyzstan | Laos | Latvia | Lebanon | Liberia | Libyan Arab Jamahiriya | Lithuania | Madagascar | Malawi | Malaysia | Maldives | Mali | Malta | Mauritania | Mauritius | Micronesia | Moldova | Mongolia | Montenegro | Morocco | Mozambique | Myanmar | Namibia | Nepal | Nicaragua | Niger | Nigeria | North Korea | Oman | Pakistan | Palau | Panama | Papua New Guinea | Paraguay | Peru | Philippines | Poland | Portugal | Qatar | Republic of Korea | Republic of Moldova | Romania | Russian Federation | Rwanda | Saint Vincent and the Grenadines | Sao Tome and Principe | Senegal | Serbia | Seychelles | Sierra Leone | Singapore | Solomon Islands | Somalia | South Africa | South Sudan | Sri Lanka | Sudan | Suriname | Swaziland | Syrian Arab Republic | Tajikistan | Tanzania | Togo | Tonga | Trinidad and Tobago | Tunisia | Turkey | Turkmenistan | Tuvalu | Uganda | Ukraine | United Republic of Tanzania | Uruguay | Uzbekistan | Vanuatu | Venezuela (Bolivarian Republic of) | Vietnam | Yemen | The former Yugoslav Republic of Macedonia | Zambia | Zimbabwe</div>
+  </div>
+
+  <p style="font-size: 9pt; margin-top: 40px;">Revised 5/2021</p>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1>Medical Health History Form</h1>
+  </div>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span class="header-logo">FRESNO PACIFIC UNIVERSITY</span>
+  </div>
+  <p>Please submit these forms and all medical records and/or immunizations to the confidential email below. Please contact the Health Center for any questions or concerns related to past or current medical issues. Email: <span data-field="health_center_email">{{ health_center_email }}</span>. Phone: <span data-field="health_center_phone">{{ health_center_phone }}</span></p>
+
+  <div class="section-title" style="margin-top: 30px;">Meningitis Advisory and Information</div>
+  <p>Meningococcal meningitis is a bacterial infection that can cause severe swelling in the membranes surrounding the brain and spinal cord. It can cause serious complications such as brain damage, hearing loss, learning disabilities, amputations and even death.</p>
+
+  <div class="section-title" style="margin-top: 20px;">SIGNS AND SYMPTOMS</div>
+  <p>Early symptoms of the meningitis infection may include a sudden onset of fever, headache, stiff neck, nausea, vomiting, increased sensitivity to light, confusion and rash. These symptoms may appear quickly and are often mistaken for a cold or the flu and ignored.</p>
+
+  <div class="section-title" style="margin-top: 20px;">HOW IS IT TRANSMITTED?</div>
+  <p>Meningitis is spread by direct contact with infected individuals. To reduce the risk of contracting meningitis, avoid sharing beverages or utensils and develop regular sleeping patterns.</p>
+
+  <div class="section-title" style="margin-top: 20px;">WHO IS AT RISK?</div>
+  <p>College-age students primarily living on campus have significantly higher risk of contracting meningococcal meningitis. The Centers for Disease Control and Prevention (CDC) have issued recommendations calling for routine vaccination with meningococcal conjugate vaccine for college students living in residence halls. The American College Health Association, the American Academy of Pediatrics and the American Academy of Family Physicians have all adopted the guidelines adopted by the Advisory Committee on Immunization Practices (ACIP). These guidelines encourage information dissemination regarding this disease and vaccination availability of those who wish to reduce the risk of meningococcal disease.</p>
+
+  <div class="section-title" style="margin-top: 20px;">IS THERE A VACCINE AGAINST MENINGOCOCCAL DISEASE?</div>
+  <p>Yes. There is an effective meningococcal conjugate vaccine that can provide long-term protection against four out of five strains of the disease. If you received a meningococcal conjugate vaccination between the ages of 11-12 a booster is recommended at age 16-18. Meningitis vaccines are available through your family physician, clinics or the County of Fresno Department of Public Health.</p>
+
+  <div class="section-title" style="margin-top: 20px;">IS THE MENINGOCOCCAL VACCINATION REQUIRED BY FRESNO PACIFIC UNIVERSITY?</div>
+  <p>No, FPU does not require students to have the meningococcal vaccination; however, it is highly recommended.</p>
+  <p>More information can be found online at <span data-field="cdc_link">{{ cdc_link }}</span> (Centers for Disease Control and Prevention).</p>
+
+  <div class="section-title" style="margin-top: 30px;">PLEASE CHECK ONE BELOW:</div>
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label><input type="checkbox"> I have received a meningococcal vaccination. "Date: <span data-field="vaccination_date">{{ vaccination_date }}</span>"</label>
+    </div>
+    <div>
+      <label><input type="checkbox"> I have decided to accept the meningitis vaccine from my family physician or local clinic. "*"</label>
+    </div>
+  </div>
+
+  <div class="grid-2col" style="margin-top: 15px;">
+    <div>
+      <label><input type="checkbox"> I have decided to accept the meningitis vaccine from the County of Fresno Department of Public Health (Phone: <span data-field="public_health_phone">{{ public_health_phone }}</span>).</label>
+    </div>
+    <div>
+      <label><input type="checkbox"> I am aware of the above risks and I have decided not to get a meningitis vaccination. I take full responsibility in the event of any possible illness or injury resulting from waiving this immunization. I am aware that in case of an outbreak of a disease in which I have waived immunization, it is plausible that the public health department could mandate a quarantine, thereby preventing non-immunized students' access to campus.</label>
+    </div>
+  </div>
+
+  <p style="margin-top: 30px;">I have read the information above and certify that the information provided by me is true.</p>
+
+  <div class="signature-line">
+    <div class="signature-box">
+      <p>PRINTED STUDENT NAME</p>
+      <div></div>
+      <p>STUDENT SIGNATURE</p>
+      <div></div>
+      <p>DATE</p>
+      <div></div>
+    </div>
+    <div class="signature-box">
+      <p>PRINTED GUARDIAN NAME</p>
+      <div></div>
+      <p>GUARDIAN SIGNATURE</p>
+      <div></div>
+      <p>DATE</p>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

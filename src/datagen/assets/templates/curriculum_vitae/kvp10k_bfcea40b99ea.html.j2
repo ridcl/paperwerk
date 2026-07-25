@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .contact-info {
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  .publication-list li {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+  }
+  .collaboration-list li {
+    margin-bottom: 5px;
+  }
+  .grant-item {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 2px solid #eee;
+  }
+  .grant-item p {
+    margin: 2px 0;
+    font-size: 0.9em;
+  }
+</style>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <h1>Curriculum Vitae</h1>
+    <h2 style="font-size: 1.5em;">Professor {{ full_name }}</h2>
+    <div class="contact-info">
+      <p>{{ address_line_1 }}</p>
+      <p>{{ city_state_zip }}</p>
+      <p>Phone: {{ phone }}</p>
+      <p>Fax: {{ fax }}</p>
+      <p>E-mail: <a href="mailto:{{ email }}">{{ email }}</a></p>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  <ul>
+    <li>{{ education_entry_1.degree }} from {{ education_entry_1.institution }} ({{ education_entry_1.year }})</li>
+    <li>{{ education_entry_2.degree }} from {{ education_entry_2.institution }} ({{ education_entry_2.year }})</li>
+  </ul>
+
+  <div class="section-title">Positions Held</div>
+  <ul>
+    {% for position in positions_held %}
+    <li>{{ position.title }} at {{ position.institution }} ({{ position.years }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Courses Taught (15 different courses)</div>
+  <ul>
+    {% for course in courses_taught %}
+    <li>{{ course.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">New Courses Developed and Taught</div>
+  <ul>
+    {% for new_course in new_courses_developed %}
+    <li>{{ new_course.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Active Research Areas:</div>
+  <ul>
+    {% for research_area in research_areas %}
+    <li>{{ research_area }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Publications (*Undergraduate Student Co-authors: 40 undergraduate co-authors)</div>
+  <div class="publication-list">
+    {% for pub in publications %}
+    <li data-field="publication_{{ loop.index0 }}">{{ pub.citation }}</li>
+    {% endfor %}
+  </div>
+
+  <div class="section-title">Presentations and Invited Talks</div>
+  <ul>
+    {% for talk in talks %}
+    <li>{{ talk.title }} ({{ talk.year }})</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Grants, Fellowships, and Awards (Funded: Internal: ${{ total_internal_grants }}; External: ${{ total_external_grants }})</div>
+  {% for grant in grants %}
+  <div class="grant-item">
+    <p><strong>{{ grant.title }}</strong></p>
+    <p>PI: {{ grant.pi }}</p>
+    <p>Dates: {{ grant.dates }}</p>
+    <p>Amount: {{ grant.amount }}</p>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">National Institutes of Health</div>
+  <ul>
+    {% for nih_item in nih_items %}
+    <li>{{ nih_item.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">NSF-Phase I Centers for Chemical Innovation</div>
+  <ul>
+    {% for nsf_center in nsf_centers %}
+    <li>{{ nsf_center.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">National Science Foundation-Research Experience for Undergraduates</div>
+  <ul>
+    {% for nsf_undergrad in nsf_undergrads %}
+    <li>{{ nsf_undergrad.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Hope College-Howard Hughes Medical Institute Faculty Development Grants for Research</div>
+  <ul>
+    {% for hhmi_grant in hhmi_grants %}
+    <li>{{ hhmi_grant.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">National Science Foundation-Collaborative Research at Undergraduate Institutions</div>
+  <ul>
+    {% for nsf_collaborative in nsf_collaborative %}
+    <li>{{ nsf_collaborative.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">National Science Foundation-Research Site for Educators in Chemistry</div>
+  <ul>
+    {% for nsf_educator in nsf_educator %}
+    <li>{{ nsf_educator.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">National Science Foundation-Collaborative Research at Undergraduate Institutions</div>
+  <ul>
+    {% for nsf_collaboration_2 in nsf_collaboration_2 %}
+    <li>{{ nsf_collaboration_2.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">NASA Michigan Space Grant</div>
+  <ul>
+    {% for nasa_grant in nasa_grants %}
+    <li>{{ nasa_grant.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Collaborations Since 1999 (*Current Collaborations):</div>
+  <ul class="collaboration-list">
+    {% for collaborator in collaborators %}
+    <li data-field="collaborator[{{ loop.index0 }}]">{{ collaborator }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Service to Hope College and the Department of Chemistry</div>
+  <ul>
+    {% for service in services %}
+    <li>{{ service }}</li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Media Appearances and Interviews</div>
+  <ul>
+    {% for media in media_appearances %}
+    <li>{{ media }}</li>
+    {% endfor %}
+  </ul>
+
+  <div style="text-align: center; margin-top: 50px; font-size: 0.8em;">
+    Page {{ page_number }}
+  </div>
+</div>
+
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+
+<div class="page">
+  <p>
+    <ul>
+      <li>Search Committee Member (seven search committee appointments: {{ start_year }}-{{ end_year }};
+        {{ field_of_study }}</li>
+      <li>Hope College Recruiting Senior Representative at the Southeastern Regional
+        Education Board ({{ start_year }}-{{ end_year }}).</li>
+      <li>Provost Search Committee Member ({{ start_year }}-{{ end_year }}).</li>
+      <li>Cultural Intelligence Workshop Trainee ({{ start_year }}).</li>
+    </ul>
+  </p>
+  <p>
+    <strong>Service to the Holland Community</strong>
+  </p>
+  <p>
+    <ul>
+      {% for item in community_service_items %}
+        <li>{{ item.description }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+  <div style="text-align: center; margin-top: 50px;">
+    <p>9</p>
+  </div>
+</div></body>
+</html>

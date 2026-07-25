@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial Aid & Scholarship Department</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .csun-logo {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .department-info {
+    text-align: right;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .label {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .input-field {
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    min-height: 1.2em;
+  }
+  .table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  .table-container th {
+    background-color: #f0f0f0;
+  }
+  .signature-line {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-box {
+    width: 45%;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <div class="csun-logo">CSUN</div>
+      <div>
+        <p>CALIFORNIA</p>
+        <p>STATE UNIVERSITY</p>
+        <p>NORTHRIDGE</p>
+      </div>
+    </div>
+    <div class="department-info">
+      <p>2021-22 FA-PLUS</p>
+      <p>Financial Aid & Scholarship Department</p>
+      <p>Bayramian Hall, Student Services Center</p>
+      <p>18111 Nordhoff Street</p>
+      <p>Northridge, CA 91330-8307</p>
+      <p>(818) 677-4085</p>
+      <p>www.csun.edu/financialaid</p>
+    </div>
+  </div>
+
+  <h2 style="text-align: center;">FALL 2021/SPRING 2022</h2>
+  <h1 style="text-align: center;">FEDERAL DIRECT PARENT PLUS LOAN REQUEST FORM</h1>
+
+  <div class="section-title">Student Information (please print clearly):</div>
+  <div class="form-row">
+    <div>
+      <span class="label">Last Name</span>
+      <div class="input-field"><span data-field="full_name">{{ student_last_name }}</span></div>
+    </div>
+    <div>
+      <span class="label">First Name</span>
+      <div class="input-field"><span data-field="full_name">{{ student_first_name }}</span></div>
+    </div>
+    <div>
+      <span class="label">Middle Initial</span>
+      <div class="input-field"><span data-field="full_name">{{ student_middle_initial }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Student ID Number (9-digit)</span>
+      <div class="input-field"><span data-field="student_id_number">{{ student_id_number }}</span></div>
+    </div>
+  </div>
+
+  <p>The Federal Parent PLUS loan is a low-interest loan available to parents of dependent undergraduate students. These loans are not subsidized by the federal government; therefore repayment begins 60 days after the full award amount that you've borrowed for the academic year has disbursed. The student must enroll at least half-time and make <span data-field="satisfactory_academic_progress">{{ satisfactory_academic_progress }}</span> towards degree in order for the parent to obtain a Federal Parent PLUS Loan. The PLUS loan award is subject to a credit decision from the Department of Education. The addition of a PLUS loan to a student's package does NOT guarantee the PLUS loan will be approved. For general information on PLUS loans including loan limits and interest rates, go to <a href="https://studentaid.ed.gov/sa/types/loans/plus">https://studentaid.ed.gov/sa/types/loans/plus</a>.</p>
+
+  <div class="section-title">Deadline</div>
+  <p>The student's financial aid file must be complete and this form must be submitted to the Financial Aid & Scholarship Department by the following dates in order to be evaluated for eligibility. If student is enrolled full and spring, the loan will be processed for the academic year and funds will be disbursed in two payments (one in fall and one in spring).</p>
+
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>For 2021-2022 academic year loans:</td>
+        <td>File completed and form submitted by <span data-field="deadline_fall_2022">{{ deadline_fall_2022 }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>For Fall 2021 loans (if only attending fall):</td>
+        <td>File completed and form submitted by <span data-field="deadline_fall_2021">{{ deadline_fall_2021 }}</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>For Spring 2022 loans (if only attending spring):</td>
+        <td>File completed and form submitted by <span data-field="deadline_spring_2022">{{ deadline_spring_2022 }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Parent Information (the parent applying for the PLUS loan)</div>
+  <div class="form-row">
+    <div>
+      <span class="label">Name (Last, First, MI)</span>
+      <div class="input-field"><span data-field="parent_full_name">{{ parent_full_name }}</span></div>
+    </div>
+    <div>
+      <span class="label">City/State/Zip Code</span>
+      <div class="input-field"><span data-field="parent_address">{{ parent_address }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Social Security Number</span>
+      <div class="input-field"><span data-field="parent_ssn">{{ parent_ssn }}</span></div>
+    </div>
+    <div>
+      <span class="label">Date of Birth</span>
+      <div class="input-field"><span data-field="parent_dob">{{ parent_dob }}</span></div>
+    </div>
+    <div>
+      <span class="label">Phone Number</span>
+      <div class="input-field"><span data-field="parent_phone">{{ parent_phone }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Check One:</span>
+      <div style="display: flex; gap: 20px; margin-top: 5px;">
+        <label><input type="checkbox"> U.S. Citizen/Nationalized Citizen</label>
+        <label><input type="checkbox"> Eligible Non-Citizen Alien Reg. #</label>
+      </div>
+    </div>
+  </div>
+
+  <p>Parent must be a U.S. Citizen or Eligible Non-Citizen to be eligible to apply for the PLUS Loan. The student may check with the Financial Aid & Scholarship Department for information on available grants and scholarships.</p>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Loan Amount Requested: $</span>
+      <div class="input-field"><span data-field="loan_amount_requested">{{ loan_amount_requested }}</span></div>
+    </div>
+  </div>
+
+  <div class="signature-line">
+    <div class="signature-box">
+      <span class="label">Parent's Signature:</span>
+      <div class="input-field" data-field="parent_s_signature">{{ parent_s_signature }}</div>
+    </div>
+    <div class="signature-box">
+      <span class="label">Date:</span>
+      <div class="input-field" data-field="date">{{ date }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    (Office Use Only - Amount Certified: $ <span data-field="certified_amount">{{ certified_amount }}</span>)
+  </div>
+  <div style="text-align: right; margin-bottom: 50px;">
+    2021-22 FA-PLUS
+  </div>
+
+  <h2 style="text-align: center;">Parent Authorization and Certification</h2>
+  <h3 style="text-align: center;">Must be signed by both the student and the parent-borrower</h3>
+
+  <p>By signing below the borrower and the student confirm that they have read and understand all of the following:</p>
+
+  <p>The information on this form is true and complete to the best of my knowledge. By signing this form, the borrower authorizes CSU, Northridge to process a Federal Direct PLUS Loan for the loan amount indicated to pay the student's educational expenses for attendance at CSU, Northridge during the 2021-22 academic year.</p>
+
+  <p>1) The borrower may be eligible for a lesser amount. 2) The loan will be disbursed in equal amounts for each term or payment period. 3) The electronic transfer of the PLUS funds will be applied toward the student's registration fees FIRST and then other University charges including, but not limited to, on-campus housing, short-term loan repayments and past-due university obligations. 4) It is not mandatory to request a PLUS loan. 5) The loan must be repaid according to the conditions of the signed promissory note.</p>
+
+  <p>Changes in the student's academic, housing, or California residency status and any additional resources received including but not limited to loans, scholarships, stipends, and grants from outside sources MUST be reported to the Financial Aid & Scholarship Department. Changes may result in a reduction of awards and a balance due to CSU. If the student withdraws or drops classes, repayment may be required. Cancellation of the PLUS Loan and any refund to which borrower may be entitled will first be remitted to the Direct Loan Servicer.</p>
+
+  <p>As a financial aid recipient, the student has read and understands their rights & responsibilities, enrollment requirements and the Satisfactory Academic Progress policy as outlined in the CSUC Academic and Planning Guide available at <a href="https://csuc.edu/financialaid/academic-planning-guide">https://csuc.edu/financialaid/academic-planning-guide</a>.</p>
+
+  <p>Credential students must be enrolled in a post baccalaureate program that consists of the courses required by the state of California to receive professional certification or licensing credential necessary for employment as a teacher in an elementary or secondary school in California and does not lead to a graduate degree. The student must be pursuing an initial teacher certification or licensing credential.</p>
+
+  <p>If the student does not receive sufficient financial aid to cover all charges, the student is responsible for paying any unpaid portion to University Cash Services. The student's ability to enroll in classes and University services may be withheld if these charges are not paid.</p>
+
+  <p>Money received under the Title IV student financial aid programs, including PLUS loans, may be used only for educational expenses related to the student's attendance at California State University, Northridge.</p>
+
+  <p>1. I, the parent borrower, certify that at the present time I do not owe a refund or repayment to any institution on any Title IV grant, that I am not currently in default on any Title IV loan, and have not borrowed in excess of the Title IV loan limits, at any institution.</p>
+
+  <p>I consent to the U.S. Department of Education and its agents obtaining a report of my (the parent-borrower) credit record and using the information from that report in determining whether to make a PLUS Loan to me (the parent-borrower). I, the parent-borrower, understand that the student will be notified in writing of the results of the credit decision with respect to the Parent PLUS Loan Request.</p>
+
+  <div class="signature-line">
+    <div>
+      <span class="label">Parent's Signature:</span>
+      <div class="input-field" data-field="parent_s_signature_2">{{ parent_s_signature_2 }}</div>
+    </div>
+    <div>
+      <span class="label">Date:</span>
+      <div class="input-field" data-field="date_2">{{ date_2 }}</div>
+    </div>
+  </div>
+
+  <div class="signature-line" style="margin-top: 60px;">
+    <div>
+      <span class="label">Student's Signature:</span>
+      <div class="input-field" data-field="student_s_signature">{{ student_s_signature }}</div>
+    </div>
+    <div>
+      <span class="label">Date:</span>
+      <div class="input-field" data-field="date_3">{{ date_3 }}</div>
+    </div>
+  </div>
+
+  <p style="margin-top: 50px;">Submit this form by uploading to the following link: <a href="https://financials.csun.edu/doc-upload">https://financials.csun.edu/doc-upload</a> or mail to:</p>
+  <p>Financial Aid & Scholarship Department</p>
+  <p>California State University, Northridge</p>
+  <p>18111 Nordhoff St.</p>
+  <p>Northridge, CA 91330-8307</p>
+
+  <p style="text-align: right; margin-top: 50px;">PARENT PLUS revised 06/2021</p>
+</div>
+
+</body>
+</html>

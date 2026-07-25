@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Synthetic Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, Helvetica, Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+  .logo { font-weight: bold; font-size: 24px; }
+  .title { font-size: 36px; font-weight: bold; }
+  .section-title { font-size: 20px; font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: normal; }
+  .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+  .button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+  .primary-button { background-color: #007bff; color: white; }
+  .secondary-button { background-color: #f0f0f0; color: #333; }
+  .table-container { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .table-container th, .table-container td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+  .table-container th { background-color: #f2f2f2; font-weight: bold; }
+  .flex-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+  .flex-item { flex: 1; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <div class="title">Bills Payment</div>
+    <div class="logo" style="margin-top: 10px;">UnionBank</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-section">
+    <div class="logo">Pay Bills</div>
+    <div style="display: flex; gap: 10px;">
+      <button class="secondary-button">My Billers</button>
+      <button class="secondary-button">Favorites</button>
+      <button class="secondary-button">Biller List</button>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <div class="section-title">Select Biller</div>
+      <div class="form-group">
+        <label>Select Biller</label>
+        <button class="button primary-button" style="width: 100%;">Select Biller</button>
+      </div>
+      <div class="form-group">
+        <label>Scan To Pay</label>
+        <button class="button secondary-button" style="width: 100%;">Scan To Pay</button>
+      </div>
+
+      <div class="section-title" style="margin-top: 30px;">Recent Payments</div>
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>Biller</th>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-field="recent_payments[0].biller_name">{{ recent_payments[0].biller_name }}</span></td>
+            <td><span data-field="recent_payments[0].date">{{ recent_payments[0].date }}</span></td>
+            <td><span data-field="recent_payments[0].amount">{{ recent_payments[0].amount }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-title" style="margin-top: 30px;">Manage</div>
+      <div class="form-group">
+        <label>Recent Payments</label>
+        <button class="button secondary-button" style="width: 100%;">Recent Payments</button>
+      </div>
+      <div class="form-group">
+        <label>Manage Billers</label>
+        <button class="button secondary-button" style="width: 100%;">Manage Billers</button>
+      </div>
+      <div class="form-group">
+        <label>Manage Scheduled Payments</label>
+        <button class="button secondary-button" style="width: 100%;">Manage Scheduled Payments</button>
+      </div>
+      <div class="form-group">
+        <label>FAQs</label>
+        <button class="button secondary-button" style="width: 100%;">FAQs</button>
+      </div>
+    </div>
+
+    <div style="flex: 1;">
+      <div class="section-title">Select Biller</div>
+      <div class="form-group">
+        <label>Select Biller</label>
+        <button class="button primary-button" style="width: 100%;">Select Biller</button>
+      </div>
+
+      <div class="section-title" style="margin-top: 30px;">Biller List</div>
+      <div class="form-group">
+        <label>Search</label>
+        <input type="text" placeholder="Search billers...">
+      </div>
+
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>Biller Name</th>
+            <th>Details</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-field="biller_list[0].name">{{ biller_list[0].name }}</span></td>
+            <td><span data-field="biller_list[0].details">{{ biller_list[0].details }}</span></td>
+            <td><span data-field="biller_list[0].action_icon">{{ biller_list[0].action_icon }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="biller_list[1].name">{{ biller_list[1].name }}</span></td>
+            <td><span data-field="biller_list[1].details">Account Number: {{ biller_list[1].account_number }}</span></td>
+            <td><span data-field="biller_list[1].action_icon">{{ biller_list[1].action_icon }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="biller_list[2].name">{{ biller_list[2].name }}</span></td>
+            <td><span data-field="biller_list[2].details">Payor's Name 1: {{ biller_list[2].payor_name_1 }}</span></td>
+            <td><span data-field="biller_list[2].action_icon">{{ biller_list[2].action_icon }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="biller_list[3].name">{{ biller_list[3].name }}</span></td>
+            <td><span data-field="biller_list[3].details">Payor's Name 1: {{ biller_list[3].payor_name_1 }}</span></td>
+            <td><span data-field="biller_list[3].action_icon">{{ biller_list[3].action_icon }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="biller_list[4].name">{{ biller_list[4].name }}</span></td>
+            <td><span data-field="biller_list[4].details">Customer Reference Number: {{ biller_list[4].reference_number }}</span></td>
+            <td><span data-field="biller_list[4].action_icon">{{ biller_list[4].action_icon }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="biller_list[5].name">{{ biller_list[5].name }}</span></td>
+            <td><span data-field="biller_list[5].details">Payor's Name 1: {{ biller_list[5].payor_name_1 }}</span></td>
+            <td><span data-field="biller_list[5].action_icon">{{ biller_list[5].action_icon }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-title">Fee Description</div>
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th>Fee Description</th>
+        <th>OPCode</th>
+        <th>Fee Description</th>
+        <th>OPCode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="fee_codes[0].description">{{ fee_codes[0].description }}</span></td>
+        <td><span data-field="fee_codes[0].opcode">{{ fee_codes[0].opcode }}</span></td>
+        <td><span data-field="fee_codes[15].description">{{ fee_codes[15].description }}</span></td>
+        <td><span data-field="fee_codes[15].opcode">{{ fee_codes[15].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[1].description">{{ fee_codes[1].description }}</span></td>
+        <td><span data-field="fee_codes[1].opcode">{{ fee_codes[1].opcode }}</span></td>
+        <td><span data-field="fee_codes[16].description">{{ fee_codes[16].description }}</span></td>
+        <td><span data-field="fee_codes[16].opcode">{{ fee_codes[16].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[2].description">{{ fee_codes[2].description }}</span></td>
+        <td><span data-field="fee_codes[2].opcode">{{ fee_codes[2].opcode }}</span></td>
+        <td><span data-field="fee_codes[17].description">{{ fee_codes[17].description }}</span></td>
+        <td><span data-field="fee_codes[17].opcode">{{ fee_codes[17].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[3].description">{{ fee_codes[3].description }}</span></td>
+        <td><span data-field="fee_codes[3].opcode">{{ fee_codes[3].opcode }}</span></td>
+        <td><span data-field="fee_codes[18].description">{{ fee_codes[18].description }}</span></td>
+        <td><span data-field="fee_codes[18].opcode">{{ fee_codes[18].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[4].description">{{ fee_codes[4].description }}</span></td>
+        <td><span data-field="fee_codes[4].opcode">{{ fee_codes[4].opcode }}</span></td>
+        <td><span data-field="fee_codes[19].description">{{ fee_codes[19].description }}</span></td>
+        <td><span data-field="fee_codes[19].opcode">{{ fee_codes[19].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[5].description">{{ fee_codes[5].description }}</span></td>
+        <td><span data-field="fee_codes[5].opcode">{{ fee_codes[5].opcode }}</span></td>
+        <td><span data-field="fee_codes[20].description">{{ fee_codes[20].description }}</span></td>
+        <td><span data-field="fee_codes[20].opcode">{{ fee_codes[20].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[6].description">{{ fee_codes[6].description }}</span></td>
+        <td><span data-field="fee_codes[6].opcode">{{ fee_codes[6].opcode }}</span></td>
+        <td><span data-field="fee_codes[21].description">{{ fee_codes[21].description }}</span></td>
+        <td><span data-field="fee_codes[21].opcode">{{ fee_codes[21].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[7].description">{{ fee_codes[7].description }}</span></td>
+        <td><span data-field="fee_codes[7].opcode">{{ fee_codes[7].opcode }}</span></td>
+        <td><span data-field="fee_codes[22].description">{{ fee_codes[22].description }}</span></td>
+        <td><span data-field="fee_codes[22].opcode">{{ fee_codes[22].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[8].description">{{ fee_codes[8].description }}</span></td>
+        <td><span data-field="fee_codes[8].opcode">{{ fee_codes[8].opcode }}</span></td>
+        <td><span data-field="fee_codes[23].description">{{ fee_codes[23].description }}</span></td>
+        <td><span data-field="fee_codes[23].opcode">{{ fee_codes[23].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[9].description">{{ fee_codes[9].description }}</span></td>
+        <td><span data-field="fee_codes[9].opcode">{{ fee_codes[9].opcode }}</span></td>
+        <td><span data-field="fee_codes[24].description">{{ fee_codes[24].description }}</span></td>
+        <td><span data-field="fee_codes[24].opcode">{{ fee_codes[24].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[10].description">{{ fee_codes[10].description }}</span></td>
+        <td><span data-field="fee_codes[10].opcode">{{ fee_codes[10].opcode }}</span></td>
+        <td><span data-field="fee_codes[25].description">{{ fee_codes[25].description }}</span></td>
+        <td><span data-field="fee_codes[25].opcode">{{ fee_codes[25].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[11].description">{{ fee_codes[11].description }}</span></td>
+        <td><span data-field="fee_codes[11].opcode">{{ fee_codes[11].opcode }}</span></td>
+        <td><span data-field="fee_codes[26].description">{{ fee_codes[26].description }}</span></td>
+        <td><span data-field="fee_codes[26].opcode">{{ fee_codes[26].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[12].description">{{ fee_codes[12].description }}</span></td>
+        <td><span data-field="fee_codes[12].opcode">{{ fee_codes[12].opcode }}</span></td>
+        <td><span data-field="fee_codes[27].description">{{ fee_codes[27].description }}</span></td>
+        <td><span data-field="fee_codes[27].opcode">{{ fee_codes[27].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[13].description">{{ fee_codes[13].description }}</span></td>
+        <td><span data-field="fee_codes[13].opcode">{{ fee_codes[13].opcode }}</span></td>
+        <td><span data-field="fee_codes[28].description">{{ fee_codes[28].description }}</span></td>
+        <td><span data-field="fee_codes[28].opcode">{{ fee_codes[28].opcode }}</span></td>
+      </tr>
+      <tr>
+        <td><span data-field="fee_codes[14].description">{{ fee_codes[14].description }}</span></td>
+        <td><span data-field="fee_codes[14].opcode">{{ fee_codes[14].opcode }}</span></td>
+        <td><span data-field="fee_codes[29].description">{{ fee_codes[29].description }}</span></td>
+        <td><span data-field="fee_codes[29].opcode">{{ fee_codes[29].opcode }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div class="section-title">Payment Details</div>
+    <button class="secondary-button">NEXT</button>
+  </div>
+
+  <div style="display: flex; gap: 30px;">
+    <div style="flex: 1;">
+      <div class="section-title">Biller Information</div>
+      <div class="form-group">
+        <label>Biller Name</label>
+        <input type="text" value="<span data-field="biller_name_payment">{{ biller_name_payment }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Student ID</label>
+        <input type="text" value="<span data-field="student_id_payment">{{ student_id_payment }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Student Name</label>
+        <input type="text" value="<span data-field="student_name_payment">{{ student_name_payment }}</span>">
+      </div>
+      <div class="form-group">
+        <label>OP Code</label>
+        <input type="text" value="<span data-field="op_code_payment">{{ op_code_payment }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" value="<span data-field="contact_number_payment">{{ contact_number_payment }}</span>">
+      </div>
+    </div>
+
+    <div style="flex: 1;">
+      <div class="section-title">Pay From Which Account?</div>
+      <div class="form-group">
+        <label>Select Account</label>
+        <select>
+          <option value="1"><span data-field="account_1_name">{{ account_1_name }}</span></option>
+          <option value="2"><span data-field="account_2_name">{{ account_2_name }}</span></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Account Number</label>
+        <input type="text" value="<span data-field="account_number_selected">{{ account_number_selected }}</span>">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div class="section-title">Payment Details</div>
+    <button class="secondary-button">NEXT</button>
+  </div>
+
+  <div style="display: flex; gap: 30px;">
+    <div style="flex: 1;">
+      <div class="form-group">
+        <label>Biller</label>
+        <input type="text" value="<span data-field="biller_name_review">{{ biller_name_review }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="text" value="<span data-field="payment_date_review">{{ payment_date_review }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <input type="text" value="<span data-field="payment_amount_review">{{ payment_amount_review }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Repeat</label>
+        <input type="checkbox" checked>
+      </div>
+      <div class="form-group">
+        <label>Frequency</label>
+        <select>
+          <option value="Monthly">Monthly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="text" value="<span data-field="end_date_review">{{ end_date_review }}</span>">
+      </div>
+      <button class="button primary-button" style="width: 100%; margin-top: 20px;">PAY PHP 100.00</button>
+    </div>
+
+    <div style="flex: 1;">
+      <div class="section-title">Review and Pay</div>
+      <div class="form-group">
+        <label>From Account</label>
+        <input type="text" value="<span data-field="from_account_review">{{ from_account_review }}</span>">
+      </div>
+      <div class="form-group">
+        <label>To Biller</label>
+        <input type="text" value="<span data-field="to_biller_review">{{ to_biller_review }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <input type="text" value="<span data-field="amount_review">{{ amount_review }}</span>">
+      </div>
+      <button class="button primary-button" style="width: 100%; margin-top: 20px;">PAY PHP 100.00</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div class="section-title">With Scheduled Payments</div>
+    <div class="section-title">One-Time Payment</div>
+  </div>
+
+  <div style="display: flex; gap: 30px;">
+    <div style="flex: 1;">
+      <div class="section-title">Review and Pay</div>
+      <div class="form-group">
+        <label>From Account</label>
+        <input type="text" value="<span data-field="from_account_otp">{{ from_account_otp }}</span>">
+      </div>
+      <div class="form-group">
+        <label>To Biller</label>
+        <input type="text" value="<span data-field="to_biller_otp">{{ to_biller_otp }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <input type="text" value="<span data-field="amount_otp">{{ amount_otp }}</span>">
+      </div>
+      <button class="button primary-button" style="width: 100%; margin-top: 20px;">PAY PHP 100.00</button>
+    </div>
+
+    <div style="flex: 1;">
+      <div class="section-title">Transaction Receipt and SMS Notification</div>
+      <div style="text-align: center; margin-top: 50px;">
+        <div style="border: 1px solid #ccc; padding: 20px; width: 80%;">
+          <p><strong>UnionBank</strong></p>
+          <p>You paid <span data-field="transaction_amount">{{ transaction_amount }}</span> to <span data-field="transaction_biller">{{ transaction_biller }}</span></p>
+          <p>Reference No.: <span data-field="transaction_reference_no">{{ transaction_reference_no }}</span></p>
+          <p>Date: <span data-field="transaction_date">{{ transaction_date }}</span></p>
+          <div style="margin-top: 20px;">
+            <button class="button secondary-button">Share</button>
+            <button class="button secondary-button">NEW PAYMENT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <div class="section-title">Manage Billers</div>
+    <div class="section-title">Add Biller</div>
+  </div>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <div class="section-title">Add Biller</div>
+      <div class="form-group">
+        <label>Biller Name</label>
+        <input type="text" value="<span data-field="add_biller_name">{{ add_biller_name }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Biller Details</label>
+        <select>
+          <option value="1"><span data-field="add_biller_details_1">{{ add_biller_details_1 }}</span></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Student ID</label>
+        <input type="text" value="<span data-field="add_biller_student_id">{{ add_biller_student_id }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Student Name</label>
+        <input type="text" value="<span data-field="add_biller_student_name">{{ add_biller_student_name }}</span>">
+      </div>
+      <div class="form-group">
+        <label>OP Code</label>
+        <input type="text" value="<span data-field="add_biller_op_code">{{ add_biller_op_code }}</span>">
+      </div>
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" value="<span data-field="add_biller_contact_number">{{ add_biller_contact_number }}</span>">
+      </div>
+      <button class="button primary-button" style="margin-top: 20px;">SAVE</button>
+    </div>
+
+    <div style="flex: 1;">
+      <div class="section-title">Existing Billers</div>
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>Biller Name</th>
+            <th>Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-field="existing_biller_1_name">{{ existing_biller_1_name }}</span></td>
+            <td><span data-field="existing_biller_1_details">Account Number: {{ existing_biller_1.account_number }}</span></td>
+            <td><span data-field="existing_biller_1_actions">{{ existing_biller_1_actions }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="existing_biller_2_name">{{ existing_biller_2_name }}</span></td>
+            <td><span data-field="existing_biller_2_details">{{ existing_biller_2_details }}</span></td>
+            <td><span data-field="existing_biller_2_actions">{{ existing_biller_2_actions }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="existing_biller_3_name">{{ existing_biller_3_name }}</span></td>
+            <td><span data-field="existing_biller_3_details">{{ existing_biller_3_details }}</span></td>
+            <td><span data-field="existing_biller_3_actions">{{ existing_biller_3_actions }}</span></td>
+          </tr>
+          <tr>
+            <td><span data-field="existing_biller_4_name">{{ existing_biller_4_name }}</span></td>
+            <td><span data-field="existing_biller_4_details">{{ existing_biller_4_details }}</span></td>
+            <td><span data-field="existing_biller_4_actions">{{ existing_biller_4_actions }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <div class="title" style="font-size: 48px;">Thank you!!!</div>
+    <div class="logo" style="margin-top: 20px;">UnionBank</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Form</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+        }
+        .page:last-child { page-break-after: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        td {
+            padding: 5px 0;
+            vertical-align: top;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        .logo-area {
+            text-align: left;
+        }
+        .contact-info {
+            text-align: right;
+        }
+        h1 {
+            font-size: 24pt;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 14pt;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+        .full-width {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .signature-area {
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature-line {
+            text-align: center;
+            width: 45%;
+        }
+        .signature-line div {
+            border-top: 1px solid black;
+            padding-top: 5px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-info">
+            <div class="logo-area">
+                <!-- Placeholder for University Logo/Name -->
+            </div>
+            <div class="contact-info">
+                <p>2121 Euclid Ave. MC 412</p>
+                <p>Cleveland, OH 44115</p>
+                <p>Phone: {{ contact_info.phone }}</p>
+                <p>Fax: {{ contact_info.fax }}</p>
+                <p>{{ contact_info.website }}</p>
+            </div>
+        </div>
+
+        <h1>General Approval Application for Study Abroad</h1>
+
+        <!-- I. Personal Information -->
+        <h2>I. Personal Information</h2>
+        <table>
+            <tr>
+                <td style="width: 30%;">Name of Student</td>
+                <td style="width: 70%;"><span data-field="personal_info.full_name">{{ personal_info.full_name }}</span></td>
+            </tr>
+            <tr>
+                <td>Telephone No. #1</td>
+                <td>Telephone No. #2</td>
+                <td>Student ID Number</td>
+                <td>Academic Adviser</td>
+            </tr>
+            <tr>
+                <td><span data-field="personal_info.phone_1">{{ personal_info.phone_1 }}</span></td>
+                <td><span data-field="personal_info.phone_2">{{ personal_info.phone_2 }}</span></td>
+                <td><span data-field="personal_info.student_id">{{ personal_info.student_id }}</span></td>
+                <td><span data-field="personal_info.academic_adviser">{{ personal_info.academic_adviser }}</span></td>
+            </tr>
+            <tr>
+                <td>Current Address</td>
+                <td>Major/Degree</td>
+                <td>Year/Class</td>
+            </tr>
+            <tr>
+                <td><span data-field="personal_info.current_address">{{ personal_info.current_address }}</span></td>
+                <td><span data-field="personal_info.major_degree">{{ personal_info.major_degree }}</span></td>
+                <td><span data-field="personal_info.year_class">{{ personal_info.year_class }}</span></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip Code</td>
+                <td>GPA</td>
+            </tr>
+            <tr>
+                <td><span data-field="personal_info.city">{{ personal_info.city }}</span></td>
+                <td><span data-field="personal_info.state">{{ personal_info.state }}</span></td>
+                <td><span data-field="personal_info.zip_code">{{ personal_info.zip_code }}</span></td>
+                <td><span data-field="personal_info.gpa">{{ personal_info.gpa }}</span></td>
+            </tr>
+            <tr>
+                <td>Permanent/Home Address</td>
+                <td>Passport # (If Currently Known)</td>
+                <td>Verification (CISP Advisor)</td>
+                <td>Expiration Date (MM/DD/YYYY)</td>
+            </tr>
+            <tr>
+                <td><span data-field="personal_info.permanent_address">{{ personal_info.permanent_address }}</span></td>
+                <td><span data-field="personal_info.passport_number">{{ personal_info.passport_number }}</span></td>
+                <td><span data-field="personal_info.verification_advisor">{{ personal_info.verification_advisor }}</span></td>
+                <td><span data-field="personal_info.passport_expiry">{{ personal_info.passport_expiry }}</span></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip Code</td>
+                <td>Country of Citizenship</td>
+            </tr>
+            <tr>
+                <td><span data-field="personal_info.city_citizenship">{{ personal_info.city_citizenship }}</span></td>
+                <td><span data-field="personal_info.state_citizenship">{{ personal_info.state_citizenship }}</span></td>
+                <td><span data-field="personal_info.zip_code_citizenship">{{ personal_info.zip_code_citizenship }}</span></td>
+                <td><span data-field="personal_info.country_citizenship">{{ personal_info.country_citizenship }}</span></td>
+            </tr>
+        </table>
+
+        <!-- II. Program Information -->
+        <h2>II. Program Information</h2>
+        <table>
+            <tr>
+                <td style="width: 30%;">Name of Study Abroad Program/University</td>
+                <td style="width: 70%;"><span data-field="program_info.program_name">{{ program_info.program_name }}</span></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>Sponsoring Organization</td>
+            </tr>
+            <tr>
+                <td><span data-field="program_info.city_program">{{ program_info.city_program }}</span></td>
+                <td><span data-field="program_info.sponsoring_org">{{ program_info.sponsoring_org }}</span></td>
+            </tr>
+            <tr>
+                <td>Begin Date (MM/DD/YYYY)</td>
+                <td>End Date (MM/DD/YYYY)</td>
+            </tr>
+            <tr>
+                <td><span data-field="program_info.start_date">{{ program_info.start_date }}</span></td>
+                <td><span data-field="program_info.end_date">{{ program_info.end_date }}</span></td>
+            </tr>
+        </table>
+
+        <div class="full-width">
+            <p>Have you previously studied or traveled abroad? If yes, when and for how long did you study abroad?</p>
+            <p><span data-field="program_info.travel_history">{{ program_info.travel_history }}</span></p>
+        </div>
+        <div class="full-width">
+            <p>What languages other than English do you speak? What is your level of fluency?</p>
+            <p><span data-field="program_info.languages">{{ program_info.languages }}</span></p>
+        </div>
+
+        <!-- III. Emergency Contact -->
+        <h2>III. Emergency Contact</h2>
+        <table>
+            <tr>
+                <td style="width: 30%;">Name of Contact</td>
+                <td style="width: 70%;"><span data-field="emergency_contact.full_name">{{ emergency_contact.full_name }}</span></td>
+            </tr>
+            <tr>
+                <td>Telephone No. #1</td>
+                <td>Telephone No. #2</td>
+                <td>Relationship to Student</td>
+                <td>Email Address</td>
+            </tr>
+            <tr>
+                <td><span data-field="emergency_contact.phone_1">{{ emergency_contact.phone_1 }}</span></td>
+                <td><span data-field="emergency_contact.phone_2">{{ emergency_contact.phone_2 }}</span></td>
+                <td><span data-field="emergency_contact.relationship">{{ emergency_contact.relationship }}</span></td>
+                <td><span data-field="emergency_contact.email">{{ emergency_contact.email }}</span></td>
+            </tr>
+            <tr>
+                <td>Current Address</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip Code</td>
+            </tr>
+            <tr>
+                <td><span data-field="emergency_contact.address">{{ emergency_contact.address }}</span></td>
+                <td><span data-field="emergency_contact.city">{{ emergency_contact.city }}</span></td>
+                <td><span data-field="emergency_contact.state">{{ emergency_contact.state }}</span></td>
+                <td><span data-field="emergency_contact.zip_code">{{ emergency_contact.zip_code }}</span></td>
+            </tr>
+        </table>
+
+        <!-- IV. Release of Information Waiver -->
+        <h2>IV. Release of Information Waiver</h2>
+        <div class="full-width">
+            <p>I hereby give the Office of Judicial Affairs at Cleveland State University, located in the Department of Student Life, permission to discuss any disciplinary records or provide any information regarding any disciplinary proceedings against me, and/or the outcome of Student Conduct Hearings, with the Center for International Services and Programs. I understand that the information discussed will be for the purposes of the Student Conduct Code and the University's Student Code of Conduct. I also understand that the Center for International Services and Programs and Family Education Rights and Privacy Act (FERPA). This permission is valid from the time I submit this signed document to the Center for International Services and Programs through a period of one semester or until my program abroad ends.</p>
+        </div>
+
+        <!-- Signature -->
+        <div class="signature-area">
+            <div class="signature-line">
+                Signature of Student
+                <div></div>
+            </div>
+            <div class="signature-line">
+                Date
+                <div></div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 50px; font-size: 10pt;">Submit signed form to Center for International Services and Programs</p>
+    </div>
+</body>
+</html>

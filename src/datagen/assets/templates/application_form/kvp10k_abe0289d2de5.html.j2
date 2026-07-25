@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+  }
+  .section-header {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center;">
+    <img src="placeholder_logo.png" alt="Logo" style="max-width: 150px; height: auto;">
+    <h2 style="margin-top: 10px;">School of Osteopathic Medicine</h2>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <h3 style="margin-bottom: 5px;">Office of Academic Affairs</h3>
+    <p style="margin: 0;">1 Medical Center Drive, Suite 210</p>
+    <p style="margin: 0;">Stratford, NJ 08084</p>
+    <p style="margin: 0;"><span data-field="contact_email">{{ contact_email }}</span></p>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 40px;">Visiting Student Clerkship Application</h1>
+  <p style="text-align: center; margin-bottom: 30px;">Please read instructions on back before completing.</p>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">Student Name</td>
+      <td><span data-field="full_name">{{ full_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Mailing Address</td>
+      <td><span data-field="mailing_address">{{ mailing_address }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 30%;">Telephone Number</td>
+      <td><span data-field="phone_number">{{ phone_number }}</span></td>
+      <td style="width: 30%;">E-mail address</td>
+      <td><span data-field="email_address">{{ email_address }}</span></td>
+    </tr>
+    <tr>
+      <td>Have you previously completed rotations with UMDNJ/Rowan-SOM?</td>
+      <td><span data-field="previous_rotation_yes">{{ previous_rotation_yes }}</span></td>
+      <td><span data-field="previous_rotation_no">{{ previous_rotation_no }}</span></td>
+    </tr>
+    <tr>
+      <td>At the time of the clerkship I will be enrolled as a</td>
+      <td><span data-field="enrollment_status">{{ enrollment_status }}</span></td>
+      <td>year student at</td>
+      <td><span data-field="year_level">{{ year_level }}</span></td>
+    </tr>
+    <tr>
+      <td>At the time of the clerkship I will have completed the following clerkships:</td>
+      <td colspan="3">
+        <table style="width: 100%;">
+          <tr>
+            <td style="width: 20%;">Family Med</td>
+            <td style="width: 20%;">Int Medicine</td>
+            <td style="width: 20%;">Ob/Gyn</td>
+            <td style="width: 20%;">Peds</td>
+            <td style="width: 20%;">Psych</td>
+            <td style="width: 20%;">Surg</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Dates Requested</td>
+      <td>to</td>
+      <td><span data-field="start_date">{{ start_date }}</span></td>
+      <td>to</td>
+      <td><span data-field="end_date">{{ end_date }}</span></td>
+    </tr>
+    <tr>
+      <td>Are you interested in a Residency or Internship program?</td>
+      <td><span data-field="residency_interest_yes">{{ residency_interest_yes }}</span></td>
+      <td><span data-field="residency_interest_no">{{ residency_interest_no }}</span></td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 30px;">Please check the desired clerkship. If you want to indicate alternate clerkships, use "1" as your first choice, "2" as your second choice, etc. Unless indicated, all clerkships are in South Jersey on hospital services.</p>
+
+  <div style="margin-top: 20px;">
+    <p>Cardiology</p>
+    <p>Emergency Medicine</p>
+    <p>Endocrinology</p>
+    <p>ENT Surgery</p>
+    <p>Family Medicine (Hospital)</p>
+    <p>Gastroenterology</p>
+    <p>Infectious Disease</p>
+    <p>Intensive Care Unit (fourth year only)</p>
+    <p>Internal Medicine</p>
+    <p>Nephrology</p>
+    <p>Neurology (ambulatory/hospital, fourth year only)</p>
+    <p>Obstetrics/Gynecology</p>
+    <p>Orthopedic Surgery</p>
+    <p>Pediatrics</p>
+    <p>Psychiatry</p>
+    <p>Pulmonology</p>
+    <p>Rheumatology (ambulatory)</p>
+    <p>Surgery</p>
+    <p>Urology</p>
+    <p>Vascular Surgery</p>
+    <p>Other (specify specialty)</p>
+  </div>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 30%;">Signature of Student:</td>
+      <td></td>
+      <td style="width: 30%;">Date:</td>
+      <td><span data-field="signature_date">{{ signature_date }}</span></td>
+    </tr>
+  </table>
+
+  <h3 style="text-align: center; margin-top: 40px;">INSTITUTIONAL ENDORSEMENT</h3>
+  <p> (To be completed by an official of the medical school where the student is enrolled.)</p>
+  <p>The medical student named above is in good standing at this institution. The student will pay tuition at our school during the period indicated. Liability insurance of $1,000,000/$3,000,000 covers the student away from our school. Personal health coverage is in effect while the student is away from our school. The student has received HIPAA education. He/She is approved to take this clerkship for credit.</p>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 30%;">Signature</td>
+      <td></td>
+      <td style="width: 30%;">Title</td>
+      <td><span data-field="endorsement_title">{{ endorsement_title }}</span></td>
+      <td style="width: 30%;">Date</td>
+      <td><span data-field="endorsement_date">{{ endorsement_date }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; margin-bottom: 30px;">APPLICATION INSTRUCTIONS</h2>
+
+  <h3 class="section-header">A. ELIGIBILITY:</h3>
+  <p>Any regularly enrolled full-time third or fourth year student in an accredited osteopathic institution may make application for a visiting student clerkship. You must be in good standing at your institution and covered by liability insurance of $1,000,000/$3,000,000 while away from your school. (Proof of coverage or policy statement of the student's institution must be attached to the application request.) Also, personal health coverage is to be in effect while you are away from your school. RowanSOM must have approval from your school for you to take this clerkship for credit. A copy of your criminal background check must be provided.</p>
+
+  <h3 class="section-header">B. COMPLETION OF APPLICATION:</h3>
+  <p>Applications forms should be received thirty (30) days prior to the start of the requested rotation. The student should only complete the student section of the application. Students requesting clerkships may be assigned to any of our affiliate hospitals based upon the availability of the position and needs of each institution. A separate completed application form (with institutional approval) must be submitted for each clerkship requested. This form may be copied.</p>
+
+  <h3 class="section-header">C. INSTITUTIONAL ENDORSEMENT:</h3>
+  <p>Take this application to the official in your school authorized to complete the Institutional Endorsement. The endorsed application form must be returned to the RowanSOM Office of Academic Affairs at the following address:</p>
+  <p><span data-field="endorsement_address">{{ endorsement_address }}</span></p>
+
+  <h3 class="section-header">D. CRIMINAL BACKGROUND CHECK</h3>
+  <p>A criminal background check that was completed within one year of the requested start date is required in order to be accepted for a clerkship at RowanSOM. The criminal background check must include a Social Security number trace to confirm past residences and a criminal background search based on all areas of past residence. The search must have involved all levels of criminal offense, all types of adjudications, all legal processes not yet resolved and all types of offenses, extending as far back as possible. Military clearance will not be accepted as a substitute for the criminal background check. You may satisfy the criminal background check requirement in one of three ways:</p>
+  <ol>
+    <li>If you already have a criminal background check that was completed within one year of the requested clerkship start date, you must have a copy sent to the address listed above. The report must comply with the requirements outlined above in "D."</li>
+    <li>If you do not have a recent criminal background check, you will need to have one done. You may utilize the agency used by RowanSOM. If you choose that option, you must send both the "Student Authorization for Criminal Background Check" form and a check for the $95.00 fee made out to "Rowan SOM."</li>
+    <li>If you choose to have another agency complete the criminal background check, you must ensure that they comply with the requirements outlined above in "D."</li>
+  </ol>
+
+  <h3 class="section-header">E. NOTIFICATION:</h3>
+  <p>A letter stating the status of your application will be sent to the address you indicate on the application. Reporting information will be included if you have been accepted. Please note that clerkships are scheduled for the current academic year only. Clerkships for the next academic year will not be set up until Spring. Also note that clerkships will not be set up by telephone, nor will the availability of any rotation be guaranteed by telephone.</p>
+
+  <h3 class="section-header">F. COMPLETION OF THE EVALUATION FORM:</h3>
+  <p>Upon arrival at your rotation, you are responsible for providing your preceptor with an evaluation form. IT IS THE STUDENT'S RESPONSIBILITY TO ASK HIS/HER PRECEPTOR TO COMPLETE THE EVALUATION.</p>
+</div>
+</body>
+</html>

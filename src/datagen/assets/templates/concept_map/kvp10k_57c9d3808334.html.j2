@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Concept Maps</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-title { font-size: 24pt; font-weight: bold; }
+  .sub-header { font-size: 12pt; }
+  .body-text { font-size: 10pt; line-height: 1.4; }
+  .key-box { border: 1px solid #000; padding: 10px; margin-top: 15px; font-size: 10pt; }
+  .key-box div { margin-bottom: 5px; }
+</style>
+
+<style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+        }
+        .page:last-child { page-break-after: auto; }
+        body {
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+        .diagram-container {
+            position: relative;
+            min-height: 600px; /* Placeholder for diagram structure */
+        }
+        .node {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: inline-block;
+            margin: 10px;
+        }
+        .arrow {
+            position: absolute;
+            /* Arrows would be drawn using SVG or complex CSS positioning in a real rendering engine */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .key-box {
+            border: 1px solid #333;
+            padding: 15px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div class="header-title">Concept Maps</div>
+    <div style="font-size: 10pt;">{{ page_number }}</div>
+  </div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="Logo" style="max-width: 200px; height: auto;">
+    <div style="font-size: 14pt; font-weight: bold; margin-top: 10px;">OTRP online</div>
+    <div style="font-size: 10pt;">office of teaching resources in PSYCHOLOGY</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="font-weight: bold;">Instructor's Guide to Using Research Methods and Statistics Concept Maps</div>
+    <div style="margin-top: 5px;">{{ author_name }}</div>
+    <div style="margin-top: 5px;">{{ employer_name }}</div>
+  </div>
+
+  <div class="body-text">
+    <p>The maps in this resource (the first nine) represent the concepts that are typically covered in Research Methods and Statistics courses in psychology. The final two (previously published by OTRP) represent the computational material typically taught in psychology departments in their Statistics courses.</p>
+    <p>These maps can be handed out at the end of a section to provide students with a summary of the material covered and to use as a review/study guide when preparing for tests covering that material. Alternatively, these maps could be handed out at the beginning of a section to provide students with a "road map" about what material will be covered and how it relates to other material in the course.</p>
+    <p>Regardless of when instructors hand this out, these maps should help students organize the material in the course and see the bigger picture of how the concepts they are learning interrelate. Novice instructors could use these concept maps to help ensure that relevant topics are covered in their courses.</p>
+    <p>The maps span nine pages based on reviewer feedback to avoid overwhelming students with material as would have happened if there were only three maps (one each for concepts in descriptive statistics, inferential statistics, and research methods).</p>
+    <p>The PDFs have hyperlinks (noted in the key) tying related maps together. Instructors need not distribute the maps with functioning hyperlinks, however. In fact, if an instructor desired, she or he could give students only the main concept and subtopics and having students fill in the remainder (not unlike giving students an outline in PowerPoint&sup2; for note taking during class).</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div class="header-title">Concept Maps</div>
+    <div style="font-size: 10pt;">2</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="font-weight: bold;">Author contact information:</div>
+    <div style="margin-top: 5px;">{{ author_full_name }}</div>
+    <div style="margin-top: 5px;">{{ department_name }}</div>
+    <div style="margin-top: 5px;">{{ college_name }}</div>
+    <div style="margin-top: 5px;">{{ street_address }}</div>
+    <div style="margin-top: 5px;">{{ city_state_zip }}</div>
+    <div style="margin-top: 5px;">{{ phone_number }}</div>
+    <div style="margin-top: 5px;">{{ email_address }}</div>
+  </div>
+
+  <div class="body-text">
+    <p>Copyright {{ copyright_year }} by {{ author_name }}. All rights reserved. You may reproduce multiple copies of this material for your own personal use, including use in your classes and/or sharing with individual colleagues as long as the author's name and institution and the Office of Teaching Resources in Psychology heading or other identifying information appear on the copied document. No other permission is implied or granted to print, copy, reproduce, or distribute additional copies of this material. Anyone who wishes to produce copies for purposes other than those specified above must obtain the permission of the author.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Descriptive Statistics</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Descriptive Statistics concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Descriptive Statistics</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Descriptive Statistics concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Descriptive Statistics</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Descriptive Statistics concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Inferential Statistics</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Inferential Statistics concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Inferential Statistics</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Inferential Statistics concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 20pt; font-weight: bold;">Concept Map: Research Methods in Psychological Science</div>
+  </div>
+
+  <!-- Conceptual Diagram Placeholder -->
+  <div style="border: 1px solid #ccc; padding: 20px; min-height: 500px; text-align: center;">
+    <p style="font-size: 10pt;">[Visual representation of the Research Methods concept map structure would be rendered here, using placeholders for nodes and connections.]</p>
+    <div style="margin-top: 30px; font-size: 10pt;">
+      <div style="display: inline-block; margin: 0 20px;">
+        <div style="border: 1px solid black; padding: 5px;">main concept</div>
+        <div style="border: 1px solid black; padding: 5px;">subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">secondary subtopic</div>
+        <div style="border: 1px solid black; padding: 5px;">(note/explanation)</div>
+        <div style="border: 1px solid black; padding: 5px;">procedural note</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 24pt;">Research Methods in Psychological Science</h1>
+    </div>
+
+    <div class="diagram-container" style="position: relative; height: 600px;">
+        <!-- Conceptual Diagram Structure Placeholder -->
+        <div style="position: absolute; top: 100px; left: 50%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="concept_a">{{ concept_a }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 100px; left: 35%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="concept_b">{{ concept_b }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 100px; right: 35%; transform: translateX(50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="concept_c">{{ concept_c }}</span>
+            </div>
+        </div>
+
+        <!-- Sub-nodes for Causation -->
+        <div style="position: absolute; top: 200px; left: 25%; transform: translateX(-50%);">
+            <div class="node" style="width: 180px;">
+                <span data-field="causation.detail_1">{{ causation.detail_1 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 300px; left: 25%; transform: translateX(-50%);">
+            <div class="node" style="width: 200px;">
+                <span data-field="causation.detail_2">{{ causation.detail_2 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 400px; left: 25%; transform: translateX(-50%);">
+            <div class="node" style="width: 200px;">
+                <span data-field="causation.detail_3">{{ causation.detail_3 }}</span>
+            </div>
+        </div>
+
+        <!-- Sub-nodes for Correlation -->
+        <div style="position: absolute; top: 200px; left: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="correlation.detail_1">{{ correlation.detail_1 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 300px; left: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="correlation.detail_2">{{ correlation.detail_2 }}</span>
+            </div>
+        </div>
+
+        <!-- Sub-nodes for Observation -->
+        <div style="position: absolute; top: 200px; right: 25%; transform: translateX(50%);">
+            <div class="node" style="width: 200px;">
+                <span data-field="observation.detail_1">{{ observation.detail_1 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 300px; right: 25%; transform: translateX(50%);">
+            <div class="node" style="width: 200px;">
+                <span data-field="observation.detail_2">{{ observation.detail_2 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div style="width: 48%;">
+                <h3 style="margin-top: 0;">Key</h3>
+                <div class="key-box">
+                    <p><strong>Main concept:</strong> <span data-field="key.main_concept">{{ key.main_concept }}</span></p>
+                    <p><strong>Subtopic:</strong> <span data-field="key.subtopic">{{ key.subtopic }}</span></p>
+                    <p><strong>Secondary subtopic:</strong> <span data-field="key.secondary_subtopic">{{ key.secondary_subtopic }}</span></p>
+                    <p><strong>Note/explanation:</strong> <span data-field="key.note_explanation">{{ key.note_explanation }}</span></p>
+                    <p><strong>Procedural note:</strong> <span data-field="key.procedural_note">{{ key.procedural_note }}</span></p>
+                </div>
+            </div>
+            <div style="width: 48%; text-align: right;">
+                <div class="key-box" style="text-align: right;">
+                    <p>Created by: <span data-field="key.creator_name">{{ key.creator_name }}</span></p>
+                    <p>Department: <span data-field="key.creator_dept">{{ key.creator_dept }}</span></p>
+                    <p>Date: <span data-field="key.creator_date">{{ key.creator_date }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 24pt;">Research Methods in Psychological Science</h1>
+    </div>
+
+    <div class="diagram-container" style="position: relative; height: 600px;">
+        <!-- Conceptual Diagram Structure Placeholder -->
+        <div style="position: absolute; top: 100px; left: 50%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="concept_a_2">{{ concept_a_2 }}</span>
+            </div>
+        </div>
+
+        <!-- Branches from Ways of Knowing -->
+        <div style="position: absolute; top: 200px; left: 15%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="knowing_type_1">{{ knowing_type_1 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 200px; left: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="knowing_type_2">{{ knowing_type_2 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 200px; right: 15%; transform: translateX(50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="knowing_type_3">{{ knowing_type_3 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 200px; right: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="knowing_type_4">{{ knowing_type_4 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 200px; right: 75%; transform: translateX(-50%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="knowing_type_5">{{ knowing_type_5 }}</span>
+            </div>
+        </div>
+
+        <!-- Sub-nodes for Experience -->
+        <div style="position: absolute; top: 300px; left: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="experience.detail_1">{{ experience.detail_1 }}</span>
+            </div>
+        </div>
+
+        <!-- Sub-nodes for Science -->
+        <div style="position: absolute; top: 300px; right: 45%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="science.detail_1">{{ science.detail_1 }}</span>
+            </div>
+        </div>
+
+        <!-- Comparison -->
+        <div style="position: absolute; top: 350px; right: 50%; transform: translateX(0%);">
+            <div class="node" style="width: 150px;">
+                <span data-field="comparison_label">{{ comparison_label }}</span>
+            </div>
+        </div>
+
+        <!-- Pseudoscientific side -->
+        <div style="position: absolute; top: 200px; right: 75%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="pseudoscience_label">{{ pseudoscience_label }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 300px; right: 75%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="pseudoscience.detail_1">{{ pseudoscience.detail_1 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 400px; right: 75%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="pseudoscience.detail_2">{{ pseudoscience.detail_2 }}</span>
+            </div>
+        </div>
+        <div style="position: absolute; top: 500px; right: 75%; transform: translateX(-50%);">
+            <div class="node" style="width: 250px;">
+                <span data-field="pseudoscience.detail_3">{{ pseudoscience.detail_3 }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="width: 48%;">
+            <h3 style="margin-top: 0;">General Research Concerns</h3>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="general_concern_1">{{ general_concern_1 }}</span>
+            </div>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="general_concern_2">{{ general_concern_2 }}</span>
+            </div>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="general_concern_3">{{ general_concern_3 }}</span>
+            </div>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="general_concern_4">{{ general_concern_4 }}</span>
+            </div>
+        </div>
+        <div style="width: 48%;">
+            <h3 style="margin-top: 0;">Measurement Error</h3>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="measurement_error_1">{{ measurement_error_1 }}</span>
+            </div>
+            <div class="node" style="width: 100%; margin-bottom: 10px;">
+                <span data-field="measurement_error_2">{{ measurement_error_2 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="margin-top: 0;">Bias</h3>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="bias_subject">{{ bias_subject }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="bias_experimenter">{{ bias_experimenter }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="bias_help_control">{{ bias_help_control }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="margin-top: 0;">Validity</h3>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="validity_internal">{{ validity_internal }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="validity_construct">{{ validity_construct }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="validity_external">{{ validity_external }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <h3 style="margin-top: 0;">Threats to Validity</h3>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_history">{{ threats_history }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_maturation">{{ threats_maturation }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_testing">{{ threats_testing }}</span>
+                </div>
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_instrumentation">{{ threats_instrumentation }}</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_confounds">{{ threats_confounds }}</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_internal_summary">{{ threats_internal_summary }}</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="threats_external_summary">{{ threats_external_summary }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 18pt;">Decision Tree: Inferential Statistics</h2>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: flex-start; margin-top: 30px;">
+        <!-- Main Decision Point -->
+        <div style="text-align: center;">
+            <div class="node" style="width: 200px;">
+                <span data-field="decision_tree_1">{{ decision_tree_1 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <div style="display: flex; justify-content: center; align-items: flex-start;">
+            <!-- Branch 1: 1 variable -->
+            <div style="text-align: center; margin-right: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="branch_1_1">{{ branch_1_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="branch_1_1_yes">{{ branch_1_1_yes }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="branch_1_1_no">{{ branch_1_1_no }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Branch 2: Relationship -->
+            <div style="text-align: center; margin-left: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="branch_2_1">{{ branch_2_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="branch_2_1_yes">{{ branch_2_1_yes }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="branch_2_1_no">{{ branch_2_1_no }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <!-- Ordinal Branch -->
+        <div style="display: flex; justify-content: center; align-items: flex-start;">
+            <div style="text-align: center; margin-right: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="ordinal_branch_1">{{ ordinal_branch_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="ordinal_branch_1_yes">{{ ordinal_branch_1_yes }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="ordinal_branch_1_no">{{ ordinal_branch_1_no }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <!-- Parametric Branch -->
+        <div style="display: flex; justify-content: center; align-items: flex-start;">
+            <div style="text-align: center; margin-right: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="parametric_branch_1">{{ parametric_branch_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="parametric_branch_1_yes">{{ parametric_branch_1_yes }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="parametric_branch_1_no">{{ parametric_branch_1_no }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <!-- Further Splits -->
+        <div style="display: flex; justify-content: center; align-items: flex-start;">
+            <!-- Split from 1-way between subjects ANOVA -->
+            <div style="text-align: center; margin-right: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="anova_split_1">{{ anova_split_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="anova_split_1_2">{{ anova_split_1_2 }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="anova_split_1_3">{{ anova_split_1_3 }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split from 1-way within subjects ANOVA -->
+            <div style="text-align: center; margin-left: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="anova_split_2">{{ anova_split_2 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="anova_split_2_2">{{ anova_split_2_2 }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="anova_split_2_3">{{ anova_split_2_3 }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <!-- Final Splits (Simplified for template structure) -->
+        <div style="display: flex; justify-content: center; align-items: flex-start;">
+            <div style="text-align: center; margin-right: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="final_split_1">{{ final_split_1 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="final_split_1_yes">{{ final_split_1_yes }}</span>
+                    </div>
+                    <div class="node" style="width: 150px;">
+                        <span data-field="final_split_1_no">{{ final_split_1_no }}</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-left: 50px;">
+                <div class="node" style="width: 150px;">
+                    <span data-field="final_split_2">{{ final_split_2 }}</span>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="node" style="width: 150px;">
+                        <span data-field="final_split_2_yes">{{ final_split_2_yes }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 18pt;">Decision Aid: Descriptive Statistics</h2>
+    </div>
+
+    <!-- Selection Table -->
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Type of Description</th>
+                <th style="width: 20%;">Scale of Measurement</th>
+                <th style="width: 30%;">Nominal</th>
+                <th style="width: 30%;">Ordinal</th>
+                <th style="width: 20%;">Interval/Ratio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>central tendency</td>
+                <td></td>
+                <td><span data-field="table_central_nominal">{{ table_central_nominal }}</span></td>
+                <td><span data-field="table_central_ordinal">{{ table_central_ordinal }}</span></td>
+                <td><span data-field="table_central_interval_ratio">{{ table_central_interval_ratio }}</span></td>
+            </tr>
+            <tr>
+                <td>variability</td>
+                <td></td>
+                <td>not applicable</td>
+                <td><span data-field="table_variability_ordinal">{{ table_variability_ordinal }}</span></td>
+                <td><span data-field="table_variability_interval_ratio">{{ table_variability_interval_ratio }}</span></td>
+            </tr>
+            <tr>
+                <td>relationship</td>
+                <td></td>
+                <td><span data-field="table_relationship_nominal">{{ table_relationship_nominal }}</span></td>
+                <td><span data-field="table_relationship_ordinal">{{ table_relationship_ordinal }}</span></td>
+                <td><span data-field="table_relationship_interval_ratio">{{ table_relationship_interval_ratio }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 40px;">
+        <p style="font-size: 10pt;">*dichotomous variable: only two categories exist (e.g., male-female, yes-no, pet owner-not owner)</p>
+        <p style="font-size: 10pt;">**not truly dichotomous: actually on a continuum, but combined into only two categories (e.g., anxiety: high-low)</p>
+    </div>
+
+    <!-- Display Table -->
+    <table style="margin-top: 40px;">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Scale of Measurement</th>
+                <th style="width: 20%;">Type of Display</th>
+                <th style="width: 30%;">Graph</th>
+                <th style="width: 30%;">Relationship</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nominal or Ordinal</td>
+                <td>Table</td>
+                <td><span data-field="display_nominal_graph">{{ display_nominal_graph }}</span></td>
+                <td><span data-field="display_nominal_relationship">{{ display_nominal_relationship }}</span></td>
+            </tr>
+            <tr>
+                <td>Interval or Ratio</td>
+                <td>Graph</td>
+                <td><span data-field="display_interval_graph">{{ display_interval_graph }}</span></td>
+                <td><span data-field="display_interval_relationship">{{ display_interval_relationship }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

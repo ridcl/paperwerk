@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .name {
+    font-size: 24pt;
+    font-weight: bold;
+  }
+  .title {
+    font-size: 14pt;
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-title {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-style: italic;
+    margin-left: 15px;
+  }
+  .two-column-layout {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .two-column-layout > div {
+    width: 48%;
+  }
+  .right-aligned {
+    text-align: right;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  td {
+    padding: 5px 0;
+  }
+  .divider {
+    border-top: 1px solid #000;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span class="name">{{ full_name }}</span>
+      <div class="title">Curriculum Vitae</div>
+    </div>
+    <div class="right-aligned">
+      <span data-field="date_august_2021">{{ date_august_2021 }}</span>
+    </div>
+  </div>
+  <div style="margin-bottom: 30px;">
+    Website: <a href="{{ website_url }}">{{ website_url }}</a>
+    <div style="margin-top: 5px;">Email: <span data-field="email_address">{{ email_address }}</span></div>
+  </div>
+
+  <div class="section-title">Academic Appointments</div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_1_title }}</span>, <span data-field="academic_appointment_1_institution">{{ academic_appointment_1_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="current_status_1">{{ current_status_1 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_2_title }}</span>, <span data-field="academic_appointment_2_institution">{{ academic_appointment_2_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_2">{{ status_2 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_3_title }}</span>, <span data-field="academic_appointment_3_institution">{{ academic_appointment_3_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_3">{{ status_3 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_4_title }}</span>, <span data-field="academic_appointment_4_institution">{{ academic_appointment_4_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_4">{{ status_4 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_5_title }}</span>, <span data-field="academic_appointment_5_institution">{{ academic_appointment_5_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_5">{{ status_5 }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ education_1_degree }}</span>, <span data-field="education_1_institution">{{ education_1_institution }}</span>, <span data-field="education_1_location">{{ education_1_location }}</span>
+        <div class="entry-details">
+          <span data-field="education_1_focus">{{ education_1_focus }}</span>
+          <br>
+          <span data-field="education_1_subfield_1">{{ education_1_subfield_1 }}</span>
+          <br>
+          <span data-field="education_1_subfield_2">{{ education_1_subfield_2 }}</span>
+        </div>
+      </div>
+      <div class="right-aligned"><span data-field="education_1_date">{{ education_1_date }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ education_2_degree }}</span>, <span data-field="education_2_institution">{{ education_2_institution }}</span>, <span data-field="education_2_location">{{ education_2_location }}</span>
+        <div class="entry-details">
+          <span data-field="education_2_focus">{{ education_2_focus }}</span>
+        </div>
+      </div>
+      <div class="right-aligned"><span data-field="education_2_date">{{ education_2_date }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Under Review</div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_1_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_2_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_3_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_4_title }}"</span>
+  </div>
+
+  <div class="section-title">Working Papers</div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_1_title }}" (with {{ working_paper_1_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_2_title }}" (with {{ working_paper_2_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_3_title }}"</span>
+  </div>
+
+  <div class="section-title">Ongoing Projects</div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_1_title }}" (with {{ project_1_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_2_title }}" (with {{ project_2_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_3_title }}" (with {{ project_3_coauthor }})</span>
+  </div>
+
+  <div class="section-title">Honors, Awards, and Grants</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;"></td>
+        <td style="width: 30%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ award_1_name }}</td>
+        <td class="right-aligned">{{ award_1_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_2_name }}</td>
+        <td class="right-aligned">{{ award_2_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_3_name }}</td>
+        <td class="right-aligned">{{ award_3_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_4_name }}</td>
+        <td class="right-aligned">{{ award_4_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Advising</div>
+  <div class="entry">
+    <span class="entry-title">{{ advising_1_student }}</span>, <span data-field="advising_1_institution">{{ advising_1_institution }}</span>
+  </div>
+
+  <div class="section-title">Research Experience</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;"></td>
+        <td style="width: 30%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ research_exp_1_role }} for {{ research_exp_1_project }}</td>
+        <td class="right-aligned">{{ research_exp_1_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ research_exp_2_role }} for {{ research_exp_2_project }}</td>
+        <td class="right-aligned">{{ research_exp_2_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ research_exp_3_role }} for {{ research_exp_3_project }}</td>
+        <td class="right-aligned">{{ research_exp_3_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">References</div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_1_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_1_title">{{ reference_1_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_1_phone">{{ reference_1_phone }}</span>
+      <br>
+      Email: <span data-field="reference_1_email">{{ reference_1_email }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_2_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_2_title">{{ reference_2_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_2_phone">{{ reference_2_phone }}</span>
+      <br>
+      Email: <span data-field="reference_2_email">{{ reference_2_email }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_3_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_3_title">{{ reference_3_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_3_phone">{{ reference_3_phone }}</span>
+      <br>
+      Email: <span data-field="reference_3_email">{{ reference_3_email }}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="header-info">
+    <div>
+      <span class="name">{{ full_name }}</span>
+      <div class="title">Curriculum Vitae</div>
+    </div>
+    <div class="right-aligned">
+      <span data-field="date_august_2021">{{ date_august_2021 }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Academic Appointments</div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_1_title }}</span>, <span data-field="academic_appointment_1_institution">{{ academic_appointment_1_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="current_status_1">{{ current_status_1 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_2_title }}</span>, <span data-field="academic_appointment_2_institution">{{ academic_appointment_2_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_2">{{ status_2 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_3_title }}</span>, <span data-field="academic_appointment_3_institution">{{ academic_appointment_3_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_3">{{ status_3 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_4_title }}</span>, <span data-field="academic_appointment_4_institution">{{ academic_appointment_4_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_4">{{ status_4 }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ academic_appointment_5_title }}</span>, <span data-field="academic_appointment_5_institution">{{ academic_appointment_5_institution }}</span>
+      </div>
+      <div class="right-aligned"><span data-field="status_5">{{ status_5 }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ education_1_degree }}</span>, <span data-field="education_1_institution">{{ education_1_institution }}</span>, <span data-field="education_1_location">{{ education_1_location }}</span>
+        <div class="entry-details">
+          <span data-field="education_1_focus">{{ education_1_focus }}</span>
+          <br>
+          <span data-field="education_1_subfield_1">{{ education_1_subfield_1 }}</span>
+          <br>
+          <span data-field="education_1_subfield_2">{{ education_1_subfield_2 }}</span>
+        </div>
+      </div>
+      <div class="right-aligned"><span data-field="education_1_date">{{ education_1_date }}</span></div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="two-column-layout">
+      <div>
+        <span class="entry-title">{{ education_2_degree }}</span>, <span data-field="education_2_institution">{{ education_2_institution }}</span>, <span data-field="education_2_location">{{ education_2_location }}</span>
+        <div class="entry-details">
+          <span data-field="education_2_focus">{{ education_2_focus }}</span>
+        </div>
+      </div>
+      <div class="right-aligned"><span data-field="education_2_date">{{ education_2_date }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Under Review</div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_1_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_2_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_3_title }}"</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ under_review_4_title }}"</span>
+  </div>
+
+  <div class="section-title">Working Papers</div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_1_title }}" (with {{ working_paper_1_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_2_title }}" (with {{ working_paper_2_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ working_paper_3_title }}"</span>
+  </div>
+
+  <div class="section-title">Ongoing Projects</div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_1_title }}" (with {{ project_1_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_2_title }}" (with {{ project_2_coauthor }})</span>
+  </div>
+  <div class="entry">
+    <span class="entry-title">"{{ project_3_title }}" (with {{ project_3_coauthor }})</span>
+  </div>
+
+  <div class="section-title">Honors, Awards, and Grants</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;"></td>
+        <td style="width: 30%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ award_1_name }}</td>
+        <td class="right-aligned">{{ award_1_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_2_name }}</td>
+        <td class="right-aligned">{{ award_2_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_3_name }}</td>
+        <td class="right-aligned">{{ award_3_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ award_4_name }}</td>
+        <td class="right-aligned">{{ award_4_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Advising</div>
+  <div class="entry">
+    <span class="entry-title">{{ advising_1_student }}</span>, <span data-field="advising_1_institution">{{ advising_1_institution }}</span>
+  </div>
+
+  <div class="section-title">Research Experience</div>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;"></td>
+        <td style="width: 30%; text-align: right;"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ research_exp_1_role }} for {{ research_exp_1_project }}</td>
+        <td class="right-aligned">{{ research_exp_1_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ research_exp_2_role }} for {{ research_exp_2_project }}</td>
+        <td class="right-aligned">{{ research_exp_2_date }}</td>
+      </tr>
+      <tr>
+        <td>{{ research_exp_3_role }} for {{ research_exp_3_project }}</td>
+        <td class="right-aligned">{{ research_exp_3_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">References</div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_1_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_1_title">{{ reference_1_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_1_phone">{{ reference_1_phone }}</span>
+      <br>
+      Email: <span data-field="reference_1_email">{{ reference_1_email }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_2_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_2_title">{{ reference_2_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_2_phone">{{ reference_2_phone }}</span>
+      <br>
+      Email: <span data-field="reference_2_email">{{ reference_2_email }}</span>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="entry-title">{{ reference_3_name }}</span>
+    <div class="entry-details">
+      <span data-field="reference_3_title">{{ reference_3_title }}</span>
+      <br>
+      Phone number: <span data-field="reference_3_phone">{{ reference_3_phone }}</span>
+      <br>
+      Email: <span data-field="reference_3_email">{{ reference_3_email }}</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

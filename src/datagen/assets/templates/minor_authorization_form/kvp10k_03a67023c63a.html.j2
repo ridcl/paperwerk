@@ -1,0 +1,176 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 5px 0;
+    text-align: left;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .inline-fields {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .inline-fields > div {
+    width: 48%;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">R.I.T</h1>
+      <p style="font-size: 10pt; margin-top: 5px;">ROCHESTER INSTITUTE OF TECHNOLOGY</p>
+      <p style="font-size: 10pt;">OFFICE OF THE REGISTRAR</p>
+      <p style="font-size: 10pt;">EASTMAN HALL, ROOM 1202</p>
+      <p style="font-size: 10pt;">PHONE: 385/475-2021</p>
+      <p style="font-size: 10pt;">FAX: 385/473-7005</p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 16pt; margin: 0;">Minor Authorization / Change</h2>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">Instructions</p>
+    <p style="font-size: 10pt;">This form is to be used by undergraduate students who wish to complete a minor or minors. Minors must be approved by the minor advisor and should also be carefully reviewed by the student's program advisor. Upon successful completion of all requirements, the minor will be reflected on the official degree transcript. If you wish to declare a new minor, the minor will be recorded on the student's transcript. Minors are available to degree seeking baccalaureate students only, and cannot be added after the degree has been awarded. Minors are not listed on the diploma.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">General Information</h3>
+    <table style="margin-top: 15px;">
+      <tr>
+        <td style="width: 20%;">Please Type</td>
+        <td style="width: 30%;">Name</td>
+        <td style="width: 20%;">University ID Number</td>
+        <td style="width: 30%;">Date</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span data-field="full_name">{{ full_name }}</span></td>
+        <td><span data-field="university_id_number">{{ university_id_number }}</span></td>
+        <td><span data-field="date_submitted">{{ date_submitted }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Declaring a Minor</h3>
+    <p style="font-size: 10pt;">A minor within a program of study allows for greater depth within a particular subject area. All minors require 15 units, 9 of which must not meet requirements of the student's major. Please review the options available and discuss your interests with your advisor.</p>
+
+    <div class="form-group">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%;">Minor</div>
+        <div style="width: 30%;">Requirement Term</div>
+        <div style="width: 30%;">Effective Term</div>
+      </div>
+      <table style="margin-top: 5px;">
+        <tr>
+          <td><span data-field="minor_name">{{ minor_name }}</span></td>
+          <td><span data-field="requirement_term">{{ requirement_term }}</span></td>
+          <td><span data-field="effective_term">{{ effective_term }}</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <p style="font-size: 10pt;">
+        <input type="checkbox" style="margin-right: 5px;"> This is the student's first Minor.
+      </p>
+      <p style="font-size: 10pt;">
+        <input type="checkbox" style="margin-right: 5px;"> Drop this previously authorized Non-Liberal Arts Minor.
+      </p>
+      <p style="font-size: 10pt;">
+        <input type="checkbox" style="margin-right: 5px;"> Drop this previously authorized Liberal Arts Minor, and replace with the following Immersion:
+        <span data-field="immersion_title">{{ immersion_title }}</span>
+      </p>
+      <p style="font-size: 10pt;">
+        <input type="checkbox" style="margin-right: 5px;"> This Minor will be in addition to a previously authorized Minor.
+      </p>
+      <p style="font-size: 10pt;">
+        <input type="checkbox" style="margin-right: 5px;"> This Minor will replace a previously authorized Minor.
+        <span data-field="old_minor_code">{{ old_minor_code }}</span>
+      </p>
+    </div>
+
+    <table style="margin-top: 30px;">
+      <thead>
+        <tr>
+          <th style="width: 15%;">CLASS NO.</th>
+          <th style="width: 20%;">SUBJECT</th>
+          <th style="width: 20%;">CATALOG</th>
+          <th style="width: 15%;">SECTION</th>
+          <th style="width: 15%;">UNITS</th>
+          <th style="width: 15%;">COURSE TITLE / DESCRIPTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in line_items %}
+        <tr>
+          <td><span data-field="line_items[{{ loop.index0 }}].class_no">{{ line_items[loop.index0].class_no }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].subject">{{ line_items[loop.index0].subject }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].catalog">{{ line_items[loop.index0].catalog }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].section">{{ line_items[loop.index0].section }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].units">{{ line_items[loop.index0].units }}</span></td>
+          <td><span data-field="line_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Student Confirmation and Signature</h3>
+    <p style="font-size: 10pt;">Important Note to Student: Current federal and state financial aid regulations do not permit extensions of aid eligibility due to the additional unique credits required. There are different requirements for each minor and each university. Please consult with your financial aid counselor to confirm the end date of eligibility in comparison with the date of anticipated degree completion.</p>
+    <div style="margin-top: 20px;">
+      <p style="font-size: 10pt;">Student: Print <span data-field="student_printed_name">{{ student_printed_name }}</span> Email: <span data-field="student_email">{{ student_email }}</span> @rit.edu</p>
+      <p style="font-size: 10pt;">Sign _________________________ Date: <span data-field="student_signature_date">{{ student_signature_date }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Department Signatures</h3>
+    <div style="margin-top: 20px;">
+      <p style="font-size: 10pt;">Minor Advisor: Print <span data-field="advisor_printed_name">{{ advisor_printed_name }}</span> Email: <span data-field="advisor_email">{{ advisor_email }}</span> @rit.edu</p>
+      <p style="font-size: 10pt;">Sign _________________________ Date: <span data-field="advisor_signature_date">{{ advisor_signature_date }}</span></p>
+    </div>
+    <div style="margin-top: 20px;">
+      <p style="font-size: 10pt;">Home Department Head Print <span data-field="dept_head_printed_name">{{ dept_head_printed_name }}</span> Email: <span data-field="dept_head_email">{{ dept_head_email }}</span> @rit.edu</p>
+      <p style="font-size: 10pt;">Sign _________________________ Date: <span data-field="dept_head_signature_date">{{ dept_head_signature_date }}</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 12pt; font-weight: bold;">Registrar's Office Use Only</h3>
+    <table style="margin-top: 15px;">
+      <tr>
+        <td style="width: 30%;">Date Received</td>
+        <td style="width: 30%;">Date Processed</td>
+        <td style="width: 30%;">Processed by</td>
+      </tr>
+      <tr>
+        <td><span data-field="registrar_date_received">{{ registrar_date_received }}</span></td>
+        <td><span data-field="registrar_date_processed">{{ registrar_date_processed }}</span></td>
+        <td><span data-field="registrar_processed_by">{{ registrar_processed_by }}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px; font-size: 10pt;">
+    <p>Distribution: Please keep a copy for your records. Return original to the Registrar's Office, EAS, room 1202.</p>
+  </div>
+</div>

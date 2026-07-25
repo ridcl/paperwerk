@@ -1,0 +1,85 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2, h3 { text-align: center; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 20px; display: inline-block; width: 50%; }
+  .form-row { margin-bottom: 15px; display: flex; justify-content: space-between; }
+  .form-row > div { width: 48%; }
+</style>
+
+<div class="page">
+  <!-- Logo/Header Area -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 40px; margin-bottom: -10px;">&#x2726;</div> <!-- Placeholder for cross icon -->
+    <h1 style="font-size: 36px; margin: 0;">Saint John's</h1>
+    <h2 style="font-size: 20px; margin: 0;">UNIVERSITY</h2>
+  </div>
+
+  <!-- Title -->
+  <h2 style="text-align: center; margin-bottom: 30px;">AUTHORIZATION AGREEMENT FOR ELECTRONIC FUND TRANSFER</h2>
+
+  <!-- Introductory Text -->
+  <p style="margin-bottom: 20px;">I/We hereby authorize Saint John's University to initiate debit entries to the account listed below:</p>
+
+  <!-- Payment Schedule -->
+  <p style="margin-bottom: 10px;">This gift is to be applied to the Student Fund on the following schedule $ <span data-field="schedule_amount">{{ schedule_amount }}</span>:</p>
+  <ul style="list-style-type: none; padding-left: 0; margin-top: 0;">
+    <li style="margin-bottom: 5px;"><input type="checkbox"> Monthly on the third day of the month $ <span data-field="monthly_amount">{{ monthly_amount }}</span></li>
+    <li style="margin-bottom: 5px;"><input type="checkbox"> Quarterly on the third day of the month $ <span data-field="quarterly_amount">{{ quarterly_amount }}</span> (September, December, March & June)</li>
+    <li style="margin-bottom: 5px;"><input type="checkbox"> Annually on the third day of December $ <span data-field="annual_amount">{{ annual_amount }}</span></li>
+  </ul>
+
+  <!-- Date of First Debit -->
+  <div style="margin-top: 30px;">
+    Date of first authorized debit entry: _________________________
+  </div>
+
+  <!-- Agreement Statement -->
+  <p style="margin-top: 30px; margin-bottom: 50px;">This agreement is to remain in effect until Saint John's University receives written notification of its termination in such time as to afford the University a reasonable opportunity to act on it.</p>
+
+  <!-- Depositary Information -->
+  <div style="margin-bottom: 30px;">
+    <p>Depositary Name and Branch:</p>
+    <div class="form-row">
+      <div>City: _________________________</div>
+      <div>State: _________________________ Zip: _________________________</div>
+    </div>
+    <div class="form-row">
+      <div>Depositary 9-Digit Routing Number: _________________________</div>
+      <div>Name of Account Holder(s): _________________________</div>
+    </div>
+    <div class="form-row">
+      <div>Account Number: _________________________ Type: _________________________ Checking _________________________ Savings</div>
+    </div>
+  </div>
+
+  <!-- Verification Note -->
+  <p style="margin-bottom: 30px;">** For verification purposes, please attach a voided check.</p>
+
+  <!-- Donor Information -->
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Donor Name(s): _________________________ Class Year: _________________________</div>
+      <div>Donor Address: _________________________</div>
+    </div>
+    <div class="form-row">
+      <div>Donor Phone: _________________________ Date: _________________________</div>
+      <div>Donor Signature(s): _________________________ Date: _________________________</div>
+    </div>
+  </div>
+
+  <!-- Footer Notes -->
+  <p style="margin-bottom: 10px;">**To minimize fees to the University, all transactions of this nature will occur on the third day of each month. Should an error be made, we reserve the right to correct said error. Thank you.</p>
+
+  <!-- Mailing Address -->
+  <p style="margin-top: 50px; font-size: 12px;">Send form and voided check to:</p>
+  <p style="font-size: 12px;">Saint John's University, Attn: <span data-field="mailing_contact_name">{{ mailing_contact_name }}</span>, PO Box <span data-field="mailing_zip_code">{{ mailing_zip_code }}</span>, <span data-field="mailing_city">{{ mailing_city }}</span>, <span data-field="mailing_state">{{ mailing_state }}</span> <span data-field="mailing_zip_code_2">{{ mailing_zip_code_2 }}</span></p>
+</div>

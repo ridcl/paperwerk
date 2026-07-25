@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enrollment and Change Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td, th { padding: 8px; text-align: left; border: 1px solid #ccc; }
+  .header { font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">WESTERN MICHIGAN UNIVERSITY</h1>
+      <p style="margin: 0;">Human Resources</p>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 24pt; margin: 0;">PPO</h2>
+      <p style="margin: 0;">PPO Health Insurance Enrollment and Change Form</p>
+    </div>
+  </div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 20%;">Social Security Number</td>
+      <td style="width: 20%;">BCBS Group and Division # 007005281 -</td>
+      <td style="width: 20%;">Date of Hire</td>
+      <td style="width: 20%;">Employee/Subscriber Information</td>
+      <td style="width: 20%;">Employee Group</td>
+    </tr>
+    <tr>
+      <td>Effective Date</td>
+      <td>Last Name</td>
+      <td>First Name</td>
+      <td>Mi</td>
+      <td>Date of Birth</td>
+      <td>Home Phone</td>
+    </tr>
+    <tr>
+      <td>Home Address</td>
+      <td>City</td>
+      <td>State</td>
+      <td>Zip Code</td>
+      <td>Gender</td>
+      <td>Marital Status</td>
+      <td>Work Phone</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 20px;">Plan: Community Blue PPO</h3>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 20%;">
+        <input type="checkbox"> Waive upon hire
+      </td>
+      <td style="width: 20%;">
+        <input type="checkbox"> New Hire/Rehire
+      </td>
+      <td style="width: 20%;">Reason for Enrollment</td>
+      <td style="width: 20%;">
+        <input type="checkbox"> DEI Event
+      </td>
+      <td style="width: 20%;">Reason for Cancellation</td>
+      <td>
+        <input type="checkbox"> No Longer Employed
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"> Terminate coverage
+      </td>
+      <td>
+        <input type="checkbox"> Surviving Spouse
+      </td>
+      <td>
+        <input type="checkbox"> Open Enrollment
+      </td>
+      <td>
+        <input type="checkbox"> Open Enrollment
+      </td>
+      <td>
+        <input type="checkbox"> Deceased
+      </td>
+      <td>
+        <input type="checkbox"> Other Insurance
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"> Single (employee only)
+      </td>
+      <td>
+        <input type="checkbox"> Marriage
+      </td>
+      <td>
+        <input type="checkbox"> Return to Work (LOA)
+      </td>
+      <td>
+        <input type="checkbox"> Loss of Status
+      </td>
+      <td>
+        <input type="checkbox"> Divorce Status
+      </td>
+      <td>
+        <input type="checkbox"> Loss of Dep Status
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"> Double (employee & 1 family member)
+      </td>
+      <td>
+        <input type="checkbox"> Birth/Adoption/Foster Care
+      </td>
+      <td>
+        <input type="checkbox"> Other Reason:
+      </td>
+      <td></td>
+      <td>
+        <input type="checkbox"> Family (employee & 2 or more family members)
+      </td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 20px;">List all dependents to be enrolled/cancelled</h3>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 20%;">First Name</th>
+        <th style="width: 10%;">Mi</th>
+        <th style="width: 15%;">Gender</th>
+        <th style="width: 15%;">Date of Birth</th>
+        <th style="width: 10%;">Social Security</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in line_items %}
+      <tr>
+        <td><input type="checkbox"></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].last_name">{{ item.last_name }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].first_name">{{ item.first_name }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].mi">{{ item.mi }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].gender">{{ item.gender }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].dob">{{ item.dob }}</span></td>
+        <td><span data-field="line_items[{{ loop.index0 }}].ssn">{{ item.ssn }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 20px;">If the permanent address of the spouse or child is difference from the Employee, please complete the information below:</p>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 20%;">Spouse/Child - Full Name</td>
+      <td style="width: 30%;">Street Address</td>
+      <td style="width: 15%;">City</td>
+      <td style="width: 15%;">State</td>
+      <td style="width: 10%;">Zip</td>
+    </tr>
+    <tr>
+      <td>Child - Full Name</td>
+      <td>Street Address</td>
+      <td>City</td>
+      <td>State</td>
+      <td>Zip</td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 20px;">Do you, your spouse or children maintain other health coverage? Yes <input type="checkbox"> No <input type="checkbox"> If yes, complete below</p>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Full Name of Insured</th>
+        <th style="width: 15%;">Coverage Type</th>
+        <th style="width: 20%;">Insurance Company</th>
+        <th style="width: 15%;">Part A Effective</th>
+        <th style="width: 15%;">Part B Effective</th>
+        <th style="width: 5%;">Claim Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in other_coverage %}
+      <tr>
+        <td><span data-field="other_coverage[{{ loop.index0 }}].name">{{ item.name }}</span></td>
+        <td>
+          <input type="radio" name="coverage_type_{{ loop.index0 }}" value="M"> M
+          <input type="radio" name="coverage_type_{{ loop.index0 }}" value="D"> D
+          <input type="radio" name="coverage_type_{{ loop.index0 }}" value="V"> V
+        </td>
+        <td><span data-field="other_coverage[{{ loop.index0 }}].company">{{ item.company }}</span></td>
+        <td><span data-field="other_coverage[{{ loop.index0 }}].part_a_effective">{{ item.part_a_effective }}</span></td>
+        <td><span data-field="other_coverage[{{ loop.index0 }}].part_b_effective">{{ item.part_b_effective }}</span></td>
+        <td><span data-field="other_coverage[{{ loop.index0 }}].claim_number">{{ item.claim_number }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 30px;">I have read and understand the conditions, eligibility, & required documentation on Page 2.</p>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 50%;">Employee Signature</td>
+      <td style="width: 25%;">Date</td>
+      <td style="width: 25%;">HR USE ONLY</td>
+    </tr>
+  </table>
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <p>HRA</p>
+      <p>Deduction Begin Date</p>
+      <p>Logged/Faxed to BCBSM</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2 style="font-size: 18pt; margin-bottom: 20px;">Please Read – Conditions for Enrollment/Cancellation</h2>
+  <ul style="list-style-type: disc; padding-left: 40px;">
+    <li>I hereby authorize my employer or successor to make deductions from my earnings of the required contributions or premiums for the group coverage provided in the policy or policies issued to my employer. Additionally, I understand the contribution for the medical plan is made on a pre-tax basis.</li>
+    <li><span data-field="condition_1_text">{{ condition_1_text }}</span></li>
+    <li>I understand that if my employment is terminated, by voluntary resignation, involuntary resignation, or by any other fashion or method, upon re-employment, coverage will not become effective until I again apply for it in accordance with the terms of the group policy.</li>
+  </ul>
+
+  <h3 style="margin-top: 30px;">Eligibility Definitions</h3>
+  <ol style="padding-left: 40px;">
+    <li><strong>Spouse</strong> The legal spouse of a Subscriber.</li>
+    <li><strong>Dependent Child</strong>
+      <ol style="list-style-type: lower-alpha; padding-left: 40px;">
+        <li>Child of a Subscriber by birth; by legal adoption; by legal foster care; or by legal guardianship where the Subscriber is legally obligated by court order to provide health insurance.</li>
+        <li>Child of a Subscriber's spouse by birth; by legal adoption; by legal foster care; or by legal guardianship for whom the Subscriber is legally obligated to provide health insurance.</li>
+      </ol>
+    </li>
+  </ol>
+
+  <p style="margin-top: 20px;"><strong>NOTE:</strong> A child is considered legally adopted on the date of placement for adoption by an authorized placement agency. A child as defined above is eligible for coverage until the limiting age of 26 under all specified eligibility provisions, or if the child is incapable of self-sustaining employment by reason of a physical or mental disability that was incurred prior to the limiting age and the child is considered a dependent on the Subscriber's federal income tax return.</p>
+
+  <h3 style="margin-top: 30px;">Designated Eligible Individual (DEI)</h3>
+  <p>An employee who does not already enroll a spouse in health insurance may enroll one adult individual for coverage provided the adult, at the time of proposed enrollment, resides in the same residence as the employee and has done so for at least the previous 18 consecutive months. The employee may also enroll a dependent child of an adult DEI provided the child resides with the employee. The employee may not designate his or her IRS dependents, relatives, or tenants. To enroll a DEI, an employee must complete and submit with this form the DEI enrollment form.</p>
+
+  <h3 style="margin-top: 30px;">Family Status Change</h3>
+  <p>A family status change or life event includes an employee's marriage or divorce, death of a spouse or child, birth or adoption of a child, meeting the DEI requirements, a change in the employee or spouse's employment or an unpaid leave of absence by the employee or spouse.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  h1 { font-size: 24pt; }
+  h2 { font-size: 16pt; border-bottom: 1px solid #ccc; padding-bottom: 3px; margin-top: 1.5em; }
+  h3 { font-size: 14pt; margin-top: 1em; }
+  .contact-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 11pt;
+  }
+  .contact-info div {
+    display: flex;
+    flex-direction: column;
+  }
+  .section-content {
+    margin-bottom: 1.5em;
+  }
+  .entry {
+    margin-bottom: 1em;
+  }
+  .entry h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .entry p {
+    margin: 0;
+    font-size: 10pt;
+  }
+  .publication-list li {
+    margin-bottom: 0.5em;
+    font-size: 10pt;
+  }
+  .job-title {
+    font-weight: bold;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+  .author-name {
+    font-weight: bold;
+  }
+  .page-number {
+    font-size: 0.9em;
+  }
+  .year-heading {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .publication-entry {
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  .publication-entry p {
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1><span data-field="full_name">{{ full_name }}</span></h1>
+  <div class="contact-info">
+    <div>
+      <div>Phone: {{ contact.phone }}</div>
+      <div>Fax: {{ contact.fax }}</div>
+    </div>
+    <div>
+      <div>Email: {{ contact.email }}</div>
+      <div>Homepage: {{ contact.homepage }}</div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <h2>Education</h2>
+    <div class="entry">
+      <p><span data-field="education.degree_1">{{ education.degree_1 }}</span></p>
+      <p><span data-field="education.degree_2">{{ education.degree_2 }}</span></p>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <h2>Academic Appointments</h2>
+    {% for appointment in academic_appointments %}
+    <div class="entry">
+      <p><span data-field="academic_appointments[{{ loop.index0 }}].title">{{ appointment.title }}</span>, {{ appointment.institution }}</p>
+      <p><span data-field="academic_appointments[{{ loop.index0 }}].dates">{{ appointment.dates }}</span></p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-content">
+    <h2>Publications</h2>
+    <h3>Books</h3>
+    <ul class="publication-list">
+      <li><span data-field="publications.books[{{ 0 }}].title">{{ publications.books[0].title }}</span></li>
+      <li><span data-field="publications.books[{{ 1 }}].title">{{ publications.books[1].title }}</span></li>
+      <li><span data-field="publications.books[{{ 2 }}].title">{{ publications.books[2].title }}</span></li>
+      <li><span data-field="publications.books[{{ 3 }}].title">{{ publications.books[3].title }}</span></li>
+      <li><span data-field="publications.books[{{ 4 }}].title">{{ publications.books[4].title }}</span></li>
+      <li><span data-field="publications.books[{{ 5 }}].title">{{ publications.books[5].title }}</span></li>
+      <li><span data-field="publications.books[{{ 6 }}].title">{{ publications.books[6].title }}</span></li>
+      <li><span data-field="publications.books[{{ 7 }}].title">{{ publications.books[7].title }}</span></li>
+      <li><span data-field="publications.books[{{ 8 }}].title">{{ publications.books[8].title }}</span></li>
+      <li><span data-field="publications.books[{{ 9 }}].title">{{ publications.books[9].title }}</span></li>
+      <li><span data-field="publications.books[{{ 10 }}].title">{{ publications.books[10].title }}</span></li>
+      <li><span data-field="publications.books[{{ 11 }}].title">{{ publications.books[11].title }}</span></li>
+      <li><span data-field="publications.books[{{ 12 }}].title">{{ publications.books[12].title }}</span></li>
+      <li><span data-field="publications.books[{{ 13 }}].title">{{ publications.books[13].title }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Chapters in Edited Volumes</h2>
+    <ul class="publication-list">
+      <li><span data-field="publications.chapters[{{ 0 }}].title">{{ publications.chapters[0].title }}</span></li>
+      <li><span data-field="publications.chapters[{{ 1 }}].title">{{ publications.chapters[1].title }}</span></li>
+      <li><span data-field="publications.chapters[{{ 2 }}].title">{{ publications.chapters[2].title }}</span></li>
+      <li><span data-field="publications.chapters[{{ 3 }}].title">{{ publications.chapters[3].title }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Working Papers</h2>
+    <ul class="publication-list">
+      <li><span data-field="working_papers[{{ 0 }}].title">{{ working_papers[0].title }}</span></li>
+      <li><span data-field="working_papers[{{ 1 }}].title">{{ working_papers[1].title }}</span></li>
+      <li><span data-field="working_papers[{{ 2 }}].title">{{ working_papers[2].title }}</span></li>
+      <li><span data-field="working_papers[{{ 3 }}].title">{{ working_papers[3].title }}</span></li>
+      <li><span data-field="working_papers[{{ 4 }}].title">{{ working_papers[4].title }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Grants</h2>
+    <ul class="publication-list">
+      <li><span data-field="grants[{{ 0 }}].description">{{ grants[0].description }}</span></li>
+      <li><span data-field="grants[{{ 1 }}].description">{{ grants[1].description }}</span></li>
+      <li><span data-field="grants[{{ 2 }}].description">{{ grants[2].description }}</span></li>
+      <li><span data-field="grants[{{ 3 }}].description">{{ grants[3].description }}</span></li>
+      <li><span data-field="grants[{{ 4 }}].description">{{ grants[4].description }}</span></li>
+      <li><span data-field="grants[{{ 5 }}].description">{{ grants[5].description }}</span></li>
+      <li><span data-field="grants[{{ 6 }}].description">{{ grants[6].description }}</span></li>
+      <li><span data-field="grants[{{ 7 }}].description">{{ grants[7].description }}</span></li>
+      <li><span data-field="grants[{{ 8 }}].description">{{ grants[8].description }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Honors, Awards, & Fellowships</h2>
+    <ul class="publication-list">
+      <li><span data-field="honors_awards[{{ 0 }}].description">{{ honors_awards[0].description }}</span></li>
+      <li><span data-field="honors_awards[{{ 1 }}].description">{{ honors_awards[1].description }}</span></li>
+      <li><span data-field="honors_awards[{{ 2 }}].description">{{ honors_awards[2].description }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Professional & Departmental Service</h2>
+    <ul class="publication-list">
+      <li><span data-field="service[{{ 0 }}].description">{{ service[0].description }}</span></li>
+      <li><span data-field="service[{{ 1 }}].description">{{ service[1].description }}</span></li>
+      <li><span data-field="service[{{ 2 }}].description">{{ service[2].description }}</span></li>
+      <li><span data-field="service[{{ 3 }}].description">{{ service[3].description }}</span></li>
+      <li><span data-field="service[{{ 4 }}].description">{{ service[4].description }}</span></li>
+      <li><span data-field="service[{{ 5 }}].description">{{ service[5].description }}</span></li>
+      <li><span data-field="service[{{ 6 }}].description">{{ service[6].description }}</span></li>
+      <li><span data-field="service[{{ 7 }}].description">{{ service[7].description }}</span></li>
+      <li><span data-field="service[{{ 8 }}].description">{{ service[8].description }}</span></li>
+      <li><span data-field="service[{{ 9 }}].description">{{ service[9].description }}</span></li>
+      <li><span data-field="service[{{ 10 }}].description">{{ service[10].description }}</span></li>
+      <li><span data-field="service[{{ 11 }}].description">{{ service[11].description }}</span></li>
+      <li><span data-field="service[{{ 12 }}].description">{{ service[12].description }}</span></li>
+      <li><span data-field="service[{{ 13 }}].description">{{ service[13].description }}</span></li>
+      <li><span data-field="service[{{ 14 }}].description">{{ service[14].description }}</span></li>
+      <li><span data-field="service[{{ 15 }}].description">{{ service[15].description }}</span></li>
+      <li><span data-field="service[{{ 16 }}].description">{{ service[16].description }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Courses Taught</h2>
+    <h3>Undergraduate</h3>
+    <ul class="publication-list">
+      <li><span data-field="courses_taught.undergrad[{{ 0 }}].title">{{ courses_taught.undergrad[0].title }}</span></li>
+      <li><span data-field="courses_taught.undergrad[{{ 1 }}].title">{{ courses_taught.undergrad[1].title }}</span></li>
+      <li><span data-field="courses_taught.undergrad[{{ 2 }}].title">{{ courses_taught.undergrad[2].title }}</span></li>
+    </ul>
+    <h3>Graduate</h3>
+    <ul class="publication-list">
+      <li><span data-field="courses_taught.grad[{{ 0 }}].title">{{ courses_taught.grad[0].title }}</span></li>
+      <li><span data-field="courses_taught.grad[{{ 1 }}].title">{{ courses_taught.grad[1].title }}</span></li>
+      <li><span data-field="courses_taught.grad[{{ 2 }}].title">{{ courses_taught.grad[2].title }}</span></li>
+      <li><span data-field="courses_taught.grad[{{ 3 }}].title">{{ courses_taught.grad[3].title }}</span></li>
+    </ul>
+  </div>
+
+  <div class="section-content">
+    <h2>Invited Talks/Lectures</h2>
+    <ul class="publication-list">
+      <li><span data-field="invited_talks[{{ 0 }}].title">{{ invited_talks[0].title }}</span></li>
+      <li><span data-field="invited_talks[{{ 1 }}].title">{{ invited_talks[1].title }}</span></li>
+      <li><span data-field="invited_talks[{{ 2 }}].title">{{ invited_talks[2].title }}</span></li>
+      <li><span data-field="invited_talks[{{ 3 }}].title">{{ invited_talks[3].title }}</span></li>
+      <li><span data-field="invited_talks[{{ 4 }}].title">{{ invited_talks[4].title }}</span></li>
+    </ul>
+  </div>
+
+  <div class="page">
+    <div class="section-content">
+      <h2>Conference Presentations</h2>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations[{{ 0 }}].title">{{ conference_presentations[0].title }}</span></li>
+        <li><span data-field="conference_presentations[{{ 1 }}].title">{{ conference_presentations[1].title }}</span></li>
+        <li><span data-field="conference_presentations[{{ 2 }}].title">{{ conference_presentations[2].title }}</span></li>
+        <li><span data-field="conference_presentations[{{ 3 }}].title">{{ conference_presentations[3].title }}</span></li>
+        <li><span data-field="conference_presentations[{{ 4 }}].title">{{ conference_presentations[4].title }}</span></li>
+        <li><span data-field="conference_presentations[{{ 5 }}].title">{{ conference_presentations[5].title }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="section-content">
+      <h3>2015</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2015[{{ 0 }}].title">{{ conference_presentations_2015[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2015[{{ 1 }}].title">{{ conference_presentations_2015[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2015[{{ 2 }}].title">{{ conference_presentations_2015[2].title }}</span></li>
+        <li><span data-field="conference_presentations_2015[{{ 3 }}].title">{{ conference_presentations_2015[3].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2014</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2014[{{ 0 }}].title">{{ conference_presentations_2014[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2014[{{ 1 }}].title">{{ conference_presentations_2014[1].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2013</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2013[{{ 0 }}].title">{{ conference_presentations_2013[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2013[{{ 1 }}].title">{{ conference_presentations_2013[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2013[{{ 2 }}].title">{{ conference_presentations_2013[2].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2012</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2012[{{ 0 }}].title">{{ conference_presentations_2012[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2012[{{ 1 }}].title">{{ conference_presentations_2012[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2012[{{ 2 }}].title">{{ conference_presentations_2012[2].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2011</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2011[{{ 0 }}].title">{{ conference_presentations_2011[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2011[{{ 1 }}].title">{{ conference_presentations_2011[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2011[{{ 2 }}].title">{{ conference_presentations_2011[2].title }}</span></li>
+        <li><span data-field="conference_presentations_2011[{{ 3 }}].title">{{ conference_presentations_2011[3].title }}</span></li>
+        <li><span data-field="conference_presentations_2011[{{ 4 }}].title">{{ conference_presentations_2011[4].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2010</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2010[{{ 0 }}].title">{{ conference_presentations_2010[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2010[{{ 1 }}].title">{{ conference_presentations_2010[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2010[{{ 2 }}].title">{{ conference_presentations_2010[2].title }}</span></li>
+        <li><span data-field="conference_presentations_2010[{{ 3 }}].title">{{ conference_presentations_2010[3].title }}</span></li>
+      </ul>
+    </div>
+
+    <div class="section-content">
+      <h3>2009</h3>
+      <ul class="publication-list">
+        <li><span data-field="conference_presentations_2009[{{ 0 }}].title">{{ conference_presentations_2009[0].title }}</span></li>
+        <li><span data-field="conference_presentations_2009[{{ 1 }}].title">{{ conference_presentations_2009[1].title }}</span></li>
+        <li><span data-field="conference_presentations_2009[{{ 2 }}].title">{{ conference_presentations_2009[2].title }}</span></li>
+        <li><span data-field="conference_presentations_2009[{{ 3 }}].title">{{ conference_presentations_2009[3].title }}</span></li>
+        <li><span data-field="conference_presentations_2009[{{ 4 }}].title">{{ conference_presentations_2009[4].title }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+  .author-name {
+    font-weight: bold;
+  }
+  .page-number {
+    font-size: 0.9em;
+  }
+  .year-heading {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .publication-entry {
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  .publication-entry p {
+    margin: 0;
+  }
+</style>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2008</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2008_1">{{ publication_title_2008_1 }}</span>" with <span data-field="author_2008_1_co_author">{{ author_2008_1_co_author }}</span> and <span data-field="author_2008_1_co_author_2">{{ author_2008_1_co_author_2 }}</span>, <span data-field="publication_venue_2008_1">{{ publication_venue_2008_1 }}</span>, <span data-field="publication_date_2008_1">{{ publication_date_2008_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2008_2">{{ publication_title_2008_2 }}</span>" with <span data-field="author_2008_2_co_author">{{ author_2008_2_co_author }}</span>, <span data-field="publication_venue_2008_2">{{ publication_venue_2008_2 }}</span>, <span data-field="publication_date_2008_2">{{ publication_date_2008_2 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2008_3">{{ publication_title_2008_3 }}</span>" with <span data-field="author_2008_3_co_author">{{ author_2008_3_co_author }}</span>, <span data-field="publication_venue_2008_3">{{ publication_venue_2008_3 }}</span>, <span data-field="publication_date_2008_3">{{ publication_date_2008_3 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2008_4">{{ publication_title_2008_4 }}</span>" with <span data-field="author_2008_4_co_author">{{ author_2008_4_co_author }}</span>, <span data-field="publication_venue_2008_4">{{ publication_venue_2008_4 }}</span>, <span data-field="publication_date_2008_4">{{ publication_date_2008_4 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2007</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2007_1">{{ publication_title_2007_1 }}</span>" with <span data-field="author_2007_1_co_author">{{ author_2007_1_co_author }}</span>, <span data-field="publication_venue_2007_1">{{ publication_venue_2007_1 }}</span>, <span data-field="publication_date_2007_1">{{ publication_date_2007_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2007_2">{{ publication_title_2007_2 }}</span>" with <span data-field="author_2007_2_co_author">{{ author_2007_2_co_author }}</span>, <span data-field="publication_venue_2007_2">{{ publication_venue_2007_2 }}</span>, <span data-field="publication_date_2007_2">{{ publication_date_2007_2 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2007_3">{{ publication_title_2007_3 }}</span>" with <span data-field="author_2007_3_co_author">{{ author_2007_3_co_author }}</span>, <span data-field="publication_venue_2007_3">{{ publication_venue_2007_3 }}</span>, <span data-field="publication_date_2007_3">{{ publication_date_2007_3 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2006</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2006_1">{{ publication_title_2006_1 }}</span>" with <span data-field="author_2006_1_co_author">{{ author_2006_1_co_author }}</span>, <span data-field="publication_venue_2006_1">{{ publication_venue_2006_1 }}</span>, <span data-field="publication_date_2006_1">{{ publication_date_2006_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2006_2">{{ publication_title_2006_2 }}</span>" with <span data-field="author_2006_2_co_author">{{ author_2006_2_co_author }}</span>, <span data-field="publication_venue_2006_2">{{ publication_venue_2006_2 }}</span>, <span data-field="publication_date_2006_2">{{ publication_date_2006_2 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2006_3">{{ publication_title_2006_3 }}</span>" with <span data-field="author_2006_3_co_author">{{ author_2006_3_co_author }}</span>, <span data-field="publication_venue_2006_3">{{ publication_venue_2006_3 }}</span>, <span data-field="publication_date_2006_3">{{ publication_date_2006_3 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2005</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2005_1">{{ publication_title_2005_1 }}</span>" in the <span data-field="publication_venue_2005_1">{{ publication_venue_2005_1 }}</span>, <span data-field="publication_date_2005_1">{{ publication_date_2005_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2005_2">{{ publication_title_2005_2 }}</span>" with <span data-field="author_2005_2_co_author">{{ author_2005_2_co_author }}</span>, <span data-field="publication_venue_2005_2">{{ publication_venue_2005_2 }}</span>, <span data-field="publication_date_2005_2">{{ publication_date_2005_2 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2004</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2004_1">{{ publication_title_2004_1 }}</span>" in the <span data-field="publication_venue_2004_1">{{ publication_venue_2004_1 }}</span>, <span data-field="publication_date_2004_1">{{ publication_date_2004_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2004_2">{{ publication_title_2004_2 }}</span>" with <span data-field="author_2004_2_co_author">{{ author_2004_2_co_author }}</span>, <span data-field="publication_venue_2004_2">{{ publication_venue_2004_2 }}</span>, <span data-field="publication_date_2004_2">{{ publication_date_2004_2 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2004_3">{{ publication_title_2004_3 }}</span>" with <span data-field="author_2004_3_co_author">{{ author_2004_3_co_author }}</span>, <span data-field="publication_venue_2004_3">{{ publication_venue_2004_3 }}</span>, <span data-field="publication_date_2004_3">{{ publication_date_2004_3 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2003</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2003_1">{{ publication_title_2003_1 }}</span>" with <span data-field="author_2003_1_co_author">{{ author_2003_1_co_author }}</span>, <span data-field="publication_venue_2003_1">{{ publication_venue_2003_1 }}</span>, <span data-field="publication_date_2003_1">{{ publication_date_2003_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2003_2">{{ publication_title_2003_2 }}</span>" with <span data-field="author_2003_2_co_author">{{ author_2003_2_co_author }}</span>, <span data-field="publication_venue_2003_2">{{ publication_venue_2003_2 }}</span>, <span data-field="publication_date_2003_2">{{ publication_date_2003_2 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2002</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2002_1">{{ publication_title_2002_1 }}</span>" with <span data-field="author_2002_1_co_author">{{ author_2002_1_co_author }}</span>, <span data-field="publication_venue_2002_1">{{ publication_venue_2002_1 }}</span>, <span data-field="publication_date_2002_1">{{ publication_date_2002_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2002_2">{{ publication_title_2002_2 }}</span>" with <span data-field="author_2002_2_co_author">{{ author_2002_2_co_author }}</span>, <span data-field="publication_venue_2002_2">{{ publication_venue_2002_2 }}</span>, <span data-field="publication_date_2002_2">{{ publication_date_2002_2 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div class="year-heading">2001</div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2001_1">{{ publication_title_2001_1 }}</span>" with <span data-field="author_2001_1_co_author">{{ author_2001_1_co_author }}</span>, <span data-field="publication_venue_2001_1">{{ publication_venue_2001_1 }}</span>, <span data-field="publication_date_2001_1">{{ publication_date_2001_1 }}</span>.</p>
+  </div>
+  <div class="publication-entry">
+    <p>"<span data-field="publication_title_2001_2">{{ publication_title_2001_2 }}</span>" with <span data-field="author_2001_2_co_author">{{ author_2001_2_co_author }}</span>, <span data-field="publication_venue_2001_2">{{ publication_venue_2001_2 }}</span>, <span data-field="publication_date_2001_2">{{ publication_date_2001_2 }}</span>.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="header-info">
+    <div class="author-name"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="page-number">{{ page_number }}</div>
+  </div>
+  <div style="text-align: center; margin-top: 50px;">
+    <p style="font-size: 0.9em;">Last updated: <span data-field="last_updated_date">{{ last_updated_date }}</span></p>
+    <p style="font-size: 0.9em;">http://www.columbia.edu/~jhp2121</p>
+  </div>
+</div></body>
+</html>

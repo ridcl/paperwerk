@@ -1,0 +1,93 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .spec-table td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .spec-table .label {
+    font-weight: normal;
+    color: #555;
+  }
+  .spec-table .value {
+    font-weight: bold;
+  }
+</style>
+
+<div class="page">
+  <div>
+    <h1 style="font-size: 24px; margin-bottom: 5px;">PRODUCT SPECIFICATION</h1>
+    <h2 style="font-size: 36px; margin-top: 0;">SR2-DAD-230</h2>
+    <p style="font-size: 16px;">Serenga 2 230v AC Open Area IP42 Recess</p>
+
+    <table class="spec-table">
+      <tr>
+        <td style="width: 50%;">
+          <span class="label">Catalogue Number:</span> <span class="value">{{ catalogue_number }}</span><br>
+          <span class="label">GTID:</span> <span class="value">{{ gtid }}</span><br>
+          <span class="label">Warranty:</span> <span class="value">{{ warranty_info }}</span><br>
+          <span class="label">Power Supply:</span> <span class="value">{{ power_supply }}</span><br>
+          <span class="label">Mounting Method/Form:</span> <span class="value">{{ mounting_method }}</span><br>
+          <span class="label">Housing Material/Aluminium/Plastic:</span> <span class="value">{{ housing_material }}</span><br>
+          <span class="label">Colour:</span> <span class="value">{{ colour }}</span><br>
+          <span class="label">Dimensions (L x W x H):</span> <span class="value">{{ dimensions }}</span><br>
+          <span class="label">Temperature Range:</span> <span class="value">{{ temperature_range }}</span><br>
+          <span class="label">Weight:</span> <span class="value">{{ weight }}</span>
+        </td>
+        <td style="width: 50%;">
+          <span class="label">Emergency Duration (Hours):</span> <span class="value">{{ emergency_duration }}</span><br>
+          <span class="label">Mains / Central Battery Hours:</span> <span class="value">{{ mains_battery_hours }}</span><br>
+          <span class="label">Monitoring Equipment:</span> <span class="value">{{ monitoring_equipment }}</span><br>
+          <span class="label">Lamp 1 x 2W LED:</span> <span class="value">{{ lamp_spec }}</span><br>
+          <span class="label">Emergency Light Output (Lumens):</span> <span class="value">{{ light_output }}</span><br>
+          <span class="label">Average Lifespan Light Source (Hours):</span> <span class="value">{{ lifespan }}</span><br>
+          <span class="label">Light Colour/Temperature/CRI/White / 5600 / 70:</span> <span class="value">{{ light_colour_temp }}</span><br>
+          <span class="label">Degree of Protection:</span> <span class="value">{{ ip_rating }}</span><br>
+          <span class="label">Type of Legend:</span> <span class="value">{{ legend_type }}</span><br>
+          <span class="label">Exit Sign Viewing/Recognition Distance (m):</span> <span class="value">{{ viewing_distance }}</span><br>
+          <span class="label">Nominal Voltage:</span> <span class="value">{{ nominal_voltage }}</span><br>
+          <span class="label">Power Consumption:</span> <span class="value">{{ power_consumption }}</span><br>
+          <span class="label">Current Nominal:</span> <span class="value">{{ current_nominal }}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <h2 class="section-title">Accessories</h2>
+    <ul style="list-style-type: none; padding: 0;">
+      {% for accessory in accessories %}
+      <li style="margin-bottom: 8px;">
+        <span data-field="accessories[{{ loop.index0 }}]">{{ accessory }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Qualified Adoption Expenses</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px; text-align: left; }
+  .form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .label-col { width: 40%; }
+  .value-col { width: 60%; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 10px; }
+  .sub-header { font-weight: bold; margin-top: 10px; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">Form 8839</h1>
+      <p style="margin: 5px 0 0 0;">Qualified Adoption Expenses</p>
+    </div>
+    <div style="text-align: right;">
+      <p style="margin: 0;">OMB No. 1545-0074</p>
+      <p style="margin: 5px 0 0 0;">20<span data-field="year">{{ year }}</span></p>
+      <p style="margin: 5px 0 0 0;">Attachment</p>
+      <p style="margin: 5px 0 0 0;">Sequence No. <span data-field="sequence_number">{{ sequence_number }}</span></p>
+    </div>
+  </header>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div class="label-col">Name(s) shown on return:</div>
+      <div class="value-col"><span data-field="filer_name">{{ filer_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Your social security number</div>
+      <div class="value-col"><span data-field="ssn">{{ ssn }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    Part I Information About Your Eligible Child or Children—You must complete this part. See instructions for details, including what to do if you need more space.
+  </div>
+
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 5%;">1</th>
+        <th style="width: 25%;">Child's name</th>
+        <th style="width: 15%;">First</th>
+        <th style="width: 15%;">Last</th>
+        <th style="width: 15%;">Child's year of birth</th>
+        <th style="width: 15%;">Check if child was—</th>
+        <th style="width: 15%;">Check if child became final in 2015 or earlier</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(1, 4) %}
+      <tr>
+        <td>{{ i }}</td>
+        <td><span data-field="child_name_{{ i }}">{{ "Child Name" }}</span></td>
+        <td><span data-field="child_first_{{ i }}">{{ "First" }}</span></td>
+        <td><span data-field="child_last_{{ i }}">{{ "Last" }}</span></td>
+        <td><span data-field="child_dob_{{ i }}">{{ "DOB" }}</span></td>
+        <td>
+          <input type="checkbox" style="margin-right: 5px;"> disabled
+          <input type="checkbox" style="margin-right: 5px;"> with special needs
+          <input type="checkbox" style="margin-right: 5px;"> foreign child
+        </td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-header" style="margin-top: 30px;">
+    Part II Adoption Credit
+  </div>
+
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 25%;">Child 1</th>
+        <th style="width: 25%;">Child 2</th>
+        <th style="width: 25%;">Child 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2</td>
+        <td><span data-field="max_adoption_credit_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="max_adoption_credit_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="max_adoption_credit_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span data-field="did_you_file_form_8839_child1">{{ "Y/N" }}</span></td>
+        <td><span data-field="did_you_file_form_8839_child2">{{ "Y/N" }}</span></td>
+        <td><span data-field="did_you_file_form_8839_child3">{{ "Y/N" }}</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span data-field="subtract_line_3_from_2_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_line_3_from_2_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_line_3_from_2_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span data-field="qualified_adoption_expenses_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="qualified_adoption_expenses_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="qualified_adoption_expenses_child3">{{ "Amount" }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <p style="font-size: 10pt;">Caution. Your qualified adoption expenses may not be equal to the adoption expenses you paid in 2015.</p>
+    <div class="form-row" style="margin-top: 10px;">
+      <div class="label-col">Enter the smaller of line 4 or line 5</div>
+      <div class="value-col"><span data-field="smaller_of_4_or_5">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Enter modified adjusted gross income (see instructions)</div>
+      <div class="value-col"><span data-field="modified_adjusted_gross_income">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Is line 7 more than $201,010?</div>
+      <div class="value-col"><span data-field="is_line_7_over_threshold">{{ "Y/N" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Yes. Subtract $201,010 from line 7</div>
+      <div class="value-col"><span data-field="subtract_threshold_from_7">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Divide line 8 by $40,000. Enter the result as a decimal (rounded to at least three places).</div>
+      <div class="value-col"><span data-field="divide_line_8_by_40k">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Multiply each amount on line 6 by line 9</div>
+      <div class="value-col"><span data-field="multiply_line_6_by_9">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Subtract line 10 from line 6</div>
+      <div class="value-col"><span data-field="subtract_line_10_from_6">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Add the amounts on line 11</div>
+      <div class="value-col"><span data-field="add_line_11">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Credit carryforward, if any, from prior years. See your Adoption Credit Carryforward Worksheet in the 2014 Form 8839 instructions</div>
+      <div class="value-col"><span data-field="credit_carryforward">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Add lines 12 and 13</div>
+      <div class="value-col"><span data-field="add_lines_12_and_13">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Enter the amount from line 5 of the Credit Limit Worksheet in the instructions</div>
+      <div class="value-col"><span data-field="amount_from_credit_limit_worksheet">{{ "Amount" }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Adoption Credit. Enter the smaller of line 14 or line 15 as listed on Form 1040, line 54, or Form 1040NR, line 51. Choose the smaller “8839” in the space next to box c. If line 15 is smaller than line 14, you may have a credit carryforward (see instructions).</div>
+      <div class="value-col"><span data-field="adoption_credit">{{ "Amount" }}</span></div>
+    </div>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">For Paperwork Reduction Act Notice, see your tax return instructions.</p>
+    <div style="text-align: right; font-size: 10pt;">Cat. No. 22843L</div>
+    <div style="text-align: right; font-size: 10pt;">Form 8839 (2015)</div>
+  </div>
+</div>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="text-align: left;">
+      <p style="font-size: 10pt;">Form 8839 (2015)</p>
+      <p style="font-size: 10pt;">Part III Employer-Provided Adoption Benefits</p>
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 10pt;">Page 2</p>
+    </div>
+  </header>
+
+  <div class="section-header" style="margin-top: 15px;">
+    Part III Employer-Provided Adoption Benefits
+  </div>
+
+  <table style="margin-top: 15px;">
+    <thead>
+      <tr>
+        <th style="width: 10%;"></th>
+        <th style="width: 25%;">Child 1</th>
+        <th style="width: 25%;">Child 2</th>
+        <th style="width: 25%;">Child 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>17</td>
+        <td><span data-field="max_exclusion_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="max_exclusion_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="max_exclusion_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td><span data-field="did_receive_employer_benefits_child1">{{ "Y/N" }}</span></td>
+        <td><span data-field="did_receive_employer_benefits_child2">{{ "Y/N" }}</span></td>
+        <td><span data-field="did_receive_employer_benefits_child3">{{ "Y/N" }}</span></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td><span data-field="subtract_line_18_from_17_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_line_18_from_17_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_line_18_from_17_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td><span data-field="employer_provided_benefits_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="employer_provided_benefits_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="employer_provided_benefits_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td><span data-field="add_amounts_on_line_20_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="add_amounts_on_line_20_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="add_amounts_on_line_20_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td><span data-field="enter_smaller_of_line_19_or_20_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="enter_smaller_of_line_19_or_20_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="enter_smaller_of_line_19_or_20_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td><span data-field="enter_modified_adjusted_gross_income_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="enter_modified_adjusted_gross_income_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="enter_modified_adjusted_gross_income_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td><span data-field="is_line_23_more_than_201010_child1">{{ "Y/N" }}</span></td>
+        <td><span data-field="is_line_23_more_than_201010_child2">{{ "Y/N" }}</span></td>
+        <td><span data-field="is_line_23_more_than_201010_child3">{{ "Y/N" }}</span></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td><span data-field="subtract_201010_from_23_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_201010_from_23_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="subtract_201010_from_23_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td><span data-field="multiply_each_amount_on_line_22_by_25_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="multiply_each_amount_on_line_22_by_25_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="multiply_each_amount_on_line_22_by_25_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td><span data-field="excluded_benefits_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="excluded_benefits_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="excluded_benefits_child3">{{ "Amount" }}</span></td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td><span data-field="add_amounts_on_line_27_child1">{{ "Amount" }}</span></td>
+        <td><span data-field="add_amounts_on_line_27_child2">{{ "Amount" }}</span></td>
+        <td><span data-field="add_amounts_on_line_27_child3">{{ "Amount" }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-header" style="margin-top: 30px;">
+    29 Taxable benefits. Is line 28 more than line 21?
+  </div>
+
+  <table style="margin-top: 15px;">
+    <tbody>
+      <tr>
+        <td style="width: 10%;">No.</td>
+        <td style="width: 90%;">Subtract line 28 from line 21. Also, include this amount, if more than zero, on line 7 of Form 1040 or line 8 of Form 1040NR. On the dotted line next to line 7 of Form 1040 or line 8 of Form 1040NR, enter “AB.”</td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">Yes.</td>
+        <td style="width: 90%;">Subtract line 21 from line 28. Enter the result as a negative number. Reduce the total you would enter on line 7 of Form 1040 or line 8 of Form 1040NR by the amount on Form 8839, line 29. Enter the result on line 7 of Form 1040 or line 8 of Form 1040NR. Enter “SNE” on the dotted line next to the entry line.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">You may be able to claim the adoption credit in Part II on the front of this form if any of the following apply.</p>
+    <ul style="list-style-type: disc; padding-left: 20px; font-size: 10pt;">
+      <li>You paid adoption expenses in 2014, those expenses were not fully reimbursed by your employer or otherwise, and the adoption was not final by the end of 2014.</li>
+      <li>The total adoption expenses you paid in 2015 were not fully reimbursed by your employer or otherwise, and the adoption became final in 2015 or earlier.</li>
+      <li>You adopted a child with special needs and the adoption became final in 2015.</li>
+    </ul>
+  </div>
+
+  <div style="text-align: right; font-size: 10pt; margin-top: 40px;">
+    Form 8839 (2015)
+  </div>
+</div>
+</body>
+</html>

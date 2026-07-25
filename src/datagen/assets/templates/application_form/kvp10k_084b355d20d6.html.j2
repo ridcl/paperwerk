@@ -1,0 +1,78 @@
+```html
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; margin-bottom: 20px; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-row > div { width: 48%; }
+  .signature-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+  .signature-table td { padding: 10px 0; border-bottom: 1px solid #ccc; }
+  .signature-table .name-col { width: 50%; text-align: left; }
+  .signature-table .signature-col { width: 50%; text-align: center; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <h1 style="font-size: 24pt; margin-bottom: 5px;">GRADUATE SCHOOL</h1>
+            <p style="font-size: 10pt; margin: 0;">{{ institution_address_line_1 }}</p>
+            <p style="font-size: 10pt; margin: 0;">{{ institution_address_line_2 }}</p>
+            <p style="font-size: 10pt; margin: 0;">{{ institution_phone }} | {{ institution_fax }}</p>
+        </div>
+        <div style="text-align: right;">
+            <h2 style="font-size: 16pt; margin-top: 0;">APPLICATION FOR CANDIDACY</h2>
+            <h2 style="font-size: 16pt; margin-top: 0;">FOR DOCTORAL STUDENTS ONLY</h2>
+            <p style="font-size: 12pt; margin-top: 10px;">SUBMIT AFTER DEFENDING THE PROPOSAL</p>
+            <p style="font-size: 12pt; margin-top: 0;">Please attach a Degree Plan</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <div class="form-row">
+            <div>
+                <p style="font-weight: bold;">Name:</p>
+                <div style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                    <span data-field="full_name">{{ full_name }}</span>
+                </div>
+            </div>
+            <div>
+                <p style="font-weight: bold;">Student ID:</p>
+                <div style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                    <span data-field="student_id">{{ student_id }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <p style="font-weight: bold;">E-mail:</p>
+                <div style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                    <span data-field="email">{{ email }}</span>
+                </div>
+            </div>
+            <div>
+                <p style="font-weight: bold;">Degree:</p>
+                <div style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                    <span data-field="degree">{{ degree }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <p style="font-weight: bold;">Doctoral Program:</p>
+                <div style="border-bottom: 1px solid black; padding-bottom: 5px;">
+                    <span data-field="doctoral_program">{{ doctoral_program }}</span>
+                </div>
+            </div>
+            <div>
+                <p style="font-weight: bold;">Major:</p>
+                <div style="border-bottom: 1px solid black; padding

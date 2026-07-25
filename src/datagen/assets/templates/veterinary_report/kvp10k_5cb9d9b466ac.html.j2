@@ -1,0 +1,267 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+  .logo-area { display: flex; align-items: center; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .full-width-section { grid-column: 1 / -1; margin-bottom: 20px; }
+  .label-input-group { display: flex; align-items: center; margin-bottom: 10px; }
+  .label-input-group label { width: 120px; font-weight: bold; }
+  .label-input-group input[type="text"], .label-input-group select { flex-grow: 1; border-bottom: 1px solid #000; padding: 2px 5px; }
+  .drawing-area { display: flex; justify-content: space-around; margin-top: 40px; }
+  .diagram { text-align: center; }
+  .checkbox-group { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 15px; }
+  .checkbox-group label { font-weight: normal; display: flex; align-items: center; gap: 5px; }
+  .signature-line { margin-top: 50px; }
+</style>
+<body>
+  <div class="page">
+    <div class="header-section">
+      <div>
+        <h1>Louisiana Animal Disease Diagnostic Laboratory</h1>
+        <p>Phone: <span data-field="phone">{{ phone }}</span> • Fax: <span data-field="fax">{{ fax }}</span> • Website: <span data-field="website">{{ website }}</span></p>
+      </div>
+      <div class="logo-area">
+        <!-- Placeholder for logos -->
+        <img src="logo1.png" alt="LSU Logo" style="height: 50px; margin-right: 10px;">
+        <img src="logo2.png" alt="LADDL Logo" style="height: 50px;">
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <h2>BIOPSY</h2>
+      <h3>NECROPSY IN A JAR</h3>
+    </div>
+
+    <div class="form-grid">
+      <!-- Left Column Fields -->
+      <div>
+        <div class="label-input-group">
+          <label>DOCTOR</label>
+          <input type="text" data-field="doctor_name" value="{{ doctor_name }}">
+        </div>
+        <div class="label-input-group">
+          <label>HOSPITAL</label>
+          <input type="text" data-field="hospital_name" value="{{ hospital_name }}">
+        </div>
+        <div class="label-input-group">
+          <label>STREET or P.O. BOX</label>
+          <input type="text" data-field="street_address" value="{{ street_address }}">
+        </div>
+        <div class="label-input-group">
+          <label>CITY, STATE, ZIP</label>
+          <input type="text" data-field="city_state_zip" value="{{ city_state_zip }}">
+        </div>
+        <div class="label-input-group">
+          <label>PHONE</label>
+          <input type="text" data-field="phone_number" value="{{ phone_number }}">
+        </div>
+        <div class="label-input-group">
+          <label>EMAIL</label>
+          <input type="text" data-field="email_address" value="{{ email_address }}">
+        </div>
+        <div class="label-input-group">
+          <label>OWNER'S NAME</label>
+          <input type="text" data-field="owner_name" value="{{ owner_name }}">
+        </div>
+        <div class="label-input-group">
+          <label>ANIMAL'S NAME</label>
+          <input type="text" data-field="animal_name" value="{{ animal_name }}">
+        </div>
+        <div class="label-input-group">
+          <label>BREED</label>
+          <input type="text" data-field="animal_breed" value="{{ animal_breed }}">
+        </div>
+        <div class="label-input-group">
+          <label>SPECIES</label>
+          <input type="text" data-field="animal_species" value="{{ animal_species }}">
+        </div>
+        <div class="label-input-group">
+          <label>AGE</label>
+          <input type="text" data-field="animal_age" value="{{ animal_age }}">
+        </div>
+        <div class="label-input-group">
+          <label>SEX</label>
+          <input type="text" data-field="animal_sex" value="{{ animal_sex }}">
+        </div>
+      </div>
+
+      <!-- Right Column Fields (Date/Status) -->
+      <div>
+        <div class="label-input-group">
+          <label>DATE</label>
+          <input type="text" data-field="date_collected" value="{{ date_collected }}">
+        </div>
+        <div class="label-input-group">
+          <label>PLACE STICKER HERE</label>
+          <input type="text" data-field="sample_identifier" value="{{ sample_identifier }}">
+        </div>
+        <div class="label-input-group">
+          <label>Previous Submission(s) from this animal to LADDL:</label>
+          <input type="text" data-field="previous_submissions" value="{{ previous_submissions }}">
+        </div>
+        <div class="label-input-group">
+          <label>No</label>
+          <input type="text" data-field="previous_submission_no" value="{{ previous_submission_no }}">
+        </div>
+        <div class="label-input-group">
+          <label>Yes</label>
+          <input type="text" data-field="previous_submission_yes" value="{{ previous_submission_yes }}">
+        </div>
+        <div class="label-input-group">
+          <label>If yes, DL#</label>
+          <input type="text" data-field="previous_submission_dl_number" value="{{ previous_submission_dl_number }}">
+        </div>
+        <div class="label-input-group">
+          <label>and date</label>
+          <input type="text" data-field="previous_submission_date" value="{{ previous_submission_date }}">
+        </div>
+        <div class="label-input-group">
+          <label>Please select:</label>
+          <input type="text" data-field="sample_status" value="{{ sample_status }}">
+        </div>
+        <div class="label-input-group">
+          <label>Alive</label>
+          <input type="text" data-field="status_alive" value="{{ status_alive }}">
+        </div>
+        <div class="label-input-group">
+          <label>Died</label>
+          <input type="text" data-field="status_died" value="{{ status_died }}">
+        </div>
+        <div class="label-input-group">
+          <label>Euthanized</label>
+          <input type="text" data-field="status_euthanized" value="{{ status_euthanized }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <div class="label-input-group">
+        <label>Number of specimens submitted</label>
+        <input type="text" data-field="number_of_specimens" value="{{ number_of_specimens }}">
+      </div>
+      <div class="label-input-group">
+        <label>Number of vials</label>
+        <input type="text" data-field="number_of_vials" value="{{ number_of_vials }}">
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <label>Clinical History:</label>
+      <div style="border-bottom: 1px solid #000; height: 60px; margin-top: 5px;"></div>
+    </div>
+
+    <!-- Diagram Section -->
+    <div class="drawing-area">
+      <div class="diagram">
+        <p>Front</p>
+        <img src="front_view.png" alt="Front View" style="width: 150px;">
+        <p>Ventral</p>
+      </div>
+      <div class="diagram">
+        <p>Dorsal</p>
+        <img src="dorsal_view.png" alt="Dorsal View" style="width: 150px;">
+      </div>
+      <div class="diagram">
+        <p>Right</p>
+        <img src="right_view.png" alt="Right View" style="width: 150px;">
+        <p>Left</p>
+        <img src="left_view.png" alt="Left View" style="width: 150px;">
+        <p>Right</p>
+      </div>
+      <div class="diagram">
+        <p>Rear</p>
+        <img src="rear_view.png" alt="Rear View" style="width: 150px;">
+      </div>
+    </div>
+
+    <div class="full-width-section" style="margin-top: 40px;">
+      <label>Clinical Differential Diagnoses:</label>
+      <div style="border-bottom: 1px solid #000; height: 30px; margin-top: 5px;"></div>
+    </div>
+
+    <div class="full-width-section">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> *Mass/Nodule</label>
+        <label><input type="checkbox"> Yes</label>
+        <label><input type="checkbox"> X</label>
+        <label><input type="checkbox"> _cm) Margins discrete</label>
+        <label><input type="checkbox"> No</label>
+        <label><input type="checkbox"> Yes</label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Entire mass submitted</label>
+        <label><input type="checkbox"> No</label>
+        <label><input type="checkbox"> Yes</label>
+        <label><input type="checkbox"> Surgeon's impression of removal</label>
+        <label><input type="checkbox"> Complete</label>
+        <label><input type="checkbox"> Incomplete</label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> *If multiple masses – list information under history.</label>
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Check here if you desire Dermatopathology Review (additional cost)</label>
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Skin biopsy (check all that apply):</label>
+        <label><input type="checkbox"> Flat</label>
+        <label><input type="checkbox"> Raised</label>
+        <label><input type="checkbox"> Depressed</label>
+        <label><input type="checkbox"> Macule</label>
+        <label><input type="checkbox"> Papule</label>
+        <label><input type="checkbox"> Pedunculated</label>
+        <label><input type="checkbox"> Alopecic</label>
+        <label><input type="checkbox"> Altered hair</label>
+        <label><input type="checkbox"> Erosion/ulceration</label>
+        <label><input type="checkbox"> Seborrhea/scale/crust</label>
+        <label><input type="checkbox"> Pruritic</label>
+        <label><input type="checkbox"> Wheal</label>
+        <label><input type="checkbox"> Painful</label>
+        <label><input type="checkbox"> Recurrent</label>
+        <label><input type="checkbox"> Pustules</label>
+        <label><input type="checkbox"> Vesicles/bulla</label>
+        <label><input type="checkbox"> Epidermal collarette</label>
+        <label><input type="checkbox"> Deg pigmentation</label>
+        <label><input type="checkbox"> Hyperpigmentation</label>
+        <label><input type="checkbox"> Lichenification</label>
+        <label><input type="checkbox"> Erythema</label>
+        <label><input type="checkbox"> Excoriation</label>
+      </div>
+    </div>
+
+    <div class="full-width-section">
+      <label>Previous treatment/response to therapy</label>
+      <div style="border-bottom: 1px solid #000; height: 40px; margin-top: 5px;"></div>
+    </div>
+
+    <div class="full-width-section">
+      <label>Results of other diagnostic tests</label>
+      <div style="border-bottom: 1px solid #000; height: 40px; margin-top: 5px;"></div>
+    </div>
+
+    <div class="full-width-section">
+      <label>Internal organs also affected (please describe)</label>
+      <div style="border-bottom: 1px solid #000; height: 100px; margin-top: 5px;"></div>
+    </div>
+
+    <div class="signature-line">
+      <p>BUS-FRM-102.2 Biopsy Form</p>
+      <p style="float: right;">01/2018</p>
+    </div>
+  </div>
+</body>

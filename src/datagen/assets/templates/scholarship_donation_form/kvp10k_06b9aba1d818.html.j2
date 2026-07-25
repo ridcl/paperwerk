@@ -1,0 +1,193 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .form-row > div {
+    width: 48%;
+  }
+  .full-width {
+    width: 100%;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 60px;"/>
+    <h1 style="font-size: 24pt; margin: 5px 0;">The Hong Kong Academy for Performing Arts</h1>
+    <h2 style="font-size: 16pt; margin: 0;">香港演藝學院</h2>
+  </div>
+
+  <h2 style="font-size: 14pt; margin-bottom: 20px;">Scholarship Donation Form</h2>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">
+        Name of Scholarship: <span data-field="scholarship_name">{{ scholarship_name }}</span>
+      </td>
+      <td style="width: 50%; text-align: right;">(Eng)</td>
+    </tr>
+    <tr>
+      <td>Academic Year(s) of the Scholarship:</td>
+      <td style="width: 50%;">
+        <span data-field="academic_year_1">{{ academic_year_1 }}</span> /
+        <span data-field="academic_year_2">{{ academic_year_2 }}</span> /
+        <span data-field="academic_year_3">{{ academic_year_3 }}</span> /
+        <span data-field="academic_year_4">{{ academic_year_4 }}</span> /
+        <span data-field="academic_year_5">{{ academic_year_5 }}</span> /
+        <span data-field="academic_year_6">{{ academic_year_6 }}</span>
+      </td>
+      <td style="width: 50%; text-align: right;">(Chi)</td>
+    </tr>
+    <tr>
+      <td>Total Scholarship Amount:</td>
+      <td style="width: 50%;"><span data-field="total_amount">{{ total_amount }}</span></td>
+      <td style="width: 50%; text-align: right;">No. of Scholarship(s): <span data-field="number_of_scholarships">{{ number_of_scholarships }}</span></td>
+    </tr>
+    <tr>
+      <td>Designated Programme(s):</td>
+      <td style="width: 50%;">
+        <input type="checkbox" id="sub_degree"><label for="sub_degree">Sub-degree</label>
+        <input type="checkbox" id="degree"><label for="degree">Degree</label>
+        <input type="checkbox" id="master"><label for="master">Master</label>
+        <input type="checkbox" id="no_preference"><label for="no_preference">No Preference</label>
+      </td>
+      <td style="width: 50%;"></td>
+    </tr>
+    <tr>
+      <td>Designated School(s):</td>
+      <td style="width: 50%;">
+        <input type="checkbox" id="ch_opera"><label for="ch_opera">Chinese Opera</label>
+        <input type="checkbox" id="dance"><label for="dance">Dance</label>
+        <input type="checkbox" id="drama"><label for="drama">Drama</label>
+        <input type="checkbox" id="film_tv"><label for="film_tv">Film & Television</label>
+      </td>
+      <td style="width: 50%;">
+        <input type="checkbox" id="theatre_arts"><label for="theatre_arts">Theatre & Entertainment Arts</label>
+        <input type="checkbox" id="no_preference_school"><label for="no_preference_school">No Preference</label>
+      </td>
+    </tr>
+    <tr>
+      <td>Other Requirement(s) such as Major:</td>
+      <td class="full-width"><span data-field="other_requirements">{{ other_requirements }}</span></td>
+    </tr>
+    <tr>
+      <td>Nationality of Scholarship Recipient(s):</td>
+      <td style="width: 50%;">
+        <input type="checkbox" id="local"><label for="local">Local</label>
+        <input type="checkbox" id="non_local"><label for="non_local">Non-Local</label>
+        <input type="checkbox" id="mainland_china"><label for="mainland_china">Mainland China</label>
+        <input type="checkbox" id="no_preference_nat"><label for="no_preference_nat">No Preference</label>
+      </td>
+      <td style="width: 50%;"></td>
+    </tr>
+  </table>
+
+  <h3 style="font-size: 12pt; margin-top: 30px; margin-bottom: 15px;">Donor's Information</h3>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Name:</td>
+      <td style="width: 75%;"><span data-field="donor_name">{{ donor_name }}</span></td>
+    </tr>
+    <tr>
+      <td>Company:</td>
+      <td><span data-field="donor_company">{{ donor_company }}</span></td>
+    </tr>
+    <tr>
+      <td>Job Title:</td>
+      <td><span data-field="donor_job_title">{{ donor_job_title }}</span></td>
+    </tr>
+    <tr>
+      <td>Tel:</td>
+      <td><span data-field="donor_phone">{{ donor_phone }}</span></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><span data-field="donor_email">{{ donor_email }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Acknowledgement in the Publication:</td>
+      <td style="width: 75%;">
+        <input type="checkbox" id="please_acknowledge"><label for="please_acknowledge">Please acknowledge as "Anonymous"</label>
+      </td>
+    </tr>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Address:</td>
+      <td style="width: 75%;"><span data-field="donor_address">{{ donor_address }}</span></td>
+    </tr>
+    <tr>
+      <td>Contact Person:</td>
+      <td><span data-field="contact_person_name">{{ contact_person_name }}</span></td>
+    </tr>
+  </table>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Signature</td>
+      <td style="width: 75%; text-align: right;"></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 10pt;">
+      <strong>Remarks:</strong>
+      <br>
+      <span data-field="remark_1">{{ remark_1 }}</span>
+      <br>
+      <span data-field="remark_2">{{ remark_2 }}</span>
+      <br>
+      <span data-field="remark_3">{{ remark_3 }}</span>
+      <br>
+      <span data-field="remark_4">{{ remark_4 }}</span>
+    </p>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt; display: flex; justify-content: space-between;">
+    <div>
+      <p>Chinese Opera</p>
+      <p>Drama</p>
+      <p>Film & Television</p>
+      <p>Theatre & Entertainment Arts</p>
+    </div>
+    <div>
+      <p>國語</p>
+      <p>劇</p>
+      <p>電影電視</p>
+      <p>舞台及製作藝術</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  td { padding: 8px 0; text-align: left; }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <h1 style="font-size: 24pt; margin-bottom: 10px;">University of Pennsylvania</h1>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Seal Image -->
+      <div style="width: 100px; height: 100px; margin: 0 auto;"></div>
+    </div>
+    <h2 style="font-size: 16pt; margin-top: 0;">The University Archives and Records Center</h2>
+    <h3 style="font-size: 14pt; margin-top: 30px;">A Guide to the <span data-field="collection_name">{{ collection_name }}</span></h3>
+    <p style="font-size: 12pt; margin-top: 10px;">1865-1895</p>
+    <p style="font-size: 12pt; margin-top: 5px;">{{ item_count }} Items</p>
+    <p style="font-size: 12pt; margin-top: 5px;">UPT 50 C753</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <p style="font-size: 12pt;">Dennis Conner Papers</p>
+    <p style="font-size: 12pt;">UPT 50 C753</p>
+  </div>
+  <h2 style="text-align: center; font-size: 16pt;">TABLE OF CONTENTS</h2>
+  <div style="margin-top: 40px;">
+    <p style="display: flex; justify-content: space-between; font-size: 12pt;">
+      <span>ARRANGEMENT</span>
+      <span style="width: 50px; text-align: right;">1</span>
+    </p>
+    <p style="display: flex; justify-content: space-between; font-size: 12pt;">
+      <span>INVENTORY</span>
+      <span style="width: 50px; text-align: right;">2</span>
+    </p>
+    <p style="display: flex; justify-content: space-between; font-size: 12pt;">
+      <span>PRINTED MATERIALS</span>
+      <span style="width: 50px; text-align: right;">2</span>
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-top: 100px;">
+    <h2 style="font-size: 16pt;">Guide to the <span data-field="collection_name">{{ collection_name }}</span></h2>
+    <p style="font-size: 12pt;">1865-1895</p>
+    <p style="font-size: 12pt;">UPT 50 C753</p>
+    <p style="font-size: 12pt; margin-top: 5px;">{{ item_count }} Items</p>
+  </div>
+  <div style="margin-top: 50px;">
+    <p style="font-size: 12pt;">Access is granted in accordance with the <a href="#" style="color: blue;">Protocols for the University Archives and Records Center</a>.</p>
+  </div>
+  <div style="margin-top: 50px;">
+    <h3 style="font-size: 14pt;">ARRANGEMENT</h3>
+    <p style="font-size: 12pt; margin-top: 10px;">These materials relate to <span data-field="collection_subject_1">{{ collection_subject_1 }}</span> (c. 1844-1904), M.D. 1867, and his son-in-law <span data-field="collection_subject_2">{{ collection_subject_2 }}</span>, Jr. (1873-1944), LL.B. 1895. Although the collection has not been fully processed, the following inventory is available.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 10px;">
+    <p style="font-size: 12pt;">Dennis Conner Papers</p>
+    <p style="font-size: 12pt;">UPT 50 C753</p>
+  </div>
+  <h2 style="text-align: center; font-size: 16pt;">Dennis N. Conner Papers</h2>
+  <p style="text-align: center; font-size: 14pt;">1865-1895</p>
+  <p style="text-align: center; font-size: 12pt;">UPT 50 C753</p>
+  <p style="text-align: center; font-size: 12pt; margin-top: 30px;">Access is granted in accordance with the <a href="#" style="color: blue;">Protocols for the University Archives and Records Center</a>.</p>
+
+  <h3 style="font-size: 14pt; margin-top: 50px;">INVENTORY</h3>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;">Description</td>
+        <td style="width: 15%; text-align: center;">Box</td>
+        <td style="width: 15%; text-align: center;">Folder</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory %}
+      <tr>
+        <td><span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center;"><span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="text-align: center;"><span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 10px;">
+    <p style="font-size: 12pt;">Dennis Conner Papers</p>
+    <p style="font-size: 12pt;">UPT 50 C753</p>
+  </div>
+  <h3 style="font-size: 14pt; margin-top: 50px;">INVENTORY</h3>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 70%;">Description</td>
+        <td style="width: 15%; text-align: center;">Box</td>
+        <td style="width: 15%; text-align: center;">Folder</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory %}
+      <tr>
+        <td><span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td style="text-align: center;"><span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span></td>
+        <td style="text-align: center;"><span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

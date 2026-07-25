@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OSHPD Seismic Certification</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 20px; }
+        .section-header { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 3px; }
+        .form-row { display: flex; margin-bottom: 10px; }
+        .form-row > div { flex: 1; }
+        .label { font-weight: bold; display: inline-block; width: 150px; }
+        .input-field { border-bottom: 1px solid #000; min-width: 200px; }
+        .signature-line { border-top: 1px solid #000; margin-top: 50px; padding-top: 5px; }
+        .table-caption { font-size: 10pt; margin-top: 5px; font-weight: bold; }
+    </style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+  .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 10px; }
+  .section-header { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .sub-header { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .notes { font-size: 10pt; margin-top: 30px; }
+  .footer { font-size: 9pt; text-align: right; margin-top: 50px; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .title-block {
+    flex-grow: 1;
+  }
+  .logo-block {
+    text-align: right;
+  }
+  .summary-table {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .details-section {
+    margin-top: 30px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    right: 60px;
+    font-size: 10pt;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">OFFICE OF STATEWIDE HEALTH PLANNING AND DEVELOPMENT</div>
+        <div style="font-size: 14pt; font-weight: bold;">FACILITIES DEVELOPMENT DIVISION</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div class="section-header">APPLICATION FOR OSHPD SPECIAL SEISMIC CERTIFICATION PREAPPROVAL (OSP)</div>
+            <div style="margin-top: 15px;">
+                <div class="form-row">
+                    <div style="width: 150px;">Type:</div>
+                    <div style="flex-grow: 1;">
+                        <input type="checkbox" name="type_new"> New
+                        <input type="checkbox" name="type_renewal"> Renewal
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-weight: bold;">OFFICE USE ONLY</div>
+            <div style="margin-top: 10px;">APPLICATION #: <span data-field="application_number">{{ application_number }}</span></div>
+        </div>
+    </div>
+
+    <div class="section-header">Manufacturer Information</div>
+    <div class="form-row">
+        <div style="width: 150px;">Manufacturer:</div>
+        <div style="flex-grow: 1;"><span data-field="manufacturer.name">{{ manufacturer.name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Manufacturer's Technical Representative:</div>
+        <div style="flex-grow: 1;"><span data-field="manufacturer.tech_rep">{{ manufacturer.tech_rep }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Mailing Address:</div>
+        <div style="flex-grow: 1;"><span data-field="manufacturer.address">{{ manufacturer.address }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Telephone:</div>
+        <div style="flex-grow: 1;"><span data-field="manufacturer.phone">{{ manufacturer.phone }}</span></div>
+        <div style="width: 150px;">Email:</div>
+        <div style="flex-grow: 1;"><span data-field="manufacturer.email">{{ manufacturer.email }}</span></div>
+    </div>
+
+    <div class="section-header">Product Information</div>
+    <div class="form-row">
+        <div style="width: 150px;">Product Name:</div>
+        <div style="flex-grow: 1;"><span data-field="product.name">{{ product.name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Product Type:</div>
+        <div style="flex-grow: 1;"><span data-field="product.type">{{ product.type }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Product Model Number:</div>
+        <div style="flex-grow: 1;"><span data-field="product.model_number">{{ product.model_number }}</span></div>
+    </div>
+    <div style="margin-top: 10px;">
+        General Description: <span data-field="product.description">{{ product.description }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Modifications made to test units to address anomalies observed during testing shall be incorporated into production units.
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Mounting Description:</div>
+        <div style="flex-grow: 1;"><span data-field="product.mounting_description">{{ product.mounting_description }}</span></div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">OFFICE OF STATEWIDE HEALTH PLANNING AND DEVELOPMENT</div>
+        <div style="font-size: 14pt; font-weight: bold;">FACILITIES DEVELOPMENT DIVISION</div>
+    </div>
+
+    <div class="section-header">Applicant Information</div>
+    <div class="form-row">
+        <div style="width: 150px;">Applicant Company Name:</div>
+        <div style="flex-grow: 1;"><span data-field="applicant.company_name">{{ applicant.company_name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Contact Person:</div>
+        <div style="flex-grow: 1;"><span data-field="applicant.contact_person">{{ applicant.contact_person }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Mailing Address:</div>
+        <div style="flex-grow: 1;"><span data-field="applicant.address">{{ applicant.address }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Telephone:</div>
+        <div style="flex-grow: 1;"><span data-field="applicant.phone">{{ applicant.phone }}</span></div>
+        <div style="width: 150px;">Email:</div>
+        <div style="flex-grow: 1;"><span data-field="applicant.email">{{ applicant.email }}</span></div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        I hereby agree to reimburse the Office of Statewide Health Planning and Development review fees in accordance with the California Administrative Code, 2016.
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            Signature of Applicant:
+            <div class="signature-line" style="width: 300px;"></div>
+        </div>
+        <div>
+            Date: <span data-field="date_signed">{{ date_signed }}</span>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            Title: <span data-field="applicant.title">{{ applicant.title }}</span>
+        </div>
+        <div>
+            Company Name: <span data-field="applicant.company_name">{{ applicant.company_name }}</span>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <div style="font-size: 40pt; font-weight: bold;">OSHPD</div>
+    </div>
+    <div style="text-align: center; font-size: 10pt; margin-top: 20px;">
+        <p>"Access to Safe, Quality Healthcare Environments that Meet California's Diverse and Dynamic Needs"</p>
+        <p>STATE OF CALIFORNIA – HEALTH AND HUMAN SERVICES AGENCY</p>
+        <p>OSH-FD-759 (REV 12/16/15)</p>
+        <p>Page 1 of 3</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">OFFICE OF STATEWIDE HEALTH PLANNING AND DEVELOPMENT</div>
+        <div style="font-size: 14pt; font-weight: bold;">FACILITIES DEVELOPMENT DIVISION</div>
+    </div>
+
+    <div class="section-header">California Licensed Structural Engineer Responsible for the Engineering and Test Report(s)</div>
+    <div class="form-row">
+        <div style="width: 150px;">Company Name:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.company_name">{{ engineer.company_name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Name:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.name">{{ engineer.name }}</span></div>
+        <div style="width: 150px;">California License Number:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.license_number">{{ engineer.license_number }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Mailing Address:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.address">{{ engineer.address }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Telephone:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.phone">{{ engineer.phone }}</span></div>
+        <div style="width: 150px;">Email:</div>
+        <div style="flex-grow: 1;"><span data-field="engineer.email">{{ engineer.email }}</span></div>
+    </div>
+
+    <div class="section-header">Supports and Attachments Preapproval</div>
+    <div style="margin-top: 10px;">
+        <input type="checkbox" name="supports_preapproved"> Supports and attachments are preapproved under OPM-
+        (Separate application for OSHPD Preapproval of Manufacturer's Certification (OPM) of Supports and attachments is required)
+    </div>
+    <div style="margin-top: 10px;">
+        <input type="checkbox" name="supports_not_preapproved"> Supports and attachments are not preapproved
+    </div>
+
+    <div class="section-header">Certification Method</div>
+    <div style="margin-top: 10px;">
+        <input type="checkbox" name="method_testing"> Testing in accordance with: <span data-field="certification.standard">{{ certification.standard }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        <input type="checkbox" name="method_other"> Other (Please Specify): 
+    </div>
+
+    <div class="section-header">Testing Laboratory</div>
+    <div class="form-row">
+        <div style="width: 150px;">Company Name:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.company_name">{{ lab.company_name }}</span></div>
+        <div style="width: 150px;">Date:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.date">{{ lab.date }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Contact Name:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.contact_name">{{ lab.contact_name }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Mailing Address:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.address">{{ lab.address }}</span></div>
+    </div>
+    <div class="form-row">
+        <div style="width: 150px;">Telephone:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.phone">{{ lab.phone }}</span></div>
+        <div style="width: 150px;">Email:</div>
+        <div style="flex-grow: 1;"><span data-field="lab.email">{{ lab.email }}</span></div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">OFFICE OF STATEWIDE HEALTH PLANNING AND DEVELOPMENT</div>
+        <div style="font-size: 14pt; font-weight: bold;">FACILITIES DEVELOPMENT DIVISION</div>
+    </div>
+
+    <div class="section-header">Seismic Parameters</div>
+    <div style="margin-top: 10px;">
+        Design in accordance with ASCE 7-10 Chapter 13: <input type="checkbox" name="design_yes"> Yes <input type="checkbox" name="design_no"> No
+    </div>
+    <div style="margin-top: 10px;">
+        Design Basis of Equipment or Components (Fn/w): <span data-field="seismic.fn_w">{{ seismic.fn_w }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Sds (Design spectral response acceleration at short period, g) = <span data-field="seismic.sds">{{ seismic.sds }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        a_b (In-structure equipment or component response modification factor) = <span data-field="seismic.a_b">{{ seismic.a_b }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        R_b (Equipment or component response modification factor) = <span data-field="seismic.r_b">{{ seismic.r_b }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Iz (Importance factor) = <span data-field="seismic.iz">{{ seismic.iz }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        z/h (Height factor ratio) = <span data-field="seismic.z_h">{{ seismic.z_h }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Equipment or Component Natural Frequencies (Hz) = <span data-field="seismic.natural_freq">{{ seismic.natural_freq }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Overall dimensions and weight (or range thereof) = <span data-field="seismic.dimensions_weight">{{ seismic.dimensions_weight }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Equipment or Components @ grade designed in accordance with ASCE 7-10 Chapter 15: <input type="checkbox" name="grade_design_yes"> Yes <input type="checkbox" name="grade_design_no"> No
+    </div>
+    <div style="margin-top: 10px;">
+        Design Basis of Equipment or Components (V/W) = <span data-field="seismic.v_w">{{ seismic.v_w }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Sds (Design spectral response acceleration at short period, g) = <span data-field="seismic.sds_2">{{ seismic.sds_2 }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        R (Response overstrength factor) = <span data-field="seismic.r">{{ seismic.r }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Iz (System overstrength factor) = <span data-field="seismic.iz_2">{{ seismic.iz_2 }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        C_d (Deflection amplification factor) = <span data-field="seismic.cd">{{ seismic.cd }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Iz (Importance factor) = <span data-field="seismic.iz_3">{{ seismic.iz_3 }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Height to Center of Gravity above base = <span data-field="seismic.height_cg">{{ seismic.height_cg }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Equipment or Component Natural Frequencies (Hz) = <span data-field="seismic.natural_freq_2">{{ seismic.natural_freq_2 }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Overall dimensions and weight (or range thereof) = <span data-field="seismic.dimensions_weight_2">{{ seismic.dimensions_weight_2 }}</span>
+    </div>
+    <div style="margin-top: 10px;">
+        Tank(s) designed in accordance with ASME BPVC, 2015: <input type="checkbox" name="tank_design_yes"> Yes <input type="checkbox" name="tank_design_no"> No
+    </div>
+
+    <div class="section-header">List of Attachments Supporting Seismic Special Certification</div>
+    <div style="margin-top: 10px;">
+        <input type="checkbox" name="attach_test_report"> Test Report(s)
+        <input type="checkbox" name="attach_drawings"> Drawings
+        <input type="checkbox" name="attach_calculations"> Calculations
+        <input type="checkbox" name="attach_manufacturer_catalog"> Manufacturer's Catalog
+    </div>
+    <div style="margin-top: 10px;">
+        Other(s)(Please Specify): <span data-field="attachments.other">{{ attachments.other }}</span>
+    </div>
+
+    <div style="margin-top: 30px;">
+        OSHPD Approval (For Office Use Only) – Approval Expires on December 31, 2025
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            Signature:
+            <div class="signature-line" style="width: 300px;"></div>
+        </div>
+        <div>
+            Date: <span data-field="approval_date">{{ approval_date }}</span>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            Print Name: <span data-field="approval_name">{{ approval_name }}</span>
+        </div>
+        <div>
+            Title: <span data-field="approval_title">{{ approval_title }}</span>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            Seismic Special Certification Valid Up to: Sds (g) = <span data-field="approval_sds">{{ approval_sds }}</span>
+        </div>
+        <div>
+            Condition of Approval (if applicable): 
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <div style="font-size: 40pt; font-weight: bold;">OSHPD</div>
+    </div>
+    <div style="text-align: center; font-size: 10pt; margin-top: 20px;">
+        <p>"Access to Safe, Quality Healthcare Environments that Meet California's Diverse and Dynamic Needs"</p>
+        <p>STATE OF CALIFORNIA – HEALTH AND HUMAN SERVICES AGENCY</p>
+        <p>OSH-FD-759 (REV 12/16/15)</p>
+        <p>Page 3 of 3</p>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">SPECIAL SEISMIC CERTIFICATION</div>
+        <div style="font-size: 24pt; font-weight: bold;">CERTIFIED COMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <div style="font-size: 14pt; font-weight: bold;">1900462-CR-001 RO</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+            <div style="font-size: 12pt;"><span data-field="matrix.manufacturer">{{ matrix.manufacturer }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TRU COMPLIANCE</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+            <div style="font-size: 12pt;"><span data-field="matrix.model_line">{{ matrix.model_line }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TABLE 1</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="table-caption">Certified Product Construction Summary:</div>
+        <div style="margin-bottom: 10px;">
+            Enclosures: NEMA 1 - Cold formed carbon steel, NEMA 3 - Cold formed carbon steel, NEMA 4X - Stainless Steel
+        </div>
+        <div class="table-caption">Certified Options Summary:</div>
+        <div style="margin-bottom: 10px;">
+            Mounting Configuration: Wall mounted-rigid
+        </div>
+        <div style="margin-bottom: 10px;">
+            Note: Installed mounting configuration must be of similar configuration and equivalent strength and stiffness to those tested.
+        </div>
+        <div class="table-caption">Building Code: CBC 2019</div>
+    </div>
+
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Model Line</th>
+                <th style="width: 15%;">Model</th>
+                <th style="width: 15%;">Dimensions (in)</th>
+                <th style="width: 15%;">Weight (lb)</th>
+                <th style="width: 20%;">Notes</th>
+                <th style="width: 10%;">UUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in matrix_table_1 %}
+            <tr>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].model_line">{{ matrix_table_1[loop.index0].model_line }}</span></td>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].model">{{ matrix_table_1[loop.index0].model }}</span></td>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].dimensions">{{ matrix_table_1[loop.index0].dimensions }}</span></td>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].weight">{{ matrix_table_1[loop.index0].weight }}</span></td>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].notes">{{ matrix_table_1[loop.index0].notes }}</span></td>
+                <td><span data-field="matrix_table_1[{{ loop.index0 }}].uut">{{ matrix_table_1[loop.index0].uut }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <div style="font-size: 10pt;">Notes:</div>
+        <div style="font-size: 10pt;">
+            <span data-field="matrix.notes_1">{{ matrix.notes_1 }}</span>
+            <br>
+            <span data-field="matrix.notes_2">{{ matrix.notes_2 }}</span>
+            <br>
+            <span data-field="matrix.notes_3">{{ matrix.notes_3 }}</span>
+            <br>
+            <span data-field="matrix.notes_4">{{ matrix.notes_4 }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            TRU Compliance, by Structural Integrity Associates, Inc.
+            <div style="font-size: 10pt;">844-TRU-0200 | info@trucompliance.com</div>
+        </div>
+        <div>
+            <div style="font-size: 10pt;">04/08/2021</div>
+        </div>
+    </div>
+    <div style="text-align: right; font-size: 10pt;">OSP-0304</div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">SPECIAL SEISMIC CERTIFICATION</div>
+        <div style="font-size: 24pt; font-weight: bold;">CERTIFIED SUBCOMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <div style="font-size: 14pt; font-weight: bold;">1900462-CR-001 RO</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix.manufacturer">{{ subcomponent_matrix.manufacturer }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TRU COMPLIANCE</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix.model_line">{{ subcomponent_matrix.model_line }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TABLE 2</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="table-caption">Table Description: Enclosures and Internal Frame</div>
+    </div>
+
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Model Line</th>
+                <th style="width: 15%;">Model</th>
+                <th style="width: 15%;">Dimension (in)</th>
+                <th style="width: 15%;">Weight (lb)</th>
+                <th style="width: 20%;">Material</th>
+                <th style="width: 10%;">Notes</th>
+                <th style="width: 10%;">UUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in subcomponent_matrix_table_2 %}
+            <tr>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].model_line">{{ subcomponent_matrix_table_2[loop.index0].model_line }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].model">{{ subcomponent_matrix_table_2[loop.index0].model }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].dimension">{{ subcomponent_matrix_table_2[loop.index0].dimension }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].weight">{{ subcomponent_matrix_table_2[loop.index0].weight }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].material">{{ subcomponent_matrix_table_2[loop.index0].material }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].notes">{{ subcomponent_matrix_table_2[loop.index0].notes }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_2[{{ loop.index0 }}].uut">{{ subcomponent_matrix_table_2[loop.index0].uut }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <div style="font-size: 10pt;">Notes:</div>
+        <div style="font-size: 10pt;">
+            <span data-field="subcomponent_matrix.notes_1">{{ subcomponent_matrix.notes_1 }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            TRU Compliance, by Structural Integrity Associates, Inc.
+            <div style="font-size: 10pt;">844-TRU-0200 | info@trucompliance.com</div>
+        </div>
+        <div>
+            <div style="font-size: 10pt;">Page 5 of 20</div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">SPECIAL SEISMIC CERTIFICATION</div>
+        <div style="font-size: 24pt; font-weight: bold;">CERTIFIED SUBCOMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <div style="font-size: 14pt; font-weight: bold;">1900462-CR-001 RO</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_2.manufacturer">{{ subcomponent_matrix_2.manufacturer }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TRU COMPLIANCE</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_2.model_line">{{ subcomponent_matrix_2.model_line }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TABLE 3</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="table-caption">Table Description: Interior Bus Stack</div>
+    </div>
+
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Model Line(s) (Manufacturer)</th>
+                <th style="width: 15%;">Model</th>
+                <th style="width: 15%;">Dimension (in)</th>
+                <th style="width: 15%;">Weight (lb)</th>
+                <th style="width: 20%;">Material</th>
+                <th style="width: 10%;">Notes</th>
+                <th style="width: 10%;">UUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in subcomponent_matrix_table_3 %}
+            <tr>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].model_line">{{ subcomponent_matrix_table_3[loop.index0].model_line }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].model">{{ subcomponent_matrix_table_3[loop.index0].model }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].dimension">{{ subcomponent_matrix_table_3[loop.index0].dimension }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].weight">{{ subcomponent_matrix_table_3[loop.index0].weight }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].material">{{ subcomponent_matrix_table_3[loop.index0].material }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].notes">{{ subcomponent_matrix_table_3[loop.index0].notes }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_3[{{ loop.index0 }}].uut">{{ subcomponent_matrix_table_3[loop.index0].uut }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <div style="font-size: 10pt;">Notes:</div>
+        <div style="font-size: 10pt;">
+            <span data-field="subcomponent_matrix_2.notes_1">{{ subcomponent_matrix_2.notes_1 }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            TRU Compliance, by Structural Integrity Associates, Inc.
+            <div style="font-size: 10pt;">844-TRU-0200 | info@trucompliance.com</div>
+        </div>
+        <div>
+            <div style="font-size: 10pt;">Page 6 of 20</div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">SPECIAL SEISMIC CERTIFICATION</div>
+        <div style="font-size: 24pt; font-weight: bold;">CERTIFIED SUBCOMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <div style="font-size: 14pt; font-weight: bold;">1900462-CR-001 RO</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_3.manufacturer">{{ subcomponent_matrix_3.manufacturer }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TRU COMPLIANCE</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_3.model_line">{{ subcomponent_matrix_3.model_line }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TABLE 4</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="table-caption">Table Description: Circuit Breakers</div>
+    </div>
+
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Component Type</th>
+                <th style="width: 15%;">Manufacturer¹</th>
+                <th style="width: 15%;">Model</th>
+                <th style="width: 15%;">Seismic Certification Limits:</th>
+                <th style="width: 20%;">Description</th>
+                <th style="width: 10%;">Notes</th>
+                <th style="width: 10%;">UUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in subcomponent_matrix_table_4 %}
+            <tr>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].component_type">{{ subcomponent_matrix_table_4[loop.index0].component_type }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].manufacturer">{{ subcomponent_matrix_table_4[loop.index0].manufacturer }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].model">{{ subcomponent_matrix_table_4[loop.index0].model }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].limits">{{ subcomponent_matrix_table_4[loop.index0].limits }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].description">{{ subcomponent_matrix_table_4[loop.index0].description }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].notes">{{ subcomponent_matrix_table_4[loop.index0].notes }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_4[{{ loop.index0 }}].uut">{{ subcomponent_matrix_table_4[loop.index0].uut }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <div style="font-size: 10pt;">Notes:</div>
+        <div style="font-size: 10pt;">
+            <span data-field="subcomponent_matrix_3.notes_1">{{ subcomponent_matrix_3.notes_1 }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            TRU Compliance, by Structural Integrity Associates, Inc.
+            <div style="font-size: 10pt;">844-TRU-0200 | info@trucompliance.com</div>
+        </div>
+        <div>
+            <div style="font-size: 10pt;">Page 7 of 20</div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div style="text-align: center;">
+        <div style="font-size: 18pt; font-weight: bold;">SPECIAL SEISMIC CERTIFICATION</div>
+        <div style="font-size: 24pt; font-weight: bold;">CERTIFIED SUBCOMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <div style="font-size: 14pt; font-weight: bold;">1900462-CR-001 RO</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_4.manufacturer">{{ subcomponent_matrix_4.manufacturer }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TRU COMPLIANCE</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+            <div style="font-size: 12pt;"><span data-field="subcomponent_matrix_4.model_line">{{ subcomponent_matrix_4.model_line }}</span></div>
+        </div>
+        <div>
+            <div style="font-size: 12pt; font-weight: bold;">TABLE 4</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="table-caption">Table Description: Circuit Breakers</div>
+    </div>
+
+    <table style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th style="width: 15%;">Component Type</th>
+                <th style="width: 15%;">Manufacturer¹</th>
+                <th style="width: 15%;">Model</th>
+                <th style="width: 15%;">Seismic Certification Limits:</th>
+                <th style="width: 20%;">Description</th>
+                <th style="width: 10%;">Notes</th>
+                <th style="width: 10%;">UUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in subcomponent_matrix_table_5 %}
+            <tr>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].component_type">{{ subcomponent_matrix_table_5[loop.index0].component_type }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].manufacturer">{{ subcomponent_matrix_table_5[loop.index0].manufacturer }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].model">{{ subcomponent_matrix_table_5[loop.index0].model }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].limits">{{ subcomponent_matrix_table_5[loop.index0].limits }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].description">{{ subcomponent_matrix_table_5[loop.index0].description }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].notes">{{ subcomponent_matrix_table_5[loop.index0].notes }}</span></td>
+                <td><span data-field="subcomponent_matrix_table_5[{{ loop.index0 }}].uut">{{ subcomponent_matrix_table_5[loop.index0].uut }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <div style="font-size: 10pt;">Notes:</div>
+        <div style="font-size: 10pt;">
+            <span data-field="subcomponent_matrix_4.notes_1">{{ subcomponent_matrix_4.notes_1 }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div>
+            TRU Compliance, by Structural Integrity Associates, Inc.
+            <div style="font-size: 10pt;">844-TRU-0200 | info@trucompliance.com</div>
+        </div>
+        <div>
+            <div style="font-size: 10pt;">Page 8 of 20</div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+  .header-title { font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 10px; }
+  .section-header { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .sub-header { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .notes { font-size: 10pt; margin-top: 30px; }
+  .footer { font-size: 9pt; text-align: right; margin-top: 50px; }
+</style>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <div class="header-title">SPECIAL SEISMIC CERTIFICATION</div>
+      <div style="font-size: 16pt; font-weight: bold;">CERTIFIED SUBCOMPONENT MATRIX</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 30pt; font-weight: bold;">ABB</div>
+      <div style="font-size: 30pt; font-weight: bold;">TRU</div>
+      <div style="font-size: 10pt; margin-top: -10px;">COMPLIANCE</div>
+    </div>
+  </div>
+  <div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <div style="font-size: 12pt; font-weight: bold;">Manufacturer:</div>
+        <div style="font-size: 12pt;"><span data-field="manufacturer.name">{{ manufacturer.name }}</span></div>
+      </div>
+      <div>
+        <div style="font-size: 12pt; font-weight: bold;">Model Line:</div>
+        <div style="font-size: 12pt;"><span data-field="model_line">{{ model_line }}</span></div>
+      </div>
+    </div>
+    <div style="margin-top: 10px;">
+      <div style="font-size: 12pt; font-weight: bold;">Building Code:</div>
+      <div style="font-size: 12pt;"><span data-field="building_code">{{ building_code }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top: 40px;">TABLE 5</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div style="width: 50%;">
+      <div style="font-size: 12pt; font-weight: bold;">Seismic Certification Limits:</div>
+      <div style="font-size: 12pt;">
+        <span data-field="seismic_limits.s_ds">{{ seismic_limits.s_ds }}</span> &lt; z/h = <span data-field="seismic_limits.z_h_1">{{ seismic_limits.z_h_1 }}</span><br>
+        <span data-field="seismic_limits.s_ds_2">{{ seismic_limits.s_ds_2 }}</span> &lt; z/h = <span data-field="seismic_limits.z_h_2">{{ seismic_limits.z_h_2 }}</span>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 12pt; font-weight: bold;">I_p = <span data-field="table_5.ip">{{ table_5.ip }}</span></div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Component Type</th>
+        <th style="width: 15%;">Manufacturer¹</th>
+        <th style="width: 25%;">Model</th>
+        <th style="width: 35%;">Description</th>
+        <th style="width: 10%;">Notes</th>
+        <th style="width: 10%;">UUT</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in table_5.components %}
+      <tr>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].component_type">{{ item.component_type }}</span></td>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].manufacturer">{{ item.manufacturer }}</span></td>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].model">{{ item.model }}</span></td>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].description">{{ item.description }}</span></td>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].notes">{{ item.notes }}</span></td>
+        <td><span data-field="table_5.components[{{ loop.index0 }}].uut">{{ item.uut }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    Notes:
+    <div style="font-size: 10pt; margin-top: 5px;">¹ GE or ABB may be branded on product, products are identical</div>
+  </div>
+
+  <div class="footer">
+    TRU Compliance, by Structural Integrity Associates, Inc.<br>
+    844-TRU-0200 | info@trucompliance.com<br>
+    Page <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-section">
+    <div class="title-block">
+      <h1>UNIT UNDER TEST (UUT)</h1>
+      <h2>SUMMARY SHEET</h2>
+      <p>1900462-CR-001 R0</p>
+    </div>
+    <div class="logo-block">
+      <img src="abb_logo.png" alt="ABB Logo" style="height: 50px; margin-right: 10px;">
+      <img src="tru_logo.png" alt="TRU Logo" style="height: 50px;">
+      <div style="margin-top: 10px; font-weight: bold;">UUT 3</div>
+    </div>
+  </div>
+
+  <table class="summary-table">
+    <tr>
+      <td style="width: 20%;">Manufacturer:</td>
+      <td><span data-field="manufacturer">{{ manufacturer }}</span></td>
+      <td style="width: 20%;">Model Line:</td>
+      <td><span data-field="model_line">{{ model_line }}</span></td>
+      <td style="width: 20%;">Model Number:</td>
+      <td><span data-field="model_number">{{ model_number }}</span></td>
+      <td style="width: 20%;">Serial Number:</td>
+      <td><span data-field="serial_number">{{ serial_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Product Construction Summary:</td>
+      <td><span data-field="product_construction_summary">{{ product_construction_summary }}</span></td>
+    </tr>
+  </table>
+
+  <div class="details-section">
+    <h3>Options/Subcomponent Summary:</h3>
+    <p><span data-field="options_summary">{{ options_summary }}</span></p>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width: 10%;">Weight (lb)</th>
+        <th style="width: 10%;">Depth (in)</th>
+        <th style="width: 15%;">Dimension (in)</th>
+        <th style="width: 15%;">Height (in)</th>
+        <th style="width: 15%;">Front-Back</th>
+        <th style="width: 15%;">Side-Side</th>
+        <th style="width: 10%;">Vertical</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="weight">{{ weight }}</span></td>
+        <td><span data-field="depth">{{ depth }}</span></td>
+        <td><span data-field="dimension">{{ dimension }}</span></td>
+        <td><span data-field="height">{{ height }}</span></td>
+        <td><span data-field="front_back">{{ front_back }}</span></td>
+        <td><span data-field="side_side">{{ side_side }}</span></td>
+        <td><span data-field="vertical">{{ vertical }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="details-section">
+    <h4>UUT Properties</h4>
+    <table style="margin-top: 15px;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Building Code</th>
+          <th style="width: 20%;">Test Criteria</th>
+          <th style="width: 10%;">S_DS (g)</th>
+          <th style="width: 10%;">z/h</th>
+          <th style="width: 20%;">I_p</th>
+          <th style="width: 10%;">A_FX,H (g)</th>
+          <th style="width: 10%;">A_FX,V (g)</th>
+          <th style="width: 10%;">A_BG,H (g)</th>
+          <th style="width: 10%;">A_BG,V (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="building_code">{{ building_code }}</span></td>
+          <td><span data-field="test_criteria">{{ test_criteria }}</span></td>
+          <td><span data-field="s_ds">{{ s_ds }}</span></td>
+          <td><span data-field="z_h">{{ z_h }}</span></td>
+          <td><span data-field="i_p">{{ i_p }}</span></td>
+          <td><span data-field="a_fx_h">{{ a_fx_h }}</span></td>
+          <td><span data-field="a_fx_v">{{ a_fx_v }}</span></td>
+          <td><span data-field="a_bg_h">{{ a_bg_h }}</span></td>
+          <td><span data-field="a_bg_v">{{ a_bg_v }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="details-section">
+    <h4>Test Mounting Details:</h4>
+    <img src="test_mounting_image.jpg" alt="Test Mounting Image" style="max-width: 100%; height: auto; margin-top: 15px;">
+    <p style="margin-top: 15px;"><span data-field="mounting_details">{{ mounting_details }}</span></p>
+  </div>
+
+  <div class="footer">
+    <p>TRU Compliance, by Structural Integrity Associates, Inc.</p>
+    <p>844-TRU-0200 | info@trucompliance.com</p>
+    <p>Page <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-section">
+    <div class="title-block">
+      <h1>UNIT UNDER TEST (UUT)</h1>
+      <h2>SUMMARY SHEET</h2>
+      <p>1900462-CR-001 R0</p>
+    </div>
+    <div class="logo-block">
+      <img src="abb_logo.png" alt="ABB Logo" style="height: 50px; margin-right: 10px;">
+      <img src="tru_logo.png" alt="TRU Logo" style="height: 50px;">
+      <div style="margin-top: 10px; font-weight: bold;">UUT 4</div>
+    </div>
+  </div>
+
+  <table class="summary-table">
+    <tr>
+      <td style="width: 20%;">Manufacturer:</td>
+      <td><span data-field="manufacturer">{{ manufacturer }}</span></td>
+      <td style="width: 20%;">Model Line:</td>
+      <td><span data-field="model_line">{{ model_line }}</span></td>
+      <td style="width: 20%;">Model Number:</td>
+      <td><span data-field="model_number">{{ model_number }}</span></td>
+      <td style="width: 20%;">Serial Number:</td>
+      <td><span data-field="serial_number">{{ serial_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Product Construction Summary:</td>
+      <td><span data-field="product_construction_summary">{{ product_construction_summary }}</span></td>
+    </tr>
+  </table>
+
+  <div class="details-section">
+    <h3>Options/Subcomponent Summary:</h3>
+    <p><span data-field="options_summary">{{ options_summary }}</span></p>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width: 10%;">Weight (lb)</th>
+        <th style="width: 10%;">Depth (in)</th>
+        <th style="width: 15%;">Dimension (in)</th>
+        <th style="width: 15%;">Height (in)</th>
+        <th style="width: 15%;">Front-Back</th>
+        <th style="width: 15%;">Side-Side</th>
+        <th style="width: 10%;">Vertical</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="weight">{{ weight }}</span></td>
+        <td><span data-field="depth">{{ depth }}</span></td>
+        <td><span data-field="dimension">{{ dimension }}</span></td>
+        <td><span data-field="height">{{ height }}</span></td>
+        <td><span data-field="front_back">{{ front_back }}</span></td>
+        <td><span data-field="side_side">{{ side_side }}</span></td>
+        <td><span data-field="vertical">{{ vertical }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="details-section">
+    <h4>UUT Properties</h4>
+    <table style="margin-top: 15px;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Building Code</th>
+          <th style="width: 20%;">Test Criteria</th>
+          <th style="width: 10%;">S_DS (g)</th>
+          <th style="width: 10%;">z/h</th>
+          <th style="width: 20%;">I_p</th>
+          <th style="width: 10%;">A_FX,H (g)</th>
+          <th style="width: 10%;">A_FX,V (g)</th>
+          <th style="width: 10%;">A_BG,H (g)</th>
+          <th style="width: 10%;">A_BG,V (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="building_code">{{ building_code }}</span></td>
+          <td><span data-field="test_criteria">{{ test_criteria }}</span></td>
+          <td><span data-field="s_ds">{{ s_ds }}</span></td>
+          <td><span data-field="z_h">{{ z_h }}</span></td>
+          <td><span data-field="i_p">{{ i_p }}</span></td>
+          <td><span data-field="a_fx_h">{{ a_fx_h }}</span></td>
+          <td><span data-field="a_fx_v">{{ a_fx_v }}</span></td>
+          <td><span data-field="a_bg_h">{{ a_bg_h }}</span></td>
+          <td><span data-field="a_bg_v">{{ a_bg_v }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="details-section">
+    <h4>Test Mounting Details:</h4>
+    <img src="test_mounting_image.jpg" alt="Test Mounting Image" style="max-width: 100%; height: auto; margin-top: 15px;">
+    <p style="margin-top: 15px;"><span data-field="mounting_details">{{ mounting_details }}</span></p>
+  </div>
+
+  <div class="footer">
+    <p>TRU Compliance, by Structural Integrity Associates, Inc.</p>
+    <p>844-TRU-0200 | info@trucompliance.com</p>
+    <p>Page <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-section">
+    <div class="title-block">
+      <h1>UNIT UNDER TEST (UUT)</h1>
+      <h2>SUMMARY SHEET</h2>
+      <p>1900462-CR-001 R0</p>
+    </div>
+    <div class="logo-block">
+      <img src="abb_logo.png" alt="ABB Logo" style="height: 50px; margin-right: 10px;">
+      <img src="tru_logo.png" alt="TRU Logo" style="height: 50px;">
+      <div style="margin-top: 10px; font-weight: bold;">UUT 5</div>
+    </div>
+  </div>
+
+  <table class="summary-table">
+    <tr>
+      <td style="width: 20%;">Manufacturer:</td>
+      <td><span data-field="manufacturer">{{ manufacturer }}</span></td>
+      <td style="width: 20%;">Model Line:</td>
+      <td><span data-field="model_line">{{ model_line }}</span></td>
+      <td style="width: 20%;">Model Number:</td>
+      <td><span data-field="model_number">{{ model_number }}</span></td>
+      <td style="width: 20%;">Serial Number:</td>
+      <td><span data-field="serial_number">{{ serial_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Product Construction Summary:</td>
+      <td><span data-field="product_construction_summary">{{ product_construction_summary }}</span></td>
+    </tr>
+  </table>
+
+  <div class="details-section">
+    <h3>Options/Subcomponent Summary:</h3>
+    <p><span data-field="options_summary">{{ options_summary }}</span></p>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width: 10%;">Weight (lb)</th>
+        <th style="width: 10%;">Depth (in)</th>
+        <th style="width: 15%;">Dimension (in)</th>
+        <th style="width: 15%;">Height (in)</th>
+        <th style="width: 15%;">Front-Back</th>
+        <th style="width: 15%;">Side-Side</th>
+        <th style="width: 10%;">Vertical</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="weight">{{ weight }}</span></td>
+        <td><span data-field="depth">{{ depth }}</span></td>
+        <td><span data-field="dimension">{{ dimension }}</span></td>
+        <td><span data-field="height">{{ height }}</span></td>
+        <td><span data-field="front_back">{{ front_back }}</span></td>
+        <td><span data-field="side_side">{{ side_side }}</span></td>
+        <td><span data-field="vertical">{{ vertical }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="details-section">
+    <h4>UUT Properties</h4>
+    <table style="margin-top: 15px;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Building Code</th>
+          <th style="width: 20%;">Test Criteria</th>
+          <th style="width: 10%;">S_DS (g)</th>
+          <th style="width: 10%;">z/h</th>
+          <th style="width: 20%;">I_p</th>
+          <th style="width: 10%;">A_FX,H (g)</th>
+          <th style="width: 10%;">A_FX,V (g)</th>
+          <th style="width: 10%;">A_BG,H (g)</th>
+          <th style="width: 10%;">A_BG,V (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="building_code">{{ building_code }}</span></td>
+          <td><span data-field="test_criteria">{{ test_criteria }}</span></td>
+          <td><span data-field="s_ds">{{ s_ds }}</span></td>
+          <td><span data-field="z_h">{{ z_h }}</span></td>
+          <td><span data-field="i_p">{{ i_p }}</span></td>
+          <td><span data-field="a_fx_h">{{ a_fx_h }}</span></td>
+          <td><span data-field="a_fx_v">{{ a_fx_v }}</span></td>
+          <td><span data-field="a_bg_h">{{ a_bg_h }}</span></td>
+          <td><span data-field="a_bg_v">{{ a_bg_v }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="details-section">
+    <h4>Test Mounting Details:</h4>
+    <img src="test_mounting_image.jpg" alt="Test Mounting Image" style="max-width: 100%; height: auto; margin-top: 15px;">
+    <p style="margin-top: 15px;"><span data-field="mounting_details">{{ mounting_details }}</span></p>
+  </div>
+
+  <div class="footer">
+    <p>TRU Compliance, by Structural Integrity Associates, Inc.</p>
+    <p>844-TRU-0200 | info@trucompliance.com</p>
+    <p>Page <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="header-section">
+    <div class="title-block">
+      <h1>UNIT UNDER TEST (UUT)</h1>
+      <h2>SUMMARY SHEET</h2>
+      <p>1900462-CR-001 R0</p>
+    </div>
+    <div class="logo-block">
+      <img src="abb_logo.png" alt="ABB Logo" style="height: 50px; margin-right: 10px;">
+      <img src="tru_logo.png" alt="TRU Logo" style="height: 50px;">
+      <div style="margin-top: 10px; font-weight: bold;">UUT 6</div>
+    </div>
+  </div>
+
+  <table class="summary-table">
+    <tr>
+      <td style="width: 20%;">Manufacturer:</td>
+      <td><span data-field="manufacturer">{{ manufacturer }}</span></td>
+      <td style="width: 20%;">Model Line:</td>
+      <td><span data-field="model_line">{{ model_line }}</span></td>
+      <td style="width: 20%;">Model Number:</td>
+      <td><span data-field="model_number">{{ model_number }}</span></td>
+      <td style="width: 20%;">Serial Number:</td>
+      <td><span data-field="serial_number">{{ serial_number }}</span></td>
+    </tr>
+    <tr>
+      <td>Product Construction Summary:</td>
+      <td><span data-field="product_construction_summary">{{ product_construction_summary }}</span></td>
+    </tr>
+  </table>
+
+  <div class="details-section">
+    <h3>Options/Subcomponent Summary:</h3>
+    <p><span data-field="options_summary">{{ options_summary }}</span></p>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width: 10%;">Weight (lb)</th>
+        <th style="width: 10%;">Depth (in)</th>
+        <th style="width: 15%;">Dimension (in)</th>
+        <th style="width: 15%;">Height (in)</th>
+        <th style="width: 15%;">Front-Back</th>
+        <th style="width: 15%;">Side-Side</th>
+        <th style="width: 10%;">Vertical</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="weight">{{ weight }}</span></td>
+        <td><span data-field="depth">{{ depth }}</span></td>
+        <td><span data-field="dimension">{{ dimension }}</span></td>
+        <td><span data-field="height">{{ height }}</span></td>
+        <td><span data-field="front_back">{{ front_back }}</span></td>
+        <td><span data-field="side_side">{{ side_side }}</span></td>
+        <td><span data-field="vertical">{{ vertical }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="details-section">
+    <h4>UUT Properties</h4>
+    <table style="margin-top: 15px;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Building Code</th>
+          <th style="width: 20%;">Test Criteria</th>
+          <th style="width: 10%;">S_DS (g)</th>
+          <th style="width: 10%;">z/h</th>
+          <th style="width: 20%;">I_p</th>
+          <th style="width: 10%;">A_FX,H (g)</th>
+          <th style="width: 10%;">A_FX,V (g)</th>
+          <th style="width: 10%;">A_BG,H (g)</th>
+          <th style="width: 10%;">A_BG,V (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-field="building_code">{{ building_code }}</span></td>
+          <td><span data-field="test_criteria">{{ test_criteria }}</span></td>
+          <td><span data-field="s_ds">{{ s_ds }}</span></td>
+          <td><span data-field="z_h">{{ z_h }}</span></td>
+          <td><span data-field="i_p">{{ i_p }}</span></td>
+          <td><span data-field="a_fx_h">{{ a_fx_h }}</span></td>
+          <td><span data-field="a_fx_v">{{ a_fx_v }}</span></td>
+          <td><span data-field="a_bg_h">{{ a_bg_h }}</span></td>
+          <td><span data-field="a_bg_v">{{ a_bg_v }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="details-section">
+    <h4>Test Mounting Details:</h4>
+    <img src="test_mounting_image.jpg" alt="Test Mounting Image" style="max-width: 100%; height: auto; margin-top: 15px;">
+    <p style="margin-top: 15px;"><span data-field="mounting_details">{{ mounting_details }}</span></p>
+  </div>
+
+  <div class="footer">
+    <p>TRU Compliance, by Structural Integrity Associates, Inc.</p>
+    <p>844-TRU-0200 | info@trucompliance.com</p>
+    <p>Page <span data-field="page_number">{{ page_number }}</span> of <span data-field="total_pages">{{ total_pages }}</span></p>
+  </div>
+</div>
+</body>
+</html>

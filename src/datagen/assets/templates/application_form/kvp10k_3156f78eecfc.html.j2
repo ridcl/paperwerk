@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+  }
+  .logo-icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+  }
+  .college-name h1 {
+    font-size: 36pt;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .contact-info {
+    text-align: right;
+    font-size: 10pt;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .input-line {
+    border-bottom: 1px solid #000;
+    min-height: 1em;
+    display: inline-block;
+    width: 100%;
+  }
+  .full-width-line {
+    border-bottom: 1px solid #000;
+    min-height: 1em;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .signature-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+  }
+  .signature-box {
+    width: 45%;
+    text-align: center;
+  }
+  .signature-box div {
+    border-bottom: 1px solid #000;
+    margin-top: 50px;
+  }
+  .disclaimer-text {
+    font-size: 10pt;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .bullet-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  .bullet-list li {
+    margin-bottom: 10px;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <div class="logo-icon"></div>
+      <div class="college-name">
+        <h1>Middlebury College</h1>
+      </div>
+    </div>
+    <div class="contact-info">
+      Department of Event Management<br>
+      <span data-field="department_email">{{ department_email }}</span><br>
+      23 Adirondack View<br>
+      Middlebury, VT 05753<br>
+      FAX: {{ fax_number }}<br>
+      www.middlebury.edu
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 40px;">APPLICATION FOR USE OF THE COLLEGE PARK</h2>
+
+  <div class="section-title">Event Details</div>
+  <div class="form-row">
+    <div>
+      <span class="label">Date:</span>
+      <span class="input-line">{{ event_date }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">EVENT:</span>
+      <span class="input-line">{{ event_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Sponsor:</span>
+      <span class="input-line">{{ sponsor_name }}</span>
+    </div>
+    <div>
+      <span class="label">Non-Profit Organization?</span>
+      <span class="input-line">{{ is_non_profit }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Preferred Event Date:</span>
+      <span class="input-line">{{ preferred_event_date }}</span>
+    </div>
+    <div>
+      <span class="label">Event Name:</span>
+      <span class="input-line">{{ event_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Preferred Event Start Time:</span>
+      <span class="input-line">{{ preferred_start_time }}</span>
+    </div>
+    <div>
+      <span class="label">Preferred Load In Time:</span>
+      <span class="input-line">{{ preferred_load_in_time }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Preferred Event End Time:</span>
+      <span class="input-line">{{ preferred_end_time }}</span>
+    </div>
+    <div>
+      <span class="label">Preferred Load Out Time:</span>
+      <span class="input-line">{{ preferred_load_out_time }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Event Description and Purpose:</div>
+  <div class="full-width-line" data-field="event_description_and_purpose">{{ event_description_and_purpose }}</div>
+
+  <div class="section-title">Anticipated attendance #:</div>
+  <div class="full-width-line" data-field="anticipated_attendance">{{ anticipated_attendance }}</div>
+
+  <div class="section-title">VENDOR DETAILS: Provide details of participating vendors with any additional support considerations:</div>
+  <div class="full-width-line" data-field="anticipated_attendance_2">{{ anticipated_attendance_2 }}</div>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Crowd and Safety Management will be managed by:</div>
+  <div class="full-width-line" data-field="anticipated_attendance_3">{{ anticipated_attendance_3 }}</div>
+
+  <div class="section-title">CONTACT/BILLING:</div>
+  <div class="form-row">
+    <div>
+      <span class="label">Name:</span>
+      <span class="input-line">{{ contact_name }}</span>
+    </div>
+    <div>
+      <span class="label">Phone:</span>
+      <span class="input-line">{{ contact_phone }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Address1:</span>
+      <span class="input-line">{{ contact_address1 }}</span>
+    </div>
+    <div>
+      <span class="label">Email:</span>
+      <span class="input-line">{{ contact_email }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Address2:</span>
+      <span class="input-line">{{ contact_address2 }}</span>
+    </div>
+    <div>
+      <span class="label">State & Zip:</span>
+      <span class="input-line">{{ contact_state_zip }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <span class="label">Town:</span>
+      <span class="input-line">{{ contact_town }}</span>
+    </div>
+    <div>
+      <span class="label">Cell Phone:</span>
+      <span class="input-line">{{ contact_cell_phone }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">On-Site Event Contact (attending the event)</div>
+  <div class="form-row">
+    <div>
+      <span class="label">Name:</span>
+      <span class="input-line">{{ on_site_contact_name }}</span>
+    </div>
+    <div>
+      <span class="label">Cell Phone:</span>
+      <span class="input-line">{{ on_site_contact_cell_phone }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">DEADLINE:</div>
+  <div class="disclaimer-text">
+    To ensure the success of your event, the deadline to finalize event details and submit all required documents is two weeks in advance of your event. We regret that we cannot allow the event to occur without first receiving the following documents.
+  </div>
+
+  <div class="section-title">Required Documentation:</div>
+  <ul class="bullet-list">
+    <li>Review the details of the terms of use and return it along with the application and signature of acceptance.</li>
+    <li>A completed Facilities Use Release is also necessary to guarantee your reservation.</li>
+    <li>A certificate of liability insurance for <span data-field="insurance_amount">{{ insurance_amount }}</span> is necessary to guarantee your reservation. The certificate should list the College by its full legal name: "<span data-field="college_legal_name">{{ college_legal_name }}</span>," and the College should be "a named additional insured" for the date and location of your event.</li>
+  </ul>
+
+</div>
+
+<div class="page">
+  <div class="section-title">TERMS OF USE FOR THE COLLEGE PARK</div>
+  <div class="disclaimer-text">
+    Middlebury College intends the College Park as a place for community. The park may be available for special events under the following guidelines:
+  </div>
+
+  <ol style="font-size: 10pt; line-height: 1.6;">
+    <li>The application shall be filed with Middlebury College Department of Event Management at least 15 days prior to the proposed special event or group activity.</li>
+    <li>The park shall not be used for the purpose of street vending for any for profit venture.</li>
+    <li>The organization must be a not-for-profit as defined by the IRS Code or not-for-profit in spirit.</li>
+    <li>It is not required that a non-College group has a sponsor within the College in order to request use of the park.</li>
+    <li>Generally, not-for-profit groups that are based in Addison County or that provide substantial services to the residents of Addison County, are given priority for the use of available College facilities or grounds, over non-Addison County groups.</li>
+    <li>Groups, organizations or events may not use the park for private or personal gain or profit, or for activities that are not complementary to the mission of the College. The College reserves the right to prohibit or cancel any event, without notice, if it deems the event contrary to the mission of the College.</li>
+    <li>Generally, large personal events (picnics, family reunions, etc.) will not be permitted to schedule exclusive use in an effort to avoid limiting park use for the community.</li>
+    <li>Middlebury College reserves the right to approve, deny or impose conditions to any proposed use of the College Park.</li>
+  </ol>
+
+  <div class="section-title">General Terms of Use:</div>
+  <div class="disclaimer-text">
+    The park shall be open for public use from 7 a.m. until midnight
+  </div>
+  <div class="disclaimer-text">
+    At no time a special event prohibit the normal and customary casual use of the park by individuals.
+  </div>
+  <div class="disclaimer-text">
+    Events cannot be scheduled more than one year in advance.
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Noise and Activity Restrictions</div>
+  <div class="disclaimer-text">
+    Normally groups may not schedule events on a regular basis; i.e. no more than two consecutive events, and, for annual events, no more than two consecutive years. It is intended that this practice will allow for a wider range of organizations to be able to use the park over time.
+  </div>
+  <div class="disclaimer-text">
+    Events must be self-sufficient, providing trash receptacles, power cords, staging, etc. without the support services of the College. One 50-amp power supply is available on site. Power needs cannot exceed 50 amps.
+  </div>
+  <div class="disclaimer-text">
+    One water hose connection is available on site. Hoses are to be provided by the event organizers. Water is not to be freely flowing on the grounds at any time.
+  </div>
+  <div class="disclaimer-text">
+    For any contracted services, proof of adequate insurance coverages are required from those contractors as defined by the College's Director of Business Services. At no time is a contractor permitted to perform work on College property for an event unless they have been approved by the College.
+  </div>
+
+  <div class="section-title">Event Signage:</div>
+  <div class="disclaimer-text">
+    Please note that the Town of Middlebury has an ordinance for Placement of Signs on Public Property. If you plan to put up directional signage for your event, please contact Middlebury Planning and Zoning office at 388-8105 for more information.
+  </div>
+
+  <div class="disclaimer-text">
+    Smoking, alcohol, and open flames are prohibited.
+  </div>
+  <div class="disclaimer-text">
+    Users are responsible for leaving the park in the same condition it was found. In the event of damages beyond normal wear and tear, users are responsible for costs associated with repair. Events must be inclusive for all.
+  </div>
+  <div class="disclaimer-text">
+    Children under the age of 18 must be supervised at all times.
+  </div>
+  <div class="disclaimer-text">
+    Any damages or issues must be reported to the Middlebury College Department of Event Management within 24 hours of the event or the event organizers may be held responsible.
+  </div>
+  <div class="disclaimer-text">
+    No occupier of the park, or any person who has been given lawful permission to use or control the park, shall knowingly violate a violation of the Town of Middlebury Noise Ordinance on such premises:
+  </div>
+
+  <ul class="bullet-list">
+    <li>No person or persons shall make or continue, or cause to be made or continued, any excessive, unnecessary, or unreasonably loud noise or disturbance which disturbs, destroys, or endangers the comfort, quiet, repose, health, peace, or safety of others within the immediate vicinity of the park.</li>
+    <li>Although intended as examples only, and not exclusive of other acts constituting a violation of this Article, the commission of one or more of the following acts, if done in such a manner, shall be deemed a violation:</li>
+  </ul>
+
+  <div class="section-title">Prohibited Activities</div>
+  <ul class="bullet-list">
+    <li>a. Electronic sound producing devices. The playing or use of an electronic sound producing device in such manner or with such volume at unreasonable hours. For the purposes of this subsection, the term "electronic sound-producing devices" shall include any radio, phonograph, stereo, television set, amplified musical instrument, loud speaker, tape, cassette or compact disc recorder or any other similar device. On Sunday through Thursday, the hours between 10:00 p.m. and 7:00 a.m. shall be deemed unreasonable whenever any person shall make complaint of the disturbance during such hours. On Friday, Saturday and special holidays (New Year's Eve and Fourth of July) the hours between 1:00 a.m. and 7:00 a.m. shall be deemed unreasonable whenever any person shall make complaint of the disturbance during such hours. The complaint of the disturbance, if or when confirmed by a Town Police Officer, shall also be deemed a violation as well.</li>
+    <li>b. Vocal Disturbances. Yelling, shouting, whistling, singing, or making any other loud vocal disturbance which are deemed to be objectionable because of volume, frequency or beat and is not muffled or otherwise controlled.</li>
+    <li>c. Devices to attract attention. The use of any drum, musical instrument, loud speaker, amplifier, or other instrument or device for the purpose of attracting attention. This section shall not be construed to prohibit the playing of musical instruments by persons practicing or performing in a school or town band, orchestra or participating in or practicing for an authorized parade or assembly in a public place.</li>
+  </ul>
+
+  <div class="disclaimer-text" style="margin-top: 50px;">
+    I hereby agree to comply with the rules & regulations for use of the College Park.
+  </div>
+
+  <div class="signature-area">
+    <div class="signature-box">
+      <span class="label">Signature:</span>
+      <div></div>
+      <span class="label" style="margin-top: 5px;">Application:</span>
+      <div class="input-line" style="width: 80%;" data-field="application">{{ application }}</div>
+    </div>
+    <div class="signature-box">
+      <span class="label">Date:</span>
+      <div></div>
+      <span class="label" style="margin-top: 5px;">Granted</span>
+      <div class="input-line" style="width: 80%;" data-field="granted">{{ granted }}</div>
+    </div>
+  </div>
+
+  <div class="signature-area" style="margin-top: 20px;">
+    <div class="signature-box">
+      <span class="label">Conditions:</span>
+      <div class="full-width-line" data-field="conditions">{{ conditions }}</div>
+    </div>
+    <div class="signature-box">
+      <span class="label">Denied</span>
+      <div class="full-width-line" data-field="denied">{{ denied }}</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

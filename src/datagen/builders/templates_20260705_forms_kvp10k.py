@@ -5,20 +5,31 @@ at the underlying multi-page source PDF; rows sharing a URL are pages of the
 same document. This builder groups rows by ``image_url`` so every LLM call
 sees the full document rather than a single page.
 
-Pipeline (each phase is a Prefect task fanning out per document):
-  0.  Group kvp10k rows by ``image_url``; pre-filter to URLs with
-      ``<= max_pages_per_doc`` annotated rows.
+Pipeline: rows are grouped by ``image_url`` and pre-filtered to URLs with
+``<= max_pages_per_doc`` annotated rows, then every document flows through
+the full chain *independently and concurrently* — so template generation
+(GPU/LLM) starts on the first downloaded PDF while the rest are still
+downloading, keeping the GPU busy instead of idling through a global
+download barrier. Per document:
+
   0a. ``download_pdf``   — fetch + cache the source PDF (retries=2).
   0b. ``get_page_count`` — cheap ``pdfinfo`` check; drop long-tail docs.
   1.  ``classify_pdf``   — first 3 PDF pages → snake_case class label,
                             cached in ``/data/paperwerk/cache/kvp10k/docs.json``.
-  2a. Per-class phash dedup on the first page (sequential, in-flow).
+  2a. Per-class phash dedup on the first page, applied incrementally under a
+      per-class lock as documents arrive. Because documents complete in
+      download/LLM order rather than a fixed order, which member of a set of
+      near-duplicates "wins" is no longer deterministic across runs — an
+      accepted trade-off for overlapping download and generation.
   2b. ``build_template`` — full-document Jinja HTML + schema via
                             ``datagen.templates.make_template`` (which now
                             auto-chunks long docs internally, retries=1).
   3.  ``_persist``       — write ``<class>/kvp10k_<url_hash12>.html.j2`` +
                             sidecar under
                             ``src/datagen/assets/templates/``.
+
+Concurrency is bounded per stage: downloads by ``_DOWNLOAD_CONCURRENCY``
+(``_DL_SEM``) and LLM calls by the ``LLM`` client's ``max_concurrency``.
 
 Running this triggers a Prefect flow. To see live per-task progress, start
 a local Prefect server in another shell first::
@@ -49,7 +60,7 @@ import json
 import os
 import urllib.error
 import urllib.request
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 from datasets import load_dataset
@@ -66,8 +77,12 @@ from datagen.templates import TemplateDeduper, make_template
 _HF_DATASET = "ibm-research/KVP10k"
 _HF_SPLIT = "train"
 
-_ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
-_MODEL = "claude-sonnet-4-6"
+# Local Gemma served by vLLM on the host. We run inside a Docker container
+# on the host network, so the host's localhost is reachable directly; override
+# with VLLM_BASE_URL if the endpoint moves. vLLM ignores the API key, but the
+# OpenAI client still requires a non-empty value.
+_VLLM_BASE_URL = os.environ.get("VLLM_BASE_URL", "http://localhost:8000/v1/")
+_MODEL = os.environ.get("VLLM_MODEL", "google/gemma-4-E4B-it")
 _LLM_CONCURRENCY = 10
 _DOWNLOAD_CONCURRENCY = 16
 _SOURCE = "kvp10k"
@@ -102,11 +117,10 @@ _DL_SEM = asyncio.Semaphore(_DOWNLOAD_CONCURRENCY)
 def _get_llm() -> LLM:
     global _LLM
     if _LLM is None:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        if not api_key:
-            raise RuntimeError("ANTHROPIC_API_KEY environment variable is not set")
+        # vLLM doesn't authenticate; any non-empty key satisfies the client.
+        api_key = os.environ.get("VLLM_API_KEY", "EMPTY")
         _LLM = LLM(
-            base_url=_ANTHROPIC_BASE_URL,
+            base_url=_VLLM_BASE_URL,
             api_key=api_key,
             model=_MODEL,
             max_concurrency=_LLM_CONCURRENCY,
@@ -272,6 +286,12 @@ async def build_template(url_hash: str, cls: str, pdf_path: Path) -> dict | None
 # ---------------------------------------------------------------------------
 
 
+# Flush the classification cache to disk every N new entries rather than on
+# every call: rewriting the whole JSON per classification would be O(n^2)
+# I/O over a long run, and the flow flushes any remainder on exit.
+_CACHE_FLUSH_EVERY = 25
+
+
 @flow(name="kvp10k-templates")
 async def kvp10k_templates(
     limit: int = 0,
@@ -282,7 +302,7 @@ async def kvp10k_templates(
 ) -> None:
     logger = get_run_logger()
 
-    # Fail fast if the key isn't set (before any tasks fan out).
+    # Initialise the LLM client before any tasks fan out.
     _get_llm()
 
     logger.info(f"loading {_HF_DATASET} ({_HF_SPLIT}) from HuggingFace")
@@ -307,107 +327,106 @@ async def kvp10k_templates(
     if limit > 0:
         urls = urls[:limit]
         logger.info(f"limit: first {len(urls)} URL(s)")
-
-    # ---- Phase 0a: download PDFs ----
-    logger.info(f"phase 0a: downloading {len(urls)} PDF(s)")
-    pdf_paths = await asyncio.gather(*(download_pdf(h, u) for h, u in urls))
-    have_pdf = [(h, u, p) for (h, u), p in zip(urls, pdf_paths) if p is not None]
-    logger.info(f"phase 0a: {len(have_pdf)}/{len(urls)} PDF(s) available")
-    if not have_pdf:
+    if not urls:
         return
-
-    # ---- Phase 0b: filter by actual page count ----
-    logger.info("phase 0b: checking page counts")
-    page_counts = await asyncio.gather(*(get_page_count(h, p) for h, _, p in have_pdf))
-    kept = [
-        (h, u, p, n)
-        for (h, u, p), n in zip(have_pdf, page_counts)
-        if n <= max_pages_per_doc
-    ]
-    logger.info(
-        f"phase 0b: {len(kept)}/{len(have_pdf)} pass (<= {max_pages_per_doc} pages)"
-    )
-    if not kept:
-        return
-
-    # ---- Phase 1: classify (cached) ----
-    docs_cache = _load_docs_cache()
-    logger.info(f"phase 1: classifying ({len(docs_cache)} cache entries)")
-    to_classify = [
-        (h, u, p, n)
-        for h, u, p, n in kept
-        if h not in docs_cache or "class" not in docs_cache[h]
-    ]
-    if to_classify:
-        results = await asyncio.gather(
-            *(classify_pdf(h, p) for h, _, p, _ in to_classify)
-        )
-        for (h, u, p, n), cls in zip(to_classify, results):
-            entry = docs_cache.setdefault(h, {})
-            entry["url"] = u
-            entry["page_count"] = n
-            if cls is not None:
-                entry["class"] = cls
-        _save_docs_cache(docs_cache)
-    else:
-        logger.info("phase 1: all classifications cached")
-
-    dist = Counter(
-        docs_cache[h]["class"]
-        for h, _, _, _ in kept
-        if h in docs_cache and "class" in docs_cache[h]
-    )
-    logger.info(f"phase 1: {len(dist)} distinct class(es)")
-    for cls, n in dist.most_common(30):
-        logger.info(f"  {cls}: {n}")
-
-    # ---- Phase 2a: per-class phash dedup (sequential, in-flow) ----
-    logger.info("phase 2a: phash dedup")
-    by_class: dict[str, list[tuple[str, str, Path, int]]] = defaultdict(list)
-    for h, u, p, n in kept:
-        entry = docs_cache.get(h) or {}
-        cls = entry.get("class")
-        if cls is None:
-            continue
-        by_class[cls].append((h, u, p, n))
-
-    to_generate: list[tuple[str, str, str, Path, int]] = []
-    for cls, entries in sorted(by_class.items()):
-        existing_dir = templates_root / cls
-        dedup = TemplateDeduper(hash_size=hash_size, threshold=hamming_threshold)
-        n_new = 0
-        for h, u, p, n in entries:
-            target = existing_dir / f"{_SOURCE}_{h}.html.j2"
-            if target.exists():
-                continue
-            first = _first_page(p)
-            if first is None:
-                continue
-            if dedup.check_and_add(first):
-                continue
-            to_generate.append((cls, h, u, p, n))
-            n_new += 1
-        if entries:
-            logger.info(f"  {cls}: {n_new} new / {len(entries)} candidate(s)")
-
-    if not to_generate:
-        logger.info("nothing new to generate.")
-        return
-
-    # ---- Phase 2b: template generation ----
-    logger.info(f"phase 2b: generating {len(to_generate)} template(s)")
-    results = await asyncio.gather(
-        *(build_template(h, cls, p) for cls, h, _, p, _ in to_generate)
-    )
 
     templates_root.mkdir(parents=True, exist_ok=True)
-    saved = 0
-    for r, (cls, h, u, p, n) in zip(results, to_generate):
+
+    # ---- Shared, mutable pipeline state ----
+    #
+    # Documents flow through the whole chain concurrently, so state touched by
+    # more than one document is guarded by locks:
+    #   * ``docs_cache`` — the classification cache (one global lock).
+    #   * per-class ``TemplateDeduper`` — one lock per class; created lazily as
+    #     classes are first seen, under ``class_guard``.
+    docs_cache = _load_docs_cache()
+    logger.info(f"loaded {len(docs_cache)} classification cache entrie(s)")
+    cache_lock = asyncio.Lock()
+    class_guard = asyncio.Lock()
+    class_locks: dict[str, asyncio.Lock] = {}
+    class_dedupers: dict[str, TemplateDeduper] = {}
+    pending_cache_writes = 0
+
+    async def _class_ctx(cls: str) -> tuple[asyncio.Lock, TemplateDeduper]:
+        async with class_guard:
+            if cls not in class_locks:
+                class_locks[cls] = asyncio.Lock()
+                class_dedupers[cls] = TemplateDeduper(
+                    hash_size=hash_size, threshold=hamming_threshold
+                )
+            return class_locks[cls], class_dedupers[cls]
+
+    async def _cached_class(url_hash: str) -> str | None:
+        async with cache_lock:
+            entry = docs_cache.get(url_hash)
+            return entry.get("class") if entry else None
+
+    async def _record_class(url_hash: str, url: str, n: int, cls: str) -> None:
+        nonlocal pending_cache_writes
+        async with cache_lock:
+            entry = docs_cache.setdefault(url_hash, {})
+            entry["url"] = url
+            entry["page_count"] = n
+            entry["class"] = cls
+            pending_cache_writes += 1
+            if pending_cache_writes >= _CACHE_FLUSH_EVERY:
+                _save_docs_cache(docs_cache)
+                pending_cache_writes = 0
+
+    async def _process_doc(url_hash: str, url: str) -> str:
+        """Full per-document chain; returns a status label for tallying."""
+        # 0a. download
+        pdf_path = await download_pdf(url_hash, url)
+        if pdf_path is None:
+            return "no_pdf"
+
+        # 0b. page count
+        n = await get_page_count(url_hash, pdf_path)
+        if n > max_pages_per_doc:
+            return "too_long"
+
+        # 1. classify (reuse cache; only hit the LLM on a miss)
+        cls = await _cached_class(url_hash)
+        if cls is None:
+            cls = await classify_pdf(url_hash, pdf_path)
+            if cls is None:
+                return "classify_fail"
+            await _record_class(url_hash, url, n, cls)
+
+        # Skip documents whose template already exists (resume support).
+        target = templates_root / cls / f"{_SOURCE}_{url_hash}.html.j2"
+        if target.exists():
+            return "exists"
+
+        # 2a. per-class phash dedup on the first page
+        first = await asyncio.to_thread(_first_page, pdf_path)
+        if first is None:
+            return "no_first_page"
+        lock, deduper = await _class_ctx(cls)
+        async with lock:
+            if deduper.check_and_add(first):
+                return "dedup"
+
+        # 2b. build template (GPU/LLM), then persist
+        r = await build_template(url_hash, cls, pdf_path)
         if r is None:
-            continue
-        _persist(templates_root, r, u, n)
-        saved += 1
-    logger.info(f"done: saved {saved}/{len(to_generate)} template(s)")
+            return "build_fail"
+        await asyncio.to_thread(_persist, templates_root, r, url, n)
+        return "saved"
+
+    logger.info(f"processing {len(urls)} document(s) end-to-end (pipelined)")
+    try:
+        statuses = await asyncio.gather(*(_process_doc(h, u) for h, u in urls))
+    finally:
+        async with cache_lock:
+            if pending_cache_writes:
+                _save_docs_cache(docs_cache)
+
+    tally = Counter(statuses)
+    logger.info(
+        f"done: saved {tally['saved']}/{len(urls)} template(s); "
+        + ", ".join(f"{k}={v}" for k, v in sorted(tally.items()) if k != "saved")
+    )
 
 
 def main(

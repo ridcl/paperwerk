@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On-Campus Tutoring Centers</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 13px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  h1 {
+    text-align: center;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    margin-bottom: 18px;
+  }
+
+  .main-center {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .main-center .center-name {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 13.5px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .main-center ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .main-center ul li {
+    margin-bottom: 2px;
+  }
+
+  .main-center ul li::before {
+    content: "o  ";
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+  }
+
+  .main-center a {
+    color: #1155CC;
+    text-decoration: underline;
+  }
+
+  .centers-list {
+    list-style: disc;
+    padding-left: 28px;
+    margin-top: 8px;
+  }
+
+  .centers-list > li {
+    margin-bottom: 14px;
+  }
+
+  .center-title {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 13.5px;
+  }
+
+  .center-details {
+    list-style: none;
+    padding-left: 30px;
+    margin-top: 3px;
+  }
+
+  .center-details > li {
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  .center-details > li::before {
+    content: "o  ";
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+  }
+
+  .hours-list {
+    list-style: none;
+    padding-left: 30px;
+    margin-top: 2px;
+  }
+
+  .hours-list > li {
+    margin-bottom: 1px;
+    position: relative;
+    padding-left: 14px;
+  }
+
+  .hours-list > li::before {
+    content: "▪  ";
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    top: 1px;
+  }
+
+  .bold { font-weight: bold; }
+  a { color: #1155CC; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <h1>On-Campus Tutoring Centers (<span data-field="semester_year">{{ semester_year }}</span>)</h1>
+
+  <div class="main-center">
+    <span class="center-name"><span data-field="main_center.name">{{ main_center.name }}</span></span>
+    <ul>
+      <li><span class="bold">Location:</span> <span data-field="main_center.location">{{ main_center.location }}</span></li>
+      <li><span class="bold">Phone number:</span> <span data-field="main_center.phone">{{ main_center.phone }}</span></li>
+      <li><span class="bold">Website:</span> <a><span data-field="main_center.website">{{ main_center.website }}</span></a></li>
+    </ul>
+  </div>
+
+  <ul class="centers-list">
+    {% for center in tutoring_centers[:5] %}
+    <li>
+      <span class="center-title"><span data-field="tutoring_centers[{{ loop.index0 }}].name">{{ center.name }}</span></span>
+      <ul class="center-details">
+        {% if center.location %}
+        <li><span class="bold">Location:</span> <span data-field="tutoring_centers[{{ loop.index0 }}].location">{{ center.location }}</span></li>
+        {% endif %}
+        {% if center.phone %}
+        <li><span class="bold">Phone number:</span> <span data-field="tutoring_centers[{{ loop.index0 }}].phone">{{ center.phone }}</span></li>
+        {% endif %}
+        {% if center.email %}
+        <li><span class="bold">Email:</span> <span data-field="tutoring_centers[{{ loop.index0 }}].email">{{ center.email }}</span></li>
+        {% endif %}
+        {% if center.website %}
+        <li><span class="bold">Website:</span> <a><span data-field="tutoring_centers[{{ loop.index0 }}].website">{{ center.website }}</span></a></li>
+        {% endif %}
+        {% if center.no_tutoring_note %}
+        <li><span class="bold"><span data-field="tutoring_centers[{{ loop.index0 }}].no_tutoring_note">{{ center.no_tutoring_note }}</span></span></li>
+        {% endif %}
+        {% if center.hours %}
+        <li>
+          <span class="bold">Hours:</span>
+          <ul class="hours-list">
+            {% for hour in center.hours %}
+            <li>
+              {% if hour.days %}<span class="bold"><span data-field="tutoring_centers[{{ loop.index0 }}].hours[{{ loop.index0 }}].days">{{ hour.days }}</span>:</span> {% endif %}<span data-field="tutoring_centers[{{ loop.index0 }}].hours[{{ loop.index0 }}].time">{{ hour.time }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <ul class="centers-list">
+    {% for center in tutoring_centers[5:] %}
+    <li>
+      <span class="center-title"><span data-field="tutoring_centers[{{ loop.index0 + 5 }}].name">{{ center.name }}</span></span>
+      <ul class="center-details">
+        {% if center.location %}
+        <li><span class="bold">Location:</span> <span data-field="tutoring_centers[{{ loop.index0 + 5 }}].location">{{ center.location }}</span></li>
+        {% endif %}
+        {% if center.phone %}
+        <li><span class="bold">Phone number:</span> <span data-field="tutoring_centers[{{ loop.index0 + 5 }}].phone">{{ center.phone }}</span></li>
+        {% endif %}
+        {% if center.email %}
+        <li><span class="bold">E-mail:</span> <span data-field="tutoring_centers[{{ loop.index0 + 5 }}].email">{{ center.email }}</span></li>
+        {% endif %}
+        {% if center.website %}
+        <li><span class="bold">Website:</span> <a><span data-field="tutoring_centers[{{ loop.index0 + 5 }}].website">{{ center.website }}</span></a></li>
+        {% endif %}
+        {% if center.no_tutoring_note %}
+        <li><span class="bold"><span data-field="tutoring_centers[{{ loop.index0 + 5 }}].no_tutoring_note">{{ center.no_tutoring_note }}</span></span></li>
+        {% endif %}
+        {% if center.hours %}
+        <li>
+          <span class="bold">Hours:</span>
+          <ul class="hours-list">
+            {% for hour in center.hours %}
+            <li>
+              {% if hour.days %}<span class="bold"><span data-field="tutoring_centers[{{ loop.index0 + 5 }}].hours[{{ loop.index0 }}].days">{{ hour.days }}</span>:</span> {% endif %}<span data-field="tutoring_centers[{{ loop.index0 + 5 }}].hours[{{ loop.index0 }}].time">{{ hour.time }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+</body>
+</html>

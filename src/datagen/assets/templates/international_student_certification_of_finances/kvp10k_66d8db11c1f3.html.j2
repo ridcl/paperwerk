@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>International Student Finances Certification</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        .form-section { margin-bottom: 20px; }
+        .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .line-item-table td { padding: 5px 0; }
+        .input-field { border-bottom: 1px solid black; display: inline-block; width: 100%; min-width: 100px; }
+        .radio-group label { margin-right: 15px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 24pt;">CollegeBoard</h1>
+            <h1 style="font-size: 18pt; margin-top: 10px;">INTERNATIONAL STUDENT FINANCES</h1>
+            <h2 style="font-size: 14pt;">2021-22</h2>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 30px;">
+            <p>The purpose of the Certification of Finances is to help colleges and universities obtain complete and accurate information about the funds available to international applicants who want to study in the United States. Strict government regulations, rising education costs, and the complexity of financial aid make it essential that institutions have a clear understanding of the financial resources of their international applicants. Financial verification must be made prior to institutional issuance of a Certificate of Eligibility (Form I-20 or DS-2019).</p>
+            <p>This form is designed to standardize financial information provided by applicants to colleges, universities, and U.S. consulates. By completing this form and returning it to the college or university requiring it, an applicant, if admitted, may obtain that college's acceptance and the necessary documentation to prove that they have sufficient funds to cover the costs of their education. If the applicant is unable to obtain a bank official's verification, it is recommended that institutions forward a copy of the International Student Financial Aid Application to the family for completion. The institution should attach a copy of this certification to the Certificate of Eligibility. U.S. consuls scrutinize the statements of financial resources given by nonimmigrant visa applicants. This certification will help such officials make their decisions and expedite visa issuance.</p>
+            <p style="text-align: center; margin-top: 30px;">Return directly to the college providing or requesting this statement.</p>
+            <p style="text-align: center; margin-top: 10px;">The space below is for optional use by issuing institutions for listing student's expected annual budget.</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>1. Your Name</strong></p>
+                    <div style="margin-top: 10px;">
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Mr."> Mr.</label>
+                            <label><input type="radio" name="gender" value="Mrs."> Mrs.</label>
+                            <label><input type="radio" name="gender" value="Miss"> Miss</label>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span class="input-field" style="width: 60%;">{{ full_name }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>2. Permanent Address</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="height: 30px;">{{ permanent_address }}</span>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>3. Mailing Address (if different from above)</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="height: 30px;">{{ mailing_address }}</span>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>4. Date of Birth</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="width: 15%;">{{ dob_month }}</span> /
+                        <span class="input-field" style="width: 15%;">{{ dob_day }}</span> /
+                        <span class="input-field" style="width: 15%;">{{ dob_year }}</span>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>5. Place of Birth (country)</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="height: 30px;">{{ place_of_birth }}</span>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>6. Country of Citizenship</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="height: 30px;">{{ citizenship_country }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>8. Enter the expected amount of annual support from the sources listed below. Enter amounts in U.S. dollars. Please PRINT all entries.</strong></p>
+                    <table class="line-item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Student's Sources of Funds</th>
+                                <th style="width: 25%;">Assured Support</th>
+                                <th style="width: 25%;">Projected Support</th>
+                                <th style="width: 20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 30%;"><strong>8a. Personal or Family Savings</strong></td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="personal_savings_2021_22">{{ personal_savings_2021_22 }}</span> .00</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="personal_savings_2022_23">{{ personal_savings_2022_23 }}</span> .00</td>
+                                <td style="width: 20%; text-align: right;">$ <span data-field="personal_savings_2023_24">{{ personal_savings_2023_24 }}</span> .00</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%;">Name of Bank</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="bank_2021_22">{{ bank_2021_22 }}</span> .00</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="bank_2022_23">{{ bank_2022_23 }}</span> .00</td>
+                                <td style="width: 20%; text-align: right;">$ <span data-field="bank_2023_24">{{ bank_2023_24 }}</span> .00</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%;">Address of Bank</td>
+                                <td colspan="3" style="text-align: left;">{{ bank_address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-section">
+                    <p><strong>8b. Parents (Money available from sources other than savings.)</strong></p>
+                    <table class="line-item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Parent's Name</th>
+                                <th style="width: 25%;">Assured Support</th>
+                                <th style="width: 25%;">Projected Support</th>
+                                <th style="width: 20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in parents %}
+                            <tr>
+                                <td style="width: 30%;">{{ item.parent_name }}</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="parents[{{ loop.index0 }}].assured_2021_22">{{ parents[loop.index0].assured_2021_22 }}</span> .00</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="parents[{{ loop.index0 }}].projected_2022_23">{{ parents[loop.index0].projected_2022_23 }}</span> .00</td>
+                                <td style="width: 20%; text-align: right;">$ <span data-field="parents[{{ loop.index0 }}].projected_2023_24">{{ parents[loop.index0].projected_2023_24 }}</span> .00</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="4" style="text-align: left; padding-top: 10px;">Please describe the source: {{ parents[0].source_description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 20px;">
+                        <p>Signature of Parent _________________________ Date: _________________________</p>
+                        <p>Address: {{ parent_address }}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>8c. Sponsors (Money available from sources other than parents.)</strong></p>
+                    <table class="line-item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Sponsor's Name</th>
+                                <th style="width: 25%;">Assured Support</th>
+                                <th style="width: 25%;">Projected Support</th>
+                                <th style="width: 20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in sponsors %}
+                            <tr>
+                                <td style="width: 30%;">{{ item.sponsor_name }}</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="sponsors[{{ loop.index0 }}].assured_2021_22">{{ sponsors[loop.index0].assured_2021_22 }}</span> .00</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="sponsors[{{ loop.index0 }}].projected_2022_23">{{ sponsors[loop.index0].projected_2022_23 }}</span> .00</td>
+                                <td style="width: 20%; text-align: right;">$ <span data-field="sponsors[{{ loop.index0 }}].projected_2023_24">{{ sponsors[loop.index0].projected_2023_24 }}</span> .00</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="4" style="text-align: left; padding-top: 10px;">Please describe the source: {{ sponsors[0].source_description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 20px;">
+                        <p>Signature of Sponsor _________________________ Date: _________________________</p>
+                        <p>Address: {{ sponsor_address }}</p>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>8d. Your Government</strong></p>
+                    <table class="line-item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Name of Agency</th>
+                                <th style="width: 25%;">Assured Support</th>
+                                <th style="width: 25%;">Projected Support</th>
+                                <th style="width: 20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 30%;">{{ government_agency_name }}</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="government_2021_22">{{ government_2021_22 }}</span> .00</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="government_2022_23">{{ government_2022_23 }}</span> .00</td>
+                                <td style="width: 20%; text-align: right;">$ <span data-field="government_2023_24">{{ government_2023_24 }}</span> .00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 10px;">Enclose a signed copy of your letter of award with this form.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>9. What is the present exchange rate of your country's currency to the U.S. dollar?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="width: 15%;">{{ exchange_rate }}</span> = $1
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>13. What is the total amount of money you expect to have when you arrive at this institution?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="width: 50%;">{{ total_expected_amount }}</span> .00
+                    </div>
+                </div>
+            </div>
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>10. Does your government currently impose restrictions on exchange and release of funds for study in the U.S.?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <label><input type="radio" name="restrictions" value="Yes"> Yes</label>
+                        <label><input type="radio" name="restrictions" value="No"> No</label>
+                    </div>
+                    <p style="margin-top: 10px;">If YES, describe restrictions. ____________________________________________________________________</p>
+                </div>
+                <div class="form-section">
+                    <p><strong>14. Do you plan to remain in the U.S. during the summer?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <label><input type="radio" name="summer_plan" value="Yes"> Yes</label>
+                        <label><input type="radio" name="summer_plan" value="No"> No</label>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p><strong>16. What are the sources and amounts of support available to you during the summer?</strong></p>
+                    <table class="line-item-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Sources</th>
+                                <th style="width: 25%; text-align: right;">U.S. $</th>
+                                <th style="width: 25%; text-align: right;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in summer_sources %}
+                            <tr>
+                                <td style="width: 50%;">{{ item.source_description }}</td>
+                                <td style="width: 25%; text-align: right;">$ <span data-field="summer_sources[{{ loop.index0 }}].amount">{{ summer_sources[loop.index0].amount }}</span> .00</td>
+                                <td style="width: 25%;"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>11. Do you have a source for emergency funds once you arrive in the U.S.?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <label><input type="radio" name="emergency_funds" value="Yes"> Yes</label>
+                        <label><input type="radio" name="emergency_funds" value="No"> No</label>
+                    </div>
+                    <p style="margin-top: 10px;">If YES, name source: <span class="input-field" style="width: 60%;">{{ emergency_source_name }}</span></p>
+                    <p style="margin-top: 10px;">Amount available in U.S. dollars: $ <span data-field="emergency_amount">{{ emergency_amount }}</span> .00</p>
+                </div>
+                <div class="form-section">
+                    <p><strong>12. How will you pay for your transportation to the U.S.?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <span class="input-field" style="width: 100%;">{{ transportation_payment_method }}</span>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 48%;">
+                <div class="form-section">
+                    <p><strong>15. If remaining in the U.S., do you plan to attend summer school?</strong></p>
+                    <div style="margin-top: 10px;">
+                        <label><input type="radio" name="summer_school" value="Yes"> Yes</label>
+                        <label><input type="radio" name="summer_school" value="No"> No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <div class="form-section" style="border-top: 1px solid black; padding-top: 20px;">
+                <p><strong>17. A CERTIFICATE OF ELIGIBILITY (Form I-20 or DS-2019) will not be authorized until this form is completed and returned to the institution which you are applying to. The institution will attach a copy of this form to the Certificate of Eligibility. U.S. consuls scrutinize the statements of financial resources given by nonimmigrant visa applicants. This certification will help such officials make their decisions and expedite visa issuance.</strong></p>
+                <p style="margin-top: 30px;">This is to certify that I have reviewed the declaration and attached documents, if appropriate, and approve issuance of a Certificate of Eligibility.</p>
+                <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+                    <div>
+                        <p>Signature of Student _________________________</p>
+                        <p>Date: _________________________</p>
+                    </div>
+                    <div>
+                        <p>FOR OFFICE USE ONLY</p>
+                        <p>TITLE: _________________________</p>
+                        <p>DATE: _________________________</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

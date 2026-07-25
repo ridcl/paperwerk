@@ -1,0 +1,158 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* Using serif as primary font */
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+    vertical-align: top;
+  }
+  .header-table td {
+    padding: 10px 0;
+  }
+  .signature-line {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    min-width: 150px;
+    margin-bottom: 5px;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <img src="placeholder_logo.png" alt="Logo" style="height: 60px;">
+    </div>
+    <div style="text-align: right;">
+      <p style="font-size: 14pt; font-weight: bold;">NEW COURSE PROPOSAL</p>
+      <p style="font-size: 14pt; font-weight: bold;">Undergraduate Programs</p>
+      <p style="margin-top: 20px;">UUPC Approval: <span data-field="uupc_approval_date">{{ uupc_approval_date }}</span></p>
+      <p>UFS Approval: <span data-field="ufs_approval_date">{{ ufs_approval_date }}</span></p>
+      <p>SCNS Submittal</p>
+      <p>Confirmed</p>
+      <p>Banner Posted</p>
+      <p>Catalog</p>
+    </div>
+  </div>
+
+  <table class="header-table">
+    <tr>
+      <td style="width: 15%;">Prefix</td>
+      <td style="width: 15%;">ANT</td>
+      <td style="width: 25%;">Department: <span data-field="department_name">{{ department_name }}</span></td>
+      <td style="width: 35%;">Course Title: <span data-field="course_title">{{ course_title }}</span></td>
+    </tr>
+    <tr>
+      <td>Number: <span data-field="course_number">{{ course_number }}</span></td>
+      <td></td>
+      <td>College: <span data-field="college_name">{{ college_name }}</span></td>
+      <td>Course Type: <span data-field="course_type">{{ course_type }}</span></td>
+    </tr>
+  </table>
+
+  <div style="margin-bottom: 30px;">
+    <p>
+      (To obtain a course number, contact <span data-field="contact_email">{{ contact_email }}</span>)
+    </p>
+  </div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;">Credits (Review Proposal Memorandum)</td>
+      <td style="width: 25%;">Grading (Select One Option)</td>
+      <td style="width: 50%;">Course Description (Syllabus must be attached: Syllabus Checklist recommended, see <span data-field="syllabus_link">{{ syllabus_link }}</span>)</td>
+    </tr>
+    <tr>
+      <td>1-3</td>
+      <td><input type="radio" name="grading" value="regular" checked> Regular <input type="radio" name="grading" value="passfail"> Pass/Fail</td>
+      <td><span data-field="course_description">{{ course_description }}</span></td>
+    </tr>
+    <tr>
+      <td>Effective Date (TERM & YEAR)</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Summer <span data-field="effective_year">{{ effective_year }}</span></td>
+      <td>Sat/UnSat</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p>Prerequisites, with minimum grade* Corequisites <span data-field="corequisites_status">{{ corequisites_status }}</span></p>
+  </div>
+
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">WAC/Gordon Rule Course</td>
+      <td style="width: 50%;">Intellectual Foundations Program (General Education) Requirement</td>
+    </tr>
+    <tr>
+      <td><input type="radio" name="wac_rule" value="yes" checked> Yes <input type="radio" name="wac_rule" value="no"> No</td>
+      <td>None</td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <p>WAC/Gordon Rule criteria must be indicated in syllabus and approval attached to proposal. See <span data-field="wac_guidelines_link">{{ wac_guidelines_link }}</span>.</p>
+    <p>General Education criteria must be indicated in the syllabus and approval attached to the proposal. See <span data-field="ge_guidelines_link">{{ ge_guidelines_link }}</span>.</p>
+  </div>
+
+  <h3 style="margin-top: 30px;">Minimum qualifications to teach course</h3>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">Faculty Contact/Email/Phone</td>
+      <td style="width: 50%;">List/Attach comments from departments affected by new course</td>
+    </tr>
+    <tr>
+      <td>MICHAEL HARRISM/MHARRIS/73233</td>
+      <td>NONE REQUIRED</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top: 30px;">Approved by</h3>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 50%;">Department Chair</td>
+      <td style="width: 50%;">Date</td>
+    </tr>
+    <tr>
+      <td><span class="signature-line"></span><br>
+        <span data-field="department_chair_name">{{ department_chair_name }}</span></td>
+      <td><span data-field="department_chair_date">{{ department_chair_date }}</span></td>
+    </tr>
+    <tr>
+      <td>College Dean</td>
+      <td><span data-field="college_dean_date">{{ college_dean_date }}</span></td>
+    </tr>
+    <tr>
+      <td>UUPC Chair</td>
+      <td><span data-field="uupc_chair_date">{{ uupc_chair_date }}</span></td>
+    </tr>
+    <tr>
+      <td>Undergraduate Studies Dean</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>UFS President</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Provost</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 50px;">Email this form and syllabus to <span data-field="submission_email">{{ submission_email }}</span> seven business days before the UUPC meeting.</p>
+</div>

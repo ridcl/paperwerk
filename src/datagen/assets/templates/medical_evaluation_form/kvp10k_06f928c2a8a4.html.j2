@@ -1,0 +1,174 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .signature-line { border-bottom: 1px solid #000; margin-bottom: 20px; display: inline-block; width: 70%; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-row > div { flex: 1; }
+  .full-width-field { width: 100%; border-bottom: 1px solid #000; margin-bottom: 15px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="" alt="University Logo" style="height: 80px; margin-bottom: 10px;">
+    <h1 style="font-size: 24pt; margin: 0;">Cleveland State University</h1>
+    <p style="font-size: 12pt; margin: 0;">engagedlearning®</p>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">OFFICE OF DISABILITY SERVICES</h2>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Student Name: <span class="full-width-field">{{ student_name }}</span></div>
+      <div>CSU ID: <span class="full-width-field">{{ csu_id }}</span></div>
+      <div>DOB: <span class="full-width-field">{{ dob }}</span></div>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #000; padding: 20px; margin-bottom: 30px;">
+    <p>I am requesting disability support services through the Office of Disability Services (ODS) at Cleveland State University. The department requires current and comprehensive documentation of my disability/medical condition as one of the criteria used to evaluate my eligibility for disability related accommodations and services. Please respond to the following questions as soon as possible. Once complete, you can return the document to me directly or submit it to ODS via email or fax. I authorize the Office of Disability Services to contact you if clarification is required.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Student signature: <span class="signature-line" data-field="field_1">{{ field_1 }}</span> Date: <span class="signature-line" data-field="student_signature">{{ student_signature }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Health Care Provider Name (print): <span class="full-width-field">{{ provider_name }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Title: <span class="full-width-field">{{ provider_title }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Phone: <span class="full-width-field">{{ provider_phone }}</span> EXT: <span class="full-width-field">{{ provider_ext }}</span> Fax: <span class="full-width-field">{{ provider_fax }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Organization: <span class="full-width-field">{{ provider_organization }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Mail address: <span class="full-width-field">{{ provider_address }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p><strong>Note to Providers:</strong></p>
+    <p>The information that you provide will <strong>NOT</strong> become part of the student's educational record(s), but it will be kept in the student's file at ODS, where it will be held strictly confidential.</p>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt;">
+    <p>Mailing Address: {{ mailing_address }}</p>
+    <p>Campus Location: {{ campus_location }}</p>
+    <p>Telephone: {{ telephone }} • Fax: {{ fax_number }}</p>
+  </div>
+</div>
+
+<div class="page">
+  <p>The following information must be completed by the health care professional listed on the previous page.</p>
+
+  <div style="margin-bottom: 20px;">
+    Physician's name (print): <span class="signature-line">{{ physician_name }}</span> Date: <span class="signature-line">{{ date_physician }}</span>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    Student's name: <span class="full-width-field">{{ student_name_2 }}</span>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    Date of last visit: <span class="full-width-field">{{ date_last_visit }}</span>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>1. Diagnoses:</p>
+    <div class="full-width-field">{{ diagnoses }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>2. Date of diagnoses:</p>
+    <div class="full-width-field">{{ date_diagnoses }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>3. Date of last contact with student:</p>
+    <div class="full-width-field">{{ date_last_contact }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>4. What is the degree of the hearing loss? (Please include a copy of the most recent audiogram)</p>
+    <div style="margin-top: 10px;">
+      <label><input type="radio" name="hearing_loss" value="mild"> a. Mild</label><br>
+      <label><input type="radio" name="hearing_loss" value="moderate"> b. Moderate</label><br>
+      <label><input type="radio" name="hearing_loss" value="severe"> c. Severe</label><br>
+      <label><input type="radio" name="hearing_loss" value="profound"> d. Profound</label>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>5. Is the hearing loss expected to remain stable or is it expected to decline? If it is expected to decline, describe the expected progression of the hearing loss</p>
+    <div class="full-width-field">{{ hearing_loss_progression }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>6. Describe how this hearing disability may affect this student both academically and/or physically (functional limitations).</p>
+    <div class="full-width-field">{{ functional_limitations }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>7. What means of communication has this student used in the past? Please describe the student's skill in the use of their communication skills.</p>
+    <div class="full-width-field">{{ communication_skills }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>8. What recommendations do you have for accommodations and/or auxiliary aids, (e.g. phonic ear, note-taker, real time captioning, sign language interpreting, etc.) in an academic setting? Please state your rationale for the accommodations and/or auxiliary aids you have recommended:</p>
+    <div class="full-width-field">{{ accommodation_recommendations }}</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <p>9. Are there any other associated disabilities? Please describe:</p>
+    <div class="full-width-field">{{ other_disabilities }}</div>
+  </div>
+
+  <div style="border: 1px solid #000; padding: 20px; margin-bottom: 30px;">
+    <p>This information is current and accurate to the best of my knowledge based on my recent evaluation of this patient or my review of records of a recent evaluation by a qualified health care provider.</p>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>Signature of Health Care Provider: <span class="signature-line">{{ signature_provider }}</span></div>
+      <div>Printed Name: <span class="signature-line">{{ printed_name }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div>License #: <span class="full-width-field">{{ license_number }}</span></div>
+      <div>Date: <span class="full-width-field">{{ date_signature }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt;">
+    <p>Thank you for your assistance. You may return your report to the Office of Disability Services via email at <span data-field="ods_email">{{ ods_email }}</span> or by fax at {{ fax_number }}.</p>
+    <p>Please call {{ phone_number }} if you require additional information. Please attach any additional reports or relevant information (audiology reports, neuropsychological evaluations, etc). All information on this form will remain confidential in accordance with the Family Educational Rights and Privacy Act (FERPA).</p>
+  </div>
+</div>

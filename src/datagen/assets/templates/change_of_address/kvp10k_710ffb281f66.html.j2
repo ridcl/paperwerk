@@ -1,0 +1,192 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  .form-row { display: flex; margin-bottom: 15px; }
+  .form-row > div { flex: 1; }
+  .label-col { width: 150px; }
+  .input-col { flex-grow: 1; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .divider { border-top: 1px solid #ccc; margin: 10px 0; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;">
+    <div>
+      <img src="" alt="Seal" style="width: 100px; height: auto;">
+      <div style="margin-top: 10px;">
+        <p style="font-size: 12px; margin: 0;">Office of the Registrar (Stockton)</p>
+        <p style="font-size: 12px; margin: 0;">Office of the Registrar (Sacramento)</p>
+        <p style="font-size: 12px; margin: 0;">Office of Academic Affairs (San Francisco)</p>
+        <p style="font-size: 12px; margin: 0;">University of the Pacific</p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 16px; margin: 0;">CHANGE OF ADDRESS</h2>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div class="form-row">
+      <div class="label-col">Name:</div>
+      <div class="input-col"><span data-field="full_name">{{ full_name }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Email:</div>
+      <div class="input-col"><span data-field="email">{{ email }}</span></div>
+    </div>
+    <div class="form-row">
+      <div class="label-col">Student Signature:</div>
+      <div class="input-col"></div>
+    </div>
+    <div class="form-row" style="margin-top: 20px;">
+      <div class="label-col">Date:</div>
+      <div class="input-col"><span data-field="date_signed">{{ date_signed }}</span></div>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 20px;">I wish to change the address(es) noted below, effective this date.</p>
+
+  <!-- MAILING (MA) Section -->
+  <div class="section-title">MAILING (MA)</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col">Start Date:</div>
+    <div class="input-col"><span data-field="mailing.start_date">{{ mailing.start_date }}</span></div>
+    <div class="label-col">End Date:</div>
+    <div class="input-col"><span data-field="mailing.end_date">{{ mailing.end_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Address:</div>
+    <div class="input-col"><span data-field="mailing.address">{{ mailing.address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">City/State:</div>
+    <div class="input-col"><span data-field="mailing.city_state">{{ mailing.city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Zip:</div>
+    <div class="input-col"><span data-field="mailing.zip">{{ mailing.zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Phone:</div>
+    <div class="input-col"><span data-field="mailing.phone">{{ mailing.phone }}</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PERMANENT (PR) Section -->
+  <div class="section-title">PERMANENT (PR)</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col">Start Date:</div>
+    <div class="input-col"><span data-field="permanent.start_date">{{ permanent.start_date }}</span></div>
+    <div class="label-col">End Date:</div>
+    <div class="input-col"><span data-field="permanent.end_date">{{ permanent.end_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Address:</div>
+    <div class="input-col"><span data-field="permanent.address">{{ permanent.address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">City/State:</div>
+    <div class="input-col"><span data-field="permanent.city_state">{{ permanent.city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Zip:</div>
+    <div class="input-col"><span data-field="permanent.zip">{{ permanent.zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Country:</div>
+    <div class="input-col"><span data-field="permanent.country">{{ permanent.country }}</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PARENT (PA) Section -->
+  <div class="section-title">PARENT (PA)</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col">Start Date:</div>
+    <div class="input-col"><span data-field="parent.start_date">{{ parent.start_date }}</span></div>
+    <div class="label-col">End Date:</div>
+    <div class="input-col"><span data-field="parent.end_date">{{ parent.end_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Address:</div>
+    <div class="input-col"><span data-field="parent.address">{{ parent.address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">City/State:</div>
+    <div class="input-col"><span data-field="parent.city_state">{{ parent.city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Zip:</div>
+    <div class="input-col"><span data-field="parent.zip">{{ parent.zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Country:</div>
+    <div class="input-col"><span data-field="parent.country">{{ parent.country }}</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EMERGENCY (EM) Section -->
+  <div class="section-title">EMERGENCY (EM)</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col">Start Date:</div>
+    <div class="input-col"><span data-field="emergency.start_date">{{ emergency.start_date }}</span></div>
+    <div class="label-col">End Date:</div>
+    <div class="input-col"><span data-field="emergency.end_date">{{ emergency.end_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Address:</div>
+    <div class="input-col"><span data-field="emergency.address">{{ emergency.address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">City/State:</div>
+    <div class="input-col"><span data-field="emergency.city_state">{{ emergency.city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Zip:</div>
+    <div class="input-col"><span data-field="emergency.zip">{{ emergency.zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Phone:</div>
+    <div class="input-col"><span data-field="emergency.phone">{{ emergency.phone }}</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOREIGN (FO) Section -->
+  <div class="section-title">FOREIGN (FO)</div>
+  <div class="form-row" style="margin-bottom: 10px;">
+    <div class="label-col">Start Date:</div>
+    <div class="input-col"><span data-field="foreign.start_date">{{ foreign.start_date }}</span></div>
+    <div class="label-col">End Date:</div>
+    <div class="input-col"><span data-field="foreign.end_date">{{ foreign.end_date }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Address:</div>
+    <div class="input-col"><span data-field="foreign.address">{{ foreign.address }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">City/State:</div>
+    <div class="input-col"><span data-field="foreign.city_state">{{ foreign.city_state }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Zip:</div>
+    <div class="input-col"><span data-field="foreign.zip">{{ foreign.zip }}</span></div>
+  </div>
+  <div class="form-row">
+    <div class="label-col">Country:</div>
+    <div class="input-col"><span data-field="foreign.country">{{ foreign.country }}</span></div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10px; text-align: right;">
+    Last revised 10/18/17
+  </div>
+</div>

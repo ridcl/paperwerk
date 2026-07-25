@@ -1,0 +1,54 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic a formal document layout */
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    color: #333;
+  }
+  h1 {
+    font-size: 28pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .contact-info p {
+    margin: 2px 0;
+    font-size: 11pt;
+  }
+  .header-meta {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    font-size: 10pt;
+  }
+</style>
+
+<div class="page">
+  <div class="header-meta">
+    <span>Contact Us</span><br>
+    <span>1</span>
+  </div>
+  <h1>Contact Us</h1>
+  <div class="contact-info">
+    <h2>Office of the Registrar</h2>
+    <p>Office of the Registrar (https://www.{{ domain }}/reg/)</p>
+    <p><span>{{ institution.name }}</span></p>
+    <p><span>{{ institution.street_address }}</span></p>
+    <p><span>{{ institution.city }}, {{ institution.state }} {{ institution.zip_code }}</span></p>
+    <p>P.O. Box <span>{{ institution.po_box }}</span>, {{ institution.city }} {{ institution.state }} <span>{{ institution.zip_code }}</span></p>
+    <p>Phone: <span>{{ institution.phone }}</span> | Toll free: <span>{{ institution.toll_free_phone }}</span> | Fax: <span>{{ institution.fax }}</span></p>
+    <p>Email: <a href="mailto:{{ institution.email }}">{{ institution.email }}</a></p>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .center-text { text-align: center; }
+  .right-align { text-align: right; }
+  .divider { border-top: 1px solid #000; margin: 10px 0; }
+</style>
+<div class="page">
+  <div class="center-text">
+    <span data-field="institution_name">{{ institution_name }}</span>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Seal Image -->
+    </div>
+    <span data-field="department_name">{{ department_name }}</span>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="document_title">{{ document_title }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="volume_size">{{ volume_size }}</span>
+    </div>
+    <div style="margin-top: 20px;">
+      <span data-field="document_id">{{ document_id }}</span>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <div class="center-text">
+    <span data-field="department_name">{{ department_name }}</span>
+    <div style="margin-top: 20px;">
+      <span data-field="address_line_1">{{ address_line_1 }}</span><br>
+      <span data-field="city_state_zip">{{ city_state_zip }}</span><br>
+      <span data-field="phone">{{ phone }}</span><br>
+      <span data-field="fax">{{ fax }}</span><br>
+      <span data-field="website">{{ website }}</span><br>
+      <span data-field="director_name">{{ director_name }}</span>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <div class="center-text" style="margin-top: 100px;">
+    <span data-field="document_title_short">{{ document_title_short }}</span>
+    <div style="margin-top: 10px;">
+      <span data-field="document_id">{{ document_id }}</span>
+    </div>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="volume_size">{{ volume_size }}</span>
+  </div>
+  <div class="center-text" style="margin-top: 50px;">
+    <span data-field="document_id">{{ document_id }}</span>
+  </div>
+</div>
+<div class="page">
+  <div class="center-text" style="margin-top: 100px;">
+    <span data-field="access_statement">Access is granted in accordance with the <span data-field="protocols_link">{{ access_statement">Access is granted in accordance with the <span data-field= }}</span>.</span>
+  </div>
+  <div class="center-text" style="margin-top: 100px;">
+    <span data-field="section_heading">{{ section_heading }}</span>
+    <div style="height: 1px; width: 50%; margin: 10px auto;"></div>
+    <span data-field="arrangement_note">{{ arrangement_note }}</span>
+  </div>
+</div>
+<div class="page">
+  <div class="center-text" style="margin-top: 100px;">
+    <span data-field="section_heading">{{ section_heading }}</span>
+  </div>
+  <table style="width: 100%; margin-top: 30px; border-collapse: collapse; font-family: inherit;">
+    <thead>
+      <tr style="border-bottom: 1px solid #000;">
+        <th style="text-align: left; padding: 8px; width: 60%;"></th>
+        <th style="text-align: center; padding: 8px; width: 20%;">Box</th>
+        <th style="text-align: center; padding: 8px; width: 20%;">Folder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items %}
+      <tr style="border-bottom: 1px dotted #ccc;">
+        <td style="padding: 8px;">
+          <span data-field="inventory_items[{{ loop.index0 }}].description">{{ item.description }}</span>
+        </td>
+        <td style="text-align: center; padding: 8px;">
+          <span data-field="inventory_items[{{ loop.index0 }}].box">{{ item.box }}</span>
+        </td>
+        <td style="text-align: center; padding: 8px;">
+          <span data-field="inventory_items[{{ loop.index0 }}].folder">{{ item.folder }}</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

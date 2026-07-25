@@ -1,0 +1,148 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .contact-info p {
+    margin: 2px 0;
+    font-size: 0.9em;
+  }
+  .list-item {
+    margin-bottom: 5px;
+  }
+</style>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h2 style="font-size: 1.2em; margin: 0;">Metallurgical, Materials and Biomedical Engineering</h2>
+    <span style="font-size: 0.9em;">1</span>
+  </header>
+
+  <h1 style="font-size: 2em; margin-bottom: 10px;">Metallurgical, Materials and Biomedical Engineering</h1>
+  <p style="font-size: 0.95em; margin-bottom: 20px;">Return to: <span data-field="return_link">{{ return_link }}</span></p>
+
+  <p style="font-size: 0.95em; line-height: 1.5; margin-bottom: 30px;">
+    Graduate students in Metallurgical, Materials and Biomedical Engineering are involved with academic studies and research programs that focus on understanding the structure, properties, processing, and performance of materials, including the development of new or improved materials and advanced processing methods. These are the critical links between the design and the realization of new materials systems. Materials and materials limitations pervade all of the engineering and high technology fields that are an integral part of our society and its economic infrastructure. The challenges and opportunities for graduates in metallurgical and materials engineering are certainly exciting and exceptional.
+  </p>
+
+  <h2 class="section-title">Chair</h2>
+  <div class="contact-info" style="margin-bottom: 20px;">
+    <p>
+      <span data-field="chair.full_name">{{ chair.full_name }}</span>
+      <br>
+      Contact Information: <span data-field="chair.contact_email">{{ chair.contact_email }}</span>
+      <br>
+      Education: <span data-field="chair.education">{{ chair.education }}</span>
+    </p>
+  </div>
+
+  <h2 class="section-title">Professor</h2>
+  {% for professor in professors %}
+  <div class="contact-info" style="margin-bottom: 20px;">
+    <p>
+      <span data-field="professors[{{ loop.index0 }}].full_name">{{ professors[loop.index0].full_name }}</span>
+      <br>
+      Contact Information: <span data-field="professors[{{ loop.index0 }}].contact_email">{{ professors[loop.index0].contact_email }}</span>
+      <br>
+      Education: <span data-field="professors[{{ loop.index0 }}].education">{{ professors[loop.index0].education }}</span>
+    </p>
+  </div>
+  {% endfor %}
+
+  <h2 class="section-title">Associate Professor</h2>
+  {% for associate_professor in associate_professors %}
+  <div class="contact-info" style="margin-bottom: 20px;">
+    <p>
+      <span data-field="associate_professors[{{ loop.index0 }}].full_name">{{ associate_professors[loop.index0].full_name }}</span>
+      <br>
+      Contact Information: <span data-field="associate_professors[{{ loop.index0 }}].contact_email">{{ associate_professors[loop.index0].contact_email }}</span>
+      <br>
+      Education: <span data-field="associate_professors[{{ loop.index0 }}].education">{{ associate_professors[loop.index0].education }}</span>
+    </p>
+  </div>
+  {% endfor %}
+
+  <h2 class="section-title">Assistant Professor</h2>
+  {% for assistant_professor in assistant_professors %}
+  <div class="contact-info" style="margin-bottom: 20px;">
+    <p>
+      <span data-field="assistant_professors[{{ loop.index0 }}].full_name">{{ assistant_professors[loop.index0].full_name }}</span>
+      <br>
+      Contact Information: <span data-field="assistant_professors[{{ loop.index0 }}].contact_email">{{ assistant_professors[loop.index0].contact_email }}</span>
+      <br>
+      Education: <span data-field="assistant_professors[{{ loop.index0 }}].education">{{ assistant_professors[loop.index0].education }}</span>
+    </p>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <span style="font-size: 0.9em;">2</span>
+    <h2 style="font-size: 1.2em; margin: 0;">Metallurgical, Materials and Biomedical Engineering</h2>
+  </header>
+
+  <h2 class="section-title">Professor of Practice</h2>
+  {% for professor_of_practice in professors_of_practice %}
+  <div class="contact-info" style="margin-bottom: 20px;">
+    <p>
+      <span data-field="professors_of_practice[{{ loop.index0 }}].full_name">{{ professors_of_practice[loop.index0].full_name }}</span>
+      <br>
+      Contact Information: <span data-field="professors_of_practice[{{ loop.index0 }}].contact_email">{{ professors_of_practice[loop.index0].contact_email }}</span>
+      <br>
+      Education: <span data-field="professors_of_practice[{{ loop.index0 }}].education">{{ professors_of_practice[loop.index0].education }}</span>
+    </p>
+  </div>
+  {% endfor %}
+
+  <h2 class="section-title">Programs</h2>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li class="list-item"><span data-field="program_m_s_biomedical">{{ program_m_s_biomedical }}</span></li>
+    <li class="list-item"><span data-field="program_m_s_metallurgical_materials">{{ program_m_s_metallurgical_materials }}</span></li>
+    <li class="list-item"><span data-field="program_phd_biomedical">{{ program_phd_biomedical }}</span></li>
+    <li class="list-item"><span data-field="program_phd_materials_science">{{ program_phd_materials_science }}</span></li>
+    <li class="list-item"><span data-field="program_graduate_certificate">{{ program_graduate_certificate }}</span></li>
+  </ul>
+
+  <h3 class="section-title" style="margin-top: 30px;">The University of Texas at El Paso</h3>
+  <p style="font-size: 0.95em; margin-bottom: 5px;">
+    <span data-field="department_name">{{ department_name }}</span>
+  </p>
+  <p style="font-size: 0.95em; margin-bottom: 5px;">
+    <span data-field="department_address_line1">{{ department_address_line1 }}</span>
+  </p>
+  <p style="font-size: 0.95em; margin-bottom: 5px;">
+    <span data-field="department_address_line2">{{ department_address_line2 }}</span>
+  </p>
+  <p style="font-size: 0.95em; margin-bottom: 15px;">
+    Phone: <span data-field="department_phone">{{ department_phone }}</span>
+  </p>
+  <p style="font-size: 0.95em; margin-bottom: 15px;">
+    Email: <span data-field="department_email">{{ department_email }}</span>
+  </p>
+  <p style="font-size: 0.95em;">
+    Visit Department Website: <span data-field="department_website">{{ department_website }}</span>
+  </p>
+</div>

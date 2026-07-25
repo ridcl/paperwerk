@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Memo</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.4;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td {
+    padding: 5px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">MEMO</h1>
+      <div style="margin-top: 10px;">
+        <h2 style="font-size: 24pt; margin: 0;">PURDUE</h2>
+        <p style="font-size: 14pt; margin: 0;">UNIVERSITY</p>
+      </div>
+    </div>
+    <div style="text-align: right; font-size: 10pt;">
+      <p style="margin: 0;">OFFICE OF RISK MANAGEMENT</p>
+      <p style="margin: 0;">2550 Northwestern Ave, Suite 1100</p>
+      <p style="margin: 0;">West Lafayette, IN 47906</p>
+      <p style="margin: 0;">(765) 494-7695 • FAX (765) 496-1338</p>
+      <p style="margin: 0;">www.purdue.edu/Risk_MGMT</p>
+    </div>
+  </div>
+
+  <h2 style="font-size: 14pt; margin-bottom: 15px;">Medical Coverage for Domestic Camps, Field Trips, and Conferences</h2>
+
+  <p style="margin-bottom: 15px;">Coverage has been renewed with <span data-field="insurer.name">{{ insurer.name }}</span> for this coming Policy Year starting on <span data-field="policy_start_date">{{ policy_start_date }}</span>. We are happy to report that the premium rates have not changed from last year. As a reminder, benefits and rates are as follows:</p>
+
+  <table style="width: 50%;">
+    <tr>
+      <td style="width: 50%; padding-right: 20px;">$15,000</td>
+      <td style="width: 50%;">Accident Medical Expense</td>
+    </tr>
+    <tr>
+      <td>1.000</td>
+      <td>Accidental Dental Expense</td>
+    </tr>
+    <tr>
+      <td>$5,000</td>
+      <td>Illness Medical Expense</td>
+    </tr>
+    <tr>
+      <td>5.000</td>
+      <td>Loss of Life</td>
+    </tr>
+    <tr>
+      <td>7.500</td>
+      <td>Double Dismemberment/Loss of Sight Both Eyes</td>
+    </tr>
+    <tr>
+      <td>3.750</td>
+      <td>Single Dismemberment/Loss of Sight One Eye</td>
+    </tr>
+    <tr>
+      <td>3.000</td>
+      <td>Specified Diseases</td>
+    </tr>
+  </table>
+
+  <p style="font-size: 10pt; margin-bottom: 20px;">*provided <span data-field="condition">{{ condition }}</span> for those covered activities lasting 24 consecutive hours or more.</p>
+
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <td style="width: 50%;">Recreational Summer Day Camps</td>
+        <td style="width: 50%;">.30 per person per day</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in coverage_rates %}
+      <tr>
+        <td>{{ item.description }}</td>
+        <td>{{ item.rate }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="margin-top: 20px;">Note: There is a minimum charge of $4.00 per camp.</p>
+
+  <p style="margin-top: 20px;">The following steps need to be followed to ensure insurance coverage for participants.</p>
+
+  <ol style="margin-top: 15px;">
+    <li>
+      Please submit the online Form RM05, available on the Office of Risk Management website at <a href="http://www.riskconnectclearsight.com/Enterprise/StormsPackages/StormsWrapper/" style="color: blue;">https://www.riskconnectclearsight.com/Enterprise/StormsPackages/StormsWrapper/</a> at least 1-2 weeks prior to the event to request the insurance coverage. For each event, please include the dates of coverage, the location of the event, the estimated number of participants, and an <span data-field="account_number">{{ account_number }}</span> to which the insurance premium should be charged. The <span data-field="full_name">{{ full_name }}</span> (also include any acronym that may be used) along with a description of the activity should also be included. If you have a change in the activity once you have requested coverage, please email <span data-field="risk_mgmt_email">{{ risk_mgmt_email }}</span> to inform us of that change.
+    </li>
+  </ol>
+</div>
+
+<div class="page">
+  <ol style="margin-top: 15px;">
+    <li>
+      If you already know who the attendees are, please upload a roster with the RM05 at the time of submission. If you do not have the list at that time, please email it to <span data-field="risk_mgmt_email">{{ risk_mgmt_email }}</span> no later than 3 days after the start of each event. The list needs to include participants' full names & their e-mail addresses. If emailing the list, please include the name & dates of the event, so we can get it attached to the correct insurance request. Make sure that the list contains only the names of persons who are to be insured; otherwise we cannot accept responsibility if you are overcharged. (NOTE: The premium charged to your account is based on this list.) <span data-field="do_not_include_employees">{{ do_not_include_employees }}</span>
+    </li>
+    <li>
+      Late submission of your rosters and claim forms causes delay in claim payments, premium payments and billings to your account – so your cooperation in providing this information early will benefit everyone.
+    </li>
+  </ol>
+
+  <h3 style="margin-top: 30px;">PLEASE REMEMBER:</h3>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li>This coverage is <span data-field="coverage_type">{{ coverage_type }}</span>.</li>
+    <li>Submit final counts no later than 3 days after the start of each activity – include e-mail addresses for participants.</li>
+    <li>Billing to your accounts will occur monthly, early submission of final counts help us accomplish this.</li>
+    <li>Provide one account number only for each program.</li>
+    <li>Make sure that the claim forms are signed by the Camp Counselor or Camp Administrator and submitted directly to American Income Life. Also – be sure the name of the camp is included on the form. CLAIMS CANNOT BE PROCESSED WITHOUT THESE TWO ITEMS.</li>
+    <li>Be sure the name of the camp is provided to the treating facility at the time of treatment.</li>
+    <li>Do not send claim forms to PUSH or other treating facility – send them immediately to American Income Life.</li>
+  </ul>
+
+  <p style="margin-top: 30px; font-size: 10pt;">* Please distribute this memo to the appropriate staff in your respective areas – we will be happy to answer any questions that you may have. Please contact <span data-field="risk_mgmt_email">{{ risk_mgmt_email }}</span> for assistance. *</p>
+</div>
+
+<div class="page">
+  <h2 style="text-align: center; font-size: 18pt; margin-bottom: 10px;">CLAIM PROCEDURES</h2>
+  <h3 style="text-align: center; font-size: 14pt; margin-bottom: 30px;">FOR</h3>
+  <h2 style="text-align: center; font-size: 14pt; margin-bottom: 40px;">DOMESTIC CAMPS, FIELD TRIPS, AND CONFERENCES</h2>
+
+  <h3 style="font-size: 12pt; margin-bottom: 10px;">I. Treatment for Injury/Illness</h3>
+  <p style="margin-top: 0;">Please arrange for the appropriate medical treatment for the participant. If necessary, arrange for transportation by ambulance.</p>
+  <p style="margin-top: 10px;">Take camper's medical authorization and medical history forms with you to the treating facility.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 25px; margin-bottom: 10px;">II. Claim Form</h3>
+  <p style="margin-top: 0;">A claim form needs to be completed for each participant who receives medical attention. The form has to be signed by the Counselor or Camp Administrator. Please be sure to include the participant's <span data-field="home_mailing_address">{{ home_mailing_address }}</span>.</p>
+  <p style="margin-top: 10px;">The claim form and any bills should be sent directly to American Income Life at <span data-field="ai_life_address">{{ ai_life_address }}</span> via Filelocker or fax (317-849-2793).</p>
+  <p style="margin-top: 10px;">Personal health information should not be emailed.</p>
+
+  <h3 style="font-size: 12pt; margin-top: 25px; margin-bottom: 10px;">III. Bills for Medical Treatment</h3>
+  <p style="margin-top: 0;">Please request that the treating facility forward an itemized statement of charges directly to American Income Life and list the name of the activity on the bill. Please give the facility the name of the camp/conference.</p>
+  <p style="margin-top: 10px;">If further treatment is required after the participant returns home, the parents should forward bills directly to American Income Life for processing.</p>
+
+  <p style="margin-top: 40px; font-size: 10pt;">It will be up to the Dept/Student/Parents to submit claims to American Income Life. The Office of Risk Management does not process claims.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advising Worksheet</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .title-block {
+    width: 50%;
+  }
+  .info-block {
+    width: 45%;
+    text-align: right;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-section">
+    <div class="title-block">
+      <h1>MSU BILLINGS</h1>
+      <p>Montana State University Billings</p>
+      <p>Advising & Career Services</p>
+      <p>Phone: {{ contact_phone }}</p>
+      <p>Fax: {{ contact_fax }}</p>
+      <p>Email: <span data-field="contact_email">{{ contact_email }}</span></p>
+      <p>Website: <span data-field="website_url">{{ website_url }}</span></p>
+    </div>
+    <div class="info-block">
+      <h2>ADVISING WORKSHEET</h2>
+      <p>MINOR IN OUTDOOR ADVENTURE LEADERSHIP</p>
+      <p>GENERAL BULLETIN 2017-2018</p>
+      <p>TRANSFER INSTITUTION(S): <span data-field="transfer_institution">{{ transfer_institution }}</span></p>
+      <p>Name: <span data-field="full_name">{{ full_name }}</span></p>
+      <p>Student ID #: <span data-field="student_id">{{ student_id }}</span></p>
+    </div>
+  </div>
+
+  <div class="section-title">Required Courses</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Course</th>
+        <th>Credits</th>
+        <th>Grade</th>
+        <th>Semester</th>
+        <th>Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in required_courses %}
+      <tr>
+        <td>REC</td>
+        <td><span data-field="required_courses[{{ loop.index0 }}].course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="required_courses[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="section-title">Skills Areas</div>
+  <p>Choose at least four skills/rescue courses in at least two different disciplines (e.g. climbing, fly fishing, skiing, etc.) from the following (continued on next page):</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Course</th>
+        <th>Credits</th>
+        <th>Grade</th>
+        <th>Semester</th>
+        <th>Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in skills_areas %}
+      <tr>
+        <td>REC</td>
+        <td><span data-field="skills_areas[{{ loop.index0 }}].course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="skills_areas[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="page">
+  <table>
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Course</th>
+        <th>Credits</th>
+        <th>Grade</th>
+        <th>Semester</th>
+        <th>Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in skills_areas_page2 %}
+      <tr>
+        <td>REC</td>
+        <td><span data-field="skills_areas_page2[{{ loop.index0 }}].course_name">{{ item.course_name }}</span></td>
+        <td><span data-field="skills_areas_page2[{{ loop.index0 }}].credits">{{ item.credits }}</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 40px;">
+    <p>Total minimum credits required for minor: <span data-field="total_minimum_credits">{{ total_minimum_credits }}</span></p>
+    <p>A minimum grade of C- is required in all minor courses.</p>
+    <p>Certain courses in this program have prerequisites; students should check the course descriptions for required prerequisites.</p>
+  </div>
+</div>
+</body>
+</html>

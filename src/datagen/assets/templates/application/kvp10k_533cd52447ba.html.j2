@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Field Studies Fund Application</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .form-label { width: 200px; }
+  .form-input { flex-grow: 1; border-bottom: 1px solid #000; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .signature-line { margin-top: 50px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 style="text-align: center; font-size: 24pt;">THE ROBERT HOWARD FIELD STUDIES FUND APPLICATION</h1>
+
+  <div class="form-row">
+    <div class="form-label">Name:</div>
+    <div class="form-input"><span data-field="full_name">{{ full_name }}</span></div>
+    <div class="form-label" style="margin-left: 300px;">Student ID#:</div>
+    <div class="form-input" style="width: 150px;"><span data-field="student_id">{{ student_id }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Check One:</div>
+    <div style="flex-grow: 1;">
+      <input type="radio" name="grade" value="graduate"> Graduate
+      <input type="radio" name="grade" value="undergraduate"> or undergraduate
+      <input type="radio" name="years" value="years_in_program"> Years in program:
+      <div class="form-input" style="width: 150px;" data-field="or_undergraduate">{{ or_undergraduate }}</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Mailing Address:</div>
+    <div class="form-input" style="flex-grow: 2;"><span data-field="mailing_address">{{ mailing_address }}</span></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-label">Phone:</div>
+    <div class="form-input" style="width: 200px;"><span data-field="phone">{{ phone }}</span></div>
+    <div class="form-label" style="margin-left: 300px;">email:</div>
+    <div class="form-input" style="width: 300px;"><span data-field="email">{{ email }}</span></div>
+  </div>
+
+  <div class="section-title">Field Work Project Description</div>
+  <p>Please attach a 250 word document describing the field work project for which these funds will be directed.</p>
+  <div class="form-input" style="height: 150px; border: 1px solid #ccc;">
+    <!-- Placeholder for description -->
+  </div>
+
+  <div class="section-title">Estimated Expenses</div>
+  <p>Estimate the amount of reimbursement you expect and a short list of the expenses you expect:</p>
+
+  <div class="form-row" style="margin-top: 20px;">
+    <div class="form-label" style="width: 300px;">Expenses (lodging, gas, equipment):</div>
+    <div class="form-input" style="flex-grow: 1;"><span data-field="expense_list">{{ expense_list }}</span></div>
+    <div class="form-label" style="margin-left: 300px;">Amount:</div>
+    <div class="form-input" style="width: 150px;"><span data-field="total_amount">{{ total_amount }}</span></div>
+  </div>
+
+  <div class="section-title">Faculty Attestation</div>
+  <p>Please provide the names of at least two faculty that will attest to your academic performance and ability to conduct field research.</p>
+  <div class="form-input" style="height: 100px; border: 1px solid #ccc;">
+    <!-- Placeholder for faculty names -->
+  </div>
+
+  <div class="signature-line">
+    <div class="form-row">
+      <div class="form-label">Signed:</div>
+      <div class="form-input" style="width: 300px;"><span data-field="signature">{{ signature }}</span></div>
+      <div class="form-label" style="margin-left: 300px;">Date:</div>
+      <div class="form-input" style="width: 150px;"><span data-field="date_signed">{{ date_signed }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 40px;">Financial Aid Recipient Information</div>
+  <p>If you are a Financial Aid recipient and you would like to know how the scholarship will be coordinated with your financial aid please contact the Financial Aid office (818) 677-4085, office location Bayramian Hall – Student Services Center, first floor East wing or financial.aid@csun.edu</p>
+
+  <div class="section-title" style="margin-top: 30px;">Deadline</div>
+  <p>Please turn your application in to <span data-field="submission_email">{{ submission_email }}</span> by the date and time listed on the flyer.</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .form-row > div {
+    flex: 1;
+  }
+  .checkbox-group label {
+    margin-right: 15px;
+    font-weight: normal;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: right; margin-bottom: 40px;">
+    <div style="font-size: 28px; font-weight: bold; font-family: Georgia, serif;">AmWINS</div>
+    <div style="font-size: 12px;">One Enterprise Drive, Suite 210</div>
+    <div style="font-size: 12px;">Shelton, CT 06484</div>
+    <div style="font-size: 12px;">800-243-2534</div>
+    <div style="font-size: 12px;">Email: <span data-field="contact_email">{{ contact_email }}</span></div>
+  </div>
+
+  <div class="header">ENROLLMENT FORM FOR GROUP INSURANCE</div>
+
+  <div class="section-title">GROUP NAME: <span data-field="group_name">{{ group_name }}</span></div>
+  <div class="section-title">GROUP POLICY #: <span data-field="policy_number">{{ policy_number }}</span></div>
+
+  <!-- A. Employee Information -->
+  <div class="section-title">A. Employee Information (Complete for ALL Enrollments)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Social Security Number</th>
+        <th style="width: 20%;">Last Name</th>
+        <th style="width: 20%;">First Name</th>
+        <th style="width: 20%;">MI</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="ssn">{{ ssn }}</span></td>
+        <td><span data-field="last_name_employee">{{ last_name_employee }}</span></td>
+        <td><span data-field="first_name_employee">{{ first_name_employee }}</span></td>
+        <td><span data-field="mi_employee">{{ mi_employee }}</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Address and Demographics -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Street Address</th>
+        <th style="width: 15%;">City</th>
+        <th style="width: 15%;">State</th>
+        <th style="width: 15%;">ZIP</th>
+        <th style="width: 30%;">Date of Birth</th>
+        <th style="width: 15%;">Occupation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="address_street">{{ address_street }}</span></td>
+        <td><span data-field="address_city">{{ address_city }}</span></td>
+        <td><span data-field="address_state">{{ address_state }}</span></td>
+        <td><span data-field="address_zip">{{ address_zip }}</span></td>
+        <td><span data-field="dob_employee">{{ dob_employee }}</span></td>
+        <td><span data-field="occupation_employee">{{ occupation_employee }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Marital Status -->
+  <div style="margin-top: 20px;">
+    <div style="font-weight: bold; margin-bottom: 5px;">Marital Status:</div>
+    <div style="display: flex; gap: 20px;">
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Male</label>
+        <label><input type="checkbox"> Female</label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Married</label>
+        <label><input type="checkbox"> Single</label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Divorced</label>
+        <label><input type="checkbox"> Widowed</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. Completed By Employer -->
+  <div class="section-title">B. Completed By Employer</div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div>Annual Earnings: $ <span data-field="annual_earnings">{{ annual_earnings }}</span></div>
+    <div>Average # Hours Worked Per Week: <span data-field="avg_hours_worked">{{ avg_hours_worked }}</span></div>
+  </div>
+
+  <!-- C. Product Selection -->
+  <div class="section-title">C. Product Selection (Complete for ALL Enrollments)</div>
+  <p style="font-size: 12px;">NOTE: Please mark each box for coverage for which you are applying.</p>
+
+  <!-- Coverage Selection Table -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;"></th>
+        <th style="width: 15%;">Group Life AD&D</th>
+        <th style="width: 15%;">Dependent Life</th>
+        <th style="width: 15%;">Short Term Disability</th>
+        <th style="width: 15%;">Long Term Disability</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dental:</td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Vision:</td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Employee Only</label><label><input type="checkbox"> Employee & Spouse</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Employee Only</label><label><input type="checkbox"> Employee & 1 Dependent</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Family</label><label><input type="checkbox"> No Coverage</label></div></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Voluntary Product Selection -->
+  <div class="section-title">Voluntary Product Selection</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;"></th>
+        <th style="width: 15%;">Voluntary Life</th>
+        <th style="width: 15%;">Voluntary STD</th>
+        <th style="width: 15%;">Voluntary LTD</th>
+        <th style="width: 15%;">Voluntary Vision</th>
+        <th style="width: 20%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dental:</td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td><div class="checkbox-group"><label><input type="checkbox"> Yes</label><label><input type="checkbox"> No</label></div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- D. Dependent Information -->
+  <div class="section-title">D. Dependent Information (Dental or Vision Coverage) List Dependents to be Covered.</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">First Name</th>
+        <th style="width: 15%;">Last Name</th>
+        <th style="width: 15%;">Relationship</th>
+        <th style="width: 15%;">DOB</th>
+        <th style="width: 15%;">First Name</th>
+        <th style="width: 15%;">Last Name</th>
+        <th style="width: 15%;">Relationship</th>
+        <th style="width: 15%;">DOB</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in dependents %}
+      <tr>
+        <td><span data-field="dependents[{{ loop.index0 }}].first_name">{{ dependents[loop.index0].first_name }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].last_name">{{ dependents[loop.index0].last_name }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].relationship">{{ dependents[loop.index0].relationship }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].dob">{{ dependents[loop.index0].dob }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].first_name_2">{{ dependents[loop.index0].first_name_2 }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].last_name_2">{{ dependents[loop.index0].last_name_2 }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].relationship_2">{{ dependents[loop.index0].relationship_2 }}</span></td>
+        <td><span data-field="dependents[{{ loop.index0 }}].dob_2">{{ dependents[loop.index0].dob_2 }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- E. Beneficiary Information -->
+  <div class="section-title">E. Beneficiary Information (Complete ONLY for Life Enrollments)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Primary Beneficiary's Last Name</th>
+        <th style="width: 15%;">First</th>
+        <th style="width: 15%;">MI</th>
+        <th style="width: 20%;">Relationship of Beneficiary</th>
+        <th style="width: 20%;">Social Security Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="primary_beneficiary_last_name">{{ primary_beneficiary_last_name }}</span></td>
+        <td><span data-field="primary_beneficiary_first">{{ primary_beneficiary_first }}</span></td>
+        <td><span data-field="primary_beneficiary_mi">{{ primary_beneficiary_mi }}</span></td>
+        <td><span data-field="primary_beneficiary_relationship">{{ primary_beneficiary_relationship }}</span></td>
+        <td><span data-field="primary_beneficiary_ssn">{{ primary_beneficiary_ssn }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Contingent Beneficiary -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Contingent Beneficiary's Last Name</th>
+        <th style="width: 15%;">First</th>
+        <th style="width: 15%;">MI</th>
+        <th style="width: 20%;">Relationship of Beneficiary</th>
+        <th style="width: 20%;">Social Security Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="contingent_beneficiary_last_name">{{ contingent_beneficiary_last_name }}</span></td>
+        <td><span data-field="contingent_beneficiary_first">{{ contingent_beneficiary_first }}</span></td>
+        <td><span data-field="contingent_beneficiary_mi">{{ contingent_beneficiary_mi }}</span></td>
+        <td><span data-field="contingent_beneficiary_relationship">{{ contingent_beneficiary_relationship }}</span></td>
+        <td><span data-field="contingent_beneficiary_ssn">{{ contingent_beneficiary_ssn }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- F. Refusal of Coverage -->
+  <div class="section-title">F. REFUSAL OF COVERAGE (Complete ONLY for Waiver of Group Insurance Coverage)</div>
+  <p style="font-size: 12px;">The group program has been offered to me, and after carefully considering its benefits, I have decided:</p>
+  <div style="margin-bottom: 15px;">
+    <p style="margin: 0;">( ) a) not to enroll myself or dependents in the Program</p>
+    <p style="margin: 0;">( ) b) not to enroll my dependents in the Program</p>
+  </div>
+
+  <!-- G. Signature -->
+  <div class="section-title">G. Signature (Complete for Enrollment or Refusal)</div>
+  <p style="font-size: 12px;">I hereby apply for group insurance, for which I am eligible or may become eligible. If contributions are required, I authorize my employer to deduct premiums from my salary. I reserve the right to revoke this deduction at any time on written notice.</p>
+
+  <table style="margin-top: 50px;">
+    <tr>
+      <td style="width: 33%;">Signature</td>
+      <td style="width: 33%;">Date</td>
+      <td style="width: 33%;">Print Name</td>
+    </tr>
+    <tr>
+      <td><span data-field="signature_line">{{ signature_line }}</span></td>
+      <td><span data-field="date_signature">{{ date_signature }}</span></td>
+      <td><span data-field="print_name">{{ print_name }}</span></td>
+    </tr>
+  </table>
+</div>

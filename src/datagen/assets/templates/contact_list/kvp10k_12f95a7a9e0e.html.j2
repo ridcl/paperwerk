@@ -1,0 +1,73 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: right; font-size: 36px; font-weight: bold;">ABB</div>
+
+  <div style="margin-top: 40px;">
+    <p>Emergi-Lite contacts - US</p>
+    <p>Call toll-free 1-888-935-3605</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>General Inquiries</p>
+    <p><span data-field="general_inquiries_email">{{ general_inquiries_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Regional sales</p>
+    <p><span data-field="regional_sales_email">{{ regional_sales_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Sales, quotations, product and application information</p>
+    <p><span data-field="sales_info_email">{{ sales_info_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Installation and after sales technical support</p>
+    <p><span data-field="installation_support_email">{{ installation_support_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Nexus after sales technical support</p>
+    <p><span data-field="nexus_support_email">{{ nexus_support_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>AC & DC Central Systems</p>
+    <p><span data-field="ac_dc_systems_email">{{ ac_dc_systems_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Customer Service Manager</p>
+    <p><span data-field="customer_service_manager_email">{{ customer_service_manager_email }}</span></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <p>Customer Service Team</p>
+    {% for item in customer_service_team %}
+      <p>
+        <span data-field="customer_service_team[{{ loop.index0 }}].name">{{ item.name }}</span>
+        <span data-field="customer_service_team[{{ loop.index0 }}].email">{{ item.email }}</span>
+      </p>
+    {% endfor %}
+  </div>
+</div>

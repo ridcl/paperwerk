@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statement of Person Claiming Refund</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        .page {
+            width: 794px; height: 1123px;
+            padding: 50px 60px; box-sizing: border-box;
+            overflow: hidden; page-break-after: always;
+            position: relative;
+            font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        }
+        .page:last-child { page-break-after: auto; }
+        h1, h2, h3 { font-weight: bold; }
+        .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+        .line-item-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .line-item-table td { padding: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <h1 style="font-size: 18pt; margin-bottom: 5px;">Form 1310</h1>
+                <p style="font-size: 10pt;">(Rev. Aug. 2019)</p>
+                <p style="font-size: 10pt;">Department of the Treasury</p>
+                <p style="font-size: 10pt;">Internal Revenue Service</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-size: 10pt;">OMB No. 1545-0074</p>
+                <p style="font-size: 10pt;">Attachment: <span data-field="attachment_number">{{ attachment_number }}</span></p>
+                <p style="font-size: 10pt;">Sequence No. <span data-field="sequence_number">{{ sequence_number }}</span></p>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">Tax year decedent was due a refund:</p>
+        <div style="display: flex; gap: 30px;">
+            <div>
+                <label>Calendar year</label>
+                <span data-field="calendar_year_start">{{ calendar_year_start }}</span>, or other tax year beginning
+                <span data-field="other_tax_year_start">{{ other_tax_year_start }}</span>, and ending
+                <span data-field="calendar_year_end">{{ calendar_year_end }}</span>
+            </div>
+            <div>
+                <label>Date of death</label>
+                <span data-field="date_of_death">{{ date_of_death }}</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>Name of decedent, if filing a joint return and both taxpayers are deceased, complete a <span data-field="form_reference">{{ form_reference }}</span>. See instructions.</p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p>Please print</p>
+            <p>Name of person claiming refund</p>
+            <span data-field="full_name">{{ full_name }}</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>Your social security number</p>
+            <span data-field="ssn">{{ ssn }}</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>Type</p>
+            <span data-field="claimant_type">{{ claimant_type }}</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>Appt. no.</p>
+            <span data-field="appointment_number">{{ appointment_number }}</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>Home address (number and street), if you have a P.O. box, see instructions.</p>
+            <span data-field="address">{{ address }}</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <p>City, town or post office, state, and ZIP code. If you have a foreign address, see instructions.</p>
+            <span data-field="city_state_zip">{{ city_state_zip }}</span>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <p><strong>Part I</strong> Check the box that applies to you. Check only one box. Be sure to complete Part III below.</p>
+            <div style="margin-top: 10px;">
+                <input type="checkbox" id="box_a">
+                <label for="box_a">A Surviving spouse requesting reissue of a refund check (see instructions).</label><br>
+                <input type="checkbox" id="box_b">
+                <label for="box_b">B Court-appointed or certified personal representative (defined below). Attach a court certificate showing your appointment, unless previously filed (see instructions).</label><br>
+                <input type="checkbox" id="box_c">
+                <label for="box_c">C Person, other than A or B, claiming refund for the decedent's estate (see instructions). Also, complete Part II.</label>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <p><strong>Part II</strong> Complete this part only if you checked the box on line C above.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <p>Did the decedent leave a will?</p>
+                <span data-field="will_yes_no">{{ will_yes_no }}</span>
+                <span data-field="will_yes_no_2">{{ will_yes_no_2 }}</span>
+            </div>
+            <div style="margin-top: 10px;">
+                <p>Was a court appointed a personal representative for the estate of the decedent?</p>
+                <span data-field="pr_yes_no">{{ pr_yes_no }}</span>
+                <span data-field="pr_yes_no_2">{{ pr_yes_no_2 }}</span>
+            </div>
+            <div style="margin-top: 10px;">
+                <p>If you answered "Yes" to 2a, will be appointed?</p>
+                <span data-field="appointed_yes_no">{{ appointed_yes_no }}</span>
+                <span data-field="appointed_yes_no_2">{{ appointed_yes_no_2 }}</span>
+            </div>
+            <p style="margin-top: 15px;">As the person claiming the refund for the decedent's estate, will you pay out the refund according to the laws of the state where the decedent was a legal resident?</p>
+            <span data-field="state_law_payment">{{ state_law_payment }}</span>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <p><strong>Part III</strong> Signature and verification. All filers must complete this part.</p>
+            <div style="margin-top: 20px;">
+                <p>I request a refund of taxes overpaid by or on behalf of the decedent. Under penalties of perjury, I declare that I have examined this claim, and to the best of my knowledge and belief, it is true, correct, and complete.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+                <div>
+                    <p>Signature of person claiming refund <span data-field="signature_line">{{ signature_line }}</span></p>
+                    <p>(Phone no. optional)</p>
+                </div>
+                <div>
+                    <p>Date <span data-field="date_signed">{{ date_signed }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 style="font-size: 14pt;">General Instructions</h2>
+        <p>Future developments. For the latest information about developments related to Form 1310 and its instructions, such as legislation enacted after they were published, go to www.irs.gov/Form1310.</p>
+
+        <h2 style="font-size: 14pt;">Purpose of Form</h2>
+        <p>Use Form 1310 to claim a refund on behalf of a deceased taxpayer.</p>
+
+        <h2 style="font-size: 14pt;">Who Must File</h2>
+        <p>If you are claiming a refund on behalf of a deceased taxpayer, you must file Form 1310 either of the following ways:</p>
+        <ul>
+            <li>You are a surviving spouse filing an original or amended joint return with the decedent.</li>
+            <li>You are a personal representative (defined on this filing as a court-appointed or certified personal representative under IRC Section 1040, 1040-NR)</li>
+        </ul>
+        <p>Example. Assume Mr. Green died on January 4 before filing his 2019 tax return. On April 3 of 2020, his spouse filed the return as the personal representative for Mr. Green's estate and you file Form 1040 for Mr. Green. You do not need to</p>
+
+        <h2 style="font-size: 14pt;">Additional Information</h2>
+        <p>For more details, see Death of a Taxpayer in the instructions for your return, or get Pub. 559, Survivors, Executors, and Administrators.</p>
+
+        <h2 style="font-size: 14pt;">Specific Instructions</h2>
+        <h3 style="font-size: 12pt;">Name of Decedent</h3>
+        <p>If you are filing a joint return for spouses who are both deceased, complete Form 1310 (see Who Must File, earlier), you must do your.</p>
+        <p>Complete a separate Form 1310 for each spouse.</p>
+        <p>Attach both of these completed Forms 1310 to the return.</p>
+
+        <h3 style="font-size: 12pt;">P.O. Box</h3>
+        <p>Enter your box number only if your post office does not deliver mail to your home.</p>
+
+        <h3 style="font-size: 12pt;">Foreign Address</h3>
+        <p>If your address is outside the United States or its possessions or territories, enter the information in the following order: city, province or state, country, and postal code. Do not abbreviate the country name.</p>
+
+        <h3 style="font-size: 12pt;">Line A</h3>
+        <p>Check the box on line A if you received a refund check in your name and your deceased spouse's name. You can return the joint-name check with Form 1310 to your local IRS office or the Internal Revenue Service Center where you filed your return. A refund check is issued in your name and mailed to you.</p>
+
+        <h3 style="font-size: 12pt;">Line B</h3>
+        <p>Check the box on line B only if you are the decedent's court-appointed or certified personal representative claiming a refund for the decedent on Form 1040 (1040-NR) beginning with the tax year of death. You must attach a copy of the court certificate to this IRS Form 1310 and write "Certificate Previously Filed" at the bottom of the form.</p>
+
+        <h3 style="font-size: 12pt;">Line C</h3>
+        <p>Check the box on line C if you are not a surviving spouse claiming a refund on a joint return and there is no court-appointed or certified personal representative.</p>
+        <p>If you check the box on line C, you must have proof of death.</p>
+        <p>The proof of death is a copy of either of the following:
+            <ul>
+                <li>The death certificate.</li>
+                <li>The formal notification from the appropriate government office (for example, Department of Defense) informing the next of kin of the decedent's death.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="page">
+        <h2 style="font-size: 14pt;">Where To File</h2>
+        <p>If you checked the box on line A, you can return the joint-name check with Form 1310 to your local IRS office or the Internal Revenue Service Center where you filed your refund. If you checked the box on line B or line C,
+            <ul>
+                <li>Follow the instructions for the form to which you are attaching Form 1310; or</li>
+            </ul>
+        </p>
+        <p>If you are using same Internal Revenue Service Center where the original return was filed if you are filing Form 1310 separately. If the original return was filed electronically, mail Form 1310 to the internal Revenue Service Center designated for the address shown on Form 1310 above. See the instructions for the original return for the address.</p>
+
+        <h2 style="font-size: 14pt;">Personal Representative</h2>
+        <p>For purposes of this form, a personal representative is the executor or administrator of the decedent's estate, as appointed or certified by the court. A copy of the decedent's will must be submitted as evidence that you are the personal representative.</p>
+    </div>
+</body>
+</html>

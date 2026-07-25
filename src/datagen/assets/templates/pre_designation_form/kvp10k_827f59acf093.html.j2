@@ -1,0 +1,170 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    color: #000;
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+  }
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .logo-area {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .contact-info {
+    text-align: right;
+    font-size: 0.9em;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+  }
+  .form-group input[type="text"], .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  .signature-line {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .signature-box {
+    width: 45%;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+    text-align: center;
+  }
+</style>
+
+<div class="page">
+  <div class="header-info">
+    <div class="logo-area">
+      <span style="font-size: 1.5em; font-weight: bold;">CSUDH</span>
+      <div style="font-size: 1.2em;">HUMAN RESOURCES MANAGEMENT</div>
+    </div>
+    <div class="contact-info">
+      <p>1000 East Victoria Street, WH-340</p>
+      <p>Carson, California 90747</p>
+      <p>PHONE: <span data-field="phone">{{ phone }}</span></p>
+      <p>FAX: <span data-field="fax">{{ fax }}</span></p>
+    </div>
+  </div>
+
+  <h2 style="font-weight: bold;">Pre-Designation of Personal Physician</h2>
+
+  <p>In the event you sustain in injury or illness related to your employment, you may be treated for such injury or illness by your personal medical doctor (M.D.), a doctor of osteopathic medicine (D.O.) or a medical group, if:</p>
+  <ul>
+    <li>Your employer offers group health coverage;</li>
+    <li>The doctor is your regular physician, who shall be either a physician who has limited his or her practice of medicine to general practice or who is a board certified or board eligible internist, pediatrician, obstetrician/gynecologist, or family practitioner, and has previously directed your medical treatment, and retains your medical records;</li>
+    <li>Prior to the injury your doctor agrees to treat you for work injuries or illnesses; prior to the injury you provided your employer the following in writing:
+      <ol>
+        <li>notice that you want your personal doctor to treat you for a work-related injury or illness, and</li>
+        <li>your personal doctor's name and business address.</li>
+      </ol>
+    </li>
+  </ul>
+
+  <p>You may use this form to notify your employer if you wish to have your personal medical doctor or a doctor of osteopathic medicine treat you for a work-related injury or illness and the above requirements are met.</p>
+
+  <h3 style="text-align: center; margin: 30px 0 15px 0;">NOTICE OF PRE-DESIGNATION OF PERSONAL PHYSICIAN</h3>
+
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label for="employee_name">Employee Name:</label>
+        <input type="text" id="employee_name" value="{{ employee_name }}">
+      </div>
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <input type="text" id="department" value="{{ department }}">
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label for="extension">Extension:</label>
+        <input type="text" id="extension" value="{{ extension }}">
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-weight: bold; margin-top: 40px;">EMPLOYEE PERSONAL PHYSICIAN PRE-DESIGNATION</h3>
+
+  <p>If I sustain an injury or illness while acting within the course and scope of my employment at California State University, Dominguez Hills, I hereby elect to be treated by my personal physician (M.D. or D.O.), named below, from the date of injury</p>
+
+  <div class="form-group">
+    <label for="physician_name">My Personal Physician is (full name):</label>
+    <input type="text" id="physician_name" value="{{ personal_physician_full_name }}">
+  </div>
+
+  <div class="signature-line">
+    <div class="signature-box">
+      Employee Signature:
+    </div>
+    <div class="signature-box">
+      Date:
+    </div>
+  </div>
+
+  <h3 style="font-weight: bold; margin-top: 40px;">PERSONAL PHYSICIAN ACCEPTANCE OF EMPLOYEE PRE-DESIGNATION</h3>
+
+  <p>I agree to be the pre-designated personal physician for <span data-field="employee_name">{{ employee_name }}</span> I am the regular physician or primary care physician (M.D. or D.O.) and meet the physician pre-designation criteria as outlined above in bold print. I understand that I am expected to comply with Title 8, California Code of Regulations, Section 9785, "Reporting Duties of the Primary Treating Physician".</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label for="physician_name_accept">Physician Name:</label>
+        <input type="text" id="physician_name_accept" value="{{ physician_name_acceptance }}">
+      </div>
+      <div class="form-group">
+        <label for="physician_address">Physician Address:</label>
+        <input type="text" id="physician_address" value="{{ physician_address }}">
+      </div>
+    </div>
+    <div style="width: 45%;">
+      <div class="form-group">
+        <label for="physician_signature">Physician Signature:</label>
+        <input type="text" id="physician_signature" value="{{ physician_signature }}">
+      </div>
+      <div class="form-group">
+        <label for="physician_date">Date:</label>
+        <input type="text" id="physician_date" value="{{ physician_date }}">
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <p>Return this form to: <span data-field="return_address_name">{{ return_address_name }}</span></p>
+    <p><span data-field="return_address_street">{{ return_address_street }}</span></p>
+    <p><span data-field="return_address_city_state_zip">{{ return_address_city_state_zip }}</span></p>
+  </div>
+
+  <div style="text-align: right; font-size: 0.9em; margin-top: 50px;">
+    <span data-field="date_generated">{{ date_generated }}</span>
+  </div>
+</div>

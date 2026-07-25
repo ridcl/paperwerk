@@ -1,0 +1,56 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+      <h1 style="font-size: 36px; margin: 0;">UNIVERSITY OF WISCONSIN</h1>
+      <h1 style="font-size: 48px; margin: 0;">PARKSIDE</h1>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="font-size: 18px; margin-top: 0;">Office of the Provost</h2>
+      <p style="margin: 0;">P.O. Box {{ address.street_line_1 }}</p>
+      <p style="margin: 0;">{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+      <p style="margin: 5px 0 0 0;">Phone: {{ contact.phone }}</p>
+      <p style="margin: 0;">Fax: {{ contact.fax }}</p>
+      <p style="margin: 0;">{{ contact.website }} Keyword: Provost</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p style="font-weight: bold;">Colleagues,</p>
+    <p>This question has come up a few times now, so I thought I would share the answer with everyone.</p>
+    <p>If a student reports to you that he or she has tested positive for Covid, please relay that information to <span data-field="contact.email_internal">{{ contact.email_internal }}</span> or to the Dean of Students Office (<span data-field="contact.email_dean">{{ contact.email_dean }}</span>). Because the student has self-disclosed this information, there are no FERPA or HIPAA issues related to you passing on the information, and the university needs this information to enable contact tracing.</p>
+    <p>Gary</p>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <div style="border-top: 1px solid #000; margin-bottom: 10px;"></div>
+    <p style="margin: 0;">{{ signature.name }}</p>
+    <p style="margin: 0;">{{ signature.title }}</p>
+    <p style="margin: 0;">University of Wisconsin-Parkside</p>
+    <p style="margin: 0;">{{ signature.address.street_line_1 }}</p>
+    <p style="margin: 0;">{{ signature.address.city }}, {{ signature.address.state }} {{ signature.address.zip_code }}</p>
+    <p style="margin: 0;">{{ signature.contact.phone }}</p>
+    <p style="margin: 0;">{{ signature.contact.email }}</p>
+    <p style="margin: 0;">WYLL 343</p>
+    <div style="border-top: 1px solid #000; margin-top: 20px;"></div>
+  </div>
+</div>

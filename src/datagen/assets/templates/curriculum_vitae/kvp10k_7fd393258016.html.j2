@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+  .contact-info p {
+    margin: 2px 0;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 12pt;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-header {
+    font-weight: bold;
+  }
+  .entry-details {
+    font-size: 10pt;
+  }
+  ul {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  li {
+    margin-bottom: 5px;
+    font-size: 10pt;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .section-title {
+    font-size: 14pt;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+  .entry {
+    margin-bottom: 15px;
+  }
+  .entry-title {
+    font-weight: bold;
+    display: block;
+  }
+  .entry-details {
+    font-size: 10pt;
+    color: #555;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 5px;
+    font-size: 10pt;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 style="font-size: 18pt; margin-bottom: 5px;">{{ full_name }}</h1>
+  <p style="font-size: 14pt; margin-top: 0;">{{ title }}</p>
+  <p style="font-size: 14pt; margin-bottom: 20px;">{{ affiliation }}</p>
+
+  <div class="contact-info">
+    <p>Department of Political Science</p>
+    <p>{{ address_line_1 }}</p>
+    <p>{{ address_line_2 }}</p>
+    <p>{{ city_state_zip }}</p>
+    <p>Email: <span data-field="email">{{ email }}</span></p>
+    <p>Phone: <span data-field="phone">{{ phone }}</span></p>
+  </div>
+
+  <div class="section-title">EDUCATION</div>
+
+  {% for edu in education %}
+  <div class="entry">
+    <div class="entry-header">
+      {{ edu.degree }} - {{ edu.year }}
+    </div>
+    <div class="entry-details">
+      {{ edu.institution }} ({{ edu.notes }})
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="section-title">TEACHING AND PROFESSIONAL EXPERIENCE</div>
+
+  {% for job in experience %}
+  <div class="entry">
+    <div class="entry-header">
+      {{ job.title }} - {{ job.start_year }}-{{ job.end_year }}
+    </div>
+    <div class="entry-details">
+      {{ job.institution }}
+    </div>
+    {% if job.details %}
+    <div class="entry-details">
+      {{ job.details }}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="section-title">CURRENT COURSES AT THE UWEC</div>
+  <ul>
+    {% for course in current_courses %}
+    <li>{{ course }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">PUBLICATIONS</div>
+
+  <div class="entry">
+    <div class="entry-header">BOOK:</div>
+    <div class="entry-details">
+      {{ book_title }}
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">ARTICLES:</div>
+    <ul>
+      {% for article in articles %}
+      <li>
+        {{ article.title }}
+        <br>
+        <span data-field="article_journal">{{ article.journal }}</span>, {{ article.volume }} vol. {{ article.issue }}, {{ article.pages }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="section-title">POST-TENURE PUBLICATIONS</div>
+  <ul>
+    {% for post_tenure in post_tenure_publications %}
+    <li>
+      {{ post_tenure.title }}
+      <br>
+      <span data-field="post_tenure_journal">{{ post_tenure.journal }}</span>, {{ post_tenure.volume }} vol. {{ post_tenure.issue }}, {{ post_tenure.pages }}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">PRE-TENURE PUBLICATIONS</div>
+  <ul>
+    {% for pre_tenure in pre_tenure_publications %}
+    <li>
+      {{ pre_tenure.title }}
+      <br>
+      <span data-field="pre_tenure_journal">{{ pre_tenure.journal }}</span>, {{ pre_tenure.volume }} vol. {{ pre_tenure.issue }}, {{ pre_tenure.pages }}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">LECTURES, PROFESSIONAL PRESENTATIONS, SERVICE (POST TENURE)</div>
+  <ul>
+    {% for lecture in post_tenure_lectures %}
+    <li>
+      Lecture: "{{ lecture.title }}"
+      <br>
+      {{ lecture.details }}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">LECTURES, PROFESSIONAL PRESENTATIONS, SERVICE (PRE-TENURE)</div>
+  <ul>
+    {% for lecture in pre_tenure_lectures %}
+    <li>
+      Presented Paper: "{{ lecture.title }}"
+      <br>
+      {{ lecture.details }}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">SERVICE</div>
+  <ul>
+    {% for service in service_entries %}
+    <li>
+      {{ service.description }}
+      <br>
+      {{ service.details }}
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+
+
+<div class="page">
+  <h1 style="font-size: 18pt; text-align: center; margin-bottom: 5px;">{{ full_name }}</h1>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span data-field="email">{{ email }}</span> |
+    <span data-field="phone">{{ phone }}</span> |
+    <span data-field="location">{{ location }}</span>
+  </div>
+
+  <div class="section-title">Presentations and Publications</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ presentation_title_1 }}</span>
+    <div class="entry-details">
+      Presented Paper, "<span data-field="paper_title_1_short</span>," at <span data-field="conference_name_1</span>, <span data-field="conference_location_1</span>, <span data-field="conference_date_1</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ presentation_title_2 }}</span>
+    <div class="entry-details">
+      Participant: <span data-field="participant_name_2</span>. Sponsored by the <span data-field="sponsor_name_2</span>, <span data-field="sponsor_location_2</span>, <span data-field="sponsor_date_2</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ presentation_title_3 }}</span>
+    <div class="entry-details">
+      Presented Paper, "<span data-field="paper_title_3_short</span>," at the <span data-field="conference_name_3</span>, <span data-field="conference_location_3</span>, <span data-field="conference_date_3</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ presentation_title_4 }}</span>
+    <div class="entry-details">
+      <span data-field="presentation_type_4">{{ presentation_type_4 }}</span>, in conjunction with the <span data-field="organization_4</span>, <span data-field="date_4</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Other Professional Activities (Post Tenure)</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_1 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_1">{{ activity_details_1 }}</span> of <span data-field="book_title_1</span>, <span data-field="publisher_1</span>, <span data-field="date_1</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_2 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_2">{{ activity_details_2 }}</span> for <span data-field="journal_name_2</span> of <span data-field="article_title_2_short</span>, <span data-field="date_2</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_3 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_3">{{ activity_details_3 }}</span>, "<span data-field="article_title_3_short</span>," submitted by <span data-field="submitter_3</span>, <span data-field="date_3</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_4 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_4">{{ activity_details_4 }}</span> of "<span data-field="manuscript_title_4_short</span>" by <span data-field="author_4</span>, submitted by <span data-field="submitter_4</span>, <span data-field="date_4</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_5 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_5">{{ activity_details_5 }}</span> to <span data-field="organization_5</span> on events in <span data-field="location_5</span> and the Middle East on <span data-field="date_5</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_6 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_6">{{ activity_details_6 }}</span> for <span data-field="journal_name_6</span>, "<span data-field="article_title_6_short</span>," <span data-field="date_6</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_7 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_7">{{ activity_details_7 }}</span> for <span data-field="book_title_7</span>, "<span data-field="book_subtitle_7_short</span>," <span data-field="date_7</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_8 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_8">{{ activity_details_8 }}</span> for <span data-field="department_8</span> on "<span data-field="course_title_8_short</span>," held <span data-field="course_date_8</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Other Professional Activities (Pre Tenure)</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_9 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_9">{{ activity_details_9 }}</span> of <span data-field="book_title_9</span>, <span data-field="publisher_9</span>, <span data-field="date_9</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_10 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_10">{{ activity_details_10 }}</span> for the <span data-field="journal_name_10</span>, titled "<span data-field="article_title_10_short</span>," <span data-field="date_10</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_11 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_11">{{ activity_details_11 }}</span> for the <span data-field="department_11">{{ department_11 }}</span>, <span data-field="institution_11">{{ institution_11 }}</span>, <span data-field="date_11">{{ date_11 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_12 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_12">{{ activity_details_12 }}</span> to the <span data-field="organization_12">{{ organization_12 }}</span>, <span data-field="institution_12">{{ institution_12 }}</span>, <span data-field="date_12">{{ date_12 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_13 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_13">{{ activity_details_13 }}</span> to the <span data-field="organization_13">{{ organization_13 }}</span>, <span data-field="institution_13">{{ institution_13 }}</span>, <span data-field="date_13">{{ date_13 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_14 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_14">{{ activity_details_14 }}</span> for the student newspaper, <span data-field="newspaper_name_14</span>, <span data-field="institution_14">{{ newspaper_name_14</span>, <span data-field= }}</span>, <span data-field="date_14">{{ date_14 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_15 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_15">{{ activity_details_15 }}</span> of the manuscript, <span data-field="manuscript_title_15_short</span>, <span data-field="publisher_15">{{ manuscript_title_15_short</span>, <span data-field= }}</span>, <span data-field="date_15">{{ date_15 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_16 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_16">{{ activity_details_16 }}</span> for the <span data-field="organization_16">{{ organization_16 }}</span> (<span data-field="organization_16_alias">{{ organization_16_alias }}</span>), <span data-field="location_16">{{ location_16 }}</span>, since <span data-field="date_16">{{ date_16 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_17 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_17">{{ activity_details_17 }}</span> of <span data-field="organization_17">{{ organization_17 }}</span> to the <span data-field="conference_17">{{ conference_17 }}</span>, held in <span data-field="location_17">{{ location_17 }}</span>, <span data-field="date_17">{{ date_17 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_18 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_18">{{ activity_details_18 }}</span> of <span data-field="organization_18">{{ organization_18 }}</span> to the <span data-field="conference_18">{{ conference_18 }}</span>, held in <span data-field="location_18">{{ location_18 }}</span>, <span data-field="date_18">{{ date_18 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ activity_title_19 }}</span>
+    <div class="entry-details">
+      <span data-field="activity_details_19">{{ activity_details_19 }}</span> for the <span data-field="organization_19">{{ organization_19 }}</span> meeting, titled "<span data-field="panel_title_19_short</span>," held in <span data-field="location_19">{{ panel_title_19_short</span>, }}</span>, <span data-field="date_19">{{ date_19 }}</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Local, State, and National Media Appearances</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_1 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_1_short</span>" Live TV Interview with <span data-field="network_1">{{ appearance_title_1_short</span> }}</span>, <span data-field="date_1">{{ date_1 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_2 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_2_short</span>" Live TV Interview with <span data-field="network_2">{{ appearance_title_2_short</span> }}</span>, <span data-field="date_2">{{ date_2 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_3 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_3_short</span>" Live TV Interview with <span data-field="network_3">{{ appearance_title_3_short</span> }}</span>, <span data-field="date_3">{{ date_3 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_4 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_4_short</span>" Live TV Interview with <span data-field="network_4">{{ appearance_title_4_short</span> }}</span>, <span data-field="date_4">{{ date_4 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_5 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_5_short</span>" Live TV Interview with <span data-field="network_5">{{ appearance_title_5_short</span> }}</span>, <span data-field="date_5">{{ date_5 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_6 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_6_short</span>" Live TV Interview with <span data-field="network_6">{{ appearance_title_6_short</span> }}</span>, <span data-field="date_6">{{ date_6 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_7 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_7_short</span>" Live TV Interview with <span data-field="network_7">{{ appearance_title_7_short</span> }}</span>, <span data-field="date_7">{{ date_7 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_8 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_8_short</span>" Live TV Interview with <span data-field="network_8">{{ appearance_title_8_short</span> }}</span>, <span data-field="date_8">{{ date_8 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_9 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_9_short</span>" Live TV Interview with <span data-field="network_9">{{ appearance_title_9_short</span> }}</span>, <span data-field="date_9">{{ date_9 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_10 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_10_short</span>" Live TV Interview with <span data-field="network_10">{{ appearance_title_10_short</span> }}</span>, <span data-field="date_10">{{ date_10 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_11 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_11_short</span>" Live TV Interview with <span data-field="network_11">{{ appearance_title_11_short</span> }}</span>, <span data-field="date_11">{{ date_11 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_12 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_12_short</span>" Live TV Interview with <span data-field="network_12">{{ appearance_title_12_short</span> }}</span>, <span data-field="date_12">{{ date_12 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_13 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_13_short</span>" Live TV Interview with <span data-field="network_13">{{ appearance_title_13_short</span> }}</span>, <span data-field="date_13">{{ date_13 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_14 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_14_short</span>" Live TV Interview with <span data-field="network_14">{{ appearance_title_14_short</span> }}</span>, <span data-field="date_14">{{ date_14 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_15 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_15_short</span>" Live TV Interview with <span data-field="network_15">{{ appearance_title_15_short</span> }}</span>, <span data-field="date_15">{{ date_15 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_16 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_16_short</span>" Live TV Interview with <span data-field="network_16">{{ appearance_title_16_short</span> }}</span>, <span data-field="date_16">{{ date_16 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_17 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_17_short</span>" Live TV Interview with <span data-field="network_17">{{ appearance_title_17_short</span> }}</span>, <span data-field="date_17">{{ date_17 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_18 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_18_short</span>" Live TV Interview with <span data-field="network_18">{{ appearance_title_18_short</span> }}</span>, <span data-field="date_18">{{ date_18 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ media_appearance_19 }}</span>
+    <div class="entry-details">
+      "<span data-field="appearance_title_19_short</span>" Live TV Interview with <span data-field="network_19">{{ appearance_title_19_short</span> }}</span>, <span data-field="date_19">{{ date_19 }}</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Sabbatical Media Activities in Tehran, Iran: March-July 2004</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_1 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_1_short</span>" Live TV Interview with <span data-field="network_s1">{{ sabbatical_title_1_short</span> }}</span>, <span data-field="date_s1">{{ date_s1 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_2 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_2_short</span>" Live TV Interview with <span data-field="network_s2">{{ sabbatical_title_2_short</span> }}</span>, <span data-field="date_s2">{{ date_s2 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_3 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_3_short</span>" Live TV Interview with <span data-field="network_s3">{{ sabbatical_title_3_short</span> }}</span>, <span data-field="date_s3">{{ date_s3 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_4 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_4_short</span>" Live TV Interview with <span data-field="network_s4">{{ sabbatical_title_4_short</span> }}</span>, <span data-field="date_s4">{{ date_s4 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_5 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_5_short</span>" Live TV Interview with <span data-field="network_s5">{{ sabbatical_title_5_short</span> }}</span>, <span data-field="date_s5">{{ date_s5 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_6 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_6_short</span>" Live TV Interview with <span data-field="network_s6">{{ sabbatical_title_6_short</span> }}</span>, <span data-field="date_s6">{{ date_s6 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_7 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_7_short</span>" Live TV Interview with <span data-field="network_s7">{{ sabbatical_title_7_short</span> }}</span>, <span data-field="date_s7">{{ date_s7 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_8 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_8_short</span>" Live TV Interview with <span data-field="network_s8">{{ sabbatical_title_8_short</span> }}</span>, <span data-field="date_s8">{{ date_s8 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_9 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_9_short</span>" Live TV Interview with <span data-field="network_s9">{{ sabbatical_title_9_short</span> }}</span>, <span data-field="date_s9">{{ date_s9 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_10 }}</span>
+    <div class="entry-details">
+      "<span data-field="sabbatical_title_10_short</span>" Live TV Interview with <span data-field="network_s10">{{ sabbatical_title_10_short</span> }}</span>, <span data-field="date_s10">{{ date_s10 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_11 }}</span>
+    <div class="entry-details">
+      "Interview with <span data-field="media_s11">{{ media_s11 }}</span> with <span data-field="host_s11">{{ host_s11 }}</span>, in <span data-field="location_s11">{{ location_s11 }}</span>, on "<span data-field="topic_s11_short</span>," <span data-field="date_s11">{{ topic_s11_short</span>, }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_12 }}</span>
+    <div class="entry-details">
+      "Interview with <span data-field="media_s12">{{ media_s12 }}</span>, WI Wednesday, <span data-field="date_s12">{{ date_s12 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ sabbatical_activity_13 }}</span>
+    <div class="entry-details">
+      "Interview with <span data-field="media_s13">{{ media_s13 }}</span> on the U.S. Efforts at Promoting Free Trade in the Middle East, <span data-field="date_s13">{{ date_s13 }}</span>.
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Honors, Scholarships</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ honor_1 }}</span>
+    <div class="entry-details">
+      <span data-field="honor_details_1">Sabbatical Leave, <span data-field="institution_h1">{{ honor_details_1">Sabbatical Leave, <span data-field= }}</span>, <span data-field="date_h1">{{ date_h1 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ honor_2 }}</span>
+    <div class="entry-details">
+      <span data-field="honor_details_2">Office of Research and Sponsored Programs research grant, <span data-field="institution_h2">{{ honor_details_2">Office of Research and Sponsored Programs research grant, <span data-field= }}</span>, <span data-field="date_h2">{{ date_h2 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ honor_3 }}</span>
+    <div class="entry-details">
+      <span data-field="honor_details_3">Office of Research and Sponsored Programs research grant, <span data-field="institution_h3">{{ honor_details_3">Office of Research and Sponsored Programs research grant, <span data-field= }}</span>, <span data-field="date_h3">{{ date_h3 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ honor_4 }}</span>
+    <div class="entry-details">
+      <span data-field="honor_details_4">University Research and Creative Activity, <span data-field="institution_h4">{{ honor_details_4">University Research and Creative Activity, <span data-field= }}</span>, <span data-field="date_h4">{{ date_h4 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ honor_5 }}</span>
+    <div class="entry-details">
+      <span data-field="honor_details_5">Faculty-Student Research Fellowship, <span data-field="institution_h5">{{ honor_details_5">Faculty-Student Research Fellowship, <span data-field= }}</span>, <span data-field="date_h5">{{ date_h5 }}</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Faculty-Student Research Fellowships</div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_1 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_1">Faculty-Student Research Fellowship, <span data-field="institution_f1">{{ fellowship_details_1">Faculty-Student Research Fellowship, <span data-field= }}</span>, <span data-field="date_f1">{{ date_f1 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_2 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_2">Faculty-Student Research Fellowship, <span data-field="institution_f2">{{ fellowship_details_2">Faculty-Student Research Fellowship, <span data-field= }}</span>, <span data-field="date_f2">{{ date_f2 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_3 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_3">Faculty-Student Research Fellowship, <span data-field="institution_f3">{{ fellowship_details_3">Faculty-Student Research Fellowship, <span data-field= }}</span>, <span data-field="date_f3">{{ date_f3 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_4 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_4">{{ fellowship_details_4 }}</span> to the <span data-field="organization_f4">{{ organization_f4 }}</span>, was awarded by the MUNC "<span data-field="award_f4">{{ award_f4 }}</span>" for <span data-field="institution_f4">{{ institution_f4 }}</span>, <span data-field="date_f4">{{ date_f4 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_5 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_5">Recognized as "<span data-field="recognition_f5_short</span>" by the student newspaper of <span data-field="institution_f5">{{ fellowship_details_5">Recognized as "<span data-field="recognition_f5_short</span>{{ fellowship_details_5">Recognized as "<span data-field="recognition_f5_short</span>" by the student newspaper of <span data-field="institution_f5">{{ fellowship_details_5">Recognized as  }}</span>, <span data-field="date_f5">{{ date_f5 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_6 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_6">{{ fellowship_details_6 }}</span> in the Faculty of Social and Behavioral Sciences, <span data-field="institution_f6">{{ institution_f6 }}</span>, <span data-field="date_f6">{{ date_f6 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_7 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_7">{{ fellowship_details_7 }}</span> for Academic Excellence, <span data-field="institution_f7">{{ institution_f7 }}</span>, <span data-field="date_f7">{{ date_f7 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_8 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_8">{{ fellowship_details_8 }}</span> in the College of Social and Behavioral Sciences, <span data-field="institution_f8">{{ institution_f8 }}</span>, <span data-field="date_f8">{{ date_f8 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_9 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_9">{{ fellowship_details_9 }}</span> in the "<span data-field="committee_f9_short</span>" at the <span data-field="institution_f9">{{ committee_f9_short</span> }}</span>, <span data-field="date_f9">{{ date_f9 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_10 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_10">{{ fellowship_details_10 }}</span> for academic excellence, <span data-field="institution_f10">{{ institution_f10 }}</span>, <span data-field="date_f10">{{ date_f10 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_11 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_11">{{ fellowship_details_11 }}</span> in Political Science for academic excellence, <span data-field="institution_f11">{{ institution_f11 }}</span>, <span data-field="date_f11">{{ date_f11 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_12 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_12">{{ fellowship_details_12 }}</span> in the "<span data-field="committee_f12_short</span>" at the <span data-field="institution_f12">{{ committee_f12_short</span> }}</span>, <span data-field="date_f12">{{ date_f12 }}</span>.
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">{{ fellowship_13 }}</span>
+    <div class="entry-details">
+      <span data-field="fellowship_details_13">{{ fellowship_details_13 }}</span>: Twice Nominee and once an alternate for FLAS Fellowship at the <span data-field="institution_f13">{{ institution_f13 }}</span>, <span data-field="date_f13">{{ date_f13 }}</span>, and at the <span data-field="institution_f14">{{ institution_f14 }}</span>, <span data-field="date_f14">{{ date_f14 }}</span>.
+    </div>
+  </div>
+
+  <div class="section-title">Foreign Languages</div>
+
+  <div class="entry">
+    <span class="entry-title">1. Persian:</span>
+    <div class="entry-details">
+      <span data-field="language_persian">{{ language_persian }}</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">2. Arabic:</span>
+    <div class="entry-details">
+      <span data-field="language_arabic">{{ language_arabic }}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div class="section-title">Biography in Short</div>
+
+  <div class="entry">
+    <span class="entry-title"></span>
+    <div class="entry-details">
+      <span data-field="bio_paragraph_1">
+        <span data-field="bio_content_1">
+          {{ bio_content_1 }}
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="entry-title">Selected Publications</span>
+    <div class="entry-details">
+      <ul style="list-style-type: none; padding-left: 0;">
+        {% for pub in publications %}
+        <li style="margin-bottom: 10px;">
+          <span data-field="pub_title_{{ loop.index0 }}">{{ pub.title }}</span>, <span data-field="pub_journal_{{ loop.index0 }}">{{ pub.journal }}</span>, <span data-field="pub_volume_{{ loop.index0 }}">{{ pub.volume }}</span>, <span data-field="pub_pages_{{ loop.index0 }}">{{ pub.pages }}</span> (<span data-field="pub_year_{{ loop.index0 }}">{{ pub.year }}</span>).
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

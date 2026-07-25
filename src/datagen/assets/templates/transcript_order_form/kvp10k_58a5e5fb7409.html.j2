@@ -1,0 +1,151 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif; }
+  h1, h2, h3 { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  td { padding: 5px 0; }
+  .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .form-group { display: flex; align-items: center; margin-bottom: 10px; }
+  .checkbox-group label { margin-right: 15px; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div>
+      <h1 style="font-size: 24pt; margin-bottom: 5px;">Transcript Order Form</h1>
+      <p style="font-size: 10pt; margin: 0;">Submit by <span data-field="submission_method">{{ submission_method }}</span> to Registrar's Office, <span data-field="address_line_1">{{ address_line_1 }}</span>, <span data-field="city">{{ city }}</span>, <span data-field="state">{{ state }}</span>, <span data-field="zip">{{ zip }}</span>. Submit by Fax to <span data-field="fax_number">{{ fax_number }}</span> (no cover sheet needed)</p>
+      <p style="font-size: 10pt; margin: 5px 0 0 0;">If you have any questions regarding your transcript request, please call <span data-field="phone_number">{{ phone_number }}</span>.</p>
+    </div>
+    <div style="text-align: right;">
+      <img src="placeholder_logo.png" alt="University Logo" style="height: 60px;">
+      <h2 style="font-size: 14pt; margin-top: 5px;">DOANE UNIVERSITY</h2>
+    </div>
+  </div>
+
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td style="width: 20%;">Name:</td>
+      <td style="width: 30%;">
+        <span data-field="last_name">{{ last_name }}</span> (Last)
+        <span data-field="first_name">{{ first_name }}</span> (First)
+        <span data-field="middle_name">{{ middle_name }}</span> (Middle)
+        <span data-field="maiden_name">{{ maiden_name }}</span> (Former/Maiden)
+      </td>
+      <td style="width: 20%;">SS/ID #:</td>
+      <td style="width: 30%;"></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>
+        <span data-field="street_address">{{ street_address }}</span> (Street)
+        <span data-field="city_address">{{ city_address }}</span> (City)
+        <span data-field="state_address">{{ state_address }}</span> (State)
+        <span data-field="zip_address">{{ zip_address }}</span> (Zip)
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size: 10pt; margin-bottom: 15px;">If we have questions, please list below:</p>
+
+  <div class="form-row">
+    <div style="width: 50%;">Email: <span data-field="email_address">{{ email_address }}</span></div>
+    <div style="width: 50%;">Daytime Phone: <span data-field="daytime_phone">{{ daytime_phone }}</span></div>
+  </div>
+  <div class="form-row">
+    <div style="width: 50%;">Circle type: Home Cell Work</div>
+    <div style="width: 50%;"></div>
+  </div>
+
+  <p style="font-weight: bold; margin-top: 20px;">The fee for ordering transcripts using this form is $<span data-field="fee_amount">{{ fee_amount }}</span>. We encourage you to order transcripts online for a reduced fee at <span data-field="online_fee_url">{{ online_fee_url }}</span></p>
+
+  <h3 style="margin-top: 30px;">Please answer the questions below.</h3>
+
+  <table style="width: 100%; margin-top: 15px;">
+    <tr>
+      <td style="width: 50%; padding-right: 20px;"><strong>Check Your Highest Academic level:</strong></td>
+      <td style="width: 50%;">
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Undergraduate</label>
+          <label><input type="checkbox"> Graduate</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Are You A Current Student?</strong></td>
+      <td>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Yes</label>
+          <label><input type="checkbox"> No</label>
+        </div>
+        <div style="margin-top: 10px;">Year Last Attended: <span data-field="year_attended">{{ year_attended }}</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 50%; padding-right: 20px;"><strong>Please Mail My Transcript(s):</strong></td>
+      <td style="width: 50%;">
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Immediately</label>
+          <label><input type="checkbox"> End of Term</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Purpose of Transcript?</strong></td>
+      <td>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> New Job/Salary Increase</label>
+          <label><input type="checkbox"> Continuing Education/Graduate School</label>
+          <label><input type="checkbox"> Other</label>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table style="width: 100%; margin-top: 30px;">
+    <tr>
+      <td style="width: 30%;">Number of Copies</td>
+      <td style="width: 20%; text-align: right;">X <span data-field="copies_count">{{ copies_count }}</span></td>
+      <td style="width: 30%;">Total Due = $<span data-field="total_due">{{ total_due }}</span></td>
+    </tr>
+    <tr>
+      <td>Mail to:</td>
+      <td></td>
+      <td>Mail to:</td>
+      <td></td>
+    </tr>
+    <!-- Placeholder for potential line items if this were a complex form, but here we use simple fields -->
+  </table>
+
+  <p style="margin-top: 30px;">If submitting this form via mail, please enclose a check made out to Doane University for $<span data-field="check_amount">{{ check_amount }}</span> per transcript. If submitting this form via fax, please list a credit card number and expiration date below.</p>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+      <div style="width: 30%;">Circle one: Visa Mastercard Discover</div>
+      <div style="width: 30%;">Credit Card Number: _________________________</div>
+      <div style="width: 30%; text-align: right;">Security Code 3 digit # on the back of your card</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div style="width: 30%;">Expiration Date: _________________________</div>
+      <div></div>
+    </div>
+  </div>
+
+  <p style="font-size: 10pt; margin-bottom: 30px;">I agree to have Doane University release my academic transcripts to the addresses listed above, and to charge my credit card if applicable.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      (Signature)
+    </div>
+    <div>
+      (Date)
+    </div>
+  </div>
+</div>

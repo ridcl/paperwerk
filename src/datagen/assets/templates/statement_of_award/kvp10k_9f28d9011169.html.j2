@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statement of Award</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    font-size: 14px;
+    color: #000;
+  }
+
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    margin-bottom: 6px;
+  }
+
+  .header p {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+
+  .title-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .title-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .posting-date-line {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .posting-date-line .blue-value {
+    color: #1a56cc;
+    font-weight: bold;
+  }
+
+  .intro-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .details-section {
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+
+  .detail-label {
+    font-weight: bold;
+    min-width: 240px;
+    flex-shrink: 0;
+  }
+
+  .detail-value {
+    color: #1a56cc;
+    font-weight: bold;
+  }
+
+  .boxed-value {
+    border: 1px solid #555;
+    padding: 3px 10px;
+    min-width: 300px;
+    color: #1a56cc;
+    font-weight: bold;
+    font-size: 13.5px;
+  }
+
+  .amount-row {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 13.5px;
+  }
+
+  .amount-label {
+    font-weight: bold;
+    min-width: 240px;
+    flex-shrink: 0;
+  }
+
+  .amount-value {
+    color: #1a56cc;
+    font-weight: bold;
+  }
+
+  .signature-section {
+    margin-top: 30px;
+  }
+
+  .signature-line {
+    border-bottom: 1px solid #000;
+    width: 300px;
+    margin-bottom: 8px;
+  }
+
+  .signatory-title {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1><span data-field="institution.name">{{ institution.name }}</span></h1>
+    <p><span data-field="institution.department">{{ institution.department }}</span></p>
+    <p><span data-field="institution.po_box">{{ institution.po_box }}</span></p>
+    <p><span data-field="institution.city_state_zip">{{ institution.city_state_zip }}</span></p>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h2>Statement of Award</h2>
+    <div class="posting-date-line">
+      <strong>Posting Date:</strong>&nbsp;<span class="blue-value" data-field="posting_date">{{ posting_date }}</span>
+    </div>
+  </div>
+
+  <!-- Intro paragraphs -->
+  <div class="intro-text" style="margin-top: 20px;">
+    This is a statement of award and serves as acceptance of your offer.
+  </div>
+  <div class="intro-text">
+    Contractor should not perform work prior to the receipt of a purchase order from <span data-field="institution.short_name">{{ institution.short_name }}</span>.
+    The University assumes no liability for any expenses incurred prior to the effective date of the contract and
+    issuance of a purchase order.
+  </div>
+
+  <!-- Details Section -->
+  <div class="details-section">
+
+    <div class="detail-row">
+      <span class="detail-label">Description:</span>
+      <span class="detail-value" data-field="description">{{ description }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Issue Date of Intent to Sole Source:</span>
+      <span class="detail-value" data-field="issue_date_intent">{{ issue_date_intent }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Award Posting Date:</span>
+      <span class="detail-value" data-field="award_posting_date">{{ award_posting_date }}</span>
+    </div>
+
+    <div class="detail-row" style="align-items: center;">
+      <span class="detail-label">Sole Source Awarded To:</span>
+      <span class="boxed-value" data-field="awardee.name">{{ awardee.name }}</span>
+    </div>
+
+    <div class="detail-row" style="margin-top: 8px; align-items: center;">
+      <span class="detail-label">Address:</span>
+      <span class="boxed-value" data-field="awardee.address">{{ awardee.address }}</span>
+    </div>
+
+  </div>
+
+  <!-- Amount -->
+  <div class="amount-row">
+    <span class="amount-label">Amount:</span>
+    <span class="amount-value" data-field="amount">{{ amount }}</span>
+  </div>
+
+  <!-- Signature -->
+  <div class="signature-section">
+    <div class="signature-line"></div>
+    <div class="signatory-title">
+      <span data-field="signatory.title">{{ signatory.title }}</span><br>
+      <span data-field="signatory.name">{{ signatory.name }}</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

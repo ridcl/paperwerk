@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application Checklist</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+  .list-item { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: right; margin-bottom: 20px;">
+    <span data-field="application_deadline">Application Deadline: {{ application_deadline }}</span>
+  </div>
+
+  <h1 style="text-align: center; margin-bottom: 30px;">UPWARD BOUND PROGRAMS - WEBFORM APPLICATION CHECKLIST</h1>
+  <p style="text-align: center; margin-bottom: 20px;">
+    <span data-field="institution_name">{{ institution_name }}</span><br>
+    <span data-field="address">Pre-College Programs • {{ institution_address }}</span><br>
+    <span data-field="contact_info">Office: {{ office_phone }} • Fax: {{ fax_number }}</span><br>
+    <span data-field="email">Email: {{ email_address }} • Website: {{ website_url }}</span>
+  </p>
+
+  <p style="margin-bottom: 20px;">
+    This checklist is for the Webform application process. If you are not completing your application via this webform, then you can use the links on our website at <a href="{{ website_url }}">{{ website_url }}</a> to select the program you wish to apply to and select "Apply to Program" to get pdf versions of the application documents.
+  </p>
+
+  <p style="margin-bottom: 20px;">
+    The Webform application has <span data-field="number_of_forms">{{ number_of_forms }}</span> forms to complete: (1) Application Information (2) Short Answer (3) Income Verification (4) Counselor Recommendation, and (5) Teacher Recommendation. <span data-field="note_on_forms">{{ note_on_forms }}</span> The application is separated so that if you cannot complete the application all at once, you can come back to complete the other forms.
+  </p>
+
+  <p style="margin-bottom: 20px;">
+    When you submit a form, you will receive an email with the subject "<span data-field="email_subject">{{ email_subject }}</span>", where you will have to click the "Confirm my email address" link within the document. A webpage will pop open in your web browser letting you know your signature has been verified. You will know you have completed the application process when you have received <span data-field="number_of_emails">{{ number_of_emails }}</span> different emails and verified your signature <span data-field="time_frame">{{ time_frame }}</span>.
+  </p>
+
+  <div style="margin-top: 30px;">
+    <h2 class="section-title">BEFORE you start your webform application, you will need the following information:</h2>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li class="list-item">
+        <span data-field="instruction_1">{{ instruction_1 }}</span>
+      </li>
+      <li class="list-item">
+        A Math, Science, English, History, or AVID teacher's email address that you want to complete a recommendation for you. If you are applying to the Upward Bound Math & Science Program, it is required that your Teacher Recommendation be from a <span data-field="required_teacher_subject">{{ required_teacher_subject }}</span>.
+      </li>
+      <li class="list-item">
+        Your counselor's email address for them to complete a recommendation and provide your transcript.
+      </li>
+      <li class="list-item">
+        Ask your parent(s)/guardian(s) if they have received a Bachelor of Arts or Bachelor of Science Degree within the United States.
+      </li>
+      <li class="list-item">
+        Have parent(s)/guardian(s) cell/work phone number.
+      </li>
+      <li class="list-item">
+        Have your parent's available to review and sign the Application Information, Income Verification, and Counselor & Teacher Recommendation Forms, which can take approximately <span data-field="review_time">{{ review_time }}</span> to complete if you have all the information above available.
+      </li>
+      <li class="list-item">
+        The Short Answer Form may take <span data-field="short_answer_time">{{ short_answer_time }}</span> to complete.
+      </li>
+      <li class="list-item">
+        If you have any questions, please call <span data-field="contact_phone">{{ contact_phone }}</span> or send an email to <span data-field="contact_email">{{ contact_email }}</span>.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="font-weight: bold;">IMPORTANT: When you click submit for each document below, you must use the same email address so that we can compile your application documents together when we receive them.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="margin-bottom: 15px;">Required Forms:</h3>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="form1" style="margin-right: 10px;">
+      <label for="form1">Application Information Form (Must be signed by parent/guardian)</label>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="form2" style="margin-right: 10px;">
+      <label for="form2">Short Answer Form (Must answered and signed by student)</label>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="form3" style="margin-right: 10px;">
+      <label for="form3">Income Verification Form (Must be signed by parent/guardian)</label>
+      <ul style="list-style-type: disc; padding-left: 30px; margin-top: 10px;">
+        <li class="list-item"><span data-field="income_version_english">{{ income_version_english }}</span></li>
+        <li class="list-item"><span data-field="income_version_spanish">{{ income_version_spanish }}</span></li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="form4" style="margin-right: 10px;">
+      <label for="form4">Counselor Recommendation Form (Must be signed by parent/guardian)</label>
+      <ul style="list-style-type: disc; padding-left: 30px; margin-top: 10px;">
+        <li class="list-item">You must provide your counselor's name and email address for the form to be forwarded to them.</li>
+        <li class="list-item">We will request your transcript from the counselor you provide, so please make sure your <span data-field="transcript_signer">{{ transcript_signer }}</span></li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <input type="checkbox" id="form5" style="margin-right: 10px;">
+      <label for="form5">Teacher Recommendation Form (You must input your teacher's name and email address for it to forward to them.)</label>
+      <ul style="list-style-type: disc; padding-left: 30px; margin-top: 10px;">
+        <li class="list-item">This form will automatically be emailed to your teacher for them to process your recommendation.</li>
+        <li class="list-item">If you are applying to the Upward Bound Math & Science Program, it is required that your Teacher Recommendation Form be from a <span data-field="required_teacher_subject_2">{{ required_teacher_subject_2 }}</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; text-align: center; font-size: small;">
+    <p>Upward Bound is a TRIO Program federally funded by the United States Department of Education.</p>
+  </div>
+</div>
+</body>
+</html>

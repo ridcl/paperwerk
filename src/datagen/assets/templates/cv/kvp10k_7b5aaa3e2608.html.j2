@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CV Template</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .contact-info { text-align: right; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .entry { margin-bottom: 15px; }
+  .entry-header { display: flex; justify-content: space-between; font-weight: bold; }
+  .entry-details { margin-top: 3px; font-size: 0.95em; }
+  .publication-list { list-style-type: none; padding-left: 0; }
+  .publication-list li { margin-bottom: 10px; font-size: 0.95em; }
+  .abstract-list { list-style-type: none; padding-left: 0; }
+  .abstract-list li { margin-bottom: 8px; font-size: 0.95em; }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div style="text-align: center; margin-bottom: 10px;">
+    <span data-field="full_name">{{ full_name }}</span>
+  </div>
+  <div class="header-info">
+    <div>
+      <div class="section-title">Address</div>
+      <div class="entry-details">
+        <span data-field="address.line1">{{ address.line1 }}</span><br>
+        <span data-field="address.line2">{{ address.line2 }}</span><br>
+        <span data-field="address.line3">{{ address.line3 }}</span><br>
+        <span data-field="address.city_state_zip">{{ address.city_state_zip }}</span>
+      </div>
+    </div>
+    <div class="contact-info">
+      <div class="section-title">Contact Information</div>
+      <div class="entry-details">
+        <span data-field="contact.phone">{{ contact.phone }}</span><br>
+        <span data-field="contact.fax">{{ contact.fax }}</span><br>
+        <span data-field="contact.email">{{ contact.email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="entry-header">
+      <span data-field="education.institution">{{ education.institution }}</span>
+      <span data-field="education.years">{{ education.years }}</span>
+    </div>
+    <div class="entry-details">
+      <span data-field="education.degree">{{ education.degree }}</span>, <span data-field="education.major">{{ education.major }}</span>
+    </div>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+  {% for job in professional_experience %}
+    <div class="entry">
+      <div class="entry-header">
+        <span data-field="professional_experience[{{ loop.index0 }}].title">{{ job.title }}</span>
+        <span data-field="professional_experience[{{ loop.index0 }}].years">{{ job.years }}</span>
+      </div>
+      <div class="entry-details">
+        <span data-field="professional_experience[{{ loop.index0 }}].employer">{{ job.employer }}</span><br>
+        <span data-field="professional_experience[{{ loop.index0 }}].description">{{ job.description }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Research Experience</div>
+  {% for research in research_experience %}
+    <div class="entry">
+      <div class="entry-header">
+        <span data-field="research_experience[{{ loop.index0 }}].title">{{ research.title }}</span>
+        <span data-field="research_experience[{{ loop.index0 }}].years">{{ research.years }}</span>
+      </div>
+      <div class="entry-details">
+        <span data-field="research_experience[{{ loop.index0 }}].description">{{ research.description }}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="section-title">Publications</div>
+  <ul class="publication-list">
+    {% for pub in publications %}
+      <li>
+        <span data-field="publications[{{ loop.index0 }}].title">{{ pub.title }}</span>. <span data-field="publications[{{ loop.index0 }}].authors">{{ pub.authors }}</span>. <span data-field="publications[{{ loop.index0 }}].journal">{{ pub.journal }}</span>, <span data-field="publications[{{ loop.index0 }}].year">{{ pub.year }}</span>.
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Published Abstracts</div>
+  <ul class="abstract-list">
+    {% for abs in published_abstracts %}
+      <li>
+        <span data-field="published_abstracts[{{ loop.index0 }}].title">{{ abs.title }}</span>. <span data-field="published_abstracts[{{ loop.index0 }}].authors">{{ abs.authors }}</span>. <span data-field="published_abstracts[{{ loop.index0 }}].conference">{{ abs.conference }}</span>, <span data-field="published_abstracts[{{ loop.index0 }}].year">{{ abs.year }}</span>.
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Awards and Honors</div>
+  <ul class="publication-list">
+    {% for award in awards_and_honors %}
+      <li>
+        <span data-field="awards_and_honors[{{ loop.index0 }}].award">{{ award.award }}</span>, <span data-field="awards_and_honors[{{ loop.index0 }}].year">{{ award.year }}</span>.
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="section-title">Professional Membership and Service</div>
+  <ul class="publication-list">
+    {% for service in professional_membership_and_service %}
+      <li>
+        <span data-field="professional_membership_and_service[{{ loop.index0 }}].item">{{ service.item }}</span>, <span data-field="professional_membership_and_service[{{ loop.index0 }}].years">{{ service.years }}</span>.
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <h1 style="font-size: 18pt; font-weight: bold;">Sobeck</h1>
+    <div style="text-align: right;">
+      <span data-field="page_number">{{ page_number }}</span>
+    </div>
+  </header>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Institutional Involvement</h2>
+      <p style="margin-top: 0;">
+        Departmental Duties: <span data-field="departmental_duties">{{ departmental_duties }}</span>
+      </p>
+      <p style="margin-top: 0;">
+        Institutional Committees: <span data-field="institutional_committees">{{ institutional_committees }}</span>
+      </p>
+    </div>
+    <div style="flex: 1;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Undergraduate Theses Advised</h2>
+      <div style="margin-top: 15px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="thesis_student_name">{{ thesis_student_name_1 }}</span>
+          <span data-field="thesis_year_1">{{ thesis_year_1 }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="thesis_student_name">{{ thesis_student_name_2 }}</span>
+          <span data-field="thesis_year_2">{{ thesis_year_2 }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="thesis_student_name">{{ thesis_student_name_3 }}</span>
+          <span data-field="thesis_year_3">{{ thesis_year_3 }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="thesis_student_name">{{ thesis_student_name_4 }}</span>
+          <span data-field="thesis_year_4">{{ thesis_year_4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <h1 style="font-size: 18pt; font-weight: bold;">Sobeck</h1>
+    <div style="text-align: right;">
+      <span data-field="page_number">{{ page_number }}</span>
+    </div>
+  </header>
+
+  <div style="display: flex; gap: 40px;">
+    <div style="flex: 1;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Undergraduate Researchers Advised</h2>
+      <div style="margin-top: 15px;">
+        {% for item in undergraduate_researchers %}
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="undergraduate_researchers[{{ loop.index0 }}].name">{{ item.name }}</span>
+          <span data-field="undergraduate_researchers[{{ loop.index0 }}].year">{{ item.year }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <h2 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">Graduate Researcher Advised</h2>
+      <div style="margin-top: 15px;">
+        {% for item in graduate_researchers %}
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span data-field="graduate_researchers[{{ loop.index0 }}].name">{{ item.name }}</span>
+          <span data-field="graduate_researchers[{{ loop.index0 }}].year">{{ item.year }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

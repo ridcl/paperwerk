@@ -1,0 +1,181 @@
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+    }
+    .page:last-child { page-break-after: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    td { padding: 5px 0; }
+    .form-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .form-group { width: 48%; }
+</style>
+
+<div class="page">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+        <div>
+            <div style="font-size: 24px; font-weight: bold;">ICBC</div>
+            <div style="font-size: 12px;">Insurance Corporation of British Columbia</div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 12px;">Telephone</div>
+            <div style="font-size: 12px;">Fax</div>
+            <div style="font-size: 12px;">{{ telephone_number }}</div>
+            <div style="font-size: 12px;">{{ fax_number }}</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="font-size: 16px; font-weight: bold;">Driver's Licence Abstract Request</div>
+        <div style="margin-top: 10px;">Return abstract by:</div>
+        <div style="margin-top: 5px;">
+            <input type="checkbox" style="margin-right: 5px;"> Mail
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <input type="checkbox" style="margin-right: 5px;"> Fax
+            <span style="font-size: 12px;">{{ fax_number }}</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <input type="checkbox" style="margin-right: 5px;"> Email
+            <span style="font-size: 12px;">{{ email_address }}</span>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-weight: bold;">Please type or print clearly, illegible information cannot be processed.</p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="font-weight: bold;">Search fee enclosed</div>
+            <div style="margin-left: auto; font-weight: bold;">$ {{ search_fee }}</div>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="font-weight: bold;">OR</div>
+            <div style="margin-left: auto; font-weight: bold;">Search fee account no:</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="width: 30%;">NAME OF COMPANY</div>
+            <div style="width: 30%;">MAILING ADDRESS</div>
+            <div style="width: 30%;">STREET / PO BOX / RR#</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="width: 30%;">CITY / PROVINCE / STATE</div>
+            <div style="width: 30%;">POSTAL CODE / ZIP CODE</div>
+            <div style="width: 30%;"></div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="width: 100%;">{{ company_name }}</div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="width: 100%;">{{ mailing_address }}</div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="width: 100%;">{{ street_po_box_rr_number }}</div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="width: 100%;">{{ city_province_state }}</div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="width: 100%;">{{ postal_code_zip_code }}</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-weight: bold;">If you wish to charge the Search Fee to Visa, MasterCard or American Express, please include the information below:</p>
+        <div style="margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="width: 25%;">CREDIT CARD NUMBER</div>
+                <div style="width: 25%;">EXPIRY DATE</div>
+                <div style="width: 50%;">NAME AS IT APPEARS ON CREDIT CARD</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="width: 25%; border-bottom: 1px solid #000;"></div>
+                <div style="width: 25%; border-bottom: 1px solid #000;"></div>
+                <div style="width: 50%; border-bottom: 1px solid #000;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-weight: bold;">Companies with access to driver abstract must be listed below before driver signs</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left; width: 50%;">COMPANY NUMBER 1</th>
+                    <th style="text-align: left; width: 50%;">COMPANY NUMBER 6</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ company_number_1 }}</td>
+                    <td>{{ company_number_6 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ company_number_2 }}</td>
+                    <td>{{ company_number_7 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ company_number_3 }}</td>
+                    <td>{{ company_number_8 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ company_number_4 }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-weight: bold;">Driver information</p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p>I authorize the above named company to obtain a copy of my driver's abstract from the Insurance Corporation of British Columbia.</p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="width: 30%;">Name of Driver:</div>
+            <div style="width: 30%;">LAST</div>
+            <div style="width: 30%;">FIRST</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="width: 30%;">MIDDLE</div>
+        </div>
+        <div style="margin-top: 15px;">
+            <div style="width: 100%;">Address:</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+            <div style="width: 30%;">STREET / PO BOX / RR #</div>
+            <div style="width: 30%;">CITY / PROVINCE / STATE</div>
+            <div style="width: 30%;">POSTAL CODE / ZIP CODE</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div>Date of Birth:</div>
+            <div>Driver's Licence Number:</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+            <div style="width: 45%; border-bottom: 1px solid #000;">{{ date_of_birth }}</div>
+            <div style="width: 45%; border-bottom: 1px solid #000;">{{ driver_licence_number }}</div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+        <div style="width: 45%;">SIGNATURE OF DRIVER</div>
+        <div style="width: 45%;">DATE OF REQUEST</div>
+    </div>
+</div>

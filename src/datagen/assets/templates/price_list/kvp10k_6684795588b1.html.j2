@@ -1,0 +1,407 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .page {
+    width: 794px;
+    height: 1123px;
+    padding: 50px 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, "DejaVu Sans", "Liberation Sans";
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+  .header {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .sub-section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .disclaimer {
+    font-size: 9pt;
+    line-height: 1.4;
+    margin-top: 30px;
+  }
+</style>
+
+<div class="page">
+  <div style="text-align: center;">
+    <img src="placeholder_logo.png" alt="SuperiorVision Logo" style="max-width: 150px; margin-bottom: 10px;">
+    <div class="header">SuperiorVision</div>
+  </div>
+
+  <h1 style="font-size: 18pt; font-weight: bold; text-align: center; margin-top: 30px;">Vision plan benefits for University of Southern Mississippi</h1>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+    <div style="width: 30%;">
+      <div class="section-title">Copays</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exam</td>
+            <td><span data-field="copays.exam_cost">{{ copays.exam_cost }}</span></td>
+          </tr>
+          <tr>
+            <td>Materials¹</td>
+            <td><span data-field="copays.materials_cost">{{ copays.materials_cost }}</span></td>
+          </tr>
+          <tr>
+            <td>Contact lens fitting</td>
+            <td><span data-field="copays.contact_lens_fitting_cost">{{ copays.contact_lens_fitting_cost }}</span></td>
+          </tr>
+          <tr>
+            <td>(standard & specialty)</td>
+            <td><span data-field="copays.standard_specialty_cost">{{ copays.standard_specialty_cost }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="width: 30%;">
+      <div class="section-title">Monthly premiums</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Emp. only</td>
+            <td><span data-field="premiums.emp_only">{{ premiums.emp_only }}</span></td>
+          </tr>
+          <tr>
+            <td>Emp. + 1 dependent</td>
+            <td><span data-field="premiums.emp_plus_one">{{ premiums.emp_plus_one }}</span></td>
+          </tr>
+          <tr>
+            <td>Emp. + family</td>
+            <td><span data-field="premiums.emp_plus_family">{{ premiums.emp_plus_family }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="width: 30%;">
+      <div class="section-title">Services/frequency</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exam</td>
+            <td><span data-field="services.exam_frequency">{{ services.exam_frequency }}</span></td>
+          </tr>
+          <tr>
+            <td>Frame</td>
+            <td><span data-field="services.frame_frequency">{{ services.frame_frequency }}</span></td>
+          </tr>
+          <tr>
+            <td>Contact lens fitting</td>
+            <td><span data-field="services.contact_lens_fitting_frequency">{{ services.contact_lens_fitting_frequency }}</span></td>
+          </tr>
+          <tr>
+            <td>Lenses</td>
+            <td><span data-field="services.lenses_frequency">{{ services.lenses_frequency }}</span></td>
+          </tr>
+          <tr>
+            <td>(Based on date of service)</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Benefits through Superior National network</div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 48%;">
+      <div class="sub-section-title">In-network</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exam (ophthalmologist)</td>
+            <td><span data-field="in_network.exam_coverage">{{ in_network.exam_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Exam (optometrist)</td>
+            <td><span data-field="in_network.optometrist_exam_coverage">{{ in_network.optometrist_exam_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Frames</td>
+            <td><span data-field="in_network.frames_coverage">{{ in_network.frames_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Contact lens fitting (standard)</td>
+            <td><span data-field="in_network.contact_lens_standard_coverage">{{ in_network.contact_lens_standard_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Contact lens fitting (specialty)</td>
+            <td><span data-field="in_network.contact_lens_specialty_coverage">{{ in_network.contact_lens_specialty_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Lenses (standard) per pair</td>
+            <td><span data-field="in_network.lenses_standard_coverage">{{ in_network.lenses_standard_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Bifocal</td>
+            <td><span data-field="in_network.bifocal_coverage">{{ in_network.bifocal_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Trifocal</td>
+            <td><span data-field="in_network.trifocal_coverage">{{ in_network.trifocal_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>Progressives lens upgrade</td>
+            <td><span data-field="in_network.progressives_upgrade_coverage">{{ in_network.progressives_upgrade_coverage }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="width: 48%;">
+      <div class="sub-section-title">Out-of-network</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Covered in full</td>
+            <td><span data-field="out_of_network.full_coverage">{{ out_of_network.full_coverage }}</span></td>
+          </tr>
+          <tr>
+            <td>$100 retail allowance</td>
+            <td><span data-field="out_of_network.retail_allowance_100">{{ out_of_network.retail_allowance_100 }}</span></td>
+          </tr>
+          <tr>
+            <td>Covered in full</td>
+            <td><span data-field="out_of_network.full_coverage_2">{{ out_of_network.full_coverage_2 }}</span></td>
+          </tr>
+          <tr>
+            <td>$50 retail allowance</td>
+            <td><span data-field="out_of_network.retail_allowance_50">{{ out_of_network.retail_allowance_50 }}</span></td>
+          </tr>
+          <tr>
+            <td>Not covered</td>
+            <td><span data-field="out_of_network.not_covered_1">{{ out_of_network.not_covered_1 }}</span></td>
+          </tr>
+          <tr>
+            <td>Not covered</td>
+            <td><span data-field="out_of_network.not_covered_2">{{ out_of_network.not_covered_2 }}</span></td>
+          </tr>
+          <tr>
+            <td>Up to $35 retail</td>
+            <td><span data-field="out_of_network.retail_up_to_35">{{ out_of_network.retail_up_to_35 }}</span></td>
+          </tr>
+          <tr>
+            <td>Up to $50 retail</td>
+            <td><span data-field="out_of_network.retail_up_to_50">{{ out_of_network.retail_up_to_50 }}</span></td>
+          </tr>
+          <tr>
+            <td>Up to $70 retail</td>
+            <td><span data-field="out_of_network.retail_up_to_70">{{ out_of_network.retail_up_to_70 }}</span></td>
+          </tr>
+          <tr>
+            <td>Not covered</td>
+            <td><span data-field="out_of_network.not_covered_3">{{ out_of_network.not_covered_3 }}</span></td>
+          </tr>
+          <tr>
+            <td>Not covered</td>
+            <td><span data-field="out_of_network.not_covered_4">{{ out_of_network.not_covered_4 }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Discount features</div>
+  <p>Look for providers in the provider directory who accept discounts, as some do not; please verify their services as they vary.</p>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 48%;">
+      <div class="sub-section-title">Discounts on covered materials</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frames:</td>
+            <td><span data-field="material_discounts.frames">{{ material_discounts.frames }}</span></td>
+          </tr>
+          <tr>
+            <td>Progressives:</td>
+            <td><span data-field="material_discounts.progressives">{{ material_discounts.progressives }}</span></td>
+          </tr>
+          <tr>
+            <td>Specialty contact lens fit:</td>
+            <td><span data-field="material_discounts.specialty_contact_lens">{{ material_discounts.specialty_contact_lens }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="width: 48%;">
+      <div class="sub-section-title">Discounts on non-covered exam, services and materials</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;"></th>
+            <th style="width: 40%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exams, frames, and prescription lenses:</td>
+            <td><span data-field="discount_services.exams_frames_lenses">{{ discount_services.exams_frames_lenses }}</span></td>
+          </tr>
+          <tr>
+            <td>Lenses options, contacts, miscellaneous options:</td>
+            <td><span data-field="discount_services.options">{{ discount_services.options }}</span></td>
+          </tr>
+          <tr>
+            <td>Disposable contact lenses:</td>
+            <td><span data-field="discount_services.disposable_contacts">{{ discount_services.disposable_contacts }}</span></td>
+          </tr>
+          <tr>
+            <td>Retinal imaging:</td>
+            <td><span data-field="discount_services.retinal_imaging">{{ discount_services.retinal_imaging }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Maximum member out-of-pocket</div>
+  <p>The following options have out-of-pocket maximums on standard (not premium, brand, or progressive) lenses:</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 33%;"></th>
+        <th style="width: 33%;"></th>
+        <th style="width: 33%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ultraviolet coat</td>
+        <td><span data-field="oop_max.ultraviolet_coat">{{ oop_max.ultraviolet_coat }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal">{{ oop_max.bifocal }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal">{{ oop_max.trifocal }}</span></td>
+      </tr>
+      <tr>
+        <td>Tint, solids or gradients</td>
+        <td><span data-field="oop_max.tint_solids">{{ oop_max.tint_solids }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal_tint_solids">{{ oop_max.bifocal_tint_solids }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal_tint_solids">{{ oop_max.trifocal_tint_solids }}</span></td>
+      </tr>
+      <tr>
+        <td>Anti-reflective coat</td>
+        <td><span data-field="oop_max.anti_reflective_coat">{{ oop_max.anti_reflective_coat }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal_anti_reflective_coat">{{ oop_max.bifocal_anti_reflective_coat }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal_anti_reflective_coat">{{ oop_max.trifocal_anti_reflective_coat }}</span></td>
+      </tr>
+      <tr>
+        <td>Polycarbonate</td>
+        <td><span data-field="oop_max.polycarbonate">{{ oop_max.polycarbonate }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal_polycarbonate">{{ oop_max.bifocal_polycarbonate }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal_polycarbonate">{{ oop_max.trifocal_polycarbonate }}</span></td>
+      </tr>
+      <tr>
+        <td>Holographic</td>
+        <td><span data-field="oop_max.holographic">{{ oop_max.holographic }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal_holographic">{{ oop_max.bifocal_holographic }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal_holographic">{{ oop_max.trifocal_holographic }}</span></td>
+      </tr>
+      <tr>
+        <td>Photochromic</td>
+        <td><span data-field="oop_max.photochromic">{{ oop_max.photochromic }}</span></td>
+        <td>Bifocal</td>
+        <td><span data-field="oop_max.bifocal_photochromic">{{ oop_max.bifocal_photochromic }}</span></td>
+        <td>Trifocal</td>
+        <td><span data-field="oop_max.trifocal_photochromic">{{ oop_max.trifocal_photochromic }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="disclaimer">
+    <p>¹ Discounts and maximums may vary by lens type. Please check with your provider.</p>
+    <p>The plan discount features are not insurance.</p>
+    <p>All allowances are retail; the member is responsible for paying the provider directly for all non-covered items and/or any amount over the allowances, minus available discounts. These are not covered by the plan.</p>
+    <p>Discounts are subject to change without notice.</p>
+    <p>Disclaimer: All final determinations of benefits, administrative duties, and definitions are governed by the Certificate of Insurance for your vision plan. Please check with your Human Resources department if you have any questions.</p>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; justify-content: space-between; font-size: 9pt;">
+    <div>
+      <p>Superior Vision Services, Inc. P.O. Box 967 Rancho Cordova, CA 95741 (800) 507-3800 supervision.com</p>
+      <p>The Superior Vision Plan is administered by National Guardian Life Insurance Company. National Guardian Life Insurance Company is not affiliated with Superior Vision.</p>
+      <p>The Guardian Life Insurance Company of America, AKA The Guardian or Guardian Life</p>
+    </div>
+    <div>
+      <p>NVGPR-S-07</p>
+      <p>0919-BS/2KS</p>
+    </div>
+  </div>
+</div>

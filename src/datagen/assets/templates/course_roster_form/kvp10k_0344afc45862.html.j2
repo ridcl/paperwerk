@@ -1,0 +1,77 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { text-align: center; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .line-item-row div { width: 33%; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <p style="margin: 0;">The Office of Disability Services</p>
+    <p style="margin: 0;">{{ organization.name }}</p>
+    <p style="margin: 0;">{{ organization.address_line_1 }}</p>
+    <p style="margin: 0;">{{ organization.address_line_2 }}</p>
+    <p style="margin: 0;">{{ organization.phone }}</p>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 20px;">Course Roster Form</h2>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p style="text-align: justify;">In order to notify your instructors about accommodations, it is necessary for you to provide information with regard to your courses and instructors. Please return this form before the semester begins or when you make a change in your schedule.</p>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 20px;">
+    <div class="line-item-row">
+      <div style="width: 33%;">Student's Name: <span data-field="full_name">{{ full_name }}</span></div>
+      <div style="width: 33%;">Semester: <span data-field="semester">{{ semester }}</span></div>
+      <div style="width: 33%;"></div>
+    </div>
+    <div class="line-item-row">
+      <div style="width: 33%;">Student ID#: <span data-field="student_id">{{ student_id }}</span></div>
+      <div style="width: 33%;">Phone Number: <span data-field="phone_number">{{ phone_number }}</span></div>
+      <div style="width: 33%;"></div>
+    </div>
+    <div class="line-item-row">
+      <div style="width: 33%;">Address: <span data-field="address">{{ address }}</span></div>
+      <div style="width: 33%;"></div>
+      <div style="width: 33%;"></div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <div style="width: 25%;">Course</div>
+      <div style="width: 25%;">CRN</div>
+      <div style="width: 25%;">Section</div>
+      <div style="width: 25%;">Instructor</div>
+    </div>
+
+    {% for i in range(5) %}
+    <div class="line-item-row" style="margin-bottom: 15px;">
+      <div style="width: 25%;">{{ i + 1 }}.</div>
+      <div style="width: 25%; border-bottom: 1px solid #000;" data-field="instructor">{{ instructor }}</div>
+      <div style="width: 25%; border-bottom: 1px solid #000;" data-field="instructor_2">{{ instructor_2 }}</div>
+      <div style="width: 25%; border-bottom: 1px solid #000;" data-field="instructor_3">{{ instructor_3 }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="form-section" style="margin-bottom: 30px;">
+    <p style="text-align: justify;">I hereby give my permission for the Office of Disability Services to notify the instructors listed above with regard to my disability and accommodations agreed upon.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div style="width: 45%;">Signature</div>
+    <div style="width: 45%;">Date</div>
+  </div>
+</div>

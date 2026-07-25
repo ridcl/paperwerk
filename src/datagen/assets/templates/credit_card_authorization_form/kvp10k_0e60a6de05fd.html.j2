@@ -1,0 +1,112 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  h1, h2 { text-align: center; }
+  .form-section { margin-bottom: 20px; }
+  .line-item-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .input-field { border-bottom: 1px solid #000; min-width: 100px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <!-- Logo Placeholder -->
+    <div style="margin-bottom: 10px;">
+      <span style="font-size: 30px;">[Logo Placeholder]</span>
+    </div>
+    <h1 style="font-size: 24px; margin-top: 0;">LINCOLN UNIVERSITY</h1>
+    <p style="font-size: 12px;">401 15th Street, Oakland, CA 94612</p>
+  </div>
+
+  <h2 style="text-align: center; margin-bottom: 30px;">Credit Card Authorization Form</h2>
+
+  <div class="form-section">
+    <p>Please complete the information below. Incomplete forms will not be accepted.</p>
+    <div style="margin-top: 20px;">
+      <p>I, <span data-field="full_name">{{ full_name }}</span>, authorize <span data-field="institution.name">{{ institution.name }}</span> to charge</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>
+      <span style="font-weight: bold;">$</span> <span data-field="amount_to_charge">{{ amount_to_charge }}</span> on my credit card account indicated below for
+      <span data-field="description_of_fee">{{ description_of_fee }}</span>.
+    </p>
+  </div>
+
+  <div class="form-section">
+    <p>
+      (Student Name: <span data-field="student_name">{{ student_name }}</span>, First Name & Student ID)
+    </p>
+    <div style="margin-top: 15px;">
+      <p>
+        Card Type:
+        <span style="margin-left: 20px;">
+          <input type="checkbox"> Visa
+          <input type="checkbox" style="margin-left: 15px;"> MasterCard
+          <input type="checkbox" style="margin-left: 15px;"> American Express
+          <input type="checkbox" style="margin-left: 15px;"> Discover
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <p>Cardholder Name: <span class="input-field" style="width: 50%;" data-field="discover">{{ discover }}</span></p>
+    <p>Card Number: <span class="input-field" style="width: 50%;" data-field="cardholder_name">{{ cardholder_name }}</span></p>
+    <p>Expiration Date: <span class="input-field" style="width: 50%;" data-field="card_number">{{ card_number }}</span></p>
+    <p>CVV2 (3-digit on back of Visa/MC/Discover, 4-digit on front of Amex): <span class="input-field" style="width: 50%;" data-field="expiration_date">{{ expiration_date }}</span></p>
+  </div>
+
+  <div class="form-section" style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 45%;">
+      <p>Billing Address</p>
+      <p>
+        <span style="display: inline-block; width: 30%;">Number</span>
+        <span style="display: inline-block; width: 30%;">Street</span>
+        <span style="display: inline-block; width: 30%;">Apt</span>
+      </p>
+      <p><span class="input-field" style="width: 100%;" data-field="apt">{{ apt }}</span></p>
+    </div>
+    <div style="width: 45%;">
+      <p>
+        <span style="display: inline-block; width: 30%;">City</span>
+        <span style="display: inline-block; width: 30%;">State</span>
+        <span style="display: inline-block; width: 30%;">Zip Code</span>
+      </p>
+      <p><span class="input-field" style="width: 100%;" data-field="zip_code">{{ zip_code }}</span></p>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top: 20px;">
+    <p>Phone Number: <span class="input-field" style="width: 50%;" data-field="zip_code_2">{{ zip_code_2 }}</span></p>
+    <p>Email: <span class="input-field" style="width: 50%;" data-field="phone_number">{{ phone_number }}</span></p>
+  </div>
+
+  <div class="form-section" style="margin-top: 40px;">
+    <p>SIGNATURE: _________________________ DATE: <span data-field="authorization_date">{{ authorization_date }}</span> (MM/DD/YYYY)</p>
+  </div>
+
+  <div class="form-section" style="font-size: 10px; line-height: 1.4;">
+    <p>
+      * The minimum charge for card is <span data-field="minimum_charge">{{ minimum_charge }}</span>.
+    </p>
+    <p>
+      * If credit card billing address is not in the United States, please add an <span data-field="additional_fee_note">{{ additional_fee_note }}</span> to the total amount for bank charge.
+    </p>
+    <p>
+      * We reserve the right not to accept this form.
+    </p>
+  </div>
+
+  <div style="text-align: right; font-size: 10px; margin-top: 30px;">
+    Rev. 04/30/2025
+  </div>
+</div>

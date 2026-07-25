@@ -1,0 +1,316 @@
+<style>
+    @page { size: A4; margin: 0; }
+    .page {
+        width: 794px; height: 1123px;
+        padding: 50px 60px; box-sizing: border-box;
+        overflow: hidden; page-break-after: always;
+        position: relative;
+    }
+    .page:last-child { page-break-after: auto; }
+    body {
+        font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+        color: #000;
+    }
+    h1, h2, h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+    .logo-area {
+        display: flex;
+        align-items: center;
+    }
+    .logo-area h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0;
+    }
+    .logo-area span {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .info-block {
+        width: 45%;
+    }
+    .info-block div {
+        margin-bottom: 15px;
+    }
+    .info-block label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .info-block span {
+        display: block;
+        padding: 2px 0;
+    }
+    .form-row {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+    .form-row > div {
+        flex: 1;
+    }
+    .form-row label {
+        font-weight: normal;
+        display: inline-block;
+        width: 150px; /* Approximate width for labels */
+    }
+    .form-row input[type="text"], .form-row select {
+        border: 1px solid #ccc;
+        padding: 5px;
+        flex-grow: 1;
+    }
+    .checkbox-group label {
+        font-weight: normal;
+        display: inline-flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    .divider {
+        border-top: 1px solid #000;
+        margin: 30px 0;
+    }
+    .section-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .table-container {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    .table-container th, .table-container td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-container th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+    .signature-area {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .signature-block {
+        width: 45%;
+        text-align: center;
+    }
+    .signature-block div {
+        height: 50px;
+        border-bottom: 1px solid #000;
+        margin-bottom: 5px;
+    }
+    .signature-block span {
+        font-size: 12px;
+    }
+</style>
+
+<div class="page">
+    <div class="header-section">
+        <div class="logo-area">
+            <h1><span data-field="organization_name">{{ organization_name }}</span></h1>
+            <span><span data-field="bank_name">{{ bank_name }}</span></span>
+        </div>
+        <div class="info-block">
+            <div>
+                <label>RECEIVING HSA</label>
+                <span data-field="receiving_institution_name">{{ receiving_institution_name }}</span>
+                <span data-field="receiving_address">{{ receiving_address }}</span>
+            </div>
+            <div>
+                <label>TRUSTEE</label>
+                <span data-field="trustee_name">{{ trustee_name }}</span>
+            </div>
+            <div>
+                <label>CUSTODIAN</label>
+                <span data-field="custodian_name">{{ custodian_name }}</span>
+            </div>
+        </div>
+    </div>
+
+    <p>The <span data-field="organization_name">{{ organization_name }}</span> gathers information about a HSA direct transfer, authorizes the existing Trustee/Custodian to <span data-field="transfer_action">{{ transfer_action }}</span> the funds, and provides details regarding the investment liquidation.</p>
+
+    <div class="form-row">
+        <label>Type of Transfer:</label>
+        <div>
+            <label><input type="radio" name="transfer_type" value="MSA"> MSA or HSA to HSA</label>
+            <label><input type="radio" name="transfer_type" value="Traditional"> Traditional IRA or Roth IRA to HSA</label>
+        </div>
+    </div>
+
+    <p style="font-size: 10px; margin-top: -10px;">*Note: A contribution transferred directly from a Traditional IRA or a Roth IRA as tax-free qualified HSA funding distribution is subject to HSA contribution limits and may be subject to tax if the distribution is not qualified. The HSA/IRA custodian may require you to consult your tax advisor to discuss potential tax consequences that could result if a qualified funding HSA distribution is ineligible or you do not meet the required level of documentation.</p>
+
+    <div class="section-title">DISTRIBUTING HSA OWNER INFORMATION</div>
+    <div class="form-row">
+        <label>Mailing Address:</label>
+        <div>
+            <span data-field="mailing_address">{{ mailing_address }}</span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Taxpayer ID Number:</label>
+        <div>
+            <span data-field="taxpayer_id">{{ taxpayer_id }}</span>
+        </div>
+        <label style="flex: 1;">D.O.B.:</label>
+        <div>
+            <span data-field="date_of_birth">{{ date_of_birth }}</span>
+        </div>
+    </div>
+
+    <div class="section-title">TRANSFER INSTRUCTIONS</div>
+    <div class="form-row">
+        <label>Transfer By:</label>
+        <div>
+            <label><input type="radio" name="transfer_by" value="HSA_Owner"> HSA Owner</label>
+            <label><input type="radio" name="transfer_by" value="Spouse"> Spouse Beneficiary</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Name:</label>
+        <div>
+            <span data-field="transferor_name">{{ transferor_name }}</span>
+        </div>
+        <label style="flex: 1;">Taxpayer ID Number:</label>
+        <div>
+            <span data-field="transferor_taxpayer_id">{{ transferor_taxpayer_id }}</span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Address:</label>
+        <div>
+            <span data-field="transferor_address">{{ transferor_address }}</span>
+        </div>
+        <label style="flex: 1;">D.O.B.:</label>
+        <div>
+            <span data-field="transferor_dob">{{ transferor_dob }}</span>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">Current HSA Trustee/Custodian</div>
+    <div class="form-row">
+        <label>Name of HSA Trustee/Custodian:</label>
+        <div>
+            <span data-field="current_trustee_name">{{ current_trustee_name }}</span>
+        </div>
+    </div>
+    <div class="form-row">
+        <label>Address:</label>
+        <div>
+            <span data-field="current_trustee_address">{{ current_trustee_address }}</span>
+        </div>
+    </div>
+
+    <div class="section-title">Current HSA Account/Plan Number</div>
+    <div class="form-row">
+        <label>Bank Reference Number:</label>
+        <div>
+            <span data-field="current_account_number">{{ current_account_number }}</span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Phone:</label>
+        <div>
+            <span data-field="current_phone">{{ current_phone }}</span>
+        </div>
+        <label style="flex: 1;">Transfer Amount:</label>
+        <div>
+            <span data-field="transfer_amount">{{ transfer_amount }}</span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Investment Description:</label>
+        <div>
+            <span data-field="investment_description">{{ investment_description }}</span>
+        </div>
+        <label style="flex: 1;">Amount/No. Shares:</label>
+        <div>
+            <span data-field="amount_shares">{{ amount_shares }}</span>
+        </div>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <div style="flex: 1;">
+            <label>Transfer:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="transfer_option" value="immediately"> Immediately</label>
+                <label><input type="checkbox" name="transfer_option" value="in_kind"> In-kind</label>
+                <label><input type="checkbox" name="transfer_option" value="at_maturity"> At Maturity</label>
+                <label><input type="checkbox" name="transfer_option" value="other"> Other:</label>
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <label>At Maturity:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="maturity_option" value="immediately"> Immediately</label>
+                <label><input type="checkbox" name="maturity_option" value="in_kind"> In-kind</label>
+                <label><input type="checkbox" name="maturity_option" value="at_maturity"> At Maturity</label>
+                <label><input type="checkbox" name="maturity_option" value="other"> Other:</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row" style="margin-top: 20px;">
+        <div style="flex: 1;">
+            <label>Transfer Method:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="method" value="mail"> Mail a check made payable as follows:</label>
+                <label><input type="checkbox" name="method" value="wire"> Send a wire transfer as follows:</label>
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <label>Routing Number:</label>
+            <div>
+                <span data-field="routing_number">{{ routing_number }}</span>
+            </div>
+            <label>Account Number:</label>
+            <div>
+                <span data-field="account_number">{{ account_number }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Special Instructions:</div>
+    <div>
+        <span data-field="special_instructions">{{ special_instructions }}</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">ACKNOWLEDGMENT</div>
+    <p>By signing this <span data-field="organization_name">{{ organization_name }}</span>, I certify that the information I have provided is true and correct and I authorize the Trustee/Custodian to <span data-field="transfer_action">{{ transfer_action }}</span> the funds. I understand that I am responsible for ensuring an eligible HSA funding distribution and I assume all responsibilities for any consequences as a result of my actions. If the contribution contains dollars directly transferred from an IRA as a qualified HSA funding distribution, I understand that I am responsible for ensuring that the distribution is eligible for HSA funding and I assume all responsibilities for any consequences related to executing my directions. I have been advised to seek competent legal and tax advice and have not relied upon any such advice by the Trustee/Custodian. The Signature of the Owner (or X other authorized person) below signifies agreement to accept this transfer as instructed above.</p>
+
+    <div class="signature-area">
+        <div class="signature-block">
+            <div></div>
+            <span>Signature of Owner (or X other authorized person)</span>
+            <span data-field="signature_date">{{ signature_date }}</span>
+        </div>
+        <div class="signature-block">
+            <div></div>
+            <span>Signature of Trustee/Custodian Representative</span>
+            <span data-field="representative_date">{{ representative_date }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,216 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic layout structure */
+  body { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  h1, h2, h3 { margin-top: 0; }
+  .form-row { display: flex; margin-bottom: 10px; }
+  .form-row > div { flex: 1; }
+  .full-width { width: 100%; margin-bottom: 15px; }
+  .section-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px; border: 1px solid #ccc; }
+</style>
+
+<div class="page">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div style="text-align: left;">
+      <h1 style="font-size: 24pt; font-weight: bold;">Westmont College</h1>
+      <p style="font-size: 10pt;">Westmont College Official Transcript Request</p>
+    </div>
+    <button style="padding: 10px 20px; font-size: 12pt; border: 1px solid black; background-color: white;">Print Form</button>
+  </div>
+
+  <p style="margin-bottom: 20px;">Transcripts Are Not Issued Without Financial Clearance from the BusinessOffice</p>
+  <p style="font-size: 10pt; margin-bottom: 30px;">For Business Office questions, please call {{ business_office_phone }} (Toll Free) or e-mail <span data-field="business_office_email">{{ business_office_email }}</span>.</p>
+
+  <!-- Personal Information Section -->
+  <div class="section-header">Applicant Information</div>
+  <div class="form-row">
+    <div style="width: 25%;">First Name:</div>
+    <div style="width: 75%;">
+      <span data-field="first_name">{{ first_name }}</span>
+      <span data-field="middle_name">{{ middle_name }}</span>
+      <span data-field="last_name">{{ last_name }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 25%;">Student ID # or Last 4 digits of SSN:</div>
+    <div style="width: 75%;">
+      <span data-field="student_id_ssn">{{ student_id_ssn }}</span>
+      Date of Birth: <span data-field="date_of_birth">{{ date_of_birth }}</span>
+      Dates (years) Attended Westmont: <span data-field="years_attended">{{ years_attended }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 25%;">Street Address:</div>
+    <div style="width: 75%;">
+      <span data-field="street_address">{{ street_address }}</span>
+      City: <span data-field="city">{{ city }}</span>
+      State: <span data-field="state">{{ state }}</span>
+      Zip: <span data-field="zip_code">{{ zip_code }}</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 25%;">Daytime Telephone Number:</div>
+    <div style="width: 75%;">
+      <span data-field="phone_number">{{ phone_number }}</span>
+      E-mail Address: <span data-field="email_address">{{ email_address }}</span>
+    </div>
+  </div>
+
+  <!-- Processing Options -->
+  <div class="section-header">Process my request:</div>
+  <div style="margin-bottom: 15px;">
+    <input type="checkbox" id="option1">
+    <label for="option1">I have attached a document that needs to be included with my transcript.</label><br>
+    <input type="checkbox" id="option2">
+    <label for="option2">I will pick up my transcript from the Student Records Office in Kerrwood Hall (Address below not needed)</label>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <input type="checkbox" id="option3">
+    <label for="option3">Process my request: Now</label>
+    <input type="checkbox" id="option4">
+    <label for="option4">When grades are posted for current semester</label>
+    <input type="checkbox" id="option5">
+    <label for="option5">When my degree has been posted</label>
+  </div>
+
+  <!-- Rush Request Section -->
+  <div class="section-header" style="background-color: #ffffcc; padding: 5px; border: 1px solid #ccc;">
+    RUSH AND REGULAR REQUESTS MUST BE ON SEPARATE FORMS
+  </div>
+  <p style="font-size: 10pt; margin-top: -10px;">A complete and accurate mailing address is REQUIRED.</p>
+
+  <div style="display: flex; margin-bottom: 20px;">
+    <div style="flex: 1;">
+      <div class="section-header">One address per form</div>
+      <div style="border: 1px solid #000; height: 100px; padding: 5px;">
+        <span data-field="mailing_address_line1">{{ mailing_address_line1 }}</span><br>
+        <span data-field="mailing_address_line2">{{ mailing_address_line2 }}</span><br>
+        <span data-field="mailing_city_state_zip">{{ mailing_city_state_zip }}</span>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="section-header">Mail To</div>
+      <div style="border: 1px solid #000; height: 100px; padding: 5px;">
+        <span data-field="mailing_address_line1_2">{{ mailing_address_line1_2 }}</span><br>
+        <span data-field="mailing_address_line2_2">{{ mailing_address_line2_2 }}</span><br>
+        <span data-field="mailing_city_state_zip_2">{{ mailing_city_state_zip_2 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Processing Costs Table -->
+  <div class="section-header">Processing Costs:</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">REG Qty.</th>
+        <th style="width: 20%;">REG Amt</th>
+        <th style="width: 20%;">RUSH Qty</th>
+        <th style="width: 20%;">RUSH Amt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span data-field="regular_quantity">{{ regular_quantity }}</span></td>
+        <td>$ <span data-field="regular_amount">{{ regular_amount }}</span></td>
+        <td><span data-field="rush_quantity">{{ rush_quantity }}</span></td>
+        <td>$ <span data-field="rush_amount">{{ rush_amount }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size: 10pt; margin-top: 10px;">Regular Processing: $14 per copy. Allow 3 business days for processing.</p>
+  <p style="font-size: 10pt;">Rush Processing: $20 total processing cost per Rush copy. Allow 2 business days for processing.</p>
+
+  <!-- Delivery Costs -->
+  <div class="section-header" style="margin-top: 30px;">Delivery Costs:</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Delivery Amt</th>
+        <th style="width: 80%;">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>$ <span data-field="delivery_amount">{{ delivery_amount }}</span></td>
+        <td>Delivery Costs (per request): U.S. Mail: No additional cost Next Day: $30 $2-day: $20.00</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>*FedEx/UPS International: Costs vary by destination, you will be contacted via e-mail for payment authorization prior to processing your transcript request.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+    <table style="width: 40%;">
+      <tr>
+        <td style="text-align: right;">TOTAL Qty:</td>
+        <td style="text-align: right;">$ <span data-field="total_quantity">{{ total_quantity }}</span></td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">TOTAL Amount:</td>
+        <td style="text-align: right;">$ <span data-field="total_amount">{{ total_amount }}</span></td>
+      </tr>
+    </table>
+  </div>
+  <p style="font-size: 10pt; margin-top: 10px;">(If necessary, we will adjust the total amount to be consistent with all requests submitted at same time.)</p>
+
+  <!-- Payment Methods -->
+  <div class="section-header" style="margin-top: 30px;">Payment Methods:</div>
+  <div style="display: flex; gap: 30px;">
+    <div>
+      <label>VISA or MasterCardONLY</label>
+      <div class="form-row" style="margin-top: 10px;">
+        <div style="width: 50%;">Credit Card Number: <span data-field="credit_card_number">{{ credit_card_number }}</span></div>
+        <div style="width: 25%;">Expiration Date: <span data-field="expiration_date">{{ expiration_date }}</span></div>
+        <div style="width: 25%;">*Name on Credit Card: <span data-field="cardholder_name">{{ cardholder_name }}</span></div>
+      </div>
+    </div>
+    <div>
+      <label>Personal Check:</label>
+      <p style="font-size: 10pt;">Please make check payable to Westmont College.</p>
+    </div>
+  </div>
+
+  <!-- Signature and Date -->
+  <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+    <div>
+      <p style="font-weight: bold;">Signature (required)</p>
+      <p style="font-size: 10pt;">Your signature authorizes Westmont to release your transcript and charge your credit card.</p>
+      <p style="font-size: 10pt;">*If the card does not belong to the student, a separate signature from the cardholder is REQUIRED.</p>
+    </div>
+    <div>
+      Date: <span data-field="date_signed">{{ date_signed }}</span>
+    </div>
+  </div>
+
+  <!-- Mailing Address Footer -->
+  <div style="margin-top: 80px;">
+    <p style="font-weight: bold;">Mail Transcript Request (and check) to:</p>
+    <p><span data-field="college_name">{{ college_name }}</span></p>
+    <p><span data-field="college_address_line1">{{ college_address_line1 }}</span></p>
+    <p><span data-field="college_address_line2">{{ college_address_line2 }}</span></p>
+    <p><span data-field="college_city_state_zip">{{ college_city_state_zip }}</span></p>
+  </div>
+
+  <!-- Email Request Footer -->
+  <div style="margin-top: 50px; text-align: right;">
+    <p>E-mail Scanned Request to:</p>
+    <p><span data-field="email_request_address">{{ email_request_address }}</span></p>
+  </div>
+</div>

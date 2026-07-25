@@ -1,0 +1,161 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  h1, h2, h3 { margin-top: 0; }
+  .form-section { margin-bottom: 20px; }
+  .input-row { display: flex; margin-bottom: 10px; }
+  .input-row > div { flex: 1; }
+  .label { font-weight: bold; display: block; margin-bottom: 3px; }
+  .field-container { border-bottom: 1px solid #000; padding-bottom: 2px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="placeholder_logo.png" alt="Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+    <h2 style="font-size: 18pt;">THIRD-PARTY ACCESS REQUEST FORM</h2>
+    <p style="font-size: 10pt;">Michigan Department of State</p>
+    <p style="font-size: 10pt;">Email: <span data-field="contact_email">{{ contact_email }}</span></p>
+    <p style="font-size: 10pt;">PLEASE PRINT OR TYPE INFORMATION REQUESTED</p>
+  </div>
+
+  <!-- SECTION A: ACCESS REQUEST -->
+  <div class="form-section">
+    <h3 style="font-weight: bold;">SECTION A: ACCESS REQUEST</h3>
+    <div style="margin-top: 15px;">
+      <label style="font-weight: normal; display: inline-block; margin-right: 20px;"><input type="checkbox"> ADD NEW USER</label>
+      <label style="font-weight: normal; display: inline-block; margin-right: 20px;"><input type="checkbox"> DELETE EXISTING USER</label>
+      <label style="font-weight: normal; display: inline-block;"><input type="checkbox"> NAME CHANGE FOR CURRENT USER</label>
+    </div>
+    <div style="margin-top: 15px;">
+      <span class="label">Previous Name:</span>
+      <div class="field-container" style="width: 50%;">
+        <span data-field="previous_name">{{ previous_name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B: EMPLOYEE INFORMATION -->
+  <div class="form-section">
+    <h3 style="font-weight: bold;">SECTION B: EMPLOYEE INFORMATION (EMPLOYEE COMPLETES ALL FIELDS IN THIS SECTION)</h3>
+    <div class="input-row">
+      <div style="flex: 1;">
+        <span class="label">NAME</span>
+        <div class="field-container">
+          <span data-field="employee.first_name">{{ employee.first_name }}</span>
+          <span data-field="employee.middle_initial">{{ employee.middle_initial }}</span>
+          <span data-field="employee.last_name">{{ employee.last_name }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <span class="label">COMPANY NAME</span>
+        <div class="field-container">
+          <span data-field="employer.name">{{ employer.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div style="flex: 1;">
+        <span class="label">COMPANY ADDRESS</span>
+        <div class="field-container">
+          <span data-field="employer.address">{{ employer.address }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <span class="label">CITY</span>
+        <div class="field-container">
+          <span data-field="employer.city">{{ employer.city }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <span class="label">STATE</span>
+        <div class="field-container">
+          <span data-field="employer.state">{{ employer.state }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <span class="label">ZIP</span>
+        <div class="field-container">
+          <span data-field="employer.zip">{{ employer.zip }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div style="flex: 1;">
+        <span class="label">WORK EMAIL ADDRESS</span>
+        <div class="field-container">
+          <span data-field="employee.work_email">{{ employee.work_email }}</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <span class="label">WORK TELEPHONE (AREA CODE AND NUMBER)</span>
+        <div class="field-container">
+          <span data-field="employee.work_phone">{{ employee.work_phone }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C: EMPLOYEE SECURITY AGREEMENT -->
+  <div class="form-section">
+    <h3 style="font-weight: bold;">SECTION C: EMPLOYEE SECURITY AGREEMENT (EMPLOYEE SIGNS AND FORWARDS TO SUPERVISOR/ACCOUNT MANAGER)</h3>
+    <p style="font-size: 10pt; line-height: 1.4;">
+      USER AGREEMENT: I agree to protect my usercode and password from unauthorized use. I understand that work done under my usercode is recorded as being done by me. I understand that I control the use of my usercode through the protection of my password, which I keep secret and change on a frequent basis to prevent unauthorized use. Information obtained through the use of my usercode is for official use only. I understand that the Michigan Department of State has a policy covering the release of information and the disciplinary measures for violation of that policy. All operators should be aware that inappropriate release of information accessible through terminals is a violation of Federal law.
+    </p>
+    <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+      <div style="width: 45%;">
+        <span class="label">EMPLOYEE SIGNATURE</span>
+        <div class="field-container" style="height: 50px;" data-field="employee_signature">{{ employee_signature }}</div>
+      </div>
+      <div style="width: 45%;">
+        <span class="label">DATE</span>
+        <div class="field-container">
+          <span data-field="agreement.date">{{ agreement.date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION D: APPROVAL -->
+  <div class="form-section">
+    <h3 style="font-weight: bold;">SECTION D: APPROVAL (EMPLOYER'S SUPERVISOR/ACCOUNT MANAGER COMPLETES ALL FIELDS IN THIS SECTION)</h3>
+    <p style="font-size: 10pt; line-height: 1.4;">
+      *** Supervisors can sign for their employee's access as long as forms are vetted by an Account Manager. ***
+    </p>
+    <p style="font-size: 10pt; line-height: 1.4;">
+      By signing this document, I agree the employee named above requires access to the Michigan Department of State records for performance of assigned job duties.
+    </p>
+
+    <div style="margin-top: 40px;">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 45%;">
+          <span class="label">POSITION/TITLE</span>
+          <div class="field-container" style="height: 30px;" data-field="position_title">{{ position_title }}</div>
+        </div>
+        <div style="width: 45%;">
+          <span class="label">DATE</span>
+          <div class="field-container">
+            <span data-field="approval.date">{{ approval.date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <div style="width: 45%;">
+        <span class="label">SIGNATURE</span>
+        <div class="field-container" style="height: 50px;" data-field="signature">{{ signature }}</div>
+      </div>
+      <!-- Placeholder for Manager Name/Title if needed, but sticking strictly to layout -->
+    </div>
+  </div>
+</div>

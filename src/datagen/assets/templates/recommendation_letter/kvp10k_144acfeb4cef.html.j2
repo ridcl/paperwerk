@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recommendation Form</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-weight: bold; }
+  .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .logo-area { font-size: 24pt; font-weight: bold; }
+  .title-area { font-size: 14pt; }
+  .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .form-row { display: flex; margin-bottom: 15px; align-items: flex-start; }
+  .form-row > div { flex: 1; }
+  .label { font-weight: normal; }
+  .input-field { border-bottom: 1px solid #000; padding-bottom: 2px; min-width: 100px; }
+  .checkbox-group label { margin-right: 15px; font-weight: normal; }
+  .rating-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .rating-table th, .rating-table td { border: 1px solid #000; padding: 8px; text-align: center; font-size: 10pt; }
+  .rating-table th { background-color: #f0f0f0; }
+  .textarea-box { width: 100%; height: 100px; border: 1px solid #000; padding: 10px; box-sizing: border-box; margin-top: 5px; }
+  .signature-line { display: flex; justify-content: space-between; margin-top: 50px; }
+  .signature-block { width: 45%; text-align: center; }
+  .footer { font-size: 8pt; margin-top: 50px; border-top: 1px solid #000; padding-top: 10px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-bar">
+    <div class="logo-area">CLEMSON<br>THE GRADUATE SCHOOL</div>
+    <div class="title-area">ADMISSIONS & RECRUITMENT</div>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <h2 style="font-size: 16pt;">GSL — Recommendation for Graduate School Admission</h2>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+      <div style="margin-right: 10px;">&gt;</div>
+      <div style="flex-grow: 1;">
+        <p style="font-size: 11pt;">Instructions for the applicant. Use this form when a potential recommender lacks access to the online recommendation form through your application for admission. Please complete the section above the dashed line, then forward this form to the recommender for completion. Also, note the waiver below.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">RECOMMENDATION ON BEHALF OF</div>
+
+  <div class="form-row">
+    <div style="width: 30%;">
+      <div class="label">Name</div>
+      <div class="input-field"><span data-field="full_name">{{ recommender_full_name }}</span></div>
+    </div>
+    <div style="width: 30%;">
+      <div class="label">Last</div>
+      <div class="input-field"><span data-field="recommender_last_name">{{ recommender_last_name }}</span></div>
+    </div>
+    <div style="width: 20%;">
+      <div class="label">First</div>
+      <div class="input-field"><span data-field="recommender_first_name">{{ recommender_first_name }}</span></div>
+    </div>
+    <div style="width: 20%;">
+      <div class="label">Middle</div>
+      <div class="input-field"><span data-field="recommender_middle_name">{{ recommender_middle_name }}</span></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div style="width: 30%;">
+      <div class="label">NRR (international students)</div>
+      <div class="input-field"><span data-field="recommender_nationality">{{ recommender_nationality }}</span></div>
+    </div>
+    <div style="width: 30%;">
+      <div class="label">Proposed major</div>
+      <div class="input-field"><span data-field="proposed_major">{{ proposed_major }}</span></div>
+    </div>
+    <div style="width: 40%;">
+      <div class="label">Degree sought</div>
+      <div class="input-field"><span data-field="degree_sought">{{ degree_sought }}</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">APPLICANT'S WAIVER OF RIGHT OF ACCESS TO CONFIDENTIAL STATEMENT</div>
+  <p style="font-size: 10pt; line-height: 1.5;">Under the Family Educational Rights and Privacy Act of 1974, a student enrolled at Clemson University has access to his or her educational records. We comply with this law, while still allowing the student the option of waiving the right of access. If you wish to waive the right to examine this recommendation, please sign. If left unsigned, you will have access to this document upon enrollment at Clemson University. The alternative you choose in no way affects our consideration of your application. I hereby freely and voluntarily waive my right to any information contained on this recommendation form submitted by:</p>
+
+  <div style="margin-top: 50px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="width: 50%;">
+        <div class="label">Name of recommender; provided by applicant</div>
+        <div class="input-field" style="height: 30px;"><span data-field="applicant_provided_recommender_name">{{ applicant_provided_recommender_name }}</span></div>
+      </div>
+      <div style="width: 25%;">
+        <div class="label">Date</div>
+        <div class="input-field" style="height: 30px;"><span data-field="waiver_date">{{ waiver_date }}</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page">
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <div style="margin-right: 10px;">&gt;</div>
+    <div style="flex-grow: 1;">
+      <div class="section-title">TO THE RECOMMENDER</div>
+      <p style="font-size: 10pt; line-height: 1.5;">Because of federal legislation giving students access to educational records, the Clemson University Graduate School cannot guarantee the confidentiality of your statement unless the applicant has signed the waiver printed above.</p>
+    </div>
+  </div>
+
+  <div class="section-title">1. Knowledge of the Applicant</div>
+  <p style="font-size: 10pt;">Approximately how long have you known the applicant? <span data-field="years_known">{{ years_known }}</span> years</p>
+  <div style="margin-top: 15px;">
+    <p style="font-size: 10pt;">How well do you feel you know the applicant? <span data-field="know_well_option">{{ know_well_option }}</span></p>
+    <div class="checkbox-group" style="margin-top: 10px;">
+      <label><input type="checkbox"> Casually</label>
+      <label><input type="checkbox"> Well</label>
+      <label><input type="checkbox"> Very well</label>
+    </div>
+  </div>
+
+  <p style="font-size: 10pt; margin-top: 15px;">What was the nature of your contact with the applicant?</p>
+  <div class="checkbox-group" style="margin-top: 10px;">
+    <label><input type="checkbox"> Teacher in one class</label>
+    <label><input type="checkbox"> Teacher in more than one class</label>
+    <label><input type="checkbox"> Supervisor</label>
+    <label><input type="checkbox"> Research advisor</label>
+  </div>
+  <div class="checkbox-group" style="margin-top: 10px;">
+    <label><input type="checkbox"> Major advisor</label>
+    <label><input type="checkbox"> Other (specify)</label>
+  </div>
+
+  <div class="section-title" style="margin-top: 30px;">2. Rating of the applicant. Please rate the applicant in the areas indicated.</div>
+  <table class="rating-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Truly exceptional (top 5%)</th>
+        <th>Outstanding (top 10%)</th>
+        <th>Very strong (top 25%)</th>
+        <th>Average (top 50%)</th>
+        <th>Below average (50% and below)</th>
+        <th>Unable to rate/not applicable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Knowledge in area of proposed study</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>2. Ability to grasp new concepts</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>3. Originality, intellectual creativity</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>4. Demonstrates professional curiosity</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>5. Written communication</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>6. Oral communication</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>7. Ability to work collaboratively</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>8. Ability to analyze problems/formulate solutions</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>9. Planning and organizational skills</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>10. Attention to detail</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>11. Perseverance toward goals</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>12. Self-motivation</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>13. Ethics and integrity</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>14. Ability to manage stressful situations</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>15. Laboratory skills (if applicable)</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>16. Mathematical and logical thought (if applicable)</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>17. Potential as a researcher (if applicable)</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>18. Potential as a teacher (if applicable)</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 30px;">3. Which two of the above characteristics would you say best describe the applicant? Please elaborate on your ratings.</div>
+  <div class="textarea-box"><span data-field="elaboration_ratings">{{ elaboration_ratings }}</span></div>
+
+  <div class="section-title" style="margin-top: 30px;">4. Please share your perspective on the suitability of the applicant for graduate study in the indicated program.</div>
+  <div class="textarea-box"><span data-field="suitability_perspective">{{ suitability_perspective }}</span></div>
+
+</div>
+
+<div class="page">
+  <div class="section-title" style="margin-top: 0;">5. Please provide your most compelling reason for Clemson University to admit this applicant, and explain your reasoning.</div>
+  <div class="textarea-box"><span data-field="compelling_reason">{{ compelling_reason }}</span></div>
+
+  <div class="section-title" style="margin-top: 30px;">6. Do you have any additional information related to the applicant's character or abilities that you think the admissions committee should consider when reviewing the applicant?</div>
+  <div class="textarea-box"><span data-field="additional_information">{{ additional_information }}</span></div>
+
+  <div class="section-title" style="margin-top: 30px;">7. Summary</div>
+  <div style="margin-top: 20px;">
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <label><input type="checkbox"> Recommend enthusiastically</label>
+      <div style="flex-grow: 1;"></div>
+      <div class="input-field" style="width: 30%;"><span data-field="enthusiastic_signature">{{ enthusiastic_signature }}</span></div>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <label><input type="checkbox"> Recommend with confidence</label>
+      <div style="flex-grow: 1;"></div>
+      <div class="input-field" style="width: 30%;"><span data-field="confident_signature">{{ confident_signature }}</span></div>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <label><input type="checkbox"> Recommend</label>
+      <div style="flex-grow: 1;"></div>
+      <div class="input-field" style="width: 30%;"><span data-field="recommend_signature">{{ recommend_signature }}</span></div>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <label><input type="checkbox"> Recommend with reservation</label>
+      <div style="flex-grow: 1;"></div>
+      <div class="input-field" style="width: 30%;"><span data-field="reservation_signature">{{ reservation_signature }}</span></div>
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+      <label><input type="checkbox"> Not recommended</label>
+      <div style="flex-grow: 1;"></div>
+      <div class="input-field" style="width: 30%;"><span data-field="not_recommended_signature">{{ not_recommended_signature }}</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: center;">
+        <div class="label">Your signature</div>
+        <div class="input-field" style="height: 30px;"><span data-field="signature_line">{{ signature_line }}</span></div>
+      </div>
+      <div style="width: 45%; text-align: center;">
+        <div class="label">Date</div>
+        <div class="input-field" style="height: 30px;"><span data-field="date_line">{{ date_line }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Printed name</div>
+        <div class="input-field"><span data-field="printed_name">{{ printed_name }}</span></div>
+      </div>
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Title</div>
+        <div class="input-field"><span data-field="title">{{ title }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Position</div>
+        <div class="input-field"><span data-field="position">{{ position }}</span></div>
+      </div>
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Department</div>
+        <div class="input-field"><span data-field="department">{{ department }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Organization</div>
+        <div class="input-field"><span data-field="organization">{{ organization }}</span></div>
+      </div>
+      <div style="width: 45%; text-align: left;">
+        <div class="label">City</div>
+        <div class="input-field"><span data-field="city">{{ city }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Country</div>
+        <div class="input-field"><span data-field="country">{{ country }}</span></div>
+      </div>
+      <div style="width: 45%; text-align: left;">
+        <div class="label">State</div>
+        <div class="input-field"><span data-field="state">{{ state }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div style="width: 45%; text-align: left;">
+        <div class="label">Zip code</div>
+        <div class="input-field"><span data-field="zip_code">{{ zip_code }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Page 2 of 3</p>
+    <p>Form GSL—Recommendation for Graduate School Admission Rev.01/2021</p>
+    <p>Clemson University Graduate School | OFFICE OF GRADUATE ADMISSIONS | E-209 Martin Hall Clemson, SC 29634-5713</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="footer">
+    <p>Page 3 of 3</p>
+    <p>Form GSL—Recommendation for Graduate School Admission Rev.01/2021</p>
+    <p>Clemson University Graduate School | OFFICE OF GRADUATE ADMISSIONS | E-209 Martin Hall Clemson, SC 29634-5713</p>
+  </div>
+  <div style="text-align: center; margin-top: 100px;">
+    <p style="font-size: 10pt;">Recommender: please return this form directly to the Graduate School.</p>
+    <p style="font-size: 10pt;">This form allows digital signatures and may be submitted via email by clicking this link: <span data-field="email_link">{{ email_link }}</span></p>
+    <p style="font-size: 10pt;">If you prefer, send as a hardcopy via regular mail to:</p>
+    <p style="font-size: 10pt;">Graduate Admissions<br>E-209 Martin Hall<br>Clemson University<br>Clemson, SC 29634-5713</p>
+  </div>
+</div>
+
+</body>
+</html>

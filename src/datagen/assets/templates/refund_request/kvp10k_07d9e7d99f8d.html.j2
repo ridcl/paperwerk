@@ -1,0 +1,162 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  /* Basic styling to mimic document structure */
+  body { font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif; }
+  h1, h2 { text-align: center; }
+  .header-section { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  .form-group { margin-bottom: 20px; }
+  .line-item-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .line-item-table td { padding: 8px 0; border-bottom: 1px solid #ccc; }
+  .signature-line { border-bottom: 1px solid black; width: 100%; margin-top: 50px; }
+</style>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="placeholder_logo.png" alt="Logo" style="height: 60px; margin-right: 10px;">
+    <div>
+      <h1 style="font-size: 24pt; margin: 0;">CALIFORNIA STATE UNIVERSITY</h1>
+      <h2 style="font-size: 18pt; margin: 0;">Stanislaus</h2>
+      <p style="font-size: 10pt; margin-top: 5px;">OFFICE OF EXTENDED AND INTERNATIONAL EDUCATION</p>
+    </div>
+  </div>
+
+  <div style="text-align: right; margin-bottom: 100px;">
+    <h1 style="font-size: 24pt; margin: 0;">REQUEST FOR REFUND</h1>
+  </div>
+
+  <div class="form-group">
+    Student ID#: <span class="signature-line" style="width: 300px; display: inline-block;" data-field="request_for_refund">{{ request_for_refund }}</span>
+  </div>
+
+  <div class="form-group">
+    Name (Please Print): <span class="signature-line" style="width: 300px; display: inline-block;" data-field="student_id">{{ student_id }}</span>
+  </div>
+
+  <div class="form-group">
+    Address: <span class="signature-line" style="width: 300px; display: inline-block;" data-field="name">{{ name }}</span>
+  </div>
+
+  <div class="form-group">
+    Phone Number: <span class="signature-line" style="width: 300px; display: inline-block;" data-field="address">{{ address }}</span>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+    <div class="form-group" style="width: 45%;">
+      Signature: <span class="signature-line" style="width: 100%;" data-field="phone_number">{{ phone_number }}</span>
+    </div>
+    <div class="form-group" style="width: 45%; text-align: right;">
+      Date: <span class="signature-line" style="width: 150px; display: inline-block;" data-field="signature">{{ signature }}</span>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 30px;">
+    I request the allowable amount of refund of fees paid for the following term:
+    <div style="margin-top: 15px;">
+      <label><input type="radio" name="term" value="Fall"> Fall</label>
+      <label><input type="radio" name="term" value="Winter"> Winter</label>
+      <label><input type="radio" name="term" value="Spring"> Spring</label>
+      <label><input type="radio" name="term" value="Summer"> Summer</label>
+      Year: <span class="signature-line" style="width: 100px; display: inline-block;" data-field="summer">{{ summer }}</span>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    Did you receive Financial Aid for the current year?
+    <label><input type="radio" name="aid" value="Yes"> Yes</label>
+    <label><input type="radio" name="aid" value="No"> No</label>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    Reason for Request:
+    <label><input type="radio" name="reason" value="Course Drop"> Course Drop</label>
+    <label><input type="radio" name="reason" value="Course Cancellation"> Course Cancellation</label>
+    <label><input type="radio" name="reason" value="Other"> Other</label>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    Explanation:
+    <div class="signature-line" style="width: 100%;" data-field="other">{{ other }}</div>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 10pt;">
+    Note: Please see the Extended Education website www.csustan.edu/uee for the official refund policy
+  </div>
+
+  <div style="margin-top: 60px;">
+    <h3 style="text-align: center; margin-bottom: 20px;">For Office Use Only:</h3>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div style="width: 30%;">
+        Current Units Enrolled: <span class="signature-line" style="width: 100%;" data-field="for_office_use_only">{{ for_office_use_only }}</span>
+      </div>
+      <div style="width: 30%;">
+        Units Dropped: <span class="signature-line" style="width: 100%;" data-field="current_units_enrolled">{{ current_units_enrolled }}</span>
+      </div>
+      <div style="width: 30%;">
+        Date of Change: <span class="signature-line" style="width: 100%;" data-field="units_dropped">{{ units_dropped }}</span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+      <div style="width: 45%;">
+        <label><input type="checkbox" name="approved_req"> Request Approved:</label>
+        <div class="signature-line" style="width: 100%;" data-field="request_approved">{{ request_approved }}</div>
+        Authorized Signature
+      </div>
+      <div style="width: 45%; text-align: right;">
+        <label><input type="checkbox" name="approved_req"> Request Approved:</label>
+        Accounting Office
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 30px;">
+      Reason Denied: <span class="signature-line" style="width: 100%;" data-field="accounting_office">{{ accounting_office }}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <h3 style="text-align: center;">Accounting Office Information</h3>
+    <table class="line-item-table">
+      <tr>
+        <td style="width: 30%;">Amount Paid for:</td>
+        <td style="width: 30%;">Detail Code</td>
+        <td style="width: 30%;">Refund Due</td>
+      </tr>
+      <tr>
+        <td>Extension Refund:</td>
+        <td><span class="signature-line" style="width: 100%;" data-field="extension_refund">{{ extension_refund }}</span></td>
+        <td><span class="signature-line" style="width: 100%;" data-field="extension_refund_2">{{ extension_refund_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Withdrawal/Drop fee:</td>
+        <td><span class="signature-line" style="width: 100%;" data-field="withdrawal_drop_fee">{{ withdrawal_drop_fee }}</span></td>
+        <td><span class="signature-line" style="width: 100%;" data-field="withdrawal_drop_fee_2">{{ withdrawal_drop_fee_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Withheld for other fees:</td>
+        <td><span class="signature-line" style="width: 100%;" data-field="withheld_for_other_fees">{{ withheld_for_other_fees }}</span></td>
+        <td><span class="signature-line" style="width: 100%;" data-field="withheld_for_other_fees_2">{{ withheld_for_other_fees_2 }}</span></td>
+      </tr>
+      <tr>
+        <td>Reason:</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;">Total Refund:</td>
+        <td style="font-weight: bold;"></td>
+        <td style="font-weight: bold;">$ <span data-field="total_refund">{{ total_refund }}</span></td>
+      </tr>
+    </table>
+    <div style="display: flex; justify-content: space-between; margin-top: 40px; font-size: 10pt;">
+      <div>Receipt No.: <span class="signature-line" style="width: 150px; display: inline-block;" data-field="total_refund_2">{{ total_refund_2 }}</span></div>
+      <div>Invoice No.: <span class="signature-line" style="width: 150px; display: inline-block;" data-field="receipt_no">{{ receipt_no }}</span></div>
+    </div>
+  </div>
+</div>

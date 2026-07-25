@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  h1, h2, h3 {
+    font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+  .left {
+    text-align: left;
+  }
+  .divider {
+    border-top: 1px solid #000;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="center">
+    <span style="font-size: 18pt;">University of Pennsylvania</span>
+    <div style="margin: 20px 0;">
+      <!-- Placeholder for University Logo -->
+      <img src="" alt="Logo" style="width: 100px; height: auto;">
+    </div>
+    <span style="font-size: 14pt;">The University Archives and Records Center</span>
+  </div>
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 16pt;">A Guide to the</span>
+    <span style="font-size: 16pt;">Engineering Science Management</span>
+    <span style="font-size: 16pt;">War Training. Program Records</span>
+    <span style="font-size: 14pt;">1941-1944</span>
+  </div>
+  <div class="center" style="margin-top: 40px;">
+    <span style="font-size: 12pt;">3.0 Cubic feet</span>
+    <div style="margin-top: 10px;">
+      <span style="font-size: 12pt;">UPB 91.2</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="left">
+    <span style="font-size: 12pt;">The University Archives and Records Center</span>
+    <div style="font-size: 10pt;">
+      <span data-field="address.street">{{ address.street }}</span><br>
+      <span data-field="address.city">{{ address.city }}</span>, <span data-field="address.state">{{ address.state }}</span> <span data-field="address.zip">{{ address.zip }}</span><br>
+      <span data-field="address.phone">{{ address.phone }}</span><br>
+      Fax: <span data-field="address.fax">{{ address.fax }}</span><br>
+      <span data-field="address.website">{{ address.website }}</span><br>
+      <span data-field="contact.director_name">{{ contact.director_name }}</span>, Director
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-bottom: 30px;">
+    <span style="font-size: 14pt;">Engineering Science Management War Training. Program Records</span>
+    <div style="margin-top: 5px;">
+      <span style="font-size: 12pt;">UPB 91.2</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 12pt;">3.0 Cubic feet</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 50px;">
+    <span style="font-size: 12pt;">Access is granted in accordance with the <a href="#" style="text-decoration: underline;">Protocols for the University Archives and Records Center</a>.</span>
+  </div>
+  <div class="center" style="margin-top: 60px;">
+    <span style="font-size: 14pt;">ARRANGEMENT</span>
+  </div>
+  <div class="center" style="margin-top: 20px;">
+    <span style="font-size: 10pt;">This collection has not been fully processed. The following preliminary inventory is available.</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 30px;">
+    <span style="font-size: 14pt;">ENGINEERING SCIENCE MANAGEMENT WAR TRAINING. PROGRAM RECORDS</span>
+    <div style="margin-top: 5px;">
+      <span style="font-size: 12pt;">UPB 91.2</span>
+    </div>
+  </div>
+  <div class="center" style="margin-top: 40px;">
+    <span style="font-size: 12pt;">COMPLETE PROPOSAL RECORDS</span>
+  </div>
+  <div style="width: 100%; margin-top: 20px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px; width: 60%;"></td>
+          <td style="padding: 5px; width: 20%; text-align: center;"></td>
+          <td style="padding: 5px; width: 20%; text-align: center;"></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in inventory_records %}
+        <tr style="border-bottom: 1px solid #ccc;">
+          <td style="padding: 5px;">{{ item.description }}</td>
+          <td style="padding: 5px; text-align: center;">{{ item.box }}</td>
+          <td style="padding: 5px; text-align: center;">{{ item.folder }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <div class="center" style="margin-top: 40px;">
+    <span style="font-size: 14pt;">STUDENT ENROLLMENT RECORDS</span>
+  </div>
+  <div style="width: 100%; margin-top: 20px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+      <thead>
+        <tr style="border-bottom: 1px solid #000;">
+          <td style="padding: 5px; width: 60%;"></td>
+          <td style="padding: 5px; width: 20%; text-align: center;">Box</td>
+          <td style="padding: 5px; width: 20%; text-align: center;">Folder</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in enrollment_records %}
+        <tr style="border-bottom: 1px solid #ccc;">
+          <td style="padding: 5px;">{{ item.description }}</td>
+          <td style="padding: 5px; text-align: center;">{{ item.box }}</td>
+          <td style="padding: 5px; text-align: center;">{{ item.folder }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

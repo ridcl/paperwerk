@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+  body {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    line-height: 1.4;
+    color: #000;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .header-logo {
+    float: left;
+    margin-right: 50px;
+  }
+  .header-info {
+    float: right;
+    text-align: right;
+  }
+  .section-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+  .subsection-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 1em;
+  }
+  .toc-entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+  }
+  .toc-entry span:first-child {
+    flex-grow: 1;
+  }
+  .toc-entry span:last-child {
+    text-align: right;
+    font-weight: normal;
+  }
+</style>
+
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* System font stack */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; }
+  p, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .sub-section-header { font-weight: bold; margin-top: 10px; margin-bottom: 3px; }
+  .list-item { margin-bottom: 5px; }
+</style>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Helvetica", Arial, sans-serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  p { line-height: 1.5; }
+  ul { line-height: 1.5; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-logo">
+    <!-- Placeholder for University Logo -->
+    <div style="font-size: 30px; font-weight: bold;">
+      San José State University
+    </div>
+  </div>
+  <div class="header-info">
+    <div style="text-align: right;">
+      PD 01-01
+    </div>
+  </div>
+
+  <div style="clear: both;"></div>
+
+  <div style="margin-top: 30px;">
+    <p>Date: <span data-field="date_issued">{{ date_issued }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <p>MEMO TO: <span data-field="memo_to">{{ memo_to }}</span></p>
+    <p>FROM: <span data-field="memo_from">{{ memo_from }}</span></p>
+    <p>President</p>
+    <p>SUBJECT: <span data-field="memo_subject">{{ memo_subject }}</span></p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 1.4em;">SJSU "Time, Place & Manner" Regulations (Excerpts)</h2>
+    <p>The mission of the University requires appropriate conditions for teaching, learning, scholarship, and research.</p>
+    <p>The following excerpts from the SJSU "Time, Place, and Manner" regulations (which we issued by the Office of the President under the authority of applicable sections of the California Education Code, Title 5 [California Code of Regulations], and the orders of the CSU Chancellor) are designed to insure that this mission can be carried out effectively:</p>
+    <ol>
+      <li>Use of all state university facilities is subject to reservations, conditions, and priority scheduling.</li>
+      <li>Activities that disrupt the normal operations of the University are prohibited.</li>
+      <li>The selling or displaying for sale on campus of any books, newspapers, pamphlets, and other published materials that are available for sale at the campus bookstore is prohibited.</li>
+      <li>Handbills, pamphlets, flyers, and other similar information materials (other than those described in #3 above) may be handed out, provided that such activities do not disrupt normal operations of the University and that the distribution of such materials is not prohibited under paragraph 3 above.</li>
+      <li>Public solicitation, selling, exposing for sale, or offering for sale of goods, wares, merchandise, books, magazines, newspapers, property, published materials, or services of any kind (to be performed instantly or in the future), are subject to regulation and require obtaining a permit.</li>
+      <li>Sound amplification or percussive sound is prohibited unless officially scheduled, and is restricted to certain locations and subject to strict conditions.</li>
+      <li>Posting of material is permissible only on approved kiosks and bulletin boards, and is subject to regulations. Posting on trees, lampposts, phone booths, benches, buildings, or any other permanent structure not specifically designated for posting is prohibited. Self-standing signs, etc., are prohibited, as is distribution of any materials by placing on unoccupied automobiles.</li>
+    </ol>
+    <p>Violations of these regulations may constitute a crime under the Penal Code and/or may be subject to University disciplinary action. Enforcement of these regulations is under the purview of the University Police Department, which should be notified when there is a violation. For information purposes, any SJSU employee may distribute copies of this summary.</p>
+    <p>The complete "Time, Place, and Manner" document for San Jose State University is available at the University Police Department. Questions about these regulations may be addressed to the University Police Department (4-2185), the Office of the Vice President for Student Affairs (4-5900), or the Non-Academic Scheduling Office (4-6300).</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 2em;">PRESIDENT'S DIRECTIVE REGARDING USE OF BUILDINGS AND GROUNDS OF SAN JOSE STATE UNIVERSITY</h1>
+    <p>PD 01-01</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 1.5em;">TABLE OF CONTENTS</h2>
+    <div class="toc-entry">
+      <span>1.0 AUTHORITY</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>2.0 DELEGATION</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>2.1 Officer</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>2.2 President's Designees</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>3.0 SANCTIONS</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>4.0 REPORTING OF VIOLATIONS</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>4.1 Incident Reports</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>4.2 Crimes</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>5.0 DISRUPTION</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>6.0 SOUND AMPLIFICATION</span>
+      <span>1</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.0 MEETINGS, PERFORMANCES, RALLIES, ATHLETIC CONTESTS, AND SIMILAR PUBLIC EVENTS</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.1 Use of Campus Facilities</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.2 Reservation of Campus Facilities</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.3 Reservation Length</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.4 Reservation Priorities</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.5 Reservation Requirements</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.6 Organization Liability</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.7 Facility Capacities</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.8 Outside Speakers</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.9 Admission Charges</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.10 Student Union Rules</span>
+      <span>2</span>
+    </div>
+    <div class="toc-entry">
+      <span>7.11 Failure to Obtain Proper Reservation</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>8.0 SALE OR FREE DISTRIBUTION OF PUBLISHED MATERIALS</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>8.1 Sales Prohibited</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>8.2 Sales Violations</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>8.3 Additional Restrictions</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>8.4 Distribution of Handbills</span>
+      <span>3</span>
+    </div>
+    <div class="toc-entry">
+      <span>9.0 SALES OF MERCHANDISE NOT OTHERWISE COVERED IN THESE RULES</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>9.1 General</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>9.2 Sales Permit</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.0 BULLETIN BOARDS AND POSTINGS OF SIGNS, PICTURES, NOTICES, TRANSPARENCIES AND ADVERTISEMENTS</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.1 Sign Permit</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.2 Bulletin Boards Permit</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.3 Posting Rules</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.4 Posting Size</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.5 Duplicate Postings</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.6 Posting Methods</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.7 Bulletin Board Priorities</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.8 Removal of Postings</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.9 Postings not Recognized</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>10.10 Exemptions</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.0 BANNER SPACE FOR ANNOUNCEMENTS</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.1 Banners Permit</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.2 Banners Prohibitions</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.3 Banner Topics Prohibited</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.4 Fasteners</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.5 Banner Space</span>
+      <span>4</span>
+    </div>
+    <div class="toc-entry">
+      <span>11.6 Removal of Banners</span>
+      <span>4</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">1.0 AUTHORITY</h2>
+    <p>1.1 This directive is issued under the authority of, and to implement, interpret, and make specific those State code sections listed in Appendix B, the resolutions and the Standing Orders of the Board of Trustees, Executive Orders of the Chancellor, and the general authority of the President.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">2.0 DELEGATION</h2>
+    <p>2.1 Any reference to an officer in these rules includes duly authorized designees.</p>
+    <p>2.2 For purposes of Title 5, California Code of Regulations Sections 42350-42353, except as to academic employees, the President's designees are the Vice President of Student Affairs and such persons as the President may designate. For academic employees, the President's designees are the Provost and such persons as the Provost may designate.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">3.0 SANCTIONS</h2>
+    <p>3.1 Every person who violates or attempts to violate any express prohibitions respecting buildings and grounds contained in this directive is guilty of a misdemeanor pursuant to Education Code Section 89031. In addition, a violation of these rules may constitute a crime under the Penal Code and may subject the violator, if a student, to disciplinary action pursuant to Title 5, California Code of Regulations Sections 41301-41303, or if an employee, to employee disciplinary action pursuant to Education Code Sections 89355 and 89356.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">4.0 REPORTING OF VIOLATIONS</h2>
+    <p>4.1 Incident Reports: Any person who witnesses, or is a victim of, an incident (whether or not a crime) on or about the campus, or on the grounds of the University, shall report the incident to the University Police Department, or which takes place at a campus function is urged to promptly report the crime to the nearest law enforcement agency having jurisdiction. In addition, the witness or victim is urged to file an Incident Report, described in Section 4.1 above. The University Police Department will complete and file a report in respect to all criminal matters reported to the Departments.</p>
+    <p>5.0 DISRUPTION</p>
+    <p>5.1 Any activity on campus or at a campus function that disrupts, by preventing the effective carrying out of, the operation or activities of the University, its auxiliary organizations, its alumni organizations, or its recognized student organizations (as defined in California Code of Regulations Section 41402) is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and may constitute a crime under sections of the Penal Code.</p>
+    <p>6.0 SOUND AMPLIFICATION</p>
+    <p>6.1 Sound amplification equipment, when used, shall be limited in volume so as not to be audibly heard in any of the following areas except as necessary for those activities or in any facility where people are watching or participating in sports or entertainment for which admission has been charged, or as is necessary to conduct the program: classrooms, outdoor instructional areas where instruction or graduation activities are the primary purpose, or in any facility located on campus where sound amplification is least likely to violate this section 6.1 are the Paseo de Cesar E. Chavez (formerly the 7th Street Plaza), in front of the Event Center, the 9th Street Plaza on</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 30px;">
+    <p>the east side of the Student Union Amphitheater, and the Student Union Amphitheater. Sound amplification above the level specified is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and may constitute a violation of Sections 415(2) or 415.5(a)(2) of the Penal Code.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">7.0 MEETINGS, PERFORMANCES, RALLIES, ATHLETIC CONTESTS, AND SIMILAR PUBLIC EVENTS</h2>
+    <p>7.1 All use of campus facilities shall be by reservation, on a first come, first served basis subject to the priorities listed in Section 7.4 below.</p>
+    <p>7.2 Reservation of campus facilities is required for all but University instruction and events.</p>
+    <p>7.2.1 The Non-Academic Scheduling Office schedules activities for campus facilities (including open space, Paseo de Cesar E. Chavez, and the 9th Street Plaza) except the Auditorium and all classrooms not scheduled by other departments.</p>
+    <p>7.2.2 The Academic Scheduling Office schedules activities that take place in Morris Dailey Auditorium and all classrooms not scheduled by other departments.</p>
+    <p>7.2.3 The Athletics Department schedules all activities that take place inside the Spartan Complex Buildings, including Uchida Hall.</p>
+    <p>7.2.4 The Athletics Department schedules all activities at the South Campus Athletics Facilities, except for Spartan Stadium.</p>
+    <p>7.2.5 Spartan Shops schedules all activities at Spartan Stadium.</p>
+    <p>7.2.6 The Office of Traffic & Parking Operations schedules the use of all parking garages and lots.</p>
+    <p>7.2.7 The Event Center Office schedules all activities in the Event Center.</p>
+    <p>7.3 Generally, no reservation will exceed one week in length without a lease or written license.</p>
+    <p>7.4 Priorities to be observed in scheduling reservations:</p>
+    <ol>
+      <li>University instruction and events;</li>
+      <li>Associated Students and recognized student organizations;</li>
+      <li>Campus alumni organizations and faculty social clubs;</li>
+      <li>University official business;</li>
+      <li>Individuals, staff, or faculty member;</li>
+    </ol>
+    <p>7.5 No reservation shall be confirmed by the scheduling department until the following requirements have been met:</p>
+    <ol>
+      <li>7.5.1 Availability of the facility has been confirmed by the administrator responsible for the facility. (For example, the availability of the Concert Hall will be determined from the Chair of the Department of Music).</li>
+      <li>7.5.2 Security requirements of the proposed use have been specified by the Chief of University Police, and the amount of extra cost, if any, thereof has been provided to the scheduling department.</li>
+      <li>7.5.3 Services required by the proposed use have been reviewed with the Director of Plant Operations, and extra cost, if any, thereof has been provided to the scheduling department.</li>
+      <li>7.5.4 Parking requirements of the proposed event or program have been reported to the Office of Traffic & Parking, and the amount of extra cost, if any, thereof has been approved.</li>
+      <li>7.5.5 Insurance requirements for any event or program have been reported to the Office of Risk Management for review and approval.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 30px;">
+    <p>7.5.6 Necessity for a lease, written license, or contract respecting reimbursement has been reviewed with the Director of Business Operations. Advance payment may be required in full or in part.</p>
+    <p>7.5.6.1 A lease or written license shall be required for all uses by organizations not designated in Section 7.4.1-4 above.</p>
+    <p>7.5.6.2 A contract or written agreement shall be required for all uses by organizations designated in Section 7.4.2-3 above when reimbursement is required, unless the entire amount is paid in advance of use. In making reservations, ample time should be allowed for the confirmation process.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p>7.6 Organized use of campus facilities is subject to the condition that the reserving and using organization shall be primarily liable for any claims or losses accruing or resulting to the University or any person who may be injured, damaged, or unpaid by the use in the course of facility activities.</p>
+    <p>7.7 The reserving and using organization(s) shall be responsible for adhering to officially approved facility capacities.</p>
+    <p>7.8 The organizations listed in Section 7.8.1 through 7.8.5, and no other, may invite outside speakers to speak to them on campus:</p>
+    <ol>
+      <li>7.8.1 The Associated Students;</li>
+      <li>7.8.2 Faculty and staff organizations and University departments;</li>
+      <li>7.8.3 Campus alumni organization;</li>
+      <li>7.8.4 Recognized student organizations;</li>
+      <li>7.8.5 Lessees and licensees of campus facilities.</li>
+    </ol>
+    <p>7.9 Admission may be charged for events conducted in campus facilities. When admission is charged with the Associated Students or recognized student organizations, all proceeds will be deposited with the Associated Students Business Office and will be used in a manner consistent with the stated objectives and purposes of the organization and by law. Such uses must comply with law, Trustee, and University policies. This section does not apply to events conducted by the University.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">8.0 SALE OR FREE DISTRIBUTION OF PUBLISHED MATERIALS</h2>
+    <p>8.1 Other than private sales between individuals where no general or public solicitation, exposure for sale, or offering for sale is involved, on-campus exposing for sale, offering for sale, selling of books, newspapers, magazines, pamphlets and similar published materials, or software, which are available at the University Bookstore is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+    <p>8.2 On-campus exposing for sale or selling of published materials that violate the provisions of California Penal Code, Title 9, Chapter 7.5, Part 1 (commencing with Section 311), and dealing with obscenity is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+    <p>8.3 To books, newspapers, magazines, pamphlets, handbills, and similar published materials other than those described above, such materials may be sold or given away on campus provided that the sale or giving-away activities do not disrupt any operation or activity of the University, its auxiliary organizations, and its recognized student organizations. Activities which disturb instructional activities or which obstruct the free flow of pedestrian or vehicular traffic are prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and may constitute violations of Sections 602.1(b), 602.10, 626.4(d), 626.6(a), or 647(c) of the Penal Code.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">9.0 SALES OF MERCHANDISE NOT OTHERWISE COVERED IN THESE RULES</h2>
+    <p>9.1 Other than private sales between individuals where no general or public solicitation, exposure for sale, or offering for sale is involved, on-campus exposing for sale, offering for sale, selling of any goods, merchandise, wares, property of any kind, or services to be performed instantly or in the future is prohibited except as provided in Section 9.2 below. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+    <p>9.2 The Associated Students, recognized student organizations, the Academic Senate, faculty social clubs, and campus alumni organizations may sell goods and services, after first receiving a permit from the Non-Academic Scheduling Office, may sponsor the sale of such goods and services at such times and places as are authorized by the permit, during the period of time specified therein. The permit must be available during all such selling. Permits will only be issued for special events such as major cultural days or weeks, orientation, etc.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">10.0 BULLETIN BOARDS AND POSTINGS OF SIGNS, PICTURES, NOTICES, TRANSPARENCIES AND ADVERTISEMENTS</h2>
+    <p>10.1 Sign permit: Notice, transparency, or advertisement shall be placed or maintained, or caused to be placed or maintained, on campus, except as provided in Section 10.2 below (Bulletin Boards). Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+    <p>10.2 Use of bulletin boards listed in Appendix A below by the users designated in Appendix A, is permitted subject to the following rules of space and time priority. Determinations respecting space and time priority shall be made by the Office of Student Affairs.</p>
+    <p>10.3 All postings shall be dated with the date of posting. Postings not dated or prepared, are considered to be posted on the date of posting.</p>
+    <p>10.4 All postings exceeding in size 14" x 28" are subject to removal at any time.</p>
+    <p>10.5 Duplicate postings on the same bulletin board are subject to removal at any time.</p>
+    <p>10.6 Posting shall be by thumb tack or staple only. Other methods of posting which damage a bulletin board are prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+    <p>10.7 In the event of conflicting claims for limited space on bulletin boards in or on academic buildings, postings respecting academic programs offered in that building and activities of recognized campus organizations shall have priority. Otherwise, priority shall be in the order listed in Section 7.4.</p>
+    <p>10.8 Removal of prohibited posting by the posting party or University personnel acting pursuant to this directive, shall be done at the expense of the posting party. The University shall not be responsible for the removal of any posting.</p>
+    <p>10.9 Posting of users not designated below are subject to removal at any time, and will subject the posting party to disciplinary action.</p>
+    <p>10.10 This Section 10.0 does not apply to signs, pictures, notices, transparencies, or advertisements posted by the University, nor to notices of student body membership fee elections posted pursuant to Title 5, California Code of Regulations, Section 41402.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 style="font-size: 1.5em;">11.0 BANNER SPACE FOR ANNOUNCEMENTS</h2>
+    <p>11.1 Banners Permit: The Associated Students, and recognized student organizations may place banners announcing events or activities, including sales for which a permit has been obtained, in designated locations listed in Appendix A.</p>
+    <p>11.2 No banners of any type may be placed on campus by any organization or person not designated in Section 11.1, nor shall banners be placed at any location not specified in Section 11.1. Violation of the prohibitions contained in this Section 11.2 is a misdemeanor pursuant to Education Code Section 89031.</p>
+  </div>
+</div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document Conversion</title>
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; /* System font stack */
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif; }
+  p, td { font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif; }
+  .section-header { font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .sub-section-header { font-weight: bold; margin-top: 10px; margin-bottom: 3px; }
+  .list-item { margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div style="text-align: right; font-size: 10pt;">4</div>
+
+  <div class="section-header">11.3 When not required for announcement purposes, pursuant to Section 11.1, banners dealing with other topics may be placed by the organizations designated in Section 11.1, subject to Sections 11.4, 11.5, and 11.6, provided that the subjects dealt with on the banners do not include:</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li class="list-item">11.3.1 Establishment of or opposition to any religion.</li>
+    <li class="list-item">11.3.2 Support for or opposition to any candidate for off-campus public office.</li>
+    <li class="list-item">11.3.3 Support for or opposition to any issue before the voters in an off-campus election.</li>
+    <li class="list-item">11.3.4 Anything violative of Chapter 7.5, Title 9, Part I of the California Penal Code (commencing with Section 311), any dealing with obscenity).</li>
+  </ul>
+
+  <div class="section-header">11.4 Use of fasteners which penetrate that to which the banner is attached, such as nails and staples, in attaching banners is prohibited; the use of string or rope is suggested. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and may violate Section 594(a)(2) of the Penal Code.</div>
+
+  <div class="section-header">11.5 Banner space is available on a first come, first served basis, evidenced by a scheduling application filed with the Non-Academic Union Scheduling Office and which will state the date and time of the posting and removal of banners. Organizations not removing banners at the time specified for the removal are subject to charge by the University for the cost of removal.</div>
+
+  <div class="section-header">11.6 Removal by one organization of a banner by another organization is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</div>
+
+  <div class="section-header">12.0 SMOKING</div>
+  <p>12.1 Smoking is prohibited in all university buildings and leased space (including space within buildings shared by others). This prohibition shall apply to any area enclosed by the perimeter (outermost) walls of the building, including restrooms, and warehouse and storage space. Atriums, balconies, stairwells, breezeways, and green spaces featuring are to be considered “within a building.” Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Government Code Section 19994.31.</p>
+  <p>12.2 Smoking is prohibited in university owned vehicles. This prohibition includes passenger vehicles and all other state-owned mobile equipment, including light and heavy-duty trucks, cargo and passenger vans, buses, and any other mobile equipment with an enclosed or exclosable driver or passenger compartment. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Government Code Section 19994.31.</p>
+  <p>12.3 Smoking is prohibited within 15 feet of doorways and ground level air intake structures. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Government Code Section 19994.31.</p>
+  <p>12.4 Smoking is prohibited within the Spartan Stadium seating area. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Government Code Section 19994.31.</p>
+  <p>12.5 Specific outside areas for smoking will not be established or identified. The University will clearly display signs at the entrances, exits, and other appropriate locations throughout the campus to notify tenants and the public that smoking is prohibited within the buildings.</p>
+</div>
+
+<div class="page">
+  <div class="section-header">13.0 ANIMALS ON CAMPUS</div>
+  <p>13.1 Dogs, cats, and other domesticated animals must be under control while on campus grounds, and restrained by a leash or chain that does not exceed 6 feet in length and that is in the hands of a responsible person. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+  <p>13.2 Any dog, cat, or other animal brought to campus must be licensed and fully inoculated, with the burden of proof on the owner. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+  <p>13.3 Fecal matter deposited by any dog, cat, or other animal brought to campus must be removed immediately by the animal's owner. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Penal Code Section 374.4.</p>
+  <p>13.4 Dogs, cats, and other animals may not enter campus buildings, including all residence and non-residence buildings. This paragraph does not apply to guide dogs, or service dogs, as defined by</p>
+</div>
+
+<div class="page">
+  <div class="section-header">14.0 LODGING</div>
+  <p>14.1 No person shall use any motor vehicle in any area on the campus for the purpose of human habitation or camping without the express written permission of the University President or designee. “Human Habitation” includes one or more of the following activities: sleeping between the hours of 12:00 am and 7:00 am, cooking, or elimination of body wastes. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Penal Code Section 470.</p>
+  <p>14.2 No person shall camp on any property owned, operated, or controlled by the University or use any permission of the President or his designee for the facility being used. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Penal Code Section 647(j).</p>
+
+  <div class="section-header">15.0 CURFEW</div>
+  <p>15.1 The purpose of the University enforcing a curfew is to maintain a balance between the City of San Jose, whose within city limits the University resides, and San Jose State University. The City of San Jose has enacted a curfew designed to protect minors from crimes of opportunity and exploitation and to reduce juvenile crime within the city limits. The University most enforce this curfew to prevent the University from becoming an oasis for those seeking to evade the curfew by loitering on University property.</p>
+  <p>15.2 “Curfew hours” means: The hours between 10:00 p.m. to 5:00 a.m. for minors under the age of sixteen years; or the hours between 11:30 p.m. to 5:00 a.m. for minors under the age of eighteen years.</p>
+  <p>15.3 It is unlawful for any minor, not a student of the University, under the age of sixteen years to be in any public place within the University during curfew hours, except as provided under Section 15.4. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+  <p>15.4 It is unlawful for any minor, not a student of the University, under the age of eighteen years to be in any public place within the University during curfew hours, except as provided under Section 15.4. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+  <p>15.5 A minor under the age of eighteen years shall not be in violation of this chapter if, at the time the minor was stopped by a police officer, the minor was:</p>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li class="list-item">15.4.1 Accompanied by the minor's parent or guardian;</li>
+    <li class="list-item">15.4.2 On an errand at the direction of the minor's parent or guardian, without detour or stop;</li>
+    <li class="list-item">15.4.3 Engaged in a lawful volunteer or paid employment activity, or going to or returning home from a lawful volunteer or paid employment activity, without detour or stop;</li>
+    <li class="list-item">15.4.4 Acting in response to an emergency;</li>
+    <li class="list-item">15.4.5 Attending or going to or returning home, without detour or stop, from a school, religious, cultural, sports, amusement, entertainment, or recreation activity; or any organized rally, demonstration, meeting, or similar activity.</li>
+  </ul>
+</div>
+
+<div class="page">
+  <p>15.4.6 Waiting at a bus stop for transportation;</p>
+
+  <div class="section-header">15.6 Before taking any enforcement action under Sections 15.2 and 15.3, a police officer shall ask the apparent offender's age and reason for being in the public place.</div>
+  <p>15.7 The officer shall not take enforcement action under this chapter unless the officer has probable cause to believe that neither Sections 15.2 and 15.3 nor any exemption under Section 15.4 applies.</p>
+  <p>15.8 Enforcement action available to the officer shall be limited to delivering the minor to an appropriate City of San Jose Curfew Center.</p>
+
+  <div class="section-header">16.0 ALCOHOL</div>
+  <p>16.1 The sale or consumption of alcoholic beverages is prohibited in all areas open to the public on University grounds, unless exempted in section 16.2 below. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031.</p>
+  <div class="sub-section-header">16.2 Exemptions:</div>
+  <ul style="list-style-type: disc; padding-left: 20px;">
+    <li class="list-item">16.2.1 Scheduled and approved University and University sponsored events.</li>
+    <li class="list-item">16.2.2 “Tailgating” in the South Campus Athletic Fields immediately preceding or following a sporting event or other scheduled function at Spartan Stadium.</li>
+    <li class="list-item">16.2.3 Any University or Auxiliary sponsored business or event in possession of a valid ABC license to sell alcoholic beverages.</li>
+    <li class="list-item">16.2.4 Any other event or function approved by the President or his designee.</li>
+  </ul>
+
+  <div class="sub-section-header">16.3 Definitions:</div>
+  <p>16.3.1 “Alcoholic beverage” includes alcohol, spirits, liquor, wine, beer, and every liquid or solid containing alcohol, spirits, wine, or beer, and which contains one-half of 1 percent or more of alcohol by volume and which is fit for beverage purposes either alone or when diluted, mixed, or combined with other substances.</p>
+  <p>16.3.2 “Public Area” includes any exterior locations on University property, such as lawns, landscaping, paths, walkways, roads, parking lots, and garages. It also includes any interior location with general access for the public, such as classrooms, lecture halls, restrooms, labs, and any other room not specifically occupied as an office or residence on property owned, operated, or leased by the University or its auxiliaries.</p>
+</div>
+
+<div class="page">
+  <div class="section-header">17.0 PANHANDLING</div>
+  <p>17.1 Soliciting alms or begging in any public place or in any place open to the public on University property is prohibited. Violation of this prohibition is a misdemeanor pursuant to Education Code Section 89031 and Penal Code Section 647(c).</p>
+
+  <div class="section-header">18.0 REVIEW</div>
+  <p>18.1 This directive will be reviewed and submitted to the President for approval the beginning of every even fiscal year.</p>
+
+  <div class="section-header">19.0 NOTIFICATION</div>
+  <p>19.1 A sign bearing the following copy shall be posted at the principal entrances to the campus as listed in Appendix A.</p>
+  <p>19.2 The sign shall read:</p>
+
+  <div style="margin-top: 50px;">
+    <p>Signed by</p>
+    <div style="border-bottom: 1px solid black; width: 200px; margin-bottom: 50px;"></div>
+    <p>
+      <span data-field="signer.full_name">{{ signer.full_name }}</span>, President<br>
+      <span data-field="signer.title">{{ signer.title }}</span>
+    </p>
+    <p>Date <span data-field="signer.date">{{ signer.date }}</span></p>
+  </div>
+</div>
+
+<div class="page">
+  <div style="text-align: center; font-weight: bold; margin-bottom: 20px;">APPENDIX A</div>
+  <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">BULLETIN BOARD LOCATIONS</div>
+  <ol style="list-style-type: decimal; padding-left: 20px;">
+    <li class="list-item">In the Art Quad</li>
+    <li class="list-item">South side of Clark Library</li>
+    <li class="list-item">South side of the Modular Buildings</li>
+    <li class="list-item">Old Cafeteria Building at the Student Life Center</li>
+  </ol>
+
+  <div style="text-align: center; font-weight: bold; margin-top: 30px; margin-bottom: 10px;">BANNER LOCATIONS</div>
+  <ol style="list-style-type: decimal; padding-left: 20px;">
+    <li class="list-item">Between Central Classroom Building and Clark Library</li>
+    <li class="list-item">On the Palm Trees on Paseo de Cesar E. Chavez in front of the Old Cafeteria Building</li>
+    <li class="list-item">On the 7th Street Balcony on the second floor of Sweeney Hall</li>
+    <li class="list-item">On the west balcony of the Student Union Ballroom (major cultural events only)</li>
+  </ol>
+
+  <div style="text-align: center; font-weight: bold; margin-top: 30px; margin-bottom: 10px;">SIGN LOCATIONS</div>
+  <ol style="list-style-type: decimal; padding-left: 20px;">
+    <li class="list-item">Paseo de San Carlos at South Fourth Street</li>
+    <li class="list-item">South Seventh Street at East San Fernando Street</li>
+    <li class="list-item">Paseo de San Carlos at South Tenth Street</li>
+    <li class="list-item">South Seventh Street at East Salvador Street</li>
+  </ol>
+</div>
+
+<div class="page">
+  <div style="text-align: center; font-weight: bold; margin-bottom: 20px;">APPENDIX B</div>
+  <div style="font-size: 10pt;">
+    <p>66017. The respective governing boards of the California Community Colleges, the California State University, or the University of California shall adopt appropriate procedures and designate appropriate persons to take disciplinary action against any student, member of the faculty, member of the support staff, or member of the administration of the community college, state college, or state university who, after a prompt hearing by a campus body, has been found to have willfully disrupted the orderly operation of the campus. Nothing in this section shall be construed to prohibit, where an immediate suspension is required in order to protect lives or property and to ensure the maintenance of order, interim suspension pending a hearing; provided that a reasonable opportunity be afforded to the suspended person for a hearing within 10 days. The disciplinary action may include, but need not be limited to, suspension, dismissal, or expulsion. Sections 89530 to 89540, and 89550 to 89554, are applicable to any state university or college employee dismissed pursuant to this section.</p>
+    <p>66030. The tenants of the University of California State University shall have full power and authority to govern the University, including the power to adopt and enforce rules and regulations, and to manage the University's property and to ensure the maintenance of order, interim suspension pending a hearing; provided that a reasonable opportunity be afforded to the suspended person for a hearing within 10 days. The disciplinary action may include, but need not be limited to, suspension, dismissal, or expulsion. Sections 89530 to 89540, and 89550 to 89554, are applicable to any state university or college employee dismissed pursuant to this section.</p>
+    <p>66060. The California State University shall be administered by a board designated as the Trustees of the California State University, which is hereby created.</p>
+    <p>66066. The Trustees of the California State University shall succeed to the powers, duties, and functions with respect to the management, administration, and control of the state colleges heretofore vested in the State Board of Education or in the Director of Education, including all powers, duties, obligations, and functions specified in Article 2 (commencing with Section 90010) of Chapter 8 of Part 5, and all obligations assumed by the State Board of Education pursuant to that article prior to July 1, 1961.</p>
+    <p>On and after July 1, 1961, the Trustees of the California State University shall have full power and authority to govern the University, including the power to adopt and enforce rules and regulations, and to manage the University's property and to ensure the maintenance of order, interim suspension pending a hearing; provided that a reasonable opportunity be afforded to the suspended person for a hearing within 10 days. The Trustees of the California State University notwithstanding Chapter 10 (commencing with Section 14950) of the Government Code, shall have full power and authority to govern the University, including the power to adopt and enforce rules and regulations, and to manage the University's property and to ensure the maintenance of order, interim suspension pending a hearing; provided that a reasonable opportunity be afforded to the suspended person for a hearing within 10 days. The Trustees of the California State University may accept gifts of land, or gifts of options on land, may accept and expend gifts of money for the purchase of land or options on land, and may enter into negotiations and contracts for the purchase of land for a future state university site in the vicinity of any of the areas specified in the regulations contained in the Master Plan for Higher Education printed on page 42, paragraph 5, Senate Journal (Regular Session) for February 1, 1960, except that the gifts, expenditures, negotiations, and contracts shall not obligate the expenditure of any state funds for the purchase of the land or for development on the land, unless the Legislature subsequently approves the obligation by appropriating the funds for that specific purpose.</p>
+    <p>89030. (a) The Trustees shall adopt rules and regulations not inconsistent with the laws of this state for the government of all of the following:</p>
+    <ol style="list-style-type: decimal; padding-left: 20px;">
+      <li class="list-item">The trustees.</li>
+      <li class="list-item">The appointees and employees of the trustees.</li>
+      <li class="list-item">The California State University.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="page">
+  <div style="font-size: 10pt;">
+    <p>(b) The adoption of these rules and regulations shall not be subject to Chapter 3.5 (commencing with Section 11340) of Part 1 of Division 3 of Title 2 of the Government Code.</p>
+    <p>(c) The rules and regulations shall be published for distribution as soon as practicable after adoption.</p>
+    <p>(d) This section shall be liberally construed in order that the purposes of the Donahue Higher Education Act pursuant to Part 40 (commencing with Section 66010) of Division 5 may be effected.</p>
+    <p>89031. The trustees may establish rules and regulations for the government and maintenance of the buildings and grounds of the University. Any person who violates or attempts to violate the rules and regulations is guilty of a misdemeanor.</p>
+    <p>89035. Wherever in this code a power is vested in the trustees, the trustees by majority vote may adopt a rule delegating such power to any officer, employee, or committee as the trustees may designate. The rule shall prescribe the limits of such delegation.</p>
+    <p>89046. The trustees may lease any property of a state university for any purpose that they consider is not inconsistent with the laws of the State of California or the regulations of the University. The trustees may lease any property of the University or members of the faculty of the university or both, for purposes related to the activities of the university or for the benefit of the university. The trustees may lease any property of the University for the purpose of constructing and using thereon buildings as living quarters for students of the university and as meeting places.</p>
+    <p>The trustees may fix fees for voluntary membership in the organization established at a state university. Notwithstanding any law to the contrary, if a student body organization is established at any state university, the trustees may fix fees for voluntary membership in that organization, provided that the fees shall not be excessive, and that the trustees shall prescribe, and upon all regular students enrolled in the university, the trustees shall fix a reasonable fee for the use of the facilities of the university, and the trustees shall prescribe the manner in which the fees shall be charged to students. The trustees may approve an increase or decrease in the student body fee only after the fee increase or decrease has been approved by a majority of students voting in a referendum established for that purpose.</p>
+  </div>
+</div>
+
+
+<div class="page">
+  <p><strong>California Code of Regulations</strong></p>
+
+  <p><strong>41301. Expulsion, Suspension, and Probation of Students.</strong></p>
+  <p>Following procedures consonant with due process established pursuant to Section 41304, any student of a campus may be expelled, suspended, placed on probation or given a lesser sanction for one or more of the following causes which must be campus related:</p>
+  <ul>
+    <li>(a) Cheating or plagiarism in connection with an academic program at a campus.</li>
+    <li>(b) Forgery, alteration or misuse of campus documents, records, or identification or knowingly furnish false information to a campus.</li>
+    <li>(c) Misrepresentation of oneself or of an organization to be an agent of a campus.</li>
+    <li>(d) Obstruction or disruption, or off campus property, of the campus educational process, administrative process, or other campus function.</li>
+    <li>(e) Physical abuse on or off campus property, of the person or property in the possession of, or owned by, a member of the campus community.</li>
+    <li>(f) Theft of, or non-accidental damage to, campus property, or property in the possession of, or owned by a member of the campus community.</li>
+    <li>(g) Unauthorized entry into, unauthorized use of, or misuse of campus property.</li>
+    <li>(h) On campus property, the sale or knowing possession of dangerous drugs, restricted dangerous drugs, or narcotics as those terms are used in California statutes, except when lawfully prescribed pursuant to medical or dental care, or when lawfully permitted for the purpose of research, instruction or analysis.</li>
+    <li>(i) Knowing possession or use of explosives, dangerous chemicals or deadly weapons on campus property, or at a campus function without prior authorization of the campus president.</li>
+    <li>(j) Engaging in lewd, indecent, or obscene behavior on campus property or at a campus function.</li>
+    <li>(k) Abusive behavior directed toward, or toward, a campus community member.</li>
+    <li>(l) Violation of any order of a campus president, notice of which had been given prior to such violation and during the academic term in which the violation occurs, either by publication in the campus newspaper, or by posting on an official bulletin board designated for this purpose, and which order is not inconsistent with any of the other provisions of this Section.</li>
+    <li>(m) Soliciting or assisting another to do any act which would subject a student to expulsion, suspension or probation pursuant to this Section.</li>
+  </ul>
+  <p>(n) For purposes of this Article, the following terms are defined:</p>
+  <ul>
+    <li>(1) The term "member of the campus community" is defined as meaning California State University and Colleges Trustees, academic, non-academic and administrative personnel, students, and other persons while such persons are on campus property or at a campus function.</li>
+    <li>(2) The term "campus property" includes:</li>
+    <ul>
+      <li>(A) real or personal property in the possession of, or under the control of, the Board of Trustees of the California State University and Colleges, and</li>
+      <li>(B) all campus feeding, retail, or residential facilities whether operated by a campus or by a campus auxiliary organization.</li>
+    </ul>
+    <li>(3) The term "deadly weapons" includes any instrument or weapon of the kind commonly known as a blackjack, shiv, bottle, billy, sandclub, sandbag, metal knuckles, any dirk, dagger, switchblade knife, pistol, revolver, or any other foreign, any knife having a blade longer than five inches, any razor with an unguarded blade, and any metal pipe or bar used or intended to be used as a club.</li>
+    <li>(4) The term "behavior" includes conduct and expression.</li>
+  </ul>
+</div >
+
+<div class="page">
+  <p><strong>41302. Disposition of Fees: Campus Emergency; Interim Suspension.</strong></p>
+  <p>The president of the campus may place on probation, suspend, expel or a student for one or more of the causes enumerated on Section 41301. No fees or tuition paid by or for such student for the semester, quarter, or summer session in which he or she is suspended or expelled shall be refunded. If the student is re-admitted before the close of the semester, quarter, or summer session in which he is suspended, no additional tuition or fees shall be required of the student on account of the suspension.</p>
+  <p>During periods of campus emergency, as determined by the president of the individual campus, the President may, after consultation with the Chancellor, make necessary adjustments to institute emergency regulations, procedures, and other measures deemed necessary or appropriate to meet the emergency, safeguard persons and property, and maintain educational activities.</p>
+  <p>The President may immediately impose an interim suspension in all cases in which there is reasonable cause to believe that such an immediate suspension is required to protect lives or property and to insure the maintenance of order. A student so placed on interim suspension shall be given prompt notice of charges and the opportunity for a hearing within 10 days of the imposition of the interim suspension. During the period of interim suspension, the student shall not, without prior written permission of the President or designated representative, enter any campus of the California State University and Colleges other than to attend the hearing. Violation of any condition of interim suspension shall be grounds for expulsion.</p>
+  <p>Authority cited: Sections 66600, 66600, 89030, 89031, and 89035, Education Code.</p>
+  <p>Reference: Sections 66017, 66300, 66600, 69810-69813, 89030, 89070, and Education Code; Section 626.2, Penal Code.</p>
+
+  <p><strong>41303. Conduct by Applicants for Admission.</strong></p>
+  <p>Notwithstanding any provision in this Chapter to the contrary, admission or readmission may be qualified or denied to any person who, while not enrolled as a student, commits acts which are, or he or she enrolled as a student, would be the basis for disciplinary proceedings pursuant to Sections 41301 or 41302. Admission or readmission may be qualified or denied to any person who, while a student, commits acts which are subject to disciplinary action pursuant to Section 41301 or Section 41302. Qualified admission or denial of admission in such cases shall be determined under procedures adopted pursuant to Section 41304.</p>
+  <p>Authority cited: Sections 66600, 66600, 89030, 89031, and 89035, Education Code.</p>
+  <p>Reference: Sections 66017, 66300, 66600, 69810-69813, 89030, Education Code; Section 626.2, Penal Code.</p>
+
+  <p><strong>41402. Notice.</strong></p>
+  <p>The election shall be posted at or new the principal entrances of each campus calling attention to the existence of regulations relating to soliciting handbills and circulars, and to public meetings, performances, rallies and similar public events, citing by the number of the sections in this Article, and designating the places where copies thereof and of directives issued by the campus president pursuant thereto may be examined.</p>
+  <p>Authority cited: Sections 66600, 89030, 89031 and 89035, Education Code.</p>
+  <p>Reference: Section 89031, Education Code.</p>
+
+  <p><strong>42350. Definitions.</strong></p>
+  <p>As used in this Article the following definitions apply:</p>
+  <ul>
+    <li>(a) "Sale," "selling" or "purchasing" mean an activity creating an obligation to transfer property or services for a valuable consideration.</li>
+    <li>(b) "Commercial solicitation" means any direct and personal communication in the course of a trade or business reasonably intended to result in a sale.</li>
+    <li>(c) "Solicitation" means to importune, or endeavor to persuade or obtain by asking, but does not include "commercial solicitation."</li>
+    <li>(d) "Private sale" means occasional selling between persons who are campus students or employees.</li>
+    <li>(e) "Commercial transaction" means selling or purchasing or both selling and purchasing by any person in the course of employment in, or in the carrying on of, a trade or business.</li>
+    <li>(f) "Campus president" means those persons referred to in Section 42355 and includes their designees.</li>
+  </ul>
+</div >
+
+<div class="page">
+  <p><strong>42351. Commercial Transactions.</strong></p>
+  <p>(a) Commercial transactions and the display of property or services for sale on a campus is prohibited except with written permission by the campus president. Such permission shall be granted if</p>
+  <ul>
+    <li>(1) the proposed activity aids achievement of the educational objectives of the campus, does not unreasonably interfere with the operation of the campus and is not prohibited by law, or</li>
+    <li>(2) the prospective buyer has agreed in writing in advance to an appointment, and the prospective seller makes no more than one appointment for any day, and such appointment does not interfere with the operation of the campus.</li>
+  </ul>
+  <p>(b) This Section shall not apply to private sales.</p>
+  <p>Authority cited: Sections 66600, 89030, 89031 and 89035, Education Code.</p>
+  <p>Reference: Section 89031, Education Code.</p>
+
+  <p><strong>42350. Solicitation.</strong></p>
+  <p>(a) Solicitation shall be permitted on a campus subject, however, to a reasonable regulation by the campus president as to time, place and manner thereof. Solicitation in violation of established campus directives regarding time, place and manner is prohibited.</p>
+  <p>(b) All directives issued by the campus president pursuant to this section shall be available to the public at places designated pursuant to Section 42354.</p>
+  <p>Authority cited: Sections 66600, 89030, 89031 and 89035, Education Code.</p>
+
+  <p><strong>42350. Commercial Solicitation.</strong></p>
+  <p>(a) Commercial solicitation on a campus is prohibited unless prior written authorization has been obtained from the campus president. Permission for commercial solicitation shall be granted by the campus president subject to reasonable regulation by the campus president as to time, place and manner thereof, unless such solicitation for sale would be in violation of law.</p>
+  <p>(b) All directives issued by the campus president pursuant to this section shall be available to the public at places designated pursuant to Section 42354.</p>
+  <p>Authority cited: Sections 66600, 89030, 89031 and 89035, Education Code.</p>
+
+  <p><strong>42351. Selling of Published Materials.</strong></p>
+  <p>(a) Selling of published materials and commercial transactions to which Section 42350.1 applies, the selling or displaying for sale of any books, newspapers, pamphlets and other published materials shall be permitted on campus provided:</p>
+  <ul>
+    <li>(i) such published materials are not available for sale at the campus bookstore, and</li>
+    <li>(ii) the selling or display of such published materials is conducted in compliance with any time, place and manner directives adopted by the president.</li>
+  </ul>
+  <p>(b) The published materials displayed or offered for sale are not in violation of the provisions of Chapter 7.5, Title 9, Part 1 (commencing with Section 311) of the Penal Code (relating to the sale and distribution of obscene matter), or of Chapter 6, Title 3 (commencing with Section 66400) of the Education Code (relating to the preparation, sale and distribution of term papers, theses and other materials to be submitted for academic credit).</p>
+  <p>(c) Selling or displaying for sale of published materials in violation of subsection (a) is prohibited.</p>
+  <p>Authority cited: Sections 66600, 89030, 89031 and 89035, Education Code.</p>
+  <p>Reference: Section 89031, Education Code.</p>
+
+  <p><strong>42352. Handbills and Circulars.</strong></p>
+  <p>(a) The president of the campus may permit the use of campus buildings and grounds for public meetings, performances, rallies and similar events held in accordance with directives issued by the respective campus president as to the time, place and manner thereof. Any such event occurring on campus in violation of established campus directives regarding time, place and manner is prohibited.</p>
+</div >
+
+<div class="page">
+  <p><strong>California Penal Code</strong></p>
+
+  <p><strong>311. As used in this chapter, the following definitions apply:</strong></p>
+  <ul>
+    <li>(a) "Obscene matter" means matter, taken as a whole, that to the average person, applying contemporary statewide standards, appeals to the prurient interest, that taken as a whole, depicts or describes sexual conduct in a patently offensive way, and that, taken as a whole, lacks serious literary, artistic, political, or scientific value.</li>
+    <li>(b) If it appears from the nature of the matter or the circumstances of its dissemination, distribution, exhibition or exhibition that it is designed for clearly defined deviant sexual groups, the appeal of the matter shall be judged with reference to its intended recipient group.</li>
+    <li>(c) In prosecutions under this chapter, circumstances of production, presentation, sale, dissemination, distribution, exhibition or exhibition that indicate that matter is being commercially exploited by the defendant for the sake of its prurient appeal, then the matter shall be deemed to be obscene.</li>
+    <li>(d) In determining whether the matter taken as a whole lacks serious literary, artistic, political, or scientific value, the court shall consider the matter in its entirety, and not only the parts of the matter that the defendant knew the latter serious literary, artistic, political, or scientific value.</li>
+    <li>(e) "Matter" means any book, magazine, newspaper, or other printed or written material, any or picture, drawing, photograph, motion picture, or other pictorial representation, or any other tangible, or any recording, transcription, or mechanical, chemical, or electrical reproduction, or any other article, equipment, or device, or any other tangible item that is distributed, disseminated, or displayed, or distributed as part of a commercial transaction.</li>
+    <li>(f) "Person" means any individual, partnership, firm, association, corporation, limited liability company, or other legal entity.</li>
+    <li>(g) "Distribute" means transfer possession of, whether with or without consideration.</li>
+    <li>(h) "Knowingly" means being aware of the character of the matter or live conduct.</li>
+  </ul>
+</div >
+
+<div class="page">
+  <p><strong>415. Any person who willfully commits any of the following acts with respect to any real or personal property not his or her own, in cases other than those specified by state law, is guilty of vandalism:</strong></p>
+  <ol>
+    <li>Defaces with graffiti or other inscribed material.</li>
+    <li>Damages.</li>
+    <li>Destroys.</li>
+  </ol>
+  <p>When a person violates this subdivision with respect to real property, vehicles, signs, fixtures, furnishings, or property belonging to any public entity, as defined by Section 811.2 of the Government Code, or the federal government, it shall be a permissive interference that the person neither owned the property nor had the permission of the owner to damage, deface, or destroy the property.</p>
+
+  <p><strong>602.1 (b) Any person who intentionally interferes with any lawful business carried on by the employees of a public agency open to the public, by obstructing or intimidating those attempting to carry on business, or those persons there to transact business with the public agency, and who refuses to leave the premises of the public agency or to cease the interference when directed to do so by a peace officer, is guilty of a misdemeanor, punishable by a fine not exceeding four thousand dollars ($4,000), or by imprisonment in a county jail for up to four hundred days, or both that imprisonment and fine.</p>
+  <p>602.1 (c) Any person who willfully and maliciously obstructs or attempts to obstruct or interfere with the lawful business of a public agency open to the public, by obstructing or intimidating those attempting to carry on business, or those persons there to transact business with the public agency, and who refuses to leave the premises of the public agency or to cease the interference when directed to do so by a peace officer, is guilty of a misdemeanor, punishable by a fine not exceeding four thousand dollars ($4,000), or by imprisonment in a county jail for up to four hundred days, or both that imprisonment and fine.</p>
+
+  <p><strong>602.1 (d) Any person who willfully and maliciously obstructs the free movement of any person on any street, sidewalk, or other public place or on or in any place open to the public is guilty of a misdemeanor. Nothing in this section affects the power of a county or a city to regulate conduct upon a street, sidewalk, or other public place or on or in a place open to the public.</strong></p>
+</div >
+
+<div class="page">
+  <p><strong>19954.30. As used in this chapter:</strong></p>
+  <ul>
+    <li>(a) "Building" means a building owned and occupied, or leased and occupied, by the state.</li>
+    <li>(b) "Inside a state-owned and state-occupied building" includes any indoor areas of the building, except for covered parking lots, residential space, and state prison yards.</li>
+    <li>(c) "Inside a state-owned and state-occupied building" includes any indoor space leased to the state, except for covered parking lots, and residential space.</li>
+    <li>(d) "Residential space" means a private living area, but it does not include common areas such as lobbies, hallways, waiting areas, elevators, stairwells, and restrooms that are a structural part of a multiexample building such as a dormitory.</li>
+    <li>(e) "State agency" means a state agency, as defined pursuant to Section 11000, the Legislature, the Supreme Court and the courts of appeal, and each California Community College campus and each campus of the California State University and the University of California.</li>
+    <li>(f) "State employee" means an employee of a state agency.</li>
+  </ul>
+</div >
+
+</body>
+</html>

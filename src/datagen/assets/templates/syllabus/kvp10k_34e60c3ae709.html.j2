@@ -1,0 +1,196 @@
+<style>
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 794px; height: 1123px;
+    padding: 50px 60px; box-sizing: border-box;
+    overflow: hidden; page-break-after: always;
+    position: relative;
+    font-family: "DejaVu Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, h4 { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; }
+  .header-title { font-size: 18pt; font-weight: bold; }
+  .course-info { font-size: 12pt; margin-bottom: 20px; }
+  .section-heading { font-size: 14pt; font-weight: bold; margin-top: 20px; margin-bottom: 10px; }
+  .sub-heading { font-size: 12pt; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+  .list-item { margin-bottom: 8px; line-height: 1.4; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  td { padding: 5px 0; }
+</style>
+
+<div class="page">
+  <div class="header-title">THE UNIVERSITY OF COLORADO BOULDER</div>
+  <div class="course-info">
+    ASEN 5007: Introduction to Finite Element Methods<br>
+    Fall {{ current_year }}
+  </div>
+
+  <div class="section-heading">SYLLABUS</div>
+
+  <div style="margin-top: 20px;">
+    Instructor: {{ instructor.full_name }}<br>
+    E-mail Address: {{ instructor.email }}
+  </div>
+
+  <div style="margin-top: 20px;">
+    Teaching Assistant: {{ ta.full_name }}<br>
+    E-mail Address: {{ ta.email }}
+  </div>
+
+  <div style="margin-top: 20px;">
+    Lecture: {{ lecture_time }}<br>
+    Location: {{ lecture_location }}
+  </div>
+
+  <div style="margin-top: 20px;">
+    Office Hours: {{ office_hours }}<br>
+    Location: {{ office_location }}
+  </div>
+
+  <div class="section-heading">Web Page:</div>
+  <div style="margin-bottom: 20px;">
+    <span data-field="web_page_url">{{ web_page_url }}</span>
+  </div>
+
+  <div class="section-heading">Course Objective:</div>
+  <p>Introduces finite element methods used for solving linear problems in structural and continuum mechanics. Covers modeling, mathematical formulation, and computer implementation.</p>
+
+  <div class="section-heading">Prerequisites:</div>
+  <p>This class requires an undergraduate course in matrix algebra. Students should also have experience with vector calculus and differential equations, and it is highly recommended that students have a working knowledge of MATLAB.</p>
+
+  <div class="section-heading">Required Textbooks:</div>
+  <p>There are no required textbooks for this class. Instead, notes will be released on a periodic basis to students through the course website.</p>
+
+  <div class="section-heading">Reference Textbook:</div>
+  <p>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis, {{ reference_author }}, {{ reference_publisher }}, {{ reference_year }}.</p>
+</div>
+
+<div class="page">
+  <div class="section-heading">Topics:</div>
+  <ol>
+    <li class="list-item"><span data-field="topic_1">{{ topic_1 }}</span></li>
+    <li class="list-item"><span data-field="topic_2">{{ topic_2 }}</span></li>
+    <li class="list-item"><span data-field="topic_3">{{ topic_3 }}</span></li>
+    <li class="list-item"><span data-field="topic_4">{{ topic_4 }}</span></li>
+    <li class="list-item"><span data-field="topic_5">{{ topic_5 }}</span></li>
+    <li class="list-item"><span data-field="topic_6">{{ topic_6 }}</span></li>
+  </ol>
+
+  <div class="section-heading">Class Format:</div>
+  <p>The class meets twice a week for an hour and fifteen minutes of formal lecture and discussion.</p>
+
+  <div class="section-heading">Grading:</div>
+  <table>
+    <tr>
+      <td>15% Homework Assignments</td>
+    </tr>
+    <tr>
+      <td>15% Concept Quizzes</td>
+    </tr>
+    <tr>
+      <td>20% Mini-Project</td>
+    </tr>
+    <tr>
+      <td>20% Midterm Exam</td>
+    </tr>
+    <tr>
+      <td>30% Final Exam</td>
+    </tr>
+  </table>
+  <p style="margin-top: 10px;">Grades will be posted to the class website on Canvas.</p>
+
+  <div class="section-heading">Homework Assignments:</div>
+  <p>There will be four homework assignments covering both theory and implementation:</p>
+
+  {% for i in range(1, 5) %}
+  <div style="margin-bottom: 15px;">
+    <p>Assignment {{ i }}: <span data-field="hw_assignment_{{ i }}_title">{{ hw_assignment_i_title }}</span></p>
+    <p>Assigned: {{ hw_assignment_{{ i }}_assigned_date }}, Due: {{ hw_assignment_{{ i }}_due_date }}</p>
+  </div>
+  {% endfor %}
+
+  <p>Homework assignments are to be turned in through the course website by the start of class on their due date. Students should make an effort to turn in assignments that are organized, professional looking, and legible. Homework assignments will be graded on a completion basis only, and solutions will be made available so students can check the correctness of their work.</p>
+  <p>Collaboration is permitted on homework assignments. This means students may discuss the means and methods for solving problems and even compare answers, but students are not free to copy someone else's homework assignment. The work that a student turns in must be their own – copying is not allowed and will not be tolerated. Students who are caught copying (or providing their assignment to another) will receive an "F" for the course and reported to the Dean's office for further punitive action.</p>
+</div>
+
+<div class="page">
+  <div class="section-heading">Concept Quizzes:</div>
+  <p>There will be five concept quizzes throughout the semester:</p>
+
+  {% for i in range(1, 6) %}
+  <div style="margin-bottom: 15px;">
+    <p>Quiz {{ i }}: <span data-field="quiz_{{ i }}_title">{{ quiz_i_title }}</span></p>
+    <p>Released: {{ quiz_{{ i }}_released_date }}, Due: {{ quiz_{{ i }}_due_date }}</p>
+  </div>
+  {% endfor %}
+
+  <p>The quizzes are intended to help students identify, practice, and comprehend important finite element concepts. The quizzes will be administered as Canvas quizzes, and each quiz will be released on a Thursday immediately following lecture and due by the start of the following lecture. Students will have fifteen minutes to complete each quiz, and students will be able to take the quizzes as many times as they like before they are due.</p>
+
+  <div class="section-heading">Mini-Project:</div>
+  <p>Students will use MATLAB to implement a finite element method for a one-dimensional model problem in the first half of the semester.</p>
+  <div style="margin-bottom: 15px;">
+    <p>Mini-Project: Computer Implementation of a One-Dimensional Finite Element Code</p>
+    <p>Assigned: {{ mp_assigned_date }}, Due: {{ mp_due_date }} (Start of Class)</p>
+  </div>
+
+  <p>In this mini-project, students will not only create a MATLAB code to solve the given model problem using a finite element method, they will also create a MATLAB post-processing scheme to visualize the resulting solution field and construct a suitable verification test to confirm their code works as intended.</p>
+  <p>The mini-project is to be turned in through the course website by the start of class on its due date. Submissions should be organized and professional looking. Code should be commented. A readme should be included indicating how to run a student's code. The mini-project will be graded on both a completion basis and a correctness basis.</p>
+  <p>Collaboration is permitted on the mini-project. This means students may discuss the means and methods for solving problems and even compare answers, but students are not free to copy someone else's code. MOSS (Measure Of Software Similarity) will be used to detect potential cases of plagiarism. Students who are caught copying code (or providing their code to another) will receive an "F" for the course and reported to the Dean's office for further punitive action.</p>
+
+  <div class="section-heading">Midterm Exam:</div>
+  <p>There will be a midterm exam on {{ midterm_date }}. This midterm exam will test material associated with "Finite Element Analysis of a One-Dimensional Model Problem". It will also test material associated with Homework Assignment 1, Concept Quizzes 1-3, and the Mini-Project.</p>
+  <p>The midterm exam will consist of a closed-book conceptual portion and an open-book applied portion. The conceptual portion will test a student's understanding of basic finite element concepts, while the applied portion will test a student's understanding of applied finite element concepts. Students will have seventy five minutes to complete the midterm exam. Online students will have 24 hours to take the exam from the start of the in-person exam, and their exam must be proctored.</p>
+  <p>Collaboration on the midterm exam will not be tolerated. Students who are caught in these activities will receive an "F" for the course and reported to the Dean's office for further punitive action. Students are free to ask the instructor any clarification questions.</p>
+
+  <div class="section-heading">Final Exam:</div>
+  <p>There will be a final exam on {{ final_exam_date }}. The final exam will test all material associated with the course. In particular, it will test material associated with Homework Assignments 1-4, Concept Quizzes 1-5, the Mini-Project, and the Midterm Exam. However, the final exam will emphasize material covered after "Finite Element Analysis of a One-Dimensional Model Problem".</p>
+  <p>Like the midterm exam, the final exam will consist of a closed-book conceptual portion and an open-book applied portion. Students will have two and a half hours to complete the final exam. Online students will have 24 hours to start the in-person exam, and their exam must be proctored.</p>
+
+  <div class="section-heading">MATLAB, Gmsh, and Paraview:</div>
+  <p>The homework assignments and mini-project will make heavy use of MATLAB, Gmsh, and Paraview. Each of these software packages is available for Windows, MacOS, and Linux. CU Boulder has a campus site license for MATLAB. To download MATLAB, visit: <a href="{{ matlab_download_link }}">{{ matlab_download_link }}</a></p>
+  <p>Gmsh is freely available to download at: <a href="{{ gmsh_download_link }}">{{ gmsh_download_link }}</a></p>
+  <p>Paraview is freely available to download at: <a href="{{ paraview_download_link }}">{{ paraview_download_link }}</a></p>
+  <p>It is recommended that students download these packages as soon as possible.</p>
+</div>
+
+<div class="page">
+  <div class="section-heading">Slack:</div>
+  <p>A Slack channel has been created to foster communication. Students will receive an e-mail invitation to join this channel. Students can use Slack to ask questions regarding lecture material, homework assignments, concept quizzes, the mini-project, and the midterm and final exams. Slack is the instructor's preferred means of communication, and he will make every effort to respond to Slack messages within 24 hours.</p>
+
+  <div class="section-heading">Late Assignment and Missed Exam Policy:</div>
+  <p>Generally speaking, late assignment submissions will not be accepted, and there will be no make-up quizzes or exams. That being said, we are living in unusual times, so please contact the instructor if you are unable to submit an assignment or take a quiz or exam due to illness, technical issues, or other challenging extenuating circumstances. Reasonable accommodations will be made where appropriate provided you contact the instructor before the assignment due date or quiz or exam date.</p>
+
+  <div class="section-heading">Requirements for COVID-19:</div>
+  <p>As a matter of public health and safety due to the pandemic, all members of the CU Boulder community and all visitors to campus must follow university, department and building requirements and all public health orders in place to reduce the risk of spreading infectious disease. Students who fail to adhere to these requirements will be asked to leave class, and students who do not leave class when asked or who refuse to comply with these requirements will be referred to <a href="{{ student_conduct_link }}">{{ student_conduct_link }}</a> and <a href="{{ student_code_of_conduct_link }}">{{ student_code_of_conduct_link }}</a>. For more information, see the policy on <a href="{{ classroom_behavior_link }}">{{ classroom_behavior_link }}</a> and the <a href="{{ student_conduct_and_conflict_resolution_policies_link }}">{{ student_conduct_and_conflict_resolution_policies_link }}</a>.</p>
+  <p>If you have any questions about these requirements, please follow the steps in the "Accommodation for Disabilities" statement on this syllabus.</p>
+  <p>As of Aug. 13, 2021, CU Boulder has returned to requiring masks in classrooms and laboratories regardless of vaccination status. This requirement is a temporary precaution during the delta surge to supplement CU Boulder's COVID-19 vaccine requirement. Exemptions include individuals who cannot medically tolerate a face covering, as well as those who are hearing-impaired or otherwise disabled and where the ability to see the mouth is essential to communication. If you qualify for a mask-related accommodation, please follow the steps in the "Accommodation for Disabilities" statement on this syllabus. In addition, vaccinated instructional faculty who are engaged in an indoor instructional activity and are separated by at least 6 feet from the nearest person are exempt from wearing masks if they so choose.</p>
+
+  <div class="section-heading">Accommodation for Disabilities:</div>
+  <p>If you qualify for accommodations because of a disability, please submit your accommodation letter from Disability Services to your faculty member in a timely manner so that your needs can be addressed. Disability Services determines accommodations based on documented disabilities in the academic environment. Information on requesting accommodations is located on the <a href="{{ disability_services_website }}">{{ disability_services_website }}</a>. Contact Disability Services at 303-492-8671 or <a href="{{ disability_services_email }}">{{ disability_services_email }}</a> for further assistance. If you have a temporary medical condition, see <a href="{{ temporary_medical_conditions_link }}">{{ temporary_medical_conditions_link }}</a> on the Disability Services website.</p>
+
+  <div class="section-heading">Classroom Behavior:</div>
+  <p>Both students and faculty are responsible for maintaining an appropriate learning environment in all instructional settings, whether in person, remote or online. Those who fail to adhere to such behavioral standards may be subject to discipline. Professional courtesy and sensitivity are especially important with respect to individuals and topics dealing with race, color, national origin, sex, pregnancy, age, disability, creed, religion, sexual orientation, gender identity, gender expression, veteran status, political affiliation or political philosophy. For more information, see the policies on <a href="{{ classroom_behavior_link }}">{{ classroom_behavior_link }}</a> and the <a href="{{ student_conduct_and_conflict_resolution_policies_link }}">{{ student_conduct_and_conflict_resolution_policies_link }}</a>.</p>
+
+  <div class="section-heading">Preferred Student Names and Pronouns:</div>
+  <p>CU Boulder recognizes that students' legal information doesn't always align with how they identify. Students may update their preferred names and pronouns via the student portal; those preferred names and pronouns are listed on instructors' class rosters. In the absence of such updates, the name that appears on the class roster is the student's legal name.</p>
+
+  <div class="section-heading">Honor Code:</div>
+  <p>All students enrolled in a University of Colorado Boulder course are responsible for knowing and adhering to the Honor Code academic integrity policy. Violations of the Honor Code may include, but are not limited to: plagiarism, cheating, fabrication, lying, bribery, threat, unauthorized access to academic materials, clicker fraud, submitting the same or similar work in more than one course without permission from all course instructors involved, and aiding academic dishonesty. All incidents of academic misconduct will be reported to the Honor Code office at <a href="{{ honor_code_link }}">{{ honor_code_link }}</a>. 303-492-5550. Students found responsible for violating the academic integrity policy will be subject to nonacademic sanctions from the Honor Code as well as academic sanctions from the faculty member. Additional information regarding the Honor Code academic integrity policy can be found on the <a href="{{ honor_code_website }}">{{ honor_code_website }}</a>.</p>
+
+  <div class="section-heading">Sexual Misconduct, Discrimination, Harassment and/or Related Retaliation:</div>
+  <p>The University of Colorado Boulder (CU Boulder) is committed to fostering an inclusive and welcoming learning, working, and living environment. CU Boulder will not tolerate acts of sexual misconduct (harassment, exploitation, and assault), intimate partner violence (dating or domestic violence), stalking, or protected-class discrimination or harassment by or against members of our community. Individuals who believe they have been subject to misconduct or retaliatory actions for</p>
+</div>
+
+<div class="page">
+  <p>reporting a concern should contact the Office of Institutional Equity and Compliance (OIEC) at 303-492-2127 or email <a href="{{ oiec_email }}">{{ oiec_email }}</a>. Information about OIEC, university policies, reporting options, and the campus resources can be found on the <a href="{{ oiec_website }}">{{ oiec_website }}</a>.</p>
+  <p>Please know that faculty and graduate instructors have a responsibility to inform OIEC when made aware of incidents of sexual misconduct, dating and domestic violence, stalking, discrimination, harassment and/or related retaliation, to ensure that individuals impacted receive information about their rights, support resources, and reporting options.</p>
+
+  <div class="section-heading">Religious Holidays:</div>
+  <p>Campus policy regarding religious observances requires that faculty make every effort to deal reasonably and fairly with all students who, because of religious obligations, have conflicts with scheduled exams, assignments or required attendance. In this class, you must let the instructors know of any such conflicts within the first two weeks of the semester so that we can work with you to make arrangements.</p>
+  <p>See the <a href="{{ campus_policy_religious_observances_link }}">{{ campus_policy_religious_observances_link }}</a> for full details.</p>
+
+  <div style="text-align: right; margin-top: 50px;">
+    Prepared by: {{ preparer_name }}<br>
+    Date: {{ document_date }}
+  </div>
+</div>
