@@ -30,7 +30,7 @@ from PIL import Image
 
 from paperwerk.llm import LLM
 
-from datagen.utils import document_to_data_urls
+from paperwerk.datagen.utils import document_to_data_urls
 
 # Output-token budget for a single LLM call. Auto-chunking (below) keeps each
 # chunk small enough that this ceiling is never the bottleneck.
