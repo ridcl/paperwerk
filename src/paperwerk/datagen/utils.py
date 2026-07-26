@@ -53,25 +53,40 @@ def _encode_png_under_limit(
 def document_to_data_urls(
     path: str | Path,
     *,
-    max_pages: int | None = None,
+    start_page: int = 0,
+    end_page: int | None = None,
     dpi: int = _DEFAULT_DPI,
     max_side: int | None = _DEFAULT_MAX_SIDE,
 ) -> list[str]:
     """Convert a PDF (one image per page) or single image file into base64 PNG data URLs.
 
-    Used by the classifier and template builder to feed real documents to a
-    vision-capable LLM. `max_pages` caps the number of PDF pages returned
-    (None means all pages). Each page is downscaled so its longest side is
-    at most `max_side` pixels (pass `None` to disable resizing), then
-    adaptively shrunk further if the encoded PNG would exceed the 5 MB
-    vision-API per-image limit.
+    Page selection uses Python-slice semantics: `start_page` is 0-indexed
+    inclusive, `end_page` is 0-indexed exclusive (None means through the
+    last page). Default is "all pages". For PDFs the range is pushed into
+    pdf2image (via its 1-indexed inclusive first_page/last_page args) so we
+    don't rasterize pages we're about to discard - important when the
+    caller only wants a small window of a long document.
+
+    Each page is downscaled so its longest side is at most `max_side`
+    pixels (pass `None` to disable resizing), then adaptively shrunk
+    further if the encoded PNG would exceed the 5 MB vision-API limit.
     """
     p = Path(path)
+    if end_page is not None and start_page >= end_page:
+        return []
     if p.suffix.lower() == ".pdf":
-        images = convert_from_path(str(p), dpi=dpi)
-        if max_pages is not None:
-            images = images[:max_pages]
+        # pdf2image: first_page/last_page are 1-indexed inclusive; None is
+        # unbounded on that side. 0-indexed-exclusive `end_page` and
+        # 1-indexed-inclusive last_page happen to be numerically equal.
+        images = convert_from_path(
+            str(p),
+            dpi=dpi,
+            first_page=start_page + 1,
+            last_page=end_page,
+        )
     else:
+        if start_page > 0:
+            return []
         images = [Image.open(p).convert("RGB")]
     urls: list[str] = []
     for img in images:

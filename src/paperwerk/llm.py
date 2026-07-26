@@ -53,6 +53,46 @@ class LLM:
         self.aclient = AsyncOpenAI(base_url=base_url, api_key=api_key)
         self._semaphore = asyncio.Semaphore(max_concurrency)
 
+    @classmethod
+    def from_openai_client(
+        cls,
+        client: "OpenAI | AsyncOpenAI",
+        model: str,
+        *,
+        max_concurrency: int = 8,
+    ) -> "LLM":
+        """Build an ``LLM`` from an existing OpenAI SDK client.
+
+        For callers who already have a configured ``OpenAI`` or
+        ``AsyncOpenAI`` instance (custom ``base_url``, timeout, headers, proxy
+        / ``http_client``, org, …) and want to drive the data-generation tools
+        with it. The passed client is reused as-is on its native path; its
+        sync/async counterpart is derived from the same ``base_url`` and
+        ``api_key`` so that both ``invoke`` and ``ainvoke`` work.
+
+        Note the derived counterpart only copies ``base_url`` + ``api_key`` —
+        other per-client options don't transfer. The data-gen tools call
+        ``ainvoke``, so pass an ``AsyncOpenAI`` if you need your custom options
+        honored on the hot path.
+        """
+        self = cls.__new__(cls)
+        if isinstance(client, AsyncOpenAI):
+            self.aclient = client
+            self.client = OpenAI(base_url=client.base_url, api_key=client.api_key)
+        elif isinstance(client, OpenAI):
+            self.client = client
+            self.aclient = AsyncOpenAI(base_url=client.base_url, api_key=client.api_key)
+        else:
+            raise TypeError(
+                "expected an OpenAI or AsyncOpenAI client, got "
+                f"{type(client).__name__}"
+            )
+        self.base_url = str(client.base_url)
+        self.api_key = client.api_key
+        self.model = model
+        self._semaphore = asyncio.Semaphore(max_concurrency)
+        return self
+
     def __repr__(self):
         return f"LLM(model={self.model!r}, base_url={self.base_url!r})"
 
