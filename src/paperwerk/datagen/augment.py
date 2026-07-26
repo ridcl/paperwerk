@@ -40,7 +40,7 @@ from augraphy import (
 from pdf2image import convert_from_bytes
 from PIL import Image
 
-from datagen.render import Field
+from paperwerk.datagen.render import Field
 
 
 _DEFAULT_DPI = 200

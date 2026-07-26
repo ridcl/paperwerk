@@ -28,6 +28,7 @@ from __future__ import annotations
 import random
 from dataclasses import dataclass
 from io import BytesIO
+from pathlib import Path
 
 from jinja2 import Environment
 from pdf2image import convert_from_bytes
@@ -35,7 +36,7 @@ from PIL import ImageDraw, ImageFont
 from playwright.async_api import async_playwright
 from playwright.sync_api import sync_playwright
 
-from datagen.handwriting import apply_handwriting
+from paperwerk.datagen.handwriting import apply_handwriting
 
 A4_WIDTH_PX = 794
 A4_HEIGHT_PX = 1123
@@ -59,6 +60,24 @@ class Field:
 
 def _clamp01(v: float) -> float:
     return max(0.0, min(1.0, v))
+
+
+_FONTS_DIR = Path(__file__).parent / "assets" / "fonts"
+
+
+def _annotation_font(size: int):
+    """Load a bundled font for annotation labels.
+
+    Uses the fonts shipped under ``assets/fonts`` rather than assuming any
+    particular system font is installed; falls back to PIL's built-in default
+    if none load.
+    """
+    for ttf in sorted(_FONTS_DIR.glob("*.ttf")):
+        try:
+            return ImageFont.truetype(str(ttf), size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
 
 
 def _finalize(value):
@@ -293,11 +312,12 @@ def annotate(
     fields: list[Field],
     *,
     dpi: int = 150,
-) -> list[bytes]:
-    """Rasterize the PDF at `dpi` and overlay each field's bbox on its page.
+) -> bytes:
+    """Rasterize the PDF at `dpi`, overlay each field's bbox + name, and repack.
 
-    Returns one PNG per PDF page in document order. Used for visual
-    inspection; downstream consumers that need raster pixels at a specific
+    Takes PDF bytes and returns PDF bytes (an image-only PDF, one annotated
+    page per input page), so input and output types match. For visual
+    inspection only; downstream consumers that need raster pixels at a specific
     DPI should rasterize the PDF themselves and scale bboxes by the actual
     image dimensions.
     """
@@ -306,14 +326,9 @@ def annotate(
     for f in fields:
         by_page.setdefault(f.page, []).append(f)
 
-    try:
-        font = ImageFont.truetype(
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 11
-        )
-    except OSError:
-        font = ImageFont.load_default()
+    font = _annotation_font(11)
 
-    out: list[bytes] = []
+    annotated: list = []
     for page_idx, img in enumerate(images):
         canvas = img.convert("RGB")
         draw = ImageDraw.Draw(canvas)
@@ -325,7 +340,16 @@ def annotate(
             y1 = int(f.bbox[3] * h)
             draw.rectangle((x0, y0, x1, y1), outline=(220, 30, 30), width=2)
             draw.text((x0 + 2, max(0, y0 - 13)), f.name, fill=(220, 30, 30), font=font)
-        buf = BytesIO()
-        canvas.save(buf, format="PNG")
-        out.append(buf.getvalue())
-    return out
+        annotated.append(canvas)
+
+    if not annotated:
+        return pdf_bytes
+    buf = BytesIO()
+    annotated[0].save(
+        buf,
+        format="PDF",
+        save_all=True,
+        append_images=annotated[1:],
+        resolution=dpi,
+    )
+    return buf.getvalue()
