@@ -28,9 +28,9 @@ from pathlib import Path
 
 from paperwerk.llm import LLM
 
-from datagen.render import annotate, render
+from datagen.render import annotate, render_sync
 from datagen.templates import make_template
-from datagen.values import synthesize_values
+from datagen.values import random_values
 
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _DEFAULT_MODEL = "claude-sonnet-4-6"
@@ -54,7 +54,7 @@ async def _run(source: str, out_dir: str, model: str) -> None:
         print(f"         - {f}")
 
     print("[2/4] synthesizing fake data")
-    data = await synthesize_values(llm, schema)
+    data = await random_values(llm, schema)
     (out / "data.json").write_text(json.dumps(data, indent=2))
     print(f"      -> {out / 'data.json'}")
 
@@ -62,7 +62,7 @@ async def _run(source: str, out_dir: str, model: str) -> None:
     # worker thread; sync_playwright refuses to start under a running
     # asyncio event loop.
     print("[3/4] rendering")
-    pdf_bytes, fields = await asyncio.to_thread(render, template, data)
+    pdf_bytes, fields = await asyncio.to_thread(render_sync, template, data)
     (out / "sample.pdf").write_bytes(pdf_bytes)
     (out / "fields.json").write_text(json.dumps([asdict(f) for f in fields], indent=2))
     print(f"      -> {out / 'sample.pdf'} " f"({len(fields)} field occurrence(s))")

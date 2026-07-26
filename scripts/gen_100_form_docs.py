@@ -34,10 +34,10 @@ from paperwerk.llm import LLM
 
 import datagen
 from datagen.augment import PROFILES, augment, augment_geometric
-from datagen.render import render
+from datagen.render import render_sync
 from datagen.signatures import inject_signatures
 from datagen.templates import discover_fields
-from datagen.values import synthesize_values
+from datagen.values import random_values
 
 # Skip templates that would render nearly blank (too few fillable fields).
 _MIN_FIELDS = 3
@@ -58,14 +58,35 @@ _CPU_CONCURRENCY = 4
 
 # Class names that read like a fill-in form.
 _FORM_SUFFIXES = (
-    "_form", "_forms", "_application", "_worksheet", "_questionnaire",
-    "_checklist", "_request", "_claim", "_authorization", "_registration",
-    "_enrollment", "_waiver", "_petition", "_requisition", "_consent",
-    "_ballot", "_intake",
+    "_form",
+    "_forms",
+    "_application",
+    "_worksheet",
+    "_questionnaire",
+    "_checklist",
+    "_request",
+    "_claim",
+    "_authorization",
+    "_registration",
+    "_enrollment",
+    "_waiver",
+    "_petition",
+    "_requisition",
+    "_consent",
+    "_ballot",
+    "_intake",
 )
 _FORM_EXACT = {
-    "form", "application", "worksheet", "questionnaire", "checklist",
-    "request", "claim", "petition", "affidavit_form", "registration",
+    "form",
+    "application",
+    "worksheet",
+    "questionnaire",
+    "checklist",
+    "request",
+    "claim",
+    "petition",
+    "affidavit_form",
+    "registration",
 }
 _FORM_PREFIXES = ("request_for_", "application_for_", "petition_for_")
 
@@ -111,7 +132,7 @@ def _augment_plan(rng: random.Random) -> dict:
 
 def _render_and_augment(template: str, data: dict, plan: dict | None, seed: int):
     """Sync CPU stage: render, then optionally warp + scanner-augment."""
-    pdf, fields = render(template, data, seed=seed)
+    pdf, fields = render_sync(template, data, seed=seed)
     if plan is None:
         return pdf, fields
     if plan["geometric"]:
@@ -175,9 +196,7 @@ async def main() -> None:
             if tpl_path is None:
                 print(f"[slot {slot:03d}] exhausted candidates; giving up")
                 return None
-            meta = json.loads(
-                tpl_path.with_suffix("").with_suffix(".json").read_text()
-            )
+            meta = json.loads(tpl_path.with_suffix("").with_suffix(".json").read_text())
             schema = meta["schema"]
             cls = meta.get("class", tpl_path.parent.name)
             try:
@@ -187,7 +206,7 @@ async def main() -> None:
                     tpl_path.read_text(), schema, slot_rng
                 )
                 synth_fields = [f for f in schema if f not in sig_fields]
-                data = await synthesize_values(llm, synth_fields)
+                data = await random_values(llm, synth_fields)
                 plan = _augment_plan(slot_rng) if augmented else None
                 async with cpu_sem:
                     pdf, fields = await asyncio.to_thread(
@@ -220,7 +239,17 @@ async def main() -> None:
                 else "clean"
             )
             print(f"[slot {slot:03d}] ({done}/{_N}) {cls} [{tag}]")
-            return {k: record[k] for k in ("doc", "class", "template", "augmented", "augmentation", "n_pages")}
+            return {
+                k: record[k]
+                for k in (
+                    "doc",
+                    "class",
+                    "template",
+                    "augmented",
+                    "augmentation",
+                    "n_pages",
+                )
+            }
 
     results = await asyncio.gather(*(_slot(i) for i in range(_N)))
     ok = [r for r in results if r]

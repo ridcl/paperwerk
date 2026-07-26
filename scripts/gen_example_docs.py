@@ -24,8 +24,8 @@ from pathlib import Path
 from paperwerk.llm import LLM
 
 import datagen
-from datagen.render import render
-from datagen.values import synthesize_values
+from datagen.render import render_sync
+from datagen.values import random_values
 
 _ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 _MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6")
@@ -73,11 +73,11 @@ async def _build_one(
     cls = meta.get("class", template_path.parent.name)
     print(f"[{idx}] {cls}: {len(schema)} field(s) <- {template_path.name}")
 
-    data = await synthesize_values(llm, schema)
+    data = await random_values(llm, schema)
     handwritten = _handwritten_subset(schema, rng)
 
     pdf, fields = await asyncio.to_thread(
-        render,
+        render_sync,
         template,
         data,
         handwritten_fields=handwritten,
