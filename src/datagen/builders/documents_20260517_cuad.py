@@ -39,8 +39,8 @@ import pyarrow.parquet as pq
 from paperwerk.llm import LLM
 
 from datagen.augment import augment
-from datagen.render import render
-from datagen.values import synthesize_values
+from datagen.render import render_sync
+from datagen.values import random_values
 
 _TEMPLATES_PARQUET = Path("/data/paperwerk/templates/cuad_20260517.parquet")
 _OUT_DIR = Path("/data/paperwerk/documents_20260517")
@@ -88,7 +88,7 @@ async def _process_row(
 
     async with sem:
         try:
-            values = await synthesize_values(llm, row["schema"])
+            values = await random_values(llm, row["schema"])
         except Exception as e:
             print(f"  {label} SYNTH ERROR {e!r}", file=sys.stderr)
             return
@@ -96,7 +96,7 @@ async def _process_row(
         handwritten_fields = tuple(row["schema"]) if handwritten else ()
         try:
             clear_pdf, fields = await asyncio.to_thread(
-                render,
+                render_sync,
                 row["template"],
                 values,
                 handwritten_fields=handwritten_fields,

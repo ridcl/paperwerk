@@ -29,7 +29,7 @@ from pathlib import Path
 
 from paperwerk.llm import LLM
 
-from datagen.render import annotate, render
+from datagen.render import annotate, render_sync
 from datagen._templates import (
     discover_fields,
     extract_block,
@@ -182,7 +182,7 @@ def main(
         hint = _diversity_hint(sample_rng)
         print(f"[{i + 1}/{n}] {hint}")
         data = synthesize_data(field_names, llm, hint=hint)
-        pdf, fields = render(template, data)
+        pdf, fields = render_sync(template, data)
         pages = annotate(pdf, fields)
         base = out / f"sample_{i:02d}"
         base.with_suffix(".pdf").write_bytes(pdf)

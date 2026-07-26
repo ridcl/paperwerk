@@ -139,6 +139,12 @@ LAYOUT
    And include at the top of <style>:
      @page { size: A4; margin: 0; }
 
+   ORIENTATION: the above is A4 PORTRAIT. If the source page is LANDSCAPE
+   (clearly wider than it is tall), swap the dimensions and page size instead:
+   set `.page { width: 1123px; height: 794px; ... }` (keep the other .page
+   rules identical) and `@page { size: A4 landscape; margin: 0; }`. Match the
+   source's orientation. All pages within one document use the same orientation.
+
 FIELDS
 3. Wrap every variable text in a <span data-field="..."> element. The span's inner content MUST be a Jinja2 expression of the form {{ ... }} — never source text from the document.
 
