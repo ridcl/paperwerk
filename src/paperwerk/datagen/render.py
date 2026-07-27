@@ -103,12 +103,17 @@ def _field_value(loc) -> str:
     """Read a field element's rendered value.
 
     Form controls (input/textarea/select) carry their value in the `value`
-    property, not as inner text (inner_text() returns "" for them).
+    property, not as inner text (inner_text() returns "" for them). For
+    non-HTML nodes (e.g. a `data-field` on an SVG element) `inner_text()`
+    raises "Node is not an HTMLElement", so fall back to `text_content()`.
     """
     tag = loc.evaluate("el => el.tagName.toLowerCase()")
     if tag in ("input", "textarea", "select"):
         return loc.input_value()
-    return loc.inner_text()
+    try:
+        return loc.inner_text()
+    except Exception:
+        return loc.text_content() or ""
 
 
 def _fields_in_page(page_el, page_idx: int) -> list[Field]:
@@ -219,7 +224,10 @@ async def _field_value_async(loc) -> str:
     tag = await loc.evaluate("el => el.tagName.toLowerCase()")
     if tag in ("input", "textarea", "select"):
         return await loc.input_value()
-    return await loc.inner_text()
+    try:
+        return await loc.inner_text()
+    except Exception:
+        return (await loc.text_content()) or ""
 
 
 async def _fields_in_page_async(

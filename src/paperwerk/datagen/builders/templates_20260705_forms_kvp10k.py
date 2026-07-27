@@ -14,8 +14,11 @@ download barrier. Per document:
 
   0a. ``download_pdf``   — fetch + cache the source PDF (retries=2).
   0b. ``get_page_count`` — cheap ``pdfinfo`` check; drop long-tail docs.
-  1.  ``classify_pdf``   — first 3 PDF pages → snake_case class label,
-                            cached in ``/data/paperwerk/cache/kvp10k/docs.json``.
+  1.  ``classify_pdf``   — first 3 PDF pages → one of the fixed
+                            ``DOCUMENT_TYPES`` (or ``"other"``, which is
+                            skipped), cached in
+                            ``/data/paperwerk/cache/kvp10k/docs.json``. Cached
+                            labels outside the current taxonomy are re-classified.
   2a. Per-class phash dedup on the first page, applied incrementally under a
       per-class lock as documents arrive. Because documents complete in
       download/LLM order rather than a fixed order, which member of a set of
@@ -39,11 +42,15 @@ a local Prefect server in another shell first::
 
 Then::
 
-    from datagen.builders.templates_20260705_forms_kvp10k import main
-    main()                                # full train split, <=32-page docs
-    main(limit=200)                       # first 200 unique URLs only
-    main(max_pages_per_doc=64)            # push the cap higher
+    from paperwerk.datagen.builders.templates_20260705_forms_kvp10k import main
+    main()                                # local vLLM (default), full split
+    main(backend="sonnet")                # Claude Sonnet 4.6 (needs ANTHROPIC_API_KEY)
+    main(backend="sonnet", limit=200)     # first 200 unique URLs on Sonnet
+    main(max_pages_per_doc=64)            # push the page cap higher
     main(limit=200, hamming_threshold=6)  # stricter dedup
+
+Classification is restricted to the ``DOCUMENT_TYPES`` constant plus
+``"other"`` (skipped) — edit that list to change the taxonomy.
 
 The flow runs correctly without a server too — you'll just see per-task
 progress in the console via Prefect's default logger instead of in the UI.
@@ -70,24 +77,58 @@ from prefect import flow, get_run_logger, task
 
 from paperwerk.llm import LLM
 
-import datagen
-from datagen.classifier import classify
-from datagen.templates import TemplateDeduper, make_template
+from paperwerk.datagen.classifier import classify
+from paperwerk.datagen.templates import TemplateDeduper, make_template
 
 _HF_DATASET = "ibm-research/KVP10k"
 _HF_SPLIT = "train"
 
-# Local Gemma served by vLLM on the host. We run inside a Docker container
-# on the host network, so the host's localhost is reachable directly; override
-# with VLLM_BASE_URL if the endpoint moves. vLLM ignores the API key, but the
-# OpenAI client still requires a non-empty value.
+# ---------------------------------------------------------------------------
+# LLM backend. Choose at run time via `backend=` ("vllm" | "sonnet"):
+#   * "vllm"   — local Gemma served by vLLM on the host (default). We run inside
+#     a Docker container on the host network, so the host's localhost is
+#     reachable directly; override with VLLM_BASE_URL. vLLM ignores the API key,
+#     but the OpenAI client still requires a non-empty value.
+#   * "sonnet" — Anthropic's Claude Sonnet 4.6 via the OpenAI-compatible
+#     endpoint; needs ANTHROPIC_API_KEY.
+# ---------------------------------------------------------------------------
 _VLLM_BASE_URL = os.environ.get("VLLM_BASE_URL", "http://localhost:8000/v1/")
-_MODEL = os.environ.get("VLLM_MODEL", "google/gemma-4-E4B-it")
+_VLLM_MODEL = os.environ.get("VLLM_MODEL", "google/gemma-4-E4B-it")
+_ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
+_SONNET_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+# _DEFAULT_BACKEND = "vllm"
+_DEFAULT_BACKEND = "sonnet"
+
 _LLM_CONCURRENCY = 10
 _DOWNLOAD_CONCURRENCY = 16
 _SOURCE = "kvp10k"
 
-_TEMPLATES_ROOT = Path(datagen.__file__).resolve().parent / "assets" / "templates"
+# ---------------------------------------------------------------------------
+# Fixed classification vocabulary (EDITABLE).
+#
+# The classifier is constrained to exactly these snake_case types plus
+# "other"; any document that doesn't fit is labelled "other" and skipped, so
+# the corpus stays to a small, curated set of form-like types instead of the
+# open-ended long tail. Add/remove types freely.
+# ---------------------------------------------------------------------------
+DOCUMENT_TYPES: list[str] = [
+    "invoice",
+    "application_form",
+    "tax_form",
+    "datasheet",
+    "request_form",
+    "authorization_form",
+    "registration_form",
+    "certificate",
+    "worksheet",
+    "financial_statement",
+]
+_OTHER = "other"
+_CLASSIFY_CHOICES = DOCUMENT_TYPES + [_OTHER]  # what the classifier may return
+_ALLOWED_TYPES = set(DOCUMENT_TYPES)  # kept types (everything else skipped)
+_VALID_CLASSES = _ALLOWED_TYPES | {_OTHER}  # valid results under this taxonomy
+
+_TEMPLATES_ROOT = Path("/data") / "paperwerk" / "assets" / "templates"
 _CACHE_ROOT = Path("/data/paperwerk/cache/kvp10k")
 _PDF_CACHE_DIR = _CACHE_ROOT / "pdfs"
 _DOCS_CACHE_PATH = _CACHE_ROOT / "docs.json"
@@ -111,20 +152,31 @@ _DEFAULT_HASH_SIZE = 8
 # ---------------------------------------------------------------------------
 
 _LLM: LLM | None = None
+_BACKEND: str = _DEFAULT_BACKEND  # set by `main()` / the flow before tasks fan out
 _DL_SEM = asyncio.Semaphore(_DOWNLOAD_CONCURRENCY)
 
 
 def _get_llm() -> LLM:
     global _LLM
     if _LLM is None:
-        # vLLM doesn't authenticate; any non-empty key satisfies the client.
-        api_key = os.environ.get("VLLM_API_KEY", "EMPTY")
-        _LLM = LLM(
-            base_url=_VLLM_BASE_URL,
-            api_key=api_key,
-            model=_MODEL,
-            max_concurrency=_LLM_CONCURRENCY,
-        )
+        if _BACKEND == "sonnet":
+            api_key = os.environ.get("ANTHROPIC_API_KEY")
+            if not api_key:
+                raise RuntimeError("backend='sonnet' requires ANTHROPIC_API_KEY")
+            _LLM = LLM(
+                base_url=_ANTHROPIC_BASE_URL,
+                api_key=api_key,
+                model=_SONNET_MODEL,
+                max_concurrency=_LLM_CONCURRENCY,
+            )
+        else:
+            # vLLM doesn't authenticate; any non-empty key satisfies the client.
+            _LLM = LLM(
+                base_url=_VLLM_BASE_URL,
+                api_key=os.environ.get("VLLM_API_KEY", "EMPTY"),
+                model=_VLLM_MODEL,
+                max_concurrency=_LLM_CONCURRENCY,
+            )
     return _LLM
 
 
@@ -251,7 +303,7 @@ async def get_page_count(url_hash: str, pdf_path: Path) -> int:
 async def classify_pdf(url_hash: str, pdf_path: Path) -> str | None:
     logger = get_run_logger()
     try:
-        cls = await classify(_get_llm(), str(pdf_path))
+        cls = await classify(_get_llm(), str(pdf_path), classes=_CLASSIFY_CHOICES)
     except Exception as e:
         logger.error(f"[{url_hash}] classify failed: {e!r}")
         return None
@@ -299,11 +351,16 @@ async def kvp10k_templates(
     hash_size: int = _DEFAULT_HASH_SIZE,
     max_pages_per_doc: int = _MAX_PAGES_PER_DOC,
     templates_root: Path = _TEMPLATES_ROOT,
+    backend: str = _DEFAULT_BACKEND,
 ) -> None:
+    global _BACKEND
+    _BACKEND = backend
     logger = get_run_logger()
 
     # Initialise the LLM client before any tasks fan out.
-    _get_llm()
+    llm = _get_llm()
+    logger.info(f"backend={backend!r} -> {llm!r}")
+    logger.info(f"classifying into {len(DOCUMENT_TYPES)} types + 'other' (skipped)")
 
     logger.info(f"loading {_HF_DATASET} ({_HF_SPLIT}) from HuggingFace")
     ds = load_dataset(_HF_DATASET, split=_HF_SPLIT)
@@ -385,13 +442,20 @@ async def kvp10k_templates(
         if n > max_pages_per_doc:
             return "too_long"
 
-        # 1. classify (reuse cache; only hit the LLM on a miss)
+        # 1. classify into one of the fixed types. Reuse the cache, but
+        #    re-classify any label that isn't part of the current taxonomy
+        #    (e.g. a stale open-ended label from a previous run). Anything the
+        #    classifier can't place is bucketed as "other" and skipped.
         cls = await _cached_class(url_hash)
-        if cls is None:
+        if cls not in _VALID_CLASSES:
             cls = await classify_pdf(url_hash, pdf_path)
             if cls is None:
                 return "classify_fail"
+            if cls not in _ALLOWED_TYPES:  # off-list result → bucket as "other"
+                cls = _OTHER
             await _record_class(url_hash, url, n, cls)
+        if cls == _OTHER:
+            return "off_type"
 
         # Skip documents whose template already exists (resume support).
         target = templates_root / cls / f"{_SOURCE}_{url_hash}.html.j2"
@@ -435,7 +499,10 @@ def main(
     hash_size: int = _DEFAULT_HASH_SIZE,
     max_pages_per_doc: int = _MAX_PAGES_PER_DOC,
     templates_root: Path | str = _TEMPLATES_ROOT,
+    backend: str = _DEFAULT_BACKEND,
 ) -> None:
+    if backend not in ("vllm", "sonnet"):
+        raise ValueError(f"backend must be 'vllm' or 'sonnet', got {backend!r}")
     asyncio.run(
         kvp10k_templates(
             limit=limit,
@@ -443,6 +510,7 @@ def main(
             hash_size=hash_size,
             max_pages_per_doc=max_pages_per_doc,
             templates_root=Path(templates_root),
+            backend=backend,
         )
     )
 
