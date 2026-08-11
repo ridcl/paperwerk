@@ -18,7 +18,7 @@ from typing import Optional
 
 from paperwerk.llm import LLM
 
-from datagen.utils import document_to_data_urls
+from paperwerk.datagen.utils import document_to_data_urls
 
 _MAX_PAGES = 3
 

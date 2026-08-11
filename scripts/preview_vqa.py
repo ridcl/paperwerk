@@ -57,12 +57,14 @@ def main() -> None:
     ap.add_argument("--parquet", type=Path, default=_DEFAULT_PARQUET)
     ap.add_argument("-n", "--count", type=int, default=10)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--out-dir", type=Path, default=_OUT_DIR)
+    ap.add_argument("--prefix", default="doc")
     args = ap.parse_args()
 
     table = pq.read_table(args.parquet)
     n = min(args.count, table.num_rows)
     idx = random.Random(args.seed).sample(range(table.num_rows), n)
-    _OUT_DIR.mkdir(parents=True, exist_ok=True)
+    args.out_dir.mkdir(parents=True, exist_ok=True)
 
     for i, ridx in enumerate(idx):
         # Slice a single row: take() would concatenate the large binary image
@@ -75,7 +77,8 @@ def main() -> None:
             _annotate_page(Image.open(BytesIO(b)), by_page.get(p, []))
             for p, b in enumerate(row["images"])
         ]
-        out = _OUT_DIR / f"vqa_form_like_{i}.pdf"
+        category = row["source"].split("/", 1)[0]
+        out = args.out_dir / f"{args.prefix}_{i:02d}_{category}.pdf"
         pages[0].save(out, "PDF", save_all=True, append_images=pages[1:])
         print(
             f"{out}  <- row {ridx} [{row['source']}] "
