@@ -30,7 +30,7 @@ from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
 
-from jinja2 import Environment
+from jinja2 import ChainableUndefined, Environment
 from pdf2image import convert_from_bytes
 from PIL import ImageDraw, ImageFont
 from playwright.async_api import async_playwright
@@ -169,7 +169,7 @@ def render_sync(
     """
     rng = random.Random(seed)
     html = (
-        Environment(autoescape=True, finalize=_finalize)
+        Environment(autoescape=True, finalize=_finalize, undefined=ChainableUndefined)
         .from_string(template_str)
         .render(**data)
     )
@@ -274,7 +274,7 @@ async def render(
     """
     rng = random.Random(seed)
     html = (
-        Environment(autoescape=True, finalize=_finalize)
+        Environment(autoescape=True, finalize=_finalize, undefined=ChainableUndefined)
         .from_string(template_str)
         .render(**data)
     )

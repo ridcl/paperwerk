@@ -77,6 +77,7 @@ import os
 import random
 import re
 import sys
+import traceback
 from io import BytesIO
 from pathlib import Path
 
@@ -85,6 +86,7 @@ import pyarrow.parquet as pq
 from jinja2 import Environment
 from pdf2image import convert_from_bytes
 
+from paperwerk.async_utils import gather_limited
 from paperwerk.llm import LLM
 
 from paperwerk.datagen.augment import PROFILES, augment, augment_geometric
@@ -241,11 +243,22 @@ def _make_llm(backend: str, concurrency: int) -> LLM:
     )
 
 
+# A Jinja dict method (`.items`/`.values`/`.keys`/…) accessed WITHOUT calling it,
+# inside a `{{ }}`/`{% %}` block: `{% for v in row.values %}` (missing `()`).
+# `row` is a dict at render time, so `.values` is the bound method → the template
+# always fails with "'builtin_function_or_method' object is not iterable". These
+# are deterministically broken as generated, so drop them from the pool.
+_BROKEN_JINJA_RE = re.compile(
+    r"\{[{%][^}]*\.(?:items|values|keys|get|pop|update|setdefault)\b(?!\s*\()"
+)
+
+
 def build_template_pool(min_fields: int) -> list[tuple[str, Path]]:
     """Resolve CATEGORIES to concrete, usable (class, template) pairs."""
     env = Environment(autoescape=True)
     pool: list[tuple[str, Path]] = []
     missing: list[str] = []
+    broken = 0
     for cls in CATEGORIES:
         class_dir = _TEMPLATES_ROOT / cls
         if not class_dir.is_dir():
@@ -259,6 +272,9 @@ def build_template_pool(min_fields: int) -> list[tuple[str, Path]]:
                 env.parse(text)
             except Exception:
                 continue  # skip malformed-as-generated templates
+            if _BROKEN_JINJA_RE.search(text):
+                broken += 1
+                continue  # skip templates with the uncalled-dict-method bug
             if len(discover_fields(text)) < min_fields:
                 continue  # skip near-blank templates
             pool.append((cls, tpl))
@@ -267,6 +283,8 @@ def build_template_pool(min_fields: int) -> list[tuple[str, Path]]:
             f"warning: {len(missing)} listed categor(y/ies) not found under "
             f"{_TEMPLATES_ROOT}: {missing}"
         )
+    if broken:
+        print(f"skipped {broken} template(s) with the uncalled-dict-method bug")
     return pool
 
 
@@ -298,20 +316,35 @@ def _render_to_datapoint(
     dpi: int,
     image_format: str,
     jpeg_quality: int,
-) -> tuple[list[bytes], list]:
-    """Sync CPU stage: render (+optional augment) → (page image bytes, fields)."""
+) -> tuple[list[bytes], list, bool]:
+    """Sync CPU stage: render (+optional augment) → (page images, fields, aug_ok).
+
+    Augmentation is best-effort: augraphy occasionally trips an internal numba
+    parfor bug (`AssertionError` in numba type inference) on certain images. If
+    that happens we keep the CLEAN render rather than discarding the whole doc
+    (and the value-gen call already spent on it). `aug_ok` reports whether the
+    requested augmentation was actually applied.
+    """
     pdf, fields = render_sync(template_html, data, seed=seed)
+    aug_ok = False
     if plan is not None:
-        if plan["geometric"]:
-            pdf, fields = augment_geometric(
-                pdf, fields, quality=plan["geo_quality"], seed=seed
+        try:
+            if plan["geometric"]:
+                pdf, fields = augment_geometric(
+                    pdf, fields, quality=plan["geo_quality"], seed=seed
+                )
+            pdf, fields = augment(
+                pdf, fields, profile=plan["profile"], quality=plan["quality"], seed=seed
             )
-        pdf, fields = augment(
-            pdf, fields, profile=plan["profile"], quality=plan["quality"], seed=seed
-        )
+            aug_ok = True
+        except Exception as e:  # noqa: BLE001 - augraphy/numba flakiness -> clean
+            print(
+                f"  augment failed ({plan['profile']}: {type(e).__name__}); using clean render"
+            )
+            pdf, fields = render_sync(template_html, data, seed=seed)
     pages = convert_from_bytes(pdf, dpi=dpi)
     images = [_encode(p, image_format, jpeg_quality) for p in pages]
-    return images, fields
+    return images, fields, aug_ok
 
 
 def _logical(name: str) -> str:
@@ -379,11 +412,14 @@ async def generate_queries(
         f"Set `field` to the EXACT string from the list above — never invent or "
         f"alter a field name."
     )
+    # Scale the token budget to the field count: the JSON holds up to `hi`
+    # {field, query} pairs, so a flat 4096 truncates field-heavy docs mid-string.
+    max_tokens = min(20000, 2048 + 80 * n)
     resp = await llm.ainvoke(
         messages=[{"role": "user", "content": prompt}],
         schema=_QUERY_GEN_SCHEMA,
         temperature=temperature,
-        max_tokens=4096,
+        max_tokens=max_tokens,
     )
     text = resp.choices[0].message.content
     try:
@@ -513,12 +549,45 @@ def _merge_shards(out_dir: Path, merged_path: Path) -> int:
     return len(shards)
 
 
-async def _build(args: argparse.Namespace) -> None:
-    if args.merge_only:
-        _merge_shards(args.output, args.merge_output)
+async def _build(
+    *,
+    limit: int = 100,
+    output: Path = _DEFAULT_OUTPUT,
+    backend: str = "vllm",
+    augment_ratio: float = 0.0,
+    signatures: bool = True,
+    split: str = "train",
+    seed: int = 20260727,
+    dpi: int = 150,
+    image_format: str = "png",
+    jpeg_quality: int = 92,
+    min_fields: int = 4,
+    query_temperature: float = 0.7,
+    concurrency: int = 10,
+    cpu_concurrency: int = 4,
+    merge: bool = False,
+    merge_output: Path | None = None,
+    merge_only: bool = False,
+) -> None:
+    """Generate the dataset. All parameters are keyword-only.
+
+    `output` is a shard directory (one parquet per doc; resumable). When
+    `merge_output` is None it defaults to ``<output>.parquet``.
+    """
+    if not 0.0 <= augment_ratio <= 1.0:
+        raise ValueError("augment_ratio must be in [0, 1]")
+    output = Path(output)
+    merge_output = (
+        output.with_name(output.name + ".parquet")
+        if merge_output is None
+        else Path(merge_output)
+    )
+
+    if merge_only:
+        _merge_shards(output, merge_output)
         return
 
-    pool = build_template_pool(args.min_fields)
+    pool = build_template_pool(min_fields)
     if not pool:
         sys.exit(
             f"error: no usable templates resolved from CATEGORIES under {_TEMPLATES_ROOT}"
@@ -528,44 +597,45 @@ async def _build(args: argparse.Namespace) -> None:
         f"{len({c for c, _ in pool})} categor(y/ies)"
     )
 
-    rng = random.Random(args.seed)
+    rng = random.Random(seed)
     # Per-slot augmentation flags: exactly round(N * ratio) augmented, shuffled.
-    n_aug = round(args.limit * args.augment_ratio)
-    aug_flags = [True] * n_aug + [False] * (args.limit - n_aug)
+    n_aug = round(limit * augment_ratio)
+    aug_flags = [True] * n_aug + [False] * (limit - n_aug)
     rng.shuffle(aug_flags)
 
-    cpu_sem = asyncio.Semaphore(args.cpu_concurrency)
+    cpu_sem = asyncio.Semaphore(cpu_concurrency)
 
-    llm = _make_llm(args.backend, args.concurrency)
-    print(f"value generation via {llm!r} (backend={args.backend})")
+    llm = _make_llm(backend, concurrency)
+    print(f"value generation via {llm!r} (backend={backend})")
 
-    args.output.mkdir(parents=True, exist_ok=True)
+    output.mkdir(parents=True, exist_ok=True)
     # Clear any leftover temp shards from a previously-killed run.
-    for stale in args.output.glob("part_*.parquet.tmp"):
+    for stale in output.glob("part_*.parquet.tmp"):
         stale.unlink()
-    resumed = _existing_slots(args.output)
+    resumed = _existing_slots(output)
     if resumed:
-        print(f"resuming: {len(resumed)} of {args.limit} shard(s) already present")
+        print(f"resuming: {len(resumed)} of {limit} shard(s) already present")
     done = 0
 
     async def _slot(slot: int) -> None:
         nonlocal done
-        shard = _shard_path(args.output, slot)
+        shard = _shard_path(output, slot)
         if slot in resumed:
             return  # already cached — skip all LLM/render work
         augmented = aug_flags[slot]
-        slot_rng = random.Random(f"{args.seed}:{slot}")
-        seed = args.seed + slot
+        slot_rng = random.Random(f"{seed}:{slot}")
+        render_seed = seed + slot
         # Sample templates WITH replacement (a run of N docs typically far
         # exceeds the pool size); each pick gets fresh values + seed, so reuses
         # still differ. Each slot retries a bounded number of times to skip
         # templates that fail to render before giving up.
-        for _ in range(_MAX_ATTEMPTS):
+        for i in range(_MAX_ATTEMPTS):
             cls, tpl_path = slot_rng.choice(pool)
+            print(f"[slot {slot:05d}] starting on class {cls}, template {tpl_path} ")
             try:
                 template_html = tpl_path.read_text()
                 schema = discover_fields(template_html)
-                if args.signatures:
+                if signatures:
                     template_html, sig_fields = inject_signatures(
                         template_html, schema, slot_rng
                     )
@@ -577,15 +647,15 @@ async def _build(args: argparse.Namespace) -> None:
                 data = await random_values(llm, synth_fields, hint_rng=slot_rng)
                 plan = _augment_plan(slot_rng) if augmented else None
                 async with cpu_sem:
-                    images, fields = await asyncio.to_thread(
+                    images, fields, aug_ok = await asyncio.to_thread(
                         _render_to_datapoint,
                         template_html,
                         data,
                         plan,
-                        seed=seed,
-                        dpi=args.dpi,
-                        image_format=args.image_format,
-                        jpeg_quality=args.jpeg_quality,
+                        seed=render_seed,
+                        dpi=dpi,
+                        image_format=image_format,
+                        jpeg_quality=jpeg_quality,
                     )
                 # LLM picks the extractable subset and writes queries for it in
                 # one format chosen for this whole datapoint.
@@ -595,43 +665,45 @@ async def _build(args: argparse.Namespace) -> None:
                     continue
                 fmt = slot_rng.choice(_QUERY_FORMATS)
                 query_map = await generate_queries(
-                    llm, cls, filled, fmt, slot_rng, temperature=args.query_temperature
+                    llm, cls, filled, fmt, slot_rng, temperature=query_temperature
                 )
             except Exception as e:  # noqa: BLE001 - retry with next template
-                print(f"[slot {slot:05d}] {cls} failed ({e!r}); retrying")
+                # Full traceback so opaque errors (e.g. bare AssertionError from
+                # a bad template) are identifiable; one block per failed attempt.
+                print(
+                    f"[slot {slot:05d}] {cls} failed on {tpl_path.name} "
+                    f"({type(e).__name__}: {e}); retrying\n"
+                    + traceback.format_exc().rstrip()
+                )
                 continue
 
             source = f"{cls}/{tpl_path.stem.replace('.html', '')}#{slot:05d}"
-            dp = _to_datapoint(
-                images, fields, query_map, source=source, split=args.split
-            )
+            dp = _to_datapoint(images, fields, query_map, source=source, split=split)
             if dp is None:
                 print(f"[slot {slot:05d}] {cls} produced no answers; retrying")
                 continue
             await asyncio.to_thread(_write_shard, shard, dp)
             done += 1
-            tag = (
-                f"aug:{plan['profile']}" + ("+geo" if plan["geometric"] else "")
-                if plan
-                else "clean"
-            )
+            if plan and aug_ok:
+                tag = f"aug:{plan['profile']}" + ("+geo" if plan["geometric"] else "")
+            elif plan:
+                tag = "clean(aug-failed)"
+            else:
+                tag = "clean"
             print(
-                f"[slot {slot:05d}] ({done} new / {args.limit}) {cls} "
+                f"[slot {slot:05d}] ({done} new / {limit}) {cls} "
                 f"[{tag}, fmt:{fmt}, {len(dp['images'])}p, "
                 f"{len(dp['queries'])}/{len(filled)} fields, {len(dp['answers'])} qa]"
             )
             return
         print(f"[slot {slot:05d}] gave up after {_MAX_ATTEMPTS} failed attempt(s)")
 
-    await asyncio.gather(*(_slot(i) for i in range(args.limit)))
+    await gather_limited((_slot(i) for i in range(limit)), concurrency)
 
-    total = len(_existing_slots(args.output))
-    print(
-        f"\ndone: wrote {done} new shard(s); {total}/{args.limit} total "
-        f"in {args.output}"
-    )
-    if args.merge:
-        _merge_shards(args.output, args.merge_output)
+    total = len(_existing_slots(output))
+    print(f"\ndone: wrote {done} new shard(s); {total}/{limit} total in {output}")
+    if merge:
+        _merge_shards(output, merge_output)
 
 
 def main() -> None:
@@ -741,10 +813,9 @@ def main() -> None:
     args = parser.parse_args()
     if not 0.0 <= args.augment_ratio <= 1.0:
         sys.exit("error: --augment-ratio must be in [0, 1]")
-    if args.merge_output is None:
-        args.merge_output = args.output.with_name(args.output.name + ".parquet")
-    asyncio.run(_build(args))
+    # argparse dest names match _build's keyword-only parameters one-to-one.
+    asyncio.run(_build(**vars(args)))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "__file__" in globals():
     main()
